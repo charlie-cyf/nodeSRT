@@ -1,11 +1,11 @@
 Selective Regression Testing for Node.js
-
+\s\s
 special Javascript/Node.js features to handle
-1) Object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
-	[] dynamic property key(i.e. pan[cake], pan['size'])
-	[] constructor & factory
-	[] defineProperties: getter and setter
-	[] deleting properties. e.g. delete obj.key;
+1) Object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects \s\s
+	[] dynamic property key(i.e. pan[cake], pan['size']) \s\s
+	[] constructor & factory \s\s
+	[] defineProperties: getter and setter \s\s
+	[] deleting properties. e.g. delete obj.key;  \s\s
 
 2) Class: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
    `classes are in fact special functions`
