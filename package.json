@@ -1,0 +1,25 @@
+{
+  "name": "nodesrt",
+  "version": "1.0.0",
+  "description": "Selective Regression Testing for Node.js \\s\\s special Javascript/Node.js features to handle 1) Object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects <br />  \t[] dynamic property key(i.e. pan[cake], pan['size']) <br /> \t[] constructor & factory <br /> \t[] defineProperties: getter and setter <br /> \t[] deleting properties. e.g. delete obj.key;  <br />",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlie-cyf/nodeSRT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlie-cyf/nodeSRT/issues"
+  },
+  "homepage": "https://github.com/charlie-cyf/nodeSRT#readme",
+  "dependencies": {
+    "acorn": "^7.2.0",
+    "acorn-bigint": "^0.4.0",
+    "acorn-jsx": "^5.2.0",
+    "esmangle": "^1.0.1"
+  }
+}
