@@ -20,6 +20,7 @@
     "acorn": "^7.2.0",
     "acorn-bigint": "^0.4.0",
     "acorn-jsx": "^5.2.0",
+    "acorn-loose": "^7.0.0",
     "esmangle": "^1.0.1"
   }
 }
