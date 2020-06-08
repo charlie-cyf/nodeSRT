@@ -1,5 +1,5 @@
 Selective Regression Testing for Node.js
-\s\s
+<br />
 special Javascript/Node.js features to handle
 1) Object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects <br /> 
 	[] dynamic property key(i.e. pan[cake], pan['size']) <br />
