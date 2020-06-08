@@ -1,6 +1,14 @@
-Selective Regression Testing for Node.js
-<br />
-special Javascript/Node.js features to handle
+# Selective Regression Testing for Node.js
+
+## Steps: <br /> 
+1. static analysis on each js file, generate dependency graph on functions and fields <br /> 
+2. inject dynamic analysis code to each function<br /> 
+3. run tests one by one, get entities influenced by each tests. Store as json file.<br /> 
+4. parse diff file, identify changes.<br /> 
+5. generate a list of tests on test-entities relationship.<br /> 
+
+
+## special Javascript/Node.js features to handle<br /> 
 1) Object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects <br /> 
 	[] dynamic property key(i.e. pan[cake], pan['size']) <br />
 	[] constructor & factory <br />
