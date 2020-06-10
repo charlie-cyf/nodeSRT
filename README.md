@@ -1,7 +1,7 @@
 # Selective Regression Testing for Node.js
 
 ## Steps: <br /> 
-~~ 1. static analysis on each js file, generate dependency graph on functions and fields ~~
+1. ~~static analysis on each js file, generate dependency graph on functions and fields~~
 2. inject dynamic analysis code to each function
 3. run tests one by one, get entities influenced by each tests. Store as json file.
 4. parse diff file, identify changes.
