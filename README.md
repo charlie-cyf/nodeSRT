@@ -1,11 +1,11 @@
 # Selective Regression Testing for Node.js
 
 ## Steps: <br /> 
-1. static analysis on each js file, generate dependency graph on functions and fields <br /> 
-2. inject dynamic analysis code to each function<br /> 
-3. run tests one by one, get entities influenced by each tests. Store as json file.<br /> 
-4. parse diff file, identify changes.<br /> 
-5. generate a list of tests on test-entities relationship.<br /> 
+~~ 1. static analysis on each js file, generate dependency graph on functions and fields ~~
+2. inject dynamic analysis code to each function
+3. run tests one by one, get entities influenced by each tests. Store as json file.
+4. parse diff file, identify changes.
+5. generate a list of tests on test-entities relationship.
 
 
 ## special Javascript/Node.js features to handle<br /> 
@@ -34,4 +34,6 @@
 4) async & promises <br />
 	[] chained promises
 
+## design decisions
+1. since the selection is at method level, if a modification is on a uncovered method, we will run all tests have dependencies on this file. ThereFore static analysis in unnecessary.
 
