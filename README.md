@@ -8,7 +8,7 @@
 5. generate a list of tests on test-entities relationship.
 
 
-## special Javascript/Node.js features to handle<br /> 
+## special Javascript features to handle<br /> 
 1) Object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects <br /> 
 	[] dynamic property key(i.e. pan[cake], pan['size']) <br />
 	[] constructor & factory <br />
