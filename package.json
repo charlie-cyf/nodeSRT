@@ -23,6 +23,7 @@
     "acorn-loose": "^7.0.0",
     "esmangle": "^1.0.1",
     "esprima": "^4.0.1",
+    "madge": "^3.9.1",
     "styx": "^0.2.1"
   }
 }
