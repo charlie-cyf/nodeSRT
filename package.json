@@ -21,6 +21,7 @@
     "acorn-bigint": "^0.4.0",
     "acorn-jsx": "^5.2.0",
     "acorn-loose": "^7.0.0",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "envfile": "^6.4.0",
