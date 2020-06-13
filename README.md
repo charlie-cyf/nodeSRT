@@ -19,7 +19,7 @@
    `classes are in fact special functions` <br />
 	[] unnamed class: let rec = class {}; <br />
 	[] prototype <br />
-	[] static method <br />
+	[] static method and field <br />
 	[] public & private field <br />
 	[] inheritance <br />
 

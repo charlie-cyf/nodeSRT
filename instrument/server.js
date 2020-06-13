@@ -19,7 +19,6 @@ app.use(bodyParser.json());
   *     fileName: fileName in ../tmp/ folder, create new file if doesn't exist
   *     msg: message to add to file
   * 
-  * automatically add \n to each message
   * remember to use --header 'Content-Type: application/x-www-form-urlencoded'
 */
 app.post('/instrument-message', (req, res) => {
@@ -29,7 +28,7 @@ app.post('/instrument-message', (req, res) => {
         let log_path = path.join(process.env.SRT_PATH, "tmp", req.body.fileName);
         logStream = fs.createWriteStream(log_path, {flags: "a"});
         logStream.write(req.body.msg);
-        logStream.end('\n');
+        logStream.end();
     } catch(err) {
         res.status(500).send({error: err});
     }
