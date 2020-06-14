@@ -1,4 +1,4 @@
-const SRTlib = require('../../instrument/SRTlib')
+const SRTlib = require('SRT-util')
 
 function fA() {
     SRTlib.send(`{ "function": \"${arguments.callee.name}\", 
@@ -61,6 +61,6 @@ fC();
 SRTlib.endLogger();
 
 
-(() => {
+(() => { 
     console.log(new Error().stack)
 })()

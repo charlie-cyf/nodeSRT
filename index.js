@@ -2,6 +2,7 @@ const {generate} = require("./ASTgenerater");
 const fs = require("fs");
 const madge = require('madge'); // use madge to construct file dependency
 const envfile = require('envfile')
+const Injector = require('./instrument/instrumentor')
 const codeBase = "./code/uppy/"
 
 
@@ -23,3 +24,7 @@ if(!fs.existsSync(process.env.SRT_PATH+'/tmp'))
 // madge('./code/uppy').then((res) => {
 // 	console.log(res)
 // });
+
+const codeInjector = new Injector(codeBase)
+
+codeInjector.getInjected()
