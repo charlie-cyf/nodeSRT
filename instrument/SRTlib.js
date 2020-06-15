@@ -12,12 +12,15 @@ module.exports = class SRTlib {
 
     static endPontUrl;
 
+    static started;
+
     // call this function to initialize the logger
     /*
     *   param: 
     *       base: absolute path to original project
     */
     static startLogger(base, url){
+        this.started = true;
         this.basePath = base;
         this.message = '';
         this.endPontUrl = url
@@ -25,10 +28,18 @@ module.exports = class SRTlib {
     }
 
     static send(msg){
-        this.message = this.message+msg;
+        if(this.started){
+            this.message = this.message+msg;
+        }
+        console.warn('received message when SRTlib logger not started!',msg)
     }
 
     static endLogger(){
+        if(!this.started){
+            new Error('endlogger when SRTlib is not started!')
+        }
+        this.started = false;
+
         if(this.message.length != 0){
             axios.post(this.endPontUrl, {
                 fileName: this.logFile,
