@@ -30,8 +30,9 @@ module.exports = class SRTlib {
     static send(msg){
         if(this.started){
             this.message = this.message+msg;
+        } else {
+            console.warn('received message when SRTlib logger not started!',msg)
         }
-        console.warn('received message when SRTlib logger not started!',msg)
     }
 
     static endLogger(){

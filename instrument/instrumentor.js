@@ -59,20 +59,28 @@ module.exports = class Instrumentor {
                         }
                     })
                 } else {
-                    // TODO
-                    let functionMap = [];
+                    console.log("full name", fullPath)                    
+                    const getListOfId = this.getListOfId;
+                    const functionHandler = this.functionHandler;
                     acornWalk.ancestor(tree, {
                         FunctionDeclaration(node, ancestors){
-
+                            const paramsNum = node.params.length;
+                            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"${arguments.callee.name}\", "fileName": \"${__filename}\", "paramsNumber": '+paramsNum+', "calls" : [`);'))
+                            node.body.body.push(ASTParser.parse('SRTlib.send("]}");'))
                         },
 
                         FunctionExpression(node, ancestors){
-
+                            functionHandler(node, ancestors, getListOfId)
                         },
 
                         ArrowFunctionExpression(node, ancestors){
+                            functionHandler(node, ancestors, getListOfId);
+                        },
 
+                        ReturnStatement(node, ancestors){
+                            // TODO 
                         }
+
 
                     })
                 }
@@ -89,6 +97,102 @@ module.exports = class Instrumentor {
             }
 
         })
+    }
+
+
+    functionHandler(node, ancestors, getListOfId){
+        let functionMap = {};
+        const paramsNum = node.params.length;
+        // find VariableDeclarator
+        let parent = ancestors[ancestors.length -1];
+        if(parent.type === 'VariableDeclarator' || parent.type === 'MethodDefinition'){
+            if(node.body.type !== 'BlockStatement'){
+                // turn into blockStatment
+                const expStmt = {
+                    type: "ExpressionStatement",
+                    expression: node.body
+                };
+                node.body = {
+                    type: "BlockStatement",
+                    body: [expStmt]
+                }
+            }
+            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"${arguments.callee.name}\", "fileName": \"${__filename}\", "paramsNumber": '+paramsNum+', "calls" : [`);'))
+            node.body.body.push(ASTParser.parse('SRTlib.send("]}");'))
+
+        } else {
+            let funcName = getListOfId(ancestors, []).join('.');
+            funcName = funcName? funcName: 'empty';
+            if(functionMap[funcName]){
+                funcName = funcName + functionMap[funcName]++;
+            } else {
+                funcName = funcName+'1';
+                functionMap[funcName] = 1;
+            }
+
+            if(node.body.type !== 'BlockStatement'){
+                // turn into blockStatment
+                const expStmt2 = {
+                    type: "ExpressionStatement",
+                    expression: node.body
+                };
+                node.body = {
+                    type: "BlockStatement",
+                    body: [expStmt2]
+                }
+            }
+
+            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": true, "function": \"'+funcName+'\", "fileName": \"${__filename}\", "paramsNumber": '+paramsNum+', "calls" : [`);'))
+            node.body.body.push(ASTParser.parse('SRTlib.send("]}");'))
+        }
+
+    }
+
+    getListOfId(ancestors, idList){
+        let ancestorIdx = ancestors.length -1;
+        while(ancestorIdx >= 0){
+            const ancestor = ancestors[ancestorIdx];
+            switch (ancestor.type) {
+                case 'FunctionExpression':
+                case 'FunctionDeclaration':
+                case 'ArrowFunctionExpression':
+                case 'Program':
+                    return idList;
+                case 'CallExpression':
+                    if(ancestor.callee.type === 'Identifier'){
+                        idList.unshift(ancestor.callee.name);
+                    } else if (ancestor.callee.type === 'MemberExpression'){
+                        let callee = ancestor.callee;
+                        while(callee.object.type !== "Identifier"){
+                            if(callee.property.type === "Identifier"){
+                                idList.unshift(callee.property.name)
+                            }
+
+                            if(callee.object.type === 'CallExpression'){
+                                callee = callee.object.callee
+                            } else{
+                                break;
+                            }
+                        }
+                    }
+                    return idList;
+                case 'Property':
+                    if(ancestor.key.type === 'Identifier'){
+                        idList.unshift(ancestor.key.name);
+                    }
+                    break;
+                case 'VariableDeclarator':
+                    if(ancestor.key.type === 'Identifier'){
+                        idList.unshift(ancestor.key.name);
+                    }
+                    break;
+                case "ReturnStatement":
+                    idList.unshift('ReturnStatement')
+                default:
+                    break;
+            }
+        }
+
     }
 
     getSuiteName(ancestors) {

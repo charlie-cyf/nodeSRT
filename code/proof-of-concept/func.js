@@ -1,5 +1,14 @@
 const SRTlib = require('SRT-util')
 
+
+axios.get('/test', function(){
+    return 'cb'
+}).then(res => {
+    return res.body;
+}).catch(err => {
+    return err;
+})
+
 function fA() {
     SRTlib.send(`{ "function": \"${arguments.callee.name}\", 
                    "fileName": \"${__filename.split('/').pop()}\", 
@@ -22,8 +31,8 @@ function fB(x) {
     // console.log("arguments", JSON.stringify(arguments))
     // console.log("filename", __filename.split('/').pop())
     let r = 1 + 1;
-    SRTlib.send(']}')
     return 98;
+    SRTlib.send(']}')
 }
 
 const fC = function () {
