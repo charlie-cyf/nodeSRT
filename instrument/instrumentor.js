@@ -122,6 +122,7 @@ module.exports = class Instrumentor {
 
         } else {
             let funcName = getListOfId(ancestors, []).join('.');
+            console.log('funcName', funcName)
             funcName = funcName? funcName: 'empty';
             if(functionMap[funcName]){
                 funcName = funcName + functionMap[funcName]++;
