@@ -60,6 +60,7 @@ module.exports = class Instrumentor {
                     })
                 } else {
                     console.log("full name", fullPath)                    
+                    let functionMap = new Map();
                     const getListOfId = this.getListOfId;
                     const functionHandler = this.functionHandler;
                     acornWalk.ancestor(tree, {
@@ -70,11 +71,11 @@ module.exports = class Instrumentor {
                         },
 
                         FunctionExpression(node, ancestors){
-                            functionHandler(node, ancestors, getListOfId)
+                            functionHandler(node, ancestors, getListOfId, functionMap)
                         },
 
                         ArrowFunctionExpression(node, ancestors){
-                            functionHandler(node, ancestors, getListOfId);
+                            functionHandler(node, ancestors, getListOfId, functionMap);
                         },
 
                         ReturnStatement(node, ancestors){
@@ -100,8 +101,7 @@ module.exports = class Instrumentor {
     }
 
 
-    functionHandler(node, ancestors, getListOfId){
-        let functionMap = {};
+    functionHandler(node, ancestors, getListOfId, functionMap){
         const paramsNum = node.params.length;
         // find VariableDeclarator
         let parent = ancestors[ancestors.length -1];
@@ -122,14 +122,15 @@ module.exports = class Instrumentor {
 
         } else {
             let funcName = getListOfId(ancestors, []).join('.');
-            console.log('funcName', funcName)
-            funcName = funcName? funcName: 'empty';
-            if(functionMap[funcName]){
-                funcName = funcName + functionMap[funcName]++;
+            funcName = funcName? funcName: 'emptyKey';
+            if(functionMap.has(funcName)){
+                functionMap.set(funcName, functionMap.get(funcName)+1);
+                funcName = funcName + functionMap.get(funcName);
             } else {
-                funcName = funcName+'1';
-                functionMap[funcName] = 1;
+                functionMap.set(funcName, 1)
+                funcName = funcName;
             }
+            console.log('function map', functionMap)
 
             if(node.body.type !== 'BlockStatement'){
                 // turn into blockStatment
@@ -149,12 +150,34 @@ module.exports = class Instrumentor {
 
     }
 
+
     getListOfId(ancestors, idList){
         let ancestorIdx = ancestors.length -1;
+        const memberExpHandler = function (node) {
+            let temp = node.object;
+            if(node.property.type === 'Identifier'){
+                idList.unshift(node.property.name)
+            }
+
+            if(temp.type ===  'MemberExpression'){
+                memberExpHandler(temp);
+            } else if(temp.type === 'Identifier') {
+                idList.unshift(temp.name);
+            }
+        }
         while(ancestorIdx >= 0){
-            const ancestor = ancestors[ancestorIdx];
+            const ancestor = ancestors[ancestorIdx--];
             switch (ancestor.type) {
                 case 'FunctionExpression':
+                    if(ancestor.id && ancestor.id.type === 'Identifier'){
+                        idList.unshift(ancestor.id.name)
+                    }
+                    break;
+                case 'AssignmentExpression':
+                    if(ancestor.left.type === 'MemberExpression'){
+                        memberExpHandler(ancestor.left)
+                    }
+                    break;
                 case 'FunctionDeclaration':
                 case 'ArrowFunctionExpression':
                 case 'Program':
@@ -171,20 +194,24 @@ module.exports = class Instrumentor {
 
                             if(callee.object.type === 'CallExpression'){
                                 callee = callee.object.callee
-                            } else{
+                            } else if (callee.object.type === 'MemberExpression') {
+                                memberExpHandler(callee.object);
+                                break;
+                            } 
+                            else{
                                 break;
                             }
                         }
                     }
-                    return idList;
+                    break;
                 case 'Property':
                     if(ancestor.key.type === 'Identifier'){
                         idList.unshift(ancestor.key.name);
                     }
                     break;
                 case 'VariableDeclarator':
-                    if(ancestor.key.type === 'Identifier'){
-                        idList.unshift(ancestor.key.name);
+                    if(ancestor.id.type === 'Identifier'){
+                        idList.unshift(ancestor.id.name);
                     }
                     break;
                 case "ReturnStatement":
@@ -193,6 +220,7 @@ module.exports = class Instrumentor {
                     break;
             }
         }
+        return idList;
 
     }
 
