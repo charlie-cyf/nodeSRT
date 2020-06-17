@@ -1,0 +1,12 @@
+var SRTlib = require('SRT-util');
+const form = require('./form');
+const dashboard = require('./dashboard');
+const pick = require('./pick');
+const upload = require('./upload');
+module.exports = {
+  dashboard,
+  form,
+  pick,
+  upload,
+  VERSION: require('../package.json').version
+};

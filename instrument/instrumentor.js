@@ -40,56 +40,61 @@ module.exports = class Instrumentor {
 
                 const getSuiteName = this.getSuiteName;
                 const codebase = this.codebaseName
+                console.log('inject to:', fullPath)
                 // if file is test
-                if (fullPath.includes('test.js') || fullPath.includes('spec.js')) {
-                    acornWalk.ancestor(tree, {
-                        CallExpression(node, ancestors) {
-                            if (node.callee.name === 'it' || node.callee.name === 'test') {
-                                const suiteName = getSuiteName(ancestors);
-                                if (suiteName) {
-                                    const testName = node.arguments[0].value;
-                                    // insert in start of test
-                                    if (node.arguments[1].type === 'FunctionExpression') {
-                                        node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suiteName + '\", \"testName\": \"' + testName + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);').body[0]);
-                                        node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')").body[0]);
-                                        node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\']},\'); SRTlib.endLogger();'));
+                try {
+                    if (fullPath.includes('test.js') || fullPath.includes('spec.js')) {
+                        acornWalk.ancestor(tree, {
+                            CallExpression(node, ancestors) {
+                                if (node.callee.name === 'it' || node.callee.name === 'test') {
+                                    const suiteName = getSuiteName(ancestors);
+                                    if (suiteName) {
+                                        const testName = node.arguments[0].value;
+                                        // insert in start of test
+                                        if (node.arguments[1].type === 'FunctionExpression') {
+                                            node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suiteName + '\", \"testName\": \"' + testName + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);').body[0]);
+                                            node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')").body[0]);
+                                            node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\']},\'); SRTlib.endLogger();'));
 
+                                        }
                                     }
                                 }
                             }
-                        }
-                    })
-                } else {
-                    console.log("full name", fullPath)
-                    let functionMap = new Map();
-                    const getListOfId = this.getListOfId;
-                    const functionHandler = this.functionHandler;
-                    const insertBeforeReturn = this.insertBeforeReturn;
-                    acornWalk.ancestor(tree, {
-                        FunctionDeclaration(node, ancestors) {
-                            const paramsNum = node.params.length;
-                            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"${arguments.callee.name}\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
-                            node.body.body.push(ASTParser.parse('SRTlib.send("]},");'))
-                            insertBeforeReturn(node);
-                        },
+                        })
+                    } else {
+                        let functionMap = new Map();
+                        const getListOfId = this.getListOfId;
+                        const functionHandler = this.functionHandler;
+                        const insertBeforeReturn = this.insertBeforeReturn;
+                        acornWalk.ancestor(tree, {
+                            FunctionDeclaration(node, ancestors) {
+                                const paramsNum = node.params.length;
+                                node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"${arguments.callee.name}\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+                                node.body.body.push(ASTParser.parse('SRTlib.send("]},");'))
+                                insertBeforeReturn(node);
+                            },
 
-                        FunctionExpression(node, ancestors) {
-                            functionHandler(node, ancestors, getListOfId, functionMap);
-                            insertBeforeReturn(node);
-                        },
+                            FunctionExpression(node, ancestors) {
+                                functionHandler(node, ancestors, getListOfId, functionMap);
+                                insertBeforeReturn(node);
+                            },
 
-                        ArrowFunctionExpression(node, ancestors) {
-                            functionHandler(node, ancestors, getListOfId, functionMap);
-                            insertBeforeReturn(node)
-                        },
+                            ArrowFunctionExpression(node, ancestors) {
+                                functionHandler(node, ancestors, getListOfId, functionMap);
+                                insertBeforeReturn(node)
+                            },
 
 
-                    })
+                        })
+                    }
+
+                    //  write to outputDir
+                    fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(tree))
+
+
+                } catch (err) {
+                    console.log('injection to', fullPath, 'failed!', err)
                 }
-
-                //  write to outputDir
-                fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(tree))
-
 
             } else if (fs.lstatSync(astDir + '/' + file).isDirectory()) {
                 let dirName = file.split('/').pop();
@@ -101,33 +106,33 @@ module.exports = class Instrumentor {
         })
     }
 
-    insertBeforeReturn(node){
-        const insert = function(node, parent) {
-            if(!node) return;
-            if(node.type === 'ReturnStatement'){
+    insertBeforeReturn(node) {
+        const insert = function (node, parent) {
+            if (!node) return;
+            if (node.type === 'ReturnStatement') {
                 if (parent.type !== 'BlockStatement') {
                     const blkStmt = {
                         type: 'BlockStatement',
                         body: [node]
                     }
-                    
+
                     let key = _.invert(parent)[node]
                     parent[key] = blkStmt;
                     const returnIdx = parent[key].body.findIndex(ele => ele.type === 'ReturnStatement');
-                    if(!_.isEqual(parent[key].body[returnIdx - 1], ASTParser.parse('SRTlib.send("]},");')))
-                        parent[key].body.splice(returnIdx, 0 , ASTParser.parse('SRTlib.send("]},");'))
+                    if (!_.isEqual(parent[key].body[returnIdx - 1], ASTParser.parse('SRTlib.send("]},");')))
+                        parent[key].body.splice(returnIdx, 0, ASTParser.parse('SRTlib.send("]},");'))
                 } else {
                     const returnIdx = parent.body.findIndex(ele => ele.type === 'ReturnStatement');
-                    if(!_.isEqual(parent.body[returnIdx - 1], ASTParser.parse('SRTlib.send("]},");')))
-                        parent.body.splice(returnIdx, 0 , ASTParser.parse('SRTlib.send("]},");'))
+                    if (!_.isEqual(parent.body[returnIdx - 1], ASTParser.parse('SRTlib.send("]},");')))
+                        parent.body.splice(returnIdx, 0, ASTParser.parse('SRTlib.send("]},");'))
                 }
             } else {
                 Object.keys(node).forEach(key => {
-                    if(Array.isArray(node[key])){
+                    if (Array.isArray(node[key])) {
                         node[key].forEach(ele => {
                             insert(ele, node);
                         })
-                    } else if (typeof node[key] === 'object'){
+                    } else if (typeof node[key] === 'object') {
                         insert(node[key], node)
                     }
                 })
@@ -135,7 +140,7 @@ module.exports = class Instrumentor {
 
         }
 
-        insert(node, null);        
+        insert(node, null);
     }
 
     functionHandler(node, ancestors, getListOfId, functionMap) {
@@ -223,7 +228,7 @@ module.exports = class Instrumentor {
                         idList.unshift(ancestor.callee.name);
                     } else if (ancestor.callee.type === 'MemberExpression') {
                         let callee = ancestor.callee;
-                        while (callee.object.type !== "Identifier") {
+                        while (callee.object && callee.object.type !== "Identifier") {
                             if (callee.property.type === "Identifier") {
                                 idList.unshift(callee.property.name)
                             }
@@ -262,7 +267,6 @@ module.exports = class Instrumentor {
 
     getSuiteName(ancestors) {
         if (ancestors) {
-            console.log("ancestors", ancestors)
             for (let ancestor of ancestors) {
                 if (ancestor.type === 'CallExpression') {
                     if (ancestor.callee.name === 'describe') {

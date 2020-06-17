@@ -6,7 +6,7 @@ describe('File upload with Dropbox Provider', () => {
     await browser.url(testURL);
   });
   it('should upload a file completely with Dropbox', async function () {
-    SRTlib.startLogger('./code', 'http://localhost:8888/instrument-message');
+    SRTlib.startLogger('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code', 'http://localhost:8888/instrument-message');
     SRTlib.send(`{ "testSuite": "File upload with Dropbox Provider", "testName": "should upload a file completely with Dropbox", "fileName": "${__filename}", "calls" : [`);
     if (!process.env.UPPY_GOOGLE_EMAIL) {
       console.log('skipping Dropbox integration test');
@@ -28,19 +28,19 @@ describe('File upload with Dropbox Provider', () => {
     await allowAccessButton.waitForDisplayed();
     await allowAccessButton.click();
     await finishUploadTest(browser);
-        SRTlib.send(']}');
+        SRTlib.send(']},');
     SRTlib.endLogger();
 
   });
   it('should resume uploads when retry is triggered with Dropbox', async function () {
-    SRTlib.startLogger('./code', 'http://localhost:8888/instrument-message');
+    SRTlib.startLogger('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code', 'http://localhost:8888/instrument-message');
     SRTlib.send(`{ "testSuite": "File upload with Dropbox Provider", "testName": "should resume uploads when retry is triggered with Dropbox", "fileName": "${__filename}", "calls" : [`);
     if (!process.env.UPPY_GOOGLE_EMAIL) {
       console.log('skipping Dropbox integration test');
       return this.skip();
     }
     await uploadWithRetry(browser, 'Dropbox', testURL);
-        SRTlib.send(']}');
+        SRTlib.send(']},');
     SRTlib.endLogger();
 
   });
