@@ -1,12 +1,11 @@
-var SRTlib = require('SRT-util');
-var _require = require('preact'), h = _require.h;
+var _require = require('preact'),
+    h = _require.h;
+
 var FilePreview = require('../../FilePreview');
+
 var getFileTypeIcon = require('../../../utils/getFileTypeIcon');
+
 module.exports = function FilePreviewAndLink(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.FilePreviewAndLink", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("div", {
     class: "uppy-DashboardItem-previewInnerWrap",
     style: {
@@ -21,6 +20,4 @@ module.exports = function FilePreviewAndLink(props) {
   }), h(FilePreview, {
     file: props.file
   }));
-    SRTlib.send("]},");
-
 };

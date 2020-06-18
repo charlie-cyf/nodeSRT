@@ -1,12 +1,20 @@
-const {generate} = require("./ASTgenerater");
+const {generate, copyDir} = require("./ASTgenerater");
 const fs = require("fs");
 const madge = require('madge'); // use madge to construct file dependency
 const envfile = require('envfile')
 const Injector = require('./instrument/instrumentor')
-const codeBase = "./code/uppy/"
+let codeBase = "./code/uppy/"
+const path = require('path')
+const SRTlibPath = './instrument/SRTlib.js'
 
 
 //init
+if(codeBase.endsWith('/')){
+    codeBase = codeBase.substring(0, codeBase.length -1)
+}
+
+let injectedCodebase = codeBase+'-injected';
+
 let parsedEnv = envfile.parse(fs.readFileSync('.env'));
 parsedEnv.SRT_PATH = __dirname;
 fs.writeFileSync("./.env", envfile.stringify(parsedEnv))
@@ -25,6 +33,19 @@ if(!fs.existsSync(process.env.SRT_PATH+'/tmp'))
 // 	console.log(res)
 // });
 
+copyDir(codeBase, injectedCodebase)
+console.log('copy success!')
+
 const codeInjector = new Injector(codeBase)
 
 codeInjector.getInjected()
+
+// TODO run npm install in injected folder
+
+// copy SRTlib.js to injected node_modules
+const SRTUtilFolder = path.join(injectedCodebase, 'node_modules', 'SRT-util');
+if(!fs.existsSync(SRTUtilFolder)){
+    fs.mkdirSync(SRTUtilFolder);
+}
+fs.copyFileSync(SRTlibPath, path.join(SRTUtilFolder, 'index.js'))
+

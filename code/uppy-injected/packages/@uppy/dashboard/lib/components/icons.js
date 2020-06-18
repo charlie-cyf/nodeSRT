@@ -1,10 +1,8 @@
-var SRTlib = require('SRT-util');
-var _require = require('preact'), h = _require.h;
+var _require = require('preact'),
+    h = _require.h; // https://css-tricks.com/creating-svg-icon-system-react/
+
+
 function defaultPickerIcon() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -14,14 +12,9 @@ function defaultPickerIcon() {
   }, h("path", {
     d: "M15 30c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15C6.716 0 0 6.716 0 15c0 8.284 6.716 15 15 15zm4.258-12.676v6.846h-8.426v-6.846H5.204l9.82-12.364 9.82 12.364H19.26z"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconCopy() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -34,14 +27,9 @@ function iconCopy() {
   }), h("path", {
     d: "M44.256 2.858A8.728 8.728 0 0 0 38.043.283h-.002a8.73 8.73 0 0 0-6.212 2.574l-13.55 13.55a8.725 8.725 0 0 0-2.575 6.214 8.73 8.73 0 0 0 2.574 6.216l4.12 4.12 2.405-2.403-4.12-4.12a5.357 5.357 0 0 1-1.58-3.812c0-1.437.562-2.79 1.58-3.808l13.55-13.55a5.348 5.348 0 0 1 3.81-1.58c1.44 0 2.792.562 3.81 1.58l4.12 4.12c2.1 2.1 2.1 5.518 0 7.617L39.2 23.775l2.404 2.404 6.775-6.777c3.426-3.427 3.426-9 0-12.426l-4.12-4.12z"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconResume() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -54,14 +42,9 @@ function iconResume() {
     transform: "translate(6, 5.5)",
     points: "13 21.6666667 13 11 21 16.3333333"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconPause() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -85,14 +68,9 @@ function iconPause() {
     height: "10",
     rx: "0"
   })));
-    SRTlib.send("]},");
-
 }
+
 function localIcon() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -116,14 +94,9 @@ function localIcon() {
   }), h("path", {
     d: "M22.4 10.018c-.13-.45-.32-.703-.716-.703h-2.877l.603.699h2.34l1.21 6.541h-4.263v1.617h-5.296v-1.615H9.039l1.577-6.542h1.973l.603-.7h-2.877c-.396 0-.628.273-.717.703L8 16.752v4.185c0 .486.4.878.895.878h14.21a.887.887 0 0 0 .895-.878v-4.185l-1.6-6.734z"
   }))));
-    SRTlib.send("]},");
-
 }
+
 function iconMyDevice() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -143,14 +116,9 @@ function iconMyDevice() {
     d: "M21.973 21.152H9.863l-1.108-5.087h14.464l-1.246 5.087zM9.935 11.37h3.958l.886 1.444a.673.673 0 0 0 .585.316h6.506v1.37H9.935v-3.13zm14.898 3.44a.793.793 0 0 0-.616-.31h-.978v-2.126c0-.379-.275-.613-.653-.613H15.75l-.886-1.445a.673.673 0 0 0-.585-.316H9.232c-.378 0-.667.209-.667.587V14.5h-.782a.793.793 0 0 0-.61.303.795.795 0 0 0-.155.663l1.45 6.633c.078.36.396.618.764.618h13.354c.36 0 .674-.246.76-.595l1.631-6.636a.795.795 0 0 0-.144-.675z",
     fill: "#FFF"
   })));
-    SRTlib.send("]},");
-
 }
+
 function iconRetry() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -167,14 +135,9 @@ function iconRetry() {
   }), h("path", {
     d: "M10.657 2.621l1.414 1.415L8.536 7.57 7.12 6.157z"
   }));
-    SRTlib.send("]},");
-
 }
+
 function checkIcon() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -185,14 +148,9 @@ function checkIcon() {
   }, h("polygon", {
     points: "5 7.293 1.354 3.647 0.646 4.354 5 8.707 12.354 1.354 11.646 0.647"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconImage() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -214,14 +172,9 @@ function iconImage() {
     cy: "9.5",
     r: "1.5"
   })));
-    SRTlib.send("]},");
-
 }
+
 function iconAudio() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -234,14 +187,9 @@ function iconAudio() {
     fill: "#049BCF",
     "fill-rule": "nonzero"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconVideo() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -254,14 +202,9 @@ function iconVideo() {
     fill: "#19AF67",
     "fill-rule": "nonzero"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconPDF() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -274,14 +217,9 @@ function iconPDF() {
     fill: "#E2514A",
     "fill-rule": "nonzero"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconArchive() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -294,14 +232,9 @@ function iconArchive() {
     fill: "#00C469",
     "fill-rule": "nonzero"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconFile() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -317,14 +250,9 @@ function iconFile() {
   }), h("path", {
     d: "M15 4v3a1 1 0 0 0 1 1h3V7h-3V4h-1z"
   })));
-    SRTlib.send("]},");
-
 }
+
 function iconText() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -337,14 +265,9 @@ function iconText() {
     fill: "#5A5E69",
     "fill-rule": "nonzero"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconCopyLink() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -355,14 +278,9 @@ function iconCopyLink() {
   }, h("path", {
     d: "M7.94 7.703a2.613 2.613 0 0 1-.626 2.681l-.852.851a2.597 2.597 0 0 1-1.849.766A2.616 2.616 0 0 1 2.764 7.54l.852-.852a2.596 2.596 0 0 1 2.69-.625L5.267 7.099a1.44 1.44 0 0 0-.833.407l-.852.851a1.458 1.458 0 0 0 1.03 2.486c.39 0 .755-.152 1.03-.426l.852-.852c.231-.231.363-.522.406-.824l1.04-1.038zm4.295-5.937A2.596 2.596 0 0 0 10.387 1c-.698 0-1.355.272-1.849.766l-.852.851a2.614 2.614 0 0 0-.624 2.688l1.036-1.036c.041-.304.173-.6.407-.833l.852-.852c.275-.275.64-.426 1.03-.426a1.458 1.458 0 0 1 1.03 2.486l-.852.851a1.442 1.442 0 0 1-.824.406l-1.04 1.04a2.596 2.596 0 0 0 2.683-.628l.851-.85a2.616 2.616 0 0 0 0-3.697zm-6.88 6.883a.577.577 0 0 0 .82 0l3.474-3.474a.579.579 0 1 0-.819-.82L5.355 7.83a.579.579 0 0 0 0 .819z"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconPencil() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -385,14 +303,9 @@ function iconPencil() {
     "fill-rule": "nonzero",
     d: "M6.793 2.5L9.5 5.207l.707-.707L7.5 1.793z"
   })));
-    SRTlib.send("]},");
-
 }
+
 function iconCross() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -406,14 +319,9 @@ function iconCross() {
     fill: "#FFF",
     d: "M13 12.222l-.778.778L9 9.778 5.778 13 5 12.222 8.222 9 5 5.778 5.778 5 9 8.222 12.222 5l.778.778L9.778 9z"
   }));
-    SRTlib.send("]},");
-
 }
+
 function iconPlus() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -424,9 +332,8 @@ function iconPlus() {
   }, h("path", {
     d: "M8 6.5h6a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-.5.5H8v6a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5V8h-6a.5.5 0 0 1-.5-.5V7a.5.5 0 0 1 .5-.5h6v-6A.5.5 0 0 1 7 0h.5a.5.5 0 0 1 .5.5v6z"
   }));
-    SRTlib.send("]},");
-
 }
+
 module.exports = {
   defaultPickerIcon: defaultPickerIcon,
   iconCopy: iconCopy,

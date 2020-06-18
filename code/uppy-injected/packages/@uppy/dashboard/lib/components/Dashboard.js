@@ -1,60 +1,42 @@
-var SRTlib = require('SRT-util');
-function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-  _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-        SRTlib.send("]},");
-
-    return target;
-        SRTlib.send("]},");
-
-  });
-    SRTlib.send("]},");
-
-  return _extends.apply(this, arguments);
-    SRTlib.send("]},");
-
-}
 var FileList = require('./FileList');
+
 var AddFiles = require('./AddFiles');
+
 var AddFilesPanel = require('./AddFilesPanel');
+
 var PickerPanelContent = require('./PickerPanelContent');
+
 var PanelTopBar = require('./PickerPanelTopBar');
+
 var FileCard = require('./FileCard');
+
 var classNames = require('classnames');
+
 var isDragDropSupported = require('@uppy/utils/lib/isDragDropSupported');
-var _require = require('preact'), h = _require.h;
-var PreactCSSTransitionGroup = require('preact-css-transition-group');
+
+var _require = require('preact'),
+    h = _require.h;
+
+var PreactCSSTransitionGroup = require('preact-css-transition-group'); // http://dev.edenspiekermann.com/2016/02/11/introducing-accessible-modal-dialog
+// https://github.com/ghosh/micromodal
+
+
 function TransitionWrapper(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h(PreactCSSTransitionGroup, {
     transitionName: "uppy-transition-slideDownUp",
     transitionEnterTimeout: 250,
     transitionLeaveTimeout: 250
   }, props.children);
-    SRTlib.send("]},");
-
 }
+
 var WIDTH_XL = 900;
 var WIDTH_LG = 700;
 var WIDTH_MD = 576;
 var HEIGHT_MD = 400;
-module.exports = function Dashboard(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.Dashboard", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+module.exports = function Dashboard(props) {
   var noFiles = props.totalFileCount === 0;
   var isSizeMD = props.containerWidth > WIDTH_MD;
   var dashboardClassName = classNames({
@@ -70,8 +52,10 @@ module.exports = function Dashboard(props) {
     'uppy-size--height-md': props.containerHeight > HEIGHT_MD,
     'uppy-Dashboard--isAddFilesPanelVisible': props.showAddFilesPanel,
     'uppy-Dashboard--isInnerWrapVisible': props.areInsidesReadyToBeVisible
-  });
-  var itemsPerRow = 1;
+  }); // Important: keep these in sync with the percent width values in `src/components/FileItem/index.scss`.
+
+  var itemsPerRow = 1; // mobile
+
   if (props.containerWidth > WIDTH_XL) {
     itemsPerRow = 5;
   } else if (props.containerWidth > WIDTH_LG) {
@@ -79,9 +63,8 @@ module.exports = function Dashboard(props) {
   } else if (props.containerWidth > WIDTH_MD) {
     itemsPerRow = 3;
   }
-  var showFileList = props.showSelectedFiles && !noFiles;
-    SRTlib.send("]},");
 
+  var showFileList = props.showSelectedFiles && !noFiles;
   return h("div", {
     class: dashboardClassName,
     "data-uppy-theme": props.theme,
@@ -132,14 +115,6 @@ module.exports = function Dashboard(props) {
   }, props)) : null), h("div", {
     class: "uppy-Dashboard-progressindicators"
   }, props.progressindicators.map(function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-        SRTlib.send("]},");
-
     return props.getPlugin(target.id).render(props.state);
-        SRTlib.send("]},");
-
   })))));
-    SRTlib.send("]},");
-
 };

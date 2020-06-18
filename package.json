@@ -4,6 +4,7 @@
   "description": "Selective Regression Testing for Node.js \\s\\s special Javascript/Node.js features to handle 1) Object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects <br />  \t[] dynamic property key(i.e. pan[cake], pan['size']) <br /> \t[] constructor & factory <br /> \t[] defineProperties: getter and setter <br /> \t[] deleting properties. e.g. delete obj.key;  <br />",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,7 +31,9 @@
     "esmangle": "^1.0.1",
     "esprima": "^4.0.1",
     "express": "^4.17.1",
+    "fs-extra": "^9.0.1",
     "madge": "^3.9.1",
+    "ncp": "^2.0.0",
     "path": "^0.12.7",
     "styx": "^0.2.1",
     "underscore": "^1.10.2"

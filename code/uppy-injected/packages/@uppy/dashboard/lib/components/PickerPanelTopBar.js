@@ -1,6 +1,9 @@
-var SRTlib = require('SRT-util');
-var _require = require('preact'), h = _require.h;
-var _require2 = require('./icons'), iconPlus = _require2.iconPlus;
+var _require = require('preact'),
+    h = _require.h;
+
+var _require2 = require('./icons'),
+    iconPlus = _require2.iconPlus;
+
 var uploadStates = {
   STATE_ERROR: 'error',
   STATE_WAITING: 'waiting',
@@ -10,109 +13,84 @@ var uploadStates = {
   STATE_COMPLETE: 'complete',
   STATE_PAUSED: 'paused'
 };
-function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
 
+function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
   if (files === void 0) {
     files = {};
   }
-  if (isAllErrored) {
-        SRTlib.send("]},");
 
+  if (isAllErrored) {
     return uploadStates.STATE_ERROR;
   }
-  if (isAllComplete) {
-        SRTlib.send("]},");
 
+  if (isAllComplete) {
     return uploadStates.STATE_COMPLETE;
   }
-  if (isAllPaused) {
-        SRTlib.send("]},");
 
+  if (isAllPaused) {
     return uploadStates.STATE_PAUSED;
   }
+
   var state = uploadStates.STATE_WAITING;
   var fileIDs = Object.keys(files);
-  for (var i = 0; i < fileIDs.length; i++) {
-    var progress = files[fileIDs[i]].progress;
-    if (progress.uploadStarted && !progress.uploadComplete) {
-            SRTlib.send("]},");
 
+  for (var i = 0; i < fileIDs.length; i++) {
+    var progress = files[fileIDs[i]].progress; // If ANY files are being uploaded right now, show the uploading state.
+
+    if (progress.uploadStarted && !progress.uploadComplete) {
       return uploadStates.STATE_UPLOADING;
-    }
+    } // If files are being preprocessed AND postprocessed at this time, we show the
+    // preprocess state. If any files are being uploaded we show uploading.
+
+
     if (progress.preprocess && state !== uploadStates.STATE_UPLOADING) {
       state = uploadStates.STATE_PREPROCESSING;
-    }
+    } // If NO files are being preprocessed or uploaded right now, but some files are
+    // being postprocessed, show the postprocess state.
+
+
     if (progress.postprocess && state !== uploadStates.STATE_UPLOADING && state !== uploadStates.STATE_PREPROCESSING) {
       state = uploadStates.STATE_POSTPROCESSING;
     }
   }
-    SRTlib.send("]},");
 
   return state;
-    SRTlib.send("]},");
-
 }
+
 function UploadStatus(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
   var uploadingState = getUploadingState(props.isAllErrored, props.isAllComplete, props.isAllPaused, props.files);
-  switch (uploadingState) {
-    case {
-                SRTlib.send("]},");
 
-        return props.i18n('uploadingXFiles', {
-          smart_count: props.inProgressNotPausedFiles.length
-        });
-      }:
+  switch (uploadingState) {
+    case 'uploading':
       return props.i18n('uploadingXFiles', {
         smart_count: props.inProgressNotPausedFiles.length
       });
-    case 'preprocessing':
-    case {
-                SRTlib.send("]},");
 
-        return props.i18n('processingXFiles', {
-          smart_count: props.processingFiles.length
-        });
-      }:
+    case 'preprocessing':
+    case 'postprocessing':
       return props.i18n('processingXFiles', {
         smart_count: props.processingFiles.length
       });
-    case {
-                SRTlib.send("]},");
 
-        return props.i18n('uploadPaused');
-      }:
+    case 'paused':
       return props.i18n('uploadPaused');
-    case {
-                SRTlib.send("]},");
 
-        return props.i18n('xFilesSelected', {
-          smart_count: props.newFiles.length
-        });
-      }:
+    case 'waiting':
       return props.i18n('xFilesSelected', {
         smart_count: props.newFiles.length
       });
-    case {
-                SRTlib.send("]},");
 
-        return props.i18n('uploadComplete');
-      }:
+    case 'complete':
       return props.i18n('uploadComplete');
   }
-    SRTlib.send("]},");
-
 }
-function PanelTopBar(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-  var allowNewUpload = props.allowNewUpload;
+function PanelTopBar(props) {
+  var allowNewUpload = props.allowNewUpload; // TODO maybe this should be done in ../index.js, then just pass that down as `allowNewUpload`
+
   if (allowNewUpload && props.maxNumberOfFiles) {
     allowNewUpload = props.totalFileCount < props.maxNumberOfFiles;
   }
-    SRTlib.send("]},");
 
   return h("div", {
     class: "uppy-DashboardContent-bar"
@@ -130,18 +108,11 @@ function PanelTopBar(props) {
     "aria-label": props.i18n('addMoreFiles'),
     title: props.i18n('addMoreFiles'),
     onclick: function onclick() {
-            SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.h.h.onclick.onclick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-            SRTlib.send("]},");
-
       return props.toggleAddFilesPanel(true);
-            SRTlib.send("]},");
-
     }
   }, iconPlus(), h("span", {
     class: "uppy-DashboardContent-addMoreCaption"
   }, props.i18n('addMore'))) : h("div", null));
-    SRTlib.send("]},");
-
 }
+
 module.exports = PanelTopBar;

@@ -1,4 +1,5 @@
 var SRTlib = require('SRT-util');
+
 var cs_CZ = {};
 cs_CZ.strings = {
   addMore: 'Přidat další',
@@ -134,21 +135,22 @@ cs_CZ.strings = {
     '2': 'Je třeba vybrat alespoň %{smart_count} souborů'
   }
 };
+
 cs_CZ.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "cs_CZ.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+  SRTlib.send("{ \"anonymous\": true, \"function\": \"cs_CZ.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
 
   if (n === 1) {
-        SRTlib.send("]},");
-
+    SRTlib.send("]},");
     return 0;
   }
-    SRTlib.send("]},");
 
+  SRTlib.send("]},");
   return 1;
-    SRTlib.send("]},");
-
+  SRTlib.send("]},");
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.cs_CZ = cs_CZ;
 }
+
 module.exports = cs_CZ;

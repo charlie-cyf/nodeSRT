@@ -1,4 +1,5 @@
 var SRTlib = require('SRT-util');
+
 var es_ES = {};
 es_ES.strings = {
   addMoreFiles: 'Agregar más archivos',
@@ -134,21 +135,22 @@ es_ES.strings = {
   unselectFileNamed: 'Deseleccionar archivo %{name}',
   openFolderNamed: 'Carpeta abierta %{name}'
 };
+
 es_ES.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "es_ES.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+  SRTlib.send("{ \"anonymous\": true, \"function\": \"es_ES.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
 
   if (n === 1) {
-        SRTlib.send("]},");
-
+    SRTlib.send("]},");
     return 0;
   }
-    SRTlib.send("]},");
 
+  SRTlib.send("]},");
   return 1;
-    SRTlib.send("]},");
-
+  SRTlib.send("]},");
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.es_ES = es_ES;
 }
+
 module.exports = es_ES;

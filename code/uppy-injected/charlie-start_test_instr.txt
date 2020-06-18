@@ -1,0 +1,19 @@
+# start uppy test instructions
+## unit tests
+
+npm run test:unit
+
+#  result:
+##Test Suites: 2 skipped, 45 passed, 45 of 47 total
+##Tests:       6 skipped, 216 passed, 222 total
+##Snapshots:   5 passed, 5 total
+##Time:        39.157s
+##Ran all test suites.
+
+## end to end tests on wsl2
+xvfb-run java -Dwebdriver.chrome.driver=/usr/bin/chromedriver -jar selenium-server-standalone-3.141.59.jar
+# then run this in terminal
+npm run test:endtoend:local -- -b chrome
+
+# result:
+9 passed, 9 total (100% completed) in 00:04:50 
