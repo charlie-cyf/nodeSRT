@@ -48,14 +48,15 @@ module.exports = class Instrumentor {
                             CallExpression(node, ancestors) {
                                 if (node.callee.name === 'it' || node.callee.name === 'test') {
                                     const suiteName = getSuiteName(ancestors);
+                                    console.log('suite name', suiteName)
                                     if (suiteName) {
                                         const testName = node.arguments[0].value;
                                         // insert in start of test
-                                        if (node.arguments[1].type === 'FunctionExpression') {
-                                            node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suiteName + '\", \"testName\": \"' + testName + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);').body[0]);
-                                            node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')").body[0]);
+                                        if (node.arguments[1].type === 'FunctionExpression' || node.arguments[1].type === 'ArrowFunctionExpression') {
+                                            node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ "testSuite": "' + suiteName + '", "testName": "' + testName + '", "fileName": "${__filename}", "calls" : [`);'));
+                                            node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
                                             node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\']},\'); SRTlib.endLogger();'));
-
+                                            
                                         }
                                     }
                                 }
