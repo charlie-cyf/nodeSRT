@@ -1,51 +1,66 @@
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+var SRTlib = require('SRT-util');
+function _inheritsLoose(subClass, superClass) {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-var _require = require('preact'),
-    h = _require.h,
-    Component = _require.Component;
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+    SRTlib.send("]},");
 
+}
+var _require = require('preact'), h = _require.h, Component = _require.Component;
 var classNames = require('classnames');
-
 var shallowEqual = require('is-shallow-equal');
-
 var FilePreviewAndLink = require('./FilePreviewAndLink');
-
 var FileProgress = require('./FileProgress');
-
 var FileInfo = require('./FileInfo');
-
 var Buttons = require('./Buttons');
+module.exports = (function (_Component) {
+    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-module.exports = /*#__PURE__*/function (_Component) {
   _inheritsLoose(FileItem, _Component);
-
   function FileItem() {
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
+        SRTlib.send("]},");
+
     return _Component.apply(this, arguments) || this;
+        SRTlib.send("]},");
+
   }
-
   var _proto = FileItem.prototype;
-
   _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.shouldComponentUpdate.shouldComponentUpdate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+        SRTlib.send("]},");
+
     return !shallowEqual(this.props, nextProps);
+        SRTlib.send("]},");
+
   };
-
   _proto.componentDidMount = function componentDidMount() {
-    var file = this.props.file;
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.componentDidMount.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+    var file = this.props.file;
     if (!file.preview) {
       this.props.handleRequestThumbnail(file);
     }
+        SRTlib.send("]},");
+
   };
-
   _proto.componentWillUnmount = function componentWillUnmount() {
-    var file = this.props.file;
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.componentWillUnmount.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+    var file = this.props.file;
     if (!file.preview) {
       this.props.handleCancelThumbnail(file);
     }
-  };
+        SRTlib.send("]},");
 
+  };
   _proto.render = function render() {
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.render.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
     var file = this.props.file;
     var isProcessing = file.progress.preprocess || file.progress.postprocess;
     var isUploaded = file.progress.uploadComplete && !isProcessing && !file.error;
@@ -54,11 +69,9 @@ module.exports = /*#__PURE__*/function (_Component) {
     var isPaused = file.isPaused || false;
     var error = file.error || false;
     var showRemoveButton = this.props.individualCancellation ? !isUploaded : !uploadInProgress && !isUploaded;
-
     if (isUploaded && this.props.showRemoveButtonAfterComplete) {
       showRemoveButton = true;
     }
-
     var dashboardItemClass = classNames({
       'uppy-u-reset': true,
       'uppy-DashboardItem': true,
@@ -70,6 +83,8 @@ module.exports = /*#__PURE__*/function (_Component) {
       'is-resumable': this.props.resumableUploads,
       'is-noIndividualCancellation': !this.props.individualCancellation
     });
+        SRTlib.send("]},");
+
     return h("div", {
       class: dashboardItemClass,
       id: "uppy_" + file.id,
@@ -112,7 +127,12 @@ module.exports = /*#__PURE__*/function (_Component) {
       log: this.props.log,
       info: this.props.info
     })));
+        SRTlib.send("]},");
+
   };
+    SRTlib.send("]},");
 
   return FileItem;
-}(Component);
+    SRTlib.send("]},");
+
+})(Component);

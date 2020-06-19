@@ -1,17 +1,12 @@
-var _require = require('preact'),
-    h = _require.h;
-/**
- * Control screen capture recording. Will show record or stop button.
- */
-
-
+var SRTlib = require('SRT-util');
+var _require = require('preact'), h = _require.h;
 module.exports = function RecordButton(_ref) {
-  var recording = _ref.recording,
-      onStartRecording = _ref.onStartRecording,
-      onStopRecording = _ref.onStopRecording,
-      i18n = _ref.i18n;
+    SRTlib.send(`{ "anonymous": true, "function": "module.exports.RecordButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+  var recording = _ref.recording, onStartRecording = _ref.onStartRecording, onStopRecording = _ref.onStopRecording, i18n = _ref.i18n;
   if (recording) {
+        SRTlib.send("]},");
+
     return h("button", {
       class: "uppy-u-reset uppy-c-btn uppy-ScreenCapture-button uppy-ScreenCapture-button--video uppy-ScreenCapture-button--stop-rec",
       type: "button",
@@ -33,6 +28,7 @@ module.exports = function RecordButton(_ref) {
       height: "70"
     })));
   }
+    SRTlib.send("]},");
 
   return h("button", {
     class: "uppy-u-reset uppy-c-btn uppy-ScreenCapture-button uppy-ScreenCapture-button--video",
@@ -53,4 +49,6 @@ module.exports = function RecordButton(_ref) {
     cy: "50",
     r: "40"
   })));
+    SRTlib.send("]},");
+
 };

@@ -6,6 +6,7 @@ const Injector = require('./instrument/instrumentor')
 let codeBase = "./code/uppy/"
 const path = require('path')
 const SRTlibPath = './instrument/SRTlib.js'
+const child_process = require('child_process');
 
 
 //init
@@ -40,7 +41,8 @@ const codeInjector = new Injector(codeBase)
 
 codeInjector.getInjected()
 
-// TODO run npm install in injected folder
+// run npm install in injected folder
+child_process.execSync('cd '+injectedCodebase+' && pwd && npm install',{stdio:[0,1,2]});
 
 // copy SRTlib.js to injected node_modules
 const SRTUtilFolder = path.join(injectedCodebase, 'node_modules', 'SRT-util');

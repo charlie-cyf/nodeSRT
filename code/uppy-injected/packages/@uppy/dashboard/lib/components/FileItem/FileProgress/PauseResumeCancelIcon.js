@@ -1,14 +1,11 @@
-var _require = require('preact'),
-    h = _require.h; // http://codepen.io/Harkko/pen/rVxvNM
-// https://css-tricks.com/svg-line-animation-works/
-// https://gist.github.com/eswak/ad4ea57bcd5ff7aa5d42
-// circle length equals 2 * PI * R
-
-
-var circleLength = 2 * Math.PI * 15; // stroke-dashoffset is a percentage of the progress from circleLength,
-// substracted from circleLength, because its an offset
-
+var SRTlib = require('SRT-util');
+var _require = require('preact'), h = _require.h;
+var circleLength = 2 * Math.PI * 15;
 module.exports = function PauseResumeCancelIcon(props) {
+    SRTlib.send(`{ "anonymous": true, "function": "module.exports.PauseResumeCancelIcon", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+    SRTlib.send("]},");
+
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -63,4 +60,6 @@ module.exports = function PauseResumeCancelIcon(props) {
     transform: "translate(2, 3)",
     points: "14 22.5 7 15.2457065 8.99985857 13.1732815 14 18.3547104 22.9729883 9 25 11.1005634"
   }));
+    SRTlib.send("]},");
+
 };

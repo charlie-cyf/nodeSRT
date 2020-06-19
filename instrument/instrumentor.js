@@ -47,16 +47,20 @@ module.exports = class Instrumentor {
                         acornWalk.ancestor(tree, {
                             CallExpression(node, ancestors) {
                                 if (node.callee.name === 'it' || node.callee.name === 'test') {
-                                    const suiteName = getSuiteName(ancestors);
-                                    console.log('suite name', suiteName)
+                                    let suiteName = getSuiteName(ancestors);
                                     if (suiteName) {
-                                        const testName = node.arguments[0].value;
+                                        let testName = node.arguments[0].value;
+                                        
+                                        // process special quotation marks in string names.
+                                        testName = Instrumentor.processStringNames(testName);
+                                        suiteName = Instrumentor.processStringNames(suiteName)
+                                        console.log('testName:', testName)
                                         // insert in start of test
                                         if (node.arguments[1].type === 'FunctionExpression' || node.arguments[1].type === 'ArrowFunctionExpression') {
-                                            node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ "testSuite": "' + suiteName + '", "testName": "' + testName + '", "fileName": "${__filename}", "calls" : [`);'));
+                                            node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suiteName + '\", \"testName\": \"' + testName + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);'));
                                             node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
                                             node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\']},\'); SRTlib.endLogger();'));
-                                            
+
                                         }
                                     }
                                 }
@@ -94,6 +98,7 @@ module.exports = class Instrumentor {
 
 
                 } catch (err) {
+                    // throw err;
                     console.log('injection to', fullPath, 'failed!', err)
                 }
 
@@ -278,6 +283,10 @@ module.exports = class Instrumentor {
         }
 
         return false;
+    }
+
+    static processStringNames(s){
+        return escape(s);
     }
 
 

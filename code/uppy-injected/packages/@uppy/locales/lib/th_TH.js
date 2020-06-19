@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var th_TH = {};
 th_TH.strings = {
   addMore: 'เพิ่ม',
@@ -136,22 +135,21 @@ th_TH.strings = {
     '2': 'คุณต้องเลือกอย่างน้อย %{smart_count} ไฟล์'
   }
 };
-
 th_TH.pluralize = function (n) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"th_TH.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "th_TH.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-    SRTlib.send("]},");
+        SRTlib.send("]},");
+
     return 0;
   }
+    SRTlib.send("]},");
 
-  SRTlib.send("]},");
   return 1;
-  SRTlib.send("]},");
-};
+    SRTlib.send("]},");
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.th_TH = th_TH;
 }
-
 module.exports = th_TH;

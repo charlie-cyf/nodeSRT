@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var fa_IR = {};
 fa_IR.strings = {
   addMoreFiles: 'افزودن فایل‌های بیشتر',
@@ -134,22 +133,21 @@ fa_IR.strings = {
   unselectFileNamed: 'لغو انتخاب پرونده %{name}',
   openFolderNamed: 'پوشه باز کنید %{name}'
 };
-
 fa_IR.pluralize = function (n) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"fa_IR.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "fa_IR.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-    SRTlib.send("]},");
+        SRTlib.send("]},");
+
     return 0;
   }
+    SRTlib.send("]},");
 
-  SRTlib.send("]},");
   return 1;
-  SRTlib.send("]},");
-};
+    SRTlib.send("]},");
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.fa_IR = fa_IR;
 }
-
 module.exports = fa_IR;

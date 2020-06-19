@@ -1,757 +1,890 @@
+var SRTlib = require('SRT-util');
 var _class, _temp;
+function _extends() {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+  _extends = Object.assign || (function (target) {
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+        SRTlib.send("]},");
 
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+    return target;
+        SRTlib.send("]},");
 
-var _require = require('@uppy/core'),
-    Plugin = _require.Plugin;
+  });
+    SRTlib.send("]},");
 
+  return _extends.apply(this, arguments);
+    SRTlib.send("]},");
+
+}
+function _assertThisInitialized(self) {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+    SRTlib.send("]},");
+
+  return self;
+    SRTlib.send("]},");
+
+}
+function _inheritsLoose(subClass, superClass) {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+    SRTlib.send("]},");
+
+}
+var _require = require('@uppy/core'), Plugin = _require.Plugin;
 var Translator = require('@uppy/utils/lib/Translator');
-
 var DashboardUI = require('./components/Dashboard');
-
 var StatusBar = require('@uppy/status-bar');
-
 var Informer = require('@uppy/informer');
-
 var ThumbnailGenerator = require('@uppy/thumbnail-generator');
-
 var findAllDOMElements = require('@uppy/utils/lib/findAllDOMElements');
-
 var toArray = require('@uppy/utils/lib/toArray');
-
 var getDroppedFiles = require('@uppy/utils/lib/getDroppedFiles');
-
 var trapFocus = require('./utils/trapFocus');
-
 var cuid = require('cuid');
-
 var ResizeObserver = require('resize-observer-polyfill').default || require('resize-observer-polyfill');
-
-var _require2 = require('./components/icons'),
-    defaultPickerIcon = _require2.defaultPickerIcon;
-
+var _require2 = require('./components/icons'), defaultPickerIcon = _require2.defaultPickerIcon;
 var createSuperFocus = require('./utils/createSuperFocus');
-
 var memoize = require('memoize-one').default || require('memoize-one');
-
 var TAB_KEY = 9;
 var ESC_KEY = 27;
-
 function createPromise() {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
   var o = {};
   o.promise = new Promise(function (resolve, reject) {
+        SRTlib.send(`{ "anonymous": true, "function": "o.promise", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
     o.resolve = resolve;
     o.reject = reject;
+        SRTlib.send("]},");
+
   });
+    SRTlib.send("]},");
+
   return o;
+    SRTlib.send("]},");
+
 }
-/**
- * Dashboard UI with previews, metadata editing, tabs for various services and more
- */
+module.exports = (_temp = _class = (function (_Plugin) {
+    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-
-module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _inheritsLoose(Dashboard, _Plugin);
-
   function Dashboard(uppy, _opts) {
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
     var _this;
-
     _this = _Plugin.call(this, uppy, _opts) || this;
-
     _this.setOptions = function (newOpts) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.setOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       _Plugin.prototype.setOptions.call(_assertThisInitialized(_this), newOpts);
-
       _this.i18nInit();
-    };
+            SRTlib.send("]},");
 
+    };
     _this.i18nInit = function () {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.i18nInit", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       _this.translator = new Translator([_this.defaultLocale, _this.uppy.locale, _this.opts.locale]);
       _this.i18n = _this.translator.translate.bind(_this.translator);
       _this.i18nArray = _this.translator.translateArray.bind(_this.translator);
-
-      _this.setPluginState(); // so that UI re-renders and we see the updated locale
+      _this.setPluginState();
+            SRTlib.send("]},");
 
     };
-
     _this.removeTarget = function (plugin) {
-      var pluginState = _this.getPluginState(); // filter out the one we want to remove
+            SRTlib.send(`{ "anonymous": true, "function": "_this.removeTarget", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-
+      var pluginState = _this.getPluginState();
       var newTargets = pluginState.targets.filter(function (target) {
-        return target.id !== plugin.id;
-      });
+                SRTlib.send(`{ "anonymous": true, "function": "_this.removeTarget.newTargets.pluginState.targets.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+                SRTlib.send("]},");
+
+        return target.id !== plugin.id;
+                SRTlib.send("]},");
+
+      });
       _this.setPluginState({
         targets: newTargets
       });
-    };
+            SRTlib.send("]},");
 
+    };
     _this.addTarget = function (plugin) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.addTarget", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       var callerPluginId = plugin.id || plugin.constructor.name;
       var callerPluginName = plugin.title || callerPluginId;
       var callerPluginType = plugin.type;
-
       if (callerPluginType !== 'acquirer' && callerPluginType !== 'progressindicator' && callerPluginType !== 'presenter') {
         var msg = 'Dashboard: Modal can only be used by plugins of types: acquirer, progressindicator, presenter';
-
         _this.uppy.log(msg, 'error');
+                SRTlib.send("]},");
 
         return;
       }
-
       var target = {
         id: callerPluginId,
         name: callerPluginName,
         type: callerPluginType
       };
-
       var state = _this.getPluginState();
-
       var newTargets = state.targets.slice();
       newTargets.push(target);
-
       _this.setPluginState({
         targets: newTargets
       });
+            SRTlib.send("]},");
 
       return _this.el;
-    };
+            SRTlib.send("]},");
 
+    };
     _this.hideAllPanels = function () {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.hideAllPanels", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       var update = {
         activePickerPanel: false,
         showAddFilesPanel: false,
         activeOverlayType: null
       };
-
       var current = _this.getPluginState();
-
       if (current.activePickerPanel === update.activePickerPanel && current.showAddFilesPanel === update.showAddFilesPanel && current.activeOverlayType === update.activeOverlayType) {
-        // avoid doing a state update if nothing changed
+                SRTlib.send("]},");
+
         return;
       }
-
       _this.setPluginState(update);
+            SRTlib.send("]},");
+
     };
-
     _this.showPanel = function (id) {
-      var _this$getPluginState = _this.getPluginState(),
-          targets = _this$getPluginState.targets;
+            SRTlib.send(`{ "anonymous": true, "function": "_this.showPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+      var _this$getPluginState = _this.getPluginState(), targets = _this$getPluginState.targets;
       var activePickerPanel = targets.filter(function (target) {
-        return target.type === 'acquirer' && target.id === id;
-      })[0];
+                SRTlib.send(`{ "anonymous": true, "function": "_this.showPanel.activePickerPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+                SRTlib.send("]},");
+
+        return target.type === 'acquirer' && target.id === id;
+                SRTlib.send("]},");
+
+      })[0];
       _this.setPluginState({
         activePickerPanel: activePickerPanel,
         activeOverlayType: 'PickerPanel'
       });
+            SRTlib.send("]},");
+
     };
-
     _this.openModal = function () {
-      var _createPromise = createPromise(),
-          promise = _createPromise.promise,
-          resolve = _createPromise.resolve; // save scroll position
+            SRTlib.send(`{ "anonymous": true, "function": "_this.openModal", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-
-      _this.savedScrollPosition = window.pageYOffset; // save active element, so we can restore focus when modal is closed
-
+      var _createPromise = createPromise(), promise = _createPromise.promise, resolve = _createPromise.resolve;
+      _this.savedScrollPosition = window.pageYOffset;
       _this.savedActiveElement = document.activeElement;
-
       if (_this.opts.disablePageScrollWhenModalOpen) {
         document.body.classList.add('uppy-Dashboard-isFixed');
       }
-
       if (_this.opts.animateOpenClose && _this.getPluginState().isClosing) {
         var handler = function handler() {
+                    SRTlib.send(`{ "anonymous": true, "function": "_this.openModal.handler.handler", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
           _this.setPluginState({
             isHidden: false
           });
-
           _this.el.removeEventListener('animationend', handler, false);
-
           resolve();
-        };
+                    SRTlib.send("]},");
 
+        };
         _this.el.addEventListener('animationend', handler, false);
       } else {
         _this.setPluginState({
           isHidden: false
         });
-
         resolve();
       }
-
       if (_this.opts.browserBackButtonClose) {
         _this.updateBrowserHistory();
-      } // handle ESC and TAB keys in modal dialog
-
-
+      }
       document.addEventListener('keydown', _this.handleKeyDownInModal);
-
       _this.uppy.emit('dashboard:modal-open');
+            SRTlib.send("]},");
 
       return promise;
-    };
+            SRTlib.send("]},");
 
+    };
     _this.closeModal = function (opts) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.closeModal", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       if (opts === void 0) {
         opts = {};
       }
-
-      var _opts2 = opts,
-          _opts2$manualClose = _opts2.manualClose,
-          manualClose = _opts2$manualClose === void 0 ? true : _opts2$manualClose;
-
-      var _this$getPluginState2 = _this.getPluginState(),
-          isHidden = _this$getPluginState2.isHidden,
-          isClosing = _this$getPluginState2.isClosing;
-
+      var _opts2 = opts, _opts2$manualClose = _opts2.manualClose, manualClose = _opts2$manualClose === void 0 ? true : _opts2$manualClose;
+      var _this$getPluginState2 = _this.getPluginState(), isHidden = _this$getPluginState2.isHidden, isClosing = _this$getPluginState2.isClosing;
       if (isHidden || isClosing) {
-        // short-circuit if animation is ongoing
+                SRTlib.send("]},");
+
         return;
       }
-
-      var _createPromise2 = createPromise(),
-          promise = _createPromise2.promise,
-          resolve = _createPromise2.resolve;
-
+      var _createPromise2 = createPromise(), promise = _createPromise2.promise, resolve = _createPromise2.resolve;
       if (_this.opts.disablePageScrollWhenModalOpen) {
         document.body.classList.remove('uppy-Dashboard-isFixed');
       }
-
       if (_this.opts.animateOpenClose) {
         _this.setPluginState({
           isClosing: true
         });
-
         var handler = function handler() {
+                    SRTlib.send(`{ "anonymous": true, "function": "_this.closeModal.handler.handler", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
           _this.setPluginState({
             isHidden: true,
             isClosing: false
           });
-
           _this.superFocus.cancel();
-
           _this.savedActiveElement.focus();
-
           _this.el.removeEventListener('animationend', handler, false);
-
           resolve();
-        };
+                    SRTlib.send("]},");
 
+        };
         _this.el.addEventListener('animationend', handler, false);
       } else {
         _this.setPluginState({
           isHidden: true
         });
-
         _this.superFocus.cancel();
-
         _this.savedActiveElement.focus();
-
         resolve();
-      } // handle ESC and TAB keys in modal dialog
-
-
+      }
       document.removeEventListener('keydown', _this.handleKeyDownInModal);
-
       if (manualClose) {
         if (_this.opts.browserBackButtonClose) {
-          // Make sure that the latest entry in the history state is our modal name
           if (history.state && history.state[_this.modalName]) {
-            // Go back in history to clear out the entry we created (ultimately closing the modal)
             history.go(-1);
           }
         }
       }
-
       _this.uppy.emit('dashboard:modal-closed');
+            SRTlib.send("]},");
 
       return promise;
-    };
+            SRTlib.send("]},");
 
+    };
     _this.isModalOpen = function () {
-      return !_this.getPluginState().isHidden || false;
-    };
+            SRTlib.send(`{ "anonymous": true, "function": "_this.isModalOpen", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+            SRTlib.send("]},");
+
+      return !_this.getPluginState().isHidden || false;
+            SRTlib.send("]},");
+
+    };
     _this.requestCloseModal = function () {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.requestCloseModal", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       if (_this.opts.onRequestCloseModal) {
+                SRTlib.send("]},");
+
         return _this.opts.onRequestCloseModal();
       }
+            SRTlib.send("]},");
 
       return _this.closeModal();
+            SRTlib.send("]},");
+
     };
-
     _this.setDarkModeCapability = function (isDarkModeOn) {
-      var _this$uppy$getState = _this.uppy.getState(),
-          capabilities = _this$uppy$getState.capabilities;
+            SRTlib.send(`{ "anonymous": true, "function": "_this.setDarkModeCapability", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+      var _this$uppy$getState = _this.uppy.getState(), capabilities = _this$uppy$getState.capabilities;
       _this.uppy.setState({
         capabilities: _extends({}, capabilities, {
           darkMode: isDarkModeOn
         })
       });
-    };
+            SRTlib.send("]},");
 
+    };
     _this.handleSystemDarkModeChange = function (event) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleSystemDarkModeChange", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       var isDarkModeOnNow = event.matches;
-
       _this.uppy.log("[Dashboard] Dark mode is " + (isDarkModeOnNow ? 'on' : 'off'));
-
       _this.setDarkModeCapability(isDarkModeOnNow);
-    };
+            SRTlib.send("]},");
 
+    };
     _this.toggleFileCard = function (fileId) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.toggleFileCard", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       if (fileId) {
         _this.uppy.emit('dashboard:file-edit-start');
       } else {
         _this.uppy.emit('dashboard:file-edit-complete');
       }
-
       _this.setPluginState({
         fileCardFor: fileId || null,
         activeOverlayType: fileId ? 'FileCard' : null
       });
-    };
+            SRTlib.send("]},");
 
+    };
     _this.toggleAddFilesPanel = function (show) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.toggleAddFilesPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       _this.setPluginState({
         showAddFilesPanel: show,
         activeOverlayType: show ? 'AddFiles' : null
       });
-    };
+            SRTlib.send("]},");
 
+    };
     _this.addFiles = function (files) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.addFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       var descriptors = files.map(function (file) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.addFiles.descriptors", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return {
           source: _this.id,
           name: file.name,
           type: file.type,
           data: file,
           meta: {
-            // path of the file relative to the ancestor directory the user selected.
-            // e.g. 'docs/Old Prague/airbnb.pdf'
             relativePath: file.relativePath || null
           }
         };
-      });
+                SRTlib.send("]},");
 
+      });
       try {
         _this.uppy.addFiles(descriptors);
       } catch (err) {
         _this.uppy.log(err);
       }
+            SRTlib.send("]},");
+
     };
-
     _this.startListeningToResize = function () {
-      // Watch for Dashboard container (`.uppy-Dashboard-inner`) resize
-      // and update containerWidth/containerHeight in plugin state accordingly.
-      // Emits first event on initialization.
+            SRTlib.send(`{ "anonymous": true, "function": "_this.startListeningToResize", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       _this.resizeObserver = new ResizeObserver(function (entries, observer) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.startListeningToResize._this.resizeObserver", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
         var uppyDashboardInnerEl = entries[0];
-        var _uppyDashboardInnerEl = uppyDashboardInnerEl.contentRect,
-            width = _uppyDashboardInnerEl.width,
-            height = _uppyDashboardInnerEl.height;
-
+        var _uppyDashboardInnerEl = uppyDashboardInnerEl.contentRect, width = _uppyDashboardInnerEl.width, height = _uppyDashboardInnerEl.height;
         _this.uppy.log("[Dashboard] resized: " + width + " / " + height, 'debug');
-
         _this.setPluginState({
           containerWidth: width,
           containerHeight: height,
           areInsidesReadyToBeVisible: true
         });
+                SRTlib.send("]},");
+
       });
-
-      _this.resizeObserver.observe(_this.el.querySelector('.uppy-Dashboard-inner')); // If ResizeObserver fails to emit an event telling us what size to use - default to the mobile view
-
-
+      _this.resizeObserver.observe(_this.el.querySelector('.uppy-Dashboard-inner'));
       _this.makeDashboardInsidesVisibleAnywayTimeout = setTimeout(function () {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.startListeningToResize._this.makeDashboardInsidesVisibleAnywayTimeout.setTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
         var pluginState = _this.getPluginState();
-
         var isModalAndClosed = !_this.opts.inline && pluginState.isHidden;
-
-        if ( // if ResizeObserver hasn't yet fired,
-        !pluginState.areInsidesReadyToBeVisible && // and it's not due to the modal being closed
-        !isModalAndClosed) {
+        if (!pluginState.areInsidesReadyToBeVisible && !isModalAndClosed) {
           _this.uppy.log("[Dashboard] resize event didn't fire on time: defaulted to mobile layout", 'debug');
-
           _this.setPluginState({
             areInsidesReadyToBeVisible: true
           });
         }
+                SRTlib.send("]},");
+
       }, 1000);
-    };
+            SRTlib.send("]},");
 
+    };
     _this.stopListeningToResize = function () {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.stopListeningToResize", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       _this.resizeObserver.disconnect();
-
       clearTimeout(_this.makeDashboardInsidesVisibleAnywayTimeout);
-    };
+            SRTlib.send("]},");
 
+    };
     _this.recordIfFocusedOnUppyRecently = function (event) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.recordIfFocusedOnUppyRecently", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       if (_this.el.contains(event.target)) {
         _this.ifFocusedOnUppyRecently = true;
       } else {
-        _this.ifFocusedOnUppyRecently = false; // ___Why run this.superFocus.cancel here when it already runs in superFocusOnEachUpdate?
-        //    Because superFocus is debounced, when we move from Uppy to some other element on the page,
-        //    previously run superFocus sometimes hits and moves focus back to Uppy.
-
+        _this.ifFocusedOnUppyRecently = false;
         _this.superFocus.cancel();
       }
-    };
+            SRTlib.send("]},");
 
+    };
     _this.updateBrowserHistory = function () {
-      // Ensure history state does not already contain our modal name to avoid double-pushing
+            SRTlib.send(`{ "anonymous": true, "function": "_this.updateBrowserHistory", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       if (!history.state || !history.state[_this.modalName]) {
         var _extends2;
-
-        // Push to history so that the page is not lost on browser back button press
         history.pushState(_extends({}, history.state, (_extends2 = {}, _extends2[_this.modalName] = true, _extends2)), '');
-      } // Listen for back button presses
-
-
+      }
       window.addEventListener('popstate', _this.handlePopState, false);
-    };
+            SRTlib.send("]},");
 
+    };
     _this.handlePopState = function (event) {
-      // Close the modal if the history state no longer contains our modal name
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handlePopState", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       if (_this.isModalOpen() && (!event.state || !event.state[_this.modalName])) {
         _this.closeModal({
           manualClose: false
         });
-      } // When the browser back button is pressed and uppy is now the latest entry in the history but the modal is closed, fix the history by removing the uppy history entry
-      // This occurs when another entry is added into the history state while the modal is open, and then the modal gets manually closed
-      // Solves PR #575 (https://github.com/transloadit/uppy/pull/575)
-
-
+      }
       if (!_this.isModalOpen() && event.state && event.state[_this.modalName]) {
         history.go(-1);
       }
-    };
+            SRTlib.send("]},");
 
+    };
     _this.handleKeyDownInModal = function (event) {
-      // close modal on esc key press
-      if (event.keyCode === ESC_KEY) _this.requestCloseModal(event); // trap focus on tab key press
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleKeyDownInModal", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+      if (event.keyCode === ESC_KEY) _this.requestCloseModal(event);
       if (event.keyCode === TAB_KEY) trapFocus.forModal(event, _this.getPluginState().activeOverlayType, _this.el);
-    };
+            SRTlib.send("]},");
 
+    };
     _this.handleClickOutside = function () {
-      if (_this.opts.closeModalOnClickOutside) _this.requestCloseModal();
-    };
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleClickOutside", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+      if (_this.opts.closeModalOnClickOutside) _this.requestCloseModal();
+            SRTlib.send("]},");
+
+    };
     _this.handlePaste = function (event) {
-      // 1. Let any acquirer plugin (Url/Webcam/etc.) handle pastes to the root
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handlePaste", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       _this.uppy.iteratePlugins(function (plugin) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.handlePaste._this.uppy.iteratePlugins", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
         if (plugin.type === 'acquirer') {
-          // Every Plugin with .type acquirer can define handleRootPaste(event)
           plugin.handleRootPaste && plugin.handleRootPaste(event);
         }
-      }); // 2. Add all dropped files
+                SRTlib.send("]},");
 
-
+      });
       var files = toArray(event.clipboardData.files);
-
       _this.addFiles(files);
-    };
+            SRTlib.send("]},");
 
+    };
     _this.handleInputChange = function (event) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleInputChange", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       event.preventDefault();
       var files = toArray(event.target.files);
-
       _this.addFiles(files);
+            SRTlib.send("]},");
+
     };
-
     _this.handleDragOver = function (event) {
-      event.preventDefault();
-      event.stopPropagation(); // 1. Add a small (+) icon on drop
-      // (and prevent browsers from interpreting this as files being _moved_ into the browser, https://github.com/transloadit/uppy/issues/1978)
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleDragOver", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+      event.preventDefault();
+      event.stopPropagation();
       event.dataTransfer.dropEffect = 'copy';
       clearTimeout(_this.removeDragOverClassTimeout);
-
       _this.setPluginState({
         isDraggingOver: true
       });
-    };
+            SRTlib.send("]},");
 
+    };
     _this.handleDragLeave = function (event) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleDragLeave", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       event.preventDefault();
       event.stopPropagation();
-      clearTimeout(_this.removeDragOverClassTimeout); // Timeout against flickering, this solution is taken from drag-drop library. Solution with 'pointer-events: none' didn't work across browsers.
-
+      clearTimeout(_this.removeDragOverClassTimeout);
       _this.removeDragOverClassTimeout = setTimeout(function () {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.handleDragLeave._this.removeDragOverClassTimeout.setTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
         _this.setPluginState({
           isDraggingOver: false
         });
-      }, 50);
-    };
+                SRTlib.send("]},");
 
+      }, 50);
+            SRTlib.send("]},");
+
+    };
     _this.handleDrop = function (event, dropCategory) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleDrop", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
       event.preventDefault();
       event.stopPropagation();
-      clearTimeout(_this.removeDragOverClassTimeout); // 2. Remove dragover class
-
+      clearTimeout(_this.removeDragOverClassTimeout);
       _this.setPluginState({
         isDraggingOver: false
-      }); // 3. Let any acquirer plugin (Url/Webcam/etc.) handle drops to the root
-
-
+      });
       _this.uppy.iteratePlugins(function (plugin) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.handleDrop._this.uppy.iteratePlugins", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
         if (plugin.type === 'acquirer') {
-          // Every Plugin with .type acquirer can define handleRootDrop(event)
           plugin.handleRootDrop && plugin.handleRootDrop(event);
         }
-      }); // 4. Add all dropped files
+                SRTlib.send("]},");
 
-
+      });
       var executedDropErrorOnce = false;
-
       var logDropError = function logDropError(error) {
-        _this.uppy.log(error, 'error'); // In practice all drop errors are most likely the same, so let's just show one to avoid overwhelming the user
+                SRTlib.send(`{ "anonymous": true, "function": "_this.handleDrop.logDropError.logDropError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-
+        _this.uppy.log(error, 'error');
         if (!executedDropErrorOnce) {
           _this.uppy.info(error.message, 'error');
-
           executedDropErrorOnce = true;
         }
-      };
+                SRTlib.send("]},");
 
+      };
       getDroppedFiles(event.dataTransfer, {
         logDropError: logDropError
       }).then(function (files) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.handleDrop.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
         if (files.length > 0) {
           _this.uppy.log('[Dashboard] Files were dropped');
-
           _this.addFiles(files);
         }
-      });
-    };
+                SRTlib.send("]},");
 
+      });
+            SRTlib.send("]},");
+
+    };
     _this.handleRequestThumbnail = function (file) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleRequestThumbnail", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:request', file);
       }
-    };
+            SRTlib.send("]},");
 
+    };
     _this.handleCancelThumbnail = function (file) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleCancelThumbnail", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:cancel', file);
       }
-    };
+            SRTlib.send("]},");
 
+    };
     _this.handleKeyDownInInline = function (event) {
-      // Trap focus on tab key press.
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleKeyDownInInline", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       if (event.keyCode === TAB_KEY) trapFocus.forInline(event, _this.getPluginState().activeOverlayType, _this.el);
+            SRTlib.send("]},");
+
     };
-
     _this.handlePasteOnBody = function (event) {
-      var isFocusInOverlay = _this.el.contains(document.activeElement);
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handlePasteOnBody", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+      var isFocusInOverlay = _this.el.contains(document.activeElement);
       if (isFocusInOverlay) {
         _this.handlePaste(event);
       }
+            SRTlib.send("]},");
+
     };
-
     _this.handleComplete = function (_ref) {
-      var failed = _ref.failed,
-          uploadID = _ref.uploadID;
+            SRTlib.send(`{ "anonymous": true, "function": "_this.handleComplete", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+      var failed = _ref.failed, uploadID = _ref.uploadID;
       if (_this.opts.closeAfterFinish && failed.length === 0) {
-        // All uploads are done
         _this.requestCloseModal();
       }
-    };
+            SRTlib.send("]},");
 
+    };
     _this.initEvents = function () {
-      // Modal open button
+            SRTlib.send(`{ "anonymous": true, "function": "_this.initEvents2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       if (_this.opts.trigger && !_this.opts.inline) {
         var showModalTrigger = findAllDOMElements(_this.opts.trigger);
-
         if (showModalTrigger) {
           showModalTrigger.forEach(function (trigger) {
+                        SRTlib.send(`{ "anonymous": true, "function": "_this.initEvents", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                        SRTlib.send("]},");
+
             return trigger.addEventListener('click', _this.openModal);
+                        SRTlib.send("]},");
+
           });
         } else {
           _this.uppy.log('Dashboard modal trigger not found. Make sure `trigger` is set in Dashboard options, unless you are planning to call `dashboard.openModal()` method yourself', 'warning');
         }
       }
-
       _this.startListeningToResize();
-
       document.addEventListener('paste', _this.handlePasteOnBody);
-
       _this.uppy.on('plugin-remove', _this.removeTarget);
-
       _this.uppy.on('file-added', _this.hideAllPanels);
-
       _this.uppy.on('dashboard:modal-closed', _this.hideAllPanels);
-
-      _this.uppy.on('complete', _this.handleComplete); // ___Why fire on capture?
-      //    Because this.ifFocusedOnUppyRecently needs to change before onUpdate() fires.
-
-
+      _this.uppy.on('complete', _this.handleComplete);
       document.addEventListener('focus', _this.recordIfFocusedOnUppyRecently, true);
       document.addEventListener('click', _this.recordIfFocusedOnUppyRecently, true);
-
       if (_this.opts.inline) {
         _this.el.addEventListener('keydown', _this.handleKeyDownInInline);
       }
+            SRTlib.send("]},");
+
     };
-
     _this.removeEvents = function () {
-      var showModalTrigger = findAllDOMElements(_this.opts.trigger);
+            SRTlib.send(`{ "anonymous": true, "function": "_this.removeEvents2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+      var showModalTrigger = findAllDOMElements(_this.opts.trigger);
       if (!_this.opts.inline && showModalTrigger) {
         showModalTrigger.forEach(function (trigger) {
+                    SRTlib.send(`{ "anonymous": true, "function": "_this.removeEvents", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                    SRTlib.send("]},");
+
           return trigger.removeEventListener('click', _this.openModal);
+                    SRTlib.send("]},");
+
         });
       }
-
       _this.stopListeningToResize();
-
       document.removeEventListener('paste', _this.handlePasteOnBody);
       window.removeEventListener('popstate', _this.handlePopState, false);
-
       _this.uppy.off('plugin-remove', _this.removeTarget);
-
       _this.uppy.off('file-added', _this.hideAllPanels);
-
       _this.uppy.off('dashboard:modal-closed', _this.hideAllPanels);
-
       _this.uppy.off('complete', _this.handleComplete);
-
       document.removeEventListener('focus', _this.recordIfFocusedOnUppyRecently);
       document.removeEventListener('click', _this.recordIfFocusedOnUppyRecently);
-
       if (_this.opts.inline) {
         _this.el.removeEventListener('keydown', _this.handleKeyDownInInline);
       }
+            SRTlib.send("]},");
+
     };
-
     _this.superFocusOnEachUpdate = function () {
-      var isFocusInUppy = _this.el.contains(document.activeElement); // When focus is lost on the page (== focus is on body for most browsers, or focus is null for IE11)
+            SRTlib.send(`{ "anonymous": true, "function": "_this.superFocusOnEachUpdate", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-
+      var isFocusInUppy = _this.el.contains(document.activeElement);
       var isFocusNowhere = document.activeElement === document.body || document.activeElement === null;
-
       var isInformerHidden = _this.uppy.getState().info.isHidden;
-
       var isModal = !_this.opts.inline;
-
-      if ( // If update is connected to showing the Informer - let the screen reader calmly read it.
-      isInformerHidden && ( // If we are in a modal - always superfocus without concern for other elements on the page (user is unlikely to want to interact with the rest of the page)
-      isModal || // If we are already inside of Uppy, or
-      isFocusInUppy || // If we are not focused on anything BUT we have already, at least once, focused on uppy
-      //   1. We focus when isFocusNowhere, because when the element we were focused on disappears (e.g. an overlay), - focus gets lost. If user is typing something somewhere else on the page, - focus won't be 'nowhere'.
-      //   2. We only focus when focus is nowhere AND this.ifFocusedOnUppyRecently, to avoid focus jumps if we do something else on the page.
-      //   [Practical check] Without '&& this.ifFocusedOnUppyRecently', in Safari, in inline mode, when file is uploading, - navigate via tab to the checkbox, try to press space multiple times. Focus will jump to Uppy.
-      isFocusNowhere && _this.ifFocusedOnUppyRecently)) {
+      if (isInformerHidden && (isModal || isFocusInUppy || isFocusNowhere && _this.ifFocusedOnUppyRecently)) {
         _this.superFocus(_this.el, _this.getPluginState().activeOverlayType);
       } else {
         _this.superFocus.cancel();
       }
-    };
+            SRTlib.send("]},");
 
+    };
     _this.afterUpdate = function () {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.afterUpdate", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       _this.superFocusOnEachUpdate();
-    };
+            SRTlib.send("]},");
 
+    };
     _this.cancelUpload = function (fileID) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.cancelUpload", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       _this.uppy.removeFile(fileID);
-    };
+            SRTlib.send("]},");
 
+    };
     _this.saveFileCard = function (meta, fileID) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.saveFileCard", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
       _this.uppy.setFileMeta(fileID, meta);
-
       _this.toggleFileCard();
-    };
+            SRTlib.send("]},");
 
+    };
     _this._attachRenderFunctionToTarget = function (target) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this._attachRenderFunctionToTarget", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       var plugin = _this.uppy.getPlugin(target.id);
+            SRTlib.send("]},");
 
       return _extends({}, target, {
         icon: plugin.icon || _this.opts.defaultPickerIcon,
         render: plugin.render
       });
+            SRTlib.send("]},");
+
     };
-
     _this._isTargetSupported = function (target) {
-      var plugin = _this.uppy.getPlugin(target.id); // If the plugin does not provide a `supported` check, assume the plugin works everywhere.
+            SRTlib.send(`{ "anonymous": true, "function": "_this._isTargetSupported", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-
+      var plugin = _this.uppy.getPlugin(target.id);
       if (typeof plugin.isSupported !== 'function') {
+                SRTlib.send("]},");
+
         return true;
       }
+            SRTlib.send("]},");
 
       return plugin.isSupported();
-    };
+            SRTlib.send("]},");
 
+    };
     _this._getAcquirers = memoize(function (targets) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this._getAcquirers.memoize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send("]},");
+
       return targets.filter(function (target) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this._getAcquirers.memoize.ReturnStatement.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return target.type === 'acquirer' && _this._isTargetSupported(target);
+                SRTlib.send("]},");
+
       }).map(_this._attachRenderFunctionToTarget);
+            SRTlib.send("]},");
+
     });
     _this._getProgressIndicators = memoize(function (targets) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this._getProgressIndicators.memoize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send("]},");
+
       return targets.filter(function (target) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this._getProgressIndicators.memoize.ReturnStatement.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return target.type === 'progressindicator';
+                SRTlib.send("]},");
+
       }).map(_this._attachRenderFunctionToTarget);
+            SRTlib.send("]},");
+
     });
-
     _this.render = function (state) {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.render", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       var pluginState = _this.getPluginState();
-
-      var files = state.files,
-          capabilities = state.capabilities,
-          allowNewUpload = state.allowNewUpload; // TODO: move this to Core, to share between Status Bar and Dashboard
-      // (and any other plugin that might need it, too)
-
+      var files = state.files, capabilities = state.capabilities, allowNewUpload = state.allowNewUpload;
       var newFiles = Object.keys(files).filter(function (file) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.render.newFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return !files[file].progress.uploadStarted;
+                SRTlib.send("]},");
+
       });
       var uploadStartedFiles = Object.keys(files).filter(function (file) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.render.uploadStartedFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return files[file].progress.uploadStarted;
+                SRTlib.send("]},");
+
       });
       var pausedFiles = Object.keys(files).filter(function (file) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.render.pausedFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return files[file].isPaused;
+                SRTlib.send("]},");
+
       });
       var completeFiles = Object.keys(files).filter(function (file) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.render.completeFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return files[file].progress.uploadComplete;
+                SRTlib.send("]},");
+
       });
       var erroredFiles = Object.keys(files).filter(function (file) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.render.erroredFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return files[file].error;
+                SRTlib.send("]},");
+
       });
       var inProgressFiles = Object.keys(files).filter(function (file) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.render.inProgressFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return !files[file].progress.uploadComplete && files[file].progress.uploadStarted;
+                SRTlib.send("]},");
+
       });
       var inProgressNotPausedFiles = inProgressFiles.filter(function (file) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.render.inProgressNotPausedFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return !files[file].isPaused;
+                SRTlib.send("]},");
+
       });
       var processingFiles = Object.keys(files).filter(function (file) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.render.processingFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return files[file].progress.preprocess || files[file].progress.postprocess;
+                SRTlib.send("]},");
+
       });
       var isUploadStarted = uploadStartedFiles.length > 0;
       var isAllComplete = state.totalProgress === 100 && completeFiles.length === Object.keys(files).length && processingFiles.length === 0;
       var isAllErrored = isUploadStarted && erroredFiles.length === uploadStartedFiles.length;
       var isAllPaused = inProgressFiles.length !== 0 && pausedFiles.length === inProgressFiles.length;
-
       var acquirers = _this._getAcquirers(pluginState.targets);
-
       var progressindicators = _this._getProgressIndicators(pluginState.targets);
-
       var theme;
-
       if (_this.opts.theme === 'auto') {
         theme = capabilities.darkMode ? 'dark' : 'light';
       } else {
         theme = _this.opts.theme;
       }
+            SRTlib.send("]},");
 
       return DashboardUI({
         state: state,
@@ -824,24 +957,32 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         showSelectedFiles: _this.opts.showSelectedFiles,
         handleRequestThumbnail: _this.handleRequestThumbnail,
         handleCancelThumbnail: _this.handleCancelThumbnail,
-        // drag props
         isDraggingOver: pluginState.isDraggingOver,
         handleDragOver: _this.handleDragOver,
         handleDragLeave: _this.handleDragLeave,
         handleDrop: _this.handleDrop
       });
-    };
+            SRTlib.send("]},");
 
+    };
     _this.discoverProviderPlugins = function () {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.discoverProviderPlugins", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       _this.uppy.iteratePlugins(function (plugin) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.discoverProviderPlugins._this.uppy.iteratePlugins", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
         if (plugin && !plugin.target && plugin.opts && plugin.opts.target === _this.constructor) {
           _this.addTarget(plugin);
         }
-      });
-    };
+                SRTlib.send("]},");
 
+      });
+            SRTlib.send("]},");
+
+    };
     _this.install = function () {
-      // Set default state for Dashboard
+            SRTlib.send(`{ "anonymous": true, "function": "_this.install2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       _this.setPluginState({
         isHidden: true,
         fileCardFor: null,
@@ -850,40 +991,32 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         activePickerPanel: false,
         metaFields: _this.opts.metaFields,
         targets: [],
-        // We'll make them visible once .containerWidth is determined
         areInsidesReadyToBeVisible: false,
         isDraggingOver: false
       });
-
-      var _this$opts = _this.opts,
-          inline = _this$opts.inline,
-          closeAfterFinish = _this$opts.closeAfterFinish;
-
+      var _this$opts = _this.opts, inline = _this$opts.inline, closeAfterFinish = _this$opts.closeAfterFinish;
       if (inline && closeAfterFinish) {
         throw new Error('[Dashboard] `closeAfterFinish: true` cannot be used on an inline Dashboard, because an inline Dashboard cannot be closed at all. Either set `inline: false`, or disable the `closeAfterFinish` option.');
       }
-
       var allowMultipleUploads = _this.uppy.opts.allowMultipleUploads;
-
       if (allowMultipleUploads && closeAfterFinish) {
         _this.uppy.log('[Dashboard] When using `closeAfterFinish`, we recommended setting the `allowMultipleUploads` option to `false` in the Uppy constructor. See https://uppy.io/docs/uppy/#allowMultipleUploads-true', 'warning');
       }
-
       var target = _this.opts.target;
-
       if (target) {
         _this.mount(target, _assertThisInitialized(_this));
       }
-
       var plugins = _this.opts.plugins || [];
       plugins.forEach(function (pluginID) {
-        var plugin = _this.uppy.getPlugin(pluginID);
+                SRTlib.send(`{ "anonymous": true, "function": "_this.install", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+        var plugin = _this.uppy.getPlugin(pluginID);
         if (plugin) {
           plugin.mount(_assertThisInitialized(_this), plugin);
         }
-      });
+                SRTlib.send("]},");
 
+      });
       if (!_this.opts.disableStatusBar) {
         _this.uppy.use(StatusBar, {
           id: _this.id + ":StatusBar",
@@ -897,78 +1030,64 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           locale: _this.opts.locale
         });
       }
-
       if (!_this.opts.disableInformer) {
         _this.uppy.use(Informer, {
           id: _this.id + ":Informer",
           target: _assertThisInitialized(_this)
         });
       }
-
       if (!_this.opts.disableThumbnailGenerator) {
         _this.uppy.use(ThumbnailGenerator, {
           id: _this.id + ":ThumbnailGenerator",
           thumbnailWidth: _this.opts.thumbnailWidth,
           waitForThumbnailsBeforeUpload: _this.opts.waitForThumbnailsBeforeUpload,
-          // If we don't block on thumbnails, we can lazily generate them
           lazy: !_this.opts.waitForThumbnailsBeforeUpload
         });
-      } // Dark Mode / theme
-
-
+      }
       _this.darkModeMediaQuery = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
       var isDarkModeOnFromTheStart = _this.darkModeMediaQuery ? _this.darkModeMediaQuery.matches : false;
-
       _this.uppy.log("[Dashboard] Dark mode is " + (isDarkModeOnFromTheStart ? 'on' : 'off'));
-
       _this.setDarkModeCapability(isDarkModeOnFromTheStart);
-
       if (_this.opts.theme === 'auto') {
         _this.darkModeMediaQuery.addListener(_this.handleSystemDarkModeChange);
       }
-
       _this.discoverProviderPlugins();
-
       _this.initEvents();
+            SRTlib.send("]},");
+
     };
-
     _this.uninstall = function () {
+            SRTlib.send(`{ "anonymous": true, "function": "_this.uninstall2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
       if (!_this.opts.disableInformer) {
-        var informer = _this.uppy.getPlugin(_this.id + ":Informer"); // Checking if this plugin exists, in case it was removed by uppy-core
-        // before the Dashboard was.
-
-
+        var informer = _this.uppy.getPlugin(_this.id + ":Informer");
         if (informer) _this.uppy.removePlugin(informer);
       }
-
       if (!_this.opts.disableStatusBar) {
         var statusBar = _this.uppy.getPlugin(_this.id + ":StatusBar");
-
         if (statusBar) _this.uppy.removePlugin(statusBar);
       }
-
       if (!_this.opts.disableThumbnailGenerator) {
         var thumbnail = _this.uppy.getPlugin(_this.id + ":ThumbnailGenerator");
-
         if (thumbnail) _this.uppy.removePlugin(thumbnail);
       }
-
       var plugins = _this.opts.plugins || [];
       plugins.forEach(function (pluginID) {
+                SRTlib.send(`{ "anonymous": true, "function": "_this.uninstall", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
         var plugin = _this.uppy.getPlugin(pluginID);
-
         if (plugin) plugin.unmount();
-      });
+                SRTlib.send("]},");
 
+      });
       if (_this.opts.theme === 'auto') {
         _this.darkModeMediaQuery.removeListener(_this.handleSystemDarkModeChange);
       }
-
       _this.unmount();
-
       _this.removeEvents();
-    };
+            SRTlib.send("]},");
 
+    };
     _this.id = _this.opts.id || 'Dashboard';
     _this.title = 'Dashboard';
     _this.type = 'orchestrator';
@@ -1017,16 +1136,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           0: 'Processing %{smart_count} file',
           1: 'Processing %{smart_count} files'
         },
-        // The default `poweredBy2` string only combines the `poweredBy` string (%{backwardsCompat}) with the size.
-        // Locales can override `poweredBy2` to specify a different word order. This is for backwards compat with
-        // Uppy 1.9.x and below which did a naive concatenation of `poweredBy2 + size` instead of using a locale-specific
-        // substitution.
-        // TODO: In 2.0 `poweredBy2` should be removed in and `poweredBy` updated to use substitution.
         poweredBy2: '%{backwardsCompat} %{uppy}',
         poweredBy: 'Powered by'
       }
-    }; // set default options
-
+    };
     var defaultOptions = {
       target: 'body',
       metaFields: [],
@@ -1053,25 +1166,34 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       animateOpenClose: true,
       proudlyDisplayPoweredByUppy: true,
       onRequestCloseModal: function onRequestCloseModal() {
+                SRTlib.send(`{ "anonymous": true, "function": "defaultOptions.onRequestCloseModal.onRequestCloseModal", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
+                SRTlib.send("]},");
+
         return _this.closeModal();
+                SRTlib.send("]},");
+
       },
       showSelectedFiles: true,
       showRemoveButtonAfterComplete: false,
       browserBackButtonClose: false,
       theme: 'light'
-    }; // merge default options with the ones set by user
-
+    };
     _this.opts = _extends({}, defaultOptions, {}, _opts);
-
     _this.i18nInit();
-
     _this.superFocus = createSuperFocus();
-    _this.ifFocusedOnUppyRecently = false; // Timeouts
-
+    _this.ifFocusedOnUppyRecently = false;
     _this.makeDashboardInsidesVisibleAnywayTimeout = null;
     _this.removeDragOverClassTimeout = null;
+        SRTlib.send("]},");
+
     return _this;
+        SRTlib.send("]},");
+
   }
+    SRTlib.send("]},");
 
   return Dashboard;
-}(Plugin), _class.VERSION = require('../package.json').version, _temp);
+    SRTlib.send("]},");
+
+})(Plugin), _class.VERSION = require('../package.json').version, _temp);

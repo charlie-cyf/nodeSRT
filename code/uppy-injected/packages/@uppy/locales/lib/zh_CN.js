@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var zh_CN = {};
 zh_CN.strings = {
   addMoreFiles: '添加更多文件',
@@ -134,22 +133,21 @@ zh_CN.strings = {
   unselectFileNamed: '取消选择文件 %{name}',
   openFolderNamed: '打开文件夹 %{name}'
 };
-
 zh_CN.pluralize = function (n) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"zh_CN.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "zh_CN.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-    SRTlib.send("]},");
+        SRTlib.send("]},");
+
     return 0;
   }
+    SRTlib.send("]},");
 
-  SRTlib.send("]},");
   return 1;
-  SRTlib.send("]},");
-};
+    SRTlib.send("]},");
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.zh_CN = zh_CN;
 }
-
 module.exports = zh_CN;

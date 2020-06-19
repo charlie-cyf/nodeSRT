@@ -1,111 +1,143 @@
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
 var SRTlib = require('SRT-util');
+function _extends() {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-var React = require('react');
+  _extends = Object.assign || (function (target) {
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-var PropTypes = require('prop-types');
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+        SRTlib.send("]},");
 
-var DashboardPlugin = require('@uppy/dashboard');
+    return target;
+        SRTlib.send("]},");
 
-var basePropTypes = require('./propTypes').dashboard;
-
-var h = React.createElement;
-
-var DashboardModal = /*#__PURE__*/function (_React$Component) {
-  _inheritsLoose(DashboardModal, _React$Component);
-
-  function DashboardModal() {
-    return _React$Component.apply(this, arguments) || this;
-  }
-
-  var _proto = DashboardModal.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 0, \"calls\" : [");
-    this.installPlugin();
+  });
     SRTlib.send("]},");
-  };
 
+  return _extends.apply(this, arguments);
+    SRTlib.send("]},");
+
+}
+function _inheritsLoose(subClass, superClass) {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+    SRTlib.send("]},");
+
+}
+var React = require('react');
+var PropTypes = require('prop-types');
+var DashboardPlugin = require('@uppy/dashboard');
+var basePropTypes = require('./propTypes').dashboard;
+var h = React.createElement;
+var DashboardModal = (function (_React$Component) {
+    SRTlib.send(`{ "anonymous": true, "function": "DashboardModal", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+  _inheritsLoose(DashboardModal, _React$Component);
+  function DashboardModal() {
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
+        SRTlib.send("]},");
+
+    return _React$Component.apply(this, arguments) || this;
+        SRTlib.send("]},");
+
+  }
+  var _proto = DashboardModal.prototype;
+  _proto.componentDidMount = function componentDidMount() {
+        SRTlib.send(`{ "anonymous": true, "function": "DashboardModal._proto.componentDidMount.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
+    this.installPlugin();
+        SRTlib.send("]},");
+
+  };
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-    SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey2\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+        SRTlib.send(`{ "anonymous": true, "function": "DashboardModal._proto.componentDidUpdate.componentDidUpdate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
       this.installPlugin();
     }
-
     if (prevProps.open && !this.props.open) {
       this.plugin.closeModal();
     } else if (!prevProps.open && this.props.open) {
       this.plugin.openModal();
     }
+        SRTlib.send("]},");
 
-    SRTlib.send("]},");
   };
-
   _proto.componentWillUnmount = function componentWillUnmount() {
-    SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey3\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 0, \"calls\" : [");
+        SRTlib.send(`{ "anonymous": true, "function": "DashboardModal._proto.componentWillUnmount.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
     this.uninstallPlugin();
-    SRTlib.send("]},");
+        SRTlib.send("]},");
+
   };
-
   _proto.installPlugin = function installPlugin() {
-    SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey4\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 0, \"calls\" : [");
-    var uppy = this.props.uppy;
+        SRTlib.send(`{ "anonymous": true, "function": "DashboardModal._proto.installPlugin.installPlugin", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+    var uppy = this.props.uppy;
     var options = _extends({
       id: 'react:DashboardModal'
     }, this.props, {
       onRequestCloseModal: this.props.onRequestClose
     });
-
     if (!options.target) {
       options.target = this.container;
     }
-
     delete options.uppy;
     uppy.use(DashboardPlugin, options);
     this.plugin = uppy.getPlugin(options.id);
-
     if (this.props.open) {
       this.plugin.openModal();
     }
+        SRTlib.send("]},");
 
-    SRTlib.send("]},");
   };
-
   _proto.uninstallPlugin = function uninstallPlugin(props) {
+        SRTlib.send(`{ "anonymous": true, "function": "DashboardModal._proto.uninstallPlugin.uninstallPlugin", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
     if (props === void 0) {
       props = this.props;
     }
-
-    SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey5\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
     var uppy = props.uppy;
     uppy.removePlugin(this.plugin);
-    SRTlib.send("]},");
+        SRTlib.send("]},");
+
   };
-
   _proto.render = function render() {
-    var _this = this;
+        SRTlib.send(`{ "anonymous": true, "function": "DashboardModal._proto.render.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey7\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 0, \"calls\" : [");
-    SRTlib.send("]},");
+    var _this = this;
+        SRTlib.send("]},");
+
     return h('div', {
       ref: function ref(container) {
-        SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey6\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+                SRTlib.send(`{ "anonymous": true, "function": "DashboardModal._proto.render.render.ReturnStatement.h.ref.ref", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
         _this.container = container;
-        SRTlib.send("]},");
+                SRTlib.send("]},");
+
       }
     });
-    SRTlib.send("]},");
+        SRTlib.send("]},");
+
   };
+    SRTlib.send("]},");
 
   return DashboardModal;
-}(React.Component);
+    SRTlib.send("]},");
 
+})(React.Component);
 DashboardModal.propTypes = _extends({
   target: typeof window !== 'undefined' ? PropTypes.instanceOf(window.HTMLElement) : PropTypes.any,
   open: PropTypes.bool,

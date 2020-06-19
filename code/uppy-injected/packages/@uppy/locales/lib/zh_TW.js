@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var zh_TW = {};
 zh_TW.strings = {
   addBulkFilesFailed: {
@@ -143,22 +142,21 @@ zh_TW.strings = {
     '2': '您至少要選擇%{smart_count}個檔案'
   }
 };
-
 zh_TW.pluralize = function (n) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"zh_TW.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "zh_TW.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-    SRTlib.send("]},");
+        SRTlib.send("]},");
+
     return 0;
   }
+    SRTlib.send("]},");
 
-  SRTlib.send("]},");
   return 1;
-  SRTlib.send("]},");
-};
+    SRTlib.send("]},");
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.zh_TW = zh_TW;
 }
-
 module.exports = zh_TW;

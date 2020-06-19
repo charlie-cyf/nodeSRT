@@ -1,0 +1,1438 @@
+env /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT
+copy success!
+inject to: ./code/uppy-AST/.browsersync.js.json
+inject to: ./code/uppy-AST/babel.config.js.json
+inject to: ./code/uppy-AST/bin/build-bundle.js.json
+inject to: ./code/uppy-AST/bin/build-css.js.json
+inject to: ./code/uppy-AST/bin/build-lib.js.json
+inject to: ./code/uppy-AST/bin/disc.js.json
+inject to: ./code/uppy-AST/bin/locale-packs.js.json
+inject to: ./code/uppy-AST/bin/update-contributors.js.json
+inject to: ./code/uppy-AST/coverage/lcov-report/block-navigation.js.json
+inject to: ./code/uppy-AST/coverage/lcov-report/prettify.js.json
+inject to: ./code/uppy-AST/coverage/lcov-report/sorter.js.json
+inject to: ./code/uppy-AST/examples/aws-companion/main.js.json
+inject to: ./code/uppy-AST/examples/aws-companion/server.js.json
+inject to: ./code/uppy-AST/examples/aws-presigned-url/main.js.json
+inject to: ./code/uppy-AST/examples/aws-presigned-url/serve.js.json
+inject to: ./code/uppy-AST/examples/bundled/index.js.json
+inject to: ./code/uppy-AST/examples/bundled/sw.js.json
+inject to: ./code/uppy-AST/examples/custom-provider/client/MyCustomProvider.js.json
+injection to ./code/uppy-AST/examples/custom-provider/client/MyCustomProvider.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Function (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:296:5)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:274:62)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
+inject to: ./code/uppy-AST/examples/custom-provider/client/main.js.json
+inject to: ./code/uppy-AST/examples/custom-provider/server/customprovider.js.json
+inject to: ./code/uppy-AST/examples/custom-provider/server/index.js.json
+inject to: ./code/uppy-AST/examples/dev/Dashboard.js.json
+inject to: ./code/uppy-AST/examples/dev/DragDrop.js.json
+inject to: ./code/uppy-AST/examples/dev/index.js.json
+inject to: ./code/uppy-AST/examples/dev/sw.js.json
+inject to: ./code/uppy-AST/examples/digitalocean-spaces/main.js.json
+inject to: ./code/uppy-AST/examples/digitalocean-spaces/server.js.json
+inject to: ./code/uppy-AST/examples/multiple-instances/main.js.json
+inject to: ./code/uppy-AST/examples/node-xhr/main.js.json
+inject to: ./code/uppy-AST/examples/node-xhr/server.js.json
+inject to: ./code/uppy-AST/examples/php-xhr/main.js.json
+inject to: ./code/uppy-AST/examples/python-xhr/main.js.json
+inject to: ./code/uppy-AST/examples/react-example/.babelrc.js.json
+inject to: ./code/uppy-AST/examples/react-example/App.js.json
+injection to ./code/uppy-AST/examples/react-example/App.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/examples/react-example/main.js.json
+injection to ./code/uppy-AST/examples/react-example/main.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.NewExpression.base.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:395:11)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ExpressionStatement.base.ParenthesizedExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:204:37)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/examples/react-native-expo/babel.config.js.json
+inject to: ./code/uppy-AST/examples/redux/main.js.json
+inject to: ./code/uppy-AST/examples/transloadit/main.js.json
+inject to: ./code/uppy-AST/examples/transloadit/server.js.json
+inject to: ./code/uppy-AST/examples/transloadit-textarea/main.js.json
+inject to: ./code/uppy-AST/examples/uppy-with-companion/server/index.js.json
+inject to: ./code/uppy-AST/examples/xhr-bundle/main.js.json
+inject to: ./code/uppy-AST/examples/xhr-bundle/serve.js.json
+inject to: ./code/uppy-AST/packages/@uppy/aws-s3/lib/MiniXHRUpload.js.json
+inject to: ./code/uppy-AST/packages/@uppy/aws-s3/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/aws-s3/src/MiniXHRUpload.js.json
+inject to: ./code/uppy-AST/packages/@uppy/aws-s3/src/index.test.js.json
+testName: Registers%20AwsS3%20upload%20plugin
+testName: Throws%20an%20error%20if%20configured%20without%20companionUrl
+testName: Does%20not%20throw%20an%20error%20with%20campanionUrl%20configured
+inject to: ./code/uppy-AST/packages/@uppy/aws-s3-multipart/lib/MultipartUploader.js.json
+inject to: ./code/uppy-AST/packages/@uppy/aws-s3-multipart/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/aws-s3-multipart/src/MultipartUploader.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/companion.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/config/grant.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/Uploader.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/callback.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/connect.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/get.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/list.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/logout.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/oauth-redirect.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/s3.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/send-token.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/thumbnail.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/controllers/url.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/emitter/default-emitter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/emitter/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/emitter/redis-emitter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/header-blacklist.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/helpers/jwt.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/helpers/oauth-state.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/helpers/request.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/helpers/utils.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/helpers/version.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/jobs.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/logger.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/middlewares.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/Provider.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/drive/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/drive/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/dropbox/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/dropbox/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/error.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/facebook/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/facebook/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/instagram/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/instagram/graph/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/instagram/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/onedrive/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/provider/onedrive/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/redis.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/standalone/helper.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/lib/standalone/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/companion.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/config/grant.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/Uploader.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/callback.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/connect.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/get.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/list.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/logout.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/oauth-redirect.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/s3.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/send-token.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/thumbnail.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/controllers/url.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/emitter/default-emitter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/emitter/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/emitter/redis-emitter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/header-blacklist.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/helpers/jwt.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/helpers/oauth-state.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/helpers/request.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/helpers/utils.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/helpers/version.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/jobs.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/logger.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/middlewares.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/Provider.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/drive/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/drive/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/dropbox/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/dropbox/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/error.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/facebook/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/facebook/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/instagram/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/instagram/graph/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/instagram/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/onedrive/adapter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/provider/onedrive/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/server/redis.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/standalone/helper.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/src/standalone/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/test/__mocks__/purest.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/test/__mocks__/tus-js-client.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/test/__tests__/companion.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/test/__tests__/header-blacklist.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/test/__tests__/http-agent.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/test/__tests__/logger.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/test/__tests__/provider-manager.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion/test/mockserver.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/lib/AuthError.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/lib/Provider.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/lib/RequestClient.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/lib/Socket.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/lib/tokenStorage.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/AuthError.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/Provider.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/RequestClient.test.js.json
+testName: has%20a%20hostname%20without%20trailing%20slash
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/Socket.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/Socket.test.js.json
+testName: should%20expose%20a%20class
+testName: should%20setup%20a%20new%20WebSocket
+testName: should%20send%20a%20message%20via%20the%20websocket%20if%20the%20connection%20is%20open
+testName: should%20queue%20the%20message%20for%20the%20websocket%20if%20the%20connection%20is%20not%20open
+testName: should%20queue%20any%20messages%20for%20the%20websocket%20if%20the%20connection%20is%20not%20open%2C%20then%20send%20them%20when%20the%20connection%20is%20open
+testName: should%20start%20queuing%20any%20messages%20when%20the%20websocket%20connection%20is%20closed
+testName: should%20close%20the%20websocket%20when%20it%20is%20force%20closed
+testName: should%20be%20able%20to%20subscribe%20to%20messages%20received%20on%20the%20websocket
+testName: should%20be%20able%20to%20emit%20messages%20and%20subscribe%20to%20them
+testName: should%20be%20able%20to%20subscribe%20to%20the%20first%20event%20for%20a%20particular%20action
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/tokenStorage.js.json
+inject to: ./code/uppy-AST/packages/@uppy/core/lib/Plugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/core/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/core/lib/loggers.js.json
+inject to: ./code/uppy-AST/packages/@uppy/core/lib/supportsUploadProgress.js.json
+inject to: ./code/uppy-AST/packages/@uppy/core/src/Plugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/core/src/Plugin.test.js.json
+testName: returns%20an%20empty%20object%20if%20no%20state%20is%20available
+testName: applies%20patches
+inject to: ./code/uppy-AST/packages/@uppy/core/src/index.test.js.json
+testName: should%20expose%20a%20class
+testName: should%20have%20a%20string%20%60id%60%20option%20that%20defaults%20to%20%22uppy%22
+testName: should%20add%20a%20plugin%20to%20the%20plugin%20stack
+testName: should%20prevent%20the%20same%20plugin%20from%20being%20added%20more%20than%20once
+testName: should%20not%20be%20able%20to%20add%20an%20invalid%20plugin
+testName: should%20not%20be%20able%20to%20add%20a%20plugin%20that%20has%20no%20id
+testName: should%20not%20be%20able%20to%20add%20a%20plugin%20that%20has%20no%20type
+testName: should%20return%20the%20plugin%20that%20matches%20the%20specified%20name
+testName: should%20call%20the%20specified%20method%20on%20all%20the%20plugins
+testName: should%20uninstall%20and%20the%20remove%20the%20specified%20plugin
+testName: should%20update%20all%20the%20plugins%20with%20the%20new%20state%20when%20the%20updateAll%20method%20is%20called
+testName: should%20update%20the%20state
+testName: should%20get%20the%20state
+testName: should%20reset%20when%20the%20reset%20method%20is%20called
+testName: should%20clear%20all%20uploads%20and%20files%20on%20cancelAll%28%29
+testName: should%20close%2C%20reset%20and%20uninstall%20when%20the%20close%20method%20is%20called
+testName: should%20add%20data%20returned%20from%20upload%20hooks%20to%20the%20.upload%28%29%20result
+testName: should%20add%20a%20preprocessor
+testName: should%20remove%20a%20preprocessor
+testName: should%20execute%20all%20the%20preprocessors%20when%20uploading%20a%20file
+testName: should%20not%20pass%20removed%20file%20IDs%20to%20next%20step
+testName: should%20update%20the%20file%20progress%20state%20when%20preprocess-progress%20event%20is%20fired
+testName: should%20update%20the%20file%20progress%20state%20when%20preprocess-complete%20event%20is%20fired
+testName: should%20add%20a%20postprocessor
+testName: should%20remove%20a%20postprocessor
+testName: should%20execute%20all%20the%20postprocessors%20when%20uploading%20a%20file
+testName: should%20update%20the%20file%20progress%20state%20when%20postprocess-progress%20event%20is%20fired
+testName: should%20update%20the%20file%20progress%20state%20when%20postprocess-complete%20event%20is%20fired
+testName: should%20add%20an%20uploader
+testName: should%20remove%20an%20uploader
+testName: should%20call%20onBeforeFileAdded%20if%20it%20was%20specified%20in%20the%20options%20when%20initialising%20the%20class
+testName: should%20add%20a%20file
+testName: should%20not%20allow%20a%20file%20that%20does%20not%20meet%20the%20restrictions
+testName: should%20not%20allow%20a%20dupicate%20file%2C%20a%20file%20with%20the%20same%20id
+testName: should%20allow%20a%20duplicate%20file%20if%20its%20relativePath%20is%20different%2C%20thus%20the%20id%20is%20different
+testName: should%20not%20allow%20a%20file%20if%20onBeforeFileAdded%20returned%20false
+testName: allows%20no%20new%20files%20after%20upload
+testName: does%20not%20allow%20new%20files%20after%20the%20removeFile%28%29%20if%20some%20file%20is%20still%20present
+testName: allows%20new%20files%20after%20the%20last%20removeFile%28%29
+testName: does%20not%20dedupe%20different%20files
+testName: should%20return%20a%20%7B%20successful%2C%20failed%20%7D%20pair%20containing%20file%20objects
+testName: should%20return%20files%20with%20errors%20in%20the%20%7B%20failed%20%7D%20key
+testName: should%20only%20upload%20files%20that%20are%20not%20already%20assigned%20to%20another%20upload%20id
+testName: should%20not%20upload%20if%20onBeforeUpload%20returned%20false
+testName: only%20allows%20a%20single%20upload%28%29%20batch%20when%20allowMultipleUploads%3A%20false
+testName: allows%20new%20files%20again%20with%20allowMultipleUploads%3A%20false%20after%20reset%28%29%20was%20called
+testName: should%20remove%20the%20file
+testName: should%20get%20the%20specified%20file
+testName: should%20return%20an%20empty%20array%20if%20there%20are%20no%20files
+testName: should%20return%20all%20files%20as%20an%20array
+testName: should%20change%20options%20on%20the%20fly
+testName: should%20change%20locale%20on%20the%20fly
+testName: should%20change%20meta%20on%20the%20fly
+testName: should%20change%20restrictions%20on%20the%20fly
+testName: should%20set%20meta%20data%20by%20calling%20setMeta
+testName: should%20update%20meta%20data%20for%20a%20file%20by%20calling%20updateMeta
+testName: should%20merge%20meta%20data%20when%20add%20file
+testName: should%20calculate%20the%20progress%20of%20a%20file%20upload
+testName: should%20work%20with%20unsized%20files
+testName: should%20estimate%20progress%20for%20unsized%20files
+testName: should%20calculate%20the%20total%20progress%20of%20all%20file%20uploads
+testName: should%20reset%20the%20progress
+testName: should%20enforce%20the%20maxNumberOfFiles%20rule
+testName: should%20enforce%20the%20allowedFileTypes%20rule
+testName: should%20throw%20if%20allowedFileTypes%20is%20not%20an%20array
+testName: should%20enforce%20the%20allowedFileTypes%20rule%20with%20file%20extensions
+testName: should%20enforce%20the%20maxFileSize%20rule
+testName: should%20emit%20%60restriction-failed%60%20event%20when%20some%20rule%20is%20violated
+testName: should%20update%20the%20state%20when%20receiving%20the%20error%20event
+testName: should%20update%20the%20state%20when%20receiving%20the%20upload-error%20event
+testName: should%20reset%20the%20error%20state%20when%20receiving%20the%20upload%20event
+testName: should%20emit%20the%20correct%20event%20based%20on%20whether%20there%20is%20a%20network%20connection
+testName: should%20set%20a%20string%20based%20message%20to%20be%20displayed%20infinitely
+testName: should%20set%20a%20object%20based%20message%20to%20be%20displayed%20infinitely
+testName: should%20set%20an%20info%20message%20to%20be%20displayed%20for%20a%20period%20of%20time%20before%20hiding
+testName: should%20hide%20an%20info%20message
+testName: should%20assign%20the%20specified%20files%20to%20a%20new%20upload
+testName: merges%20in%20custom%20locale%20strings
+testName: should%20be%20merged%20with%20supplied%20restrictions
+testName: should%20log%20via%20provided%20logger%20function
+testName: should%20log%20via%20provided%20logger%20function%2C%20even%20if%20debug%3A%20true
+testName: should%20log%20to%20console%20when%20logger%3A%20Uppy.debugLogger%20or%20debug%3A%20true%20is%20set
+testName: should%20only%20log%20errors%20to%20console%20when%20logger%20is%20not%20set
+inject to: ./code/uppy-AST/packages/@uppy/core/src/loggers.js.json
+inject to: ./code/uppy-AST/packages/@uppy/core/src/supportsUploadProgress.js.json
+inject to: ./code/uppy-AST/packages/@uppy/core/src/supportsUploadProgress.test.js.json
+testName: returns%20true%20in%20working%20browsers
+testName: returns%20false%20in%20broken%20browsers
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/AddFiles.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/AddFilesPanel.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/Dashboard.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/FileCard/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/FileItem/Buttons/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/FileItem/FileInfo/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/FileItem/FilePreviewAndLink/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/FileItem/FileProgress/PauseResumeCancelIcon.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/FileItem/FileProgress/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/FileItem/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/FileList.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/FilePreview.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/PickerPanelContent.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/PickerPanelTopBar.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/VirtualList.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/components/icons.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/copyToClipboard.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/createSuperFocus.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/getActiveOverlayEl.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/getFileTypeIcon.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/ignoreEvent.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/trapFocus.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/truncateString.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFilesPanel.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFilesPanel.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/Dashboard.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/Dashboard.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/Buttons/index.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/Buttons/index.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Function (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:296:5)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:274:62)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:285:22)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FilePreviewAndLink/index.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FilePreviewAndLink/index.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileProgress/PauseResumeCancelIcon.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileProgress/PauseResumeCancelIcon.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileProgress/index.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileProgress/index.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/index.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/index.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileList.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileList.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FilePreview.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FilePreview.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelContent.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelContent.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/icons.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/icons.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/index.test.js.json
+testName: can%20safely%20be%20added%20together%20with%20the%20StatusBar%20without%20id%20conflicts
+testName: works%20without%20any%20remote%20provider%20plugins
+testName: works%20when%20targeting%20remote%20provider%20plugins%20using%20%60target%60
+testName: works%20when%20passing%20plugins%20in%20%60plugins%60%20array
+testName: should%20change%20options%20on%20the%20fly
+testName: should%20use%20updated%20locale%20from%20Core%2C%20when%20it%u2019s%20set%20via%20Core%u2019s%20setOptions%28%29
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/copyToClipboard.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/copyToClipboard.test.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/createSuperFocus.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/createSuperFocus.test.js.json
+testName: should%20return%20a%20function%20that%20can%20be%20cancelled
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/getActiveOverlayEl.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/getFileTypeIcon.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/ignoreEvent.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/trapFocus.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/truncateString.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/truncateString.test.js.json
+testName: should%20truncate%20the%20string%20to%20the%20length
+testName: should%20not%20truncate%20the%20string%20if%20it%20is%20already%20short%20enough
+testName: should%20not%20truncate%20the%20string%20if%20it%20is%20too%20short%20to%20be%20meaningfully%20truncated
+inject to: ./code/uppy-AST/packages/@uppy/drag-drop/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dropbox/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/facebook/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/file-input/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/form/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/lib/IndexedDBStore.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/lib/MetaDataStore.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/lib/ServiceWorker.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/lib/ServiceWorkerStore.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/lib/cleanup.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/src/IndexedDBStore.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/src/MetaDataStore.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/src/ServiceWorker.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js.json
+inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/src/cleanup.js.json
+inject to: ./code/uppy-AST/packages/@uppy/google-drive/lib/DriveProviderViews.js.json
+inject to: ./code/uppy-AST/packages/@uppy/google-drive/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/google-drive/src/DriveProviderViews.js.json
+inject to: ./code/uppy-AST/packages/@uppy/informer/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/instagram/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/ar_SA.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/bg_BG.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/cs_CZ.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/da_DK.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/de_DE.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/el_GR.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/en_US.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/es_ES.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/es_GL.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/fa_IR.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/fi_FI.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/fr_FR.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/gl_ES.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/he_IL.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/hr_HR.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/hu_HU.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/id_ID.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/is_IS.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/it_IT.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/ja_JP.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/ko_KR.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/nl_NL.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/pl_PL.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/pt_BR.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/ro_RO.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/ru_RU.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/sk_SK.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/sr_RS_Cyrillic.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/sr_RS_Latin.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/sv_SE.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/th_TH.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/tr_TR.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/vi_VN.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/zh_CN.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/dist/zh_TW.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/legacy/nb_NO.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/ar_SA.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/bg_BG.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/cs_CZ.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/da_DK.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/de_DE.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/el_GR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/en_US.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/es_ES.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/es_GL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/fa_IR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/fi_FI.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/fr_FR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/gl_ES.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/he_IL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/hr_HR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/hu_HU.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/id_ID.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/is_IS.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/it_IT.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/ja_JP.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/ko_KR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/nl_NL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/pl_PL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/pt_BR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/ro_RO.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/ru_RU.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/sk_SK.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/sr_RS_Cyrillic.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/sr_RS_Latin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/sv_SE.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/th_TH.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/tr_TR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/vi_VN.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/zh_CN.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/lib/zh_TW.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/ar_SA.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/bg_BG.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/cs_CZ.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/da_DK.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/de_DE.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/el_GR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/en_US.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/es_ES.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/es_GL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/fa_IR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/fi_FI.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/fr_FR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/gl_ES.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/he_IL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/hr_HR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/hu_HU.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/id_ID.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/is_IS.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/it_IT.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/ja_JP.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/ko_KR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/nl_NL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/pl_PL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/pt_BR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/ro_RO.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/ru_RU.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/sk_SK.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/sr_RS_Cyrillic.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/sr_RS_Latin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/sv_SE.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/th_TH.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/tr_TR.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/vi_VN.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/zh_CN.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/src/zh_TW.js.json
+inject to: ./code/uppy-AST/packages/@uppy/locales/template.js.json
+inject to: ./code/uppy-AST/packages/@uppy/onedrive/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/progress-bar/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/AuthView.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Breadcrumbs.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Browser.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Filter.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/FooterActions.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Item/components/GridLi.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Item/components/ItemIcon.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Item/components/ListLi.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Item/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/ItemList.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Loader.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/AuthView.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/AuthView.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:285:22)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:280:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Breadcrumbs.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Breadcrumbs.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Browser.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Browser.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Filter.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Filter.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/FooterActions.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/FooterActions.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/GridLi.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/GridLi.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ItemIcon.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ItemIcon.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ListLi.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ListLi.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/index.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/index.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:285:22)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:280:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/ItemList.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/ItemList.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Loader.js.json
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Loader.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/react/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/lib/Dashboard.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/lib/DashboardModal.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/lib/DragDrop.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/lib/ProgressBar.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/lib/StatusBar.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/lib/Wrapper.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/lib/propTypes.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/Dashboard.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/Dashboard.test.js.json
+injection to ./code/uppy-AST/packages/@uppy/react/src/Dashboard.test.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.NewExpression.base.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:395:11)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:285:22)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:280:7)
+inject to: ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.test.js.json
+injection to ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.test.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.NewExpression.base.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:395:11)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:285:22)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:280:7)
+inject to: ./code/uppy-AST/packages/@uppy/react/src/DragDrop.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/DragDrop.test.js.json
+injection to ./code/uppy-AST/packages/@uppy/react/src/DragDrop.test.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.NewExpression.base.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:395:11)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:285:22)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:280:7)
+inject to: ./code/uppy-AST/packages/@uppy/react/src/ProgressBar.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/ProgressBar.test.js.json
+injection to ./code/uppy-AST/packages/@uppy/react/src/ProgressBar.test.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.NewExpression.base.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:395:11)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:285:22)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:280:7)
+inject to: ./code/uppy-AST/packages/@uppy/react/src/StatusBar.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/StatusBar.test.js.json
+injection to ./code/uppy-AST/packages/@uppy/react/src/StatusBar.test.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.NewExpression.base.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:395:11)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:285:22)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:280:7)
+inject to: ./code/uppy-AST/packages/@uppy/react/src/Wrapper.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/DashboardPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/DragDropPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/ProgressBarPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/StatusBarPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/react/src/propTypes.js.json
+inject to: ./code/uppy-AST/packages/@uppy/redux-dev-tools/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/bundle.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/dist/robodog.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/dist/robodog.min.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/AttachFileInputs.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/TransloaditFormResult.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/TransloaditResultsPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/addDashboardPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/addProviders.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/addTransloaditPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/createUppy.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/dashboard.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/form.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/pick.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/lib/upload.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/AttachFileInputs.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/TransloaditFormResult.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/TransloaditResultsPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/addDashboardPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/addProviders.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/addTransloaditPlugin.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/createUppy.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/dashboard.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/form.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/pick.js.json
+inject to: ./code/uppy-AST/packages/@uppy/robodog/src/upload.js.json
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/CaptureScreen.js.json
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/RecordButton.js.json
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/ScreenRecIcon.js.json
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/StopWatch.js.json
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/StreamStatus.js.json
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/SubmitButton.js.json
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/CaptureScreen.js.json
+injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/CaptureScreen.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/RecordButton.js.json
+injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/RecordButton.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/ScreenRecIcon.js.json
+injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/ScreenRecIcon.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/StopWatch.js.json
+injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/StopWatch.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/StreamStatus.js.json
+injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/StreamStatus.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/SubmitButton.js.json
+injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/SubmitButton.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/status-bar/lib/StatusBar.js.json
+inject to: ./code/uppy-AST/packages/@uppy/status-bar/lib/StatusBarStates.js.json
+inject to: ./code/uppy-AST/packages/@uppy/status-bar/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBar.js.json
+injection to ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBar.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBarStates.js.json
+inject to: ./code/uppy-AST/packages/@uppy/store-default/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/store-default/src/index.test.js.json
+testName: can%20be%20created%20with%20or%20without%20new
+testName: merges%20in%20state%20using%20%60setState%60
+testName: notifies%20subscriptions%20when%20state%20changes
+inject to: ./code/uppy-AST/packages/@uppy/store-redux/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/store-redux/src/index.test.js.json
+testName: can%20be%20created%20with%20or%20without%20new
+testName: merges%20in%20state%20using%20%60setState%60
+testName: notifies%20subscriptions%20when%20state%20changes
+testName: fires%20%60subscribe%60%20if%20state%20is%20modified%20externally%20%28eg%20redux%20devtools%29
+testName: can%20mount%20in%20a%20custom%20state%20key
+inject to: ./code/uppy-AST/packages/@uppy/thumbnail-generator/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/thumbnail-generator/src/index.test.js.json
+testName: should%20initialise%20successfully
+testName: should%20accept%20the%20thumbnailWidth%20and%20thumbnailHeight%20option%20and%20override%20the%20default
+testName: should%20subscribe%20to%20uppy%20file-added%20event
+testName: should%20unsubscribe%20from%20uppy%20file-added%20event
+testName: should%20add%20a%20new%20file%20to%20the%20queue%20and%20start%20processing%20the%20queue%20when%20queueProcessing%20is%20false
+testName: should%20process%20items%20in%20the%20queue%20one%20by%20one
+testName: should%20revoke%20object%20URLs%20when%20files%20are%20removed
+testName: should%20emit%20thumbnail%3Agenerated%20when%20a%20thumbnail%20was%20generated
+injection to ./code/uppy-AST/packages/@uppy/thumbnail-generator/src/index.test.js.json failed! TypeError: Cannot read property 'unshift' of undefined
+    at CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:60:73)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:45:20)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ExpressionStatement.base.ParenthesizedExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:204:37)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/Assembly.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/AssemblyOptions.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/AssemblyWatcher.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/Client.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/parseUrl.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/Assembly.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/Assembly.test.js.json
+testName: ASSEMBLY_UPLOADING%20%u2192%20ASSEMBLY_EXECUTING
+testName: ASSEMBLY_EXECUTING%20%u2192%20ASSEMBLY_COMPLETED
+testName: ASSEMBLY_UPLOADING%20%u2192%20ASSEMBLY_COMPLETED
+testName: emits%20events%20for%20new%20files
+testName: emits%20executing%2C%20then%20upload%2C%20on%20new%20files%20+%20status%20change
+testName: emits%20new%20results
+testName: emits%20correctly%20jumping%20straight%20from%20uploading%20to%20finished
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/AssemblyOptions.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/AssemblyOptions.test.js.json
+testName: Validates%20response%20from%20getAssemblyOptions%28%29
+testName: Uses%20different%20assemblies%20for%20different%20params
+testName: Should%20merge%20files%20with%20same%20parameters%20into%20one%20Assembly
+testName: Does%20not%20create%20an%20Assembly%20if%20no%20files%20are%20being%20uploaded
+testName: Creates%20an%20Assembly%20if%20no%20files%20are%20being%20uploaded%20but%20%60alwaysRunAssembly%60%20is%20enabled
+testName: Collects%20metadata%20if%20%60fields%60%20is%20an%20array
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/AssemblyWatcher.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/Client.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/index.test.js.json
+testName: Throws%20errors%20if%20options%20are%20missing
+testName: Accepts%20a%20JSON%20string%20as%20%60params%60%20for%20signature%20authentication
+testName: Does%20not%20leave%20lingering%20progress%20if%20getAssemblyOptions%20fails
+testName: Does%20not%20leave%20lingering%20progress%20if%20creating%20assembly%20fails
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/parseUrl.js.json
+inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/parseUrl.test.js.json
+testName: splits%20a%20url%20into%20origin%20and%20pathname
+testName: defaults%20to%20pathname%3D/%20if%20absent
+inject to: ./code/uppy-AST/packages/@uppy/tus/lib/getFingerprint.js.json
+inject to: ./code/uppy-AST/packages/@uppy/tus/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/tus/src/getFingerprint.js.json
+inject to: ./code/uppy-AST/packages/@uppy/url/lib/UrlUI.js.json
+inject to: ./code/uppy-AST/packages/@uppy/url/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/url/lib/utils/forEachDroppedOrPastedUrl.js.json
+inject to: ./code/uppy-AST/packages/@uppy/url/src/UrlUI.js.json
+injection to ./code/uppy-AST/packages/@uppy/url/src/UrlUI.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/url/src/utils/forEachDroppedOrPastedUrl.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/EventTracker.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/FOCUSABLE_ELEMENTS.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/NetworkError.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/ProgressTimeout.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/RateLimitedQueue.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/Translator.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/canvasToBlob.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/dataURItoBlob.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/dataURItoFile.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/emitSocketProgress.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/findAllDOMElements.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/findDOMElement.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/generateFileID.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getBytesRemaining.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getDroppedFiles/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getDroppedFiles/utils/fallbackApi.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getDroppedFiles/utils/webkitGetAsEntryApi/getFilesAndDirectoriesFromDirectory.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getDroppedFiles/utils/webkitGetAsEntryApi/getRelativePath.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getDroppedFiles/utils/webkitGetAsEntryApi/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getETA.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getFileNameAndExtension.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getFileType.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getFileTypeExtension.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getSocketHost.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getSpeed.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/getTimeStamp.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/hasProperty.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/isDOMElement.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/isDragDropSupported.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/isMobileDevice.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/isNetworkError.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/isObjectURL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/isPreviewSupported.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/isTouchDevice.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/mimeTypes.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/prettyETA.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/sampleImageDataURI.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/secondsToTime.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/settle.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/lib/toArray.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/EventTracker.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/FOCUSABLE_ELEMENTS.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/NetworkError.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/ProgressTimeout.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/RateLimitedQueue.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/RateLimitedQueue.test.js.json
+testName: should%20run%20at%20most%20N%20promises%20at%20the%20same%20time
+testName: should%20accept%20Infinity%20as%20limit
+testName: should%20accept%20non-promise%20function%20in%20wrapPromiseFunction%28%29
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/Translator.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/Translator.test.js.json
+testName: should%20translate%20a%20string
+testName: should%20translate%20a%20string%20with%20non-string%20elements
+testName: should%20prioritize%20language%20pack%20strings%20from%20Core%20over%20default
+testName: should%20prioritize%20user-supplied%20strings%20over%20language%20pack%20from%20Core
+testName: should%20interpolate%20a%20string
+testName: should%20translate%20a%20string
+testName: should%20support%20strings%20without%20plural%20forms
+testName: should%20error%20when%20using%20a%20plural%20form%20without%20%25%7Bsmart_count%7D
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/canvasToBlob.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/dataURItoBlob.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/dataURItoBlob.test.js.json
+testName: should%20convert%20a%20data%20uri%20to%20a%20blob
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/dataURItoFile.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/dataURItoFile.test.js.json
+testName: should%20convert%20a%20data%20uri%20to%20a%20file
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/emitSocketProgress.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/findAllDOMElements.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/findDOMElement.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/generateFileID.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/generateFileID.test.js.json
+testName: should%20take%20the%20filename%20object%20and%20produce%20a%20lowercase%20file%20id%20made%20up%20of%20uppy-%20prefix%2C%20file%20name%20%28cleaned%20up%20to%20be%20lowercase%2C%20letters%20and%20numbers%20only%29%2C%20type%2C%20relative%20path%20%28folder%29%20from%20file.meta.relativePath%2C%20size%20and%20lastModified%20date
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getBytesRemaining.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getBytesRemaining.test.js.json
+testName: should%20calculate%20the%20bytes%20remaining%20given%20a%20fileProgress%20object
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getDroppedFiles/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getDroppedFiles/utils/fallbackApi.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getDroppedFiles/utils/webkitGetAsEntryApi/getFilesAndDirectoriesFromDirectory.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getDroppedFiles/utils/webkitGetAsEntryApi/getRelativePath.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getDroppedFiles/utils/webkitGetAsEntryApi/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getETA.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getETA.test.js.json
+testName: should%20get%20the%20ETA%20remaining%20based%20on%20a%20fileProgress%20object
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getFileNameAndExtension.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getFileNameAndExtension.test.js.json
+testName: should%20return%20the%20filename%20and%20extension%20as%20an%20array
+testName: should%20handle%20invalid%20filenames
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getFileType.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getFileType.test.js.json
+testName: should%20trust%20the%20filetype%20if%20the%20file%20comes%20from%20a%20remote%20source
+testName: should%20determine%20the%20filetype%20from%20the%20mimetype
+testName: should%20determine%20the%20filetype%20from%20the%20extension
+testName: should%20fail%20gracefully%20if%20unable%20to%20detect
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getFileTypeExtension.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getFileTypeExtension.test.js.json
+testName: should%20return%20the%20filetype%20based%20on%20the%20specified%20mime%20type
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getSocketHost.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getSocketHost.test.js.json
+testName: should%20get%20the%20host%20from%20the%20specified%20url
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getSpeed.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getSpeed.test.js.json
+testName: should%20calculate%20the%20speed%20given%20a%20fileProgress%20object
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/getTimeStamp.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/hasProperty.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isDOMElement.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isDragDropSupported.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isMobileDevice.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isMobileDevice.test.js.json
+testName: should%20return%20true%20if%20the%20specified%20user%20agent%20is%20mobile
+testName: should%20return%20false%20if%20the%20user%20agent%20is%20not%20mobile
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isNetworkError.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isNetworkError.test.js.json
+testName: should%20return%20true%20if%20the%20specified%20xhr%20object%20contains%20a%20network%20error
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isObjectURL.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isObjectURL.test.js.json
+testName: should%20return%20true%20if%20the%20specified%20url%20is%20an%20object%20url
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isPreviewSupported.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isPreviewSupported.test.js.json
+testName: should%20return%20true%20for%20any%20filetypes%20that%20browsers%20can%20preview
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isTouchDevice.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/isTouchDevice.test.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/mimeTypes.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/prettyETA.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/prettyETA.test.js.json
+testName: should%20convert%20the%20specified%20number%20of%20seconds%20to%20a%20pretty%20ETA
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/sampleImageDataURI.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/secondsToTime.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/secondsToTime.test.js.json
+testName: converts%20seconds%20to%20an%20%7B%20hours%2C%20minutes%2C%20seconds%20%7D%20object
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/settle.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/settle.test.js.json
+testName: should%20resolve%20even%20if%20all%20input%20promises%20reject
+testName: should%20resolve%20with%20an%20object%20if%20some%20input%20promises%20resolve
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/toArray.js.json
+inject to: ./code/uppy-AST/packages/@uppy/utils/src/toArray.test.js.json
+testName: should%20convert%20a%20array-like%20object%20into%20an%20array
+inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/CameraIcon.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/CameraScreen.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/PermissionsScreen.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/RecordButton.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/RecordingLength.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/SnapshotButton.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/formatSeconds.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/supportsMediaRecorder.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/CameraIcon.js.json
+injection to ./code/uppy-AST/packages/@uppy/webcam/src/CameraIcon.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/CameraScreen.js.json
+injection to ./code/uppy-AST/packages/@uppy/webcam/src/CameraScreen.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/PermissionsScreen.js.json
+injection to ./code/uppy-AST/packages/@uppy/webcam/src/PermissionsScreen.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/RecordButton.js.json
+injection to ./code/uppy-AST/packages/@uppy/webcam/src/RecordButton.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/RecordingLength.js.json
+injection to ./code/uppy-AST/packages/@uppy/webcam/src/RecordingLength.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/SnapshotButton.js.json
+injection to ./code/uppy-AST/packages/@uppy/webcam/src/SnapshotButton.js.json failed! TypeError: baseVisitor[type] is not a function
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.ReturnStatement.base.YieldExpression.base.AwaitExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:240:26)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
+    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/formatSeconds.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/formatSeconds.test.js.json
+testName: should%20return%20a%20value%20of%20%270%3A43%27%20when%20an%20argument%20of%2043%20seconds%20is%20supplied
+testName: should%20return%20a%20value%20of%20%271%3A43%27%20when%20an%20argument%20of%20103%20seconds%20is%20supplied
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/index.test.js.json
+testName: should%20not%20have%20a%20mimeType%20set%20if%20no%20preferences%20given
+testName: should%20use%20preferredVideoMimeType
+testName: should%20not%20use%20preferredVideoMimeType%20if%20it%20is%20not%20supported
+testName: should%20pick%20type%20based%20on%20%60allowedFileTypes%60
+testName: should%20use%20first%20supported%20type%20from%20allowedFileTypes
+testName: should%20prefer%20preferredVideoMimeType%20over%20allowedFileTypes
+testName: should%20not%20use%20allowedFileTypes%20if%20they%20are%20unsupported
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/supportsMediaRecorder.js.json
+inject to: ./code/uppy-AST/packages/@uppy/webcam/src/supportsMediaRecorder.test.js.json
+testName: should%20return%20true%20if%20MediaRecorder%20is%20supported
+testName: should%20return%20false%20if%20MediaRecorder%20is%20not%20supported
+inject to: ./code/uppy-AST/packages/@uppy/xhr-upload/lib/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/xhr-upload/src/index.test.js.json
+testName: has%20the%20XHRUpload%20options%20as%20its%20%60this%60
+testName: emit%20upload%20error%20under%20status%20code%20200
+inject to: ./code/uppy-AST/packages/uppy/bundle.js.json
+inject to: ./code/uppy-AST/packages/uppy/dist/uppy.js.json
+inject to: ./code/uppy-AST/packages/uppy/dist/uppy.min.js.json
+inject to: ./code/uppy-AST/packages/uppy/index.js.json
+inject to: ./code/uppy-AST/private/remark-lint-uppy/index.js.json
+inject to: ./code/uppy-AST/test/endtoend/chaos-monkey/dist/bundle.js.json
+inject to: ./code/uppy-AST/test/endtoend/chaos-monkey/main.js.json
+inject to: ./code/uppy-AST/test/endtoend/chaos-monkey/test.js.json
+testName: Add%20and%20cancel%20a%20bunch
+inject to: ./code/uppy-AST/test/endtoend/create-react-app/build/precache-manifest.6cc24fd30d5266e6dbe57da73130a567.js.json
+inject to: ./code/uppy-AST/test/endtoend/create-react-app/build/service-worker.js.json
+inject to: ./code/uppy-AST/test/endtoend/create-react-app/build/static/js/2.20f56f13.chunk.js.json
+inject to: ./code/uppy-AST/test/endtoend/create-react-app/build/static/js/main.81be1f4f.chunk.js.json
+inject to: ./code/uppy-AST/test/endtoend/create-react-app/build/static/js/runtime~main.7bfddab4.js.json
+inject to: ./code/uppy-AST/test/endtoend/create-react-app/test.js.json
+testName: should%20include%20CSS
+testName: should%20have%20Google%20Drive%20panel
+testName: should%20survive%20being%20mounted%20and%20unmounted
+testName: should%20have%20controlled%20open%20and%20close
+inject to: ./code/uppy-AST/test/endtoend/i18n-drag-drop/dist/bundle.js.json
+inject to: ./code/uppy-AST/test/endtoend/i18n-drag-drop/main.js.json
+inject to: ./code/uppy-AST/test/endtoend/i18n-drag-drop/test.js.json
+testName: should%20upload%20a%20file%20with%20XHRUpload%20and%20set%20progressbar%20to%20100%25
+testName: should%20translate%20text%20strings%20into%20Russian
+inject to: ./code/uppy-AST/test/endtoend/providers/dist/bundle.js.json
+inject to: ./code/uppy-AST/test/endtoend/providers/helper.js.json
+inject to: ./code/uppy-AST/test/endtoend/providers/main.js.json
+inject to: ./code/uppy-AST/test/endtoend/providers/provider.dropbox.test.js.json
+testName: should%20upload%20a%20file%20completely%20with%20Dropbox
+testName: should%20resume%20uploads%20when%20retry%20is%20triggered%20with%20Dropbox
+inject to: ./code/uppy-AST/test/endtoend/providers/provider.google.test.js.json
+testName: should%20upload%20a%20file%20completely%20with%20Google%20Drive
+testName: should%20resume%20uploads%20when%20retry%20is%20triggered%20with%20Google%20Drive
+inject to: ./code/uppy-AST/test/endtoend/providers/provider.instagram.test.js.json
+testName: should%20upload%20a%20file%20completely%20with%20Instagram
+testName: should%20resume%20uploads%20when%20retry%20is%20triggered%20Instagram
+inject to: ./code/uppy-AST/test/endtoend/thumbnails/dist/bundle.js.json
+inject to: ./code/uppy-AST/test/endtoend/thumbnails/main.js.json
+inject to: ./code/uppy-AST/test/endtoend/thumbnails/test.js.json
+testName: should%20generate%20thumbnails%20for%20images
+inject to: ./code/uppy-AST/test/endtoend/transloadit/dist/bundle.js.json
+inject to: ./code/uppy-AST/test/endtoend/transloadit/main.js.json
+inject to: ./code/uppy-AST/test/endtoend/transloadit/test.js.json
+testName: should%20upload%20a%20file%20to%20Transloadit%20and%20crop%20it
+inject to: ./code/uppy-AST/test/endtoend/tus-dashboard/main.js.json
+inject to: ./code/uppy-AST/test/endtoend/tus-drag-drop/dist/bundle.js.json
+inject to: ./code/uppy-AST/test/endtoend/tus-drag-drop/main.js.json
+inject to: ./code/uppy-AST/test/endtoend/tus-drag-drop/test.js.json
+testName: should%20upload%20a%20file%20with%20Tus%20and%20set%20progressbar%20to%20100%25
+inject to: ./code/uppy-AST/test/endtoend/typescript/dist/bundle.js.json
+inject to: ./code/uppy-AST/test/endtoend/typescript/test.js.json
+testName: Should%20have%20correct%20imports%20%28thus%20not%20crash%29
+inject to: ./code/uppy-AST/test/endtoend/url-plugin/dist/bundle.js.json
+inject to: ./code/uppy-AST/test/endtoend/url-plugin/main.js.json
+inject to: ./code/uppy-AST/test/endtoend/url-plugin/test.js.json
+testName: should%20import%20%20and%20upload%20a%20file%20completely%20with%20Url%20Plugin
+inject to: ./code/uppy-AST/test/endtoend/utils.js.json
+inject to: ./code/uppy-AST/test/endtoend/wdio.base.conf.js.json
+inject to: ./code/uppy-AST/test/endtoend/wdio.local.conf.js.json
+inject to: ./code/uppy-AST/test/endtoend/wdio.remote.conf.js.json
+inject to: ./code/uppy-AST/test/endtoend/xhr-limit/dist/bundle.js.json
+inject to: ./code/uppy-AST/test/endtoend/xhr-limit/main.js.json
+inject to: ./code/uppy-AST/test/endtoend/xhr-limit/test.js.json
+inject to: ./code/uppy-AST/test/mocks/acquirerPlugin1.js.json
+inject to: ./code/uppy-AST/test/mocks/acquirerPlugin2.js.json
+inject to: ./code/uppy-AST/test/mocks/invalidPlugin.js.json
+inject to: ./code/uppy-AST/test/mocks/invalidPluginWithoutId.js.json
+inject to: ./code/uppy-AST/test/mocks/invalidPluginWithoutType.js.json
+inject to: ./code/uppy-AST/wdio.conf.js.json
+inject to: ./code/uppy-AST/website/build-examples.js.json
+inject to: ./code/uppy-AST/website/inject.js.json
+inject to: ./code/uppy-AST/website/postcss.config.js.json
+inject to: ./code/uppy-AST/website/private_modules/hexo-renderer-uppyexamples/index.js.json
+inject to: ./code/uppy-AST/website/public/examples/dashboard/app.js.json
+inject to: ./code/uppy-AST/website/public/examples/dragdrop/app.js.json
+inject to: ./code/uppy-AST/website/public/examples/i18n/app.js.json
+inject to: ./code/uppy-AST/website/public/examples/markdown-snippets/app.js.json
+inject to: ./code/uppy-AST/website/public/examples/statusbar/app.js.json
+inject to: ./code/uppy-AST/website/public/examples/transloadit/app.js.json
+inject to: ./code/uppy-AST/website/public/examples/xhrupload/app.js.json
+inject to: ./code/uppy-AST/website/scripts/highlight.js.json
+inject to: ./code/uppy-AST/website/src/examples/env.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/js/common.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/js/smooth-scroll.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/ar_SA.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/bg_BG.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/cs_CZ.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/da_DK.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/de_DE.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/el_GR.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/en_US.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/es_ES.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/es_GL.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/fa_IR.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/fi_FI.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/fr_FR.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/gl_ES.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/he_IL.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/hr_HR.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/hu_HU.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/id_ID.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/is_IS.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/it_IT.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/ja_JP.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/ko_KR.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/nl_NL.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/pl_PL.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/pt_BR.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/ro_RO.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/ru_RU.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/sk_SK.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/sr_RS_Cyrillic.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/sr_RS_Latin.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/sv_SE.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/th_TH.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/tr_TR.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/vi_VN.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/zh_CN.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/locales/zh_TW.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/robodog.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/robodog.min.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/uppy.js.json
+inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/uppy.min.js.json
+/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/code/uppy-injected
+removed 3 packages and audited 4510 packages in 61.644s
+
+154 packages are looking for funding
+  run `npm fund` for details
+
+found 402 vulnerabilities (393 low, 9 high)
+  run `npm audit fix` to fix them, or `npm audit` for details

@@ -1,22 +1,36 @@
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+var SRTlib = require('SRT-util');
+function _inheritsLoose(subClass, superClass) {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-var _require = require('preact'),
-    h = _require.h,
-    Component = _require.Component;
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+    SRTlib.send("]},");
 
-var AuthView = /*#__PURE__*/function (_Component) {
+}
+var _require = require('preact'), h = _require.h, Component = _require.Component;
+var AuthView = (function (_Component) {
+    SRTlib.send(`{ "anonymous": true, "function": "AuthView", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
   _inheritsLoose(AuthView, _Component);
-
   function AuthView() {
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
+        SRTlib.send("]},");
+
     return _Component.apply(this, arguments) || this;
+        SRTlib.send("]},");
+
   }
-
   var _proto = AuthView.prototype;
-
   _proto.render = function render() {
+        SRTlib.send(`{ "anonymous": true, "function": "AuthView._proto.render.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+
     var pluginNameComponent = h("span", {
       class: "uppy-Provider-authTitleName"
     }, this.props.pluginName, h("br", null));
+        SRTlib.send("]},");
+
     return h("div", {
       class: "uppy-Provider-auth"
     }, h("div", {
@@ -33,9 +47,13 @@ var AuthView = /*#__PURE__*/function (_Component) {
     }, this.props.i18nArray('authenticateWith', {
       pluginName: this.props.pluginName
     })));
+        SRTlib.send("]},");
+
   };
+    SRTlib.send("]},");
 
   return AuthView;
-}(Component);
+    SRTlib.send("]},");
 
+})(Component);
 module.exports = AuthView;

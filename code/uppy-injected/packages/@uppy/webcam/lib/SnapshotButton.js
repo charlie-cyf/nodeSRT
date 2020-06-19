@@ -1,11 +1,12 @@
-var _require = require('preact'),
-    h = _require.h;
-
+var SRTlib = require('SRT-util');
+var _require = require('preact'), h = _require.h;
 var CameraIcon = require('./CameraIcon');
-
 module.exports = function (_ref) {
-  var onSnapshot = _ref.onSnapshot,
-      i18n = _ref.i18n;
+    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+  var onSnapshot = _ref.onSnapshot, i18n = _ref.i18n;
+    SRTlib.send("]},");
+
   return h("button", {
     class: "uppy-u-reset uppy-c-btn uppy-Webcam-button uppy-Webcam-button--picture",
     type: "button",
@@ -14,4 +15,6 @@ module.exports = function (_ref) {
     onclick: onSnapshot,
     "data-uppy-super-focusable": true
   }, CameraIcon());
+    SRTlib.send("]},");
+
 };

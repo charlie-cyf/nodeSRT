@@ -30,18 +30,36 @@ describe('Socket', () => {
     global.WebSocket = undefined;
   });
   it('should expose a class', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20expose%20a%20class", "fileName": "${__filename}", "calls" : [`);
+
     expect(UppySocket.name).toEqual('UppySocket');
     expect(new UppySocket({
       target: 'foo'
     }) instanceof UppySocket);
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   it('should setup a new WebSocket', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20setup%20a%20new%20WebSocket", "fileName": "${__filename}", "calls" : [`);
+
     new UppySocket({
       target: 'foo'
     });
     expect(webSocketConstructorSpy.mock.calls[0][0]).toEqual('foo');
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   it('should send a message via the websocket if the connection is open', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20send%20a%20message%20via%20the%20websocket%20if%20the%20connection%20is%20open", "fileName": "${__filename}", "calls" : [`);
+
     const uppySocket = new UppySocket({
       target: 'foo'
     });
@@ -53,8 +71,15 @@ describe('Socket', () => {
       action: 'bar',
       payload: 'boo'
     })]);
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   it('should queue the message for the websocket if the connection is not open', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20queue%20the%20message%20for%20the%20websocket%20if%20the%20connection%20is%20not%20open", "fileName": "${__filename}", "calls" : [`);
+
     const uppySocket = new UppySocket({
       target: 'foo'
     });
@@ -64,8 +89,15 @@ describe('Socket', () => {
       payload: 'boo'
     }]);
     expect(webSocketSendSpy.mock.calls.length).toEqual(0);
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   it('should queue any messages for the websocket if the connection is not open, then send them when the connection is open', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20queue%20any%20messages%20for%20the%20websocket%20if%20the%20connection%20is%20not%20open%2C%20then%20send%20them%20when%20the%20connection%20is%20open", "fileName": "${__filename}", "calls" : [`);
+
     const uppySocket = new UppySocket({
       target: 'foo'
     });
@@ -91,8 +123,15 @@ describe('Socket', () => {
       action: 'moo',
       payload: 'baa'
     })]);
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   it('should start queuing any messages when the websocket connection is closed', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20start%20queuing%20any%20messages%20when%20the%20websocket%20connection%20is%20closed", "fileName": "${__filename}", "calls" : [`);
+
     const uppySocket = new UppySocket({
       target: 'foo'
     });
@@ -106,8 +145,15 @@ describe('Socket', () => {
       action: 'bar',
       payload: 'boo'
     }]);
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   it('should close the websocket when it is force closed', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20close%20the%20websocket%20when%20it%20is%20force%20closed", "fileName": "${__filename}", "calls" : [`);
+
     const uppySocket = new UppySocket({
       target: 'foo'
     });
@@ -115,8 +161,15 @@ describe('Socket', () => {
     webSocketInstance.triggerOpen();
     uppySocket.close();
     expect(webSocketCloseSpy.mock.calls.length).toEqual(1);
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   it('should be able to subscribe to messages received on the websocket', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20be%20able%20to%20subscribe%20to%20messages%20received%20on%20the%20websocket", "fileName": "${__filename}", "calls" : [`);
+
     const uppySocket = new UppySocket({
       target: 'foo'
     });
@@ -131,8 +184,15 @@ describe('Socket', () => {
       })
     });
     expect(emitterListenerMock.mock.calls).toEqual([['ho', undefined, undefined, undefined, undefined, undefined]]);
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   it('should be able to emit messages and subscribe to them', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20be%20able%20to%20emit%20messages%20and%20subscribe%20to%20them", "fileName": "${__filename}", "calls" : [`);
+
     const uppySocket = new UppySocket({
       target: 'foo'
     });
@@ -142,8 +202,15 @@ describe('Socket', () => {
     uppySocket.emit('hi', 'ho');
     uppySocket.emit('hi', 'off to work we go');
     expect(emitterListenerMock.mock.calls).toEqual([['ho', undefined, undefined, undefined, undefined, undefined], ['ho', undefined, undefined, undefined, undefined, undefined], ['off to work we go', undefined, undefined, undefined, undefined, undefined]]);
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   it('should be able to subscribe to the first event for a particular action', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "Socket", "testName": "should%20be%20able%20to%20subscribe%20to%20the%20first%20event%20for%20a%20particular%20action", "fileName": "${__filename}", "calls" : [`);
+
     const uppySocket = new UppySocket({
       target: 'foo'
     });
@@ -154,5 +221,8 @@ describe('Socket', () => {
     uppySocket.emit('hi', 'off to work we go');
     expect(emitterListenerMock.mock.calls.length).toEqual(1);
     expect(emitterListenerMock.mock.calls).toEqual([['ho', undefined, undefined, undefined, undefined, undefined]]);
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
 });

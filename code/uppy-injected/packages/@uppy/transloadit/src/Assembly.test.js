@@ -12,6 +12,10 @@ describe('Transloadit/Assembly', () => {
       return events;
     }
     it('ASSEMBLY_UPLOADING → ASSEMBLY_EXECUTING', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+            SRTlib.send(`{ "testSuite": "Transloadit/Assembly", "testName": "ASSEMBLY_UPLOADING%20%u2192%20ASSEMBLY_EXECUTING", "fileName": "${__filename}", "calls" : [`);
+
       const result = attemptDiff({
         ok: 'ASSEMBLY_UPLOADING',
         uploads: {},
@@ -22,8 +26,15 @@ describe('Transloadit/Assembly', () => {
         results: {}
       });
       expect(result[0]).toEqual(['executing']);
+            SRTlib.send(']},');
+      SRTlib.endLogger();
+
     });
     it('ASSEMBLY_EXECUTING → ASSEMBLY_COMPLETED', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+            SRTlib.send(`{ "testSuite": "Transloadit/Assembly", "testName": "ASSEMBLY_EXECUTING%20%u2192%20ASSEMBLY_COMPLETED", "fileName": "${__filename}", "calls" : [`);
+
       const result = attemptDiff({
         ok: 'ASSEMBLY_EXECUTING',
         uploads: {},
@@ -34,8 +45,15 @@ describe('Transloadit/Assembly', () => {
         results: {}
       });
       expect(result[0]).toEqual(['finished']);
+            SRTlib.send(']},');
+      SRTlib.endLogger();
+
     });
     it('ASSEMBLY_UPLOADING → ASSEMBLY_COMPLETED', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+            SRTlib.send(`{ "testSuite": "Transloadit/Assembly", "testName": "ASSEMBLY_UPLOADING%20%u2192%20ASSEMBLY_COMPLETED", "fileName": "${__filename}", "calls" : [`);
+
       const result = attemptDiff({
         ok: 'ASSEMBLY_UPLOADING',
         uploads: {},
@@ -48,8 +66,15 @@ describe('Transloadit/Assembly', () => {
       expect(result[0]).toEqual(['executing']);
       expect(result[1]).toEqual(['metadata']);
       expect(result[2]).toEqual(['finished']);
+            SRTlib.send(']},');
+      SRTlib.endLogger();
+
     });
     it('emits events for new files', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+            SRTlib.send(`{ "testSuite": "Transloadit/Assembly", "testName": "emits%20events%20for%20new%20files", "fileName": "${__filename}", "calls" : [`);
+
       const result = attemptDiff({
         ok: 'ASSEMBLY_UPLOADING',
         uploads: {},
@@ -66,8 +91,15 @@ describe('Transloadit/Assembly', () => {
       expect(result[0]).toEqual(['upload', {
         id: 'some_id'
       }]);
+            SRTlib.send(']},');
+      SRTlib.endLogger();
+
     });
     it('emits executing, then upload, on new files + status change', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+            SRTlib.send(`{ "testSuite": "Transloadit/Assembly", "testName": "emits%20executing%2C%20then%20upload%2C%20on%20new%20files%20+%20status%20change", "fileName": "${__filename}", "calls" : [`);
+
       const result = attemptDiff({
         ok: 'ASSEMBLY_UPLOADING',
         uploads: {},
@@ -86,8 +118,15 @@ describe('Transloadit/Assembly', () => {
         id: 'some_id'
       }]);
       expect(result[2]).toEqual(['metadata']);
+            SRTlib.send(']},');
+      SRTlib.endLogger();
+
     });
     it('emits new results', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+            SRTlib.send(`{ "testSuite": "Transloadit/Assembly", "testName": "emits%20new%20results", "fileName": "${__filename}", "calls" : [`);
+
       const one = {
         ok: 'ASSEMBLY_EXECUTING',
         uploads: {
@@ -153,8 +192,15 @@ describe('Transloadit/Assembly', () => {
       expect(resultTwo[1]).toEqual(['result', 'step_two', {
         id: 'transcript'
       }]);
+            SRTlib.send(']},');
+      SRTlib.endLogger();
+
     });
     it('emits correctly jumping straight from uploading to finished', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+            SRTlib.send(`{ "testSuite": "Transloadit/Assembly", "testName": "emits%20correctly%20jumping%20straight%20from%20uploading%20to%20finished", "fileName": "${__filename}", "calls" : [`);
+
       const start = {
         ok: 'ASSEMBLY_UPLOADING',
         uploads: {},
@@ -204,6 +250,9 @@ describe('Transloadit/Assembly', () => {
         id: 'transcript'
       }]);
       expect(result[8]).toEqual(['finished']);
+            SRTlib.send(']},');
+      SRTlib.endLogger();
+
     });
   });
 });

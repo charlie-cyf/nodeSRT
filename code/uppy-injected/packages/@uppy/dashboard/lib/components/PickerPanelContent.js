@@ -1,9 +1,11 @@
-var _require = require('preact'),
-    h = _require.h;
-
+var SRTlib = require('SRT-util');
+var _require = require('preact'), h = _require.h;
 var ignoreEvent = require('../utils/ignoreEvent.js');
-
 function PickerPanelContent(props) {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+    SRTlib.send("]},");
+
   return h("div", {
     class: "uppy-DashboardContent-panel",
     role: "tabpanel",
@@ -28,6 +30,7 @@ function PickerPanelContent(props) {
   }, props.i18n('done'))), h("div", {
     class: "uppy-DashboardContent-panelBody"
   }, props.getPlugin(props.activePickerPanel.id).render(props.state)));
-}
+    SRTlib.send("]},");
 
+}
 module.exports = PickerPanelContent;

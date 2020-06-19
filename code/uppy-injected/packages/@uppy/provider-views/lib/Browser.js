@@ -1,28 +1,48 @@
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+var SRTlib = require('SRT-util');
+function _extends() {
+    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+  _extends = Object.assign || (function (target) {
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+        SRTlib.send("]},");
+
+    return target;
+        SRTlib.send("]},");
+
+  });
+    SRTlib.send("]},");
+
+  return _extends.apply(this, arguments);
+    SRTlib.send("]},");
+
+}
 var classNames = require('classnames');
-
 var Breadcrumbs = require('./Breadcrumbs');
-
 var Filter = require('./Filter');
-
 var ItemList = require('./ItemList');
-
 var FooterActions = require('./FooterActions');
-
-var _require = require('preact'),
-    h = _require.h;
-
+var _require = require('preact'), h = _require.h;
 var Browser = function Browser(props) {
+    SRTlib.send(`{ "anonymous": true, "function": "Browser.Browser", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
   var filteredFolders = props.folders;
   var filteredFiles = props.files;
-
   if (props.filterInput !== '') {
     filteredFolders = props.filterItems(props.folders);
     filteredFiles = props.filterItems(props.files);
   }
-
   var selected = props.currentSelection.length;
+    SRTlib.send("]},");
+
   return h("div", {
     class: classNames('uppy-ProviderBrowser', "uppy-ProviderBrowser-viewType--" + props.viewType)
   }, h("div", {
@@ -61,6 +81,7 @@ var Browser = function Browser(props) {
   }), selected > 0 && h(FooterActions, _extends({
     selected: selected
   }, props)));
-};
+    SRTlib.send("]},");
 
+};
 module.exports = Browser;
