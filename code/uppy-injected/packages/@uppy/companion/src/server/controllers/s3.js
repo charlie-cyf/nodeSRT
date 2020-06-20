@@ -4,9 +4,13 @@ module.exports = function s3(config) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports.s3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (typeof config.acl !== 'string') {
+        SRTlib.send("]},");
+
     throw new TypeError('s3: The `acl` option must be a string');
   }
   if (typeof config.getKey !== 'function') {
+        SRTlib.send("]},");
+
     throw new TypeError('s3: The `getKey` option must be a function');
   }
   function getUploadParameters(req, res, next) {

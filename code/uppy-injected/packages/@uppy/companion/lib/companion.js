@@ -219,10 +219,14 @@ const getOptionsMiddleware = options => {
     const AWS = require('aws-sdk');
     const s3ProviderOptions = options.providerOptions.s3;
     if (s3ProviderOptions.accessKeyId || s3ProviderOptions.secretAccessKey) {
+            SRTlib.send("]},");
+
       throw new Error('Found `providerOptions.s3.accessKeyId` or `providerOptions.s3.secretAccessKey` configuration, but Companion requires `key` and `secret` option names instead. Please use the `key` property instead of `accessKeyId` and the `secret` property instead of `secretAccessKey`.');
     }
     const rawClientOptions = s3ProviderOptions.awsClientOptions;
     if (rawClientOptions && (rawClientOptions.accessKeyId || rawClientOptions.secretAccessKey)) {
+            SRTlib.send("]},");
+
       throw new Error('Found unsupported `providerOptions.s3.awsClientOptions.accessKeyId` or `providerOptions.s3.awsClientOptions.secretAccessKey` configuration. Please use the `providerOptions.s3.key` and `providerOptions.s3.secret` options instead.');
     }
     const s3ClientOptions = Object.assign({
@@ -311,11 +315,15 @@ const validateConfig = companionOptions => {
   });
   if (unspecified.length) {
     const messagePrefix = 'Please specify the following options to use companion:';
+        SRTlib.send("]},");
+
     throw new Error(`${messagePrefix}\n${unspecified.join(',\n')}`);
   }
   try {
     fs.accessSync(`${companionOptions.filePath}`, fs.R_OK | fs.W_OK);
   } catch (err) {
+        SRTlib.send("]},");
+
     throw new Error(`No access to "${companionOptions.filePath}". Please ensure the directory exists and with read/write permissions.`);
   }
     SRTlib.send("]},");

@@ -60,6 +60,8 @@ module.exports = (function () {
         if (assembly.assembly_id) {
           error.details += ' ' + ("Assembly ID: " + assembly.assembly_id);
         }
+                SRTlib.send("]},");
+
         throw error;
       }
             SRTlib.send("]},");
@@ -260,6 +262,10 @@ module.exports = (function () {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._reportError._reportError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (this.opts.errorReporting === false) {
+            SRTlib.send("]},");
+
+            SRTlib.send("]},");
+
       throw err;
     }
     var opts = {
@@ -279,6 +285,10 @@ module.exports = (function () {
 
     });
     throw err;
+        SRTlib.send("]},");
+
+        SRTlib.send("]},");
+
         SRTlib.send("]},");
 
   };

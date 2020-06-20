@@ -91,6 +91,8 @@ module.exports = class MiniXHRUpload {
 
     const file = this.uppy.getFile(id);
     if (file.error) {
+            SRTlib.send("]},");
+
       throw new Error(file.error);
     } else if (file.isRemote) {
             SRTlib.send("]},");

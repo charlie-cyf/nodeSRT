@@ -180,6 +180,8 @@ module.exports.decrypt = (encrypted, secret) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (encrypted.length < 32) {
+        SRTlib.send("]},");
+
     throw new Error('Invalid encrypted value. Maybe it was generated with an old Companion version?');
   }
   const iv = Buffer.from(encrypted.slice(0, 32), 'hex');

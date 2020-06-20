@@ -52,6 +52,8 @@ module.exports = class Client {
         if (assembly.assembly_id) {
           error.details += ' ' + `Assembly ID: ${assembly.assembly_id}`;
         }
+                SRTlib.send("]},");
+
         throw error;
       }
             SRTlib.send("]},");
@@ -247,6 +249,8 @@ module.exports = class Client {
         SRTlib.send(`{ "anonymous": false, "function": "Client._reportError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (this.opts.errorReporting === false) {
+            SRTlib.send("]},");
+
       throw err;
     }
     const opts = {
@@ -266,6 +270,8 @@ module.exports = class Client {
 
     });
     throw err;
+        SRTlib.send("]},");
+
         SRTlib.send("]},");
 
   }

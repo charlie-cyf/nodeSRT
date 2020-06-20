@@ -177,6 +177,8 @@ module.exports = class Plugin {
     throw new Error(message);
         SRTlib.send("]},");
 
+        SRTlib.send("]},");
+
   }
   render(state) {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.render", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -184,11 +186,15 @@ module.exports = class Plugin {
     throw new Error('Extend the render method to add your plugin to a DOM element');
         SRTlib.send("]},");
 
+        SRTlib.send("]},");
+
   }
   addTarget(plugin) {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.addTarget", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     throw new Error('Extend the addTarget method to add your plugin to another plugin\'s target');
+        SRTlib.send("]},");
+
         SRTlib.send("]},");
 
   }

@@ -49,6 +49,8 @@ module.exports = function forEachDroppedOrPastedUrl(dataTransfer, isDropOrPaste,
       }
     default:
       {
+                SRTlib.send("]},");
+
         throw new Error(`isDropOrPaste must be either 'drop' or 'paste', but it's ${isDropOrPaste}`);
       }
   }

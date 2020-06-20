@@ -3,6 +3,8 @@ function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
+        SRTlib.send("]},");
+
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
     SRTlib.send("]},");

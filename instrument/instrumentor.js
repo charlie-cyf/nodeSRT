@@ -63,6 +63,8 @@ module.exports = class Instrumentor {
 
                                         }
                                     }
+                                } else if (node.callee.name === 'describe'){
+                                    // TODO
                                 }
                             }
                         })
@@ -128,8 +130,15 @@ module.exports = class Instrumentor {
     insertBeforeReturn(node) {
         const insert = function (node, parent) {
             if (!node) return;
-            if (node.type === 'ReturnStatement') {
-                if (parent.type !== 'BlockStatement') {
+            if (node.type === 'ReturnStatement' || node.type === 'ThrowStatement') {
+                if(parent.type === "SwitchCase"){
+                    parent.consequent.unshift( ASTParser.parse('SRTlib.send("]},");') );
+
+                } else if (parent.type == 'BlockStatement') {
+                    const returnIdx = parent.body.findIndex(ele => ele.type === 'ReturnStatement');
+                    if (!_.isEqual(parent.body[returnIdx - 1], ASTParser.parse('SRTlib.send("]},");')))
+                        parent.body.splice(returnIdx, 0, ASTParser.parse('SRTlib.send("]},");'))
+                } else {
                     const blkStmt = {
                         type: 'BlockStatement',
                         body: [node]
@@ -140,11 +149,7 @@ module.exports = class Instrumentor {
                     const returnIdx = parent[key].body.findIndex(ele => ele.type === 'ReturnStatement');
                     if (!_.isEqual(parent[key].body[returnIdx - 1], ASTParser.parse('SRTlib.send("]},");')))
                         parent[key].body.splice(returnIdx, 0, ASTParser.parse('SRTlib.send("]},");'))
-                } else {
-                    const returnIdx = parent.body.findIndex(ele => ele.type === 'ReturnStatement');
-                    if (!_.isEqual(parent.body[returnIdx - 1], ASTParser.parse('SRTlib.send("]},");')))
-                        parent.body.splice(returnIdx, 0, ASTParser.parse('SRTlib.send("]},");'))
-                }
+                } 
             } else {
                 Object.keys(node).forEach(key => {
                     if (Array.isArray(node[key])) {
@@ -249,7 +254,7 @@ module.exports = class Instrumentor {
                     if (ancestor.left.type === 'MemberExpression') {
                         memberExpHandler(ancestor.left)
                     } else if (ancestor.left.type === 'Identifier') {
-                        idList.unshift(ancestor.left.id.name)
+                        idList.unshift(ancestor.left.name)
                     }
                     break;
                 case 'FunctionDeclaration':

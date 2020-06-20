@@ -71,6 +71,8 @@ function pick(opts = {}) {
     throw err;
         SRTlib.send("]},");
 
+        SRTlib.send("]},");
+
   });
     SRTlib.send("]},");
 

@@ -76,6 +76,10 @@ function addProviders(uppy, names, opts = {}) {
                 SRTlib.send("]},");
 
       }).join(', ');
+            SRTlib.send("]},");
+
+            SRTlib.send("]},");
+
       throw new Error(`Unexpected provider '${name}', expected one of [${expectedNameString}]`);
     }
         SRTlib.send("]},");

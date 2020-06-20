@@ -64,25 +64,24 @@ module.exports = function (props) {
     return;
   }
   switch (props.itemIconString) {
-    case {
-                SRTlib.send("]},");
+    case 'file':
+            SRTlib.send("]},");
 
-        return h(FileIcon, null);
-      }:
       return h(FileIcon, null);
-    case {
-                SRTlib.send("]},");
+    case 'folder':
+            SRTlib.send("]},");
 
-        return h(FolderIcon, null);
-      }:
       return h(FolderIcon, null);
-    case {
-                SRTlib.send("]},");
+    case 'video':
+            SRTlib.send("]},");
 
-        return h(VideoIcon, null);
-      }:
       return h(VideoIcon, null);
     default:
+            SRTlib.send("]},");
+
+      return h("img", {
+        src: props.itemIconString
+      });
   }
     SRTlib.send("]},");
 

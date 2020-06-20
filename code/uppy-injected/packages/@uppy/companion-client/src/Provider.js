@@ -161,11 +161,15 @@ module.exports = class Provider extends RequestClient {
       plugin.opts = Object.assign({}, defaultOpts, opts);
     }
     if (opts.serverUrl || opts.serverPattern) {
+            SRTlib.send("]},");
+
       throw new Error('`serverUrl` and `serverPattern` have been renamed to `companionUrl` and `companionAllowedHosts` respectively in the 0.30.5 release. Please consult the docs (for example, https://uppy.io/docs/instagram/ for the Instagram plugin) and use the updated options.`');
     }
     if (opts.companionAllowedHosts) {
       const pattern = opts.companionAllowedHosts;
       if (typeof pattern !== 'string' && !Array.isArray(pattern) && !(pattern instanceof RegExp)) {
+                SRTlib.send("]},");
+
         throw new TypeError(`${plugin.id}: the option "companionAllowedHosts" must be one of string, Array, RegExp`);
       }
       plugin.opts.companionAllowedHosts = pattern;

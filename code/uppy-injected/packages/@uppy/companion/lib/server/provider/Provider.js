@@ -25,11 +25,15 @@ class Provider {
     throw new Error('method not implemented');
         SRTlib.send("]},");
 
+        SRTlib.send("]},");
+
   }
   download(options, cb) {
         SRTlib.send(`{ "anonymous": false, "function": "Provider.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     throw new Error('method not implemented');
+        SRTlib.send("]},");
+
         SRTlib.send("]},");
 
   }
@@ -39,11 +43,15 @@ class Provider {
     throw new Error('method not implemented');
         SRTlib.send("]},");
 
+        SRTlib.send("]},");
+
   }
   size(options, cb) {
         SRTlib.send(`{ "anonymous": false, "function": "Provider.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     throw new Error('method not implemented');
+        SRTlib.send("]},");
+
         SRTlib.send("]},");
 
   }

@@ -44,6 +44,8 @@ bundler.bundle().pipe(disc()).pipe(prepend('---\nlayout: false\n---\n')).pipe(re
   throw err;
     SRTlib.send("]},");
 
+    SRTlib.send("]},");
+
 });
 function prepend(text) {
     SRTlib.send(`{ "anonymous": false, "function": "prepend", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);

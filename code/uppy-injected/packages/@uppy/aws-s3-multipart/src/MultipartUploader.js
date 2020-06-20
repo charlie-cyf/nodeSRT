@@ -41,6 +41,8 @@ const defaultOptions = {
     throw err;
         SRTlib.send("]},");
 
+        SRTlib.send("]},");
+
   }
 };
 function remove(arr, el) {
@@ -128,6 +130,8 @@ class MultipartUploader {
 
       const valid = typeof result === 'object' && result && typeof result.uploadId === 'string' && typeof result.key === 'string';
       if (!valid) {
+                SRTlib.send("]},");
+
         throw new TypeError('AwsS3/Multipart: Got incorrect result from `createMultipartUpload()`, expected an object `{ uploadId, key }`.');
       }
       this.key = result.key;
@@ -276,6 +280,8 @@ class MultipartUploader {
 
       const valid = typeof result === 'object' && result && typeof result.url === 'string';
       if (!valid) {
+                SRTlib.send("]},");
+
         throw new TypeError('AwsS3/Multipart: Got incorrect result from `prepareUploadPart()`, expected an object `{ url }`.');
       }
             SRTlib.send("]},");

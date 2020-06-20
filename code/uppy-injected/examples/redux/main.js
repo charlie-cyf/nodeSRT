@@ -9,19 +9,18 @@ function counter(state = 0, action) {
     SRTlib.send(`{ "anonymous": false, "function": "counter", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   switch (action.type) {
-    case {
-                SRTlib.send("]},");
+    case 'INCREMENT':
+            SRTlib.send("]},");
 
-        return state + 1;
-      }:
       return state + 1;
-    case {
-                SRTlib.send("]},");
+    case 'DECREMENT':
+            SRTlib.send("]},");
 
-        return state - 1;
-      }:
       return state - 1;
     default:
+            SRTlib.send("]},");
+
+      return state;
   }
     SRTlib.send("]},");
 

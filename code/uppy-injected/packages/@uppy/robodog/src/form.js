@@ -31,7 +31,11 @@ function mergeDefaultLocale(defaults, userProvided = {}) {
 function form(target, opts) {
     SRTlib.send(`{ "anonymous": false, "function": "form", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-  if (!opts) throw new TypeError('robodog.form: must provide an options object');
+  if (!opts) {
+        SRTlib.send("]},");
+
+    throw new TypeError('robodog.form: must provide an options object');
+  }
   opts = {
     ...opts,
     locale: mergeDefaultLocale(defaultLocaleStrings, opts.locale)

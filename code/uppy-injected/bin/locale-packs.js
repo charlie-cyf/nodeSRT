@@ -140,6 +140,8 @@ function buildPluginsList() {
     } catch (err) {
       if (err.message !== 'Plugin is not a constructor') {
         console.error(`--> While trying to instantiate plugin: ${pluginName}, this error was thrown: `);
+                SRTlib.send("]},");
+
         throw err;
       }
     }

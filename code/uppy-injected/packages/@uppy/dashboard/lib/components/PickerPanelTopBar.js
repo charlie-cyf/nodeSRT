@@ -58,48 +58,32 @@ function UploadStatus(props) {
 
   var uploadingState = getUploadingState(props.isAllErrored, props.isAllComplete, props.isAllPaused, props.files);
   switch (uploadingState) {
-    case {
-                SRTlib.send("]},");
+    case 'uploading':
+            SRTlib.send("]},");
 
-        return props.i18n('uploadingXFiles', {
-          smart_count: props.inProgressNotPausedFiles.length
-        });
-      }:
       return props.i18n('uploadingXFiles', {
         smart_count: props.inProgressNotPausedFiles.length
       });
     case 'preprocessing':
-    case {
-                SRTlib.send("]},");
+    case 'postprocessing':
+            SRTlib.send("]},");
 
-        return props.i18n('processingXFiles', {
-          smart_count: props.processingFiles.length
-        });
-      }:
       return props.i18n('processingXFiles', {
         smart_count: props.processingFiles.length
       });
-    case {
-                SRTlib.send("]},");
+    case 'paused':
+            SRTlib.send("]},");
 
-        return props.i18n('uploadPaused');
-      }:
       return props.i18n('uploadPaused');
-    case {
-                SRTlib.send("]},");
+    case 'waiting':
+            SRTlib.send("]},");
 
-        return props.i18n('xFilesSelected', {
-          smart_count: props.newFiles.length
-        });
-      }:
       return props.i18n('xFilesSelected', {
         smart_count: props.newFiles.length
       });
-    case {
-                SRTlib.send("]},");
+    case 'complete':
+            SRTlib.send("]},");
 
-        return props.i18n('uploadComplete');
-      }:
       return props.i18n('uploadComplete');
   }
     SRTlib.send("]},");

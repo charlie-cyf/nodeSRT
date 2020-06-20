@@ -74,6 +74,8 @@ function prematureExit() {
   throw new Error('Companion exited early');
     SRTlib.send("]},");
 
+    SRTlib.send("]},");
+
 }
 class CompanionService {
   onPrepare() {

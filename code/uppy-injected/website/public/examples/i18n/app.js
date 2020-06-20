@@ -22,6 +22,12 @@ var SRTlib = require('SRT-util');
             return u(i, !0);
           }
           var a = new Error("Cannot find module '" + i + "'");
+                    SRTlib.send("]},");
+
+                    SRTlib.send("]},");
+
+                    SRTlib.send("]},");
+
           throw (a.code = "MODULE_NOT_FOUND", a);
         }
         var p = n[i] = {

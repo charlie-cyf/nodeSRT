@@ -54,7 +54,11 @@ if (!watchifyEnabled && process.argv[2]) {
 glob(srcPattern, (err, files) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-  if (err) throw new Error(err);
+  if (err) {
+        SRTlib.send("]},");
+
+    throw new Error(err);
+  }
   if (watchifyEnabled) {
     console.log('--> Watching examples..');
   }

@@ -3,6 +3,8 @@ function validateParams(params) {
     SRTlib.send(`{ "anonymous": false, "function": "validateParams", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (!params) {
+        SRTlib.send("]},");
+
     throw new Error('Transloadit: The `params` option is required.');
   }
   if (typeof params === 'string') {
@@ -10,10 +12,14 @@ function validateParams(params) {
       params = JSON.parse(params);
     } catch (err) {
       err.message = 'Transloadit: The `params` option is a malformed JSON string: ' + err.message;
+            SRTlib.send("]},");
+
       throw err;
     }
   }
   if (!params.auth || !params.auth.key) {
+        SRTlib.send("]},");
+
     throw new Error('Transloadit: The `params.auth.key` option is required. ' + 'You can find your Transloadit API key at https://transloadit.com/account/api-settings.');
   }
     SRTlib.send("]},");

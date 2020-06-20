@@ -129,6 +129,8 @@ module.exports = class Translator {
 
         return this.interpolate(string[plural], options);
       } else {
+                SRTlib.send("]},");
+
         throw new Error('Attempted to use a string with plural forms, but no value was given for %{smart_count}');
       }
     }

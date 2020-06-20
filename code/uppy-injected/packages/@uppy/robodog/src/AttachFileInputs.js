@@ -51,6 +51,8 @@ class AttachFileInputs extends Plugin {
 
     this.el = findDOMElement(this.opts.target);
     if (!this.el) {
+            SRTlib.send("]},");
+
       throw new Error('[AttachFileInputs] Target form does not exist');
     }
     const {restrictions} = this.uppy.opts;

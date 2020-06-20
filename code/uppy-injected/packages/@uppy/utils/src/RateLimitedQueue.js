@@ -48,6 +48,8 @@ module.exports = class RateLimitedQueue {
       cancelActive = fn();
     } catch (err) {
       this.activeRequests -= 1;
+            SRTlib.send("]},");
+
       throw err;
     }
         SRTlib.send("]},");
@@ -136,6 +138,10 @@ module.exports = class RateLimitedQueue {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         throw new Error('Cannot mark a queued request as done: this indicates a bug');
+                SRTlib.send("]},");
+
+                SRTlib.send("]},");
+
                 SRTlib.send("]},");
 
       }
