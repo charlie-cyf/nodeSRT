@@ -1002,17 +1002,21 @@ testName: should%20add%20a%20new%20file%20to%20the%20queue%20and%20start%20proce
 testName: should%20process%20items%20in%20the%20queue%20one%20by%20one
 testName: should%20revoke%20object%20URLs%20when%20files%20are%20removed
 testName: should%20emit%20thumbnail%3Agenerated%20when%20a%20thumbnail%20was%20generated
-injection to ./code/uppy-AST/packages/@uppy/thumbnail-generator/src/index.test.js.json failed! TypeError: Cannot read property 'unshift' of undefined
-    at CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:60:73)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:45:20)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ExpressionStatement.base.ParenthesizedExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:204:37)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
+testName: should%20emit%20thumbnail%3Aall-generated%20when%20all%20thumbnails%20were%20generated
+testName: should%20call%20createThumbnail%20if%20it%20is%20a%20supported%20filetype
+testName: should%20not%20call%20createThumbnail%20if%20it%20is%20not%20a%20supported%20filetype
+testName: should%20not%20call%20createThumbnail%20if%20the%20file%20is%20remote
+testName: should%20call%20setPreviewURL%20with%20the%20thumbnail%20image
+testName: should%20update%20the%20preview%20url%20for%20the%20specified%20image
+testName: should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20width%20whilst%20keeping%20aspect%20ratio
+testName: should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20height%20whilst%20keeping%20aspect%20ratio
+testName: should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20default%20width%20if%20no%20custom%20width%20is%20given
+testName: should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20width%20if%20both%20width%20and%20height%20are%20given
+testName: should%20use%20canvas.toBlob%20if%20available
+testName: should%20return%20a%20canvas%20with%20the%20resized%20image%20on%20it
+testName: should%20upsize%20if%20original%20image%20is%20smaller%20than%20target%20size
+testName: should%20enqueue%20restored%20files
+testName: should%20not%20regenerate%20thumbnail%20for%20remote%20files
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/Assembly.js.json
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/AssemblyOptions.js.json
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/AssemblyWatcher.js.json
@@ -1429,7 +1433,7 @@ inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/robodog.min.js.json
 inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/uppy.js.json
 inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/uppy.min.js.json
 /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/code/uppy-injected
-removed 1 package and audited 4510 packages in 44.674s
+removed 1 package and audited 4510 packages in 56.72s
 
 154 packages are looking for funding
   run `npm fund` for details

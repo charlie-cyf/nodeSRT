@@ -1,4 +1,5 @@
 var SRTlib = require('SRT-util');
+
 module.exports = {
   STATE_ERROR: 'error',
   STATE_WAITING: 'waiting',

@@ -4,13 +4,15 @@ const lorem = require('@jamen/lorem');
 const {selectFakeFile} = require('../utils');
 const testURL = 'http://localhost:4567/chaos-monkey';
 describe('Chaos monkey', function () {
+    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+    SRTlib.send(`{ "testSuite": "Chaos%20monkey", "fileName": "${__filename}", "calls" : [`);
+
   this.timeout(5 * 60 * 1000);
   beforeEach(async () => {
     await browser.url(testURL);
   });
   it('Add and cancel a bunch', async () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
         SRTlib.send(`{ "testSuite": "Chaos%20monkey", "testName": "Add%20and%20cancel%20a%20bunch", "fileName": "${__filename}", "calls" : [`);
 
     await browser.execute(function () {
@@ -86,7 +88,9 @@ describe('Chaos monkey', function () {
     });
     expect(errorMessage).to.not.exist;
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

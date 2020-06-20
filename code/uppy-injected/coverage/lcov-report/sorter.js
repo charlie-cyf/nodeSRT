@@ -1,210 +1,170 @@
-var SRTlib = require('SRT-util');
-var addSorting = (function () {
-    SRTlib.send(`{ "anonymous": true, "function": "addSorting", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+/* eslint-disable */
+var addSorting = (function() {
+    'use strict';
+    var cols,
+        currentSort = {
+            index: 0,
+            desc: false
+        };
 
-  'use strict';
-  var cols, currentSort = {
-    index: 0,
-    desc: false
-  };
-  function getTable() {
-        SRTlib.send(`{ "anonymous": false, "function": "getTable", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-        SRTlib.send("]},");
-
-    return document.querySelector('.coverage-summary');
-        SRTlib.send("]},");
-
-  }
-  function getTableHeader() {
-        SRTlib.send(`{ "anonymous": false, "function": "getTableHeader", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-        SRTlib.send("]},");
-
-    return getTable().querySelector('thead tr');
-        SRTlib.send("]},");
-
-  }
-  function getTableBody() {
-        SRTlib.send(`{ "anonymous": false, "function": "getTableBody", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-        SRTlib.send("]},");
-
-    return getTable().querySelector('tbody');
-        SRTlib.send("]},");
-
-  }
-  function getNthColumn(n) {
-        SRTlib.send(`{ "anonymous": false, "function": "getNthColumn", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-        SRTlib.send("]},");
-
-    return getTableHeader().querySelectorAll('th')[n];
-        SRTlib.send("]},");
-
-  }
-  function loadColumns() {
-        SRTlib.send(`{ "anonymous": false, "function": "loadColumns", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    var colNodes = getTableHeader().querySelectorAll('th'), colNode, cols = [], col, i;
-    for (i = 0; i < colNodes.length; i += 1) {
-      colNode = colNodes[i];
-      col = {
-        key: colNode.getAttribute('data-col'),
-        sortable: !colNode.getAttribute('data-nosort'),
-        type: colNode.getAttribute('data-type') || 'string'
-      };
-      cols.push(col);
-      if (col.sortable) {
-        col.defaultDescSort = col.type === 'number';
-        colNode.innerHTML = colNode.innerHTML + '<span class="sorter"></span>';
-      }
+    // returns the summary table element
+    function getTable() {
+        return document.querySelector('.coverage-summary');
     }
-        SRTlib.send("]},");
-
-    return cols;
-        SRTlib.send("]},");
-
-  }
-  function loadRowData(tableRow) {
-        SRTlib.send(`{ "anonymous": false, "function": "loadRowData", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-    var tableCols = tableRow.querySelectorAll('td'), colNode, col, data = {}, i, val;
-    for (i = 0; i < tableCols.length; i += 1) {
-      colNode = tableCols[i];
-      col = cols[i];
-      val = colNode.getAttribute('data-value');
-      if (col.type === 'number') {
-        val = Number(val);
-      }
-      data[col.key] = val;
+    // returns the thead element of the summary table
+    function getTableHeader() {
+        return getTable().querySelector('thead tr');
     }
-        SRTlib.send("]},");
-
-    return data;
-        SRTlib.send("]},");
-
-  }
-  function loadData() {
-        SRTlib.send(`{ "anonymous": false, "function": "loadData", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    var rows = getTableBody().querySelectorAll('tr'), i;
-    for (i = 0; i < rows.length; i += 1) {
-      rows[i].data = loadRowData(rows[i]);
+    // returns the tbody element of the summary table
+    function getTableBody() {
+        return getTable().querySelector('tbody');
     }
-        SRTlib.send("]},");
-
-  }
-  function sortByIndex(index, desc) {
-        SRTlib.send(`{ "anonymous": false, "function": "sortByIndex", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
-
-    var key = cols[index].key, sorter = function (a, b) {
-            SRTlib.send(`{ "anonymous": false, "function": "sorter", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
-
-      a = a.data[key];
-      b = b.data[key];
-            SRTlib.send("]},");
-
-      return a < b ? -1 : a > b ? 1 : 0;
-            SRTlib.send("]},");
-
-    }, finalSorter = sorter, tableBody = document.querySelector('.coverage-summary tbody'), rowNodes = tableBody.querySelectorAll('tr'), rows = [], i;
-    if (desc) {
-      finalSorter = function (a, b) {
-                SRTlib.send(`{ "anonymous": true, "function": "finalSorter", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
-
-                SRTlib.send("]},");
-
-        return -1 * sorter(a, b);
-                SRTlib.send("]},");
-
-      };
+    // returns the th element for nth column
+    function getNthColumn(n) {
+        return getTableHeader().querySelectorAll('th')[n];
     }
-    for (i = 0; i < rowNodes.length; i += 1) {
-      rows.push(rowNodes[i]);
-      tableBody.removeChild(rowNodes[i]);
-    }
-    rows.sort(finalSorter);
-    for (i = 0; i < rows.length; i += 1) {
-      tableBody.appendChild(rows[i]);
-    }
-        SRTlib.send("]},");
 
-  }
-  function removeSortIndicators() {
-        SRTlib.send(`{ "anonymous": false, "function": "removeSortIndicators", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    // loads all columns
+    function loadColumns() {
+        var colNodes = getTableHeader().querySelectorAll('th'),
+            colNode,
+            cols = [],
+            col,
+            i;
 
-    var col = getNthColumn(currentSort.index), cls = col.className;
-    cls = cls.replace(/ sorted$/, '').replace(/ sorted-desc$/, '');
-    col.className = cls;
-        SRTlib.send("]},");
-
-  }
-  function addSortIndicators() {
-        SRTlib.send(`{ "anonymous": false, "function": "addSortIndicators", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    getNthColumn(currentSort.index).className += currentSort.desc ? ' sorted-desc' : ' sorted';
-        SRTlib.send("]},");
-
-  }
-  function enableUI() {
-        SRTlib.send(`{ "anonymous": false, "function": "enableUI", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    var i, el, ithSorter = function ithSorter(i) {
-            SRTlib.send(`{ "anonymous": false, "function": "ithSorter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-      var col = cols[i];
-            SRTlib.send("]},");
-
-      return function () {
-                SRTlib.send(`{ "anonymous": true, "function": "ithSorter.ithSorter.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-        var desc = col.defaultDescSort;
-        if (currentSort.index === i) {
-          desc = !currentSort.desc;
+        for (i = 0; i < colNodes.length; i += 1) {
+            colNode = colNodes[i];
+            col = {
+                key: colNode.getAttribute('data-col'),
+                sortable: !colNode.getAttribute('data-nosort'),
+                type: colNode.getAttribute('data-type') || 'string'
+            };
+            cols.push(col);
+            if (col.sortable) {
+                col.defaultDescSort = col.type === 'number';
+                colNode.innerHTML =
+                    colNode.innerHTML + '<span class="sorter"></span>';
+            }
         }
-        sortByIndex(i, desc);
-        removeSortIndicators();
-        currentSort.index = i;
-        currentSort.desc = desc;
+        return cols;
+    }
+    // attaches a data attribute to every tr element with an object
+    // of data values keyed by column name
+    function loadRowData(tableRow) {
+        var tableCols = tableRow.querySelectorAll('td'),
+            colNode,
+            col,
+            data = {},
+            i,
+            val;
+        for (i = 0; i < tableCols.length; i += 1) {
+            colNode = tableCols[i];
+            col = cols[i];
+            val = colNode.getAttribute('data-value');
+            if (col.type === 'number') {
+                val = Number(val);
+            }
+            data[col.key] = val;
+        }
+        return data;
+    }
+    // loads all row data
+    function loadData() {
+        var rows = getTableBody().querySelectorAll('tr'),
+            i;
+
+        for (i = 0; i < rows.length; i += 1) {
+            rows[i].data = loadRowData(rows[i]);
+        }
+    }
+    // sorts the table using the data for the ith column
+    function sortByIndex(index, desc) {
+        var key = cols[index].key,
+            sorter = function(a, b) {
+                a = a.data[key];
+                b = b.data[key];
+                return a < b ? -1 : a > b ? 1 : 0;
+            },
+            finalSorter = sorter,
+            tableBody = document.querySelector('.coverage-summary tbody'),
+            rowNodes = tableBody.querySelectorAll('tr'),
+            rows = [],
+            i;
+
+        if (desc) {
+            finalSorter = function(a, b) {
+                return -1 * sorter(a, b);
+            };
+        }
+
+        for (i = 0; i < rowNodes.length; i += 1) {
+            rows.push(rowNodes[i]);
+            tableBody.removeChild(rowNodes[i]);
+        }
+
+        rows.sort(finalSorter);
+
+        for (i = 0; i < rows.length; i += 1) {
+            tableBody.appendChild(rows[i]);
+        }
+    }
+    // removes sort indicators for current column being sorted
+    function removeSortIndicators() {
+        var col = getNthColumn(currentSort.index),
+            cls = col.className;
+
+        cls = cls.replace(/ sorted$/, '').replace(/ sorted-desc$/, '');
+        col.className = cls;
+    }
+    // adds sort indicators for current column being sorted
+    function addSortIndicators() {
+        getNthColumn(currentSort.index).className += currentSort.desc
+            ? ' sorted-desc'
+            : ' sorted';
+    }
+    // adds event listeners for all sorter widgets
+    function enableUI() {
+        var i,
+            el,
+            ithSorter = function ithSorter(i) {
+                var col = cols[i];
+
+                return function() {
+                    var desc = col.defaultDescSort;
+
+                    if (currentSort.index === i) {
+                        desc = !currentSort.desc;
+                    }
+                    sortByIndex(i, desc);
+                    removeSortIndicators();
+                    currentSort.index = i;
+                    currentSort.desc = desc;
+                    addSortIndicators();
+                };
+            };
+        for (i = 0; i < cols.length; i += 1) {
+            if (cols[i].sortable) {
+                // add the click event handler on the th so users
+                // dont have to click on those tiny arrows
+                el = getNthColumn(i).querySelector('.sorter').parentElement;
+                if (el.addEventListener) {
+                    el.addEventListener('click', ithSorter(i));
+                } else {
+                    el.attachEvent('onclick', ithSorter(i));
+                }
+            }
+        }
+    }
+    // adds sorting functionality to the UI
+    return function() {
+        if (!getTable()) {
+            return;
+        }
+        cols = loadColumns();
+        loadData();
         addSortIndicators();
-                SRTlib.send("]},");
-
-      };
-            SRTlib.send("]},");
-
+        enableUI();
     };
-    for (i = 0; i < cols.length; i += 1) {
-      if (cols[i].sortable) {
-        el = getNthColumn(i).querySelector('.sorter').parentElement;
-        if (el.addEventListener) {
-          el.addEventListener('click', ithSorter(i));
-        } else {
-          el.attachEvent('onclick', ithSorter(i));
-        }
-      }
-    }
-        SRTlib.send("]},");
-
-  }
-    SRTlib.send("]},");
-
-  return function () {
-        SRTlib.send(`{ "anonymous": true, "function": "addSorting.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    if (!getTable()) {
-            SRTlib.send("]},");
-
-      return;
-    }
-    cols = loadColumns();
-    loadData();
-    addSortIndicators();
-    enableUI();
-        SRTlib.send("]},");
-
-  };
-    SRTlib.send("]},");
-
 })();
+
 window.addEventListener('load', addSorting);

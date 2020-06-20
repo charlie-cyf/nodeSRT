@@ -1,4 +1,5 @@
 var SRTlib = require('SRT-util');
+
 var ja_JP = {};
 ja_JP.strings = {
   addMore: 'さらに追加',
@@ -133,21 +134,22 @@ ja_JP.strings = {
   unselectFileNamed: 'ファイルの選択を解除 %{name}',
   openFolderNamed: '開いたフォルダ %{name}'
 };
+
 ja_JP.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "ja_JP.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+  SRTlib.send("{ \"anonymous\": true, \"function\": \"ja_JP.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
 
   if (n === 1) {
-        SRTlib.send("]},");
-
+    SRTlib.send("]},");
     return 0;
   }
-    SRTlib.send("]},");
 
+  SRTlib.send("]},");
   return 1;
-    SRTlib.send("]},");
-
+  SRTlib.send("]},");
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.ja_JP = ja_JP;
 }
+
 module.exports = ja_JP;

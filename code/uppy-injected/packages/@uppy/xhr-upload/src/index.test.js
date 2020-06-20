@@ -3,10 +3,16 @@ const nock = require('nock');
 const Core = require('@uppy/core');
 const XHRUpload = require('./index');
 describe('XHRUpload', () => {
-  describe('getResponseData', () => {
-    it('has the XHRUpload options as its `this`', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
 
+    SRTlib.send(`{ "testSuite": "XHRUpload", "fileName": "${__filename}", "calls" : [`);
+
+  describe('getResponseData', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "getResponseData", "fileName": "${__filename}", "calls" : [`);
+
+    it('has the XHRUpload options as its `this`', () => {
             SRTlib.send(`{ "testSuite": "XHRUpload", "testName": "has%20the%20XHRUpload%20options%20as%20its%20%60this%60", "fileName": "${__filename}", "calls" : [`);
 
       nock('https://fake-endpoint.uppy.io').defaultReplyHeaders({
@@ -32,14 +38,18 @@ describe('XHRUpload', () => {
         expect(getResponseData).toHaveBeenCalled();
       });
             SRTlib.send(']},');
-      SRTlib.endLogger();
 
     });
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   describe('validateStatus', () => {
-    it('emit upload error under status code 200', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
 
+        SRTlib.send(`{ "testSuite": "validateStatus", "fileName": "${__filename}", "calls" : [`);
+
+    it('emit upload error under status code 200', () => {
             SRTlib.send(`{ "testSuite": "XHRUpload", "testName": "emit%20upload%20error%20under%20status%20code%20200", "fileName": "${__filename}", "calls" : [`);
 
       nock('https://fake-endpoint.uppy.io').defaultReplyHeaders({
@@ -74,8 +84,13 @@ describe('XHRUpload', () => {
         });
       });
             SRTlib.send(']},');
-      SRTlib.endLogger();
 
     });
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

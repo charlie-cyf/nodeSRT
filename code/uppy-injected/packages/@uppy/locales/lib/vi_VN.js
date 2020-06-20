@@ -1,4 +1,5 @@
 var SRTlib = require('SRT-util');
+
 var vi_VN = {};
 vi_VN.strings = {
   addMore: 'Thêm',
@@ -136,21 +137,22 @@ vi_VN.strings = {
     '2': 'Chọn ít nhất %{smart_count} tập tin'
   }
 };
+
 vi_VN.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "vi_VN.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+  SRTlib.send("{ \"anonymous\": true, \"function\": \"vi_VN.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
 
   if (n === 1) {
-        SRTlib.send("]},");
-
+    SRTlib.send("]},");
     return 0;
   }
-    SRTlib.send("]},");
 
+  SRTlib.send("]},");
   return 1;
-    SRTlib.send("]},");
-
+  SRTlib.send("]},");
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.vi_VN = vi_VN;
 }
+
 module.exports = vi_VN;

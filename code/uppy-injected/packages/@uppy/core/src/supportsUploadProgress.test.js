@@ -1,9 +1,11 @@
 var SRTlib = require('SRT-util');
 const supportsUploadProgress = require('./supportsUploadProgress');
 describe('supportsUploadProgress', () => {
-  it('returns true in working browsers', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
 
+    SRTlib.send(`{ "testSuite": "supportsUploadProgress", "fileName": "${__filename}", "calls" : [`);
+
+  it('returns true in working browsers', () => {
         SRTlib.send(`{ "testSuite": "supportsUploadProgress", "testName": "returns%20true%20in%20working%20browsers", "fileName": "${__filename}", "calls" : [`);
 
     expect(supportsUploadProgress('Mozilla/5.0 (X11; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0')).toBe(true);
@@ -12,18 +14,17 @@ describe('supportsUploadProgress', () => {
     expect(supportsUploadProgress('Chrome (AppleWebKit/537.1; Chrome50.0; Windows NT 6.3) AppleWebKit/537.36 (KHTML like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393')).toBe(true);
     expect(supportsUploadProgress('Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/18.18218')).toBe(true);
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
   it('returns false in broken browsers', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
         SRTlib.send(`{ "testSuite": "supportsUploadProgress", "testName": "returns%20false%20in%20broken%20browsers", "fileName": "${__filename}", "calls" : [`);
 
     expect(supportsUploadProgress('Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063')).toBe(false);
     expect(supportsUploadProgress('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134')).toBe(false);
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

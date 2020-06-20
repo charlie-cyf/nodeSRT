@@ -1,9 +1,11 @@
 var SRTlib = require('SRT-util');
 const secondsToTime = require('./secondsToTime');
 describe('secondsToTime', () => {
-  it('converts seconds to an { hours, minutes, seconds } object', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
 
+    SRTlib.send(`{ "testSuite": "secondsToTime", "fileName": "${__filename}", "calls" : [`);
+
+  it('converts seconds to an { hours, minutes, seconds } object', () => {
         SRTlib.send(`{ "testSuite": "secondsToTime", "testName": "converts%20seconds%20to%20an%20%7B%20hours%2C%20minutes%2C%20seconds%20%7D%20object", "fileName": "${__filename}", "calls" : [`);
 
     expect(secondsToTime(60)).toEqual({
@@ -27,7 +29,9 @@ describe('secondsToTime', () => {
       seconds: 40
     });
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

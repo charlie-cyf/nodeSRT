@@ -1,8 +1,10 @@
 var SRTlib = require('SRT-util');
 describe('File upload with URL plugin', () => {
-  it('should import  and upload a file completely with Url Plugin', async () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
 
+    SRTlib.send(`{ "testSuite": "File%20upload%20with%20URL%20plugin", "fileName": "${__filename}", "calls" : [`);
+
+  it('should import  and upload a file completely with Url Plugin', async () => {
         SRTlib.send(`{ "testSuite": "File%20upload%20with%20URL%20plugin", "testName": "should%20import%20%20and%20upload%20a%20file%20completely%20with%20Url%20Plugin", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url('http://localhost:4567/url-plugin');
@@ -21,7 +23,9 @@ describe('File upload with URL plugin', () => {
     const completeStatusBar = await browser.$('.uppy-StatusBar.is-complete');
     await completeStatusBar.waitForExist(20000);
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

@@ -7,12 +7,14 @@ function setTransloaditKeyAndInit(transloaditKey) {
   window.initUppyTransloadit(transloaditKey);
 }
 describe('Transloadit file processing', () => {
+    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
+    SRTlib.send(`{ "testSuite": "Transloadit%20file%20processing", "fileName": "${__filename}", "calls" : [`);
+
   beforeEach(async () => {
     await browser.url(testURL);
   });
   it('should upload a file to Transloadit and crop it', async function () {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
         SRTlib.send(`{ "testSuite": "Transloadit%20file%20processing", "testName": "should%20upload%20a%20file%20to%20Transloadit%20and%20crop%20it", "fileName": "${__filename}", "calls" : [`);
 
     const transloaditKey = process.env.TRANSLOADIT_KEY;
@@ -37,7 +39,9 @@ describe('Transloadit file processing', () => {
     const text = await result.getText();
     expect(text).to.be.equal('ok');
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

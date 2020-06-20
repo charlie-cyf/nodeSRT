@@ -1,4 +1,5 @@
 var SRTlib = require('SRT-util');
+
 var hu_HU = {};
 hu_HU.contributors = ['nagyv'];
 hu_HU.strings = {
@@ -134,16 +135,16 @@ hu_HU.strings = {
   unselectFileNamed: 'A fájl törlése %{name}',
   openFolderNamed: 'Nyitott mappa %{name}'
 };
+
 hu_HU.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "hu_HU.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-    SRTlib.send("]},");
-
+  SRTlib.send("{ \"anonymous\": true, \"function\": \"hu_HU.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+  SRTlib.send("]},");
   return 0;
-    SRTlib.send("]},");
-
+  SRTlib.send("]},");
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.hu_HU = hu_HU;
 }
+
 module.exports = hu_HU;

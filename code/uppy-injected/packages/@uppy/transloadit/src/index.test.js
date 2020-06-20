@@ -2,9 +2,11 @@ var SRTlib = require('SRT-util');
 const Core = require('@uppy/core');
 const Transloadit = require('./');
 describe('Transloadit', () => {
-  it('Throws errors if options are missing', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
 
+    SRTlib.send(`{ "testSuite": "Transloadit", "fileName": "${__filename}", "calls" : [`);
+
+  it('Throws errors if options are missing', () => {
         SRTlib.send(`{ "testSuite": "Transloadit", "testName": "Throws%20errors%20if%20options%20are%20missing", "fileName": "${__filename}", "calls" : [`);
 
     const uppy = new Core();
@@ -14,12 +16,9 @@ describe('Transloadit', () => {
       });
     }).toThrowError(/The `params\.auth\.key` option is required/);
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
   it('Accepts a JSON string as `params` for signature authentication', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
         SRTlib.send(`{ "testSuite": "Transloadit", "testName": "Accepts%20a%20JSON%20string%20as%20%60params%60%20for%20signature%20authentication", "fileName": "${__filename}", "calls" : [`);
 
     const uppy = new Core();
@@ -39,12 +38,9 @@ describe('Transloadit', () => {
       });
     }).not.toThrowError(/The `params\.auth\.key` option is required/);
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
   it('Does not leave lingering progress if getAssemblyOptions fails', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
         SRTlib.send(`{ "testSuite": "Transloadit", "testName": "Does%20not%20leave%20lingering%20progress%20if%20getAssemblyOptions%20fails", "fileName": "${__filename}", "calls" : [`);
 
     const uppy = new Core();
@@ -66,12 +62,9 @@ describe('Transloadit', () => {
       expect(uppy.getFile(fileID).progress.uploadStarted).toBe(null);
     });
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
   it('Does not leave lingering progress if creating assembly fails', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
         SRTlib.send(`{ "testSuite": "Transloadit", "testName": "Does%20not%20leave%20lingering%20progress%20if%20creating%20assembly%20fails", "fileName": "${__filename}", "calls" : [`);
 
     const uppy = new Core();
@@ -97,7 +90,9 @@ describe('Transloadit', () => {
       expect(uppy.getFile(fileID).progress.uploadStarted).toBe(null);
     });
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

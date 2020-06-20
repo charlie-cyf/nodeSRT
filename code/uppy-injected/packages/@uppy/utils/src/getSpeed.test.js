@@ -1,9 +1,11 @@
 var SRTlib = require('SRT-util');
 const getSpeed = require('./getSpeed');
 describe('getSpeed', () => {
-  it('should calculate the speed given a fileProgress object', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
 
+    SRTlib.send(`{ "testSuite": "getSpeed", "fileName": "${__filename}", "calls" : [`);
+
+  it('should calculate the speed given a fileProgress object', () => {
         SRTlib.send(`{ "testSuite": "getSpeed", "testName": "should%20calculate%20the%20speed%20given%20a%20fileProgress%20object", "fileName": "${__filename}", "calls" : [`);
 
     const dateNow = new Date();
@@ -14,7 +16,9 @@ describe('getSpeed', () => {
     };
     expect(Math.round(getSpeed(fileProgress))).toEqual(Math.round(205));
         SRTlib.send(']},');
-    SRTlib.endLogger();
 
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

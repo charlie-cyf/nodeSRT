@@ -57,14 +57,22 @@ module.exports = class Instrumentor {
                                         console.log('testName:', testName)
                                         // insert in start of test
                                         if (node.arguments[1].type === 'FunctionExpression' || node.arguments[1].type === 'ArrowFunctionExpression') {
-                                            node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suiteName + '\", \"testName\": \"' + testName + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);'));
-                                            node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
-                                            node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\']},\'); SRTlib.endLogger();'));
+                                            if(node.arguments[1].body.body){
+                                                node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suiteName + '\", \"testName\": \"' + testName + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);'));
+                                                node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\']},\');'));
+                                            }
 
                                         }
                                     }
                                 } else if (node.callee.name === 'describe'){
-                                    // TODO
+                                    const suite = Instrumentor.processStringNames(node.arguments[0].value);
+                                    if (node.arguments[1].type === 'FunctionExpression' || node.arguments[1].type === 'ArrowFunctionExpression') {
+                                        if(node.arguments[1].body.body){
+                                            node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suite + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);'));
+                                            node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
+                                            node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\']},\'); SRTlib.endLogger();'));
+                                        }
+                                    }
                                 }
                             }
                         })
