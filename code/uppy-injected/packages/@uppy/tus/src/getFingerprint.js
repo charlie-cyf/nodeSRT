@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 const tus = require('tus-js-client');
 function isCordova() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isCordova", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -10,7 +10,7 @@ function isCordova() {
 
 }
 function isReactNative() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isReactNative", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     SRTlib.send("]},");
 

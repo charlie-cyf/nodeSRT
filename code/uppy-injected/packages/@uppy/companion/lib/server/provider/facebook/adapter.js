@@ -111,7 +111,9 @@ exports.sortImages = images => {
   return images.slice().sort((a, b) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    a.width - b.width;
+        SRTlib.send("]},");
+
+    return a.width - b.width;
         SRTlib.send("]},");
 
   });

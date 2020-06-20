@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 var _require = require('preact'), h = _require.h;
 var AddFiles = require('./AddFiles');
 var AddFilesPanel = function AddFilesPanel(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "AddFilesPanel.AddFilesPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "AddFilesPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 

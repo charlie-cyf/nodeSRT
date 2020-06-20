@@ -14,14 +14,14 @@ const renderScss = promisify(sass.render);
 const writeFile = promisify(fs.writeFile);
 const cwd = process.cwd();
 function handleErr(err) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "handleErr", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   console.error(chalk.red('✗ Error:'), chalk.red(err.message));
     SRTlib.send("]},");
 
 }
 async function compileCSS() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "compileCSS", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const files = await glob('packages/{,@uppy/}*/src/style.scss');
   for (const file of files) {

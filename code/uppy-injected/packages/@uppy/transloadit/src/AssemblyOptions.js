@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function validateParams(params) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "validateParams", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (!params) {
     throw new Error('Transloadit: The `params` option is required.');
@@ -21,7 +21,7 @@ function validateParams(params) {
 }
 class AssemblyOptions {
   constructor(files, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.files = files;
     this.opts = opts;
@@ -29,13 +29,13 @@ class AssemblyOptions {
 
   }
   _normalizeAssemblyOptions(file, assemblyOptions) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions._normalizeAssemblyOptions", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (Array.isArray(assemblyOptions.fields)) {
       const fieldNames = assemblyOptions.fields;
       assemblyOptions.fields = {};
       fieldNames.forEach(fieldName => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         assemblyOptions.fields[fieldName] = file.meta[fieldName];
                 SRTlib.send("]},");
@@ -52,13 +52,13 @@ class AssemblyOptions {
 
   }
   _getAssemblyOptions(file) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions._getAssemblyOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const options = this.opts;
         SRTlib.send("]},");
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
             SRTlib.send("]},");
 
@@ -66,7 +66,7 @@ class AssemblyOptions {
             SRTlib.send("]},");
 
     }).then(assemblyOptions => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
             SRTlib.send("]},");
 
@@ -74,7 +74,7 @@ class AssemblyOptions {
             SRTlib.send("]},");
 
     }).then(assemblyOptions => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       validateParams(assemblyOptions.params);
             SRTlib.send("]},");
@@ -90,11 +90,11 @@ class AssemblyOptions {
 
   }
   _dedupe(list) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions._dedupe", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const dedupeMap = Object.create(null);
     list.forEach(({fileIDs, options}) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const id = JSON.stringify(options);
       if (dedupeMap[id]) {
@@ -111,9 +111,11 @@ class AssemblyOptions {
         SRTlib.send("]},");
 
     return Object.keys(dedupeMap).map(id => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      dedupeMap[id];
+            SRTlib.send("]},");
+
+      return dedupeMap[id];
             SRTlib.send("]},");
 
     });
@@ -121,20 +123,22 @@ class AssemblyOptions {
 
   }
   build() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions.build", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const options = this.opts;
     if (this.files.length > 0) {
             SRTlib.send("]},");
 
       return Promise.all(this.files.map(file => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        this._getAssemblyOptions(file);
+                SRTlib.send("]},");
+
+        return this._getAssemblyOptions(file);
                 SRTlib.send("]},");
 
       })).then(list => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
                 SRTlib.send("]},");
 
@@ -147,16 +151,18 @@ class AssemblyOptions {
             SRTlib.send("]},");
 
       return Promise.resolve(options.getAssemblyOptions(null, options)).then(assemblyOptions => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         validateParams(assemblyOptions.params);
                 SRTlib.send("]},");
 
         return [{
           fileIDs: this.files.map(file => {
-                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            file.id;
+                        SRTlib.send("]},");
+
+            return file.id;
                         SRTlib.send("]},");
 
           }),

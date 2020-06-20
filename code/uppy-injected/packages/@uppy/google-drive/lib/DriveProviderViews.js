@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
@@ -14,7 +14,7 @@ module.exports = (function (_ProviderViews) {
 
   _inheritsLoose(DriveProviderViews, _ProviderViews);
   function DriveProviderViews() {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DriveProviderViews", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 

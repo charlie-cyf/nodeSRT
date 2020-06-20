@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
@@ -13,7 +13,7 @@ var SnapshotButton = require('./SnapshotButton');
 var RecordButton = require('./RecordButton');
 var RecordingLength = require('./RecordingLength');
 function isModeAvailable(modes, mode) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isModeAvailable", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -26,7 +26,7 @@ var CameraScreen = (function (_Component) {
 
   _inheritsLoose(CameraScreen, _Component);
   function CameraScreen() {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "CameraScreen", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 

@@ -3,7 +3,7 @@ var _require = require('preact'), h = _require.h;
 var copyToClipboard = require('../../../utils/copyToClipboard');
 var _require2 = require('../../icons'), iconPencil = _require2.iconPencil, iconCross = _require2.iconCross, iconCopyLink = _require2.iconCopyLink;
 function EditButton(_ref) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "EditButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var file = _ref.file, uploadInProgressOrComplete = _ref.uploadInProgressOrComplete, metaFields = _ref.metaFields, i18n = _ref.i18n, onClick = _ref.onClick;
   if (!uploadInProgressOrComplete && metaFields && metaFields.length > 0) {
@@ -32,7 +32,7 @@ function EditButton(_ref) {
 
 }
 function RemoveButton(_ref2) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "RemoveButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var i18n = _ref2.i18n, onClick = _ref2.onClick;
     SRTlib.send("]},");
@@ -56,7 +56,7 @@ function RemoveButton(_ref2) {
 
 }
 var copyLinkToClipboard = function copyLinkToClipboard(event, props) {
-    SRTlib.send(`{ "anonymous": true, "function": "copyLinkToClipboard.copyLinkToClipboard", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "copyLinkToClipboard", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   copyToClipboard(props.file.uploadURL, props.i18n('copyLinkToClipboardFallback')).then(function () {
         SRTlib.send(`{ "anonymous": true, "function": "copyLinkToClipboard.copyLinkToClipboard.then.catch.then.then.catch.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
@@ -80,7 +80,7 @@ var copyLinkToClipboard = function copyLinkToClipboard(event, props) {
 
 };
 function CopyLinkButton(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "CopyLinkButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 

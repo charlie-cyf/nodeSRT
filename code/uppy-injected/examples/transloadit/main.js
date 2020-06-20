@@ -64,7 +64,7 @@ const dashboard = robodog.dashboard('#dashboard', {
 });
 window.dashboard = dashboard;
 function openModal() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "openModal", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   robodog.pick({
     restrictions: {

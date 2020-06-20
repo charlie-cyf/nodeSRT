@@ -11,7 +11,7 @@ const browserify = require('browserify');
 const watchify = require('watchify');
 const bresolve = require('browser-resolve');
 function useSourcePackages(b) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "useSourcePackages", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   b._bresolve = (id, opts, cb) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
@@ -84,7 +84,7 @@ glob(srcPattern, (err, files) => {
     });
     bundle();
     function bundle(ids = []) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "bundle", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       ids.forEach(id => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -118,7 +118,7 @@ glob(srcPattern, (err, files) => {
 
 });
 function onError(err) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "onError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   console.error(chalk.red('✗ error:'), chalk.red(err.message));
   notifier.notify({

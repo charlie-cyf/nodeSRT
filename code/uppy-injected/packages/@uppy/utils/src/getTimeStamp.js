@@ -13,7 +13,7 @@ module.exports = function getTimeStamp() {
 
 };
 function pad(str) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "pad", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 

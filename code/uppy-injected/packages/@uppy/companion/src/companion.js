@@ -35,7 +35,9 @@ const defaultOptions = {
       getKey: (req, filename) => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        filename;
+                SRTlib.send("]},");
+
+        return filename;
                 SRTlib.send("]},");
 
       },
@@ -124,7 +126,7 @@ module.exports.socket = server => {
     const token = fullPath.replace(/^.*\/api\//, '');
     logger.info(`connection received from ${token}`, 'socket.connect');
     function sendProgress(data) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "sendProgress", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       ws.send(jsonStringify(data), err => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -209,7 +211,7 @@ const interceptGrantErrorResponse = interceptor((req, res) => {
 
 });
 const getOptionsMiddleware = options => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getOptionsMiddleware", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   let s3Client = null;
   if (options.providerOptions.s3) {
@@ -235,7 +237,7 @@ const getOptionsMiddleware = options => {
     s3Client = new S3(s3ClientOptions);
   }
   const middleware = (req, res, next) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "middleware", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const versionFromQuery = req.query.uppyVersions ? decodeURIComponent(req.query.uppyVersions) : null;
     req.companion = {
@@ -258,12 +260,12 @@ const getOptionsMiddleware = options => {
 
 };
 const maskLogger = companionOptions => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "maskLogger", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const secrets = [];
   const {providerOptions, customProviders} = companionOptions;
   Object.keys(providerOptions).forEach(provider => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (providerOptions[provider].secret) {
       secrets.push(providerOptions[provider].secret);
@@ -273,7 +275,7 @@ const maskLogger = companionOptions => {
   });
   if (customProviders) {
     Object.keys(customProviders).forEach(provider => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (customProviders[provider].config && customProviders[provider].config.secret) {
         secrets.push(customProviders[provider].config.secret);
@@ -287,17 +289,19 @@ const maskLogger = companionOptions => {
 
 };
 const validateConfig = companionOptions => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "validateConfig", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const mandatoryOptions = ['secret', 'filePath', 'server.host'];
   const unspecified = [];
   mandatoryOptions.forEach(i => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const value = i.split('.').reduce((prev, curr) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-      prev ? prev[curr] : undefined;
+            SRTlib.send("]},");
+
+      return prev ? prev[curr] : undefined;
             SRTlib.send("]},");
 
     }, companionOptions);

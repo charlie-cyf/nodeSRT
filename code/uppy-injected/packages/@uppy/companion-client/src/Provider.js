@@ -3,14 +3,16 @@ var SRTlib = require('SRT-util');
 const RequestClient = require('./RequestClient');
 const tokenStorage = require('./tokenStorage');
 const _getName = id => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "_getName", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
   return id.split('-').map(s => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    s.charAt(0).toUpperCase() + s.slice(1);
+        SRTlib.send("]},");
+
+    return s.charAt(0).toUpperCase() + s.slice(1);
         SRTlib.send("]},");
 
   }).join(' ');
@@ -19,7 +21,7 @@ const _getName = id => {
 };
 module.exports = class Provider extends RequestClient {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     super(uppy, opts);
     this.provider = opts.provider;
@@ -32,18 +34,18 @@ module.exports = class Provider extends RequestClient {
 
   }
   headers() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.headers", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       super.headers().then(headers => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         this.getAuthToken().then(token => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
           resolve(Object.assign({}, headers, {
             'uppy-auth-token': token
@@ -61,7 +63,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   onReceiveResponse(response) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.onReceiveResponse", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     response = super.onReceiveResponse(response);
     const plugin = this.uppy.getPlugin(this.pluginId);
@@ -77,7 +79,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   setAuthToken(token) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.setAuthToken", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -86,7 +88,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   getAuthToken() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.getAuthToken", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -95,7 +97,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   authUrl() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.authUrl", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -104,7 +106,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   fileUrl(id) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.fileUrl", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -113,7 +115,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   list(directory) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.list", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -122,20 +124,22 @@ module.exports = class Provider extends RequestClient {
 
   }
   logout() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports9", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.logout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       this.get(`${this.id}/logout`).then(res => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         this.uppy.getPlugin(this.pluginId).storage.removeItem(this.tokenKey).then(() => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-          resolve(res);
+                    SRTlib.send("]},");
+
+          return resolve(res);
                     SRTlib.send("]},");
 
         }).catch(reject);
@@ -149,7 +153,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   static initPlugin(plugin, opts, defaultOpts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports10", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Provider.initPlugin", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     plugin.type = 'acquirer';
     plugin.files = [];

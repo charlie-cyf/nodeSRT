@@ -12,7 +12,7 @@ var SRTlib = require('SRT-util');
     InnerPage();
   }
   function InnerPage() {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "InnerPage", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     var menuButton = document.querySelector('.js-MenuBtn');
     var header = document.querySelector('.js-MainHeader');
@@ -21,7 +21,7 @@ var SRTlib = require('SRT-util');
     var animating = false;
     var allLinks = [];
     function updateSidebar() {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "updateSidebar", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       var top = doc && doc.scrollTop || body.scrollTop;
       var headerHeight = header.offsetHeight;
@@ -52,7 +52,7 @@ var SRTlib = require('SRT-util');
 
     }
     function makeLink(h) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "makeLink", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       var link = document.createElement('li');
       var text = h.textContent.replace(/\(.*\)$/, '');
@@ -65,7 +65,7 @@ var SRTlib = require('SRT-util');
 
     }
     function collectH3s(h) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "collectH3s", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       var h3s = [];
       var next = h.nextSibling;
@@ -82,7 +82,7 @@ var SRTlib = require('SRT-util');
 
     }
     function makeSubLinks(h3s, small) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "makeSubLinks", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       var container = document.createElement('ul');
       if (small) {
@@ -102,7 +102,7 @@ var SRTlib = require('SRT-util');
 
     }
     function setActive(id) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "setActive", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       var previousActive = menu.querySelector('.section-link.active');
       var currentActive = typeof id === 'string' ? menu.querySelector('.section-link[href="#' + id + '"]') : id;
@@ -114,7 +114,7 @@ var SRTlib = require('SRT-util');
 
     }
     function makeLinkClickable(link) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "makeLinkClickable", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (link.getAttribute('data-scroll') === 'no') {
                 SRTlib.send("]},");
@@ -146,7 +146,7 @@ var SRTlib = require('SRT-util');
 
     });
     function initSubHeaders() {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "initSubHeaders", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       var currentPageAnchor = menu.querySelector('.sidebar-link.current');
       var isDocs = content.classList.contains('docs');
@@ -223,14 +223,14 @@ var SRTlib = require('SRT-util');
 
   }
   function IndexPage() {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "IndexPage", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     window.addEventListener('load', function () {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       var tabs = document.querySelectorAll('.Tabs-link');
       function myTabClicks(tabClickEvent) {
-                SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": false, "function": "myTabClicks", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         for (var i = 0; i < tabs.length; i++) {
           tabs[i].classList.remove('Tabs-link--active');
@@ -261,7 +261,7 @@ var SRTlib = require('SRT-util');
     var taglineList = document.querySelector('.MainHeader-taglineList');
     var taglineCounter = taglineList.children.length;
     function shuffleTaglines() {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "shuffleTaglines", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       for (var i = taglineList.children.length; i >= 0; i--) {
         taglineList.appendChild(taglineList.children[Math.random() * i | 0]);
@@ -270,7 +270,7 @@ var SRTlib = require('SRT-util');
 
     }
     function loopTaglines() {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "loopTaglines", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       taglineCounter--;
       if (taglineCounter >= 0) {
@@ -286,7 +286,7 @@ var SRTlib = require('SRT-util');
 
     }
     function showTagline(taglineText) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "showTagline", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       tagline.classList.remove('is-visible');
       setTimeout(function () {

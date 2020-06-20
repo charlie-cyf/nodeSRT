@@ -16,7 +16,7 @@ module.exports = () => {
 
 };
 const meta = (req, res) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "meta", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   logger.debug('URL file import handler running', null, req.id);
   const debug = req.companion.options.debug;
@@ -31,7 +31,9 @@ const meta = (req, res) => {
   utils.getURLMeta(req.body.url, !debug).then(meta => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    res.json(meta);
+        SRTlib.send("]},");
+
+    return res.json(meta);
         SRTlib.send("]},");
 
   }).catch(err => {
@@ -50,7 +52,7 @@ const meta = (req, res) => {
 
 };
 const get = (req, res) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "get", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   logger.debug('URL file import handler running', null, req.id);
   const debug = req.companion.options.debug;
@@ -63,7 +65,7 @@ const get = (req, res) => {
     });
   }
   utils.getURLMeta(req.body.url).then(({size}) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     logger.debug('Instantiating uploader.', null, req.id);
     const uploader = new Uploader(Uploader.reqToOptions(req, size));
@@ -76,7 +78,7 @@ const get = (req, res) => {
     }
     logger.debug('Waiting for socket connection before beginning remote download.', null, req.id);
     uploader.onSocketReady(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       logger.debug('Socket connection received. Starting remote download.', null, req.id);
       downloadURL(req.body.url, uploader.handleChunk.bind(uploader), !debug, req.id);
@@ -88,7 +90,7 @@ const get = (req, res) => {
         SRTlib.send("]},");
 
   }).catch(err => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     logger.error(err, 'controller.url.get.error', req.id);
     res.json({
@@ -101,7 +103,7 @@ const get = (req, res) => {
 
 };
 const validateURL = (url, debug) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "validateURL", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const validURLOpts = {
     protocols: ['http', 'https'],
@@ -120,7 +122,7 @@ const validateURL = (url, debug) => {
 
 };
 const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "downloadURL", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
 
   const opts = {
     uri: url,
@@ -129,21 +131,27 @@ const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
     agentClass: getProtectedHttpAgent(utils.parseURL(url).protocol, blockLocalIPs)
   };
   request(opts).on('data', chunk => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    onDataChunk(null, chunk);
+        SRTlib.send("]},");
+
+    return onDataChunk(null, chunk);
         SRTlib.send("]},");
 
   }).on('end', () => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    onDataChunk(null, null);
+        SRTlib.send("]},");
+
+    return onDataChunk(null, null);
         SRTlib.send("]},");
 
   }).on('error', err => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    logger.error(err, 'controller.url.download.error', traceId);
+        SRTlib.send("]},");
+
+    return logger.error(err, 'controller.url.download.error', traceId);
         SRTlib.send("]},");
 
   });

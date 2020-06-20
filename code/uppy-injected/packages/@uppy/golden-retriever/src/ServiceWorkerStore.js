@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 const isSupported = typeof navigator !== 'undefined' && ('serviceWorker' in navigator);
 function waitForServiceWorker() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "waitForServiceWorker", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -29,7 +29,7 @@ function waitForServiceWorker() {
 }
 class ServiceWorkerStore {
   constructor(opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ServiceWorkerStore.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.ready = waitForServiceWorker();
     this.name = opts.storeName;
@@ -37,11 +37,11 @@ class ServiceWorkerStore {
 
   }
   list() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ServiceWorkerStore.list", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const defer = {};
     const promise = new Promise((resolve, reject) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       defer.resolve = resolve;
       defer.reject = reject;
@@ -50,7 +50,7 @@ class ServiceWorkerStore {
     });
     console.log('Loading stored blobs from Service Worker');
     const onMessage = event => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "onMessage", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (event.data.store !== this.name) {
                 SRTlib.send("]},");
@@ -67,7 +67,7 @@ class ServiceWorkerStore {
 
     };
     this.ready.then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       navigator.serviceWorker.addEventListener('message', onMessage);
       navigator.serviceWorker.controller.postMessage({
@@ -84,12 +84,12 @@ class ServiceWorkerStore {
 
   }
   put(file) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ServiceWorkerStore.put", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.ready.then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       navigator.serviceWorker.controller.postMessage({
         type: 'uppy/ADD_FILE',
@@ -103,12 +103,12 @@ class ServiceWorkerStore {
 
   }
   delete(fileID) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ServiceWorkerStore.delete", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.ready.then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       navigator.serviceWorker.controller.postMessage({
         type: 'uppy/REMOVE_FILE',

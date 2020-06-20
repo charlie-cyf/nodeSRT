@@ -9,14 +9,14 @@ var exorcist = require('exorcist');
 var glob = require('glob');
 var path = require('path');
 function handleErr(err) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "handleErr", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   console.error(chalk.red('✗ Error:'), chalk.red(err.message));
     SRTlib.send("]},");
 
 }
 function buildBundle(srcFile, bundleFile, {minify = false, standalone = ''} = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "buildBundle", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   var b = browserify(srcFile, {
     debug: true,

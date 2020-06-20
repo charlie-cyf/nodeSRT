@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 const {Plugin} = require('../../packages/@uppy/core');
 module.exports = class InvalidPluginWithoutType extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "InvalidPluginWithoutType.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     super(uppy, opts);
     this.id = 'InvalidPluginWithoutType';
@@ -11,7 +11,7 @@ module.exports = class InvalidPluginWithoutType extends Plugin {
 
   }
   run(results) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "InvalidPluginWithoutType.run", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.uppy.log({
       class: this.constructor.name,

@@ -37,7 +37,7 @@ inject().catch(err => {
 
 });
 async function getMinifiedSize(pkg, name) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getMinifiedSize", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const b = browserify(pkg);
   const packageJSON = fs.readFileSync(path.join(pkg, 'package.json'));
@@ -63,13 +63,15 @@ async function getMinifiedSize(pkg, name) {
 
 }
 async function injectSizes(config) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "injectSizes", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   console.info(chalk.grey('Generating bundle sizes…'));
   const padTarget = packages.reduce((max, cur) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    Math.max(max, cur.length);
+        SRTlib.send("]},");
+
+    return Math.max(max, cur.length);
         SRTlib.send("]},");
 
   }, 0) + 2;
@@ -108,7 +110,7 @@ async function injectSizes(config) {
 
 }
 async function injectBundles() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "injectBundles", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const cmds = [`mkdir -p ${path.join(webRoot, '/themes/uppy/source/uppy')}`, `mkdir -p ${path.join(webRoot, '/themes/uppy/source/uppy/locales')}`, `cp -vfR ${path.join(uppyRoot, '/dist/*')} ${path.join(webRoot, '/themes/uppy/source/uppy/')}`, `cp -vfR ${path.join(robodogRoot, '/dist/*')} ${path.join(webRoot, '/themes/uppy/source/uppy/')}`, `cp -vfR ${path.join(localesRoot, '/dist/*')} ${path.join(webRoot, '/themes/uppy/source/uppy/locales')}`].join(' && ');
   const {stdout} = await promisify(exec)(cmds);
@@ -123,7 +125,7 @@ async function injectBundles() {
 
 }
 async function injectGhStars() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "injectGhStars", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const opts = {};
   if (('GITHUB_TOKEN' in process.env)) {
@@ -143,7 +145,7 @@ async function injectGhStars() {
 
 }
 async function injectMarkdown() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "injectMarkdown", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const sources = {
     '.github/ISSUE_TEMPLATE/integration_help.md': 'src/_template/integration_help.md',
@@ -168,7 +170,7 @@ async function injectMarkdown() {
 
 }
 function injectLocaleList() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "injectLocaleList", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const mdTable = [`<!-- WARNING! This file was automatically injected. Please run "${path.basename(__filename)}" to re-generate -->\n\n`, '| %count% Locales | NPM                | CDN                 | Source on GitHub |', '| --------------- | ------------------ | ------------------- | ---------------- |'];
   const mdRows = [];
@@ -215,7 +217,7 @@ function injectLocaleList() {
 
 }
 async function readConfig() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "readConfig", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   try {
     const buf = await promisify(fs.readFile)(configPath, 'utf8');
@@ -231,7 +233,7 @@ async function readConfig() {
 
 }
 async function inject() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "inject", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const config = await readConfig();
   await injectGhStars();

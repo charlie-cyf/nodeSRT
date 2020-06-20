@@ -10,7 +10,7 @@ const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../../error');
 class Instagram extends Provider {
   constructor(options) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     super(options);
     this.authProvider = options.provider = Instagram.authProvider;
@@ -19,7 +19,7 @@ class Instagram extends Provider {
 
   }
   static getExtraConfig() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram.getExtraConfig", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -31,7 +31,7 @@ class Instagram extends Provider {
 
   }
   static get authProvider() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -42,7 +42,7 @@ class Instagram extends Provider {
   list({directory, token, query = {
     cursor: null
   }}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram.list", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const qs = {
       fields: 'id,media_type,thumbnail_url,media_url,timestamp,children{media_type,media_url,thumbnail_url,timestamp}'
@@ -51,7 +51,7 @@ class Instagram extends Provider {
       qs.after = query.cursor;
     }
     this.client.get('https://graph.instagram.com/me/media').qs(qs).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -61,7 +61,7 @@ class Instagram extends Provider {
         return done(err);
       } else {
         this._getUsername(token, (err, username) => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
           err ? done(err) : done(null, this.adaptData(body, username, directory, query));
                     SRTlib.send("]},");
@@ -75,12 +75,12 @@ class Instagram extends Provider {
 
   }
   _getUsername(token, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram._getUsername", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.client.get('https://graph.instagram.com/me').qs({
       fields: 'username'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -98,14 +98,14 @@ class Instagram extends Provider {
 
   }
   download({id, token}, onData) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.client.get(`https://graph.instagram.com/${id}`).qs({
       fields: 'media_url'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -116,15 +116,17 @@ class Instagram extends Provider {
         return;
       }
       request(body.media_url).on('response', resp => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         if (resp.statusCode !== 200) {
           onData(this._error(null, resp));
         } else {
           resp.on('data', chunk => {
-                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            onData(null, chunk);
+                        SRTlib.send("]},");
+
+            return onData(null, chunk);
                         SRTlib.send("]},");
 
           });
@@ -132,13 +134,15 @@ class Instagram extends Provider {
                 SRTlib.send("]},");
 
       }).on('end', () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        onData(null, null);
+                SRTlib.send("]},");
+
+        return onData(null, null);
                 SRTlib.send("]},");
 
       }).on('error', err => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         logger.error(err, 'provider.instagram.download.url.error');
         onData(err);
@@ -152,7 +156,7 @@ class Instagram extends Provider {
 
   }
   thumbnail(_, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram.thumbnail", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.instagram.thumbnail.error');
@@ -163,14 +167,14 @@ class Instagram extends Provider {
 
   }
   size({id, token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.client.get(`https://graph.instagram.com/${id}`).qs({
       fields: 'media_url'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -180,13 +184,15 @@ class Instagram extends Provider {
         return done(err);
       }
       utils.getURLMeta(body.media_url).then(({size}) => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        done(null, size);
+                SRTlib.send("]},");
+
+        return done(null, size);
                 SRTlib.send("]},");
 
       }).catch(err => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         logger.error(err, 'provider.instagram.size.error');
         done();
@@ -200,7 +206,7 @@ class Instagram extends Provider {
 
   }
   logout(_, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram.logout", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     done(null, {
       revoked: false,
@@ -210,7 +216,7 @@ class Instagram extends Provider {
 
   }
   adaptData(res, username, directory, currentQuery) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram.adaptData", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
 
     const data = {
       username: username,
@@ -218,7 +224,7 @@ class Instagram extends Provider {
     };
     const items = adapter.getItemSubList(res);
     items.forEach((item, i) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       data.items.push({
         isFolder: adapter.isFolder(item),
@@ -241,7 +247,7 @@ class Instagram extends Provider {
 
   }
   _error(err, resp) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey23", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Instagram._error", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (resp) {
       if (resp.body && resp.body.error.code === 190) {

@@ -7,7 +7,7 @@ const STORE_NAME = 'files';
 const DEFAULT_EXPIRY = 24 * 60 * 60 * 1000;
 const DB_VERSION = 3;
 function migrateExpiration(store) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "migrateExpiration", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const request = store.openCursor();
   request.onsuccess = event => {
@@ -29,7 +29,7 @@ function migrateExpiration(store) {
 
 }
 function connect(dbName) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "connect", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const request = indexedDB.open(dbName, DB_VERSION);
     SRTlib.send("]},");
@@ -82,7 +82,7 @@ function connect(dbName) {
 
 }
 function waitForRequest(request) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "waitForRequest", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -106,7 +106,7 @@ function waitForRequest(request) {
 let cleanedUp = false;
 class IndexedDBStore {
   constructor(opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "IndexedDBStore.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.opts = Object.assign({
       dbName: DB_NAME,
@@ -117,7 +117,7 @@ class IndexedDBStore {
     }, opts);
     this.name = this.opts.storeName;
     const createConnection = () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "createConnection", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
             SRTlib.send("]},");
 
@@ -135,7 +135,7 @@ class IndexedDBStore {
 
   }
   key(fileID) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "IndexedDBStore.key", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -144,12 +144,12 @@ class IndexedDBStore {
 
   }
   list() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "IndexedDBStore.list", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.ready.then(db => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const transaction = db.transaction([STORE_NAME], 'readonly');
       const store = transaction.objectStore(STORE_NAME);
@@ -160,11 +160,11 @@ class IndexedDBStore {
             SRTlib.send("]},");
 
     }).then(files => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const result = {};
       files.forEach(file => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         result[file.fileID] = file.data;
                 SRTlib.send("]},");
@@ -180,12 +180,12 @@ class IndexedDBStore {
 
   }
   get(fileID) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "IndexedDBStore.get", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.ready.then(db => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const transaction = db.transaction([STORE_NAME], 'readonly');
       const request = transaction.objectStore(STORE_NAME).get(this.key(fileID));
@@ -195,12 +195,14 @@ class IndexedDBStore {
             SRTlib.send("]},");
 
     }).then(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      ({
+            SRTlib.send("]},");
+
+      return {
         id: result.data.fileID,
         data: result.data.data
-      });
+      };
             SRTlib.send("]},");
 
     });
@@ -208,12 +210,12 @@ class IndexedDBStore {
 
   }
   getSize() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "IndexedDBStore.getSize", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.ready.then(db => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const transaction = db.transaction([STORE_NAME], 'readonly');
       const store = transaction.objectStore(STORE_NAME);
@@ -221,11 +223,11 @@ class IndexedDBStore {
             SRTlib.send("]},");
 
       return new Promise((resolve, reject) => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         let size = 0;
         request.onsuccess = event => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
           const cursor = event.target.result;
           if (cursor) {
@@ -238,7 +240,7 @@ class IndexedDBStore {
 
         };
         request.onerror = () => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
           reject(new Error('Could not retrieve stored blobs size'));
                     SRTlib.send("]},");
@@ -254,7 +256,7 @@ class IndexedDBStore {
 
   }
   put(file) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey25", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "IndexedDBStore.put", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (file.data.size > this.opts.maxFileSize) {
             SRTlib.send("]},");
@@ -264,7 +266,7 @@ class IndexedDBStore {
         SRTlib.send("]},");
 
     return this.getSize().then(size => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey23", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (size > this.opts.maxTotalSize) {
                 SRTlib.send("]},");
@@ -277,7 +279,7 @@ class IndexedDBStore {
             SRTlib.send("]},");
 
     }).then(db => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey24", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const transaction = db.transaction([STORE_NAME], 'readwrite');
       const request = transaction.objectStore(STORE_NAME).add({
@@ -297,12 +299,12 @@ class IndexedDBStore {
 
   }
   delete(fileID) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey27", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "IndexedDBStore.delete", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.ready.then(db => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey26", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const transaction = db.transaction([STORE_NAME], 'readwrite');
       const request = transaction.objectStore(STORE_NAME).delete(this.key(fileID));
@@ -316,12 +318,12 @@ class IndexedDBStore {
 
   }
   static cleanup() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey32", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "IndexedDBStore.cleanup", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
     return connect(DB_NAME).then(db => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey30", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const transaction = db.transaction([STORE_NAME], 'readwrite');
       const store = transaction.objectStore(STORE_NAME);
@@ -329,10 +331,10 @@ class IndexedDBStore {
             SRTlib.send("]},");
 
       return new Promise((resolve, reject) => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey29", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         request.onsuccess = event => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey28", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
           const cursor = event.target.result;
           if (cursor) {
@@ -353,7 +355,7 @@ class IndexedDBStore {
             SRTlib.send("]},");
 
     }).then(db => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey31", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey23", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       db.close();
             SRTlib.send("]},");

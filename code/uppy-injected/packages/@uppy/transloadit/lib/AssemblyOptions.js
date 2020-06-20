@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function validateParams(params) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "validateParams", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (!params) {
     throw new Error('Transloadit: The `params` option is required.');
@@ -23,7 +23,7 @@ var AssemblyOptions = (function () {
     SRTlib.send(`{ "anonymous": true, "function": "AssemblyOptions", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   function AssemblyOptions(files, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.files = files;
     this.opts = opts;

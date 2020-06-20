@@ -9,7 +9,7 @@ const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../error');
 const charsToEncode = /[\u007f-\uffff]/g;
 function httpHeaderSafeJson(v) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "httpHeaderSafeJson", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -27,7 +27,7 @@ function httpHeaderSafeJson(v) {
 }
 class DropBox extends Provider {
   constructor(options) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     super(options);
     this.authProvider = options.provider = DropBox.authProvider;
@@ -37,7 +37,7 @@ class DropBox extends Provider {
 
   }
   static get authProvider() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -46,7 +46,7 @@ class DropBox extends Provider {
 
   }
   _userInfo({token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox._userInfo", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.client.post('users/get_current_account').options({
       version: '2'
@@ -55,7 +55,7 @@ class DropBox extends Provider {
 
   }
   list(options, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox.list", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     let userInfoDone = false;
     let statsDone = false;
@@ -63,7 +63,7 @@ class DropBox extends Provider {
     let stats;
     let reqErr;
     const finishReq = () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "finishReq", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       if (reqErr || stats.statusCode !== 200) {
         const err = this._error(reqErr, stats);
@@ -77,7 +77,7 @@ class DropBox extends Provider {
 
     };
     this.stats(options, (err, resp) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       statsDone = true;
       stats = resp;
@@ -89,7 +89,7 @@ class DropBox extends Provider {
 
     });
     this._userInfo(options, (err, resp) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       userInfoDone = true;
       userInfo = resp;
@@ -104,7 +104,7 @@ class DropBox extends Provider {
 
   }
   stats({directory, query, token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox.stats", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (query.cursor) {
       this.client.post('files/list_folder/continue').options({
@@ -125,7 +125,7 @@ class DropBox extends Provider {
 
   }
   download({id, token}, onData) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -137,15 +137,17 @@ class DropBox extends Provider {
         })
       }
     }).auth(token).request().on('response', resp => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (resp.statusCode !== 200) {
         onData(this._error(null, resp));
       } else {
         resp.on('data', chunk => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-          onData(null, chunk);
+                    SRTlib.send("]},");
+
+          return onData(null, chunk);
                     SRTlib.send("]},");
 
         });
@@ -153,13 +155,15 @@ class DropBox extends Provider {
             SRTlib.send("]},");
 
     }).on('end', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      onData(null, null);
+            SRTlib.send("]},");
+
+      return onData(null, null);
             SRTlib.send("]},");
 
     }).on('error', err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       logger.error(err, 'provider.dropbox.download.error');
       onData(err);
@@ -170,7 +174,7 @@ class DropBox extends Provider {
 
   }
   thumbnail({id, token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox.thumbnail", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -183,7 +187,7 @@ class DropBox extends Provider {
         })
       }
     }).auth(token).request().on('response', resp => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (resp.statusCode !== 200) {
         const err = this._error(null, resp);
@@ -196,7 +200,7 @@ class DropBox extends Provider {
             SRTlib.send("]},");
 
     }).on('error', err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       logger.error(err, 'provider.dropbox.thumbnail.error');
             SRTlib.send("]},");
@@ -206,7 +210,7 @@ class DropBox extends Provider {
 
   }
   size({id, token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -215,7 +219,7 @@ class DropBox extends Provider {
     }).auth(token).json({
       path: id
     }).request((err, resp, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -232,14 +236,14 @@ class DropBox extends Provider {
 
   }
   logout({token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox.logout", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.client.post('auth/token/revoke').options({
       version: '2'
     }).auth(token).request((err, resp) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         logger.error(err, 'provider.dropbox.size.error');
@@ -258,7 +262,7 @@ class DropBox extends Provider {
 
   }
   adaptData(res, companion) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox.adaptData", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const data = {
       username: adapter.getUsername(res),
@@ -266,7 +270,7 @@ class DropBox extends Provider {
     };
     const items = adapter.getItemSubList(res);
     items.forEach(item => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       data.items.push({
         isFolder: adapter.isFolder(item),
@@ -290,7 +294,7 @@ class DropBox extends Provider {
 
   }
   _error(err, resp) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey23", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DropBox._error", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (resp) {
       const fallbackMessage = `request to ${this.authProvider} returned ${resp.statusCode}`;

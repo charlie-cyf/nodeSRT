@@ -5,14 +5,14 @@ module.exports = function settle(promises) {
   var resolutions = [];
   var rejections = [];
   function resolved(value) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "resolved", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     resolutions.push(value);
         SRTlib.send("]},");
 
   }
   function rejected(error) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "rejected", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     rejections.push(error);
         SRTlib.send("]},");

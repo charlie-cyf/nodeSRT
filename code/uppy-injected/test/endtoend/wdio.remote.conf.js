@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 const base = require('./wdio.base.conf');
 function createCapability(capability) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "createCapability", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 

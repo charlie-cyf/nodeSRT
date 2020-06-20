@@ -3,7 +3,7 @@ var SRTlib = require('SRT-util');
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   function r(r) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "r", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     for (var n, u, p = r[0], c = r[1], l = r[2], i = 0, s = []; i < p.length; i++) (u = p[i], Object.prototype.hasOwnProperty.call(o, u) && o[u] && s.push(o[u][0]), o[u] = 0);
     for (n in c) Object.prototype.hasOwnProperty.call(c, n) && (e[n] = c[n]);
@@ -15,7 +15,7 @@ var SRTlib = require('SRT-util');
 
   }
   function t() {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "t", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     for (var e, r = 0; r < a.length; r++) {
       for (var t = a[r], n = !0, p = 1; p < t.length; p++) {
@@ -34,7 +34,7 @@ var SRTlib = require('SRT-util');
     1: 0
   }, a = [];
   function u(r) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "u", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (n[r]) {
             SRTlib.send("]},");

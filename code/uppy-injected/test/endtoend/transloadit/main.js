@@ -5,7 +5,7 @@ const Uppy = require('@uppy/core');
 const Dashboard = require('@uppy/dashboard');
 const Transloadit = require('@uppy/transloadit');
 function initUppyTransloadit(transloaditKey) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "initUppyTransloadit", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var uppyTransloadit = Uppy({
     id: 'uppyTransloadit',

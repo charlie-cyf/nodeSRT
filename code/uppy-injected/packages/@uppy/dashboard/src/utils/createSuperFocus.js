@@ -7,7 +7,7 @@ module.exports = function createSuperFocus() {
 
   let lastFocusWasOnSuperFocusableEl = false;
   const superFocus = (dashboardEl, activeOverlayType) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "superFocus", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const overlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
     const isFocusInOverlay = overlayEl.contains(document.activeElement);

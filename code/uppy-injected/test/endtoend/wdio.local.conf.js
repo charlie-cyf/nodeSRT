@@ -22,7 +22,9 @@ if (capabilities.length === 0) {
 const testingInternetExplorer = capabilities.find(capability => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-  capability.browserName === 'internet explorer';
+    SRTlib.send("]},");
+
+  return capability.browserName === 'internet explorer';
     SRTlib.send("]},");
 
 }) !== null;

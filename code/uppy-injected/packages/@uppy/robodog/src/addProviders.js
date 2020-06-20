@@ -15,7 +15,7 @@ const localProviders = {
 const remoteProviderOptionNames = ['companionUrl', 'companionAllowedHosts', 'companionHeaders', 'serverHeaders', 'target'];
 const localProviderOptionNames = ['target'];
 function addRemoteProvider(uppy, name, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "addRemoteProvider", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   const Provider = remoteProviders[name];
   const providerOptions = {
@@ -37,7 +37,7 @@ function addRemoteProvider(uppy, name, opts) {
 
 }
 function addLocalProvider(uppy, name, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "addLocalProvider", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   const Provider = localProviders[name];
   const providerOptions = {};
@@ -56,7 +56,7 @@ function addLocalProvider(uppy, name, opts) {
 
 }
 function addProviders(uppy, names, opts = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "addProviders", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   names.forEach(name => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -70,7 +70,9 @@ function addProviders(uppy, names, opts = {}) {
       const expectedNameString = validNames.sort().map(validName => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        `'${validName}'`;
+                SRTlib.send("]},");
+
+        return `'${validName}'`;
                 SRTlib.send("]},");
 
       }).join(', ');

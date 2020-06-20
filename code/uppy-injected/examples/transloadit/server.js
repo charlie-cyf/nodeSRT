@@ -5,7 +5,7 @@ const e = require('he').encode;
 const server = http.createServer(onrequest);
 server.listen(9967);
 function onrequest(req, res) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "onrequest", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (req.url !== '/test') {
     res.writeHead(404, {
@@ -32,7 +32,7 @@ function onrequest(req, res) {
 
   });
   function onbody(body) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "onbody", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const fields = qs.parse(body);
     const assemblies = JSON.parse(fields.transloadit);
@@ -54,7 +54,7 @@ function onrequest(req, res) {
 
 }
 function Header() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "Header", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -80,7 +80,7 @@ function Header() {
 
 }
 function Footer() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "Footer", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -93,7 +93,7 @@ function Footer() {
 
 }
 function FormFields(fields) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "FormFields", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -104,7 +104,7 @@ function FormFields(fields) {
     </dl>
   `;
   function Field([name, value]) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Field", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (name === 'transloadit') {
             SRTlib.send("]},");
@@ -124,7 +124,7 @@ function FormFields(fields) {
 
 }
 function AssemblyResult(assembly) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "AssemblyResult", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -137,7 +137,7 @@ function AssemblyResult(assembly) {
 
 }
 function UploadsList(uploads) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "UploadsList", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -147,7 +147,7 @@ function UploadsList(uploads) {
     </ul>
   `;
   function Upload(upload) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Upload", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -159,13 +159,13 @@ function UploadsList(uploads) {
 
 }
 function ResultsList(results) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "ResultsList", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
   return Object.keys(results).map(ResultsSection).join('\n');
   function ResultsSection(stepName) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ResultsSection", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -179,7 +179,7 @@ function ResultsList(results) {
 
   }
   function Result(result) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Result", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 

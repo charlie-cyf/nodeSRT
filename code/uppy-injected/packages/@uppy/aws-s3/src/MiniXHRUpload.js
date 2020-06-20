@@ -8,7 +8,7 @@ const ProgressTimeout = require('@uppy/utils/lib/ProgressTimeout');
 const NetworkError = require('@uppy/utils/lib/NetworkError');
 const isNetworkError = require('@uppy/utils/lib/isNetworkError');
 function buildResponseError(xhr, error) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "buildResponseError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (!error) error = new Error('Upload error');
   if (typeof error === 'string') error = new Error(error);
@@ -31,7 +31,7 @@ function buildResponseError(xhr, error) {
 
 }
 function setTypeInBlob(file) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "setTypeInBlob", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const dataWithUpdatedType = file.data.slice(0, file.data.size, file.meta.type);
     SRTlib.send("]},");
@@ -42,7 +42,7 @@ function setTypeInBlob(file) {
 }
 module.exports = class MiniXHRUpload {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.uppy = uppy;
     this.opts = {
@@ -63,7 +63,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _getOptions(file) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._getOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const uppy = this.uppy;
     const overrides = uppy.getState().xhrUpload;
@@ -87,7 +87,7 @@ module.exports = class MiniXHRUpload {
 
   }
   uploadFile(id, current, total) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports3", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload.uploadFile", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const file = this.uppy.getFile(id);
     if (file.error) {
@@ -104,7 +104,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _addMetadata(formData, meta, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports4", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._addMetadata", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(meta);
     metaFields.forEach(item => {
@@ -118,7 +118,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _createFormDataUpload(file, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._createFormDataUpload", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const formPost = new FormData();
     this._addMetadata(formPost, file.meta, opts);
@@ -135,7 +135,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _createBareUpload(file, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._createBareUpload", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -144,7 +144,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _onFileRemoved(fileID, cb) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._onFileRemoved", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.uploaderEvents[fileID].on('file-removed', file => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -157,7 +157,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _onRetry(fileID, cb) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports8", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._onRetry", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.uploaderEvents[fileID].on('upload-retry', targetFileID => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -172,7 +172,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _onRetryAll(fileID, cb) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports9", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._onRetryAll", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.uploaderEvents[fileID].on('retry-all', filesToRetry => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -190,7 +190,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _onCancelAll(fileID, cb) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports10", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._onCancelAll", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.uploaderEvents[fileID].on('cancel-all', () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
@@ -208,7 +208,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _uploadLocalFile(file, current, total) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports11", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._uploadLocalFile", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const opts = this._getOptions(file);
     this.uppy.log(`uploading ${current} of ${total}`);
@@ -368,7 +368,7 @@ module.exports = class MiniXHRUpload {
 
   }
   _uploadRemoteFile(file, current, total) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports12", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MiniXHRUpload._uploadRemoteFile", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const opts = this._getOptions(file);
         SRTlib.send("]},");
@@ -443,7 +443,9 @@ module.exports = class MiniXHRUpload {
         socket.on('progress', progressData => {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-          emitSocketProgress(this, progressData, file);
+                    SRTlib.send("]},");
+
+          return emitSocketProgress(this, progressData, file);
                     SRTlib.send("]},");
 
         });
@@ -498,7 +500,9 @@ module.exports = class MiniXHRUpload {
           return () => {
                         SRTlib.send(`{ "anonymous": true, "function": "emptyKey25", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            socket.close();
+                        SRTlib.send("]},");
+
+            return socket.close();
                         SRTlib.send("]},");
 
           };

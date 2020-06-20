@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 module.exports = class EventTracker {
   constructor(emitter) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "EventTracker.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this._events = [];
     this._emitter = emitter;
@@ -9,7 +9,7 @@ module.exports = class EventTracker {
 
   }
   on(event, fn) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "EventTracker.on", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this._events.push([event, fn]);
         SRTlib.send("]},");
@@ -19,7 +19,7 @@ module.exports = class EventTracker {
 
   }
   remove() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "EventTracker.remove", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this._events.forEach(([event, fn]) => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);

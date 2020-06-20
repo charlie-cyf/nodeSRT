@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function findUppyInstances() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "findUppyInstances", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const instances = [];
   for (let i = 0; i < localStorage.length; i++) {
@@ -16,7 +16,7 @@ function findUppyInstances() {
 
 }
 function maybeParse(str) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "maybeParse", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   try {
         SRTlib.send("]},");
@@ -33,7 +33,7 @@ function maybeParse(str) {
 let cleanedUp = false;
 module.exports = class MetaDataStore {
   constructor(opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MetaDataStore.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.opts = Object.assign({
       expires: 24 * 60 * 60 * 1000
@@ -47,7 +47,7 @@ module.exports = class MetaDataStore {
 
   }
   load() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MetaDataStore.load", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const savedState = localStorage.getItem(this.name);
     if (!savedState) {
@@ -74,7 +74,7 @@ module.exports = class MetaDataStore {
 
   }
   save(metadata) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MetaDataStore.save", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const expires = Date.now() + this.opts.expires;
     const state = JSON.stringify({
@@ -86,7 +86,7 @@ module.exports = class MetaDataStore {
 
   }
   static cleanup() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MetaDataStore.cleanup", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const instanceIDs = findUppyInstances();
     const now = Date.now();

@@ -20,7 +20,7 @@ const PROTOCOLS = Object.freeze({
 });
 class Uploader {
   constructor(options) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!this.validateOptions(options)) {
       logger.debug(this._errRespMessage, 'uploader.validator.fail');
@@ -42,7 +42,9 @@ class Uploader {
     }).on('error', err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      logger.error(`${err}`, 'uploader.write.error', this.shortToken);
+            SRTlib.send("]},");
+
+      return logger.error(`${err}`, 'uploader.write.error', this.shortToken);
             SRTlib.send("]},");
 
     });
@@ -87,7 +89,7 @@ class Uploader {
 
   }
   static shortenToken(token) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.shortenToken", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -96,7 +98,7 @@ class Uploader {
 
   }
   static reqToOptions(req, size) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.reqToOptions", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const useFormDataIsSet = Object.prototype.hasOwnProperty.call(req.body, 'useFormData');
     const useFormData = useFormDataIsSet ? req.body.useFormData : true;
@@ -124,7 +126,7 @@ class Uploader {
 
   }
   get bytesWritten() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.bytesWritten", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -133,7 +135,7 @@ class Uploader {
 
   }
   validateOptions(options) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.validateOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (options.httpMethod) {
       if (typeof options.httpMethod !== 'string') {
@@ -169,9 +171,11 @@ class Uploader {
       return false;
     }
     if (options.protocol && !Object.keys(PROTOCOLS).some(key => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      PROTOCOLS[key] === options.protocol;
+            SRTlib.send("]},");
+
+      return PROTOCOLS[key] === options.protocol;
             SRTlib.send("]},");
 
     })) {
@@ -198,7 +202,7 @@ class Uploader {
         SRTlib.send("]},");
 
     return [options.endpoint, options.uploadUrl].every(url => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (url && !validator.isURL(url, validatorOpts)) {
         this._errRespMessage = 'invalid destination url';
@@ -223,7 +227,7 @@ class Uploader {
 
   }
   hasError() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.hasError", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -232,7 +236,7 @@ class Uploader {
 
   }
   get shortToken() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.shortToken", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -241,12 +245,14 @@ class Uploader {
 
   }
   onSocketReady(callback) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.onSocketReady", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     emitter().once(`connection:${this.token}`, () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      callback();
+            SRTlib.send("]},");
+
+      return callback();
             SRTlib.send("]},");
 
     });
@@ -255,10 +261,10 @@ class Uploader {
 
   }
   cleanUp() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.cleanUp", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     fs.unlink(this.path, err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (err) {
         logger.error(`cleanup failed for: ${this.path} err: ${err}`, 'uploader.cleanup.error');
@@ -274,7 +280,7 @@ class Uploader {
 
   }
   handleChunk(err, chunk) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.handleChunk", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (this.uploadStopped) {
             SRTlib.send("]},");
@@ -292,7 +298,7 @@ class Uploader {
     const protocol = this.options.protocol || PROTOCOLS.multipart;
     if (chunk === null) {
       this.writeStream.on('finish', () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         this.streamsEnded = true;
         switch (protocol) {
@@ -324,7 +330,7 @@ class Uploader {
       return this.endStreams();
     }
     this.writeStream.write(chunk, () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       logger.debug(`${this.bytesWritten} bytes`, 'uploader.download.progress', this.shortToken);
             SRTlib.send("]},");
@@ -337,12 +343,12 @@ class Uploader {
 
   }
   writeToStreams(chunk, cb) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.writeToStreams", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const done = [];
     const doneLength = this.duplexStream ? 2 : 1;
     const onDone = () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "onDone", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       done.push(true);
       if (done.length >= doneLength) {
@@ -359,7 +365,7 @@ class Uploader {
 
   }
   endStreams() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey23", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.endStreams", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.writeStream.end();
     if (this.duplexStream) {
@@ -369,7 +375,7 @@ class Uploader {
 
   }
   getResponse() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey24", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.getResponse", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this._errRespMessage) {
             SRTlib.send("]},");
@@ -393,7 +399,7 @@ class Uploader {
 
   }
   saveState(state) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey25", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.saveState", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!this.storage) {
             SRTlib.send("]},");
@@ -405,7 +411,7 @@ class Uploader {
 
   }
   emitIllusiveProgress(bytesUploaded = 0) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey26", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.emitIllusiveProgress", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (this._paused) {
             SRTlib.send("]},");
@@ -423,7 +429,7 @@ class Uploader {
 
   }
   emitProgress(bytesUploaded, bytesTotal) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey27", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.emitProgress", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     bytesTotal = bytesTotal || this.options.size;
     if (this.tus && this.tus.options.uploadLengthDeferred && this.streamsEnded) {
@@ -450,7 +456,7 @@ class Uploader {
 
   }
   emitSuccess(url, extraData = {}) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey28", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.emitSuccess", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const emitData = {
       action: 'success',
@@ -465,7 +471,7 @@ class Uploader {
 
   }
   emitError(err, extraData = {}) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey29", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.emitError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const serializedErr = serializeError(err);
     delete serializedErr.stack;
@@ -481,7 +487,7 @@ class Uploader {
 
   }
   uploadTus() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey30", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.uploadTus", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const file = fs.createReadStream(this.path);
     const uploader = this;
@@ -527,12 +533,12 @@ class Uploader {
 
   }
   uploadMultipart() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey33", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.uploadMultipart", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const file = fs.createReadStream(this.path);
     let bytesUploaded = 0;
     file.on('data', data => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey31", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       bytesUploaded += data.length;
       this.emitIllusiveProgress(bytesUploaded);
@@ -560,7 +566,7 @@ class Uploader {
       reqOptions.body = file;
     }
     request[httpMethod](reqOptions, (error, response, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey32", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (error) {
         logger.error(error, 'upload.multipart.error');
@@ -598,7 +604,7 @@ class Uploader {
 
   }
   uploadS3Multipart() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey34", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader.uploadS3Multipart", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const file = fs.createReadStream(this.path);
         SRTlib.send("]},");
@@ -608,7 +614,7 @@ class Uploader {
 
   }
   _uploadS3MultipartStream(stream) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey37", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Uploader._uploadS3MultipartStream", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!this.options.s3) {
       this.emitError(new Error('The S3 client is not configured on this companion instance.'));
@@ -627,14 +633,14 @@ class Uploader {
     });
     this.s3Upload = upload;
     upload.on('httpUploadProgress', ({loaded, total}) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey35", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this.emitProgress(loaded, total);
             SRTlib.send("]},");
 
     });
     upload.send((error, data) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey36", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       this.s3Upload = null;
       if (error) {

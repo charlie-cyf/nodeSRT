@@ -6,7 +6,7 @@ const uppyReduxStore = require('@uppy/store-redux');
 const Dashboard = require('@uppy/dashboard');
 const Tus = require('@uppy/tus');
 function counter(state = 0, action) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "counter", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   switch (action.type) {
     case {
@@ -37,7 +37,7 @@ if (window.__REDUX_DEVTOOLS_EXTENSION__) {
 const store = createStore(reducer, enhancer);
 const valueEl = document.querySelector('#value');
 function getCounter() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getCounter", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -46,7 +46,7 @@ function getCounter() {
 
 }
 function render() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   valueEl.innerHTML = getCounter().toString();
     SRTlib.send("]},");
@@ -89,7 +89,9 @@ document.querySelector('#incrementAsync').onclick = () => {
   setTimeout(() => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    store.dispatch({
+        SRTlib.send("]},");
+
+    return store.dispatch({
       type: 'INCREMENT'
     });
         SRTlib.send("]},");

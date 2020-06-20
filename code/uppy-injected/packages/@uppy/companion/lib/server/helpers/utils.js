@@ -99,10 +99,10 @@ exports.getURLMeta = (url, blockLocalIPs = false) => {
 
 };
 module.exports.getURLBuilder = options => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const buildURL = (path, isExternal, excludeHost) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "buildURL", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     let url = path;
     if (isExternal) {
@@ -125,7 +125,7 @@ module.exports.getURLBuilder = options => {
 
 };
 function createSecret(secret) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "createSecret", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const hash = crypto.createHash('sha256');
   hash.update(secret);
@@ -136,7 +136,7 @@ function createSecret(secret) {
 
 }
 function createIv() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "createIv", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -145,7 +145,7 @@ function createIv() {
 
 }
 function urlEncode(unencoded) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "urlEncode", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -154,7 +154,7 @@ function urlEncode(unencoded) {
 
 }
 function urlDecode(encoded) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "urlDecode", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   encoded = encoded.replace(/-/g, '+').replace(/_/g, '/').replace(/~/g, '=');
     SRTlib.send("]},");
@@ -164,7 +164,7 @@ function urlDecode(encoded) {
 
 }
 module.exports.encrypt = (input, secret) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const iv = createIv();
   const cipher = crypto.createCipheriv('aes256', createSecret(secret), iv);
@@ -177,7 +177,7 @@ module.exports.encrypt = (input, secret) => {
 
 };
 module.exports.decrypt = (encrypted, secret) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (encrypted.length < 32) {
     throw new Error('Invalid encrypted value. Maybe it was generated with an old Companion version?');

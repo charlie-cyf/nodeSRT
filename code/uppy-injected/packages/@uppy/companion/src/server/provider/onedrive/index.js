@@ -9,7 +9,7 @@ const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../error');
 class OneDrive extends Provider {
   constructor(options) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     super(options);
     this.authProvider = options.provider = OneDrive.authProvider;
@@ -18,7 +18,7 @@ class OneDrive extends Provider {
 
   }
   static get authProvider() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -27,14 +27,14 @@ class OneDrive extends Provider {
 
   }
   _userInfo({token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive._userInfo", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.client.get('me').auth(token).request(done);
         SRTlib.send("]},");
 
   }
   list({directory, query, token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive.list", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const path = directory ? `items/${directory}` : 'root';
     const rootPath = query.driveId ? `/drives/${query.driveId}` : '/drive';
@@ -45,7 +45,7 @@ class OneDrive extends Provider {
       qs.$skiptoken = query.cursor;
     }
     this.client.get(`${rootPath}/${path}/children`).qs(qs).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -57,7 +57,7 @@ class OneDrive extends Provider {
         this._userInfo({
           token
         }, (err, infoResp) => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
           if (err || infoResp.statusCode !== 200) {
             err = this._error(err, infoResp);
@@ -78,21 +78,23 @@ class OneDrive extends Provider {
 
   }
   download({id, token, query}, onData) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const rootPath = query.driveId ? `/drives/${query.driveId}` : '/drive';
         SRTlib.send("]},");
 
     return this.client.get(`${rootPath}/items/${id}/content`).auth(token).request().on('response', resp => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (resp.statusCode !== 200) {
         onData(this._error(null, resp));
       } else {
         resp.on('data', chunk => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-          onData(null, chunk);
+                    SRTlib.send("]},");
+
+          return onData(null, chunk);
                     SRTlib.send("]},");
 
         });
@@ -100,13 +102,15 @@ class OneDrive extends Provider {
             SRTlib.send("]},");
 
     }).on('end', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      onData(null, null);
+            SRTlib.send("]},");
+
+      return onData(null, null);
             SRTlib.send("]},");
 
     }).on('error', err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       logger.error(err, 'provider.onedrive.download.error');
       onData(err);
@@ -117,7 +121,7 @@ class OneDrive extends Provider {
 
   }
   thumbnail(_, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive.thumbnail", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.onedrive.thumbnail.error');
@@ -128,13 +132,13 @@ class OneDrive extends Provider {
 
   }
   size({id, query, token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const rootPath = query.driveId ? `/drives/${query.driveId}` : '/drive';
         SRTlib.send("]},");
 
     return this.client.get(`${rootPath}/items/${id}`).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -152,7 +156,7 @@ class OneDrive extends Provider {
 
   }
   logout(_, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive.logout", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     done(null, {
       revoked: false,
@@ -162,7 +166,7 @@ class OneDrive extends Provider {
 
   }
   adaptData(res, username) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive.adaptData", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const data = {
       username,
@@ -170,7 +174,7 @@ class OneDrive extends Provider {
     };
     const items = adapter.getItemSubList(res);
     items.forEach(item => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       data.items.push({
         isFolder: adapter.isFolder(item),
@@ -194,7 +198,7 @@ class OneDrive extends Provider {
 
   }
   _error(err, resp) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "OneDrive._error", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (resp) {
       const fallbackMsg = `request to ${this.authProvider} returned ${resp.statusCode}`;

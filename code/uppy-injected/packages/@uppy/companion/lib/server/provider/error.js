@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 class ProviderApiError extends Error {
   constructor(message, statusCode) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ProviderApiError.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     super(message);
     this.name = 'ProviderApiError';
@@ -13,7 +13,7 @@ class ProviderApiError extends Error {
 }
 class ProviderAuthError extends ProviderApiError {
   constructor() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ProviderAuthError.constructor", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     super('invalid access token detected by Provider', 401);
     this.name = 'AuthError';
@@ -23,7 +23,7 @@ class ProviderAuthError extends ProviderApiError {
   }
 }
 function errorToResponse(err) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "errorToResponse", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (err instanceof ProviderAuthError && err.isAuthError) {
         SRTlib.send("]},");

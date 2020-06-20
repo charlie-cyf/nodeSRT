@@ -10,14 +10,18 @@ jest.mock('../../src/server/helpers/oauth-state', () => {
     generateState: () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      'some-cool-nice-encrytpion';
+            SRTlib.send("]},");
+
+      return 'some-cool-nice-encrytpion';
             SRTlib.send("]},");
 
     },
     addToState: () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      'some-cool-nice-encrytpion';
+            SRTlib.send("]},");
+
+      return 'some-cool-nice-encrytpion';
             SRTlib.send("]},");
 
     },
@@ -74,7 +78,9 @@ describe('set i-am header', () => {
     return request(authServer).get('/dropbox/list/').set('uppy-auth-token', token).expect(200).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.header['i-am']).toBe('http://localhost:3020');
+            SRTlib.send("]},");
+
+      return expect(res.header['i-am']).toBe('http://localhost:3020');
             SRTlib.send("]},");
 
     });
@@ -95,7 +101,9 @@ describe('list provider files', () => {
     return request(authServer).get('/dropbox/list/').set('uppy-auth-token', token).expect(200).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.body.username).toBe('foo@bar.com');
+            SRTlib.send("]},");
+
+      return expect(res.body.username).toBe('foo@bar.com');
             SRTlib.send("]},");
 
     });
@@ -110,7 +118,9 @@ describe('list provider files', () => {
     return request(authServer).get('/drive/list/').set('uppy-auth-token', token).expect(200).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.body.username).toBe('ife@bala.com');
+            SRTlib.send("]},");
+
+      return expect(res.body.username).toBe('ife@bala.com');
             SRTlib.send("]},");
 
     });
@@ -134,7 +144,9 @@ describe('validate upload data', () => {
     }).expect(400).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.body.message).toBe('unsupported protocol specified');
+            SRTlib.send("]},");
+
+      return expect(res.body.message).toBe('unsupported protocol specified');
             SRTlib.send("]},");
 
     });
@@ -153,7 +165,9 @@ describe('validate upload data', () => {
     }).expect(400).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.body.message).toBe('fieldname must be a string');
+            SRTlib.send("]},");
+
+      return expect(res.body.message).toBe('fieldname must be a string');
             SRTlib.send("]},");
 
     });
@@ -172,7 +186,9 @@ describe('validate upload data', () => {
     }).expect(400).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.body.message).toBe('metadata must be an object');
+            SRTlib.send("]},");
+
+      return expect(res.body.message).toBe('metadata must be an object');
             SRTlib.send("]},");
 
     });
@@ -191,7 +207,9 @@ describe('validate upload data', () => {
     }).expect(400).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.body.message).toBe('headers must be an object');
+            SRTlib.send("]},");
+
+      return expect(res.body.message).toBe('headers must be an object');
             SRTlib.send("]},");
 
     });
@@ -210,7 +228,9 @@ describe('validate upload data', () => {
     }).expect(400).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.body.message).toBe('unsupported HTTP METHOD specified');
+            SRTlib.send("]},");
+
+      return expect(res.body.message).toBe('unsupported HTTP METHOD specified');
             SRTlib.send("]},");
 
     });
@@ -274,7 +294,9 @@ describe('download provdier file', () => {
     }).expect(200).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey26", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.body.token).toBeTruthy();
+            SRTlib.send("]},");
+
+      return expect(res.body.token).toBeTruthy();
             SRTlib.send("]},");
 
     });
@@ -393,7 +415,9 @@ describe('test authentication', () => {
     return request(authServer).get('/drive/logout/').set('uppy-auth-token', token).expect(200).then(res => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey37", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      expect(res.body.ok).toBe(true);
+            SRTlib.send("]},");
+
+      return expect(res.body.ok).toBe(true);
             SRTlib.send("]},");
 
     });

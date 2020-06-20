@@ -3,12 +3,12 @@ const path = require('path');
 const {spawn} = require('child_process');
 const {promisify} = require('util');
 function selectFakeFile(uppyID, name, type, b64) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "selectFakeFile", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
 
   if (!b64) b64 = 'PHN2ZyB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNTAiLz4KPC9zdmc+Cg==';
   if (!type) type = 'image/svg+xml';
   function base64toBlob(base64Data, contentType) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "base64toBlob", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     contentType = contentType || '';
     var sliceSize = 1024;
@@ -44,7 +44,7 @@ function selectFakeFile(uppyID, name, type, b64) {
 
 }
 function ensureInputVisible(selector) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "ensureInputVisible", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var input = document.querySelector(selector);
   input.style = 'width: auto; height: auto; opacity: 1; z-index: 199';
@@ -55,7 +55,7 @@ function ensureInputVisible(selector) {
 
 }
 function supportsChooseFile() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "supportsChooseFile", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   if (process.env.CI) {
         SRTlib.send("]},");
@@ -69,7 +69,7 @@ function supportsChooseFile() {
 
 }
 function prematureExit() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "prematureExit", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   throw new Error('Companion exited early');
     SRTlib.send("]},");
@@ -77,7 +77,7 @@ function prematureExit() {
 }
 class CompanionService {
   onPrepare() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "CompanionService.onPrepare", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.companion = spawn('node', [path.join(__dirname, '../../packages/@uppy/companion/lib/standalone/start-server')], {
       stdio: 'pipe',
@@ -119,18 +119,20 @@ class CompanionService {
 
   }
   onComplete() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "CompanionService.onComplete", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
     return new Promise(resolve => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this.companion.removeListener('exit', prematureExit);
       this.companion.on('exit', () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        resolve();
+                SRTlib.send("]},");
+
+        return resolve();
                 SRTlib.send("]},");
 
       });
@@ -145,7 +147,7 @@ class CompanionService {
 const express = require('express');
 class StaticServerService {
   constructor({folders, staticServerPort = 4567}) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "StaticServerService.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.folders = folders;
     this.port = staticServerPort;
@@ -153,7 +155,7 @@ class StaticServerService {
 
   }
   async onPrepare() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "StaticServerService.onPrepare", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (!this.folders) {
             SRTlib.send("]},");
@@ -170,7 +172,7 @@ class StaticServerService {
 
   }
   async onComplete() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "StaticServerService.onComplete", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this.server) {
       const close = promisify(this.server.close.bind(this.server));
@@ -190,7 +192,7 @@ const httpProxy = require('http-proxy');
 const brake = require('brake');
 class TusService {
   constructor({tusServerPort = 1080}) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TusService.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.port = tusServerPort;
     this.path = path.join(os.tmpdir(), `uppy-e2e-tus-node-server-${randomBytes(6).toString('hex')}`);
@@ -198,7 +200,7 @@ class TusService {
 
   }
   async onPrepare() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TusService.onPrepare", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.tusServer = new tus.Server();
     this.tusServer.datastore = new tus.FileStore({
@@ -207,7 +209,7 @@ class TusService {
     });
     const proxy = httpProxy.createProxyServer();
     this.slowServer = http.createServer((req, res) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       proxy.web(req, res, {
         target: 'http://localhost:1080',
@@ -216,7 +218,7 @@ class TusService {
           rate: 200 * 1024 / 50
         }))
       }, err => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
                 SRTlib.send("]},");
 
@@ -235,7 +237,7 @@ class TusService {
 
   }
   async onComplete() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TusService.onComplete", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this.slowServer) {
       const close = promisify(this.slowServer.close.bind(this.slowServer));

@@ -10,10 +10,10 @@ const {getURLBuilder} = require('../helpers/utils');
 const logger = require('../logger');
 const Provider = require('./Provider');
 module.exports.getProviderMiddleware = providers => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const middleware = (req, res, next, providerName) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "middleware", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
 
     if (providers[providerName] && validOptions(req.companion.options)) {
       req.companion.provider = new providers[providerName]({
@@ -34,7 +34,7 @@ module.exports.getProviderMiddleware = providers => {
 
 };
 module.exports.getDefaultProviders = companionOptions => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const {providerOptions} = companionOptions || ({
     providerOptions: null
@@ -46,9 +46,11 @@ module.exports.getDefaultProviders = companionOptions => {
     onedrive
   };
   const usesGraphAPI = () => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "usesGraphAPI", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    (/^\d+$/).test(providerOptions.instagram.key);
+        SRTlib.send("]},");
+
+    return (/^\d+$/).test(providerOptions.instagram.key);
         SRTlib.send("]},");
 
   };
@@ -64,10 +66,10 @@ module.exports.getDefaultProviders = companionOptions => {
 
 };
 module.exports.addCustomProviders = (customProviders, providers, grantConfig) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   Object.keys(customProviders).forEach(providerName => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     providers[providerName] = customProviders[providerName].module;
     grantConfig[providerName] = customProviders[providerName].config;
@@ -78,7 +80,7 @@ module.exports.addCustomProviders = (customProviders, providers, grantConfig) =>
 
 };
 module.exports.addProviderOptions = (companionOptions, grantConfig) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const {server, providerOptions} = companionOptions;
   if (!validOptions({
@@ -96,14 +98,16 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
   };
   const {oauthDomain} = server;
   const keys = Object.keys(providerOptions).filter(key => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    key !== 'server';
+        SRTlib.send("]},");
+
+    return key !== 'server';
         SRTlib.send("]},");
 
   });
   keys.forEach(authProvider => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (grantConfig[authProvider]) {
       grantConfig[authProvider].key = providerOptions[authProvider].key;
@@ -132,7 +136,7 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
 
 };
 const authNameToProvider = (authProvider, options) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "authNameToProvider", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const providers = exports.getDefaultProviders(options);
   const providerNames = Object.keys(providers);
@@ -151,7 +155,7 @@ const authNameToProvider = (authProvider, options) => {
 
 };
 const validOptions = options => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "validOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 

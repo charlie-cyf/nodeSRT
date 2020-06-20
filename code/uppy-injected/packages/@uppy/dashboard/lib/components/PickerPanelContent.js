@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 var _require = require('preact'), h = _require.h;
 var ignoreEvent = require('../utils/ignoreEvent.js');
 function PickerPanelContent(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "PickerPanelContent", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 

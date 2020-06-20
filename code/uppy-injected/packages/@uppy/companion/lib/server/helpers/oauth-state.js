@@ -33,7 +33,7 @@ module.exports.getFromState = (state, name, secret) => {
 
 };
 const setState = (state, secret) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "setState", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const encodedState = Buffer.from(JSON.stringify(state)).toString('base64');
     SRTlib.send("]},");
@@ -43,7 +43,7 @@ const setState = (state, secret) => {
 
 };
 const getState = (state, secret) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getState", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const encodedState = decrypt(state, secret);
     SRTlib.send("]},");

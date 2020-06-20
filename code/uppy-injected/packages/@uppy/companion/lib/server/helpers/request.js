@@ -5,7 +5,7 @@ const dns = require('dns');
 const ipAddress = require('ip-address');
 const FORBIDDEN_IP_ADDRESS = 'Forbidden IP address';
 function isIPAddress(address) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isIPAddress", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const addressAsV6 = new ipAddress.Address6(address);
   const addressAsV4 = new ipAddress.Address4(address);
@@ -16,7 +16,7 @@ function isIPAddress(address) {
 
 }
 function isPrivateIP(ipAddress) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isPrivateIP", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   let isPrivate = false;
   const ipPrefix = [];
@@ -75,7 +75,7 @@ module.exports.getProtectedHttpAgent = (protocol, blockPrivateIPs) => {
 
 };
 function dnsLookup(hostname, options, callback) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "dnsLookup", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   dns.lookup(hostname, options, (err, addresses, maybeFamily) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
@@ -106,7 +106,7 @@ function dnsLookup(hostname, options, callback) {
 }
 class HttpAgent extends http.Agent {
   createConnection(options, callback) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "HttpAgent.createConnection", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     options.lookup = dnsLookup;
     if (isIPAddress(options.host) && isPrivateIP(options.host)) {
@@ -124,7 +124,7 @@ class HttpAgent extends http.Agent {
 }
 class HttpsAgent extends https.Agent {
   createConnection(options, callback) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "HttpsAgent.createConnection", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     options.lookup = dnsLookup;
     if (isIPAddress(options.host) && isPrivateIP(options.host)) {

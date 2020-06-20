@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 const has = require('./hasProperty');
 module.exports = class Translator {
   constructor(locales) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Translator.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.locale = {
       strings: {},
@@ -25,7 +25,9 @@ module.exports = class Translator {
       locales.forEach(locale => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        this._apply(locale);
+                SRTlib.send("]},");
+
+        return this._apply(locale);
                 SRTlib.send("]},");
 
       });
@@ -36,7 +38,7 @@ module.exports = class Translator {
 
   }
   _apply(locale) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Translator._apply", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!locale || !locale.strings) {
             SRTlib.send("]},");
@@ -52,7 +54,7 @@ module.exports = class Translator {
 
   }
   interpolate(phrase, options) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Translator.interpolate", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const {split, replace} = String.prototype;
     const dollarRegex = /\$/g;
@@ -71,7 +73,7 @@ module.exports = class Translator {
 
     return interpolated;
     function insertReplacement(source, rx, replacement) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "insertReplacement", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       const newParts = [];
       source.forEach(chunk => {
@@ -107,7 +109,7 @@ module.exports = class Translator {
 
   }
   translate(key, options) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Translator.translate", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -116,7 +118,7 @@ module.exports = class Translator {
 
   }
   translateArray(key, options) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Translator.translateArray", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const string = this.locale.strings[key];
     const hasPluralForms = typeof string === 'object';

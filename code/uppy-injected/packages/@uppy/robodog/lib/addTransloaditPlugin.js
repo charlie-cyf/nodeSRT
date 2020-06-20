@@ -4,7 +4,7 @@ var has = require('@uppy/utils/lib/hasProperty');
 var TransloaditResults = require('./TransloaditResultsPlugin');
 var transloaditOptionNames = ['service', 'waitForEncoding', 'waitForMetadata', 'alwaysRunAssembly', 'importFromUploadURLs', 'signature', 'params', 'fields', 'getAssemblyOptions'];
 function addTransloaditPlugin(uppy, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "addTransloaditPlugin", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   var transloaditOptions = {};
   transloaditOptionNames.forEach(function (name) {

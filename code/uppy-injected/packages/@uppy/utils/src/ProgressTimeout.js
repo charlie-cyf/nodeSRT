@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 class ProgressTimeout {
   constructor(timeout, timeoutHandler) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ProgressTimeout.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this._timeout = timeout;
     this._onTimedOut = timeoutHandler;
@@ -12,7 +12,7 @@ class ProgressTimeout {
 
   }
   progress() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ProgressTimeout.progress", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this._isDone) {
             SRTlib.send("]},");
@@ -27,7 +27,7 @@ class ProgressTimeout {
 
   }
   done() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ProgressTimeout.done", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this._aliveTimer) {
       clearTimeout(this._aliveTimer);

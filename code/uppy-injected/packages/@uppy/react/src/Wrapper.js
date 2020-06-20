@@ -5,7 +5,7 @@ const uppyPropType = require('./propTypes').uppy;
 const h = React.createElement;
 class UppyWrapper extends React.Component {
   constructor(props) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     super(props);
     this.refContainer = this.refContainer.bind(this);
@@ -13,14 +13,14 @@ class UppyWrapper extends React.Component {
 
   }
   componentDidMount() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.installPlugin();
         SRTlib.send("]},");
 
   }
   componentDidUpdate(prevProps) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.componentDidUpdate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
@@ -30,14 +30,14 @@ class UppyWrapper extends React.Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uninstallPlugin();
         SRTlib.send("]},");
 
   }
   installPlugin() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.installPlugin", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const plugin = this.props.uppy.getPlugin(this.props.plugin);
     plugin.mount(this.container, plugin);
@@ -45,7 +45,7 @@ class UppyWrapper extends React.Component {
 
   }
   uninstallPlugin(props = this.props) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.uninstallPlugin", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const plugin = props.uppy.getPlugin(this.props.plugin);
     plugin.unmount();
@@ -53,14 +53,14 @@ class UppyWrapper extends React.Component {
 
   }
   refContainer(container) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.refContainer", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.container = container;
         SRTlib.send("]},");
 
   }
   render() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 

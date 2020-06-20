@@ -3,7 +3,7 @@ const toArray = require('@uppy/utils/lib/toArray');
 const createUppy = require('./createUppy');
 const addTransloaditPlugin = require('./addTransloaditPlugin');
 function upload(files, opts = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "upload", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (!Array.isArray(files) && typeof files.length === 'number') {
     files = toArray(files);

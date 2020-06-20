@@ -3,7 +3,7 @@ const Uploader = require('../Uploader');
 const logger = require('../logger');
 const {errorToResponse} = require('../provider/error');
 function get(req, res, next) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "get", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   const providerName = req.params.providerName;
   const id = req.params.id;

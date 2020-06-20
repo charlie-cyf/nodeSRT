@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 const Emitter = require('component-emitter');
 class TransloaditAssemblyWatcher extends Emitter {
   constructor(uppy, assemblyIDs) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     super();
     this._uppy = uppy;
@@ -25,7 +25,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _watching(id) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._watching", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -34,7 +34,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _onAssemblyComplete(assembly) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._onAssemblyComplete", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!this._watching(assembly.assembly_id)) {
             SRTlib.send("]},");
@@ -48,7 +48,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _onAssemblyCancel(assembly) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._onAssemblyCancel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!this._watching(assembly.assembly_id)) {
             SRTlib.send("]},");
@@ -60,7 +60,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _onAssemblyError(assembly, error) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._onAssemblyError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (!this._watching(assembly.assembly_id)) {
             SRTlib.send("]},");
@@ -75,7 +75,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _onImportError(assembly, fileID, error) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._onImportError", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     if (!this._watching(assembly.assembly_id)) {
             SRTlib.send("]},");
@@ -87,7 +87,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _checkAllComplete() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._checkAllComplete", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this._remaining -= 1;
     if (this._remaining === 0) {
@@ -98,7 +98,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _removeListeners() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._removeListeners", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this._uppy.off('transloadit:complete', this._onAssemblyComplete);
     this._uppy.off('transloadit:assembly-cancel', this._onAssemblyCancel);
@@ -108,7 +108,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _addListeners() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._addListeners", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this._uppy.on('transloadit:complete', this._onAssemblyComplete);
     this._uppy.on('transloadit:assembly-cancel', this._onAssemblyCancel);

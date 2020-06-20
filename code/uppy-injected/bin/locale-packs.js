@@ -19,7 +19,7 @@ if (mode === 'build') {
   throw new Error("First argument must be either 'build' or 'test'");
 }
 function getSources(pluginName) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getSources", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const dependencies = {
     core: ['provider-views']
@@ -50,7 +50,7 @@ function getSources(pluginName) {
 
 }
 function buildPluginsList() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "buildPluginsList", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const packagesGlobPath = path.join(__dirname, '..', 'packages', '@uppy', '*', 'package.json');
   const files = glob.sync(packagesGlobPath);
@@ -162,7 +162,7 @@ function buildPluginsList() {
 
 }
 function addLocaleToPack(plugin, pluginName) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "addLocaleToPack", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const localeStrings = plugin.defaultLocale.strings;
   for (const key in localeStrings) {
@@ -180,7 +180,7 @@ function addLocaleToPack(plugin, pluginName) {
 
 }
 function checkForUnused(fileContents, pluginName, localePack) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "checkForUnused", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   const buff = fileContents.join('\n');
   for (const key in localePack) {
@@ -193,7 +193,7 @@ function checkForUnused(fileContents, pluginName, localePack) {
 
 }
 function sortObjectAlphabetically(obj, sortFunc) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "sortObjectAlphabetically", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -211,12 +211,14 @@ function sortObjectAlphabetically(obj, sortFunc) {
 
 }
 function createTypeScriptLocale(plugin, pluginName) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "createTypeScriptLocale", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const allowedStringTypes = Object.keys(plugin.defaultLocale.strings).map(key => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    `  | '${key}'`;
+        SRTlib.send("]},");
+
+    return `  | '${key}'`;
         SRTlib.send("]},");
 
   }).join('\n');
@@ -228,7 +230,7 @@ function createTypeScriptLocale(plugin, pluginName) {
 
 }
 function build() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "build", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const {plugins, sources} = buildPluginsList();
   for (const pluginName in plugins) {
@@ -256,7 +258,7 @@ function build() {
 
 }
 function test() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "test", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const leadingLocaleName = 'en_US';
   const followerLocales = {};
@@ -286,14 +288,18 @@ function test() {
     const missing = leadingLocale.filter(key => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      !followerLocale.includes(key);
+            SRTlib.send("]},");
+
+      return !followerLocale.includes(key);
             SRTlib.send("]},");
 
     });
     const excess = followerLocale.filter(key => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      !leadingLocale.includes(key);
+            SRTlib.send("]},");
+
+      return !leadingLocale.includes(key);
             SRTlib.send("]},");
 
     });

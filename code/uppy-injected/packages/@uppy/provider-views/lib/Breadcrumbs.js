@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 var _require = require('preact'), h = _require.h;
 var Breadcrumb = function Breadcrumb(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "Breadcrumb.Breadcrumb", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "Breadcrumb", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 

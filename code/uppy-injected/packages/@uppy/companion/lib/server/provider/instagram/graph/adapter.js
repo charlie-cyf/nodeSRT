@@ -6,14 +6,16 @@ const MEDIA_TYPES = Object.freeze({
   image: 'IMAGE'
 });
 const isVideo = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isVideo", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-  item.media_type === MEDIA_TYPES.video;
+    SRTlib.send("]},");
+
+  return item.media_type === MEDIA_TYPES.video;
     SRTlib.send("]},");
 
 };
 exports.isFolder = _ => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -22,7 +24,7 @@ exports.isFolder = _ => {
 
 };
 exports.getItemIcon = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -31,11 +33,11 @@ exports.getItemIcon = item => {
 
 };
 exports.getItemSubList = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const newItems = [];
   item.data.forEach(subItem => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (isVideo(subItem)) {
             SRTlib.send("]},");
@@ -44,7 +46,7 @@ exports.getItemSubList = item => {
     }
     if (subItem.media_type === MEDIA_TYPES.carousel) {
       subItem.children.data.forEach(i => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         if (isVideo(i)) {
                     SRTlib.send("]},");
@@ -68,7 +70,7 @@ exports.getItemSubList = item => {
 
 };
 exports.getItemName = (item, index) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const ext = isVideo(item) ? 'mp4' : 'jpeg';
     SRTlib.send("]},");
@@ -78,7 +80,7 @@ exports.getItemName = (item, index) => {
 
 };
 exports.getMimeType = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -87,35 +89,43 @@ exports.getMimeType = item => {
 
 };
 exports.getItemId = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-  item.id;
+    SRTlib.send("]},");
+
+  return item.id;
     SRTlib.send("]},");
 
 };
 exports.getItemRequestPath = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-  item.id;
+    SRTlib.send("]},");
+
+  return item.id;
     SRTlib.send("]},");
 
 };
 exports.getItemModifiedDate = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-  item.timestamp;
+    SRTlib.send("]},");
+
+  return item.timestamp;
     SRTlib.send("]},");
 
 };
 exports.getItemThumbnailUrl = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-  exports.getItemIcon(item);
+    SRTlib.send("]},");
+
+  return exports.getItemIcon(item);
     SRTlib.send("]},");
 
 };
 exports.getNextPagePath = (data, currentQuery, currentPath) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   if (!data.paging || !data.paging.cursors) {
         SRTlib.send("]},");

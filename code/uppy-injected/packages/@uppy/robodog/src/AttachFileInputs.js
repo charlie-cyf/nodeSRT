@@ -4,7 +4,7 @@ const toArray = require('@uppy/utils/lib/toArray');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');
 class AttachFileInputs extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     super(uppy, opts);
     this.id = this.opts.id || 'AttachFileInputs';
@@ -15,18 +15,18 @@ class AttachFileInputs extends Plugin {
 
   }
   handleChange(event) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.handleChange", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.addFiles(event.target);
         SRTlib.send("]},");
 
   }
   addFiles(input) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.addFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const files = toArray(input.files);
     files.forEach(file => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       try {
         this.uppy.addFile({
@@ -47,7 +47,7 @@ class AttachFileInputs extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.el = findDOMElement(this.opts.target);
     if (!this.el) {
@@ -56,7 +56,7 @@ class AttachFileInputs extends Plugin {
     const {restrictions} = this.uppy.opts;
     this.inputs = this.el.querySelectorAll('input[type="file"]');
     this.inputs.forEach(input => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       input.addEventListener('change', this.handleChange);
       if (!input.hasAttribute('multiple')) {
@@ -77,10 +77,10 @@ class AttachFileInputs extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.inputs.forEach(input => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       input.removeEventListener('change', this.handleChange);
             SRTlib.send("]},");

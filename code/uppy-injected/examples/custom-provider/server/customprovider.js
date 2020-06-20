@@ -4,14 +4,14 @@ const path = require('path');
 const DUMM_FILE = path.join(__dirname, 'fixtures/image.jpg');
 class MyCustomProvider {
   constructor(options) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.authProvider = MyCustomProvider.authProvider;
         SRTlib.send("]},");
 
   }
   static get authProvider() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -20,7 +20,7 @@ class MyCustomProvider {
 
   }
   list(options, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.list", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const response = {
       body: {
@@ -40,12 +40,12 @@ class MyCustomProvider {
 
   }
   download({id, token}, onData) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
     return fs.readFile(DUMM_FILE, (err, data) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       if (err) console.error(err);
       onData(data);
@@ -56,7 +56,7 @@ class MyCustomProvider {
 
   }
   size({id, token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 

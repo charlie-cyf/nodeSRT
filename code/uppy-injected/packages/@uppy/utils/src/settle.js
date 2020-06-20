@@ -5,14 +5,14 @@ module.exports = function settle(promises) {
   const resolutions = [];
   const rejections = [];
   function resolved(value) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "resolved", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     resolutions.push(value);
         SRTlib.send("]},");
 
   }
   function rejected(error) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "rejected", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     rejections.push(error);
         SRTlib.send("]},");
@@ -21,7 +21,9 @@ module.exports = function settle(promises) {
   const wait = Promise.all(promises.map(promise => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    promise.then(resolved, rejected);
+        SRTlib.send("]},");
+
+    return promise.then(resolved, rejected);
         SRTlib.send("]},");
 
   }));

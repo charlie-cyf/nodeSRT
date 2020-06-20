@@ -9,7 +9,7 @@ var jumpToCode = (function init() {
   var missingCoverageElements = document.querySelectorAll(selector);
   var currentIndex;
   function toggleClass(index) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "toggleClass", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     missingCoverageElements.item(currentIndex).classList.remove('highlighted');
     missingCoverageElements.item(index).classList.add('highlighted');
@@ -17,7 +17,7 @@ var jumpToCode = (function init() {
 
   }
   function makeCurrent(index) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "makeCurrent", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     toggleClass(index);
     currentIndex = index;
@@ -30,7 +30,7 @@ var jumpToCode = (function init() {
 
   }
   function goToPrevious() {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "goToPrevious", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     var nextIndex = 0;
     if (typeof currentIndex !== 'number' || currentIndex === 0) {
@@ -43,7 +43,7 @@ var jumpToCode = (function init() {
 
   }
   function goToNext() {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "goToNext", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     var nextIndex = 0;
     if (typeof currentIndex === 'number' && currentIndex < missingCoverageElements.length - 1) {

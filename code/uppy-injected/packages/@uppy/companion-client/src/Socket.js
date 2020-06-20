@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 const ee = require('namespace-emitter');
 module.exports = class UppySocket {
   constructor(opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppySocket.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.opts = opts;
     this._queued = [];
@@ -21,7 +21,7 @@ module.exports = class UppySocket {
 
   }
   open() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppySocket.open", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.socket = new WebSocket(this.opts.target);
     this.socket.onopen = e => {
@@ -48,7 +48,7 @@ module.exports = class UppySocket {
 
   }
   close() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppySocket.close", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this.socket) {
       this.socket.close();
@@ -57,7 +57,7 @@ module.exports = class UppySocket {
 
   }
   send(action, payload) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppySocket.send", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (!this.isOpen) {
       this._queued.push({
@@ -76,28 +76,28 @@ module.exports = class UppySocket {
 
   }
   on(action, handler) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppySocket.on", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.emitter.on(action, handler);
         SRTlib.send("]},");
 
   }
   emit(action, payload) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppySocket.emit", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.emitter.emit(action, payload);
         SRTlib.send("]},");
 
   }
   once(action, handler) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppySocket.once", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.emitter.once(action, handler);
         SRTlib.send("]},");
 
   }
   _handleMessage(e) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "UppySocket._handleMessage", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     try {
       const message = JSON.parse(e.data);

@@ -6,7 +6,7 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
     SRTlib.send("]},");
 
   return new Promise(resolve => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const textArea = document.createElement('textarea');
     textArea.setAttribute('style', {
@@ -25,7 +25,7 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
     document.body.appendChild(textArea);
     textArea.select();
     const magicCopyFailed = () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "magicCopyFailed", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       document.body.removeChild(textArea);
       window.prompt(fallbackString, textToCopy);

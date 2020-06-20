@@ -12,7 +12,7 @@ const DRIVE_FILES_FIELDS = `kind,nextPageToken,incompleteSearch,files(${DRIVE_FI
 const SHARED_DRIVE_FIELDS = '*';
 class Drive extends Provider {
   constructor(options) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     super(options);
     this.authProvider = options.provider = Drive.authProvider;
@@ -23,7 +23,7 @@ class Drive extends Provider {
 
   }
   static get authProvider() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -32,7 +32,7 @@ class Drive extends Provider {
 
   }
   list(options, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive.list", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const directory = options.directory || 'root';
     const query = options.query || ({});
@@ -40,12 +40,12 @@ class Drive extends Provider {
     const shouldListSharedDrives = directory === 'root' && !query.cursor;
     if (shouldListSharedDrives) {
       sharedDrivesPromise = new Promise(resolve => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         this.client.query().get('drives').qs({
           fields: SHARED_DRIVE_FIELDS
         }).auth(options.token).request((err, resp) => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
           if (err) {
             logger.error(err, 'provider.drive.sharedDrive.error');
@@ -69,10 +69,10 @@ class Drive extends Provider {
       supportsAllDrives: true
     };
     const filesPromise = new Promise((resolve, reject) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       this.client.query().get('files').qs(where).auth(options.token).request((err, resp) => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         if (err || resp.statusCode !== 200) {
           reject(this._error(err, resp));
@@ -88,14 +88,14 @@ class Drive extends Provider {
 
     });
     Promise.all([sharedDrivesPromise, filesPromise]).then(([sharedDrives, filesResponse]) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const returnData = this.adaptData(filesResponse.body, sharedDrives && sharedDrives.body, directory, query);
       done(null, returnData);
             SRTlib.send("]},");
 
     }, reqErr => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       logger.error(reqErr, 'provider.drive.list.error');
       done(reqErr);
@@ -106,7 +106,7 @@ class Drive extends Provider {
 
   }
   stats({id, token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive.stats", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -118,7 +118,7 @@ class Drive extends Provider {
 
   }
   _exportGsuiteFile(id, token, mimeType) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive._exportGsuiteFile", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     logger.info(`calling google file export for ${id} to ${mimeType}`, 'provider.drive.export');
         SRTlib.send("]},");
@@ -131,22 +131,22 @@ class Drive extends Provider {
 
   }
   _waitForFailedResponse(resp) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive._waitForFailedResponse", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       let data = '';
       resp.on('data', chunk => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         data += chunk;
                 SRTlib.send("]},");
 
       }).on('end', () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         try {
           resolve(JSON.parse(data.toString()));
@@ -163,13 +163,13 @@ class Drive extends Provider {
 
   }
   download({id, token}, onData) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey23", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.stats({
       id,
       token
     }, (err, _, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err) {
         logger.error(err, 'provider.drive.download.stats.error');
@@ -188,28 +188,32 @@ class Drive extends Provider {
         }).auth(token).request();
       }
       requestStream.on('response', resp => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         if (resp.statusCode !== 200) {
           this._waitForFailedResponse(resp).then(jsonResp => {
-                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
             resp.body = jsonResp;
             onData(this._error(null, resp));
                         SRTlib.send("]},");
 
           }).catch(err => {
-                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            onData(this._error(err, resp));
+                        SRTlib.send("]},");
+
+            return onData(this._error(err, resp));
                         SRTlib.send("]},");
 
           });
         } else {
           resp.on('data', chunk => {
-                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            onData(null, chunk);
+                        SRTlib.send("]},");
+
+            return onData(null, chunk);
                         SRTlib.send("]},");
 
           });
@@ -217,13 +221,15 @@ class Drive extends Provider {
                 SRTlib.send("]},");
 
       }).on('end', () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        onData(null, null);
+                SRTlib.send("]},");
+
+        return onData(null, null);
                 SRTlib.send("]},");
 
       }).on('error', err => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         logger.error(err, 'provider.drive.download.error');
         onData(err);
@@ -237,7 +243,7 @@ class Drive extends Provider {
 
   }
   thumbnail(_, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey24", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive.thumbnail", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.drive.thumbnail.error');
@@ -248,7 +254,7 @@ class Drive extends Provider {
 
   }
   size({id, token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey26", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -256,7 +262,7 @@ class Drive extends Provider {
       id,
       token
     }, (err, resp, body) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey25", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -278,14 +284,14 @@ class Drive extends Provider {
 
   }
   logout({token}, done) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey28", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive.logout", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 
     return this.client.get('https://accounts.google.com/o/oauth2/revoke').qs({
       token
     }).request((err, resp) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey27", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       if (err || resp.statusCode !== 200) {
         logger.error(err, 'provider.drive.logout.error');
@@ -304,12 +310,14 @@ class Drive extends Provider {
 
   }
   adaptData(res, sharedDrivesResp, directory, query) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey30", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive.adaptData", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
 
     const adaptItem = item => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey29", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "adaptItem", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      ({
+            SRTlib.send("]},");
+
+      return {
         isFolder: adapter.isFolder(item),
         icon: adapter.getItemIcon(item),
         name: adapter.getItemName(item),
@@ -323,7 +331,7 @@ class Drive extends Provider {
           isTeamDrive: adapter.isSharedDrive(item),
           isSharedDrive: adapter.isSharedDrive(item)
         }
-      });
+      };
             SRTlib.send("]},");
 
     };
@@ -341,7 +349,7 @@ class Drive extends Provider {
 
   }
   _error(err, resp) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey31", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Drive._error", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (resp) {
       const fallbackMessage = `request to ${this.authProvider} returned ${resp.statusCode}`;

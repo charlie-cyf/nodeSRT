@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 module.exports = class Client {
   constructor(opts = {}) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Client.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.opts = opts;
     this._reportError = this._reportError.bind(this);
@@ -12,7 +12,7 @@ module.exports = class Client {
 
   }
   createAssembly({templateId, params, fields, signature, expectedFiles}) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Client.createAssembly", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const data = new FormData();
     data.append('params', typeof params === 'string' ? params : JSON.stringify(params));
@@ -37,7 +37,9 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      response.json();
+            SRTlib.send("]},");
+
+      return response.json();
             SRTlib.send("]},");
 
     }).then(assembly => {
@@ -60,7 +62,9 @@ module.exports = class Client {
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      this._reportError(err, {
+            SRTlib.send("]},");
+
+      return this._reportError(err, {
         url,
         type: 'API_ERROR'
       });
@@ -71,7 +75,7 @@ module.exports = class Client {
 
   }
   reserveFile(assembly, file) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Client.reserveFile", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const size = encodeURIComponent(file.size);
     const url = `${assembly.assembly_ssl_url}/reserve_file?size=${size}`;
@@ -83,13 +87,17 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      response.json();
+            SRTlib.send("]},");
+
+      return response.json();
             SRTlib.send("]},");
 
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      this._reportError(err, {
+            SRTlib.send("]},");
+
+      return this._reportError(err, {
         assembly,
         file,
         url,
@@ -102,7 +110,7 @@ module.exports = class Client {
 
   }
   addFile(assembly, file) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Client.addFile", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (!file.uploadURL) {
             SRTlib.send("]},");
@@ -123,13 +131,17 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      response.json();
+            SRTlib.send("]},");
+
+      return response.json();
             SRTlib.send("]},");
 
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      this._reportError(err, {
+            SRTlib.send("]},");
+
+      return this._reportError(err, {
         assembly,
         file,
         url,
@@ -142,7 +154,7 @@ module.exports = class Client {
 
   }
   cancelAssembly(assembly) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Client.cancelAssembly", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const url = assembly.assembly_ssl_url;
         SRTlib.send("]},");
@@ -153,13 +165,17 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      response.json();
+            SRTlib.send("]},");
+
+      return response.json();
             SRTlib.send("]},");
 
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      this._reportError(err, {
+            SRTlib.send("]},");
+
+      return this._reportError(err, {
         url,
         type: 'API_ERROR'
       });
@@ -170,7 +186,7 @@ module.exports = class Client {
 
   }
   getAssemblyStatus(url) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Client.getAssemblyStatus", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -179,13 +195,17 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      response.json();
+            SRTlib.send("]},");
+
+      return response.json();
             SRTlib.send("]},");
 
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      this._reportError(err, {
+            SRTlib.send("]},");
+
+      return this._reportError(err, {
         url,
         type: 'STATUS_ERROR'
       });
@@ -196,7 +216,7 @@ module.exports = class Client {
 
   }
   submitError(err, {endpoint, instance, assembly}) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Client.submitError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const message = err.details ? `${err.message} (${err.details})` : err.message;
         SRTlib.send("]},");
@@ -214,7 +234,9 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      response.json();
+            SRTlib.send("]},");
+
+      return response.json();
             SRTlib.send("]},");
 
     });
@@ -222,7 +244,7 @@ module.exports = class Client {
 
   }
   _reportError(err, params) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports8", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Client._reportError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (this.opts.errorReporting === false) {
       throw err;

@@ -3,7 +3,7 @@ var _require = require('preact'), h = _require.h;
 var _require2 = require('../../icons'), iconRetry = _require2.iconRetry;
 var PauseResumeCancelIcon = require('./PauseResumeCancelIcon');
 function onPauseResumeCancelRetry(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "onPauseResumeCancelRetry", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (props.isUploaded) {
         SRTlib.send("]},");
@@ -30,7 +30,7 @@ function onPauseResumeCancelRetry(props) {
 
 }
 function progressIndicatorTitle(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "progressIndicatorTitle", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (props.isUploaded) {
         SRTlib.send("]},");

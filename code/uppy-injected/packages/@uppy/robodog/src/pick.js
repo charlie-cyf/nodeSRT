@@ -5,7 +5,7 @@ const addTransloaditPlugin = require('./addTransloaditPlugin');
 const addProviders = require('./addProviders');
 const CANCEL = {};
 function pick(opts = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "pick", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const target = opts.target || document.body;
   const pluginId = 'pick';
@@ -42,7 +42,9 @@ function pick(opts = {}) {
     uppy.on('cancel-all', () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      reject(CANCEL);
+            SRTlib.send("]},");
+
+      return reject(CANCEL);
             SRTlib.send("]},");
 
     });

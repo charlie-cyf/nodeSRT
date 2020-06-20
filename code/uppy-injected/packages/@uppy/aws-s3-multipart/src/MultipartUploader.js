@@ -44,7 +44,7 @@ const defaultOptions = {
   }
 };
 function remove(arr, el) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "remove", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const i = arr.indexOf(el);
   if (i !== -1) arr.splice(i, 1);
@@ -53,7 +53,7 @@ function remove(arr, el) {
 }
 class MultipartUploader {
   constructor(file, options) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.options = {
       ...defaultOptions,
@@ -82,7 +82,7 @@ class MultipartUploader {
 
   }
   _initChunks() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._initChunks", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const chunks = [];
     const desiredChunkSize = this.options.getChunkSize(this.file);
@@ -94,13 +94,15 @@ class MultipartUploader {
     }
     this.chunks = chunks;
     this.chunkState = chunks.map(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      ({
+            SRTlib.send("]},");
+
+      return {
         uploaded: 0,
         busy: false,
         done: false
-      });
+      };
             SRTlib.send("]},");
 
     });
@@ -108,19 +110,21 @@ class MultipartUploader {
 
   }
   _createUpload() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._createUpload", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.createdPromise = Promise.resolve().then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      this.options.createMultipartUpload();
+            SRTlib.send("]},");
+
+      return this.options.createMultipartUpload();
             SRTlib.send("]},");
 
     });
         SRTlib.send("]},");
 
     return this.createdPromise.then(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const valid = typeof result === 'object' && result && typeof result.uploadId === 'string' && typeof result.key === 'string';
       if (!valid) {
@@ -133,7 +137,7 @@ class MultipartUploader {
             SRTlib.send("]},");
 
     }).catch(err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this._onError(err);
             SRTlib.send("]},");
@@ -143,24 +147,26 @@ class MultipartUploader {
 
   }
   _resumeUpload() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._resumeUpload", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      this.options.listParts({
+            SRTlib.send("]},");
+
+      return this.options.listParts({
         uploadId: this.uploadId,
         key: this.key
       });
             SRTlib.send("]},");
 
     }).then(parts => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       parts.forEach(part => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         const i = part.PartNumber - 1;
         this.chunkState[i] = {
@@ -169,9 +175,11 @@ class MultipartUploader {
           done: true
         };
         if (!this.parts.some(p => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-          p.PartNumber === part.PartNumber;
+                    SRTlib.send("]},");
+
+          return p.PartNumber === part.PartNumber;
                     SRTlib.send("]},");
 
         })) {
@@ -187,7 +195,7 @@ class MultipartUploader {
             SRTlib.send("]},");
 
     }).catch(err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this._onError(err);
             SRTlib.send("]},");
@@ -197,7 +205,7 @@ class MultipartUploader {
 
   }
   _uploadParts() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._uploadParts", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this.isPaused) {
             SRTlib.send("]},");
@@ -211,9 +219,11 @@ class MultipartUploader {
       return;
     }
     if (this.chunkState.every(state => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      state.done;
+            SRTlib.send("]},");
+
+      return state.done;
             SRTlib.send("]},");
 
     })) {
@@ -232,7 +242,7 @@ class MultipartUploader {
       }
     }
     candidates.forEach(index => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this._uploadPart(index);
             SRTlib.send("]},");
@@ -242,16 +252,18 @@ class MultipartUploader {
 
   }
   _uploadPart(index) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._uploadPart", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const body = this.chunks[index];
     this.chunkState[index].busy = true;
         SRTlib.send("]},");
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      this.options.prepareUploadPart({
+            SRTlib.send("]},");
+
+      return this.options.prepareUploadPart({
         key: this.key,
         uploadId: this.uploadId,
         body,
@@ -260,7 +272,7 @@ class MultipartUploader {
             SRTlib.send("]},");
 
     }).then(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const valid = typeof result === 'object' && result && typeof result.url === 'string';
       if (!valid) {
@@ -272,13 +284,13 @@ class MultipartUploader {
             SRTlib.send("]},");
 
     }).then(({url, headers}) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this._uploadPartBytes(index, url, headers);
             SRTlib.send("]},");
 
     }, err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this._onError(err);
             SRTlib.send("]},");
@@ -288,13 +300,15 @@ class MultipartUploader {
 
   }
   _onPartProgress(index, sent, total) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey24", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._onPartProgress", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     this.chunkState[index].uploaded = sent;
     const totalUploaded = this.chunkState.reduce((n, c) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey23", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-      n + c.uploaded;
+            SRTlib.send("]},");
+
+      return n + c.uploaded;
             SRTlib.send("]},");
 
     }, 0);
@@ -303,7 +317,7 @@ class MultipartUploader {
 
   }
   _onPartComplete(index, etag) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey25", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._onPartComplete", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.chunkState[index].etag = etag;
     this.chunkState[index].done = true;
@@ -318,14 +332,14 @@ class MultipartUploader {
 
   }
   _uploadPartBytes(index, url, headers) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey31", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._uploadPartBytes", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const body = this.chunks[index];
     const xhr = new XMLHttpRequest();
     xhr.open('PUT', url, true);
     if (headers) {
       Object.keys(headers).map(key => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey26", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         xhr.setRequestHeader(key, headers[key]);
                 SRTlib.send("]},");
@@ -335,7 +349,7 @@ class MultipartUploader {
     xhr.responseType = 'text';
     this.uploading.push(xhr);
     xhr.upload.addEventListener('progress', ev => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey27", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (!ev.lengthComputable) {
                 SRTlib.send("]},");
@@ -347,7 +361,7 @@ class MultipartUploader {
 
     });
     xhr.addEventListener('abort', ev => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey28", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       remove(this.uploading, ev.target);
       this.chunkState[index].busy = false;
@@ -355,7 +369,7 @@ class MultipartUploader {
 
     });
     xhr.addEventListener('load', ev => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey29", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       remove(this.uploading, ev.target);
       this.chunkState[index].busy = false;
@@ -378,7 +392,7 @@ class MultipartUploader {
 
     });
     xhr.addEventListener('error', ev => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey30", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       remove(this.uploading, ev.target);
       this.chunkState[index].busy = false;
@@ -393,21 +407,25 @@ class MultipartUploader {
 
   }
   _completeUpload() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey36", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._completeUpload", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.parts.sort((a, b) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey32", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey23", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-      a.PartNumber - b.PartNumber;
+            SRTlib.send("]},");
+
+      return a.PartNumber - b.PartNumber;
             SRTlib.send("]},");
 
     });
         SRTlib.send("]},");
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey33", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey24", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      this.options.completeMultipartUpload({
+            SRTlib.send("]},");
+
+      return this.options.completeMultipartUpload({
         key: this.key,
         uploadId: this.uploadId,
         parts: this.parts
@@ -415,13 +433,13 @@ class MultipartUploader {
             SRTlib.send("]},");
 
     }).then(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey34", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey25", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this.options.onSuccess(result);
             SRTlib.send("]},");
 
     }, err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey35", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey26", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this._onError(err);
             SRTlib.send("]},");
@@ -431,17 +449,17 @@ class MultipartUploader {
 
   }
   _abortUpload() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey40", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._abortUpload", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uploading.slice().forEach(xhr => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey37", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey27", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       xhr.abort();
             SRTlib.send("]},");
 
     });
     this.createdPromise.then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey38", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey28", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       this.options.abortMultipartUpload({
         key: this.key,
@@ -450,7 +468,7 @@ class MultipartUploader {
             SRTlib.send("]},");
 
     }, () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey39", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey29", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
             SRTlib.send("]},");
 
@@ -460,14 +478,14 @@ class MultipartUploader {
 
   }
   _onError(err) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey41", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader._onError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.options.onError(err);
         SRTlib.send("]},");
 
   }
   start() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey42", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader.start", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.isPaused = false;
     if (this.uploadId) {
@@ -479,11 +497,11 @@ class MultipartUploader {
 
   }
   pause() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey44", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader.pause", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const inProgress = this.uploading.slice();
     inProgress.forEach(xhr => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey43", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey30", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       xhr.abort();
             SRTlib.send("]},");
@@ -494,7 +512,7 @@ class MultipartUploader {
 
   }
   abort(opts = {}) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey45", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MultipartUploader.abort", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const really = opts.really || false;
     if (!really) {

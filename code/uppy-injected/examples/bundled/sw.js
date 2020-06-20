@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 const fileCache = Object.create(null);
 function getCache(name) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getCache", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (!fileCache[name]) {
     fileCache[name] = Object.create(null);
@@ -19,7 +19,9 @@ self.addEventListener('install', event => {
   event.waitUntil(Promise.resolve().then(() => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    self.skipWaiting();
+        SRTlib.send("]},");
+
+    return self.skipWaiting();
         SRTlib.send("]},");
 
   }));
@@ -34,7 +36,7 @@ self.addEventListener('activate', event => {
 
 });
 function sendMessageToAllClients(msg) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "sendMessageToAllClients", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   clients.matchAll().then(clients => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -53,7 +55,7 @@ function sendMessageToAllClients(msg) {
 
 }
 function addFile(store, file) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "addFile", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   getCache(store)[file.id] = file.data;
   console.log('Added file blob to service worker cache:', file.data);
@@ -61,7 +63,7 @@ function addFile(store, file) {
 
 }
 function removeFile(store, fileID) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "removeFile", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   delete getCache(store)[fileID];
   console.log('Removed file blob from service worker cache:', fileID);
@@ -69,7 +71,7 @@ function removeFile(store, fileID) {
 
 }
 function getFiles(store) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   sendMessageToAllClients({
     type: 'uppy/ALL_FILES',

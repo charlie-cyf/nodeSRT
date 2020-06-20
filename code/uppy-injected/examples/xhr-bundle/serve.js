@@ -9,7 +9,7 @@ app.use(cors());
 app.post('/upload', upload.array('files'), uploadRoute);
 app.listen(9967);
 function uploadRoute(req, res) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "uploadRoute", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   res.json({
     files: req.files.map(function (file) {

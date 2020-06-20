@@ -8,7 +8,7 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
   var files = [];
   var rootPromises = [];
   var createPromiseToAddFileOrParseDirectory = function createPromiseToAddFileOrParseDirectory(entry) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports.webkitGetAsEntryApi.createPromiseToAddFileOrParseDirectory.createPromiseToAddFileOrParseDirectory", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "createPromiseToAddFileOrParseDirectory", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 

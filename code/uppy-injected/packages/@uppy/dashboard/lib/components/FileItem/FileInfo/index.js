@@ -3,7 +3,7 @@ var _require = require('preact'), h = _require.h;
 var prettierBytes = require('@transloadit/prettier-bytes');
 var truncateString = require('../../../utils/truncateString');
 var renderAcquirerIcon = function renderAcquirerIcon(acquirer, props) {
-    SRTlib.send(`{ "anonymous": true, "function": "renderAcquirerIcon.renderAcquirerIcon", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "renderAcquirerIcon", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -16,7 +16,7 @@ var renderAcquirerIcon = function renderAcquirerIcon(acquirer, props) {
 
 };
 var renderFileSource = function renderFileSource(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "renderFileSource.renderFileSource", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "renderFileSource", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -37,7 +37,7 @@ var renderFileSource = function renderFileSource(props) {
 
 };
 var renderFileName = function renderFileName(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "renderFileName.renderFileName", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "renderFileName", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var maxNameLength;
   if (props.containerWidth <= 352) {
@@ -57,7 +57,7 @@ var renderFileName = function renderFileName(props) {
 
 };
 var renderFileSize = function renderFileSize(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "renderFileSize.renderFileSize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "renderFileSize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -68,7 +68,7 @@ var renderFileSize = function renderFileSize(props) {
 
 };
 var ErrorButton = function ErrorButton(_ref) {
-    SRTlib.send(`{ "anonymous": true, "function": "ErrorButton.ErrorButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "ErrorButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var file = _ref.file, onClick = _ref.onClick;
   if (file.error) {

@@ -24,7 +24,9 @@ const options = {
       getKey: (req, filename) => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        `whatever/${Math.random().toString(32).slice(2)}/${filename}`;
+                SRTlib.send("]},");
+
+        return `whatever/${Math.random().toString(32).slice(2)}/${filename}`;
                 SRTlib.send("]},");
 
       },

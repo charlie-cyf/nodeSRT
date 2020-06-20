@@ -13,14 +13,16 @@ const SOURCE = 'packages/{*,@uppy/*}/src/**/*.js';
 const IGNORE = /\.test\.js$|__mocks__|companion\//;
 const META_FILES = ['babel.config.js', 'package.json', 'package-lock.json', 'bin/build-lib.js'];
 function lastModified(file) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "lastModified", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
   return stat(file).then(s => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    s.mtime;
+        SRTlib.send("]},");
+
+    return s.mtime;
         SRTlib.send("]},");
 
   });
@@ -28,12 +30,14 @@ function lastModified(file) {
 
 }
 async function buildLib() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "buildLib", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const metaMtimes = await Promise.all(META_FILES.map(filename => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    lastModified(path.join(__dirname, '..', filename));
+        SRTlib.send("]},");
+
+    return lastModified(path.join(__dirname, '..', filename));
         SRTlib.send("]},");
 
   }));
@@ -47,7 +51,9 @@ async function buildLib() {
       const libMtime = await lastModified(libFile).catch(() => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        0;
+                SRTlib.send("]},");
+
+        return 0;
                 SRTlib.send("]},");
 
       });

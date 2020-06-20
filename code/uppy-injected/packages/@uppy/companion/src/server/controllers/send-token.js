@@ -29,7 +29,7 @@ module.exports = function sendToken(req, res, next) {
 
 };
 const htmlContent = (token, origin) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "htmlContent", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -49,7 +49,7 @@ const htmlContent = (token, origin) => {
 
 };
 const oldHtmlContent = (token, origin) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "oldHtmlContent", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     SRTlib.send("]},");
 

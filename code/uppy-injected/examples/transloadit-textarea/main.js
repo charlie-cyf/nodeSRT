@@ -6,7 +6,7 @@ const TRANSLOADIT_EXAMPLE_KEY = '35c1aed03f5011e982b6afe82599b6a0';
 const TRANSLOADIT_EXAMPLE_TEMPLATE = '0b2ee2bc25dc43619700c2ce0a75164a';
 class MarkdownTextarea {
   constructor(element) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.element = element;
     this.controls = document.createElement('div');
@@ -18,7 +18,7 @@ class MarkdownTextarea {
 
   }
   install() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const {element} = this;
     const wrapper = document.createElement('div');
@@ -32,10 +32,10 @@ class MarkdownTextarea {
 
   }
   setupTextareaDrop() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.setupTextareaDrop", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     dragdrop(this.element, files => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this.uploadFiles(files);
             SRTlib.send("]},");
@@ -45,10 +45,10 @@ class MarkdownTextarea {
 
   }
   setupUploadLine() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.setupUploadLine", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uploadLine.addEventListener('click', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       this.pickFiles();
             SRTlib.send("]},");
@@ -58,7 +58,7 @@ class MarkdownTextarea {
 
   }
   reportUploadError(err) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.reportUploadError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.uploadLine.classList.add('error');
     const message = document.createElement('span');
@@ -68,7 +68,7 @@ class MarkdownTextarea {
 
   }
   unreportUploadError() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.unreportUploadError", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uploadLine.classList.remove('error');
     const message = this.uploadLine.querySelector('message');
@@ -79,10 +79,10 @@ class MarkdownTextarea {
 
   }
   insertAttachments(attachments) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.insertAttachments", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     attachments.forEach(attachment => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const {file, thumb} = attachment;
       const link = `\n[LABEL](${file.ssl_url})\n`;
@@ -99,12 +99,12 @@ class MarkdownTextarea {
 
   }
   matchFilesAndThumbs(results) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.matchFilesAndThumbs", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const filesById = {};
     const thumbsById = {};
     results.forEach(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (result.stepName === 'thumbnails') {
         thumbsById[result.original_id] = result;
@@ -117,7 +117,7 @@ class MarkdownTextarea {
         SRTlib.send("]},");
 
     return Object.keys(filesById).reduce((acc, key) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       const file = filesById[key];
       const thumb = thumbsById[key];
@@ -135,7 +135,7 @@ class MarkdownTextarea {
 
   }
   uploadFiles(files) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.uploadFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     robodog.upload({
       waitForEncoding: true,
@@ -146,7 +146,7 @@ class MarkdownTextarea {
         template_id: TRANSLOADIT_EXAMPLE_TEMPLATE
       }
     }).then(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (result == null) {
                 SRTlib.send("]},");
@@ -157,7 +157,7 @@ class MarkdownTextarea {
             SRTlib.send("]},");
 
     }).catch(err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       console.error(err);
       this.reportUploadError(err);
@@ -168,7 +168,7 @@ class MarkdownTextarea {
 
   }
   pickFiles() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.pickFiles", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     robodog.pick({
       waitForEncoding: true,
@@ -179,7 +179,7 @@ class MarkdownTextarea {
         template_id: TRANSLOADIT_EXAMPLE_TEMPLATE
       }
     }).then(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (result == null) {
                 SRTlib.send("]},");
@@ -190,7 +190,7 @@ class MarkdownTextarea {
             SRTlib.send("]},");
 
     }).catch(err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       console.error(err);
       this.reportUploadError(err);
@@ -204,7 +204,7 @@ class MarkdownTextarea {
 const textarea = new MarkdownTextarea(document.querySelector('#new textarea'));
 textarea.install();
 function renderSnippet(title, text) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "renderSnippet", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const template = document.querySelector('#snippet');
   const newSnippet = document.importNode(template.content, true);
@@ -218,7 +218,7 @@ function renderSnippet(title, text) {
 
 }
 function saveSnippet(title, text) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "saveSnippet", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const id = parseInt(localStorage.numSnippets || 0, 10);
   localStorage[`snippet_${id}`] = JSON.stringify({
@@ -230,7 +230,7 @@ function saveSnippet(title, text) {
 
 }
 function loadSnippets() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "loadSnippets", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   for (let id = 0; localStorage[`snippet_${id}`] != null; id += 1) {
     const {title, text} = JSON.parse(localStorage[`snippet_${id}`]);
@@ -240,7 +240,7 @@ function loadSnippets() {
 
 }
 document.querySelector('#new').addEventListener('submit', event => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   event.preventDefault();
   const title = event.target.querySelector('input[name="title"]').value || 'Unnamed Snippet';
@@ -253,7 +253,7 @@ document.querySelector('#new').addEventListener('submit', event => {
 
 });
 window.addEventListener('DOMContentLoaded', () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   loadSnippets();
     SRTlib.send("]},");

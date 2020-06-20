@@ -3,7 +3,7 @@ var ProgressTimeout = (function () {
     SRTlib.send(`{ "anonymous": true, "function": "ProgressTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   function ProgressTimeout(timeout, timeoutHandler) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ProgressTimeout", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this._timeout = timeout;
     this._onTimedOut = timeoutHandler;

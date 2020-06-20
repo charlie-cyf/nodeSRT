@@ -13,7 +13,7 @@ const defaultLocaleStrings = {
   chooseFiles: 'Choose files'
 };
 function mergeDefaultLocale(defaults, userProvided = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "mergeDefaultLocale", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const strings = userProvided.strings || ({});
     SRTlib.send("]},");
@@ -29,7 +29,7 @@ function mergeDefaultLocale(defaults, userProvided = {}) {
 
 }
 function form(target, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "form", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (!opts) throw new TypeError('robodog.form: must provide an options object');
   opts = {

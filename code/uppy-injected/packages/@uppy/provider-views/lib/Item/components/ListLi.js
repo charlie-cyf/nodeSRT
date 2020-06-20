@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 var _require = require('preact'), h = _require.h;
 var getAriaLabelOfCheckbox = function getAriaLabelOfCheckbox(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "getAriaLabelOfCheckbox.getAriaLabelOfCheckbox", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getAriaLabelOfCheckbox", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (props.type === 'folder') {
     if (props.isChecked) {

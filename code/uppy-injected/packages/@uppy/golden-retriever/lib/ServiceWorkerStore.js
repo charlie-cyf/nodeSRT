@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 var isSupported = typeof navigator !== 'undefined' && ('serviceWorker' in navigator);
 function waitForServiceWorker() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "waitForServiceWorker", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -31,7 +31,7 @@ var ServiceWorkerStore = (function () {
     SRTlib.send(`{ "anonymous": true, "function": "ServiceWorkerStore", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   function ServiceWorkerStore(opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "ServiceWorkerStore", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.ready = waitForServiceWorker();
     this.name = opts.storeName;
@@ -54,7 +54,7 @@ var ServiceWorkerStore = (function () {
     });
     console.log('Loading stored blobs from Service Worker');
     var onMessage = function onMessage(event) {
-            SRTlib.send(`{ "anonymous": true, "function": "ServiceWorkerStore._proto.list.list.onMessage.onMessage", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "onMessage", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (event.data.store !== _this.name) {
                 SRTlib.send("]},");

@@ -3,7 +3,7 @@ var toArray = require('@uppy/utils/lib/toArray');
 var getActiveOverlayEl = require('./getActiveOverlayEl');
 var FOCUSABLE_ELEMENTS = require('@uppy/utils/lib//FOCUSABLE_ELEMENTS');
 function focusOnFirstNode(event, nodes) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "focusOnFirstNode", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   var node = nodes[0];
   if (node) {
@@ -14,7 +14,7 @@ function focusOnFirstNode(event, nodes) {
 
 }
 function focusOnLastNode(event, nodes) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "focusOnLastNode", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   var node = nodes[nodes.length - 1];
   if (node) {
@@ -25,7 +25,7 @@ function focusOnLastNode(event, nodes) {
 
 }
 function isFocusInOverlay(activeOverlayEl) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isFocusInOverlay", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -34,7 +34,7 @@ function isFocusInOverlay(activeOverlayEl) {
 
 }
 function trapFocus(event, activeOverlayType, dashboardEl) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "trapFocus", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   var activeOverlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
   var focusableNodes = toArray(activeOverlayEl.querySelectorAll(FOCUSABLE_ELEMENTS));

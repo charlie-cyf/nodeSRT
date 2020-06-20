@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function ignoreEvent(ev) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "ignoreEvent", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var tagName = ev.target.tagName;
   if (tagName === 'INPUT' || tagName === 'TEXTAREA') {

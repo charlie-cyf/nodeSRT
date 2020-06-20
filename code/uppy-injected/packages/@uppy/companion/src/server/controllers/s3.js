@@ -10,7 +10,7 @@ module.exports = function s3(config) {
     throw new TypeError('s3: The `getKey` option must be a function');
   }
   function getUploadParameters(req, res, next) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "getUploadParameters", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const client = req.companion.s3Client;
     const metadata = req.query.metadata || ({});
@@ -61,7 +61,7 @@ module.exports = function s3(config) {
 
   }
   function createMultipartUpload(req, res, next) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "createMultipartUpload", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const client = req.companion.s3Client;
     const key = config.getKey(req, req.body.filename, req.body.metadata || ({}));
@@ -107,7 +107,7 @@ module.exports = function s3(config) {
 
   }
   function getUploadedParts(req, res, next) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "getUploadedParts", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const client = req.companion.s3Client;
     const {uploadId} = req.params;
@@ -122,7 +122,7 @@ module.exports = function s3(config) {
     let parts = [];
     listPartsPage(0);
     function listPartsPage(startAt) {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "listPartsPage", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       client.listParts({
         Bucket: config.bucket,
@@ -151,7 +151,7 @@ module.exports = function s3(config) {
 
     }
     function done() {
-            SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "done", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       res.json(parts);
             SRTlib.send("]},");
@@ -161,7 +161,7 @@ module.exports = function s3(config) {
 
   }
   function signPartUpload(req, res, next) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "signPartUpload", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const client = req.companion.s3Client;
     const {uploadId, partNumber} = req.params;
@@ -206,7 +206,7 @@ module.exports = function s3(config) {
 
   }
   function abortMultipartUpload(req, res, next) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "abortMultipartUpload", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const client = req.companion.s3Client;
     const {uploadId} = req.params;
@@ -239,7 +239,7 @@ module.exports = function s3(config) {
 
   }
   function completeMultipartUpload(req, res, next) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "completeMultipartUpload", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     const client = req.companion.s3Client;
     const {uploadId} = req.params;
@@ -291,7 +291,7 @@ module.exports = function s3(config) {
 
 };
 function isValidPart(part) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isValidPart", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 

@@ -45,7 +45,7 @@ window.setup = function (options) {
 
 };
 function randomColorImage(callback) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "randomColorImage", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const canvas = document.createElement('canvas');
   canvas.width = 140;
@@ -54,7 +54,9 @@ function randomColorImage(callback) {
   context.fillStyle = ('#xxxxxx').replace(/x/g, () => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    ('0123456789ABCDEF')[Math.floor(Math.random() * 16)];
+        SRTlib.send("]},");
+
+    return ('0123456789ABCDEF')[Math.floor(Math.random() * 16)];
         SRTlib.send("]},");
 
   });

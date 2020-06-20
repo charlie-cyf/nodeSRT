@@ -16,7 +16,9 @@ const justErrorsLogger = {
   error: (...args) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    console.error(`[Uppy] [${getTimeStamp()}]`, ...args);
+        SRTlib.send("]},");
+
+    return console.error(`[Uppy] [${getTimeStamp()}]`, ...args);
         SRTlib.send("]},");
 
   }
@@ -33,14 +35,18 @@ const debugLogger = {
   warn: (...args) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    console.warn(`[Uppy] [${getTimeStamp()}]`, ...args);
+        SRTlib.send("]},");
+
+    return console.warn(`[Uppy] [${getTimeStamp()}]`, ...args);
         SRTlib.send("]},");
 
   },
   error: (...args) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    console.error(`[Uppy] [${getTimeStamp()}]`, ...args);
+        SRTlib.send("]},");
+
+    return console.error(`[Uppy] [${getTimeStamp()}]`, ...args);
         SRTlib.send("]},");
 
   }

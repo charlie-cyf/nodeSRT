@@ -1,63 +1,27 @@
-var SRTlib = require('SRT-util');
 var _class, _temp;
-function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-  _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-        SRTlib.send("]},");
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-    return target;
-        SRTlib.send("]},");
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-  });
-    SRTlib.send("]},");
+var _require = require('@uppy/core'),
+    Plugin = _require.Plugin;
 
-  return _extends.apply(this, arguments);
-    SRTlib.send("]},");
-
-}
-function _assertThisInitialized(self) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-    SRTlib.send("]},");
-
-  return self;
-    SRTlib.send("]},");
-
-}
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
-
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send("]},");
-
-}
-var _require = require('@uppy/core'), Plugin = _require.Plugin;
 var Translator = require('@uppy/utils/lib/Translator');
-var _require2 = require('preact'), h = _require2.h;
-var _require3 = require('@uppy/companion-client'), RequestClient = _require3.RequestClient;
+
+var _require2 = require('preact'),
+    h = _require2.h;
+
+var _require3 = require('@uppy/companion-client'),
+    RequestClient = _require3.RequestClient;
+
 var UrlUI = require('./UrlUI.js');
+
 var forEachDroppedOrPastedUrl = require('./utils/forEachDroppedOrPastedUrl');
+
 function UrlIcon() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-    SRTlib.send("]},");
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
@@ -78,30 +42,29 @@ function UrlIcon() {
     fill: "#FFF",
     "fill-rule": "nonzero"
   })));
-    SRTlib.send("]},");
-
 }
-module.exports = (_temp = _class = (function (_Plugin) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+/**
+ * Url
+ *
+ */
 
+
+module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _inheritsLoose(Url, _Plugin);
-  function Url(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
+  function Url(uppy, opts) {
     var _this;
+
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.id = _this.opts.id || 'Url';
     _this.title = _this.opts.title || 'Link';
     _this.type = 'acquirer';
+
     _this.icon = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.icon", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
-            SRTlib.send("]},");
-
       return h(UrlIcon, null);
-            SRTlib.send("]},");
+    }; // Set default options and locale
 
-    };
+
     _this.defaultLocale = {
       strings: {
         import: 'Import',
@@ -112,11 +75,16 @@ module.exports = (_temp = _class = (function (_Plugin) {
     };
     var defaultOptions = {};
     _this.opts = _extends({}, defaultOptions, {}, opts);
+
     _this.i18nInit();
+
     _this.hostname = _this.opts.companionUrl;
+
     if (!_this.hostname) {
       throw new Error('Companion hostname is required, please consult https://uppy.io/docs/companion');
-    }
+    } // Bind all event handlers for referencability
+
+
     _this.getMeta = _this.getMeta.bind(_assertThisInitialized(_this));
     _this.addFile = _this.addFile.bind(_assertThisInitialized(_this));
     _this.handleRootDrop = _this.handleRootDrop.bind(_assertThisInitialized(_this));
@@ -125,118 +93,80 @@ module.exports = (_temp = _class = (function (_Plugin) {
       companionUrl: _this.opts.companionUrl,
       companionHeaders: _this.opts.companionHeaders || _this.opts.serverHeaders
     });
-        SRTlib.send("]},");
-
     return _this;
-        SRTlib.send("]},");
-
   }
+
   var _proto = Url.prototype;
+
   _proto.setOptions = function setOptions(newOpts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.setOptions.setOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
     _Plugin.prototype.setOptions.call(this, newOpts);
+
     this.i18nInit();
-        SRTlib.send("]},");
-
   };
-  _proto.i18nInit = function i18nInit() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.i18nInit.i18nInit", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+  _proto.i18nInit = function i18nInit() {
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
-    this.setPluginState();
-        SRTlib.send("]},");
-
+    this.setPluginState(); // so that UI re-renders and we see the updated locale
   };
+
   _proto.getFileNameFromUrl = function getFileNameFromUrl(url) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.getFileNameFromUrl.getFileNameFromUrl", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-        SRTlib.send("]},");
-
     return url.substring(url.lastIndexOf('/') + 1);
-        SRTlib.send("]},");
-
   };
+
   _proto.checkIfCorrectURL = function checkIfCorrectURL(url) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.checkIfCorrectURL.checkIfCorrectURL", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-    if (!url) {
-            SRTlib.send("]},");
-
-      return false;
-    }
+    if (!url) return false;
     var protocol = url.match(/^([a-z0-9]+):\/\//)[1];
-    if (protocol !== 'http' && protocol !== 'https') {
-            SRTlib.send("]},");
 
+    if (protocol !== 'http' && protocol !== 'https') {
       return false;
     }
-        SRTlib.send("]},");
 
     return true;
-        SRTlib.send("]},");
-
   };
-  _proto.addProtocolToURL = function addProtocolToURL(url) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.addProtocolToURL.addProtocolToURL", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+  _proto.addProtocolToURL = function addProtocolToURL(url) {
     var protocolRegex = /^[a-z0-9]+:\/\//;
     var defaultProtocol = 'http://';
-    if (protocolRegex.test(url)) {
-            SRTlib.send("]},");
 
+    if (protocolRegex.test(url)) {
       return url;
     }
-        SRTlib.send("]},");
 
     return defaultProtocol + url;
-        SRTlib.send("]},");
-
   };
-  _proto.getMeta = function getMeta(url) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.getMeta.getMeta", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+  _proto.getMeta = function getMeta(url) {
     var _this2 = this;
-        SRTlib.send("]},");
 
     return this.client.post('url/meta', {
       url: url
     }).then(function (res) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.getMeta.getMeta.ReturnStatement.client.post.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
       if (res.error) {
         _this2.uppy.log('[URL] Error:');
+
         _this2.uppy.log(res.error);
+
         throw new Error('Failed to fetch the file');
       }
-            SRTlib.send("]},");
 
       return res;
-            SRTlib.send("]},");
-
     });
-        SRTlib.send("]},");
-
   };
-  _proto.addFile = function addFile(url) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.addFile.addFile", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+  _proto.addFile = function addFile(url) {
     var _this3 = this;
+
     url = this.addProtocolToURL(url);
+
     if (!this.checkIfCorrectURL(url)) {
       this.uppy.log("[URL] Incorrect URL entered: " + url);
       this.uppy.info(this.i18n('enterCorrectUrl'), 'error', 4000);
-            SRTlib.send("]},");
-
       return;
     }
-        SRTlib.send("]},");
 
     return this.getMeta(url).then(function (meta) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.addFile.addFile.ReturnStatement.getMeta.then.then.catch.getMeta.then.then.getMeta.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
       var tagFile = {
         source: _this3.id,
         name: _this3.getFileNameFromUrl(url),
@@ -258,15 +188,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
           providerOptions: _this3.client.opts
         }
       };
-            SRTlib.send("]},");
-
       return tagFile;
-            SRTlib.send("]},");
-
     }).then(function (tagFile) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.addFile.addFile.ReturnStatement.getMeta.then.then.catch.getMeta.then.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
       _this3.uppy.log('[Url] Adding remote file');
+
       try {
         _this3.uppy.addFile(tagFile);
       } catch (err) {
@@ -274,84 +199,54 @@ module.exports = (_temp = _class = (function (_Plugin) {
           _this3.uppy.log(err);
         }
       }
-            SRTlib.send("]},");
-
     }).catch(function (err) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.addFile.addFile.ReturnStatement.getMeta.then.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
       _this3.uppy.log(err);
+
       _this3.uppy.info({
         message: _this3.i18n('failedToFetch'),
         details: err
       }, 'error', 4000);
-            SRTlib.send("]},");
-
     });
-        SRTlib.send("]},");
-
   };
+
   _proto.handleRootDrop = function handleRootDrop(e) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.handleRootDrop.handleRootDrop", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
     var _this4 = this;
+
     forEachDroppedOrPastedUrl(e.dataTransfer, 'drop', function (url) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.handleRootDrop.handleRootDrop.forEachDroppedOrPastedUrl", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
       _this4.uppy.log("[URL] Adding file from dropped url: " + url);
+
       _this4.addFile(url);
-            SRTlib.send("]},");
-
     });
-        SRTlib.send("]},");
-
   };
+
   _proto.handleRootPaste = function handleRootPaste(e) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.handleRootPaste.handleRootPaste", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
     var _this5 = this;
+
     forEachDroppedOrPastedUrl(e.clipboardData, 'paste', function (url) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.handleRootPaste.handleRootPaste.forEachDroppedOrPastedUrl", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
       _this5.uppy.log("[URL] Adding file from pasted url: " + url);
+
       _this5.addFile(url);
-            SRTlib.send("]},");
-
     });
-        SRTlib.send("]},");
-
   };
+
   _proto.render = function render(state) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.render.render", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-        SRTlib.send("]},");
-
     return h(UrlUI, {
       i18n: this.i18n,
       addFile: this.addFile
     });
-        SRTlib.send("]},");
-
   };
-  _proto.install = function install() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.install.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+  _proto.install = function install() {
     var target = this.opts.target;
+
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send("]},");
-
   };
+
   _proto.uninstall = function uninstall() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.uninstall.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
     this.unmount();
-        SRTlib.send("]},");
-
   };
-    SRTlib.send("]},");
 
   return Url;
-    SRTlib.send("]},");
-
-})(Plugin), _class.VERSION = require('../package.json').version, _temp);
+}(Plugin), _class.VERSION = require('../package.json').version, _temp);

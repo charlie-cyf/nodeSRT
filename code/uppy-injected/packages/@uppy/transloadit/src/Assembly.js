@@ -5,7 +5,7 @@ const has = require('@uppy/utils/lib/hasProperty');
 const parseUrl = require('./parseUrl');
 let socketIo;
 function requireSocketIo() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "requireSocketIo", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   if (!socketIo) {
     socketIo = require('socket.io-client');
@@ -21,7 +21,7 @@ const ASSEMBLY_EXECUTING = 'ASSEMBLY_EXECUTING';
 const ASSEMBLY_COMPLETED = 'ASSEMBLY_COMPLETED';
 const statusOrder = [ASSEMBLY_UPLOADING, ASSEMBLY_EXECUTING, ASSEMBLY_COMPLETED];
 function isStatus(status, test) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isStatus", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -31,7 +31,7 @@ function isStatus(status, test) {
 }
 class TransloaditAssembly extends Emitter {
   constructor(assembly) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     super();
     this.status = assembly;
@@ -42,7 +42,7 @@ class TransloaditAssembly extends Emitter {
 
   }
   connect() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly.connect", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this._connectSocket();
     this._beginPolling();
@@ -50,7 +50,7 @@ class TransloaditAssembly extends Emitter {
 
   }
   _onFinished() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly._onFinished", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.emit('finished');
     this.close();
@@ -58,7 +58,7 @@ class TransloaditAssembly extends Emitter {
 
   }
   _connectSocket() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly._connectSocket", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const parsed = parseUrl(this.status.websocket_url);
     const socket = io().connect(parsed.origin, {
@@ -66,7 +66,7 @@ class TransloaditAssembly extends Emitter {
       path: parsed.pathname
     });
     socket.on('connect', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       socket.emit('assembly_connect', {
         id: this.status.assembly_id
@@ -76,7 +76,7 @@ class TransloaditAssembly extends Emitter {
 
     });
     socket.on('error', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       socket.disconnect();
       this.socket = null;
@@ -84,14 +84,14 @@ class TransloaditAssembly extends Emitter {
 
     });
     socket.on('assembly_finished', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       this._onFinished();
             SRTlib.send("]},");
 
     });
     socket.on('assembly_upload_finished', file => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this.emit('upload', file);
       this.status.uploads.push(file);
@@ -99,14 +99,14 @@ class TransloaditAssembly extends Emitter {
 
     });
     socket.on('assembly_uploading_finished', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       this.emit('executing');
             SRTlib.send("]},");
 
     });
     socket.on('assembly_upload_meta_data_extracted', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       this.emit('metadata');
       this._fetchStatus({
@@ -116,7 +116,7 @@ class TransloaditAssembly extends Emitter {
 
     });
     socket.on('assembly_result_finished', (stepName, result) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       this.emit('result', stepName, result);
       if (!this.status.results[stepName]) {
@@ -127,7 +127,7 @@ class TransloaditAssembly extends Emitter {
 
     });
     socket.on('assembly_error', err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this._onError(err);
       this._fetchStatus({
@@ -141,17 +141,17 @@ class TransloaditAssembly extends Emitter {
 
   }
   _onError(err) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly._onError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.emit('error', Object.assign(new Error(err.message), err));
         SRTlib.send("]},");
 
   }
   _beginPolling() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly._beginPolling", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.pollInterval = setInterval(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       if (!this.socket || !this.socket.connected) {
         this._fetchStatus();
@@ -163,18 +163,20 @@ class TransloaditAssembly extends Emitter {
 
   }
   _fetchStatus({diff = true} = {}) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly._fetchStatus", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         SRTlib.send("]},");
 
     return fetch(this.status.assembly_ssl_url).then(response => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      response.json();
+            SRTlib.send("]},");
+
+      return response.json();
             SRTlib.send("]},");
 
     }).then(status => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (this.closed) {
                 SRTlib.send("]},");
@@ -194,7 +196,7 @@ class TransloaditAssembly extends Emitter {
 
   }
   update() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey19", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly.update", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
@@ -205,7 +207,7 @@ class TransloaditAssembly extends Emitter {
 
   }
   updateStatus(next) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey20", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly.updateStatus", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this._diffStatus(this.status, next);
     this.status = next;
@@ -213,7 +215,7 @@ class TransloaditAssembly extends Emitter {
 
   }
   _diffStatus(prev, next) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey28", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly._diffStatus", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const prevStatus = prev.ok;
     const nextStatus = next.ok;
@@ -227,19 +229,23 @@ class TransloaditAssembly extends Emitter {
       this.emit('executing');
     }
     Object.keys(next.uploads).filter(upload => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey21", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      !has(prev.uploads, upload);
+            SRTlib.send("]},");
+
+      return !has(prev.uploads, upload);
             SRTlib.send("]},");
 
     }).map(upload => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey22", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      next.uploads[upload];
+            SRTlib.send("]},");
+
+      return next.uploads[upload];
             SRTlib.send("]},");
 
     }).forEach(upload => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey23", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this.emit('upload', upload);
             SRTlib.send("]},");
@@ -249,24 +255,28 @@ class TransloaditAssembly extends Emitter {
       this.emit('metadata');
     }
     Object.keys(next.results).forEach(stepName => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey27", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey18", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const nextResults = next.results[stepName];
       const prevResults = prev.results[stepName];
       nextResults.filter(n => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey25", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        !prevResults || !prevResults.some(p => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey24", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send("]},");
 
-          p.id === n.id;
+        return !prevResults || !prevResults.some(p => {
+                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+                    SRTlib.send("]},");
+
+          return p.id === n.id;
                     SRTlib.send("]},");
 
         });
                 SRTlib.send("]},");
 
       }).forEach(result => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey26", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         this.emit('result', stepName, result);
                 SRTlib.send("]},");
@@ -282,7 +292,7 @@ class TransloaditAssembly extends Emitter {
 
   }
   close() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey29", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly.close", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.closed = true;
     if (this.socket) {

@@ -5,7 +5,7 @@ const Uppy = require('@uppy/core');
 const FileInput = require('@uppy/file-input');
 const XHRUpload = require('@uppy/xhr-upload');
 function startXHRLimitTest(endpoint) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "startXHRLimitTest", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const uppy = Uppy({
     id: 'uppyXhrLimit',

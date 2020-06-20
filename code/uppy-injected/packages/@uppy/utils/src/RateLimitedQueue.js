@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function findIndex(array, predicate) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "findIndex", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   for (let i = 0; i < array.length; i++) {
     if (predicate(array[i])) {
@@ -16,7 +16,7 @@ function findIndex(array, predicate) {
 
 }
 function createCancelError() {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "createCancelError", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -26,7 +26,7 @@ function createCancelError() {
 }
 module.exports = class RateLimitedQueue {
   constructor(limit) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "RateLimitedQueue.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (typeof limit !== 'number' || limit === 0) {
       this.limit = Infinity;
@@ -39,7 +39,7 @@ module.exports = class RateLimitedQueue {
 
   }
   _call(fn) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "RateLimitedQueue._call", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.activeRequests += 1;
     let done = false;
@@ -87,7 +87,7 @@ module.exports = class RateLimitedQueue {
 
   }
   _queueNext() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "RateLimitedQueue._queueNext", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     Promise.resolve().then(() => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
@@ -100,7 +100,7 @@ module.exports = class RateLimitedQueue {
 
   }
   _next() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "RateLimitedQueue._next", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this.activeRequests >= this.limit) {
             SRTlib.send("]},");
@@ -120,7 +120,7 @@ module.exports = class RateLimitedQueue {
 
   }
   _queue(fn, options = {}) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "RateLimitedQueue._queue", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const handler = {
       fn,
@@ -161,7 +161,7 @@ module.exports = class RateLimitedQueue {
 
   }
   _dequeue(handler) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "RateLimitedQueue._dequeue", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const index = this.queuedHandlers.indexOf(handler);
     if (index !== -1) {
@@ -171,7 +171,7 @@ module.exports = class RateLimitedQueue {
 
   }
   run(fn, queueOptions) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "RateLimitedQueue.run", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (this.activeRequests < this.limit) {
             SRTlib.send("]},");
@@ -185,7 +185,7 @@ module.exports = class RateLimitedQueue {
 
   }
   wrapPromiseFunction(fn, queueOptions) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports8", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "RateLimitedQueue.wrapPromiseFunction", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         SRTlib.send("]},");
 

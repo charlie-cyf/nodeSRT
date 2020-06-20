@@ -25,7 +25,7 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
     document.body.appendChild(textArea);
     textArea.select();
     var magicCopyFailed = function magicCopyFailed() {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports.copyToClipboard.ReturnStatement.magicCopyFailed.magicCopyFailed", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{ "anonymous": false, "function": "magicCopyFailed", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       document.body.removeChild(textArea);
       window.prompt(fallbackString, textToCopy);

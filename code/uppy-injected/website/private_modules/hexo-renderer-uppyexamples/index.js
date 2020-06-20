@@ -6,7 +6,7 @@ var uuid = require('uuid');
 var webRoot = path.dirname(path.dirname(__dirname));
 var browserifyScript = webRoot + '/build-examples.js';
 function parseExamplesBrowserify(data, options, callback) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "parseExamplesBrowserify", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   if (!data || !data.path) {
         SRTlib.send("]},");

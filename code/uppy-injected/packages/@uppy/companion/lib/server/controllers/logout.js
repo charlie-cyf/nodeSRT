@@ -2,10 +2,10 @@ var SRTlib = require('SRT-util');
 const tokenService = require('../helpers/jwt');
 const {errorToResponse} = require('../provider/error');
 function logout(req, res, next) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "logout", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   const cleanSession = () => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "cleanSession", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (req.session.grant) {
       req.session.grant.state = null;
@@ -20,7 +20,7 @@ function logout(req, res, next) {
     req.companion.provider.logout({
       token
     }, (err, data) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       if (err) {
         const errResp = errorToResponse(err);

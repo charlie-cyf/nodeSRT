@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 const {errorToResponse} = require('../provider/error');
 function list({query, params, companion}, res, next) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "list", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   const providerName = params.providerName;
   const token = companion.providerTokens[providerName];

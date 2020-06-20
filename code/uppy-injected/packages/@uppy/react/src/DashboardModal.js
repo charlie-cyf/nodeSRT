@@ -6,14 +6,14 @@ const basePropTypes = require('./propTypes').dashboard;
 const h = React.createElement;
 class DashboardModal extends React.Component {
   componentDidMount() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DashboardModal.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.installPlugin();
         SRTlib.send("]},");
 
   }
   componentDidUpdate(prevProps) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DashboardModal.componentDidUpdate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
@@ -28,14 +28,14 @@ class DashboardModal extends React.Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DashboardModal.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uninstallPlugin();
         SRTlib.send("]},");
 
   }
   installPlugin() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DashboardModal.installPlugin", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const uppy = this.props.uppy;
     const options = Object.assign({
@@ -56,7 +56,7 @@ class DashboardModal extends React.Component {
 
   }
   uninstallPlugin(props = this.props) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DashboardModal.uninstallPlugin", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const uppy = props.uppy;
     uppy.removePlugin(this.plugin);
@@ -64,13 +64,13 @@ class DashboardModal extends React.Component {
 
   }
   render() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "DashboardModal.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
     return h('div', {
       ref: container => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         this.container = container;
                 SRTlib.send("]},");

@@ -47,7 +47,7 @@ exports.debug = (msg, tag, traceId) => {
 
 };
 const log = (msg, tag, level, id, color, shouldLogStackTrace) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 6, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "log", "fileName": "${__filename}", "paramsNumber": 6, "calls" : [`);
 
   const time = new Date().toISOString();
   tag = tag || '';
@@ -56,7 +56,9 @@ const log = (msg, tag, level, id, color, shouldLogStackTrace) => {
   color = color || (message => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    message;
+        SRTlib.send("]},");
+
+    return message;
         SRTlib.send("]},");
 
   });
@@ -77,7 +79,7 @@ const log = (msg, tag, level, id, color, shouldLogStackTrace) => {
 
 };
 const maskMessage = msg => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "maskMessage", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   for (const toBeMasked of valuesToMask) {
     const toBeReplaced = new RegExp(toBeMasked, 'gi');

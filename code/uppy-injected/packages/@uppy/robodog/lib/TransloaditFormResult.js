@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function _assertThisInitialized(self) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -12,7 +12,7 @@ function _assertThisInitialized(self) {
 
 }
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
@@ -27,7 +27,7 @@ var TransloaditFormResult = (function (_Plugin) {
 
   _inheritsLoose(TransloaditFormResult, _Plugin);
   function TransloaditFormResult(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditFormResult", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     var _this;
     _this = _Plugin.call(this, uppy, opts) || this;

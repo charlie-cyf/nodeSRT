@@ -11,7 +11,9 @@ exports.startCleanUpJob = dirPath => {
   schedule.scheduleJob('0 23 * * *', () => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    cleanUpFinishedUploads(dirPath);
+        SRTlib.send("]},");
+
+    return cleanUpFinishedUploads(dirPath);
         SRTlib.send("]},");
 
   });
@@ -19,7 +21,7 @@ exports.startCleanUpJob = dirPath => {
 
 };
 const cleanUpFinishedUploads = dirPath => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "cleanUpFinishedUploads", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   logger.info(`running clean up job for path: ${dirPath}`, 'jobs.cleanup.progress.read');
   fs.readdir(dirPath, (err, files) => {

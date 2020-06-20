@@ -35,7 +35,7 @@ if (app.get('env') !== 'test') {
 }
 const sensitiveKeys = new Set(['access_token', 'uppyAuthToken']);
 function censorQuery(rawQuery) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "censorQuery", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const query = {};
   let censored = false;
@@ -132,7 +132,9 @@ app.use((req, res, next) => {
     const whitelist = process.env.COMPANION_CLIENT_ORIGINS.split(',').map(url => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      helper.hasProtocol(url) ? url : `${protocol}://${url}`;
+            SRTlib.send("]},");
+
+      return helper.hasProtocol(url) ? url : `${protocol}://${url}`;
             SRTlib.send("]},");
 
     });

@@ -8,9 +8,11 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
   const files = [];
   const rootPromises = [];
   const createPromiseToAddFileOrParseDirectory = entry => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "createPromiseToAddFileOrParseDirectory", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    new Promise(resolve => {
+        SRTlib.send("]},");
+
+    return new Promise(resolve => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (entry.isFile) {
@@ -39,14 +41,18 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
             const promises = entries.map(entry => {
                             SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-              createPromiseToAddFileOrParseDirectory(entry);
+                            SRTlib.send("]},");
+
+              return createPromiseToAddFileOrParseDirectory(entry);
                             SRTlib.send("]},");
 
             });
             Promise.all(promises).then(() => {
                             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-              resolve();
+                            SRTlib.send("]},");
+
+              return resolve();
                             SRTlib.send("]},");
 
             });
@@ -62,7 +68,7 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
 
   };
   toArray(dataTransfer.items).forEach(item => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const entry = item.webkitGetAsEntry();
     if (entry) {
@@ -74,9 +80,11 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
     SRTlib.send("]},");
 
   return Promise.all(rootPromises).then(() => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    files;
+        SRTlib.send("]},");
+
+    return files;
         SRTlib.send("]},");
 
   });

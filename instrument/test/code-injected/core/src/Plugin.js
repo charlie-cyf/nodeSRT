@@ -35,7 +35,7 @@ function debounce(fn) {
 }
 module.exports = class Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.uppy = uppy;
     this.opts = opts || ({});
@@ -47,7 +47,7 @@ module.exports = class Plugin {
 
   }
   getPluginState() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const {plugins} = this.uppy.getState();
         SRTlib.send("]},");
@@ -57,7 +57,7 @@ module.exports = class Plugin {
 
   }
   setPluginState(update) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const {plugins} = this.uppy.getState();
     this.uppy.setState({
@@ -73,7 +73,7 @@ module.exports = class Plugin {
 
   }
   setOptions(newOpts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.opts = {
       ...this.opts,
@@ -84,7 +84,7 @@ module.exports = class Plugin {
 
   }
   update(state) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (typeof this.el === 'undefined') {
             SRTlib.send("]},");
@@ -98,19 +98,19 @@ module.exports = class Plugin {
 
   }
   afterUpdate() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
   }
   onMount() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
   }
   mount(target, plugin) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports8", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const callerPluginName = plugin.id;
     const targetElement = findDOMElement(target);
@@ -179,21 +179,21 @@ module.exports = class Plugin {
 
   }
   render(state) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     throw new Error('Extend the render method to add your plugin to a DOM element');
         SRTlib.send("]},");
 
   }
   addTarget(plugin) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     throw new Error('Extend the addTarget method to add your plugin to another plugin\'s target');
         SRTlib.send("]},");
 
   }
   unmount() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports11", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this.isTargetDOMEl && this.el && this.el.parentNode) {
       this.el.parentNode.removeChild(this.el);
@@ -202,13 +202,13 @@ module.exports = class Plugin {
 
   }
   install() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports12", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         SRTlib.send("]},");
 
   }
   uninstall() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports13", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.unmount();
         SRTlib.send("]},");

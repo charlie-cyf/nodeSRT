@@ -19,7 +19,9 @@ app.use('/companion', companion.app({
       getKey: (req, filename) => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        `uploads/${filename}`;
+                SRTlib.send("]},");
+
+        return `uploads/${filename}`;
                 SRTlib.send("]},");
 
       },

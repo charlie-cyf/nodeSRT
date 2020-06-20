@@ -3,7 +3,7 @@ const {Plugin} = require('@uppy/core');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');
 class TransloaditFormResult extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditFormResult.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     super(uppy, opts);
     this.id = this.opts.id || 'TransloaditFormResult';
@@ -13,11 +13,11 @@ class TransloaditFormResult extends Plugin {
 
   }
   getAssemblyStatuses(fileIDs) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditFormResult.getAssemblyStatuses", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const assemblyIds = [];
     fileIDs.forEach(fileID => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       const file = this.uppy.getFile(fileID);
       const assembly = file.transloadit && file.transloadit.assembly;
@@ -31,9 +31,11 @@ class TransloaditFormResult extends Plugin {
         SRTlib.send("]},");
 
     return assemblyIds.map(id => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      tl.getAssembly(id);
+            SRTlib.send("]},");
+
+      return tl.getAssembly(id);
             SRTlib.send("]},");
 
     });
@@ -41,7 +43,7 @@ class TransloaditFormResult extends Plugin {
 
   }
   handleUpload(fileIDs) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditFormResult.handleUpload", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const assemblies = this.getAssemblyStatuses(fileIDs);
     const input = document.createElement('input');
@@ -54,14 +56,14 @@ class TransloaditFormResult extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditFormResult.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uppy.addPostProcessor(this.handleUpload);
         SRTlib.send("]},");
 
   }
   uninstall() {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "TransloaditFormResult.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uppy.removePostProcessor(this.handleUpload);
         SRTlib.send("]},");

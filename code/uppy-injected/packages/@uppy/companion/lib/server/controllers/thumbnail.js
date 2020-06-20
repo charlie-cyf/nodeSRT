@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function thumbnail(req, res, next) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "thumbnail", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   const providerName = req.params.providerName;
   const id = req.params.id;

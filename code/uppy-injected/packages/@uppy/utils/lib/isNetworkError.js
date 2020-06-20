@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function isNetworkError(xhr) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "isNetworkError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (!xhr) {
         SRTlib.send("]},");

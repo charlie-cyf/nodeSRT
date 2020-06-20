@@ -11,7 +11,7 @@ var uploadStates = {
   STATE_PAUSED: 'paused'
 };
 function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getUploadingState", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
 
   if (files === void 0) {
     files = {};
@@ -54,7 +54,7 @@ function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
 
 }
 function UploadStatus(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "UploadStatus", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var uploadingState = getUploadingState(props.isAllErrored, props.isAllComplete, props.isAllPaused, props.files);
   switch (uploadingState) {
@@ -106,7 +106,7 @@ function UploadStatus(props) {
 
 }
 function PanelTopBar(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "PanelTopBar", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var allowNewUpload = props.allowNewUpload;
   if (allowNewUpload && props.maxNumberOfFiles) {

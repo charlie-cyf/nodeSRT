@@ -16,7 +16,7 @@ exports.getCompanionOptions = () => {
 
 };
 const getConfigFromEnv = () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getConfigFromEnv", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const uploadUrls = process.env.COMPANION_UPLOAD_URLS;
   const domains = process.env.COMPANION_DOMAINS || process.env.COMPANION_DOMAIN || null;
@@ -78,7 +78,7 @@ const getConfigFromEnv = () => {
 
 };
 const getSecret = baseEnvVar => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getSecret", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const secretFile = process.env[`${baseEnvVar}_FILE`];
     SRTlib.send("]},");
@@ -88,7 +88,7 @@ const getSecret = baseEnvVar => {
 
 };
 const generateSecret = () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "generateSecret", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   logger.warn('auto-generating server secret because none was specified', 'startup.secret');
     SRTlib.send("]},");
@@ -98,7 +98,7 @@ const generateSecret = () => {
 
 };
 const getConfigFromFile = () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getConfigFromFile", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   const path = getConfigPath();
   if (!path) {
@@ -114,7 +114,7 @@ const getConfigFromFile = () => {
 
 };
 const getConfigPath = () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "getConfigPath", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   let configPath;
   for (let i = process.argv.length - 1; i >= 0; i--) {
@@ -132,7 +132,7 @@ const getConfigPath = () => {
 
 };
 exports.hasProtocol = url => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     SRTlib.send("]},");
 
@@ -141,12 +141,12 @@ exports.hasProtocol = url => {
 
 };
 exports.buildHelpfulStartupMessage = companionOptions => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const buildURL = utils.getURLBuilder(companionOptions);
   const callbackURLs = [];
   Object.keys(companionOptions.providerOptions).forEach(providerName => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (providerName === 's3') {
             SRTlib.send("]},");

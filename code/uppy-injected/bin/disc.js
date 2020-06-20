@@ -9,7 +9,7 @@ const minify = require('minify-stream');
 const disc = require('disc');
 const outputPath = path.join(__dirname, '../website/src/disc.html');
 function minifyify(filename) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "minifyify", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (filename.endsWith('.js')) {
         SRTlib.send("]},");
@@ -46,7 +46,7 @@ bundler.bundle().pipe(disc()).pipe(prepend('---\nlayout: false\n---\n')).pipe(re
 
 });
 function prepend(text) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "prepend", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const stream = new PassThrough();
   stream.write(text);

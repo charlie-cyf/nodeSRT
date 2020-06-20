@@ -11,7 +11,9 @@ module.exports = function forEachDroppedOrPastedUrl(dataTransfer, isDropOrPaste,
         const atLeastOneFileIsDragged = items.some(item => {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-          item.kind === 'file';
+                    SRTlib.send("]},");
+
+          return item.kind === 'file';
                     SRTlib.send("]},");
 
         });
@@ -23,7 +25,9 @@ module.exports = function forEachDroppedOrPastedUrl(dataTransfer, isDropOrPaste,
           urlItems = items.filter(item => {
                         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            item.kind === 'string' && item.type === 'text/plain';
+                        SRTlib.send("]},");
+
+            return item.kind === 'string' && item.type === 'text/plain';
                         SRTlib.send("]},");
 
           });
@@ -35,7 +39,9 @@ module.exports = function forEachDroppedOrPastedUrl(dataTransfer, isDropOrPaste,
         urlItems = items.filter(item => {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-          item.kind === 'string' && item.type === 'text/uri-list';
+                    SRTlib.send("]},");
+
+          return item.kind === 'string' && item.type === 'text/uri-list';
                     SRTlib.send("]},");
 
         });
@@ -52,7 +58,9 @@ module.exports = function forEachDroppedOrPastedUrl(dataTransfer, isDropOrPaste,
     item.getAsString(urlString => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-      callback(urlString);
+            SRTlib.send("]},");
+
+      return callback(urlString);
             SRTlib.send("]},");
 
     });

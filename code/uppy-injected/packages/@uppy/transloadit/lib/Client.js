@@ -3,7 +3,7 @@ module.exports = (function () {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   function Client(opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{ "anonymous": false, "function": "Client", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (opts === void 0) {
       opts = {};

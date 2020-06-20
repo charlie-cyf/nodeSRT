@@ -74,7 +74,8 @@ module.exports = class Instrumentor {
                         acornWalk.ancestor(tree, {
                             FunctionDeclaration(node, ancestors) {
                                 const paramsNum = node.params.length;
-                                node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"${arguments.callee.name}\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+                                const funcName = node.id.name;
+                                node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"'+funcName+'\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
                                 node.body.body.push(ASTParser.parse('SRTlib.send("]},");'))
                                 insertBeforeReturn(node);
                             },
@@ -85,6 +86,18 @@ module.exports = class Instrumentor {
                             },
 
                             ArrowFunctionExpression(node, ancestors) {
+                                // handle arrow function implicit return
+                                if(node.body.type !== 'BlockStatement'){
+                                    const returnStmt = {
+                                        type: "ReturnStatement",
+                                        argument: node.body
+                                    };
+                                    node.body = {
+                                        type: "BlockStatement",
+                                        body: [returnStmt]
+                                    }
+                                }
+
                                 functionHandler(node, ancestors, getListOfId, functionMap);
                                 insertBeforeReturn(node)
                             },
@@ -151,24 +164,46 @@ module.exports = class Instrumentor {
 
     functionHandler(node, ancestors, getListOfId, functionMap) {
         const paramsNum = node.params.length;
-        // find VariableDeclarator
-        let parent = ancestors[ancestors.length - 1];
-        if (parent.type === 'VariableDeclarator' || parent.type === 'MethodDefinition') {
-            if (node.body.type !== 'BlockStatement') {
-                // turn into blockStatment
-                const expStmt = {
-                    type: "ExpressionStatement",
-                    expression: node.body
-                };
-                node.body = {
-                    type: "BlockStatement",
-                    body: [expStmt]
-                }
-            }
-            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"${arguments.callee.name}\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
-            node.body.body.push(ASTParser.parse('SRTlib.send("]},");'))
 
-        } else {
+        const memberExpHandler = function (node, idList) {
+            let temp = node.object;
+            if (node.property.type === 'Identifier') {
+                idList.unshift(node.property.name)
+            }
+
+            if (temp.type === 'MemberExpression') {
+                memberExpHandler(temp);
+            } else if (temp.type === 'Identifier') {
+                idList.unshift(temp.name);
+            }
+        }
+
+        if (node.body.type !== 'BlockStatement') {
+            // turn into blockStatment
+            const expStmt = {
+                type: "ExpressionStatement",
+                expression: node.body
+            };
+            node.body = {
+                type: "BlockStatement",
+                body: [expStmt]
+            }
+        }
+
+        // find VariableDeclarator
+        let parent = ancestors[ancestors.length - 2];
+        let fname;
+        if (parent.type === 'VariableDeclarator' && parent.id.type === 'Identifier') {
+            fname = parent.id.name;         
+            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"'+fname+'\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+            
+        } else if ( parent.type === 'MethodDefinition' ){
+            const classDeclare = ancestors[ancestors.length - 4];
+            const className = classDeclare.id.name;
+            fname = parent.key.name;
+            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"'+className+'.'+fname+'\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+        }
+        else {
             let funcName = getListOfId(ancestors, []).join('.');
             funcName = funcName ? funcName : 'emptyKey';
             if (functionMap.has(funcName)) {
@@ -179,21 +214,11 @@ module.exports = class Instrumentor {
                 funcName = funcName;
             }
 
-            if (node.body.type !== 'BlockStatement') {
-                // turn into blockStatment
-                const expStmt2 = {
-                    type: "ExpressionStatement",
-                    expression: node.body
-                };
-                node.body = {
-                    type: "BlockStatement",
-                    body: [expStmt2]
-                }
-            }
-
             node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": true, "function": \"' + funcName + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
-            node.body.body.push(ASTParser.parse('SRTlib.send("]},");'))
+            
         }
+
+        node.body.body.push(ASTParser.parse('SRTlib.send("]},");'))
 
     }
 
@@ -223,6 +248,8 @@ module.exports = class Instrumentor {
                 case 'AssignmentExpression':
                     if (ancestor.left.type === 'MemberExpression') {
                         memberExpHandler(ancestor.left)
+                    } else if (ancestor.left.type === 'Identifier') {
+                        idList.unshift(ancestor.left.id.name)
                     }
                     break;
                 case 'FunctionDeclaration':

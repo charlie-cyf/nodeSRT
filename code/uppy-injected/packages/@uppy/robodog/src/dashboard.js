@@ -4,7 +4,7 @@ const addDashboardPlugin = require('./addDashboardPlugin');
 const addTransloaditPlugin = require('./addTransloaditPlugin');
 const addProviders = require('./addProviders');
 function dashboard(target, opts = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "${arguments.callee.name}", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{ "anonymous": false, "function": "dashboard", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const inline = opts.inline == null ? true : opts.inline;
   const pluginId = 'Dashboard';
