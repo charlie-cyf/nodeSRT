@@ -23,6 +23,7 @@ describe('src/Core', () => {
 
   const RealCreateObjectUrl = global.URL.createObjectURL;
   beforeEach(() => {
+    SRTlib.send('jasmine ' + JSON.stringify(jasmine['currentTest']))
     global.URL.createObjectURL = jest.fn().mockReturnValue('newUrl');
   });
   afterEach(() => {

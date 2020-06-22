@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var sr_RS_Cyrillic = {};
 sr_RS_Cyrillic.strings = {
   addMore: 'Додај још',
@@ -134,22 +133,21 @@ sr_RS_Cyrillic.strings = {
   unselectFileNamed: 'Искључите фајл %{name}',
   openFolderNamed: 'Отвори фолдер %{name}'
 };
-
 sr_RS_Cyrillic.pluralize = function (n) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"sr_RS_Cyrillic.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "sr_RS_Cyrillic.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-    SRTlib.send('], "end": "sr_RS_Cyrillic.pluralize"},');
+        SRTlib.send('], "end": "sr_RS_Cyrillic.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('], "end": "sr_RS_Cyrillic.pluralize"},');
 
-  SRTlib.send('], "end": "sr_RS_Cyrillic.pluralize"},');
   return 1;
-  SRTlib.send('], "end": "sr_RS_Cyrillic.pluralize"},');
-};
+    SRTlib.send('], "end": "sr_RS_Cyrillic.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.sr_RS_Cyrillic = sr_RS_Cyrillic;
 }
-
 module.exports = sr_RS_Cyrillic;

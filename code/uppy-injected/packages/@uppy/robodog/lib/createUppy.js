@@ -1,11 +1,32 @@
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 var SRTlib = require('SRT-util');
+function _extends() {
+    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
+  _extends = Object.assign || (function (target) {
+        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+        SRTlib.send('], "end": "_extends"},');
+
+    return target;
+        SRTlib.send('], "end": "_extends"},');
+
+  });
+    SRTlib.send('], "end": "_extends"},');
+
+  return _extends.apply(this, arguments);
+    SRTlib.send('], "end": "_extends"},');
+
+}
 var Uppy = require('@uppy/core');
-
 var has = require('@uppy/utils/lib/hasProperty');
-
 var eventNames = {
   onFileAdded: 'file-added',
   onFileRemoved: 'file-removed',
@@ -27,49 +48,46 @@ var eventNames = {
   onComplete: 'complete'
 };
 var uppyOptionNames = ['autoProceed', 'restrictions', 'meta', 'onBeforeFileAdded', 'onBeforeUpload', 'debug'];
-
 function createUppy(opts, overrides) {
+    SRTlib.send(`{ "anonymous": false, "function": "createUppy", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
   if (overrides === void 0) {
     overrides = {};
   }
-
-  SRTlib.send("{ \"anonymous\": false, \"function\": \"createUppy\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 2, \"calls\" : [");
   var uppyOptions = {};
   uppyOptionNames.forEach(function (name) {
-    SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
     if (has(opts, name)) uppyOptions[name] = opts[name];
-    SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('], "end": "emptyKey"},');
+
   });
-
   _extends(uppyOptions, overrides);
-
   var uppy = Uppy(uppyOptions);
   Object.keys(eventNames).forEach(function (optionName) {
-    SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey2\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-    var eventName = eventNames[optionName];
+        SRTlib.send(`{ "anonymous": true, "function": "forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+    var eventName = eventNames[optionName];
     if (typeof opts[optionName] === 'function') {
       uppy.on(eventName, opts[optionName]);
     }
+        SRTlib.send('], "end": "forEach"},');
 
-    SRTlib.send('], "end": "emptyKey2"},');
   });
-
   if (typeof opts.onProgress === 'function') {
     uppy.on('upload-progress', function () {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey3\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 0, \"calls\" : [");
+            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-      var _uppy$getState = uppy.getState(),
-          totalProgress = _uppy$getState.totalProgress;
-
+      var _uppy$getState = uppy.getState(), totalProgress = _uppy$getState.totalProgress;
       opts.onProgress.call(uppy, totalProgress);
-      SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('], "end": "emptyKey2"},');
+
     });
   }
+    SRTlib.send('], "end": "createUppy"},');
 
-  SRTlib.send('], "end": "createUppy"},');
   return uppy;
-  SRTlib.send('], "end": "createUppy"},');
-}
+    SRTlib.send('], "end": "createUppy"},');
 
+}
 module.exports = createUppy;

@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var el_GR = {};
 el_GR.strings = {
   addMore: 'Προσθέστε περισσότερα',
@@ -134,22 +133,21 @@ el_GR.strings = {
     '2': 'Πρέπει να επιλέξετε τουλάχιστον %{smart_count} αρχεία'
   }
 };
-
 el_GR.pluralize = function (n) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"el_GR.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "el_GR.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-    SRTlib.send('], "end": "el_GR.pluralize"},');
+        SRTlib.send('], "end": "el_GR.pluralize"},');
+
     return 1;
   }
+    SRTlib.send('], "end": "el_GR.pluralize"},');
 
-  SRTlib.send('], "end": "el_GR.pluralize"},');
   return 0;
-  SRTlib.send('], "end": "el_GR.pluralize"},');
-};
+    SRTlib.send('], "end": "el_GR.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.el_GR = el_GR;
 }
-
 module.exports = el_GR;

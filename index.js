@@ -6,6 +6,7 @@ const Injector = require('./instrument/instrumentor')
 let codeBase = "./code/uppy/"
 const path = require('path')
 const SRTlibPath = './instrument/SRTlib.js'
+const InstrumentorSrc = './instrument/'
 const child_process = require('child_process');
 
 
@@ -40,6 +41,13 @@ console.log('copy success!')
 const codeInjector = new Injector(codeBase)
 
 codeInjector.getInjected()
+
+// update package.json jest configuration
+const injectedPackageJson = JSON.parse(fs.readFileSync(path.join(injectedCodebase, 'package.json')));
+injectedPackageJson.jest.setupFilesAfterEnv = ["./jest.setup.js"]
+fs.writeFileSync(injectedCodebase+'/package.json', JSON.stringify(injectedPackageJson));
+
+fs.copyFileSync(path.join(InstrumentorSrc, 'jest.setup.js'), path.join(injectedCodebase, 'jest.setup.js'))
 
 // run npm install in injected folder
 child_process.execSync('cd '+injectedCodebase+' && pwd && npm install',{stdio:[0,1,2]});

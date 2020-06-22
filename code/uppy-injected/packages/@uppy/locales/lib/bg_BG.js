@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var bg_BG = {};
 bg_BG.strings = {
   addBulkFilesFailed: {
@@ -142,22 +141,21 @@ bg_BG.strings = {
     '1': 'Трябва да изберете поне %{smart_count} файла'
   }
 };
-
 bg_BG.pluralize = function (count) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"bg_BG.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "bg_BG.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (count === 1) {
-    SRTlib.send('], "end": "bg_BG.pluralize"},');
+        SRTlib.send('], "end": "bg_BG.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('], "end": "bg_BG.pluralize"},');
 
-  SRTlib.send('], "end": "bg_BG.pluralize"},');
   return 1;
-  SRTlib.send('], "end": "bg_BG.pluralize"},');
-};
+    SRTlib.send('], "end": "bg_BG.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.bg_BG = bg_BG;
 }
-
 module.exports = bg_BG;

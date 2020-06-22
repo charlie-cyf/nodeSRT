@@ -1,211 +1,241 @@
 var SRTlib = require('SRT-util');
+module.exports = (function () {
+    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-module.exports = /*#__PURE__*/function () {
   function Client(opts) {
+        SRTlib.send(`{ "anonymous": false, "function": "Client", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
     if (opts === void 0) {
       opts = {};
     }
-
-    SRTlib.send("{ \"anonymous\": false, \"function\": \"Client.constructor\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
     this.opts = opts;
     this._reportError = this._reportError.bind(this);
     this._headers = {
       'Transloadit-Client': this.opts.client
     };
-    SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('], "end": "Client"},');
+
   }
-
   var _proto = Client.prototype;
-
   _proto.createAssembly = function createAssembly(_ref) {
-    var _this = this;
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.createAssembly.createAssembly", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    var templateId = _ref.templateId,
-        params = _ref.params,
-        fields = _ref.fields,
-        signature = _ref.signature,
-        expectedFiles = _ref.expectedFiles;
-    SRTlib.send("{ \"anonymous\": false, \"function\": \"Client.createAssembly\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    var _this = this;
+    var templateId = _ref.templateId, params = _ref.params, fields = _ref.fields, signature = _ref.signature, expectedFiles = _ref.expectedFiles;
     var data = new FormData();
     data.append('params', typeof params === 'string' ? params : JSON.stringify(params));
-
     if (signature) {
       data.append('signature', signature);
     }
-
     Object.keys(fields).forEach(function (key) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.createAssembly.createAssembly.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
       data.append(key, fields[key]);
-      SRTlib.send('], "end": "emptyKey"},');
+            SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly.forEach"},');
+
     });
     data.append('num_expected_upload_files', expectedFiles);
     var url = this.opts.service + "/assemblies";
-    SRTlib.send('], "end": "createAssembly"},');
+        SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly"},');
+
     return fetch(url, {
       method: 'post',
       headers: this._headers,
       body: data
     }).then(function (response) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey2\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then.then"},');
+
       return response.json();
-      SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then.then"},');
+
     }).then(function (assembly) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey3\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (assembly.error) {
         var error = new Error(assembly.error);
         error.details = assembly.message;
         error.assembly = assembly;
-
         if (assembly.assembly_id) {
           error.details += ' ' + ("Assembly ID: " + assembly.assembly_id);
         }
+                SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then"},');
 
-        SRTlib.send('], "end": "emptyKey3"},');
         throw error;
       }
+            SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then"},');
 
-      SRTlib.send('], "end": "emptyKey3"},');
       return assembly;
-      SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then"},');
+
     }).catch(function (err) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey4\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch"},');
+
       return _this._reportError(err, {
         url: url,
         type: 'API_ERROR'
       });
-      SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly.ReturnStatement.then.then.catch"},');
+
     });
-    SRTlib.send('], "end": "createAssembly"},');
+        SRTlib.send('], "end": "module.exports._proto.createAssembly.createAssembly"},');
+
   };
-
   _proto.reserveFile = function reserveFile(assembly, file) {
-    var _this2 = this;
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.reserveFile.reserveFile", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    SRTlib.send("{ \"anonymous\": false, \"function\": \"Client.reserveFile\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 2, \"calls\" : [");
+    var _this2 = this;
     var size = encodeURIComponent(file.size);
     var url = assembly.assembly_ssl_url + "/reserve_file?size=" + size;
-    SRTlib.send('], "end": "reserveFile"},');
+        SRTlib.send('], "end": "module.exports._proto.reserveFile.reserveFile"},');
+
     return fetch(url, {
       method: 'post',
       headers: this._headers
     }).then(function (response) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey5\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey5"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.reserveFile.reserveFile.ReturnStatement.then.catch.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.reserveFile.reserveFile.ReturnStatement.then.catch.then"},');
+
       return response.json();
-      SRTlib.send('], "end": "emptyKey5"},');
+            SRTlib.send('], "end": "module.exports._proto.reserveFile.reserveFile.ReturnStatement.then.catch.then"},');
+
     }).catch(function (err) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey6\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey6"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.reserveFile.reserveFile.ReturnStatement.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.reserveFile.reserveFile.ReturnStatement.then.catch"},');
+
       return _this2._reportError(err, {
         assembly: assembly,
         file: file,
         url: url,
         type: 'API_ERROR'
       });
-      SRTlib.send('], "end": "emptyKey6"},');
+            SRTlib.send('], "end": "module.exports._proto.reserveFile.reserveFile.ReturnStatement.then.catch"},');
+
     });
-    SRTlib.send('], "end": "reserveFile"},');
+        SRTlib.send('], "end": "module.exports._proto.reserveFile.reserveFile"},');
+
   };
-
   _proto.addFile = function addFile(assembly, file) {
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.addFile.addFile", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
     var _this3 = this;
-
-    SRTlib.send("{ \"anonymous\": false, \"function\": \"Client.addFile\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 2, \"calls\" : [");
-
     if (!file.uploadURL) {
-      SRTlib.send('], "end": "addFile"},');
+            SRTlib.send('], "end": "module.exports._proto.addFile.addFile"},');
+
       return Promise.reject(new Error('File does not have an `uploadURL`.'));
     }
-
     var size = encodeURIComponent(file.size);
     var uploadUrl = encodeURIComponent(file.uploadURL);
     var filename = encodeURIComponent(file.name);
     var fieldname = 'file';
     var qs = "size=" + size + "&filename=" + filename + "&fieldname=" + fieldname + "&s3Url=" + uploadUrl;
     var url = assembly.assembly_ssl_url + "/add_file?" + qs;
-    SRTlib.send('], "end": "addFile"},');
+        SRTlib.send('], "end": "module.exports._proto.addFile.addFile"},');
+
     return fetch(url, {
       method: 'post',
       headers: this._headers
     }).then(function (response) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey7\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey7"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.addFile.addFile.ReturnStatement.then.catch.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.addFile.addFile.ReturnStatement.then.catch.then"},');
+
       return response.json();
-      SRTlib.send('], "end": "emptyKey7"},');
+            SRTlib.send('], "end": "module.exports._proto.addFile.addFile.ReturnStatement.then.catch.then"},');
+
     }).catch(function (err) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey8\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey8"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.addFile.addFile.ReturnStatement.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.addFile.addFile.ReturnStatement.then.catch"},');
+
       return _this3._reportError(err, {
         assembly: assembly,
         file: file,
         url: url,
         type: 'API_ERROR'
       });
-      SRTlib.send('], "end": "emptyKey8"},');
+            SRTlib.send('], "end": "module.exports._proto.addFile.addFile.ReturnStatement.then.catch"},');
+
     });
-    SRTlib.send('], "end": "addFile"},');
+        SRTlib.send('], "end": "module.exports._proto.addFile.addFile"},');
+
   };
-
   _proto.cancelAssembly = function cancelAssembly(assembly) {
-    var _this4 = this;
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.cancelAssembly.cancelAssembly", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("{ \"anonymous\": false, \"function\": \"Client.cancelAssembly\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    var _this4 = this;
     var url = assembly.assembly_ssl_url;
-    SRTlib.send('], "end": "cancelAssembly"},');
+        SRTlib.send('], "end": "module.exports._proto.cancelAssembly.cancelAssembly"},');
+
     return fetch(url, {
       method: 'delete',
       headers: this._headers
     }).then(function (response) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey9\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey9"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.cancelAssembly.cancelAssembly.ReturnStatement.then.catch.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.cancelAssembly.cancelAssembly.ReturnStatement.then.catch.then"},');
+
       return response.json();
-      SRTlib.send('], "end": "emptyKey9"},');
+            SRTlib.send('], "end": "module.exports._proto.cancelAssembly.cancelAssembly.ReturnStatement.then.catch.then"},');
+
     }).catch(function (err) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey10\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey10"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.cancelAssembly.cancelAssembly.ReturnStatement.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.cancelAssembly.cancelAssembly.ReturnStatement.then.catch"},');
+
       return _this4._reportError(err, {
         url: url,
         type: 'API_ERROR'
       });
-      SRTlib.send('], "end": "emptyKey10"},');
+            SRTlib.send('], "end": "module.exports._proto.cancelAssembly.cancelAssembly.ReturnStatement.then.catch"},');
+
     });
-    SRTlib.send('], "end": "cancelAssembly"},');
+        SRTlib.send('], "end": "module.exports._proto.cancelAssembly.cancelAssembly"},');
+
   };
-
   _proto.getAssemblyStatus = function getAssemblyStatus(url) {
-    var _this5 = this;
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.getAssemblyStatus.getAssemblyStatus", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("{ \"anonymous\": false, \"function\": \"Client.getAssemblyStatus\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-    SRTlib.send('], "end": "getAssemblyStatus"},');
+    var _this5 = this;
+        SRTlib.send('], "end": "module.exports._proto.getAssemblyStatus.getAssemblyStatus"},');
+
     return fetch(url, {
       headers: this._headers
     }).then(function (response) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey11\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey11"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.getAssemblyStatus.getAssemblyStatus.ReturnStatement.then.catch.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.getAssemblyStatus.getAssemblyStatus.ReturnStatement.then.catch.then"},');
+
       return response.json();
-      SRTlib.send('], "end": "emptyKey11"},');
+            SRTlib.send('], "end": "module.exports._proto.getAssemblyStatus.getAssemblyStatus.ReturnStatement.then.catch.then"},');
+
     }).catch(function (err) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey12\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey12"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.getAssemblyStatus.getAssemblyStatus.ReturnStatement.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto.getAssemblyStatus.getAssemblyStatus.ReturnStatement.then.catch"},');
+
       return _this5._reportError(err, {
         url: url,
         type: 'STATUS_ERROR'
       });
-      SRTlib.send('], "end": "emptyKey12"},');
-    });
-    SRTlib.send('], "end": "getAssemblyStatus"},');
-  };
+            SRTlib.send('], "end": "module.exports._proto.getAssemblyStatus.getAssemblyStatus.ReturnStatement.then.catch"},');
 
+    });
+        SRTlib.send('], "end": "module.exports._proto.getAssemblyStatus.getAssemblyStatus"},');
+
+  };
   _proto.submitError = function submitError(err, _ref2) {
-    var endpoint = _ref2.endpoint,
-        instance = _ref2.instance,
-        assembly = _ref2.assembly;
-    SRTlib.send("{ \"anonymous\": false, \"function\": \"Client.submitError\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 2, \"calls\" : [");
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.submitError.submitError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+
+    var endpoint = _ref2.endpoint, instance = _ref2.instance, assembly = _ref2.assembly;
     var message = err.details ? err.message + " (" + err.details + ")" : err.message;
-    SRTlib.send('], "end": "submitError"},');
+        SRTlib.send('], "end": "module.exports._proto.submitError.submitError"},');
+
     return fetch('https://status.transloadit.com/client_error', {
       method: 'post',
       body: JSON.stringify({
@@ -217,43 +247,50 @@ module.exports = /*#__PURE__*/function () {
         error: message
       })
     }).then(function (response) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey13\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey13"},');
-      return response.json();
-      SRTlib.send('], "end": "emptyKey13"},');
-    });
-    SRTlib.send('], "end": "submitError"},');
-  };
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.submitError.submitError.ReturnStatement.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+            SRTlib.send('], "end": "module.exports._proto.submitError.submitError.ReturnStatement.then"},');
+
+      return response.json();
+            SRTlib.send('], "end": "module.exports._proto.submitError.submitError.ReturnStatement.then"},');
+
+    });
+        SRTlib.send('], "end": "module.exports._proto.submitError.submitError"},');
+
+  };
   _proto._reportError = function _reportError(err, params) {
-    SRTlib.send("{ \"anonymous\": false, \"function\": \"Client._reportError\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 2, \"calls\" : [");
+        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._reportError._reportError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (this.opts.errorReporting === false) {
-      SRTlib.send('], "end": "_reportError"},');
+            SRTlib.send('], "end": "module.exports._proto._reportError._reportError"},');
+
       throw err;
     }
-
     var opts = {
       type: params.type
     };
-
     if (params.assembly) {
       opts.assembly = params.assembly.assembly_id;
       opts.instance = params.assembly.instance;
     }
-
     if (params.url) {
       opts.endpoint = params.url;
     }
-
     this.submitError(err, opts).catch(function (_) {
-      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey14\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-      SRTlib.send('], "end": "emptyKey14"},');
+            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._reportError._reportError.submitError.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+            SRTlib.send('], "end": "module.exports._proto._reportError._reportError.submitError.catch"},');
+
     });
-    SRTlib.send('], "end": "_reportError"},');
+        SRTlib.send('], "end": "module.exports._proto._reportError._reportError"},');
+
     throw err;
-    SRTlib.send('], "end": "_reportError"},');
+        SRTlib.send('], "end": "module.exports._proto._reportError._reportError"},');
+
   };
+    SRTlib.send('], "end": "module.exports"},');
 
   return Client;
-}();
+    SRTlib.send('], "end": "module.exports"},');
+
+})();

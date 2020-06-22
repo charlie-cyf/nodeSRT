@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var da_DK = {};
 da_DK.strings = {
   addMore: 'Tilføj flere',
@@ -134,22 +133,21 @@ da_DK.strings = {
     '2': 'Du skal vælge mindst %{smart_count} filer'
   }
 };
-
 da_DK.pluralize = function (n) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"da_DK.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "da_DK.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-    SRTlib.send('], "end": "da_DK.pluralize"},');
+        SRTlib.send('], "end": "da_DK.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('], "end": "da_DK.pluralize"},');
 
-  SRTlib.send('], "end": "da_DK.pluralize"},');
   return 1;
-  SRTlib.send('], "end": "da_DK.pluralize"},');
-};
+    SRTlib.send('], "end": "da_DK.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.da_DK = da_DK;
 }
-
 module.exports = da_DK;

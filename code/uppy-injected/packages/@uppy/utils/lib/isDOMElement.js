@@ -1,8 +1,10 @@
 var SRTlib = require('SRT-util');
-
 module.exports = function isDOMElement(obj) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"module.exports.isDOMElement\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
-  SRTlib.send('], "end": "module.exports.isDOMElement"},');
+    SRTlib.send(`{ "anonymous": true, "function": "module.exports.isDOMElement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+
+    SRTlib.send('], "end": "module.exports.isDOMElement"},');
+
   return obj && typeof obj === 'object' && obj.nodeType === Node.ELEMENT_NODE;
-  SRTlib.send('], "end": "module.exports.isDOMElement"},');
+    SRTlib.send('], "end": "module.exports.isDOMElement"},');
+
 };
