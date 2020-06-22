@@ -24,13 +24,13 @@ module.exports.getProviderMiddleware = providers => {
       logger.warn('invalid provider options detected. Provider will not be loaded', 'provider.middleware.invalid', req.id);
     }
     next();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "middleware"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return middleware;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };
 module.exports.getDefaultProviders = companionOptions => {
@@ -48,10 +48,10 @@ module.exports.getDefaultProviders = companionOptions => {
   const usesGraphAPI = () => {
         SRTlib.send(`{ "anonymous": false, "function": "usesGraphAPI", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "usesGraphAPI"},');
 
     return (/^\d+$/).test(providerOptions.instagram.key);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "usesGraphAPI"},');
 
   };
   if (providerOptions && providerOptions.instagram && usesGraphAPI()) {
@@ -59,10 +59,10 @@ module.exports.getDefaultProviders = companionOptions => {
   } else {
     providers.instagram = instagram;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
   return providers;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };
 module.exports.addCustomProviders = (customProviders, providers, grantConfig) => {
@@ -73,10 +73,10 @@ module.exports.addCustomProviders = (customProviders, providers, grantConfig) =>
 
     providers[providerName] = customProviders[providerName].module;
     grantConfig[providerName] = customProviders[providerName].config;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey4"},');
 
 };
 module.exports.addProviderOptions = (companionOptions, grantConfig) => {
@@ -87,7 +87,7 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
     server
   })) {
     logger.warn('invalid provider options detected. Providers will not be loaded', 'provider.options.invalid');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey7"},');
 
     return;
   }
@@ -100,10 +100,10 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
   const keys = Object.keys(providerOptions).filter(key => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
     return key !== 'server';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
   });
   keys.forEach(authProvider => {
@@ -129,10 +129,10 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
     } else if (authProvider !== 's3') {
       logger.warn(`skipping one found unsupported provider "${authProvider}".`, 'provider.options.skip');
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey6"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey7"},');
 
 };
 const authNameToProvider = (authProvider, options) => {
@@ -143,7 +143,7 @@ const authNameToProvider = (authProvider, options) => {
   for (const name of providerNames) {
     const provider = providers[name];
     if (provider.authProvider === authProvider) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "authNameToProvider"},');
 
       return {
         name,
@@ -151,15 +151,15 @@ const authNameToProvider = (authProvider, options) => {
       };
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "authNameToProvider"},');
 
 };
 const validOptions = options => {
     SRTlib.send(`{ "anonymous": false, "function": "validOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "validOptions"},');
 
   return options.server.host && options.server.protocol;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "validOptions"},');
 
 };

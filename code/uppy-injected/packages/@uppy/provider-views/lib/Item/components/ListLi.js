@@ -5,13 +5,13 @@ var getAriaLabelOfCheckbox = function getAriaLabelOfCheckbox(props) {
 
   if (props.type === 'folder') {
     if (props.isChecked) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "getAriaLabelOfCheckbox"},');
 
       return props.i18n('unselectAllFilesFromFolderNamed', {
         name: props.title
       });
     } else {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "getAriaLabelOfCheckbox"},');
 
       return props.i18n('selectAllFilesFromFolderNamed', {
         name: props.title
@@ -19,26 +19,26 @@ var getAriaLabelOfCheckbox = function getAriaLabelOfCheckbox(props) {
     }
   } else {
     if (props.isChecked) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "getAriaLabelOfCheckbox"},');
 
       return props.i18n('unselectFileNamed', {
         name: props.title
       });
     } else {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "getAriaLabelOfCheckbox"},');
 
       return props.i18n('selectFileNamed', {
         name: props.title
       });
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getAriaLabelOfCheckbox"},');
 
 };
 module.exports = function (props) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
   return h("li", {
     class: props.className
@@ -63,6 +63,6 @@ module.exports = function (props) {
       name: props.title
     })
   }, props.itemIconEl, props.showTitles && props.title));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
 };

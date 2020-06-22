@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 var _require = require('preact'), h = _require.h;
@@ -44,24 +44,24 @@ module.exports = function (props) {
   });
   switch (props.viewType) {
     case 'grid':
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports"},');
 
       return h(GridLi, _extends({}, props, {
         className: className,
         itemIconEl: itemIconEl
       }));
     case 'list':
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports"},');
 
       return h(ListLi, _extends({}, props, {
         className: className,
         itemIconEl: itemIconEl
       }));
     default:
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports"},');
 
       throw new Error("There is no such type " + props.viewType);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
 };

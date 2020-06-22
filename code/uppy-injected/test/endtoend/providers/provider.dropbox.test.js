@@ -10,6 +10,8 @@ describe('File upload with Dropbox Provider', () => {
     await browser.url(testURL);
   });
   it('should upload a file completely with Dropbox', async function () {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "File%20upload%20with%20Dropbox%20Provider", "testName": "should%20upload%20a%20file%20completely%20with%20Dropbox", "fileName": "${__filename}", "calls" : [`);
 
     if (!process.env.UPPY_GOOGLE_EMAIL) {
@@ -32,10 +34,13 @@ describe('File upload with Dropbox Provider', () => {
     await allowAccessButton.waitForDisplayed();
     await allowAccessButton.click();
     await finishUploadTest(browser);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20upload%20a%20file%20completely%20with%20Dropbox"},');
+    SRTlib.endLogger();
 
   });
   it('should resume uploads when retry is triggered with Dropbox', async function () {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "File%20upload%20with%20Dropbox%20Provider", "testName": "should%20resume%20uploads%20when%20retry%20is%20triggered%20with%20Dropbox", "fileName": "${__filename}", "calls" : [`);
 
     if (!process.env.UPPY_GOOGLE_EMAIL) {
@@ -43,7 +48,8 @@ describe('File upload with Dropbox Provider', () => {
       return this.skip();
     }
     await uploadWithRetry(browser, 'Dropbox', testURL);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20resume%20uploads%20when%20retry%20is%20triggered%20with%20Dropbox"},');
+    SRTlib.endLogger();
 
   });
     SRTlib.send(']},');

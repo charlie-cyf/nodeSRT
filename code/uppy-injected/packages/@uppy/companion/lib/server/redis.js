@@ -5,16 +5,16 @@ module.exports.client = opts => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (!opts) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return redisClient;
   }
   if (!redisClient) {
     redisClient = redis.createClient(opts);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return redisClient;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };

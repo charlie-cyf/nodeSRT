@@ -25,12 +25,12 @@ function selectFakeFile(uppyID, name, type, b64) {
       }
       byteArrays[sliceIndex] = new Uint8Array(bytes);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "base64toBlob"},');
 
     return new Blob(byteArrays, {
       type: contentType
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "base64toBlob"},');
 
   }
   var blob = base64toBlob(b64, type);
@@ -40,7 +40,7 @@ function selectFakeFile(uppyID, name, type, b64) {
     type: blob.type,
     data: blob
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "selectFakeFile"},');
 
 }
 function ensureInputVisible(selector) {
@@ -51,30 +51,30 @@ function ensureInputVisible(selector) {
   input.removeAttribute('hidden');
   input.removeAttribute('aria-hidden');
   input.removeAttribute('tabindex');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "ensureInputVisible"},');
 
 }
 function supportsChooseFile() {
     SRTlib.send(`{ "anonymous": false, "function": "supportsChooseFile", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   if (process.env.CI) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "supportsChooseFile"},');
 
     return false;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "supportsChooseFile"},');
 
   return capabilities.browserName !== 'Safari' && capabilities.browserName !== 'MicrosoftEdge' && capabilities.platformName !== 'Android';
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "supportsChooseFile"},');
 
 }
 function prematureExit() {
     SRTlib.send(`{ "anonymous": false, "function": "prematureExit", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-  throw new Error('Companion exited early');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "prematureExit"},');
 
-    SRTlib.send("]},");
+  throw new Error('Companion exited early');
+    SRTlib.send('], "end": "prematureExit"},');
 
 }
 class CompanionService {
@@ -96,7 +96,7 @@ class CompanionService {
         COMPANION_GOOGLE_SECRET: process.env.TEST_COMPANION_GOOGLE_SECRET
       }
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onPrepare"},');
 
     return new Promise((resolve, reject) => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
@@ -108,22 +108,22 @@ class CompanionService {
         if (`${chunk}`.includes('Listening on')) {
           resolve();
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
       });
       this.companion.on('error', console.error);
       this.companion.stderr.pipe(process.stderr);
       this.companion.on('exit', prematureExit);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onPrepare"},');
 
   }
   onComplete() {
         SRTlib.send(`{ "anonymous": false, "function": "CompanionService.onComplete", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onComplete"},');
 
     return new Promise(resolve => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -132,17 +132,17 @@ class CompanionService {
       this.companion.on('exit', () => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
         return resolve();
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
       });
       this.companion.kill('SIGINT');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onComplete"},');
 
   }
 }
@@ -153,14 +153,14 @@ class StaticServerService {
 
     this.folders = folders;
     this.port = staticServerPort;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   async onPrepare() {
         SRTlib.send(`{ "anonymous": false, "function": "StaticServerService.onPrepare", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (!this.folders) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "onPrepare"},');
 
       return;
     }
@@ -170,7 +170,7 @@ class StaticServerService {
     }
     const listen = promisify(this.app.listen.bind(this.app));
     this.server = await listen(this.port);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onPrepare"},');
 
   }
   async onComplete() {
@@ -181,7 +181,7 @@ class StaticServerService {
       await close();
     }
     this.app = null;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onComplete"},');
 
   }
 }
@@ -198,7 +198,7 @@ class TusService {
 
     this.port = tusServerPort;
     this.path = path.join(os.tmpdir(), `uppy-e2e-tus-node-server-${randomBytes(6).toString('hex')}`);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   async onPrepare() {
@@ -222,10 +222,10 @@ class TusService {
       }, err => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey5"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
     });
     const listen = promisify(this.tusServer.listen.bind(this.tusServer));
@@ -235,7 +235,7 @@ class TusService {
     });
     const listen2 = promisify(this.slowServer.listen.bind(this.slowServer));
     await listen2(this.port + 1);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onPrepare"},');
 
   }
   async onComplete() {
@@ -252,7 +252,7 @@ class TusService {
     await rimraf(this.path);
     this.slowServer = null;
     this.tusServer = null;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onComplete"},');
 
   }
 }

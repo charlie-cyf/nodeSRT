@@ -19,19 +19,19 @@ function get(req, res, next) {
     if (err) {
       const errResp = errorToResponse(err);
       if (errResp) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey2"},');
 
         return res.status(errResp.code).json({
           message: errResp.message
         });
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
       return next(err);
     }
     if (!size) {
       logger.error('unable to determine file size', 'controller.get.provider.size', req.id);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
       return res.status(400).json({
         message: 'unable to determine file size'
@@ -42,7 +42,7 @@ function get(req, res, next) {
     if (uploader.hasError()) {
       const response = uploader.getResponse();
       res.status(response.status).json(response.body);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
       return;
     }
@@ -56,15 +56,15 @@ function get(req, res, next) {
         token,
         query: req.query
       }, uploader.handleChunk.bind(uploader));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
     const response = uploader.getResponse();
     res.status(response.status).json(response.body);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "get"},');
 
 }
 module.exports = get;

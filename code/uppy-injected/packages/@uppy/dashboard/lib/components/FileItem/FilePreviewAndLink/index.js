@@ -5,7 +5,7 @@ var getFileTypeIcon = require('../../../utils/getFileTypeIcon');
 module.exports = function FilePreviewAndLink(props) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports.FilePreviewAndLink", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.FilePreviewAndLink"},');
 
   return h("div", {
     class: "uppy-DashboardItem-previewInnerWrap",
@@ -21,6 +21,6 @@ module.exports = function FilePreviewAndLink(props) {
   }), h(FilePreview, {
     file: props.file
   }));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.FilePreviewAndLink"},');
 
 };

@@ -5,7 +5,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('preact'), h = _require.h, Component = _require.Component;
@@ -15,10 +15,10 @@ var RecordingLength = require('./RecordingLength');
 function isModeAvailable(modes, mode) {
     SRTlib.send(`{ "anonymous": false, "function": "isModeAvailable", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isModeAvailable"},');
 
   return modes.indexOf(mode) !== -1;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isModeAvailable"},');
 
 }
 var CameraScreen = (function (_Component) {
@@ -28,10 +28,10 @@ var CameraScreen = (function (_Component) {
   function CameraScreen() {
         SRTlib.send(`{ "anonymous": false, "function": "CameraScreen", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "CameraScreen"},');
 
     return _Component.apply(this, arguments) || this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "CameraScreen"},');
 
   }
   var _proto = CameraScreen.prototype;
@@ -39,14 +39,14 @@ var CameraScreen = (function (_Component) {
         SRTlib.send(`{ "anonymous": true, "function": "CameraScreen._proto.componentDidMount.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.props.onFocus();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "CameraScreen._proto.componentDidMount.componentDidMount"},');
 
   };
   _proto.componentWillUnmount = function componentWillUnmount() {
         SRTlib.send(`{ "anonymous": true, "function": "CameraScreen._proto.componentWillUnmount.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.props.onStop();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "CameraScreen._proto.componentWillUnmount.componentWillUnmount"},');
 
   };
   _proto.render = function render() {
@@ -55,7 +55,7 @@ var CameraScreen = (function (_Component) {
     var shouldShowRecordButton = this.props.supportsRecording && (isModeAvailable(this.props.modes, 'video-only') || isModeAvailable(this.props.modes, 'audio-only') || isModeAvailable(this.props.modes, 'video-audio'));
     var shouldShowSnapshotButton = isModeAvailable(this.props.modes, 'picture');
     var shouldShowRecordingLength = this.props.supportsRecording && this.props.showRecordingLength;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "CameraScreen._proto.render.render"},');
 
     return h("div", {
       class: "uppy uppy-Webcam-container"
@@ -70,13 +70,13 @@ var CameraScreen = (function (_Component) {
     })), h("div", {
       class: "uppy-Webcam-buttonContainer"
     }, shouldShowRecordingLength ? RecordingLength(this.props) : null, ' ', shouldShowSnapshotButton ? SnapshotButton(this.props) : null, ' ', shouldShowRecordButton ? RecordButton(this.props) : null));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "CameraScreen._proto.render.render"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "CameraScreen"},');
 
   return CameraScreen;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "CameraScreen"},');
 
 })(Component);
 module.exports = CameraScreen;

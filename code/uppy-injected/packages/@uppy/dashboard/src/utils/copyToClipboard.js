@@ -3,7 +3,7 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports.copyToClipboard", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   fallbackString = fallbackString || 'Copy the URL below';
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.copyToClipboard"},');
 
   return new Promise(resolve => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -30,29 +30,29 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
       document.body.removeChild(textArea);
       window.prompt(fallbackString, textToCopy);
       resolve();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "magicCopyFailed"},');
 
     };
     try {
       const successful = document.execCommand('copy');
       if (!successful) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return magicCopyFailed('copy command unavailable');
       }
       document.body.removeChild(textArea);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
       return resolve();
     } catch (err) {
       document.body.removeChild(textArea);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
       return magicCopyFailed(err);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.copyToClipboard"},');
 
 };

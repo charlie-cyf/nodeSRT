@@ -4,7 +4,7 @@ var circleLength = 2 * Math.PI * 15;
 module.exports = function PauseResumeCancelIcon(props) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports.PauseResumeCancelIcon", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.PauseResumeCancelIcon"},');
 
   return h("svg", {
     "aria-hidden": "true",
@@ -60,6 +60,6 @@ module.exports = function PauseResumeCancelIcon(props) {
     transform: "translate(2, 3)",
     points: "14 22.5 7 15.2457065 8.99985857 13.1732815 14 18.3547104 22.9729883 9 25 11.1005634"
   }));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.PauseResumeCancelIcon"},');
 
 };

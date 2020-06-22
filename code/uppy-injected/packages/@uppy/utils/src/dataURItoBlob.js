@@ -16,22 +16,22 @@ module.exports = function dataURItoBlob(dataURI, opts, toFile) {
   try {
     bytes = new Uint8Array(array);
   } catch (err) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.dataURItoBlob"},');
 
     return null;
   }
   if (toFile) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.dataURItoBlob"},');
 
     return new File([bytes], opts.name || '', {
       type: mimeType
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.dataURItoBlob"},');
 
   return new Blob([bytes], {
     type: mimeType
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.dataURItoBlob"},');
 
 };

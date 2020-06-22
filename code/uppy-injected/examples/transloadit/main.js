@@ -23,14 +23,14 @@ formUppy.on('error', err => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   document.querySelector('#test-form .error').textContent = err.message;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 });
 formUppy.on('upload-error', (file, err) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   document.querySelector('#test-form .error').textContent = err.message;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 });
 window.formUppy = formUppy;
@@ -79,7 +79,7 @@ function openModal() {
     },
     providers: ['webcam']
   }).then(console.log, console.error);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "openModal"},');
 
 }
 window.openModal = openModal;
@@ -102,7 +102,7 @@ window.doUpload = event => {
     resultEl.classList.remove('hidden');
     errorEl.classList.add('hidden');
     resultEl.textContent = inspect(result.results);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   }, err => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -110,9 +110,9 @@ window.doUpload = event => {
     resultEl.classList.add('hidden');
     errorEl.classList.remove('hidden');
     errorEl.textContent = err.message;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey4"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey5"},');
 
 };

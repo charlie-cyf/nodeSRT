@@ -11,24 +11,24 @@ module.exports = function forEachDroppedOrPastedUrl(dataTransfer, isDropOrPaste,
         const atLeastOneFileIsDragged = items.some(item => {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey"},');
 
           return item.kind === 'file';
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey"},');
 
         });
         if (atLeastOneFileIsDragged) {
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "module.exports.forEachDroppedOrPastedUrl"},');
 
           return;
         } else {
           urlItems = items.filter(item => {
                         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "emptyKey2"},');
 
             return item.kind === 'string' && item.type === 'text/plain';
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "emptyKey2"},');
 
           });
         }
@@ -39,17 +39,17 @@ module.exports = function forEachDroppedOrPastedUrl(dataTransfer, isDropOrPaste,
         urlItems = items.filter(item => {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey3"},');
 
           return item.kind === 'string' && item.type === 'text/uri-list';
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey3"},');
 
         });
         break;
       }
     default:
       {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports.forEachDroppedOrPastedUrl"},');
 
         throw new Error(`isDropOrPaste must be either 'drop' or 'paste', but it's ${isDropOrPaste}`);
       }
@@ -60,15 +60,15 @@ module.exports = function forEachDroppedOrPastedUrl(dataTransfer, isDropOrPaste,
     item.getAsString(urlString => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
       return callback(urlString);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.forEachDroppedOrPastedUrl"},');
 
 };

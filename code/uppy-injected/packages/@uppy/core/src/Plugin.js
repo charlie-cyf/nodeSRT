@@ -6,7 +6,7 @@ function debounce(fn) {
 
   let calling = null;
   let latestArgs = null;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "debounce"},');
 
   return (...args) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -17,20 +17,20 @@ function debounce(fn) {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         calling = null;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return fn(...latestArgs);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
       });
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
     return calling;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "debounce"},');
 
 }
 module.exports = class Plugin {
@@ -43,17 +43,17 @@ module.exports = class Plugin {
     this.mount = this.mount.bind(this);
     this.install = this.install.bind(this);
     this.uninstall = this.uninstall.bind(this);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   getPluginState() {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.getPluginState", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     const {plugins} = this.uppy.getState();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getPluginState"},');
 
     return plugins[this.id] || ({});
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getPluginState"},');
 
   }
   setPluginState(update) {
@@ -69,7 +69,7 @@ module.exports = class Plugin {
         }
       }
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "setPluginState"},');
 
   }
   setOptions(newOpts) {
@@ -80,33 +80,33 @@ module.exports = class Plugin {
       ...newOpts
     };
     this.setPluginState();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "setOptions"},');
 
   }
   update(state) {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.update", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (typeof this.el === 'undefined') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "update"},');
 
       return;
     }
     if (this._updateUI) {
       this._updateUI(state);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "update"},');
 
   }
   afterUpdate() {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.afterUpdate", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "afterUpdate"},');
 
   }
   onMount() {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.onMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onMount"},');
 
   }
   mount(target, plugin) {
@@ -120,13 +120,13 @@ module.exports = class Plugin {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         if (!this.uppy.getPlugin(this.id)) {
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey3"},');
 
           return;
         }
         this.el = preact.render(this.render(state), targetElement, this.el);
         this.afterUpdate();
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
       };
       this._updateUI = debounce(this.rerender);
@@ -136,7 +136,7 @@ module.exports = class Plugin {
       }
       this.el = preact.render(this.render(this.uppy.getState()), targetElement);
       this.onMount();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "mount"},');
 
       return this.el;
     }
@@ -150,11 +150,11 @@ module.exports = class Plugin {
 
         if (plugin instanceof Target) {
           targetPlugin = plugin;
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey4"},');
 
           return false;
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey4"},');
 
       });
     }
@@ -163,7 +163,7 @@ module.exports = class Plugin {
       this.parent = targetPlugin;
       this.el = targetPlugin.addTarget(plugin);
       this.onMount();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "mount"},');
 
       return this.el;
     }
@@ -174,28 +174,28 @@ module.exports = class Plugin {
     } else {
       message += 'If you meant to target an HTML element, please make sure that the element exists. ' + 'Check that the <script> tag initializing Uppy is right before the closing </body> tag at the end of the page. ' + '(see https://github.com/transloadit/uppy/issues/1042)\n\n' + 'If you meant to target a plugin, please confirm that your `import` statements or `require` calls are correct.';
     }
-    throw new Error(message);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "mount"},');
 
-        SRTlib.send("]},");
+    throw new Error(message);
+        SRTlib.send('], "end": "mount"},');
 
   }
   render(state) {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.render", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    throw new Error('Extend the render method to add your plugin to a DOM element');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "render"},');
 
-        SRTlib.send("]},");
+    throw new Error('Extend the render method to add your plugin to a DOM element');
+        SRTlib.send('], "end": "render"},');
 
   }
   addTarget(plugin) {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.addTarget", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    throw new Error('Extend the addTarget method to add your plugin to another plugin\'s target');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "addTarget"},');
 
-        SRTlib.send("]},");
+    throw new Error('Extend the addTarget method to add your plugin to another plugin\'s target');
+        SRTlib.send('], "end": "addTarget"},');
 
   }
   unmount() {
@@ -204,20 +204,20 @@ module.exports = class Plugin {
     if (this.isTargetDOMEl && this.el && this.el.parentNode) {
       this.el.parentNode.removeChild(this.el);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "unmount"},');
 
   }
   install() {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "install"},');
 
   }
   uninstall() {
         SRTlib.send(`{ "anonymous": false, "function": "Plugin.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.unmount();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "uninstall"},');
 
   }
 };

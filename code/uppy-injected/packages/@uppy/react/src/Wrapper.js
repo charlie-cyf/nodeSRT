@@ -9,14 +9,14 @@ class UppyWrapper extends React.Component {
 
     super(props);
     this.refContainer = this.refContainer.bind(this);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   componentDidMount() {
         SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.installPlugin();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "componentDidMount"},');
 
   }
   componentDidUpdate(prevProps) {
@@ -26,14 +26,14 @@ class UppyWrapper extends React.Component {
       this.uninstallPlugin(prevProps);
       this.installPlugin();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "componentDidUpdate"},');
 
   }
   componentWillUnmount() {
         SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uninstallPlugin();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "componentWillUnmount"},');
 
   }
   installPlugin() {
@@ -41,7 +41,7 @@ class UppyWrapper extends React.Component {
 
     const plugin = this.props.uppy.getPlugin(this.props.plugin);
     plugin.mount(this.container, plugin);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "installPlugin"},');
 
   }
   uninstallPlugin(props = this.props) {
@@ -49,25 +49,25 @@ class UppyWrapper extends React.Component {
 
     const plugin = props.uppy.getPlugin(this.props.plugin);
     plugin.unmount();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "uninstallPlugin"},');
 
   }
   refContainer(container) {
         SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.refContainer", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.container = container;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "refContainer"},');
 
   }
   render() {
         SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "render"},');
 
     return h('div', {
       ref: this.refContainer
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "render"},');
 
   }
 }

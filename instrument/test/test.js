@@ -4,6 +4,7 @@ var Instrumentor = require('../instrumentor')
 
 
 
-const testInstrumentor = new Instrumentor(path.resolve('./codeTest1'))
+// const testInstrumentor = new Instrumentor(path.resolve('./codeTest1'))
+const testInstrumentor = new Instrumentor(path.resolve('./code'))
 
 testInstrumentor.getInjected();

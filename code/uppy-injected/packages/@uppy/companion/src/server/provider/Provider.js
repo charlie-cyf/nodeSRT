@@ -4,64 +4,64 @@ class Provider {
         SRTlib.send(`{ "anonymous": false, "function": "Provider.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.needsCookieAuth = false;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
     return this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   static getExtraConfig() {
         SRTlib.send(`{ "anonymous": false, "function": "Provider.getExtraConfig", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getExtraConfig"},');
 
     return {};
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getExtraConfig"},');
 
   }
   list(options, cb) {
         SRTlib.send(`{ "anonymous": false, "function": "Provider.list", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    throw new Error('method not implemented');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "list"},');
 
-        SRTlib.send("]},");
+    throw new Error('method not implemented');
+        SRTlib.send('], "end": "list"},');
 
   }
   download(options, cb) {
         SRTlib.send(`{ "anonymous": false, "function": "Provider.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    throw new Error('method not implemented');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "download"},');
 
-        SRTlib.send("]},");
+    throw new Error('method not implemented');
+        SRTlib.send('], "end": "download"},');
 
   }
   thumbnail(options, cb) {
         SRTlib.send(`{ "anonymous": false, "function": "Provider.thumbnail", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    throw new Error('method not implemented');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "thumbnail"},');
 
-        SRTlib.send("]},");
+    throw new Error('method not implemented');
+        SRTlib.send('], "end": "thumbnail"},');
 
   }
   size(options, cb) {
         SRTlib.send(`{ "anonymous": false, "function": "Provider.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    throw new Error('method not implemented');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "size"},');
 
-        SRTlib.send("]},");
+    throw new Error('method not implemented');
+        SRTlib.send('], "end": "size"},');
 
   }
   static get authProvider() {
         SRTlib.send(`{ "anonymous": false, "function": "Provider.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "authProvider"},');
 
     return '';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "authProvider"},');
 
   }
 }

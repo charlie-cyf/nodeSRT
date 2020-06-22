@@ -12,21 +12,17 @@ var SRTlib = require('SRT-util');
         if (!e[i]) {
           var c = "function" == typeof require && require;
           if (!f && c) {
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "o"},');
 
             return c(i, !0);
           }
           if (u) {
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "o"},');
 
             return u(i, !0);
           }
           var a = new Error("Cannot find module '" + i + "'");
-                    SRTlib.send("]},");
-
-                    SRTlib.send("]},");
-
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "o"},');
 
           throw (a.code = "MODULE_NOT_FOUND", a);
         }
@@ -37,36 +33,36 @@ var SRTlib = require('SRT-util');
                     SRTlib.send(`{ "anonymous": true, "function": "e.i.call", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
           var n = e[i][1][r];
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "e.i.call"},');
 
           return o(n || r);
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "e.i.call"},');
 
         }, p, p.exports, r, e, n, t);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "o"},');
 
       return n[i].exports;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "o"},');
 
     }
     for (var u = "function" == typeof require && require, i = 0; i < t.length; i++) o(t[i]);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "r"},');
 
     return o;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "r"},');
 
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return r;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 })()({
   1: [function (require, module, exports) {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   }, {}]
 }, {}, [1]);

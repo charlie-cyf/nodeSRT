@@ -20,7 +20,7 @@ function useSourcePackages(b) {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
       if (err) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return cb(err);
       }
@@ -28,13 +28,13 @@ function useSourcePackages(b) {
         result = result.replace(/packages\/@uppy\/(.*?)\/lib\//, 'packages/@uppy/$1/src/');
       }
       cb(err, result, pkg);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "useSourcePackages"},');
 
 }
 const webRoot = __dirname;
@@ -55,7 +55,7 @@ glob(srcPattern, (err, files) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (err) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey7"},');
 
     throw new Error(err);
   }
@@ -83,7 +83,7 @@ glob(srcPattern, (err, files) => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       muted.delete(file);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
     });
     bundle();
@@ -97,7 +97,7 @@ glob(srcPattern, (err, files) => {
           console.info(chalk.cyan('change:'), path.relative(process.cwd(), id));
           muted.add(id);
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey4"},');
 
       });
       const exampleName = path.basename(path.dirname(file));
@@ -109,16 +109,16 @@ glob(srcPattern, (err, files) => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         console.info(chalk.green(`✓ built: ${path.relative(process.cwd(), file)}`));
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey5"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "bundle"},');
 
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey6"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey7"},');
 
 });
 function onError(err) {
@@ -133,6 +133,6 @@ function onError(err) {
   if (!watchifyEnabled) {
     process.exit(1);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "onError"},');
 
 }

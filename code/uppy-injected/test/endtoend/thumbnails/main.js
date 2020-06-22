@@ -21,7 +21,7 @@ uppyThumbnails.on('file-added', file => {
   el.className = 'file-name';
   el.textContent = file.name;
   document.body.appendChild(el);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 });
 uppyThumbnails.on('thumbnail:error', (file, err) => {
@@ -31,7 +31,7 @@ uppyThumbnails.on('thumbnail:error', (file, err) => {
   el.style = 'font: 14pt monospace; background: red; color: white';
   el.textContent = `Error: ${err.stack}`;
   document.body.appendChild(el);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 });
 uppyThumbnails.on('thumbnail:generated', (file, preview) => {
@@ -42,6 +42,6 @@ uppyThumbnails.on('thumbnail:generated', (file, preview) => {
   img.className = 'file-preview';
   img.style.display = 'block';
   document.body.appendChild(img);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 });

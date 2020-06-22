@@ -12,7 +12,7 @@ module.exports = class SRTlib {
 
     static endPontUrl;
 
-    static started;
+    static started = false;
 
     // call this function to initialize the logger
     /*
@@ -20,22 +20,7 @@ module.exports = class SRTlib {
     *       base: absolute path to original project
     */
     static startLogger(base, url){
-        if(this.started) {
-            if(this.message.length != 0 && this.endPontUrl){
-                axios.post(this.endPontUrl, {
-                    fileName: this.logFile,
-                    msg: this.message
-                }).then(res => {
-                    if(res.status < 400){
-                        this.message = ''
-                    } else {
-                        new Error('fail to send to log server!');
-                    }
-                }).catch(err => {
-                    new Error('fail to send to log server!', err);
-                })
-            }
-        }
+        if(this.started) return;
         this.started = true;
         this.basePath = base;
         this.message = '';

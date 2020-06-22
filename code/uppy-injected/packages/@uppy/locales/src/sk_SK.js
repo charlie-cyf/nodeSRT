@@ -154,14 +154,14 @@ sk_SK.pluralize = function (count) {
     SRTlib.send(`{ "anonymous": true, "function": "sk_SK.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (count === 1) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "sk_SK.pluralize"},');
 
     return 0;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "sk_SK.pluralize"},');
 
   return 1;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "sk_SK.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

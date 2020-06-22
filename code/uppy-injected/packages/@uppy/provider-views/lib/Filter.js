@@ -3,14 +3,14 @@ function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -19,7 +19,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('preact'), h = _require.h, Component = _require.Component;
@@ -33,10 +33,10 @@ module.exports = (function (_Component) {
     var _this;
     _this = _Component.call(this, props) || this;
     _this.preventEnterPress = _this.preventEnterPress.bind(_assertThisInitialized(_this));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Filter"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Filter"},');
 
   }
   var _proto = Filter.prototype;
@@ -47,14 +47,14 @@ module.exports = (function (_Component) {
       ev.stopPropagation();
       ev.preventDefault();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._proto.preventEnterPress.preventEnterPress"},');
 
   };
   _proto.render = function render() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.render.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     var _this2 = this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._proto.render.render"},');
 
     return h("div", {
       class: "uppy-ProviderBrowser-search"
@@ -69,10 +69,10 @@ module.exports = (function (_Component) {
       oninput: function oninput(e) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.render.render.ReturnStatement.h.h.oninput.oninput", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._proto.render.render.ReturnStatement.h.h.oninput.oninput"},');
 
         return _this2.props.filterQuery(e);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._proto.render.render.ReturnStatement.h.h.oninput.oninput"},');
 
       },
       value: this.props.filterInput
@@ -99,12 +99,12 @@ module.exports = (function (_Component) {
     }, h("path", {
       d: "M17.318 17.232L9.94 9.854 9.586 9.5l-.354.354-7.378 7.378h.707l-.62-.62v.706L9.318 9.94l.354-.354-.354-.354L1.94 1.854v.707l.62-.62h-.706l7.378 7.378.354.354.354-.354 7.378-7.378h-.707l.622.62v-.706L9.854 9.232l-.354.354.354.354 7.378 7.378.708-.707-7.38-7.378v.708l7.38-7.38.353-.353-.353-.353-.622-.622-.353-.353-.354.352-7.378 7.38h.708L2.56 1.23 2.208.88l-.353.353-.622.62-.353.355.352.353 7.38 7.38v-.708l-7.38 7.38-.353.353.352.353.622.622.353.353.354-.353 7.38-7.38h-.708l7.38 7.38z"
     }))));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._proto.render.render"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
   return Filter;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
 })(Component);

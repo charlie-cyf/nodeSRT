@@ -11,13 +11,13 @@ exports.startCleanUpJob = dirPath => {
   schedule.scheduleJob('0 23 * * *', () => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return cleanUpFinishedUploads(dirPath);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };
 const cleanUpFinishedUploads = dirPath => {
@@ -29,7 +29,7 @@ const cleanUpFinishedUploads = dirPath => {
 
     if (err) {
       logger.error(err, 'jobs.cleanup.read.error');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
       return;
     }
@@ -39,7 +39,7 @@ const cleanUpFinishedUploads = dirPath => {
 
       if (!file.startsWith(FILE_NAME_PREFIX)) {
         logger.info(`skipping file ${file}`, 'jobs.cleanup.skip');
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey5"},');
 
         return;
       }
@@ -52,7 +52,7 @@ const cleanUpFinishedUploads = dirPath => {
           logger.error(err, 'jobs.cleanup.stat.error');
         } else if (new Date() - stats.mtime < twelveHoursAgo) {
           logger.info(`skipping file ${file}`, 'jobs.cleanup.skip');
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey4"},');
 
           return;
         }
@@ -61,18 +61,18 @@ const cleanUpFinishedUploads = dirPath => {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
           if (err) logger.error(err, 'jobs.cleanup.delete.error');
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey3"},');
 
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey4"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey5"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey6"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "cleanUpFinishedUploads"},');
 
 };

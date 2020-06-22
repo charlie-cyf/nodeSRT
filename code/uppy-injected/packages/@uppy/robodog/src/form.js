@@ -16,7 +16,7 @@ function mergeDefaultLocale(defaults, userProvided = {}) {
     SRTlib.send(`{ "anonymous": false, "function": "mergeDefaultLocale", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const strings = userProvided.strings || ({});
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "mergeDefaultLocale"},');
 
   return {
     ...userProvided,
@@ -25,14 +25,14 @@ function mergeDefaultLocale(defaults, userProvided = {}) {
       ...strings
     }
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "mergeDefaultLocale"},');
 
 }
 function form(target, opts) {
     SRTlib.send(`{ "anonymous": false, "function": "form", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (!opts) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "form"},');
 
     throw new TypeError('robodog.form: must provide an options object');
   }
@@ -104,10 +104,10 @@ function form(target, opts) {
       hideCancelButtons: true
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "form"},');
 
   return uppy;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "form"},');
 
 }
 module.exports = form;

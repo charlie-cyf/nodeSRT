@@ -28,10 +28,10 @@ function getSources(pluginName) {
   let contents = glob.sync(globPath).map(file => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return fs.readFileSync(file, 'utf-8');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   if (dependencies[pluginName]) {
@@ -39,14 +39,14 @@ function getSources(pluginName) {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       contents = contents.concat(getSources(addPlugin));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getSources"},');
 
   return contents;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getSources"},');
 
 }
 function buildPluginsList() {
@@ -73,13 +73,13 @@ function buildPluginsList() {
       key: () => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
       },
       getItem: () => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey4"},');
 
       }
     };
@@ -88,10 +88,10 @@ function buildPluginsList() {
         open: () => {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey5"},');
 
           return {};
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey5"},');
 
         }
       }
@@ -100,12 +100,12 @@ function buildPluginsList() {
       createElement: () => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey6"},');
 
         return {
           style: {}
         };
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey6"},');
 
       }
     };
@@ -121,7 +121,7 @@ function buildPluginsList() {
             dispatch: () => {
                             SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                            SRTlib.send("]},");
+                            SRTlib.send('], "end": "emptyKey7"},');
 
             }
           }
@@ -140,7 +140,7 @@ function buildPluginsList() {
     } catch (err) {
       if (err.message !== 'Plugin is not a constructor') {
         console.error(`--> While trying to instantiate plugin: ${pluginName}, this error was thrown: `);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "buildPluginsList"},');
 
         throw err;
       }
@@ -154,13 +154,13 @@ function buildPluginsList() {
     }
   }
   console.log('');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "buildPluginsList"},');
 
   return {
     plugins,
     sources
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "buildPluginsList"},');
 
 }
 function addLocaleToPack(plugin, pluginName) {
@@ -178,7 +178,7 @@ function addLocaleToPack(plugin, pluginName) {
     }
     localePack[key] = localeStrings[key];
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "addLocaleToPack"},');
 
 }
 function checkForUnused(fileContents, pluginName, localePack) {
@@ -191,25 +191,25 @@ function checkForUnused(fileContents, pluginName, localePack) {
       console.error(`⚠ defaultLocale key: ${chalk.magenta(key)} not used in plugin: ${chalk.cyan(pluginName)}`);
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "checkForUnused"},');
 
 }
 function sortObjectAlphabetically(obj, sortFunc) {
     SRTlib.send(`{ "anonymous": false, "function": "sortObjectAlphabetically", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "sortObjectAlphabetically"},');
 
   return Object.keys(obj).sort(sortFunc).reduce(function (result, key) {
         SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.sort.reduce", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     result[key] = obj[key];
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReturnStatement.sort.reduce"},');
 
     return result;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReturnStatement.sort.reduce"},');
 
   }, {});
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "sortObjectAlphabetically"},');
 
 }
 function createTypeScriptLocale(plugin, pluginName) {
@@ -218,17 +218,17 @@ function createTypeScriptLocale(plugin, pluginName) {
   const allowedStringTypes = Object.keys(plugin.defaultLocale.strings).map(key => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey8"},');
 
     return `  | '${key}'`;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey8"},');
 
   }).join('\n');
   const pluginClassName = pluginName === 'core' ? 'Core' : plugin.id;
   const localePath = path.join(__dirname, '..', 'packages', '@uppy', pluginName, 'types', 'generatedLocale.d.ts');
   const localeTypes = 'import Uppy = require(\'@uppy/core\')\n' + '\n' + `type ${pluginClassName}Locale = Uppy.Locale` + '<\n' + allowedStringTypes + '\n' + '>\n' + '\n' + `export = ${pluginClassName}Locale\n`;
   fs.writeFileSync(localePath, localeTypes);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "createTypeScriptLocale"},');
 
 }
 function build() {
@@ -256,7 +256,7 @@ function build() {
   const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', 'en_US.js');
   fs.writeFileSync(localePackagePath, finalLocale, 'utf-8');
   console.log(`✅ Written '${localePackagePath}'`);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "build"},');
 
 }
 function test() {
@@ -271,13 +271,13 @@ function test() {
 
     const localeName = path.basename(localePath, '.js');
     if (localeName === 'es_GL') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey9"},');
 
       return;
     }
     followerValues[localeName] = require(localePath).strings;
     followerLocales[localeName] = Object.keys(followerValues[localeName]);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey9"},');
 
   });
   const leadingLocale = followerLocales[leadingLocaleName];
@@ -290,19 +290,19 @@ function test() {
     const missing = leadingLocale.filter(key => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
       return !followerLocale.includes(key);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
     });
     const excess = followerLocale.filter(key => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey11"},');
 
       return !leadingLocale.includes(key);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey11"},');
 
     });
     missing.forEach(key => {
@@ -313,14 +313,14 @@ function test() {
         value = value[Object.keys(value)[0]];
       }
       warnings.push(`${chalk.cyan(followerName)} locale has missing string: '${chalk.red(key)}' that is present in ${chalk.cyan(leadingLocaleName)} with value: ${chalk.yellow(leadingValues[key])}`);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey12"},');
 
     });
     excess.forEach(key => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       fatals.push(`${chalk.cyan(followerName)} locale has excess string: '${chalk.yellow(key)}' that is not present in ${chalk.cyan(leadingLocaleName)}. `);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey13"},');
 
     });
   }
@@ -339,6 +339,6 @@ function test() {
     console.log(`--> All locale strings have matching keys ${chalk.green(': )')}`);
     console.log('');
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "test"},');
 
 }

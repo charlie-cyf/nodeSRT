@@ -12,7 +12,7 @@ function handleErr(err) {
     SRTlib.send(`{ "anonymous": false, "function": "handleErr", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   console.error(chalk.red('✗ Error:'), chalk.red(err.message));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "handleErr"},');
 
 }
 function buildBundle(srcFile, bundleFile, {minify = false, standalone = ''} = {}) {
@@ -27,7 +27,7 @@ function buildBundle(srcFile, bundleFile, {minify = false, standalone = ''} = {}
   }
   b.transform(babelify);
   b.on('error', handleErr);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "buildBundle"},');
 
   return new Promise(function (resolve, reject) {
         SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
@@ -41,13 +41,13 @@ function buildBundle(srcFile, bundleFile, {minify = false, standalone = ''} = {}
         console.info(chalk.green(`✓ Built Bundle [${standalone}]:`), chalk.magenta(bundleFile));
       }
       resolve();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.pipe.pipe.on.on"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReturnStatement"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "buildBundle"},');
 
 }
 mkdirp.sync('./packages/uppy/dist');
@@ -72,13 +72,13 @@ glob.sync(localePackagePath).forEach(localePath => {
   methods.push(buildBundle(`./packages/@uppy/locales/src/${localeName}.js`, `./packages/@uppy/locales/dist/${localeName}.min.js`, {
     minify: true
   }));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 });
 Promise.all(methods).then(function () {
     SRTlib.send(`{ "anonymous": true, "function": "then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   console.info(chalk.yellow('✓ JS bundles 🎉'));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "then"},');
 
 });

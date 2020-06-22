@@ -12,7 +12,7 @@ describe('test getProtectedHttpAgent', () => {
     const Agent = getProtectedHttpAgent('https:');
     expect(Agent).toEqual(https.Agent);
     done();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   test('setting "https" as protocol', done => {
@@ -21,7 +21,7 @@ describe('test getProtectedHttpAgent', () => {
     const Agent = getProtectedHttpAgent('https');
     expect(Agent).toEqual(https.Agent);
     done();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
   test('setting "http:" as protocol', done => {
@@ -30,7 +30,7 @@ describe('test getProtectedHttpAgent', () => {
     const Agent = getProtectedHttpAgent('http:');
     expect(Agent).toEqual(http.Agent);
     done();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   });
   test('setting "http" as protocol', done => {
@@ -39,10 +39,10 @@ describe('test getProtectedHttpAgent', () => {
     const Agent = getProtectedHttpAgent('http');
     expect(Agent).toEqual(http.Agent);
     done();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey4"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey5"},');
 
 });
 describe('test protected request Agent', () => {
@@ -66,10 +66,10 @@ describe('test protected request Agent', () => {
       } else {
         done();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey7"},');
 
   });
   test('blocks private http IP address', done => {
@@ -86,10 +86,10 @@ describe('test protected request Agent', () => {
       expect(err).toBeInstanceOf(Error);
       expect(err.message).toEqual(FORBIDDEN_IP_ADDRESS);
       done();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey8"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey9"},');
 
   });
   test('blocks private https IP address', done => {
@@ -106,10 +106,10 @@ describe('test protected request Agent', () => {
       expect(err).toBeInstanceOf(Error);
       expect(err.message).toEqual(FORBIDDEN_IP_ADDRESS);
       done();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey11"},');
 
   });
   test('blocks localhost IP address', done => {
@@ -126,12 +126,12 @@ describe('test protected request Agent', () => {
       expect(err).toBeInstanceOf(Error);
       expect(err.message).toEqual(FORBIDDEN_IP_ADDRESS);
       done();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey12"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey13"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey14"},');
 
 });

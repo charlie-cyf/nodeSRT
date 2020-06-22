@@ -13,7 +13,7 @@ module.exports = class TestSelector1 extends Plugin {
       update: jest.fn(),
       uninstall: jest.fn()
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   run(results) {
@@ -25,24 +25,24 @@ module.exports = class TestSelector1 extends Plugin {
       results: results
     });
     this.mocks.run(results);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "run"},');
 
     return Promise.resolve('success');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "run"},');
 
   }
   update(state) {
         SRTlib.send(`{ "anonymous": false, "function": "TestSelector1.update", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.mocks.update(state);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "update"},');
 
   }
   uninstall() {
         SRTlib.send(`{ "anonymous": false, "function": "TestSelector1.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.mocks.uninstall();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "uninstall"},');
 
   }
 };

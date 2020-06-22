@@ -46,14 +46,14 @@ function initUppyTransloadit(transloaditKey) {
       result.setAttribute('id', 'uppy-result');
       result.textContent = 'ok';
       document.body.appendChild(result);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "img.onload"},');
 
     };
     img.src = result.url;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "initUppyTransloadit"},');
 
 }
 window.initUppyTransloadit = initUppyTransloadit;

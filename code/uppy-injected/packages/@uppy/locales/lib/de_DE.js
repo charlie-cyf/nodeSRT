@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var de_DE = {};
 de_DE.strings = {
   addMoreFiles: 'Dateien hinzufügen',
@@ -137,22 +136,21 @@ de_DE.strings = {
   unselectFileNamed: 'Datei abwählen %{name}',
   openFolderNamed: 'Ordner öffnen %{name}'
 };
-
 de_DE.pluralize = function (n) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"de_DE.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "de_DE.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-    SRTlib.send("]},");
+        SRTlib.send('], "end": "de_DE.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('], "end": "de_DE.pluralize"},');
 
-  SRTlib.send("]},");
   return 1;
-  SRTlib.send("]},");
-};
+    SRTlib.send('], "end": "de_DE.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.de_DE = de_DE;
 }
-
 module.exports = de_DE;

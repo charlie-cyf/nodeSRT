@@ -10,7 +10,7 @@ function focusOnFirstNode(event, nodes) {
     node.focus();
     event.preventDefault();
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "focusOnFirstNode"},');
 
 }
 function focusOnLastNode(event, nodes) {
@@ -21,16 +21,16 @@ function focusOnLastNode(event, nodes) {
     node.focus();
     event.preventDefault();
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "focusOnLastNode"},');
 
 }
 function isFocusInOverlay(activeOverlayEl) {
     SRTlib.send(`{ "anonymous": false, "function": "isFocusInOverlay", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isFocusInOverlay"},');
 
   return activeOverlayEl.contains(document.activeElement);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isFocusInOverlay"},');
 
 }
 function trapFocus(event, activeOverlayType, dashboardEl) {
@@ -46,7 +46,7 @@ function trapFocus(event, activeOverlayType, dashboardEl) {
   } else if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
     focusOnFirstNode(event, focusableNodes);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "trapFocus"},');
 
 }
 module.exports = {
@@ -54,7 +54,7 @@ module.exports = {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     trapFocus(event, activeOverlayType, dashboardEl);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   },
   forInline: (event, activeOverlayType, dashboardEl) => {
@@ -63,7 +63,7 @@ module.exports = {
     if (activeOverlayType === null) {} else {
       trapFocus(event, activeOverlayType, dashboardEl);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   }
 };

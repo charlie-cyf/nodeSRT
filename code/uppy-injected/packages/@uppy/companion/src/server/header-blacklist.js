@@ -10,26 +10,26 @@ const isForbiddenHeader = header => {
   const forbidden = forbiddenNames.indexOf(headerLower) >= 0 || forbiddenRegex.findIndex(regex => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return regex.test(headerLower);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   }) >= 0;
   if (forbidden) {
     logger.warn(`Header forbidden: ${header}`, 'header.forbidden');
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isForbiddenHeader"},');
 
   return forbidden;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isForbiddenHeader"},');
 
 };
 module.exports = headers => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (!isObject(headers)) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
     return {};
   }
@@ -40,12 +40,12 @@ module.exports = headers => {
     if (isForbiddenHeader(header)) {
       delete headersCloned[header];
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
   return headersCloned;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 };

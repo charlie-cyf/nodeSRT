@@ -1,0 +1,316 @@
+
+> uppy-build@0.0.0 test:unit /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/code/uppy-injected
+> npm run build:lib && jest
+
+
+> uppy-build@0.0.0 build:lib /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/code/uppy-injected
+> node ./bin/build-lib.js
+
+Using Babel version: 7.9.0
+------------------------------------------------------|----------|----------|----------|----------|-------------------|
+File                                                  |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------------------------------------------|----------|----------|----------|----------|-------------------|
+All files                                             |    18.71 |    15.88 |    16.86 |     18.7 |                   |
+ aws-s3-multipart/src                                 |        0 |        0 |        0 |        0 |                   |
+  MultipartUploader.js                                |        0 |        0 |        0 |        0 |... 27,529,530,534 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 86,490,491,497 |
+ aws-s3/src                                           |    12.13 |     5.83 |     6.25 |    12.22 |                   |
+  MiniXHRUpload.js                                    |     5.32 |        0 |     2.27 |     5.37 |... 20,521,524,527 |
+  index.js                                            |    32.04 |    11.67 |       15 |    32.04 |... 62,264,265,286 |
+ companion-client/src                                 |    26.33 |     12.2 |    18.06 |    26.33 |                   |
+  AuthError.js                                        |     37.5 |      100 |        0 |     37.5 |        5,7,8,9,10 |
+  Provider.js                                         |        0 |        0 |        0 |        0 |... 78,180,183,184 |
+  RequestClient.js                                    |    15.29 |     4.26 |     7.89 |    15.29 |... 98,202,204,205 |
+  Socket.js                                           |    98.31 |       80 |      100 |    98.31 |               106 |
+  index.js                                            |        0 |      100 |      100 |        0 |       1,2,3,4,5,6 |
+  tokenStorage.js                                     |        0 |      100 |        0 |        0 |... 34,36,37,38,41 |
+ companion/src                                        |        0 |        0 |        0 |        0 |                   |
+  companion.js                                        |        0 |        0 |        0 |        0 |... 23,325,327,329 |
+ companion/src/config                                 |        0 |      100 |        0 |        0 |                   |
+  grant.js                                            |        0 |      100 |        0 |        0 |      1,2,3,5,7,34 |
+ companion/src/server                                 |        0 |        0 |        0 |        0 |                   |
+  Uploader.js                                         |        0 |        0 |        0 |        0 |... 63,667,668,669 |
+  header-blacklist.js                                 |        0 |        0 |        0 |        0 |... 41,43,46,48,49 |
+  jobs.js                                             |        0 |        0 |        0 |        0 |... 64,67,70,73,76 |
+  logger.js                                           |        0 |        0 |        0 |        0 |... 85,86,88,90,91 |
+  middlewares.js                                      |        0 |        0 |        0 |        0 |... 65,67,68,70,71 |
+  redis.js                                            |        0 |        0 |        0 |        0 |... 12,13,15,17,18 |
+ companion/src/server/controllers                     |        0 |        0 |        0 |        0 |                   |
+  callback.js                                         |        0 |        0 |        0 |        0 |... 19,20,21,23,24 |
+  connect.js                                          |        0 |        0 |        0 |        0 |... 14,18,19,23,24 |
+  get.js                                              |        0 |        0 |        0 |        0 |... 62,63,64,67,70 |
+  index.js                                            |        0 |      100 |      100 |        0 |               1,2 |
+  list.js                                             |        0 |        0 |        0 |        0 |... 29,31,32,35,38 |
+  logout.js                                           |        0 |        0 |        0 |        0 |... 44,48,49,54,57 |
+  oauth-redirect.js                                   |        0 |        0 |        0 |        0 |... 21,22,24,26,27 |
+  s3.js                                               |        0 |        0 |        0 |        0 |... 98,300,302,303 |
+  send-token.js                                       |        0 |        0 |        0 |        0 |... 51,52,54,56,68 |
+  thumbnail.js                                        |        0 |        0 |        0 |        0 |... 16,18,19,22,25 |
+  url.js                                              |        0 |        0 |        0 |        0 |... 52,154,155,158 |
+ companion/src/server/emitter                         |        0 |        0 |        0 |        0 |                   |
+  default-emitter.js                                  |        0 |      100 |        0 |        0 |     1,2,3,4,6,8,9 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 6,8,9,11,13,14 |
+  redis-emitter.js                                    |        0 |        0 |        0 |        0 |... 53,54,56,58,59 |
+ companion/src/server/helpers                         |        0 |        0 |        0 |        0 |                   |
+  jwt.js                                              |        0 |        0 |        0 |        0 |... 53,57,58,60,61 |
+  oauth-state.js                                      |        0 |      100 |        0 |        0 |... 46,48,49,51,52 |
+  request.js                                          |        0 |        0 |        0 |        0 |... 34,136,138,139 |
+  utils.js                                            |        0 |        0 |        0 |        0 |... 91,192,194,195 |
+  version.js                                          |        0 |      100 |        0 |        0 |... ,4,6,7,8,10,11 |
+ companion/src/server/provider                        |        0 |        0 |        0 |        0 |                   |
+  Provider.js                                         |        0 |      100 |        0 |        0 |... 59,61,63,64,68 |
+  error.js                                            |        0 |        0 |        0 |        0 |... 45,46,48,54,57 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 58,160,162,163 |
+ companion/src/server/provider/drive                  |        0 |        0 |        0 |        0 |                   |
+  adapter.js                                          |        0 |        0 |        0 |        0 |... 88,195,197,198 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 61,363,364,368 |
+ companion/src/server/provider/dropbox                |        0 |        0 |        0 |        0 |                   |
+  adapter.js                                          |        0 |        0 |        0 |        0 |... 11,114,116,117 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 06,308,309,313 |
+ companion/src/server/provider/facebook               |        0 |        0 |        0 |        0 |                   |
+  adapter.js                                          |        0 |        0 |        0 |        0 |... 14,116,117,120 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 81,283,284,288 |
+ companion/src/server/provider/instagram              |        0 |        0 |        0 |        0 |                   |
+  adapter.js                                          |        0 |        0 |        0 |        0 |... 30,131,133,135 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 67,269,270,274 |
+ companion/src/server/provider/instagram/graph        |        0 |        0 |        0 |        0 |                   |
+  adapter.js                                          |        0 |        0 |        0 |        0 |... 35,138,140,141 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 64,266,267,271 |
+ companion/src/server/provider/onedrive               |        0 |        0 |        0 |        0 |                   |
+  adapter.js                                          |        0 |        0 |        0 |        0 |... 15,118,120,121 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 10,212,213,217 |
+ companion/src/standalone                             |        0 |        0 |        0 |        0 |                   |
+  helper.js                                           |        0 |        0 |        0 |        0 |... 57,160,162,179 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 19,220,226,229 |
+  start-server.js                                     |        0 |        0 |      100 |        0 |   2,4,5,6,8,10,11 |
+ core/src                                             |    68.51 |    64.74 |       70 |    68.59 |                   |
+  Plugin.js                                           |    16.95 |     9.09 |    16.67 |    16.95 |... 13,217,219,220 |
+  index.js                                            |    77.66 |    70.27 |     76.8 |    77.99 |... 1511,1522,1558 |
+  loggers.js                                          |       76 |       50 |    83.33 |       76 | 22,36,38,40,41,50 |
+  supportsUploadProgress.js                           |       88 |    88.89 |      100 |       88 |           9,11,36 |
+ dashboard/src                                        |     54.1 |    34.72 |    32.47 |    54.76 |                   |
+  index.js                                            |     54.1 |    34.72 |    32.47 |    54.76 |... 02,907,964,996 |
+ dashboard/src/components                             |    36.98 |    32.35 |    13.79 |    37.37 |                   |
+  AddFiles.js                                         |     62.5 |     62.5 |    35.71 |     62.5 |... 40,142,145,147 |
+  AddFilesPanel.js                                    |    66.67 |      100 |        0 |    66.67 |              5,18 |
+  Dashboard.js                                        |    89.66 |    77.78 |      100 |    89.66 |          54,56,58 |
+  FileList.js                                         |    21.74 |        0 |        0 |    22.73 |... 36,65,68,73,84 |
+  FilePreview.js                                      |     37.5 |        0 |        0 |     37.5 |       5,7,8,11,13 |
+  PickerPanelContent.js                               |       75 |      100 |        0 |       75 |                 5 |
+  PickerPanelTopBar.js                                |    11.76 |        0 |        0 |    12.12 |... 3,75,76,79,103 |
+  VirtualList.js                                      |    11.43 |        0 |        0 |    11.43 |... 40,142,143,147 |
+  icons.js                                            |     9.52 |      100 |        0 |     9.52 |... 49,157,165,174 |
+ dashboard/src/components/FileCard                    |    14.29 |        0 |        0 |    14.29 |                   |
+  index.js                                            |    14.29 |        0 |        0 |    14.29 |... 58,64,77,87,89 |
+ dashboard/src/components/FileItem                    |    29.63 |        0 |        0 |    29.63 |                   |
+  index.js                                            |    29.63 |        0 |        0 |    29.63 |... 38,42,43,46,58 |
+ dashboard/src/components/FileItem/Buttons            |    23.81 |        0 |        0 |    23.81 |                   |
+  index.js                                            |    23.81 |        0 |        0 |    23.81 |... 3,82,84,91,106 |
+ dashboard/src/components/FileItem/FileInfo           |       36 |        0 |        0 |       36 |                   |
+  index.js                                            |       36 |        0 |        0 |       36 |... 51,52,65,69,78 |
+ dashboard/src/components/FileItem/FilePreviewAndLink |       80 |        0 |        0 |       80 |                   |
+  index.js                                            |       80 |        0 |        0 |       80 |                 6 |
+ dashboard/src/components/FileItem/FileProgress       |    19.44 |        0 |        0 |       20 |                   |
+  PauseResumeCancelIcon.js                            |       75 |        0 |        0 |       75 |                13 |
+  index.js                                            |     12.5 |        0 |        0 |     12.9 |... 48,49,53,64,71 |
+ dashboard/src/utils                                  |    23.21 |     6.45 |    13.33 |    23.21 |                   |
+  copyToClipboard.js                                  |     6.45 |        0 |        0 |     6.45 |... 48,49,51,53,56 |
+  createSuperFocus.js                                 |    35.71 |        0 |       50 |    35.71 |... 31,32,35,37,43 |
+  getActiveOverlayEl.js                               |    18.18 |        0 |        0 |    18.18 |... ,8,10,13,15,16 |
+  getFileTypeIcon.js                                  |     9.38 |        0 |        0 |     9.38 |... 59,61,66,68,69 |
+  ignoreEvent.js                                      |    18.18 |        0 |        0 |    18.18 |... ,8,10,12,13,14 |
+  trapFocus.js                                        |    12.82 |        0 |        0 |    12.82 |... 57,61,63,64,66 |
+  truncateString.js                                   |    93.75 |      100 |      100 |    93.75 |                22 |
+ drag-drop/src                                        |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 21,222,223,228 |
+ dropbox/src                                          |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 51,56,57,61,65 |
+ facebook/src                                         |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 66,67,68,69,71 |
+ file-input/src                                       |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 25,126,127,132 |
+ form/src                                             |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 47,151,152,153 |
+ golden-retriever/src                                 |        0 |        0 |        0 |        0 |                   |
+  IndexedDBStore.js                                   |        0 |        0 |        0 |        0 |... 61,364,368,369 |
+  MetaDataStore.js                                    |        0 |        0 |        0 |        0 |... 08,109,111,114 |
+  ServiceWorker.js                                    |        0 |        0 |        0 |        0 |... 92,93,95,96,98 |
+  ServiceWorkerStore.js                               |        0 |        0 |        0 |        0 |... 18,121,125,126 |
+  cleanup.js                                          |        0 |      100 |        0 |        0 |   1,2,3,4,5,7,8,9 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 64,265,266,267 |
+ google-drive/src                                     |        0 |        0 |        0 |        0 |                   |
+  DriveProviderViews.js                               |        0 |        0 |        0 |        0 |... ,5,7,8,9,10,12 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 56,61,62,66,70 |
+ informer/src                                         |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 39,42,69,70,71 |
+ instagram/src                                        |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 56,61,62,66,70 |
+ locales/src                                          |        0 |        0 |        0 |        0 |                   |
+  ar_SA.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  bg_BG.js                                            |        0 |        0 |        0 |        0 |... 55,158,159,161 |
+  cs_CZ.js                                            |        0 |        0 |        0 |        0 |... 48,151,152,154 |
+  da_DK.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  de_DE.js                                            |        0 |        0 |        0 |        0 |... 50,153,154,156 |
+  el_GR.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  en_US.js                                            |        0 |        0 |        0 |        0 |... 57,160,161,163 |
+  es_ES.js                                            |        0 |        0 |        0 |        0 |... 48,151,152,154 |
+  es_GL.js                                            |        0 |      100 |      100 |        0 |               1,2 |
+  fa_IR.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  fi_FI.js                                            |        0 |        0 |        0 |        0 |... 54,157,158,160 |
+  fr_FR.js                                            |        0 |        0 |        0 |        0 |... 62,165,166,168 |
+  gl_ES.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  he_IL.js                                            |        0 |        0 |        0 |        0 |... 49,152,153,155 |
+  hr_HR.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  hu_HU.js                                            |        0 |        0 |        0 |        0 |... 43,146,147,149 |
+  id_ID.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  is_IS.js                                            |        0 |        0 |        0 |        0 |... 49,152,153,155 |
+  it_IT.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  ja_JP.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  ko_KR.js                                            |        0 |        0 |        0 |        0 |... 49,152,153,155 |
+  nl_NL.js                                            |        0 |        0 |        0 |        0 |... 40,143,144,146 |
+  pl_PL.js                                            |        0 |        0 |        0 |        0 |... 56,159,160,162 |
+  pt_BR.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  ro_RO.js                                            |        0 |        0 |        0 |        0 |... 48,151,152,154 |
+  ru_RU.js                                            |        0 |        0 |        0 |        0 |... 52,155,156,158 |
+  sk_SK.js                                            |        0 |        0 |        0 |        0 |... 64,167,168,170 |
+  sr_RS_Cyrillic.js                                   |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  sr_RS_Latin.js                                      |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  sv_SE.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  th_TH.js                                            |        0 |        0 |        0 |        0 |... 49,152,153,155 |
+  tr_TR.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  vi_VN.js                                            |        0 |        0 |        0 |        0 |... 50,153,154,156 |
+  zh_CN.js                                            |        0 |        0 |        0 |        0 |... 47,150,151,153 |
+  zh_TW.js                                            |        0 |        0 |        0 |        0 |... 56,159,160,162 |
+ onedrive/src                                         |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 54,59,60,64,68 |
+ progress-bar/src                                     |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 35,48,49,50,55 |
+ provider-views/src                                   |        0 |        0 |        0 |        0 |                   |
+  AuthView.js                                         |        0 |      100 |        0 |        0 |          1,6,8,27 |
+  Breadcrumbs.js                                      |        0 |        0 |        0 |        0 | 1,4,5,19,20,25,27 |
+  Browser.js                                          |        0 |        0 |        0 |        0 |... 13,14,17,19,60 |
+  Filter.js                                           |        0 |        0 |        0 |        0 |... 10,11,12,17,27 |
+  FooterActions.js                                    |        0 |      100 |        0 |        0 |             1,3,4 |
+  ItemList.js                                         |        0 |        0 |        0 |        0 |... 18,21,31,35,39 |
+  Loader.js                                           |        0 |      100 |        0 |        0 |             1,3,4 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 83,596,597,623 |
+ provider-views/src/Item                              |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 16,18,20,22,24 |
+ provider-views/src/Item/components                   |        0 |        0 |        0 |        0 |                   |
+  GridLi.js                                           |        0 |        0 |        0 |        0 |             1,4,5 |
+  ItemIcon.js                                         |        0 |        0 |        0 |        0 |... 31,33,35,37,39 |
+  ListLi.js                                           |        0 |        0 |        0 |        0 |... 11,12,14,25,26 |
+ react/src                                            |    73.77 |    53.13 |    72.09 |    73.77 |                   |
+  Dashboard.js                                        |    83.78 |    33.33 |    85.71 |    83.78 | 15,17,18,19,21,68 |
+  DashboardModal.js                                   |    93.48 |    76.47 |      100 |    93.48 |          19,20,80 |
+  DragDrop.js                                         |    83.78 |    33.33 |    85.71 |    83.78 | 15,17,18,19,21,68 |
+  ProgressBar.js                                      |    84.21 |    33.33 |    85.71 |    84.21 | 16,18,19,20,22,69 |
+  StatusBar.js                                        |    84.21 |    33.33 |    85.71 |    84.21 | 16,18,19,20,22,69 |
+  Wrapper.js                                          |        0 |        0 |        0 |        0 |... 65,67,70,74,78 |
+  propTypes.js                                        |      100 |      100 |      100 |      100 |                   |
+ redux-dev-tools/src                                  |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 61,62,67,68,69 |
+ robodog/src                                          |        0 |        0 |        0 |        0 |                   |
+  AttachFileInputs.js                                 |        0 |        0 |        0 |        0 |... 87,88,91,92,96 |
+  TransloaditFormResult.js                            |        0 |        0 |        0 |        0 |... 62,66,68,69,73 |
+  TransloaditResultsPlugin.js                         |        0 |        0 |        0 |        0 |... 46,49,52,55,59 |
+  addDashboardPlugin.js                               |        0 |        0 |        0 |        0 |... 25,27,31,35,38 |
+  addProviders.js                                     |        0 |        0 |        0 |        0 |... 81,83,85,88,91 |
+  addTransloaditPlugin.js                             |        0 |        0 |        0 |        0 |... 17,18,19,21,24 |
+  createUppy.js                                       |        0 |        0 |        0 |        0 |... 54,58,60,61,64 |
+  dashboard.js                                        |        0 |        0 |        0 |        0 |... 20,25,27,28,31 |
+  form.js                                             |        0 |        0 |        0 |        0 |... 07,109,110,113 |
+  index.js                                            |        0 |      100 |      100 |        0 |       1,2,3,4,5,6 |
+  pick.js                                             |        0 |        0 |        0 |        0 |... 71,72,74,77,80 |
+  upload.js                                           |        0 |        0 |        0 |        0 |... 24,27,29,30,33 |
+ screen-capture/src                                   |        0 |        0 |        0 |        0 |                   |
+  CaptureScreen.js                                    |        0 |        0 |        0 |        0 |... 33,34,38,42,55 |
+  RecordButton.js                                     |        0 |        0 |        0 |        0 |        1,6,7,8,24 |
+  ScreenRecIcon.js                                    |        0 |      100 |        0 |        0 |             1,3,4 |
+  StopWatch.js                                        |        0 |        0 |        0 |        0 |... ,84,85,100,105 |
+  StreamStatus.js                                     |        0 |        0 |        0 |        0 |         1,3,4,5,9 |
+  SubmitButton.js                                     |        0 |        0 |        0 |        0 |        1,6,7,8,24 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 97,399,400,403 |
+ status-bar/src                                       |        0 |        0 |        0 |        0 |                   |
+  StatusBar.js                                        |        0 |        0 |        0 |        0 |... 70,372,373,376 |
+  StatusBarStates.js                                  |        0 |      100 |      100 |        0 |               1,2 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 41,242,243,248 |
+ store-default/src                                    |    93.33 |      100 |     87.5 |    93.33 |                   |
+  index.js                                            |    93.33 |      100 |     87.5 |    93.33 |                28 |
+ store-redux/src                                      |    89.47 |    90.91 |    73.33 |    93.94 |                   |
+  index.js                                            |    89.47 |    90.91 |    73.33 |    93.94 |             76,77 |
+ thumbnail-generator/src                              |    57.22 |    61.04 |     47.5 |    57.29 |                   |
+  index.js                                            |    57.22 |    61.04 |     47.5 |    57.29 |... 86,393,394,401 |
+ transloadit/src                                      |    32.56 |    25.86 |    27.59 |    32.79 |                   |
+  Assembly.js                                         |    36.97 |    43.75 |    35.48 |    36.97 |... 99,300,302,303 |
+  AssemblyOptions.js                                  |    82.29 |    94.44 |    93.75 |    82.29 |... 71,172,177,184 |
+  AssemblyWatcher.js                                  |     4.29 |        0 |        0 |     4.29 |... 14,115,116,117 |
+  Client.js                                           |     5.56 |        0 |     4.55 |     5.56 |... 69,272,273,275 |
+  index.js                                            |    29.74 |    12.36 |    21.28 |    30.21 |... 41,842,846,847 |
+  parseUrl.js                                         |    92.86 |       75 |      100 |    92.86 |                25 |
+ tus/src                                              |        0 |        0 |        0 |        0 |                   |
+  getFingerprint.js                                   |        0 |        0 |        0 |        0 |... 34,35,37,38,41 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 49,654,656,657 |
+ url/src                                              |        0 |        0 |        0 |        0 |                   |
+  UrlUI.js                                            |        0 |        0 |        0 |        0 |... 16,21,25,33,48 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 87,188,189,194 |
+ url/src/utils                                        |        0 |        0 |        0 |        0 |                   |
+  forEachDroppedOrPastedUrl.js                        |        0 |        0 |        0 |        0 |... 63,65,66,69,72 |
+ utils/src                                            |    57.41 |     57.4 |     64.1 |    57.36 |                   |
+  EventTracker.js                                     |        0 |      100 |        0 |        0 |... 24,25,27,28,31 |
+  FOCUSABLE_ELEMENTS.js                               |        0 |      100 |      100 |        0 |               1,2 |
+  NetworkError.js                                     |        0 |        0 |        0 |        0 |    1,4,6,7,8,9,13 |
+  ProgressTimeout.js                                  |        0 |        0 |        0 |        0 |... 33,34,36,37,41 |
+  RateLimitedQueue.js                                 |    57.86 |    55.56 |    65.22 |    57.55 |... 56,257,263,266 |
+  Translator.js                                       |    79.22 |    82.14 |       90 |    79.22 |... 05,108,117,140 |
+  canvasToBlob.js                                     |        0 |        0 |        0 |        0 |... 20,22,24,25,28 |
+  dataURItoBlob.js                                    |    81.82 |       75 |      100 |    80.95 |        8,19,21,35 |
+  dataURItoFile.js                                    |    85.71 |      100 |      100 |    85.71 |                 9 |
+  emitSocketProgress.js                               |        0 |        0 |        0 |        0 |... ,6,7,8,9,15,18 |
+  findAllDOMElements.js                               |        0 |        0 |        0 |        0 |... 10,12,13,15,17 |
+  findDOMElement.js                                   |        0 |        0 |        0 |        0 |... ,9,11,12,14,16 |
+  generateFileID.js                                   |     87.1 |    66.67 |      100 |     87.1 |       24,40,43,52 |
+  getBytesRemaining.js                                |    83.33 |      100 |      100 |    83.33 |                 8 |
+  getETA.js                                           |    78.57 |       50 |      100 |    78.57 |           8,10,18 |
+  getFileNameAndExtension.js                          |       90 |      100 |      100 |       90 |                21 |
+  getFileType.js                                      |    93.75 |       90 |      100 |    93.75 |                22 |
+  getFileTypeExtension.js                             |     87.5 |      100 |      100 |     87.5 |                26 |
+  getSocketHost.js                                    |    88.89 |      100 |      100 |    88.89 |                11 |
+  getSpeed.js                                         |    72.73 |       50 |      100 |    72.73 |            6,8,15 |
+  getTimeStamp.js                                     |        0 |        0 |        0 |        0 |... 12,16,18,20,21 |
+  hasProperty.js                                      |    83.33 |      100 |      100 |    83.33 |                 8 |
+  index.js                                            |        0 |      100 |      100 |        0 |                 1 |
+  isDOMElement.js                                     |        0 |        0 |        0 |        0 |       1,2,3,5,7,8 |
+  isDragDropSupported.js                              |        0 |        0 |        0 |        0 |... 17,19,21,23,24 |
+  isMobileDevice.js                                   |    88.89 |      100 |      100 |    88.89 |                13 |
+  isNetworkError.js                                   |    66.67 |       80 |      100 |    66.67 |            6,8,13 |
+  isObjectURL.js                                      |    83.33 |      100 |      100 |    83.33 |                 8 |
+  isPreviewSupported.js                               |    76.92 |       75 |      100 |    76.92 |            6,8,19 |
+  isTouchDevice.js                                    |    22.22 |        0 |        0 |    22.22 |  3,5,6,8,10,12,13 |
+  mimeTypes.js                                        |      100 |      100 |      100 |      100 |                   |
+  prettyETA.js                                        |    92.31 |      100 |      100 |    92.31 |                15 |
+  sampleImageDataURI.js                               |      100 |      100 |      100 |      100 |                   |
+  secondsToTime.js                                    |    88.89 |      100 |      100 |    88.89 |                15 |
+  settle.js                                           |    86.96 |      100 |      100 |    86.96 |          27,41,44 |
+  toArray.js                                          |    83.33 |       50 |      100 |    83.33 |                 8 |
+ utils/src/getDroppedFiles                            |        0 |        0 |        0 |        0 |                   |
+  index.js                                            |        0 |        0 |        0 |        0 |... 13,15,17,19,21 |
+ utils/src/getDroppedFiles/utils                      |        0 |      100 |        0 |        0 |                   |
+  fallbackApi.js                                      |        0 |      100 |        0 |        0 |  1,2,3,4,6,7,9,10 |
+ utils/src/getDroppedFiles/utils/webkitGetAsEntryApi  |        0 |        0 |        0 |        0 |                   |
+  getFilesAndDirectoriesFromDirectory.js              |        0 |        0 |        0 |        0 |... 25,27,28,29,32 |
+  getRelativePath.js                                  |        0 |        0 |        0 |        0 |... 5,6,8,10,12,14 |
+  index.js                                            |        0 |        0 |        0 |        0 |... 83,85,87,88,91 |
+ webcam/src                                           |    35.16 |    22.52 |    15.63 |    35.86 |                   |
+  CameraIcon.js                                       |    66.67 |      100 |        0 |    66.67 |                 4 |
+  CameraScreen.js                                     |    41.67 |        0 |        0 |    41.67 |... 16,20,25,26,28 |
+  PermissionsScreen.js                                |    66.67 |        0 |        0 |    66.67 |                 4 |
+  RecordButton.js                                     |       40 |        0 |        0 |       40 |            4,5,21 |
+  RecordingLength.js                                  |       60 |      100 |        0 |       60 |               5,7 |
+  SnapshotButton.js                                   |       75 |      100 |        0 |       75 |                 5 |
+  formatSeconds.js                                    |    83.33 |      100 |      100 |    83.33 |                 8 |
+  index.js                                            |    29.72 |    25.58 |    15.09 |    30.43 |... 94,499,500,503 |
+  supportsMediaRecorder.js                            |    83.33 |      100 |      100 |    83.33 |                 8 |
+ xhr-upload/src                                       |    39.68 |    33.67 |     33.8 |    40.13 |                   |
+  index.js                                            |    39.68 |    33.67 |     33.8 |    40.13 |... 44,645,646,654 |
+------------------------------------------------------|----------|----------|----------|----------|-------------------|

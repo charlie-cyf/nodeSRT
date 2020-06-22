@@ -12,13 +12,13 @@ class MockPurest {
       this[item] = () => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return this;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
       };
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
     httpMethodsToMock.forEach(item => {
@@ -28,17 +28,17 @@ class MockPurest {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         this._requestUrl = url;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
         return this;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
       };
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     });
     this.opts = opts;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   request(done) {
@@ -92,10 +92,10 @@ class MockPurest {
         statusCode: 200
       }, body);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "request"},');
 
     return this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "request"},');
 
   }
   on(evt, cb) {
@@ -104,27 +104,27 @@ class MockPurest {
     if (evt === 'response') {
       cb(fs.createReadStream('./README.md'));
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "on"},');
 
     return this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "on"},');
 
   }
 }
 module.exports = () => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey6"},');
 
   return options => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
     return new MockPurest(options);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey6"},');
 
 };

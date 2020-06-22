@@ -7,6 +7,8 @@ describe('dataURItoFile', () => {
     SRTlib.send(`{ "testSuite": "dataURItoFile", "fileName": "${__filename}", "calls" : [`);
 
   it('should convert a data uri to a file', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "dataURItoFile", "testName": "should%20convert%20a%20data%20uri%20to%20a%20file", "fileName": "${__filename}", "calls" : [`);
 
     const file = dataURItoFile(sampleImageDataURI, {
@@ -16,7 +18,8 @@ describe('dataURItoFile', () => {
     expect(file.size).toEqual(9348);
     expect(file.type).toEqual('image/jpeg');
     expect(file.name).toEqual('foo.jpg');
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20convert%20a%20data%20uri%20to%20a%20file"},');
+    SRTlib.endLogger();
 
   });
     SRTlib.send(']},');

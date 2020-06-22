@@ -5,7 +5,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('preact'), h = _require.h, Component = _require.Component;
@@ -16,10 +16,10 @@ var AuthView = (function (_Component) {
   function AuthView() {
         SRTlib.send(`{ "anonymous": false, "function": "AuthView", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "AuthView"},');
 
     return _Component.apply(this, arguments) || this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "AuthView"},');
 
   }
   var _proto = AuthView.prototype;
@@ -29,7 +29,7 @@ var AuthView = (function (_Component) {
     var pluginNameComponent = h("span", {
       class: "uppy-Provider-authTitleName"
     }, this.props.pluginName, h("br", null));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "AuthView._proto.render.render"},');
 
     return h("div", {
       class: "uppy-Provider-auth"
@@ -47,13 +47,13 @@ var AuthView = (function (_Component) {
     }, this.props.i18nArray('authenticateWith', {
       pluginName: this.props.pluginName
     })));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "AuthView._proto.render.render"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "AuthView"},');
 
   return AuthView;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "AuthView"},');
 
 })(Component);
 module.exports = AuthView;

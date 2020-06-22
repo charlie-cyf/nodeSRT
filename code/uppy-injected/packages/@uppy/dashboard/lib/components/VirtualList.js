@@ -13,23 +13,23 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _objectWithoutPropertiesLoose(source, excluded) {
     SRTlib.send(`{ "anonymous": false, "function": "_objectWithoutPropertiesLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (source == null) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_objectWithoutPropertiesLoose"},');
 
     return {};
   }
@@ -41,10 +41,10 @@ function _objectWithoutPropertiesLoose(source, excluded) {
     if (excluded.indexOf(key) >= 0) continue;
     target[key] = source[key];
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_objectWithoutPropertiesLoose"},');
 
   return target;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_objectWithoutPropertiesLoose"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -53,7 +53,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('preact'), h = _require.h, Component = _require.Component;
@@ -82,7 +82,7 @@ var VirtualList = (function (_Component) {
             SRTlib.send(`{ "anonymous": true, "function": "_this.handleResize", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       _this.resize();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleResize"},');
 
     };
     _this.handleScroll = function () {
@@ -94,7 +94,7 @@ var VirtualList = (function (_Component) {
       if (_this.props.sync) {
         _this.forceUpdate();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleScroll"},');
 
     };
     _this.focusElement = null;
@@ -102,10 +102,10 @@ var VirtualList = (function (_Component) {
       offset: 0,
       height: 0
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "VirtualList"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "VirtualList"},');
 
   }
   var _proto = VirtualList.prototype;
@@ -117,7 +117,7 @@ var VirtualList = (function (_Component) {
         height: this.base.offsetHeight
       });
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "VirtualList._proto.resize.resize"},');
 
   };
   _proto.componentWillUpdate = function componentWillUpdate() {
@@ -126,7 +126,7 @@ var VirtualList = (function (_Component) {
     if (this.base.contains(document.activeElement)) {
       this.focusElement = document.activeElement;
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "VirtualList._proto.componentWillUpdate.componentWillUpdate"},');
 
   };
   _proto.componentDidUpdate = function componentDidUpdate() {
@@ -137,7 +137,7 @@ var VirtualList = (function (_Component) {
     }
     this.focusElement = null;
     this.resize();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "VirtualList._proto.componentDidUpdate.componentDidUpdate"},');
 
   };
   _proto.componentDidMount = function componentDidMount() {
@@ -145,14 +145,14 @@ var VirtualList = (function (_Component) {
 
     this.resize();
     window.addEventListener('resize', this.handleResize);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "VirtualList._proto.componentDidMount.componentDidMount"},');
 
   };
   _proto.componentWillUnmount = function componentWillUnmount() {
         SRTlib.send(`{ "anonymous": true, "function": "VirtualList._proto.componentWillUnmount.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     window.removeEventListener('resize', this.handleResize);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "VirtualList._proto.componentWillUnmount.componentWillUnmount"},');
 
   };
   _proto.render = function render(_ref) {
@@ -174,7 +174,7 @@ var VirtualList = (function (_Component) {
     var styleContent = _extends({}, STYLE_CONTENT, {
       top: start * rowHeight
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "VirtualList._proto.render.render"},');
 
     return h("div", _extends({
       onScroll: this.handleScroll
@@ -185,13 +185,13 @@ var VirtualList = (function (_Component) {
       role: "presentation",
       style: styleContent
     }, selection.map(renderRow))));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "VirtualList._proto.render.render"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "VirtualList"},');
 
   return VirtualList;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "VirtualList"},');
 
 })(Component);
 module.exports = VirtualList;

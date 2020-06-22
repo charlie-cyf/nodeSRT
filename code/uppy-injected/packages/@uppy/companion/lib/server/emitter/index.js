@@ -8,9 +8,9 @@ module.exports = redisUrl => {
   if (!emitter) {
     emitter = redisUrl ? redisEmitter(redisUrl) : nodeEmitter();
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return emitter;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };

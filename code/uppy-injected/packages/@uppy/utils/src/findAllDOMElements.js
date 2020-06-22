@@ -5,15 +5,15 @@ module.exports = function findAllDOMElements(element) {
 
   if (typeof element === 'string') {
     const elements = [].slice.call(document.querySelectorAll(element));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.findAllDOMElements"},');
 
     return elements.length > 0 ? elements : null;
   }
   if (typeof element === 'object' && isDOMElement(element)) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.findAllDOMElements"},');
 
     return [element];
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.findAllDOMElements"},');
 
 };

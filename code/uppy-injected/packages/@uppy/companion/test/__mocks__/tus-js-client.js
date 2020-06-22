@@ -4,7 +4,7 @@ class Upload {
         SRTlib.send(`{ "anonymous": false, "function": "Upload.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.url = 'https://tus.endpoint/files/foo-bar';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
 }

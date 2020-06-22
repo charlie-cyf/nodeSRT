@@ -10,6 +10,8 @@ describe('File upload with Instagram Provider', () => {
     await browser.url(testURL);
   });
   it('should upload a file completely with Instagram', async function () {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "File%20upload%20with%20Instagram%20Provider", "testName": "should%20upload%20a%20file%20completely%20with%20Instagram", "fileName": "${__filename}", "calls" : [`);
 
     if (!process.env.UPPY_INSTAGRAM_USERNAME) {
@@ -42,10 +44,13 @@ describe('File upload with Instagram Provider', () => {
       }
     }
     await finishUploadTest(browser);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20upload%20a%20file%20completely%20with%20Instagram"},');
+    SRTlib.endLogger();
 
   });
   it('should resume uploads when retry is triggered Instagram', async function () {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "File%20upload%20with%20Instagram%20Provider", "testName": "should%20resume%20uploads%20when%20retry%20is%20triggered%20Instagram", "fileName": "${__filename}", "calls" : [`);
 
     if (!process.env.UPPY_INSTAGRAM_USERNAME) {
@@ -53,7 +58,8 @@ describe('File upload with Instagram Provider', () => {
       return this.skip();
     }
     await uploadWithRetry(browser, 'Instagram', testURL);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20resume%20uploads%20when%20retry%20is%20triggered%20Instagram"},');
+    SRTlib.endLogger();
 
   });
     SRTlib.send(']},');

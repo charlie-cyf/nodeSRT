@@ -15,28 +15,28 @@ class Instagram extends Provider {
     super(options);
     this.authProvider = options.provider = Instagram.authProvider;
     this.client = purest(options);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   static getExtraConfig() {
         SRTlib.send(`{ "anonymous": false, "function": "Instagram.getExtraConfig", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getExtraConfig"},');
 
     return {
       protocol: 'https',
       scope: ['user_profile', 'user_media']
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getExtraConfig"},');
 
   }
   static get authProvider() {
         SRTlib.send(`{ "anonymous": false, "function": "Instagram.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "authProvider"},');
 
     return 'instagram';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "authProvider"},');
 
   }
   list({directory, token, query = {
@@ -56,7 +56,7 @@ class Instagram extends Provider {
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.instagram.list.error');
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey2"},');
 
         return done(err);
       } else {
@@ -64,14 +64,14 @@ class Instagram extends Provider {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
           err ? done(err) : done(null, this.adaptData(body, username, directory, query));
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey"},');
 
         });
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "list"},');
 
   }
   _getUsername(token, done) {
@@ -85,22 +85,22 @@ class Instagram extends Provider {
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.instagram.user.error');
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
         return done(err);
       } else {
         done(null, body.username);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_getUsername"},');
 
   }
   download({id, token}, onData) {
         SRTlib.send(`{ "anonymous": false, "function": "Instagram.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "download"},');
 
     return this.client.get(`https://graph.instagram.com/${id}`).qs({
       fields: 'media_url'
@@ -111,7 +111,7 @@ class Instagram extends Provider {
         err = this._error(err, resp);
         logger.error(err, 'provider.instagram.download.error');
         onData(err);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey8"},');
 
         return;
       }
@@ -124,35 +124,35 @@ class Instagram extends Provider {
           resp.on('data', chunk => {
                         SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "emptyKey4"},');
 
             return onData(null, chunk);
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "emptyKey4"},');
 
           });
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey5"},');
 
       }).on('end', () => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey6"},');
 
         return onData(null, null);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey6"},');
 
       }).on('error', err => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         logger.error(err, 'provider.instagram.download.url.error');
         onData(err);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey7"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey8"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "download"},');
 
   }
   thumbnail(_, done) {
@@ -160,16 +160,16 @@ class Instagram extends Provider {
 
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.instagram.thumbnail.error');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "thumbnail"},');
 
     return done(err);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "thumbnail"},');
 
   }
   size({id, token}, done) {
         SRTlib.send(`{ "anonymous": false, "function": "Instagram.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "size"},');
 
     return this.client.get(`https://graph.instagram.com/${id}`).qs({
       fields: 'media_url'
@@ -179,30 +179,30 @@ class Instagram extends Provider {
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.instagram.size.error');
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey11"},');
 
         return done(err);
       }
       utils.getURLMeta(body.media_url).then(({size}) => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey9"},');
 
         return done(null, size);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey9"},');
 
       }).catch(err => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         logger.error(err, 'provider.instagram.size.error');
         done();
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey10"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey11"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "size"},');
 
   }
   logout(_, done) {
@@ -212,7 +212,7 @@ class Instagram extends Provider {
       revoked: false,
       manual_revoke_url: 'https://www.instagram.com/accounts/manage_access/'
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "logout"},');
 
   }
   adaptData(res, username, directory, currentQuery) {
@@ -236,14 +236,14 @@ class Instagram extends Provider {
         requestPath: adapter.getItemRequestPath(item),
         modifiedDate: adapter.getItemModifiedDate(item)
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey12"},');
 
     });
     data.nextPagePath = adapter.getNextPagePath(res, currentQuery, directory);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "adaptData"},');
 
     return data;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "adaptData"},');
 
   }
   _error(err, resp) {
@@ -251,20 +251,20 @@ class Instagram extends Provider {
 
     if (resp) {
       if (resp.body && resp.body.error.code === 190) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_error"},');
 
         return new ProviderAuthError();
       }
       const fallbackMessage = `request to ${this.authProvider} returned ${resp.statusCode}`;
       const msg = resp.body && resp.body.error ? resp.body.error.message : fallbackMessage;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_error"},');
 
       return new ProviderApiError(msg, resp.statusCode);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_error"},');
 
     return err;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_error"},');
 
   }
 }

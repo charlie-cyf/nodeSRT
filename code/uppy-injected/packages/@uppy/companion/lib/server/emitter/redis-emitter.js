@@ -7,7 +7,7 @@ class RedisEmitter extends NRP {
     super({
       url: redisUrl
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   once(eventName, handler) {
@@ -18,19 +18,19 @@ class RedisEmitter extends NRP {
 
       handler(message);
       removeListener();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "once"},');
 
   }
   emit(eventName, message) {
         SRTlib.send(`{ "anonymous": false, "function": "RedisEmitter.emit", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emit"},');
 
     return super.emit(eventName, message || ({}));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emit"},');
 
   }
   removeListener(eventName, handler) {
@@ -38,7 +38,7 @@ class RedisEmitter extends NRP {
 
     this.receiver.removeListener(eventName, handler);
     this.receiver.punsubscribe(this.prefix + eventName);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "removeListener"},');
 
   }
   removeAllListeners(eventName) {
@@ -46,16 +46,16 @@ class RedisEmitter extends NRP {
 
     this.receiver.removeAllListeners(eventName);
     this.receiver.punsubscribe(this.prefix + eventName);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "removeAllListeners"},');
 
   }
 }
 module.exports = redisUrl => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
   return new RedisEmitter(redisUrl);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };

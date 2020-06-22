@@ -7,7 +7,7 @@ module.exports = class InvalidPluginWithoutType extends Plugin {
     super(uppy, opts);
     this.id = 'InvalidPluginWithoutType';
     this.name = this.constructor.name;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   run(results) {
@@ -18,10 +18,10 @@ module.exports = class InvalidPluginWithoutType extends Plugin {
       method: 'run',
       results: results
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "run"},');
 
     return Promise.resolve('success');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "run"},');
 
   }
 };

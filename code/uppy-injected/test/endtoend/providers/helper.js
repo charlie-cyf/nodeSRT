@@ -10,7 +10,7 @@ exports.finishUploadTest = async browser => {
   await uploadButton.click();
   const completeBar = await browser.$('.uppy-StatusBar-content[title="Complete"]');
   await completeBar.waitForDisplayed(20000);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };
 exports.startUploadTest = async (browser, providerName, tabMatch) => {
@@ -24,7 +24,7 @@ exports.startUploadTest = async (browser, providerName, tabMatch) => {
   await authButton.click();
   await browser.pause(5000);
   await browser.switchWindow(tabMatch);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };
 exports.uploadWithRetry = async (browser, providerName, testURL) => {
@@ -44,6 +44,6 @@ exports.uploadWithRetry = async (browser, providerName, testURL) => {
   await retryButton.click();
   const completeBar = await browser.$('.uppy-StatusBar-content[title="Complete"]');
   await completeBar.waitForDisplayed(20000);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 };

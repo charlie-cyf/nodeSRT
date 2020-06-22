@@ -5,7 +5,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('preact'), h = _require.h, Component = _require.Component;
@@ -22,20 +22,20 @@ module.exports = (function (_Component) {
   function FileItem() {
         SRTlib.send(`{ "anonymous": false, "function": "FileItem", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "FileItem"},');
 
     return _Component.apply(this, arguments) || this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "FileItem"},');
 
   }
   var _proto = FileItem.prototype;
   _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.shouldComponentUpdate.shouldComponentUpdate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._proto.shouldComponentUpdate.shouldComponentUpdate"},');
 
     return !shallowEqual(this.props, nextProps);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._proto.shouldComponentUpdate.shouldComponentUpdate"},');
 
   };
   _proto.componentDidMount = function componentDidMount() {
@@ -45,7 +45,7 @@ module.exports = (function (_Component) {
     if (!file.preview) {
       this.props.handleRequestThumbnail(file);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._proto.componentDidMount.componentDidMount"},');
 
   };
   _proto.componentWillUnmount = function componentWillUnmount() {
@@ -55,7 +55,7 @@ module.exports = (function (_Component) {
     if (!file.preview) {
       this.props.handleCancelThumbnail(file);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._proto.componentWillUnmount.componentWillUnmount"},');
 
   };
   _proto.render = function render() {
@@ -83,7 +83,7 @@ module.exports = (function (_Component) {
       'is-resumable': this.props.resumableUploads,
       'is-noIndividualCancellation': !this.props.individualCancellation
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._proto.render.render"},');
 
     return h("div", {
       class: dashboardItemClass,
@@ -127,12 +127,12 @@ module.exports = (function (_Component) {
       log: this.props.log,
       info: this.props.info
     })));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._proto.render.render"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
   return FileItem;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
 })(Component);

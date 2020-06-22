@@ -21,6 +21,6 @@ module.exports = function connect(req, res) {
     }, secret);
   }
   res.redirect(req.companion.buildURL(`/connect/${req.companion.provider.authProvider}?state=${state}`, true));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.connect"},');
 
 };

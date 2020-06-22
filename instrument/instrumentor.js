@@ -3,6 +3,7 @@ const acornWalk = require('acorn-walk')
 const path = require('path')
 const { Parser } = require("acorn")
 const astring = require('astring')
+const {t} = require('typy')
 var _ = require('underscore');
 
 const ASTParser = Parser.extend(
@@ -59,7 +60,8 @@ module.exports = class Instrumentor {
                                         if (node.arguments[1].type === 'FunctionExpression' || node.arguments[1].type === 'ArrowFunctionExpression') {
                                             if(node.arguments[1].body.body){
                                                 node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suiteName + '\", \"testName\": \"' + testName + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);'));
-                                                node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\']},\');'));
+                                                node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
+                                                node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\'], "end": "test-'+testName+'"},\'); SRTlib.endLogger();'));
                                             }
 
                                         }
@@ -86,13 +88,13 @@ module.exports = class Instrumentor {
                                 const paramsNum = node.params.length;
                                 const funcName = node.id.name;
                                 node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"'+funcName+'\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
-                                node.body.body.push(ASTParser.parse('SRTlib.send("]},");'))
-                                insertBeforeReturn(node);
+                                node.body.body.push(ASTParser.parse('SRTlib.send(\'], "end": "'+funcName+'"},\');'))
+                                insertBeforeReturn(node, funcName);
                             },
 
                             FunctionExpression(node, ancestors) {
-                                functionHandler(node, ancestors, getListOfId, functionMap);
-                                insertBeforeReturn(node);
+                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap);
+                                insertBeforeReturn(node, funcName);
                             },
 
                             ArrowFunctionExpression(node, ancestors) {
@@ -108,8 +110,8 @@ module.exports = class Instrumentor {
                                     }
                                 }
 
-                                functionHandler(node, ancestors, getListOfId, functionMap);
-                                insertBeforeReturn(node)
+                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap);
+                                insertBeforeReturn(node, funcName)
                             },
 
 
@@ -135,17 +137,28 @@ module.exports = class Instrumentor {
         })
     }
 
-    insertBeforeReturn(node) {
+    insertBeforeReturn(node, funcName) {
+        const visited = new Map();
+
+        const isEnd = function (node) {
+            let obj = t(node, 'body[0].expression.arguments[0].value').safeObject;
+            if(obj) {
+                return obj.includes('], \"end\": \"')
+            }
+            return false;
+        }
+        
+
         const insert = function (node, parent) {
             if (!node) return;
             if (node.type === 'ReturnStatement' || node.type === 'ThrowStatement') {
                 if(parent.type === "SwitchCase"){
-                    parent.consequent.unshift( ASTParser.parse('SRTlib.send("]},");') );
+                    parent.consequent.unshift( ASTParser.parse('SRTlib.send(\'], "end": "'+funcName+'"},\');') );
 
                 } else if (parent.type == 'BlockStatement') {
-                    const returnIdx = parent.body.findIndex(ele => ele.type === 'ReturnStatement');
-                    if (!_.isEqual(parent.body[returnIdx - 1], ASTParser.parse('SRTlib.send("]},");')))
-                        parent.body.splice(returnIdx, 0, ASTParser.parse('SRTlib.send("]},");'))
+                    const returnIdx = parent.body.findIndex(ele => (ele.type === 'ReturnStatement' || ele.type === 'ThrowStatement'));
+                    if (!isEnd(parent.body[returnIdx - 1]))
+                        parent.body.splice(returnIdx, 0,  ASTParser.parse('SRTlib.send(\'], "end": "'+funcName+'"},\');'))
                 } else {
                     const blkStmt = {
                         type: 'BlockStatement',
@@ -154,21 +167,23 @@ module.exports = class Instrumentor {
 
                     let key = _.invert(parent)[node]
                     parent[key] = blkStmt;
-                    const returnIdx = parent[key].body.findIndex(ele => ele.type === 'ReturnStatement');
-                    if (!_.isEqual(parent[key].body[returnIdx - 1], ASTParser.parse('SRTlib.send("]},");')))
-                        parent[key].body.splice(returnIdx, 0, ASTParser.parse('SRTlib.send("]},");'))
+                    const returnIdx = parent[key].body.findIndex(ele => (ele.type === 'ReturnStatement' || ele.type === 'ThrowStatement'));
+                    if (!isEnd(parent[key].body[returnIdx - 1]))
+                        parent[key].body.splice(returnIdx, 0,  ASTParser.parse('SRTlib.send(\'], "end": "'+funcName+'"},\');'))
                 } 
             } else {
                 Object.keys(node).forEach(key => {
                     if (Array.isArray(node[key])) {
                         node[key].forEach(ele => {
-                            insert(ele, node);
+                            if (!visited.has(ele))
+                                insert(ele, node);
                         })
                     } else if (typeof node[key] === 'object') {
-                        insert(node[key], node)
+                        if (!visited.has(node[key])) insert(node[key], node)
                     }
                 })
             }
+            visited.set(node, true)
 
         }
 
@@ -217,21 +232,22 @@ module.exports = class Instrumentor {
             node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"'+className+'.'+fname+'\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
         }
         else {
-            let funcName = getListOfId(ancestors, []).join('.');
-            funcName = funcName ? funcName : 'emptyKey';
-            if (functionMap.has(funcName)) {
-                functionMap.set(funcName, functionMap.get(funcName) + 1);
-                funcName = funcName + functionMap.get(funcName);
+            fname = getListOfId(ancestors, []).join('.');
+            fname = fname ? fname : 'emptyKey';
+            if (functionMap.has(fname)) {
+                functionMap.set(fname, functionMap.get(fname) + 1);
+                fname = fname + functionMap.get(fname);
             } else {
-                functionMap.set(funcName, 1)
-                funcName = funcName;
+                functionMap.set(fname, 1)
+                fname = fname;
             }
 
-            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": true, "function": \"' + funcName + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": true, "function": \"' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
             
         }
 
-        node.body.body.push(ASTParser.parse('SRTlib.send("]},");'))
+        node.body.body.push(ASTParser.parse('SRTlib.send(\'], "end": "'+fname+'"},\');'))
+        return fname
 
     }
 

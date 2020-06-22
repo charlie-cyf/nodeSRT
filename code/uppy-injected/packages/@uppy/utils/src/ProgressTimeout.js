@@ -8,14 +8,14 @@ class ProgressTimeout {
     this._isDone = false;
     this._aliveTimer = null;
     this._onTimedOut = this._onTimedOut.bind(this);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   progress() {
         SRTlib.send(`{ "anonymous": false, "function": "ProgressTimeout.progress", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this._isDone) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "progress"},');
 
       return;
     }
@@ -23,7 +23,7 @@ class ProgressTimeout {
       if (this._aliveTimer) clearTimeout(this._aliveTimer);
       this._aliveTimer = setTimeout(this._onTimedOut, this._timeout);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "progress"},');
 
   }
   done() {
@@ -34,7 +34,7 @@ class ProgressTimeout {
       this._aliveTimer = null;
     }
     this._isDone = true;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "done"},');
 
   }
 }

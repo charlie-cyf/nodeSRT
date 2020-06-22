@@ -9,19 +9,19 @@ module.exports = function parseUrl(url) {
   }
   const slashIndex = url.indexOf('/', i);
   if (slashIndex === -1) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.parseUrl"},');
 
     return {
       origin: url,
       pathname: '/'
     };
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.parseUrl"},');
 
   return {
     origin: url.slice(0, slashIndex),
     pathname: url.slice(slashIndex)
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.parseUrl"},');
 
 };

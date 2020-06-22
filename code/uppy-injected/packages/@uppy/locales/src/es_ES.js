@@ -138,14 +138,14 @@ es_ES.pluralize = function (n) {
     SRTlib.send(`{ "anonymous": true, "function": "es_ES.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "es_ES.pluralize"},');
 
     return 0;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "es_ES.pluralize"},');
 
   return 1;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "es_ES.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

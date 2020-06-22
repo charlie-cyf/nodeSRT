@@ -137,14 +137,14 @@ fa_IR.pluralize = function (n) {
     SRTlib.send(`{ "anonymous": true, "function": "fa_IR.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "fa_IR.pluralize"},');
 
     return 0;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "fa_IR.pluralize"},');
 
   return 1;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "fa_IR.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

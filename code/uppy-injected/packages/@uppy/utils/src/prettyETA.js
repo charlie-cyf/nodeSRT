@@ -9,9 +9,9 @@ module.exports = function prettyETA(seconds) {
   const minutesStr = minutesVal ? minutesVal + 'm' : '';
   const secondsVal = minutesVal ? ('0' + time.seconds).substr(-2) : time.seconds;
   const secondsStr = time.hours ? '' : minutesVal ? ' ' + secondsVal + 's' : secondsVal + 's';
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.prettyETA"},');
 
   return `${hoursStr}${minutesStr}${secondsStr}`;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.prettyETA"},');
 
 };

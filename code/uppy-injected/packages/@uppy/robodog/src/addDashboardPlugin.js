@@ -13,7 +13,7 @@ function addDashboardPlugin(uppy, opts, overrideOpts) {
     if (has(opts, key)) {
       dashboardOpts[key] = opts[key];
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   const inline = overrideOpts.inline == null ? dashboardOpts.inline : overrideOpts.inline;
@@ -24,7 +24,7 @@ function addDashboardPlugin(uppy, opts, overrideOpts) {
       if (has(opts, key)) {
         dashboardOpts[key] = opts[key];
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
   }
@@ -32,7 +32,7 @@ function addDashboardPlugin(uppy, opts, overrideOpts) {
     ...dashboardOpts,
     ...overrideOpts
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "addDashboardPlugin"},');
 
 }
 module.exports = addDashboardPlugin;

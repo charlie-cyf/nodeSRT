@@ -14,30 +14,30 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -46,7 +46,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -80,10 +80,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.render = _this.render.bind(_assertThisInitialized(_this));
     _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "FileInput"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "FileInput"},');
 
   }
   var _proto = FileInput.prototype;
@@ -92,7 +92,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     _Plugin.prototype.setOptions.call(this, newOpts);
     this.i18nInit();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.setOptions.setOptions"},');
 
   };
   _proto.i18nInit = function i18nInit() {
@@ -102,7 +102,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
     this.setPluginState();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.i18nInit.i18nInit"},');
 
   };
   _proto.addFiles = function addFiles(files) {
@@ -112,7 +112,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var descriptors = files.map(function (file) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.addFiles.addFiles.descriptors", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.addFiles.addFiles.descriptors"},');
 
       return {
         source: _this2.id,
@@ -120,7 +120,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         type: file.type,
         data: file
       };
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.addFiles.addFiles.descriptors"},');
 
     });
     try {
@@ -128,7 +128,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     } catch (err) {
       this.uppy.log(err);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.addFiles.addFiles"},');
 
   };
   _proto.handleInputChange = function handleInputChange(event) {
@@ -138,14 +138,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var files = toArray(event.target.files);
     this.addFiles(files);
     event.target.value = null;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleInputChange.handleInputChange"},');
 
   };
   _proto.handleClick = function handleClick(ev) {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleClick.handleClick", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.input.click();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleClick.handleClick"},');
 
   };
   _proto.render = function render(state) {
@@ -162,7 +162,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     };
     var restrictions = this.uppy.opts.restrictions;
     var accept = restrictions.allowedFileTypes ? restrictions.allowedFileTypes.join(',') : null;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
     return h("div", {
       class: "uppy-Root uppy-FileInput-container"
@@ -178,7 +178,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.render.render.ReturnStatement.h.h.ref.ref", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         _this3.input = input;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.render.render.ReturnStatement.h.h.ref.ref"},');
 
       }
     }), this.opts.pretty && h("button", {
@@ -186,7 +186,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       type: "button",
       onclick: this.handleClick
     }, this.i18n('chooseFiles')));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
   };
   _proto.install = function install() {
@@ -196,19 +196,19 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.uninstall.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.unmount();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return FileInput;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

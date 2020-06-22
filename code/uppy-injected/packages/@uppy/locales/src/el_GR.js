@@ -137,14 +137,14 @@ el_GR.pluralize = function (n) {
     SRTlib.send(`{ "anonymous": true, "function": "el_GR.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "el_GR.pluralize"},');
 
     return 1;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "el_GR.pluralize"},');
 
   return 0;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "el_GR.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

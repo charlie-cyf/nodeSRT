@@ -16,23 +16,23 @@ function list({query, params, companion}, res, next) {
     if (err) {
       const errResp = errorToResponse(err);
       if (errResp) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return res.status(errResp.code).json({
           message: errResp.message
         });
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
       return next(err);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return res.json(data);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "list"},');
 
 }
 module.exports = list;

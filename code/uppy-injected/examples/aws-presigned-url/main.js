@@ -13,7 +13,7 @@ uppy.use(AwsS3, {
   getUploadParameters(file) {
         SRTlib.send(`{ "anonymous": true, "function": "getUploadParameters", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getUploadParameters"},');
 
     return fetch('/s3-sign.php', {
       method: 'post',
@@ -28,15 +28,15 @@ uppy.use(AwsS3, {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
       return response.json();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     }).then(data => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
       return {
         method: data.method,
@@ -44,10 +44,10 @@ uppy.use(AwsS3, {
         fields: data.fields,
         headers: data.headers
       };
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getUploadParameters"},');
 
   }
 });

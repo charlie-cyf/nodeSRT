@@ -3,15 +3,15 @@ module.exports = function getSpeed(fileProgress) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports.getSpeed", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (!fileProgress.bytesUploaded) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getSpeed"},');
 
     return 0;
   }
   const timeElapsed = new Date() - fileProgress.uploadStarted;
   const uploadSpeed = fileProgress.bytesUploaded / (timeElapsed / 1000);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getSpeed"},');
 
   return uploadSpeed;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getSpeed"},');
 
 };

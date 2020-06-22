@@ -33,7 +33,7 @@ inject().catch(err => {
 
   console.error(err);
   process.exit(1);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 });
 async function getMinifiedSize(pkg, name) {
@@ -52,14 +52,14 @@ async function getMinifiedSize(pkg, name) {
   b.plugin('tinyify');
   const bundle = await promisify(b.bundle).call(b);
   const gzipped = await gzipSize(bundle);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getMinifiedSize"},');
 
   return {
     minified: bundle.length,
     gzipped,
     version
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getMinifiedSize"},');
 
 }
 async function injectSizes(config) {
@@ -69,10 +69,10 @@ async function injectSizes(config) {
   const padTarget = packages.reduce((max, cur) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
     return Math.max(max, cur.length);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   }, 0) + 2;
   const sizesPromise = Promise.all(packages.map(async pkg => {
@@ -80,13 +80,13 @@ async function injectSizes(config) {
 
     const result = await getMinifiedSize(path.join(__dirname, '../packages', pkg), pkg);
     console.info(chalk.green(`  ✓ ${pkg}: ${(' ').repeat(padTarget - pkg.length)}` + `${prettierBytes(result.minified)} min`.padEnd(10) + ` / ${prettierBytes(result.gzipped)} gz`));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
     return Object.assign(result, {
       prettyMinified: prettierBytes(result.minified),
       prettyGzipped: prettierBytes(result.gzipped)
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   })).then(list => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -96,17 +96,17 @@ async function injectSizes(config) {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       map[packages[i]] = size;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
     return map;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
   });
   config.uppy_bundle_kb_sizes = await sizesPromise;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "injectSizes"},');
 
 }
 async function injectBundles() {
@@ -118,10 +118,10 @@ async function injectBundles() {
         SRTlib.send(`{ "anonymous": true, "function": "split.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     console.info(chalk.green('✓ injected: '), chalk.grey(line));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "split.forEach"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "injectBundles"},');
 
 }
 async function injectGhStars() {
@@ -141,7 +141,7 @@ async function injectGhStars() {
   const dstpath = path.join(webRoot, 'themes', 'uppy', 'layout', 'partials', 'generated_stargazers.ejs');
   fs.writeFileSync(dstpath, String(data.stargazers_count), 'utf-8');
   console.log(`${data.stargazers_count} stargazers written to '${dstpath}'`);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "injectGhStars"},');
 
 }
 async function injectMarkdown() {
@@ -166,7 +166,7 @@ async function injectMarkdown() {
     console.info(chalk.green('✓ injected: '), chalk.grey(srcpath));
   }
   touch(path.join(webRoot, '/src/support.md'));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "injectMarkdown"},');
 
 }
 function injectLocaleList() {
@@ -182,7 +182,7 @@ function injectLocaleList() {
 
     const localeName = path.basename(localePath, '.js');
     if (localeName === 'es_GL') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
       return;
     }
@@ -203,7 +203,7 @@ function injectLocaleList() {
     const mdTableRow = `| ${languageName}<br/> <small>${countryName}</small>${variant ? `<br /><small>(${variant})</small>` : ''} | ${npmPath} | ${cdnPath} | ✏️ ${githubSource} |`;
     mdRows.push(mdTableRow);
     localeList[localeName] = `${languageName} (${countryName}${variant ? ` ${variant}` : ''})`;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey6"},');
 
   });
   const resultingMdTable = mdTable.concat(mdRows.sort()).join('\n').replace('%count%', mdRows.length);
@@ -213,7 +213,7 @@ function injectLocaleList() {
   console.info(chalk.green('✓ injected: '), chalk.grey(dstpath));
   fs.writeFileSync(localeListDstPath, JSON.stringify(localeList), 'utf-8');
   console.info(chalk.green('✓ injected: '), chalk.grey(localeListDstPath));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "injectLocaleList"},');
 
 }
 async function readConfig() {
@@ -221,15 +221,15 @@ async function readConfig() {
 
   try {
     const buf = await promisify(fs.readFile)(configPath, 'utf8');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "readConfig"},');
 
     return YAML.safeLoad(buf);
   } catch (err) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "readConfig"},');
 
     return {};
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "readConfig"},');
 
 }
 async function inject() {
@@ -251,6 +251,6 @@ async function inject() {
     console.error(chalk.red('x failed to inject: '), chalk.grey('uppy bundle into site, because: ' + error));
     process.exit(1);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "inject"},');
 
 }

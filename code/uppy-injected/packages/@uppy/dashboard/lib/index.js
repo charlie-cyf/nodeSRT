@@ -14,30 +14,30 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -46,7 +46,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -75,13 +75,13 @@ function createPromise() {
 
     o.resolve = resolve;
     o.reject = reject;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "o.promise"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "createPromise"},');
 
   return o;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "createPromise"},');
 
 }
 module.exports = (_temp = _class = (function (_Plugin) {
@@ -98,7 +98,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       _Plugin.prototype.setOptions.call(_assertThisInitialized(_this), newOpts);
       _this.i18nInit();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.setOptions"},');
 
     };
     _this.i18nInit = function () {
@@ -108,7 +108,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       _this.i18n = _this.translator.translate.bind(_this.translator);
       _this.i18nArray = _this.translator.translateArray.bind(_this.translator);
       _this.setPluginState();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.i18nInit"},');
 
     };
     _this.removeTarget = function (plugin) {
@@ -118,16 +118,16 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var newTargets = pluginState.targets.filter(function (target) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.removeTarget.newTargets.pluginState.targets.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.removeTarget.newTargets.pluginState.targets.filter"},');
 
         return target.id !== plugin.id;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.removeTarget.newTargets.pluginState.targets.filter"},');
 
       });
       _this.setPluginState({
         targets: newTargets
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.removeTarget"},');
 
     };
     _this.addTarget = function (plugin) {
@@ -139,7 +139,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (callerPluginType !== 'acquirer' && callerPluginType !== 'progressindicator' && callerPluginType !== 'presenter') {
         var msg = 'Dashboard: Modal can only be used by plugins of types: acquirer, progressindicator, presenter';
         _this.uppy.log(msg, 'error');
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.addTarget"},');
 
         return;
       }
@@ -154,10 +154,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       _this.setPluginState({
         targets: newTargets
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.addTarget"},');
 
       return _this.el;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.addTarget"},');
 
     };
     _this.hideAllPanels = function () {
@@ -170,12 +170,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
       };
       var current = _this.getPluginState();
       if (current.activePickerPanel === update.activePickerPanel && current.showAddFilesPanel === update.showAddFilesPanel && current.activeOverlayType === update.activeOverlayType) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.hideAllPanels"},');
 
         return;
       }
       _this.setPluginState(update);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.hideAllPanels"},');
 
     };
     _this.showPanel = function (id) {
@@ -185,17 +185,17 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var activePickerPanel = targets.filter(function (target) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.showPanel.activePickerPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.showPanel.activePickerPanel"},');
 
         return target.type === 'acquirer' && target.id === id;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.showPanel.activePickerPanel"},');
 
       })[0];
       _this.setPluginState({
         activePickerPanel: activePickerPanel,
         activeOverlayType: 'PickerPanel'
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.showPanel"},');
 
     };
     _this.openModal = function () {
@@ -216,7 +216,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           });
           _this.el.removeEventListener('animationend', handler, false);
           resolve();
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "handler"},');
 
         };
         _this.el.addEventListener('animationend', handler, false);
@@ -231,10 +231,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }
       document.addEventListener('keydown', _this.handleKeyDownInModal);
       _this.uppy.emit('dashboard:modal-open');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.openModal"},');
 
       return promise;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.openModal"},');
 
     };
     _this.closeModal = function (opts) {
@@ -246,7 +246,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var _opts2 = opts, _opts2$manualClose = _opts2.manualClose, manualClose = _opts2$manualClose === void 0 ? true : _opts2$manualClose;
       var _this$getPluginState2 = _this.getPluginState(), isHidden = _this$getPluginState2.isHidden, isClosing = _this$getPluginState2.isClosing;
       if (isHidden || isClosing) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.closeModal"},');
 
         return;
       }
@@ -269,7 +269,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           _this.savedActiveElement.focus();
           _this.el.removeEventListener('animationend', handler, false);
           resolve();
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "handler"},');
 
         };
         _this.el.addEventListener('animationend', handler, false);
@@ -290,33 +290,33 @@ module.exports = (_temp = _class = (function (_Plugin) {
         }
       }
       _this.uppy.emit('dashboard:modal-closed');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.closeModal"},');
 
       return promise;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.closeModal"},');
 
     };
     _this.isModalOpen = function () {
             SRTlib.send(`{ "anonymous": true, "function": "_this.isModalOpen", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.isModalOpen"},');
 
       return !_this.getPluginState().isHidden || false;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.isModalOpen"},');
 
     };
     _this.requestCloseModal = function () {
             SRTlib.send(`{ "anonymous": true, "function": "_this.requestCloseModal", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       if (_this.opts.onRequestCloseModal) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.requestCloseModal"},');
 
         return _this.opts.onRequestCloseModal();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.requestCloseModal"},');
 
       return _this.closeModal();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.requestCloseModal"},');
 
     };
     _this.setDarkModeCapability = function (isDarkModeOn) {
@@ -328,7 +328,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           darkMode: isDarkModeOn
         })
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.setDarkModeCapability"},');
 
     };
     _this.handleSystemDarkModeChange = function (event) {
@@ -337,7 +337,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var isDarkModeOnNow = event.matches;
       _this.uppy.log("[Dashboard] Dark mode is " + (isDarkModeOnNow ? 'on' : 'off'));
       _this.setDarkModeCapability(isDarkModeOnNow);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleSystemDarkModeChange"},');
 
     };
     _this.toggleFileCard = function (fileId) {
@@ -352,7 +352,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         fileCardFor: fileId || null,
         activeOverlayType: fileId ? 'FileCard' : null
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.toggleFileCard"},');
 
     };
     _this.toggleAddFilesPanel = function (show) {
@@ -362,7 +362,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         showAddFilesPanel: show,
         activeOverlayType: show ? 'AddFiles' : null
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.toggleAddFilesPanel"},');
 
     };
     _this.addFiles = function (files) {
@@ -371,7 +371,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var descriptors = files.map(function (file) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.addFiles.descriptors", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.addFiles.descriptors"},');
 
         return {
           source: _this.id,
@@ -382,7 +382,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
             relativePath: file.relativePath || null
           }
         };
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.addFiles.descriptors"},');
 
       });
       try {
@@ -390,7 +390,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       } catch (err) {
         _this.uppy.log(err);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.addFiles"},');
 
     };
     _this.startListeningToResize = function () {
@@ -407,7 +407,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           containerHeight: height,
           areInsidesReadyToBeVisible: true
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.startListeningToResize._this.resizeObserver"},');
 
       });
       _this.resizeObserver.observe(_this.el.querySelector('.uppy-Dashboard-inner'));
@@ -422,10 +422,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
             areInsidesReadyToBeVisible: true
           });
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.startListeningToResize._this.makeDashboardInsidesVisibleAnywayTimeout.setTimeout"},');
 
       }, 1000);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.startListeningToResize"},');
 
     };
     _this.stopListeningToResize = function () {
@@ -433,7 +433,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       _this.resizeObserver.disconnect();
       clearTimeout(_this.makeDashboardInsidesVisibleAnywayTimeout);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.stopListeningToResize"},');
 
     };
     _this.recordIfFocusedOnUppyRecently = function (event) {
@@ -445,7 +445,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         _this.ifFocusedOnUppyRecently = false;
         _this.superFocus.cancel();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.recordIfFocusedOnUppyRecently"},');
 
     };
     _this.updateBrowserHistory = function () {
@@ -456,7 +456,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         history.pushState(_extends({}, history.state, (_extends2 = {}, _extends2[_this.modalName] = true, _extends2)), '');
       }
       window.addEventListener('popstate', _this.handlePopState, false);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.updateBrowserHistory"},');
 
     };
     _this.handlePopState = function (event) {
@@ -470,7 +470,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (!_this.isModalOpen() && event.state && event.state[_this.modalName]) {
         history.go(-1);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handlePopState"},');
 
     };
     _this.handleKeyDownInModal = function (event) {
@@ -478,14 +478,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       if (event.keyCode === ESC_KEY) _this.requestCloseModal(event);
       if (event.keyCode === TAB_KEY) trapFocus.forModal(event, _this.getPluginState().activeOverlayType, _this.el);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleKeyDownInModal"},');
 
     };
     _this.handleClickOutside = function () {
             SRTlib.send(`{ "anonymous": true, "function": "_this.handleClickOutside", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       if (_this.opts.closeModalOnClickOutside) _this.requestCloseModal();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleClickOutside"},');
 
     };
     _this.handlePaste = function (event) {
@@ -497,12 +497,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
         if (plugin.type === 'acquirer') {
           plugin.handleRootPaste && plugin.handleRootPaste(event);
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.handlePaste._this.uppy.iteratePlugins"},');
 
       });
       var files = toArray(event.clipboardData.files);
       _this.addFiles(files);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handlePaste"},');
 
     };
     _this.handleInputChange = function (event) {
@@ -511,7 +511,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       event.preventDefault();
       var files = toArray(event.target.files);
       _this.addFiles(files);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleInputChange"},');
 
     };
     _this.handleDragOver = function (event) {
@@ -524,7 +524,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       _this.setPluginState({
         isDraggingOver: true
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleDragOver"},');
 
     };
     _this.handleDragLeave = function (event) {
@@ -539,10 +539,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
         _this.setPluginState({
           isDraggingOver: false
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.handleDragLeave._this.removeDragOverClassTimeout.setTimeout"},');
 
       }, 50);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleDragLeave"},');
 
     };
     _this.handleDrop = function (event, dropCategory) {
@@ -560,7 +560,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         if (plugin.type === 'acquirer') {
           plugin.handleRootDrop && plugin.handleRootDrop(event);
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.handleDrop._this.uppy.iteratePlugins"},');
 
       });
       var executedDropErrorOnce = false;
@@ -572,7 +572,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           _this.uppy.info(error.message, 'error');
           executedDropErrorOnce = true;
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "logDropError"},');
 
       };
       getDroppedFiles(event.dataTransfer, {
@@ -584,10 +584,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
           _this.uppy.log('[Dashboard] Files were dropped');
           _this.addFiles(files);
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.handleDrop.then"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleDrop"},');
 
     };
     _this.handleRequestThumbnail = function (file) {
@@ -596,7 +596,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:request', file);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleRequestThumbnail"},');
 
     };
     _this.handleCancelThumbnail = function (file) {
@@ -605,14 +605,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:cancel', file);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleCancelThumbnail"},');
 
     };
     _this.handleKeyDownInInline = function (event) {
             SRTlib.send(`{ "anonymous": true, "function": "_this.handleKeyDownInInline", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (event.keyCode === TAB_KEY) trapFocus.forInline(event, _this.getPluginState().activeOverlayType, _this.el);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleKeyDownInInline"},');
 
     };
     _this.handlePasteOnBody = function (event) {
@@ -622,7 +622,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (isFocusInOverlay) {
         _this.handlePaste(event);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handlePasteOnBody"},');
 
     };
     _this.handleComplete = function (_ref) {
@@ -632,7 +632,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (_this.opts.closeAfterFinish && failed.length === 0) {
         _this.requestCloseModal();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.handleComplete"},');
 
     };
     _this.initEvents = function () {
@@ -644,10 +644,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
           showModalTrigger.forEach(function (trigger) {
                         SRTlib.send(`{ "anonymous": true, "function": "_this.initEvents", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "_this.initEvents"},');
 
             return trigger.addEventListener('click', _this.openModal);
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "_this.initEvents"},');
 
           });
         } else {
@@ -665,7 +665,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (_this.opts.inline) {
         _this.el.addEventListener('keydown', _this.handleKeyDownInInline);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.initEvents2"},');
 
     };
     _this.removeEvents = function () {
@@ -676,10 +676,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
         showModalTrigger.forEach(function (trigger) {
                     SRTlib.send(`{ "anonymous": true, "function": "_this.removeEvents", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "_this.removeEvents"},');
 
           return trigger.removeEventListener('click', _this.openModal);
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "_this.removeEvents"},');
 
         });
       }
@@ -695,7 +695,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (_this.opts.inline) {
         _this.el.removeEventListener('keydown', _this.handleKeyDownInInline);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.removeEvents2"},');
 
     };
     _this.superFocusOnEachUpdate = function () {
@@ -710,21 +710,21 @@ module.exports = (_temp = _class = (function (_Plugin) {
       } else {
         _this.superFocus.cancel();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.superFocusOnEachUpdate"},');
 
     };
     _this.afterUpdate = function () {
             SRTlib.send(`{ "anonymous": true, "function": "_this.afterUpdate", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       _this.superFocusOnEachUpdate();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.afterUpdate"},');
 
     };
     _this.cancelUpload = function (fileID) {
             SRTlib.send(`{ "anonymous": true, "function": "_this.cancelUpload", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       _this.uppy.removeFile(fileID);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.cancelUpload"},');
 
     };
     _this.saveFileCard = function (meta, fileID) {
@@ -732,20 +732,20 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       _this.uppy.setFileMeta(fileID, meta);
       _this.toggleFileCard();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.saveFileCard"},');
 
     };
     _this._attachRenderFunctionToTarget = function (target) {
             SRTlib.send(`{ "anonymous": true, "function": "_this._attachRenderFunctionToTarget", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       var plugin = _this.uppy.getPlugin(target.id);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this._attachRenderFunctionToTarget"},');
 
       return _extends({}, target, {
         icon: plugin.icon || _this.opts.defaultPickerIcon,
         render: plugin.render
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this._attachRenderFunctionToTarget"},');
 
     };
     _this._isTargetSupported = function (target) {
@@ -753,48 +753,48 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       var plugin = _this.uppy.getPlugin(target.id);
       if (typeof plugin.isSupported !== 'function') {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this._isTargetSupported"},');
 
         return true;
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this._isTargetSupported"},');
 
       return plugin.isSupported();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this._isTargetSupported"},');
 
     };
     _this._getAcquirers = memoize(function (targets) {
             SRTlib.send(`{ "anonymous": true, "function": "_this._getAcquirers.memoize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this._getAcquirers.memoize"},');
 
       return targets.filter(function (target) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this._getAcquirers.memoize.ReturnStatement.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this._getAcquirers.memoize.ReturnStatement.map"},');
 
         return target.type === 'acquirer' && _this._isTargetSupported(target);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this._getAcquirers.memoize.ReturnStatement.map"},');
 
       }).map(_this._attachRenderFunctionToTarget);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this._getAcquirers.memoize"},');
 
     });
     _this._getProgressIndicators = memoize(function (targets) {
             SRTlib.send(`{ "anonymous": true, "function": "_this._getProgressIndicators.memoize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this._getProgressIndicators.memoize"},');
 
       return targets.filter(function (target) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this._getProgressIndicators.memoize.ReturnStatement.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this._getProgressIndicators.memoize.ReturnStatement.map"},');
 
         return target.type === 'progressindicator';
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this._getProgressIndicators.memoize.ReturnStatement.map"},');
 
       }).map(_this._attachRenderFunctionToTarget);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this._getProgressIndicators.memoize"},');
 
     });
     _this.render = function (state) {
@@ -805,73 +805,73 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var newFiles = Object.keys(files).filter(function (file) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.render.newFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.newFiles.filter"},');
 
         return !files[file].progress.uploadStarted;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.newFiles.filter"},');
 
       });
       var uploadStartedFiles = Object.keys(files).filter(function (file) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.render.uploadStartedFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.uploadStartedFiles.filter"},');
 
         return files[file].progress.uploadStarted;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.uploadStartedFiles.filter"},');
 
       });
       var pausedFiles = Object.keys(files).filter(function (file) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.render.pausedFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.pausedFiles.filter"},');
 
         return files[file].isPaused;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.pausedFiles.filter"},');
 
       });
       var completeFiles = Object.keys(files).filter(function (file) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.render.completeFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.completeFiles.filter"},');
 
         return files[file].progress.uploadComplete;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.completeFiles.filter"},');
 
       });
       var erroredFiles = Object.keys(files).filter(function (file) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.render.erroredFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.erroredFiles.filter"},');
 
         return files[file].error;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.erroredFiles.filter"},');
 
       });
       var inProgressFiles = Object.keys(files).filter(function (file) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.render.inProgressFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.inProgressFiles.filter"},');
 
         return !files[file].progress.uploadComplete && files[file].progress.uploadStarted;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.inProgressFiles.filter"},');
 
       });
       var inProgressNotPausedFiles = inProgressFiles.filter(function (file) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.render.inProgressNotPausedFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.inProgressNotPausedFiles"},');
 
         return !files[file].isPaused;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.inProgressNotPausedFiles"},');
 
       });
       var processingFiles = Object.keys(files).filter(function (file) {
                 SRTlib.send(`{ "anonymous": true, "function": "_this.render.processingFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.processingFiles.filter"},');
 
         return files[file].progress.preprocess || files[file].progress.postprocess;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.render.processingFiles.filter"},');
 
       });
       var isUploadStarted = uploadStartedFiles.length > 0;
@@ -886,7 +886,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       } else {
         theme = _this.opts.theme;
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.render"},');
 
       return DashboardUI({
         state: state,
@@ -964,7 +964,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         handleDragLeave: _this.handleDragLeave,
         handleDrop: _this.handleDrop
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.render"},');
 
     };
     _this.discoverProviderPlugins = function () {
@@ -976,10 +976,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
         if (plugin && !plugin.target && plugin.opts && plugin.opts.target === _this.constructor) {
           _this.addTarget(plugin);
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.discoverProviderPlugins._this.uppy.iteratePlugins"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.discoverProviderPlugins"},');
 
     };
     _this.install = function () {
@@ -998,11 +998,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       });
       var _this$opts = _this.opts, inline = _this$opts.inline, closeAfterFinish = _this$opts.closeAfterFinish;
       if (inline && closeAfterFinish) {
-                SRTlib.send("]},");
-
-                SRTlib.send("]},");
-
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.install2"},');
 
         throw new Error('[Dashboard] `closeAfterFinish: true` cannot be used on an inline Dashboard, because an inline Dashboard cannot be closed at all. Either set `inline: false`, or disable the `closeAfterFinish` option.');
       }
@@ -1022,7 +1018,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         if (plugin) {
           plugin.mount(_assertThisInitialized(_this), plugin);
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.install"},');
 
       });
       if (!_this.opts.disableStatusBar) {
@@ -1061,7 +1057,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }
       _this.discoverProviderPlugins();
       _this.initEvents();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.install2"},');
 
     };
     _this.uninstall = function () {
@@ -1085,7 +1081,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
         var plugin = _this.uppy.getPlugin(pluginID);
         if (plugin) plugin.unmount();
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "_this.uninstall"},');
 
       });
       if (_this.opts.theme === 'auto') {
@@ -1093,7 +1089,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }
       _this.unmount();
       _this.removeEvents();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.uninstall2"},');
 
     };
     _this.id = _this.opts.id || 'Dashboard';
@@ -1176,10 +1172,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       onRequestCloseModal: function onRequestCloseModal() {
                 SRTlib.send(`{ "anonymous": true, "function": "defaultOptions.onRequestCloseModal.onRequestCloseModal", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "defaultOptions.onRequestCloseModal.onRequestCloseModal"},');
 
         return _this.closeModal();
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "defaultOptions.onRequestCloseModal.onRequestCloseModal"},');
 
       },
       showSelectedFiles: true,
@@ -1193,15 +1189,15 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.ifFocusedOnUppyRecently = false;
     _this.makeDashboardInsidesVisibleAnywayTimeout = null;
     _this.removeDragOverClassTimeout = null;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Dashboard"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Dashboard"},');
 
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return Dashboard;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

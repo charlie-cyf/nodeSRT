@@ -6,10 +6,10 @@ function getCache(name) {
   if (!fileCache[name]) {
     fileCache[name] = Object.create(null);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getCache"},');
 
   return fileCache[name];
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getCache"},');
 
 }
 self.addEventListener('install', event => {
@@ -19,20 +19,20 @@ self.addEventListener('install', event => {
   event.waitUntil(Promise.resolve().then(() => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return self.skipWaiting();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   }));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 });
 self.addEventListener('activate', event => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   event.waitUntil(self.clients.claim());
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 });
 function sendMessageToAllClients(msg) {
@@ -45,13 +45,13 @@ function sendMessageToAllClients(msg) {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       client.postMessage(msg);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "sendMessageToAllClients"},');
 
 }
 function addFile(store, file) {
@@ -59,7 +59,7 @@ function addFile(store, file) {
 
   getCache(store)[file.id] = file.data;
   console.log('Added file blob to service worker cache:', file.data);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "addFile"},');
 
 }
 function removeFile(store, fileID) {
@@ -67,7 +67,7 @@ function removeFile(store, fileID) {
 
   delete getCache(store)[fileID];
   console.log('Removed file blob from service worker cache:', fileID);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "removeFile"},');
 
 }
 function getFiles(store) {
@@ -78,7 +78,7 @@ function getFiles(store) {
     store: store,
     files: getCache(store)
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getFiles"},');
 
 }
 self.addEventListener('message', event => {
@@ -95,6 +95,6 @@ self.addEventListener('message', event => {
       getFiles(event.data.store);
       break;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey6"},');
 
 });

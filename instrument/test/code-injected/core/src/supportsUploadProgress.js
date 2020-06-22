@@ -6,13 +6,13 @@ module.exports = function supportsUploadProgress(userAgent) {
     userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : null;
   }
   if (!userAgent) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.supportsUploadProgress"},');
 
     return true;
   }
   const m = (/Edge\/(\d+\.\d+)/).exec(userAgent);
   if (!m) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.supportsUploadProgress"},');
 
     return true;
   }
@@ -21,18 +21,18 @@ module.exports = function supportsUploadProgress(userAgent) {
   major = parseInt(major, 10);
   minor = parseInt(minor, 10);
   if (major < 15 || major === 15 && minor < 15063) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.supportsUploadProgress"},');
 
     return true;
   }
   if (major > 18 || major === 18 && minor >= 18218) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.supportsUploadProgress"},');
 
     return true;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.supportsUploadProgress"},');
 
   return false;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.supportsUploadProgress"},');
 
 };

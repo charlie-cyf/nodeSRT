@@ -24,16 +24,16 @@ b.transform(aliasify, {
 function bundle() {
     SRTlib.send(`{ "anonymous": false, "function": "bundle", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "bundle"},');
 
   return b.bundle((err, data) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (err) console.error(err.stack); else console.log('bundle complete');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   }).pipe(createWriteStream(path.join(__dirname, './bundle.js')));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "bundle"},');
 
 }
 b.on('log', console.log);
@@ -47,6 +47,6 @@ bundle().on('finish', () => {
   spawn('php', ['-S', `localhost:${port}`], {
     stdio: 'inherit'
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 });

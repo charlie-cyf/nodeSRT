@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization, Origin, Content-Type, Accept');
   next();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 });
 app.get('/', (req, res) => {
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 
   res.setHeader('Content-Type', 'text/plain');
   res.send('Welcome to Companion');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 });
 const uppyOptions = {
@@ -51,12 +51,12 @@ app.use(companion.app(uppyOptions));
 app.use((req, res, next) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
   return res.status(404).json({
     message: 'Not Found'
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 });
 app.use((err, req, res, next) => {
@@ -67,7 +67,7 @@ app.use((err, req, res, next) => {
     message: err.message,
     error: err
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey4"},');
 
 });
 companion.socket(app.listen(3020), uppyOptions);

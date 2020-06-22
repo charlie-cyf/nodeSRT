@@ -14,30 +14,30 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -46,7 +46,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('preact'), h = _require.h;
@@ -63,68 +63,68 @@ function toMimeType(fileType) {
     SRTlib.send(`{ "anonymous": false, "function": "toMimeType", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (fileType[0] === '.') {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "toMimeType"},');
 
     return mimeTypes[fileType.slice(1)];
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "toMimeType"},');
 
   return fileType;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "toMimeType"},');
 
 }
 function isVideoMimeType(mimeType) {
     SRTlib.send(`{ "anonymous": false, "function": "isVideoMimeType", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isVideoMimeType"},');
 
   return (/^video\/[^*]+$/).test(mimeType);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isVideoMimeType"},');
 
 }
 function isImageMimeType(mimeType) {
     SRTlib.send(`{ "anonymous": false, "function": "isImageMimeType", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isImageMimeType"},');
 
   return (/^image\/[^*]+$/).test(mimeType);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isImageMimeType"},');
 
 }
 function getMediaDevices() {
     SRTlib.send(`{ "anonymous": false, "function": "getMediaDevices", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getMediaDevices"},');
 
     return navigator.mediaDevices;
   }
   var _getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
   if (!_getUserMedia) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getMediaDevices"},');
 
     return null;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getMediaDevices"},');
 
   return {
     getUserMedia: function getUserMedia(opts) {
             SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.getUserMedia.getUserMedia", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.getUserMedia.getUserMedia"},');
 
       return new Promise(function (resolve, reject) {
                 SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.getUserMedia.getUserMedia.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
         _getUserMedia.call(navigator, opts, resolve, reject);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "ReturnStatement.getUserMedia.getUserMedia.ReturnStatement"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.getUserMedia.getUserMedia"},');
 
     }
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getMediaDevices"},');
 
 }
 module.exports = (_temp = _class = (function (_Plugin) {
@@ -145,7 +145,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.icon = function () {
             SRTlib.send(`{ "anonymous": true, "function": "_this.icon", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.icon"},');
 
       return h("svg", {
         "aria-hidden": "true",
@@ -167,7 +167,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         fill: "#FFF",
         "fill-rule": "nonzero"
       })));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.icon"},');
 
     };
     _this.defaultLocale = {
@@ -188,10 +188,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       onBeforeSnapshot: function onBeforeSnapshot() {
                 SRTlib.send(`{ "anonymous": true, "function": "defaultOptions.onBeforeSnapshot.onBeforeSnapshot", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "defaultOptions.onBeforeSnapshot.onBeforeSnapshot"},');
 
         return Promise.resolve();
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "defaultOptions.onBeforeSnapshot.onBeforeSnapshot"},');
 
       },
       countdown: false,
@@ -218,10 +218,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (_this.opts.countdown) {
       _this.opts.onBeforeSnapshot = _this._oneTwoThreeSmile;
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Webcam"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Webcam"},');
 
   }
   var _proto = Webcam.prototype;
@@ -230,7 +230,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     _Plugin.prototype.setOptions.call(this, newOpts);
     this.i18nInit();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.setOptions.setOptions"},');
 
   };
   _proto.i18nInit = function i18nInit() {
@@ -240,37 +240,37 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
     this.setPluginState();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.i18nInit.i18nInit"},');
 
   };
   _proto.hasCameraCheck = function hasCameraCheck() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (!this.mediaDevices) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck"},');
 
       return Promise.resolve(false);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck"},');
 
     return this.mediaDevices.enumerateDevices().then(function (devices) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck.ReturnStatement.mediaDevices.enumerateDevices.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck.ReturnStatement.mediaDevices.enumerateDevices.then"},');
 
       return devices.some(function (device) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck.ReturnStatement.mediaDevices.enumerateDevices.then.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck.ReturnStatement.mediaDevices.enumerateDevices.then.ReturnStatement"},');
 
         return device.kind === 'videoinput';
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck.ReturnStatement.mediaDevices.enumerateDevices.then.ReturnStatement"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck.ReturnStatement.mediaDevices.enumerateDevices.then"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.hasCameraCheck.hasCameraCheck"},');
 
   };
   _proto.getConstraints = function getConstraints() {
@@ -278,7 +278,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     var acceptsAudio = this.opts.modes.indexOf('video-audio') !== -1 || this.opts.modes.indexOf('audio-only') !== -1;
     var acceptsVideo = this.opts.modes.indexOf('video-audio') !== -1 || this.opts.modes.indexOf('video-only') !== -1 || this.opts.modes.indexOf('picture') !== -1;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.getConstraints.getConstraints"},');
 
     return {
       audio: acceptsAudio,
@@ -286,7 +286,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         facingMode: this.opts.facingMode
       } : false
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.getConstraints.getConstraints"},');
 
   };
   _proto._start = function _start() {
@@ -294,7 +294,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     var _this2 = this;
     if (!this.supportsUserMedia) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._start._start"},');
 
       return Promise.reject(new Error('Webcam access not supported'));
     }
@@ -306,7 +306,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       _this2.setPluginState({
         hasCamera: hasCamera
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._start._start.hasCameraCheck.then"},');
 
       return _this2.mediaDevices.getUserMedia(constraints).then(function (stream) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._start._start.hasCameraCheck.then.ReturnStatement._this2.mediaDevices.getUserMedia.then.catch._this2.mediaDevices.getUserMedia.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -315,7 +315,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         _this2.setPluginState({
           cameraReady: true
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto._start._start.hasCameraCheck.then.ReturnStatement._this2.mediaDevices.getUserMedia.then.catch._this2.mediaDevices.getUserMedia.then"},');
 
       }).catch(function (err) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._start._start.hasCameraCheck.then.ReturnStatement._this2.mediaDevices.getUserMedia.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -323,13 +323,13 @@ module.exports = (_temp = _class = (function (_Plugin) {
         _this2.setPluginState({
           cameraError: err
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto._start._start.hasCameraCheck.then.ReturnStatement._this2.mediaDevices.getUserMedia.then.catch"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._start._start.hasCameraCheck.then"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._start._start"},');
 
   };
   _proto._getMediaRecorderOptions = function _getMediaRecorderOptions() {
@@ -347,20 +347,20 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var acceptableMimeTypes = preferredVideoMimeTypes.filter(function (candidateType) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._getMediaRecorderOptions._getMediaRecorderOptions.acceptableMimeTypes", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto._getMediaRecorderOptions._getMediaRecorderOptions.acceptableMimeTypes"},');
 
         return MediaRecorder.isTypeSupported(candidateType) && getFileTypeExtension(candidateType);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto._getMediaRecorderOptions._getMediaRecorderOptions.acceptableMimeTypes"},');
 
       });
       if (acceptableMimeTypes.length > 0) {
         options.mimeType = acceptableMimeTypes[0];
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._getMediaRecorderOptions._getMediaRecorderOptions"},');
 
     return options;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._getMediaRecorderOptions._getMediaRecorderOptions"},');
 
   };
   _proto._startRecording = function _startRecording() {
@@ -379,10 +379,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
         var totalSize = _this3.recordingChunks.reduce(function (acc, chunk) {
                     SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._startRecording._startRecording.recorder.addEventListener.totalSize._this3.recordingChunks.reduce", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "module.exports._temp._class._proto._startRecording._startRecording.recorder.addEventListener.totalSize._this3.recordingChunks.reduce"},');
 
           return acc + chunk.size;
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "module.exports._temp._class._proto._startRecording._startRecording.recorder.addEventListener.totalSize._this3.recordingChunks.reduce"},');
 
         }, 0);
         var averageChunkSize = (totalSize - _this3.recordingChunks[0].size) / (_this3.recordingChunks.length - 1);
@@ -394,7 +394,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           _this3._stopRecording();
         }
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._startRecording._startRecording.recorder.addEventListener"},');
 
     });
     this.recorder.start(500);
@@ -406,14 +406,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
         _this3.setPluginState({
           recordingLengthSeconds: currentRecordingLength + 1
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto._startRecording._startRecording.recordingLengthTimer.setInterval"},');
 
       }, 1000);
     }
     this.setPluginState({
       isRecording: true
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._startRecording._startRecording"},');
 
   };
   _proto._stopRecording = function _stopRecording() {
@@ -427,7 +427,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._stopRecording._stopRecording.stopped._this4.recorder.addEventListener", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         resolve();
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording.stopped._this4.recorder.addEventListener"},');
 
       });
       _this4.recorder.stop();
@@ -437,10 +437,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
           recordingLengthSeconds: 0
         });
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording.stopped"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording"},');
 
     return stopped.then(function () {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
@@ -448,10 +448,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       _this4.setPluginState({
         isRecording: false
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then.then"},');
 
       return _this4.getVideo();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then.then"},');
 
     }).then(function (file) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then.then2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -463,27 +463,27 @@ module.exports = (_temp = _class = (function (_Plugin) {
           _this4.uppy.log(err);
         }
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then.then2"},');
 
     }).then(function () {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       _this4.recordingChunks = null;
       _this4.recorder = null;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then"},');
 
     }, function (error) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       _this4.recordingChunks = null;
       _this4.recorder = null;
-      throw error;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then2"},');
 
-            SRTlib.send("]},");
+      throw error;
+            SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.then.then2"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._stopRecording._stopRecording"},');
 
   };
   _proto._stop = function _stop() {
@@ -493,35 +493,35 @@ module.exports = (_temp = _class = (function (_Plugin) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._stop._stop.stream.getAudioTracks.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       track.stop();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._stop._stop.stream.getAudioTracks.forEach"},');
 
     });
     this.stream.getVideoTracks().forEach(function (track) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._stop._stop.stream.getVideoTracks.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       track.stop();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._stop._stop.stream.getVideoTracks.forEach"},');
 
     });
     this.webcamActive = false;
     this.stream = null;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._stop._stop"},');
 
   };
   _proto._getVideoElement = function _getVideoElement() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._getVideoElement._getVideoElement", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._getVideoElement._getVideoElement"},');
 
     return this.el.querySelector('.uppy-Webcam-video');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._getVideoElement._getVideoElement"},');
 
   };
   _proto._oneTwoThreeSmile = function _oneTwoThreeSmile() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     var _this5 = this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile"},');
 
     return new Promise(function (resolve, reject) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
@@ -533,7 +533,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         if (!_this5.webcamActive) {
           clearInterval(countDown);
           _this5.captureInProgress = false;
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile.ReturnStatement.countDown.setInterval"},');
 
           return reject(new Error('Webcam is not active'));
         }
@@ -546,20 +546,20 @@ module.exports = (_temp = _class = (function (_Plugin) {
           setTimeout(function () {
                         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile.ReturnStatement.countDown.setInterval.setTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile.ReturnStatement.countDown.setInterval.setTimeout"},');
 
             return resolve();
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile.ReturnStatement.countDown.setInterval.setTimeout"},');
 
           }, 1500);
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile.ReturnStatement.countDown.setInterval"},');
 
       }, 1000);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile.ReturnStatement"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._oneTwoThreeSmile._oneTwoThreeSmile"},');
 
   };
   _proto._takeSnapshot = function _takeSnapshot() {
@@ -567,7 +567,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     var _this6 = this;
     if (this.captureInProgress) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot"},');
 
       return;
     }
@@ -577,18 +577,18 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       var message = typeof err === 'object' ? err.message : err;
       _this6.uppy.info(message, 'error', 5000);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then.opts.onBeforeSnapshot.catch"},');
 
       return Promise.reject(new Error("onBeforeSnapshot: " + message));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then.opts.onBeforeSnapshot.catch"},');
 
     }).then(function () {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then"},');
 
       return _this6._getImage();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then"},');
 
     }).then(function (tagFile) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -601,23 +601,19 @@ module.exports = (_temp = _class = (function (_Plugin) {
           _this6.uppy.log(err);
         }
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then"},');
 
     }, function (error) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       _this6.captureInProgress = false;
+            SRTlib.send('], "end": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then2"},');
+
       throw error;
-            SRTlib.send("]},");
-
-            SRTlib.send("]},");
-
-            SRTlib.send("]},");
-
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then2"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._takeSnapshot._takeSnapshot"},');
 
   };
   _proto._getImage = function _getImage() {
@@ -626,7 +622,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var _this7 = this;
     var video = this._getVideoElement();
     if (!video) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._getImage._getImage"},');
 
       return Promise.reject(new Error('No video element found, likely due to the Webcam tab being closed.'));
     }
@@ -647,12 +643,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var mimeType = preferredImageMimeTypes[0] || 'image/jpeg';
     var ext = getFileTypeExtension(mimeType) || 'jpg';
     var name = "cam-" + Date.now() + "." + ext;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._getImage._getImage"},');
 
     return canvasToBlob(canvas, mimeType).then(function (blob) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._getImage._getImage.ReturnStatement.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._getImage._getImage.ReturnStatement.then"},');
 
       return {
         source: _this7.id,
@@ -662,10 +658,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
         }),
         type: mimeType
       };
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._getImage._getImage.ReturnStatement.then"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._getImage._getImage"},');
 
   };
   _proto.getVideo = function getVideo() {
@@ -674,7 +670,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var mimeType = this.recordingChunks[0].type;
     var fileExtension = getFileTypeExtension(mimeType);
     if (!fileExtension) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.getVideo.getVideo"},');
 
       return Promise.reject(new Error("Could not retrieve recording: Unsupported media type \"" + mimeType + "\""));
     }
@@ -690,10 +686,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }),
       type: mimeType
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.getVideo.getVideo"},');
 
     return Promise.resolve(file);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.getVideo.getVideo"},');
 
   };
   _proto._focus = function _focus() {
@@ -701,7 +697,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     var _this8 = this;
     if (!this.opts.countdown) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._focus._focus"},');
 
       return;
     }
@@ -709,10 +705,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto._focus._focus.setTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       _this8.uppy.info(_this8.i18n('smile'), 'success', 1500);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto._focus._focus.setTimeout"},');
 
     }, 1000);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto._focus._focus"},');
 
   };
   _proto.render = function render() {
@@ -723,7 +719,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     }
     var webcamState = this.getPluginState();
     if (!webcamState.cameraReady || !webcamState.hasCamera) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
       return h(PermissionsScreen, {
         icon: CameraIcon,
@@ -731,7 +727,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         hasCamera: webcamState.hasCamera
       });
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
     return h(CameraScreen, _extends({}, webcamState, {
       onSnapshot: this._takeSnapshot,
@@ -747,7 +743,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       mirror: this.opts.mirror,
       src: this.stream
     }));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
   };
   _proto.install = function install() {
@@ -761,7 +757,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
@@ -771,12 +767,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
       this._stop();
     }
     this.unmount();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return Webcam;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

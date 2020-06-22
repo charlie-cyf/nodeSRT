@@ -12,7 +12,7 @@ describe('Header black-list testing', () => {
       'content-Length': 1234
     });
     expect(headers).toEqual({});
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   test('All headers invalid by regex', () => {
@@ -28,7 +28,7 @@ describe('Header black-list testing', () => {
       'sec-header-fake': 'sec-header-fake'
     });
     expect(headers).toEqual({});
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
   test('All headers invalid by name and regex', () => {
@@ -39,7 +39,7 @@ describe('Header black-list testing', () => {
       'Sec-header-fake': 'sec-header-fake'
     });
     expect(headers).toEqual({});
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   });
   test('Returning only allowed headers', () => {
@@ -56,7 +56,7 @@ describe('Header black-list testing', () => {
     expect(headers).toHaveProperty('Authorization');
     expect(headers).toHaveProperty('Content-Type');
     expect(headers).toHaveProperty('Expires');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey4"},');
 
   });
   test('Return empty object when headers is not an object', () => {
@@ -67,9 +67,9 @@ describe('Header black-list testing', () => {
     expect(headerSanitize(undefined)).toEqual({});
     expect(headerSanitize('Authorization: Basic 1234')).toEqual({});
     expect(headerSanitize(['Authorization', 'Basic 1234'])).toEqual({});
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey6"},');
 
 });

@@ -13,6 +13,8 @@ describe('ReduxStore', () => {
     return Redux.createStore(reducer);
   }
   it('can be created with or without new', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "ReduxStore", "testName": "can%20be%20created%20with%20or%20without%20new", "fileName": "${__filename}", "calls" : [`);
 
     const r = createStore();
@@ -24,10 +26,13 @@ describe('ReduxStore', () => {
       store: r
     });
     expect(typeof store).toBe('object');
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-can%20be%20created%20with%20or%20without%20new"},');
+    SRTlib.endLogger();
 
   });
   it('merges in state using `setState`', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "ReduxStore", "testName": "merges%20in%20state%20using%20%60setState%60", "fileName": "${__filename}", "calls" : [`);
 
     const r = createStore();
@@ -50,10 +55,13 @@ describe('ReduxStore', () => {
       a: 1,
       b: 3
     });
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-merges%20in%20state%20using%20%60setState%60"},');
+    SRTlib.endLogger();
 
   });
   it('notifies subscriptions when state changes', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "ReduxStore", "testName": "notifies%20subscriptions%20when%20state%20changes", "fileName": "${__filename}", "calls" : [`);
 
     let expected = [];
@@ -91,10 +99,13 @@ describe('ReduxStore', () => {
       b: 3
     });
     expect(calls).toBe(2);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-notifies%20subscriptions%20when%20state%20changes"},');
+    SRTlib.endLogger();
 
   });
   it('fires `subscribe` if state is modified externally (eg redux devtools)', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "ReduxStore", "testName": "fires%20%60subscribe%60%20if%20state%20is%20modified%20externally%20%28eg%20redux%20devtools%29", "fileName": "${__filename}", "calls" : [`);
 
     const reducer = Redux.combineReducers({
@@ -140,10 +151,13 @@ describe('ReduxStore', () => {
       }
     });
     expect(calls).toBe(2);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-fires%20%60subscribe%60%20if%20state%20is%20modified%20externally%20%28eg%20redux%20devtools%29"},');
+    SRTlib.endLogger();
 
   });
   it('can mount in a custom state key', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "ReduxStore", "testName": "can%20mount%20in%20a%20custom%20state%20key", "fileName": "${__filename}", "calls" : [`);
 
     const reducer = Redux.combineReducers({
@@ -165,7 +179,8 @@ describe('ReduxStore', () => {
         }
       }
     });
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-can%20mount%20in%20a%20custom%20state%20key"},');
+    SRTlib.endLogger();
 
   });
     SRTlib.send(']},');

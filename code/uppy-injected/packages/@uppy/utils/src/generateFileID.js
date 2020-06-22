@@ -18,37 +18,37 @@ module.exports = function generateFileID(file) {
   if (file.data.lastModified !== undefined) {
     id += '-' + file.data.lastModified;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.generateFileID"},');
 
   return id;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.generateFileID"},');
 
 };
 function encodeFilename(name) {
     SRTlib.send(`{ "anonymous": false, "function": "encodeFilename", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   let suffix = '';
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "encodeFilename"},');
 
   return name.replace(/[^A-Z0-9]/ig, character => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     suffix += '-' + encodeCharacter(character);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return '/';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   }) + suffix;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "encodeFilename"},');
 
 }
 function encodeCharacter(character) {
     SRTlib.send(`{ "anonymous": false, "function": "encodeCharacter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "encodeCharacter"},');
 
   return character.charCodeAt(0).toString(32);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "encodeCharacter"},');
 
 }

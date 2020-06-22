@@ -47,14 +47,19 @@ describe('Translator', () => {
         SRTlib.send(`{ "testSuite": "translate", "fileName": "${__filename}", "calls" : [`);
 
     it('should translate a string', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Translator", "testName": "should%20translate%20a%20string", "fileName": "${__filename}", "calls" : [`);
 
       const translator = new Translator(russian);
       expect(translator.translate('chooseFile')).toEqual('Выберите файл');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20translate%20a%20string"},');
+      SRTlib.endLogger();
 
     });
     it('should translate a string with non-string elements', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Translator", "testName": "should%20translate%20a%20string%20with%20non-string%20elements", "fileName": "${__filename}", "calls" : [`);
 
       const translator = new Translator({
@@ -70,7 +75,8 @@ describe('Translator', () => {
       expect(translator.translateArray('test2', {
         who: who
       })).toEqual(['Hello ', who]);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20translate%20a%20string%20with%20non-string%20elements"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -94,23 +100,29 @@ describe('Translator', () => {
       }
     };
     it('should prioritize language pack strings from Core over default', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Translator", "testName": "should%20prioritize%20language%20pack%20strings%20from%20Core%20over%20default", "fileName": "${__filename}", "calls" : [`);
 
       const translator = new Translator([defaultStrings, launguagePackLoadedInCore]);
       expect(translator.translate('youHaveChosen', {
         fileName: 'img.jpg'
       })).toEqual('You have chosen: img.jpg');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20prioritize%20language%20pack%20strings%20from%20Core%20over%20default"},');
+      SRTlib.endLogger();
 
     });
     it('should prioritize user-supplied strings over language pack from Core', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Translator", "testName": "should%20prioritize%20user-supplied%20strings%20over%20language%20pack%20from%20Core", "fileName": "${__filename}", "calls" : [`);
 
       const translator = new Translator([defaultStrings, launguagePackLoadedInCore, userSuppliedStrings]);
       expect(translator.translate('youHaveChosen', {
         fileName: 'img.jpg'
       })).toEqual('Beep boop: img.jpg');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20prioritize%20user-supplied%20strings%20over%20language%20pack%20from%20Core"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -123,13 +135,16 @@ describe('Translator', () => {
         SRTlib.send(`{ "testSuite": "interpolation", "fileName": "${__filename}", "calls" : [`);
 
     it('should interpolate a string', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Translator", "testName": "should%20interpolate%20a%20string", "fileName": "${__filename}", "calls" : [`);
 
       const translator = new Translator(english);
       expect(translator.translate('youHaveChosen', {
         fileName: 'img.jpg'
       })).toEqual('You have chosen: img.jpg');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20interpolate%20a%20string"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -142,6 +157,8 @@ describe('Translator', () => {
         SRTlib.send(`{ "testSuite": "pluralization", "fileName": "${__filename}", "calls" : [`);
 
     it('should translate a string', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Translator", "testName": "should%20translate%20a%20string", "fileName": "${__filename}", "calls" : [`);
 
       const translator = new Translator(russian);
@@ -154,10 +171,13 @@ describe('Translator', () => {
       expect(translator.translate('filesChosen', {
         smart_count: 0
       })).toEqual('Выбрано 0 файлов');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20translate%20a%20string"},');
+      SRTlib.endLogger();
 
     });
     it('should support strings without plural forms', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Translator", "testName": "should%20support%20strings%20without%20plural%20forms", "fileName": "${__filename}", "calls" : [`);
 
       const translator = new Translator({
@@ -175,10 +195,13 @@ describe('Translator', () => {
       expect(translator.translate('theAmount', {
         smart_count: 1202530
       })).toEqual('het aantal is 1202530');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20support%20strings%20without%20plural%20forms"},');
+      SRTlib.endLogger();
 
     });
     it('should error when using a plural form without %{smart_count}', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Translator", "testName": "should%20error%20when%20using%20a%20plural%20form%20without%20%25%7Bsmart_count%7D", "fileName": "${__filename}", "calls" : [`);
 
       const translator = new Translator({
@@ -192,7 +215,8 @@ describe('Translator', () => {
       expect(() => {
         translator.translate('test');
       }).toThrow('Attempted to use a string with plural forms, but no value was given for %{smart_count}');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20error%20when%20using%20a%20plural%20form%20without%20%25%7Bsmart_count%7D"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');

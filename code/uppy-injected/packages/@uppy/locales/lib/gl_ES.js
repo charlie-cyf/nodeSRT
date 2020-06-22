@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var gl_ES = {};
 gl_ES.strings = {
   addMore: 'añadir más',
@@ -134,22 +133,21 @@ gl_ES.strings = {
   unselectFileNamed: 'Deseleccionar archivo %{name}',
   openFolderNamed: 'Carpeta abierta %{name}'
 };
-
 gl_ES.pluralize = function (n) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"gl_ES.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "gl_ES.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (n === 1) {
-    SRTlib.send("]},");
+        SRTlib.send('], "end": "gl_ES.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('], "end": "gl_ES.pluralize"},');
 
-  SRTlib.send("]},");
   return 1;
-  SRTlib.send("]},");
-};
+    SRTlib.send('], "end": "gl_ES.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.gl_ES = gl_ES;
 }
-
 module.exports = gl_ES;

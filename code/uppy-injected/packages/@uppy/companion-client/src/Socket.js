@@ -17,7 +17,7 @@ module.exports = class UppySocket {
     if (!opts || opts.autoOpen !== false) {
       this.open();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   open() {
@@ -33,18 +33,18 @@ module.exports = class UppySocket {
         this.send(first.action, first.payload);
         this._queued = this._queued.slice(1);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     };
     this.socket.onclose = e => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this.isOpen = false;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     };
     this.socket.onmessage = this._handleMessage;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "open"},');
 
   }
   close() {
@@ -53,7 +53,7 @@ module.exports = class UppySocket {
     if (this.socket) {
       this.socket.close();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "close"},');
 
   }
   send(action, payload) {
@@ -64,7 +64,7 @@ module.exports = class UppySocket {
         action,
         payload
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "send"},');
 
       return;
     }
@@ -72,28 +72,28 @@ module.exports = class UppySocket {
       action,
       payload
     }));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "send"},');
 
   }
   on(action, handler) {
         SRTlib.send(`{ "anonymous": false, "function": "UppySocket.on", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.emitter.on(action, handler);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "on"},');
 
   }
   emit(action, payload) {
         SRTlib.send(`{ "anonymous": false, "function": "UppySocket.emit", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.emitter.emit(action, payload);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emit"},');
 
   }
   once(action, handler) {
         SRTlib.send(`{ "anonymous": false, "function": "UppySocket.once", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this.emitter.once(action, handler);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "once"},');
 
   }
   _handleMessage(e) {
@@ -105,7 +105,7 @@ module.exports = class UppySocket {
     } catch (err) {
       console.log(err);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_handleMessage"},');
 
   }
 };

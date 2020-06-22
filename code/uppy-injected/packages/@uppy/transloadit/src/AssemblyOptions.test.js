@@ -6,6 +6,8 @@ describe('Transloadit/AssemblyOptions', () => {
     SRTlib.send(`{ "testSuite": "Transloadit/AssemblyOptions", "fileName": "${__filename}", "calls" : [`);
 
   it('Validates response from getAssemblyOptions()', async () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "Transloadit/AssemblyOptions", "testName": "Validates%20response%20from%20getAssemblyOptions%28%29", "fileName": "${__filename}", "calls" : [`);
 
     const options = new AssemblyOptions([{
@@ -19,10 +21,13 @@ describe('Transloadit/AssemblyOptions', () => {
       }
     });
     await expect(options.build()).rejects.toThrow(/The `params\.auth\.key` option is required/);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-Validates%20response%20from%20getAssemblyOptions%28%29"},');
+    SRTlib.endLogger();
 
   });
   it('Uses different assemblies for different params', async () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "Transloadit/AssemblyOptions", "testName": "Uses%20different%20assemblies%20for%20different%20params", "fileName": "${__filename}", "calls" : [`);
 
     const data = Buffer.alloc(10);
@@ -59,10 +64,13 @@ describe('Transloadit/AssemblyOptions', () => {
     expect(assemblies[1].options.params.steps.fake_step.data).toBe('b.png');
     expect(assemblies[2].options.params.steps.fake_step.data).toBe('c.png');
     expect(assemblies[3].options.params.steps.fake_step.data).toBe('d.png');
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-Uses%20different%20assemblies%20for%20different%20params"},');
+    SRTlib.endLogger();
 
   });
   it('Should merge files with same parameters into one Assembly', async () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "Transloadit/AssemblyOptions", "testName": "Should%20merge%20files%20with%20same%20parameters%20into%20one%20Assembly", "fileName": "${__filename}", "calls" : [`);
 
     const data = Buffer.alloc(10);
@@ -103,10 +111,13 @@ describe('Transloadit/AssemblyOptions', () => {
     expect(assemblies[1].fileIDs).toHaveLength(1);
     expect(assemblies[0].options.params.steps.fake_step.data).toBe(10);
     expect(assemblies[1].options.params.steps.fake_step.data).toBe(20);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-Should%20merge%20files%20with%20same%20parameters%20into%20one%20Assembly"},');
+    SRTlib.endLogger();
 
   });
   it('Does not create an Assembly if no files are being uploaded', async () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "Transloadit/AssemblyOptions", "testName": "Does%20not%20create%20an%20Assembly%20if%20no%20files%20are%20being%20uploaded", "fileName": "${__filename}", "calls" : [`);
 
     const options = new AssemblyOptions([], {
@@ -115,10 +126,13 @@ describe('Transloadit/AssemblyOptions', () => {
       }
     });
     await expect(options.build()).resolves.toEqual([]);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-Does%20not%20create%20an%20Assembly%20if%20no%20files%20are%20being%20uploaded"},');
+    SRTlib.endLogger();
 
   });
   it('Creates an Assembly if no files are being uploaded but `alwaysRunAssembly` is enabled', async () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "Transloadit/AssemblyOptions", "testName": "Creates%20an%20Assembly%20if%20no%20files%20are%20being%20uploaded%20but%20%60alwaysRunAssembly%60%20is%20enabled", "fileName": "${__filename}", "calls" : [`);
 
     const options = new AssemblyOptions([], {
@@ -136,10 +150,13 @@ describe('Transloadit/AssemblyOptions', () => {
       }
     });
     await expect(options.build()).resolves.toHaveLength(1);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-Creates%20an%20Assembly%20if%20no%20files%20are%20being%20uploaded%20but%20%60alwaysRunAssembly%60%20is%20enabled"},');
+    SRTlib.endLogger();
 
   });
   it('Collects metadata if `fields` is an array', async () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "Transloadit/AssemblyOptions", "testName": "Collects%20metadata%20if%20%60fields%60%20is%20an%20array", "fileName": "${__filename}", "calls" : [`);
 
     function defaultGetAssemblyOptions(file, options) {
@@ -176,7 +193,8 @@ describe('Transloadit/AssemblyOptions', () => {
     expect(assemblies[1].options.fields).toMatchObject({
       watermark: 'ⓒ Transloadit GmbH'
     });
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-Collects%20metadata%20if%20%60fields%60%20is%20an%20array"},');
+    SRTlib.endLogger();
 
   });
     SRTlib.send(']},');

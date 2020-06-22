@@ -6,7 +6,7 @@ module.exports = function RecordingLength(_ref) {
 
   var recordingLengthSeconds = _ref.recordingLengthSeconds, i18n = _ref.i18n;
   var formattedRecordingLengthSeconds = formatSeconds(recordingLengthSeconds);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.RecordingLength"},');
 
   return h("div", {
     class: "uppy-Webcam-recordingLength",
@@ -14,6 +14,6 @@ module.exports = function RecordingLength(_ref) {
       recording_length: formattedRecordingLengthSeconds
     })
   }, formattedRecordingLengthSeconds);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.RecordingLength"},');
 
 };

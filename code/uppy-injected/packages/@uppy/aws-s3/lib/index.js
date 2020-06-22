@@ -4,14 +4,14 @@ function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -20,7 +20,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 function _extends() {
@@ -37,16 +37,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 var URL_ = typeof URL === 'function' ? URL : require('url-parse');
@@ -60,10 +60,10 @@ var MiniXHRUpload = require('./MiniXHRUpload');
 function resolveUrl(origin, link) {
     SRTlib.send(`{ "anonymous": false, "function": "resolveUrl", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "resolveUrl"},');
 
   return origin ? new URL_(link, origin).toString() : new URL_(link).toString();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "resolveUrl"},');
 
 }
 function isXml(content, xhr) {
@@ -71,27 +71,27 @@ function isXml(content, xhr) {
 
   var rawContentType = xhr.headers ? xhr.headers['content-type'] : xhr.getResponseHeader('Content-Type');
   if (rawContentType === null) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "isXml"},');
 
     return false;
   }
   var contentType = rawContentType.replace(/;.*$/, '').toLowerCase();
   if (typeof contentType === 'string') {
     if (contentType === 'application/xml' || contentType === 'text/xml') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "isXml"},');
 
       return true;
     }
     if (contentType === 'text/html' && (/^<\?xml /).test(content)) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "isXml"},');
 
       return true;
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isXml"},');
 
   return false;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isXml"},');
 
 }
 function getXmlValue(source, key) {
@@ -99,10 +99,10 @@ function getXmlValue(source, key) {
 
   var start = source.indexOf("<" + key + ">");
   var end = source.indexOf("</" + key + ">", start);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getXmlValue"},');
 
   return start !== -1 && end !== -1 ? source.slice(start + key.length + 2, end) : '';
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getXmlValue"},');
 
 }
 function assertServerError(res) {
@@ -111,14 +111,14 @@ function assertServerError(res) {
   if (res && res.error) {
     var error = new Error(res.message);
     _extends(error, res.error);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "assertServerError"},');
 
     throw error;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "assertServerError"},');
 
   return res;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "assertServerError"},');
 
 }
 var warnedSuccessActionStatus = false;
@@ -144,10 +144,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.client = new RequestClient(uppy, opts);
     _this.handleUpload = _this.handleUpload.bind(_assertThisInitialized(_this));
     _this.requests = new RateLimitedQueue(_this.opts.limit);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "AwsS3"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "AwsS3"},');
 
   }
   var _proto = AwsS3.prototype;
@@ -155,9 +155,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.getUploadParameters.getUploadParameters", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!this.opts.companionUrl) {
-            SRTlib.send("]},");
-
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.getUploadParameters.getUploadParameters"},');
 
       throw new Error('Expected a `companionUrl` option containing a Companion address.');
     }
@@ -170,7 +168,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (file.meta[key] != null) {
         metadata[key] = file.meta[key].toString();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.getUploadParameters.getUploadParameters.opts.metaFields.forEach"},');
 
     });
     var query = qsStringify({
@@ -178,10 +176,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       type: type,
       metadata: metadata
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.getUploadParameters.getUploadParameters"},');
 
     return this.client.get("s3/params?" + query).then(assertServerError);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.getUploadParameters.getUploadParameters"},');
 
   };
   _proto.validateParameters = function validateParameters(file, params) {
@@ -191,13 +189,11 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (!valid) {
       var err = new TypeError("AwsS3: got incorrect result from 'getUploadParameters()' for file '" + file.name + "', expected an object '{ url, method, fields, headers }'.\nSee https://uppy.io/docs/aws-s3/#getUploadParameters-file for more on the expected format.");
       console.error(err);
-            SRTlib.send("]},");
-
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.validateParameters.validateParameters"},');
 
       throw err;
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.validateParameters.validateParameters"},');
 
   };
   _proto.handleUpload = function handleUpload(fileIDs) {
@@ -212,7 +208,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (hasProperty(paramsPromises, id)) {
         paramsPromises[id].abort();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "onremove"},');
 
     }
     this.uppy.on('file-removed', onremove);
@@ -221,26 +217,26 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       var file = _this2.uppy.getFile(id);
       _this2.uppy.emit('upload-started', file);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload"},');
 
     });
     var getUploadParameters = this.requests.wrapPromiseFunction(function (file) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleUpload.handleUpload.getUploadParameters.requests.wrapPromiseFunction", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload.getUploadParameters.requests.wrapPromiseFunction"},');
 
       return _this2.opts.getUploadParameters(file);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload.getUploadParameters.requests.wrapPromiseFunction"},');
 
     });
     var numberOfFiles = fileIDs.length;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload2"},');
 
     return settle(fileIDs.map(function (id, index) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then.settle", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       paramsPromises[id] = getUploadParameters(_this2.uppy.getFile(id));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then.settle"},');
 
       return paramsPromises[id].then(function (params) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then.settle.ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -262,10 +258,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
           meta: _extends({}, file.meta, {}, fields),
           xhrUpload: xhrOpts
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then.settle.ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then"},');
 
         return _this2._uploader.uploadFile(file.id, index, numberOfFiles);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then.settle.ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then"},');
 
       }).catch(function (error) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then.settle.ReturnStatement.paramsPromises.id.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -273,22 +269,22 @@ module.exports = (_temp = _class = (function (_Plugin) {
         delete paramsPromises[id];
         var file = _this2.uppy.getFile(id);
         _this2.uppy.emit('upload-error', file, error);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then.settle.ReturnStatement.paramsPromises.id.then.catch"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then.settle"},');
 
     })).then(function (settled) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       _this2.uppy.off('file-removed', onremove);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then"},');
 
       return settled;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload.ReturnStatement.then"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleUpload.handleUpload2"},');
 
   };
   _proto.install = function install() {
@@ -306,26 +302,26 @@ module.exports = (_temp = _class = (function (_Plugin) {
             uppy.log('[AwsS3] No response data found, make sure to set the success_action_status AWS SDK option to 201. See https://uppy.io/docs/aws-s3/#POST-Uploads', 'warning');
             warnedSuccessActionStatus = true;
           }
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "defaultGetResponseData"},');
 
           return {
             location: null
           };
         }
         if (!xhr.responseURL) {
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "defaultGetResponseData"},');
 
           return {
             location: null
           };
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "defaultGetResponseData"},');
 
         return {
           location: xhr.responseURL.replace(/\?.*$/, '')
         };
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "defaultGetResponseData"},');
 
       return {
         location: resolveUrl(xhr.responseURL, getXmlValue(content, 'Location')),
@@ -333,22 +329,22 @@ module.exports = (_temp = _class = (function (_Plugin) {
         key: getXmlValue(content, 'Key'),
         etag: getXmlValue(content, 'ETag')
       };
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "defaultGetResponseData"},');
 
     }
     function defaultGetResponseError(content, xhr) {
             SRTlib.send(`{ "anonymous": false, "function": "defaultGetResponseError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       if (!isXml(content, xhr)) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "defaultGetResponseError"},');
 
         return;
       }
       var error = getXmlValue(content, 'Message');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "defaultGetResponseError"},');
 
       return new Error(error);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "defaultGetResponseError"},');
 
     }
     var xhrOptions = {
@@ -362,19 +358,19 @@ module.exports = (_temp = _class = (function (_Plugin) {
     };
     this._uploader = new MiniXHRUpload(this.uppy, xhrOptions);
     this._uploader.i18n = this.uppy.i18n;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.uninstall.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uppy.removePreProcessor(this.handleUpload);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return AwsS3;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

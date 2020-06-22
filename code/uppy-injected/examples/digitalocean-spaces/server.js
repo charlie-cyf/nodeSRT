@@ -19,10 +19,10 @@ app.use('/companion', companion.app({
       getKey: (req, filename) => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return `uploads/${filename}`;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
       },
       key: process.env.COMPANION_AWS_KEY,
@@ -40,7 +40,7 @@ app.get('/uppy.min.css', (req, res) => {
 
   res.setHeader('content-type', 'text/css');
   fs.createReadStream(path.join('../../packages/uppy/dist/uppy.min.css')).pipe(res);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 });
 budo(path.join(__dirname, 'main.js'), {

@@ -43,7 +43,7 @@ function censorQuery(rawQuery) {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (typeof rawQuery[key] !== 'string') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
       return;
     }
@@ -53,16 +53,16 @@ function censorQuery(rawQuery) {
     } else {
       query[key] = rawQuery[key];
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "censorQuery"},');
 
   return {
     query,
     censored
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "censorQuery"},');
 
 }
 app.use(addRequestId);
@@ -71,10 +71,10 @@ morgan.token('url', (req, res) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   const {query, censored} = censorQuery(req.query);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
   return censored ? `${req.path}?${qs.stringify(query)}` : req.originalUrl || req.url;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 });
 morgan.token('referrer', (req, res) => {
@@ -85,11 +85,11 @@ morgan.token('referrer', (req, res) => {
     const parsed = parseURL(ref);
     const rawQuery = qs.parse(parsed.search.replace('?', ''));
     const {query, censored} = censorQuery(rawQuery);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
     return censored ? `${parsed.href.split('?')[0]}?${qs.stringify(query)}` : parsed.href;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 });
 app.use(metricsMiddleware);
@@ -132,10 +132,10 @@ app.use((req, res, next) => {
     const whitelist = process.env.COMPANION_CLIENT_ORIGINS.split(',').map(url => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
       return helper.hasProtocol(url) ? url : `${protocol}://${url}`;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     });
     if (req.headers.origin && whitelist.indexOf(req.headers.origin) > -1) {
@@ -148,7 +148,7 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization, Origin, Content-Type, Accept');
   next();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey5"},');
 
 });
 app.get('/', (req, res) => {
@@ -156,7 +156,7 @@ app.get('/', (req, res) => {
 
   res.setHeader('Content-Type', 'text/plain');
   res.send(helper.buildHelpfulStartupMessage(companionOptions));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey6"},');
 
 });
 let companionApp;
@@ -186,19 +186,19 @@ if (process.env.COMPANION_ONEDRIVE_DOMAIN_VALIDATION === 'true' && process.env.C
     });
     res.write(content);
     res.end();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey7"},');
 
   });
 }
 app.use((req, res, next) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey8"},');
 
   return res.status(404).json({
     message: 'Not Found'
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey8"},');
 
 });
 app.use((err, req, res, next) => {
@@ -223,7 +223,7 @@ app.use((err, req, res, next) => {
       requestId: req.id
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey9"},');
 
 });
 module.exports = {

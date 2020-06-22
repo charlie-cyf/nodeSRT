@@ -9,10 +9,10 @@ const logger = require('../logger');
 module.exports = () => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return router().post('/meta', meta).post('/get', get);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };
 const meta = (req, res) => {
@@ -22,7 +22,7 @@ const meta = (req, res) => {
   const debug = req.companion.options.debug;
   if (!validateURL(req.body.url, debug)) {
     logger.debug('Invalid request body detected. Exiting url meta handler.', null, req.id);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "meta"},');
 
     return res.status(400).json({
       error: 'Invalid request body'
@@ -31,24 +31,24 @@ const meta = (req, res) => {
   utils.getURLMeta(req.body.url, !debug).then(meta => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
     return res.json(meta);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   }).catch(err => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     logger.error(err, 'controller.url.meta.error', req.id);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
     return res.status(500).json({
       error: err
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "meta"},');
 
 };
 const get = (req, res) => {
@@ -58,7 +58,7 @@ const get = (req, res) => {
   const debug = req.companion.options.debug;
   if (!validateURL(req.body.url, debug)) {
     logger.debug('Invalid request body detected. Exiting url import handler.', null, req.id);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "get"},');
 
     return res.status(400).json({
       error: 'Invalid request body'
@@ -72,7 +72,7 @@ const get = (req, res) => {
     if (uploader.hasError()) {
       const response = uploader.getResponse();
       res.status(response.status).json(response.body);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey5"},');
 
       return;
     }
@@ -82,12 +82,12 @@ const get = (req, res) => {
 
       logger.debug('Socket connection received. Starting remote download.', null, req.id);
       downloadURL(req.body.url, uploader.handleChunk.bind(uploader), !debug, req.id);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     });
     const response = uploader.getResponse();
     res.status(response.status).json(response.body);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
   }).catch(err => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -96,10 +96,10 @@ const get = (req, res) => {
     res.json({
       err
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey6"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "get"},');
 
 };
 const validateURL = (url, debug) => {
@@ -111,14 +111,14 @@ const validateURL = (url, debug) => {
     require_tld: !debug
   };
   if (!validator.isURL(url, validURLOpts)) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "validateURL"},');
 
     return false;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "validateURL"},');
 
   return true;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "validateURL"},');
 
 };
 const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
@@ -133,28 +133,28 @@ const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
   request(opts).on('data', chunk => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey7"},');
 
     return onDataChunk(null, chunk);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey7"},');
 
   }).on('end', () => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey8"},');
 
     return onDataChunk(null, null);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey8"},');
 
   }).on('error', err => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey9"},');
 
     return logger.error(err, 'controller.url.download.error', traceId);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey9"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "downloadURL"},');
 
 };

@@ -11,14 +11,14 @@ function addTransloaditPlugin(uppy, opts) {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (has(opts, name)) transloaditOptions[name] = opts[name];
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   uppy.use(Transloadit, transloaditOptions);
   if (transloaditOptions.waitForEncoding) {
     uppy.use(TransloaditResults);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "addTransloaditPlugin"},');
 
 }
 module.exports = addTransloaditPlugin;

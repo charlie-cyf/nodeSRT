@@ -5,17 +5,17 @@ module.exports = class EventTracker {
 
     this._events = [];
     this._emitter = emitter;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   on(event, fn) {
         SRTlib.send(`{ "anonymous": false, "function": "EventTracker.on", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     this._events.push([event, fn]);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "on"},');
 
     return this._emitter.on(event, fn);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "on"},');
 
   }
   remove() {
@@ -25,10 +25,10 @@ module.exports = class EventTracker {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this._emitter.off(event, fn);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "remove"},');
 
   }
 };

@@ -10,10 +10,10 @@ function requireSocketIo() {
   if (!socketIo) {
     socketIo = require('socket.io-client');
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "requireSocketIo"},');
 
   return socketIo;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "requireSocketIo"},');
 
 }
 const ASSEMBLY_UPLOADING = 'ASSEMBLY_UPLOADING';
@@ -23,10 +23,10 @@ const statusOrder = [ASSEMBLY_UPLOADING, ASSEMBLY_EXECUTING, ASSEMBLY_COMPLETED]
 function isStatus(status, test) {
     SRTlib.send(`{ "anonymous": false, "function": "isStatus", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isStatus"},');
 
   return statusOrder.indexOf(status) >= statusOrder.indexOf(test);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isStatus"},');
 
 }
 class TransloaditAssembly extends Emitter {
@@ -38,7 +38,7 @@ class TransloaditAssembly extends Emitter {
     this.socket = null;
     this.pollInterval = null;
     this.closed = false;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   connect() {
@@ -46,7 +46,7 @@ class TransloaditAssembly extends Emitter {
 
     this._connectSocket();
     this._beginPolling();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "connect"},');
 
   }
   _onFinished() {
@@ -54,7 +54,7 @@ class TransloaditAssembly extends Emitter {
 
     this.emit('finished');
     this.close();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_onFinished"},');
 
   }
   _connectSocket() {
@@ -72,7 +72,7 @@ class TransloaditAssembly extends Emitter {
         id: this.status.assembly_id
       });
       this.emit('connect');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
     socket.on('error', () => {
@@ -80,14 +80,14 @@ class TransloaditAssembly extends Emitter {
 
       socket.disconnect();
       this.socket = null;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
     socket.on('assembly_finished', () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       this._onFinished();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
     });
     socket.on('assembly_upload_finished', file => {
@@ -95,14 +95,14 @@ class TransloaditAssembly extends Emitter {
 
       this.emit('upload', file);
       this.status.uploads.push(file);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     });
     socket.on('assembly_uploading_finished', () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       this.emit('executing');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey5"},');
 
     });
     socket.on('assembly_upload_meta_data_extracted', () => {
@@ -112,7 +112,7 @@ class TransloaditAssembly extends Emitter {
       this._fetchStatus({
         diff: false
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
     });
     socket.on('assembly_result_finished', (stepName, result) => {
@@ -123,7 +123,7 @@ class TransloaditAssembly extends Emitter {
         this.status.results[stepName] = [];
       }
       this.status.results[stepName].push(result);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey7"},');
 
     });
     socket.on('assembly_error', err => {
@@ -133,18 +133,18 @@ class TransloaditAssembly extends Emitter {
       this._fetchStatus({
         diff: false
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey8"},');
 
     });
     this.socket = socket;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_connectSocket"},');
 
   }
   _onError(err) {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly._onError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.emit('error', Object.assign(new Error(err.message), err));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_onError"},');
 
   }
   _beginPolling() {
@@ -156,30 +156,30 @@ class TransloaditAssembly extends Emitter {
       if (!this.socket || !this.socket.connected) {
         this._fetchStatus();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey9"},');
 
     }, 2000);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_beginPolling"},');
 
   }
   _fetchStatus({diff = true} = {}) {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly._fetchStatus", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_fetchStatus"},');
 
     return fetch(this.status.assembly_ssl_url).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
       return response.json();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
     }).then(status => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       if (this.closed) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey11"},');
 
         return;
       }
@@ -189,21 +189,21 @@ class TransloaditAssembly extends Emitter {
       } else {
         this.status = status;
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey11"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_fetchStatus"},');
 
   }
   update() {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssembly.update", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "update"},');
 
     return this._fetchStatus({
       diff: true
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "update"},');
 
   }
   updateStatus(next) {
@@ -211,7 +211,7 @@ class TransloaditAssembly extends Emitter {
 
     this._diffStatus(this.status, next);
     this.status = next;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "updateStatus"},');
 
   }
   _diffStatus(prev, next) {
@@ -220,7 +220,7 @@ class TransloaditAssembly extends Emitter {
     const prevStatus = prev.ok;
     const nextStatus = next.ok;
     if (next.error && !prev.error) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_diffStatus"},');
 
       return this._onError(next);
     }
@@ -231,24 +231,24 @@ class TransloaditAssembly extends Emitter {
     Object.keys(next.uploads).filter(upload => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey12"},');
 
       return !has(prev.uploads, upload);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey12"},');
 
     }).map(upload => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey13"},');
 
       return next.uploads[upload];
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey13"},');
 
     }).forEach(upload => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       this.emit('upload', upload);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey14"},');
 
     });
     if (nowExecuting) {
@@ -262,33 +262,33 @@ class TransloaditAssembly extends Emitter {
       nextResults.filter(n => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey16", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey16"},');
 
         return !prevResults || !prevResults.some(p => {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey15"},');
 
           return p.id === n.id;
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey15"},');
 
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey16"},');
 
       }).forEach(result => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey17", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         this.emit('result', stepName, result);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey17"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey18"},');
 
     });
     if (isStatus(nextStatus, ASSEMBLY_COMPLETED) && !isStatus(prevStatus, ASSEMBLY_COMPLETED)) {
       this.emit('finished');
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_diffStatus"},');
 
   }
   close() {
@@ -300,7 +300,7 @@ class TransloaditAssembly extends Emitter {
       this.socket = null;
     }
     clearInterval(this.pollInterval);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "close"},');
 
   }
 }

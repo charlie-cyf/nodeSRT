@@ -6,7 +6,7 @@ module.exports = api => {
   if (api.env('test')) {
     targets.node = 'current';
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return {
     presets: [['@babel/preset-env', {
@@ -20,6 +20,6 @@ module.exports = api => {
       pragma: 'h'
     }], process.env.IS_RELEASE_BUILD && 'babel-plugin-inline-package-json'].filter(Boolean)
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };

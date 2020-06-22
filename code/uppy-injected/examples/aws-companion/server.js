@@ -24,10 +24,10 @@ const options = {
       getKey: (req, filename) => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return `whatever/${Math.random().toString(32).slice(2)}/${filename}`;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
       },
       key: process.env.COMPANION_AWS_KEY,
@@ -53,7 +53,7 @@ process.on('exit', function () {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   rimraf.sync(DATA_DIR);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 });
 app.use(companion.app(options));
@@ -61,7 +61,7 @@ const server = app.listen(3020, () => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   console.log('listening on port 3020');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 });
 companion.socket(server, options);

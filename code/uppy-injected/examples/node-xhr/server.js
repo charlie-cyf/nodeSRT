@@ -13,7 +13,7 @@ http.createServer(function (req, res) {
   if (req.method === 'OPTIONS') {
     res.writeHead(204, headers);
     res.end();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "listen2"},');
 
     return;
   }
@@ -28,7 +28,7 @@ http.createServer(function (req, res) {
         console.log('some error', err);
         res.writeHead(200, headers);
         res.write(JSON.stringify(err));
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "listen"},');
 
         return res.end();
       }
@@ -42,19 +42,19 @@ http.createServer(function (req, res) {
         fields,
         files
       }));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "listen"},');
 
       return res.end();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "listen"},');
 
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "listen2"},');
 
 }).listen(3020, () => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   console.log('server started');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 });

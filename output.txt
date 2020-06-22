@@ -1433,7 +1433,7 @@ inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/robodog.min.js.json
 inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/uppy.js.json
 inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/uppy.min.js.json
 /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/code/uppy-injected
-removed 1 package and audited 4510 packages in 56.72s
+removed 1 package and audited 4510 packages in 44.563s
 
 154 packages are looking for funding
   run `npm fund` for details

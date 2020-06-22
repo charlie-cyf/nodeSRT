@@ -11,18 +11,18 @@ const charsToEncode = /[\u007f-\uffff]/g;
 function httpHeaderSafeJson(v) {
     SRTlib.send(`{ "anonymous": false, "function": "httpHeaderSafeJson", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "httpHeaderSafeJson"},');
 
   return JSON.stringify(v).replace(charsToEncode, function (c) {
         SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.replace", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReturnStatement.replace"},');
 
     return '\\u' + ('000' + c.charCodeAt(0).toString(16)).slice(-4);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReturnStatement.replace"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "httpHeaderSafeJson"},');
 
 }
 class DropBox extends Provider {
@@ -33,16 +33,16 @@ class DropBox extends Provider {
     this.authProvider = options.provider = DropBox.authProvider;
     this.client = purest(options);
     this.needsCookieAuth = true;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   static get authProvider() {
         SRTlib.send(`{ "anonymous": false, "function": "DropBox.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "authProvider"},');
 
     return 'dropbox';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "authProvider"},');
 
   }
   _userInfo({token}, done) {
@@ -51,7 +51,7 @@ class DropBox extends Provider {
     this.client.post('users/get_current_account').options({
       version: '2'
     }).auth(token).request(done);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_userInfo"},');
 
   }
   list(options, done) {
@@ -73,7 +73,7 @@ class DropBox extends Provider {
         stats.body.user_email = userInfo.body.email;
         done(null, this.adaptData(stats.body, options.companion));
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "finishReq"},');
 
     };
     this.stats(options, (err, resp) => {
@@ -85,7 +85,7 @@ class DropBox extends Provider {
       if (userInfoDone) {
         finishReq();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
     this._userInfo(options, (err, resp) => {
@@ -97,10 +97,10 @@ class DropBox extends Provider {
       if (statsDone) {
         finishReq();
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "list"},');
 
   }
   stats({directory, query, token}, done) {
@@ -112,7 +112,7 @@ class DropBox extends Provider {
       }).auth(token).json({
         cursor: query.cursor
       }).request(done);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "stats"},');
 
       return;
     }
@@ -121,13 +121,13 @@ class DropBox extends Provider {
     }).qs(query).auth(token).json({
       path: `${directory || ''}`
     }).request(done);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "stats"},');
 
   }
   download({id, token}, onData) {
         SRTlib.send(`{ "anonymous": false, "function": "DropBox.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "download"},');
 
     return this.client.post('https://content.dropboxapi.com/2/files/download').options({
       version: '2',
@@ -145,38 +145,38 @@ class DropBox extends Provider {
         resp.on('data', chunk => {
                     SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey3"},');
 
           return onData(null, chunk);
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey3"},');
 
         });
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     }).on('end', () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey5"},');
 
       return onData(null, null);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey5"},');
 
     }).on('error', err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       logger.error(err, 'provider.dropbox.download.error');
       onData(err);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "download"},');
 
   }
   thumbnail({id, token}, done) {
         SRTlib.send(`{ "anonymous": false, "function": "DropBox.thumbnail", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "thumbnail"},');
 
     return this.client.post('https://content.dropboxapi.com/2/files/get_thumbnail').options({
       version: '2',
@@ -192,27 +192,27 @@ class DropBox extends Provider {
       if (resp.statusCode !== 200) {
         const err = this._error(null, resp);
         logger.error(err, 'provider.dropbox.thumbnail.error');
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey7"},');
 
         return done(err);
       }
       done(null, resp);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey7"},');
 
     }).on('error', err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       logger.error(err, 'provider.dropbox.thumbnail.error');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey8"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "thumbnail"},');
 
   }
   size({id, token}, done) {
         SRTlib.send(`{ "anonymous": false, "function": "DropBox.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "size"},');
 
     return this.client.post('files/get_metadata').options({
       version: '2'
@@ -224,21 +224,21 @@ class DropBox extends Provider {
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.dropbox.size.error');
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey9"},');
 
         return done(err);
       }
       done(null, parseInt(body.size));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey9"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "size"},');
 
   }
   logout({token}, done) {
         SRTlib.send(`{ "anonymous": false, "function": "DropBox.logout", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "logout"},');
 
     return this.client.post('auth/token/revoke').options({
       version: '2'
@@ -248,17 +248,17 @@ class DropBox extends Provider {
       if (err || resp.statusCode !== 200) {
         logger.error(err, 'provider.dropbox.size.error');
         done(this._error(err, resp));
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey10"},');
 
         return;
       }
       done(null, {
         revoked: true
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "logout"},');
 
   }
   adaptData(res, companion) {
@@ -283,14 +283,14 @@ class DropBox extends Provider {
         modifiedDate: adapter.getItemModifiedDate(item),
         size: adapter.getItemSize(item)
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey11"},');
 
     });
     data.nextPagePath = adapter.getNextPagePath(res);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "adaptData"},');
 
     return data;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "adaptData"},');
 
   }
   _error(err, resp) {
@@ -299,14 +299,14 @@ class DropBox extends Provider {
     if (resp) {
       const fallbackMessage = `request to ${this.authProvider} returned ${resp.statusCode}`;
       const errMsg = (resp.body || ({})).error_summary ? resp.body.error_summary : fallbackMessage;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_error"},');
 
       return resp.statusCode === 401 ? new ProviderAuthError() : new ProviderApiError(errMsg, resp.statusCode);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_error"},');
 
     return err;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_error"},');
 
   }
 }

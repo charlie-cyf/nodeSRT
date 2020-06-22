@@ -9,7 +9,7 @@ class TransloaditFormResult extends Plugin {
     this.id = this.opts.id || 'TransloaditFormResult';
     this.type = 'modifier';
     this.handleUpload = this.handleUpload.bind(this);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   getAssemblyStatuses(fileIDs) {
@@ -24,22 +24,22 @@ class TransloaditFormResult extends Plugin {
       if (assembly && assemblyIds.indexOf(assembly) === -1) {
         assemblyIds.push(assembly);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
     const tl = this.uppy.getPlugin(this.opts.transloaditPluginId || 'Transloadit');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getAssemblyStatuses"},');
 
     return assemblyIds.map(id => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
       return tl.getAssembly(id);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getAssemblyStatuses"},');
 
   }
   handleUpload(fileIDs) {
@@ -52,21 +52,21 @@ class TransloaditFormResult extends Plugin {
     input.value = JSON.stringify(assemblies);
     const target = findDOMElement(this.opts.target);
     target.appendChild(input);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "handleUpload"},');
 
   }
   install() {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditFormResult.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uppy.addPostProcessor(this.handleUpload);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "install"},');
 
   }
   uninstall() {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditFormResult.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uppy.removePostProcessor(this.handleUpload);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "uninstall"},');
 
   }
 }

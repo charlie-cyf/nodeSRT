@@ -1,5 +1,4 @@
 var SRTlib = require('SRT-util');
-
 var sk_SK = {};
 sk_SK.strings = {
   addBulkFilesFailed: {
@@ -151,22 +150,21 @@ sk_SK.strings = {
     '2': 'Musíte vybrať aspoň %{smart_count} súborov'
   }
 };
-
 sk_SK.pluralize = function (count) {
-  SRTlib.send("{ \"anonymous\": true, \"function\": \"sk_SK.pluralize\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+    SRTlib.send(`{ "anonymous": true, "function": "sk_SK.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (count === 1) {
-    SRTlib.send("]},");
+        SRTlib.send('], "end": "sk_SK.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('], "end": "sk_SK.pluralize"},');
 
-  SRTlib.send("]},");
   return 1;
-  SRTlib.send("]},");
-};
+    SRTlib.send('], "end": "sk_SK.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.sk_SK = sk_SK;
 }
-
 module.exports = sk_SK;

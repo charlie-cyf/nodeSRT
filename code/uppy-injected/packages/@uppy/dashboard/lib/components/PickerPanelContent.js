@@ -4,7 +4,7 @@ var ignoreEvent = require('../utils/ignoreEvent.js');
 function PickerPanelContent(props) {
     SRTlib.send(`{ "anonymous": false, "function": "PickerPanelContent", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "PickerPanelContent"},');
 
   return h("div", {
     class: "uppy-DashboardContent-panel",
@@ -30,7 +30,7 @@ function PickerPanelContent(props) {
   }, props.i18n('done'))), h("div", {
     class: "uppy-DashboardContent-panelBody"
   }, props.getPlugin(props.activePickerPanel.id).render(props.state)));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "PickerPanelContent"},');
 
 }
 module.exports = PickerPanelContent;

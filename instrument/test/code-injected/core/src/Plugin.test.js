@@ -2,7 +2,15 @@ var SRTlib = require('SRT-util');
 const Plugin = require('./Plugin');
 const Core = require('./index');
 describe('Plugin', () => {
+    SRTlib.startLogger('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code', 'http://localhost:8888/instrument-message');
+
+    SRTlib.send(`{ "testSuite": "Plugin", "fileName": "${__filename}", "calls" : [`);
+
   describe('getPluginState', () => {
+        SRTlib.startLogger('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "getPluginState", "fileName": "${__filename}", "calls" : [`);
+
     it('returns an empty object if no state is available', () => {
             SRTlib.startLogger('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code', 'http://localhost:8888/instrument-message');
 
@@ -11,12 +19,19 @@ describe('Plugin', () => {
       class Example extends Plugin {}
       const inst = new Example(new Core(), {});
       expect(inst.getPluginState()).toEqual({});
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-returns%20an%20empty%20object%20if%20no%20state%20is%20available"},');
       SRTlib.endLogger();
 
     });
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
   describe('setPluginState', () => {
+        SRTlib.startLogger('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code', 'http://localhost:8888/instrument-message');
+
+        SRTlib.send(`{ "testSuite": "setPluginState", "fileName": "${__filename}", "calls" : [`);
+
     it('applies patches', () => {
             SRTlib.startLogger('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code', 'http://localhost:8888/instrument-message');
 
@@ -37,9 +52,15 @@ describe('Plugin', () => {
         a: 1,
         b: 2
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-applies%20patches"},');
       SRTlib.endLogger();
 
     });
+        SRTlib.send(']},');
+    SRTlib.endLogger();
+
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

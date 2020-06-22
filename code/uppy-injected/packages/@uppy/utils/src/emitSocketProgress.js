@@ -12,7 +12,7 @@ function _emitSocketProgress(uploader, progressData, file) {
       bytesTotal: bytesTotal
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_emitSocketProgress"},');
 
 }
 module.exports = throttle(_emitSocketProgress, 300, {

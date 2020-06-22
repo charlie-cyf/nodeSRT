@@ -13,22 +13,22 @@ module.exports = function getFilesAndDirectoriesFromDirectory(directoryReader, o
         getFilesAndDirectoriesFromDirectory(directoryReader, newEntries, logDropError, {
           onSuccess
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
       }, 0);
     } else {
       onSuccess(newEntries);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   }, error => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     logDropError(error);
     onSuccess(oldEntries);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getFilesAndDirectoriesFromDirectory"},');
 
 };

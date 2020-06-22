@@ -121,11 +121,11 @@ module.exports = () => {
     if (UPLOADER === 'transloadit') {
       console.log('Transloadit result:', result.transloadit);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   const modalTrigger = document.querySelector('#pick-files');
   if (modalTrigger) modalTrigger.click();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };

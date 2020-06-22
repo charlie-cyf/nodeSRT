@@ -16,13 +16,13 @@ async function updateContributorsListInReadme() {
   console.log(stdout);
   if (stdout === '' || stdout === null) {
     console.log('Empty response from githubcontrib. GitHub’s rate limit?');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "updateContributorsListInReadme"},');
 
     return;
   }
   const readmeWithUpdatedContributors = readme.replace(/<!--contributors-->[\s\S]+<!--\/contributors-->/, `<!--contributors-->\n${stdout}\n<!--/contributors-->`);
   fs.writeFileSync(README_FILE_NAME, readmeWithUpdatedContributors);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "updateContributorsListInReadme"},');
 
 }
 updateContributorsListInReadme();

@@ -14,16 +14,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -32,7 +32,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -55,24 +55,24 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
         var errorMessage = message + " \n\n " + details;
         alert(errorMessage);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "displayErrorAlert"},');
 
       }
       var handleMouseOver = function handleMouseOver() {
                 SRTlib.send(`{ "anonymous": false, "function": "handleMouseOver", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         clearTimeout(_this.uppy.infoTimeoutID);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "handleMouseOver"},');
 
       };
       var handleMouseLeave = function handleMouseLeave() {
                 SRTlib.send(`{ "anonymous": false, "function": "handleMouseLeave", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
         _this.uppy.infoTimeoutID = setTimeout(_this.uppy.hideInfo, 2000);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "handleMouseLeave"},');
 
       };
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.render"},');
 
       return h("div", {
         class: "uppy uppy-Informer",
@@ -88,7 +88,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         onMouseOver: handleMouseOver,
         onMouseLeave: handleMouseLeave
       }, "?")));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.render"},');
 
     };
     _this.type = 'progressindicator';
@@ -96,10 +96,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.title = 'Informer';
     var defaultOptions = {};
     _this.opts = _extends({}, defaultOptions, opts);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Informer"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Informer"},');
 
   }
   var _proto = Informer.prototype;
@@ -110,12 +110,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return Informer;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

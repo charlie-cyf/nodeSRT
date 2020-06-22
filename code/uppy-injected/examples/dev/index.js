@@ -17,13 +17,13 @@ if (('serviceWorker' in navigator)) {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   }).catch(error => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     console.log('Registration failed with ' + error);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
 }

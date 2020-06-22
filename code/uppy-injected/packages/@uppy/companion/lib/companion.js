@@ -35,10 +35,10 @@ const defaultOptions = {
       getKey: (req, filename) => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return filename;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
       },
       expires: ms('5 minutes') / 1000
@@ -88,7 +88,7 @@ module.exports.app = (options = {}) => {
     }
     res.header('Access-Control-Expose-Headers', exposedHeaders.join(','));
     next();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
   app.use('*', getOptionsMiddleware(options));
@@ -106,10 +106,10 @@ module.exports.app = (options = {}) => {
   if (app.get('env') !== 'test') {
     jobs.startCleanUpJob(options.filePath);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
   return app;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 };
 module.exports.socket = server => {
@@ -132,10 +132,10 @@ module.exports.socket = server => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         if (err) logger.error(err, 'socket.progress.error', shortenToken(token));
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey4"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "sendProgress"},');
 
     }
     if (redisClient) {
@@ -147,7 +147,7 @@ module.exports.socket = server => {
           const dataObj = JSON.parse(data.toString());
           if (dataObj.action) sendProgress(dataObj);
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey5"},');
 
       });
     }
@@ -160,35 +160,35 @@ module.exports.socket = server => {
       if (['pause', 'resume', 'cancel'].includes(data.action)) {
         emitter().emit(`${data.action}:${token}`);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
     });
     ws.on('close', () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       emitter().removeListener(token, sendProgress);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey7"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey8"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey9"},');
 
 };
 const interceptGrantErrorResponse = interceptor((req, res) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey12"},');
 
   return {
     isInterceptable: () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
       return (/^\/connect\/\w+\/callback/).test(req.path);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
     },
     intercept: (body, send) => {
@@ -203,11 +203,11 @@ const interceptGrantErrorResponse = interceptor((req, res) => {
       } else {
         send(body);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey11"},');
 
     }
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey12"},');
 
 });
 const getOptionsMiddleware = options => {
@@ -219,13 +219,13 @@ const getOptionsMiddleware = options => {
     const AWS = require('aws-sdk');
     const s3ProviderOptions = options.providerOptions.s3;
     if (s3ProviderOptions.accessKeyId || s3ProviderOptions.secretAccessKey) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "getOptionsMiddleware"},');
 
       throw new Error('Found `providerOptions.s3.accessKeyId` or `providerOptions.s3.secretAccessKey` configuration, but Companion requires `key` and `secret` option names instead. Please use the `key` property instead of `accessKeyId` and the `secret` property instead of `secretAccessKey`.');
     }
     const rawClientOptions = s3ProviderOptions.awsClientOptions;
     if (rawClientOptions && (rawClientOptions.accessKeyId || rawClientOptions.secretAccessKey)) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "getOptionsMiddleware"},');
 
       throw new Error('Found unsupported `providerOptions.s3.awsClientOptions.accessKeyId` or `providerOptions.s3.awsClientOptions.secretAccessKey` configuration. Please use the `providerOptions.s3.key` and `providerOptions.s3.secret` options instead.');
     }
@@ -254,13 +254,13 @@ const getOptionsMiddleware = options => {
     logger.info(`uppy client version ${req.companion.clientVersion}`, 'companion.client.version');
     req.uppy = req.companion;
     next();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "middleware"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getOptionsMiddleware"},');
 
   return middleware;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getOptionsMiddleware"},');
 
 };
 const maskLogger = companionOptions => {
@@ -274,7 +274,7 @@ const maskLogger = companionOptions => {
     if (providerOptions[provider].secret) {
       secrets.push(providerOptions[provider].secret);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey13"},');
 
   });
   if (customProviders) {
@@ -284,12 +284,12 @@ const maskLogger = companionOptions => {
       if (customProviders[provider].config && customProviders[provider].config.secret) {
         secrets.push(customProviders[provider].config.secret);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey14"},');
 
     });
   }
   logger.setMaskables(secrets);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "maskLogger"},');
 
 };
 const validateConfig = companionOptions => {
@@ -303,29 +303,29 @@ const validateConfig = companionOptions => {
     const value = i.split('.').reduce((prev, curr) => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey15", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey15"},');
 
       return prev ? prev[curr] : undefined;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey15"},');
 
     }, companionOptions);
     if (!value) unspecified.push(`"${i}"`);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey16"},');
 
   });
   if (unspecified.length) {
     const messagePrefix = 'Please specify the following options to use companion:';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "validateConfig"},');
 
     throw new Error(`${messagePrefix}\n${unspecified.join(',\n')}`);
   }
   try {
     fs.accessSync(`${companionOptions.filePath}`, fs.R_OK | fs.W_OK);
   } catch (err) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "validateConfig"},');
 
     throw new Error(`No access to "${companionOptions.filePath}". Please ensure the directory exists and with read/write permissions.`);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "validateConfig"},');
 
 };

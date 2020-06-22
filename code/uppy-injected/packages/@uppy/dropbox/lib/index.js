@@ -4,14 +4,14 @@ function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -20,7 +20,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -42,7 +42,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.icon = function () {
             SRTlib.send(`{ "anonymous": true, "function": "_this.icon", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.icon"},');
 
       return h("svg", {
         "aria-hidden": "true",
@@ -64,7 +64,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         fill: "#FFF",
         "fill-rule": "nonzero"
       })));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.icon"},');
 
     };
     _this.provider = new Provider(uppy, {
@@ -75,10 +75,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     });
     _this.onFirstRender = _this.onFirstRender.bind(_assertThisInitialized(_this));
     _this.render = _this.render.bind(_assertThisInitialized(_this));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Dropbox"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Dropbox"},');
 
   }
   var _proto = Dropbox.prototype;
@@ -101,7 +101,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
@@ -109,30 +109,30 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     this.view.tearDown();
     this.unmount();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
   _proto.onFirstRender = function onFirstRender() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.onFirstRender.onFirstRender", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.onFirstRender.onFirstRender"},');
 
     return this.view.getFolder();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.onFirstRender.onFirstRender"},');
 
   };
   _proto.render = function render(state) {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.render.render", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
     return this.view.render(state);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return Dropbox;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

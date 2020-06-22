@@ -13,6 +13,8 @@ describe('Chaos monkey', function () {
     await browser.url(testURL);
   });
   it('Add and cancel a bunch', async () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "Chaos%20monkey", "testName": "Add%20and%20cancel%20a%20bunch", "fileName": "${__filename}", "calls" : [`);
 
     await browser.execute(function () {
@@ -87,7 +89,8 @@ describe('Chaos monkey', function () {
       return window.anyError;
     });
     expect(errorMessage).to.not.exist;
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-Add%20and%20cancel%20a%20bunch"},');
+    SRTlib.endLogger();
 
   });
     SRTlib.send(']},');

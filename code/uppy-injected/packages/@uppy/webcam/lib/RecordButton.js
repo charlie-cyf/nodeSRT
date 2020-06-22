@@ -5,7 +5,7 @@ module.exports = function RecordButton(_ref) {
 
   var recording = _ref.recording, onStartRecording = _ref.onStartRecording, onStopRecording = _ref.onStopRecording, i18n = _ref.i18n;
   if (recording) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.RecordButton"},');
 
     return h("button", {
       class: "uppy-u-reset uppy-c-btn uppy-Webcam-button uppy-Webcam-button--video",
@@ -28,7 +28,7 @@ module.exports = function RecordButton(_ref) {
       height: "70"
     })));
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.RecordButton"},');
 
   return h("button", {
     class: "uppy-u-reset uppy-c-btn uppy-Webcam-button uppy-Webcam-button--video",
@@ -49,6 +49,6 @@ module.exports = function RecordButton(_ref) {
     cy: "50",
     r: "40"
   })));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.RecordButton"},');
 
 };

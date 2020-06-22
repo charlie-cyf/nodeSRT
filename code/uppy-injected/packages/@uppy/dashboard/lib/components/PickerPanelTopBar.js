@@ -17,17 +17,17 @@ function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
     files = {};
   }
   if (isAllErrored) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getUploadingState"},');
 
     return uploadStates.STATE_ERROR;
   }
   if (isAllComplete) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getUploadingState"},');
 
     return uploadStates.STATE_COMPLETE;
   }
   if (isAllPaused) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getUploadingState"},');
 
     return uploadStates.STATE_PAUSED;
   }
@@ -36,7 +36,7 @@ function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
   for (var i = 0; i < fileIDs.length; i++) {
     var progress = files[fileIDs[i]].progress;
     if (progress.uploadStarted && !progress.uploadComplete) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "getUploadingState"},');
 
       return uploadStates.STATE_UPLOADING;
     }
@@ -47,10 +47,10 @@ function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
       state = uploadStates.STATE_POSTPROCESSING;
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getUploadingState"},');
 
   return state;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getUploadingState"},');
 
 }
 function UploadStatus(props) {
@@ -59,34 +59,34 @@ function UploadStatus(props) {
   var uploadingState = getUploadingState(props.isAllErrored, props.isAllComplete, props.isAllPaused, props.files);
   switch (uploadingState) {
     case 'uploading':
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "UploadStatus"},');
 
       return props.i18n('uploadingXFiles', {
         smart_count: props.inProgressNotPausedFiles.length
       });
     case 'preprocessing':
     case 'postprocessing':
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "UploadStatus"},');
 
       return props.i18n('processingXFiles', {
         smart_count: props.processingFiles.length
       });
     case 'paused':
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "UploadStatus"},');
 
       return props.i18n('uploadPaused');
     case 'waiting':
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "UploadStatus"},');
 
       return props.i18n('xFilesSelected', {
         smart_count: props.newFiles.length
       });
     case 'complete':
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "UploadStatus"},');
 
       return props.i18n('uploadComplete');
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "UploadStatus"},');
 
 }
 function PanelTopBar(props) {
@@ -96,7 +96,7 @@ function PanelTopBar(props) {
   if (allowNewUpload && props.maxNumberOfFiles) {
     allowNewUpload = props.totalFileCount < props.maxNumberOfFiles;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "PanelTopBar"},');
 
   return h("div", {
     class: "uppy-DashboardContent-bar"
@@ -116,16 +116,16 @@ function PanelTopBar(props) {
     onclick: function onclick() {
             SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.h.h.onclick.onclick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.h.h.onclick.onclick"},');
 
       return props.toggleAddFilesPanel(true);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.h.h.onclick.onclick"},');
 
     }
   }, iconPlus(), h("span", {
     class: "uppy-DashboardContent-addMoreCaption"
   }, props.i18n('addMore'))) : h("div", null));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "PanelTopBar"},');
 
 }
 module.exports = PanelTopBar;

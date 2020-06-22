@@ -7,7 +7,7 @@ function EditButton(_ref) {
 
   var file = _ref.file, uploadInProgressOrComplete = _ref.uploadInProgressOrComplete, metaFields = _ref.metaFields, i18n = _ref.i18n, onClick = _ref.onClick;
   if (!uploadInProgressOrComplete && metaFields && metaFields.length > 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "EditButton"},');
 
     return h("button", {
       class: "uppy-u-reset uppy-DashboardItem-action uppy-DashboardItem-action--edit",
@@ -17,25 +17,25 @@ function EditButton(_ref) {
       onclick: function onclick() {
                 SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.h.onclick.onclick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "ReturnStatement.h.onclick.onclick"},');
 
         return onClick();
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "ReturnStatement.h.onclick.onclick"},');
 
       }
     }, iconPencil());
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "EditButton"},');
 
   return null;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "EditButton"},');
 
 }
 function RemoveButton(_ref2) {
     SRTlib.send(`{ "anonymous": false, "function": "RemoveButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var i18n = _ref2.i18n, onClick = _ref2.onClick;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "RemoveButton"},');
 
   return h("button", {
     class: "uppy-u-reset uppy-DashboardItem-action uppy-DashboardItem-action--remove",
@@ -45,14 +45,14 @@ function RemoveButton(_ref2) {
     onclick: function onclick() {
             SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.h.onclick.onclick2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.h.onclick.onclick2"},');
 
       return onClick();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.h.onclick.onclick2"},');
 
     }
   }, iconCross());
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "RemoveButton"},');
 
 }
 var copyLinkToClipboard = function copyLinkToClipboard(event, props) {
@@ -63,26 +63,26 @@ var copyLinkToClipboard = function copyLinkToClipboard(event, props) {
 
     props.log('Link copied to clipboard.');
     props.info(props.i18n('copyLinkToClipboardSuccess'), 'info', 3000);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "copyLinkToClipboard.copyLinkToClipboard.then.catch.then.then.catch.then"},');
 
   }).catch(props.log).then(function () {
         SRTlib.send(`{ "anonymous": true, "function": "copyLinkToClipboard.copyLinkToClipboard.then.catch.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "copyLinkToClipboard.copyLinkToClipboard.then.catch.then"},');
 
     return event.target.focus({
       preventScroll: true
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "copyLinkToClipboard.copyLinkToClipboard.then.catch.then"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "copyLinkToClipboard"},');
 
 };
 function CopyLinkButton(props) {
     SRTlib.send(`{ "anonymous": false, "function": "CopyLinkButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "CopyLinkButton"},');
 
   return h("button", {
     class: "uppy-u-reset uppy-DashboardItem-action uppy-DashboardItem-action--copyLink",
@@ -92,21 +92,21 @@ function CopyLinkButton(props) {
     onclick: function onclick(event) {
             SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.h.onclick.onclick3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.h.onclick.onclick3"},');
 
       return copyLinkToClipboard(event, props);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.h.onclick.onclick3"},');
 
     }
   }, iconCopyLink());
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "CopyLinkButton"},');
 
 }
 module.exports = function Buttons(props) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports.Buttons", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var file = props.file, uploadInProgressOrComplete = props.uploadInProgressOrComplete, metaFields = props.metaFields, showLinkToFileUploadResult = props.showLinkToFileUploadResult, showRemoveButton = props.showRemoveButton, i18n = props.i18n, removeFile = props.removeFile, toggleFileCard = props.toggleFileCard, log = props.log, info = props.info;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.Buttons"},');
 
   return h("div", {
     className: "uppy-DashboardItem-actionWrapper"
@@ -118,10 +118,10 @@ module.exports = function Buttons(props) {
     onClick: function onClick() {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports.Buttons.ReturnStatement.h.h.onClick.onClick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports.Buttons.ReturnStatement.h.h.onClick.onClick"},');
 
       return toggleFileCard(file.id);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports.Buttons.ReturnStatement.h.h.onClick.onClick"},');
 
     }
   }), showLinkToFileUploadResult && file.uploadURL ? h(CopyLinkButton, {
@@ -136,13 +136,13 @@ module.exports = function Buttons(props) {
     onClick: function onClick() {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports.Buttons.ReturnStatement.h.h.onClick.onClick2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports.Buttons.ReturnStatement.h.h.onClick.onClick2"},');
 
       return removeFile(file.id);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports.Buttons.ReturnStatement.h.h.onClick.onClick2"},');
 
     }
   }) : null);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.Buttons"},');
 
 };

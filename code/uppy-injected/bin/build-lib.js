@@ -15,18 +15,18 @@ const META_FILES = ['babel.config.js', 'package.json', 'package-lock.json', 'bin
 function lastModified(file) {
     SRTlib.send(`{ "anonymous": false, "function": "lastModified", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "lastModified"},');
 
   return stat(file).then(s => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return s.mtime;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "lastModified"},');
 
 }
 async function buildLib() {
@@ -35,10 +35,10 @@ async function buildLib() {
   const metaMtimes = await Promise.all(META_FILES.map(filename => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
     return lastModified(path.join(__dirname, '..', filename));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   }));
   const metaMtime = Math.max(...metaMtimes);
@@ -51,10 +51,10 @@ async function buildLib() {
       const libMtime = await lastModified(libFile).catch(() => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
         return 0;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
       });
       if (srcMtime < libMtime && metaMtime < libMtime) {
@@ -66,7 +66,7 @@ async function buildLib() {
     await Promise.all([writeFile(libFile, code), writeFile(libFile + '.map', JSON.stringify(map))]);
     console.log(chalk.green('Compiled lib:'), chalk.magenta(libFile));
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "buildLib"},');
 
 }
 console.log('Using Babel version:', require('@babel/core/package.json').version);
@@ -75,6 +75,6 @@ buildLib().catch(err => {
 
   console.error(err.stack);
   process.exit(1);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey4"},');
 
 });

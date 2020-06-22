@@ -4,33 +4,33 @@ const {encrypt, decrypt} = require('./utils');
 module.exports.generateToken = (payload, secret) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return encrypt(jwt.sign({
     data: payload
   }, secret, {
     expiresIn: 60 * 60 * 24
   }), secret);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };
 module.exports.verifyToken = (token, secret) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   try {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
     return {
       payload: jwt.verify(decrypt(token, secret), secret, {}).data
     };
   } catch (err) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
     return {
       err
     };
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };
 module.exports.addToCookies = (res, token, companionOptions, providerName) => {
@@ -44,7 +44,7 @@ module.exports.addToCookies = (res, token, companionOptions, providerName) => {
     cookieOptions.domain = companionOptions.cookieDomain;
   }
   res.cookie(`uppyAuthToken--${providerName}`, token, cookieOptions);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 };
 module.exports.removeFromCookies = (res, companionOptions, providerName) => {
@@ -58,6 +58,6 @@ module.exports.removeFromCookies = (res, companionOptions, providerName) => {
     cookieOptions.domain = companionOptions.cookieDomain;
   }
   res.clearCookie(`uppyAuthToken--${providerName}`, cookieOptions);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey4"},');
 
 };

@@ -9,10 +9,10 @@ const {version} = require('../../package.json');
 exports.getCompanionOptions = () => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return merge({}, getConfigFromEnv(), getConfigFromFile());
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };
 const getConfigFromEnv = () => {
@@ -21,7 +21,7 @@ const getConfigFromEnv = () => {
   const uploadUrls = process.env.COMPANION_UPLOAD_URLS;
   const domains = process.env.COMPANION_DOMAINS || process.env.COMPANION_DOMAIN || null;
   const validHosts = domains ? domains.split(',') : [];
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getConfigFromEnv"},');
 
   return {
     providerOptions: {
@@ -74,27 +74,27 @@ const getConfigFromEnv = () => {
     cookieDomain: process.env.COMPANION_COOKIE_DOMAIN,
     multipleInstances: true
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getConfigFromEnv"},');
 
 };
 const getSecret = baseEnvVar => {
     SRTlib.send(`{ "anonymous": false, "function": "getSecret", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   const secretFile = process.env[`${baseEnvVar}_FILE`];
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getSecret"},');
 
   return secretFile ? fs.readFileSync(secretFile).toString() : process.env[baseEnvVar];
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getSecret"},');
 
 };
 const generateSecret = () => {
     SRTlib.send(`{ "anonymous": false, "function": "generateSecret", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   logger.warn('auto-generating server secret because none was specified', 'startup.secret');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "generateSecret"},');
 
   return crypto.randomBytes(64).toString('hex');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "generateSecret"},');
 
 };
 const getConfigFromFile = () => {
@@ -102,15 +102,15 @@ const getConfigFromFile = () => {
 
   const path = getConfigPath();
   if (!path) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getConfigFromFile"},');
 
     return {};
   }
   const rawdata = fs.readFileSync(getConfigPath());
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getConfigFromFile"},');
 
   return JSON.parse(rawdata);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getConfigFromFile"},');
 
 };
 const getConfigPath = () => {
@@ -125,19 +125,19 @@ const getConfigPath = () => {
       break;
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getConfigPath"},');
 
   return configPath;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getConfigPath"},');
 
 };
 exports.hasProtocol = url => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
   return url.startsWith('http://') || url.startsWith('https://');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };
 exports.buildHelpfulStartupMessage = companionOptions => {
@@ -149,15 +149,15 @@ exports.buildHelpfulStartupMessage = companionOptions => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (providerName === 's3') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
       return;
     }
     callbackURLs.push(buildURL(`/connect/${providerName}/callback`, true));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey4"},');
 
   return stripIndent`
     Welcome to Companion v${version}
@@ -176,6 +176,6 @@ exports.buildHelpfulStartupMessage = companionOptions => {
 
     So quit lollygagging, start uploading and experience the future!
   `;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey4"},');
 
 };

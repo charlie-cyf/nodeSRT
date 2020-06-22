@@ -138,14 +138,14 @@ ro_RO.pluralize = function (count) {
     SRTlib.send(`{ "anonymous": true, "function": "ro_RO.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (count === 1) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ro_RO.pluralize"},');
 
     return 0;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "ro_RO.pluralize"},');
 
   return 1;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "ro_RO.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

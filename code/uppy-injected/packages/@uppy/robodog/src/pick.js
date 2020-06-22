@@ -24,7 +24,7 @@ function pick(opts = {}) {
       target: uppy.getPlugin(pluginId)
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "pick"},');
 
   return new Promise((resolve, reject) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
@@ -35,46 +35,46 @@ function pick(opts = {}) {
       if (result.failed.length === 0) {
         resolve(result);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
     uppy.on('error', reject);
     uppy.on('cancel-all', () => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
       return reject(CANCEL);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
     uppy.getPlugin(pluginId).openModal();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   }).then(result => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey4"},');
 
     return result;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey4"},');
 
   }, err => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (err === CANCEL) {
       uppy.getPlugin(pluginId).requestCloseModal();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey5"},');
 
       return null;
     }
-    throw err;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
-        SRTlib.send("]},");
+    throw err;
+        SRTlib.send('], "end": "emptyKey5"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "pick"},');
 
 }
 module.exports = pick;

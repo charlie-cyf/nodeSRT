@@ -24,17 +24,17 @@ function startXHRLimitTest(endpoint) {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     uppy.uploadsStarted++;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   uppy.on('upload-success', () => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     uppy.uploadsComplete++;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "startXHRLimitTest"},');
 
 }
 window.startXHRLimitTest = startXHRLimitTest;

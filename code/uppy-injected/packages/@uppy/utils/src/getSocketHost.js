@@ -5,9 +5,9 @@ module.exports = function getSocketHost(url) {
   var regex = /^(?:https?:\/\/|\/\/)?(?:[^@\n]+@)?(?:www\.)?([^\n]+)/i;
   var host = regex.exec(url)[1];
   var socketProtocol = (/^http:\/\//i).test(url) ? 'ws' : 'wss';
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getSocketHost"},');
 
   return `${socketProtocol}://${host}`;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getSocketHost"},');
 
 };

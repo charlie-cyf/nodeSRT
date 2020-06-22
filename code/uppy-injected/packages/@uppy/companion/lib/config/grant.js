@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 module.exports = () => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return {
     google: {
@@ -31,6 +31,6 @@ module.exports = () => {
       callback: '/onedrive/callback'
     }
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };

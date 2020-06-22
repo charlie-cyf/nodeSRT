@@ -7,18 +7,18 @@ module.exports = function getFileType(file) {
   let fileExtension = file.name ? getFileNameAndExtension(file.name).extension : null;
   fileExtension = fileExtension ? fileExtension.toLowerCase() : null;
   if (file.type) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getFileType"},');
 
     return file.type;
   } else if (fileExtension && mimeTypes[fileExtension]) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getFileType"},');
 
     return mimeTypes[fileExtension];
   } else {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getFileType"},');
 
     return 'application/octet-stream';
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getFileType"},');
 
 };

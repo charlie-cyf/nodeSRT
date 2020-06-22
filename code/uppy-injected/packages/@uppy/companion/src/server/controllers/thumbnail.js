@@ -16,10 +16,10 @@ function thumbnail(req, res, next) {
       err.isAuthError ? res.sendStatus(401) : next(err);
     }
     response ? response.pipe(res) : res.sendStatus(404);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "thumbnail"},');
 
 }
 module.exports = thumbnail;

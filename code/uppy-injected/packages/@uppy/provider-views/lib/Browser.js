@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 var classNames = require('classnames');
@@ -41,7 +41,7 @@ var Browser = function Browser(props) {
     filteredFiles = props.filterItems(props.files);
   }
   var selected = props.currentSelection.length;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "Browser"},');
 
   return h("div", {
     class: classNames('uppy-ProviderBrowser', "uppy-ProviderBrowser-viewType--" + props.viewType)
@@ -81,7 +81,7 @@ var Browser = function Browser(props) {
   }), selected > 0 && h(FooterActions, _extends({
     selected: selected
   }, props)));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "Browser"},');
 
 };
 module.exports = Browser;

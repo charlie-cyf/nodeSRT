@@ -12,7 +12,7 @@ function minifyify(filename) {
     SRTlib.send(`{ "anonymous": false, "function": "minifyify", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (filename.endsWith('.js')) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "minifyify"},');
 
     return minify({
       sourceMap: false,
@@ -22,10 +22,10 @@ function minifyify(filename) {
       }
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "minifyify"},');
 
   return new PassThrough();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "minifyify"},');
 
 }
 const bundler = browserify(path.join(__dirname, '../packages/uppy/index.js'), {
@@ -41,10 +41,10 @@ bundler.bundle().pipe(disc()).pipe(prepend('---\nlayout: false\n---\n')).pipe(re
 })).pipe(fs.createWriteStream(outputPath)).on('error', err => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-  throw err;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
-    SRTlib.send("]},");
+  throw err;
+    SRTlib.send('], "end": "emptyKey"},');
 
 });
 function prepend(text) {
@@ -52,9 +52,9 @@ function prepend(text) {
 
   const stream = new PassThrough();
   stream.write(text);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "prepend"},');
 
   return stream;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "prepend"},');
 
 }

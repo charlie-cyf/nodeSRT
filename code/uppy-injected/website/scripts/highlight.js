@@ -19,10 +19,10 @@ function highlight(lang, code) {
   } else {
     parsedCode = code;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "highlight"},');
 
   return startTag + parsedCode + endTag;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "highlight"},');
 
 }
 function prismify(data) {
@@ -31,25 +31,25 @@ function prismify(data) {
   data.content = data.content.replace(unhighlightedCodeRx, (_, lang, code) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return highlight(lang, entities.decode(code));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   data.excerpt = data.excerpt.replace(unhighlightedCodeRx, (_, lang, code) => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
     return highlight(lang, entities.decode(code));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "prismify"},');
 
   return data;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "prismify"},');
 
 }
 function code(args, content) {
@@ -59,10 +59,10 @@ function code(args, content) {
   if (args[0].startsWith('lang:')) {
     lang = args.shift().replace(/^lang:/, '');
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "code"},');
 
   return highlight(lang, content);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "code"},');
 
 }
 async function includeCode(args) {
@@ -74,10 +74,10 @@ async function includeCode(args) {
   }
   const file = path.join(hexo.source_dir, hexo.config.code_dir, args.join(' '));
   const content = await readFile(file, 'utf8');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "includeCode"},');
 
   return highlight(lang, content.trim());
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "includeCode"},');
 
 }
 hexo.extend.tag.register('code', code, true);

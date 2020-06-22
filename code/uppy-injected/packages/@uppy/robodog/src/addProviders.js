@@ -26,14 +26,14 @@ function addRemoteProvider(uppy, name, opts) {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (has(opts, name)) providerOptions[name] = opts[name];
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   if (typeof opts[name] === 'object') {
     Object.assign(providerOptions, opts[name]);
   }
   uppy.use(Provider, providerOptions);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "addRemoteProvider"},');
 
 }
 function addLocalProvider(uppy, name, opts) {
@@ -45,14 +45,14 @@ function addLocalProvider(uppy, name, opts) {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (has(opts, name)) providerOptions[name] = opts[name];
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
   if (typeof opts[name] === 'object') {
     Object.assign(providerOptions, opts[name]);
   }
   uppy.use(Provider, providerOptions);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "addLocalProvider"},');
 
 }
 function addProviders(uppy, names, opts = {}) {
@@ -70,22 +70,20 @@ function addProviders(uppy, names, opts = {}) {
       const expectedNameString = validNames.sort().map(validName => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
         return `'${validName}'`;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
       }).join(', ');
-            SRTlib.send("]},");
-
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
       throw new Error(`Unexpected provider '${name}', expected one of [${expectedNameString}]`);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey4"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "addProviders"},');
 
 }
 module.exports = addProviders;

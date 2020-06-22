@@ -7,21 +7,21 @@ module.exports = class StatusBar extends Plugin {
     super(uppy, opts);
     this.id = this.opts.id;
     this.type = 'progressindicator';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   install() {
         SRTlib.send(`{ "anonymous": false, "function": "StatusBar.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.opts.onInstall();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "install"},');
 
   }
   uninstall() {
         SRTlib.send(`{ "anonymous": false, "function": "StatusBar.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.opts.onUninstall();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "uninstall"},');
 
   }
 };

@@ -3,7 +3,7 @@ var _require = require('preact'), h = _require.h;
 module.exports = function () {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
   return h("svg", {
     "aria-hidden": "true",
@@ -30,6 +30,6 @@ module.exports = function () {
     cy: "16",
     r: "2"
   })));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
 };

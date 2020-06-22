@@ -5,7 +5,7 @@ module.exports = function (_ref) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   var onSnapshot = _ref.onSnapshot, i18n = _ref.i18n;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
   return h("button", {
     class: "uppy-u-reset uppy-c-btn uppy-Webcam-button uppy-Webcam-button--picture",
@@ -15,6 +15,6 @@ module.exports = function (_ref) {
     onclick: onSnapshot,
     "data-uppy-super-focusable": true
   }, CameraIcon());
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
 };

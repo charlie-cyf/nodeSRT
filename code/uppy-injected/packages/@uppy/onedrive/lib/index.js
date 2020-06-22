@@ -4,14 +4,14 @@ function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -20,7 +20,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -42,7 +42,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.icon = function () {
             SRTlib.send(`{ "anonymous": true, "function": "_this.icon", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.icon"},');
 
       return h("svg", {
         "aria-hidden": "true",
@@ -67,7 +67,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }), h("path", {
         d: "M9.421 19.246c0-2.197 1.606-3.159 2.871-3.472.44-1.477 1.654-3.439 4.135-3.439H16.445c1.721 0 2.79.823 3.368 1.476a3.99 3.99 0 0 1 1.147-.171h.01l.03.002C21.017 13.5 20.691 10 16.757 10c-2.69 0-3.639 2.345-3.639 2.345s-1.95-1.482-3.955.567c-1.028 1.052-.79 2.669-.79 2.669S6 15.824 6 18.412C6 20.757 8.452 21 8.452 21h1.372a3.77 3.77 0 0 1-.403-1.754z"
       }))));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_this.icon"},');
 
     };
     _this.provider = new Provider(uppy, {
@@ -78,10 +78,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     });
     _this.onFirstRender = _this.onFirstRender.bind(_assertThisInitialized(_this));
     _this.render = _this.render.bind(_assertThisInitialized(_this));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "OneDrive"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "OneDrive"},');
 
   }
   var _proto = OneDrive.prototype;
@@ -104,7 +104,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
@@ -112,30 +112,30 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     this.view.tearDown();
     this.unmount();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
   _proto.onFirstRender = function onFirstRender() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.onFirstRender.onFirstRender", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.onFirstRender.onFirstRender"},');
 
     return this.view.getFolder();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.onFirstRender.onFirstRender"},');
 
   };
   _proto.render = function render(state) {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.render.render", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
     return this.view.render(state);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return OneDrive;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

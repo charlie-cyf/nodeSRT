@@ -11,14 +11,14 @@ class AttachFileInputs extends Plugin {
     this.type = 'acquirer';
     this.handleChange = this.handleChange.bind(this);
     this.inputs = null;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   handleChange(event) {
         SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.handleChange", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.addFiles(event.target);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "handleChange"},');
 
   }
   addFiles(input) {
@@ -40,10 +40,10 @@ class AttachFileInputs extends Plugin {
           this.uppy.log(err);
         }
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "addFiles"},');
 
   }
   install() {
@@ -51,7 +51,7 @@ class AttachFileInputs extends Plugin {
 
     this.el = findDOMElement(this.opts.target);
     if (!this.el) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "install"},');
 
       throw new Error('[AttachFileInputs] Target form does not exist');
     }
@@ -72,10 +72,10 @@ class AttachFileInputs extends Plugin {
         input.setAttribute('accept', restrictions.allowedFileTypes.join(','));
       }
       this.addFiles(input);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "install"},');
 
   }
   uninstall() {
@@ -85,11 +85,11 @@ class AttachFileInputs extends Plugin {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       input.removeEventListener('change', this.handleChange);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
     });
     this.inputs = null;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "uninstall"},');
 
   }
 }

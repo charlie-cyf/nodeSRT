@@ -16,13 +16,13 @@ function uploadRoute(req, res) {
             SRTlib.send(`{ "anonymous": true, "function": "files.req.files.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       delete file.buffer;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "files.req.files.map"},');
 
       return file;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "files.req.files.map"},');
 
     })
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "uploadRoute"},');
 
 }

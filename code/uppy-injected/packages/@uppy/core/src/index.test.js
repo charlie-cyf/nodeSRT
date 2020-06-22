@@ -29,14 +29,19 @@ describe('src/Core', () => {
     global.URL.createObjectURL = RealCreateObjectUrl;
   });
   it('should expose a class', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20expose%20a%20class", "fileName": "${__filename}", "calls" : [`);
 
     const core = Core();
     expect(core.constructor.name).toEqual('Uppy');
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20expose%20a%20class"},');
+    SRTlib.endLogger();
 
   });
   it('should have a string `id` option that defaults to "uppy"', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20have%20a%20string%20%60id%60%20option%20that%20defaults%20to%20%22uppy%22", "fileName": "${__filename}", "calls" : [`);
 
     const core = Core();
@@ -45,7 +50,8 @@ describe('src/Core', () => {
       id: 'profile'
     });
     expect(core2.getID()).toEqual('profile');
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20have%20a%20string%20%60id%60%20option%20that%20defaults%20to%20%22uppy%22"},');
+    SRTlib.endLogger();
 
   });
   describe('plugins', () => {
@@ -54,15 +60,20 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "plugins", "fileName": "${__filename}", "calls" : [`);
 
     it('should add a plugin to the plugin stack', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20add%20a%20plugin%20to%20the%20plugin%20stack", "fileName": "${__filename}", "calls" : [`);
 
       const core = Core();
       core.use(AcquirerPlugin1);
       expect(Object.keys(core.plugins.acquirer).length).toEqual(1);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20add%20a%20plugin%20to%20the%20plugin%20stack"},');
+      SRTlib.endLogger();
 
     });
     it('should prevent the same plugin from being added more than once', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20prevent%20the%20same%20plugin%20from%20being%20added%20more%20than%20once", "fileName": "${__filename}", "calls" : [`);
 
       const core = Core();
@@ -70,36 +81,48 @@ describe('src/Core', () => {
       expect(() => {
         core.use(AcquirerPlugin1);
       }).toThrowErrorMatchingSnapshot();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20prevent%20the%20same%20plugin%20from%20being%20added%20more%20than%20once"},');
+      SRTlib.endLogger();
 
     });
     it('should not be able to add an invalid plugin', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20not%20be%20able%20to%20add%20an%20invalid%20plugin", "fileName": "${__filename}", "calls" : [`);
 
       const core = Core();
       expect(() => {
         core.use(InvalidPlugin);
       }).toThrowErrorMatchingSnapshot();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20not%20be%20able%20to%20add%20an%20invalid%20plugin"},');
+      SRTlib.endLogger();
 
     });
     it('should not be able to add a plugin that has no id', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20not%20be%20able%20to%20add%20a%20plugin%20that%20has%20no%20id", "fileName": "${__filename}", "calls" : [`);
 
       const core = Core();
       expect(() => core.use(InvalidPluginWithoutId)).toThrowErrorMatchingSnapshot();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20not%20be%20able%20to%20add%20a%20plugin%20that%20has%20no%20id"},');
+      SRTlib.endLogger();
 
     });
     it('should not be able to add a plugin that has no type', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20not%20be%20able%20to%20add%20a%20plugin%20that%20has%20no%20type", "fileName": "${__filename}", "calls" : [`);
 
       const core = Core();
       expect(() => core.use(InvalidPluginWithoutType)).toThrowErrorMatchingSnapshot();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20not%20be%20able%20to%20add%20a%20plugin%20that%20has%20no%20type"},');
+      SRTlib.endLogger();
 
     });
     it('should return the plugin that matches the specified name', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20return%20the%20plugin%20that%20matches%20the%20specified%20name", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -108,10 +131,13 @@ describe('src/Core', () => {
       const plugin = core.getPlugin('TestSelector1');
       expect(plugin.id).toEqual('TestSelector1');
       expect(plugin instanceof Plugin);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20return%20the%20plugin%20that%20matches%20the%20specified%20name"},');
+      SRTlib.endLogger();
 
     });
     it('should call the specified method on all the plugins', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20call%20the%20specified%20method%20on%20all%20the%20plugins", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -124,10 +150,13 @@ describe('src/Core', () => {
       expect(core.plugins.acquirer[0].mocks.run.mock.calls[0]).toEqual(['hello']);
       expect(core.plugins.acquirer[1].mocks.run.mock.calls.length).toEqual(1);
       expect(core.plugins.acquirer[1].mocks.run.mock.calls[0]).toEqual(['hello']);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20call%20the%20specified%20method%20on%20all%20the%20plugins"},');
+      SRTlib.endLogger();
 
     });
     it('should uninstall and the remove the specified plugin', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20uninstall%20and%20the%20remove%20the%20specified%20plugin", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -139,7 +168,8 @@ describe('src/Core', () => {
       expect(Object.keys(core.plugins.acquirer).length).toEqual(1);
       expect(plugin.mocks.uninstall.mock.calls.length).toEqual(1);
       expect(core.plugins.acquirer[0].mocks.run.mock.calls.length).toEqual(0);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20uninstall%20and%20the%20remove%20the%20specified%20plugin"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -152,6 +182,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "state", "fileName": "${__filename}", "calls" : [`);
 
     it('should update all the plugins with the new state when the updateAll method is called', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20update%20all%20the%20plugins%20with%20the%20new%20state%20when%20the%20updateAll%20method%20is%20called", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -168,10 +200,13 @@ describe('src/Core', () => {
       expect(core.plugins.acquirer[1].mocks.update.mock.calls[0]).toEqual([{
         foo: 'bar'
       }]);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20update%20all%20the%20plugins%20with%20the%20new%20state%20when%20the%20updateAll%20method%20is%20called"},');
+      SRTlib.endLogger();
 
     });
     it('should update the state', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20update%20the%20state", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -250,10 +285,13 @@ describe('src/Core', () => {
         plugins: {},
         totalProgress: 0
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20update%20the%20state"},');
+      SRTlib.endLogger();
 
     });
     it('should get the state', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20get%20the%20state", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -263,7 +301,8 @@ describe('src/Core', () => {
       expect(core.getState()).toMatchObject({
         foo: 'bar'
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20get%20the%20state"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -271,6 +310,8 @@ describe('src/Core', () => {
 
   });
   it('should reset when the reset method is called', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20reset%20when%20the%20reset%20method%20is%20called", "fileName": "${__filename}", "calls" : [`);
 
     const core = new Core();
@@ -305,10 +346,13 @@ describe('src/Core', () => {
       plugins: {},
       totalProgress: 0
     });
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20reset%20when%20the%20reset%20method%20is%20called"},');
+    SRTlib.endLogger();
 
   });
   it('should clear all uploads and files on cancelAll()', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20clear%20all%20uploads%20and%20files%20on%20cancelAll%28%29", "fileName": "${__filename}", "calls" : [`);
 
     const core = new Core();
@@ -335,10 +379,13 @@ describe('src/Core', () => {
     core.cancelAll();
     expect(core.getState().currentUploads[id]).toBeUndefined();
     expect(Object.keys(core.getState().files).length).toEqual(0);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20clear%20all%20uploads%20and%20files%20on%20cancelAll%28%29"},');
+    SRTlib.endLogger();
 
   });
   it('should close, reset and uninstall when the close method is called', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20close%2C%20reset%20and%20uninstall%20when%20the%20close%20method%20is%20called", "fileName": "${__filename}", "calls" : [`);
 
     const core = new Core();
@@ -372,7 +419,8 @@ describe('src/Core', () => {
     });
     expect(plugin.mocks.uninstall.mock.calls.length).toEqual(1);
     expect(core.plugins[Object.keys(core.plugins)[0]].length).toEqual(0);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20close%2C%20reset%20and%20uninstall%20when%20the%20close%20method%20is%20called"},');
+    SRTlib.endLogger();
 
   });
   describe('upload hooks', () => {
@@ -381,6 +429,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "upload%20hooks", "fileName": "${__filename}", "calls" : [`);
 
     it('should add data returned from upload hooks to the .upload() result', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20add%20data%20returned%20from%20upload%20hooks%20to%20the%20.upload%28%29%20result", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -404,7 +454,8 @@ describe('src/Core', () => {
         expect(result.upload).toBe('ok');
         expect(result.post).toBe('ok');
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20add%20data%20returned%20from%20upload%20hooks%20to%20the%20.upload%28%29%20result"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -417,16 +468,21 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "preprocessors", "fileName": "${__filename}", "calls" : [`);
 
     it('should add a preprocessor', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20add%20a%20preprocessor", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
       const preprocessor = function () {};
       core.addPreProcessor(preprocessor);
       expect(core.preProcessors[0]).toEqual(preprocessor);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20add%20a%20preprocessor"},');
+      SRTlib.endLogger();
 
     });
     it('should remove a preprocessor', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20remove%20a%20preprocessor", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -439,10 +495,13 @@ describe('src/Core', () => {
       expect(core.preProcessors.length).toEqual(3);
       core.removePreProcessor(preprocessor2);
       expect(core.preProcessors.length).toEqual(2);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20remove%20a%20preprocessor"},');
+      SRTlib.endLogger();
 
     });
     it('should execute all the preprocessors when uploading a file', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20execute%20all%20the%20preprocessors%20when%20uploading%20a%20file", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -466,10 +525,13 @@ describe('src/Core', () => {
         expect(preprocessor2.mock.calls[0][0].length).toEqual(1);
         expect(preprocessor2.mock.calls[0][0][0]).toEqual(fileId);
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20execute%20all%20the%20preprocessors%20when%20uploading%20a%20file"},');
+      SRTlib.endLogger();
 
     });
     it('should not pass removed file IDs to next step', async () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20not%20pass%20removed%20file%20IDs%20to%20next%20step", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -498,10 +560,13 @@ describe('src/Core', () => {
       expect(uploader.mock.calls.length).toEqual(1);
       expect(uploader.mock.calls[0][0].length).toEqual(1, 'Got 1 file ID');
       expect(core.getFile(uploader.mock.calls[0][0][0]).name).toEqual('kept.jpg');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20not%20pass%20removed%20file%20IDs%20to%20next%20step"},');
+      SRTlib.endLogger();
 
     });
     it('should update the file progress state when preprocess-progress event is fired', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20update%20the%20file%20progress%20state%20when%20preprocess-progress%20event%20is%20fired", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -532,10 +597,13 @@ describe('src/Core', () => {
           value: 0
         }
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20update%20the%20file%20progress%20state%20when%20preprocess-progress%20event%20is%20fired"},');
+      SRTlib.endLogger();
 
     });
     it('should update the file progress state when preprocess-complete event is fired', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20update%20the%20file%20progress%20state%20when%20preprocess-complete%20event%20is%20fired", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -561,7 +629,8 @@ describe('src/Core', () => {
         uploadComplete: false,
         uploadStarted: null
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20update%20the%20file%20progress%20state%20when%20preprocess-complete%20event%20is%20fired"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -574,16 +643,21 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "postprocessors", "fileName": "${__filename}", "calls" : [`);
 
     it('should add a postprocessor', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20add%20a%20postprocessor", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
       const postprocessor = function () {};
       core.addPostProcessor(postprocessor);
       expect(core.postProcessors[0]).toEqual(postprocessor);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20add%20a%20postprocessor"},');
+      SRTlib.endLogger();
 
     });
     it('should remove a postprocessor', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20remove%20a%20postprocessor", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -596,10 +670,13 @@ describe('src/Core', () => {
       expect(core.postProcessors.length).toEqual(3);
       core.removePostProcessor(postprocessor2);
       expect(core.postProcessors.length).toEqual(2);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20remove%20a%20postprocessor"},');
+      SRTlib.endLogger();
 
     });
     it('should execute all the postprocessors when uploading a file', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20execute%20all%20the%20postprocessors%20when%20uploading%20a%20file", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -623,10 +700,13 @@ describe('src/Core', () => {
         expect(postprocessor2.mock.calls[0][0].length).toEqual(1);
         expect(postprocessor2.mock.calls[0][0][0].substring(0, 17)).toEqual(fileId.substring(0, 17));
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20execute%20all%20the%20postprocessors%20when%20uploading%20a%20file"},');
+      SRTlib.endLogger();
 
     });
     it('should update the file progress state when postprocess-progress event is fired', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20update%20the%20file%20progress%20state%20when%20postprocess-progress%20event%20is%20fired", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -657,10 +737,13 @@ describe('src/Core', () => {
           value: 0
         }
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20update%20the%20file%20progress%20state%20when%20postprocess-progress%20event%20is%20fired"},');
+      SRTlib.endLogger();
 
     });
     it('should update the file progress state when postprocess-complete event is fired', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20update%20the%20file%20progress%20state%20when%20postprocess-complete%20event%20is%20fired", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -686,7 +769,8 @@ describe('src/Core', () => {
         uploadComplete: false,
         uploadStarted: null
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20update%20the%20file%20progress%20state%20when%20postprocess-complete%20event%20is%20fired"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -699,16 +783,21 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "uploaders", "fileName": "${__filename}", "calls" : [`);
 
     it('should add an uploader', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20add%20an%20uploader", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
       const uploader = function () {};
       core.addUploader(uploader);
       expect(core.uploaders[0]).toEqual(uploader);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20add%20an%20uploader"},');
+      SRTlib.endLogger();
 
     });
     it('should remove an uploader', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20remove%20an%20uploader", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -721,7 +810,8 @@ describe('src/Core', () => {
       expect(core.uploaders.length).toEqual(3);
       core.removeUploader(uploader2);
       expect(core.uploaders.length).toEqual(2);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20remove%20an%20uploader"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -734,6 +824,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "adding%20a%20file", "fileName": "${__filename}", "calls" : [`);
 
     it('should call onBeforeFileAdded if it was specified in the options when initialising the class', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20call%20onBeforeFileAdded%20if%20it%20was%20specified%20in%20the%20options%20when%20initialising%20the%20class", "fileName": "${__filename}", "calls" : [`);
 
       const onBeforeFileAdded = jest.fn();
@@ -751,10 +843,13 @@ describe('src/Core', () => {
       expect(onBeforeFileAdded.mock.calls.length).toEqual(1);
       expect(onBeforeFileAdded.mock.calls[0][0].name).toEqual('foo.jpg');
       expect(onBeforeFileAdded.mock.calls[0][1]).toEqual({});
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20call%20onBeforeFileAdded%20if%20it%20was%20specified%20in%20the%20options%20when%20initialising%20the%20class"},');
+      SRTlib.endLogger();
 
     });
     it('should add a file', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20add%20a%20file", "fileName": "${__filename}", "calls" : [`);
 
       const fileData = new File([sampleImage], {
@@ -794,10 +889,13 @@ describe('src/Core', () => {
       };
       expect(core.getFile(fileId)).toEqual(newFile);
       expect(fileAddedEventMock.mock.calls[0][0]).toEqual(newFile);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20add%20a%20file"},');
+      SRTlib.endLogger();
 
     });
     it('should not allow a file that does not meet the restrictions', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20not%20allow%20a%20file%20that%20does%20not%20meet%20the%20restrictions", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -825,10 +923,13 @@ describe('src/Core', () => {
           })
         });
       }).not.toThrow();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20not%20allow%20a%20file%20that%20does%20not%20meet%20the%20restrictions"},');
+      SRTlib.endLogger();
 
     });
     it('should not allow a dupicate file, a file with the same id', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20not%20allow%20a%20dupicate%20file%2C%20a%20file%20with%20the%20same%20id", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -853,10 +954,13 @@ describe('src/Core', () => {
         });
       }).toThrow("Cannot add the duplicate file 'foo.jpg', it already exists");
       expect(core.getFiles().length).toEqual(1);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20not%20allow%20a%20dupicate%20file%2C%20a%20file%20with%20the%20same%20id"},');
+      SRTlib.endLogger();
 
     });
     it('should allow a duplicate file if its relativePath is different, thus the id is different', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20allow%20a%20duplicate%20file%20if%20its%20relativePath%20is%20different%2C%20thus%20the%20id%20is%20different", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -880,10 +984,13 @@ describe('src/Core', () => {
         }
       });
       expect(core.getFiles().length).toEqual(2);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20allow%20a%20duplicate%20file%20if%20its%20relativePath%20is%20different%2C%20thus%20the%20id%20is%20different"},');
+      SRTlib.endLogger();
 
     });
     it('should not allow a file if onBeforeFileAdded returned false', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20not%20allow%20a%20file%20if%20onBeforeFileAdded%20returned%20false", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -904,7 +1011,8 @@ describe('src/Core', () => {
         });
       }).toThrow('Cannot add the file because onBeforeFileAdded returned false.');
       expect(core.getFiles().length).toEqual(0);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20not%20allow%20a%20file%20if%20onBeforeFileAdded%20returned%20false"},');
+      SRTlib.endLogger();
 
     });
     describe('with allowMultipleUploads: false', () => {
@@ -913,6 +1021,8 @@ describe('src/Core', () => {
             SRTlib.send(`{ "testSuite": "with%20allowMultipleUploads%3A%20false", "fileName": "${__filename}", "calls" : [`);
 
       it('allows no new files after upload', async () => {
+                SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
                 SRTlib.send(`{ "testSuite": "src/Core", "testName": "allows%20no%20new%20files%20after%20upload", "fileName": "${__filename}", "calls" : [`);
 
         const core = new Core({
@@ -937,10 +1047,13 @@ describe('src/Core', () => {
             })
           });
         }).toThrow(/Cannot add new files: already uploading/);
-                SRTlib.send(']},');
+                SRTlib.send('], "end": "test-allows%20no%20new%20files%20after%20upload"},');
+        SRTlib.endLogger();
 
       });
       it('does not allow new files after the removeFile() if some file is still present', async () => {
+                SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
                 SRTlib.send(`{ "testSuite": "src/Core", "testName": "does%20not%20allow%20new%20files%20after%20the%20removeFile%28%29%20if%20some%20file%20is%20still%20present", "fileName": "${__filename}", "calls" : [`);
 
         const core = new Core({
@@ -964,10 +1077,13 @@ describe('src/Core', () => {
         });
         core.removeFile(fileId1);
         await expect(core.upload()).resolves.toBeDefined();
-                SRTlib.send(']},');
+                SRTlib.send('], "end": "test-does%20not%20allow%20new%20files%20after%20the%20removeFile%28%29%20if%20some%20file%20is%20still%20present"},');
+        SRTlib.endLogger();
 
       });
       it('allows new files after the last removeFile()', async () => {
+                SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
                 SRTlib.send(`{ "testSuite": "src/Core", "testName": "allows%20new%20files%20after%20the%20last%20removeFile%28%29", "fileName": "${__filename}", "calls" : [`);
 
         const core = new Core({
@@ -992,7 +1108,8 @@ describe('src/Core', () => {
         core.removeFile(fileId1);
         core.removeFile(fileId2);
         await expect(core.upload()).resolves.toBeDefined();
-                SRTlib.send(']},');
+                SRTlib.send('], "end": "test-allows%20new%20files%20after%20the%20last%20removeFile%28%29"},');
+        SRTlib.endLogger();
 
       });
             SRTlib.send(']},');
@@ -1000,6 +1117,8 @@ describe('src/Core', () => {
 
     });
     it('does not dedupe different files', async () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "does%20not%20dedupe%20different%20files", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1022,7 +1141,8 @@ describe('src/Core', () => {
       expect(core.getFiles()).toHaveLength(2);
       expect(core.getFile('uppy-foo/jpg-1e-image/jpeg-17175-1562770350937')).toBeDefined();
       expect(core.getFile('uppy-foo//jpg-1l3o-1e-image/jpeg-17175-1562770350937')).toBeDefined();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-does%20not%20dedupe%20different%20files"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -1035,6 +1155,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "uploading%20a%20file", "fileName": "${__filename}", "calls" : [`);
 
     it('should return a { successful, failed } pair containing file objects', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20return%20a%20%7B%20successful%2C%20failed%20%7D%20pair%20containing%20file%20objects", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1059,10 +1181,13 @@ describe('src/Core', () => {
         }],
         failed: []
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20return%20a%20%7B%20successful%2C%20failed%20%7D%20pair%20containing%20file%20objects"},');
+      SRTlib.endLogger();
 
     });
     it('should return files with errors in the { failed } key', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20return%20files%20with%20errors%20in%20the%20%7B%20failed%20%7D%20key", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1096,10 +1221,13 @@ describe('src/Core', () => {
           error: 'This is bar and I do not like bar'
         }]
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20return%20files%20with%20errors%20in%20the%20%7B%20failed%20%7D%20key"},');
+      SRTlib.endLogger();
 
     });
     it('should only upload files that are not already assigned to another upload id', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20only%20upload%20files%20that%20are%20not%20already%20assigned%20to%20another%20upload%20id", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1131,10 +1259,13 @@ describe('src/Core', () => {
         data: new Uint8Array()
       });
       return expect(core.upload()).resolves.toMatchSnapshot();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20only%20upload%20files%20that%20are%20not%20already%20assigned%20to%20another%20upload%20id"},');
+      SRTlib.endLogger();
 
     });
     it('should not upload if onBeforeUpload returned false', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20not%20upload%20if%20onBeforeUpload%20returned%20false", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1173,10 +1304,13 @@ describe('src/Core', () => {
       return core.upload().catch(err => {
         expect(err).toMatchObject(new Error('Not starting the upload because onBeforeUpload returned false'));
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20not%20upload%20if%20onBeforeUpload%20returned%20false"},');
+      SRTlib.endLogger();
 
     });
     it('only allows a single upload() batch when allowMultipleUploads: false', async () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "only%20allows%20a%20single%20upload%28%29%20batch%20when%20allowMultipleUploads%3A%20false", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1200,10 +1334,13 @@ describe('src/Core', () => {
       });
       await expect(core.upload()).resolves.toBeDefined();
       await expect(core.upload()).rejects.toThrow(/Cannot create a new upload: already uploading\./);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-only%20allows%20a%20single%20upload%28%29%20batch%20when%20allowMultipleUploads%3A%20false"},');
+      SRTlib.endLogger();
 
     });
     it('allows new files again with allowMultipleUploads: false after reset() was called', async () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "allows%20new%20files%20again%20with%20allowMultipleUploads%3A%20false%20after%20reset%28%29%20was%20called", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1228,7 +1365,8 @@ describe('src/Core', () => {
         })
       });
       await expect(core.upload()).resolves.toBeDefined();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-allows%20new%20files%20again%20with%20allowMultipleUploads%3A%20false%20after%20reset%28%29%20was%20called"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -1241,6 +1379,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "removing%20a%20file", "fileName": "${__filename}", "calls" : [`);
 
     it('should remove the file', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20remove%20the%20file", "fileName": "${__filename}", "calls" : [`);
 
       const fileRemovedEventMock = jest.fn();
@@ -1264,7 +1404,8 @@ describe('src/Core', () => {
       expect(core.getFiles().length).toEqual(0);
       expect(fileRemovedEventMock.mock.calls[0][0]).toEqual(file);
       expect(core.getState().totalProgress).toEqual(0);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20remove%20the%20file"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -1288,6 +1429,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "get%20a%20file", "fileName": "${__filename}", "calls" : [`);
 
     it('should get the specified file', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20get%20the%20specified%20file", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1302,7 +1445,8 @@ describe('src/Core', () => {
       const fileId = Object.keys(core.getState().files)[0];
       expect(core.getFile(fileId).name).toEqual('foo.jpg');
       expect(core.getFile('non existant file')).toEqual(undefined);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20get%20the%20specified%20file"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -1315,14 +1459,19 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "getFiles", "fileName": "${__filename}", "calls" : [`);
 
     it('should return an empty array if there are no files', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20return%20an%20empty%20array%20if%20there%20are%20no%20files", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
       expect(core.getFiles()).toEqual([]);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20return%20an%20empty%20array%20if%20there%20are%20no%20files"},');
+      SRTlib.endLogger();
 
     });
     it('should return all files as an array', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20return%20all%20files%20as%20an%20array", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1344,7 +1493,8 @@ describe('src/Core', () => {
       });
       expect(core.getFiles()).toHaveLength(2);
       expect(core.getFiles().map(file => file.name).sort()).toEqual(['empty.dat', 'foo.jpg']);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20return%20all%20files%20as%20an%20array"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -1357,6 +1507,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "setOptions", "fileName": "${__filename}", "calls" : [`);
 
     it('should change options on the fly', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20change%20options%20on%20the%20fly", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1368,10 +1520,13 @@ describe('src/Core', () => {
       expect(core.opts.id).toEqual('lolUppy');
       expect(core.opts.autoProceed).toEqual(true);
       expect(core.opts.allowMultipleUploads).toEqual(true);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20change%20options%20on%20the%20fly"},');
+      SRTlib.endLogger();
 
     });
     it('should change locale on the fly', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20change%20locale%20on%20the%20fly", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1385,10 +1540,13 @@ describe('src/Core', () => {
       });
       expect(core.i18n('cancel')).toEqual('Отмена');
       expect(core.i18n('logOut')).toEqual('Log out');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20change%20locale%20on%20the%20fly"},');
+      SRTlib.endLogger();
 
     });
     it('should change meta on the fly', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20change%20meta%20on%20the%20fly", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1408,10 +1566,13 @@ describe('src/Core', () => {
         foo: 'bar',
         beep: 'boop'
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20change%20meta%20on%20the%20fly"},');
+      SRTlib.endLogger();
 
     });
     it('should change restrictions on the fly', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20change%20restrictions%20on%20the%20fly", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1449,7 +1610,8 @@ describe('src/Core', () => {
         });
       }).not.toThrow();
       expect(core.getFiles().length).toEqual(1);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20change%20restrictions%20on%20the%20fly"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -1462,6 +1624,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "meta%20data", "fileName": "${__filename}", "calls" : [`);
 
     it('should set meta data by calling setMeta', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20set%20meta%20data%20by%20calling%20setMeta", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1483,10 +1647,13 @@ describe('src/Core', () => {
         boo: 'moo',
         bur: 'fur'
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20set%20meta%20data%20by%20calling%20setMeta"},');
+      SRTlib.endLogger();
 
     });
     it('should update meta data for a file by calling updateMeta', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20update%20meta%20data%20for%20a%20file%20by%20calling%20updateMeta", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1514,10 +1681,13 @@ describe('src/Core', () => {
         bur: 'fur',
         boo: 'moo'
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20update%20meta%20data%20for%20a%20file%20by%20calling%20updateMeta"},');
+      SRTlib.endLogger();
 
     });
     it('should merge meta data when add file', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20merge%20meta%20data%20when%20add%20file", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1543,7 +1713,8 @@ describe('src/Core', () => {
         foo2: 'bar2',
         resize: 5000
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20merge%20meta%20data%20when%20add%20file"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -1556,6 +1727,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "progress", "fileName": "${__filename}", "calls" : [`);
 
     it('should calculate the progress of a file upload', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20calculate%20the%20progress%20of%20a%20file%20upload", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1592,10 +1765,13 @@ describe('src/Core', () => {
         uploadComplete: false,
         uploadStarted: null
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20calculate%20the%20progress%20of%20a%20file%20upload"},');
+      SRTlib.endLogger();
 
     });
     it('should work with unsized files', async () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20work%20with%20unsized%20files", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1653,10 +1829,13 @@ describe('src/Core', () => {
       });
       await uploadPromise;
       core.close();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20work%20with%20unsized%20files"},');
+      SRTlib.endLogger();
 
     });
     it('should estimate progress for unsized files', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20estimate%20progress%20for%20unsized%20files", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1689,10 +1868,13 @@ describe('src/Core', () => {
       core._calculateTotalProgress();
       expect(core.getState().totalProgress).toBe(18);
       core.close();
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20estimate%20progress%20for%20unsized%20files"},');
+      SRTlib.endLogger();
 
     });
     it('should calculate the total progress of all file uploads', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20calculate%20the%20total%20progress%20of%20all%20file%20uploads", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -1734,10 +1916,13 @@ describe('src/Core', () => {
       core._calculateTotalProgress();
       core._calculateProgress.flush();
       expect(core.getState().totalProgress).toEqual(66);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20calculate%20the%20total%20progress%20of%20all%20file%20uploads"},');
+      SRTlib.endLogger();
 
     });
     it('should reset the progress', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20reset%20the%20progress", "fileName": "${__filename}", "calls" : [`);
 
       const resetProgressEvent = jest.fn();
@@ -1798,7 +1983,8 @@ describe('src/Core', () => {
       });
       expect(core.getState().totalProgress).toEqual(0);
       expect(resetProgressEvent.mock.calls.length).toEqual(1);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20reset%20the%20progress"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -1811,6 +1997,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "checkRestrictions", "fileName": "${__filename}", "calls" : [`);
 
     it('should enforce the maxNumberOfFiles rule', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20enforce%20the%20maxNumberOfFiles%20rule", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1840,11 +2028,14 @@ describe('src/Core', () => {
         expect(err).toMatchObject(new Error('You can only upload 1 file'));
         expect(core.getState().info.message).toEqual('You can only upload 1 file');
       }
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20enforce%20the%20maxNumberOfFiles%20rule"},');
+      SRTlib.endLogger();
 
     });
     xit('should enforce the minNumberOfFiles rule', () => {});
     it('should enforce the allowedFileTypes rule', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20enforce%20the%20allowedFileTypes%20rule", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1866,10 +2057,13 @@ describe('src/Core', () => {
         expect(err).toMatchObject(new Error('You can only upload: image/gif, image/png'));
         expect(core.getState().info.message).toEqual('You can only upload: image/gif, image/png');
       }
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20enforce%20the%20allowedFileTypes%20rule"},');
+      SRTlib.endLogger();
 
     });
     it('should throw if allowedFileTypes is not an array', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20throw%20if%20allowedFileTypes%20is%20not%20an%20array", "fileName": "${__filename}", "calls" : [`);
 
       try {
@@ -1882,10 +2076,13 @@ describe('src/Core', () => {
       } catch (err) {
         expect(err).toMatchObject(new Error('`restrictions.allowedFileTypes` must be an array'));
       }
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20throw%20if%20allowedFileTypes%20is%20not%20an%20array"},');
+      SRTlib.endLogger();
 
     });
     it('should enforce the allowedFileTypes rule with file extensions', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20enforce%20the%20allowedFileTypes%20rule%20with%20file%20extensions", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1915,10 +2112,13 @@ describe('src/Core', () => {
           type: 'image/jpeg'
         })
       }).not.toThrow());
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20enforce%20the%20allowedFileTypes%20rule%20with%20file%20extensions"},');
+      SRTlib.endLogger();
 
     });
     it('should enforce the maxFileSize rule', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20enforce%20the%20maxFileSize%20rule", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -1940,10 +2140,13 @@ describe('src/Core', () => {
         expect(err).toMatchObject(new Error('This file exceeds maximum allowed size of 1.2 KB'));
         expect(core.getState().info.message).toEqual('This file exceeds maximum allowed size of 1.2 KB');
       }
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20enforce%20the%20maxFileSize%20rule"},');
+      SRTlib.endLogger();
 
     });
     it('should emit `restriction-failed` event when some rule is violated', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20emit%20%60restriction-failed%60%20event%20when%20some%20rule%20is%20violated", "fileName": "${__filename}", "calls" : [`);
 
       const maxFileSize = 100;
@@ -1965,7 +2168,8 @@ describe('src/Core', () => {
       expect(restrictionsViolatedEventMock.mock.calls.length).toEqual(1);
       expect(restrictionsViolatedEventMock.mock.calls[0][0].name).toEqual(file.name);
       expect(restrictionsViolatedEventMock.mock.calls[0][1].message).toEqual(errorMessage);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20emit%20%60restriction-failed%60%20event%20when%20some%20rule%20is%20violated"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -1978,15 +2182,20 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "actions", "fileName": "${__filename}", "calls" : [`);
 
     it('should update the state when receiving the error event', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20update%20the%20state%20when%20receiving%20the%20error%20event", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
       core.emit('error', new Error('foooooo'));
       expect(core.getState().error).toEqual('foooooo');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20update%20the%20state%20when%20receiving%20the%20error%20event"},');
+      SRTlib.endLogger();
 
     });
     it('should update the state when receiving the upload-error event', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20update%20the%20state%20when%20receiving%20the%20upload-error%20event", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -2005,10 +2214,13 @@ describe('src/Core', () => {
         isHidden: false,
         type: 'error'
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20update%20the%20state%20when%20receiving%20the%20upload-error%20event"},');
+      SRTlib.endLogger();
 
     });
     it('should reset the error state when receiving the upload event', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20reset%20the%20error%20state%20when%20receiving%20the%20upload%20event", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -2017,7 +2229,8 @@ describe('src/Core', () => {
       });
       core.emit('upload');
       expect(core.getState().error).toEqual(null);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20reset%20the%20error%20state%20when%20receiving%20the%20upload%20event"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -2040,6 +2253,8 @@ describe('src/Core', () => {
       global.window.navigator.onLine = RealNavigatorOnline;
     });
     it('should emit the correct event based on whether there is a network connection', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20emit%20the%20correct%20event%20based%20on%20whether%20there%20is%20a%20network%20connection", "fileName": "${__filename}", "calls" : [`);
 
       const onlineEventMock = jest.fn();
@@ -2064,7 +2279,8 @@ describe('src/Core', () => {
       expect(onlineEventMock.mock.calls.length).toEqual(2);
       expect(offlineEventMock.mock.calls.length).toEqual(1);
       expect(backOnlineEventMock.mock.calls.length).toEqual(1);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20emit%20the%20correct%20event%20based%20on%20whether%20there%20is%20a%20network%20connection"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -2077,6 +2293,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "info", "fileName": "${__filename}", "calls" : [`);
 
     it('should set a string based message to be displayed infinitely', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20set%20a%20string%20based%20message%20to%20be%20displayed%20infinitely", "fileName": "${__filename}", "calls" : [`);
 
       const infoVisibleEvent = jest.fn();
@@ -2091,10 +2309,13 @@ describe('src/Core', () => {
       });
       expect(infoVisibleEvent.mock.calls.length).toEqual(1);
       expect(typeof core.infoTimeoutID).toEqual('undefined');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20set%20a%20string%20based%20message%20to%20be%20displayed%20infinitely"},');
+      SRTlib.endLogger();
 
     });
     it('should set a object based message to be displayed infinitely', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20set%20a%20object%20based%20message%20to%20be%20displayed%20infinitely", "fileName": "${__filename}", "calls" : [`);
 
       const infoVisibleEvent = jest.fn();
@@ -2116,10 +2337,13 @@ describe('src/Core', () => {
       });
       expect(infoVisibleEvent.mock.calls.length).toEqual(1);
       expect(typeof core.infoTimeoutID).toEqual('undefined');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20set%20a%20object%20based%20message%20to%20be%20displayed%20infinitely"},');
+      SRTlib.endLogger();
 
     });
     it('should set an info message to be displayed for a period of time before hiding', done => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20set%20an%20info%20message%20to%20be%20displayed%20for%20a%20period%20of%20time%20before%20hiding", "fileName": "${__filename}", "calls" : [`);
 
       const infoVisibleEvent = jest.fn();
@@ -2140,10 +2364,13 @@ describe('src/Core', () => {
         });
         done();
       }, 110);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20set%20an%20info%20message%20to%20be%20displayed%20for%20a%20period%20of%20time%20before%20hiding"},');
+      SRTlib.endLogger();
 
     });
     it('should hide an info message', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20hide%20an%20info%20message", "fileName": "${__filename}", "calls" : [`);
 
       const infoVisibleEvent = jest.fn();
@@ -2162,7 +2389,8 @@ describe('src/Core', () => {
         message: 'This is the message',
         details: null
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20hide%20an%20info%20message"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -2175,6 +2403,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "createUpload", "fileName": "${__filename}", "calls" : [`);
 
     it('should assign the specified files to a new upload', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20assign%20the%20specified%20files%20to%20a%20new%20upload", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core();
@@ -2195,7 +2425,8 @@ describe('src/Core', () => {
         result: {}
       };
       expect(core.getState().currentUploads).toEqual(currentUploadsState);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20assign%20the%20specified%20files%20to%20a%20new%20upload"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -2208,6 +2439,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "i18n", "fileName": "${__filename}", "calls" : [`);
 
     it('merges in custom locale strings', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "merges%20in%20custom%20locale%20strings", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -2219,7 +2452,8 @@ describe('src/Core', () => {
       });
       expect(core.i18n('exceedsSize')).toBe('This file exceeds maximum allowed size of');
       expect(core.i18n('test')).toBe('beep boop');
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-merges%20in%20custom%20locale%20strings"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -2232,6 +2466,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "default%20restrictions", "fileName": "${__filename}", "calls" : [`);
 
     it('should be merged with supplied restrictions', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20be%20merged%20with%20supplied%20restrictions", "fileName": "${__filename}", "calls" : [`);
 
       const core = new Core({
@@ -2241,7 +2477,8 @@ describe('src/Core', () => {
       });
       expect(core.opts.restrictions.maxNumberOfFiles).toBe(3);
       expect(core.opts.restrictions.minNumberOfFiles).toBe(null);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20be%20merged%20with%20supplied%20restrictions"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -2254,6 +2491,8 @@ describe('src/Core', () => {
         SRTlib.send(`{ "testSuite": "log", "fileName": "${__filename}", "calls" : [`);
 
     it('should log via provided logger function', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20log%20via%20provided%20logger%20function", "fileName": "${__filename}", "calls" : [`);
 
       const myTestLogger = {
@@ -2271,10 +2510,13 @@ describe('src/Core', () => {
       expect(core.opts.logger.debug.mock.calls.length).toBe(2);
       expect(core.opts.logger.error.mock.calls.length).toBe(2);
       expect(core.opts.logger.warn.mock.calls.length).toBe(1);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20log%20via%20provided%20logger%20function"},');
+      SRTlib.endLogger();
 
     });
     it('should log via provided logger function, even if debug: true', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20log%20via%20provided%20logger%20function%2C%20even%20if%20debug%3A%20true", "fileName": "${__filename}", "calls" : [`);
 
       const myTestLogger = {
@@ -2293,10 +2535,13 @@ describe('src/Core', () => {
       expect(core.opts.logger.debug.mock.calls.length).toBe(2);
       expect(core.opts.logger.error.mock.calls.length).toBe(2);
       expect(core.opts.logger.warn.mock.calls.length).toBe(2);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20log%20via%20provided%20logger%20function%2C%20even%20if%20debug%3A%20true"},');
+      SRTlib.endLogger();
 
     });
     it('should log to console when logger: Uppy.debugLogger or debug: true is set', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20log%20to%20console%20when%20logger%3A%20Uppy.debugLogger%20or%20debug%3A%20true%20is%20set", "fileName": "${__filename}", "calls" : [`);
 
       console.debug = jest.fn();
@@ -2319,10 +2564,13 @@ describe('src/Core', () => {
       core2.log('beep beep', 'error');
       expect(console.debug.mock.calls.length).toBe(3);
       expect(console.error.mock.calls.length).toBe(1);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20log%20to%20console%20when%20logger%3A%20Uppy.debugLogger%20or%20debug%3A%20true%20is%20set"},');
+      SRTlib.endLogger();
 
     });
     it('should only log errors to console when logger is not set', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "src/Core", "testName": "should%20only%20log%20errors%20to%20console%20when%20logger%20is%20not%20set", "fileName": "${__filename}", "calls" : [`);
 
       console.debug = jest.fn();
@@ -2333,7 +2581,8 @@ describe('src/Core', () => {
       core.log('beep beep', 'error');
       expect(console.debug.mock.calls.length).toBe(0);
       expect(console.error.mock.calls.length).toBe(1);
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-should%20only%20log%20errors%20to%20console%20when%20logger%20is%20not%20set"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');

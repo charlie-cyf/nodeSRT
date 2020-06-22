@@ -12,12 +12,15 @@ describe('Plugin', () => {
         SRTlib.send(`{ "testSuite": "getPluginState", "fileName": "${__filename}", "calls" : [`);
 
     it('returns an empty object if no state is available', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Plugin", "testName": "returns%20an%20empty%20object%20if%20no%20state%20is%20available", "fileName": "${__filename}", "calls" : [`);
 
       class Example extends Plugin {}
       const inst = new Example(new Core(), {});
       expect(inst.getPluginState()).toEqual({});
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-returns%20an%20empty%20object%20if%20no%20state%20is%20available"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');
@@ -30,6 +33,8 @@ describe('Plugin', () => {
         SRTlib.send(`{ "testSuite": "setPluginState", "fileName": "${__filename}", "calls" : [`);
 
     it('applies patches', () => {
+            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
             SRTlib.send(`{ "testSuite": "Plugin", "testName": "applies%20patches", "fileName": "${__filename}", "calls" : [`);
 
       class Example extends Plugin {}
@@ -47,7 +52,8 @@ describe('Plugin', () => {
         a: 1,
         b: 2
       });
-            SRTlib.send(']},');
+            SRTlib.send('], "end": "test-applies%20patches"},');
+      SRTlib.endLogger();
 
     });
         SRTlib.send(']},');

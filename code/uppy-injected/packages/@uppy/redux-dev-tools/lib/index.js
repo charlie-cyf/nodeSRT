@@ -14,30 +14,30 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -46,7 +46,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -66,10 +66,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.opts = _extends({}, defaultOptions, opts);
     _this.handleStateChange = _this.handleStateChange.bind(_assertThisInitialized(_this));
     _this.initDevTools = _this.initDevTools.bind(_assertThisInitialized(_this));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReduxDevTools"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReduxDevTools"},');
 
   }
   var _proto = ReduxDevTools.prototype;
@@ -77,7 +77,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleStateChange.handleStateChange", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     this.devTools.send('UPPY_STATE_UPDATE', nextState);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleStateChange.handleStateChange"},');
 
   };
   _proto.initDevTools = function initDevTools() {
@@ -92,11 +92,11 @@ module.exports = (_temp = _class = (function (_Plugin) {
         console.log(message.payload.type);
         switch (message.payload.type) {
           case 'RESET':
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "module.exports._temp._class"},');
 
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "module.exports._temp._class._proto.initDevTools.initDevTools"},');
 
-                        SRTlib.send("]},");
+                        SRTlib.send('], "end": "module.exports._temp._class._proto.initDevTools.initDevTools.devToolsUnsubscribe.devTools.subscribe"},');
 
             _this2.uppy.reset();
             return;
@@ -105,7 +105,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
               var computedStates = message.payload.nextLiftedState.computedStates;
               _this2.uppy.store.state = _extends({}, _this2.uppy.getState(), computedStates[computedStates.length - 1].state);
               _this2.uppy.updateAll(_this2.uppy.getState());
-                            SRTlib.send("]},");
+                            SRTlib.send('], "end": "module.exports._temp._class._proto.initDevTools.initDevTools.devToolsUnsubscribe.devTools.subscribe"},');
 
               return;
             }
@@ -115,10 +115,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
             _this2.uppy.updateAll(_this2.uppy.getState());
         }
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.initDevTools.initDevTools.devToolsUnsubscribe.devTools.subscribe"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.initDevTools.initDevTools"},');
 
   };
   _proto.install = function install() {
@@ -129,7 +129,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       this.initDevTools();
       this.uppy.on('state-update', this.handleStateChange);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
@@ -139,12 +139,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
       this.devToolsUnsubscribe();
       this.uppy.off('state-update', this.handleStateUpdate);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return ReduxDevTools;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

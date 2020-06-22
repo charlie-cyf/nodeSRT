@@ -9,25 +9,25 @@ function findUppyInstances() {
       instances.push(key.slice(('uppyState:').length));
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "findUppyInstances"},');
 
   return instances;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "findUppyInstances"},');
 
 }
 function maybeParse(str) {
     SRTlib.send(`{ "anonymous": false, "function": "maybeParse", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   try {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "maybeParse"},');
 
     return JSON.parse(str);
   } catch (err) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "maybeParse"},');
 
     return null;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "maybeParse"},');
 
 }
 let cleanedUp = false;
@@ -43,7 +43,7 @@ module.exports = class MetaDataStore {
       cleanedUp = true;
       MetaDataStore.cleanup();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   load() {
@@ -51,26 +51,26 @@ module.exports = class MetaDataStore {
 
     const savedState = localStorage.getItem(this.name);
     if (!savedState) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "load"},');
 
       return null;
     }
     const data = maybeParse(savedState);
     if (!data) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "load"},');
 
       return null;
     }
     if (!data.metadata) {
       this.save(data);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "load"},');
 
       return data;
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "load"},');
 
     return data.metadata;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "load"},');
 
   }
   save(metadata) {
@@ -82,7 +82,7 @@ module.exports = class MetaDataStore {
       expires
     });
     localStorage.setItem(this.name, state);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "save"},');
 
   }
   static cleanup() {
@@ -95,23 +95,23 @@ module.exports = class MetaDataStore {
 
       const data = localStorage.getItem(`uppyState:${id}`);
       if (!data) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return null;
       }
       const obj = maybeParse(data);
       if (!obj) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return null;
       }
       if (obj.expires && obj.expires < now) {
         localStorage.removeItem(`uppyState:${id}`);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "cleanup"},');
 
   }
 };

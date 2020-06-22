@@ -4,12 +4,12 @@ module.exports = function s3(config) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports.s3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (typeof config.acl !== 'string') {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.s3"},');
 
     throw new TypeError('s3: The `acl` option must be a string');
   }
   if (typeof config.getKey !== 'function') {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.s3"},');
 
     throw new TypeError('s3: The `getKey` option must be a function');
   }
@@ -20,7 +20,7 @@ module.exports = function s3(config) {
     const metadata = req.query.metadata || ({});
     const key = config.getKey(req, req.query.filename, metadata);
     if (typeof key !== 'string') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "getUploadParameters"},');
 
       return res.status(500).json({
         error: 's3: filename returned from `getKey` must be a string'
@@ -36,7 +36,7 @@ module.exports = function s3(config) {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       fields[`x-amz-meta-${key}`] = metadata[key];
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
     client.createPresignedPost({
@@ -49,7 +49,7 @@ module.exports = function s3(config) {
 
       if (err) {
         next(err);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey2"},');
 
         return;
       }
@@ -58,10 +58,10 @@ module.exports = function s3(config) {
         url: data.url,
         fields: data.fields
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getUploadParameters"},');
 
   }
   function createMultipartUpload(req, res, next) {
@@ -71,14 +71,14 @@ module.exports = function s3(config) {
     const key = config.getKey(req, req.body.filename, req.body.metadata || ({}));
     const {type, metadata} = req.body;
     if (typeof key !== 'string') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "createMultipartUpload"},');
 
       return res.status(500).json({
         error: 's3: filename returned from `getKey` must be a string'
       });
     }
     if (typeof type !== 'string') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "createMultipartUpload"},');
 
       return res.status(400).json({
         error: 's3: content type must be a string'
@@ -96,7 +96,7 @@ module.exports = function s3(config) {
 
       if (err) {
         next(err);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
         return;
       }
@@ -104,10 +104,10 @@ module.exports = function s3(config) {
         key: data.Key,
         uploadId: data.UploadId
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "createMultipartUpload"},');
 
   }
   function getUploadedParts(req, res, next) {
@@ -117,7 +117,7 @@ module.exports = function s3(config) {
     const {uploadId} = req.params;
     const {key} = req.query;
     if (typeof key !== 'string') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "getUploadedParts"},');
 
       return res.status(400).json({
         error: 's3: the object key must be passed as a query parameter. For example: "?key=abc.jpg"'
@@ -138,7 +138,7 @@ module.exports = function s3(config) {
 
         if (err) {
           next(err);
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey4"},');
 
           return;
         }
@@ -148,20 +148,20 @@ module.exports = function s3(config) {
         } else {
           done();
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey4"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "listPartsPage"},');
 
     }
     function done() {
             SRTlib.send(`{ "anonymous": false, "function": "done", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
       res.json(parts);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "done"},');
 
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getUploadedParts"},');
 
   }
   function signPartUpload(req, res, next) {
@@ -171,14 +171,14 @@ module.exports = function s3(config) {
     const {uploadId, partNumber} = req.params;
     const {key} = req.query;
     if (typeof key !== 'string') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "signPartUpload"},');
 
       return res.status(400).json({
         error: 's3: the object key must be passed as a query parameter. For example: "?key=abc.jpg"'
       });
     }
     if (!parseInt(partNumber, 10)) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "signPartUpload"},');
 
       return res.status(400).json({
         error: 's3: the part number must be a number between 1 and 10000.'
@@ -196,17 +196,17 @@ module.exports = function s3(config) {
 
       if (err) {
         next(err);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey5"},');
 
         return;
       }
       res.json({
         url
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey5"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "signPartUpload"},');
 
   }
   function abortMultipartUpload(req, res, next) {
@@ -216,7 +216,7 @@ module.exports = function s3(config) {
     const {uploadId} = req.params;
     const {key} = req.query;
     if (typeof key !== 'string') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "abortMultipartUpload"},');
 
       return res.status(400).json({
         error: 's3: the object key must be passed as a query parameter. For example: "?key=abc.jpg"'
@@ -231,15 +231,15 @@ module.exports = function s3(config) {
 
       if (err) {
         next(err);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey6"},');
 
         return;
       }
       res.json({});
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "abortMultipartUpload"},');
 
   }
   function completeMultipartUpload(req, res, next) {
@@ -250,14 +250,14 @@ module.exports = function s3(config) {
     const {key} = req.query;
     const {parts} = req.body;
     if (typeof key !== 'string') {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "completeMultipartUpload"},');
 
       return res.status(400).json({
         error: 's3: the object key must be passed as a query parameter. For example: "?key=abc.jpg"'
       });
     }
     if (!Array.isArray(parts) || !parts.every(isValidPart)) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "completeMultipartUpload"},');
 
       return res.status(400).json({
         error: 's3: `parts` must be an array of {ETag, PartNumber} objects.'
@@ -275,31 +275,31 @@ module.exports = function s3(config) {
 
       if (err) {
         next(err);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey7"},');
 
         return;
       }
       res.json({
         location: data.Location
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey7"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "completeMultipartUpload"},');
 
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.s3"},');
 
   return router().get('/params', getUploadParameters).post('/multipart', createMultipartUpload).get('/multipart/:uploadId', getUploadedParts).get('/multipart/:uploadId/:partNumber', signPartUpload).post('/multipart/:uploadId/complete', completeMultipartUpload).delete('/multipart/:uploadId', abortMultipartUpload);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.s3"},');
 
 };
 function isValidPart(part) {
     SRTlib.send(`{ "anonymous": false, "function": "isValidPart", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isValidPart"},');
 
   return part && typeof part === 'object' && typeof part.PartNumber === 'number' && typeof part.ETag === 'string';
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isValidPart"},');
 
 }

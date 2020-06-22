@@ -8,7 +8,7 @@ glob('test/endtoend/*/test.js').forEach(file => {
 
   const name = path.basename(path.dirname(file));
   suites[name] = [file];
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 });
 exports.config = {
@@ -70,7 +70,7 @@ exports.config = {
     global.expect = chai.expect;
     global.capabilities = capabilities;
     chai.Should();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "exports.config.before"},');
 
   }
 };

@@ -22,10 +22,10 @@ function dashboard(target, opts = {}) {
       target: uppy.getPlugin(pluginId)
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "dashboard"},');
 
   return uppy;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "dashboard"},');
 
 }
 module.exports = dashboard;

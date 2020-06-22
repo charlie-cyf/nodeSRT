@@ -17,6 +17,8 @@ describe('ThumbnailGenerator', () => {
     await browser.url(testURL);
   });
   it('should generate thumbnails for images', async function () {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "ThumbnailGenerator", "testName": "should%20generate%20thumbnails%20for%20images", "fileName": "${__filename}", "calls" : [`);
 
     if (capabilities.browserName === 'internet explorer') {
@@ -56,7 +58,8 @@ describe('ThumbnailGenerator', () => {
         expect(await getWidth(p)).to.equal(200);
       }
     }
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20generate%20thumbnails%20for%20images"},');
+    SRTlib.endLogger();
 
   });
     SRTlib.send(']},');

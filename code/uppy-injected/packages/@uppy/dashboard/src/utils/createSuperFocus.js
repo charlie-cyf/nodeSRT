@@ -12,13 +12,13 @@ module.exports = function createSuperFocus() {
     const overlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
     const isFocusInOverlay = overlayEl.contains(document.activeElement);
     if (isFocusInOverlay && lastFocusWasOnSuperFocusableEl) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "superFocus"},');
 
       return;
     }
     const superFocusableEl = overlayEl.querySelector('[data-uppy-super-focusable]');
     if (isFocusInOverlay && !superFocusableEl) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "superFocus"},');
 
       return;
     }
@@ -34,12 +34,12 @@ module.exports = function createSuperFocus() {
       });
       lastFocusWasOnSuperFocusableEl = false;
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "superFocus"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.createSuperFocus"},');
 
   return debounce(superFocus, 260);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.createSuperFocus"},');
 
 };

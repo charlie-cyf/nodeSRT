@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -31,7 +31,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('preact'), h = _require.h, Component = _require.Component;
@@ -46,10 +46,10 @@ var RecorderScreen = (function (_Component) {
   function RecorderScreen() {
         SRTlib.send(`{ "anonymous": false, "function": "RecorderScreen", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "RecorderScreen"},');
 
     return _Component.apply(this, arguments) || this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "RecorderScreen"},');
 
   }
   var _proto = RecorderScreen.prototype;
@@ -57,7 +57,7 @@ var RecorderScreen = (function (_Component) {
         SRTlib.send(`{ "anonymous": true, "function": "RecorderScreen._proto.componentWillUnmount.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.props.onStop();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "RecorderScreen._proto.componentWillUnmount.componentWillUnmount"},');
 
   };
   _proto.render = function render() {
@@ -81,7 +81,7 @@ var RecorderScreen = (function (_Component) {
         this.videoElement.srcObject = undefined;
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "RecorderScreen._proto.render.render"},');
 
     return h("div", {
       class: "uppy uppy-ScreenCapture-container"
@@ -91,23 +91,23 @@ var RecorderScreen = (function (_Component) {
       ref: function ref(videoElement) {
                 SRTlib.send(`{ "anonymous": true, "function": "RecorderScreen._proto.render.render.ReturnStatement.h.h.h._extends.ref.ref", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "RecorderScreen._proto.render.render.ReturnStatement.h.h.h._extends.ref.ref"},');
 
         return _this.videoElement = videoElement;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "RecorderScreen._proto.render.render.ReturnStatement.h.h.h._extends.ref.ref"},');
 
       },
       class: "uppy-ScreenCapture-video"
     }, videoProps)), h(StopWatch, this.props)), h("div", {
       class: "uppy-ScreenCapture-buttonContainer"
     }, h(RecordButton, this.props), h(SubmitButton, this.props)));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "RecorderScreen._proto.render.render"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "RecorderScreen"},');
 
   return RecorderScreen;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "RecorderScreen"},');
 
 })(Component);
 module.exports = RecorderScreen;

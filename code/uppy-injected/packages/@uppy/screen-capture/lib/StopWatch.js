@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -31,7 +31,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('preact'), h = _require.h, Component = _require.Component;
@@ -81,10 +81,10 @@ var Stopwatch = (function (_Component) {
       fontSize: '3rem',
       fontFamily: 'Courier New'
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Stopwatch"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Stopwatch"},');
 
   }
   var _proto = Stopwatch.prototype;
@@ -93,7 +93,7 @@ var Stopwatch = (function (_Component) {
 
     this.timerTick();
     this.timerRunning = true;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Stopwatch._proto.startTimer.startTimer"},');
 
   };
   _proto.resetTimer = function resetTimer() {
@@ -104,7 +104,7 @@ var Stopwatch = (function (_Component) {
       elapsedTime: 0
     });
     this.timerRunning = false;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Stopwatch._proto.resetTimer.resetTimer"},');
 
   };
   _proto.timerTick = function timerTick() {
@@ -118,19 +118,19 @@ var Stopwatch = (function (_Component) {
         elapsedTime: _this2.state.elapsedTime + 1
       });
       _this2.timerTick();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "Stopwatch._proto.timerTick.timerTick.timer.setTimeout"},');
 
     }, 1000);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Stopwatch._proto.timerTick.timerTick"},');
 
   };
   _proto.fmtMSS = function fmtMSS(s) {
         SRTlib.send(`{ "anonymous": true, "function": "Stopwatch._proto.fmtMSS.fmtMSS", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Stopwatch._proto.fmtMSS.fmtMSS"},');
 
     return (s - (s %= 60)) / 60 + (s > 9 ? ':' : ':0') + s;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Stopwatch._proto.fmtMSS.fmtMSS"},');
 
   };
   _proto.render = function render() {
@@ -145,7 +145,7 @@ var Stopwatch = (function (_Component) {
       this.resetTimer();
     }
     if (recording) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "Stopwatch._proto.render.render"},');
 
       return h("div", {
         style: this.wrapperStyle
@@ -159,17 +159,17 @@ var Stopwatch = (function (_Component) {
         style: this.timeStyle
       }, minAndSec)));
     } else {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "Stopwatch._proto.render.render"},');
 
       return null;
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Stopwatch._proto.render.render"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "Stopwatch"},');
 
   return Stopwatch;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "Stopwatch"},');
 
 })(Component);
 module.exports = Stopwatch;

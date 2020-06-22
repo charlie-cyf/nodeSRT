@@ -6,18 +6,18 @@ function onPauseResumeCancelRetry(props) {
     SRTlib.send(`{ "anonymous": false, "function": "onPauseResumeCancelRetry", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (props.isUploaded) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onPauseResumeCancelRetry"},');
 
     return;
   }
   if (props.error && !props.hideRetryButton) {
     props.retryUpload(props.file.id);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onPauseResumeCancelRetry"},');
 
     return;
   }
   if (props.hidePauseResumeCancelButtons) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "onPauseResumeCancelRetry"},');
 
     return;
   }
@@ -26,53 +26,53 @@ function onPauseResumeCancelRetry(props) {
   } else if (props.individualCancellation) {
     props.cancelUpload(props.file.id);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "onPauseResumeCancelRetry"},');
 
 }
 function progressIndicatorTitle(props) {
     SRTlib.send(`{ "anonymous": false, "function": "progressIndicatorTitle", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (props.isUploaded) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "progressIndicatorTitle"},');
 
     return props.i18n('uploadComplete');
   }
   if (props.error) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "progressIndicatorTitle"},');
 
     return props.i18n('retryUpload');
   }
   if (props.resumableUploads) {
     if (props.file.isPaused) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "progressIndicatorTitle"},');
 
       return props.i18n('resumeUpload');
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "progressIndicatorTitle"},');
 
     return props.i18n('pauseUpload');
   } else if (props.individualCancellation) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "progressIndicatorTitle"},');
 
     return props.i18n('cancelUpload');
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "progressIndicatorTitle"},');
 
   return '';
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "progressIndicatorTitle"},');
 
 }
 module.exports = function FileProgress(props) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports.FileProgress", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (props.hideRetryButton && props.error || props.isUploaded && props.showRemoveButtonAfterComplete) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.FileProgress"},');
 
     return h("div", {
       class: "uppy-DashboardItem-progress"
     });
   } else if (props.isUploaded || props.hidePauseResumeCancelButtons && !props.error) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.FileProgress"},');
 
     return h("div", {
       class: "uppy-DashboardItem-progress"
@@ -83,7 +83,7 @@ module.exports = function FileProgress(props) {
       hidePauseResumeCancelButtons: props.hidePauseResumeCancelButtons
     })));
   } else {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.FileProgress"},');
 
     return h("div", {
       class: "uppy-DashboardItem-progress"
@@ -95,10 +95,10 @@ module.exports = function FileProgress(props) {
       onclick: function onclick() {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports.FileProgress.ReturnStatement.h.h.onclick.onclick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports.FileProgress.ReturnStatement.h.h.onclick.onclick"},');
 
         return onPauseResumeCancelRetry(props);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports.FileProgress.ReturnStatement.h.h.onclick.onclick"},');
 
       }
     }, props.error ? props.hideRetryButton ? null : iconRetry() : h(PauseResumeCancelIcon, {
@@ -106,6 +106,6 @@ module.exports = function FileProgress(props) {
       hidePauseResumeCancelButtons: props.hidePauseResumeCancelButtons
     })));
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.FileProgress"},');
 
 };

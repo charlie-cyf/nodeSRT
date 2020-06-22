@@ -21,13 +21,13 @@ function upload(files, opts = {}) {
       name: file.name,
       meta: file.meta || ({})
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "upload"},');
 
   return uppy.upload();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "upload"},');
 
 }
 module.exports = upload;

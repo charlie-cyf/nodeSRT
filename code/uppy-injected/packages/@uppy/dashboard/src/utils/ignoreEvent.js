@@ -5,13 +5,13 @@ function ignoreEvent(ev) {
   const tagName = ev.target.tagName;
   if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
     ev.stopPropagation();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ignoreEvent"},');
 
     return;
   }
   ev.preventDefault();
   ev.stopPropagation();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "ignoreEvent"},');
 
 }
 module.exports = ignoreEvent;

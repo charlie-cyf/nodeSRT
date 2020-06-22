@@ -6,20 +6,20 @@ exports.hasSessionAndProvider = (req, res, next) => {
 
   if (!req.session || !req.body) {
     logger.debug('No session/body attached to req object. Exiting dispatcher.', null, req.id);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return res.sendStatus(400);
   }
   if (!req.companion.provider) {
     logger.debug('No provider/provider-handler found. Exiting dispatcher.', null, req.id);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return res.sendStatus(400);
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return next();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };
 exports.verifyToken = (req, res, next) => {
@@ -28,7 +28,7 @@ exports.verifyToken = (req, res, next) => {
   const token = req.companion.authToken;
   if (token == null) {
     logger.info('cannot auth token', 'token.verify.unset', req.id);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
     return res.sendStatus(401);
   }
@@ -38,13 +38,13 @@ exports.verifyToken = (req, res, next) => {
     if (err) {
       logger.error(err, 'token.verify.error', req.id);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
     return res.sendStatus(401);
   }
   req.companion.providerTokens = payload;
   next();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };
 exports.gentleVerifyToken = (req, res, next) => {
@@ -58,16 +58,16 @@ exports.gentleVerifyToken = (req, res, next) => {
     }
   }
   next();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 };
 exports.cookieAuthToken = (req, res, next) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   req.companion.authToken = req.cookies[`uppyAuthToken--${req.companion.provider.authProvider}`];
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey4"},');
 
   return next();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey4"},');
 
 };

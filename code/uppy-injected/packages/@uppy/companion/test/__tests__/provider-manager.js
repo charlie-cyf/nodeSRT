@@ -11,7 +11,7 @@ describe('Test Provider options', () => {
 
     grantConfig = require('../../src/config/grant')();
     companionOptions = getCompanionOptions();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   test('adds provider options', () => {
@@ -24,7 +24,7 @@ describe('Test Provider options', () => {
     expect(grantConfig.google.secret).toBe('google_secret');
     expect(grantConfig.instagram.key).toBe('instagram_key');
     expect(grantConfig.instagram.secret).toBe('instagram_secret');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
   test('adds extra provider config', () => {
@@ -55,7 +55,7 @@ describe('Test Provider options', () => {
       scope: ['https://www.googleapis.com/auth/drive.readonly'],
       callback: '/drive/callback'
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   });
   test('adds provider options for secret files', () => {
@@ -69,7 +69,7 @@ describe('Test Provider options', () => {
     expect(grantConfig.dropbox.secret).toBe('xobpord');
     expect(grantConfig.google.secret).toBe('elgoog');
     expect(grantConfig.instagram.secret).toBe('margatsni');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey4"},');
 
   });
   test('does not add provider options if protocol and host are not set', () => {
@@ -84,7 +84,7 @@ describe('Test Provider options', () => {
     expect(grantConfig.google.secret).toBeUndefined();
     expect(grantConfig.instagram.key).toBeUndefined();
     expect(grantConfig.instagram.secret).toBeUndefined();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
   });
   test('sets a master redirect uri, if oauthDomain is set', () => {
@@ -95,10 +95,10 @@ describe('Test Provider options', () => {
     expect(grantConfig.dropbox.redirect_uri).toBe('http://domain.com/dropbox/redirect');
     expect(grantConfig.google.redirect_uri).toBe('http://domain.com/drive/redirect');
     expect(grantConfig.instagram.redirect_uri).toBe('http://domain.com/instagram/redirect');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey6"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey7"},');
 
 });
 describe('Test Custom Provider options', () => {
@@ -120,9 +120,9 @@ describe('Test Custom Provider options', () => {
     expect(grantConfig.foo.key).toBe('foo_key');
     expect(grantConfig.foo.secret).toBe('foo_secret');
     expect(providers.foo).toBeTruthy();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey8"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey9"},');
 
 });

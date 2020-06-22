@@ -7,7 +7,7 @@ class AuthError extends Error {
     super('Authorization required');
     this.name = 'AuthError';
     this.isAuthError = true;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
 }

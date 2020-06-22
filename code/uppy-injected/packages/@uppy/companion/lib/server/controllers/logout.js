@@ -11,7 +11,7 @@ function logout(req, res, next) {
       req.session.grant.state = null;
       req.session.grant.dynamic = null;
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "cleanSession"},');
 
   };
   const providerName = req.params.providerName;
@@ -25,13 +25,13 @@ function logout(req, res, next) {
       if (err) {
         const errResp = errorToResponse(err);
         if (errResp) {
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey"},');
 
           return res.status(errResp.code).json({
             message: errResp.message
           });
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return next(err);
       }
@@ -41,7 +41,7 @@ function logout(req, res, next) {
       res.json(Object.assign({
         ok: true
       }, data));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
   } else {
@@ -51,7 +51,7 @@ function logout(req, res, next) {
       revoked: false
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "logout"},');
 
 }
 module.exports = logout;

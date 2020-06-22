@@ -14,30 +14,30 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -46,7 +46,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -80,10 +80,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.handleSuccess = _this.handleSuccess.bind(_assertThisInitialized(_this));
     _this.addResultToForm = _this.addResultToForm.bind(_assertThisInitialized(_this));
     _this.getMetaFromForm = _this.getMetaFromForm.bind(_assertThisInitialized(_this));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Form"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "Form"},');
 
   }
   var _proto = Form.prototype;
@@ -93,7 +93,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (this.opts.getMetaFromForm) {
       this.getMetaFromForm();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleUploadStart.handleUploadStart"},');
 
   };
   _proto.handleSuccess = function handleSuccess(result) {
@@ -105,7 +105,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (this.opts.submitOnSuccess) {
       this.form.submit();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleSuccess.handleSuccess"},');
 
   };
   _proto.handleFormSubmit = function handleFormSubmit(ev) {
@@ -124,7 +124,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           el.disabled = true;
           disabledByUppy.push(el);
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit"},');
 
       });
       this.uppy.upload().then(function () {
@@ -134,10 +134,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
                     SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch.uppy.upload.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
           button.disabled = false;
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch.uppy.upload.then"},');
 
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch.uppy.upload.then2"},');
 
       }, function (err) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch.uppy.upload.then4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -146,23 +146,23 @@ module.exports = (_temp = _class = (function (_Plugin) {
                     SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch.uppy.upload.then3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
           button.disabled = false;
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch.uppy.upload.then3"},');
 
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch.uppy.upload.then4"},');
 
         return Promise.reject(err);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch.uppy.upload.then4"},');
 
       }).catch(function (err) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         _this2.uppy.log(err.stack || err.message || err);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit.uppy.upload.then.catch"},');
 
       });
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleFormSubmit.handleFormSubmit2"},');
 
   };
   _proto.addResultToForm = function addResultToForm(result) {
@@ -185,7 +185,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       } else {
         resultInput.value = JSON.stringify(result);
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.addResultToForm.addResultToForm"},');
 
       return;
     }
@@ -198,7 +198,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       resultInput.value = JSON.stringify(result);
     }
     this.form.appendChild(resultInput);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.addResultToForm.addResultToForm"},');
 
   };
   _proto.getMetaFromForm = function getMetaFromForm() {
@@ -207,7 +207,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var formMeta = getFormData(this.form);
     delete formMeta[this.opts.resultName];
     this.uppy.setMeta(formMeta);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.getMetaFromForm.getMetaFromForm"},');
 
   };
   _proto.install = function install() {
@@ -216,14 +216,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.form = findDOMElement(this.opts.target);
     if (!this.form || this.form.nodeName !== 'FORM') {
       this.uppy.log('Form plugin requires a <form> target element passed in options to operate, none was found', 'error');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
       return;
     }
     this.form.addEventListener('submit', this.handleFormSubmit);
     this.uppy.on('upload', this.handleUploadStart);
     this.uppy.on('complete', this.handleSuccess);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
@@ -232,12 +232,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.form.removeEventListener('submit', this.handleFormSubmit);
     this.uppy.off('upload', this.handleUploadStart);
     this.uppy.off('complete', this.handleSuccess);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return Form;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

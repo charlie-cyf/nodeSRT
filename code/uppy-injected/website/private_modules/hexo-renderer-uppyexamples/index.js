@@ -9,7 +9,7 @@ function parseExamplesBrowserify(data, options, callback) {
     SRTlib.send(`{ "anonymous": false, "function": "parseExamplesBrowserify", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
   if (!data || !data.path) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "parseExamplesBrowserify"},');
 
     return callback(null);
   }
@@ -23,7 +23,7 @@ function parseExamplesBrowserify(data, options, callback) {
         SRTlib.send(`{ "anonymous": true, "function": "exec2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     if (err) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "exec2"},');
 
       return callback(err);
     }
@@ -32,19 +32,19 @@ function parseExamplesBrowserify(data, options, callback) {
             SRTlib.send(`{ "anonymous": true, "function": "exec", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       if (err) {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "exec"},');
 
         return callback(err);
       }
       bundledJS = bundledJS.replace(/<(?!=)/g, ' < ');
       callback(null, bundledJS);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "exec"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "exec2"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "parseExamplesBrowserify"},');
 
 }
 hexo.extend.renderer.register('es6', 'js', parseExamplesBrowserify);

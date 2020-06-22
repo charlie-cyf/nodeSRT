@@ -8,7 +8,7 @@ describe('Test Logger secret mask', () => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     logger.setMaskables(['ToBeMasked1', 'toBeMasked2', 'toBeMasked(And)?Escaped']);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   test('masks secret values present in log.info messages', () => {
@@ -21,7 +21,7 @@ describe('Test Logger secret mask', () => {
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     };
     logger.info('this info has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2');
@@ -29,7 +29,7 @@ describe('Test Logger secret mask', () => {
     const exptectedMsg = 'this info has ****** and ****** and case-insensitive ******';
     expect(loggedMessage).toBeTruthy();
     expect(loggedMessage).toBe(exptectedMsg);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey3"},');
 
   });
   test('masks secret values present in log.warn messages', () => {
@@ -42,7 +42,7 @@ describe('Test Logger secret mask', () => {
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     };
     logger.warn('this warning has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2');
@@ -50,7 +50,7 @@ describe('Test Logger secret mask', () => {
     const exptectedMsg = chalk.bold.yellow('this warning has ****** and ****** and case-insensitive ******');
     expect(loggedMessage).toBeTruthy();
     expect(loggedMessage).toBe(exptectedMsg);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey5"},');
 
   });
   test('masks secret values present in log.error messages', () => {
@@ -63,7 +63,7 @@ describe('Test Logger secret mask', () => {
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
     };
     logger.error(new Error('this error has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2'));
@@ -71,7 +71,7 @@ describe('Test Logger secret mask', () => {
     const exptectedMsg = chalk.bold.red('Error: this error has ****** and ****** and case-insensitive ******');
     expect(loggedMessage).toBeTruthy();
     expect(loggedMessage).toBe(exptectedMsg);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey7"},');
 
   });
   test('masks secret values present in log.error stack trace', () => {
@@ -84,7 +84,7 @@ describe('Test Logger secret mask', () => {
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey8"},');
 
     };
     const err = new Error('this error has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2');
@@ -96,7 +96,7 @@ describe('Test Logger secret mask', () => {
     expect(loggedMessage.includes('ToBeMasked1')).toBe(false);
     expect(loggedMessage.includes('toBeMasked2')).toBe(false);
     expect(loggedMessage.includes('TOBEMasKED2')).toBe(false);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey9"},');
 
   });
   test('escape regex characters from secret values before masking them', () => {
@@ -109,7 +109,7 @@ describe('Test Logger secret mask', () => {
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
     };
     logger.warn('this warning has ToBeMasked(And)?Escaped but not toBeMaskedEscaped ');
@@ -117,9 +117,9 @@ describe('Test Logger secret mask', () => {
     const exptectedMsg = chalk.bold.yellow('this warning has ****** but not toBeMaskedEscaped ');
     expect(loggedMessage).toBeTruthy();
     expect(loggedMessage).toBe(exptectedMsg);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey11"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey12"},');
 
 });

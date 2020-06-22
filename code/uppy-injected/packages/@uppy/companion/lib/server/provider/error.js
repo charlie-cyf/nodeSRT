@@ -7,7 +7,7 @@ class ProviderApiError extends Error {
     this.name = 'ProviderApiError';
     this.statusCode = statusCode;
     this.isAuthError = false;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
 }
@@ -18,7 +18,7 @@ class ProviderAuthError extends ProviderApiError {
     super('invalid access token detected by Provider', 401);
     this.name = 'AuthError';
     this.isAuthError = true;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
 }
@@ -26,7 +26,7 @@ function errorToResponse(err) {
     SRTlib.send(`{ "anonymous": false, "function": "errorToResponse", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (err instanceof ProviderAuthError && err.isAuthError) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "errorToResponse"},');
 
     return {
       code: 401,
@@ -35,7 +35,7 @@ function errorToResponse(err) {
   }
   if (err instanceof ProviderApiError) {
     if (err.statusCode >= 500) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "errorToResponse"},');
 
       return {
         code: 502,
@@ -43,7 +43,7 @@ function errorToResponse(err) {
       };
     }
     if (err.statusCode >= 400) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "errorToResponse"},');
 
       return {
         code: 424,
@@ -51,7 +51,7 @@ function errorToResponse(err) {
       };
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "errorToResponse"},');
 
 }
 module.exports = {

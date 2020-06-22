@@ -9,7 +9,7 @@ module.exports = function oauthRedirect(req, res) {
   const dynamic = (req.session.grant || ({})).dynamic || ({});
   const state = dynamic.state;
   if (!state) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.oauthRedirect"},');
 
     return res.status(400).send('Cannot find state in session');
   }
@@ -19,11 +19,11 @@ module.exports = function oauthRedirect(req, res) {
     const providerName = req.companion.provider.authProvider;
     const params = qs.stringify(req.query);
     const url = `${handler}/connect/${providerName}/callback?${params}`;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.oauthRedirect"},');
 
     return res.redirect(url);
   }
   res.status(400).send('Invalid Host in state');
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.oauthRedirect"},');
 
 };

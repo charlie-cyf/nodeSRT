@@ -13,7 +13,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
       this._resolve = resolve;
       this._reject = reject;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
     this._onAssemblyComplete = this._onAssemblyComplete.bind(this);
@@ -21,49 +21,49 @@ class TransloaditAssemblyWatcher extends Emitter {
     this._onAssemblyError = this._onAssemblyError.bind(this);
     this._onImportError = this._onImportError.bind(this);
     this._addListeners();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   _watching(id) {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._watching", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_watching"},');
 
     return this._assemblyIDs.indexOf(id) !== -1;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_watching"},');
 
   }
   _onAssemblyComplete(assembly) {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._onAssemblyComplete", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!this._watching(assembly.assembly_id)) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_onAssemblyComplete"},');
 
       return;
     }
     this._uppy.log(`[Transloadit] AssemblyWatcher: Got Assembly finish ${assembly.assembly_id}`);
     this.emit('assembly-complete', assembly.assembly_id);
     this._checkAllComplete();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_onAssemblyComplete"},');
 
   }
   _onAssemblyCancel(assembly) {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._onAssemblyCancel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!this._watching(assembly.assembly_id)) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_onAssemblyCancel"},');
 
       return;
     }
     this._checkAllComplete();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_onAssemblyCancel"},');
 
   }
   _onAssemblyError(assembly, error) {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._onAssemblyError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (!this._watching(assembly.assembly_id)) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_onAssemblyError"},');
 
       return;
     }
@@ -71,19 +71,19 @@ class TransloaditAssemblyWatcher extends Emitter {
     this._uppy.log(error);
     this.emit('assembly-error', assembly.assembly_id, error);
     this._checkAllComplete();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_onAssemblyError"},');
 
   }
   _onImportError(assembly, fileID, error) {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditAssemblyWatcher._onImportError", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
 
     if (!this._watching(assembly.assembly_id)) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_onImportError"},');
 
       return;
     }
     this._onAssemblyError(assembly, error);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_onImportError"},');
 
   }
   _checkAllComplete() {
@@ -94,7 +94,7 @@ class TransloaditAssemblyWatcher extends Emitter {
       this._removeListeners();
       this._resolve();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_checkAllComplete"},');
 
   }
   _removeListeners() {
@@ -104,7 +104,7 @@ class TransloaditAssemblyWatcher extends Emitter {
     this._uppy.off('transloadit:assembly-cancel', this._onAssemblyCancel);
     this._uppy.off('transloadit:assembly-error', this._onAssemblyError);
     this._uppy.off('transloadit:import-error', this._onImportError);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_removeListeners"},');
 
   }
   _addListeners() {
@@ -114,7 +114,7 @@ class TransloaditAssemblyWatcher extends Emitter {
     this._uppy.on('transloadit:assembly-cancel', this._onAssemblyCancel);
     this._uppy.on('transloadit:assembly-error', this._onAssemblyError);
     this._uppy.on('transloadit:import-error', this._onImportError);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_addListeners"},');
 
   }
 }

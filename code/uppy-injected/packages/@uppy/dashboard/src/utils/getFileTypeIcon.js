@@ -8,14 +8,14 @@ module.exports = function getIconByMime(fileType) {
     icon: iconFile()
   };
   if (!fileType) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getIconByMime"},');
 
     return defaultChoice;
   }
   const fileTypeGeneral = fileType.split('/')[0];
   const fileTypeSpecific = fileType.split('/')[1];
   if (fileTypeGeneral === 'text') {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getIconByMime"},');
 
     return {
       color: '#5a5e69',
@@ -23,7 +23,7 @@ module.exports = function getIconByMime(fileType) {
     };
   }
   if (fileTypeGeneral === 'image') {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getIconByMime"},');
 
     return {
       color: '#686de0',
@@ -31,7 +31,7 @@ module.exports = function getIconByMime(fileType) {
     };
   }
   if (fileTypeGeneral === 'audio') {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getIconByMime"},');
 
     return {
       color: '#068dbb',
@@ -39,7 +39,7 @@ module.exports = function getIconByMime(fileType) {
     };
   }
   if (fileTypeGeneral === 'video') {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getIconByMime"},');
 
     return {
       color: '#19af67',
@@ -47,7 +47,7 @@ module.exports = function getIconByMime(fileType) {
     };
   }
   if (fileTypeGeneral === 'application' && fileTypeSpecific === 'pdf') {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getIconByMime"},');
 
     return {
       color: '#e25149',
@@ -56,16 +56,16 @@ module.exports = function getIconByMime(fileType) {
   }
   const archiveTypes = ['zip', 'x-7z-compressed', 'x-rar-compressed', 'x-gtar', 'x-apple-diskimage', 'x-diskcopy'];
   if (fileTypeGeneral === 'application' && archiveTypes.indexOf(fileTypeSpecific) !== -1) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.getIconByMime"},');
 
     return {
       color: '#00C469',
       icon: iconArchive()
     };
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getIconByMime"},');
 
   return defaultChoice;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getIconByMime"},');
 
 };

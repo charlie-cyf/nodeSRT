@@ -10,7 +10,7 @@ if (args.b) {
     capabilities.push({
       browserName
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
 }
@@ -22,10 +22,10 @@ if (capabilities.length === 0) {
 const testingInternetExplorer = capabilities.find(capability => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
   return capability.browserName === 'internet explorer';
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 }) !== null;
 exports.config = {

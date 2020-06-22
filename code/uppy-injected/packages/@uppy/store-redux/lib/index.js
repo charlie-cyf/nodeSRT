@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 var cuid = require('cuid');
@@ -30,18 +30,18 @@ var STATE_UPDATE = 'uppy/STATE_UPDATE';
 var defaultSelector = function defaultSelector(id) {
     SRTlib.send(`{ "anonymous": false, "function": "defaultSelector", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "defaultSelector"},');
 
   return function (state) {
         SRTlib.send(`{ "anonymous": true, "function": "defaultSelector.defaultSelector.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "defaultSelector.defaultSelector.ReturnStatement"},');
 
     return state.uppy[id];
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "defaultSelector.defaultSelector.ReturnStatement"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "defaultSelector"},');
 
 };
 var ReduxStore = (function () {
@@ -54,7 +54,7 @@ var ReduxStore = (function () {
     this._id = opts.id || cuid();
     this._selector = opts.selector || defaultSelector(this._id);
     this.setState({});
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReduxStore"},');
 
   }
   var _proto = ReduxStore.prototype;
@@ -66,16 +66,16 @@ var ReduxStore = (function () {
       id: this._id,
       payload: patch
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReduxStore._proto.setState.setState"},');
 
   };
   _proto.getState = function getState() {
         SRTlib.send(`{ "anonymous": true, "function": "ReduxStore._proto.getState.getState", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReduxStore._proto.getState.getState"},');
 
     return this._selector(this._store.getState());
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReduxStore._proto.getState.getState"},');
 
   };
   _proto.subscribe = function subscribe(cb) {
@@ -83,7 +83,7 @@ var ReduxStore = (function () {
 
     var _this = this;
     var prevState = this.getState();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReduxStore._proto.subscribe.subscribe"},');
 
     return this._store.subscribe(function () {
             SRTlib.send(`{ "anonymous": true, "function": "ReduxStore._proto.subscribe.subscribe.ReturnStatement._store.subscribe", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
@@ -94,16 +94,16 @@ var ReduxStore = (function () {
         cb(prevState, nextState, patch);
         prevState = nextState;
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReduxStore._proto.subscribe.subscribe.ReturnStatement._store.subscribe"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReduxStore._proto.subscribe.subscribe"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "ReduxStore"},');
 
   return ReduxStore;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "ReduxStore"},');
 
 })();
 ReduxStore.VERSION = require('../package.json').version;
@@ -116,13 +116,13 @@ function getPatch(prev, next) {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (prev[k] !== next[k]) patch[k] = next[k];
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getPatch"},');
 
   return patch;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getPatch"},');
 
 }
 function reducer(state, action) {
@@ -134,54 +134,54 @@ function reducer(state, action) {
   if (action.type === STATE_UPDATE) {
     var _extends2;
     var newState = _extends({}, state[action.id], action.payload);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "reducer"},');
 
     return _extends({}, state, (_extends2 = {}, _extends2[action.id] = newState, _extends2));
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "reducer"},');
 
   return state;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "reducer"},');
 
 }
 function middleware() {
     SRTlib.send(`{ "anonymous": false, "function": "middleware", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "middleware"},');
 
   return function () {
         SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReturnStatement"},');
 
     return function (next) {
             SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.ReturnStatement"},');
 
       return function (action) {
                 SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.ReturnStatement.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         next(action);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "ReturnStatement.ReturnStatement.ReturnStatement"},');
 
       };
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.ReturnStatement"},');
 
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "ReturnStatement"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "middleware"},');
 
 }
 module.exports = function createReduxStore(opts) {
     SRTlib.send(`{ "anonymous": true, "function": "module.exports.createReduxStore", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.createReduxStore"},');
 
   return new ReduxStore(opts);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.createReduxStore"},');
 
 };
 module.exports.STATE_UPDATE = STATE_UPDATE;

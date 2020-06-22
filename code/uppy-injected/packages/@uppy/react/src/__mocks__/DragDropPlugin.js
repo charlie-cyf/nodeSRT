@@ -7,21 +7,21 @@ module.exports = class DragDrop extends Plugin {
     super(uppy, opts);
     this.id = this.opts.id;
     this.type = 'acquirer';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   install() {
         SRTlib.send(`{ "anonymous": false, "function": "DragDrop.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this.opts.onInstall) this.opts.onInstall();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "install"},');
 
   }
   uninstall() {
         SRTlib.send(`{ "anonymous": false, "function": "DragDrop.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     if (this.opts.onUninstall) this.opts.onUninstall();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "uninstall"},');
 
   }
 };

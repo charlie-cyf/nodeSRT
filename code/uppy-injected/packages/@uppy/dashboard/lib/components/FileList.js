@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 var FileItem = require('./FileItem/index.js');
@@ -43,14 +43,14 @@ function chunks(list, size) {
       chunked.push(currentChunk);
       currentChunk = [item];
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   if (currentChunk.length) chunked.push(currentChunk);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "chunks"},');
 
   return chunked;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "chunks"},');
 
 }
 module.exports = function (props) {
@@ -88,7 +88,7 @@ module.exports = function (props) {
   function renderRow(row) {
         SRTlib.send(`{ "anonymous": false, "function": "renderRow", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "renderRow"},');
 
     return h("div", {
       role: "presentation",
@@ -96,7 +96,7 @@ module.exports = function (props) {
     }, row.map(function (fileID) {
             SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.h", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.h"},');
 
       return h(FileItem, _extends({
         key: fileID
@@ -104,13 +104,13 @@ module.exports = function (props) {
         role: "listitem",
         file: props.files[fileID]
       }));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "ReturnStatement.h"},');
 
     }));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "renderRow"},');
 
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
   return h(VirtualList, {
     class: dashboardFilesClass,
@@ -119,6 +119,6 @@ module.exports = function (props) {
     renderRow: renderRow,
     rowHeight: rowHeight
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports"},');
 
 };

@@ -28,9 +28,9 @@ module.exports = () => {
     }
     console.log('successful files:', result.successful);
     console.log('failed files:', result.failed);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };

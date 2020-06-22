@@ -10,14 +10,14 @@ module.exports = class Translator {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports.locale.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         if (n === 1) {
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "module.exports.locale.pluralize"},');
 
           return 0;
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports.locale.pluralize"},');
 
         return 1;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports.locale.pluralize"},');
 
       }
     };
@@ -25,23 +25,23 @@ module.exports = class Translator {
       locales.forEach(locale => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
         return this._apply(locale);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
       });
     } else {
       this._apply(locales);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   _apply(locale) {
         SRTlib.send(`{ "anonymous": false, "function": "Translator._apply", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (!locale || !locale.strings) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_apply"},');
 
       return;
     }
@@ -50,7 +50,7 @@ module.exports = class Translator {
       strings: Object.assign({}, prevLocale.strings, locale.strings)
     });
     this.locale.pluralize = locale.pluralize || prevLocale.pluralize;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_apply"},');
 
   }
   interpolate(phrase, options) {
@@ -69,7 +69,7 @@ module.exports = class Translator {
         interpolated = insertReplacement(interpolated, new RegExp('%\\{' + arg + '\\}', 'g'), replacement);
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "interpolate"},');
 
     return interpolated;
     function insertReplacement(source, rx, replacement) {
@@ -80,7 +80,7 @@ module.exports = class Translator {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         if (typeof chunk !== 'string') {
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey3"},');
 
           return newParts.push(chunk);
         }
@@ -93,28 +93,28 @@ module.exports = class Translator {
           if (i < list.length - 1) {
             newParts.push(replacement);
           }
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey2"},');
 
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "insertReplacement"},');
 
       return newParts;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "insertReplacement"},');
 
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "interpolate"},');
 
   }
   translate(key, options) {
         SRTlib.send(`{ "anonymous": false, "function": "Translator.translate", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "translate"},');
 
     return this.translateArray(key, options).join('');
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "translate"},');
 
   }
   translateArray(key, options) {
@@ -125,19 +125,19 @@ module.exports = class Translator {
     if (hasPluralForms) {
       if (options && typeof options.smart_count !== 'undefined') {
         const plural = this.locale.pluralize(options.smart_count);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "translateArray"},');
 
         return this.interpolate(string[plural], options);
       } else {
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "translateArray"},');
 
         throw new Error('Attempted to use a string with plural forms, but no value was given for %{smart_count}');
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "translateArray"},');
 
     return this.interpolate(string, options);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "translateArray"},');
 
   }
 };

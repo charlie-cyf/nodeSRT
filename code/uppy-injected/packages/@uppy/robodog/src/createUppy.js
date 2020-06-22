@@ -30,7 +30,7 @@ function createUppy(opts, overrides = {}) {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     if (has(opts, name)) uppyOptions[name] = opts[name];
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
   });
   Object.assign(uppyOptions, overrides);
@@ -42,7 +42,7 @@ function createUppy(opts, overrides = {}) {
     if (typeof opts[optionName] === 'function') {
       uppy.on(eventName, opts[optionName]);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
   if (typeof opts.onProgress === 'function') {
@@ -51,14 +51,14 @@ function createUppy(opts, overrides = {}) {
 
       const {totalProgress} = uppy.getState();
       opts.onProgress.call(uppy, totalProgress);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "createUppy"},');
 
   return uppy;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "createUppy"},');
 
 }
 module.exports = createUppy;

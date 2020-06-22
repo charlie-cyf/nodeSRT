@@ -9,10 +9,10 @@ function isIPAddress(address) {
 
   const addressAsV6 = new ipAddress.Address6(address);
   const addressAsV4 = new ipAddress.Address4(address);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isIPAddress"},');
 
   return addressAsV6.isValid() || addressAsV4.isValid();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isIPAddress"},');
 
 }
 function isPrivateIP(ipAddress) {
@@ -53,10 +53,10 @@ function isPrivateIP(ipAddress) {
       break;
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isPrivateIP"},');
 
   return isPrivate;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "isPrivateIP"},');
 
 }
 module.exports.FORBIDDEN_IP_ADDRESS = FORBIDDEN_IP_ADDRESS;
@@ -64,14 +64,14 @@ module.exports.getProtectedHttpAgent = (protocol, blockPrivateIPs) => {
     SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
   if (blockPrivateIPs) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey"},');
 
     return protocol.startsWith('https') ? HttpsAgent : HttpAgent;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return protocol.startsWith('https') ? https.Agent : http.Agent;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };
 function dnsLookup(hostname, options, callback) {
@@ -82,7 +82,7 @@ function dnsLookup(hostname, options, callback) {
 
     if (err) {
       callback(err, addresses, maybeFamily);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
       return;
     }
@@ -92,16 +92,16 @@ function dnsLookup(hostname, options, callback) {
     for (const record of toValidate) {
       if (isPrivateIP(record.address)) {
         callback(new Error(FORBIDDEN_IP_ADDRESS), addresses, maybeFamily);
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey2"},');
 
         return;
       }
     }
     callback(err, addresses, maybeFamily);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey2"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "dnsLookup"},');
 
 }
 class HttpAgent extends http.Agent {
@@ -111,14 +111,14 @@ class HttpAgent extends http.Agent {
     options.lookup = dnsLookup;
     if (isIPAddress(options.host) && isPrivateIP(options.host)) {
       callback(new Error(FORBIDDEN_IP_ADDRESS));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "createConnection"},');
 
       return;
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "createConnection"},');
 
     return super.createConnection(options, callback);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "createConnection"},');
 
   }
 }
@@ -129,14 +129,14 @@ class HttpsAgent extends https.Agent {
     options.lookup = dnsLookup;
     if (isIPAddress(options.host) && isPrivateIP(options.host)) {
       callback(new Error(FORBIDDEN_IP_ADDRESS));
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "createConnection"},');
 
       return;
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "createConnection"},');
 
     return super.createConnection(options, callback);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "createConnection"},');
 
   }
 }

@@ -3,7 +3,7 @@ const base = require('./wdio.base.conf');
 function createCapability(capability) {
     SRTlib.send(`{ "anonymous": false, "function": "createCapability", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "createCapability"},');
 
   return {
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
@@ -11,7 +11,7 @@ function createCapability(capability) {
     extendedDebugging: true,
     ...capability
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "createCapability"},');
 
 }
 exports.config = {

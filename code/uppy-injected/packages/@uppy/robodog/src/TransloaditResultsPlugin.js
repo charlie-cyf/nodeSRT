@@ -8,14 +8,14 @@ class TransloaditResultsPlugin extends Plugin {
     this.type = 'modifier';
     this.id = this.opts.id || 'TransloaditResultsPlugin';
     this._afterUpload = this._afterUpload.bind(this);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   install() {
         SRTlib.send(`{ "anonymous": false, "function": "TransloaditResultsPlugin.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uppy.addPostProcessor(this._afterUpload);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "install"},');
 
   }
   _afterUpload(fileIDs, uploadID) {
@@ -40,19 +40,19 @@ class TransloaditResultsPlugin extends Plugin {
             assemblyId: assembly.assembly_id,
             stepName
           });
-                    SRTlib.send("]},");
+                    SRTlib.send('], "end": "emptyKey"},');
 
         });
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey2"},');
 
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
     });
     this.uppy.addResultData(uploadID, {
       results: assemblyResults
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_afterUpload"},');
 
   }
 }

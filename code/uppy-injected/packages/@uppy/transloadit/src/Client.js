@@ -8,7 +8,7 @@ module.exports = class Client {
     this._headers = {
       'Transloadit-Client': this.opts.client
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   createAssembly({templateId, params, fields, signature, expectedFiles}) {
@@ -23,12 +23,12 @@ module.exports = class Client {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       data.append(key, fields[key]);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
     data.append('num_expected_upload_files', expectedFiles);
     const url = `${this.opts.service}/assemblies`;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "createAssembly"},');
 
     return fetch(url, {
       method: 'post',
@@ -37,10 +37,10 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
       return response.json();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey2"},');
 
     }).then(assembly => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
@@ -52,28 +52,28 @@ module.exports = class Client {
         if (assembly.assembly_id) {
           error.details += ' ' + `Assembly ID: ${assembly.assembly_id}`;
         }
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey3"},');
 
         throw error;
       }
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
       return assembly;
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey3"},');
 
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
       return this._reportError(err, {
         url,
         type: 'API_ERROR'
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey4"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "createAssembly"},');
 
   }
   reserveFile(assembly, file) {
@@ -81,7 +81,7 @@ module.exports = class Client {
 
     const size = encodeURIComponent(file.size);
     const url = `${assembly.assembly_ssl_url}/reserve_file?size=${size}`;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "reserveFile"},');
 
     return fetch(url, {
       method: 'post',
@@ -89,15 +89,15 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey5"},');
 
       return response.json();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey5"},');
 
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
       return this._reportError(err, {
         assembly,
@@ -105,17 +105,17 @@ module.exports = class Client {
         url,
         type: 'API_ERROR'
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey6"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "reserveFile"},');
 
   }
   addFile(assembly, file) {
         SRTlib.send(`{ "anonymous": false, "function": "Client.addFile", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (!file.uploadURL) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "addFile"},');
 
       return Promise.reject(new Error('File does not have an `uploadURL`.'));
     }
@@ -125,7 +125,7 @@ module.exports = class Client {
     const fieldname = 'file';
     const qs = `size=${size}&filename=${filename}&fieldname=${fieldname}&s3Url=${uploadUrl}`;
     const url = `${assembly.assembly_ssl_url}/add_file?${qs}`;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "addFile"},');
 
     return fetch(url, {
       method: 'post',
@@ -133,15 +133,15 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey7"},');
 
       return response.json();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey7"},');
 
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey8"},');
 
       return this._reportError(err, {
         assembly,
@@ -149,17 +149,17 @@ module.exports = class Client {
         url,
         type: 'API_ERROR'
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey8"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "addFile"},');
 
   }
   cancelAssembly(assembly) {
         SRTlib.send(`{ "anonymous": false, "function": "Client.cancelAssembly", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     const url = assembly.assembly_ssl_url;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "cancelAssembly"},');
 
     return fetch(url, {
       method: 'delete',
@@ -167,61 +167,61 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey9"},');
 
       return response.json();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey9"},');
 
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
       return this._reportError(err, {
         url,
         type: 'API_ERROR'
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey10"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "cancelAssembly"},');
 
   }
   getAssemblyStatus(url) {
         SRTlib.send(`{ "anonymous": false, "function": "Client.getAssemblyStatus", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getAssemblyStatus"},');
 
     return fetch(url, {
       headers: this._headers
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey11"},');
 
       return response.json();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey11"},');
 
     }).catch(err => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey12"},');
 
       return this._reportError(err, {
         url,
         type: 'STATUS_ERROR'
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey12"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "getAssemblyStatus"},');
 
   }
   submitError(err, {endpoint, instance, assembly}) {
         SRTlib.send(`{ "anonymous": false, "function": "Client.submitError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     const message = err.details ? `${err.message} (${err.details})` : err.message;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "submitError"},');
 
     return fetch('https://status.transloadit.com/client_error', {
       method: 'post',
@@ -236,20 +236,20 @@ module.exports = class Client {
     }).then(response => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey13"},');
 
       return response.json();
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey13"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "submitError"},');
 
   }
   _reportError(err, params) {
         SRTlib.send(`{ "anonymous": false, "function": "Client._reportError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
     if (this.opts.errorReporting === false) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "_reportError"},');
 
       throw err;
     }
@@ -266,13 +266,13 @@ module.exports = class Client {
     this.submitError(err, opts).catch(_ => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey14", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey14"},');
 
     });
-    throw err;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_reportError"},');
 
-        SRTlib.send("]},");
+    throw err;
+        SRTlib.send('], "end": "_reportError"},');
 
   }
 };

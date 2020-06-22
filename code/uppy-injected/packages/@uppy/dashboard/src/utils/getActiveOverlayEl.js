@@ -5,14 +5,14 @@ module.exports = function getActiveOverlayEl(dashboardEl, activeOverlayType) {
   if (activeOverlayType) {
     const overlayEl = dashboardEl.querySelector(`[data-uppy-paneltype="${activeOverlayType}"]`);
     if (overlayEl) {
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports.getActiveOverlayEl"},');
 
       return overlayEl;
     }
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getActiveOverlayEl"},');
 
   return dashboardEl;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.getActiveOverlayEl"},');
 
 };

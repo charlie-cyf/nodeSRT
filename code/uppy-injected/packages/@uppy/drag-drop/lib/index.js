@@ -14,30 +14,30 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 function _assertThisInitialized(self) {
     SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (self === void 0) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
   return self;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_assertThisInitialized"},');
 
 }
 function _inheritsLoose(subClass, superClass) {
@@ -46,7 +46,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_inheritsLoose"},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -90,10 +90,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.handleDrop = _this.handleDrop.bind(_assertThisInitialized(_this));
     _this.addFiles = _this.addFiles.bind(_assertThisInitialized(_this));
     _this.render = _this.render.bind(_assertThisInitialized(_this));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "DragDrop"},');
 
     return _this;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "DragDrop"},');
 
   }
   var _proto = DragDrop.prototype;
@@ -102,7 +102,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     _Plugin.prototype.setOptions.call(this, newOpts);
     this.i18nInit();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.setOptions.setOptions"},');
 
   };
   _proto.i18nInit = function i18nInit() {
@@ -112,7 +112,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
     this.setPluginState();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.i18nInit.i18nInit"},');
 
   };
   _proto.addFiles = function addFiles(files) {
@@ -122,7 +122,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var descriptors = files.map(function (file) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.addFiles.addFiles.descriptors", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.addFiles.addFiles.descriptors"},');
 
       return {
         source: _this2.id,
@@ -133,7 +133,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           relativePath: file.relativePath || null
         }
       };
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.addFiles.addFiles.descriptors"},');
 
     });
     try {
@@ -141,7 +141,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     } catch (err) {
       this.uppy.log(err);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.addFiles.addFiles"},');
 
   };
   _proto.onInputChange = function onInputChange(event) {
@@ -151,7 +151,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var files = toArray(event.target.files);
     this.addFiles(files);
     event.target.value = null;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.onInputChange.onInputChange"},');
 
   };
   _proto.handleDrop = function handleDrop(event, dropCategory) {
@@ -169,7 +169,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
             SRTlib.send(`{ "anonymous": false, "function": "logDropError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
       _this3.uppy.log(error, 'error');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "logDropError"},');
 
     };
     getDroppedFiles(event.dataTransfer, {
@@ -177,13 +177,13 @@ module.exports = (_temp = _class = (function (_Plugin) {
     }).then(function (files) {
             SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleDrop.handleDrop.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleDrop.handleDrop.then"},');
 
       return _this3.addFiles(files);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleDrop.handleDrop.then"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleDrop.handleDrop"},');
 
   };
   _proto.handleDragOver = function handleDragOver(event) {
@@ -196,7 +196,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.setPluginState({
       isDraggingOver: true
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleDragOver.handleDragOver"},');
 
   };
   _proto.handleDragLeave = function handleDragLeave(event) {
@@ -212,10 +212,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       _this4.setPluginState({
         isDraggingOver: false
       });
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports._temp._class._proto.handleDragLeave.handleDragLeave.removeDragOverClassTimeout.setTimeout"},');
 
     }, 50);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.handleDragLeave.handleDragLeave"},');
 
   };
   _proto.renderHiddenFileInput = function renderHiddenFileInput() {
@@ -223,7 +223,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     var _this5 = this;
     var restrictions = this.uppy.opts.restrictions;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput"},');
 
     return h("input", {
       id: this.uppy.id + '-' + this.id,
@@ -235,7 +235,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput.ReturnStatement.h.ref.ref", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         _this5.fileInputRef = _ref;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput.ReturnStatement.h.ref.ref"},');
 
       },
       name: this.opts.inputName,
@@ -243,13 +243,13 @@ module.exports = (_temp = _class = (function (_Plugin) {
       accept: restrictions.allowedFileTypes,
       onchange: this.onInputChange
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput"},');
 
   };
   _proto.renderArrowSvg = function renderArrowSvg() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.renderArrowSvg.renderArrowSvg", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.renderArrowSvg.renderArrowSvg"},');
 
     return h("svg", {
       "aria-hidden": "true",
@@ -262,13 +262,13 @@ module.exports = (_temp = _class = (function (_Plugin) {
       d: "M11 10V0H5v10H2l6 6 6-6h-3zm0 0",
       "fill-rule": "evenodd"
     }));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.renderArrowSvg.renderArrowSvg"},');
 
   };
   _proto.renderLabel = function renderLabel() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.renderLabel.renderLabel", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.renderLabel.renderLabel"},');
 
     return h("label", {
       class: "uppy-DragDrop-label",
@@ -278,18 +278,18 @@ module.exports = (_temp = _class = (function (_Plugin) {
         class: "uppy-DragDrop-browse"
       }, this.i18n('browse'))
     }));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.renderLabel.renderLabel"},');
 
   };
   _proto.renderNote = function renderNote() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.renderNote.renderNote", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.renderNote.renderNote"},');
 
     return h("span", {
       class: "uppy-DragDrop-note"
     }, this.opts.note);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.renderNote.renderNote"},');
 
   };
   _proto.render = function render(state) {
@@ -301,7 +301,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       width: this.opts.width,
       height: this.opts.height
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
     return h("button", {
       type: "button",
@@ -310,10 +310,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       onClick: function onClick() {
                 SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.render.render.ReturnStatement.h.onClick.onClick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.render.render.ReturnStatement.h.onClick.onClick"},');
 
         return _this6.fileInputRef.click();
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "module.exports._temp._class._proto.render.render.ReturnStatement.h.onClick.onClick"},');
 
       },
       onDragOver: this.handleDragOver,
@@ -322,7 +322,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     }, this.renderHiddenFileInput(), h("div", {
       class: "uppy-DragDrop-inner"
     }, this.renderArrowSvg(), this.renderLabel(), this.renderNote()));
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
 
   };
   _proto.install = function install() {
@@ -335,19 +335,19 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.uninstall.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.unmount();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
   return DragDrop;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

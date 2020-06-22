@@ -145,14 +145,14 @@ bg_BG.pluralize = function (count) {
     SRTlib.send(`{ "anonymous": true, "function": "bg_BG.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
   if (count === 1) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "bg_BG.pluralize"},');
 
     return 0;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "bg_BG.pluralize"},');
 
   return 1;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "bg_BG.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

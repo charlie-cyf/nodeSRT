@@ -10,19 +10,19 @@ function counter(state = 0, action) {
 
   switch (action.type) {
     case 'INCREMENT':
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "counter"},');
 
       return state + 1;
     case 'DECREMENT':
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "counter"},');
 
       return state - 1;
     default:
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "counter"},');
 
       return state;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "counter"},');
 
 }
 const reducer = combineReducers({
@@ -38,17 +38,17 @@ const valueEl = document.querySelector('#value');
 function getCounter() {
     SRTlib.send(`{ "anonymous": false, "function": "getCounter", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getCounter"},');
 
   return store.getState().counter;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "getCounter"},');
 
 }
 function render() {
     SRTlib.send(`{ "anonymous": false, "function": "render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
   valueEl.innerHTML = getCounter().toString();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "render"},');
 
 }
 render();
@@ -59,7 +59,7 @@ document.querySelector('#increment').onclick = () => {
   store.dispatch({
     type: 'INCREMENT'
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };
 document.querySelector('#decrement').onclick = () => {
@@ -68,7 +68,7 @@ document.querySelector('#decrement').onclick = () => {
   store.dispatch({
     type: 'DECREMENT'
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 };
 document.querySelector('#incrementIfOdd').onclick = () => {
@@ -79,7 +79,7 @@ document.querySelector('#incrementIfOdd').onclick = () => {
       type: 'INCREMENT'
     });
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey3"},');
 
 };
 document.querySelector('#incrementAsync').onclick = () => {
@@ -88,15 +88,15 @@ document.querySelector('#incrementAsync').onclick = () => {
   setTimeout(() => {
         SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey4"},');
 
     return store.dispatch({
       type: 'INCREMENT'
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emptyKey4"},');
 
   }, 1000);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey5"},');
 
 };
 const uppy = Uppy({

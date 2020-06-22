@@ -4,7 +4,7 @@ var AddFiles = require('./AddFiles');
 var AddFilesPanel = function AddFilesPanel(props) {
     SRTlib.send(`{ "anonymous": false, "function": "AddFilesPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "AddFilesPanel"},');
 
   return h("div", {
     class: "uppy-Dashboard-AddFilesPanel",
@@ -22,14 +22,14 @@ var AddFilesPanel = function AddFilesPanel(props) {
     onclick: function onclick(ev) {
             SRTlib.send(`{ "anonymous": true, "function": "AddFilesPanel.AddFilesPanel.ReturnStatement.h.h.h.onclick.onclick", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "AddFilesPanel.AddFilesPanel.ReturnStatement.h.h.h.onclick.onclick"},');
 
       return props.toggleAddFilesPanel(false);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "AddFilesPanel.AddFilesPanel.ReturnStatement.h.h.h.onclick.onclick"},');
 
     }
   }, props.i18n('back'))), h(AddFiles, props));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "AddFilesPanel"},');
 
 };
 module.exports = AddFilesPanel;

@@ -38,7 +38,7 @@ if (window.location.search === '?socketerr=true') {
       }
     });
     window.uppy.off('upload-progress', emitError);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "emitError"},');
 
   };
   window.uppy.on('upload-progress', emitError);

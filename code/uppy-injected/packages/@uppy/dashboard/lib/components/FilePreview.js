@@ -6,7 +6,7 @@ module.exports = function FilePreview(props) {
 
   var file = props.file;
   if (file.preview) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.FilePreview"},');
 
     return h("img", {
       class: "uppy-DashboardItem-previewImg",
@@ -15,7 +15,7 @@ module.exports = function FilePreview(props) {
     });
   }
   var _getFileTypeIcon = getFileTypeIcon(file.type), color = _getFileTypeIcon.color, icon = _getFileTypeIcon.icon;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.FilePreview"},');
 
   return h("div", {
     class: "uppy-DashboardItem-previewIconWrap"
@@ -38,6 +38,6 @@ module.exports = function FilePreview(props) {
     rx: "3",
     "fill-rule": "evenodd"
   })));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.FilePreview"},');
 
 };

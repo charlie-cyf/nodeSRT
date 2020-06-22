@@ -1,6 +1,10 @@
 var SRTlib = require('SRT-util');
 const supportsUploadProgress = require('./supportsUploadProgress');
 describe('supportsUploadProgress', () => {
+    SRTlib.startLogger('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code', 'http://localhost:8888/instrument-message');
+
+    SRTlib.send(`{ "testSuite": "supportsUploadProgress", "fileName": "${__filename}", "calls" : [`);
+
   it('returns true in working browsers', () => {
         SRTlib.startLogger('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code', 'http://localhost:8888/instrument-message');
 
@@ -11,7 +15,7 @@ describe('supportsUploadProgress', () => {
     expect(supportsUploadProgress('Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; rv:11.0) like Gecko')).toBe(true);
     expect(supportsUploadProgress('Chrome (AppleWebKit/537.1; Chrome50.0; Windows NT 6.3) AppleWebKit/537.36 (KHTML like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393')).toBe(true);
     expect(supportsUploadProgress('Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/18.18218')).toBe(true);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-returns%20true%20in%20working%20browsers"},');
     SRTlib.endLogger();
 
   });
@@ -22,8 +26,11 @@ describe('supportsUploadProgress', () => {
 
     expect(supportsUploadProgress('Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063')).toBe(false);
     expect(supportsUploadProgress('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134')).toBe(false);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-returns%20false%20in%20broken%20browsers"},');
     SRTlib.endLogger();
 
   });
+    SRTlib.send(']},');
+  SRTlib.endLogger();
+
 });

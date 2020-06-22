@@ -4,23 +4,23 @@ module.exports = function isDragDropSupported() {
 
   const div = document.createElement('div');
   if (!(('draggable' in div)) || !(('ondragstart' in div) && ('ondrop' in div))) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.isDragDropSupported"},');
 
     return false;
   }
   if (!(('FormData' in window))) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.isDragDropSupported"},');
 
     return false;
   }
   if (!(('FileReader' in window))) {
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.isDragDropSupported"},');
 
     return false;
   }
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.isDragDropSupported"},');
 
   return true;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.isDragDropSupported"},');
 
 };

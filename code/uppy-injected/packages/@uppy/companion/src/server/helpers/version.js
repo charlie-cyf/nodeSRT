@@ -5,9 +5,9 @@ exports.gte = (v1, v2) => {
 
   v1 = semver.coerce(v1).version;
   v2 = semver.coerce(v2).version;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
   return semver.gte(v1, v2);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 };

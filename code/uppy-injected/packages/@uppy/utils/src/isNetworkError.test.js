@@ -6,6 +6,8 @@ describe('isNetworkError', () => {
     SRTlib.send(`{ "testSuite": "isNetworkError", "fileName": "${__filename}", "calls" : [`);
 
   it('should return true if the specified xhr object contains a network error', () => {
+        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+
         SRTlib.send(`{ "testSuite": "isNetworkError", "testName": "should%20return%20true%20if%20the%20specified%20xhr%20object%20contains%20a%20network%20error", "fileName": "${__filename}", "calls" : [`);
 
     const xhrNetworkErrorMock = {
@@ -32,7 +34,8 @@ describe('isNetworkError', () => {
     expect(isNetworkError(xhrNetworkError2Mock)).toEqual(true);
     expect(isNetworkError(xhrRegularErrorMock)).toEqual(false);
     expect(isNetworkError(xhrNetworkSuccessMock)).toEqual(false);
-        SRTlib.send(']},');
+        SRTlib.send('], "end": "test-should%20return%20true%20if%20the%20specified%20xhr%20object%20contains%20a%20network%20error"},');
+    SRTlib.endLogger();
 
   });
     SRTlib.send(']},');

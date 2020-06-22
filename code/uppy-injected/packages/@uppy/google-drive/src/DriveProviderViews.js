@@ -9,7 +9,7 @@ module.exports = class DriveProviderViews extends ProviderViews {
     if (!file.custom.isTeamDrive && !file.custom.isSharedDrive) {
       super.toggleCheckbox(e, file);
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "toggleCheckbox"},');
 
   }
 };

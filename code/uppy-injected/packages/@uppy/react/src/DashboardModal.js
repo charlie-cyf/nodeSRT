@@ -9,7 +9,7 @@ class DashboardModal extends React.Component {
         SRTlib.send(`{ "anonymous": false, "function": "DashboardModal.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.installPlugin();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "componentDidMount"},');
 
   }
   componentDidUpdate(prevProps) {
@@ -24,14 +24,14 @@ class DashboardModal extends React.Component {
     } else if (!prevProps.open && this.props.open) {
       this.plugin.openModal();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "componentDidUpdate"},');
 
   }
   componentWillUnmount() {
         SRTlib.send(`{ "anonymous": false, "function": "DashboardModal.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
     this.uninstallPlugin();
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "componentWillUnmount"},');
 
   }
   installPlugin() {
@@ -52,7 +52,7 @@ class DashboardModal extends React.Component {
     if (this.props.open) {
       this.plugin.openModal();
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "installPlugin"},');
 
   }
   uninstallPlugin(props = this.props) {
@@ -60,24 +60,24 @@ class DashboardModal extends React.Component {
 
     const uppy = props.uppy;
     uppy.removePlugin(this.plugin);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "uninstallPlugin"},');
 
   }
   render() {
         SRTlib.send(`{ "anonymous": false, "function": "DashboardModal.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "render"},');
 
     return h('div', {
       ref: container => {
                 SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
         this.container = container;
-                SRTlib.send("]},");
+                SRTlib.send('], "end": "emptyKey"},');
 
       }
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "render"},');
 
   }
 }

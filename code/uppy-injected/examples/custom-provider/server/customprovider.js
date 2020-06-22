@@ -7,16 +7,16 @@ class MyCustomProvider {
         SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
     this.authProvider = MyCustomProvider.authProvider;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "constructor"},');
 
   }
   static get authProvider() {
         SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "authProvider"},');
 
     return 'mycustomprovider';
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "authProvider"},');
 
   }
   list(options, done) {
@@ -33,35 +33,35 @@ class MyCustomProvider {
         }]
       }
     };
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "list"},');
 
     return done(null, response, response.body);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "list"},');
 
   }
   download({id, token}, onData) {
         SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "download"},');
 
     return fs.readFile(DUMM_FILE, (err, data) => {
             SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
       if (err) console.error(err);
       onData(data);
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "emptyKey"},');
 
     });
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "download"},');
 
   }
   size({id, token}, done) {
         SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "size"},');
 
     return done(fs.statSync(DUMM_FILE).size);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "size"},');
 
   }
 }

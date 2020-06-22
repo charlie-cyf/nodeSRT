@@ -17,7 +17,7 @@ authServer.all('*/callback', (req, res, next) => {
     }
   };
   next();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey"},');
 
 });
 authServer.all(['*/send-token', '*/redirect'], (req, res, next) => {
@@ -29,7 +29,7 @@ authServer.all(['*/send-token', '*/redirect'], (req, res, next) => {
     }
   };
   next();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "emptyKey2"},');
 
 });
 authServer.use(app);

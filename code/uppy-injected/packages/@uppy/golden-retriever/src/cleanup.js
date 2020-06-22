@@ -6,6 +6,6 @@ module.exports = function cleanup() {
 
   MetaDataStore.cleanup();
   IndexedDBStore.cleanup();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.cleanup"},');
 
 };

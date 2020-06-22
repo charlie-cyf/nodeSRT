@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
     return target;
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "_extends"},');
 
   });
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "_extends"},');
 
 }
 var FileList = require('./FileList');
@@ -38,14 +38,14 @@ var PreactCSSTransitionGroup = require('preact-css-transition-group');
 function TransitionWrapper(props) {
     SRTlib.send(`{ "anonymous": false, "function": "TransitionWrapper", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "TransitionWrapper"},');
 
   return h(PreactCSSTransitionGroup, {
     transitionName: "uppy-transition-slideDownUp",
     transitionEnterTimeout: 250,
     transitionLeaveTimeout: 250
   }, props.children);
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "TransitionWrapper"},');
 
 }
 var WIDTH_XL = 900;
@@ -80,7 +80,7 @@ module.exports = function Dashboard(props) {
     itemsPerRow = 3;
   }
   var showFileList = props.showSelectedFiles && !noFiles;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.Dashboard"},');
 
   return h("div", {
     class: dashboardClassName,
@@ -134,12 +134,12 @@ module.exports = function Dashboard(props) {
   }, props.progressindicators.map(function (target) {
         SRTlib.send(`{ "anonymous": true, "function": "module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map"},');
 
     return props.getPlugin(target.id).render(props.state);
-        SRTlib.send("]},");
+        SRTlib.send('], "end": "module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map"},');
 
   })))));
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.Dashboard"},');
 
 };

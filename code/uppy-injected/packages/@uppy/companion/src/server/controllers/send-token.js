@@ -19,19 +19,19 @@ module.exports = function sendToken(req, res, next) {
     const allowedClients = req.companion.options.clients;
     if (!allowedClients || hasMatch(origin, allowedClients) || hasMatch(parseUrl(origin).host, allowedClients)) {
       const allowsStringMessage = versionCmp.gte(clientVersion, '1.0.2');
-            SRTlib.send("]},");
+            SRTlib.send('], "end": "module.exports.sendToken"},');
 
       return res.send(allowsStringMessage ? htmlContent(uppyAuthToken, origin) : oldHtmlContent(uppyAuthToken, origin));
     }
   }
   next();
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "module.exports.sendToken"},');
 
 };
 const htmlContent = (token, origin) => {
     SRTlib.send(`{ "anonymous": false, "function": "htmlContent", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "htmlContent"},');
 
   return `
     <!DOCTYPE html>
@@ -45,13 +45,13 @@ const htmlContent = (token, origin) => {
     </head>
     <body></body>
     </html>`;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "htmlContent"},');
 
 };
 const oldHtmlContent = (token, origin) => {
     SRTlib.send(`{ "anonymous": false, "function": "oldHtmlContent", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "oldHtmlContent"},');
 
   return `
     <!DOCTYPE html>
@@ -65,6 +65,6 @@ const oldHtmlContent = (token, origin) => {
     </head>
     <body></body>
     </html>`;
-    SRTlib.send("]},");
+    SRTlib.send('], "end": "oldHtmlContent"},');
 
 };
