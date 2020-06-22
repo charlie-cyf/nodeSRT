@@ -1,82 +1,62 @@
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
 var SRTlib = require('SRT-util');
-function _assertThisInitialized(self) {
-    SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
-  if (self === void 0) {
-        SRTlib.send('], "end": "_assertThisInitialized"},');
+var _require = require('@uppy/core'),
+    Plugin = _require.Plugin;
 
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-    SRTlib.send('], "end": "_assertThisInitialized"},');
-
-  return self;
-    SRTlib.send('], "end": "_assertThisInitialized"},');
-
-}
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
-
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send('], "end": "_inheritsLoose"},');
-
-}
-var _require = require('@uppy/core'), Plugin = _require.Plugin;
 var findDOMElement = require('@uppy/utils/lib/findDOMElement');
-var TransloaditFormResult = (function (_Plugin) {
-    SRTlib.send(`{ "anonymous": true, "function": "TransloaditFormResult", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+var TransloaditFormResult = /*#__PURE__*/function (_Plugin) {
   _inheritsLoose(TransloaditFormResult, _Plugin);
-  function TransloaditFormResult(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "TransloaditFormResult", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
 
+  function TransloaditFormResult(uppy, opts) {
     var _this;
+
+    SRTlib.send("{ \"anonymous\": false, \"function\": \"TransloaditFormResult.constructor\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 2, \"calls\" : [");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.id = _this.opts.id || 'TransloaditFormResult';
     _this.type = 'modifier';
     _this.handleUpload = _this.handleUpload.bind(_assertThisInitialized(_this));
-        SRTlib.send('], "end": "TransloaditFormResult"},');
-
+    SRTlib.send('], "end": "constructor"},');
     return _this;
-        SRTlib.send('], "end": "TransloaditFormResult"},');
-
   }
-  var _proto = TransloaditFormResult.prototype;
-  _proto.getAssemblyStatuses = function getAssemblyStatuses(fileIDs) {
-        SRTlib.send(`{ "anonymous": true, "function": "TransloaditFormResult._proto.getAssemblyStatuses.getAssemblyStatuses2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+  var _proto = TransloaditFormResult.prototype;
+
+  _proto.getAssemblyStatuses = function getAssemblyStatuses(fileIDs) {
     var _this2 = this;
+
+    SRTlib.send("{ \"anonymous\": false, \"function\": \"TransloaditFormResult.getAssemblyStatuses\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
     var assemblyIds = [];
     fileIDs.forEach(function (fileID) {
-            SRTlib.send(`{ "anonymous": true, "function": "TransloaditFormResult._proto.getAssemblyStatuses.getAssemblyStatuses", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
 
       var file = _this2.uppy.getFile(fileID);
+
       var assembly = file.transloadit && file.transloadit.assembly;
+
       if (assembly && assemblyIds.indexOf(assembly) === -1) {
         assemblyIds.push(assembly);
       }
-            SRTlib.send('], "end": "TransloaditFormResult._proto.getAssemblyStatuses.getAssemblyStatuses"},');
 
+      SRTlib.send('], "end": "emptyKey"},');
     });
     var tl = this.uppy.getPlugin(this.opts.transloaditPluginId || 'Transloadit');
-        SRTlib.send('], "end": "TransloaditFormResult._proto.getAssemblyStatuses.getAssemblyStatuses2"},');
-
+    SRTlib.send('], "end": "getAssemblyStatuses"},');
     return assemblyIds.map(function (id) {
-            SRTlib.send(`{ "anonymous": true, "function": "TransloaditFormResult._proto.getAssemblyStatuses.getAssemblyStatuses.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
-
-            SRTlib.send('], "end": "TransloaditFormResult._proto.getAssemblyStatuses.getAssemblyStatuses.ReturnStatement"},');
-
+      SRTlib.send("{ \"anonymous\": true, \"function\": \"emptyKey2\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
+      SRTlib.send('], "end": "emptyKey2"},');
       return tl.getAssembly(id);
-            SRTlib.send('], "end": "TransloaditFormResult._proto.getAssemblyStatuses.getAssemblyStatuses.ReturnStatement"},');
-
+      SRTlib.send('], "end": "emptyKey2"},');
     });
-        SRTlib.send('], "end": "TransloaditFormResult._proto.getAssemblyStatuses.getAssemblyStatuses2"},');
-
+    SRTlib.send('], "end": "getAssemblyStatuses"},');
   };
-  _proto.handleUpload = function handleUpload(fileIDs) {
-        SRTlib.send(`{ "anonymous": true, "function": "TransloaditFormResult._proto.handleUpload.handleUpload", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
 
+  _proto.handleUpload = function handleUpload(fileIDs) {
+    SRTlib.send("{ \"anonymous\": false, \"function\": \"TransloaditFormResult.handleUpload\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 1, \"calls\" : [");
     var assemblies = this.getAssemblyStatuses(fileIDs);
     var input = document.createElement('input');
     input.type = 'hidden';
@@ -84,27 +64,22 @@ var TransloaditFormResult = (function (_Plugin) {
     input.value = JSON.stringify(assemblies);
     var target = findDOMElement(this.opts.target);
     target.appendChild(input);
-        SRTlib.send('], "end": "TransloaditFormResult._proto.handleUpload.handleUpload"},');
-
+    SRTlib.send('], "end": "handleUpload"},');
   };
+
   _proto.install = function install() {
-        SRTlib.send(`{ "anonymous": true, "function": "TransloaditFormResult._proto.install.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
+    SRTlib.send("{ \"anonymous\": false, \"function\": \"TransloaditFormResult.install\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 0, \"calls\" : [");
     this.uppy.addPostProcessor(this.handleUpload);
-        SRTlib.send('], "end": "TransloaditFormResult._proto.install.install"},');
-
+    SRTlib.send('], "end": "install"},');
   };
+
   _proto.uninstall = function uninstall() {
-        SRTlib.send(`{ "anonymous": true, "function": "TransloaditFormResult._proto.uninstall.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
-
+    SRTlib.send("{ \"anonymous\": false, \"function\": \"TransloaditFormResult.uninstall\", \"fileName\": \"" + __filename + "\", \"paramsNumber\": 0, \"calls\" : [");
     this.uppy.removePostProcessor(this.handleUpload);
-        SRTlib.send('], "end": "TransloaditFormResult._proto.uninstall.uninstall"},');
-
+    SRTlib.send('], "end": "uninstall"},');
   };
-    SRTlib.send('], "end": "TransloaditFormResult"},');
 
   return TransloaditFormResult;
-    SRTlib.send('], "end": "TransloaditFormResult"},');
+}(Plugin);
 
-})(Plugin);
 module.exports = TransloaditFormResult;
