@@ -2,12 +2,12 @@ var SRTlib = require('SRT-util');
 const supportsUploadProgress = require('./supportsUploadProgress');
 describe('supportsUploadProgress', () => {
     beforeAll(() => {
-    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code ", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+    SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "supportsUploadProgress", "fileName": "${__filename}", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('returns true in working browsers', () => {
@@ -22,11 +22,11 @@ describe('supportsUploadProgress', () => {
     expect(supportsUploadProgress('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134')).toBe(false);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": ${jasmine["currentTest"].description} }`);
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": ${jasmine["currentTest"].description} }`);
+    SRTlib.send(`], "endTestSuiteName": "supportsUploadProgress" }`);
     SRTlib.endLogger();
   });
 

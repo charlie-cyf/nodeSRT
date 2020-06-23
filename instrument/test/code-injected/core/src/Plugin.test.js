@@ -3,22 +3,22 @@ const Plugin = require('./Plugin');
 const Core = require('./index');
 describe('Plugin', () => {
     beforeAll(() => {
-    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code ", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+    SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "Plugin", "fileName": "${__filename}", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
   });
 
   describe('getPluginState', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code ", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "Plugin", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('returns an empty object if no state is available', () => {
@@ -27,23 +27,23 @@ describe('Plugin', () => {
       expect(inst.getPluginState()).toEqual({});
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": ${jasmine["currentTest"].description} }`);
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": ${jasmine["currentTest"].description} }`);
+      SRTlib.send(`], "endTestSuiteName": "Plugin" }`);
       SRTlib.endLogger();
     });
 
   });
   describe('setPluginState', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code ", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "Plugin", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('applies patches', () => {
@@ -64,21 +64,21 @@ describe('Plugin', () => {
       });
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": ${jasmine["currentTest"].description} }`);
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": ${jasmine["currentTest"].description} }`);
+      SRTlib.send(`], "endTestSuiteName": "Plugin" }`);
       SRTlib.endLogger();
     });
 
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": ${jasmine["currentTest"].description} }`);
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": ${jasmine["currentTest"].description} }`);
+    SRTlib.send(`], "endTestSuiteName": "Plugin" }`);
     SRTlib.endLogger();
   });
 

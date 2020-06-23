@@ -5,6 +5,7 @@ const { Parser } = require("acorn")
 const astring = require('astring')
 const { t } = require('typy')
 var _ = require('underscore');
+const { para } = require('acorn-jsx/xhtml')
 
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
@@ -111,18 +112,43 @@ module.exports = class Instrumentor {
                         const getListOfId = this.getListOfId;
                         const functionHandler = this.functionHandler;
                         const insertBeforeReturn = this.insertBeforeReturn;
+                        
+                        const buildFunctionStartMsg = function (functionName, paramsNum, isAnonymous, classInfo) {
+                            const temp = {
+                                type: "FUNCTIONSTART",
+                                anonymous: isAnonymous,
+                                function: functionName,
+                                fileName: "${__filename}",
+                                paramsNumber: paramsNum,
+                                classInfo: classInfo
+                            }
+                            return ASTParser.parse('SRTlib.send(`'+JSON.stringify(temp)+',`);')
+                        }
+                        
+                        const buildFunctionEndMsg = function (functionName, paramsNum) {
+                            const temp = {
+                                type: "FUNCTIONEND",
+                                function: functionName,
+                                paramsNumber: paramsNum
+                            }
+                            return ASTParser.parse('SRTlib.send(`'+JSON.stringify(temp)+',`);')
+                        };
+
+
                         acornWalk.ancestor(tree, {
                             FunctionDeclaration(node, ancestors) {
                                 const paramsNum = node.params.length;
                                 const funcName = node.id.name;
-                                node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"' + funcName + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
-                                node.body.body.push(ASTParser.parse('SRTlib.send(\'], "end": "' + funcName + '"},\');'))
-                                insertBeforeReturn(node, funcName);
+                                // node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"' + funcName + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+                                node.body.body.unshift(buildFunctionStartMsg(funcName, paramsNum, false, undefined))
+                                // node.body.body.push(ASTParser.parse('SRTlib.send(\'], "end": "' + funcName + '"},\');'))
+                                node.body.body.push(buildFunctionEndMsg(funcName, paramsNum))
+                                insertBeforeReturn(node, funcName, buildFunctionEndMsg);
                             },
 
                             FunctionExpression(node, ancestors) {
-                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap);
-                                insertBeforeReturn(node, funcName);
+                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
+                                insertBeforeReturn(node, funcName, buildFunctionEndMsg);
                             },
 
                             ArrowFunctionExpression(node, ancestors) {
@@ -138,8 +164,8 @@ module.exports = class Instrumentor {
                                     }
                                 }
 
-                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap);
-                                insertBeforeReturn(node, funcName)
+                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
+                                insertBeforeReturn(node, funcName, buildFunctionEndMsg)
                             },
 
 
@@ -165,13 +191,15 @@ module.exports = class Instrumentor {
         })
     }
 
-    insertBeforeReturn(node, funcName) {
+    insertBeforeReturn(node, funcName, buildFunctionEndMsg) {
         const visited = new Map();
 
         const isEnd = function (node) {
+            console.log('node', JSON.stringify(node))
             let obj = t(node, 'body[0].expression.arguments[0].value').safeObject;
+            console.log('obj', obj)
             if (obj) {
-                return obj.includes('], \"end\": \"')
+                return obj.includes('FUNCTIONEND')
             }
             return false;
         }
@@ -181,12 +209,12 @@ module.exports = class Instrumentor {
             if (!node) return;
             if (node.type === 'ReturnStatement' || node.type === 'ThrowStatement') {
                 if (parent.type === "SwitchCase") {
-                    parent.consequent.unshift(ASTParser.parse('SRTlib.send(\'], "end": "' + funcName + '"},\');'));
+                    parent.consequent.unshift(buildFunctionEndMsg(funcName));
 
                 } else if (parent.type == 'BlockStatement') {
                     const returnIdx = parent.body.findIndex(ele => (ele.type === 'ReturnStatement' || ele.type === 'ThrowStatement'));
                     if (!isEnd(parent.body[returnIdx - 1]))
-                        parent.body.splice(returnIdx, 0, ASTParser.parse('SRTlib.send(\'], "end": "' + funcName + '"},\');'))
+                        parent.body.splice(returnIdx, 0, buildFunctionEndMsg(funcName))
                 } else {
                     const blkStmt = {
                         type: 'BlockStatement',
@@ -197,7 +225,7 @@ module.exports = class Instrumentor {
                     parent[key] = blkStmt;
                     const returnIdx = parent[key].body.findIndex(ele => (ele.type === 'ReturnStatement' || ele.type === 'ThrowStatement'));
                     if (!isEnd(parent[key].body[returnIdx - 1]))
-                        parent[key].body.splice(returnIdx, 0, ASTParser.parse('SRTlib.send(\'], "end": "' + funcName + '"},\');'))
+                        parent[key].body.splice(returnIdx, 0, buildFunctionEndMsg(funcName))
                 }
             } else {
                 Object.keys(node).forEach(key => {
@@ -218,7 +246,7 @@ module.exports = class Instrumentor {
         insert(node, null);
     }
 
-    functionHandler(node, ancestors, getListOfId, functionMap) {
+    functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg) {
         const paramsNum = node.params.length;
 
         const memberExpHandler = function (node, idList) {
@@ -251,13 +279,18 @@ module.exports = class Instrumentor {
         let fname;
         if (parent.type === 'VariableDeclarator' && parent.id.type === 'Identifier') {
             fname = parent.id.name;
-            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
-
+            // node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+            node.body.body.unshift(buildFunctionStartMsg(fname, paramsNum, false, undefined))
         } else if (parent.type === 'MethodDefinition') {
             const classDeclare = ancestors[ancestors.length - 4];
-            const className = classDeclare.id.name;
+            const classObj = {className: classDeclare.id.name};
+            if(classDeclare.superClass !== null){
+                classObj.superClass = classDeclare.superClass.name;
+            }
+            
             fname = parent.key.name;
-            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "class": "' + className + '", "function": \"' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+            // node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "class": "' + className + '", "function": \"' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+            node.body.body.unshift(buildFunctionStartMsg(fname, paramsNum, false, classObj));
         }
         else {
             fname = getListOfId(ancestors, []).join('.');
@@ -270,11 +303,12 @@ module.exports = class Instrumentor {
                 fname = fname;
             }
 
-            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": true, "function": \"' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
-
+            // node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": true, "function": \"' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+            node.body.body.unshift(buildFunctionStartMsg(fname, paramsNum, true, undefined));
         }
 
-        node.body.body.push(ASTParser.parse('SRTlib.send(\'], "end": "' + fname + '"},\');'))
+        // node.body.body.push(ASTParser.parse('SRTlib.send(\'], "end": "' + fname + '"},\');'))
+        node.body.body.push(buildFunctionEndMsg(fname));
         return fname
 
     }

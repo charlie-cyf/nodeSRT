@@ -3,12 +3,12 @@ const {finishUploadTest, startUploadTest, uploadWithRetry} = require('./helper')
 const testURL = 'http://localhost:4567/providers';
 describe('File upload with Dropbox Provider', () => {
     beforeAll(() => {
-    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code ", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+    SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20Dropbox%20Provider", "fileName": "${__filename}", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": ${jasmine["currentTest"].description}, "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -42,11 +42,11 @@ describe('File upload with Dropbox Provider', () => {
     await uploadWithRetry(browser, 'Dropbox', testURL);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": ${jasmine["currentTest"].description} }`);
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": ${jasmine["currentTest"].description} }`);
+    SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20Dropbox%20Provider" }`);
     SRTlib.endLogger();
   });
 
