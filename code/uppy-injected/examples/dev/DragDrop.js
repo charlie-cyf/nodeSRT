@@ -4,7 +4,7 @@ const Tus = require('@uppy/tus/src');
 const DragDrop = require('@uppy/drag-drop/src');
 const ProgressBar = require('@uppy/progress-bar/src');
 module.exports = () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
   const uppyDragDrop = Uppy({
     debug: true,
@@ -19,7 +19,7 @@ module.exports = () => {
   });
   window.uppy = uppyDragDrop;
   uppyDragDrop.on('complete', result => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
     if (result.failed.length === 0) {
       console.log('Upload successful 😀');
@@ -28,9 +28,9 @@ module.exports = () => {
     }
     console.log('successful files:', result.successful);
     console.log('failed files:', result.failed);
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 };

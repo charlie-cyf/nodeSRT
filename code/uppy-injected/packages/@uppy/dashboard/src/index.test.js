@@ -10,7 +10,7 @@ describe('Dashboard', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('can safely be added together with the StatusBar without id conflicts', () => {
@@ -88,11 +88,11 @@ describe('Dashboard', () => {
     expect(core.getPlugin('Dashboard').i18n('myDevice')).toEqual('Май дивайс');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "Dashboard" }`);
+    SRTlib.send(`], "endTestSuiteName": "Dashboard" },`);
     SRTlib.endLogger();
   });
 

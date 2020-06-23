@@ -43,17 +43,17 @@ describe('Translator', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   describe('translate', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "Translator", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "translate", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should translate a string', () => {
@@ -76,11 +76,11 @@ describe('Translator', () => {
       })).toEqual(['Hello ', who]);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "Translator" }`);
+      SRTlib.send(`], "endTestSuiteName": "translate" },`);
       SRTlib.endLogger();
     });
 
@@ -88,11 +88,11 @@ describe('Translator', () => {
   describe('translation strings inheritance / overriding', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "Translator", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "translation%20strings%20inheritance%20/%20overriding", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     const launguagePackLoadedInCore = english;
@@ -119,11 +119,11 @@ describe('Translator', () => {
       })).toEqual('Beep boop: img.jpg');
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "Translator" }`);
+      SRTlib.send(`], "endTestSuiteName": "translation%20strings%20inheritance%20/%20overriding" },`);
       SRTlib.endLogger();
     });
 
@@ -131,11 +131,11 @@ describe('Translator', () => {
   describe('interpolation', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "Translator", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "interpolation", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should interpolate a string', () => {
@@ -145,11 +145,11 @@ describe('Translator', () => {
       })).toEqual('You have chosen: img.jpg');
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "Translator" }`);
+      SRTlib.send(`], "endTestSuiteName": "interpolation" },`);
       SRTlib.endLogger();
     });
 
@@ -157,11 +157,11 @@ describe('Translator', () => {
   describe('pluralization', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "Translator", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "pluralization", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should translate a string', () => {
@@ -207,21 +207,21 @@ describe('Translator', () => {
       }).toThrow('Attempted to use a string with plural forms, but no value was given for %{smart_count}');
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "Translator" }`);
+      SRTlib.send(`], "endTestSuiteName": "pluralization" },`);
       SRTlib.endLogger();
     });
 
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "Translator" }`);
+    SRTlib.send(`], "endTestSuiteName": "Translator" },`);
     SRTlib.endLogger();
   });
 

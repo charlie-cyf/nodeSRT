@@ -9,14 +9,14 @@ var exorcist = require('exorcist');
 var glob = require('glob');
 var path = require('path');
 function handleErr(err) {
-    SRTlib.send(`{ "anonymous": false, "function": "handleErr", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleErr","fileName":"${__filename}","paramsNumber":1},`);
 
   console.error(chalk.red('✗ Error:'), chalk.red(err.message));
-    SRTlib.send('], "end": "handleErr"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"handleErr","paramsNumber":1},');
 
 }
 function buildBundle(srcFile, bundleFile, {minify = false, standalone = ''} = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "buildBundle", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildBundle","fileName":"${__filename}","paramsNumber":3},`);
 
   var b = browserify(srcFile, {
     debug: true,
@@ -27,13 +27,13 @@ function buildBundle(srcFile, bundleFile, {minify = false, standalone = ''} = {}
   }
   b.transform(babelify);
   b.on('error', handleErr);
-    SRTlib.send('], "end": "buildBundle"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"buildBundle"},');
 
   return new Promise(function (resolve, reject) {
-        SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
 
     b.bundle().pipe(exorcist(bundleFile + '.map')).pipe(fs.createWriteStream(bundleFile), 'utf8').on('error', handleErr).on('finish', function () {
-            SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.pipe.pipe.on.on", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.pipe.pipe.on.on","fileName":"${__filename}","paramsNumber":0},`);
 
       if (minify) {
         console.info(chalk.green(`✓ Built Minified Bundle [${standalone}]:`), chalk.magenta(bundleFile));
@@ -41,13 +41,13 @@ function buildBundle(srcFile, bundleFile, {minify = false, standalone = ''} = {}
         console.info(chalk.green(`✓ Built Bundle [${standalone}]:`), chalk.magenta(bundleFile));
       }
       resolve();
-            SRTlib.send('], "end": "ReturnStatement.pipe.pipe.on.on"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.pipe.pipe.on.on"},');
 
     });
-        SRTlib.send('], "end": "ReturnStatement"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
   });
-    SRTlib.send('], "end": "buildBundle"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"buildBundle","paramsNumber":3},');
 
 }
 mkdirp.sync('./packages/uppy/dist');
@@ -66,19 +66,19 @@ const methods = [buildBundle('./packages/uppy/bundle.js', './packages/uppy/dist/
 })];
 const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', '*.js');
 glob.sync(localePackagePath).forEach(localePath => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
   const localeName = path.basename(localePath, '.js');
   methods.push(buildBundle(`./packages/@uppy/locales/src/${localeName}.js`, `./packages/@uppy/locales/dist/${localeName}.min.js`, {
     minify: true
   }));
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });
 Promise.all(methods).then(function () {
-    SRTlib.send(`{ "anonymous": true, "function": "then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then","fileName":"${__filename}","paramsNumber":0},`);
 
   console.info(chalk.yellow('✓ JS bundles 🎉'));
-    SRTlib.send('], "end": "then"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"then"},');
 
 });

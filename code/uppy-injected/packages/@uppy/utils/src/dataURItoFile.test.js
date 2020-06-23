@@ -8,7 +8,7 @@ describe('dataURItoFile', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should convert a data uri to a file', () => {
@@ -21,11 +21,11 @@ describe('dataURItoFile', () => {
     expect(file.name).toEqual('foo.jpg');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "dataURItoFile" }`);
+    SRTlib.send(`], "endTestSuiteName": "dataURItoFile" },`);
     SRTlib.endLogger();
   });
 

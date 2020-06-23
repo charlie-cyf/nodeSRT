@@ -134,17 +134,17 @@ sr_RS_Latin.strings = {
   openFolderNamed: 'Otvori folder %{name}'
 };
 sr_RS_Latin.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "sr_RS_Latin.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sr_RS_Latin.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "sr_RS_Latin.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "sr_RS_Latin.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "sr_RS_Latin.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

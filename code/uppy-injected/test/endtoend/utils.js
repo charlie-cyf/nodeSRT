@@ -3,12 +3,12 @@ const path = require('path');
 const {spawn} = require('child_process');
 const {promisify} = require('util');
 function selectFakeFile(uppyID, name, type, b64) {
-    SRTlib.send(`{ "anonymous": false, "function": "selectFakeFile", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"selectFakeFile","fileName":"${__filename}","paramsNumber":4},`);
 
   if (!b64) b64 = 'PHN2ZyB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNTAiLz4KPC9zdmc+Cg==';
   if (!type) type = 'image/svg+xml';
   function base64toBlob(base64Data, contentType) {
-        SRTlib.send(`{ "anonymous": false, "function": "base64toBlob", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"base64toBlob","fileName":"${__filename}","paramsNumber":2},`);
 
     contentType = contentType || '';
     var sliceSize = 1024;
@@ -25,12 +25,12 @@ function selectFakeFile(uppyID, name, type, b64) {
       }
       byteArrays[sliceIndex] = new Uint8Array(bytes);
     }
-        SRTlib.send('], "end": "base64toBlob"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"base64toBlob"},');
 
     return new Blob(byteArrays, {
       type: contentType
     });
-        SRTlib.send('], "end": "base64toBlob"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"base64toBlob","paramsNumber":2},');
 
   }
   var blob = base64toBlob(b64, type);
@@ -40,46 +40,46 @@ function selectFakeFile(uppyID, name, type, b64) {
     type: blob.type,
     data: blob
   });
-    SRTlib.send('], "end": "selectFakeFile"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"selectFakeFile","paramsNumber":4},');
 
 }
 function ensureInputVisible(selector) {
-    SRTlib.send(`{ "anonymous": false, "function": "ensureInputVisible", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ensureInputVisible","fileName":"${__filename}","paramsNumber":1},`);
 
   var input = document.querySelector(selector);
   input.style = 'width: auto; height: auto; opacity: 1; z-index: 199';
   input.removeAttribute('hidden');
   input.removeAttribute('aria-hidden');
   input.removeAttribute('tabindex');
-    SRTlib.send('], "end": "ensureInputVisible"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ensureInputVisible","paramsNumber":1},');
 
 }
 function supportsChooseFile() {
-    SRTlib.send(`{ "anonymous": false, "function": "supportsChooseFile", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"supportsChooseFile","fileName":"${__filename}","paramsNumber":0},`);
 
   if (process.env.CI) {
-        SRTlib.send('], "end": "supportsChooseFile"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"supportsChooseFile"},');
 
     return false;
   }
-    SRTlib.send('], "end": "supportsChooseFile"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"supportsChooseFile"},');
 
   return capabilities.browserName !== 'Safari' && capabilities.browserName !== 'MicrosoftEdge' && capabilities.platformName !== 'Android';
-    SRTlib.send('], "end": "supportsChooseFile"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"supportsChooseFile","paramsNumber":0},');
 
 }
 function prematureExit() {
-    SRTlib.send(`{ "anonymous": false, "function": "prematureExit", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prematureExit","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('], "end": "prematureExit"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"prematureExit"},');
 
   throw new Error('Companion exited early');
-    SRTlib.send('], "end": "prematureExit"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"prematureExit","paramsNumber":0},');
 
 }
 class CompanionService {
   onPrepare() {
-        SRTlib.send(`{ "anonymous": false, "function": "CompanionService.onPrepare", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPrepare","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"CompanionService"}},`);
 
     this.companion = spawn('node', [path.join(__dirname, '../../packages/@uppy/companion/lib/standalone/start-server')], {
       stdio: 'pipe',
@@ -96,71 +96,71 @@ class CompanionService {
         COMPANION_GOOGLE_SECRET: process.env.TEST_COMPANION_GOOGLE_SECRET
       }
     });
-        SRTlib.send('], "end": "onPrepare"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onPrepare"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
 
       this.companion.on('error', reject);
       this.companion.stdout.on('data', chunk => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
         if (`${chunk}`.includes('Listening on')) {
           resolve();
         }
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       });
       this.companion.on('error', console.error);
       this.companion.stderr.pipe(process.stderr);
       this.companion.on('exit', prematureExit);
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     });
-        SRTlib.send('], "end": "onPrepare"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onPrepare"},');
 
   }
   onComplete() {
-        SRTlib.send(`{ "anonymous": false, "function": "CompanionService.onComplete", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onComplete","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"CompanionService"}},`);
 
-        SRTlib.send('], "end": "onComplete"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onComplete"},');
 
     return new Promise(resolve => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
       this.companion.removeListener('exit', prematureExit);
       this.companion.on('exit', () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('], "end": "emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
         return resolve();
-                SRTlib.send('], "end": "emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
       });
       this.companion.kill('SIGINT');
-            SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
     });
-        SRTlib.send('], "end": "onComplete"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onComplete"},');
 
   }
 }
 const express = require('express');
 class StaticServerService {
   constructor({folders, staticServerPort = 4567}) {
-        SRTlib.send(`{ "anonymous": false, "function": "StaticServerService.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"StaticServerService"}},`);
 
     this.folders = folders;
     this.port = staticServerPort;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   async onPrepare() {
-        SRTlib.send(`{ "anonymous": false, "function": "StaticServerService.onPrepare", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPrepare","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"StaticServerService"}},`);
 
     if (!this.folders) {
-            SRTlib.send('], "end": "onPrepare"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"onPrepare"},');
 
       return;
     }
@@ -170,18 +170,18 @@ class StaticServerService {
     }
     const listen = promisify(this.app.listen.bind(this.app));
     this.server = await listen(this.port);
-        SRTlib.send('], "end": "onPrepare"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onPrepare"},');
 
   }
   async onComplete() {
-        SRTlib.send(`{ "anonymous": false, "function": "StaticServerService.onComplete", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onComplete","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"StaticServerService"}},`);
 
     if (this.server) {
       const close = promisify(this.server.close.bind(this.server));
       await close();
     }
     this.app = null;
-        SRTlib.send('], "end": "onComplete"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onComplete"},');
 
   }
 }
@@ -194,15 +194,15 @@ const httpProxy = require('http-proxy');
 const brake = require('brake');
 class TusService {
   constructor({tusServerPort = 1080}) {
-        SRTlib.send(`{ "anonymous": false, "function": "TusService.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"TusService"}},`);
 
     this.port = tusServerPort;
     this.path = path.join(os.tmpdir(), `uppy-e2e-tus-node-server-${randomBytes(6).toString('hex')}`);
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   async onPrepare() {
-        SRTlib.send(`{ "anonymous": false, "function": "TusService.onPrepare", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPrepare","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"TusService"}},`);
 
     this.tusServer = new tus.Server();
     this.tusServer.datastore = new tus.FileStore({
@@ -211,7 +211,7 @@ class TusService {
     });
     const proxy = httpProxy.createProxyServer();
     this.slowServer = http.createServer((req, res) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":2},`);
 
       proxy.web(req, res, {
         target: 'http://localhost:1080',
@@ -220,12 +220,12 @@ class TusService {
           rate: 200 * 1024 / 50
         }))
       }, err => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "emptyKey5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
       });
-            SRTlib.send('], "end": "emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
     });
     const listen = promisify(this.tusServer.listen.bind(this.tusServer));
@@ -235,11 +235,11 @@ class TusService {
     });
     const listen2 = promisify(this.slowServer.listen.bind(this.slowServer));
     await listen2(this.port + 1);
-        SRTlib.send('], "end": "onPrepare"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onPrepare"},');
 
   }
   async onComplete() {
-        SRTlib.send(`{ "anonymous": false, "function": "TusService.onComplete", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onComplete","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"TusService"}},`);
 
     if (this.slowServer) {
       const close = promisify(this.slowServer.close.bind(this.slowServer));
@@ -252,7 +252,7 @@ class TusService {
     await rimraf(this.path);
     this.slowServer = null;
     this.tusServer = null;
-        SRTlib.send('], "end": "onComplete"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onComplete"},');
 
   }
 }

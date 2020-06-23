@@ -1,12 +1,12 @@
 var SRTlib = require('SRT-util');
 module.exports = api => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
   const targets = {};
   if (api.env('test')) {
     targets.node = 'current';
   }
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   return {
     presets: [['@babel/preset-env', {
@@ -20,6 +20,6 @@ module.exports = api => {
       pragma: 'h'
     }], process.env.IS_RELEASE_BUILD && 'babel-plugin-inline-package-json'].filter(Boolean)
   };
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 };

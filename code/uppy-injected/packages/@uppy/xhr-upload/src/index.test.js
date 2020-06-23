@@ -9,17 +9,17 @@ describe('XHRUpload', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   describe('getResponseData', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "XHRUpload", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "getResponseData", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('has the XHRUpload options as its `this`', () => {
@@ -47,11 +47,11 @@ describe('XHRUpload', () => {
       });
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "XHRUpload" }`);
+      SRTlib.send(`], "endTestSuiteName": "getResponseData" },`);
       SRTlib.endLogger();
     });
 
@@ -59,11 +59,11 @@ describe('XHRUpload', () => {
   describe('validateStatus', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "XHRUpload", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "validateStatus", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('emit upload error under status code 200', () => {
@@ -100,21 +100,21 @@ describe('XHRUpload', () => {
       });
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "XHRUpload" }`);
+      SRTlib.send(`], "endTestSuiteName": "validateStatus" },`);
       SRTlib.endLogger();
     });
 
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "XHRUpload" }`);
+    SRTlib.send(`], "endTestSuiteName": "XHRUpload" },`);
     SRTlib.endLogger();
   });
 

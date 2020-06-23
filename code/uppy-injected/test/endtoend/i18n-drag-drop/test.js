@@ -10,7 +10,7 @@ describe('File upload with DragDrop + XHRUpload, i18n translated string', functi
 
   this.retries(2);
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
     await browser.execute(ensureInputVisible, '#uppyi18n .uppy-DragDrop-input');
@@ -34,11 +34,11 @@ describe('File upload with DragDrop + XHRUpload, i18n translated string', functi
     expect(text.trim()).to.be.equal('Перенесите файлы сюда или выберите');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20DragDrop%20+%20XHRUpload%2C%20i18n%20translated%20string" }`);
+    SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20DragDrop%20+%20XHRUpload%2C%20i18n%20translated%20string" },`);
     SRTlib.endLogger();
   });
 

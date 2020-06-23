@@ -2,19 +2,19 @@ var SRTlib = require('SRT-util');
 const redis = require('redis');
 let redisClient;
 module.exports.client = opts => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
   if (!opts) {
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     return redisClient;
   }
   if (!redisClient) {
     redisClient = redis.createClient(opts);
   }
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   return redisClient;
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 };

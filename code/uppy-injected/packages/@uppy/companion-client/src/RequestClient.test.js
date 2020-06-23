@@ -7,7 +7,7 @@ describe('RequestClient', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('has a hostname without trailing slash', () => {
@@ -24,11 +24,11 @@ describe('RequestClient', () => {
     expect(b.hostname).toBe('http://companion.uppy.io');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "RequestClient" }`);
+    SRTlib.send(`], "endTestSuiteName": "RequestClient" },`);
     SRTlib.endLogger();
   });
 

@@ -3,22 +3,22 @@ var debounce = require('lodash.debounce');
 var FOCUSABLE_ELEMENTS = require('@uppy/utils/lib/FOCUSABLE_ELEMENTS');
 var getActiveOverlayEl = require('./getActiveOverlayEl');
 module.exports = function createSuperFocus() {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.createSuperFocus", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.createSuperFocus","fileName":"${__filename}","paramsNumber":0},`);
 
   var lastFocusWasOnSuperFocusableEl = false;
   var superFocus = function superFocus(dashboardEl, activeOverlayType) {
-        SRTlib.send(`{ "anonymous": false, "function": "superFocus", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"superFocus","fileName":"${__filename}","paramsNumber":2},`);
 
     var overlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
     var isFocusInOverlay = overlayEl.contains(document.activeElement);
     if (isFocusInOverlay && lastFocusWasOnSuperFocusableEl) {
-            SRTlib.send('], "end": "superFocus"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
 
       return;
     }
     var superFocusableEl = overlayEl.querySelector('[data-uppy-super-focusable]');
     if (isFocusInOverlay && !superFocusableEl) {
-            SRTlib.send('], "end": "superFocus"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
 
       return;
     }
@@ -34,12 +34,12 @@ module.exports = function createSuperFocus() {
       });
       lastFocusWasOnSuperFocusableEl = false;
     }
-        SRTlib.send('], "end": "superFocus"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
 
   };
-    SRTlib.send('], "end": "module.exports.createSuperFocus"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},');
 
   return debounce(superFocus, 260);
-    SRTlib.send('], "end": "module.exports.createSuperFocus"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},');
 
 };

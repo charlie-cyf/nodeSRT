@@ -15,7 +15,7 @@ const localProviders = {
 const remoteProviderOptionNames = ['companionUrl', 'companionAllowedHosts', 'companionHeaders', 'serverHeaders', 'target'];
 const localProviderOptionNames = ['target'];
 function addRemoteProvider(uppy, name, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "addRemoteProvider", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addRemoteProvider","fileName":"${__filename}","paramsNumber":3},`);
 
   const Provider = remoteProviders[name];
   const providerOptions = {
@@ -23,43 +23,43 @@ function addRemoteProvider(uppy, name, opts) {
     companionAllowedHosts: Transloadit.COMPANION_PATTERN
   };
   remoteProviderOptionNames.forEach(name => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, name)) providerOptions[name] = opts[name];
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   if (typeof opts[name] === 'object') {
     Object.assign(providerOptions, opts[name]);
   }
   uppy.use(Provider, providerOptions);
-    SRTlib.send('], "end": "addRemoteProvider"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"addRemoteProvider","paramsNumber":3},');
 
 }
 function addLocalProvider(uppy, name, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "addLocalProvider", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addLocalProvider","fileName":"${__filename}","paramsNumber":3},`);
 
   const Provider = localProviders[name];
   const providerOptions = {};
   localProviderOptionNames.forEach(name => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, name)) providerOptions[name] = opts[name];
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   });
   if (typeof opts[name] === 'object') {
     Object.assign(providerOptions, opts[name]);
   }
   uppy.use(Provider, providerOptions);
-    SRTlib.send('], "end": "addLocalProvider"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"addLocalProvider","paramsNumber":3},');
 
 }
 function addProviders(uppy, names, opts = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "addProviders", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addProviders","fileName":"${__filename}","paramsNumber":3},`);
 
   names.forEach(name => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(remoteProviders, name)) {
       addRemoteProvider(uppy, name, opts);
@@ -68,22 +68,22 @@ function addProviders(uppy, names, opts = {}) {
     } else {
       const validNames = [...Object.keys(remoteProviders), ...Object.keys(localProviders)];
       const expectedNameString = validNames.sort().map(validName => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
         return `'${validName}'`;
-                SRTlib.send('], "end": "emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
       }).join(', ');
-            SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
       throw new Error(`Unexpected provider '${name}', expected one of [${expectedNameString}]`);
     }
-        SRTlib.send('], "end": "emptyKey4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
   });
-    SRTlib.send('], "end": "addProviders"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"addProviders","paramsNumber":3},');
 
 }
 module.exports = addProviders;

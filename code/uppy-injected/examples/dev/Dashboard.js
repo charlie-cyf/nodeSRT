@@ -23,7 +23,7 @@ const TRANSLOADIT_KEY = '...';
 const TRANSLOADIT_TEMPLATE = '...';
 const RESTORE = false;
 module.exports = () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
   const uppyDashboard = Uppy({
     logger: Uppy.debugLogger,
@@ -109,7 +109,7 @@ module.exports = () => {
   }
   window.uppy = uppyDashboard;
   uppyDashboard.on('complete', result => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
     if (result.failed.length === 0) {
       console.log('Upload successful 😀');
@@ -121,11 +121,11 @@ module.exports = () => {
     if (UPLOADER === 'transloadit') {
       console.log('Transloadit result:', result.transloadit);
     }
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   const modalTrigger = document.querySelector('#pick-files');
   if (modalTrigger) modalTrigger.click();
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 };

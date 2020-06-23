@@ -1,10 +1,10 @@
 var SRTlib = require('SRT-util');
 var _class, _temp;
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -14,39 +14,39 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 function _assertThisInitialized(self) {
-    SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
 
   if (self === void 0) {
-        SRTlib.send('], "end": "_assertThisInitialized"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
   return self;
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized","paramsNumber":1},');
 
 }
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send('], "end": "_inheritsLoose"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -54,11 +54,11 @@ var ServiceWorkerStore = require('./ServiceWorkerStore');
 var IndexedDBStore = require('./IndexedDBStore');
 var MetaDataStore = require('./MetaDataStore');
 module.exports = (_temp = _class = (function (_Plugin) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(GoldenRetriever, _Plugin);
   function GoldenRetriever(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "GoldenRetriever", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"GoldenRetriever","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this;
     _this = _Plugin.call(this, uppy, opts) || this;
@@ -90,15 +90,15 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.loadFileBlobsFromServiceWorker = _this.loadFileBlobsFromServiceWorker.bind(_assertThisInitialized(_this));
     _this.loadFileBlobsFromIndexedDB = _this.loadFileBlobsFromIndexedDB.bind(_assertThisInitialized(_this));
     _this.onBlobsLoaded = _this.onBlobsLoaded.bind(_assertThisInitialized(_this));
-        SRTlib.send('], "end": "GoldenRetriever"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"GoldenRetriever"},');
 
     return _this;
-        SRTlib.send('], "end": "GoldenRetriever"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"GoldenRetriever","paramsNumber":2},');
 
   }
   var _proto = GoldenRetriever.prototype;
   _proto.loadFilesStateFromLocalStorage = function loadFilesStateFromLocalStorage() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.loadFilesStateFromLocalStorage.loadFilesStateFromLocalStorage", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.loadFilesStateFromLocalStorage.loadFilesStateFromLocalStorage","fileName":"${__filename}","paramsNumber":0},`);
 
     var savedState = this.MetaDataStore.load();
     if (savedState) {
@@ -109,30 +109,30 @@ module.exports = (_temp = _class = (function (_Plugin) {
       });
       this.savedPluginData = savedState.pluginData;
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.loadFilesStateFromLocalStorage.loadFilesStateFromLocalStorage"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFilesStateFromLocalStorage.loadFilesStateFromLocalStorage"},');
 
   };
   _proto.getWaitingFiles = function getWaitingFiles() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles","fileName":"${__filename}","paramsNumber":0},`);
 
     var waitingFiles = {};
     this.uppy.getFiles().forEach(function (file) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles.uppy.getFiles.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles.uppy.getFiles.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!file.progress || !file.progress.uploadStarted) {
         waitingFiles[file.id] = file;
       }
-            SRTlib.send('], "end": "module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles.uppy.getFiles.forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles.uppy.getFiles.forEach"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles"},');
 
     return waitingFiles;
-        SRTlib.send('], "end": "module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getWaitingFiles.getWaitingFiles"},');
 
   };
   _proto.getUploadingFiles = function getUploadingFiles() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles3","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this2 = this;
     var uploadingFiles = {};
@@ -140,36 +140,36 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (currentUploads) {
       var uploadIDs = Object.keys(currentUploads);
       uploadIDs.forEach(function (uploadID) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles2","fileName":"${__filename}","paramsNumber":1},`);
 
         var filesInUpload = currentUploads[uploadID].fileIDs;
         filesInUpload.forEach(function (fileID) {
-                    SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles","fileName":"${__filename}","paramsNumber":1},`);
 
           uploadingFiles[fileID] = _this2.uppy.getFile(fileID);
-                    SRTlib.send('], "end": "module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles"},');
 
         });
-                SRTlib.send('], "end": "module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles2"},');
 
       });
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles3"},');
 
     return uploadingFiles;
-        SRTlib.send('], "end": "module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getUploadingFiles.getUploadingFiles3"},');
 
   };
   _proto.saveFilesStateToLocalStorage = function saveFilesStateToLocalStorage() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.saveFilesStateToLocalStorage.saveFilesStateToLocalStorage", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.saveFilesStateToLocalStorage.saveFilesStateToLocalStorage","fileName":"${__filename}","paramsNumber":0},`);
 
     var filesToSave = _extends(this.getWaitingFiles(), this.getUploadingFiles());
     var pluginData = {};
     this.uppy.emit('restore:get-data', function (data) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.saveFilesStateToLocalStorage.saveFilesStateToLocalStorage.uppy.emit", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.saveFilesStateToLocalStorage.saveFilesStateToLocalStorage.uppy.emit","fileName":"${__filename}","paramsNumber":1},`);
 
       _extends(pluginData, data);
-            SRTlib.send('], "end": "module.exports._temp._class._proto.saveFilesStateToLocalStorage.saveFilesStateToLocalStorage.uppy.emit"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.saveFilesStateToLocalStorage.saveFilesStateToLocalStorage.uppy.emit"},');
 
     });
     var _this$uppy$getState2 = this.uppy.getState(), currentUploads = _this$uppy$getState2.currentUploads;
@@ -178,84 +178,84 @@ module.exports = (_temp = _class = (function (_Plugin) {
       files: filesToSave,
       pluginData: pluginData
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.saveFilesStateToLocalStorage.saveFilesStateToLocalStorage"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.saveFilesStateToLocalStorage.saveFilesStateToLocalStorage"},');
 
   };
   _proto.loadFileBlobsFromServiceWorker = function loadFileBlobsFromServiceWorker() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this3 = this;
     this.ServiceWorkerStore.list().then(function (blobs) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then","fileName":"${__filename}","paramsNumber":1},`);
 
       var numberOfFilesRecovered = Object.keys(blobs).length;
       var numberOfFilesTryingToRecover = _this3.uppy.getFiles().length;
       if (numberOfFilesRecovered === numberOfFilesTryingToRecover) {
         _this3.uppy.log("[GoldenRetriever] Successfully recovered " + numberOfFilesRecovered + " blobs from Service Worker!");
         _this3.uppy.info("Successfully recovered " + numberOfFilesRecovered + " files", 'success', 3000);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then"},');
 
         return _this3.onBlobsLoaded(blobs);
       }
       _this3.uppy.log('[GoldenRetriever] No blobs found in Service Worker, trying IndexedDB now...');
-            SRTlib.send('], "end": "module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then"},');
 
       return _this3.loadFileBlobsFromIndexedDB();
-            SRTlib.send('], "end": "module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then"},');
 
     }).catch(function (err) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       _this3.uppy.log('[GoldenRetriever] Failed to recover blobs from Service Worker', 'warning');
       _this3.uppy.log(err);
-            SRTlib.send('], "end": "module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker.ServiceWorkerStore.list.then.catch"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFileBlobsFromServiceWorker.loadFileBlobsFromServiceWorker"},');
 
   };
   _proto.loadFileBlobsFromIndexedDB = function loadFileBlobsFromIndexedDB() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this4 = this;
     this.IndexedDBStore.list().then(function (blobs) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch.IndexedDBStore.list.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch.IndexedDBStore.list.then","fileName":"${__filename}","paramsNumber":1},`);
 
       var numberOfFilesRecovered = Object.keys(blobs).length;
       if (numberOfFilesRecovered > 0) {
         _this4.uppy.log("[GoldenRetriever] Successfully recovered " + numberOfFilesRecovered + " blobs from IndexedDB!");
         _this4.uppy.info("Successfully recovered " + numberOfFilesRecovered + " files", 'success', 3000);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch.IndexedDBStore.list.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch.IndexedDBStore.list.then"},');
 
         return _this4.onBlobsLoaded(blobs);
       }
       _this4.uppy.log('[GoldenRetriever] No blobs found in IndexedDB');
-            SRTlib.send('], "end": "module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch.IndexedDBStore.list.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch.IndexedDBStore.list.then"},');
 
     }).catch(function (err) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       _this4.uppy.log('[GoldenRetriever] Failed to recover blobs from IndexedDB', 'warning');
       _this4.uppy.log(err);
-            SRTlib.send('], "end": "module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB.IndexedDBStore.list.then.catch"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.loadFileBlobsFromIndexedDB.loadFileBlobsFromIndexedDB"},');
 
   };
   _proto.onBlobsLoaded = function onBlobsLoaded(blobs) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this5 = this;
     var obsoleteBlobs = [];
     var updatedFiles = _extends({}, this.uppy.getState().files);
     Object.keys(blobs).forEach(function (fileID) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       var originalFile = _this5.uppy.getFile(fileID);
       if (!originalFile) {
         obsoleteBlobs.push(fileID);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.forEach"},');
 
         return;
       }
@@ -266,7 +266,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       };
       var updatedFile = _extends({}, originalFile, updatedFileData);
       updatedFiles[fileID] = updatedFile;
-            SRTlib.send('], "end": "module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.forEach"},');
 
     });
     this.uppy.setState({
@@ -275,30 +275,30 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.uppy.emit('restored', this.savedPluginData);
     if (obsoleteBlobs.length) {
       this.deleteBlobs(obsoleteBlobs).then(function () {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.deleteBlobs.then.catch.deleteBlobs.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.deleteBlobs.then.catch.deleteBlobs.then","fileName":"${__filename}","paramsNumber":0},`);
 
         _this5.uppy.log("[GoldenRetriever] Cleaned up " + obsoleteBlobs.length + " old files");
-                SRTlib.send('], "end": "module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.deleteBlobs.then.catch.deleteBlobs.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.deleteBlobs.then.catch.deleteBlobs.then"},');
 
       }).catch(function (err) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.deleteBlobs.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.deleteBlobs.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
         _this5.uppy.log("[GoldenRetriever] Could not clean up " + obsoleteBlobs.length + " old files", 'warning');
         _this5.uppy.log(err);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.deleteBlobs.then.catch"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded.deleteBlobs.then.catch"},');
 
       });
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onBlobsLoaded.onBlobsLoaded"},');
 
   };
   _proto.deleteBlobs = function deleteBlobs(fileIDs) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.deleteBlobs.deleteBlobs2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.deleteBlobs.deleteBlobs2","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this6 = this;
     var promises = [];
     fileIDs.forEach(function (id) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.deleteBlobs.deleteBlobs", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.deleteBlobs.deleteBlobs","fileName":"${__filename}","paramsNumber":1},`);
 
       if (_this6.ServiceWorkerStore) {
         promises.push(_this6.ServiceWorkerStore.delete(id));
@@ -306,17 +306,17 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (_this6.IndexedDBStore) {
         promises.push(_this6.IndexedDBStore.delete(id));
       }
-            SRTlib.send('], "end": "module.exports._temp._class._proto.deleteBlobs.deleteBlobs"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.deleteBlobs.deleteBlobs"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.deleteBlobs.deleteBlobs2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.deleteBlobs.deleteBlobs2"},');
 
     return Promise.all(promises);
-        SRTlib.send('], "end": "module.exports._temp._class._proto.deleteBlobs.deleteBlobs2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.deleteBlobs.deleteBlobs2"},');
 
   };
   _proto.install = function install() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this7 = this;
     this.loadFilesStateFromLocalStorage();
@@ -333,111 +333,111 @@ module.exports = (_temp = _class = (function (_Plugin) {
       this.onBlobsLoaded([]);
     }
     this.uppy.on('file-added', function (file) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on","fileName":"${__filename}","paramsNumber":1},`);
 
       if (file.isRemote) {
-                SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on"},');
 
         return;
       }
       if (_this7.ServiceWorkerStore) {
         _this7.ServiceWorkerStore.put(file).catch(function (err) {
-                    SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on._this7.ServiceWorkerStore.put.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on._this7.ServiceWorkerStore.put.catch","fileName":"${__filename}","paramsNumber":1},`);
 
           _this7.uppy.log('[GoldenRetriever] Could not store file', 'warning');
           _this7.uppy.log(err);
-                    SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on._this7.ServiceWorkerStore.put.catch"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on._this7.ServiceWorkerStore.put.catch"},');
 
         });
       }
       _this7.IndexedDBStore.put(file).catch(function (err) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on._this7.IndexedDBStore.put.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on._this7.IndexedDBStore.put.catch","fileName":"${__filename}","paramsNumber":1},`);
 
         _this7.uppy.log('[GoldenRetriever] Could not store file', 'warning');
         _this7.uppy.log(err);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on._this7.IndexedDBStore.put.catch"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on._this7.IndexedDBStore.put.catch"},');
 
       });
-            SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on"},');
 
     });
     this.uppy.on('file-removed', function (file) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (_this7.ServiceWorkerStore) {
         _this7.ServiceWorkerStore.delete(file.id).catch(function (err) {
-                    SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on._this7.ServiceWorkerStore.delete.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on._this7.ServiceWorkerStore.delete.catch","fileName":"${__filename}","paramsNumber":1},`);
 
           _this7.uppy.log('[GoldenRetriever] Failed to remove file', 'warning');
           _this7.uppy.log(err);
-                    SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on._this7.ServiceWorkerStore.delete.catch"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on._this7.ServiceWorkerStore.delete.catch"},');
 
         });
       }
       _this7.IndexedDBStore.delete(file.id).catch(function (err) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on._this7.IndexedDBStore.delete.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on._this7.IndexedDBStore.delete.catch","fileName":"${__filename}","paramsNumber":1},`);
 
         _this7.uppy.log('[GoldenRetriever] Failed to remove file', 'warning');
         _this7.uppy.log(err);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on._this7.IndexedDBStore.delete.catch"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on._this7.IndexedDBStore.delete.catch"},');
 
       });
-            SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on2"},');
 
     });
     this.uppy.on('complete', function (_ref) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on3","fileName":"${__filename}","paramsNumber":1},`);
 
       var successful = _ref.successful;
       var fileIDs = successful.map(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on.fileIDs", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on.fileIDs","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on.fileIDs"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on.fileIDs"},');
 
         return file.id;
-                SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on.fileIDs"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on.fileIDs"},');
 
       });
       _this7.deleteBlobs(fileIDs).then(function () {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on.then.catch.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on.then.catch.then","fileName":"${__filename}","paramsNumber":0},`);
 
         _this7.uppy.log("[GoldenRetriever] Removed " + successful.length + " files that finished uploading");
-                SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on.then.catch.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on.then.catch.then"},');
 
       }).catch(function (err) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
         _this7.uppy.log("[GoldenRetriever] Could not remove " + successful.length + " files that finished uploading", 'warning');
         _this7.uppy.log(err);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on.then.catch"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on.then.catch"},');
 
       });
-            SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on3"},');
 
     });
     this.uppy.on('state-update', this.saveFilesStateToLocalStorage);
     this.uppy.on('restored', function () {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on4","fileName":"${__filename}","paramsNumber":0},`);
 
       var _this7$uppy$getState = _this7.uppy.getState(), currentUploads = _this7$uppy$getState.currentUploads;
       if (currentUploads) {
         Object.keys(currentUploads).forEach(function (uploadId) {
-                    SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install.uppy.on.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install.uppy.on.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
           _this7.uppy.restore(uploadId, currentUploads[uploadId]);
-                    SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on.forEach"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on.forEach"},');
 
         });
       }
-            SRTlib.send('], "end": "module.exports._temp._class._proto.install.install.uppy.on4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install.uppy.on4"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install"},');
 
   };
-    SRTlib.send('], "end": "module.exports._temp._class"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
   return GoldenRetriever;
-    SRTlib.send('], "end": "module.exports._temp._class"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

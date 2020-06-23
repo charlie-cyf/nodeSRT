@@ -4,11 +4,11 @@ const path = require('path');
 const {CompanionService, StaticServerService, TusService} = require('./utils');
 const suites = {};
 glob('test/endtoend/*/test.js').forEach(file => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
   const name = path.basename(path.dirname(file));
   suites[name] = [file];
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });
 exports.config = {
@@ -64,13 +64,13 @@ exports.config = {
     timeout: 50000
   },
   before: function (capabilities, specs) {
-        SRTlib.send(`{ "anonymous": true, "function": "exports.config.before", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.config.before","fileName":"${__filename}","paramsNumber":2},`);
 
     var chai = require('chai');
     global.expect = chai.expect;
     global.capabilities = capabilities;
     chai.Should();
-        SRTlib.send('], "end": "exports.config.before"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"exports.config.before"},');
 
   }
 };

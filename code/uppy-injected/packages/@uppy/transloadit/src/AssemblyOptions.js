@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function validateParams(params) {
-    SRTlib.send(`{ "anonymous": false, "function": "validateParams", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateParams","fileName":"${__filename}","paramsNumber":1},`);
 
   if (!params) {
-        SRTlib.send('], "end": "validateParams"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"validateParams"},');
 
     throw new Error('Transloadit: The `params` option is required.');
   }
@@ -12,95 +12,95 @@ function validateParams(params) {
       params = JSON.parse(params);
     } catch (err) {
       err.message = 'Transloadit: The `params` option is a malformed JSON string: ' + err.message;
-            SRTlib.send('], "end": "validateParams"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"validateParams"},');
 
       throw err;
     }
   }
   if (!params.auth || !params.auth.key) {
-        SRTlib.send('], "end": "validateParams"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"validateParams"},');
 
     throw new Error('Transloadit: The `params.auth.key` option is required. ' + 'You can find your Transloadit API key at https://transloadit.com/account/api-settings.');
   }
-    SRTlib.send('], "end": "validateParams"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"validateParams","paramsNumber":1},');
 
 }
 class AssemblyOptions {
   constructor(files, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AssemblyOptions"}},`);
 
     this.files = files;
     this.opts = opts;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   _normalizeAssemblyOptions(file, assemblyOptions) {
-        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions._normalizeAssemblyOptions", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_normalizeAssemblyOptions","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AssemblyOptions"}},`);
 
     if (Array.isArray(assemblyOptions.fields)) {
       const fieldNames = assemblyOptions.fields;
       assemblyOptions.fields = {};
       fieldNames.forEach(fieldName => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
         assemblyOptions.fields[fieldName] = file.meta[fieldName];
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       });
     }
     if (!assemblyOptions.fields) {
       assemblyOptions.fields = {};
     }
-        SRTlib.send('], "end": "_normalizeAssemblyOptions"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_normalizeAssemblyOptions"},');
 
     return assemblyOptions;
-        SRTlib.send('], "end": "_normalizeAssemblyOptions"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_normalizeAssemblyOptions"},');
 
   }
   _getAssemblyOptions(file) {
-        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions._getAssemblyOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getAssemblyOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AssemblyOptions"}},`);
 
     const options = this.opts;
-        SRTlib.send('], "end": "_getAssemblyOptions"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_getAssemblyOptions"},');
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
       return options.getAssemblyOptions(file, options);
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     }).then(assemblyOptions => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
       return this._normalizeAssemblyOptions(file, assemblyOptions);
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
     }).then(assemblyOptions => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
       validateParams(assemblyOptions.params);
-            SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
       return {
         fileIDs: [file.id],
         options: assemblyOptions
       };
-            SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
     });
-        SRTlib.send('], "end": "_getAssemblyOptions"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_getAssemblyOptions"},');
 
   }
   _dedupe(list) {
-        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions._dedupe", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_dedupe","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AssemblyOptions"}},`);
 
     const dedupeMap = Object.create(null);
     list.forEach(({fileIDs, options}) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
 
       const id = JSON.stringify(options);
       if (dedupeMap[id]) {
@@ -111,77 +111,77 @@ class AssemblyOptions {
           fileIDs: [...fileIDs]
         };
       }
-            SRTlib.send('], "end": "emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
     });
-        SRTlib.send('], "end": "_dedupe"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_dedupe"},');
 
     return Object.keys(dedupeMap).map(id => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
       return dedupeMap[id];
-            SRTlib.send('], "end": "emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
     });
-        SRTlib.send('], "end": "_dedupe"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_dedupe"},');
 
   }
   build() {
-        SRTlib.send(`{ "anonymous": false, "function": "AssemblyOptions.build", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"build","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AssemblyOptions"}},`);
 
     const options = this.opts;
     if (this.files.length > 0) {
-            SRTlib.send('], "end": "build"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"build"},');
 
       return Promise.all(this.files.map(file => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "emptyKey7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
         return this._getAssemblyOptions(file);
-                SRTlib.send('], "end": "emptyKey7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
       })).then(list => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "emptyKey8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
         return this._dedupe(list);
-                SRTlib.send('], "end": "emptyKey8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
       });
     }
     if (options.alwaysRunAssembly) {
-            SRTlib.send('], "end": "build"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"build"},');
 
       return Promise.resolve(options.getAssemblyOptions(null, options)).then(assemblyOptions => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":1},`);
 
         validateParams(assemblyOptions.params);
-                SRTlib.send('], "end": "emptyKey10"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
 
         return [{
           fileIDs: this.files.map(file => {
-                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":1},`);
 
-                        SRTlib.send('], "end": "emptyKey9"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
 
             return file.id;
-                        SRTlib.send('], "end": "emptyKey9"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
 
           }),
           options: assemblyOptions
         }];
-                SRTlib.send('], "end": "emptyKey10"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
 
       });
     }
-        SRTlib.send('], "end": "build"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"build"},');
 
     return Promise.resolve([]);
-        SRTlib.send('], "end": "build"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"build"},');
 
   }
 }

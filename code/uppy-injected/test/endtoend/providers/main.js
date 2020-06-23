@@ -30,7 +30,7 @@ window.uppy = Uppy({
 });
 if (window.location.search === '?socketerr=true') {
   const emitError = (file, data) => {
-        SRTlib.send(`{ "anonymous": false, "function": "emitError", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitError","fileName":"${__filename}","paramsNumber":2},`);
 
     data.uploader.uploaderSockets[file.id].emit('error', {
       error: {
@@ -38,7 +38,7 @@ if (window.location.search === '?socketerr=true') {
       }
     });
     window.uppy.off('upload-progress', emitError);
-        SRTlib.send('], "end": "emitError"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emitError"},');
 
   };
   window.uppy.on('upload-progress', emitError);

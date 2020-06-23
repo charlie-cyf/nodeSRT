@@ -17,12 +17,12 @@ var mimeToExtensions = {
   'video/x-msvideo': 'avi'
 };
 module.exports = function getFileTypeExtension(mimeType) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.getFileTypeExtension", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFileTypeExtension","fileName":"${__filename}","paramsNumber":1},`);
 
   mimeType = mimeType.replace(/;.*$/, '');
-    SRTlib.send('], "end": "module.exports.getFileTypeExtension"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFileTypeExtension"},');
 
   return mimeToExtensions[mimeType] || null;
-    SRTlib.send('], "end": "module.exports.getFileTypeExtension"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFileTypeExtension"},');
 
 };

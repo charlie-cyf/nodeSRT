@@ -7,7 +7,7 @@ describe('toArray', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should convert a array-like object into an array', () => {
@@ -22,11 +22,11 @@ describe('toArray', () => {
     expect(toArray(obj)).toEqual(['zero', 'one', 'two', 'three', 'four']);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "toArray" }`);
+    SRTlib.send(`], "endTestSuiteName": "toArray" },`);
     SRTlib.endLogger();
   });
 

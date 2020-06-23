@@ -3,41 +3,41 @@ var _require = require('preact'), h = _require.h;
 var prettierBytes = require('@transloadit/prettier-bytes');
 var truncateString = require('../../../utils/truncateString');
 var renderAcquirerIcon = function renderAcquirerIcon(acquirer, props) {
-    SRTlib.send(`{ "anonymous": false, "function": "renderAcquirerIcon", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderAcquirerIcon","fileName":"${__filename}","paramsNumber":2},`);
 
-    SRTlib.send('], "end": "renderAcquirerIcon"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderAcquirerIcon"},');
 
   return h("span", {
     title: props.i18n('fileSource', {
       name: acquirer.name
     })
   }, acquirer.icon());
-    SRTlib.send('], "end": "renderAcquirerIcon"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderAcquirerIcon"},');
 
 };
 var renderFileSource = function renderFileSource(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "renderFileSource", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileSource","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "renderFileSource"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSource"},');
 
   return props.file.source && props.file.source !== props.id && h("div", {
     class: "uppy-DashboardItem-sourceIcon"
   }, props.acquirers.map(function (acquirer) {
-        SRTlib.send(`{ "anonymous": true, "function": "renderFileSource.renderFileSource.ReturnStatement.h.props.acquirers.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"renderFileSource.renderFileSource.ReturnStatement.h.props.acquirers.map","fileName":"${__filename}","paramsNumber":1},`);
 
     if (acquirer.id === props.file.source) {
-            SRTlib.send('], "end": "renderFileSource.renderFileSource.ReturnStatement.h.props.acquirers.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSource.renderFileSource.ReturnStatement.h.props.acquirers.map"},');
 
       return renderAcquirerIcon(acquirer, props);
     }
-        SRTlib.send('], "end": "renderFileSource.renderFileSource.ReturnStatement.h.props.acquirers.map"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSource.renderFileSource.ReturnStatement.h.props.acquirers.map"},');
 
   }));
-    SRTlib.send('], "end": "renderFileSource"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSource"},');
 
 };
 var renderFileName = function renderFileName(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "renderFileName", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileName","fileName":"${__filename}","paramsNumber":1},`);
 
   var maxNameLength;
   if (props.containerWidth <= 352) {
@@ -47,32 +47,32 @@ var renderFileName = function renderFileName(props) {
   } else {
     maxNameLength = 30;
   }
-    SRTlib.send('], "end": "renderFileName"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileName"},');
 
   return h("div", {
     class: "uppy-DashboardItem-name",
     title: props.file.meta.name
   }, truncateString(props.file.meta.name, maxNameLength));
-    SRTlib.send('], "end": "renderFileName"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileName"},');
 
 };
 var renderFileSize = function renderFileSize(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "renderFileSize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileSize","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "renderFileSize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSize"},');
 
   return props.file.data.size && h("div", {
     class: "uppy-DashboardItem-statusSize"
   }, prettierBytes(props.file.data.size));
-    SRTlib.send('], "end": "renderFileSize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSize"},');
 
 };
 var ErrorButton = function ErrorButton(_ref) {
-    SRTlib.send(`{ "anonymous": false, "function": "ErrorButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ErrorButton","fileName":"${__filename}","paramsNumber":1},`);
 
   var file = _ref.file, onClick = _ref.onClick;
   if (file.error) {
-        SRTlib.send('], "end": "ErrorButton"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
 
     return h("span", {
       class: "uppy-DashboardItem-errorDetails",
@@ -83,16 +83,16 @@ var ErrorButton = function ErrorButton(_ref) {
       onclick: onClick
     }, "?");
   }
-    SRTlib.send('], "end": "ErrorButton"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
 
   return null;
-    SRTlib.send('], "end": "ErrorButton"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
 
 };
 module.exports = function FileInfo(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.FileInfo", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.FileInfo","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "module.exports.FileInfo"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FileInfo"},');
 
   return h("div", {
     class: "uppy-DashboardItem-fileInfo",
@@ -102,13 +102,13 @@ module.exports = function FileInfo(props) {
   }, renderFileSize(props), renderFileSource(props), h(ErrorButton, {
     file: props.file,
     onClick: function onClick() {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports.FileInfo.ReturnStatement.h.h.h.onClick.onClick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.FileInfo.ReturnStatement.h.h.h.onClick.onClick","fileName":"${__filename}","paramsNumber":0},`);
 
       alert(props.file.error);
-            SRTlib.send('], "end": "module.exports.FileInfo.ReturnStatement.h.h.h.onClick.onClick"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FileInfo.ReturnStatement.h.h.h.onClick.onClick"},');
 
     }
   })));
-    SRTlib.send('], "end": "module.exports.FileInfo"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FileInfo"},');
 
 };

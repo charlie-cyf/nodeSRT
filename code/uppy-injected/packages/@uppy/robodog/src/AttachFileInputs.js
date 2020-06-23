@@ -4,29 +4,29 @@ const toArray = require('@uppy/utils/lib/toArray');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');
 class AttachFileInputs extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.id = this.opts.id || 'AttachFileInputs';
     this.type = 'acquirer';
     this.handleChange = this.handleChange.bind(this);
     this.inputs = null;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   handleChange(event) {
-        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.handleChange", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleChange","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     this.addFiles(event.target);
-        SRTlib.send('], "end": "handleChange"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleChange"},');
 
   }
   addFiles(input) {
-        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.addFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     const files = toArray(input.files);
     files.forEach(file => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
       try {
         this.uppy.addFile({
@@ -40,25 +40,25 @@ class AttachFileInputs extends Plugin {
           this.uppy.log(err);
         }
       }
-            SRTlib.send('], "end": "emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     });
-        SRTlib.send('], "end": "addFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"addFiles"},');
 
   }
   install() {
-        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     this.el = findDOMElement(this.opts.target);
     if (!this.el) {
-            SRTlib.send('], "end": "install"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
       throw new Error('[AttachFileInputs] Target form does not exist');
     }
     const {restrictions} = this.uppy.opts;
     this.inputs = this.el.querySelectorAll('input[type="file"]');
     this.inputs.forEach(input => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
       input.addEventListener('change', this.handleChange);
       if (!input.hasAttribute('multiple')) {
@@ -72,24 +72,24 @@ class AttachFileInputs extends Plugin {
         input.setAttribute('accept', restrictions.allowedFileTypes.join(','));
       }
       this.addFiles(input);
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     });
-        SRTlib.send('], "end": "install"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
   }
   uninstall() {
-        SRTlib.send(`{ "anonymous": false, "function": "AttachFileInputs.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     this.inputs.forEach(input => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
       input.removeEventListener('change', this.handleChange);
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
     });
     this.inputs = null;
-        SRTlib.send('], "end": "uninstall"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
 
   }
 }

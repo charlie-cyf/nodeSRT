@@ -6,7 +6,7 @@ const TRANSLOADIT_EXAMPLE_KEY = '35c1aed03f5011e982b6afe82599b6a0';
 const TRANSLOADIT_EXAMPLE_TEMPLATE = '0b2ee2bc25dc43619700c2ce0a75164a';
 class MarkdownTextarea {
   constructor(element) {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     this.element = element;
     this.controls = document.createElement('div');
@@ -14,11 +14,11 @@ class MarkdownTextarea {
     this.uploadLine = document.createElement('div');
     this.uploadLine.classList.add('mdtxt-upload');
     this.uploadLine.appendChild(document.createTextNode('Upload an attachment'));
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   install() {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     const {element} = this;
     const wrapper = document.createElement('div');
@@ -28,61 +28,61 @@ class MarkdownTextarea {
     wrapper.appendChild(element);
     wrapper.appendChild(this.uploadLine);
     this.setupUploadLine();
-        SRTlib.send('], "end": "install"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
   }
   setupTextareaDrop() {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.setupTextareaDrop", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setupTextareaDrop","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     dragdrop(this.element, files => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
       this.uploadFiles(files);
-            SRTlib.send('], "end": "emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     });
-        SRTlib.send('], "end": "setupTextareaDrop"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setupTextareaDrop"},');
 
   }
   setupUploadLine() {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.setupUploadLine", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setupUploadLine","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     this.uploadLine.addEventListener('click', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
       this.pickFiles();
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     });
-        SRTlib.send('], "end": "setupUploadLine"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setupUploadLine"},');
 
   }
   reportUploadError(err) {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.reportUploadError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"reportUploadError","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     this.uploadLine.classList.add('error');
     const message = document.createElement('span');
     message.appendChild(document.createTextNode(err.message));
     this.uploadLine.insertChild(message, this.uploadLine.firstChild);
-        SRTlib.send('], "end": "reportUploadError"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"reportUploadError"},');
 
   }
   unreportUploadError() {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.unreportUploadError", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"unreportUploadError","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     this.uploadLine.classList.remove('error');
     const message = this.uploadLine.querySelector('message');
     if (message) {
       this.uploadLine.removeChild(message);
     }
-        SRTlib.send('], "end": "unreportUploadError"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"unreportUploadError"},');
 
   }
   insertAttachments(attachments) {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.insertAttachments", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"insertAttachments","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     attachments.forEach(attachment => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
       const {file, thumb} = attachment;
       const link = `\n[LABEL](${file.ssl_url})\n`;
@@ -92,32 +92,32 @@ class MarkdownTextarea {
       } else {
         this.element.value += link.replace('LABEL', labelText);
       }
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
     });
-        SRTlib.send('], "end": "insertAttachments"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"insertAttachments"},');
 
   }
   matchFilesAndThumbs(results) {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.matchFilesAndThumbs", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"matchFilesAndThumbs","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     const filesById = {};
     const thumbsById = {};
     results.forEach(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
       if (result.stepName === 'thumbnails') {
         thumbsById[result.original_id] = result;
       } else {
         filesById[result.original_id] = result;
       }
-            SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
     });
-        SRTlib.send('], "end": "matchFilesAndThumbs"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"matchFilesAndThumbs"},');
 
     return Object.keys(filesById).reduce((acc, key) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":2},`);
 
       const file = filesById[key];
       const thumb = thumbsById[key];
@@ -125,17 +125,17 @@ class MarkdownTextarea {
         file,
         thumb
       });
-            SRTlib.send('], "end": "emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
       return acc;
-            SRTlib.send('], "end": "emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
     }, []);
-        SRTlib.send('], "end": "matchFilesAndThumbs"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"matchFilesAndThumbs"},');
 
   }
   uploadFiles(files) {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.uploadFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     robodog.upload({
       waitForEncoding: true,
@@ -146,29 +146,29 @@ class MarkdownTextarea {
         template_id: TRANSLOADIT_EXAMPLE_TEMPLATE
       }
     }).then(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
       if (result == null) {
-                SRTlib.send('], "end": "emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
         return;
       }
       this.insertAttachments(this.matchFilesAndThumbs(result.results));
-            SRTlib.send('], "end": "emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
     }).catch(err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
 
       console.error(err);
       this.reportUploadError(err);
-            SRTlib.send('], "end": "emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
     });
-        SRTlib.send('], "end": "uploadFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uploadFiles"},');
 
   }
   pickFiles() {
-        SRTlib.send(`{ "anonymous": false, "function": "MarkdownTextarea.pickFiles", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pickFiles","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     robodog.pick({
       waitForEncoding: true,
@@ -179,32 +179,32 @@ class MarkdownTextarea {
         template_id: TRANSLOADIT_EXAMPLE_TEMPLATE
       }
     }).then(result => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":1},`);
 
       if (result == null) {
-                SRTlib.send('], "end": "emptyKey8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
         return;
       }
       this.insertAttachments(this.matchFilesAndThumbs(result.results));
-            SRTlib.send('], "end": "emptyKey8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
     }).catch(err => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":1},`);
 
       console.error(err);
       this.reportUploadError(err);
-            SRTlib.send('], "end": "emptyKey9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
 
     });
-        SRTlib.send('], "end": "pickFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"pickFiles"},');
 
   }
 }
 const textarea = new MarkdownTextarea(document.querySelector('#new textarea'));
 textarea.install();
 function renderSnippet(title, text) {
-    SRTlib.send(`{ "anonymous": false, "function": "renderSnippet", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderSnippet","fileName":"${__filename}","paramsNumber":2},`);
 
   const template = document.querySelector('#snippet');
   const newSnippet = document.importNode(template.content, true);
@@ -214,11 +214,11 @@ function renderSnippet(title, text) {
   contentEl.innerHTML = marked(text);
   const list = document.querySelector('#snippets');
   list.insertBefore(newSnippet, list.firstChild);
-    SRTlib.send('], "end": "renderSnippet"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderSnippet","paramsNumber":2},');
 
 }
 function saveSnippet(title, text) {
-    SRTlib.send(`{ "anonymous": false, "function": "saveSnippet", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"saveSnippet","fileName":"${__filename}","paramsNumber":2},`);
 
   const id = parseInt(localStorage.numSnippets || 0, 10);
   localStorage[`snippet_${id}`] = JSON.stringify({
@@ -226,21 +226,21 @@ function saveSnippet(title, text) {
     text
   });
   localStorage.numSnippets = id + 1;
-    SRTlib.send('], "end": "saveSnippet"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"saveSnippet","paramsNumber":2},');
 
 }
 function loadSnippets() {
-    SRTlib.send(`{ "anonymous": false, "function": "loadSnippets", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"loadSnippets","fileName":"${__filename}","paramsNumber":0},`);
 
   for (let id = 0; localStorage[`snippet_${id}`] != null; id += 1) {
     const {title, text} = JSON.parse(localStorage[`snippet_${id}`]);
     renderSnippet(title, text);
   }
-    SRTlib.send('], "end": "loadSnippets"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"loadSnippets","paramsNumber":0},');
 
 }
 document.querySelector('#new').addEventListener('submit', event => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":1},`);
 
   event.preventDefault();
   const title = event.target.querySelector('input[name="title"]').value || 'Unnamed Snippet';
@@ -249,13 +249,13 @@ document.querySelector('#new').addEventListener('submit', event => {
   renderSnippet(title, text);
   event.target.querySelector('input').value = '';
   event.target.querySelector('textarea').value = '';
-    SRTlib.send('], "end": "emptyKey10"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
 
 });
 window.addEventListener('DOMContentLoaded', () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":0},`);
 
   loadSnippets();
-    SRTlib.send('], "end": "emptyKey11"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
 
 });

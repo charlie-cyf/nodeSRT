@@ -3,38 +3,38 @@ const toArray = require('@uppy/utils/lib/toArray');
 const getActiveOverlayEl = require('./getActiveOverlayEl');
 const FOCUSABLE_ELEMENTS = require('@uppy/utils/lib//FOCUSABLE_ELEMENTS');
 function focusOnFirstNode(event, nodes) {
-    SRTlib.send(`{ "anonymous": false, "function": "focusOnFirstNode", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"focusOnFirstNode","fileName":"${__filename}","paramsNumber":2},`);
 
   const node = nodes[0];
   if (node) {
     node.focus();
     event.preventDefault();
   }
-    SRTlib.send('], "end": "focusOnFirstNode"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"focusOnFirstNode","paramsNumber":2},');
 
 }
 function focusOnLastNode(event, nodes) {
-    SRTlib.send(`{ "anonymous": false, "function": "focusOnLastNode", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"focusOnLastNode","fileName":"${__filename}","paramsNumber":2},`);
 
   const node = nodes[nodes.length - 1];
   if (node) {
     node.focus();
     event.preventDefault();
   }
-    SRTlib.send('], "end": "focusOnLastNode"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"focusOnLastNode","paramsNumber":2},');
 
 }
 function isFocusInOverlay(activeOverlayEl) {
-    SRTlib.send(`{ "anonymous": false, "function": "isFocusInOverlay", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isFocusInOverlay","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "isFocusInOverlay"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isFocusInOverlay"},');
 
   return activeOverlayEl.contains(document.activeElement);
-    SRTlib.send('], "end": "isFocusInOverlay"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isFocusInOverlay","paramsNumber":1},');
 
 }
 function trapFocus(event, activeOverlayType, dashboardEl) {
-    SRTlib.send(`{ "anonymous": false, "function": "trapFocus", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"trapFocus","fileName":"${__filename}","paramsNumber":3},`);
 
   const activeOverlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
   const focusableNodes = toArray(activeOverlayEl.querySelectorAll(FOCUSABLE_ELEMENTS));
@@ -46,24 +46,24 @@ function trapFocus(event, activeOverlayType, dashboardEl) {
   } else if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
     focusOnFirstNode(event, focusableNodes);
   }
-    SRTlib.send('], "end": "trapFocus"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"trapFocus","paramsNumber":3},');
 
 }
 module.exports = {
   forModal: (event, activeOverlayType, dashboardEl) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":3},`);
 
     trapFocus(event, activeOverlayType, dashboardEl);
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   },
   forInline: (event, activeOverlayType, dashboardEl) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
 
     if (activeOverlayType === null) {} else {
       trapFocus(event, activeOverlayType, dashboardEl);
     }
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   }
 };

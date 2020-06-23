@@ -38,17 +38,17 @@ nb_NO.strings = {
   uploadAllNewFiles: 'Last opp alle nye filer'
 };
 nb_NO.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "nb_NO.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"nb_NO.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "nb_NO.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"nb_NO.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "nb_NO.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"nb_NO.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "nb_NO.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"nb_NO.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

@@ -4,21 +4,21 @@ var has = require('@uppy/utils/lib/hasProperty');
 var TransloaditResults = require('./TransloaditResultsPlugin');
 var transloaditOptionNames = ['service', 'waitForEncoding', 'waitForMetadata', 'alwaysRunAssembly', 'importFromUploadURLs', 'signature', 'params', 'fields', 'getAssemblyOptions'];
 function addTransloaditPlugin(uppy, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "addTransloaditPlugin", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addTransloaditPlugin","fileName":"${__filename}","paramsNumber":2},`);
 
   var transloaditOptions = {};
   transloaditOptionNames.forEach(function (name) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, name)) transloaditOptions[name] = opts[name];
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   uppy.use(Transloadit, transloaditOptions);
   if (transloaditOptions.waitForEncoding) {
     uppy.use(TransloaditResults);
   }
-    SRTlib.send('], "end": "addTransloaditPlugin"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"addTransloaditPlugin","paramsNumber":2},');
 
 }
 module.exports = addTransloaditPlugin;

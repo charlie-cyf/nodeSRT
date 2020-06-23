@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 const {Plugin} = require('../../packages/@uppy/core');
 module.exports = class TestSelector1 extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "TestSelector1.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"TestSelector1","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'acquirer';
@@ -13,11 +13,11 @@ module.exports = class TestSelector1 extends Plugin {
       update: jest.fn(),
       uninstall: jest.fn()
     };
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   run(results) {
-        SRTlib.send(`{ "anonymous": false, "function": "TestSelector1.run", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"run","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"TestSelector1","superClass":"Plugin"}},`);
 
     this.uppy.log({
       class: this.constructor.name,
@@ -25,24 +25,24 @@ module.exports = class TestSelector1 extends Plugin {
       results: results
     });
     this.mocks.run(results);
-        SRTlib.send('], "end": "run"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"run"},');
 
     return Promise.resolve('success');
-        SRTlib.send('], "end": "run"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"run"},');
 
   }
   update(state) {
-        SRTlib.send(`{ "anonymous": false, "function": "TestSelector1.update", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"update","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"TestSelector1","superClass":"Plugin"}},`);
 
     this.mocks.update(state);
-        SRTlib.send('], "end": "update"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"update"},');
 
   }
   uninstall() {
-        SRTlib.send(`{ "anonymous": false, "function": "TestSelector1.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"TestSelector1","superClass":"Plugin"}},`);
 
     this.mocks.uninstall();
-        SRTlib.send('], "end": "uninstall"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
 
   }
 };

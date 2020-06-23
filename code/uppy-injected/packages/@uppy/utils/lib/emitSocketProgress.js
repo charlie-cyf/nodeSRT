@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 var throttle = require('lodash.throttle');
 function _emitSocketProgress(uploader, progressData, file) {
-    SRTlib.send(`{ "anonymous": false, "function": "_emitSocketProgress", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_emitSocketProgress","fileName":"${__filename}","paramsNumber":3},`);
 
   var progress = progressData.progress, bytesUploaded = progressData.bytesUploaded, bytesTotal = progressData.bytesTotal;
   if (progress) {
@@ -12,7 +12,7 @@ function _emitSocketProgress(uploader, progressData, file) {
       bytesTotal: bytesTotal
     });
   }
-    SRTlib.send('], "end": "_emitSocketProgress"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_emitSocketProgress","paramsNumber":3},');
 
 }
 module.exports = throttle(_emitSocketProgress, 300, {

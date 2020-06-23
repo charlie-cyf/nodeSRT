@@ -9,10 +9,10 @@ const minify = require('minify-stream');
 const disc = require('disc');
 const outputPath = path.join(__dirname, '../website/src/disc.html');
 function minifyify(filename) {
-    SRTlib.send(`{ "anonymous": false, "function": "minifyify", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"minifyify","fileName":"${__filename}","paramsNumber":1},`);
 
   if (filename.endsWith('.js')) {
-        SRTlib.send('], "end": "minifyify"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"minifyify"},');
 
     return minify({
       sourceMap: false,
@@ -22,10 +22,10 @@ function minifyify(filename) {
       }
     });
   }
-    SRTlib.send('], "end": "minifyify"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"minifyify"},');
 
   return new PassThrough();
-    SRTlib.send('], "end": "minifyify"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"minifyify","paramsNumber":1},');
 
 }
 const bundler = browserify(path.join(__dirname, '../packages/uppy/index.js'), {
@@ -39,22 +39,22 @@ bundler.transform(minifyify, {
 bundler.bundle().pipe(disc()).pipe(prepend('---\nlayout: false\n---\n')).pipe(replace('http://', 'https://', {
   limit: 1
 })).pipe(fs.createWriteStream(outputPath)).on('error', err => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   throw err;
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });
 function prepend(text) {
-    SRTlib.send(`{ "anonymous": false, "function": "prepend", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prepend","fileName":"${__filename}","paramsNumber":1},`);
 
   const stream = new PassThrough();
   stream.write(text);
-    SRTlib.send('], "end": "prepend"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"prepend"},');
 
   return stream;
-    SRTlib.send('], "end": "prepend"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"prepend","paramsNumber":1},');
 
 }

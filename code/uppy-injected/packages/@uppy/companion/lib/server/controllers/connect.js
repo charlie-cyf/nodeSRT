@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 const oAuthState = require('../helpers/oauth-state');
 const atob = require('atob');
 module.exports = function connect(req, res) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.connect", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.connect","fileName":"${__filename}","paramsNumber":2},`);
 
   const secret = req.companion.options.secret;
   let state = oAuthState.generateState(secret);
@@ -21,6 +21,6 @@ module.exports = function connect(req, res) {
     }, secret);
   }
   res.redirect(req.companion.buildURL(`/connect/${req.companion.provider.authProvider}?state=${state}`, true));
-    SRTlib.send('], "end": "module.exports.connect"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.connect"},');
 
 };

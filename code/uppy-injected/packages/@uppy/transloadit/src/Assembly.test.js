@@ -7,17 +7,17 @@ describe('Transloadit/Assembly', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   describe('status diffing', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "Transloadit/Assembly", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "status%20diffing", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     function attemptDiff(prev, next) {
@@ -224,21 +224,21 @@ describe('Transloadit/Assembly', () => {
       expect(result[8]).toEqual(['finished']);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "Transloadit/Assembly" }`);
+      SRTlib.send(`], "endTestSuiteName": "status%20diffing" },`);
       SRTlib.endLogger();
     });
 
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "Transloadit/Assembly" }`);
+    SRTlib.send(`], "endTestSuiteName": "Transloadit/Assembly" },`);
     SRTlib.endLogger();
   });
 

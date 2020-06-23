@@ -7,7 +7,7 @@ describe('webpack build', () => {
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -18,11 +18,11 @@ describe('webpack build', () => {
     expect((/^rgba?\(250, ?250, ?250(?:, ?1)?\)$|^#fafafa$/).test(bgColor.value)).to.equal(true);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "webpack%20build" }`);
+    SRTlib.send(`], "endTestSuiteName": "webpack%20build" },`);
     SRTlib.endLogger();
   });
 
@@ -34,7 +34,7 @@ describe('React: Dashboard', () => {
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -67,11 +67,11 @@ describe('React: Dashboard', () => {
     expect(await $('.uppy-Provider-authBtn')).to.exist;
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "React%3A%20Dashboard" }`);
+    SRTlib.send(`], "endTestSuiteName": "React%3A%20Dashboard" },`);
     SRTlib.endLogger();
   });
 
@@ -83,7 +83,7 @@ describe('React: DashboardModal', () => {
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -102,11 +102,11 @@ describe('React: DashboardModal', () => {
     expect(await modalWrapper.getAttribute('aria-hidden')).to.equal('true');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "React%3A%20DashboardModal" }`);
+    SRTlib.send(`], "endTestSuiteName": "React%3A%20DashboardModal" },`);
     SRTlib.endLogger();
   });
 

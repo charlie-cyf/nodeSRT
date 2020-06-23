@@ -2,26 +2,26 @@ var SRTlib = require('SRT-util');
 const {Plugin} = require('@uppy/core');
 module.exports = class ProgressBar extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "ProgressBar.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.id = this.opts.id;
     this.type = 'progressindicator';
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   install() {
-        SRTlib.send(`{ "anonymous": false, "function": "ProgressBar.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
 
     this.opts.onInstall();
-        SRTlib.send('], "end": "install"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
   }
   uninstall() {
-        SRTlib.send(`{ "anonymous": false, "function": "ProgressBar.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
 
     this.opts.onUninstall();
-        SRTlib.send('], "end": "uninstall"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
 
   }
 };

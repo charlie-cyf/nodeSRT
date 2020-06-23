@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 const supportsUploadProgress = require('./supportsUploadProgress');
 describe('supportsUploadProgress', () => {
     beforeAll(() => {
-    SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "supportsUploadProgress", "fileName": "${__filename}", "calls" : [`);
   });
 

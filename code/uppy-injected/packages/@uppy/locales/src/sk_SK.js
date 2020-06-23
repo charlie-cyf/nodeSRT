@@ -151,17 +151,17 @@ sk_SK.strings = {
   }
 };
 sk_SK.pluralize = function (count) {
-    SRTlib.send(`{ "anonymous": true, "function": "sk_SK.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sk_SK.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (count === 1) {
-        SRTlib.send('], "end": "sk_SK.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "sk_SK.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "sk_SK.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

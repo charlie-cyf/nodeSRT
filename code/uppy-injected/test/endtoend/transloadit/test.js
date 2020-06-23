@@ -13,7 +13,7 @@ describe('Transloadit file processing', () => {
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -41,11 +41,11 @@ describe('Transloadit file processing', () => {
     expect(text).to.be.equal('ok');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "Transloadit%20file%20processing" }`);
+    SRTlib.send(`], "endTestSuiteName": "Transloadit%20file%20processing" },`);
     SRTlib.endLogger();
   });
 

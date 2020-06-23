@@ -5,7 +5,7 @@ const Uppy = require('@uppy/core');
 const Dashboard = require('@uppy/dashboard');
 const Transloadit = require('@uppy/transloadit');
 function initUppyTransloadit(transloaditKey) {
-    SRTlib.send(`{ "anonymous": false, "function": "initUppyTransloadit", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initUppyTransloadit","fileName":"${__filename}","paramsNumber":1},`);
 
   var uppyTransloadit = Uppy({
     id: 'uppyTransloadit',
@@ -34,26 +34,26 @@ function initUppyTransloadit(transloaditKey) {
     waitForEncoding: true
   });
   uppyTransloadit.on('transloadit:result', (stepName, result) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
 
     console.log('Result here ====>', stepName, result);
     console.log('Cropped image url is here ====>', result.url);
     var img = new Image();
     img.onload = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "img.onload", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"img.onload","fileName":"${__filename}","paramsNumber":0},`);
 
       var result = document.createElement('div');
       result.setAttribute('id', 'uppy-result');
       result.textContent = 'ok';
       document.body.appendChild(result);
-            SRTlib.send('], "end": "img.onload"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"img.onload"},');
 
     };
     img.src = result.url;
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
-    SRTlib.send('], "end": "initUppyTransloadit"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"initUppyTransloadit","paramsNumber":1},');
 
 }
 window.initUppyTransloadit = initUppyTransloadit;

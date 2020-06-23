@@ -2,26 +2,26 @@ var SRTlib = require('SRT-util');
 const {Plugin} = require('@uppy/core');
 module.exports = class DragDrop extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.id = this.opts.id;
     this.type = 'acquirer';
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   install() {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     if (this.opts.onInstall) this.opts.onInstall();
-        SRTlib.send('], "end": "install"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
   }
   uninstall() {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     if (this.opts.onUninstall) this.opts.onUninstall();
-        SRTlib.send('], "end": "uninstall"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
 
   }
 };

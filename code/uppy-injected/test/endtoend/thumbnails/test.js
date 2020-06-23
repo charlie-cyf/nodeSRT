@@ -15,7 +15,7 @@ describe('ThumbnailGenerator', () => {
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -59,11 +59,11 @@ describe('ThumbnailGenerator', () => {
     }
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "ThumbnailGenerator" }`);
+    SRTlib.send(`], "endTestSuiteName": "ThumbnailGenerator" },`);
     SRTlib.endLogger();
   });
 

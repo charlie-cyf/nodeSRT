@@ -7,7 +7,7 @@ describe('getBytesRemaining', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should calculate the bytes remaining given a fileProgress object', () => {
@@ -18,11 +18,11 @@ describe('getBytesRemaining', () => {
     expect(getBytesRemaining(fileProgress)).toEqual(2072);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "getBytesRemaining" }`);
+    SRTlib.send(`], "endTestSuiteName": "getBytesRemaining" },`);
     SRTlib.endLogger();
   });
 

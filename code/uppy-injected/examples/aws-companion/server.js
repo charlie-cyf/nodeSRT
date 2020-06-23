@@ -22,12 +22,12 @@ const options = {
     },
     s3: {
       getKey: (req, filename) => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
 
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
         return `whatever/${Math.random().toString(32).slice(2)}/${filename}`;
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       },
       key: process.env.COMPANION_AWS_KEY,
@@ -50,18 +50,18 @@ try {
   fs.mkdirSync(DATA_DIR);
 }
 process.on('exit', function () {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
   rimraf.sync(DATA_DIR);
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 });
 app.use(companion.app(options));
 const server = app.listen(3020, () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
 
   console.log('listening on port 3020');
-    SRTlib.send('], "end": "emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
 });
 companion.socket(server, options);

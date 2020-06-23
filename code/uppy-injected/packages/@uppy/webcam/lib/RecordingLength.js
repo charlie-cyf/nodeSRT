@@ -2,11 +2,11 @@ var SRTlib = require('SRT-util');
 var _require = require('preact'), h = _require.h;
 var formatSeconds = require('./formatSeconds');
 module.exports = function RecordingLength(_ref) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.RecordingLength", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.RecordingLength","fileName":"${__filename}","paramsNumber":1},`);
 
   var recordingLengthSeconds = _ref.recordingLengthSeconds, i18n = _ref.i18n;
   var formattedRecordingLengthSeconds = formatSeconds(recordingLengthSeconds);
-    SRTlib.send('], "end": "module.exports.RecordingLength"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.RecordingLength"},');
 
   return h("div", {
     class: "uppy-Webcam-recordingLength",
@@ -14,6 +14,6 @@ module.exports = function RecordingLength(_ref) {
       recording_length: formattedRecordingLengthSeconds
     })
   }, formattedRecordingLengthSeconds);
-    SRTlib.send('], "end": "module.exports.RecordingLength"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.RecordingLength"},');
 
 };

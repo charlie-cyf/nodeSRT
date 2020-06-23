@@ -1,11 +1,11 @@
 var SRTlib = require('SRT-util');
 var _require = require('preact'), h = _require.h;
 module.exports = function RecordButton(_ref) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.RecordButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.RecordButton","fileName":"${__filename}","paramsNumber":1},`);
 
   var recording = _ref.recording, onStartRecording = _ref.onStartRecording, onStopRecording = _ref.onStopRecording, i18n = _ref.i18n;
   if (recording) {
-        SRTlib.send('], "end": "module.exports.RecordButton"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.RecordButton"},');
 
     return h("button", {
       class: "uppy-u-reset uppy-c-btn uppy-Webcam-button uppy-Webcam-button--video",
@@ -28,7 +28,7 @@ module.exports = function RecordButton(_ref) {
       height: "70"
     })));
   }
-    SRTlib.send('], "end": "module.exports.RecordButton"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.RecordButton"},');
 
   return h("button", {
     class: "uppy-u-reset uppy-c-btn uppy-Webcam-button uppy-Webcam-button--video",
@@ -49,6 +49,6 @@ module.exports = function RecordButton(_ref) {
     cy: "50",
     r: "40"
   })));
-    SRTlib.send('], "end": "module.exports.RecordButton"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.RecordButton"},');
 
 };

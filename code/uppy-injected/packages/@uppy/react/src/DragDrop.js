@@ -5,31 +5,31 @@ const propTypes = require('./propTypes');
 const h = React.createElement;
 class DragDrop extends React.Component {
   componentDidMount() {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop"}},`);
 
     this.installPlugin();
-        SRTlib.send('], "end": "componentDidMount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
 
   }
   componentDidUpdate(prevProps) {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop.componentDidUpdate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidUpdate","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop"}},`);
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
       this.installPlugin();
     }
-        SRTlib.send('], "end": "componentDidUpdate"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidUpdate"},');
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop"}},`);
 
     this.uninstallPlugin();
-        SRTlib.send('], "end": "componentWillUnmount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
 
   }
   installPlugin() {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop.installPlugin", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"installPlugin","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop"}},`);
 
     const uppy = this.props.uppy;
     const options = Object.assign({
@@ -40,32 +40,32 @@ class DragDrop extends React.Component {
     delete options.uppy;
     uppy.use(DragDropPlugin, options);
     this.plugin = uppy.getPlugin(options.id);
-        SRTlib.send('], "end": "installPlugin"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"installPlugin"},');
 
   }
   uninstallPlugin(props = this.props) {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop.uninstallPlugin", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstallPlugin","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop"}},`);
 
     const uppy = props.uppy;
     uppy.removePlugin(this.plugin);
-        SRTlib.send('], "end": "uninstallPlugin"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstallPlugin"},');
 
   }
   render() {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop"}},`);
 
-        SRTlib.send('], "end": "render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
     return h('div', {
       ref: container => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
         this.container = container;
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       }
     });
-        SRTlib.send('], "end": "render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
   }
 }

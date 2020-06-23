@@ -135,17 +135,17 @@ es_ES.strings = {
   openFolderNamed: 'Carpeta abierta %{name}'
 };
 es_ES.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "es_ES.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"es_ES.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "es_ES.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"es_ES.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "es_ES.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"es_ES.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "es_ES.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"es_ES.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

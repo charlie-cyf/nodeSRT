@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 const base = require('./wdio.base.conf');
 function createCapability(capability) {
-    SRTlib.send(`{ "anonymous": false, "function": "createCapability", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createCapability","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "createCapability"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createCapability"},');
 
   return {
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
@@ -11,7 +11,7 @@ function createCapability(capability) {
     extendedDebugging: true,
     ...capability
   };
-    SRTlib.send('], "end": "createCapability"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createCapability","paramsNumber":1},');
 
 }
 exports.config = {

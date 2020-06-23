@@ -7,7 +7,7 @@ describe('supportsMediaRecorder', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should return true if MediaRecorder is supported', () => {
@@ -27,11 +27,11 @@ describe('supportsMediaRecorder', () => {
     expect(supportsMediaRecorder()).toEqual(false);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "supportsMediaRecorder" }`);
+    SRTlib.send(`], "endTestSuiteName": "supportsMediaRecorder" },`);
     SRTlib.endLogger();
   });
 

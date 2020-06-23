@@ -2,11 +2,11 @@ var SRTlib = require('SRT-util');
 var getFileTypeIcon = require('../utils/getFileTypeIcon');
 var _require = require('preact'), h = _require.h;
 module.exports = function FilePreview(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.FilePreview", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.FilePreview","fileName":"${__filename}","paramsNumber":1},`);
 
   var file = props.file;
   if (file.preview) {
-        SRTlib.send('], "end": "module.exports.FilePreview"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FilePreview"},');
 
     return h("img", {
       class: "uppy-DashboardItem-previewImg",
@@ -15,7 +15,7 @@ module.exports = function FilePreview(props) {
     });
   }
   var _getFileTypeIcon = getFileTypeIcon(file.type), color = _getFileTypeIcon.color, icon = _getFileTypeIcon.icon;
-    SRTlib.send('], "end": "module.exports.FilePreview"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FilePreview"},');
 
   return h("div", {
     class: "uppy-DashboardItem-previewIconWrap"
@@ -38,6 +38,6 @@ module.exports = function FilePreview(props) {
     rx: "3",
     "fill-rule": "evenodd"
   })));
-    SRTlib.send('], "end": "module.exports.FilePreview"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FilePreview"},');
 
 };

@@ -11,23 +11,23 @@ var uploadStates = {
   STATE_PAUSED: 'paused'
 };
 function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
-    SRTlib.send(`{ "anonymous": false, "function": "getUploadingState", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUploadingState","fileName":"${__filename}","paramsNumber":4},`);
 
   if (files === void 0) {
     files = {};
   }
   if (isAllErrored) {
-        SRTlib.send('], "end": "getUploadingState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadingState"},');
 
     return uploadStates.STATE_ERROR;
   }
   if (isAllComplete) {
-        SRTlib.send('], "end": "getUploadingState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadingState"},');
 
     return uploadStates.STATE_COMPLETE;
   }
   if (isAllPaused) {
-        SRTlib.send('], "end": "getUploadingState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadingState"},');
 
     return uploadStates.STATE_PAUSED;
   }
@@ -36,7 +36,7 @@ function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
   for (var i = 0; i < fileIDs.length; i++) {
     var progress = files[fileIDs[i]].progress;
     if (progress.uploadStarted && !progress.uploadComplete) {
-            SRTlib.send('], "end": "getUploadingState"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadingState"},');
 
       return uploadStates.STATE_UPLOADING;
     }
@@ -47,56 +47,56 @@ function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
       state = uploadStates.STATE_POSTPROCESSING;
     }
   }
-    SRTlib.send('], "end": "getUploadingState"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadingState"},');
 
   return state;
-    SRTlib.send('], "end": "getUploadingState"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadingState","paramsNumber":4},');
 
 }
 function UploadStatus(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "UploadStatus", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UploadStatus","fileName":"${__filename}","paramsNumber":1},`);
 
   var uploadingState = getUploadingState(props.isAllErrored, props.isAllComplete, props.isAllPaused, props.files);
   switch (uploadingState) {
     case 'uploading':
-            SRTlib.send('], "end": "UploadStatus"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
       return props.i18n('uploadingXFiles', {
         smart_count: props.inProgressNotPausedFiles.length
       });
     case 'preprocessing':
     case 'postprocessing':
-            SRTlib.send('], "end": "UploadStatus"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
       return props.i18n('processingXFiles', {
         smart_count: props.processingFiles.length
       });
     case 'paused':
-            SRTlib.send('], "end": "UploadStatus"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
       return props.i18n('uploadPaused');
     case 'waiting':
-            SRTlib.send('], "end": "UploadStatus"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
       return props.i18n('xFilesSelected', {
         smart_count: props.newFiles.length
       });
     case 'complete':
-            SRTlib.send('], "end": "UploadStatus"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
       return props.i18n('uploadComplete');
   }
-    SRTlib.send('], "end": "UploadStatus"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus","paramsNumber":1},');
 
 }
 function PanelTopBar(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "PanelTopBar", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"PanelTopBar","fileName":"${__filename}","paramsNumber":1},`);
 
   var allowNewUpload = props.allowNewUpload;
   if (allowNewUpload && props.maxNumberOfFiles) {
     allowNewUpload = props.totalFileCount < props.maxNumberOfFiles;
   }
-    SRTlib.send('], "end": "PanelTopBar"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"PanelTopBar"},');
 
   return h("div", {
     class: "uppy-DashboardContent-bar"
@@ -114,18 +114,18 @@ function PanelTopBar(props) {
     "aria-label": props.i18n('addMoreFiles'),
     title: props.i18n('addMoreFiles'),
     onclick: function onclick() {
-            SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.h.h.onclick.onclick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h.h.onclick.onclick","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('], "end": "ReturnStatement.h.h.onclick.onclick"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.h.onclick.onclick"},');
 
       return props.toggleAddFilesPanel(true);
-            SRTlib.send('], "end": "ReturnStatement.h.h.onclick.onclick"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.h.onclick.onclick"},');
 
     }
   }, iconPlus(), h("span", {
     class: "uppy-DashboardContent-addMoreCaption"
   }, props.i18n('addMore'))) : h("div", null));
-    SRTlib.send('], "end": "PanelTopBar"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"PanelTopBar","paramsNumber":1},');
 
 }
 module.exports = PanelTopBar;

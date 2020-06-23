@@ -7,7 +7,7 @@ describe('getSocketHost', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should get the host from the specified url', () => {
@@ -17,11 +17,11 @@ describe('getSocketHost', () => {
     expect(getSocketHost('http://foo.bar/a/b/cd?e=fghi&l=k&m=n')).toEqual('ws://foo.bar/a/b/cd?e=fghi&l=k&m=n');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "getSocketHost" }`);
+    SRTlib.send(`], "endTestSuiteName": "getSocketHost" },`);
     SRTlib.endLogger();
   });
 

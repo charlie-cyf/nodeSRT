@@ -134,17 +134,17 @@ zh_CN.strings = {
   openFolderNamed: '打开文件夹 %{name}'
 };
 zh_CN.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "zh_CN.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"zh_CN.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "zh_CN.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "zh_CN.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "zh_CN.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

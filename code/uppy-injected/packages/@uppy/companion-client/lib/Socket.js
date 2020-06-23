@@ -1,10 +1,10 @@
 var SRTlib = require('SRT-util');
 var ee = require('namespace-emitter');
 module.exports = (function () {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
 
   function UppySocket(opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "UppySocket", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UppySocket","fileName":"${__filename}","paramsNumber":1},`);
 
     this.opts = opts;
     this._queued = [];
@@ -19,17 +19,17 @@ module.exports = (function () {
     if (!opts || opts.autoOpen !== false) {
       this.open();
     }
-        SRTlib.send('], "end": "UppySocket"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppySocket","paramsNumber":1},');
 
   }
   var _proto = UppySocket.prototype;
   _proto.open = function open() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.open.open", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.open.open","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this = this;
     this.socket = new WebSocket(this.opts.target);
     this.socket.onopen = function (e) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.open.open.socket.onopen", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.open.open.socket.onopen","fileName":"${__filename}","paramsNumber":1},`);
 
       _this.isOpen = true;
       while (_this._queued.length > 0 && _this.isOpen) {
@@ -37,38 +37,38 @@ module.exports = (function () {
         _this.send(first.action, first.payload);
         _this._queued = _this._queued.slice(1);
       }
-            SRTlib.send('], "end": "module.exports._proto.open.open.socket.onopen"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.open.open.socket.onopen"},');
 
     };
     this.socket.onclose = function (e) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.open.open.socket.onclose", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.open.open.socket.onclose","fileName":"${__filename}","paramsNumber":1},`);
 
       _this.isOpen = false;
-            SRTlib.send('], "end": "module.exports._proto.open.open.socket.onclose"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.open.open.socket.onclose"},');
 
     };
     this.socket.onmessage = this._handleMessage;
-        SRTlib.send('], "end": "module.exports._proto.open.open"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.open.open"},');
 
   };
   _proto.close = function close() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.close.close", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.close.close","fileName":"${__filename}","paramsNumber":0},`);
 
     if (this.socket) {
       this.socket.close();
     }
-        SRTlib.send('], "end": "module.exports._proto.close.close"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.close.close"},');
 
   };
   _proto.send = function send(action, payload) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.send.send", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.send.send","fileName":"${__filename}","paramsNumber":2},`);
 
     if (!this.isOpen) {
       this._queued.push({
         action: action,
         payload: payload
       });
-            SRTlib.send('], "end": "module.exports._proto.send.send"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.send.send"},');
 
       return;
     }
@@ -76,32 +76,32 @@ module.exports = (function () {
       action: action,
       payload: payload
     }));
-        SRTlib.send('], "end": "module.exports._proto.send.send"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.send.send"},');
 
   };
   _proto.on = function on(action, handler) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.on.on", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.on.on","fileName":"${__filename}","paramsNumber":2},`);
 
     this.emitter.on(action, handler);
-        SRTlib.send('], "end": "module.exports._proto.on.on"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.on.on"},');
 
   };
   _proto.emit = function emit(action, payload) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.emit.emit", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.emit.emit","fileName":"${__filename}","paramsNumber":2},`);
 
     this.emitter.emit(action, payload);
-        SRTlib.send('], "end": "module.exports._proto.emit.emit"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.emit.emit"},');
 
   };
   _proto.once = function once(action, handler) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.once.once", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.once.once","fileName":"${__filename}","paramsNumber":2},`);
 
     this.emitter.once(action, handler);
-        SRTlib.send('], "end": "module.exports._proto.once.once"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.once.once"},');
 
   };
   _proto._handleMessage = function _handleMessage(e) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._handleMessage._handleMessage", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._handleMessage._handleMessage","fileName":"${__filename}","paramsNumber":1},`);
 
     try {
       var message = JSON.parse(e.data);
@@ -109,12 +109,12 @@ module.exports = (function () {
     } catch (err) {
       console.log(err);
     }
-        SRTlib.send('], "end": "module.exports._proto._handleMessage._handleMessage"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._handleMessage._handleMessage"},');
 
   };
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return UppySocket;
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 })();

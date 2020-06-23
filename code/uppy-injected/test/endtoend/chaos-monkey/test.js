@@ -11,7 +11,7 @@ describe('Chaos monkey', function () {
 
   this.timeout(5 * 60 * 1000);
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -90,11 +90,11 @@ describe('Chaos monkey', function () {
     expect(errorMessage).to.not.exist;
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "Chaos%20monkey" }`);
+    SRTlib.send(`], "endTestSuiteName": "Chaos%20monkey" },`);
     SRTlib.endLogger();
   });
 

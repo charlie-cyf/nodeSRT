@@ -5,7 +5,7 @@ const Uppy = require('@uppy/core');
 const FileInput = require('@uppy/file-input');
 const XHRUpload = require('@uppy/xhr-upload');
 function startXHRLimitTest(endpoint) {
-    SRTlib.send(`{ "anonymous": false, "function": "startXHRLimitTest", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"startXHRLimitTest","fileName":"${__filename}","paramsNumber":1},`);
 
   const uppy = Uppy({
     id: 'uppyXhrLimit',
@@ -21,20 +21,20 @@ function startXHRLimitTest(endpoint) {
   uppy.uploadsStarted = 0;
   uppy.uploadsComplete = 0;
   uppy.on('upload-started', () => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 
     uppy.uploadsStarted++;
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   uppy.on('upload-success', () => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
     uppy.uploadsComplete++;
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   });
-    SRTlib.send('], "end": "startXHRLimitTest"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"startXHRLimitTest","paramsNumber":1},');
 
 }
 window.startXHRLimitTest = startXHRLimitTest;

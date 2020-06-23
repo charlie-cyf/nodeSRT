@@ -35,15 +35,15 @@ if (app.get('env') !== 'test') {
 }
 const sensitiveKeys = new Set(['access_token', 'uppyAuthToken']);
 function censorQuery(rawQuery) {
-    SRTlib.send(`{ "anonymous": false, "function": "censorQuery", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"censorQuery","fileName":"${__filename}","paramsNumber":1},`);
 
   const query = {};
   let censored = false;
   Object.keys(rawQuery).forEach(key => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
     if (typeof rawQuery[key] !== 'string') {
-            SRTlib.send('], "end": "emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       return;
     }
@@ -53,43 +53,43 @@ function censorQuery(rawQuery) {
     } else {
       query[key] = rawQuery[key];
     }
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
-    SRTlib.send('], "end": "censorQuery"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"censorQuery"},');
 
   return {
     query,
     censored
   };
-    SRTlib.send('], "end": "censorQuery"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"censorQuery","paramsNumber":1},');
 
 }
 app.use(addRequestId);
 app.use(morgan('combined'));
 morgan.token('url', (req, res) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
 
   const {query, censored} = censorQuery(req.query);
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   return censored ? `${req.path}?${qs.stringify(query)}` : req.originalUrl || req.url;
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 });
 morgan.token('referrer', (req, res) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":2},`);
 
   const ref = req.headers.referer || req.headers.referrer;
   if (typeof ref === 'string') {
     const parsed = parseURL(ref);
     const rawQuery = qs.parse(parsed.search.replace('?', ''));
     const {query, censored} = censorQuery(rawQuery);
-        SRTlib.send('], "end": "emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
     return censored ? `${parsed.href.split('?')[0]}?${qs.stringify(query)}` : parsed.href;
   }
-    SRTlib.send('], "end": "emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
 });
 app.use(metricsMiddleware);
@@ -125,17 +125,17 @@ if (process.env.COMPANION_COOKIE_DOMAIN) {
 }
 app.use(session(sessionOptions));
 app.use((req, res, next) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":3},`);
 
   const protocol = process.env.COMPANION_PROTOCOL || 'http';
   if (process.env.COMPANION_CLIENT_ORIGINS) {
     const whitelist = process.env.COMPANION_CLIENT_ORIGINS.split(',').map(url => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
       return helper.hasProtocol(url) ? url : `${protocol}://${url}`;
-            SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
     });
     if (req.headers.origin && whitelist.indexOf(req.headers.origin) > -1) {
@@ -148,15 +148,15 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization, Origin, Content-Type, Accept');
   next();
-    SRTlib.send('], "end": "emptyKey5"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
 });
 app.get('/', (req, res) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":2},`);
 
   res.setHeader('Content-Type', 'text/plain');
   res.send(helper.buildHelpfulStartupMessage(companionOptions));
-    SRTlib.send('], "end": "emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
 });
 let companionApp;
@@ -173,7 +173,7 @@ if (process.env.COMPANION_PATH) {
 }
 if (process.env.COMPANION_ONEDRIVE_DOMAIN_VALIDATION === 'true' && process.env.COMPANION_ONEDRIVE_KEY) {
   app.get('/.well-known/microsoft-identity-association.json', (req, res) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":2},`);
 
     const content = JSON.stringify({
       associatedApplications: [{
@@ -186,23 +186,23 @@ if (process.env.COMPANION_ONEDRIVE_DOMAIN_VALIDATION === 'true' && process.env.C
     });
     res.write(content);
     res.end();
-        SRTlib.send('], "end": "emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
   });
 }
 app.use((req, res, next) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":3},`);
 
-    SRTlib.send('], "end": "emptyKey8"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
   return res.status(404).json({
     message: 'Not Found'
   });
-    SRTlib.send('], "end": "emptyKey8"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
 });
 app.use((err, req, res, next) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":4},`);
 
   const logStackTrace = true;
   if (app.get('env') === 'production') {
@@ -223,7 +223,7 @@ app.use((err, req, res, next) => {
       requestId: req.id
     });
   }
-    SRTlib.send('], "end": "emptyKey9"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
 
 });
 module.exports = {

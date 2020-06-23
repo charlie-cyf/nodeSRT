@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 module.exports = function generateFileID(file) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.generateFileID", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.generateFileID","fileName":"${__filename}","paramsNumber":1},`);
 
   var id = 'uppy';
   if (typeof file.name === 'string') {
@@ -18,37 +18,37 @@ module.exports = function generateFileID(file) {
   if (file.data.lastModified !== undefined) {
     id += '-' + file.data.lastModified;
   }
-    SRTlib.send('], "end": "module.exports.generateFileID"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateFileID"},');
 
   return id;
-    SRTlib.send('], "end": "module.exports.generateFileID"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateFileID"},');
 
 };
 function encodeFilename(name) {
-    SRTlib.send(`{ "anonymous": false, "function": "encodeFilename", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"encodeFilename","fileName":"${__filename}","paramsNumber":1},`);
 
   var suffix = '';
-    SRTlib.send('], "end": "encodeFilename"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"encodeFilename"},');
 
   return name.replace(/[^A-Z0-9]/ig, function (character) {
-        SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
     suffix += '-' + encodeCharacter(character);
-        SRTlib.send('], "end": "ReturnStatement"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     return '/';
-        SRTlib.send('], "end": "ReturnStatement"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
   }) + suffix;
-    SRTlib.send('], "end": "encodeFilename"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"encodeFilename","paramsNumber":1},');
 
 }
 function encodeCharacter(character) {
-    SRTlib.send(`{ "anonymous": false, "function": "encodeCharacter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"encodeCharacter","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "encodeCharacter"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"encodeCharacter"},');
 
   return character.charCodeAt(0).toString(32);
-    SRTlib.send('], "end": "encodeCharacter"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"encodeCharacter","paramsNumber":1},');
 
 }

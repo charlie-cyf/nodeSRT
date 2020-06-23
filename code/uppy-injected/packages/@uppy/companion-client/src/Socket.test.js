@@ -10,7 +10,7 @@ describe('Socket', () => {
   let webSocketCloseSpy;
   let webSocketSendSpy;
   beforeEach(() => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     webSocketConstructorSpy = jest.fn();
     webSocketCloseSpy = jest.fn();
@@ -34,7 +34,7 @@ describe('Socket', () => {
     };
   });
   afterEach(() => {
-        SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+        SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
 
     global.WebSocket = undefined;
   });
@@ -165,7 +165,7 @@ describe('Socket', () => {
     expect(emitterListenerMock.mock.calls).toEqual([['ho', undefined, undefined, undefined, undefined, undefined]]);
   });
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "Socket" }`);
+    SRTlib.send(`], "endTestSuiteName": "Socket" },`);
     SRTlib.endLogger();
   });
 

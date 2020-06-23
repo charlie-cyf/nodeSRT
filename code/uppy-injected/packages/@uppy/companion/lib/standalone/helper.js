@@ -7,21 +7,21 @@ const logger = require('../server/logger');
 const crypto = require('crypto');
 const {version} = require('../../package.json');
 exports.getCompanionOptions = () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   return merge({}, getConfigFromEnv(), getConfigFromFile());
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 };
 const getConfigFromEnv = () => {
-    SRTlib.send(`{ "anonymous": false, "function": "getConfigFromEnv", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigFromEnv","fileName":"${__filename}","paramsNumber":0},`);
 
   const uploadUrls = process.env.COMPANION_UPLOAD_URLS;
   const domains = process.env.COMPANION_DOMAINS || process.env.COMPANION_DOMAIN || null;
   const validHosts = domains ? domains.split(',') : [];
-    SRTlib.send('], "end": "getConfigFromEnv"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigFromEnv"},');
 
   return {
     providerOptions: {
@@ -74,47 +74,47 @@ const getConfigFromEnv = () => {
     cookieDomain: process.env.COMPANION_COOKIE_DOMAIN,
     multipleInstances: true
   };
-    SRTlib.send('], "end": "getConfigFromEnv"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigFromEnv"},');
 
 };
 const getSecret = baseEnvVar => {
-    SRTlib.send(`{ "anonymous": false, "function": "getSecret", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSecret","fileName":"${__filename}","paramsNumber":1},`);
 
   const secretFile = process.env[`${baseEnvVar}_FILE`];
-    SRTlib.send('], "end": "getSecret"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getSecret"},');
 
   return secretFile ? fs.readFileSync(secretFile).toString() : process.env[baseEnvVar];
-    SRTlib.send('], "end": "getSecret"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getSecret"},');
 
 };
 const generateSecret = () => {
-    SRTlib.send(`{ "anonymous": false, "function": "generateSecret", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"generateSecret","fileName":"${__filename}","paramsNumber":0},`);
 
   logger.warn('auto-generating server secret because none was specified', 'startup.secret');
-    SRTlib.send('], "end": "generateSecret"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"generateSecret"},');
 
   return crypto.randomBytes(64).toString('hex');
-    SRTlib.send('], "end": "generateSecret"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"generateSecret"},');
 
 };
 const getConfigFromFile = () => {
-    SRTlib.send(`{ "anonymous": false, "function": "getConfigFromFile", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigFromFile","fileName":"${__filename}","paramsNumber":0},`);
 
   const path = getConfigPath();
   if (!path) {
-        SRTlib.send('], "end": "getConfigFromFile"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigFromFile"},');
 
     return {};
   }
   const rawdata = fs.readFileSync(getConfigPath());
-    SRTlib.send('], "end": "getConfigFromFile"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigFromFile"},');
 
   return JSON.parse(rawdata);
-    SRTlib.send('], "end": "getConfigFromFile"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigFromFile"},');
 
 };
 const getConfigPath = () => {
-    SRTlib.send(`{ "anonymous": false, "function": "getConfigPath", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigPath","fileName":"${__filename}","paramsNumber":0},`);
 
   let configPath;
   for (let i = process.argv.length - 1; i >= 0; i--) {
@@ -125,39 +125,39 @@ const getConfigPath = () => {
       break;
     }
   }
-    SRTlib.send('], "end": "getConfigPath"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigPath"},');
 
   return configPath;
-    SRTlib.send('], "end": "getConfigPath"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigPath"},');
 
 };
 exports.hasProtocol = url => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   return url.startsWith('http://') || url.startsWith('https://');
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 };
 exports.buildHelpfulStartupMessage = companionOptions => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
   const buildURL = utils.getURLBuilder(companionOptions);
   const callbackURLs = [];
   Object.keys(companionOptions.providerOptions).forEach(providerName => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
     if (providerName === 's3') {
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
       return;
     }
     callbackURLs.push(buildURL(`/connect/${providerName}/callback`, true));
-        SRTlib.send('], "end": "emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
   });
-    SRTlib.send('], "end": "emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
   return stripIndent`
     Welcome to Companion v${version}
@@ -176,6 +176,6 @@ exports.buildHelpfulStartupMessage = companionOptions => {
 
     So quit lollygagging, start uploading and experience the future!
   `;
-    SRTlib.send('], "end": "emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
 };

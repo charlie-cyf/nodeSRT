@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 var Transloadit = require('@uppy/transloadit');
@@ -41,7 +41,7 @@ var localProviders = {
 var remoteProviderOptionNames = ['companionUrl', 'companionAllowedHosts', 'companionHeaders', 'serverHeaders', 'target'];
 var localProviderOptionNames = ['target'];
 function addRemoteProvider(uppy, name, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "addRemoteProvider", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addRemoteProvider","fileName":"${__filename}","paramsNumber":3},`);
 
   var Provider = remoteProviders[name];
   var providerOptions = {
@@ -49,46 +49,46 @@ function addRemoteProvider(uppy, name, opts) {
     companionAllowedHosts: Transloadit.COMPANION_PATTERN
   };
   remoteProviderOptionNames.forEach(function (name) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, name)) providerOptions[name] = opts[name];
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   if (typeof opts[name] === 'object') {
     _extends(providerOptions, opts[name]);
   }
   uppy.use(Provider, providerOptions);
-    SRTlib.send('], "end": "addRemoteProvider"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"addRemoteProvider","paramsNumber":3},');
 
 }
 function addLocalProvider(uppy, name, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "addLocalProvider", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addLocalProvider","fileName":"${__filename}","paramsNumber":3},`);
 
   var Provider = localProviders[name];
   var providerOptions = {};
   localProviderOptionNames.forEach(function (name) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, name)) providerOptions[name] = opts[name];
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   });
   if (typeof opts[name] === 'object') {
     _extends(providerOptions, opts[name]);
   }
   uppy.use(Provider, providerOptions);
-    SRTlib.send('], "end": "addLocalProvider"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"addLocalProvider","paramsNumber":3},');
 
 }
 function addProviders(uppy, names, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "addProviders", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addProviders","fileName":"${__filename}","paramsNumber":3},`);
 
   if (opts === void 0) {
     opts = {};
   }
   names.forEach(function (name) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(remoteProviders, name)) {
       addRemoteProvider(uppy, name, opts);
@@ -97,22 +97,22 @@ function addProviders(uppy, names, opts) {
     } else {
       var validNames = [].concat(Object.keys(remoteProviders), Object.keys(localProviders));
       var expectedNameString = validNames.sort().map(function (validName) {
-                SRTlib.send(`{ "anonymous": true, "function": "expectedNameString.map.join.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"expectedNameString.map.join.map","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "expectedNameString.map.join.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"expectedNameString.map.join.map"},');
 
         return "'" + validName + "'";
-                SRTlib.send('], "end": "expectedNameString.map.join.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"expectedNameString.map.join.map"},');
 
       }).join(', ');
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
       throw new Error("Unexpected provider '" + name + "', expected one of [" + expectedNameString + "]");
     }
-        SRTlib.send('], "end": "emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
   });
-    SRTlib.send('], "end": "addProviders"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"addProviders","paramsNumber":3},');
 
 }
 module.exports = addProviders;

@@ -24,12 +24,12 @@ describe('src/Core', () => {
 
   const RealCreateObjectUrl = global.URL.createObjectURL;
   beforeEach(() => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     global.URL.createObjectURL = jest.fn().mockReturnValue('newUrl');
   });
   afterEach(() => {
-        SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+        SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
 
     global.URL.createObjectURL = RealCreateObjectUrl;
   });
@@ -48,11 +48,11 @@ describe('src/Core', () => {
   describe('plugins', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "plugins", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should add a plugin to the plugin stack', () => {
@@ -113,11 +113,11 @@ describe('src/Core', () => {
       expect(core.plugins.acquirer[0].mocks.run.mock.calls.length).toEqual(0);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "plugins" },`);
       SRTlib.endLogger();
     });
 
@@ -125,11 +125,11 @@ describe('src/Core', () => {
   describe('state', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "state", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should update all the plugins with the new state when the updateAll method is called', () => {
@@ -236,11 +236,11 @@ describe('src/Core', () => {
       });
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "state" },`);
       SRTlib.endLogger();
     });
 
@@ -341,11 +341,11 @@ describe('src/Core', () => {
   describe('upload hooks', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "upload%20hooks", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should add data returned from upload hooks to the .upload() result', () => {
@@ -372,11 +372,11 @@ describe('src/Core', () => {
       });
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "upload%20hooks" },`);
       SRTlib.endLogger();
     });
 
@@ -384,11 +384,11 @@ describe('src/Core', () => {
   describe('preprocessors', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "preprocessors", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should add a preprocessor', () => {
@@ -516,11 +516,11 @@ describe('src/Core', () => {
       });
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "preprocessors" },`);
       SRTlib.endLogger();
     });
 
@@ -528,11 +528,11 @@ describe('src/Core', () => {
   describe('postprocessors', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "postprocessors", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should add a postprocessor', () => {
@@ -632,11 +632,11 @@ describe('src/Core', () => {
       });
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "postprocessors" },`);
       SRTlib.endLogger();
     });
 
@@ -644,11 +644,11 @@ describe('src/Core', () => {
   describe('uploaders', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "uploaders", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should add an uploader', () => {
@@ -670,11 +670,11 @@ describe('src/Core', () => {
       expect(core.uploaders.length).toEqual(2);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "uploaders" },`);
       SRTlib.endLogger();
     });
 
@@ -682,11 +682,11 @@ describe('src/Core', () => {
   describe('adding a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "adding%20a%20file", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should call onBeforeFileAdded if it was specified in the options when initialising the class', () => {
@@ -842,11 +842,11 @@ describe('src/Core', () => {
     describe('with allowMultipleUploads: false', () => {
             beforeAll(() => {
         SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-        SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testSuiteName": "with%20allowMultipleUploads%3A%20false", "fileName": "${__filename}", "calls" : [`);
       });
 
             beforeEach(() => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
       });
 
       it('allows no new files after upload', async () => {
@@ -921,11 +921,11 @@ describe('src/Core', () => {
         await expect(core.upload()).resolves.toBeDefined();
       });
             afterEach(() => {
-        SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+        SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
       });
 
             afterAll(() => {
-        SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+        SRTlib.send(`], "endTestSuiteName": "with%20allowMultipleUploads%3A%20false" },`);
         SRTlib.endLogger();
       });
 
@@ -953,11 +953,11 @@ describe('src/Core', () => {
       expect(core.getFile('uppy-foo//jpg-1l3o-1e-image/jpeg-17175-1562770350937')).toBeDefined();
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "adding%20a%20file" },`);
       SRTlib.endLogger();
     });
 
@@ -965,11 +965,11 @@ describe('src/Core', () => {
   describe('uploading a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "uploading%20a%20file", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should return a { successful, failed } pair containing file objects', () => {
@@ -1146,11 +1146,11 @@ describe('src/Core', () => {
       await expect(core.upload()).resolves.toBeDefined();
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "uploading%20a%20file" },`);
       SRTlib.endLogger();
     });
 
@@ -1158,11 +1158,11 @@ describe('src/Core', () => {
   describe('removing a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "removing%20a%20file", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should remove the file', () => {
@@ -1189,11 +1189,11 @@ describe('src/Core', () => {
       expect(core.getState().totalProgress).toEqual(0);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "removing%20a%20file" },`);
       SRTlib.endLogger();
     });
 
@@ -1201,21 +1201,21 @@ describe('src/Core', () => {
   describe('restoring a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "restoring%20a%20file", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     xit('should restore a file', () => {});
     xit("should fail to restore a file if it doesn't exist", () => {});
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "restoring%20a%20file" },`);
       SRTlib.endLogger();
     });
 
@@ -1223,11 +1223,11 @@ describe('src/Core', () => {
   describe('get a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "get%20a%20file", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should get the specified file', () => {
@@ -1245,11 +1245,11 @@ describe('src/Core', () => {
       expect(core.getFile('non existant file')).toEqual(undefined);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "get%20a%20file" },`);
       SRTlib.endLogger();
     });
 
@@ -1257,11 +1257,11 @@ describe('src/Core', () => {
   describe('getFiles', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "getFiles", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should return an empty array if there are no files', () => {
@@ -1290,11 +1290,11 @@ describe('src/Core', () => {
       expect(core.getFiles().map(file => file.name).sort()).toEqual(['empty.dat', 'foo.jpg']);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "getFiles" },`);
       SRTlib.endLogger();
     });
 
@@ -1302,11 +1302,11 @@ describe('src/Core', () => {
   describe('setOptions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "setOptions", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should change options on the fly', () => {
@@ -1390,11 +1390,11 @@ describe('src/Core', () => {
       expect(core.getFiles().length).toEqual(1);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "setOptions" },`);
       SRTlib.endLogger();
     });
 
@@ -1402,11 +1402,11 @@ describe('src/Core', () => {
   describe('meta data', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "meta%20data", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should set meta data by calling setMeta', () => {
@@ -1483,11 +1483,11 @@ describe('src/Core', () => {
       });
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "meta%20data" },`);
       SRTlib.endLogger();
     });
 
@@ -1495,11 +1495,11 @@ describe('src/Core', () => {
   describe('progress', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "progress", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should calculate the progress of a file upload', () => {
@@ -1729,11 +1729,11 @@ describe('src/Core', () => {
       expect(resetProgressEvent.mock.calls.length).toEqual(1);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "progress" },`);
       SRTlib.endLogger();
     });
 
@@ -1741,11 +1741,11 @@ describe('src/Core', () => {
   describe('checkRestrictions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "checkRestrictions", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should enforce the maxNumberOfFiles rule', () => {
@@ -1883,11 +1883,11 @@ describe('src/Core', () => {
       expect(restrictionsViolatedEventMock.mock.calls[0][1].message).toEqual(errorMessage);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "checkRestrictions" },`);
       SRTlib.endLogger();
     });
 
@@ -1895,11 +1895,11 @@ describe('src/Core', () => {
   describe('actions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "actions", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should update the state when receiving the error event', () => {
@@ -1934,11 +1934,11 @@ describe('src/Core', () => {
       expect(core.getState().error).toEqual(null);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "actions" },`);
       SRTlib.endLogger();
     });
 
@@ -1946,11 +1946,11 @@ describe('src/Core', () => {
   describe('updateOnlineStatus', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "updateOnlineStatus", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     const RealNavigatorOnline = global.window.navigator.onLine;
@@ -1961,7 +1961,7 @@ describe('src/Core', () => {
       });
     }
     afterEach(() => {
-            SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+            SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
 
       global.window.navigator.onLine = RealNavigatorOnline;
     });
@@ -1990,7 +1990,7 @@ describe('src/Core', () => {
       expect(backOnlineEventMock.mock.calls.length).toEqual(1);
     });
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "updateOnlineStatus" },`);
       SRTlib.endLogger();
     });
 
@@ -1998,11 +1998,11 @@ describe('src/Core', () => {
   describe('info', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "info", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should set a string based message to be displayed infinitely', () => {
@@ -2079,11 +2079,11 @@ describe('src/Core', () => {
       });
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "info" },`);
       SRTlib.endLogger();
     });
 
@@ -2091,11 +2091,11 @@ describe('src/Core', () => {
   describe('createUpload', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "createUpload", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should assign the specified files to a new upload', () => {
@@ -2119,11 +2119,11 @@ describe('src/Core', () => {
       expect(core.getState().currentUploads).toEqual(currentUploadsState);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "createUpload" },`);
       SRTlib.endLogger();
     });
 
@@ -2131,11 +2131,11 @@ describe('src/Core', () => {
   describe('i18n', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "i18n", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('merges in custom locale strings', () => {
@@ -2150,11 +2150,11 @@ describe('src/Core', () => {
       expect(core.i18n('test')).toBe('beep boop');
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "i18n" },`);
       SRTlib.endLogger();
     });
 
@@ -2162,11 +2162,11 @@ describe('src/Core', () => {
   describe('default restrictions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "default%20restrictions", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should be merged with supplied restrictions', () => {
@@ -2179,11 +2179,11 @@ describe('src/Core', () => {
       expect(core.opts.restrictions.minNumberOfFiles).toBe(null);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "default%20restrictions" },`);
       SRTlib.endLogger();
     });
 
@@ -2191,11 +2191,11 @@ describe('src/Core', () => {
   describe('log', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "log", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should log via provided logger function', () => {
@@ -2266,17 +2266,17 @@ describe('src/Core', () => {
       expect(console.error.mock.calls.length).toBe(1);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+      SRTlib.send(`], "endTestSuiteName": "log" },`);
       SRTlib.endLogger();
     });
 
   });
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "src/Core" }`);
+    SRTlib.send(`], "endTestSuiteName": "src/Core" },`);
     SRTlib.endLogger();
   });
 

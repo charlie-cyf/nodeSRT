@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 var Uppy = require('@uppy/core');
@@ -39,25 +39,25 @@ var defaultLocaleStrings = {
   chooseFiles: 'Choose files'
 };
 function mergeDefaultLocale(defaults, userProvided) {
-    SRTlib.send(`{ "anonymous": false, "function": "mergeDefaultLocale", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"mergeDefaultLocale","fileName":"${__filename}","paramsNumber":2},`);
 
   if (userProvided === void 0) {
     userProvided = {};
   }
   var strings = userProvided.strings || ({});
-    SRTlib.send('], "end": "mergeDefaultLocale"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"mergeDefaultLocale"},');
 
   return _extends({}, userProvided, {
     strings: _extends({}, defaults, {}, strings)
   });
-    SRTlib.send('], "end": "mergeDefaultLocale"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"mergeDefaultLocale","paramsNumber":2},');
 
 }
 function form(target, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "form", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"form","fileName":"${__filename}","paramsNumber":2},`);
 
   if (!opts) {
-        SRTlib.send('], "end": "form"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"form"},');
 
     throw new TypeError('robodog.form: must provide an options object');
   }
@@ -127,10 +127,10 @@ function form(target, opts) {
       hideCancelButtons: true
     });
   }
-    SRTlib.send('], "end": "form"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"form"},');
 
   return uppy;
-    SRTlib.send('], "end": "form"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"form","paramsNumber":2},');
 
 }
 module.exports = form;

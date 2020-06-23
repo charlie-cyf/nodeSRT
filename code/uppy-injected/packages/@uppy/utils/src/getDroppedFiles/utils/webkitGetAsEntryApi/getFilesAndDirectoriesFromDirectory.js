@@ -1,34 +1,34 @@
 var SRTlib = require('SRT-util');
 module.exports = function getFilesAndDirectoriesFromDirectory(directoryReader, oldEntries, logDropError, {onSuccess}) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.getFilesAndDirectoriesFromDirectory", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFilesAndDirectoriesFromDirectory","fileName":"${__filename}","paramsNumber":4},`);
 
   directoryReader.readEntries(entries => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
     const newEntries = [...oldEntries, ...entries];
     if (entries.length) {
       setTimeout(() => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 
         getFilesAndDirectoriesFromDirectory(directoryReader, newEntries, logDropError, {
           onSuccess
         });
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       }, 0);
     } else {
       onSuccess(newEntries);
     }
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   }, error => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
     logDropError(error);
     onSuccess(oldEntries);
-        SRTlib.send('], "end": "emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
   });
-    SRTlib.send('], "end": "module.exports.getFilesAndDirectoriesFromDirectory"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory"},');
 
 };

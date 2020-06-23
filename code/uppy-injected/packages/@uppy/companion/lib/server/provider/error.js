@@ -1,32 +1,32 @@
 var SRTlib = require('SRT-util');
 class ProviderApiError extends Error {
   constructor(message, statusCode) {
-        SRTlib.send(`{ "anonymous": false, "function": "ProviderApiError.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderApiError","superClass":"Error"}},`);
 
     super(message);
     this.name = 'ProviderApiError';
     this.statusCode = statusCode;
     this.isAuthError = false;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
 }
 class ProviderAuthError extends ProviderApiError {
   constructor() {
-        SRTlib.send(`{ "anonymous": false, "function": "ProviderAuthError.constructor", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderAuthError","superClass":"ProviderApiError"}},`);
 
     super('invalid access token detected by Provider', 401);
     this.name = 'AuthError';
     this.isAuthError = true;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
 }
 function errorToResponse(err) {
-    SRTlib.send(`{ "anonymous": false, "function": "errorToResponse", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"errorToResponse","fileName":"${__filename}","paramsNumber":1},`);
 
   if (err instanceof ProviderAuthError && err.isAuthError) {
-        SRTlib.send('], "end": "errorToResponse"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"errorToResponse"},');
 
     return {
       code: 401,
@@ -35,7 +35,7 @@ function errorToResponse(err) {
   }
   if (err instanceof ProviderApiError) {
     if (err.statusCode >= 500) {
-            SRTlib.send('], "end": "errorToResponse"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"errorToResponse"},');
 
       return {
         code: 502,
@@ -43,7 +43,7 @@ function errorToResponse(err) {
       };
     }
     if (err.statusCode >= 400) {
-            SRTlib.send('], "end": "errorToResponse"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"errorToResponse"},');
 
       return {
         code: 424,
@@ -51,7 +51,7 @@ function errorToResponse(err) {
       };
     }
   }
-    SRTlib.send('], "end": "errorToResponse"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"errorToResponse","paramsNumber":1},');
 
 }
 module.exports = {

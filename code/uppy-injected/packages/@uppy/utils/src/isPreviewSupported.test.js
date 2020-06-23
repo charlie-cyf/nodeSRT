@@ -7,7 +7,7 @@ describe('isPreviewSupported', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should return true for any filetypes that browsers can preview', () => {
@@ -18,11 +18,11 @@ describe('isPreviewSupported', () => {
     expect(isPreviewSupported('foo')).toEqual(false);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "isPreviewSupported" }`);
+    SRTlib.send(`], "endTestSuiteName": "isPreviewSupported" },`);
     SRTlib.endLogger();
   });
 

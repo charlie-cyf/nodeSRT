@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 var throttle = require('lodash.throttle');
@@ -32,11 +32,11 @@ var prettierBytes = require('@transloadit/prettier-bytes');
 var prettyETA = require('@uppy/utils/lib/prettyETA');
 var _require = require('preact'), h = _require.h;
 function calculateProcessingProgress(files) {
-    SRTlib.send(`{ "anonymous": false, "function": "calculateProcessingProgress", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"calculateProcessingProgress","fileName":"${__filename}","paramsNumber":1},`);
 
   var progresses = [];
   Object.keys(files).forEach(function (fileID) {
-        SRTlib.send(`{ "anonymous": true, "function": "forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     var progress = files[fileID].progress;
     if (progress.preprocess) {
@@ -45,64 +45,64 @@ function calculateProcessingProgress(files) {
     if (progress.postprocess) {
       progresses.push(progress.postprocess);
     }
-        SRTlib.send('], "end": "forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
   });
   var _progresses$ = progresses[0], mode = _progresses$.mode, message = _progresses$.message;
   var value = progresses.filter(isDeterminate).reduce(function (total, progress, index, all) {
-        SRTlib.send(`{ "anonymous": true, "function": "value.reduce", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"value.reduce","fileName":"${__filename}","paramsNumber":4},`);
 
-        SRTlib.send('], "end": "value.reduce"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"value.reduce"},');
 
     return total + progress.value / all.length;
-        SRTlib.send('], "end": "value.reduce"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"value.reduce"},');
 
   }, 0);
   function isDeterminate(progress) {
-        SRTlib.send(`{ "anonymous": false, "function": "isDeterminate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isDeterminate","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "isDeterminate"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isDeterminate"},');
 
     return progress.mode === 'determinate';
-        SRTlib.send('], "end": "isDeterminate"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isDeterminate","paramsNumber":1},');
 
   }
-    SRTlib.send('], "end": "calculateProcessingProgress"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"calculateProcessingProgress"},');
 
   return {
     mode: mode,
     message: message,
     value: value
   };
-    SRTlib.send('], "end": "calculateProcessingProgress"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"calculateProcessingProgress","paramsNumber":1},');
 
 }
 function togglePauseResume(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "togglePauseResume", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"togglePauseResume","fileName":"${__filename}","paramsNumber":1},`);
 
   if (props.isAllComplete) {
-        SRTlib.send('], "end": "togglePauseResume"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume"},');
 
     return;
   }
   if (!props.resumableUploads) {
-        SRTlib.send('], "end": "togglePauseResume"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume"},');
 
     return props.cancelAll();
   }
   if (props.isAllPaused) {
-        SRTlib.send('], "end": "togglePauseResume"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume"},');
 
     return props.resumeAll();
   }
-    SRTlib.send('], "end": "togglePauseResume"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume"},');
 
   return props.pauseAll();
-    SRTlib.send('], "end": "togglePauseResume"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume","paramsNumber":1},');
 
 }
 module.exports = function (props) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
   props = props || ({});
   var _props = props, newFiles = _props.newFiles, allowNewUpload = _props.allowNewUpload, isUploadInProgress = _props.isUploadInProgress, isAllPaused = _props.isAllPaused, resumableUploads = _props.resumableUploads, error = _props.error, hideUploadButton = _props.hideUploadButton, hidePauseResumeButton = _props.hidePauseResumeButton, hideCancelButton = _props.hideCancelButton, hideRetryButton = _props.hideRetryButton;
@@ -139,7 +139,7 @@ module.exports = function (props) {
   var statusBarClassNames = classNames({
     'uppy-Root': props.isTargetDOMEl
   }, 'uppy-StatusBar', "is-" + uploadState);
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return h("div", {
     class: statusBarClassNames,
@@ -158,16 +158,16 @@ module.exports = function (props) {
   }, showUploadBtn ? h(UploadBtn, _extends({}, props, {
     uploadState: uploadState
   })) : null, showRetryBtn ? h(RetryBtn, props) : null, showPauseResumeBtn ? h(PauseResumeButton, props) : null, showCancelBtn ? h(CancelBtn, props) : null));
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };
 var UploadBtn = function UploadBtn(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "UploadBtn", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UploadBtn","fileName":"${__filename}","paramsNumber":1},`);
 
   var uploadBtnClassNames = classNames('uppy-u-reset', 'uppy-c-btn', 'uppy-StatusBar-actionBtn', 'uppy-StatusBar-actionBtn--upload', {
     'uppy-c-btn-primary': props.uploadState === statusBarStates.STATE_WAITING
   });
-    SRTlib.send('], "end": "UploadBtn"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadBtn"},');
 
   return h("button", {
     type: "button",
@@ -182,13 +182,13 @@ var UploadBtn = function UploadBtn(props) {
   }) : props.i18n('uploadXFiles', {
     smart_count: props.newFiles
   }));
-    SRTlib.send('], "end": "UploadBtn"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadBtn"},');
 
 };
 var RetryBtn = function RetryBtn(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "RetryBtn", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"RetryBtn","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "RetryBtn"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"RetryBtn"},');
 
   return h("button", {
     type: "button",
@@ -206,13 +206,13 @@ var RetryBtn = function RetryBtn(props) {
   }, h("path", {
     d: "M4 2.408a2.75 2.75 0 1 0 2.75 2.75.626.626 0 0 1 1.25.018v.023a4 4 0 1 1-4-4.041V.25a.25.25 0 0 1 .389-.208l2.299 1.533a.25.25 0 0 1 0 .416l-2.3 1.533A.25.25 0 0 1 4 3.316v-.908z"
   })), props.i18n('retry'));
-    SRTlib.send('], "end": "RetryBtn"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"RetryBtn"},');
 
 };
 var CancelBtn = function CancelBtn(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "CancelBtn", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"CancelBtn","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "CancelBtn"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"CancelBtn"},');
 
   return h("button", {
     type: "button",
@@ -240,15 +240,15 @@ var CancelBtn = function CancelBtn(props) {
     fill: "#FFF",
     d: "M9.283 8l2.567 2.567-1.283 1.283L8 9.283 5.433 11.85 4.15 10.567 6.717 8 4.15 5.433 5.433 4.15 8 6.717l2.567-2.567 1.283 1.283z"
   }))));
-    SRTlib.send('], "end": "CancelBtn"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"CancelBtn"},');
 
 };
 var PauseResumeButton = function PauseResumeButton(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "PauseResumeButton", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"PauseResumeButton","fileName":"${__filename}","paramsNumber":1},`);
 
   var isAllPaused = props.isAllPaused, i18n = props.i18n;
   var title = isAllPaused ? i18n('resume') : i18n('pause');
-    SRTlib.send('], "end": "PauseResumeButton"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"PauseResumeButton"},');
 
   return h("button", {
     title: title,
@@ -256,12 +256,12 @@ var PauseResumeButton = function PauseResumeButton(props) {
     class: "uppy-u-reset uppy-StatusBar-actionCircleBtn",
     type: "button",
     onclick: function onclick() {
-            SRTlib.send(`{ "anonymous": true, "function": "PauseResumeButton.PauseResumeButton.ReturnStatement.h.onclick.onclick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"PauseResumeButton.PauseResumeButton.ReturnStatement.h.onclick.onclick","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('], "end": "PauseResumeButton.PauseResumeButton.ReturnStatement.h.onclick.onclick"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"PauseResumeButton.PauseResumeButton.ReturnStatement.h.onclick.onclick"},');
 
       return togglePauseResume(props);
-            SRTlib.send('], "end": "PauseResumeButton.PauseResumeButton.ReturnStatement.h.onclick.onclick"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"PauseResumeButton.PauseResumeButton.ReturnStatement.h.onclick.onclick"},');
 
     },
     "data-uppy-super-focusable": true
@@ -302,13 +302,13 @@ var PauseResumeButton = function PauseResumeButton(props) {
     d: "M5 4.5h2v7H5v-7zm4 0h2v7H9v-7z",
     fill: "#FFF"
   }))));
-    SRTlib.send('], "end": "PauseResumeButton"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"PauseResumeButton"},');
 
 };
 var LoadingSpinner = function LoadingSpinner() {
-    SRTlib.send(`{ "anonymous": false, "function": "LoadingSpinner", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"LoadingSpinner","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('], "end": "LoadingSpinner"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"LoadingSpinner"},');
 
   return h("svg", {
     class: "uppy-StatusBar-spinner",
@@ -320,35 +320,35 @@ var LoadingSpinner = function LoadingSpinner() {
     d: "M13.983 6.547c-.12-2.509-1.64-4.893-3.939-5.936-2.48-1.127-5.488-.656-7.556 1.094C.524 3.367-.398 6.048.162 8.562c.556 2.495 2.46 4.52 4.94 5.183 2.932.784 5.61-.602 7.256-3.015-1.493 1.993-3.745 3.309-6.298 2.868-2.514-.434-4.578-2.349-5.153-4.84a6.226 6.226 0 0 1 2.98-6.778C6.34.586 9.74 1.1 11.373 3.493c.407.596.693 1.282.842 1.988.127.598.073 1.197.161 1.794.078.525.543 1.257 1.15.864.525-.341.49-1.05.456-1.592-.007-.15.02.3 0 0",
     "fill-rule": "evenodd"
   }));
-    SRTlib.send('], "end": "LoadingSpinner"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"LoadingSpinner"},');
 
 };
 var ProgressBarProcessing = function ProgressBarProcessing(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "ProgressBarProcessing", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBarProcessing","fileName":"${__filename}","paramsNumber":1},`);
 
   var value = Math.round(props.value * 100);
-    SRTlib.send('], "end": "ProgressBarProcessing"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarProcessing"},');
 
   return h("div", {
     class: "uppy-StatusBar-content"
   }, h(LoadingSpinner, null), props.mode === 'determinate' ? value + "% \xB7 " : '', props.message);
-    SRTlib.send('], "end": "ProgressBarProcessing"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarProcessing"},');
 
 };
 var renderDot = function renderDot() {
-    SRTlib.send(`{ "anonymous": false, "function": "renderDot", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderDot","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('], "end": "renderDot"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderDot"},');
 
   return " \xB7 ";
-    SRTlib.send('], "end": "renderDot"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderDot"},');
 
 };
 var ProgressDetails = function ProgressDetails(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "ProgressDetails", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressDetails","fileName":"${__filename}","paramsNumber":1},`);
 
   var ifShowFilesUploadedOfTotal = props.numUploads > 1;
-    SRTlib.send('], "end": "ProgressDetails"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressDetails"},');
 
   return h("div", {
     class: "uppy-StatusBar-statusSecondary"
@@ -363,13 +363,13 @@ var ProgressDetails = function ProgressDetails(props) {
   }), renderDot(), props.i18n('xTimeLeft', {
     time: prettyETA(props.totalETA)
   })));
-    SRTlib.send('], "end": "ProgressDetails"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressDetails"},');
 
 };
 var UnknownProgressDetails = function UnknownProgressDetails(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "UnknownProgressDetails", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UnknownProgressDetails","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "UnknownProgressDetails"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UnknownProgressDetails"},');
 
   return h("div", {
     class: "uppy-StatusBar-statusSecondary"
@@ -377,14 +377,14 @@ var UnknownProgressDetails = function UnknownProgressDetails(props) {
     complete: props.complete,
     smart_count: props.numUploads
   }));
-    SRTlib.send('], "end": "UnknownProgressDetails"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UnknownProgressDetails"},');
 
 };
 var UploadNewlyAddedFiles = function UploadNewlyAddedFiles(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "UploadNewlyAddedFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UploadNewlyAddedFiles","fileName":"${__filename}","paramsNumber":1},`);
 
   var uploadBtnClassNames = classNames('uppy-u-reset', 'uppy-c-btn', 'uppy-StatusBar-actionBtn', 'uppy-StatusBar-actionBtn--uploadNewlyAdded');
-    SRTlib.send('], "end": "UploadNewlyAddedFiles"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadNewlyAddedFiles"},');
 
   return h("div", {
     class: "uppy-StatusBar-statusSecondary"
@@ -400,7 +400,7 @@ var UploadNewlyAddedFiles = function UploadNewlyAddedFiles(props) {
     }),
     onclick: props.startUpload
   }, props.i18n('upload')));
-    SRTlib.send('], "end": "UploadNewlyAddedFiles"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadNewlyAddedFiles"},');
 
 };
 var ThrottledProgressDetails = throttle(ProgressDetails, 500, {
@@ -408,16 +408,16 @@ var ThrottledProgressDetails = throttle(ProgressDetails, 500, {
   trailing: true
 });
 var ProgressBarUploading = function ProgressBarUploading(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "ProgressBarUploading", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBarUploading","fileName":"${__filename}","paramsNumber":1},`);
 
   if (!props.isUploadStarted || props.isAllComplete) {
-        SRTlib.send('], "end": "ProgressBarUploading"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarUploading"},');
 
     return null;
   }
   var title = props.isAllPaused ? props.i18n('paused') : props.i18n('uploading');
   var showUploadNewlyAddedFiles = props.newFiles && props.isUploadStarted;
-    SRTlib.send('], "end": "ProgressBarUploading"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarUploading"},');
 
   return h("div", {
     class: "uppy-StatusBar-content",
@@ -428,14 +428,14 @@ var ProgressBarUploading = function ProgressBarUploading(props) {
   }, h("div", {
     class: "uppy-StatusBar-statusPrimary"
   }, props.supportsUploadProgress ? title + ": " + props.totalProgress + "%" : title), !props.isAllPaused && !showUploadNewlyAddedFiles && props.showProgressDetails ? props.supportsUploadProgress ? h(ThrottledProgressDetails, props) : h(UnknownProgressDetails, props) : null, showUploadNewlyAddedFiles ? h(UploadNewlyAddedFiles, props) : null));
-    SRTlib.send('], "end": "ProgressBarUploading"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarUploading"},');
 
 };
 var ProgressBarComplete = function ProgressBarComplete(_ref) {
-    SRTlib.send(`{ "anonymous": false, "function": "ProgressBarComplete", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBarComplete","fileName":"${__filename}","paramsNumber":1},`);
 
   var totalProgress = _ref.totalProgress, i18n = _ref.i18n;
-    SRTlib.send('], "end": "ProgressBarComplete"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarComplete"},');
 
   return h("div", {
     class: "uppy-StatusBar-content",
@@ -455,22 +455,22 @@ var ProgressBarComplete = function ProgressBarComplete(_ref) {
   }, h("path", {
     d: "M.414 5.843L1.627 4.63l3.472 3.472L13.202 0l1.212 1.213L5.1 10.528z"
   })), i18n('complete'))));
-    SRTlib.send('], "end": "ProgressBarComplete"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarComplete"},');
 
 };
 var ProgressBarError = function ProgressBarError(_ref2) {
-    SRTlib.send(`{ "anonymous": false, "function": "ProgressBarError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBarError","fileName":"${__filename}","paramsNumber":1},`);
 
   var error = _ref2.error, retryAll = _ref2.retryAll, hideRetryButton = _ref2.hideRetryButton, i18n = _ref2.i18n;
   function displayErrorAlert() {
-        SRTlib.send(`{ "anonymous": false, "function": "displayErrorAlert", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"displayErrorAlert","fileName":"${__filename}","paramsNumber":0},`);
 
     var errorMessage = i18n('uploadFailed') + " \n\n " + error;
     alert(errorMessage);
-        SRTlib.send('], "end": "displayErrorAlert"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"displayErrorAlert","paramsNumber":0},');
 
   }
-    SRTlib.send('], "end": "ProgressBarError"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarError"},');
 
   return h("div", {
     class: "uppy-StatusBar-content",
@@ -497,6 +497,6 @@ var ProgressBarError = function ProgressBarError(_ref2) {
     role: "tooltip",
     onclick: displayErrorAlert
   }, "?"));
-    SRTlib.send('], "end": "ProgressBarError"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarError"},');
 
 };

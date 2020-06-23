@@ -1,10 +1,10 @@
 var SRTlib = require('SRT-util');
 class Upload {
   constructor(file, options) {
-        SRTlib.send(`{ "anonymous": false, "function": "Upload.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Upload"}},`);
 
     this.url = 'https://tus.endpoint/files/foo-bar';
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
 }

@@ -5,34 +5,34 @@ const e = require('he').encode;
 const server = http.createServer(onrequest);
 server.listen(9967);
 function onrequest(req, res) {
-    SRTlib.send(`{ "anonymous": false, "function": "onrequest", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onrequest","fileName":"${__filename}","paramsNumber":2},`);
 
   if (req.url !== '/test') {
     res.writeHead(404, {
       'content-type': 'text/html'
     });
     res.end('404');
-        SRTlib.send('], "end": "onrequest"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onrequest"},');
 
     return;
   }
   let body = '';
   req.on('data', chunk => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
     body += chunk;
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   req.on('end', () => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
     onbody(body);
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   });
   function onbody(body) {
-        SRTlib.send(`{ "anonymous": false, "function": "onbody", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onbody","fileName":"${__filename}","paramsNumber":1},`);
 
     const fields = qs.parse(body);
     const assemblies = JSON.parse(fields.transloadit);
@@ -40,23 +40,23 @@ function onrequest(req, res) {
     res.write(Header());
     res.write(FormFields(fields));
     assemblies.forEach(assembly => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
       res.write(AssemblyResult(assembly));
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
     });
     res.end(Footer());
-        SRTlib.send('], "end": "onbody"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onbody","paramsNumber":1},');
 
   }
-    SRTlib.send('], "end": "onrequest"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onrequest","paramsNumber":2},');
 
 }
 function Header() {
-    SRTlib.send(`{ "anonymous": false, "function": "Header", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Header","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('], "end": "Header"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"Header"},');
 
   return `
     <!DOCTYPE html>
@@ -76,26 +76,26 @@ function Header() {
     <body>
     <main>
   `;
-    SRTlib.send('], "end": "Header"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"Header","paramsNumber":0},');
 
 }
 function Footer() {
-    SRTlib.send(`{ "anonymous": false, "function": "Footer", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Footer","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('], "end": "Footer"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"Footer"},');
 
   return `
     </main>
     </body>
     </html>
   `;
-    SRTlib.send('], "end": "Footer"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"Footer","paramsNumber":0},');
 
 }
 function FormFields(fields) {
-    SRTlib.send(`{ "anonymous": false, "function": "FormFields", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FormFields","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "FormFields"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"FormFields"},');
 
   return `
     <h1>Form Fields</h1>
@@ -104,42 +104,42 @@ function FormFields(fields) {
     </dl>
   `;
   function Field([name, value]) {
-        SRTlib.send(`{ "anonymous": false, "function": "Field", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Field","fileName":"${__filename}","paramsNumber":1},`);
 
     if (name === 'transloadit') {
-            SRTlib.send('], "end": "Field"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Field"},');
 
       return '';
     }
-        SRTlib.send('], "end": "Field"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Field"},');
 
     return `
       <dt>${e(name)}</dt>
       <dd>${e(value)}</dd>
     `;
-        SRTlib.send('], "end": "Field"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Field","paramsNumber":1},');
 
   }
-    SRTlib.send('], "end": "FormFields"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"FormFields","paramsNumber":1},');
 
 }
 function AssemblyResult(assembly) {
-    SRTlib.send(`{ "anonymous": false, "function": "AssemblyResult", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AssemblyResult","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "AssemblyResult"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"AssemblyResult"},');
 
   return `
     <h1>${e(assembly.assembly_id)} (${e(assembly.ok)})</h1>
     ${UploadsList(assembly.uploads)}
     ${ResultsList(assembly.results)}
   `;
-    SRTlib.send('], "end": "AssemblyResult"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"AssemblyResult","paramsNumber":1},');
 
 }
 function UploadsList(uploads) {
-    SRTlib.send(`{ "anonymous": false, "function": "UploadsList", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UploadsList","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "UploadsList"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadsList"},');
 
   return `
     <ul>
@@ -147,27 +147,27 @@ function UploadsList(uploads) {
     </ul>
   `;
   function Upload(upload) {
-        SRTlib.send(`{ "anonymous": false, "function": "Upload", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Upload","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "Upload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload"},');
 
     return `<li>${e(upload.name)}</li>`;
-        SRTlib.send('], "end": "Upload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload","paramsNumber":1},');
 
   }
-    SRTlib.send('], "end": "UploadsList"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadsList","paramsNumber":1},');
 
 }
 function ResultsList(results) {
-    SRTlib.send(`{ "anonymous": false, "function": "ResultsList", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ResultsList","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "ResultsList"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ResultsList"},');
 
   return Object.keys(results).map(ResultsSection).join('\n');
   function ResultsSection(stepName) {
-        SRTlib.send(`{ "anonymous": false, "function": "ResultsSection", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ResultsSection","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "ResultsSection"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ResultsSection"},');
 
     return `
       <h2>${e(stepName)}</h2>
@@ -175,18 +175,18 @@ function ResultsList(results) {
         ${results[stepName].map(Result).join('\n')}
       </ul>
     `;
-        SRTlib.send('], "end": "ResultsSection"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ResultsSection","paramsNumber":1},');
 
   }
   function Result(result) {
-        SRTlib.send(`{ "anonymous": false, "function": "Result", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Result","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "Result"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Result"},');
 
     return `<li>${e(result.name)} <a href="${result.ssl_url}" target="_blank">View</a></li>`;
-        SRTlib.send('], "end": "Result"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Result","paramsNumber":1},');
 
   }
-    SRTlib.send('], "end": "ResultsList"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ResultsList","paramsNumber":1},');
 
 }

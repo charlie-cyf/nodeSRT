@@ -8,17 +8,17 @@ describe('Webcam', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   describe('_getMediaRecorderOptions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "Webcam", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "_getMediaRecorderOptions", "fileName": "${__filename}", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
     });
 
     it('should not have a mimeType set if no preferences given', () => {
@@ -93,21 +93,21 @@ describe('Webcam', () => {
       expect(uppy.getPlugin('Webcam')._getMediaRecorderOptions().mimeType).toEqual(undefined);
     });
         afterEach(() => {
-      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
         afterAll(() => {
-      SRTlib.send(`], "endTestSuiteName": "Webcam" }`);
+      SRTlib.send(`], "endTestSuiteName": "_getMediaRecorderOptions" },`);
       SRTlib.endLogger();
     });
 
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "Webcam" }`);
+    SRTlib.send(`], "endTestSuiteName": "Webcam" },`);
     SRTlib.endLogger();
   });
 

@@ -4,7 +4,7 @@ const addDashboardPlugin = require('./addDashboardPlugin');
 const addTransloaditPlugin = require('./addTransloaditPlugin');
 const addProviders = require('./addProviders');
 function dashboard(target, opts = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "dashboard", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"dashboard","fileName":"${__filename}","paramsNumber":2},`);
 
   const inline = opts.inline == null ? true : opts.inline;
   const pluginId = 'Dashboard';
@@ -22,10 +22,10 @@ function dashboard(target, opts = {}) {
       target: uppy.getPlugin(pluginId)
     });
   }
-    SRTlib.send('], "end": "dashboard"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"dashboard"},');
 
   return uppy;
-    SRTlib.send('], "end": "dashboard"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"dashboard","paramsNumber":2},');
 
 }
 module.exports = dashboard;

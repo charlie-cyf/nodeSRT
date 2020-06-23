@@ -17,12 +17,12 @@ app.use('/companion', companion.app({
     s3: {
       endpoint: 'https://{region}.digitaloceanspaces.com',
       getKey: (req, filename) => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
 
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
         return `uploads/${filename}`;
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       },
       key: process.env.COMPANION_AWS_KEY,
@@ -36,11 +36,11 @@ app.use('/companion', companion.app({
   }
 }));
 app.get('/uppy.min.css', (req, res) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
 
   res.setHeader('content-type', 'text/css');
   fs.createReadStream(path.join('../../packages/uppy/dist/uppy.min.css')).pipe(res);
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 });
 budo(path.join(__dirname, 'main.js'), {

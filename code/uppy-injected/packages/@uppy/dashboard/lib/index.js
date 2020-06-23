@@ -1,10 +1,10 @@
 var SRTlib = require('SRT-util');
 var _class, _temp;
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -14,39 +14,39 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 function _assertThisInitialized(self) {
-    SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
 
   if (self === void 0) {
-        SRTlib.send('], "end": "_assertThisInitialized"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
   return self;
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized","paramsNumber":1},');
 
 }
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send('], "end": "_inheritsLoose"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -67,71 +67,71 @@ var memoize = require('memoize-one').default || require('memoize-one');
 var TAB_KEY = 9;
 var ESC_KEY = 27;
 function createPromise() {
-    SRTlib.send(`{ "anonymous": false, "function": "createPromise", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createPromise","fileName":"${__filename}","paramsNumber":0},`);
 
   var o = {};
   o.promise = new Promise(function (resolve, reject) {
-        SRTlib.send(`{ "anonymous": true, "function": "o.promise", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"o.promise","fileName":"${__filename}","paramsNumber":2},`);
 
     o.resolve = resolve;
     o.reject = reject;
-        SRTlib.send('], "end": "o.promise"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"o.promise"},');
 
   });
-    SRTlib.send('], "end": "createPromise"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createPromise"},');
 
   return o;
-    SRTlib.send('], "end": "createPromise"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createPromise","paramsNumber":0},');
 
 }
 module.exports = (_temp = _class = (function (_Plugin) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(Dashboard, _Plugin);
   function Dashboard(uppy, _opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "Dashboard", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Dashboard","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this;
     _this = _Plugin.call(this, uppy, _opts) || this;
     _this.setOptions = function (newOpts) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.setOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.setOptions","fileName":"${__filename}","paramsNumber":1},`);
 
       _Plugin.prototype.setOptions.call(_assertThisInitialized(_this), newOpts);
       _this.i18nInit();
-            SRTlib.send('], "end": "_this.setOptions"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.setOptions"},');
 
     };
     _this.i18nInit = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.i18nInit", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.i18nInit","fileName":"${__filename}","paramsNumber":0},`);
 
       _this.translator = new Translator([_this.defaultLocale, _this.uppy.locale, _this.opts.locale]);
       _this.i18n = _this.translator.translate.bind(_this.translator);
       _this.i18nArray = _this.translator.translateArray.bind(_this.translator);
       _this.setPluginState();
-            SRTlib.send('], "end": "_this.i18nInit"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.i18nInit"},');
 
     };
     _this.removeTarget = function (plugin) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.removeTarget", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.removeTarget","fileName":"${__filename}","paramsNumber":1},`);
 
       var pluginState = _this.getPluginState();
       var newTargets = pluginState.targets.filter(function (target) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.removeTarget.newTargets.pluginState.targets.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.removeTarget.newTargets.pluginState.targets.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.removeTarget.newTargets.pluginState.targets.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.removeTarget.newTargets.pluginState.targets.filter"},');
 
         return target.id !== plugin.id;
-                SRTlib.send('], "end": "_this.removeTarget.newTargets.pluginState.targets.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.removeTarget.newTargets.pluginState.targets.filter"},');
 
       });
       _this.setPluginState({
         targets: newTargets
       });
-            SRTlib.send('], "end": "_this.removeTarget"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.removeTarget"},');
 
     };
     _this.addTarget = function (plugin) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.addTarget", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.addTarget","fileName":"${__filename}","paramsNumber":1},`);
 
       var callerPluginId = plugin.id || plugin.constructor.name;
       var callerPluginName = plugin.title || callerPluginId;
@@ -139,7 +139,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (callerPluginType !== 'acquirer' && callerPluginType !== 'progressindicator' && callerPluginType !== 'presenter') {
         var msg = 'Dashboard: Modal can only be used by plugins of types: acquirer, progressindicator, presenter';
         _this.uppy.log(msg, 'error');
-                SRTlib.send('], "end": "_this.addTarget"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.addTarget"},');
 
         return;
       }
@@ -154,14 +154,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
       _this.setPluginState({
         targets: newTargets
       });
-            SRTlib.send('], "end": "_this.addTarget"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.addTarget"},');
 
       return _this.el;
-            SRTlib.send('], "end": "_this.addTarget"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.addTarget"},');
 
     };
     _this.hideAllPanels = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.hideAllPanels", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.hideAllPanels","fileName":"${__filename}","paramsNumber":0},`);
 
       var update = {
         activePickerPanel: false,
@@ -170,36 +170,36 @@ module.exports = (_temp = _class = (function (_Plugin) {
       };
       var current = _this.getPluginState();
       if (current.activePickerPanel === update.activePickerPanel && current.showAddFilesPanel === update.showAddFilesPanel && current.activeOverlayType === update.activeOverlayType) {
-                SRTlib.send('], "end": "_this.hideAllPanels"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.hideAllPanels"},');
 
         return;
       }
       _this.setPluginState(update);
-            SRTlib.send('], "end": "_this.hideAllPanels"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.hideAllPanels"},');
 
     };
     _this.showPanel = function (id) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.showPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.showPanel","fileName":"${__filename}","paramsNumber":1},`);
 
       var _this$getPluginState = _this.getPluginState(), targets = _this$getPluginState.targets;
       var activePickerPanel = targets.filter(function (target) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.showPanel.activePickerPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.showPanel.activePickerPanel","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.showPanel.activePickerPanel"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.showPanel.activePickerPanel"},');
 
         return target.type === 'acquirer' && target.id === id;
-                SRTlib.send('], "end": "_this.showPanel.activePickerPanel"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.showPanel.activePickerPanel"},');
 
       })[0];
       _this.setPluginState({
         activePickerPanel: activePickerPanel,
         activeOverlayType: 'PickerPanel'
       });
-            SRTlib.send('], "end": "_this.showPanel"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.showPanel"},');
 
     };
     _this.openModal = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.openModal", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.openModal","fileName":"${__filename}","paramsNumber":0},`);
 
       var _createPromise = createPromise(), promise = _createPromise.promise, resolve = _createPromise.resolve;
       _this.savedScrollPosition = window.pageYOffset;
@@ -209,14 +209,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }
       if (_this.opts.animateOpenClose && _this.getPluginState().isClosing) {
         var handler = function handler() {
-                    SRTlib.send(`{ "anonymous": false, "function": "handler", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handler","fileName":"${__filename}","paramsNumber":0},`);
 
           _this.setPluginState({
             isHidden: false
           });
           _this.el.removeEventListener('animationend', handler, false);
           resolve();
-                    SRTlib.send('], "end": "handler"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"handler"},');
 
         };
         _this.el.addEventListener('animationend', handler, false);
@@ -231,14 +231,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }
       document.addEventListener('keydown', _this.handleKeyDownInModal);
       _this.uppy.emit('dashboard:modal-open');
-            SRTlib.send('], "end": "_this.openModal"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.openModal"},');
 
       return promise;
-            SRTlib.send('], "end": "_this.openModal"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.openModal"},');
 
     };
     _this.closeModal = function (opts) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.closeModal", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.closeModal","fileName":"${__filename}","paramsNumber":1},`);
 
       if (opts === void 0) {
         opts = {};
@@ -246,7 +246,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var _opts2 = opts, _opts2$manualClose = _opts2.manualClose, manualClose = _opts2$manualClose === void 0 ? true : _opts2$manualClose;
       var _this$getPluginState2 = _this.getPluginState(), isHidden = _this$getPluginState2.isHidden, isClosing = _this$getPluginState2.isClosing;
       if (isHidden || isClosing) {
-                SRTlib.send('], "end": "_this.closeModal"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.closeModal"},');
 
         return;
       }
@@ -259,7 +259,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           isClosing: true
         });
         var handler = function handler() {
-                    SRTlib.send(`{ "anonymous": false, "function": "handler", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handler","fileName":"${__filename}","paramsNumber":0},`);
 
           _this.setPluginState({
             isHidden: true,
@@ -269,7 +269,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           _this.savedActiveElement.focus();
           _this.el.removeEventListener('animationend', handler, false);
           resolve();
-                    SRTlib.send('], "end": "handler"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"handler"},');
 
         };
         _this.el.addEventListener('animationend', handler, false);
@@ -290,37 +290,37 @@ module.exports = (_temp = _class = (function (_Plugin) {
         }
       }
       _this.uppy.emit('dashboard:modal-closed');
-            SRTlib.send('], "end": "_this.closeModal"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.closeModal"},');
 
       return promise;
-            SRTlib.send('], "end": "_this.closeModal"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.closeModal"},');
 
     };
     _this.isModalOpen = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.isModalOpen", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.isModalOpen","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('], "end": "_this.isModalOpen"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.isModalOpen"},');
 
       return !_this.getPluginState().isHidden || false;
-            SRTlib.send('], "end": "_this.isModalOpen"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.isModalOpen"},');
 
     };
     _this.requestCloseModal = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.requestCloseModal", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.requestCloseModal","fileName":"${__filename}","paramsNumber":0},`);
 
       if (_this.opts.onRequestCloseModal) {
-                SRTlib.send('], "end": "_this.requestCloseModal"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.requestCloseModal"},');
 
         return _this.opts.onRequestCloseModal();
       }
-            SRTlib.send('], "end": "_this.requestCloseModal"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.requestCloseModal"},');
 
       return _this.closeModal();
-            SRTlib.send('], "end": "_this.requestCloseModal"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.requestCloseModal"},');
 
     };
     _this.setDarkModeCapability = function (isDarkModeOn) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.setDarkModeCapability", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.setDarkModeCapability","fileName":"${__filename}","paramsNumber":1},`);
 
       var _this$uppy$getState = _this.uppy.getState(), capabilities = _this$uppy$getState.capabilities;
       _this.uppy.setState({
@@ -328,20 +328,20 @@ module.exports = (_temp = _class = (function (_Plugin) {
           darkMode: isDarkModeOn
         })
       });
-            SRTlib.send('], "end": "_this.setDarkModeCapability"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.setDarkModeCapability"},');
 
     };
     _this.handleSystemDarkModeChange = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleSystemDarkModeChange", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleSystemDarkModeChange","fileName":"${__filename}","paramsNumber":1},`);
 
       var isDarkModeOnNow = event.matches;
       _this.uppy.log("[Dashboard] Dark mode is " + (isDarkModeOnNow ? 'on' : 'off'));
       _this.setDarkModeCapability(isDarkModeOnNow);
-            SRTlib.send('], "end": "_this.handleSystemDarkModeChange"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleSystemDarkModeChange"},');
 
     };
     _this.toggleFileCard = function (fileId) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.toggleFileCard", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.toggleFileCard","fileName":"${__filename}","paramsNumber":1},`);
 
       if (fileId) {
         _this.uppy.emit('dashboard:file-edit-start');
@@ -352,26 +352,26 @@ module.exports = (_temp = _class = (function (_Plugin) {
         fileCardFor: fileId || null,
         activeOverlayType: fileId ? 'FileCard' : null
       });
-            SRTlib.send('], "end": "_this.toggleFileCard"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.toggleFileCard"},');
 
     };
     _this.toggleAddFilesPanel = function (show) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.toggleAddFilesPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.toggleAddFilesPanel","fileName":"${__filename}","paramsNumber":1},`);
 
       _this.setPluginState({
         showAddFilesPanel: show,
         activeOverlayType: show ? 'AddFiles' : null
       });
-            SRTlib.send('], "end": "_this.toggleAddFilesPanel"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.toggleAddFilesPanel"},');
 
     };
     _this.addFiles = function (files) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.addFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.addFiles","fileName":"${__filename}","paramsNumber":1},`);
 
       var descriptors = files.map(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.addFiles.descriptors", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.addFiles.descriptors","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.addFiles.descriptors"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.addFiles.descriptors"},');
 
         return {
           source: _this.id,
@@ -382,7 +382,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
             relativePath: file.relativePath || null
           }
         };
-                SRTlib.send('], "end": "_this.addFiles.descriptors"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.addFiles.descriptors"},');
 
       });
       try {
@@ -390,14 +390,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
       } catch (err) {
         _this.uppy.log(err);
       }
-            SRTlib.send('], "end": "_this.addFiles"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.addFiles"},');
 
     };
     _this.startListeningToResize = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.startListeningToResize", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.startListeningToResize","fileName":"${__filename}","paramsNumber":0},`);
 
       _this.resizeObserver = new ResizeObserver(function (entries, observer) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.startListeningToResize._this.resizeObserver", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.startListeningToResize._this.resizeObserver","fileName":"${__filename}","paramsNumber":2},`);
 
         var uppyDashboardInnerEl = entries[0];
         var _uppyDashboardInnerEl = uppyDashboardInnerEl.contentRect, width = _uppyDashboardInnerEl.width, height = _uppyDashboardInnerEl.height;
@@ -407,12 +407,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
           containerHeight: height,
           areInsidesReadyToBeVisible: true
         });
-                SRTlib.send('], "end": "_this.startListeningToResize._this.resizeObserver"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.startListeningToResize._this.resizeObserver"},');
 
       });
       _this.resizeObserver.observe(_this.el.querySelector('.uppy-Dashboard-inner'));
       _this.makeDashboardInsidesVisibleAnywayTimeout = setTimeout(function () {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.startListeningToResize._this.makeDashboardInsidesVisibleAnywayTimeout.setTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.startListeningToResize._this.makeDashboardInsidesVisibleAnywayTimeout.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
         var pluginState = _this.getPluginState();
         var isModalAndClosed = !_this.opts.inline && pluginState.isHidden;
@@ -422,22 +422,22 @@ module.exports = (_temp = _class = (function (_Plugin) {
             areInsidesReadyToBeVisible: true
           });
         }
-                SRTlib.send('], "end": "_this.startListeningToResize._this.makeDashboardInsidesVisibleAnywayTimeout.setTimeout"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.startListeningToResize._this.makeDashboardInsidesVisibleAnywayTimeout.setTimeout"},');
 
       }, 1000);
-            SRTlib.send('], "end": "_this.startListeningToResize"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.startListeningToResize"},');
 
     };
     _this.stopListeningToResize = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.stopListeningToResize", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.stopListeningToResize","fileName":"${__filename}","paramsNumber":0},`);
 
       _this.resizeObserver.disconnect();
       clearTimeout(_this.makeDashboardInsidesVisibleAnywayTimeout);
-            SRTlib.send('], "end": "_this.stopListeningToResize"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.stopListeningToResize"},');
 
     };
     _this.recordIfFocusedOnUppyRecently = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.recordIfFocusedOnUppyRecently", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.recordIfFocusedOnUppyRecently","fileName":"${__filename}","paramsNumber":1},`);
 
       if (_this.el.contains(event.target)) {
         _this.ifFocusedOnUppyRecently = true;
@@ -445,22 +445,22 @@ module.exports = (_temp = _class = (function (_Plugin) {
         _this.ifFocusedOnUppyRecently = false;
         _this.superFocus.cancel();
       }
-            SRTlib.send('], "end": "_this.recordIfFocusedOnUppyRecently"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.recordIfFocusedOnUppyRecently"},');
 
     };
     _this.updateBrowserHistory = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.updateBrowserHistory", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.updateBrowserHistory","fileName":"${__filename}","paramsNumber":0},`);
 
       if (!history.state || !history.state[_this.modalName]) {
         var _extends2;
         history.pushState(_extends({}, history.state, (_extends2 = {}, _extends2[_this.modalName] = true, _extends2)), '');
       }
       window.addEventListener('popstate', _this.handlePopState, false);
-            SRTlib.send('], "end": "_this.updateBrowserHistory"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.updateBrowserHistory"},');
 
     };
     _this.handlePopState = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handlePopState", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handlePopState","fileName":"${__filename}","paramsNumber":1},`);
 
       if (_this.isModalOpen() && (!event.state || !event.state[_this.modalName])) {
         _this.closeModal({
@@ -470,52 +470,52 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (!_this.isModalOpen() && event.state && event.state[_this.modalName]) {
         history.go(-1);
       }
-            SRTlib.send('], "end": "_this.handlePopState"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handlePopState"},');
 
     };
     _this.handleKeyDownInModal = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleKeyDownInModal", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleKeyDownInModal","fileName":"${__filename}","paramsNumber":1},`);
 
       if (event.keyCode === ESC_KEY) _this.requestCloseModal(event);
       if (event.keyCode === TAB_KEY) trapFocus.forModal(event, _this.getPluginState().activeOverlayType, _this.el);
-            SRTlib.send('], "end": "_this.handleKeyDownInModal"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleKeyDownInModal"},');
 
     };
     _this.handleClickOutside = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleClickOutside", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleClickOutside","fileName":"${__filename}","paramsNumber":0},`);
 
       if (_this.opts.closeModalOnClickOutside) _this.requestCloseModal();
-            SRTlib.send('], "end": "_this.handleClickOutside"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleClickOutside"},');
 
     };
     _this.handlePaste = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handlePaste", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handlePaste","fileName":"${__filename}","paramsNumber":1},`);
 
       _this.uppy.iteratePlugins(function (plugin) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.handlePaste._this.uppy.iteratePlugins", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handlePaste._this.uppy.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
 
         if (plugin.type === 'acquirer') {
           plugin.handleRootPaste && plugin.handleRootPaste(event);
         }
-                SRTlib.send('], "end": "_this.handlePaste._this.uppy.iteratePlugins"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handlePaste._this.uppy.iteratePlugins"},');
 
       });
       var files = toArray(event.clipboardData.files);
       _this.addFiles(files);
-            SRTlib.send('], "end": "_this.handlePaste"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handlePaste"},');
 
     };
     _this.handleInputChange = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleInputChange", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleInputChange","fileName":"${__filename}","paramsNumber":1},`);
 
       event.preventDefault();
       var files = toArray(event.target.files);
       _this.addFiles(files);
-            SRTlib.send('], "end": "_this.handleInputChange"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleInputChange"},');
 
     };
     _this.handleDragOver = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleDragOver", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleDragOver","fileName":"${__filename}","paramsNumber":1},`);
 
       event.preventDefault();
       event.stopPropagation();
@@ -524,29 +524,29 @@ module.exports = (_temp = _class = (function (_Plugin) {
       _this.setPluginState({
         isDraggingOver: true
       });
-            SRTlib.send('], "end": "_this.handleDragOver"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleDragOver"},');
 
     };
     _this.handleDragLeave = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleDragLeave", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleDragLeave","fileName":"${__filename}","paramsNumber":1},`);
 
       event.preventDefault();
       event.stopPropagation();
       clearTimeout(_this.removeDragOverClassTimeout);
       _this.removeDragOverClassTimeout = setTimeout(function () {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.handleDragLeave._this.removeDragOverClassTimeout.setTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleDragLeave._this.removeDragOverClassTimeout.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
         _this.setPluginState({
           isDraggingOver: false
         });
-                SRTlib.send('], "end": "_this.handleDragLeave._this.removeDragOverClassTimeout.setTimeout"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleDragLeave._this.removeDragOverClassTimeout.setTimeout"},');
 
       }, 50);
-            SRTlib.send('], "end": "_this.handleDragLeave"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleDragLeave"},');
 
     };
     _this.handleDrop = function (event, dropCategory) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleDrop", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleDrop","fileName":"${__filename}","paramsNumber":2},`);
 
       event.preventDefault();
       event.stopPropagation();
@@ -555,99 +555,99 @@ module.exports = (_temp = _class = (function (_Plugin) {
         isDraggingOver: false
       });
       _this.uppy.iteratePlugins(function (plugin) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.handleDrop._this.uppy.iteratePlugins", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleDrop._this.uppy.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
 
         if (plugin.type === 'acquirer') {
           plugin.handleRootDrop && plugin.handleRootDrop(event);
         }
-                SRTlib.send('], "end": "_this.handleDrop._this.uppy.iteratePlugins"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleDrop._this.uppy.iteratePlugins"},');
 
       });
       var executedDropErrorOnce = false;
       var logDropError = function logDropError(error) {
-                SRTlib.send(`{ "anonymous": false, "function": "logDropError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logDropError","fileName":"${__filename}","paramsNumber":1},`);
 
         _this.uppy.log(error, 'error');
         if (!executedDropErrorOnce) {
           _this.uppy.info(error.message, 'error');
           executedDropErrorOnce = true;
         }
-                SRTlib.send('], "end": "logDropError"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"logDropError"},');
 
       };
       getDroppedFiles(event.dataTransfer, {
         logDropError: logDropError
       }).then(function (files) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.handleDrop.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleDrop.then","fileName":"${__filename}","paramsNumber":1},`);
 
         if (files.length > 0) {
           _this.uppy.log('[Dashboard] Files were dropped');
           _this.addFiles(files);
         }
-                SRTlib.send('], "end": "_this.handleDrop.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleDrop.then"},');
 
       });
-            SRTlib.send('], "end": "_this.handleDrop"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleDrop"},');
 
     };
     _this.handleRequestThumbnail = function (file) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleRequestThumbnail", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleRequestThumbnail","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:request', file);
       }
-            SRTlib.send('], "end": "_this.handleRequestThumbnail"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleRequestThumbnail"},');
 
     };
     _this.handleCancelThumbnail = function (file) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleCancelThumbnail", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleCancelThumbnail","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:cancel', file);
       }
-            SRTlib.send('], "end": "_this.handleCancelThumbnail"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleCancelThumbnail"},');
 
     };
     _this.handleKeyDownInInline = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleKeyDownInInline", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleKeyDownInInline","fileName":"${__filename}","paramsNumber":1},`);
 
       if (event.keyCode === TAB_KEY) trapFocus.forInline(event, _this.getPluginState().activeOverlayType, _this.el);
-            SRTlib.send('], "end": "_this.handleKeyDownInInline"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleKeyDownInInline"},');
 
     };
     _this.handlePasteOnBody = function (event) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handlePasteOnBody", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handlePasteOnBody","fileName":"${__filename}","paramsNumber":1},`);
 
       var isFocusInOverlay = _this.el.contains(document.activeElement);
       if (isFocusInOverlay) {
         _this.handlePaste(event);
       }
-            SRTlib.send('], "end": "_this.handlePasteOnBody"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handlePasteOnBody"},');
 
     };
     _this.handleComplete = function (_ref) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleComplete", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleComplete","fileName":"${__filename}","paramsNumber":1},`);
 
       var failed = _ref.failed, uploadID = _ref.uploadID;
       if (_this.opts.closeAfterFinish && failed.length === 0) {
         _this.requestCloseModal();
       }
-            SRTlib.send('], "end": "_this.handleComplete"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleComplete"},');
 
     };
     _this.initEvents = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.initEvents2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.initEvents2","fileName":"${__filename}","paramsNumber":0},`);
 
       if (_this.opts.trigger && !_this.opts.inline) {
         var showModalTrigger = findAllDOMElements(_this.opts.trigger);
         if (showModalTrigger) {
           showModalTrigger.forEach(function (trigger) {
-                        SRTlib.send(`{ "anonymous": true, "function": "_this.initEvents", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.initEvents","fileName":"${__filename}","paramsNumber":1},`);
 
-                        SRTlib.send('], "end": "_this.initEvents"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_this.initEvents"},');
 
             return trigger.addEventListener('click', _this.openModal);
-                        SRTlib.send('], "end": "_this.initEvents"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_this.initEvents"},');
 
           });
         } else {
@@ -665,21 +665,21 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (_this.opts.inline) {
         _this.el.addEventListener('keydown', _this.handleKeyDownInInline);
       }
-            SRTlib.send('], "end": "_this.initEvents2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.initEvents2"},');
 
     };
     _this.removeEvents = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.removeEvents2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.removeEvents2","fileName":"${__filename}","paramsNumber":0},`);
 
       var showModalTrigger = findAllDOMElements(_this.opts.trigger);
       if (!_this.opts.inline && showModalTrigger) {
         showModalTrigger.forEach(function (trigger) {
-                    SRTlib.send(`{ "anonymous": true, "function": "_this.removeEvents", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.removeEvents","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('], "end": "_this.removeEvents"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.removeEvents"},');
 
           return trigger.removeEventListener('click', _this.openModal);
-                    SRTlib.send('], "end": "_this.removeEvents"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.removeEvents"},');
 
         });
       }
@@ -695,11 +695,11 @@ module.exports = (_temp = _class = (function (_Plugin) {
       if (_this.opts.inline) {
         _this.el.removeEventListener('keydown', _this.handleKeyDownInInline);
       }
-            SRTlib.send('], "end": "_this.removeEvents2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.removeEvents2"},');
 
     };
     _this.superFocusOnEachUpdate = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.superFocusOnEachUpdate", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.superFocusOnEachUpdate","fileName":"${__filename}","paramsNumber":0},`);
 
       var isFocusInUppy = _this.el.contains(document.activeElement);
       var isFocusNowhere = document.activeElement === document.body || document.activeElement === null;
@@ -710,168 +710,168 @@ module.exports = (_temp = _class = (function (_Plugin) {
       } else {
         _this.superFocus.cancel();
       }
-            SRTlib.send('], "end": "_this.superFocusOnEachUpdate"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.superFocusOnEachUpdate"},');
 
     };
     _this.afterUpdate = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.afterUpdate", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.afterUpdate","fileName":"${__filename}","paramsNumber":0},`);
 
       _this.superFocusOnEachUpdate();
-            SRTlib.send('], "end": "_this.afterUpdate"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.afterUpdate"},');
 
     };
     _this.cancelUpload = function (fileID) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.cancelUpload", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.cancelUpload","fileName":"${__filename}","paramsNumber":1},`);
 
       _this.uppy.removeFile(fileID);
-            SRTlib.send('], "end": "_this.cancelUpload"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.cancelUpload"},');
 
     };
     _this.saveFileCard = function (meta, fileID) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.saveFileCard", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.saveFileCard","fileName":"${__filename}","paramsNumber":2},`);
 
       _this.uppy.setFileMeta(fileID, meta);
       _this.toggleFileCard();
-            SRTlib.send('], "end": "_this.saveFileCard"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.saveFileCard"},');
 
     };
     _this._attachRenderFunctionToTarget = function (target) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this._attachRenderFunctionToTarget", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this._attachRenderFunctionToTarget","fileName":"${__filename}","paramsNumber":1},`);
 
       var plugin = _this.uppy.getPlugin(target.id);
-            SRTlib.send('], "end": "_this._attachRenderFunctionToTarget"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this._attachRenderFunctionToTarget"},');
 
       return _extends({}, target, {
         icon: plugin.icon || _this.opts.defaultPickerIcon,
         render: plugin.render
       });
-            SRTlib.send('], "end": "_this._attachRenderFunctionToTarget"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this._attachRenderFunctionToTarget"},');
 
     };
     _this._isTargetSupported = function (target) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this._isTargetSupported", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this._isTargetSupported","fileName":"${__filename}","paramsNumber":1},`);
 
       var plugin = _this.uppy.getPlugin(target.id);
       if (typeof plugin.isSupported !== 'function') {
-                SRTlib.send('], "end": "_this._isTargetSupported"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this._isTargetSupported"},');
 
         return true;
       }
-            SRTlib.send('], "end": "_this._isTargetSupported"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this._isTargetSupported"},');
 
       return plugin.isSupported();
-            SRTlib.send('], "end": "_this._isTargetSupported"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this._isTargetSupported"},');
 
     };
     _this._getAcquirers = memoize(function (targets) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this._getAcquirers.memoize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this._getAcquirers.memoize","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "_this._getAcquirers.memoize"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this._getAcquirers.memoize"},');
 
       return targets.filter(function (target) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this._getAcquirers.memoize.ReturnStatement.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this._getAcquirers.memoize.ReturnStatement.map","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this._getAcquirers.memoize.ReturnStatement.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this._getAcquirers.memoize.ReturnStatement.map"},');
 
         return target.type === 'acquirer' && _this._isTargetSupported(target);
-                SRTlib.send('], "end": "_this._getAcquirers.memoize.ReturnStatement.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this._getAcquirers.memoize.ReturnStatement.map"},');
 
       }).map(_this._attachRenderFunctionToTarget);
-            SRTlib.send('], "end": "_this._getAcquirers.memoize"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this._getAcquirers.memoize"},');
 
     });
     _this._getProgressIndicators = memoize(function (targets) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this._getProgressIndicators.memoize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this._getProgressIndicators.memoize","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "_this._getProgressIndicators.memoize"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this._getProgressIndicators.memoize"},');
 
       return targets.filter(function (target) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this._getProgressIndicators.memoize.ReturnStatement.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this._getProgressIndicators.memoize.ReturnStatement.map","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this._getProgressIndicators.memoize.ReturnStatement.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this._getProgressIndicators.memoize.ReturnStatement.map"},');
 
         return target.type === 'progressindicator';
-                SRTlib.send('], "end": "_this._getProgressIndicators.memoize.ReturnStatement.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this._getProgressIndicators.memoize.ReturnStatement.map"},');
 
       }).map(_this._attachRenderFunctionToTarget);
-            SRTlib.send('], "end": "_this._getProgressIndicators.memoize"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this._getProgressIndicators.memoize"},');
 
     });
     _this.render = function (state) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.render", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render","fileName":"${__filename}","paramsNumber":1},`);
 
       var pluginState = _this.getPluginState();
       var files = state.files, capabilities = state.capabilities, allowNewUpload = state.allowNewUpload;
       var newFiles = Object.keys(files).filter(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.render.newFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render.newFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.render.newFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.newFiles.filter"},');
 
         return !files[file].progress.uploadStarted;
-                SRTlib.send('], "end": "_this.render.newFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.newFiles.filter"},');
 
       });
       var uploadStartedFiles = Object.keys(files).filter(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.render.uploadStartedFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render.uploadStartedFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.render.uploadStartedFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.uploadStartedFiles.filter"},');
 
         return files[file].progress.uploadStarted;
-                SRTlib.send('], "end": "_this.render.uploadStartedFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.uploadStartedFiles.filter"},');
 
       });
       var pausedFiles = Object.keys(files).filter(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.render.pausedFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render.pausedFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.render.pausedFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.pausedFiles.filter"},');
 
         return files[file].isPaused;
-                SRTlib.send('], "end": "_this.render.pausedFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.pausedFiles.filter"},');
 
       });
       var completeFiles = Object.keys(files).filter(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.render.completeFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render.completeFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.render.completeFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.completeFiles.filter"},');
 
         return files[file].progress.uploadComplete;
-                SRTlib.send('], "end": "_this.render.completeFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.completeFiles.filter"},');
 
       });
       var erroredFiles = Object.keys(files).filter(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.render.erroredFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render.erroredFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.render.erroredFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.erroredFiles.filter"},');
 
         return files[file].error;
-                SRTlib.send('], "end": "_this.render.erroredFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.erroredFiles.filter"},');
 
       });
       var inProgressFiles = Object.keys(files).filter(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.render.inProgressFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render.inProgressFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.render.inProgressFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.inProgressFiles.filter"},');
 
         return !files[file].progress.uploadComplete && files[file].progress.uploadStarted;
-                SRTlib.send('], "end": "_this.render.inProgressFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.inProgressFiles.filter"},');
 
       });
       var inProgressNotPausedFiles = inProgressFiles.filter(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.render.inProgressNotPausedFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render.inProgressNotPausedFiles","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.render.inProgressNotPausedFiles"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.inProgressNotPausedFiles"},');
 
         return !files[file].isPaused;
-                SRTlib.send('], "end": "_this.render.inProgressNotPausedFiles"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.inProgressNotPausedFiles"},');
 
       });
       var processingFiles = Object.keys(files).filter(function (file) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.render.processingFiles.filter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render.processingFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "_this.render.processingFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.processingFiles.filter"},');
 
         return files[file].progress.preprocess || files[file].progress.postprocess;
-                SRTlib.send('], "end": "_this.render.processingFiles.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render.processingFiles.filter"},');
 
       });
       var isUploadStarted = uploadStartedFiles.length > 0;
@@ -886,7 +886,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       } else {
         theme = _this.opts.theme;
       }
-            SRTlib.send('], "end": "_this.render"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render"},');
 
       return DashboardUI({
         state: state,
@@ -964,26 +964,26 @@ module.exports = (_temp = _class = (function (_Plugin) {
         handleDragLeave: _this.handleDragLeave,
         handleDrop: _this.handleDrop
       });
-            SRTlib.send('], "end": "_this.render"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render"},');
 
     };
     _this.discoverProviderPlugins = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.discoverProviderPlugins", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.discoverProviderPlugins","fileName":"${__filename}","paramsNumber":0},`);
 
       _this.uppy.iteratePlugins(function (plugin) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.discoverProviderPlugins._this.uppy.iteratePlugins", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.discoverProviderPlugins._this.uppy.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
 
         if (plugin && !plugin.target && plugin.opts && plugin.opts.target === _this.constructor) {
           _this.addTarget(plugin);
         }
-                SRTlib.send('], "end": "_this.discoverProviderPlugins._this.uppy.iteratePlugins"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.discoverProviderPlugins._this.uppy.iteratePlugins"},');
 
       });
-            SRTlib.send('], "end": "_this.discoverProviderPlugins"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.discoverProviderPlugins"},');
 
     };
     _this.install = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.install2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.install2","fileName":"${__filename}","paramsNumber":0},`);
 
       _this.setPluginState({
         isHidden: true,
@@ -998,7 +998,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       });
       var _this$opts = _this.opts, inline = _this$opts.inline, closeAfterFinish = _this$opts.closeAfterFinish;
       if (inline && closeAfterFinish) {
-                SRTlib.send('], "end": "_this.install2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.install2"},');
 
         throw new Error('[Dashboard] `closeAfterFinish: true` cannot be used on an inline Dashboard, because an inline Dashboard cannot be closed at all. Either set `inline: false`, or disable the `closeAfterFinish` option.');
       }
@@ -1012,13 +1012,13 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }
       var plugins = _this.opts.plugins || [];
       plugins.forEach(function (pluginID) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.install", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.install","fileName":"${__filename}","paramsNumber":1},`);
 
         var plugin = _this.uppy.getPlugin(pluginID);
         if (plugin) {
           plugin.mount(_assertThisInitialized(_this), plugin);
         }
-                SRTlib.send('], "end": "_this.install"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.install"},');
 
       });
       if (!_this.opts.disableStatusBar) {
@@ -1057,11 +1057,11 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }
       _this.discoverProviderPlugins();
       _this.initEvents();
-            SRTlib.send('], "end": "_this.install2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.install2"},');
 
     };
     _this.uninstall = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.uninstall2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.uninstall2","fileName":"${__filename}","paramsNumber":0},`);
 
       if (!_this.opts.disableInformer) {
         var informer = _this.uppy.getPlugin(_this.id + ":Informer");
@@ -1077,11 +1077,11 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }
       var plugins = _this.opts.plugins || [];
       plugins.forEach(function (pluginID) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.uninstall", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.uninstall","fileName":"${__filename}","paramsNumber":1},`);
 
         var plugin = _this.uppy.getPlugin(pluginID);
         if (plugin) plugin.unmount();
-                SRTlib.send('], "end": "_this.uninstall"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.uninstall"},');
 
       });
       if (_this.opts.theme === 'auto') {
@@ -1089,7 +1089,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }
       _this.unmount();
       _this.removeEvents();
-            SRTlib.send('], "end": "_this.uninstall2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.uninstall2"},');
 
     };
     _this.id = _this.opts.id || 'Dashboard';
@@ -1170,12 +1170,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
       animateOpenClose: true,
       proudlyDisplayPoweredByUppy: true,
       onRequestCloseModal: function onRequestCloseModal() {
-                SRTlib.send(`{ "anonymous": true, "function": "defaultOptions.onRequestCloseModal.onRequestCloseModal", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onRequestCloseModal.onRequestCloseModal","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('], "end": "defaultOptions.onRequestCloseModal.onRequestCloseModal"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onRequestCloseModal.onRequestCloseModal"},');
 
         return _this.closeModal();
-                SRTlib.send('], "end": "defaultOptions.onRequestCloseModal.onRequestCloseModal"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onRequestCloseModal.onRequestCloseModal"},');
 
       },
       showSelectedFiles: true,
@@ -1189,15 +1189,15 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.ifFocusedOnUppyRecently = false;
     _this.makeDashboardInsidesVisibleAnywayTimeout = null;
     _this.removeDragOverClassTimeout = null;
-        SRTlib.send('], "end": "Dashboard"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Dashboard"},');
 
     return _this;
-        SRTlib.send('], "end": "Dashboard"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Dashboard","paramsNumber":2},');
 
   }
-    SRTlib.send('], "end": "module.exports._temp._class"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
   return Dashboard;
-    SRTlib.send('], "end": "module.exports._temp._class"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

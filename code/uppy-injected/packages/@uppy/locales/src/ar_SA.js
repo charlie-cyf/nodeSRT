@@ -134,17 +134,17 @@ ar_SA.strings = {
   openFolderNamed: 'افتح المجلد %{name}'
 };
 ar_SA.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "ar_SA.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ar_SA.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "ar_SA.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "ar_SA.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "ar_SA.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

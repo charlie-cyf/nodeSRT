@@ -2,47 +2,47 @@ var SRTlib = require('SRT-util');
 const fs = require('fs');
 class MockPurest {
   constructor(opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "MockPurest.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MockPurest"}},`);
 
     const methodsToMock = ['query', 'select', 'where', 'qs', 'auth', 'json'];
     const httpMethodsToMock = ['get', 'put', 'post', 'options', 'head'];
     methodsToMock.forEach(item => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
       this[item] = () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
         return this;
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       };
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     });
     httpMethodsToMock.forEach(item => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
       this[item] = url => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
         this._requestUrl = url;
-                SRTlib.send('], "end": "emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
         return this;
-                SRTlib.send('], "end": "emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
       };
-            SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
     });
     this.opts = opts;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   request(done) {
-        SRTlib.send(`{ "anonymous": false, "function": "MockPurest.request", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"request","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MockPurest"}},`);
 
     if (typeof done === 'function') {
       const responses = {
@@ -92,39 +92,39 @@ class MockPurest {
         statusCode: 200
       }, body);
     }
-        SRTlib.send('], "end": "request"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"request"},');
 
     return this;
-        SRTlib.send('], "end": "request"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"request"},');
 
   }
   on(evt, cb) {
-        SRTlib.send(`{ "anonymous": false, "function": "MockPurest.on", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MockPurest"}},`);
 
     if (evt === 'response') {
       cb(fs.createReadStream('./README.md'));
     }
-        SRTlib.send('], "end": "on"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
 
     return this;
-        SRTlib.send('], "end": "on"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
 
   }
 }
 module.exports = () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('], "end": "emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
   return options => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
     return new MockPurest(options);
-        SRTlib.send('], "end": "emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
   };
-    SRTlib.send('], "end": "emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
 };

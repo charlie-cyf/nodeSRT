@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 var secondsToTime = require('./secondsToTime');
 module.exports = function prettyETA(seconds) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.prettyETA", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.prettyETA","fileName":"${__filename}","paramsNumber":1},`);
 
   var time = secondsToTime(seconds);
   var hoursStr = time.hours ? time.hours + 'h ' : '';
@@ -9,9 +9,9 @@ module.exports = function prettyETA(seconds) {
   var minutesStr = minutesVal ? minutesVal + 'm' : '';
   var secondsVal = minutesVal ? ('0' + time.seconds).substr(-2) : time.seconds;
   var secondsStr = time.hours ? '' : minutesVal ? ' ' + secondsVal + 's' : secondsVal + 's';
-    SRTlib.send('], "end": "module.exports.prettyETA"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.prettyETA"},');
 
   return "" + hoursStr + minutesStr + secondsStr;
-    SRTlib.send('], "end": "module.exports.prettyETA"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.prettyETA"},');
 
 };

@@ -7,7 +7,7 @@ describe('getSpeed', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should calculate the speed given a fileProgress object', () => {
@@ -20,11 +20,11 @@ describe('getSpeed', () => {
     expect(Math.round(getSpeed(fileProgress))).toEqual(Math.round(205));
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "getSpeed" }`);
+    SRTlib.send(`], "endTestSuiteName": "getSpeed" },`);
     SRTlib.endLogger();
   });
 

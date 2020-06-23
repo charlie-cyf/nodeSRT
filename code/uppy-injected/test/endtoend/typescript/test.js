@@ -6,7 +6,7 @@ describe('Project compiled with Uppy\'s TypeScript typings', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('Should have correct imports (thus not crash)', async () => {
@@ -23,11 +23,11 @@ describe('Project compiled with Uppy\'s TypeScript typings', () => {
     expect(await dashboard.isDisplayed()).to.equal(true);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "Project%20compiled%20with%20Uppy%27s%20TypeScript%20typings" }`);
+    SRTlib.send(`], "endTestSuiteName": "Project%20compiled%20with%20Uppy%27s%20TypeScript%20typings" },`);
     SRTlib.endLogger();
   });
 

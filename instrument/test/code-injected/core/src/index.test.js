@@ -18,7 +18,7 @@ jest.mock('@uppy/utils/lib/findDOMElement', () => {
 const sampleImage = fs.readFileSync(path.join(__dirname, '../../../../test/resources/image.jpg'));
 describe('src/Core', () => {
     beforeAll(() => {
-    SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
   });
 
@@ -47,7 +47,7 @@ describe('src/Core', () => {
   });
   describe('plugins', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -124,7 +124,7 @@ describe('src/Core', () => {
   });
   describe('state', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -340,7 +340,7 @@ describe('src/Core', () => {
   });
   describe('upload hooks', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -383,7 +383,7 @@ describe('src/Core', () => {
   });
   describe('preprocessors', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -527,7 +527,7 @@ describe('src/Core', () => {
   });
   describe('postprocessors', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -643,7 +643,7 @@ describe('src/Core', () => {
   });
   describe('uploaders', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -681,7 +681,7 @@ describe('src/Core', () => {
   });
   describe('adding a file', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -841,7 +841,7 @@ describe('src/Core', () => {
     });
     describe('with allowMultipleUploads: false', () => {
             beforeAll(() => {
-        SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+        SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
         SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
       });
 
@@ -964,7 +964,7 @@ describe('src/Core', () => {
   });
   describe('uploading a file', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1157,7 +1157,7 @@ describe('src/Core', () => {
   });
   describe('removing a file', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1200,7 +1200,7 @@ describe('src/Core', () => {
   });
   describe('restoring a file', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1222,7 +1222,7 @@ describe('src/Core', () => {
   });
   describe('get a file', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1256,7 +1256,7 @@ describe('src/Core', () => {
   });
   describe('getFiles', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1301,7 +1301,7 @@ describe('src/Core', () => {
   });
   describe('setOptions', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1401,7 +1401,7 @@ describe('src/Core', () => {
   });
   describe('meta data', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1494,7 +1494,7 @@ describe('src/Core', () => {
   });
   describe('progress', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1740,7 +1740,7 @@ describe('src/Core', () => {
   });
   describe('checkRestrictions', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1894,7 +1894,7 @@ describe('src/Core', () => {
   });
   describe('actions', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1945,7 +1945,7 @@ describe('src/Core', () => {
   });
   describe('updateOnlineStatus', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -1997,7 +1997,7 @@ describe('src/Core', () => {
   });
   describe('info', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -2090,7 +2090,7 @@ describe('src/Core', () => {
   });
   describe('createUpload', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -2130,7 +2130,7 @@ describe('src/Core', () => {
   });
   describe('i18n', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -2161,7 +2161,7 @@ describe('src/Core', () => {
   });
   describe('default restrictions', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -2190,7 +2190,7 @@ describe('src/Core', () => {
   });
   describe('log', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
     });
 

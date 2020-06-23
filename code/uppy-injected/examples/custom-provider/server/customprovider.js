@@ -4,23 +4,23 @@ const path = require('path');
 const DUMM_FILE = path.join(__dirname, 'fixtures/image.jpg');
 class MyCustomProvider {
   constructor(options) {
-        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider"}},`);
 
     this.authProvider = MyCustomProvider.authProvider;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   static get authProvider() {
-        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MyCustomProvider"}},`);
 
-        SRTlib.send('], "end": "authProvider"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
 
     return 'mycustomprovider';
-        SRTlib.send('], "end": "authProvider"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
 
   }
   list(options, done) {
-        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.list", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MyCustomProvider"}},`);
 
     const response = {
       body: {
@@ -33,35 +33,35 @@ class MyCustomProvider {
         }]
       }
     };
-        SRTlib.send('], "end": "list"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
 
     return done(null, response, response.body);
-        SRTlib.send('], "end": "list"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
 
   }
   download({id, token}, onData) {
-        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MyCustomProvider"}},`);
 
-        SRTlib.send('], "end": "download"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
 
     return fs.readFile(DUMM_FILE, (err, data) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err) console.error(err);
       onData(data);
-            SRTlib.send('], "end": "emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     });
-        SRTlib.send('], "end": "download"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
 
   }
   size({id, token}, done) {
-        SRTlib.send(`{ "anonymous": false, "function": "MyCustomProvider.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MyCustomProvider"}},`);
 
-        SRTlib.send('], "end": "size"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
     return done(fs.statSync(DUMM_FILE).size);
-        SRTlib.send('], "end": "size"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
   }
 }

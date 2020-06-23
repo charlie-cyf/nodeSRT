@@ -136,17 +136,17 @@ ko_KR.strings = {
   }
 };
 ko_KR.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "ko_KR.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ko_KR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "ko_KR.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "ko_KR.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "ko_KR.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

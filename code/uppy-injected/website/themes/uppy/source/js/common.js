@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 (function () {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":0},`);
 
   var each = [].forEach;
   var doc = document.documentElement;
@@ -12,7 +12,7 @@ var SRTlib = require('SRT-util');
     InnerPage();
   }
   function InnerPage() {
-        SRTlib.send(`{ "anonymous": false, "function": "InnerPage", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"InnerPage","fileName":"${__filename}","paramsNumber":0},`);
 
     var menuButton = document.querySelector('.js-MenuBtn');
     var header = document.querySelector('.js-MainHeader');
@@ -21,7 +21,7 @@ var SRTlib = require('SRT-util');
     var animating = false;
     var allLinks = [];
     function updateSidebar() {
-            SRTlib.send(`{ "anonymous": false, "function": "updateSidebar", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateSidebar","fileName":"${__filename}","paramsNumber":0},`);
 
       var top = doc && doc.scrollTop || body.scrollTop;
       var headerHeight = header.offsetHeight;
@@ -31,7 +31,7 @@ var SRTlib = require('SRT-util');
         header.classList.remove('fix-header');
       }
       if (animating || !allLinks) {
-                SRTlib.send('], "end": "updateSidebar"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"updateSidebar"},');
 
         return;
       }
@@ -48,24 +48,24 @@ var SRTlib = require('SRT-util');
       if (last) {
         setActive(last.id);
       }
-            SRTlib.send('], "end": "updateSidebar"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"updateSidebar","paramsNumber":0},');
 
     }
     function makeLink(h) {
-            SRTlib.send(`{ "anonymous": false, "function": "makeLink", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeLink","fileName":"${__filename}","paramsNumber":1},`);
 
       var link = document.createElement('li');
       var text = h.textContent.replace(/\(.*\)$/, '');
       h.id = h.id.replace(/\(.*\)$/, '').replace(/\$/, '');
       link.innerHTML = '<a class="section-link" data-scroll href="#' + h.id + '">' + text + '</a>';
-            SRTlib.send('], "end": "makeLink"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"makeLink"},');
 
       return link;
-            SRTlib.send('], "end": "makeLink"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"makeLink","paramsNumber":1},');
 
     }
     function collectH3s(h) {
-            SRTlib.send(`{ "anonymous": false, "function": "collectH3s", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"collectH3s","fileName":"${__filename}","paramsNumber":1},`);
 
       var h3s = [];
       var next = h.nextSibling;
@@ -75,34 +75,34 @@ var SRTlib = require('SRT-util');
         }
         next = next.nextSibling;
       }
-            SRTlib.send('], "end": "collectH3s"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"collectH3s"},');
 
       return h3s;
-            SRTlib.send('], "end": "collectH3s"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"collectH3s","paramsNumber":1},');
 
     }
     function makeSubLinks(h3s, small) {
-            SRTlib.send(`{ "anonymous": false, "function": "makeSubLinks", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeSubLinks","fileName":"${__filename}","paramsNumber":2},`);
 
       var container = document.createElement('ul');
       if (small) {
         container.className = 'menu-sub';
       }
       h3s.forEach(function (h) {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
         container.appendChild(makeLink(h));
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       });
-            SRTlib.send('], "end": "makeSubLinks"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"makeSubLinks"},');
 
       return container;
-            SRTlib.send('], "end": "makeSubLinks"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"makeSubLinks","paramsNumber":2},');
 
     }
     function setActive(id) {
-            SRTlib.send(`{ "anonymous": false, "function": "setActive", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setActive","fileName":"${__filename}","paramsNumber":1},`);
 
       var previousActive = menu.querySelector('.section-link.active');
       var currentActive = typeof id === 'string' ? menu.querySelector('.section-link[href="#' + id + '"]') : id;
@@ -110,14 +110,14 @@ var SRTlib = require('SRT-util');
         if (previousActive) previousActive.classList.remove('active');
         currentActive.classList.add('active');
       }
-            SRTlib.send('], "end": "setActive"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"setActive","paramsNumber":1},');
 
     }
     function makeLinkClickable(link) {
-            SRTlib.send(`{ "anonymous": false, "function": "makeLinkClickable", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeLinkClickable","fileName":"${__filename}","paramsNumber":1},`);
 
       if (link.getAttribute('data-scroll') === 'no') {
-                SRTlib.send('], "end": "makeLinkClickable"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"makeLinkClickable"},');
 
         return;
       }
@@ -126,32 +126,32 @@ var SRTlib = require('SRT-util');
       wrapper.setAttribute('data-scroll', '');
       link.parentNode.insertBefore(wrapper, link);
       wrapper.appendChild(link);
-            SRTlib.send('], "end": "makeLinkClickable"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"makeLinkClickable","paramsNumber":1},');
 
     }
     menuButton.addEventListener('click', function () {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
       menu.classList.toggle('is-open');
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     });
     body.addEventListener('click', function (e) {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
       if (e.target !== menuButton && !menu.contains(e.target)) {
         menu.classList.remove('is-open');
       }
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
     });
     function initSubHeaders() {
-            SRTlib.send(`{ "anonymous": false, "function": "initSubHeaders", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initSubHeaders","fileName":"${__filename}","paramsNumber":0},`);
 
       var currentPageAnchor = menu.querySelector('.sidebar-link.current');
       var isDocs = content.classList.contains('docs');
       if (!isDocs) {
-                SRTlib.send('], "end": "initSubHeaders"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"initSubHeaders"},');
 
         return;
       }
@@ -163,7 +163,7 @@ var SRTlib = require('SRT-util');
         var h2s = content.querySelectorAll('h2');
         if (h2s.length) {
           each.call(h2s, function (h) {
-                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
             sectionContainer.appendChild(makeLink(h));
             var h3s = collectH3s(h);
@@ -172,22 +172,22 @@ var SRTlib = require('SRT-util');
             if (h3s.length) {
               sectionContainer.appendChild(makeSubLinks(h3s, isDocs));
             }
-                        SRTlib.send('], "end": "emptyKey4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
           });
         } else {
           var h3s = content.querySelectorAll('h3');
           each.call(h3s, function (h) {
-                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
 
             sectionContainer.appendChild(makeLink(h));
             allLinks.push(h);
-                        SRTlib.send('], "end": "emptyKey5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
           });
         }
         sectionContainer.addEventListener('click', function (e) {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
           e.preventDefault();
           if (e.target.classList.contains('section-link')) {
@@ -195,14 +195,14 @@ var SRTlib = require('SRT-util');
             setActive(e.target);
             animating = true;
             setTimeout(function () {
-                            SRTlib.send(`{ "anonymous": true, "function": "setTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
               animating = false;
-                            SRTlib.send('], "end": "setTimeout"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
 
             }, 400);
           }
-                    SRTlib.send('], "end": "emptyKey6"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
         }, true);
         allLinks.forEach(makeLinkClickable);
@@ -212,25 +212,25 @@ var SRTlib = require('SRT-util');
       }
       window.addEventListener('scroll', updateSidebar);
       window.addEventListener('resize', updateSidebar);
-            SRTlib.send('], "end": "initSubHeaders"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"initSubHeaders","paramsNumber":0},');
 
     }
     var isBlog = menu.classList.contains('is-blog');
     if (!isBlog) {
       initSubHeaders();
     }
-        SRTlib.send('], "end": "InnerPage"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"InnerPage","paramsNumber":0},');
 
   }
   function IndexPage() {
-        SRTlib.send(`{ "anonymous": false, "function": "IndexPage", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"IndexPage","fileName":"${__filename}","paramsNumber":0},`);
 
     window.addEventListener('load', function () {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":0},`);
 
       var tabs = document.querySelectorAll('.Tabs-link');
       function myTabClicks(tabClickEvent) {
-                SRTlib.send(`{ "anonymous": false, "function": "myTabClicks", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"myTabClicks","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 0; i < tabs.length; i++) {
           tabs[i].classList.remove('Tabs-link--active');
@@ -247,13 +247,13 @@ var SRTlib = require('SRT-util');
         var activePaneId = anchorReference.getAttribute('href');
         var activePane = document.querySelector(activePaneId);
         activePane.classList.add('TabPane--active');
-                SRTlib.send('], "end": "myTabClicks"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"myTabClicks","paramsNumber":1},');
 
       }
       for (var i = 0; i < tabs.length; i++) {
         tabs[i].addEventListener('click', myTabClicks);
       }
-            SRTlib.send('], "end": "emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
     });
     var tagline = document.querySelector('.MainHeader-tagline');
@@ -261,51 +261,51 @@ var SRTlib = require('SRT-util');
     var taglineList = document.querySelector('.MainHeader-taglineList');
     var taglineCounter = taglineList.children.length;
     function shuffleTaglines() {
-            SRTlib.send(`{ "anonymous": false, "function": "shuffleTaglines", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shuffleTaglines","fileName":"${__filename}","paramsNumber":0},`);
 
       for (var i = taglineList.children.length; i >= 0; i--) {
         taglineList.appendChild(taglineList.children[Math.random() * i | 0]);
       }
-            SRTlib.send('], "end": "shuffleTaglines"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"shuffleTaglines","paramsNumber":0},');
 
     }
     function loopTaglines() {
-            SRTlib.send(`{ "anonymous": false, "function": "loopTaglines", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"loopTaglines","fileName":"${__filename}","paramsNumber":0},`);
 
       taglineCounter--;
       if (taglineCounter >= 0) {
         var taglineText = taglineList.children[taglineCounter].textContent;
         showTagline(taglineText);
-                SRTlib.send('], "end": "loopTaglines"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"loopTaglines"},');
 
         return;
       }
       taglineCounter = taglineList.children.length;
       loopTaglines();
-            SRTlib.send('], "end": "loopTaglines"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"loopTaglines","paramsNumber":0},');
 
     }
     function showTagline(taglineText) {
-            SRTlib.send(`{ "anonymous": false, "function": "showTagline", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"showTagline","fileName":"${__filename}","paramsNumber":1},`);
 
       tagline.classList.remove('is-visible');
       setTimeout(function () {
-                SRTlib.send(`{ "anonymous": true, "function": "setTimeout2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout2","fileName":"${__filename}","paramsNumber":0},`);
 
         taglinePart.innerHTML = taglineText;
         tagline.classList.add('is-visible');
-                SRTlib.send('], "end": "setTimeout2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout2"},');
 
       }, 800);
-            SRTlib.send('], "end": "showTagline"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"showTagline","paramsNumber":1},');
 
     }
     shuffleTaglines();
     loopTaglines();
     setInterval(loopTaglines, 4000);
-        SRTlib.send('], "end": "IndexPage"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"IndexPage","paramsNumber":0},');
 
   }
-    SRTlib.send('], "end": "emptyKey8"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
 })();

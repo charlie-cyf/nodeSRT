@@ -7,7 +7,7 @@ describe('getFileNameAndExtension', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should return the filename and extension as an array', () => {
@@ -23,11 +23,11 @@ describe('getFileNameAndExtension', () => {
     });
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "getFileNameAndExtension" }`);
+    SRTlib.send(`], "endTestSuiteName": "getFileNameAndExtension" },`);
     SRTlib.endLogger();
   });
 

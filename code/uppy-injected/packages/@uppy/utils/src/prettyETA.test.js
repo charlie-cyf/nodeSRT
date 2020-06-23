@@ -7,7 +7,7 @@ describe('prettyETA', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should convert the specified number of seconds to a pretty ETA', () => {
@@ -19,11 +19,11 @@ describe('prettyETA', () => {
     expect(prettyETA(103984.1)).toEqual('4h 53m');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "prettyETA" }`);
+    SRTlib.send(`], "endTestSuiteName": "prettyETA" },`);
     SRTlib.endLogger();
   });
 

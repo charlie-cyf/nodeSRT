@@ -7,7 +7,7 @@ describe('getFileTypeExtension', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should return the filetype based on the specified mime type', () => {
@@ -22,11 +22,11 @@ describe('getFileTypeExtension', () => {
     expect(getFileTypeExtension('foo/bar')).toEqual(null);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "getFileTypeExtension" }`);
+    SRTlib.send(`], "endTestSuiteName": "getFileTypeExtension" },`);
     SRTlib.endLogger();
   });
 

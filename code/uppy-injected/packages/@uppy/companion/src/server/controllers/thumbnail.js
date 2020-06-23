@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 function thumbnail(req, res, next) {
-    SRTlib.send(`{ "anonymous": false, "function": "thumbnail", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":3},`);
 
   const providerName = req.params.providerName;
   const id = req.params.id;
@@ -10,16 +10,16 @@ function thumbnail(req, res, next) {
     id,
     token
   }, (err, response) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
 
     if (err) {
       err.isAuthError ? res.sendStatus(401) : next(err);
     }
     response ? response.pipe(res) : res.sendStatus(404);
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
-    SRTlib.send('], "end": "thumbnail"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail","paramsNumber":3},');
 
 }
 module.exports = thumbnail;

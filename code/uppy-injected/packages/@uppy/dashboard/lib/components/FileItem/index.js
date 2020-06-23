@@ -1,11 +1,11 @@
 var SRTlib = require('SRT-util');
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send('], "end": "_inheritsLoose"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
 
 }
 var _require = require('preact'), h = _require.h, Component = _require.Component;
@@ -16,50 +16,50 @@ var FileProgress = require('./FileProgress');
 var FileInfo = require('./FileInfo');
 var Buttons = require('./Buttons');
 module.exports = (function (_Component) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(FileItem, _Component);
   function FileItem() {
-        SRTlib.send(`{ "anonymous": false, "function": "FileItem", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FileItem","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('], "end": "FileItem"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"FileItem"},');
 
     return _Component.apply(this, arguments) || this;
-        SRTlib.send('], "end": "FileItem"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"FileItem","paramsNumber":0},');
 
   }
   var _proto = FileItem.prototype;
   _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.shouldComponentUpdate.shouldComponentUpdate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.shouldComponentUpdate.shouldComponentUpdate","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "module.exports._proto.shouldComponentUpdate.shouldComponentUpdate"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.shouldComponentUpdate.shouldComponentUpdate"},');
 
     return !shallowEqual(this.props, nextProps);
-        SRTlib.send('], "end": "module.exports._proto.shouldComponentUpdate.shouldComponentUpdate"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.shouldComponentUpdate.shouldComponentUpdate"},');
 
   };
   _proto.componentDidMount = function componentDidMount() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.componentDidMount.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.componentDidMount.componentDidMount","fileName":"${__filename}","paramsNumber":0},`);
 
     var file = this.props.file;
     if (!file.preview) {
       this.props.handleRequestThumbnail(file);
     }
-        SRTlib.send('], "end": "module.exports._proto.componentDidMount.componentDidMount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.componentDidMount.componentDidMount"},');
 
   };
   _proto.componentWillUnmount = function componentWillUnmount() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.componentWillUnmount.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.componentWillUnmount.componentWillUnmount","fileName":"${__filename}","paramsNumber":0},`);
 
     var file = this.props.file;
     if (!file.preview) {
       this.props.handleCancelThumbnail(file);
     }
-        SRTlib.send('], "end": "module.exports._proto.componentWillUnmount.componentWillUnmount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.componentWillUnmount.componentWillUnmount"},');
 
   };
   _proto.render = function render() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.render.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render.render","fileName":"${__filename}","paramsNumber":0},`);
 
     var file = this.props.file;
     var isProcessing = file.progress.preprocess || file.progress.postprocess;
@@ -83,7 +83,7 @@ module.exports = (function (_Component) {
       'is-resumable': this.props.resumableUploads,
       'is-noIndividualCancellation': !this.props.individualCancellation
     });
-        SRTlib.send('], "end": "module.exports._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render"},');
 
     return h("div", {
       class: dashboardItemClass,
@@ -127,12 +127,12 @@ module.exports = (function (_Component) {
       log: this.props.log,
       info: this.props.info
     })));
-        SRTlib.send('], "end": "module.exports._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render"},');
 
   };
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return FileItem;
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 })(Component);

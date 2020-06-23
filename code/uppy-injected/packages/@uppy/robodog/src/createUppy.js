@@ -23,42 +23,42 @@ const eventNames = {
 };
 const uppyOptionNames = ['autoProceed', 'restrictions', 'meta', 'onBeforeFileAdded', 'onBeforeUpload', 'debug'];
 function createUppy(opts, overrides = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "createUppy", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createUppy","fileName":"${__filename}","paramsNumber":2},`);
 
   const uppyOptions = {};
   uppyOptionNames.forEach(name => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, name)) uppyOptions[name] = opts[name];
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   Object.assign(uppyOptions, overrides);
   const uppy = Uppy(uppyOptions);
   Object.keys(eventNames).forEach(optionName => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
     const eventName = eventNames[optionName];
     if (typeof opts[optionName] === 'function') {
       uppy.on(eventName, opts[optionName]);
     }
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   });
   if (typeof opts.onProgress === 'function') {
     uppy.on('upload-progress', () => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
 
       const {totalProgress} = uppy.getState();
       opts.onProgress.call(uppy, totalProgress);
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
     });
   }
-    SRTlib.send('], "end": "createUppy"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createUppy"},');
 
   return uppy;
-    SRTlib.send('], "end": "createUppy"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createUppy","paramsNumber":2},');
 
 }
 module.exports = createUppy;

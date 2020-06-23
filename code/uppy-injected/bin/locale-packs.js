@@ -19,38 +19,38 @@ if (mode === 'build') {
   throw new Error("First argument must be either 'build' or 'test'");
 }
 function getSources(pluginName) {
-    SRTlib.send(`{ "anonymous": false, "function": "getSources", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSources","fileName":"${__filename}","paramsNumber":1},`);
 
   const dependencies = {
     core: ['provider-views']
   };
   const globPath = path.join(__dirname, '..', 'packages', '@uppy', pluginName, 'lib', '**', '*.js');
   let contents = glob.sync(globPath).map(file => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     return fs.readFileSync(file, 'utf-8');
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   if (dependencies[pluginName]) {
     dependencies[pluginName].forEach(addPlugin => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
       contents = contents.concat(getSources(addPlugin));
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     });
   }
-    SRTlib.send('], "end": "getSources"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getSources"},');
 
   return contents;
-    SRTlib.send('], "end": "getSources"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getSources","paramsNumber":1},');
 
 }
 function buildPluginsList() {
-    SRTlib.send(`{ "anonymous": false, "function": "buildPluginsList", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildPluginsList","fileName":"${__filename}","paramsNumber":0},`);
 
   const packagesGlobPath = path.join(__dirname, '..', 'packages', '@uppy', '*', 'package.json');
   const files = glob.sync(packagesGlobPath);
@@ -71,41 +71,41 @@ function buildPluginsList() {
     };
     global.localStorage = {
       key: () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('], "end": "emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
       },
       getItem: () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('], "end": "emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
       }
     };
     global.window = {
       indexedDB: {
         open: () => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('], "end": "emptyKey5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
           return {};
-                    SRTlib.send('], "end": "emptyKey5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
         }
       }
     };
     global.document = {
       createElement: () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('], "end": "emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
         return {
           style: {}
         };
-                SRTlib.send('], "end": "emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
       }
     };
@@ -119,9 +119,9 @@ function buildPluginsList() {
         plugin = new Plugin({
           store: {
             dispatch: () => {
-                            SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('], "end": "emptyKey7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
             }
           }
@@ -140,7 +140,7 @@ function buildPluginsList() {
     } catch (err) {
       if (err.message !== 'Plugin is not a constructor') {
         console.error(`--> While trying to instantiate plugin: ${pluginName}, this error was thrown: `);
-                SRTlib.send('], "end": "buildPluginsList"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"buildPluginsList"},');
 
         throw err;
       }
@@ -154,17 +154,17 @@ function buildPluginsList() {
     }
   }
   console.log('');
-    SRTlib.send('], "end": "buildPluginsList"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"buildPluginsList"},');
 
   return {
     plugins,
     sources
   };
-    SRTlib.send('], "end": "buildPluginsList"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"buildPluginsList","paramsNumber":0},');
 
 }
 function addLocaleToPack(plugin, pluginName) {
-    SRTlib.send(`{ "anonymous": false, "function": "addLocaleToPack", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addLocaleToPack","fileName":"${__filename}","paramsNumber":2},`);
 
   const localeStrings = plugin.defaultLocale.strings;
   for (const key in localeStrings) {
@@ -178,11 +178,11 @@ function addLocaleToPack(plugin, pluginName) {
     }
     localePack[key] = localeStrings[key];
   }
-    SRTlib.send('], "end": "addLocaleToPack"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"addLocaleToPack","paramsNumber":2},');
 
 }
 function checkForUnused(fileContents, pluginName, localePack) {
-    SRTlib.send(`{ "anonymous": false, "function": "checkForUnused", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"checkForUnused","fileName":"${__filename}","paramsNumber":3},`);
 
   const buff = fileContents.join('\n');
   for (const key in localePack) {
@@ -191,48 +191,48 @@ function checkForUnused(fileContents, pluginName, localePack) {
       console.error(`⚠ defaultLocale key: ${chalk.magenta(key)} not used in plugin: ${chalk.cyan(pluginName)}`);
     }
   }
-    SRTlib.send('], "end": "checkForUnused"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"checkForUnused","paramsNumber":3},');
 
 }
 function sortObjectAlphabetically(obj, sortFunc) {
-    SRTlib.send(`{ "anonymous": false, "function": "sortObjectAlphabetically", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortObjectAlphabetically","fileName":"${__filename}","paramsNumber":2},`);
 
-    SRTlib.send('], "end": "sortObjectAlphabetically"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sortObjectAlphabetically"},');
 
   return Object.keys(obj).sort(sortFunc).reduce(function (result, key) {
-        SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.sort.reduce", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.sort.reduce","fileName":"${__filename}","paramsNumber":2},`);
 
     result[key] = obj[key];
-        SRTlib.send('], "end": "ReturnStatement.sort.reduce"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.sort.reduce"},');
 
     return result;
-        SRTlib.send('], "end": "ReturnStatement.sort.reduce"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.sort.reduce"},');
 
   }, {});
-    SRTlib.send('], "end": "sortObjectAlphabetically"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sortObjectAlphabetically","paramsNumber":2},');
 
 }
 function createTypeScriptLocale(plugin, pluginName) {
-    SRTlib.send(`{ "anonymous": false, "function": "createTypeScriptLocale", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createTypeScriptLocale","fileName":"${__filename}","paramsNumber":2},`);
 
   const allowedStringTypes = Object.keys(plugin.defaultLocale.strings).map(key => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "emptyKey8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
     return `  | '${key}'`;
-        SRTlib.send('], "end": "emptyKey8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
   }).join('\n');
   const pluginClassName = pluginName === 'core' ? 'Core' : plugin.id;
   const localePath = path.join(__dirname, '..', 'packages', '@uppy', pluginName, 'types', 'generatedLocale.d.ts');
   const localeTypes = 'import Uppy = require(\'@uppy/core\')\n' + '\n' + `type ${pluginClassName}Locale = Uppy.Locale` + '<\n' + allowedStringTypes + '\n' + '>\n' + '\n' + `export = ${pluginClassName}Locale\n`;
   fs.writeFileSync(localePath, localeTypes);
-    SRTlib.send('], "end": "createTypeScriptLocale"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createTypeScriptLocale","paramsNumber":2},');
 
 }
 function build() {
-    SRTlib.send(`{ "anonymous": false, "function": "build", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"build","fileName":"${__filename}","paramsNumber":0},`);
 
   const {plugins, sources} = buildPluginsList();
   for (const pluginName in plugins) {
@@ -256,28 +256,28 @@ function build() {
   const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', 'en_US.js');
   fs.writeFileSync(localePackagePath, finalLocale, 'utf-8');
   console.log(`✅ Written '${localePackagePath}'`);
-    SRTlib.send('], "end": "build"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"build","paramsNumber":0},');
 
 }
 function test() {
-    SRTlib.send(`{ "anonymous": false, "function": "test", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"test","fileName":"${__filename}","paramsNumber":0},`);
 
   const leadingLocaleName = 'en_US';
   const followerLocales = {};
   const followerValues = {};
   const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', '*.js');
   glob.sync(localePackagePath).forEach(localePath => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":1},`);
 
     const localeName = path.basename(localePath, '.js');
     if (localeName === 'es_GL') {
-            SRTlib.send('], "end": "emptyKey9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
 
       return;
     }
     followerValues[localeName] = require(localePath).strings;
     followerLocales[localeName] = Object.keys(followerValues[localeName]);
-        SRTlib.send('], "end": "emptyKey9"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
 
   });
   const leadingLocale = followerLocales[leadingLocaleName];
@@ -288,39 +288,39 @@ function test() {
   for (const followerName in followerLocales) {
     const followerLocale = followerLocales[followerName];
     const missing = leadingLocale.filter(key => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "emptyKey10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
 
       return !followerLocale.includes(key);
-            SRTlib.send('], "end": "emptyKey10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
 
     });
     const excess = followerLocale.filter(key => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "emptyKey11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
 
       return !leadingLocale.includes(key);
-            SRTlib.send('], "end": "emptyKey11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
 
     });
     missing.forEach(key => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey12","fileName":"${__filename}","paramsNumber":1},`);
 
       let value = leadingValues[key];
       if (typeof value === 'object') {
         value = value[Object.keys(value)[0]];
       }
       warnings.push(`${chalk.cyan(followerName)} locale has missing string: '${chalk.red(key)}' that is present in ${chalk.cyan(leadingLocaleName)} with value: ${chalk.yellow(leadingValues[key])}`);
-            SRTlib.send('], "end": "emptyKey12"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
 
     });
     excess.forEach(key => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey13", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey13","fileName":"${__filename}","paramsNumber":1},`);
 
       fatals.push(`${chalk.cyan(followerName)} locale has excess string: '${chalk.yellow(key)}' that is not present in ${chalk.cyan(leadingLocaleName)}. `);
-            SRTlib.send('], "end": "emptyKey13"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
 
     });
   }
@@ -339,6 +339,6 @@ function test() {
     console.log(`--> All locale strings have matching keys ${chalk.green(': )')}`);
     console.log('');
   }
-    SRTlib.send('], "end": "test"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"test","paramsNumber":0},');
 
 }

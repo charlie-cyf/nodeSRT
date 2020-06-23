@@ -11,16 +11,16 @@ const browserify = require('browserify');
 const watchify = require('watchify');
 const bresolve = require('browser-resolve');
 function useSourcePackages(b) {
-    SRTlib.send(`{ "anonymous": false, "function": "useSourcePackages", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"useSourcePackages","fileName":"${__filename}","paramsNumber":1},`);
 
   b._bresolve = (id, opts, cb) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
 
     bresolve(id, opts, (err, result, pkg) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err) {
-                SRTlib.send('], "end": "emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
         return cb(err);
       }
@@ -28,13 +28,13 @@ function useSourcePackages(b) {
         result = result.replace(/packages\/@uppy\/(.*?)\/lib\//, 'packages/@uppy/$1/src/');
       }
       cb(err, result, pkg);
-            SRTlib.send('], "end": "emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     });
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   };
-    SRTlib.send('], "end": "useSourcePackages"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"useSourcePackages","paramsNumber":1},');
 
 }
 const webRoot = __dirname;
@@ -52,10 +52,10 @@ if (!watchifyEnabled && process.argv[2]) {
   }
 }
 glob(srcPattern, (err, files) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":2},`);
 
   if (err) {
-        SRTlib.send('], "end": "emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
     throw new Error(err);
   }
@@ -64,7 +64,7 @@ glob(srcPattern, (err, files) => {
   }
   const muted = new Set();
   files.forEach(file => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
     const b = browserify(file, {
       cache: {},
@@ -80,24 +80,24 @@ glob(srcPattern, (err, files) => {
       }
     });
     b.on('update', bundle).on('error', onError).on('file', file => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
       muted.delete(file);
-            SRTlib.send('], "end": "emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
     });
     bundle();
     function bundle(ids = []) {
-            SRTlib.send(`{ "anonymous": false, "function": "bundle", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"bundle","fileName":"${__filename}","paramsNumber":1},`);
 
       ids.forEach(id => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
         if (!muted.has(id)) {
           console.info(chalk.cyan('change:'), path.relative(process.cwd(), id));
           muted.add(id);
         }
-                SRTlib.send('], "end": "emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
       });
       const exampleName = path.basename(path.dirname(file));
@@ -106,23 +106,23 @@ glob(srcPattern, (err, files) => {
       mkdirp.sync(parentDir);
       console.info(chalk.grey(`⏳ building: ${path.relative(process.cwd(), file)}`));
       b.bundle().on('error', onError).pipe(createStream(output)).on('finish', () => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
 
         console.info(chalk.green(`✓ built: ${path.relative(process.cwd(), file)}`));
-                SRTlib.send('], "end": "emptyKey5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
       });
-            SRTlib.send('], "end": "bundle"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"bundle","paramsNumber":1},');
 
     }
-        SRTlib.send('], "end": "emptyKey6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
   });
-    SRTlib.send('], "end": "emptyKey7"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
 });
 function onError(err) {
-    SRTlib.send(`{ "anonymous": false, "function": "onError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onError","fileName":"${__filename}","paramsNumber":1},`);
 
   console.error(chalk.red('✗ error:'), chalk.red(err.message));
   notifier.notify({
@@ -133,6 +133,6 @@ function onError(err) {
   if (!watchifyEnabled) {
     process.exit(1);
   }
-    SRTlib.send('], "end": "onError"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onError","paramsNumber":1},');
 
 }

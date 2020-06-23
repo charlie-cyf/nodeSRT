@@ -134,17 +134,17 @@ fa_IR.strings = {
   openFolderNamed: 'پوشه باز کنید %{name}'
 };
 fa_IR.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "fa_IR.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fa_IR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "fa_IR.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"fa_IR.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "fa_IR.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"fa_IR.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "fa_IR.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"fa_IR.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

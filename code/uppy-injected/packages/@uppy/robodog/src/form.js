@@ -13,10 +13,10 @@ const defaultLocaleStrings = {
   chooseFiles: 'Choose files'
 };
 function mergeDefaultLocale(defaults, userProvided = {}) {
-    SRTlib.send(`{ "anonymous": false, "function": "mergeDefaultLocale", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"mergeDefaultLocale","fileName":"${__filename}","paramsNumber":2},`);
 
   const strings = userProvided.strings || ({});
-    SRTlib.send('], "end": "mergeDefaultLocale"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"mergeDefaultLocale"},');
 
   return {
     ...userProvided,
@@ -25,14 +25,14 @@ function mergeDefaultLocale(defaults, userProvided = {}) {
       ...strings
     }
   };
-    SRTlib.send('], "end": "mergeDefaultLocale"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"mergeDefaultLocale","paramsNumber":2},');
 
 }
 function form(target, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "form", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"form","fileName":"${__filename}","paramsNumber":2},`);
 
   if (!opts) {
-        SRTlib.send('], "end": "form"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"form"},');
 
     throw new TypeError('robodog.form: must provide an options object');
   }
@@ -104,10 +104,10 @@ function form(target, opts) {
       hideCancelButtons: true
     });
   }
-    SRTlib.send('], "end": "form"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"form"},');
 
   return uppy;
-    SRTlib.send('], "end": "form"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"form","paramsNumber":2},');
 
 }
 module.exports = form;

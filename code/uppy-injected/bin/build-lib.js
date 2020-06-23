@@ -13,32 +13,32 @@ const SOURCE = 'packages/{*,@uppy/*}/src/**/*.js';
 const IGNORE = /\.test\.js$|__mocks__|companion\//;
 const META_FILES = ['babel.config.js', 'package.json', 'package-lock.json', 'bin/build-lib.js'];
 function lastModified(file) {
-    SRTlib.send(`{ "anonymous": false, "function": "lastModified", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"lastModified","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "lastModified"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"lastModified"},');
 
   return stat(file).then(s => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     return s.mtime;
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
-    SRTlib.send('], "end": "lastModified"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"lastModified","paramsNumber":1},');
 
 }
 async function buildLib() {
-    SRTlib.send(`{ "anonymous": false, "function": "buildLib", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildLib","fileName":"${__filename}","paramsNumber":0},`);
 
   const metaMtimes = await Promise.all(META_FILES.map(filename => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     return lastModified(path.join(__dirname, '..', filename));
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   }));
   const metaMtime = Math.max(...metaMtimes);
@@ -49,12 +49,12 @@ async function buildLib() {
     if (!process.env.FRESH) {
       const srcMtime = await lastModified(file);
       const libMtime = await lastModified(libFile).catch(() => {
-                SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('], "end": "emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
         return 0;
-                SRTlib.send('], "end": "emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
       });
       if (srcMtime < libMtime && metaMtime < libMtime) {
@@ -66,15 +66,15 @@ async function buildLib() {
     await Promise.all([writeFile(libFile, code), writeFile(libFile + '.map', JSON.stringify(map))]);
     console.log(chalk.green('Compiled lib:'), chalk.magenta(libFile));
   }
-    SRTlib.send('], "end": "buildLib"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"buildLib","paramsNumber":0},');
 
 }
 console.log('Using Babel version:', require('@babel/core/package.json').version);
 buildLib().catch(err => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
   console.error(err.stack);
   process.exit(1);
-    SRTlib.send('], "end": "emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
 });

@@ -9,13 +9,13 @@ describe('isTouchDevice', () => {
   const RealTouchStart = global.window.ontouchstart;
   const RealMaxTouchPoints = global.navigator.maxTouchPoints;
   beforeEach(() => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     global.window.ontouchstart = true;
     global.navigator.maxTouchPoints = 1;
   });
   afterEach(() => {
-        SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+        SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
 
     global.navigator.maxTouchPoints = RealMaxTouchPoints;
     global.window.ontouchstart = RealTouchStart;
@@ -27,7 +27,7 @@ describe('isTouchDevice', () => {
     expect(isTouchDevice()).toEqual(false);
   });
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "isTouchDevice" }`);
+    SRTlib.send(`], "endTestSuiteName": "isTouchDevice" },`);
     SRTlib.endLogger();
   });
 

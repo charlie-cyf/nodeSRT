@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -13,25 +13,25 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send('], "end": "_inheritsLoose"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
 
 }
 var _require = require('preact'), h = _require.h, Component = _require.Component;
@@ -39,16 +39,16 @@ var getFileTypeIcon = require('../../utils/getFileTypeIcon');
 var ignoreEvent = require('../../utils/ignoreEvent.js');
 var FilePreview = require('../FilePreview');
 var FileCard = (function (_Component) {
-    SRTlib.send(`{ "anonymous": true, "function": "FileCard", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"FileCard","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(FileCard, _Component);
   function FileCard(props) {
-        SRTlib.send(`{ "anonymous": false, "function": "FileCard", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FileCard","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this;
     _this = _Component.call(this, props) || this;
     _this.saveOnEnter = function (ev) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.saveOnEnter", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.saveOnEnter","fileName":"${__filename}","paramsNumber":1},`);
 
       if (ev.keyCode === 13) {
         ev.stopPropagation();
@@ -56,48 +56,48 @@ var FileCard = (function (_Component) {
         var file = _this.props.files[_this.props.fileCardFor];
         _this.props.saveFileCard(_this.state.formState, file.id);
       }
-            SRTlib.send('], "end": "_this.saveOnEnter"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.saveOnEnter"},');
 
     };
     _this.updateMeta = function (newVal, name) {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.updateMeta", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.updateMeta","fileName":"${__filename}","paramsNumber":2},`);
 
       var _extends2;
       _this.setState({
         formState: _extends({}, _this.state.formState, (_extends2 = {}, _extends2[name] = newVal, _extends2))
       });
-            SRTlib.send('], "end": "_this.updateMeta"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.updateMeta"},');
 
     };
     _this.handleSave = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleSave", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleSave","fileName":"${__filename}","paramsNumber":0},`);
 
       var fileID = _this.props.fileCardFor;
       _this.props.saveFileCard(_this.state.formState, fileID);
-            SRTlib.send('], "end": "_this.handleSave"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleSave"},');
 
     };
     _this.handleCancel = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.handleCancel", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.handleCancel","fileName":"${__filename}","paramsNumber":0},`);
 
       _this.props.toggleFileCard();
-            SRTlib.send('], "end": "_this.handleCancel"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.handleCancel"},');
 
     };
     _this.renderMetaFields = function () {
-            SRTlib.send(`{ "anonymous": true, "function": "_this.renderMetaFields", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderMetaFields","fileName":"${__filename}","paramsNumber":0},`);
 
       var metaFields = _this.props.metaFields || [];
       var fieldCSSClasses = {
         text: 'uppy-u-reset uppy-c-textInput uppy-Dashboard-FileCard-input'
       };
-            SRTlib.send('], "end": "_this.renderMetaFields"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMetaFields"},');
 
       return metaFields.map(function (field) {
-                SRTlib.send(`{ "anonymous": true, "function": "_this.renderMetaFields.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderMetaFields.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
         var id = "uppy-Dashboard-FileCard-input-" + field.id;
-                SRTlib.send('], "end": "_this.renderMetaFields.ReturnStatement"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMetaFields.ReturnStatement"},');
 
         return h("fieldset", {
           key: field.id,
@@ -108,12 +108,12 @@ var FileCard = (function (_Component) {
         }, field.name), field.render !== undefined ? field.render({
           value: _this.state.formState[field.id],
           onChange: function onChange(newVal) {
-                        SRTlib.send(`{ "anonymous": true, "function": "_this.renderMetaFields.ReturnStatement.ReturnStatement.h.onChange.onChange", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderMetaFields.ReturnStatement.ReturnStatement.h.onChange.onChange","fileName":"${__filename}","paramsNumber":1},`);
 
-                        SRTlib.send('], "end": "_this.renderMetaFields.ReturnStatement.ReturnStatement.h.onChange.onChange"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMetaFields.ReturnStatement.ReturnStatement.h.onChange.onChange"},');
 
             return _this.updateMeta(newVal, field.id);
-                        SRTlib.send('], "end": "_this.renderMetaFields.ReturnStatement.ReturnStatement.h.onChange.onChange"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMetaFields.ReturnStatement.ReturnStatement.h.onChange.onChange"},');
 
           },
           fieldCSSClasses: fieldCSSClasses
@@ -127,47 +127,47 @@ var FileCard = (function (_Component) {
           onkeydown: _this.saveOnEnter,
           onkeypress: _this.saveOnEnter,
           oninput: function oninput(ev) {
-                        SRTlib.send(`{ "anonymous": true, "function": "_this.renderMetaFields.ReturnStatement.ReturnStatement.h.h.oninput.oninput", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderMetaFields.ReturnStatement.ReturnStatement.h.h.oninput.oninput","fileName":"${__filename}","paramsNumber":1},`);
 
-                        SRTlib.send('], "end": "_this.renderMetaFields.ReturnStatement.ReturnStatement.h.h.oninput.oninput"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMetaFields.ReturnStatement.ReturnStatement.h.h.oninput.oninput"},');
 
             return _this.updateMeta(ev.target.value, field.id);
-                        SRTlib.send('], "end": "_this.renderMetaFields.ReturnStatement.ReturnStatement.h.h.oninput.oninput"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMetaFields.ReturnStatement.ReturnStatement.h.h.oninput.oninput"},');
 
           },
           "data-uppy-super-focusable": true
         }));
-                SRTlib.send('], "end": "_this.renderMetaFields.ReturnStatement"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMetaFields.ReturnStatement"},');
 
       });
-            SRTlib.send('], "end": "_this.renderMetaFields"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMetaFields"},');
 
     };
     var _file = _this.props.files[_this.props.fileCardFor];
     var _metaFields = _this.props.metaFields || [];
     var storedMetaData = {};
     _metaFields.forEach(function (field) {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
       storedMetaData[field.id] = _file.meta[field.id] || '';
-            SRTlib.send('], "end": "emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     });
     _this.state = {
       formState: storedMetaData
     };
-        SRTlib.send('], "end": "FileCard"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"FileCard"},');
 
     return _this;
-        SRTlib.send('], "end": "FileCard"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"FileCard","paramsNumber":1},');
 
   }
   var _proto = FileCard.prototype;
   _proto.render = function render() {
-        SRTlib.send(`{ "anonymous": true, "function": "FileCard._proto.render.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"FileCard._proto.render.render","fileName":"${__filename}","paramsNumber":0},`);
 
     var file = this.props.files[this.props.fileCardFor];
-        SRTlib.send('], "end": "FileCard._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"FileCard._proto.render.render"},');
 
     return h("div", {
       class: "uppy-Dashboard-FileCard",
@@ -213,13 +213,13 @@ var FileCard = (function (_Component) {
       type: "button",
       onclick: this.handleCancel
     }, this.props.i18n('cancel')))));
-        SRTlib.send('], "end": "FileCard._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"FileCard._proto.render.render"},');
 
   };
-    SRTlib.send('], "end": "FileCard"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"FileCard"},');
 
   return FileCard;
-    SRTlib.send('], "end": "FileCard"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"FileCard"},');
 
 })(Component);
 module.exports = FileCard;

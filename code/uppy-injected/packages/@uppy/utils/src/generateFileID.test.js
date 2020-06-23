@@ -7,7 +7,7 @@ describe('generateFileID', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should take the filename object and produce a lowercase file id made up of uppy- prefix, file name (cleaned up to be lowercase, letters and numbers only), type, relative path (folder) from file.meta.relativePath, size and lastModified date', () => {
@@ -41,11 +41,11 @@ describe('generateFileID', () => {
     })).toEqual('uppy-hello/jpg-1e-image/jpeg-folder/a-1f-2271173-1498510508000');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "generateFileID" }`);
+    SRTlib.send(`], "endTestSuiteName": "generateFileID" },`);
     SRTlib.endLogger();
   });
 

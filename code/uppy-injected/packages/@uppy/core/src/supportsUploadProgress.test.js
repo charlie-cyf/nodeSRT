@@ -7,7 +7,7 @@ describe('supportsUploadProgress', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('returns true in working browsers', () => {
@@ -22,11 +22,11 @@ describe('supportsUploadProgress', () => {
     expect(supportsUploadProgress('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134')).toBe(false);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "supportsUploadProgress" }`);
+    SRTlib.send(`], "endTestSuiteName": "supportsUploadProgress" },`);
     SRTlib.endLogger();
   });
 

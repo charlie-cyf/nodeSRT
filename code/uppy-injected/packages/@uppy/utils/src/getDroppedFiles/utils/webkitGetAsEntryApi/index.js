@@ -3,91 +3,91 @@ const toArray = require('../../../toArray');
 const getRelativePath = require('./getRelativePath');
 const getFilesAndDirectoriesFromDirectory = require('./getFilesAndDirectoriesFromDirectory');
 module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.webkitGetAsEntryApi", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.webkitGetAsEntryApi","fileName":"${__filename}","paramsNumber":2},`);
 
   const files = [];
   const rootPromises = [];
   const createPromiseToAddFileOrParseDirectory = entry => {
-        SRTlib.send(`{ "anonymous": false, "function": "createPromiseToAddFileOrParseDirectory", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createPromiseToAddFileOrParseDirectory","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "createPromiseToAddFileOrParseDirectory"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"createPromiseToAddFileOrParseDirectory"},');
 
     return new Promise(resolve => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
       if (entry.isFile) {
         entry.file(file => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
           file.relativePath = getRelativePath(entry);
           files.push(file);
           resolve();
-                    SRTlib.send('], "end": "emptyKey"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
         }, error => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
           logDropError(error);
           resolve();
-                    SRTlib.send('], "end": "emptyKey2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
         });
       } else if (entry.isDirectory) {
         const directoryReader = entry.createReader();
         getFilesAndDirectoriesFromDirectory(directoryReader, [], logDropError, {
           onSuccess: entries => {
-                        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
 
             const promises = entries.map(entry => {
-                            SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('], "end": "emptyKey3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
               return createPromiseToAddFileOrParseDirectory(entry);
-                            SRTlib.send('], "end": "emptyKey3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
             });
             Promise.all(promises).then(() => {
-                            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('], "end": "emptyKey4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
               return resolve();
-                            SRTlib.send('], "end": "emptyKey4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
             });
-                        SRTlib.send('], "end": "emptyKey5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
           }
         });
       }
-            SRTlib.send('], "end": "emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
     });
-        SRTlib.send('], "end": "createPromiseToAddFileOrParseDirectory"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"createPromiseToAddFileOrParseDirectory"},');
 
   };
   toArray(dataTransfer.items).forEach(item => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
 
     const entry = item.webkitGetAsEntry();
     if (entry) {
       rootPromises.push(createPromiseToAddFileOrParseDirectory(entry));
     }
-        SRTlib.send('], "end": "emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
   });
-    SRTlib.send('], "end": "module.exports.webkitGetAsEntryApi"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi"},');
 
   return Promise.all(rootPromises).then(() => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('], "end": "emptyKey8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
     return files;
-        SRTlib.send('], "end": "emptyKey8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
   });
-    SRTlib.send('], "end": "module.exports.webkitGetAsEntryApi"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi"},');
 
 };

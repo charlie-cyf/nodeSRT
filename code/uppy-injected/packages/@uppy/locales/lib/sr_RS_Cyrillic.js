@@ -134,17 +134,17 @@ sr_RS_Cyrillic.strings = {
   openFolderNamed: 'Отвори фолдер %{name}'
 };
 sr_RS_Cyrillic.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "sr_RS_Cyrillic.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sr_RS_Cyrillic.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "sr_RS_Cyrillic.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Cyrillic.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "sr_RS_Cyrillic.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Cyrillic.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "sr_RS_Cyrillic.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Cyrillic.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

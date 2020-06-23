@@ -7,7 +7,7 @@ describe('formatSeconds', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should return a value of \'0:43\' when an argument of 43 seconds is supplied', () => {
@@ -17,11 +17,11 @@ describe('formatSeconds', () => {
     expect(formatSeconds(103)).toEqual('1:43');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "formatSeconds" }`);
+    SRTlib.send(`], "endTestSuiteName": "formatSeconds" },`);
     SRTlib.endLogger();
   });
 

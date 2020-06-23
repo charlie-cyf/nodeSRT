@@ -22,18 +22,18 @@ b.transform(aliasify, {
   }
 });
 function bundle() {
-    SRTlib.send(`{ "anonymous": false, "function": "bundle", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"bundle","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('], "end": "bundle"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"bundle"},');
 
   return b.bundle((err, data) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
 
     if (err) console.error(err.stack); else console.log('bundle complete');
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   }).pipe(createWriteStream(path.join(__dirname, './bundle.js')));
-    SRTlib.send('], "end": "bundle"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"bundle","paramsNumber":0},');
 
 }
 b.on('log', console.log);
@@ -42,11 +42,11 @@ b.on('error', console.error);
 fs.createReadStream(path.join(__dirname, '../../packages/uppy/dist/uppy.min.css')).pipe(fs.createWriteStream(path.join(__dirname, './uppy.min.css')));
 console.log('bundling...');
 bundle().on('finish', () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
   spawn('php', ['-S', `localhost:${port}`], {
     stdio: 'inherit'
   });
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 });

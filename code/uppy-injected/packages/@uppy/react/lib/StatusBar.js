@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -13,25 +13,25 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send('], "end": "_inheritsLoose"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
 
 }
 var React = require('react');
@@ -40,45 +40,45 @@ var StatusBarPlugin = require('@uppy/status-bar');
 var uppyPropType = require('./propTypes').uppy;
 var h = React.createElement;
 var StatusBar = (function (_React$Component) {
-    SRTlib.send(`{ "anonymous": true, "function": "StatusBar", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StatusBar","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(StatusBar, _React$Component);
   function StatusBar() {
-        SRTlib.send(`{ "anonymous": false, "function": "StatusBar", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"StatusBar","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('], "end": "StatusBar"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar"},');
 
     return _React$Component.apply(this, arguments) || this;
-        SRTlib.send('], "end": "StatusBar"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar","paramsNumber":0},');
 
   }
   var _proto = StatusBar.prototype;
   _proto.componentDidMount = function componentDidMount() {
-        SRTlib.send(`{ "anonymous": true, "function": "StatusBar._proto.componentDidMount.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StatusBar._proto.componentDidMount.componentDidMount","fileName":"${__filename}","paramsNumber":0},`);
 
     this.installPlugin();
-        SRTlib.send('], "end": "StatusBar._proto.componentDidMount.componentDidMount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar._proto.componentDidMount.componentDidMount"},');
 
   };
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-        SRTlib.send(`{ "anonymous": true, "function": "StatusBar._proto.componentDidUpdate.componentDidUpdate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StatusBar._proto.componentDidUpdate.componentDidUpdate","fileName":"${__filename}","paramsNumber":1},`);
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
       this.installPlugin();
     }
-        SRTlib.send('], "end": "StatusBar._proto.componentDidUpdate.componentDidUpdate"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar._proto.componentDidUpdate.componentDidUpdate"},');
 
   };
   _proto.componentWillUnmount = function componentWillUnmount() {
-        SRTlib.send(`{ "anonymous": true, "function": "StatusBar._proto.componentWillUnmount.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StatusBar._proto.componentWillUnmount.componentWillUnmount","fileName":"${__filename}","paramsNumber":0},`);
 
     this.uninstallPlugin();
-        SRTlib.send('], "end": "StatusBar._proto.componentWillUnmount.componentWillUnmount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar._proto.componentWillUnmount.componentWillUnmount"},');
 
   };
   _proto.installPlugin = function installPlugin() {
-        SRTlib.send(`{ "anonymous": true, "function": "StatusBar._proto.installPlugin.installPlugin", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StatusBar._proto.installPlugin.installPlugin","fileName":"${__filename}","paramsNumber":0},`);
 
     var uppy = this.props.uppy;
     var options = _extends({
@@ -89,42 +89,42 @@ var StatusBar = (function (_React$Component) {
     delete options.uppy;
     uppy.use(StatusBarPlugin, options);
     this.plugin = uppy.getPlugin(options.id);
-        SRTlib.send('], "end": "StatusBar._proto.installPlugin.installPlugin"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar._proto.installPlugin.installPlugin"},');
 
   };
   _proto.uninstallPlugin = function uninstallPlugin(props) {
-        SRTlib.send(`{ "anonymous": true, "function": "StatusBar._proto.uninstallPlugin.uninstallPlugin", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StatusBar._proto.uninstallPlugin.uninstallPlugin","fileName":"${__filename}","paramsNumber":1},`);
 
     if (props === void 0) {
       props = this.props;
     }
     var uppy = props.uppy;
     uppy.removePlugin(this.plugin);
-        SRTlib.send('], "end": "StatusBar._proto.uninstallPlugin.uninstallPlugin"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar._proto.uninstallPlugin.uninstallPlugin"},');
 
   };
   _proto.render = function render() {
-        SRTlib.send(`{ "anonymous": true, "function": "StatusBar._proto.render.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StatusBar._proto.render.render","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this = this;
-        SRTlib.send('], "end": "StatusBar._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar._proto.render.render"},');
 
     return h('div', {
       ref: function ref(container) {
-                SRTlib.send(`{ "anonymous": true, "function": "StatusBar._proto.render.render.ReturnStatement.h.ref.ref", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StatusBar._proto.render.render.ReturnStatement.h.ref.ref","fileName":"${__filename}","paramsNumber":1},`);
 
         _this.container = container;
-                SRTlib.send('], "end": "StatusBar._proto.render.render.ReturnStatement.h.ref.ref"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar._proto.render.render.ReturnStatement.h.ref.ref"},');
 
       }
     });
-        SRTlib.send('], "end": "StatusBar._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar._proto.render.render"},');
 
   };
-    SRTlib.send('], "end": "StatusBar"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar"},');
 
   return StatusBar;
-    SRTlib.send('], "end": "StatusBar"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"StatusBar"},');
 
 })(React.Component);
 StatusBar.propTypes = {

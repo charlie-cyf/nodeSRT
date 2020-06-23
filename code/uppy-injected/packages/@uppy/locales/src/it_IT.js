@@ -134,17 +134,17 @@ it_IT.strings = {
   openFolderNamed: 'Cartella aperta %{name}'
 };
 it_IT.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "it_IT.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"it_IT.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "it_IT.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "it_IT.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "it_IT.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

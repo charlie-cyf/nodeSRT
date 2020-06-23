@@ -7,7 +7,7 @@ describe('getFileType', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should trust the filetype if the file comes from a remote source', () => {
@@ -57,11 +57,11 @@ describe('getFileType', () => {
     expect(getFileType(file)).toEqual('application/octet-stream');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "getFileType" }`);
+    SRTlib.send(`], "endTestSuiteName": "getFileType" },`);
     SRTlib.endLogger();
   });
 

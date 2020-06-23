@@ -3,7 +3,7 @@ const Plugin = require('./Plugin');
 const Core = require('./index');
 describe('Plugin', () => {
     beforeAll(() => {
-    SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "Plugin", "fileName": "${__filename}", "calls" : [`);
   });
 
@@ -13,7 +13,7 @@ describe('Plugin', () => {
 
   describe('getPluginState', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "Plugin", "fileName": "${__filename}", "calls" : [`);
     });
 
@@ -38,7 +38,7 @@ describe('Plugin', () => {
   });
   describe('setPluginState', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/code", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "Plugin", "fileName": "${__filename}", "calls" : [`);
     });
 

@@ -1,5 +1,6 @@
 const axios = require('axios')
 
+
 module.exports = class SRTlib {
     // message to send to backend
     static message;
@@ -20,35 +21,36 @@ module.exports = class SRTlib {
     *       base: absolute path to original project
     */
     static startLogger(base, url){
-        if(this.started) return;
-        this.started = true;
-        this.basePath = base;
-        this.message = '';
-        this.endPontUrl = url
-        this.logFile = base.split('/').pop() + '.log';
+        if(SRTlib.started) return;
+        SRTlib.started = true;
+        SRTlib.basePath = base;
+        SRTlib.message = '';
+        SRTlib.endPontUrl = url
+        SRTlib.logFile = base.split('/').pop() + '.log';
     }
 
     static send(msg){
-        if(this.endPontUrl && this.basePath){
-            this.message = this.message+msg;
+        if(SRTlib.endPontUrl && SRTlib.basePath){
+            SRTlib.message = SRTlib.message+msg;
         } else {
             console.warn('received message when SRTlib logger not started!',msg)
         }
     }
 
     static endLogger(){
-        if(!this.started){
-            console.warn('endlogger when SRTlib is not started!')
+        if(!SRTlib.started){
+            console.warn('endlogger when SRTlib is not started!', SRTlib.message)
         }
-        this.started = false;
+        SRTlib.started = false;
 
-        if(this.message.length != 0){
-            axios.post(this.endPontUrl, {
-                fileName: this.logFile,
-                msg: this.message
+
+        if(SRTlib.message.length !== 0){
+            axios.post(SRTlib.endPontUrl, {
+                fileName: SRTlib.logFile,
+                msg: SRTlib.message
             }).then(res => {
                 if(res.status < 400){
-                    this.message = ''
+                    SRTlib.message = ''
                 } else {
                     new Error('fail to send to log server!');
                 }

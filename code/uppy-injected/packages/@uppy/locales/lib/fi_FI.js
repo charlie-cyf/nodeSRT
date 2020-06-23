@@ -141,17 +141,17 @@ fi_FI.strings = {
   recording: 'Tallennetaan'
 };
 fi_FI.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "fi_FI.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fi_FI.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "fi_FI.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"fi_FI.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "fi_FI.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"fi_FI.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "fi_FI.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"fi_FI.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

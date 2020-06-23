@@ -15,33 +15,33 @@ uppyThumbnails.use(FileInput, {
   pretty: false
 });
 uppyThumbnails.on('file-added', file => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
   const el = document.createElement('p');
   el.className = 'file-name';
   el.textContent = file.name;
   document.body.appendChild(el);
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });
 uppyThumbnails.on('thumbnail:error', (file, err) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
 
   const el = document.createElement('pre');
   el.style = 'font: 14pt monospace; background: red; color: white';
   el.textContent = `Error: ${err.stack}`;
   document.body.appendChild(el);
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 });
 uppyThumbnails.on('thumbnail:generated', (file, preview) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":2},`);
 
   const img = new Image();
   img.src = file.preview;
   img.className = 'file-preview';
   img.style.display = 'block';
   document.body.appendChild(img);
-    SRTlib.send('], "end": "emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
 });

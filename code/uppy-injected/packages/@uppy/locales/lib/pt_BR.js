@@ -134,17 +134,17 @@ pt_BR.strings = {
   openFolderNamed: 'Pasta aberta %{name}'
 };
 pt_BR.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "pt_BR.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"pt_BR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "pt_BR.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"pt_BR.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "pt_BR.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"pt_BR.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "pt_BR.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"pt_BR.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

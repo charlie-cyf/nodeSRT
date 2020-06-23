@@ -8,7 +8,7 @@ describe('RateLimitedQueue', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   let pending = 0;
@@ -44,11 +44,11 @@ describe('RateLimitedQueue', () => {
     return Promise.all([fn2(), fn2(), fn2(), fn2(), fn2(), fn2(), fn2(), fn2(), fn2(), fn2()]);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "RateLimitedQueue" }`);
+    SRTlib.send(`], "endTestSuiteName": "RateLimitedQueue" },`);
     SRTlib.endLogger();
   });
 

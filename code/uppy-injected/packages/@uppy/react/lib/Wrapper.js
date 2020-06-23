@@ -1,25 +1,25 @@
 var SRTlib = require('SRT-util');
 function _assertThisInitialized(self) {
-    SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
 
   if (self === void 0) {
-        SRTlib.send('], "end": "_assertThisInitialized"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
   return self;
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized","paramsNumber":1},');
 
 }
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send('], "end": "_inheritsLoose"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
 
 }
 var React = require('react');
@@ -27,87 +27,87 @@ var PropTypes = require('prop-types');
 var uppyPropType = require('./propTypes').uppy;
 var h = React.createElement;
 var UppyWrapper = (function (_React$Component) {
-    SRTlib.send(`{ "anonymous": true, "function": "UppyWrapper", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UppyWrapper","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(UppyWrapper, _React$Component);
   function UppyWrapper(props) {
-        SRTlib.send(`{ "anonymous": false, "function": "UppyWrapper", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UppyWrapper","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this;
     _this = _React$Component.call(this, props) || this;
     _this.refContainer = _this.refContainer.bind(_assertThisInitialized(_this));
-        SRTlib.send('], "end": "UppyWrapper"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper"},');
 
     return _this;
-        SRTlib.send('], "end": "UppyWrapper"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper","paramsNumber":1},');
 
   }
   var _proto = UppyWrapper.prototype;
   _proto.componentDidMount = function componentDidMount() {
-        SRTlib.send(`{ "anonymous": true, "function": "UppyWrapper._proto.componentDidMount.componentDidMount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UppyWrapper._proto.componentDidMount.componentDidMount","fileName":"${__filename}","paramsNumber":0},`);
 
     this.installPlugin();
-        SRTlib.send('], "end": "UppyWrapper._proto.componentDidMount.componentDidMount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper._proto.componentDidMount.componentDidMount"},');
 
   };
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-        SRTlib.send(`{ "anonymous": true, "function": "UppyWrapper._proto.componentDidUpdate.componentDidUpdate", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UppyWrapper._proto.componentDidUpdate.componentDidUpdate","fileName":"${__filename}","paramsNumber":1},`);
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
       this.installPlugin();
     }
-        SRTlib.send('], "end": "UppyWrapper._proto.componentDidUpdate.componentDidUpdate"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper._proto.componentDidUpdate.componentDidUpdate"},');
 
   };
   _proto.componentWillUnmount = function componentWillUnmount() {
-        SRTlib.send(`{ "anonymous": true, "function": "UppyWrapper._proto.componentWillUnmount.componentWillUnmount", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UppyWrapper._proto.componentWillUnmount.componentWillUnmount","fileName":"${__filename}","paramsNumber":0},`);
 
     this.uninstallPlugin();
-        SRTlib.send('], "end": "UppyWrapper._proto.componentWillUnmount.componentWillUnmount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper._proto.componentWillUnmount.componentWillUnmount"},');
 
   };
   _proto.installPlugin = function installPlugin() {
-        SRTlib.send(`{ "anonymous": true, "function": "UppyWrapper._proto.installPlugin.installPlugin", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UppyWrapper._proto.installPlugin.installPlugin","fileName":"${__filename}","paramsNumber":0},`);
 
     var plugin = this.props.uppy.getPlugin(this.props.plugin);
     plugin.mount(this.container, plugin);
-        SRTlib.send('], "end": "UppyWrapper._proto.installPlugin.installPlugin"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper._proto.installPlugin.installPlugin"},');
 
   };
   _proto.uninstallPlugin = function uninstallPlugin(props) {
-        SRTlib.send(`{ "anonymous": true, "function": "UppyWrapper._proto.uninstallPlugin.uninstallPlugin", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UppyWrapper._proto.uninstallPlugin.uninstallPlugin","fileName":"${__filename}","paramsNumber":1},`);
 
     if (props === void 0) {
       props = this.props;
     }
     var plugin = props.uppy.getPlugin(this.props.plugin);
     plugin.unmount();
-        SRTlib.send('], "end": "UppyWrapper._proto.uninstallPlugin.uninstallPlugin"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper._proto.uninstallPlugin.uninstallPlugin"},');
 
   };
   _proto.refContainer = function refContainer(container) {
-        SRTlib.send(`{ "anonymous": true, "function": "UppyWrapper._proto.refContainer.refContainer", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UppyWrapper._proto.refContainer.refContainer","fileName":"${__filename}","paramsNumber":1},`);
 
     this.container = container;
-        SRTlib.send('], "end": "UppyWrapper._proto.refContainer.refContainer"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper._proto.refContainer.refContainer"},');
 
   };
   _proto.render = function render() {
-        SRTlib.send(`{ "anonymous": true, "function": "UppyWrapper._proto.render.render", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UppyWrapper._proto.render.render","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('], "end": "UppyWrapper._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper._proto.render.render"},');
 
     return h('div', {
       ref: this.refContainer
     });
-        SRTlib.send('], "end": "UppyWrapper._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper._proto.render.render"},');
 
   };
-    SRTlib.send('], "end": "UppyWrapper"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper"},');
 
   return UppyWrapper;
-    SRTlib.send('], "end": "UppyWrapper"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UppyWrapper"},');
 
 })(React.Component);
 UppyWrapper.propTypes = {

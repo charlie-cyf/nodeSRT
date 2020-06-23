@@ -1,122 +1,122 @@
 var SRTlib = require('SRT-util');
 const querystring = require('querystring');
 exports.isFolder = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   return !!item.type;
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 };
 exports.getItemIcon = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
   if (exports.isFolder(item)) {
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     return 'folder';
   }
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   return exports.sortImages(item.images)[0].source;
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 };
 exports.getItemSubList = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
   return item.data;
-    SRTlib.send('], "end": "emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
 };
 exports.getItemName = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
   return item.name || `${item.id} ${item.created_time}`;
-    SRTlib.send('], "end": "emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
 };
 exports.getMimeType = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey5"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
   return exports.isFolder(item) ? null : 'image/jpeg';
-    SRTlib.send('], "end": "emptyKey5"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
 };
 exports.getItemId = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
   return `${item.id}`;
-    SRTlib.send('], "end": "emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
 };
 exports.getItemRequestPath = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey7"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
   return `${item.id}`;
-    SRTlib.send('], "end": "emptyKey7"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
 };
 exports.getItemModifiedDate = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey8", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey8"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
   return item.created_time;
-    SRTlib.send('], "end": "emptyKey8"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
 
 };
 exports.getItemThumbnailUrl = item => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey9", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey9"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
 
   return exports.isFolder(item) ? null : exports.sortImages(item.images)[0].source;
-    SRTlib.send('], "end": "emptyKey9"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
 
 };
 exports.getNextPagePath = (data, currentQuery, currentPath) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey10", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":3},`);
 
   if (!data.paging || !data.paging.cursors) {
-        SRTlib.send('], "end": "emptyKey10"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
 
     return null;
   }
   const query = Object.assign({}, currentQuery, {
     cursor: data.paging.cursors.after
   });
-    SRTlib.send('], "end": "emptyKey10"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
 
   return `${currentPath || ''}?${querystring.stringify(query)}`;
-    SRTlib.send('], "end": "emptyKey10"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
 
 };
 exports.sortImages = images => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey12", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey12","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "emptyKey12"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
 
   return images.slice().sort((a, b) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey11", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":2},`);
 
-        SRTlib.send('], "end": "emptyKey11"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
 
     return a.width - b.width;
-        SRTlib.send('], "end": "emptyKey11"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
 
   });
-    SRTlib.send('], "end": "emptyKey12"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
 
 };

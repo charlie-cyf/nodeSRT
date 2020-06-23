@@ -6,7 +6,7 @@ describe('File upload with URL plugin', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should import  and upload a file completely with Url Plugin', async () => {
@@ -27,11 +27,11 @@ describe('File upload with URL plugin', () => {
     await completeStatusBar.waitForExist(20000);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20URL%20plugin" }`);
+    SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20URL%20plugin" },`);
     SRTlib.endLogger();
   });
 

@@ -1,67 +1,67 @@
 var SRTlib = require('SRT-util');
 class Provider {
   constructor(options) {
-        SRTlib.send(`{ "anonymous": false, "function": "Provider.constructor", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Provider"}},`);
 
     this.needsCookieAuth = false;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
     return this;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   static getExtraConfig() {
-        SRTlib.send(`{ "anonymous": false, "function": "Provider.getExtraConfig", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getExtraConfig","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider"}},`);
 
-        SRTlib.send('], "end": "getExtraConfig"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getExtraConfig"},');
 
     return {};
-        SRTlib.send('], "end": "getExtraConfig"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getExtraConfig"},');
 
   }
   list(options, cb) {
-        SRTlib.send(`{ "anonymous": false, "function": "Provider.list", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Provider"}},`);
 
-        SRTlib.send('], "end": "list"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
 
     throw new Error('method not implemented');
-        SRTlib.send('], "end": "list"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
 
   }
   download(options, cb) {
-        SRTlib.send(`{ "anonymous": false, "function": "Provider.download", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Provider"}},`);
 
-        SRTlib.send('], "end": "download"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
 
     throw new Error('method not implemented');
-        SRTlib.send('], "end": "download"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
 
   }
   thumbnail(options, cb) {
-        SRTlib.send(`{ "anonymous": false, "function": "Provider.thumbnail", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Provider"}},`);
 
-        SRTlib.send('], "end": "thumbnail"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail"},');
 
     throw new Error('method not implemented');
-        SRTlib.send('], "end": "thumbnail"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail"},');
 
   }
   size(options, cb) {
-        SRTlib.send(`{ "anonymous": false, "function": "Provider.size", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Provider"}},`);
 
-        SRTlib.send('], "end": "size"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
     throw new Error('method not implemented');
-        SRTlib.send('], "end": "size"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
   }
   static get authProvider() {
-        SRTlib.send(`{ "anonymous": false, "function": "Provider.authProvider", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider"}},`);
 
-        SRTlib.send('], "end": "authProvider"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
 
     return '';
-        SRTlib.send('], "end": "authProvider"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
 
   }
 }

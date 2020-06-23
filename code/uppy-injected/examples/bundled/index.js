@@ -49,7 +49,7 @@ const uppy = Uppy({
   endpoint: TUS_ENDPOINT
 });
 uppy.on('complete', result => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
   if (result.failed.length === 0) {
     console.log('Upload successful 😀');
@@ -58,6 +58,6 @@ uppy.on('complete', result => {
   }
   console.log('successful files:', result.successful);
   console.log('failed files:', result.failed);
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });

@@ -7,7 +7,7 @@ describe('getETA', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should get the ETA remaining based on a fileProgress object', () => {
@@ -21,11 +21,11 @@ describe('getETA', () => {
     expect(getETA(fileProgress)).toEqual(10.1);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "getETA" }`);
+    SRTlib.send(`], "endTestSuiteName": "getETA" },`);
     SRTlib.endLogger();
   });
 

@@ -11,9 +11,9 @@ uppy.use(Dashboard, {
 });
 uppy.use(AwsS3, {
   getUploadParameters(file) {
-        SRTlib.send(`{ "anonymous": true, "function": "getUploadParameters", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"getUploadParameters","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "getUploadParameters"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters"},');
 
     return fetch('/s3-sign.php', {
       method: 'post',
@@ -26,17 +26,17 @@ uppy.use(AwsS3, {
         contentType: file.type
       })
     }).then(response => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
       return response.json();
-            SRTlib.send('], "end": "emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     }).then(data => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
       return {
         method: data.method,
@@ -44,10 +44,10 @@ uppy.use(AwsS3, {
         fields: data.fields,
         headers: data.headers
       };
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     });
-        SRTlib.send('], "end": "getUploadParameters"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters"},');
 
   }
 });

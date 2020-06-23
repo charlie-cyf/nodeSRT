@@ -7,7 +7,7 @@ describe('truncateString', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should truncate the string to the length', () => {
@@ -36,11 +36,11 @@ describe('truncateString', () => {
     expect(truncateString('abc', 1)).toEqual('a');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "truncateString" }`);
+    SRTlib.send(`], "endTestSuiteName": "truncateString" },`);
     SRTlib.endLogger();
   });
 

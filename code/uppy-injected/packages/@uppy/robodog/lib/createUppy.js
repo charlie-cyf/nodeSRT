@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 var Uppy = require('@uppy/core');
@@ -49,45 +49,45 @@ var eventNames = {
 };
 var uppyOptionNames = ['autoProceed', 'restrictions', 'meta', 'onBeforeFileAdded', 'onBeforeUpload', 'debug'];
 function createUppy(opts, overrides) {
-    SRTlib.send(`{ "anonymous": false, "function": "createUppy", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createUppy","fileName":"${__filename}","paramsNumber":2},`);
 
   if (overrides === void 0) {
     overrides = {};
   }
   var uppyOptions = {};
   uppyOptionNames.forEach(function (name) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, name)) uppyOptions[name] = opts[name];
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   _extends(uppyOptions, overrides);
   var uppy = Uppy(uppyOptions);
   Object.keys(eventNames).forEach(function (optionName) {
-        SRTlib.send(`{ "anonymous": true, "function": "forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     var eventName = eventNames[optionName];
     if (typeof opts[optionName] === 'function') {
       uppy.on(eventName, opts[optionName]);
     }
-        SRTlib.send('], "end": "forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
   });
   if (typeof opts.onProgress === 'function') {
     uppy.on('upload-progress', function () {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
       var _uppy$getState = uppy.getState(), totalProgress = _uppy$getState.totalProgress;
       opts.onProgress.call(uppy, totalProgress);
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     });
   }
-    SRTlib.send('], "end": "createUppy"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createUppy"},');
 
   return uppy;
-    SRTlib.send('], "end": "createUppy"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createUppy","paramsNumber":2},');
 
 }
 module.exports = createUppy;

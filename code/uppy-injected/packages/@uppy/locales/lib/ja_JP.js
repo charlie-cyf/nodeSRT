@@ -134,17 +134,17 @@ ja_JP.strings = {
   openFolderNamed: '開いたフォルダ %{name}'
 };
 ja_JP.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "ja_JP.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ja_JP.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "ja_JP.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ja_JP.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "ja_JP.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ja_JP.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "ja_JP.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ja_JP.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

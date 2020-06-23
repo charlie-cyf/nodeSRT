@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 var FileItem = require('./FileItem/index.js');
@@ -30,12 +30,12 @@ var VirtualList = require('./VirtualList');
 var classNames = require('classnames');
 var _require = require('preact'), h = _require.h;
 function chunks(list, size) {
-    SRTlib.send(`{ "anonymous": false, "function": "chunks", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"chunks","fileName":"${__filename}","paramsNumber":2},`);
 
   var chunked = [];
   var currentChunk = [];
   list.forEach(function (item, i) {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
 
     if (currentChunk.length < size) {
       currentChunk.push(item);
@@ -43,18 +43,18 @@ function chunks(list, size) {
       chunked.push(currentChunk);
       currentChunk = [item];
     }
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   if (currentChunk.length) chunked.push(currentChunk);
-    SRTlib.send('], "end": "chunks"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"chunks"},');
 
   return chunked;
-    SRTlib.send('], "end": "chunks"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"chunks","paramsNumber":2},');
 
 }
 module.exports = function (props) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
   var noFiles = props.totalFileCount === 0;
   var dashboardFilesClass = classNames('uppy-Dashboard-files', {
@@ -86,17 +86,17 @@ module.exports = function (props) {
   };
   var rows = chunks(Object.keys(props.files), props.itemsPerRow);
   function renderRow(row) {
-        SRTlib.send(`{ "anonymous": false, "function": "renderRow", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderRow","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "renderRow"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderRow"},');
 
     return h("div", {
       role: "presentation",
       key: row[0]
     }, row.map(function (fileID) {
-            SRTlib.send(`{ "anonymous": true, "function": "ReturnStatement.h", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "ReturnStatement.h"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h"},');
 
       return h(FileItem, _extends({
         key: fileID
@@ -104,13 +104,13 @@ module.exports = function (props) {
         role: "listitem",
         file: props.files[fileID]
       }));
-            SRTlib.send('], "end": "ReturnStatement.h"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h"},');
 
     }));
-        SRTlib.send('], "end": "renderRow"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderRow","paramsNumber":1},');
 
   }
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return h(VirtualList, {
     class: dashboardFilesClass,
@@ -119,6 +119,6 @@ module.exports = function (props) {
     renderRow: renderRow,
     rowHeight: rowHeight
   });
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

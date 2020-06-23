@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 var FileList = require('./FileList');
@@ -36,16 +36,16 @@ var isDragDropSupported = require('@uppy/utils/lib/isDragDropSupported');
 var _require = require('preact'), h = _require.h;
 var PreactCSSTransitionGroup = require('preact-css-transition-group');
 function TransitionWrapper(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "TransitionWrapper", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"TransitionWrapper","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "TransitionWrapper"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"TransitionWrapper"},');
 
   return h(PreactCSSTransitionGroup, {
     transitionName: "uppy-transition-slideDownUp",
     transitionEnterTimeout: 250,
     transitionLeaveTimeout: 250
   }, props.children);
-    SRTlib.send('], "end": "TransitionWrapper"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"TransitionWrapper","paramsNumber":1},');
 
 }
 var WIDTH_XL = 900;
@@ -53,7 +53,7 @@ var WIDTH_LG = 700;
 var WIDTH_MD = 576;
 var HEIGHT_MD = 400;
 module.exports = function Dashboard(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.Dashboard", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Dashboard","fileName":"${__filename}","paramsNumber":1},`);
 
   var noFiles = props.totalFileCount === 0;
   var isSizeMD = props.containerWidth > WIDTH_MD;
@@ -80,7 +80,7 @@ module.exports = function Dashboard(props) {
     itemsPerRow = 3;
   }
   var showFileList = props.showSelectedFiles && !noFiles;
-    SRTlib.send('], "end": "module.exports.Dashboard"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Dashboard"},');
 
   return h("div", {
     class: dashboardClassName,
@@ -132,14 +132,14 @@ module.exports = function Dashboard(props) {
   }, props)) : null), h("div", {
     class: "uppy-Dashboard-progressindicators"
   }, props.progressindicators.map(function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map"},');
 
     return props.getPlugin(target.id).render(props.state);
-        SRTlib.send('], "end": "module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map"},');
 
   })))));
-    SRTlib.send('], "end": "module.exports.Dashboard"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Dashboard"},');
 
 };

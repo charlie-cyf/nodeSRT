@@ -1,9 +1,9 @@
 var SRTlib = require('SRT-util');
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -13,16 +13,16 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 var createUppy = require('./createUppy');
@@ -30,7 +30,7 @@ var addDashboardPlugin = require('./addDashboardPlugin');
 var addTransloaditPlugin = require('./addTransloaditPlugin');
 var addProviders = require('./addProviders');
 function dashboard(target, opts) {
-    SRTlib.send(`{ "anonymous": false, "function": "dashboard", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"dashboard","fileName":"${__filename}","paramsNumber":2},`);
 
   if (opts === void 0) {
     opts = {};
@@ -50,10 +50,10 @@ function dashboard(target, opts) {
       target: uppy.getPlugin(pluginId)
     }));
   }
-    SRTlib.send('], "end": "dashboard"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"dashboard"},');
 
   return uppy;
-    SRTlib.send('], "end": "dashboard"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"dashboard","paramsNumber":2},');
 
 }
 module.exports = dashboard;

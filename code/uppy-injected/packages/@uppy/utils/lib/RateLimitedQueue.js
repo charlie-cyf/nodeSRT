@@ -1,34 +1,34 @@
 var SRTlib = require('SRT-util');
 function findIndex(array, predicate) {
-    SRTlib.send(`{ "anonymous": false, "function": "findIndex", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findIndex","fileName":"${__filename}","paramsNumber":2},`);
 
   for (var i = 0; i < array.length; i++) {
     if (predicate(array[i])) {
-            SRTlib.send('], "end": "findIndex"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"findIndex"},');
 
       return i;
     }
   }
-    SRTlib.send('], "end": "findIndex"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"findIndex"},');
 
   return -1;
-    SRTlib.send('], "end": "findIndex"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"findIndex","paramsNumber":2},');
 
 }
 function createCancelError() {
-    SRTlib.send(`{ "anonymous": false, "function": "createCancelError", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createCancelError","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('], "end": "createCancelError"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createCancelError"},');
 
   return new Error('Cancelled');
-    SRTlib.send('], "end": "createCancelError"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createCancelError","paramsNumber":0},');
 
 }
 module.exports = (function () {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
 
   function RateLimitedQueue(limit) {
-        SRTlib.send(`{ "anonymous": false, "function": "RateLimitedQueue", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"RateLimitedQueue","fileName":"${__filename}","paramsNumber":1},`);
 
     if (typeof limit !== 'number' || limit === 0) {
       this.limit = Infinity;
@@ -37,12 +37,12 @@ module.exports = (function () {
     }
     this.activeRequests = 0;
     this.queuedHandlers = [];
-        SRTlib.send('], "end": "RateLimitedQueue"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"RateLimitedQueue","paramsNumber":1},');
 
   }
   var _proto = RateLimitedQueue.prototype;
   _proto._call = function _call(fn) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._call._call", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._call._call","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this = this;
     this.activeRequests += 1;
@@ -52,18 +52,18 @@ module.exports = (function () {
       cancelActive = fn();
     } catch (err) {
       this.activeRequests -= 1;
-            SRTlib.send('], "end": "module.exports._proto._call._call"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._call._call"},');
 
       throw err;
     }
-        SRTlib.send('], "end": "module.exports._proto._call._call"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._call._call"},');
 
     return {
       abort: function abort() {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._call._call.ReturnStatement.abort.abort", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._call._call.ReturnStatement.abort.abort","fileName":"${__filename}","paramsNumber":0},`);
 
         if (_done) {
-                    SRTlib.send('], "end": "module.exports._proto._call._call.ReturnStatement.abort.abort"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._call._call.ReturnStatement.abort.abort"},');
 
           return;
         }
@@ -71,51 +71,51 @@ module.exports = (function () {
         _this.activeRequests -= 1;
         cancelActive();
         _this._queueNext();
-                SRTlib.send('], "end": "module.exports._proto._call._call.ReturnStatement.abort.abort"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._call._call.ReturnStatement.abort.abort"},');
 
       },
       done: function done() {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._call._call.ReturnStatement.done.done", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._call._call.ReturnStatement.done.done","fileName":"${__filename}","paramsNumber":0},`);
 
         if (_done) {
-                    SRTlib.send('], "end": "module.exports._proto._call._call.ReturnStatement.done.done"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._call._call.ReturnStatement.done.done"},');
 
           return;
         }
         _done = true;
         _this.activeRequests -= 1;
         _this._queueNext();
-                SRTlib.send('], "end": "module.exports._proto._call._call.ReturnStatement.done.done"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._call._call.ReturnStatement.done.done"},');
 
       }
     };
-        SRTlib.send('], "end": "module.exports._proto._call._call"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._call._call"},');
 
   };
   _proto._queueNext = function _queueNext() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._queueNext._queueNext", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._queueNext._queueNext","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this2 = this;
     Promise.resolve().then(function () {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._queueNext._queueNext.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._queueNext._queueNext.then","fileName":"${__filename}","paramsNumber":0},`);
 
       _this2._next();
-            SRTlib.send('], "end": "module.exports._proto._queueNext._queueNext.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._queueNext._queueNext.then"},');
 
     });
-        SRTlib.send('], "end": "module.exports._proto._queueNext._queueNext"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._queueNext._queueNext"},');
 
   };
   _proto._next = function _next() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._next._next", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._next._next","fileName":"${__filename}","paramsNumber":0},`);
 
     if (this.activeRequests >= this.limit) {
-            SRTlib.send('], "end": "module.exports._proto._next._next"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._next._next"},');
 
       return;
     }
     if (this.queuedHandlers.length === 0) {
-            SRTlib.send('], "end": "module.exports._proto._next._next"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._next._next"},');
 
       return;
     }
@@ -123,11 +123,11 @@ module.exports = (function () {
     var handler = this._call(next.fn);
     next.abort = handler.abort;
     next.done = handler.done;
-        SRTlib.send('], "end": "module.exports._proto._next._next"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._next._next"},');
 
   };
   _proto._queue = function _queue(fn, options) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._queue._queue", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._queue._queue","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this3 = this;
     if (options === void 0) {
@@ -137,29 +137,29 @@ module.exports = (function () {
       fn: fn,
       priority: options.priority || 0,
       abort: function abort() {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._queue._queue.handler.abort.abort", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._queue._queue.handler.abort.abort","fileName":"${__filename}","paramsNumber":0},`);
 
         _this3._dequeue(handler);
-                SRTlib.send('], "end": "module.exports._proto._queue._queue.handler.abort.abort"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._queue._queue.handler.abort.abort"},');
 
       },
       done: function done() {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._queue._queue.handler.done.done", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._queue._queue.handler.done.done","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('], "end": "module.exports._proto._queue._queue.handler.done.done"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._queue._queue.handler.done.done"},');
 
         throw new Error('Cannot mark a queued request as done: this indicates a bug');
-                SRTlib.send('], "end": "module.exports._proto._queue._queue.handler.done.done"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._queue._queue.handler.done.done"},');
 
       }
     };
     var index = findIndex(this.queuedHandlers, function (other) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._queue._queue.index.findIndex", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._queue._queue.index.findIndex","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "module.exports._proto._queue._queue.index.findIndex"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._queue._queue.index.findIndex"},');
 
       return handler.priority > other.priority;
-            SRTlib.send('], "end": "module.exports._proto._queue._queue.index.findIndex"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._queue._queue.index.findIndex"},');
 
     });
     if (index === -1) {
@@ -167,54 +167,54 @@ module.exports = (function () {
     } else {
       this.queuedHandlers.splice(index, 0, handler);
     }
-        SRTlib.send('], "end": "module.exports._proto._queue._queue"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._queue._queue"},');
 
     return handler;
-        SRTlib.send('], "end": "module.exports._proto._queue._queue"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._queue._queue"},');
 
   };
   _proto._dequeue = function _dequeue(handler) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto._dequeue._dequeue", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._dequeue._dequeue","fileName":"${__filename}","paramsNumber":1},`);
 
     var index = this.queuedHandlers.indexOf(handler);
     if (index !== -1) {
       this.queuedHandlers.splice(index, 1);
     }
-        SRTlib.send('], "end": "module.exports._proto._dequeue._dequeue"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._dequeue._dequeue"},');
 
   };
   _proto.run = function run(fn, queueOptions) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.run.run", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.run.run","fileName":"${__filename}","paramsNumber":2},`);
 
     if (this.activeRequests < this.limit) {
-            SRTlib.send('], "end": "module.exports._proto.run.run"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.run.run"},');
 
       return this._call(fn);
     }
-        SRTlib.send('], "end": "module.exports._proto.run.run"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.run.run"},');
 
     return this._queue(fn, queueOptions);
-        SRTlib.send('], "end": "module.exports._proto.run.run"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.run.run"},');
 
   };
   _proto.wrapPromiseFunction = function wrapPromiseFunction(fn, queueOptions) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this4 = this;
-        SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction"},');
 
     return function () {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
 
       for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
         args[_key] = arguments[_key];
       }
       var queuedRequest;
       var outerPromise = new Promise(function (resolve, reject) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise","fileName":"${__filename}","paramsNumber":2},`);
 
         queuedRequest = _this4.run(function () {
-                    SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest3", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest3","fileName":"${__filename}","paramsNumber":0},`);
 
           var cancelError;
           var innerPromise;
@@ -224,7 +224,7 @@ module.exports = (function () {
             innerPromise = Promise.reject(err);
           }
           innerPromise.then(function (result) {
-                        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest","fileName":"${__filename}","paramsNumber":1},`);
 
             if (cancelError) {
               reject(cancelError);
@@ -232,10 +232,10 @@ module.exports = (function () {
               queuedRequest.done();
               resolve(result);
             }
-                        SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest"},');
 
           }, function (err) {
-                        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest2","fileName":"${__filename}","paramsNumber":1},`);
 
             if (cancelError) {
               reject(cancelError);
@@ -243,43 +243,43 @@ module.exports = (function () {
               queuedRequest.done();
               reject(err);
             }
-                        SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest2"},');
 
           });
-                    SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest3"},');
 
           return function () {
-                        SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest.ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
 
             cancelError = createCancelError();
-                        SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest.ReturnStatement"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest.ReturnStatement"},');
 
           };
-                    SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.queuedRequest3"},');
 
         }, queueOptions);
-                SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise"},');
 
       });
       outerPromise.abort = function () {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.abort", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.abort","fileName":"${__filename}","paramsNumber":0},`);
 
         queuedRequest.abort();
-                SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.abort"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.abort"},');
 
       };
-            SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement"},');
 
       return outerPromise;
-            SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement"},');
 
     };
-        SRTlib.send('], "end": "module.exports._proto.wrapPromiseFunction.wrapPromiseFunction"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction"},');
 
   };
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return RateLimitedQueue;
-    SRTlib.send('], "end": "module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 })();

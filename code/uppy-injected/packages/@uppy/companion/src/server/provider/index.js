@@ -10,10 +10,10 @@ const {getURLBuilder} = require('../helpers/utils');
 const logger = require('../logger');
 const Provider = require('./Provider');
 module.exports.getProviderMiddleware = providers => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
   const middleware = (req, res, next, providerName) => {
-        SRTlib.send(`{ "anonymous": false, "function": "middleware", "fileName": "${__filename}", "paramsNumber": 4, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"middleware","fileName":"${__filename}","paramsNumber":4},`);
 
     if (providers[providerName] && validOptions(req.companion.options)) {
       req.companion.provider = new providers[providerName]({
@@ -24,17 +24,17 @@ module.exports.getProviderMiddleware = providers => {
       logger.warn('invalid provider options detected. Provider will not be loaded', 'provider.middleware.invalid', req.id);
     }
     next();
-        SRTlib.send('], "end": "middleware"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"middleware"},');
 
   };
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   return middleware;
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 };
 module.exports.getDefaultProviders = companionOptions => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
   const {providerOptions} = companionOptions || ({
     providerOptions: null
@@ -46,12 +46,12 @@ module.exports.getDefaultProviders = companionOptions => {
     onedrive
   };
   const usesGraphAPI = () => {
-        SRTlib.send(`{ "anonymous": false, "function": "usesGraphAPI", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"usesGraphAPI","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('], "end": "usesGraphAPI"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"usesGraphAPI"},');
 
     return (/^\d+$/).test(providerOptions.instagram.key);
-        SRTlib.send('], "end": "usesGraphAPI"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"usesGraphAPI"},');
 
   };
   if (providerOptions && providerOptions.instagram && usesGraphAPI()) {
@@ -59,35 +59,35 @@ module.exports.getDefaultProviders = companionOptions => {
   } else {
     providers.instagram = instagram;
   }
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   return providers;
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 };
 module.exports.addCustomProviders = (customProviders, providers, grantConfig) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":3},`);
 
   Object.keys(customProviders).forEach(providerName => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
     providers[providerName] = customProviders[providerName].module;
     grantConfig[providerName] = customProviders[providerName].config;
-        SRTlib.send('], "end": "emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
   });
-    SRTlib.send('], "end": "emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
 };
 module.exports.addProviderOptions = (companionOptions, grantConfig) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey7", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":2},`);
 
   const {server, providerOptions} = companionOptions;
   if (!validOptions({
     server
   })) {
     logger.warn('invalid provider options detected. Providers will not be loaded', 'provider.options.invalid');
-        SRTlib.send('], "end": "emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
     return;
   }
@@ -98,16 +98,16 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
   };
   const {oauthDomain} = server;
   const keys = Object.keys(providerOptions).filter(key => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('], "end": "emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
     return key !== 'server';
-        SRTlib.send('], "end": "emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
   });
   keys.forEach(authProvider => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
     if (grantConfig[authProvider]) {
       grantConfig[authProvider].key = providerOptions[authProvider].key;
@@ -129,21 +129,21 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
     } else if (authProvider !== 's3') {
       logger.warn(`skipping one found unsupported provider "${authProvider}".`, 'provider.options.skip');
     }
-        SRTlib.send('], "end": "emptyKey6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
   });
-    SRTlib.send('], "end": "emptyKey7"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
 
 };
 const authNameToProvider = (authProvider, options) => {
-    SRTlib.send(`{ "anonymous": false, "function": "authNameToProvider", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authNameToProvider","fileName":"${__filename}","paramsNumber":2},`);
 
   const providers = exports.getDefaultProviders(options);
   const providerNames = Object.keys(providers);
   for (const name of providerNames) {
     const provider = providers[name];
     if (provider.authProvider === authProvider) {
-            SRTlib.send('], "end": "authNameToProvider"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"authNameToProvider"},');
 
       return {
         name,
@@ -151,15 +151,15 @@ const authNameToProvider = (authProvider, options) => {
       };
     }
   }
-    SRTlib.send('], "end": "authNameToProvider"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"authNameToProvider"},');
 
 };
 const validOptions = options => {
-    SRTlib.send(`{ "anonymous": false, "function": "validOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validOptions","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "validOptions"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"validOptions"},');
 
   return options.server.host && options.server.protocol;
-    SRTlib.send('], "end": "validOptions"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"validOptions"},');
 
 };

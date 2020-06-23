@@ -7,7 +7,7 @@ describe('isObjectURL', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should return true if the specified url is an object url', () => {
@@ -17,11 +17,11 @@ describe('isObjectURL', () => {
     expect(isObjectURL('abc123')).toEqual(false);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "isObjectURL" }`);
+    SRTlib.send(`], "endTestSuiteName": "isObjectURL" },`);
     SRTlib.endLogger();
   });
 

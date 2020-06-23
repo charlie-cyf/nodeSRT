@@ -2,9 +2,9 @@ var SRTlib = require('SRT-util');
 var _require = require('preact'), h = _require.h;
 var AddFiles = require('./AddFiles');
 var AddFilesPanel = function AddFilesPanel(props) {
-    SRTlib.send(`{ "anonymous": false, "function": "AddFilesPanel", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AddFilesPanel","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "AddFilesPanel"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"AddFilesPanel"},');
 
   return h("div", {
     class: "uppy-Dashboard-AddFilesPanel",
@@ -20,16 +20,16 @@ var AddFilesPanel = function AddFilesPanel(props) {
     class: "uppy-DashboardContent-back",
     type: "button",
     onclick: function onclick(ev) {
-            SRTlib.send(`{ "anonymous": true, "function": "AddFilesPanel.AddFilesPanel.ReturnStatement.h.h.h.onclick.onclick", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"AddFilesPanel.AddFilesPanel.ReturnStatement.h.h.h.onclick.onclick","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "AddFilesPanel.AddFilesPanel.ReturnStatement.h.h.h.onclick.onclick"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"AddFilesPanel.AddFilesPanel.ReturnStatement.h.h.h.onclick.onclick"},');
 
       return props.toggleAddFilesPanel(false);
-            SRTlib.send('], "end": "AddFilesPanel.AddFilesPanel.ReturnStatement.h.h.h.onclick.onclick"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"AddFilesPanel.AddFilesPanel.ReturnStatement.h.h.h.onclick.onclick"},');
 
     }
   }, props.i18n('back'))), h(AddFiles, props));
-    SRTlib.send('], "end": "AddFilesPanel"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"AddFilesPanel"},');
 
 };
 module.exports = AddFilesPanel;

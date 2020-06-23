@@ -1,10 +1,10 @@
 var SRTlib = require('SRT-util');
 var _class, _temp;
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -14,39 +14,39 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 function _assertThisInitialized(self) {
-    SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
 
   if (self === void 0) {
-        SRTlib.send('], "end": "_assertThisInitialized"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
   return self;
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized","paramsNumber":1},');
 
 }
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send('], "end": "_inheritsLoose"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
 
 }
 var _require = require('@uppy/core'), Plugin = _require.Plugin;
@@ -56,11 +56,11 @@ var isDragDropSupported = require('@uppy/utils/lib/isDragDropSupported');
 var getDroppedFiles = require('@uppy/utils/lib/getDroppedFiles');
 var _require2 = require('preact'), h = _require2.h;
 module.exports = (_temp = _class = (function (_Plugin) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(DragDrop, _Plugin);
   function DragDrop(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "DragDrop", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"DragDrop","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this;
     _this = _Plugin.call(this, uppy, opts) || this;
@@ -90,39 +90,39 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.handleDrop = _this.handleDrop.bind(_assertThisInitialized(_this));
     _this.addFiles = _this.addFiles.bind(_assertThisInitialized(_this));
     _this.render = _this.render.bind(_assertThisInitialized(_this));
-        SRTlib.send('], "end": "DragDrop"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"DragDrop"},');
 
     return _this;
-        SRTlib.send('], "end": "DragDrop"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"DragDrop","paramsNumber":2},');
 
   }
   var _proto = DragDrop.prototype;
   _proto.setOptions = function setOptions(newOpts) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.setOptions.setOptions", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.setOptions.setOptions","fileName":"${__filename}","paramsNumber":1},`);
 
     _Plugin.prototype.setOptions.call(this, newOpts);
     this.i18nInit();
-        SRTlib.send('], "end": "module.exports._temp._class._proto.setOptions.setOptions"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.setOptions.setOptions"},');
 
   };
   _proto.i18nInit = function i18nInit() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.i18nInit.i18nInit", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.i18nInit.i18nInit","fileName":"${__filename}","paramsNumber":0},`);
 
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
     this.setPluginState();
-        SRTlib.send('], "end": "module.exports._temp._class._proto.i18nInit.i18nInit"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit.i18nInit"},');
 
   };
   _proto.addFiles = function addFiles(files) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.addFiles.addFiles", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.addFiles.addFiles","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this2 = this;
     var descriptors = files.map(function (file) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.addFiles.addFiles.descriptors", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.addFiles.addFiles.descriptors","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "module.exports._temp._class._proto.addFiles.addFiles.descriptors"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.addFiles.addFiles.descriptors"},');
 
       return {
         source: _this2.id,
@@ -133,7 +133,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
           relativePath: file.relativePath || null
         }
       };
-            SRTlib.send('], "end": "module.exports._temp._class._proto.addFiles.addFiles.descriptors"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.addFiles.addFiles.descriptors"},');
 
     });
     try {
@@ -141,21 +141,21 @@ module.exports = (_temp = _class = (function (_Plugin) {
     } catch (err) {
       this.uppy.log(err);
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.addFiles.addFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.addFiles.addFiles"},');
 
   };
   _proto.onInputChange = function onInputChange(event) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.onInputChange.onInputChange", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.onInputChange.onInputChange","fileName":"${__filename}","paramsNumber":1},`);
 
     this.uppy.log('[DragDrop] Files selected through input');
     var files = toArray(event.target.files);
     this.addFiles(files);
     event.target.value = null;
-        SRTlib.send('], "end": "module.exports._temp._class._proto.onInputChange.onInputChange"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onInputChange.onInputChange"},');
 
   };
   _proto.handleDrop = function handleDrop(event, dropCategory) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleDrop.handleDrop", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.handleDrop.handleDrop","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this3 = this;
     event.preventDefault();
@@ -166,28 +166,28 @@ module.exports = (_temp = _class = (function (_Plugin) {
     });
     this.uppy.log('[DragDrop] Files were dropped');
     var logDropError = function logDropError(error) {
-            SRTlib.send(`{ "anonymous": false, "function": "logDropError", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logDropError","fileName":"${__filename}","paramsNumber":1},`);
 
       _this3.uppy.log(error, 'error');
-            SRTlib.send('], "end": "logDropError"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"logDropError"},');
 
     };
     getDroppedFiles(event.dataTransfer, {
       logDropError: logDropError
     }).then(function (files) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleDrop.handleDrop.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.handleDrop.handleDrop.then","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('], "end": "module.exports._temp._class._proto.handleDrop.handleDrop.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.handleDrop.handleDrop.then"},');
 
       return _this3.addFiles(files);
-            SRTlib.send('], "end": "module.exports._temp._class._proto.handleDrop.handleDrop.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.handleDrop.handleDrop.then"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.handleDrop.handleDrop"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.handleDrop.handleDrop"},');
 
   };
   _proto.handleDragOver = function handleDragOver(event) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleDragOver.handleDragOver", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.handleDragOver.handleDragOver","fileName":"${__filename}","paramsNumber":1},`);
 
     event.preventDefault();
     event.stopPropagation();
@@ -196,34 +196,34 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.setPluginState({
       isDraggingOver: true
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.handleDragOver.handleDragOver"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.handleDragOver.handleDragOver"},');
 
   };
   _proto.handleDragLeave = function handleDragLeave(event) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleDragLeave.handleDragLeave", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.handleDragLeave.handleDragLeave","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this4 = this;
     event.preventDefault();
     event.stopPropagation();
     clearTimeout(this.removeDragOverClassTimeout);
     this.removeDragOverClassTimeout = setTimeout(function () {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.handleDragLeave.handleDragLeave.removeDragOverClassTimeout.setTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.handleDragLeave.handleDragLeave.removeDragOverClassTimeout.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
       _this4.setPluginState({
         isDraggingOver: false
       });
-            SRTlib.send('], "end": "module.exports._temp._class._proto.handleDragLeave.handleDragLeave.removeDragOverClassTimeout.setTimeout"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.handleDragLeave.handleDragLeave.removeDragOverClassTimeout.setTimeout"},');
 
     }, 50);
-        SRTlib.send('], "end": "module.exports._temp._class._proto.handleDragLeave.handleDragLeave"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.handleDragLeave.handleDragLeave"},');
 
   };
   _proto.renderHiddenFileInput = function renderHiddenFileInput() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this5 = this;
     var restrictions = this.uppy.opts.restrictions;
-        SRTlib.send('], "end": "module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput"},');
 
     return h("input", {
       id: this.uppy.id + '-' + this.id,
@@ -232,10 +232,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
       tabindex: -1,
       focusable: "false",
       ref: function ref(_ref) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput.ReturnStatement.h.ref.ref", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput.ReturnStatement.h.ref.ref","fileName":"${__filename}","paramsNumber":1},`);
 
         _this5.fileInputRef = _ref;
-                SRTlib.send('], "end": "module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput.ReturnStatement.h.ref.ref"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput.ReturnStatement.h.ref.ref"},');
 
       },
       name: this.opts.inputName,
@@ -243,13 +243,13 @@ module.exports = (_temp = _class = (function (_Plugin) {
       accept: restrictions.allowedFileTypes,
       onchange: this.onInputChange
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.renderHiddenFileInput.renderHiddenFileInput"},');
 
   };
   _proto.renderArrowSvg = function renderArrowSvg() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.renderArrowSvg.renderArrowSvg", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.renderArrowSvg.renderArrowSvg","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('], "end": "module.exports._temp._class._proto.renderArrowSvg.renderArrowSvg"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.renderArrowSvg.renderArrowSvg"},');
 
     return h("svg", {
       "aria-hidden": "true",
@@ -262,13 +262,13 @@ module.exports = (_temp = _class = (function (_Plugin) {
       d: "M11 10V0H5v10H2l6 6 6-6h-3zm0 0",
       "fill-rule": "evenodd"
     }));
-        SRTlib.send('], "end": "module.exports._temp._class._proto.renderArrowSvg.renderArrowSvg"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.renderArrowSvg.renderArrowSvg"},');
 
   };
   _proto.renderLabel = function renderLabel() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.renderLabel.renderLabel", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.renderLabel.renderLabel","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('], "end": "module.exports._temp._class._proto.renderLabel.renderLabel"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.renderLabel.renderLabel"},');
 
     return h("label", {
       class: "uppy-DragDrop-label",
@@ -278,22 +278,22 @@ module.exports = (_temp = _class = (function (_Plugin) {
         class: "uppy-DragDrop-browse"
       }, this.i18n('browse'))
     }));
-        SRTlib.send('], "end": "module.exports._temp._class._proto.renderLabel.renderLabel"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.renderLabel.renderLabel"},');
 
   };
   _proto.renderNote = function renderNote() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.renderNote.renderNote", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.renderNote.renderNote","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('], "end": "module.exports._temp._class._proto.renderNote.renderNote"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.renderNote.renderNote"},');
 
     return h("span", {
       class: "uppy-DragDrop-note"
     }, this.opts.note);
-        SRTlib.send('], "end": "module.exports._temp._class._proto.renderNote.renderNote"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.renderNote.renderNote"},');
 
   };
   _proto.render = function render(state) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.render.render", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render.render","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this6 = this;
     var dragDropClass = "\n      uppy-Root\n      uppy-u-reset\n      uppy-DragDrop-container\n      " + (this.isDragDropSupported ? 'uppy-DragDrop--is-dragdrop-supported' : '') + "\n      " + (this.getPluginState().isDraggingOver ? 'uppy-DragDrop--isDraggingOver' : '') + "\n    ";
@@ -301,19 +301,19 @@ module.exports = (_temp = _class = (function (_Plugin) {
       width: this.opts.width,
       height: this.opts.height
     };
-        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render.render"},');
 
     return h("button", {
       type: "button",
       class: dragDropClass,
       style: dragDropStyle,
       onClick: function onClick() {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.render.render.ReturnStatement.h.onClick.onClick", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render.render.ReturnStatement.h.onClick.onClick","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('], "end": "module.exports._temp._class._proto.render.render.ReturnStatement.h.onClick.onClick"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render.render.ReturnStatement.h.onClick.onClick"},');
 
         return _this6.fileInputRef.click();
-                SRTlib.send('], "end": "module.exports._temp._class._proto.render.render.ReturnStatement.h.onClick.onClick"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render.render.ReturnStatement.h.onClick.onClick"},');
 
       },
       onDragOver: this.handleDragOver,
@@ -322,11 +322,11 @@ module.exports = (_temp = _class = (function (_Plugin) {
     }, this.renderHiddenFileInput(), h("div", {
       class: "uppy-DragDrop-inner"
     }, this.renderArrowSvg(), this.renderLabel(), this.renderNote()));
-        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render.render"},');
 
   };
   _proto.install = function install() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install","fileName":"${__filename}","paramsNumber":0},`);
 
     this.setPluginState({
       isDraggingOver: false
@@ -335,19 +335,19 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.uninstall.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall.uninstall","fileName":"${__filename}","paramsNumber":0},`);
 
     this.unmount();
-        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
-    SRTlib.send('], "end": "module.exports._temp._class"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
   return DragDrop;
-    SRTlib.send('], "end": "module.exports._temp._class"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

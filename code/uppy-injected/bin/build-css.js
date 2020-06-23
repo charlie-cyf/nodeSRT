@@ -14,14 +14,14 @@ const renderScss = promisify(sass.render);
 const writeFile = promisify(fs.writeFile);
 const cwd = process.cwd();
 function handleErr(err) {
-    SRTlib.send(`{ "anonymous": false, "function": "handleErr", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleErr","fileName":"${__filename}","paramsNumber":1},`);
 
   console.error(chalk.red('✗ Error:'), chalk.red(err.message));
-    SRTlib.send('], "end": "handleErr"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"handleErr","paramsNumber":1},');
 
 }
 async function compileCSS() {
-    SRTlib.send(`{ "anonymous": false, "function": "compileCSS", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"compileCSS","fileName":"${__filename}","paramsNumber":0},`);
 
   const files = await glob('packages/{,@uppy/}*/src/style.scss');
   for (const file of files) {
@@ -29,23 +29,23 @@ async function compileCSS() {
       file,
       importedFiles: new Set(),
       importer(url, from, done) {
-                SRTlib.send(`{ "anonymous": true, "function": "scssResult.renderScss.importer", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"scssResult.renderScss.importer","fileName":"${__filename}","paramsNumber":3},`);
 
         resolve(url, {
           basedir: path.dirname(from),
           filename: from,
           extensions: ['.scss']
         }, (err, res) => {
-                    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
 
           if (err) {
-                        SRTlib.send('], "end": "emptyKey"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
             return done(err);
           }
           res = fs.realpathSync(res);
           if (this.options.importedFiles.has(res)) {
-                        SRTlib.send('], "end": "emptyKey"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
             return done({
               contents: ''
@@ -55,10 +55,10 @@ async function compileCSS() {
           done({
             file: res
           });
-                    SRTlib.send('], "end": "emptyKey"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
         });
-                SRTlib.send('], "end": "scssResult.renderScss.importer"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"scssResult.renderScss.importer"},');
 
       }
     });
@@ -66,10 +66,10 @@ async function compileCSS() {
       from: file
     });
     postcssResult.warnings().forEach(function (warn) {
-            SRTlib.send(`{ "anonymous": true, "function": "forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       console.warn(warn.toString());
-            SRTlib.send('], "end": "forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
     });
     const outdir = path.join(path.dirname(file), '../dist');
@@ -88,22 +88,22 @@ async function compileCSS() {
       from: outfile
     });
     minifiedResult.warnings().forEach(function (warn) {
-            SRTlib.send(`{ "anonymous": true, "function": "forEach2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach2","fileName":"${__filename}","paramsNumber":1},`);
 
       console.warn(warn.toString());
-            SRTlib.send('], "end": "forEach2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach2"},');
 
     });
     await writeFile(outfile.replace(/\.css$/, '.min.css'), minifiedResult.css);
     console.info(chalk.green('✓ Minified Bundle CSS:'), chalk.magenta(path.relative(cwd, outfile).replace(/\.css$/, '.min.css')));
   }
-    SRTlib.send('], "end": "compileCSS"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"compileCSS","paramsNumber":0},');
 
 }
 compileCSS().then(() => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
   console.info(chalk.yellow('✓ CSS Bundles 🎉'));
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 }, handleErr);

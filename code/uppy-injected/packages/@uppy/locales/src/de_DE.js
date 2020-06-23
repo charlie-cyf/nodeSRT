@@ -137,17 +137,17 @@ de_DE.strings = {
   openFolderNamed: 'Ordner öffnen %{name}'
 };
 de_DE.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "de_DE.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"de_DE.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-        SRTlib.send('], "end": "de_DE.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"de_DE.pluralize"},');
 
     return 0;
   }
-    SRTlib.send('], "end": "de_DE.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"de_DE.pluralize"},');
 
   return 1;
-    SRTlib.send('], "end": "de_DE.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"de_DE.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {

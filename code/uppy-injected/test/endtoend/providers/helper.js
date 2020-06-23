@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 exports.finishUploadTest = async browser => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
   await browser.switchWindow(/localhost/);
   const fileItem = await browser.$('.uppy-ProviderBrowser-list li.uppy-ProviderBrowserItem:last-child button');
@@ -10,11 +10,11 @@ exports.finishUploadTest = async browser => {
   await uploadButton.click();
   const completeBar = await browser.$('.uppy-StatusBar-content[title="Complete"]');
   await completeBar.waitForDisplayed(20000);
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 };
 exports.startUploadTest = async (browser, providerName, tabMatch) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
 
   const providerButton = await browser.$(`.uppy-DashboardTab-btn[aria-controls=uppy-DashboardContent-panel--${providerName}]`);
   await providerButton.click();
@@ -24,11 +24,11 @@ exports.startUploadTest = async (browser, providerName, tabMatch) => {
   await authButton.click();
   await browser.pause(5000);
   await browser.switchWindow(tabMatch);
-    SRTlib.send('], "end": "emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 };
 exports.uploadWithRetry = async (browser, providerName, testURL) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":3},`);
 
   await browser.url(testURL + '?socketerr=true');
   const providerButton = await browser.$(`.uppy-DashboardTab-btn[aria-controls=uppy-DashboardContent-panel--${providerName}]`);
@@ -44,6 +44,6 @@ exports.uploadWithRetry = async (browser, providerName, testURL) => {
   await retryButton.click();
   const completeBar = await browser.$('.uppy-StatusBar-content[title="Complete"]');
   await completeBar.waitForDisplayed(20000);
-    SRTlib.send('], "end": "emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
 };

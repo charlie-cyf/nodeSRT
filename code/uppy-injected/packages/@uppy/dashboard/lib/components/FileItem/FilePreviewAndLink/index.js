@@ -3,9 +3,9 @@ var _require = require('preact'), h = _require.h;
 var FilePreview = require('../../FilePreview');
 var getFileTypeIcon = require('../../../utils/getFileTypeIcon');
 module.exports = function FilePreviewAndLink(props) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.FilePreviewAndLink", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.FilePreviewAndLink","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "module.exports.FilePreviewAndLink"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FilePreviewAndLink"},');
 
   return h("div", {
     class: "uppy-DashboardItem-previewInnerWrap",
@@ -21,6 +21,6 @@ module.exports = function FilePreviewAndLink(props) {
   }), h(FilePreview, {
     file: props.file
   }));
-    SRTlib.send('], "end": "module.exports.FilePreviewAndLink"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FilePreviewAndLink"},');
 
 };

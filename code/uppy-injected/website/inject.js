@@ -29,15 +29,15 @@ const excludes = {
   '@uppy/react': ['react']
 };
 inject().catch(err => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
   console.error(err);
   process.exit(1);
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });
 async function getMinifiedSize(pkg, name) {
-    SRTlib.send(`{ "anonymous": false, "function": "getMinifiedSize", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMinifiedSize","fileName":"${__filename}","paramsNumber":2},`);
 
   const b = browserify(pkg);
   const packageJSON = fs.readFileSync(path.join(pkg, 'package.json'));
@@ -52,80 +52,80 @@ async function getMinifiedSize(pkg, name) {
   b.plugin('tinyify');
   const bundle = await promisify(b.bundle).call(b);
   const gzipped = await gzipSize(bundle);
-    SRTlib.send('], "end": "getMinifiedSize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getMinifiedSize"},');
 
   return {
     minified: bundle.length,
     gzipped,
     version
   };
-    SRTlib.send('], "end": "getMinifiedSize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getMinifiedSize","paramsNumber":2},');
 
 }
 async function injectSizes(config) {
-    SRTlib.send(`{ "anonymous": false, "function": "injectSizes", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectSizes","fileName":"${__filename}","paramsNumber":1},`);
 
   console.info(chalk.grey('Generating bundle sizes…'));
   const padTarget = packages.reduce((max, cur) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
 
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     return Math.max(max, cur.length);
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   }, 0) + 2;
   const sizesPromise = Promise.all(packages.map(async pkg => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey3", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
     const result = await getMinifiedSize(path.join(__dirname, '../packages', pkg), pkg);
     console.info(chalk.green(`  ✓ ${pkg}: ${(' ').repeat(padTarget - pkg.length)}` + `${prettierBytes(result.minified)} min`.padEnd(10) + ` / ${prettierBytes(result.gzipped)} gz`));
-        SRTlib.send('], "end": "emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
     return Object.assign(result, {
       prettyMinified: prettierBytes(result.minified),
       prettyGzipped: prettierBytes(result.gzipped)
     });
-        SRTlib.send('], "end": "emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
   })).then(list => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey5", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
 
     const map = {};
     list.forEach((size, i) => {
-            SRTlib.send(`{ "anonymous": true, "function": "emptyKey4", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":2},`);
 
       map[packages[i]] = size;
-            SRTlib.send('], "end": "emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
     });
-        SRTlib.send('], "end": "emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
     return map;
-        SRTlib.send('], "end": "emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
   });
   config.uppy_bundle_kb_sizes = await sizesPromise;
-    SRTlib.send('], "end": "injectSizes"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"injectSizes","paramsNumber":1},');
 
 }
 async function injectBundles() {
-    SRTlib.send(`{ "anonymous": false, "function": "injectBundles", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectBundles","fileName":"${__filename}","paramsNumber":0},`);
 
   const cmds = [`mkdir -p ${path.join(webRoot, '/themes/uppy/source/uppy')}`, `mkdir -p ${path.join(webRoot, '/themes/uppy/source/uppy/locales')}`, `cp -vfR ${path.join(uppyRoot, '/dist/*')} ${path.join(webRoot, '/themes/uppy/source/uppy/')}`, `cp -vfR ${path.join(robodogRoot, '/dist/*')} ${path.join(webRoot, '/themes/uppy/source/uppy/')}`, `cp -vfR ${path.join(localesRoot, '/dist/*')} ${path.join(webRoot, '/themes/uppy/source/uppy/locales')}`].join(' && ');
   const {stdout} = await promisify(exec)(cmds);
   stdout.trim().split('\n').forEach(function (line) {
-        SRTlib.send(`{ "anonymous": true, "function": "split.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"split.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     console.info(chalk.green('✓ injected: '), chalk.grey(line));
-        SRTlib.send('], "end": "split.forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"split.forEach"},');
 
   });
-    SRTlib.send('], "end": "injectBundles"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"injectBundles","paramsNumber":0},');
 
 }
 async function injectGhStars() {
-    SRTlib.send(`{ "anonymous": false, "function": "injectGhStars", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectGhStars","fileName":"${__filename}","paramsNumber":0},`);
 
   const opts = {};
   if (('GITHUB_TOKEN' in process.env)) {
@@ -141,11 +141,11 @@ async function injectGhStars() {
   const dstpath = path.join(webRoot, 'themes', 'uppy', 'layout', 'partials', 'generated_stargazers.ejs');
   fs.writeFileSync(dstpath, String(data.stargazers_count), 'utf-8');
   console.log(`${data.stargazers_count} stargazers written to '${dstpath}'`);
-    SRTlib.send('], "end": "injectGhStars"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"injectGhStars","paramsNumber":0},');
 
 }
 async function injectMarkdown() {
-    SRTlib.send(`{ "anonymous": false, "function": "injectMarkdown", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectMarkdown","fileName":"${__filename}","paramsNumber":0},`);
 
   const sources = {
     '.github/ISSUE_TEMPLATE/integration_help.md': 'src/_template/integration_help.md',
@@ -166,11 +166,11 @@ async function injectMarkdown() {
     console.info(chalk.green('✓ injected: '), chalk.grey(srcpath));
   }
   touch(path.join(webRoot, '/src/support.md'));
-    SRTlib.send('], "end": "injectMarkdown"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"injectMarkdown","paramsNumber":0},');
 
 }
 function injectLocaleList() {
-    SRTlib.send(`{ "anonymous": false, "function": "injectLocaleList", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectLocaleList","fileName":"${__filename}","paramsNumber":0},`);
 
   const mdTable = [`<!-- WARNING! This file was automatically injected. Please run "${path.basename(__filename)}" to re-generate -->\n\n`, '| %count% Locales | NPM                | CDN                 | Source on GitHub |', '| --------------- | ------------------ | ------------------- | ---------------- |'];
   const mdRows = [];
@@ -178,11 +178,11 @@ function injectLocaleList() {
   const localePackagePath = path.join(localesRoot, 'src', '*.js');
   const localePackageVersion = require(path.join(localesRoot, 'package.json')).version;
   glob.sync(localePackagePath).forEach(localePath => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey6", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
     const localeName = path.basename(localePath, '.js');
     if (localeName === 'es_GL') {
-            SRTlib.send('], "end": "emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
       return;
     }
@@ -203,7 +203,7 @@ function injectLocaleList() {
     const mdTableRow = `| ${languageName}<br/> <small>${countryName}</small>${variant ? `<br /><small>(${variant})</small>` : ''} | ${npmPath} | ${cdnPath} | ✏️ ${githubSource} |`;
     mdRows.push(mdTableRow);
     localeList[localeName] = `${languageName} (${countryName}${variant ? ` ${variant}` : ''})`;
-        SRTlib.send('], "end": "emptyKey6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
   });
   const resultingMdTable = mdTable.concat(mdRows.sort()).join('\n').replace('%count%', mdRows.length);
@@ -213,27 +213,27 @@ function injectLocaleList() {
   console.info(chalk.green('✓ injected: '), chalk.grey(dstpath));
   fs.writeFileSync(localeListDstPath, JSON.stringify(localeList), 'utf-8');
   console.info(chalk.green('✓ injected: '), chalk.grey(localeListDstPath));
-    SRTlib.send('], "end": "injectLocaleList"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"injectLocaleList","paramsNumber":0},');
 
 }
 async function readConfig() {
-    SRTlib.send(`{ "anonymous": false, "function": "readConfig", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"readConfig","fileName":"${__filename}","paramsNumber":0},`);
 
   try {
     const buf = await promisify(fs.readFile)(configPath, 'utf8');
-        SRTlib.send('], "end": "readConfig"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"readConfig"},');
 
     return YAML.safeLoad(buf);
   } catch (err) {
-        SRTlib.send('], "end": "readConfig"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"readConfig"},');
 
     return {};
   }
-    SRTlib.send('], "end": "readConfig"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"readConfig","paramsNumber":0},');
 
 }
 async function inject() {
-    SRTlib.send(`{ "anonymous": false, "function": "inject", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"inject","fileName":"${__filename}","paramsNumber":0},`);
 
   const config = await readConfig();
   await injectGhStars();
@@ -251,6 +251,6 @@ async function inject() {
     console.error(chalk.red('x failed to inject: '), chalk.grey('uppy bundle into site, because: ' + error));
     process.exit(1);
   }
-    SRTlib.send('], "end": "inject"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"inject","paramsNumber":0},');
 
 }

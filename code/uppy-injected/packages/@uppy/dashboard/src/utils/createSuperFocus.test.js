@@ -7,7 +7,7 @@ describe('createSuperFocus', () => {
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
   it('should return a function that can be cancelled', () => {
@@ -16,11 +16,11 @@ describe('createSuperFocus', () => {
     expect(typeof superFocus.cancel).toBe('function');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "createSuperFocus" }`);
+    SRTlib.send(`], "endTestSuiteName": "createSuperFocus" },`);
     SRTlib.endLogger();
   });
 

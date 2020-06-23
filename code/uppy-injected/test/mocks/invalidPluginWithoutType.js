@@ -2,26 +2,26 @@ var SRTlib = require('SRT-util');
 const {Plugin} = require('../../packages/@uppy/core');
 module.exports = class InvalidPluginWithoutType extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "InvalidPluginWithoutType.constructor", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"InvalidPluginWithoutType","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.id = 'InvalidPluginWithoutType';
     this.name = this.constructor.name;
-        SRTlib.send('], "end": "constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
   }
   run(results) {
-        SRTlib.send(`{ "anonymous": false, "function": "InvalidPluginWithoutType.run", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"run","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"InvalidPluginWithoutType","superClass":"Plugin"}},`);
 
     this.uppy.log({
       class: this.constructor.name,
       method: 'run',
       results: results
     });
-        SRTlib.send('], "end": "run"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"run"},');
 
     return Promise.resolve('success');
-        SRTlib.send('], "end": "run"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"run"},');
 
   }
 };

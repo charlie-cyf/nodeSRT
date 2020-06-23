@@ -9,20 +9,20 @@ app.use(cors());
 app.post('/upload', upload.array('files'), uploadRoute);
 app.listen(9967);
 function uploadRoute(req, res) {
-    SRTlib.send(`{ "anonymous": false, "function": "uploadRoute", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadRoute","fileName":"${__filename}","paramsNumber":2},`);
 
   res.json({
     files: req.files.map(function (file) {
-            SRTlib.send(`{ "anonymous": true, "function": "files.req.files.map", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.req.files.map","fileName":"${__filename}","paramsNumber":1},`);
 
       delete file.buffer;
-            SRTlib.send('], "end": "files.req.files.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"files.req.files.map"},');
 
       return file;
-            SRTlib.send('], "end": "files.req.files.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"files.req.files.map"},');
 
     })
   });
-    SRTlib.send('], "end": "uploadRoute"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"uploadRoute","paramsNumber":2},');
 
 }

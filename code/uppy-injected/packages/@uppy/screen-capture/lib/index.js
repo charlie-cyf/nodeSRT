@@ -1,10 +1,10 @@
 var SRTlib = require('SRT-util');
 var _class, _temp;
 function _extends() {
-    SRTlib.send(`{ "anonymous": false, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
   _extends = Object.assign || (function (target) {
-        SRTlib.send(`{ "anonymous": true, "function": "_extends", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
 
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -14,39 +14,39 @@ function _extends() {
         }
       }
     }
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
     return target;
-        SRTlib.send('], "end": "_extends"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   });
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
 
   return _extends.apply(this, arguments);
-    SRTlib.send('], "end": "_extends"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
 }
 function _assertThisInitialized(self) {
-    SRTlib.send(`{ "anonymous": false, "function": "_assertThisInitialized", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
 
   if (self === void 0) {
-        SRTlib.send('], "end": "_assertThisInitialized"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
   return self;
-    SRTlib.send('], "end": "_assertThisInitialized"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized","paramsNumber":1},');
 
 }
 function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{ "anonymous": false, "function": "_inheritsLoose", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
-    SRTlib.send('], "end": "_inheritsLoose"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
 
 }
 var _require = require('preact'), h = _require.h;
@@ -56,25 +56,25 @@ var getFileTypeExtension = require('@uppy/utils/lib/getFileTypeExtension');
 var ScreenRecIcon = require('./ScreenRecIcon');
 var CaptureScreen = require('./CaptureScreen');
 function getMediaDevices() {
-    SRTlib.send(`{ "anonymous": false, "function": "getMediaDevices", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMediaDevices","fileName":"${__filename}","paramsNumber":0},`);
 
   if (navigator && navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia && window && window.MediaRecorder) {
-        SRTlib.send('], "end": "getMediaDevices"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getMediaDevices"},');
 
     return navigator.mediaDevices;
   }
-    SRTlib.send('], "end": "getMediaDevices"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getMediaDevices"},');
 
   return null;
-    SRTlib.send('], "end": "getMediaDevices"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getMediaDevices","paramsNumber":0},');
 
 }
 module.exports = (_temp = _class = (function (_Plugin) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(ScreenCapture, _Plugin);
   function ScreenCapture(uppy, opts) {
-        SRTlib.send(`{ "anonymous": false, "function": "ScreenCapture", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ScreenCapture","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this;
     _this = _Plugin.call(this, uppy, opts) || this;
@@ -128,19 +128,19 @@ module.exports = (_temp = _class = (function (_Plugin) {
     _this.streamInterrupted = _this.streamInactivated.bind(_assertThisInitialized(_this));
     _this.captureActive = false;
     _this.capturedMediaFile = null;
-        SRTlib.send('], "end": "ScreenCapture"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ScreenCapture"},');
 
     return _this;
-        SRTlib.send('], "end": "ScreenCapture"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ScreenCapture","paramsNumber":2},');
 
   }
   var _proto = ScreenCapture.prototype;
   _proto.install = function install() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.install.install", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install.install","fileName":"${__filename}","paramsNumber":0},`);
 
     if (!this.mediaDevices) {
       this.uppy.log('Screen recorder access is not supported', 'error');
-            SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install"},');
 
       return null;
     }
@@ -152,32 +152,32 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.install.install"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install.install"},');
 
   };
   _proto.uninstall = function uninstall() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.uninstall.uninstall", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall.uninstall","fileName":"${__filename}","paramsNumber":0},`);
 
     if (this.videoStream) {
       this.stop();
     }
     this.unmount();
-        SRTlib.send('], "end": "module.exports._temp._class._proto.uninstall.uninstall"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall.uninstall"},');
 
   };
   _proto.start = function start() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.start.start", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.start.start","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this2 = this;
     if (!this.mediaDevices) {
-            SRTlib.send('], "end": "module.exports._temp._class._proto.start.start"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.start.start"},');
 
       return Promise.reject(new Error('Screen recorder access not supported'));
     }
     this.captureActive = true;
     this.selectAudioStreamSource();
     this.selectVideoStreamSource().then(function (res) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.start.start.selectVideoStreamSource.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.start.start.selectVideoStreamSource.then","fileName":"${__filename}","paramsNumber":1},`);
 
       if (res === false) {
         if (_this2.parent && _this2.parent.hideAllPanels) {
@@ -185,121 +185,121 @@ module.exports = (_temp = _class = (function (_Plugin) {
           _this2.captureActive = false;
         }
       }
-            SRTlib.send('], "end": "module.exports._temp._class._proto.start.start.selectVideoStreamSource.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.start.start.selectVideoStreamSource.then"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.start.start"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.start.start"},');
 
   };
   _proto.selectVideoStreamSource = function selectVideoStreamSource() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this3 = this;
     if (this.videoStream) {
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource"},');
 
       return new Promise(function (resolve) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement"},');
 
         return resolve(_this3.videoStream);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement"},');
 
       });
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource"},');
 
     return this.mediaDevices.getDisplayMedia(this.opts.displayMediaConstraints).then(function (videoStream) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then","fileName":"${__filename}","paramsNumber":1},`);
 
       _this3.videoStream = videoStream;
       _this3.videoStream.addEventListener('inactive', function (event) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then._this3.videoStream.addEventListener", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then._this3.videoStream.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
 
         _this3.streamInactivated();
-                SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then._this3.videoStream.addEventListener"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then._this3.videoStream.addEventListener"},');
 
       });
       _this3.setPluginState({
         streamActive: true
       });
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then"},');
 
       return videoStream;
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.mediaDevices.getDisplayMedia.then"},');
 
     }).catch(function (err) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       _this3.setPluginState({
         screenRecError: err
       });
       _this3.userDenied = true;
       setTimeout(function () {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.setTimeout", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
         _this3.userDenied = false;
-                SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.setTimeout"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch.setTimeout"},');
 
       }, 1000);
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch"},');
 
       return false;
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource.ReturnStatement.mediaDevices.getDisplayMedia.then.catch"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectVideoStreamSource.selectVideoStreamSource"},');
 
   };
   _proto.selectAudioStreamSource = function selectAudioStreamSource() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this4 = this;
     if (this.audioStream) {
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource"},');
 
       return new Promise(function (resolve) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('], "end": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement"},');
 
         return resolve(_this4.audioStream);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement"},');
 
       });
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource"},');
 
     return this.mediaDevices.getUserMedia(this.opts.userMediaConstraints).then(function (audioStream) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then","fileName":"${__filename}","paramsNumber":1},`);
 
       _this4.audioStream = audioStream;
       _this4.setPluginState({
         audioStreamActive: true
       });
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then"},');
 
       return audioStream;
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then"},');
 
     }).catch(function (err) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       if (err.name === 'NotAllowedError') {
         _this4.uppy.info(_this4.i18n('micDisabled'), 'error', 5000);
       }
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch"},');
 
       return false;
-            SRTlib.send('], "end": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource.ReturnStatement.mediaDevices.getUserMedia.then.catch"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.selectAudioStreamSource.selectAudioStreamSource"},');
 
   };
   _proto.startRecording = function startRecording() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.startRecording.startRecording", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.startRecording.startRecording","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this5 = this;
     var options = {};
@@ -307,7 +307,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.recordingChunks = [];
     var preferredVideoMimeType = this.opts.preferredVideoMimeType;
     this.selectVideoStreamSource().then(function (videoStream) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch.selectVideoStreamSource.then", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch.selectVideoStreamSource.then","fileName":"${__filename}","paramsNumber":1},`);
 
       if (preferredVideoMimeType && MediaRecorder.isTypeSupported(preferredVideoMimeType) && getFileTypeExtension(preferredVideoMimeType)) {
         options.mimeType = preferredVideoMimeType;
@@ -319,30 +319,30 @@ module.exports = (_temp = _class = (function (_Plugin) {
       _this5.outputStream = new MediaStream(tracks);
       _this5.recorder = new MediaRecorder(_this5.outputStream, options);
       _this5.recorder.addEventListener('dataavailable', function (event) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch.selectVideoStreamSource.then._this5.recorder.addEventListener", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch.selectVideoStreamSource.then._this5.recorder.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
 
         _this5.recordingChunks.push(event.data);
-                SRTlib.send('], "end": "module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch.selectVideoStreamSource.then._this5.recorder.addEventListener"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch.selectVideoStreamSource.then._this5.recorder.addEventListener"},');
 
       });
       _this5.recorder.start();
       _this5.setPluginState({
         recording: true
       });
-            SRTlib.send('], "end": "module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch.selectVideoStreamSource.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch.selectVideoStreamSource.then"},');
 
     }).catch(function (err) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       _this5.uppy.log(err, 'error');
-            SRTlib.send('], "end": "module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.startRecording.startRecording.selectVideoStreamSource.then.catch"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.startRecording.startRecording"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.startRecording.startRecording"},');
 
   };
   _proto.streamInactivated = function streamInactivated() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.streamInactivated.streamInactivated", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.streamInactivated.streamInactivated","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this$getPluginState = _extends({}, this.getPluginState()), recordedVideo = _this$getPluginState.recordedVideo, recording = _this$getPluginState.recording;
     if (!recordedVideo && !recording) {
@@ -359,72 +359,72 @@ module.exports = (_temp = _class = (function (_Plugin) {
       streamActive: false,
       audioStreamActive: false
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.streamInactivated.streamInactivated"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.streamInactivated.streamInactivated"},');
 
   };
   _proto.stopRecording = function stopRecording() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stopRecording.stopRecording", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stopRecording.stopRecording","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this6 = this;
     var stopped = new Promise(function (resolve, reject) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stopRecording.stopRecording.stopped", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stopRecording.stopRecording.stopped","fileName":"${__filename}","paramsNumber":2},`);
 
       _this6.recorder.addEventListener('stop', function () {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stopRecording.stopRecording.stopped._this6.recorder.addEventListener", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stopRecording.stopRecording.stopped._this6.recorder.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
 
         resolve();
-                SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording.stopped._this6.recorder.addEventListener"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording.stopped._this6.recorder.addEventListener"},');
 
       });
       _this6.recorder.stop();
-            SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording.stopped"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording.stopped"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording"},');
 
     return stopped.then(function () {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then","fileName":"${__filename}","paramsNumber":0},`);
 
       _this6.setPluginState({
         recording: false
       });
-            SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then"},');
 
       return _this6.getVideo();
-            SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then"},');
 
     }).then(function (file) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then2","fileName":"${__filename}","paramsNumber":1},`);
 
       _this6.capturedMediaFile = file;
       _this6.setPluginState({
         recordedVideo: URL.createObjectURL(file.data)
       });
-            SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then.then2"},');
 
     }).then(function () {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then","fileName":"${__filename}","paramsNumber":0},`);
 
       _this6.recordingChunks = null;
       _this6.recorder = null;
-            SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then"},');
 
     }, function (error) {
-            SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then2", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then2","fileName":"${__filename}","paramsNumber":1},`);
 
       _this6.recordingChunks = null;
       _this6.recorder = null;
-            SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then2"},');
 
       throw error;
-            SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording.ReturnStatement.then.then2"},');
 
     });
-        SRTlib.send('], "end": "module.exports._temp._class._proto.stopRecording.stopRecording"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stopRecording.stopRecording"},');
 
   };
   _proto.submit = function submit() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.submit.submit", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.submit.submit","fileName":"${__filename}","paramsNumber":0},`);
 
     try {
       if (this.capturedMediaFile) {
@@ -435,59 +435,59 @@ module.exports = (_temp = _class = (function (_Plugin) {
         this.uppy.log(err, 'error');
       }
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.submit.submit"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.submit.submit"},');
 
   };
   _proto.stop = function stop() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stop.stop", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stop.stop","fileName":"${__filename}","paramsNumber":0},`);
 
     if (this.videoStream) {
       this.videoStream.getVideoTracks().forEach(function (track) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stop.stop.videoStream.getVideoTracks.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stop.stop.videoStream.getVideoTracks.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         track.stop();
-                SRTlib.send('], "end": "module.exports._temp._class._proto.stop.stop.videoStream.getVideoTracks.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stop.stop.videoStream.getVideoTracks.forEach"},');
 
       });
       this.videoStream.getAudioTracks().forEach(function (track) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stop.stop.videoStream.getAudioTracks.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stop.stop.videoStream.getAudioTracks.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         track.stop();
-                SRTlib.send('], "end": "module.exports._temp._class._proto.stop.stop.videoStream.getAudioTracks.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stop.stop.videoStream.getAudioTracks.forEach"},');
 
       });
       this.videoStream = null;
     }
     if (this.audioStream) {
       this.audioStream.getAudioTracks().forEach(function (track) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stop.stop.audioStream.getAudioTracks.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stop.stop.audioStream.getAudioTracks.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         track.stop();
-                SRTlib.send('], "end": "module.exports._temp._class._proto.stop.stop.audioStream.getAudioTracks.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stop.stop.audioStream.getAudioTracks.forEach"},');
 
       });
       this.audioStream.getVideoTracks().forEach(function (track) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stop.stop.audioStream.getVideoTracks.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stop.stop.audioStream.getVideoTracks.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         track.stop();
-                SRTlib.send('], "end": "module.exports._temp._class._proto.stop.stop.audioStream.getVideoTracks.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stop.stop.audioStream.getVideoTracks.forEach"},');
 
       });
       this.audioStream = null;
     }
     if (this.outputStream) {
       this.outputStream.getAudioTracks().forEach(function (track) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stop.stop.outputStream.getAudioTracks.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stop.stop.outputStream.getAudioTracks.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         track.stop();
-                SRTlib.send('], "end": "module.exports._temp._class._proto.stop.stop.outputStream.getAudioTracks.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stop.stop.outputStream.getAudioTracks.forEach"},');
 
       });
       this.outputStream.getVideoTracks().forEach(function (track) {
-                SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.stop.stop.outputStream.getVideoTracks.forEach", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.stop.stop.outputStream.getVideoTracks.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         track.stop();
-                SRTlib.send('], "end": "module.exports._temp._class._proto.stop.stop.outputStream.getVideoTracks.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stop.stop.outputStream.getVideoTracks.forEach"},');
 
       });
       this.outputStream = null;
@@ -496,16 +496,16 @@ module.exports = (_temp = _class = (function (_Plugin) {
       recordedVideo: null
     });
     this.captureActive = false;
-        SRTlib.send('], "end": "module.exports._temp._class._proto.stop.stop"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.stop.stop"},');
 
   };
   _proto.getVideo = function getVideo() {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.getVideo.getVideo", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.getVideo.getVideo","fileName":"${__filename}","paramsNumber":0},`);
 
     var mimeType = this.recordingChunks[0].type;
     var fileExtension = getFileTypeExtension(mimeType);
     if (!fileExtension) {
-            SRTlib.send('], "end": "module.exports._temp._class._proto.getVideo.getVideo"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getVideo.getVideo"},');
 
       return Promise.reject(new Error("Could not retrieve recording: Unsupported media type \"" + mimeType + "\""));
     }
@@ -521,20 +521,20 @@ module.exports = (_temp = _class = (function (_Plugin) {
       }),
       type: mimeType
     };
-        SRTlib.send('], "end": "module.exports._temp._class._proto.getVideo.getVideo"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getVideo.getVideo"},');
 
     return Promise.resolve(file);
-        SRTlib.send('], "end": "module.exports._temp._class._proto.getVideo.getVideo"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getVideo.getVideo"},');
 
   };
   _proto.render = function render(state) {
-        SRTlib.send(`{ "anonymous": true, "function": "module.exports._temp._class._proto.render.render", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render.render","fileName":"${__filename}","paramsNumber":1},`);
 
     var recorderState = this.getPluginState();
     if (!recorderState.streamActive && !this.captureActive && !this.userDenied) {
       this.start();
     }
-        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render.render"},');
 
     return h(CaptureScreen, _extends({}, recorderState, {
       onStartRecording: this.startRecording,
@@ -544,12 +544,12 @@ module.exports = (_temp = _class = (function (_Plugin) {
       i18n: this.i18n,
       stream: this.videoStream
     }));
-        SRTlib.send('], "end": "module.exports._temp._class._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render.render"},');
 
   };
-    SRTlib.send('], "end": "module.exports._temp._class"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
   return ScreenCapture;
-    SRTlib.send('], "end": "module.exports._temp._class"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
 })(Plugin), _class.VERSION = require('../package.json').version, _temp);

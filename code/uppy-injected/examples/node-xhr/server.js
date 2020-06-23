@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 var formidable = require('formidable');
 var http = require('http');
 http.createServer(function (req, res) {
-    SRTlib.send(`{ "anonymous": true, "function": "listen2", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"listen2","fileName":"${__filename}","paramsNumber":2},`);
 
   const headers = {
     'Content-Type': 'application/json',
@@ -13,7 +13,7 @@ http.createServer(function (req, res) {
   if (req.method === 'OPTIONS') {
     res.writeHead(204, headers);
     res.end();
-        SRTlib.send('], "end": "listen2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"listen2"},');
 
     return;
   }
@@ -22,13 +22,13 @@ http.createServer(function (req, res) {
     form.uploadDir = './uploads';
     form.keepExtensions = true;
     form.parse(req, function (err, fields, files) {
-            SRTlib.send(`{ "anonymous": true, "function": "listen", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"listen","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err) {
         console.log('some error', err);
         res.writeHead(200, headers);
         res.write(JSON.stringify(err));
-                SRTlib.send('], "end": "listen"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"listen"},');
 
         return res.end();
       }
@@ -42,19 +42,19 @@ http.createServer(function (req, res) {
         fields,
         files
       }));
-            SRTlib.send('], "end": "listen"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"listen"},');
 
       return res.end();
-            SRTlib.send('], "end": "listen"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"listen"},');
 
     });
   }
-    SRTlib.send('], "end": "listen2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"listen2"},');
 
 }).listen(3020, () => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 0, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 
   console.log('server started');
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });

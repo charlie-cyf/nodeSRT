@@ -10,7 +10,7 @@ describe('File upload with DragDrop + Tus', function () {
 
   this.retries(2);
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -28,11 +28,11 @@ describe('File upload with DragDrop + Tus', function () {
     expect(parseInt(html)).to.be.equal(100);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
     afterAll(() => {
-    SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20DragDrop%20+%20Tus" }`);
+    SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20DragDrop%20+%20Tus" },`);
     SRTlib.endLogger();
   });
 

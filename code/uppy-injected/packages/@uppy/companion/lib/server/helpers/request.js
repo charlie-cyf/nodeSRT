@@ -5,18 +5,18 @@ const dns = require('dns');
 const ipAddress = require('ip-address');
 const FORBIDDEN_IP_ADDRESS = 'Forbidden IP address';
 function isIPAddress(address) {
-    SRTlib.send(`{ "anonymous": false, "function": "isIPAddress", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isIPAddress","fileName":"${__filename}","paramsNumber":1},`);
 
   const addressAsV6 = new ipAddress.Address6(address);
   const addressAsV4 = new ipAddress.Address4(address);
-    SRTlib.send('], "end": "isIPAddress"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isIPAddress"},');
 
   return addressAsV6.isValid() || addressAsV4.isValid();
-    SRTlib.send('], "end": "isIPAddress"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isIPAddress","paramsNumber":1},');
 
 }
 function isPrivateIP(ipAddress) {
-    SRTlib.send(`{ "anonymous": false, "function": "isPrivateIP", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isPrivateIP","fileName":"${__filename}","paramsNumber":1},`);
 
   let isPrivate = false;
   const ipPrefix = [];
@@ -53,36 +53,36 @@ function isPrivateIP(ipAddress) {
       break;
     }
   }
-    SRTlib.send('], "end": "isPrivateIP"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isPrivateIP"},');
 
   return isPrivate;
-    SRTlib.send('], "end": "isPrivateIP"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isPrivateIP","paramsNumber":1},');
 
 }
 module.exports.FORBIDDEN_IP_ADDRESS = FORBIDDEN_IP_ADDRESS;
 module.exports.getProtectedHttpAgent = (protocol, blockPrivateIPs) => {
-    SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
 
   if (blockPrivateIPs) {
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     return protocol.startsWith('https') ? HttpsAgent : HttpAgent;
   }
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   return protocol.startsWith('https') ? https.Agent : http.Agent;
-    SRTlib.send('], "end": "emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 };
 function dnsLookup(hostname, options, callback) {
-    SRTlib.send(`{ "anonymous": false, "function": "dnsLookup", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"dnsLookup","fileName":"${__filename}","paramsNumber":3},`);
 
   dns.lookup(hostname, options, (err, addresses, maybeFamily) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
 
     if (err) {
       callback(err, addresses, maybeFamily);
-            SRTlib.send('], "end": "emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
       return;
     }
@@ -92,51 +92,51 @@ function dnsLookup(hostname, options, callback) {
     for (const record of toValidate) {
       if (isPrivateIP(record.address)) {
         callback(new Error(FORBIDDEN_IP_ADDRESS), addresses, maybeFamily);
-                SRTlib.send('], "end": "emptyKey2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
         return;
       }
     }
     callback(err, addresses, maybeFamily);
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   });
-    SRTlib.send('], "end": "dnsLookup"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"dnsLookup","paramsNumber":3},');
 
 }
 class HttpAgent extends http.Agent {
   createConnection(options, callback) {
-        SRTlib.send(`{ "anonymous": false, "function": "HttpAgent.createConnection", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createConnection","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"HttpAgent"}},`);
 
     options.lookup = dnsLookup;
     if (isIPAddress(options.host) && isPrivateIP(options.host)) {
       callback(new Error(FORBIDDEN_IP_ADDRESS));
-            SRTlib.send('], "end": "createConnection"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
       return;
     }
-        SRTlib.send('], "end": "createConnection"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
     return super.createConnection(options, callback);
-        SRTlib.send('], "end": "createConnection"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
   }
 }
 class HttpsAgent extends https.Agent {
   createConnection(options, callback) {
-        SRTlib.send(`{ "anonymous": false, "function": "HttpsAgent.createConnection", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createConnection","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"HttpsAgent"}},`);
 
     options.lookup = dnsLookup;
     if (isIPAddress(options.host) && isPrivateIP(options.host)) {
       callback(new Error(FORBIDDEN_IP_ADDRESS));
-            SRTlib.send('], "end": "createConnection"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
       return;
     }
-        SRTlib.send('], "end": "createConnection"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
     return super.createConnection(options, callback);
-        SRTlib.send('], "end": "createConnection"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
   }
 }

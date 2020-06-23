@@ -53,7 +53,7 @@ module.exports = class Instrumentor {
                                     let afterAllFound = false;
                                     let beforeEachFound = false;
                                     let afterEachFound = false;
-                                    const suiteName = getSuiteName(ancestors)
+                                    const suiteName = getSuiteName(node)
                                     // loop throw describe test body to find beforeAll etc
                                     let stmts = t(node, "arguments[1].body.body").safeObject;
                                     if (stmts) {
@@ -61,12 +61,12 @@ module.exports = class Instrumentor {
                                             if (t(stmt, "expression.callee.name").safeObject === 'beforeEach') {
                                                 beforeEachFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) { // might should add code block
-                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testName\": \"${jasmine["currentTest"].description}\", \"fileName\": \"${__filename}\", \"calls\" : [`);'))
+                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testName\": \"${escape(jasmine["currentTest"].description)}\", \"fileName\": \"${__filename}\", \"calls\" : [`);'))
                                                 }
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach') {
                                                 afterEachFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`], \"endTestName\": "\${jasmine["currentTest"].description}\" }`);'))
+                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`], \"endTestName\": "\${escape(jasmine["currentTest"].description)}\" },`);'))
                                                 }
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'beforeAll') {
                                                 beforeAllFound = true;
@@ -78,7 +78,7 @@ module.exports = class Instrumentor {
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'AfterAll') {
                                                 afterAllFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                    stmt.expression.arguments[0].body.body.push(ASTParser.parse('SRTlib.send(`], \"endTestSuiteName\": "' + Instrumentor.processStringNames(suiteName) + '" }`);'))
+                                                    stmt.expression.arguments[0].body.body.push(ASTParser.parse('SRTlib.send(`], \"endTestSuiteName\": "' + Instrumentor.processStringNames(suiteName) + '" },`);'))
                                                     stmt.expression.arguments[0].body.body.push(ASTParser.parse("SRTlib.endLogger();"));
                                                 }
 
@@ -86,7 +86,7 @@ module.exports = class Instrumentor {
                                         });
 
                                         if (!beforeEachFound) {
-                                            stmts.unshift(ASTParser.parse('beforeEach(() => {SRTlib.send(`{ \"testName\": \"${jasmine["currentTest"].description}\", \"fileName\": \"${__filename}\", \"calls\" : [`);})'))
+                                            stmts.unshift(ASTParser.parse('beforeEach(() => {SRTlib.send(`{ \"testName\": \"${escape(jasmine["currentTest"].description)}\", \"fileName\": \"${__filename}\", \"calls\" : [`);})'))
                                         }
 
                                         if (!beforeAllFound) {
@@ -94,11 +94,11 @@ module.exports = class Instrumentor {
                                         }
 
                                         if (!afterEachFound) {
-                                            stmts.push(ASTParser.parse('afterEach(() => { SRTlib.send(`], \"endTestName\": \"${jasmine["currentTest"].description}\" }`); })'))
+                                            stmts.push(ASTParser.parse('afterEach(() => { SRTlib.send(`], \"endTestName\": \"${escape(jasmine["currentTest"].description)}\" },`); })'))
                                         }
 
                                         if (!afterAllFound) {
-                                            stmts.push(ASTParser.parse('afterAll(() => { SRTlib.send(`], \"endTestSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\" }`);  SRTlib.endLogger();} )'))
+                                            stmts.push(ASTParser.parse('afterAll(() => { SRTlib.send(`], \"endTestSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\" },`);  SRTlib.endLogger();} )'))
                                         }
                                         node.arguments[1].body.body = stmts;
                                     }
@@ -131,7 +131,7 @@ module.exports = class Instrumentor {
                                 function: functionName,
                                 paramsNumber: paramsNum
                             }
-                            return ASTParser.parse('SRTlib.send(`'+JSON.stringify(temp)+',`);')
+                            return ASTParser.parse('SRTlib.send(\''+JSON.stringify(temp)+',\');')
                         };
 
 
@@ -195,9 +195,8 @@ module.exports = class Instrumentor {
         const visited = new Map();
 
         const isEnd = function (node) {
-            console.log('node', JSON.stringify(node))
             let obj = t(node, 'body[0].expression.arguments[0].value').safeObject;
-            console.log('obj', obj)
+            
             if (obj) {
                 return obj.includes('FUNCTIONEND')
             }
@@ -344,7 +343,7 @@ module.exports = class Instrumentor {
                     }
                     break;
                 case 'FunctionDeclaration':
-                case 'ArrowFunctionExpression':
+                case 'ArrowFunctionExpression': // TODO handle arrowFunction name case
                 case 'Program':
                     return idList;
                 case 'CallExpression':
@@ -389,18 +388,8 @@ module.exports = class Instrumentor {
 
     }
 
-    getSuiteName(ancestors) {
-        if (ancestors) {
-            for (let ancestor of ancestors) {
-                if (ancestor.type === 'CallExpression') {
-                    if (ancestor.callee.name === 'describe') {
-                        return ancestor.arguments[0].value;
-                    }
-                }
-            }
-        }
-
-        return false;
+    getSuiteName(node) {
+        return t(node, 'arguments[0].value').safeObject;
     }
 
     static processStringNames(s) {

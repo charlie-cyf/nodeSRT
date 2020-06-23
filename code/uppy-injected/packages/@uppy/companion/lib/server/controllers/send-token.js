@@ -5,7 +5,7 @@ const {hasMatch, sanitizeHtml} = require('../helpers/utils');
 const oAuthState = require('../helpers/oauth-state');
 const versionCmp = require('../helpers/version');
 module.exports = function sendToken(req, res, next) {
-    SRTlib.send(`{ "anonymous": true, "function": "module.exports.sendToken", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sendToken","fileName":"${__filename}","paramsNumber":3},`);
 
   const uppyAuthToken = req.companion.authToken;
   if (req.companion.provider.needsCookieAuth) {
@@ -19,19 +19,19 @@ module.exports = function sendToken(req, res, next) {
     const allowedClients = req.companion.options.clients;
     if (!allowedClients || hasMatch(origin, allowedClients) || hasMatch(parseUrl(origin).host, allowedClients)) {
       const allowsStringMessage = versionCmp.gte(clientVersion, '1.0.2');
-            SRTlib.send('], "end": "module.exports.sendToken"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sendToken"},');
 
       return res.send(allowsStringMessage ? htmlContent(uppyAuthToken, origin) : oldHtmlContent(uppyAuthToken, origin));
     }
   }
   next();
-    SRTlib.send('], "end": "module.exports.sendToken"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sendToken"},');
 
 };
 const htmlContent = (token, origin) => {
-    SRTlib.send(`{ "anonymous": false, "function": "htmlContent", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"htmlContent","fileName":"${__filename}","paramsNumber":2},`);
 
-    SRTlib.send('], "end": "htmlContent"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"htmlContent"},');
 
   return `
     <!DOCTYPE html>
@@ -45,13 +45,13 @@ const htmlContent = (token, origin) => {
     </head>
     <body></body>
     </html>`;
-    SRTlib.send('], "end": "htmlContent"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"htmlContent"},');
 
 };
 const oldHtmlContent = (token, origin) => {
-    SRTlib.send(`{ "anonymous": false, "function": "oldHtmlContent", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"oldHtmlContent","fileName":"${__filename}","paramsNumber":2},`);
 
-    SRTlib.send('], "end": "oldHtmlContent"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"oldHtmlContent"},');
 
   return `
     <!DOCTYPE html>
@@ -65,6 +65,6 @@ const oldHtmlContent = (token, origin) => {
     </head>
     <body></body>
     </html>`;
-    SRTlib.send('], "end": "oldHtmlContent"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"oldHtmlContent"},');
 
 };

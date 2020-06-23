@@ -9,7 +9,7 @@ require('prismjs/components/')();
 delete global.Prism;
 const unhighlightedCodeRx = /<pre><code class="([^"]*)?">([\s\S]*?)<\/code><\/pre>/igm;
 function highlight(lang, code) {
-    SRTlib.send(`{ "anonymous": false, "function": "highlight", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"highlight","fileName":"${__filename}","paramsNumber":2},`);
 
   const startTag = `<figure class="highlight ${lang}"><table><tr><td class="code"><pre>`;
   const endTag = '</pre></td></tr></table></figure>';
@@ -19,54 +19,54 @@ function highlight(lang, code) {
   } else {
     parsedCode = code;
   }
-    SRTlib.send('], "end": "highlight"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"highlight"},');
 
   return startTag + parsedCode + endTag;
-    SRTlib.send('], "end": "highlight"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"highlight","paramsNumber":2},');
 
 }
 function prismify(data) {
-    SRTlib.send(`{ "anonymous": false, "function": "prismify", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prismify","fileName":"${__filename}","paramsNumber":1},`);
 
   data.content = data.content.replace(unhighlightedCodeRx, (_, lang, code) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":3},`);
 
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
     return highlight(lang, entities.decode(code));
-        SRTlib.send('], "end": "emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   });
   data.excerpt = data.excerpt.replace(unhighlightedCodeRx, (_, lang, code) => {
-        SRTlib.send(`{ "anonymous": true, "function": "emptyKey2", "fileName": "${__filename}", "paramsNumber": 3, "calls" : [`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
 
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
     return highlight(lang, entities.decode(code));
-        SRTlib.send('], "end": "emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
   });
-    SRTlib.send('], "end": "prismify"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"prismify"},');
 
   return data;
-    SRTlib.send('], "end": "prismify"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"prismify","paramsNumber":1},');
 
 }
 function code(args, content) {
-    SRTlib.send(`{ "anonymous": false, "function": "code", "fileName": "${__filename}", "paramsNumber": 2, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"code","fileName":"${__filename}","paramsNumber":2},`);
 
   let lang = '';
   if (args[0].startsWith('lang:')) {
     lang = args.shift().replace(/^lang:/, '');
   }
-    SRTlib.send('], "end": "code"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"code"},');
 
   return highlight(lang, content);
-    SRTlib.send('], "end": "code"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"code","paramsNumber":2},');
 
 }
 async function includeCode(args) {
-    SRTlib.send(`{ "anonymous": false, "function": "includeCode", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"includeCode","fileName":"${__filename}","paramsNumber":1},`);
 
   let lang = '';
   if (args[0].startsWith('lang:')) {
@@ -74,10 +74,10 @@ async function includeCode(args) {
   }
   const file = path.join(hexo.source_dir, hexo.config.code_dir, args.join(' '));
   const content = await readFile(file, 'utf8');
-    SRTlib.send('], "end": "includeCode"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"includeCode"},');
 
   return highlight(lang, content.trim());
-    SRTlib.send('], "end": "includeCode"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"includeCode","paramsNumber":1},');
 
 }
 hexo.extend.tag.register('code', code, true);

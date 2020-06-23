@@ -135,12 +135,12 @@ hu_HU.strings = {
   openFolderNamed: 'Nyitott mappa %{name}'
 };
 hu_HU.pluralize = function (n) {
-    SRTlib.send(`{ "anonymous": true, "function": "hu_HU.pluralize", "fileName": "${__filename}", "paramsNumber": 1, "calls" : [`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"hu_HU.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('], "end": "hu_HU.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"hu_HU.pluralize"},');
 
   return 0;
-    SRTlib.send('], "end": "hu_HU.pluralize"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"hu_HU.pluralize"},');
 
 };
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
