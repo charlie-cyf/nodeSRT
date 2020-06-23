@@ -1,45 +1,32 @@
 var SRTlib = require('SRT-util');
 const getFileType = require('./getFileType');
 describe('getFileType', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "getFileType", "fileName": "${__filename}", "calls" : [`);
+  });
 
-    SRTlib.send(`{ "testSuite": "getFileType", "fileName": "${__filename}", "calls" : [`);
+    beforeEach(() => {
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+  });
 
   it('should trust the filetype if the file comes from a remote source', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "getFileType", "testName": "should%20trust%20the%20filetype%20if%20the%20file%20comes%20from%20a%20remote%20source", "fileName": "${__filename}", "calls" : [`);
-
     const file = {
       isRemote: true,
       type: 'audio/webm',
       name: 'foo.webm'
     };
     expect(getFileType(file)).toEqual('audio/webm');
-        SRTlib.send('], "end": "test-should%20trust%20the%20filetype%20if%20the%20file%20comes%20from%20a%20remote%20source"},');
-    SRTlib.endLogger();
-
   });
   it('should determine the filetype from the mimetype', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "getFileType", "testName": "should%20determine%20the%20filetype%20from%20the%20mimetype", "fileName": "${__filename}", "calls" : [`);
-
     const file = {
       type: 'audio/webm',
       name: 'foo.webm',
       data: 'sdfsdfhq9efbicw'
     };
     expect(getFileType(file)).toEqual('audio/webm');
-        SRTlib.send('], "end": "test-should%20determine%20the%20filetype%20from%20the%20mimetype"},');
-    SRTlib.endLogger();
-
   });
   it('should determine the filetype from the extension', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "getFileType", "testName": "should%20determine%20the%20filetype%20from%20the%20extension", "fileName": "${__filename}", "calls" : [`);
-
     const fileMP3 = {
       name: 'foo.mp3',
       data: 'sdfsfhfh329fhwihs'
@@ -61,25 +48,21 @@ describe('getFileType', () => {
     expect(getFileType(toUpper(fileYAML))).toEqual('text/yaml');
     expect(getFileType(fileMKV)).toEqual('video/x-matroska');
     expect(getFileType(toUpper(fileMKV))).toEqual('video/x-matroska');
-        SRTlib.send('], "end": "test-should%20determine%20the%20filetype%20from%20the%20extension"},');
-    SRTlib.endLogger();
-
   });
   it('should fail gracefully if unable to detect', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "getFileType", "testName": "should%20fail%20gracefully%20if%20unable%20to%20detect", "fileName": "${__filename}", "calls" : [`);
-
     const file = {
       name: 'foobar',
       data: 'sdfsfhfh329fhwihs'
     };
     expect(getFileType(file)).toEqual('application/octet-stream');
-        SRTlib.send('], "end": "test-should%20fail%20gracefully%20if%20unable%20to%20detect"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "getFileType" }`);
+    SRTlib.endLogger();
+  });
 
 });

@@ -7,18 +7,17 @@ function setTransloaditKeyAndInit(transloaditKey) {
   window.initUppyTransloadit(transloaditKey);
 }
 describe('Transloadit file processing', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-    SRTlib.send(`{ "testSuite": "Transloadit%20file%20processing", "fileName": "${__filename}", "calls" : [`);
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "Transloadit%20file%20processing", "fileName": "${__filename}", "calls" : [`);
+  });
 
   beforeEach(async () => {
+        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+
     await browser.url(testURL);
   });
   it('should upload a file to Transloadit and crop it', async function () {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "Transloadit%20file%20processing", "testName": "should%20upload%20a%20file%20to%20Transloadit%20and%20crop%20it", "fileName": "${__filename}", "calls" : [`);
-
     const transloaditKey = process.env.TRANSLOADIT_KEY;
     if (transloaditKey === undefined) {
       console.log('skipping Transloadit integration test');
@@ -40,11 +39,14 @@ describe('Transloadit file processing', () => {
     await result.waitForExist(25000);
     const text = await result.getText();
     expect(text).to.be.equal('ok');
-        SRTlib.send('], "end": "test-should%20upload%20a%20file%20to%20Transloadit%20and%20crop%20it"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "Transloadit%20file%20processing" }`);
+    SRTlib.endLogger();
+  });
 
 });

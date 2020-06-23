@@ -1,15 +1,16 @@
 var SRTlib = require('SRT-util');
 const generateFileID = require('./generateFileID');
 describe('generateFileID', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "generateFileID", "fileName": "${__filename}", "calls" : [`);
+  });
 
-    SRTlib.send(`{ "testSuite": "generateFileID", "fileName": "${__filename}", "calls" : [`);
+    beforeEach(() => {
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+  });
 
   it('should take the filename object and produce a lowercase file id made up of uppy- prefix, file name (cleaned up to be lowercase, letters and numbers only), type, relative path (folder) from file.meta.relativePath, size and lastModified date', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "generateFileID", "testName": "should%20take%20the%20filename%20object%20and%20produce%20a%20lowercase%20file%20id%20made%20up%20of%20uppy-%20prefix%2C%20file%20name%20%28cleaned%20up%20to%20be%20lowercase%2C%20letters%20and%20numbers%20only%29%2C%20type%2C%20relative%20path%20%28folder%29%20from%20file.meta.relativePath%2C%20size%20and%20lastModified%20date", "fileName": "${__filename}", "calls" : [`);
-
     const fileObj = {
       name: 'fOo0Fi@£$.jpg',
       type: 'image/jpeg',
@@ -38,11 +39,14 @@ describe('generateFileID', () => {
         relativePath: 'folder/a'
       }
     })).toEqual('uppy-hello/jpg-1e-image/jpeg-folder/a-1f-2271173-1498510508000');
-        SRTlib.send('], "end": "test-should%20take%20the%20filename%20object%20and%20produce%20a%20lowercase%20file%20id%20made%20up%20of%20uppy-%20prefix%2C%20file%20name%20%28cleaned%20up%20to%20be%20lowercase%2C%20letters%20and%20numbers%20only%29%2C%20type%2C%20relative%20path%20%28folder%29%20from%20file.meta.relativePath%2C%20size%20and%20lastModified%20date"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "generateFileID" }`);
+    SRTlib.endLogger();
+  });
 
 });

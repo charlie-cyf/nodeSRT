@@ -24,26 +24,20 @@ function MockCore() {
   return core;
 }
 describe('uploader/ThumbnailGeneratorPlugin', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+  });
 
-    SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    beforeEach(() => {
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+  });
 
   it('should initialise successfully', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20initialise%20successfully", "fileName": "${__filename}", "calls" : [`);
-
     const plugin = new ThumbnailGeneratorPlugin(new MockCore(), {});
     expect(plugin instanceof Plugin).toEqual(true);
-        SRTlib.send('], "end": "test-should%20initialise%20successfully"},');
-    SRTlib.endLogger();
-
   });
   it('should accept the thumbnailWidth and thumbnailHeight option and override the default', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20accept%20the%20thumbnailWidth%20and%20thumbnailHeight%20option%20and%20override%20the%20default", "fileName": "${__filename}", "calls" : [`);
-
     const plugin1 = new ThumbnailGeneratorPlugin(new MockCore());
     expect(plugin1.opts.thumbnailWidth).toEqual(null);
     expect(plugin1.opts.thumbnailHeight).toEqual(null);
@@ -55,20 +49,18 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       thumbnailHeight: 100
     });
     expect(plugin3.opts.thumbnailHeight).toEqual(100);
-        SRTlib.send('], "end": "test-should%20accept%20the%20thumbnailWidth%20and%20thumbnailHeight%20option%20and%20override%20the%20default"},');
-    SRTlib.endLogger();
-
   });
   describe('install', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "install", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     it('should subscribe to uppy file-added event', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20subscribe%20to%20uppy%20file-added%20event", "fileName": "${__filename}", "calls" : [`);
-
       const core = Object.assign(new MockCore(), {
         on: jest.fn()
       });
@@ -77,24 +69,28 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       plugin.install();
       expect(core.on).toHaveBeenCalledTimes(3);
       expect(core.on).toHaveBeenCalledWith('file-added', plugin.onFileAdded);
-            SRTlib.send('], "end": "test-should%20subscribe%20to%20uppy%20file-added%20event"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('uninstall', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "uninstall", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     it('should unsubscribe from uppy file-added event', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20unsubscribe%20from%20uppy%20file-added%20event", "fileName": "${__filename}", "calls" : [`);
-
       const core = Object.assign(new MockCore(), {
         on: jest.fn(),
         off: jest.fn()
@@ -106,24 +102,28 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       plugin.uninstall();
       expect(core.off).toHaveBeenCalledTimes(3);
       expect(core.off).toHaveBeenCalledWith('file-added', plugin.onFileAdded);
-            SRTlib.send('], "end": "test-should%20unsubscribe%20from%20uppy%20file-added%20event"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('queue', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "queue", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     it('should add a new file to the queue and start processing the queue when queueProcessing is false', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20add%20a%20new%20file%20to%20the%20queue%20and%20start%20processing%20the%20queue%20when%20queueProcessing%20is%20false", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       plugin.processQueue = jest.fn();
@@ -143,15 +143,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       plugin.addToQueue(file2.id);
       expect(plugin.queue).toEqual(['bar', 'bar2']);
       expect(plugin.processQueue).toHaveBeenCalledTimes(1);
-            SRTlib.send('], "end": "test-should%20add%20a%20new%20file%20to%20the%20queue%20and%20start%20processing%20the%20queue%20when%20queueProcessing%20is%20false"},');
-      SRTlib.endLogger();
-
     });
     it('should process items in the queue one by one', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20process%20items%20in%20the%20queue%20one%20by%20one", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       plugin.requestThumbnail = jest.fn(() => delay(100));
@@ -188,15 +181,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         expect(plugin.queue).toEqual([]);
         expect(plugin.queueProcessing).toEqual(false);
       });
-            SRTlib.send('], "end": "test-should%20process%20items%20in%20the%20queue%20one%20by%20one"},');
-      SRTlib.endLogger();
-
     });
     it('should revoke object URLs when files are removed', async () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20revoke%20object%20URLs%20when%20files%20are%20removed", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       plugin.install();
@@ -235,18 +221,26 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       } finally {
         delete URL.revokeObjectURL;
       }
-            SRTlib.send('], "end": "test-should%20revoke%20object%20URLs%20when%20files%20are%20removed"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('events', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "events", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     const core = new MockCore();
     const plugin = new ThumbnailGeneratorPlugin(core);
@@ -282,10 +276,6 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       });
     }));
     it('should emit thumbnail:all-generated when all thumbnails were generated', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20emit%20thumbnail%3Aall-generated%20when%20all%20thumbnails%20were%20generated", "fileName": "${__filename}", "calls" : [`);
-
       return new Promise(resolve => {
         core.on('thumbnail:all-generated', resolve);
         add({
@@ -299,24 +289,28 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       }).then(() => {
         expect(plugin.queue).toHaveLength(0);
       });
-            SRTlib.send('], "end": "test-should%20emit%20thumbnail%3Aall-generated%20when%20all%20thumbnails%20were%20generated"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('requestThumbnail', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "requestThumbnail", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     it('should call createThumbnail if it is a supported filetype', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20call%20createThumbnail%20if%20it%20is%20a%20supported%20filetype", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       plugin.createThumbnail = jest.fn().mockReturnValue(Promise.resolve('preview'));
@@ -330,15 +324,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         expect(plugin.createThumbnail).toHaveBeenCalledTimes(1);
         expect(plugin.createThumbnail).toHaveBeenCalledWith(file, plugin.opts.thumbnailWidth, plugin.opts.thumbnailHeight);
       });
-            SRTlib.send('], "end": "test-should%20call%20createThumbnail%20if%20it%20is%20a%20supported%20filetype"},');
-      SRTlib.endLogger();
-
     });
     it('should not call createThumbnail if it is not a supported filetype', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20not%20call%20createThumbnail%20if%20it%20is%20not%20a%20supported%20filetype", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       plugin.createThumbnail = jest.fn().mockReturnValue(Promise.resolve('preview'));
@@ -351,15 +338,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       return plugin.requestThumbnail(file).then(() => {
         expect(plugin.createThumbnail).toHaveBeenCalledTimes(0);
       });
-            SRTlib.send('], "end": "test-should%20not%20call%20createThumbnail%20if%20it%20is%20not%20a%20supported%20filetype"},');
-      SRTlib.endLogger();
-
     });
     it('should not call createThumbnail if the file is remote', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20not%20call%20createThumbnail%20if%20the%20file%20is%20remote", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       plugin.createThumbnail = jest.fn().mockReturnValue(Promise.resolve('preview'));
@@ -372,15 +352,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       return plugin.requestThumbnail(file).then(() => {
         expect(plugin.createThumbnail).toHaveBeenCalledTimes(0);
       });
-            SRTlib.send('], "end": "test-should%20not%20call%20createThumbnail%20if%20the%20file%20is%20remote"},');
-      SRTlib.endLogger();
-
     });
     it('should call setPreviewURL with the thumbnail image', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20call%20setPreviewURL%20with%20the%20thumbnail%20image", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       plugin.createThumbnail = jest.fn().mockReturnValue(Promise.resolve('preview'));
@@ -394,24 +367,28 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         expect(plugin.setPreviewURL).toHaveBeenCalledTimes(1);
         expect(plugin.setPreviewURL).toHaveBeenCalledWith('file1', 'preview');
       });
-            SRTlib.send('], "end": "test-should%20call%20setPreviewURL%20with%20the%20thumbnail%20image"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('setPreviewURL', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "setPreviewURL", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     it('should update the preview url for the specified image', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20update%20the%20preview%20url%20for%20the%20specified%20image", "fileName": "${__filename}", "calls" : [`);
-
       const core = {
         state: {
           files: {
@@ -437,27 +414,31 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       expect(core.setFileState).toHaveBeenCalledWith('file1', {
         preview: 'moo'
       });
-            SRTlib.send('], "end": "test-should%20update%20the%20preview%20url%20for%20the%20specified%20image"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('getProportionalDimensions', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "getProportionalDimensions", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     function resize(thumbnailPlugin, image, width, height) {
       return thumbnailPlugin.getProportionalDimensions(image, width, height);
     }
     it('should calculate the thumbnail dimensions based on the width whilst keeping aspect ratio', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20width%20whilst%20keeping%20aspect%20ratio", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       expect(resize(plugin, {
@@ -481,15 +462,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         width: 47,
         height: 46
       });
-            SRTlib.send('], "end": "test-should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20width%20whilst%20keeping%20aspect%20ratio"},');
-      SRTlib.endLogger();
-
     });
     it('should calculate the thumbnail dimensions based on the height whilst keeping aspect ratio', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20height%20whilst%20keeping%20aspect%20ratio", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       expect(resize(plugin, {
@@ -513,15 +487,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         width: 48,
         height: 47
       });
-            SRTlib.send('], "end": "test-should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20height%20whilst%20keeping%20aspect%20ratio"},');
-      SRTlib.endLogger();
-
     });
     it('should calculate the thumbnail dimensions based on the default width if no custom width is given', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20default%20width%20if%20no%20custom%20width%20is%20given", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       plugin.defaultThumbnailDimension = 50;
@@ -532,15 +499,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         width: 50,
         height: 25
       });
-            SRTlib.send('], "end": "test-should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20default%20width%20if%20no%20custom%20width%20is%20given"},');
-      SRTlib.endLogger();
-
     });
     it('should calculate the thumbnail dimensions based on the width if both width and height are given', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20width%20if%20both%20width%20and%20height%20are%20given", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       expect(resize(plugin, {
@@ -550,24 +510,28 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         width: 50,
         height: 25
       });
-            SRTlib.send('], "end": "test-should%20calculate%20the%20thumbnail%20dimensions%20based%20on%20the%20width%20if%20both%20width%20and%20height%20are%20given"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('canvasToBlob', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "canvasToBlob", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     it('should use canvas.toBlob if available', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20use%20canvas.toBlob%20if%20available", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       const canvas = {
@@ -577,26 +541,34 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       expect(canvas.toBlob).toHaveBeenCalledTimes(1);
       expect(canvas.toBlob.mock.calls[0][1]).toEqual('type');
       expect(canvas.toBlob.mock.calls[0][2]).toEqual(90);
-            SRTlib.send('], "end": "test-should%20use%20canvas.toBlob%20if%20available"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('downScaleInSteps', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "downScaleInSteps", "fileName": "${__filename}", "calls" : [`);
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
     let originalDocumentCreateElement;
     let originalURLCreateObjectURL;
     beforeEach(() => {
+            SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+
       originalDocumentCreateElement = document.createElement;
       originalURLCreateObjectURL = URL.createObjectURL;
     });
     afterEach(() => {
+            SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+
       document.createElement = originalDocumentCreateElement;
       URL.createObjectURL = originalURLCreateObjectURL;
     });
@@ -641,20 +613,23 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         getContext: canvas.getContext
       }, 0, 0, 250, 200, 0, 0, 125, 100]]);
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('resizeImage', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "resizeImage", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     it('should return a canvas with the resized image on it', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20return%20a%20canvas%20with%20the%20resized%20image%20on%20it", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       const image = {
@@ -676,15 +651,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         height: 160,
         getContext: canvas.getContext
       });
-            SRTlib.send('], "end": "test-should%20return%20a%20canvas%20with%20the%20resized%20image%20on%20it"},');
-      SRTlib.endLogger();
-
     });
     it('should upsize if original image is smaller than target size', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20upsize%20if%20original%20image%20is%20smaller%20than%20target%20size", "fileName": "${__filename}", "calls" : [`);
-
       const core = new MockCore();
       const plugin = new ThumbnailGeneratorPlugin(core);
       const image = {
@@ -706,24 +674,28 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         height: 160,
         getContext: canvas.getContext
       });
-            SRTlib.send('], "end": "test-should%20upsize%20if%20original%20image%20is%20smaller%20than%20target%20size"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
   describe('onRestored', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+        beforeAll(() => {
+      SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+      SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    });
 
-        SRTlib.send(`{ "testSuite": "onRestored", "fileName": "${__filename}", "calls" : [`);
+        beforeEach(() => {
+      SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+    });
 
     it('should enqueue restored files', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20enqueue%20restored%20files", "fileName": "${__filename}", "calls" : [`);
-
       const files = {
         a: {
           id: 'a',
@@ -761,15 +733,8 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       expect(plugin.addToQueue).toHaveBeenCalledTimes(2);
       expect(plugin.addToQueue).toHaveBeenCalledWith(files.a.id);
       expect(plugin.addToQueue).toHaveBeenCalledWith(files.c.id);
-            SRTlib.send('], "end": "test-should%20enqueue%20restored%20files"},');
-      SRTlib.endLogger();
-
     });
     it('should not regenerate thumbnail for remote files', () => {
-            SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-            SRTlib.send(`{ "testSuite": "uploader/ThumbnailGeneratorPlugin", "testName": "should%20not%20regenerate%20thumbnail%20for%20remote%20files", "fileName": "${__filename}", "calls" : [`);
-
       const files = {
         a: {
           preview: 'http://abc',
@@ -792,15 +757,24 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       plugin.install();
       core.emit('restored');
       expect(plugin.addToQueue).not.toHaveBeenCalled();
-            SRTlib.send('], "end": "test-should%20not%20regenerate%20thumbnail%20for%20remote%20files"},');
-      SRTlib.endLogger();
-
     });
-        SRTlib.send(']},');
-    SRTlib.endLogger();
+        afterEach(() => {
+      SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+    });
+
+        afterAll(() => {
+      SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+      SRTlib.endLogger();
+    });
 
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" }`);
+    SRTlib.endLogger();
+  });
 
 });

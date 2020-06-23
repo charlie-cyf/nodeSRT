@@ -2,15 +2,16 @@ var SRTlib = require('SRT-util');
 const dataURItoFile = require('./dataURItoFile');
 const sampleImageDataURI = require('./sampleImageDataURI');
 describe('dataURItoFile', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "dataURItoFile", "fileName": "${__filename}", "calls" : [`);
+  });
 
-    SRTlib.send(`{ "testSuite": "dataURItoFile", "fileName": "${__filename}", "calls" : [`);
+    beforeEach(() => {
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+  });
 
   it('should convert a data uri to a file', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "dataURItoFile", "testName": "should%20convert%20a%20data%20uri%20to%20a%20file", "fileName": "${__filename}", "calls" : [`);
-
     const file = dataURItoFile(sampleImageDataURI, {
       name: 'foo.jpg'
     });
@@ -18,11 +19,14 @@ describe('dataURItoFile', () => {
     expect(file.size).toEqual(9348);
     expect(file.type).toEqual('image/jpeg');
     expect(file.name).toEqual('foo.jpg');
-        SRTlib.send('], "end": "test-should%20convert%20a%20data%20uri%20to%20a%20file"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "dataURItoFile" }`);
+    SRTlib.endLogger();
+  });
 
 });

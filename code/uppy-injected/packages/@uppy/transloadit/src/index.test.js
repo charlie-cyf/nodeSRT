@@ -2,30 +2,24 @@ var SRTlib = require('SRT-util');
 const Core = require('@uppy/core');
 const Transloadit = require('./');
 describe('Transloadit', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "Transloadit", "fileName": "${__filename}", "calls" : [`);
+  });
 
-    SRTlib.send(`{ "testSuite": "Transloadit", "fileName": "${__filename}", "calls" : [`);
+    beforeEach(() => {
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+  });
 
   it('Throws errors if options are missing', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "Transloadit", "testName": "Throws%20errors%20if%20options%20are%20missing", "fileName": "${__filename}", "calls" : [`);
-
     const uppy = new Core();
     expect(() => {
       uppy.use(Transloadit, {
         params: {}
       });
     }).toThrowError(/The `params\.auth\.key` option is required/);
-        SRTlib.send('], "end": "test-Throws%20errors%20if%20options%20are%20missing"},');
-    SRTlib.endLogger();
-
   });
   it('Accepts a JSON string as `params` for signature authentication', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "Transloadit", "testName": "Accepts%20a%20JSON%20string%20as%20%60params%60%20for%20signature%20authentication", "fileName": "${__filename}", "calls" : [`);
-
     const uppy = new Core();
     expect(() => {
       uppy.use(Transloadit, {
@@ -42,15 +36,8 @@ describe('Transloadit', () => {
         params: '{"auth":{"key":"some auth key string"},"template_id":"some template id string"}'
       });
     }).not.toThrowError(/The `params\.auth\.key` option is required/);
-        SRTlib.send('], "end": "test-Accepts%20a%20JSON%20string%20as%20%60params%60%20for%20signature%20authentication"},');
-    SRTlib.endLogger();
-
   });
   it('Does not leave lingering progress if getAssemblyOptions fails', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "Transloadit", "testName": "Does%20not%20leave%20lingering%20progress%20if%20getAssemblyOptions%20fails", "fileName": "${__filename}", "calls" : [`);
-
     const uppy = new Core();
     uppy.use(Transloadit, {
       getAssemblyOptions(file) {
@@ -69,15 +56,8 @@ describe('Transloadit', () => {
       expect(err.message).toBe('Failure!');
       expect(uppy.getFile(fileID).progress.uploadStarted).toBe(null);
     });
-        SRTlib.send('], "end": "test-Does%20not%20leave%20lingering%20progress%20if%20getAssemblyOptions%20fails"},');
-    SRTlib.endLogger();
-
   });
   it('Does not leave lingering progress if creating assembly fails', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "Transloadit", "testName": "Does%20not%20leave%20lingering%20progress%20if%20creating%20assembly%20fails", "fileName": "${__filename}", "calls" : [`);
-
     const uppy = new Core();
     uppy.use(Transloadit, {
       params: {
@@ -100,11 +80,14 @@ describe('Transloadit', () => {
       expect(err.message).toBe('Transloadit: Could not create Assembly: VIDEO_ENCODE_VALIDATION');
       expect(uppy.getFile(fileID).progress.uploadStarted).toBe(null);
     });
-        SRTlib.send('], "end": "test-Does%20not%20leave%20lingering%20progress%20if%20creating%20assembly%20fails"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "Transloadit" }`);
+    SRTlib.endLogger();
+  });
 
 });

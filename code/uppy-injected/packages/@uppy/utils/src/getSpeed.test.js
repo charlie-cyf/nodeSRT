@@ -1,15 +1,16 @@
 var SRTlib = require('SRT-util');
 const getSpeed = require('./getSpeed');
 describe('getSpeed', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "getSpeed", "fileName": "${__filename}", "calls" : [`);
+  });
 
-    SRTlib.send(`{ "testSuite": "getSpeed", "fileName": "${__filename}", "calls" : [`);
+    beforeEach(() => {
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+  });
 
   it('should calculate the speed given a fileProgress object', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "getSpeed", "testName": "should%20calculate%20the%20speed%20given%20a%20fileProgress%20object", "fileName": "${__filename}", "calls" : [`);
-
     const dateNow = new Date();
     const date5SecondsAgo = new Date(dateNow.getTime() - 5 * 1000);
     const fileProgress = {
@@ -17,11 +18,14 @@ describe('getSpeed', () => {
       uploadStarted: date5SecondsAgo
     };
     expect(Math.round(getSpeed(fileProgress))).toEqual(Math.round(205));
-        SRTlib.send('], "end": "test-should%20calculate%20the%20speed%20given%20a%20fileProgress%20object"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "getSpeed" }`);
+    SRTlib.endLogger();
+  });
 
 });

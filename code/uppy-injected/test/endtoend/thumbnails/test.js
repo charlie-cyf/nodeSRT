@@ -9,18 +9,17 @@ const notImages = [{
   file: __filename
 }];
 describe('ThumbnailGenerator', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-    SRTlib.send(`{ "testSuite": "ThumbnailGenerator", "fileName": "${__filename}", "calls" : [`);
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "ThumbnailGenerator", "fileName": "${__filename}", "calls" : [`);
+  });
 
   beforeEach(async () => {
+        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+
     await browser.url(testURL);
   });
   it('should generate thumbnails for images', async function () {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "ThumbnailGenerator", "testName": "should%20generate%20thumbnails%20for%20images", "fileName": "${__filename}", "calls" : [`);
-
     if (capabilities.browserName === 'internet explorer') {
       this.skip();
       return;
@@ -58,12 +57,15 @@ describe('ThumbnailGenerator', () => {
         expect(await getWidth(p)).to.equal(200);
       }
     }
-        SRTlib.send('], "end": "test-should%20generate%20thumbnails%20for%20images"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "ThumbnailGenerator" }`);
+    SRTlib.endLogger();
+  });
 
 });
 async function getWidth(ref) {

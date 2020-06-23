@@ -1,17 +1,22 @@
 var SRTlib = require('SRT-util');
 const isTouchDevice = require('./isTouchDevice');
 describe('isTouchDevice', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-    SRTlib.send(`{ "testSuite": "isTouchDevice", "fileName": "${__filename}", "calls" : [`);
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "isTouchDevice", "fileName": "${__filename}", "calls" : [`);
+  });
 
   const RealTouchStart = global.window.ontouchstart;
   const RealMaxTouchPoints = global.navigator.maxTouchPoints;
   beforeEach(() => {
+        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+
     global.window.ontouchstart = true;
     global.navigator.maxTouchPoints = 1;
   });
   afterEach(() => {
+        SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+
     global.navigator.maxTouchPoints = RealMaxTouchPoints;
     global.window.ontouchstart = RealTouchStart;
   });
@@ -21,7 +26,9 @@ describe('isTouchDevice', () => {
     global.navigator.maxTouchPoints = false;
     expect(isTouchDevice()).toEqual(false);
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "isTouchDevice" }`);
+    SRTlib.endLogger();
+  });
 
 });

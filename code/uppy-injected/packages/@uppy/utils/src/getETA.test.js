@@ -1,15 +1,16 @@
 var SRTlib = require('SRT-util');
 const getETA = require('./getETA');
 describe('getETA', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "getETA", "fileName": "${__filename}", "calls" : [`);
+  });
 
-    SRTlib.send(`{ "testSuite": "getETA", "fileName": "${__filename}", "calls" : [`);
+    beforeEach(() => {
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+  });
 
   it('should get the ETA remaining based on a fileProgress object', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "getETA", "testName": "should%20get%20the%20ETA%20remaining%20based%20on%20a%20fileProgress%20object", "fileName": "${__filename}", "calls" : [`);
-
     const dateNow = new Date();
     const date5SecondsAgo = new Date(dateNow.getTime() - 5 * 1000);
     const fileProgress = {
@@ -18,11 +19,14 @@ describe('getETA', () => {
       uploadStarted: date5SecondsAgo
     };
     expect(getETA(fileProgress)).toEqual(10.1);
-        SRTlib.send('], "end": "test-should%20get%20the%20ETA%20remaining%20based%20on%20a%20fileProgress%20object"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "getETA" }`);
+    SRTlib.endLogger();
+  });
 
 });

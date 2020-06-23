@@ -4,19 +4,18 @@ const lorem = require('@jamen/lorem');
 const {selectFakeFile} = require('../utils');
 const testURL = 'http://localhost:4567/chaos-monkey';
 describe('Chaos monkey', function () {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-    SRTlib.send(`{ "testSuite": "Chaos%20monkey", "fileName": "${__filename}", "calls" : [`);
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "Chaos%20monkey", "fileName": "${__filename}", "calls" : [`);
+  });
 
   this.timeout(5 * 60 * 1000);
   beforeEach(async () => {
+        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+
     await browser.url(testURL);
   });
   it('Add and cancel a bunch', async () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "Chaos%20monkey", "testName": "Add%20and%20cancel%20a%20bunch", "fileName": "${__filename}", "calls" : [`);
-
     await browser.execute(function () {
       window.currentUppy = window.setup({
         limit: 3
@@ -89,11 +88,14 @@ describe('Chaos monkey', function () {
       return window.anyError;
     });
     expect(errorMessage).to.not.exist;
-        SRTlib.send('], "end": "test-Add%20and%20cancel%20a%20bunch"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "Chaos%20monkey" }`);
+    SRTlib.endLogger();
+  });
 
 });

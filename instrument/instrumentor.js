@@ -52,7 +52,7 @@ module.exports = class Instrumentor {
                                     let afterAllFound = false;
                                     let beforeEachFound = false;
                                     let afterEachFound = false;
-
+                                    const suiteName = getSuiteName(ancestors)
                                     // loop throw describe test body to find beforeAll etc
                                     let stmts = t(node, "arguments[1].body.body").safeObject;
                                     if (stmts) {
@@ -60,24 +60,24 @@ module.exports = class Instrumentor {
                                             if (t(stmt, "expression.callee.name").safeObject === 'beforeEach') {
                                                 beforeEachFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) { // might should add code block
-                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testName\": ${jasmine["currentTest"].description}, \"fileName\": \"${__filename}\", \"calls\" : [`);'))
+                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testName\": \"${jasmine["currentTest"].description}\", \"fileName\": \"${__filename}\", \"calls\" : [`);'))
                                                 }
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach') {
                                                 afterEachFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`], \"endTestName\": ${jasmine["currentTest"].description} }`);'))
+                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`], \"endTestName\": "\${jasmine["currentTest"].description}\" }`);'))
                                                 }
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'beforeAll') {
                                                 beforeAllFound = true;
                                                 // start logger
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuiteName\": ${jasmine["currentTest"].description}, \"fileName\": \"${__filename}\", \"calls\" : [`);'))
+                                                    stmt.expression.arguments[0].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);'))
                                                     stmt.expression.arguments[0].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
                                                 }
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'AfterAll') {
                                                 afterAllFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                    stmt.expression.arguments[0].body.body.push(ASTParser.parse('SRTlib.send(`], \"endTestSuiteName\": ${jasmine["currentTest"].description} }`);'))
+                                                    stmt.expression.arguments[0].body.body.push(ASTParser.parse('SRTlib.send(`], \"endTestSuiteName\": "' + Instrumentor.processStringNames(suiteName) + '" }`);'))
                                                     stmt.expression.arguments[0].body.body.push(ASTParser.parse("SRTlib.endLogger();"));
                                                 }
 
@@ -85,57 +85,25 @@ module.exports = class Instrumentor {
                                         });
 
                                         if (!beforeEachFound) {
-                                            stmts.unshift( ASTParser.parse('beforeEach(() => {SRTlib.send(`{ \"testName\": ${jasmine["currentTest"].description}, \"fileName\": \"${__filename}\", \"calls\" : [`);})') )
+                                            stmts.unshift(ASTParser.parse('beforeEach(() => {SRTlib.send(`{ \"testName\": \"${jasmine["currentTest"].description}\", \"fileName\": \"${__filename}\", \"calls\" : [`);})'))
                                         }
 
                                         if (!beforeAllFound) {
-                                            stmts.unshift( ASTParser.parse('beforeAll(() => { SRTlib.startLogger(\"' + codebase + ' \", "http://localhost:8888/instrument-message"); SRTlib.send(`{ \"testSuiteName\": ${jasmine["currentTest"].description}, \"fileName\": \"${__filename}\", \"calls\" : [`); })') )
+                                            stmts.unshift(ASTParser.parse('beforeAll(() => { SRTlib.startLogger(\"' + codebase + '\", "http://localhost:8888/instrument-message"); SRTlib.send(`{ \"testSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\", \"fileName\": \"${__filename}\", \"calls\" : [`); })'))
                                         }
 
-                                        if(!afterEachFound) {
-                                            stmts.push( ASTParser.parse('afterEach(() => { SRTlib.send(`], \"endTestName\": ${jasmine["currentTest"].description} }`); })') )
+                                        if (!afterEachFound) {
+                                            stmts.push(ASTParser.parse('afterEach(() => { SRTlib.send(`], \"endTestName\": \"${jasmine["currentTest"].description}\" }`); })'))
                                         }
 
-                                        if(!afterAllFound) {
-                                            stmts.push(  ASTParser.parse('afterAll(() => { SRTlib.send(`], \"endTestSuiteName\": ${jasmine["currentTest"].description} }`);  SRTlib.endLogger();} )') )
+                                        if (!afterAllFound) {
+                                            stmts.push(ASTParser.parse('afterAll(() => { SRTlib.send(`], \"endTestSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\" }`);  SRTlib.endLogger();} )'))
                                         }
                                         node.arguments[1].body.body = stmts;
                                     }
 
 
                                 }
-
-                                // if (node.callee.name === 'it' || node.callee.name === 'test') {
-                                //     let suiteName = getSuiteName(ancestors);
-                                //     if (suiteName) {
-                                //         let testName = node.arguments[0].value;
-
-                                //         // process special quotation marks in string names.
-                                //         testName = Instrumentor.processStringNames(testName);
-                                //         suiteName = Instrumentor.processStringNames(suiteName)
-                                //         console.log('testName:', testName)
-                                //         // insert in start of test
-                                //         if (node.arguments[1].type === 'FunctionExpression' || node.arguments[1].type === 'ArrowFunctionExpression') {
-                                //             if(node.arguments[1].body.body){
-                                //                 node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suiteName + '\", \"testName\": \"' + testName + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);'));
-                                //                 node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
-                                //                 node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\'], "end": "test-'+testName+'"},\'); SRTlib.endLogger();'));
-                                //             }
-
-                                //         }
-                                //     }
-                                // } else if (node.callee.name === 'describe'){
-                                //     // TODO add before all and after all
-
-                                //     const suite = Instrumentor.processStringNames(node.arguments[0].value);
-                                //     if (node.arguments[1].type === 'FunctionExpression' || node.arguments[1].type === 'ArrowFunctionExpression') {
-                                //         if(node.arguments[1].body.body){
-                                //             node.arguments[1].body.body.unshift(ASTParser.parse('SRTlib.send(`{ \"testSuite\": \"' + suite + '\", \"fileName\": \"${__filename}\", \"calls\" : [`);'));
-                                //             node.arguments[1].body.body.unshift(ASTParser.parse("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
-                                //             node.arguments[1].body.body.push(ASTParser.parse('SRTlib.send(\']},\'); SRTlib.endLogger();'));
-                                //         }
-                                //     }
-                                // }
                             }
                         })
                     } else {
@@ -289,7 +257,7 @@ module.exports = class Instrumentor {
             const classDeclare = ancestors[ancestors.length - 4];
             const className = classDeclare.id.name;
             fname = parent.key.name;
-            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"' + className + '.' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+            node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "class": "' + className + '", "function": \"' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
         }
         else {
             fname = getListOfId(ancestors, []).join('.');

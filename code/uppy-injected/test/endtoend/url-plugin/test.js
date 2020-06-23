@@ -1,14 +1,15 @@
 var SRTlib = require('SRT-util');
 describe('File upload with URL plugin', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20URL%20plugin", "fileName": "${__filename}", "calls" : [`);
+  });
 
-    SRTlib.send(`{ "testSuite": "File%20upload%20with%20URL%20plugin", "fileName": "${__filename}", "calls" : [`);
+    beforeEach(() => {
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+  });
 
   it('should import  and upload a file completely with Url Plugin', async () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "File%20upload%20with%20URL%20plugin", "testName": "should%20import%20%20and%20upload%20a%20file%20completely%20with%20Url%20Plugin", "fileName": "${__filename}", "calls" : [`);
-
     await browser.url('http://localhost:4567/url-plugin');
     const urlButton = await browser.$('.uppy-DashboardTab-btn[aria-controls=uppy-DashboardContent-panel--Url]');
     await urlButton.waitForDisplayed(10000);
@@ -24,11 +25,14 @@ describe('File upload with URL plugin', () => {
     await uploadButton.click();
     const completeStatusBar = await browser.$('.uppy-StatusBar.is-complete');
     await completeStatusBar.waitForExist(20000);
-        SRTlib.send('], "end": "test-should%20import%20%20and%20upload%20a%20file%20completely%20with%20Url%20Plugin"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20URL%20plugin" }`);
+    SRTlib.endLogger();
+  });
 
 });

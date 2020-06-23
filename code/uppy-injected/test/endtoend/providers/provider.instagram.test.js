@@ -2,18 +2,17 @@ var SRTlib = require('SRT-util');
 const {finishUploadTest, startUploadTest, uploadWithRetry} = require('./helper');
 const testURL = 'http://localhost:4567/providers';
 describe('File upload with Instagram Provider', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-    SRTlib.send(`{ "testSuite": "File%20upload%20with%20Instagram%20Provider", "fileName": "${__filename}", "calls" : [`);
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20Instagram%20Provider", "fileName": "${__filename}", "calls" : [`);
+  });
 
   beforeEach(async () => {
+        SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+
     await browser.url(testURL);
   });
   it('should upload a file completely with Instagram', async function () {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "File%20upload%20with%20Instagram%20Provider", "testName": "should%20upload%20a%20file%20completely%20with%20Instagram", "fileName": "${__filename}", "calls" : [`);
-
     if (!process.env.UPPY_INSTAGRAM_USERNAME) {
       console.log('skipping Instagram integration test');
       return this.skip();
@@ -44,25 +43,21 @@ describe('File upload with Instagram Provider', () => {
       }
     }
     await finishUploadTest(browser);
-        SRTlib.send('], "end": "test-should%20upload%20a%20file%20completely%20with%20Instagram"},');
-    SRTlib.endLogger();
-
   });
   it('should resume uploads when retry is triggered Instagram', async function () {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "File%20upload%20with%20Instagram%20Provider", "testName": "should%20resume%20uploads%20when%20retry%20is%20triggered%20Instagram", "fileName": "${__filename}", "calls" : [`);
-
     if (!process.env.UPPY_INSTAGRAM_USERNAME) {
       console.log('skipping Instagram integration test');
       return this.skip();
     }
     await uploadWithRetry(browser, 'Instagram', testURL);
-        SRTlib.send('], "end": "test-should%20resume%20uploads%20when%20retry%20is%20triggered%20Instagram"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20Instagram%20Provider" }`);
+    SRTlib.endLogger();
+  });
 
 });

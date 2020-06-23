@@ -1,15 +1,16 @@
 var SRTlib = require('SRT-util');
 const truncateString = require('./truncateString');
 describe('truncateString', () => {
-    SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
+    beforeAll(() => {
+    SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
+    SRTlib.send(`{ "testSuiteName": "truncateString", "fileName": "${__filename}", "calls" : [`);
+  });
 
-    SRTlib.send(`{ "testSuite": "truncateString", "fileName": "${__filename}", "calls" : [`);
+    beforeEach(() => {
+    SRTlib.send(`{ "testName": "${jasmine["currentTest"].description}", "fileName": "${__filename}", "calls" : [`);
+  });
 
   it('should truncate the string to the length', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "truncateString", "testName": "should%20truncate%20the%20string%20to%20the%20length", "fileName": "${__filename}", "calls" : [`);
-
     expect(truncateString('abcdefghijkl', 14)).toEqual('abcdefghijkl');
     expect(truncateString('abcdefghijkl', 13)).toEqual('abcdefghijkl');
     expect(truncateString('abcdefghijkl', 12)).toEqual('abcdefghijkl');
@@ -25,33 +26,22 @@ describe('truncateString', () => {
     expect(truncateString('abcdefghijkl', 2)).toEqual('ab');
     expect(truncateString('abcdefghijkl', 1)).toEqual('a');
     expect(truncateString('abcdefghijkl', 0)).toEqual('');
-        SRTlib.send('], "end": "test-should%20truncate%20the%20string%20to%20the%20length"},');
-    SRTlib.endLogger();
-
   });
   it('should not truncate the string if it is already short enough', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "truncateString", "testName": "should%20not%20truncate%20the%20string%20if%20it%20is%20already%20short%20enough", "fileName": "${__filename}", "calls" : [`);
-
     expect(truncateString('hello world', 100)).toEqual('hello world');
     expect(truncateString('hello world', 11)).toEqual('hello world');
-        SRTlib.send('], "end": "test-should%20not%20truncate%20the%20string%20if%20it%20is%20already%20short%20enough"},');
-    SRTlib.endLogger();
-
   });
   it('should not truncate the string if it is too short to be meaningfully truncated', () => {
-        SRTlib.startLogger('./code/uppy', 'http://localhost:8888/instrument-message');
-
-        SRTlib.send(`{ "testSuite": "truncateString", "testName": "should%20not%20truncate%20the%20string%20if%20it%20is%20too%20short%20to%20be%20meaningfully%20truncated", "fileName": "${__filename}", "calls" : [`);
-
     expect(truncateString('abc', 2)).toEqual('ab');
     expect(truncateString('abc', 1)).toEqual('a');
-        SRTlib.send('], "end": "test-should%20not%20truncate%20the%20string%20if%20it%20is%20too%20short%20to%20be%20meaningfully%20truncated"},');
-    SRTlib.endLogger();
-
   });
-    SRTlib.send(']},');
-  SRTlib.endLogger();
+    afterEach(() => {
+    SRTlib.send(`], "endTestName": "${jasmine["currentTest"].description}" }`);
+  });
+
+    afterAll(() => {
+    SRTlib.send(`], "endTestSuiteName": "truncateString" }`);
+    SRTlib.endLogger();
+  });
 
 });
