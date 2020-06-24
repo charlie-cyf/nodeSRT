@@ -24,7 +24,7 @@ fs.writeFileSync("./.env", envfile.stringify(parsedEnv))
 require("dotenv").config()
 
 // generate AST for codebase
-// generate(codeBase)
+generate(codeBase)
 
 console.log("env", process.env.SRT_PATH)
 

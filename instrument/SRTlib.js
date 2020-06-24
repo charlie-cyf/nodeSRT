@@ -33,13 +33,13 @@ module.exports = class SRTlib {
         if(SRTlib.endPontUrl && SRTlib.basePath){
             SRTlib.message = SRTlib.message+msg;
         } else {
-            console.warn('received message when SRTlib logger not started!',msg)
+            console.warn('received message when SRTlib logger not started!')
         }
     }
 
     static async endLogger(){
         if(!SRTlib.started){
-            console.warn('endlogger when SRTlib is not started!', SRTlib.message)
+            console.warn('endlogger when SRTlib is not started!')
         }
         SRTlib.started = false;
 

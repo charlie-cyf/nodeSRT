@@ -1,6 +1,6 @@
 var SRTlib = require('SRT-util');
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
-importScripts("/create-react-app/precache-manifest.6cc24fd30d5266e6dbe57da73130a567.js");
+importScripts("/create-react-app/precache-manifest.45257bf494ba85aa3cb4c622183219a7.js");
 self.addEventListener('message', event => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 

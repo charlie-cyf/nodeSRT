@@ -1,79 +1,78 @@
-/* eslint-disable */
+var SRTlib = require('SRT-util');
 var jumpToCode = (function init() {
-    // Classes of code we would like to highlight in the file view
-    var missingCoverageClasses = ['.cbranch-no', '.cstat-no', '.fstat-no'];
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"jumpToCode.init","fileName":"${__filename}","paramsNumber":0},`);
 
-    // Elements to highlight in the file listing view
-    var fileListingElements = ['td.pct.low'];
+  var missingCoverageClasses = ['.cbranch-no', '.cstat-no', '.fstat-no'];
+  var fileListingElements = ['td.pct.low'];
+  var notSelector = ':not(' + missingCoverageClasses.join('):not(') + ') > ';
+  var selector = fileListingElements.join(', ') + ', ' + notSelector + missingCoverageClasses.join(', ' + notSelector);
+  var missingCoverageElements = document.querySelectorAll(selector);
+  var currentIndex;
+  function toggleClass(index) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"toggleClass","fileName":"${__filename}","paramsNumber":1},`);
 
-    // We don't want to select elements that are direct descendants of another match
-    var notSelector = ':not(' + missingCoverageClasses.join('):not(') + ') > '; // becomes `:not(a):not(b) > `
+    missingCoverageElements.item(currentIndex).classList.remove('highlighted');
+    missingCoverageElements.item(index).classList.add('highlighted');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"toggleClass","paramsNumber":1},');
 
-    // Selecter that finds elements on the page to which we can jump
-    var selector =
-        fileListingElements.join(', ') +
-        ', ' +
-        notSelector +
-        missingCoverageClasses.join(', ' + notSelector); // becomes `:not(a):not(b) > a, :not(a):not(b) > b`
+  }
+  function makeCurrent(index) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeCurrent","fileName":"${__filename}","paramsNumber":1},`);
 
-    // The NodeList of matching elements
-    var missingCoverageElements = document.querySelectorAll(selector);
+    toggleClass(index);
+    currentIndex = index;
+    missingCoverageElements.item(index).scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center'
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"makeCurrent","paramsNumber":1},');
 
-    var currentIndex;
+  }
+  function goToPrevious() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"goToPrevious","fileName":"${__filename}","paramsNumber":0},`);
 
-    function toggleClass(index) {
-        missingCoverageElements
-            .item(currentIndex)
-            .classList.remove('highlighted');
-        missingCoverageElements.item(index).classList.add('highlighted');
+    var nextIndex = 0;
+    if (typeof currentIndex !== 'number' || currentIndex === 0) {
+      nextIndex = missingCoverageElements.length - 1;
+    } else if (missingCoverageElements.length > 1) {
+      nextIndex = currentIndex - 1;
     }
+    makeCurrent(nextIndex);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"goToPrevious","paramsNumber":0},');
 
-    function makeCurrent(index) {
-        toggleClass(index);
-        currentIndex = index;
-        missingCoverageElements.item(index).scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'center'
-        });
+  }
+  function goToNext() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"goToNext","fileName":"${__filename}","paramsNumber":0},`);
+
+    var nextIndex = 0;
+    if (typeof currentIndex === 'number' && currentIndex < missingCoverageElements.length - 1) {
+      nextIndex = currentIndex + 1;
     }
+    makeCurrent(nextIndex);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"goToNext","paramsNumber":0},');
 
-    function goToPrevious() {
-        var nextIndex = 0;
-        if (typeof currentIndex !== 'number' || currentIndex === 0) {
-            nextIndex = missingCoverageElements.length - 1;
-        } else if (missingCoverageElements.length > 1) {
-            nextIndex = currentIndex - 1;
-        }
+  }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"jumpToCode.init"},');
 
-        makeCurrent(nextIndex);
+  return function jump(event) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"jumpToCode.init.ReturnStatement.jump","fileName":"${__filename}","paramsNumber":1},`);
+
+    switch (event.which) {
+      case 78:
+      case 74:
+        goToNext();
+        break;
+      case 66:
+      case 75:
+      case 80:
+        goToPrevious();
+        break;
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"jumpToCode.init.ReturnStatement.jump"},');
 
-    function goToNext() {
-        var nextIndex = 0;
+  };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"jumpToCode.init"},');
 
-        if (
-            typeof currentIndex === 'number' &&
-            currentIndex < missingCoverageElements.length - 1
-        ) {
-            nextIndex = currentIndex + 1;
-        }
-
-        makeCurrent(nextIndex);
-    }
-
-    return function jump(event) {
-        switch (event.which) {
-            case 78: // n
-            case 74: // j
-                goToNext();
-                break;
-            case 66: // b
-            case 75: // k
-            case 80: // p
-                goToPrevious();
-                break;
-        }
-    };
 })();
 window.addEventListener('keydown', jumpToCode);

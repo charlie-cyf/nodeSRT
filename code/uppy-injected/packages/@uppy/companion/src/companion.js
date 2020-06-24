@@ -1,4 +1,3 @@
-var SRTlib = require('SRT-util');
 const fs = require('fs');
 const express = require('express');
 const Grant = require('grant').express();
@@ -10,6 +9,7 @@ const url = require('./server/controllers/url');
 const SocketServer = require('ws').Server;
 const emitter = require('./server/emitter');
 const merge = require('lodash.merge');
+var SRTlib = require('SRT-util');
 const redis = require('./server/redis');
 const cookieParser = require('cookie-parser');
 const {jsonStringify, getURLBuilder} = require('./server/helpers/utils');

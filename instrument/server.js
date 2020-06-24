@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
   * remember to use --header 'Content-Type: application/x-www-form-urlencoded'
 */
 app.post('/instrument-message', (req, res) => {
-  console.log("POST", req.body)
+  // console.log("POST", req.body)
   let logStream;
   try {
     let log_path = path.join(process.env.SRT_PATH, "tmp", req.body.fileName);
