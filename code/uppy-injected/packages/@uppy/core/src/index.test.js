@@ -116,9 +116,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "plugins" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -239,9 +239,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "state" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -375,9 +375,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "upload%20hooks" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -519,9 +519,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "preprocessors" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -635,9 +635,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "postprocessors" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -673,9 +673,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "uploaders" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -924,9 +924,9 @@ describe('src/Core', () => {
         SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
       });
 
-            afterAll(() => {
+            afterAll(async () => {
         SRTlib.send(`], "endTestSuiteName": "with%20allowMultipleUploads%3A%20false" },`);
-        SRTlib.endLogger();
+        await SRTlib.endLogger();
       });
 
     });
@@ -956,9 +956,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "adding%20a%20file" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1149,9 +1149,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "uploading%20a%20file" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1192,9 +1192,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "removing%20a%20file" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1214,9 +1214,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "restoring%20a%20file" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1248,9 +1248,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "get%20a%20file" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1293,9 +1293,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "getFiles" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1393,9 +1393,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "setOptions" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1486,9 +1486,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "meta%20data" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1732,9 +1732,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "progress" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1886,9 +1886,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "checkRestrictions" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1937,9 +1937,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "actions" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -1989,9 +1989,9 @@ describe('src/Core', () => {
       expect(offlineEventMock.mock.calls.length).toEqual(1);
       expect(backOnlineEventMock.mock.calls.length).toEqual(1);
     });
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "updateOnlineStatus" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -2082,9 +2082,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "info" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -2122,9 +2122,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "createUpload" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -2153,9 +2153,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "i18n" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -2182,9 +2182,9 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "default%20restrictions" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -2269,15 +2269,15 @@ describe('src/Core', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "log" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "src/Core" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

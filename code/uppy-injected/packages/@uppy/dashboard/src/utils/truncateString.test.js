@@ -39,9 +39,9 @@ describe('truncateString', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "truncateString" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

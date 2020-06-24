@@ -44,9 +44,9 @@ describe('generateFileID', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "generateFileID" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

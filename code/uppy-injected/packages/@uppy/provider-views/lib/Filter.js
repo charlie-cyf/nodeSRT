@@ -1,60 +1,33 @@
-var SRTlib = require('SRT-util');
-function _assertThisInitialized(self) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-  if (self === void 0) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
+var _require = require('preact'),
+    h = _require.h,
+    Component = _require.Component;
 
-  return self;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized","paramsNumber":1},');
-
-}
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
-
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
-
-}
-var _require = require('preact'), h = _require.h, Component = _require.Component;
-module.exports = (function (_Component) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
-
+module.exports = /*#__PURE__*/function (_Component) {
   _inheritsLoose(Filter, _Component);
-  function Filter(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Filter","fileName":"${__filename}","paramsNumber":1},`);
 
+  function Filter(props) {
     var _this;
+
     _this = _Component.call(this, props) || this;
     _this.preventEnterPress = _this.preventEnterPress.bind(_assertThisInitialized(_this));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Filter"},');
-
     return _this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Filter","paramsNumber":1},');
-
   }
-  var _proto = Filter.prototype;
-  _proto.preventEnterPress = function preventEnterPress(ev) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.preventEnterPress.preventEnterPress","fileName":"${__filename}","paramsNumber":1},`);
 
+  var _proto = Filter.prototype;
+
+  _proto.preventEnterPress = function preventEnterPress(ev) {
     if (ev.keyCode === 13) {
       ev.stopPropagation();
       ev.preventDefault();
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.preventEnterPress.preventEnterPress"},');
-
   };
-  _proto.render = function render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render.render","fileName":"${__filename}","paramsNumber":0},`);
 
+  _proto.render = function render() {
     var _this2 = this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render"},');
 
     return h("div", {
       class: "uppy-ProviderBrowser-search"
@@ -67,13 +40,7 @@ module.exports = (function (_Component) {
       onkeydown: this.preventEnterPress,
       onkeypress: this.preventEnterPress,
       oninput: function oninput(e) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render.render.ReturnStatement.h.h.oninput.oninput","fileName":"${__filename}","paramsNumber":1},`);
-
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render.ReturnStatement.h.h.oninput.oninput"},');
-
         return _this2.props.filterQuery(e);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render.ReturnStatement.h.h.oninput.oninput"},');
-
       },
       value: this.props.filterInput
     }), h("svg", {
@@ -99,12 +66,7 @@ module.exports = (function (_Component) {
     }, h("path", {
       d: "M17.318 17.232L9.94 9.854 9.586 9.5l-.354.354-7.378 7.378h.707l-.62-.62v.706L9.318 9.94l.354-.354-.354-.354L1.94 1.854v.707l.62-.62h-.706l7.378 7.378.354.354.354-.354 7.378-7.378h-.707l.622.62v-.706L9.854 9.232l-.354.354.354.354 7.378 7.378.708-.707-7.38-7.378v.708l7.38-7.38.353-.353-.353-.353-.622-.622-.353-.353-.354.352-7.378 7.38h.708L2.56 1.23 2.208.88l-.353.353-.622.62-.353.355.352.353 7.38 7.38v-.708l-7.38 7.38-.353.353.352.353.622.622.353.353.354-.353 7.38-7.38h-.708l7.38 7.38z"
     }))));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render"},');
-
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return Filter;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-})(Component);
+}(Component);

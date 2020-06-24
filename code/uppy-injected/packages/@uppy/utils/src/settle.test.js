@@ -26,9 +26,9 @@ describe('settle', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "settle" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

@@ -20,9 +20,9 @@ describe('isObjectURL', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "isObjectURL" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

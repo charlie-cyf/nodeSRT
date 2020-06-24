@@ -19,9 +19,9 @@ describe('createSuperFocus', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "createSuperFocus" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

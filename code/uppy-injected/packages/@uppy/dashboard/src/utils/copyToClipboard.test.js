@@ -17,9 +17,9 @@ describe('copyToClipboard', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "copyToClipboard" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

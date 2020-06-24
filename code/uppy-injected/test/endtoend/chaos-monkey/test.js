@@ -93,9 +93,9 @@ describe('Chaos monkey', function () {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Chaos%20monkey" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

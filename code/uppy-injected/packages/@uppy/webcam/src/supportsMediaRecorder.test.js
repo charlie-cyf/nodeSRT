@@ -30,9 +30,9 @@ describe('supportsMediaRecorder', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "supportsMediaRecorder" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

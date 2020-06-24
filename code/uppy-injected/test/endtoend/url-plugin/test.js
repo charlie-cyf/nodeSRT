@@ -30,9 +30,9 @@ describe('File upload with URL plugin', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20URL%20plugin" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

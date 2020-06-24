@@ -1,4 +1,5 @@
 var SRTlib = require('SRT-util');
+
 var en_US = {};
 en_US.strings = {
   addBulkFilesFailed: {
@@ -143,21 +144,22 @@ en_US.strings = {
     '1': 'You have to select at least %{smart_count} files'
   }
 };
+
 en_US.pluralize = function (count) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"en_US.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"en_US.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (count === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"en_US.pluralize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"en_US.pluralize"},');
     return 0;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"en_US.pluralize"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"en_US.pluralize"},');
   return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"en_US.pluralize"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"en_US.pluralize"},');
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.en_US = en_US;
 }
+
 module.exports = en_US;

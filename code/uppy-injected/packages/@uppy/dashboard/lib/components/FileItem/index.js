@@ -1,66 +1,51 @@
-var SRTlib = require('SRT-util');
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
+var _require = require('preact'),
+    h = _require.h,
+    Component = _require.Component;
 
-}
-var _require = require('preact'), h = _require.h, Component = _require.Component;
 var classNames = require('classnames');
+
 var shallowEqual = require('is-shallow-equal');
+
 var FilePreviewAndLink = require('./FilePreviewAndLink');
+
 var FileProgress = require('./FileProgress');
+
 var FileInfo = require('./FileInfo');
+
 var Buttons = require('./Buttons');
-module.exports = (function (_Component) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
+module.exports = /*#__PURE__*/function (_Component) {
   _inheritsLoose(FileItem, _Component);
+
   function FileItem() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FileItem","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"FileItem"},');
-
     return _Component.apply(this, arguments) || this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"FileItem","paramsNumber":0},');
-
   }
+
   var _proto = FileItem.prototype;
+
   _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.shouldComponentUpdate.shouldComponentUpdate","fileName":"${__filename}","paramsNumber":1},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.shouldComponentUpdate.shouldComponentUpdate"},');
-
     return !shallowEqual(this.props, nextProps);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.shouldComponentUpdate.shouldComponentUpdate"},');
-
   };
-  _proto.componentDidMount = function componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.componentDidMount.componentDidMount","fileName":"${__filename}","paramsNumber":0},`);
 
+  _proto.componentDidMount = function componentDidMount() {
     var file = this.props.file;
+
     if (!file.preview) {
       this.props.handleRequestThumbnail(file);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.componentDidMount.componentDidMount"},');
-
   };
-  _proto.componentWillUnmount = function componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.componentWillUnmount.componentWillUnmount","fileName":"${__filename}","paramsNumber":0},`);
 
+  _proto.componentWillUnmount = function componentWillUnmount() {
     var file = this.props.file;
+
     if (!file.preview) {
       this.props.handleCancelThumbnail(file);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.componentWillUnmount.componentWillUnmount"},');
-
   };
-  _proto.render = function render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render.render","fileName":"${__filename}","paramsNumber":0},`);
 
+  _proto.render = function render() {
     var file = this.props.file;
     var isProcessing = file.progress.preprocess || file.progress.postprocess;
     var isUploaded = file.progress.uploadComplete && !isProcessing && !file.error;
@@ -69,9 +54,11 @@ module.exports = (function (_Component) {
     var isPaused = file.isPaused || false;
     var error = file.error || false;
     var showRemoveButton = this.props.individualCancellation ? !isUploaded : !uploadInProgress && !isUploaded;
+
     if (isUploaded && this.props.showRemoveButtonAfterComplete) {
       showRemoveButton = true;
     }
+
     var dashboardItemClass = classNames({
       'uppy-u-reset': true,
       'uppy-DashboardItem': true,
@@ -83,8 +70,6 @@ module.exports = (function (_Component) {
       'is-resumable': this.props.resumableUploads,
       'is-noIndividualCancellation': !this.props.individualCancellation
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render"},');
-
     return h("div", {
       class: dashboardItemClass,
       id: "uppy_" + file.id,
@@ -127,12 +112,7 @@ module.exports = (function (_Component) {
       log: this.props.log,
       info: this.props.info
     })));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render"},');
-
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return FileItem;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-})(Component);
+}(Component);

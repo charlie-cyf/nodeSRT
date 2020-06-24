@@ -50,9 +50,9 @@ describe('XHRUpload', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "getResponseData" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -103,9 +103,9 @@ describe('XHRUpload', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "validateStatus" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -113,9 +113,9 @@ describe('XHRUpload', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "XHRUpload" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

@@ -26,9 +26,9 @@ describe('isTouchDevice', () => {
     global.navigator.maxTouchPoints = false;
     expect(isTouchDevice()).toEqual(false);
   });
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "isTouchDevice" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

@@ -77,9 +77,11 @@ module.exports = class Instrumentor {
                                                 }
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'AfterAll') {
                                                 afterAllFound = true;
+                                                // make callback function async
+                                                stmt.expression.arguments[0].async = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
                                                     stmt.expression.arguments[0].body.body.push(ASTParser.parse('SRTlib.send(`], \"endTestSuiteName\": "' + Instrumentor.processStringNames(suiteName) + '" },`);'))
-                                                    stmt.expression.arguments[0].body.body.push(ASTParser.parse("SRTlib.endLogger();"));
+                                                    stmt.expression.arguments[0].body.body.push(ASTParser.parse("await SRTlib.endLogger();"));
                                                 }
 
                                             }
@@ -98,7 +100,7 @@ module.exports = class Instrumentor {
                                         }
 
                                         if (!afterAllFound) {
-                                            stmts.push(ASTParser.parse('afterAll(() => { SRTlib.send(`], \"endTestSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\" },`);  SRTlib.endLogger();} )'))
+                                            stmts.push(ASTParser.parse('afterAll(async () => { SRTlib.send(`], \"endTestSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\" },`); await SRTlib.endLogger();} )'))
                                         }
                                         node.arguments[1].body.body = stmts;
                                     }

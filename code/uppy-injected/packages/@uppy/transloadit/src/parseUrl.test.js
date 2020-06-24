@@ -26,9 +26,9 @@ describe('Transloadit/parseUrl', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Transloadit/parseUrl" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

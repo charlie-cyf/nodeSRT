@@ -1,27 +1,32 @@
 var SRTlib = require('SRT-util');
+
 var debounce = require('lodash.debounce');
+
 var FOCUSABLE_ELEMENTS = require('@uppy/utils/lib/FOCUSABLE_ELEMENTS');
+
 var getActiveOverlayEl = require('./getActiveOverlayEl');
+
 module.exports = function createSuperFocus() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.createSuperFocus","fileName":"${__filename}","paramsNumber":0},`);
-
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.createSuperFocus\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
   var lastFocusWasOnSuperFocusableEl = false;
-  var superFocus = function superFocus(dashboardEl, activeOverlayType) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"superFocus","fileName":"${__filename}","paramsNumber":2},`);
 
+  var superFocus = function superFocus(dashboardEl, activeOverlayType) {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"superFocus\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
     var overlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
     var isFocusInOverlay = overlayEl.contains(document.activeElement);
+
     if (isFocusInOverlay && lastFocusWasOnSuperFocusableEl) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
       return;
     }
+
     var superFocusableEl = overlayEl.querySelector('[data-uppy-super-focusable]');
-    if (isFocusInOverlay && !superFocusableEl) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
 
+    if (isFocusInOverlay && !superFocusableEl) {
+      SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
       return;
     }
+
     if (superFocusableEl) {
       superFocusableEl.focus({
         preventScroll: true
@@ -34,12 +39,11 @@ module.exports = function createSuperFocus() {
       });
       lastFocusWasOnSuperFocusableEl = false;
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
 
+    SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},');
   return debounce(superFocus, 260);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},');
 };

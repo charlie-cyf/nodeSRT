@@ -21,9 +21,9 @@ describe('isPreviewSupported', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "isPreviewSupported" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

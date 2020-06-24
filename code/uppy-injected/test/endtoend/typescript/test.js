@@ -26,9 +26,9 @@ describe('Project compiled with Uppy\'s TypeScript typings', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Project%20compiled%20with%20Uppy%27s%20TypeScript%20typings" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

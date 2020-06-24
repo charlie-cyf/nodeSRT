@@ -1,0 +1,1721 @@
+{
+    "type": "Program",
+    "start": 0,
+    "end": 2004,
+    "body": [
+      {
+        "type": "FunctionDeclaration",
+        "start": 1,
+        "end": 159,
+        "id": {
+          "type": "Identifier",
+          "start": 10,
+          "end": 22,
+          "name": "filterByTerm"
+        },
+        "expression": false,
+        "generator": false,
+        "async": false,
+        "params": [
+          {
+            "type": "Identifier",
+            "start": 23,
+            "end": 31,
+            "name": "inputArr"
+          },
+          {
+            "type": "Identifier",
+            "start": 33,
+            "end": 43,
+            "name": "searchTerm"
+          }
+        ],
+        "body": {
+          "type": "BlockStatement",
+          "start": 45,
+          "end": 159,
+          "body": [
+            {
+              "type": "ReturnStatement",
+              "start": 51,
+              "end": 155,
+              "argument": {
+                "type": "CallExpression",
+                "start": 58,
+                "end": 154,
+                "callee": {
+                  "type": "MemberExpression",
+                  "start": 58,
+                  "end": 73,
+                  "object": {
+                    "type": "Identifier",
+                    "start": 58,
+                    "end": 66,
+                    "name": "inputArr"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 67,
+                    "end": 73,
+                    "name": "filter"
+                  },
+                  "computed": false
+                },
+                "arguments": [
+                  {
+                    "type": "FunctionExpression",
+                    "start": 74,
+                    "end": 153,
+                    "id": null,
+                    "expression": false,
+                    "generator": false,
+                    "async": false,
+                    "params": [
+                      {
+                        "type": "Identifier",
+                        "start": 83,
+                        "end": 95,
+                        "name": "arrayElement"
+                      }
+                    ],
+                    "body": {
+                      "type": "BlockStatement",
+                      "start": 97,
+                      "end": 153,
+                      "body": [
+                        {
+                          "type": "ReturnStatement",
+                          "start": 105,
+                          "end": 147,
+                          "argument": {
+                            "type": "CallExpression",
+                            "start": 112,
+                            "end": 146,
+                            "callee": {
+                              "type": "MemberExpression",
+                              "start": 112,
+                              "end": 134,
+                              "object": {
+                                "type": "MemberExpression",
+                                "start": 112,
+                                "end": 128,
+                                "object": {
+                                  "type": "Identifier",
+                                  "start": 112,
+                                  "end": 124,
+                                  "name": "arrayElement"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "start": 125,
+                                  "end": 128,
+                                  "name": "url"
+                                },
+                                "computed": false
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "start": 129,
+                                "end": 134,
+                                "name": "match"
+                              },
+                              "computed": false
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 135,
+                                "end": 145,
+                                "name": "searchTerm"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "ExpressionStatement",
+        "start": 161,
+        "end": 2004,
+        "expression": {
+          "type": "CallExpression",
+          "start": 161,
+          "end": 2003,
+          "callee": {
+            "type": "Identifier",
+            "start": 161,
+            "end": 169,
+            "name": "describe"
+          },
+          "arguments": [
+            {
+              "type": "Literal",
+              "start": 170,
+              "end": 187,
+              "value": "Filter function",
+              "raw": "\"Filter function\""
+            },
+            {
+              "type": "ArrowFunctionExpression",
+              "start": 189,
+              "end": 2002,
+              "id": null,
+              "expression": false,
+              "generator": false,
+              "async": false,
+              "params": [],
+              "body": {
+                "type": "BlockStatement",
+                "start": 195,
+                "end": 2002,
+                "body": [
+                  {
+                    "type": "ExpressionStatement",
+                    "start": 201,
+                    "end": 572,
+                    "expression": {
+                      "type": "CallExpression",
+                      "start": 201,
+                      "end": 571,
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 201,
+                        "end": 205,
+                        "name": "test"
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "start": 206,
+                          "end": 248,
+                          "value": "it should filter by a search term (link)",
+                          "raw": "\"it should filter by a search term (link)\""
+                        },
+                        {
+                          "type": "ArrowFunctionExpression",
+                          "start": 250,
+                          "end": 570,
+                          "id": null,
+                          "expression": false,
+                          "generator": false,
+                          "async": false,
+                          "params": [],
+                          "body": {
+                            "type": "BlockStatement",
+                            "start": 256,
+                            "end": 570,
+                            "body": [
+                              {
+                                "type": "VariableDeclaration",
+                                "start": 264,
+                                "end": 432,
+                                "declarations": [
+                                  {
+                                    "type": "VariableDeclarator",
+                                    "start": 270,
+                                    "end": 431,
+                                    "id": {
+                                      "type": "Identifier",
+                                      "start": 270,
+                                      "end": 275,
+                                      "name": "input"
+                                    },
+                                    "init": {
+                                      "type": "ArrayExpression",
+                                      "start": 278,
+                                      "end": 431,
+                                      "elements": [
+                                        {
+                                          "type": "ObjectExpression",
+                                          "start": 288,
+                                          "end": 326,
+                                          "properties": [
+                                            {
+                                              "type": "Property",
+                                              "start": 290,
+                                              "end": 295,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 290,
+                                                "end": 292,
+                                                "name": "id"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 294,
+                                                "end": 295,
+                                                "value": 1,
+                                                "raw": "1"
+                                              },
+                                              "kind": "init"
+                                            },
+                                            {
+                                              "type": "Property",
+                                              "start": 297,
+                                              "end": 324,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 297,
+                                                "end": 300,
+                                                "name": "url"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 302,
+                                                "end": 324,
+                                                "value": "https://www.url1.dev",
+                                                "raw": "\"https://www.url1.dev\""
+                                              },
+                                              "kind": "init"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "ObjectExpression",
+                                          "start": 336,
+                                          "end": 374,
+                                          "properties": [
+                                            {
+                                              "type": "Property",
+                                              "start": 338,
+                                              "end": 343,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 338,
+                                                "end": 340,
+                                                "name": "id"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 342,
+                                                "end": 343,
+                                                "value": 2,
+                                                "raw": "2"
+                                              },
+                                              "kind": "init"
+                                            },
+                                            {
+                                              "type": "Property",
+                                              "start": 345,
+                                              "end": 372,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 345,
+                                                "end": 348,
+                                                "name": "url"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 350,
+                                                "end": 372,
+                                                "value": "https://www.url2.dev",
+                                                "raw": "\"https://www.url2.dev\""
+                                              },
+                                              "kind": "init"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "ObjectExpression",
+                                          "start": 384,
+                                          "end": 423,
+                                          "properties": [
+                                            {
+                                              "type": "Property",
+                                              "start": 386,
+                                              "end": 391,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 386,
+                                                "end": 388,
+                                                "name": "id"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 390,
+                                                "end": 391,
+                                                "value": 3,
+                                                "raw": "3"
+                                              },
+                                              "kind": "init"
+                                            },
+                                            {
+                                              "type": "Property",
+                                              "start": 393,
+                                              "end": 421,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 393,
+                                                "end": 396,
+                                                "name": "url"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 398,
+                                                "end": 421,
+                                                "value": "https://www.link3.dev",
+                                                "raw": "\"https://www.link3.dev\""
+                                              },
+                                              "kind": "init"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "kind": "const"
+                              },
+                              {
+                                "type": "VariableDeclaration",
+                                "start": 442,
+                                "end": 499,
+                                "declarations": [
+                                  {
+                                    "type": "VariableDeclarator",
+                                    "start": 448,
+                                    "end": 498,
+                                    "id": {
+                                      "type": "Identifier",
+                                      "start": 448,
+                                      "end": 454,
+                                      "name": "output"
+                                    },
+                                    "init": {
+                                      "type": "ArrayExpression",
+                                      "start": 457,
+                                      "end": 498,
+                                      "elements": [
+                                        {
+                                          "type": "ObjectExpression",
+                                          "start": 458,
+                                          "end": 497,
+                                          "properties": [
+                                            {
+                                              "type": "Property",
+                                              "start": 460,
+                                              "end": 465,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 460,
+                                                "end": 462,
+                                                "name": "id"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 464,
+                                                "end": 465,
+                                                "value": 3,
+                                                "raw": "3"
+                                              },
+                                              "kind": "init"
+                                            },
+                                            {
+                                              "type": "Property",
+                                              "start": 467,
+                                              "end": 495,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 467,
+                                                "end": 470,
+                                                "name": "url"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 472,
+                                                "end": 495,
+                                                "value": "https://www.link3.dev",
+                                                "raw": "\"https://www.link3.dev\""
+                                              },
+                                              "kind": "init"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "kind": "const"
+                              },
+                              {
+                                "type": "ExpressionStatement",
+                                "start": 509,
+                                "end": 561,
+                                "expression": {
+                                  "type": "CallExpression",
+                                  "start": 509,
+                                  "end": 560,
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "start": 509,
+                                    "end": 552,
+                                    "object": {
+                                      "type": "CallExpression",
+                                      "start": 509,
+                                      "end": 544,
+                                      "callee": {
+                                        "type": "Identifier",
+                                        "start": 509,
+                                        "end": 515,
+                                        "name": "expect"
+                                      },
+                                      "arguments": [
+                                        {
+                                          "type": "CallExpression",
+                                          "start": 516,
+                                          "end": 543,
+                                          "callee": {
+                                            "type": "Identifier",
+                                            "start": 516,
+                                            "end": 528,
+                                            "name": "filterByTerm"
+                                          },
+                                          "arguments": [
+                                            {
+                                              "type": "Identifier",
+                                              "start": 529,
+                                              "end": 534,
+                                              "name": "input"
+                                            },
+                                            {
+                                              "type": "Literal",
+                                              "start": 536,
+                                              "end": 542,
+                                              "value": "link",
+                                              "raw": "\"link\""
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "start": 545,
+                                      "end": 552,
+                                      "name": "toEqual"
+                                    },
+                                    "computed": false
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Identifier",
+                                      "start": 553,
+                                      "end": 559,
+                                      "name": "output"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "ExpressionStatement",
+                    "start": 578,
+                    "end": 1621,
+                    "expression": {
+                      "type": "CallExpression",
+                      "start": 578,
+                      "end": 1620,
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 578,
+                        "end": 586,
+                        "name": "describe"
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "start": 587,
+                          "end": 611,
+                          "value": "nested Filter function",
+                          "raw": "\"nested Filter function\""
+                        },
+                        {
+                          "type": "ArrowFunctionExpression",
+                          "start": 613,
+                          "end": 1619,
+                          "id": null,
+                          "expression": false,
+                          "generator": false,
+                          "async": false,
+                          "params": [],
+                          "body": {
+                            "type": "BlockStatement",
+                            "start": 619,
+                            "end": 1619,
+                            "body": [
+                              {
+                                "type": "ExpressionStatement",
+                                "start": 630,
+                                "end": 1179,
+                                "expression": {
+                                  "type": "CallExpression",
+                                  "start": 630,
+                                  "end": 1178,
+                                  "callee": {
+                                    "type": "Identifier",
+                                    "start": 630,
+                                    "end": 638,
+                                    "name": "describe"
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Literal",
+                                      "start": 639,
+                                      "end": 670,
+                                      "value": "nested nested Filter function",
+                                      "raw": "\"nested nested Filter function\""
+                                    },
+                                    {
+                                      "type": "ArrowFunctionExpression",
+                                      "start": 672,
+                                      "end": 1177,
+                                      "id": null,
+                                      "expression": false,
+                                      "generator": false,
+                                      "async": false,
+                                      "params": [],
+                                      "body": {
+                                        "type": "BlockStatement",
+                                        "start": 678,
+                                        "end": 1177,
+                                        "body": [
+                                          {
+                                            "type": "ExpressionStatement",
+                                            "start": 692,
+                                            "end": 1165,
+                                            "expression": {
+                                              "type": "CallExpression",
+                                              "start": 692,
+                                              "end": 1164,
+                                              "callee": {
+                                                "type": "Identifier",
+                                                "start": 692,
+                                                "end": 696,
+                                                "name": "test"
+                                              },
+                                              "arguments": [
+                                                {
+                                                  "type": "Literal",
+                                                  "start": 697,
+                                                  "end": 753,
+                                                  "value": "nested nested it should filter by a search term (link)",
+                                                  "raw": "\"nested nested it should filter by a search term (link)\""
+                                                },
+                                                {
+                                                  "type": "ArrowFunctionExpression",
+                                                  "start": 755,
+                                                  "end": 1163,
+                                                  "id": null,
+                                                  "expression": false,
+                                                  "generator": false,
+                                                  "async": false,
+                                                  "params": [],
+                                                  "body": {
+                                                    "type": "BlockStatement",
+                                                    "start": 761,
+                                                    "end": 1163,
+                                                    "body": [
+                                                      {
+                                                        "type": "VariableDeclaration",
+                                                        "start": 777,
+                                                        "end": 977,
+                                                        "declarations": [
+                                                          {
+                                                            "type": "VariableDeclarator",
+                                                            "start": 783,
+                                                            "end": 976,
+                                                            "id": {
+                                                              "type": "Identifier",
+                                                              "start": 783,
+                                                              "end": 788,
+                                                              "name": "input"
+                                                            },
+                                                            "init": {
+                                                              "type": "ArrayExpression",
+                                                              "start": 791,
+                                                              "end": 976,
+                                                              "elements": [
+                                                                {
+                                                                  "type": "ObjectExpression",
+                                                                  "start": 809,
+                                                                  "end": 847,
+                                                                  "properties": [
+                                                                    {
+                                                                      "type": "Property",
+                                                                      "start": 811,
+                                                                      "end": 816,
+                                                                      "method": false,
+                                                                      "shorthand": false,
+                                                                      "computed": false,
+                                                                      "key": {
+                                                                        "type": "Identifier",
+                                                                        "start": 811,
+                                                                        "end": 813,
+                                                                        "name": "id"
+                                                                      },
+                                                                      "value": {
+                                                                        "type": "Literal",
+                                                                        "start": 815,
+                                                                        "end": 816,
+                                                                        "value": 1,
+                                                                        "raw": "1"
+                                                                      },
+                                                                      "kind": "init"
+                                                                    },
+                                                                    {
+                                                                      "type": "Property",
+                                                                      "start": 818,
+                                                                      "end": 845,
+                                                                      "method": false,
+                                                                      "shorthand": false,
+                                                                      "computed": false,
+                                                                      "key": {
+                                                                        "type": "Identifier",
+                                                                        "start": 818,
+                                                                        "end": 821,
+                                                                        "name": "url"
+                                                                      },
+                                                                      "value": {
+                                                                        "type": "Literal",
+                                                                        "start": 823,
+                                                                        "end": 845,
+                                                                        "value": "https://www.url1.dev",
+                                                                        "raw": "\"https://www.url1.dev\""
+                                                                      },
+                                                                      "kind": "init"
+                                                                    }
+                                                                  ]
+                                                                },
+                                                                {
+                                                                  "type": "ObjectExpression",
+                                                                  "start": 865,
+                                                                  "end": 903,
+                                                                  "properties": [
+                                                                    {
+                                                                      "type": "Property",
+                                                                      "start": 867,
+                                                                      "end": 872,
+                                                                      "method": false,
+                                                                      "shorthand": false,
+                                                                      "computed": false,
+                                                                      "key": {
+                                                                        "type": "Identifier",
+                                                                        "start": 867,
+                                                                        "end": 869,
+                                                                        "name": "id"
+                                                                      },
+                                                                      "value": {
+                                                                        "type": "Literal",
+                                                                        "start": 871,
+                                                                        "end": 872,
+                                                                        "value": 2,
+                                                                        "raw": "2"
+                                                                      },
+                                                                      "kind": "init"
+                                                                    },
+                                                                    {
+                                                                      "type": "Property",
+                                                                      "start": 874,
+                                                                      "end": 901,
+                                                                      "method": false,
+                                                                      "shorthand": false,
+                                                                      "computed": false,
+                                                                      "key": {
+                                                                        "type": "Identifier",
+                                                                        "start": 874,
+                                                                        "end": 877,
+                                                                        "name": "url"
+                                                                      },
+                                                                      "value": {
+                                                                        "type": "Literal",
+                                                                        "start": 879,
+                                                                        "end": 901,
+                                                                        "value": "https://www.url2.dev",
+                                                                        "raw": "\"https://www.url2.dev\""
+                                                                      },
+                                                                      "kind": "init"
+                                                                    }
+                                                                  ]
+                                                                },
+                                                                {
+                                                                  "type": "ObjectExpression",
+                                                                  "start": 921,
+                                                                  "end": 960,
+                                                                  "properties": [
+                                                                    {
+                                                                      "type": "Property",
+                                                                      "start": 923,
+                                                                      "end": 928,
+                                                                      "method": false,
+                                                                      "shorthand": false,
+                                                                      "computed": false,
+                                                                      "key": {
+                                                                        "type": "Identifier",
+                                                                        "start": 923,
+                                                                        "end": 925,
+                                                                        "name": "id"
+                                                                      },
+                                                                      "value": {
+                                                                        "type": "Literal",
+                                                                        "start": 927,
+                                                                        "end": 928,
+                                                                        "value": 3,
+                                                                        "raw": "3"
+                                                                      },
+                                                                      "kind": "init"
+                                                                    },
+                                                                    {
+                                                                      "type": "Property",
+                                                                      "start": 930,
+                                                                      "end": 958,
+                                                                      "method": false,
+                                                                      "shorthand": false,
+                                                                      "computed": false,
+                                                                      "key": {
+                                                                        "type": "Identifier",
+                                                                        "start": 930,
+                                                                        "end": 933,
+                                                                        "name": "url"
+                                                                      },
+                                                                      "value": {
+                                                                        "type": "Literal",
+                                                                        "start": 935,
+                                                                        "end": 958,
+                                                                        "value": "https://www.link3.dev",
+                                                                        "raw": "\"https://www.link3.dev\""
+                                                                      },
+                                                                      "kind": "init"
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        "kind": "const"
+                                                      },
+                                                      {
+                                                        "type": "VariableDeclaration",
+                                                        "start": 1003,
+                                                        "end": 1060,
+                                                        "declarations": [
+                                                          {
+                                                            "type": "VariableDeclarator",
+                                                            "start": 1009,
+                                                            "end": 1059,
+                                                            "id": {
+                                                              "type": "Identifier",
+                                                              "start": 1009,
+                                                              "end": 1015,
+                                                              "name": "output"
+                                                            },
+                                                            "init": {
+                                                              "type": "ArrayExpression",
+                                                              "start": 1018,
+                                                              "end": 1059,
+                                                              "elements": [
+                                                                {
+                                                                  "type": "ObjectExpression",
+                                                                  "start": 1019,
+                                                                  "end": 1058,
+                                                                  "properties": [
+                                                                    {
+                                                                      "type": "Property",
+                                                                      "start": 1021,
+                                                                      "end": 1026,
+                                                                      "method": false,
+                                                                      "shorthand": false,
+                                                                      "computed": false,
+                                                                      "key": {
+                                                                        "type": "Identifier",
+                                                                        "start": 1021,
+                                                                        "end": 1023,
+                                                                        "name": "id"
+                                                                      },
+                                                                      "value": {
+                                                                        "type": "Literal",
+                                                                        "start": 1025,
+                                                                        "end": 1026,
+                                                                        "value": 3,
+                                                                        "raw": "3"
+                                                                      },
+                                                                      "kind": "init"
+                                                                    },
+                                                                    {
+                                                                      "type": "Property",
+                                                                      "start": 1028,
+                                                                      "end": 1056,
+                                                                      "method": false,
+                                                                      "shorthand": false,
+                                                                      "computed": false,
+                                                                      "key": {
+                                                                        "type": "Identifier",
+                                                                        "start": 1028,
+                                                                        "end": 1031,
+                                                                        "name": "url"
+                                                                      },
+                                                                      "value": {
+                                                                        "type": "Literal",
+                                                                        "start": 1033,
+                                                                        "end": 1056,
+                                                                        "value": "https://www.link3.dev",
+                                                                        "raw": "\"https://www.link3.dev\""
+                                                                      },
+                                                                      "kind": "init"
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        "kind": "const"
+                                                      },
+                                                      {
+                                                        "type": "ExpressionStatement",
+                                                        "start": 1086,
+                                                        "end": 1138,
+                                                        "expression": {
+                                                          "type": "CallExpression",
+                                                          "start": 1086,
+                                                          "end": 1137,
+                                                          "callee": {
+                                                            "type": "MemberExpression",
+                                                            "start": 1086,
+                                                            "end": 1129,
+                                                            "object": {
+                                                              "type": "CallExpression",
+                                                              "start": 1086,
+                                                              "end": 1121,
+                                                              "callee": {
+                                                                "type": "Identifier",
+                                                                "start": 1086,
+                                                                "end": 1092,
+                                                                "name": "expect"
+                                                              },
+                                                              "arguments": [
+                                                                {
+                                                                  "type": "CallExpression",
+                                                                  "start": 1093,
+                                                                  "end": 1120,
+                                                                  "callee": {
+                                                                    "type": "Identifier",
+                                                                    "start": 1093,
+                                                                    "end": 1105,
+                                                                    "name": "filterByTerm"
+                                                                  },
+                                                                  "arguments": [
+                                                                    {
+                                                                      "type": "Identifier",
+                                                                      "start": 1106,
+                                                                      "end": 1111,
+                                                                      "name": "input"
+                                                                    },
+                                                                    {
+                                                                      "type": "Literal",
+                                                                      "start": 1113,
+                                                                      "end": 1119,
+                                                                      "value": "link",
+                                                                      "raw": "\"link\""
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              ]
+                                                            },
+                                                            "property": {
+                                                              "type": "Identifier",
+                                                              "start": 1122,
+                                                              "end": 1129,
+                                                              "name": "toEqual"
+                                                            },
+                                                            "computed": false
+                                                          },
+                                                          "arguments": [
+                                                            {
+                                                              "type": "Identifier",
+                                                              "start": 1130,
+                                                              "end": 1136,
+                                                              "name": "output"
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "type": "ExpressionStatement",
+                                "start": 1189,
+                                "end": 1611,
+                                "expression": {
+                                  "type": "CallExpression",
+                                  "start": 1189,
+                                  "end": 1610,
+                                  "callee": {
+                                    "type": "Identifier",
+                                    "start": 1189,
+                                    "end": 1193,
+                                    "name": "test"
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Literal",
+                                      "start": 1194,
+                                      "end": 1243,
+                                      "value": "nested it should filter by a search term (link)",
+                                      "raw": "\"nested it should filter by a search term (link)\""
+                                    },
+                                    {
+                                      "type": "ArrowFunctionExpression",
+                                      "start": 1245,
+                                      "end": 1609,
+                                      "id": null,
+                                      "expression": false,
+                                      "generator": false,
+                                      "async": false,
+                                      "params": [],
+                                      "body": {
+                                        "type": "BlockStatement",
+                                        "start": 1251,
+                                        "end": 1609,
+                                        "body": [
+                                          {
+                                            "type": "VariableDeclaration",
+                                            "start": 1263,
+                                            "end": 1447,
+                                            "declarations": [
+                                              {
+                                                "type": "VariableDeclarator",
+                                                "start": 1269,
+                                                "end": 1446,
+                                                "id": {
+                                                  "type": "Identifier",
+                                                  "start": 1269,
+                                                  "end": 1274,
+                                                  "name": "input"
+                                                },
+                                                "init": {
+                                                  "type": "ArrayExpression",
+                                                  "start": 1277,
+                                                  "end": 1446,
+                                                  "elements": [
+                                                    {
+                                                      "type": "ObjectExpression",
+                                                      "start": 1291,
+                                                      "end": 1329,
+                                                      "properties": [
+                                                        {
+                                                          "type": "Property",
+                                                          "start": 1293,
+                                                          "end": 1298,
+                                                          "method": false,
+                                                          "shorthand": false,
+                                                          "computed": false,
+                                                          "key": {
+                                                            "type": "Identifier",
+                                                            "start": 1293,
+                                                            "end": 1295,
+                                                            "name": "id"
+                                                          },
+                                                          "value": {
+                                                            "type": "Literal",
+                                                            "start": 1297,
+                                                            "end": 1298,
+                                                            "value": 1,
+                                                            "raw": "1"
+                                                          },
+                                                          "kind": "init"
+                                                        },
+                                                        {
+                                                          "type": "Property",
+                                                          "start": 1300,
+                                                          "end": 1327,
+                                                          "method": false,
+                                                          "shorthand": false,
+                                                          "computed": false,
+                                                          "key": {
+                                                            "type": "Identifier",
+                                                            "start": 1300,
+                                                            "end": 1303,
+                                                            "name": "url"
+                                                          },
+                                                          "value": {
+                                                            "type": "Literal",
+                                                            "start": 1305,
+                                                            "end": 1327,
+                                                            "value": "https://www.url1.dev",
+                                                            "raw": "\"https://www.url1.dev\""
+                                                          },
+                                                          "kind": "init"
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "type": "ObjectExpression",
+                                                      "start": 1343,
+                                                      "end": 1381,
+                                                      "properties": [
+                                                        {
+                                                          "type": "Property",
+                                                          "start": 1345,
+                                                          "end": 1350,
+                                                          "method": false,
+                                                          "shorthand": false,
+                                                          "computed": false,
+                                                          "key": {
+                                                            "type": "Identifier",
+                                                            "start": 1345,
+                                                            "end": 1347,
+                                                            "name": "id"
+                                                          },
+                                                          "value": {
+                                                            "type": "Literal",
+                                                            "start": 1349,
+                                                            "end": 1350,
+                                                            "value": 2,
+                                                            "raw": "2"
+                                                          },
+                                                          "kind": "init"
+                                                        },
+                                                        {
+                                                          "type": "Property",
+                                                          "start": 1352,
+                                                          "end": 1379,
+                                                          "method": false,
+                                                          "shorthand": false,
+                                                          "computed": false,
+                                                          "key": {
+                                                            "type": "Identifier",
+                                                            "start": 1352,
+                                                            "end": 1355,
+                                                            "name": "url"
+                                                          },
+                                                          "value": {
+                                                            "type": "Literal",
+                                                            "start": 1357,
+                                                            "end": 1379,
+                                                            "value": "https://www.url2.dev",
+                                                            "raw": "\"https://www.url2.dev\""
+                                                          },
+                                                          "kind": "init"
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "type": "ObjectExpression",
+                                                      "start": 1395,
+                                                      "end": 1434,
+                                                      "properties": [
+                                                        {
+                                                          "type": "Property",
+                                                          "start": 1397,
+                                                          "end": 1402,
+                                                          "method": false,
+                                                          "shorthand": false,
+                                                          "computed": false,
+                                                          "key": {
+                                                            "type": "Identifier",
+                                                            "start": 1397,
+                                                            "end": 1399,
+                                                            "name": "id"
+                                                          },
+                                                          "value": {
+                                                            "type": "Literal",
+                                                            "start": 1401,
+                                                            "end": 1402,
+                                                            "value": 3,
+                                                            "raw": "3"
+                                                          },
+                                                          "kind": "init"
+                                                        },
+                                                        {
+                                                          "type": "Property",
+                                                          "start": 1404,
+                                                          "end": 1432,
+                                                          "method": false,
+                                                          "shorthand": false,
+                                                          "computed": false,
+                                                          "key": {
+                                                            "type": "Identifier",
+                                                            "start": 1404,
+                                                            "end": 1407,
+                                                            "name": "url"
+                                                          },
+                                                          "value": {
+                                                            "type": "Literal",
+                                                            "start": 1409,
+                                                            "end": 1432,
+                                                            "value": "https://www.link3.dev",
+                                                            "raw": "\"https://www.link3.dev\""
+                                                          },
+                                                          "kind": "init"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "kind": "const"
+                                          },
+                                          {
+                                            "type": "VariableDeclaration",
+                                            "start": 1465,
+                                            "end": 1522,
+                                            "declarations": [
+                                              {
+                                                "type": "VariableDeclarator",
+                                                "start": 1471,
+                                                "end": 1521,
+                                                "id": {
+                                                  "type": "Identifier",
+                                                  "start": 1471,
+                                                  "end": 1477,
+                                                  "name": "output"
+                                                },
+                                                "init": {
+                                                  "type": "ArrayExpression",
+                                                  "start": 1480,
+                                                  "end": 1521,
+                                                  "elements": [
+                                                    {
+                                                      "type": "ObjectExpression",
+                                                      "start": 1481,
+                                                      "end": 1520,
+                                                      "properties": [
+                                                        {
+                                                          "type": "Property",
+                                                          "start": 1483,
+                                                          "end": 1488,
+                                                          "method": false,
+                                                          "shorthand": false,
+                                                          "computed": false,
+                                                          "key": {
+                                                            "type": "Identifier",
+                                                            "start": 1483,
+                                                            "end": 1485,
+                                                            "name": "id"
+                                                          },
+                                                          "value": {
+                                                            "type": "Literal",
+                                                            "start": 1487,
+                                                            "end": 1488,
+                                                            "value": 3,
+                                                            "raw": "3"
+                                                          },
+                                                          "kind": "init"
+                                                        },
+                                                        {
+                                                          "type": "Property",
+                                                          "start": 1490,
+                                                          "end": 1518,
+                                                          "method": false,
+                                                          "shorthand": false,
+                                                          "computed": false,
+                                                          "key": {
+                                                            "type": "Identifier",
+                                                            "start": 1490,
+                                                            "end": 1493,
+                                                            "name": "url"
+                                                          },
+                                                          "value": {
+                                                            "type": "Literal",
+                                                            "start": 1495,
+                                                            "end": 1518,
+                                                            "value": "https://www.link3.dev",
+                                                            "raw": "\"https://www.link3.dev\""
+                                                          },
+                                                          "kind": "init"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "kind": "const"
+                                          },
+                                          {
+                                            "type": "ExpressionStatement",
+                                            "start": 1540,
+                                            "end": 1592,
+                                            "expression": {
+                                              "type": "CallExpression",
+                                              "start": 1540,
+                                              "end": 1591,
+                                              "callee": {
+                                                "type": "MemberExpression",
+                                                "start": 1540,
+                                                "end": 1583,
+                                                "object": {
+                                                  "type": "CallExpression",
+                                                  "start": 1540,
+                                                  "end": 1575,
+                                                  "callee": {
+                                                    "type": "Identifier",
+                                                    "start": 1540,
+                                                    "end": 1546,
+                                                    "name": "expect"
+                                                  },
+                                                  "arguments": [
+                                                    {
+                                                      "type": "CallExpression",
+                                                      "start": 1547,
+                                                      "end": 1574,
+                                                      "callee": {
+                                                        "type": "Identifier",
+                                                        "start": 1547,
+                                                        "end": 1559,
+                                                        "name": "filterByTerm"
+                                                      },
+                                                      "arguments": [
+                                                        {
+                                                          "type": "Identifier",
+                                                          "start": 1560,
+                                                          "end": 1565,
+                                                          "name": "input"
+                                                        },
+                                                        {
+                                                          "type": "Literal",
+                                                          "start": 1567,
+                                                          "end": 1573,
+                                                          "value": "link",
+                                                          "raw": "\"link\""
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                },
+                                                "property": {
+                                                  "type": "Identifier",
+                                                  "start": 1576,
+                                                  "end": 1583,
+                                                  "name": "toEqual"
+                                                },
+                                                "computed": false
+                                              },
+                                              "arguments": [
+                                                {
+                                                  "type": "Identifier",
+                                                  "start": 1584,
+                                                  "end": 1590,
+                                                  "name": "output"
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "ExpressionStatement",
+                    "start": 1629,
+                    "end": 1998,
+                    "expression": {
+                      "type": "CallExpression",
+                      "start": 1629,
+                      "end": 1997,
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 1629,
+                        "end": 1633,
+                        "name": "test"
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "start": 1634,
+                          "end": 1683,
+                          "value": "nested it should filter by a search term (link)",
+                          "raw": "\"nested it should filter by a search term (link)\""
+                        },
+                        {
+                          "type": "ArrowFunctionExpression",
+                          "start": 1685,
+                          "end": 1996,
+                          "id": null,
+                          "expression": false,
+                          "generator": false,
+                          "async": false,
+                          "params": [],
+                          "body": {
+                            "type": "BlockStatement",
+                            "start": 1691,
+                            "end": 1996,
+                            "body": [
+                              {
+                                "type": "VariableDeclaration",
+                                "start": 1701,
+                                "end": 1877,
+                                "declarations": [
+                                  {
+                                    "type": "VariableDeclarator",
+                                    "start": 1707,
+                                    "end": 1876,
+                                    "id": {
+                                      "type": "Identifier",
+                                      "start": 1707,
+                                      "end": 1712,
+                                      "name": "input"
+                                    },
+                                    "init": {
+                                      "type": "ArrayExpression",
+                                      "start": 1715,
+                                      "end": 1876,
+                                      "elements": [
+                                        {
+                                          "type": "ObjectExpression",
+                                          "start": 1727,
+                                          "end": 1765,
+                                          "properties": [
+                                            {
+                                              "type": "Property",
+                                              "start": 1729,
+                                              "end": 1734,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 1729,
+                                                "end": 1731,
+                                                "name": "id"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 1733,
+                                                "end": 1734,
+                                                "value": 1,
+                                                "raw": "1"
+                                              },
+                                              "kind": "init"
+                                            },
+                                            {
+                                              "type": "Property",
+                                              "start": 1736,
+                                              "end": 1763,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 1736,
+                                                "end": 1739,
+                                                "name": "url"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 1741,
+                                                "end": 1763,
+                                                "value": "https://www.url1.dev",
+                                                "raw": "\"https://www.url1.dev\""
+                                              },
+                                              "kind": "init"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "ObjectExpression",
+                                          "start": 1777,
+                                          "end": 1815,
+                                          "properties": [
+                                            {
+                                              "type": "Property",
+                                              "start": 1779,
+                                              "end": 1784,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 1779,
+                                                "end": 1781,
+                                                "name": "id"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 1783,
+                                                "end": 1784,
+                                                "value": 2,
+                                                "raw": "2"
+                                              },
+                                              "kind": "init"
+                                            },
+                                            {
+                                              "type": "Property",
+                                              "start": 1786,
+                                              "end": 1813,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 1786,
+                                                "end": 1789,
+                                                "name": "url"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 1791,
+                                                "end": 1813,
+                                                "value": "https://www.url2.dev",
+                                                "raw": "\"https://www.url2.dev\""
+                                              },
+                                              "kind": "init"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "ObjectExpression",
+                                          "start": 1827,
+                                          "end": 1866,
+                                          "properties": [
+                                            {
+                                              "type": "Property",
+                                              "start": 1829,
+                                              "end": 1834,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 1829,
+                                                "end": 1831,
+                                                "name": "id"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 1833,
+                                                "end": 1834,
+                                                "value": 3,
+                                                "raw": "3"
+                                              },
+                                              "kind": "init"
+                                            },
+                                            {
+                                              "type": "Property",
+                                              "start": 1836,
+                                              "end": 1864,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 1836,
+                                                "end": 1839,
+                                                "name": "url"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 1841,
+                                                "end": 1864,
+                                                "value": "https://www.link3.dev",
+                                                "raw": "\"https://www.link3.dev\""
+                                              },
+                                              "kind": "init"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "kind": "const"
+                              },
+                              {
+                                "type": "VariableDeclaration",
+                                "start": 1891,
+                                "end": 1948,
+                                "declarations": [
+                                  {
+                                    "type": "VariableDeclarator",
+                                    "start": 1897,
+                                    "end": 1947,
+                                    "id": {
+                                      "type": "Identifier",
+                                      "start": 1897,
+                                      "end": 1903,
+                                      "name": "output"
+                                    },
+                                    "init": {
+                                      "type": "ArrayExpression",
+                                      "start": 1906,
+                                      "end": 1947,
+                                      "elements": [
+                                        {
+                                          "type": "ObjectExpression",
+                                          "start": 1907,
+                                          "end": 1946,
+                                          "properties": [
+                                            {
+                                              "type": "Property",
+                                              "start": 1909,
+                                              "end": 1914,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 1909,
+                                                "end": 1911,
+                                                "name": "id"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 1913,
+                                                "end": 1914,
+                                                "value": 3,
+                                                "raw": "3"
+                                              },
+                                              "kind": "init"
+                                            },
+                                            {
+                                              "type": "Property",
+                                              "start": 1916,
+                                              "end": 1944,
+                                              "method": false,
+                                              "shorthand": false,
+                                              "computed": false,
+                                              "key": {
+                                                "type": "Identifier",
+                                                "start": 1916,
+                                                "end": 1919,
+                                                "name": "url"
+                                              },
+                                              "value": {
+                                                "type": "Literal",
+                                                "start": 1921,
+                                                "end": 1944,
+                                                "value": "https://www.link3.dev",
+                                                "raw": "\"https://www.link3.dev\""
+                                              },
+                                              "kind": "init"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "kind": "const"
+                              },
+                              {
+                                "type": "ExpressionStatement",
+                                "start": 1962,
+                                "end": 1983,
+                                "expression": {
+                                  "type": "CallExpression",
+                                  "start": 1962,
+                                  "end": 1982,
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "start": 1962,
+                                    "end": 1979,
+                                    "object": {
+                                      "type": "CallExpression",
+                                      "start": 1962,
+                                      "end": 1971,
+                                      "callee": {
+                                        "type": "Identifier",
+                                        "start": 1962,
+                                        "end": 1968,
+                                        "name": "expect"
+                                      },
+                                      "arguments": [
+                                        {
+                                          "type": "Literal",
+                                          "start": 1969,
+                                          "end": 1970,
+                                          "value": 7,
+                                          "raw": "7"
+                                        }
+                                      ]
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "start": 1972,
+                                      "end": 1979,
+                                      "name": "toEqual"
+                                    },
+                                    "computed": false
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Literal",
+                                      "start": 1980,
+                                      "end": 1981,
+                                      "value": 7,
+                                      "raw": "7"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "sourceType": "module"
+  }

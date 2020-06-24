@@ -21,9 +21,9 @@ describe('webpack build', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "webpack%20build" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });
@@ -70,9 +70,9 @@ describe('React: Dashboard', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "React%3A%20Dashboard" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });
@@ -105,9 +105,9 @@ describe('React: DashboardModal', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "React%3A%20DashboardModal" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

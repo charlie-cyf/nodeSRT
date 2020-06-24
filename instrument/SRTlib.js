@@ -37,20 +37,21 @@ module.exports = class SRTlib {
         }
     }
 
-    static endLogger(){
+    static async endLogger(){
         if(!SRTlib.started){
             console.warn('endlogger when SRTlib is not started!', SRTlib.message)
         }
         SRTlib.started = false;
 
-
         if(SRTlib.message.length !== 0){
-            axios.post(SRTlib.endPontUrl, {
+            const msg = SRTlib.message;
+            SRTlib.message = '';
+            await axios.post(SRTlib.endPontUrl, {
                 fileName: SRTlib.logFile,
-                msg: SRTlib.message
+                msg: msg
             }).then(res => {
                 if(res.status < 400){
-                    SRTlib.message = ''
+                    // SRTlib.message = ''
                 } else {
                     new Error('fail to send to log server!');
                 }

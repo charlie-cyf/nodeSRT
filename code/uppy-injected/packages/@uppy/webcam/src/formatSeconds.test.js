@@ -20,9 +20,9 @@ describe('formatSeconds', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "formatSeconds" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

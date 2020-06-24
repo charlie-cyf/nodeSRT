@@ -51,9 +51,9 @@ describe('AwsS3', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "getUploadParameters" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -61,9 +61,9 @@ describe('AwsS3', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "AwsS3" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

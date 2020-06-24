@@ -227,9 +227,9 @@ describe('Transloadit/Assembly', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "status%20diffing" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -237,9 +237,9 @@ describe('Transloadit/Assembly', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Transloadit/Assembly" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

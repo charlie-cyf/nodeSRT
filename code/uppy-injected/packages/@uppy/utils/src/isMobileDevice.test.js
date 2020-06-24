@@ -35,9 +35,9 @@ describe('isMobileDevice', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "isMobileDevice" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

@@ -74,9 +74,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "install" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -107,9 +107,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "uninstall" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -226,9 +226,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "queue" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -294,9 +294,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "events" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -372,9 +372,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "requestThumbnail" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -419,9 +419,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "setPreviewURL" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -515,9 +515,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "getProportionalDimensions" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -546,9 +546,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "canvasToBlob" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -613,9 +613,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         getContext: canvas.getContext
       }, 0, 0, 250, 200, 0, 0, 125, 100]]);
     });
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "downScaleInSteps" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -679,9 +679,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "resizeImage" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -762,9 +762,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
       SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
 
-        afterAll(() => {
+        afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "onRestored" },`);
-      SRTlib.endLogger();
+      await SRTlib.endLogger();
     });
 
   });
@@ -772,9 +772,9 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "uploader/ThumbnailGeneratorPlugin" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

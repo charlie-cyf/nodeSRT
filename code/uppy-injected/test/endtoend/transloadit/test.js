@@ -44,9 +44,9 @@ describe('Transloadit file processing', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Transloadit%20file%20processing" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

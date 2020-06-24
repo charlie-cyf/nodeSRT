@@ -27,9 +27,9 @@ describe('RequestClient', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "RequestClient" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

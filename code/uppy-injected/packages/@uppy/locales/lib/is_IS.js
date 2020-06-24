@@ -1,4 +1,5 @@
 var SRTlib = require('SRT-util');
+
 var is_IS = {};
 is_IS.strings = {
   addMore: 'Bæta við',
@@ -135,21 +136,22 @@ is_IS.strings = {
     '2': 'Þú verður að velja lágmark %{smart_count} skrár'
   }
 };
+
 is_IS.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"is_IS.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"is_IS.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (n === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');
     return 0;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');
   return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.is_IS = is_IS;
 }
+
 module.exports = is_IS;

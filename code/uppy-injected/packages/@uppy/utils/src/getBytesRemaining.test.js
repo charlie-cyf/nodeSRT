@@ -21,9 +21,9 @@ describe('getBytesRemaining', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "getBytesRemaining" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

@@ -164,9 +164,9 @@ describe('Socket', () => {
     expect(emitterListenerMock.mock.calls.length).toEqual(1);
     expect(emitterListenerMock.mock.calls).toEqual([['ho', undefined, undefined, undefined, undefined, undefined]]);
   });
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Socket" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

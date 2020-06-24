@@ -45,9 +45,9 @@ describe('File upload with Dropbox Provider', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20Dropbox%20Provider" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

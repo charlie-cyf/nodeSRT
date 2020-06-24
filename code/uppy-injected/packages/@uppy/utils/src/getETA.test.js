@@ -24,9 +24,9 @@ describe('getETA', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "getETA" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

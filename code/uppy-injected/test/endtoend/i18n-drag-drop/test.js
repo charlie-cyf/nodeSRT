@@ -37,9 +37,9 @@ describe('File upload with DragDrop + XHRUpload, i18n translated string', functi
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20DragDrop%20+%20XHRUpload%2C%20i18n%20translated%20string" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

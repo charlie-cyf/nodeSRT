@@ -32,9 +32,9 @@ describe('File upload with Google Drive Provider', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20Google%20Drive%20Provider" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

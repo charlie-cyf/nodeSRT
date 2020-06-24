@@ -91,9 +91,9 @@ describe('Dashboard', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Dashboard" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

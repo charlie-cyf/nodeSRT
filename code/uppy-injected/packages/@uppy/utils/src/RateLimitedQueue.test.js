@@ -47,9 +47,9 @@ describe('RateLimitedQueue', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "RateLimitedQueue" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

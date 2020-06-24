@@ -22,9 +22,9 @@ describe('prettyETA', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "prettyETA" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

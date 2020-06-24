@@ -20,9 +20,9 @@ describe('getSocketHost', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "getSocketHost" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

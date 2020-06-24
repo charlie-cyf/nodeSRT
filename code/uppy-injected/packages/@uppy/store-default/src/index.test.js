@@ -73,9 +73,9 @@ describe('DefaultStore', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "DefaultStore" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

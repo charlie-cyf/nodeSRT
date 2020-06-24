@@ -25,9 +25,9 @@ describe('getFileTypeExtension', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "getFileTypeExtension" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

@@ -1,4 +1,5 @@
 var SRTlib = require('SRT-util');
+
 var it_IT = {};
 it_IT.strings = {
   addMoreFiles: 'Aggiungi più file',
@@ -133,21 +134,22 @@ it_IT.strings = {
   unselectFileNamed: 'Deseleziona il file %{name}',
   openFolderNamed: 'Cartella aperta %{name}'
 };
+
 it_IT.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"it_IT.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"it_IT.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (n === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');
     return 0;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');
   return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.it_IT = it_IT;
 }
+
 module.exports = it_IT;

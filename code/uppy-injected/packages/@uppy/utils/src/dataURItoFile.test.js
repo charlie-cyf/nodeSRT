@@ -24,9 +24,9 @@ describe('dataURItoFile', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "dataURItoFile" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

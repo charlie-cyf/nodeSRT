@@ -55,9 +55,9 @@ describe('File upload with Instagram Provider', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20Instagram%20Provider" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

@@ -1,12 +1,11 @@
-var SRTlib = require('SRT-util');
-var _require = require('preact'), h = _require.h;
+var _require = require('preact'),
+    h = _require.h;
+
 module.exports = function (_ref) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+  var streamActive = _ref.streamActive,
+      i18n = _ref.i18n;
 
-  var streamActive = _ref.streamActive, i18n = _ref.i18n;
   if (streamActive) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
     return h("div", {
       title: i18n('streamActive'),
       "aria-label": i18n('streamActive'),
@@ -29,8 +28,6 @@ module.exports = function (_ref) {
       d: "M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm18-7H5v1.63c3.96 1.28 7.09 4.41 8.37 8.37H19V7zM1 10v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11zm20-7H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
     })));
   } else {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
     return h("div", {
       title: i18n('streamPassive'),
       "aria-label": i18n('streamPassive'),
@@ -53,6 +50,4 @@ module.exports = function (_ref) {
       d: "M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"
     })));
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
 };

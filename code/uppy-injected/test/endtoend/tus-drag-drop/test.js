@@ -31,9 +31,9 @@ describe('File upload with DragDrop + Tus', function () {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20DragDrop%20+%20Tus" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });

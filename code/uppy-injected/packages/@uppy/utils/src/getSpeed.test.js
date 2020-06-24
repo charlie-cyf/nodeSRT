@@ -23,9 +23,9 @@ describe('getSpeed', () => {
     SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
 
-    afterAll(() => {
+    afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "getSpeed" },`);
-    SRTlib.endLogger();
+    await SRTlib.endLogger();
   });
 
 });
