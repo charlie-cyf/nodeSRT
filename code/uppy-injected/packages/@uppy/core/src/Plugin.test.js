@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Plugin = require('./Plugin');
 const Core = require('./index');
 describe('Plugin', () => {

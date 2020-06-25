@@ -1,4 +1,10 @@
-var SRTlib = require('SRT-util');
+/**
+* Checks if current device reports itself as “mobile”.
+* Very simple, not very reliable.
+*
+* @returns {boolean}
+*/
+const SRTlib = require('SRT-util');
 module.exports = function isMobileDevice() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isMobileDevice","fileName":"${__filename}","paramsNumber":0},`);
 

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 module.exports = function supportsMediaRecorder() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.supportsMediaRecorder","fileName":"${__filename}","paramsNumber":0},`);
 

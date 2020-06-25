@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const dataURItoBlob = require('./dataURItoBlob');
 module.exports = function dataURItoFile(dataURI, opts) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.dataURItoFile","fileName":"${__filename}","paramsNumber":2},`);

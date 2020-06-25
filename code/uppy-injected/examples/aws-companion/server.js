@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
@@ -44,6 +44,7 @@ const options = {
   secret: 'blah blah',
   debug: true
 };
+// Create the data directory here for the sake of the example.
 try {
   fs.accessSync(DATA_DIR);
 } catch (err) {

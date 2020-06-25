@@ -1,5 +1,4 @@
-var SRTlib = require('SRT-util');
-
+const SRTlib = require('SRT-util');
 var hr_HR = {};
 hr_HR.strings = {
   addMore: 'Dodaj još',
@@ -134,22 +133,21 @@ hr_HR.strings = {
   unselectFileNamed: 'Isključite datoteku %{name}',
   openFolderNamed: 'Otvori mapu %{name}'
 };
-
 hr_HR.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"hr_HR.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"hr_HR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');
   return 1;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');
-};
+    SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.hr_HR = hr_HR;
 }
-
 module.exports = hr_HR;

@@ -1,8 +1,9 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const sass = require('node-sass');
 const postcss = require('postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+// const safeImportant = require('postcss-safe-important')
 const chalk = require('chalk');
 const {promisify} = require('util');
 const fs = require('fs');
@@ -73,6 +74,10 @@ async function compileCSS() {
 
     });
     const outdir = path.join(path.dirname(file), '../dist');
+    // Save the `uppy` package's CSS as `uppy.css`,
+    // `@uppy/robodog` as `robodog.css`,
+    // the rest as `style.css`.
+    // const outfile = path.join(outdir, outdir.includes(path.normalize('packages/uppy/')) ? 'uppy.css' : 'style.css')
     let outfile = path.join(outdir, 'style.css');
     if (outdir.includes(path.normalize('packages/uppy/'))) {
       outfile = path.join(outdir, 'uppy.css');

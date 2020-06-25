@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const RateLimitedQueue = require('./RateLimitedQueue');
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 describe('RateLimitedQueue', () => {

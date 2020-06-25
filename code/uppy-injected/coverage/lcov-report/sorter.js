@@ -1,4 +1,5 @@
-var SRTlib = require('SRT-util');
+/*eslint-disable*/
+const SRTlib = require('SRT-util');
 var addSorting = (function () {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"addSorting","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -7,6 +8,7 @@ var addSorting = (function () {
     index: 0,
     desc: false
   };
+  // returns the summary table element
   function getTable() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getTable","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -16,6 +18,7 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"getTable","paramsNumber":0},');
 
   }
+  // returns the thead element of the summary table
   function getTableHeader() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getTableHeader","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -25,6 +28,7 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"getTableHeader","paramsNumber":0},');
 
   }
+  // returns the tbody element of the summary table
   function getTableBody() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getTableBody","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -34,6 +38,7 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"getTableBody","paramsNumber":0},');
 
   }
+  // returns the th element for nth column
   function getNthColumn(n) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getNthColumn","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -43,6 +48,7 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"getNthColumn","paramsNumber":1},');
 
   }
+  // loads all columns
   function loadColumns() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"loadColumns","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -66,6 +72,8 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"loadColumns","paramsNumber":0},');
 
   }
+  // attaches a data attribute to every tr element with an object
+  // of data values keyed by column name
   function loadRowData(tableRow) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"loadRowData","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -85,6 +93,7 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"loadRowData","paramsNumber":1},');
 
   }
+  // loads all row data
   function loadData() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"loadData","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -95,6 +104,7 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"loadData","paramsNumber":0},');
 
   }
+  // sorts the table using the data for the ith column
   function sortByIndex(index, desc) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortByIndex","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -131,6 +141,7 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"sortByIndex","paramsNumber":2},');
 
   }
+  // removes sort indicators for current column being sorted
   function removeSortIndicators() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeSortIndicators","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -140,6 +151,7 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"removeSortIndicators","paramsNumber":0},');
 
   }
+  // adds sort indicators for current column being sorted
   function addSortIndicators() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addSortIndicators","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -147,6 +159,7 @@ var addSorting = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"addSortIndicators","paramsNumber":0},');
 
   }
+  // adds event listeners for all sorter widgets
   function enableUI() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"enableUI","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -176,6 +189,8 @@ var addSorting = (function () {
     };
     for (i = 0; i < cols.length; i += 1) {
       if (cols[i].sortable) {
+        // add the click event handler on the th so users
+        // dont have to click on those tiny arrows
         el = getNthColumn(i).querySelector('.sorter').parentElement;
         if (el.addEventListener) {
           el.addEventListener('click', ithSorter(i));
@@ -189,6 +204,7 @@ var addSorting = (function () {
   }
     SRTlib.send('{"type":"FUNCTIONEND","function":"addSorting"},');
 
+  // adds sorting functionality to the UI
   return function () {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"addSorting.ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
 

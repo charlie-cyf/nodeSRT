@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const toArray = require('../../../toArray');
 const getRelativePath = require('./getRelativePath');
 const getFilesAndDirectoriesFromDirectory = require('./getFilesAndDirectoriesFromDirectory');
@@ -7,6 +7,12 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
 
   const files = [];
   const rootPromises = [];
+  /**
+  * Returns a resolved promise, when :files array is enhanced
+  *
+  * @param {(FileSystemFileEntry|FileSystemDirectoryEntry)} entry
+  * @returns {Promise} - empty promise that resolves when :files is enhanced with a file
+  */
   const createPromiseToAddFileOrParseDirectory = entry => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createPromiseToAddFileOrParseDirectory","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -15,7 +21,9 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
     return new Promise(resolve => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
+      // This is a base call
       if (entry.isFile) {
+        // Creates a new File object which can be used to read the file.
         entry.file(file => {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -27,12 +35,14 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
         }, error => {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
+          // Make sure we resolve on error anyway, it's fine if only one file couldn't be read!
           logDropError(error);
           resolve();
                     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
         });
-      } else if (entry.isDirectory) {
+              // This is a recursive call
+} else if (entry.isDirectory) {
         const directoryReader = entry.createReader();
         getFilesAndDirectoriesFromDirectory(directoryReader, [], logDropError, {
           onSuccess: entries => {
@@ -67,10 +77,12 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"createPromiseToAddFileOrParseDirectory"},');
 
   };
+  // For each dropped item, - make sure it's a file/directory, and start deepening in!
   toArray(dataTransfer.items).forEach(item => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
 
     const entry = item.webkitGetAsEntry();
+    // :entry can be null when we drop the url e.g.
     if (entry) {
       rootPromises.push(createPromiseToAddFileOrParseDirectory(entry));
     }

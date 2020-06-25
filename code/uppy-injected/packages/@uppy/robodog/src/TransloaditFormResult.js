@@ -1,6 +1,11 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const {Plugin} = require('@uppy/core');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');
+/**
+* After an upload completes, inject result data from Transloadit in a hidden input.
+*
+* Must be added _after_ the Transloadit plugin.
+*/
 class TransloaditFormResult extends Plugin {
   constructor(uppy, opts) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"TransloaditFormResult","superClass":"Plugin"}},`);

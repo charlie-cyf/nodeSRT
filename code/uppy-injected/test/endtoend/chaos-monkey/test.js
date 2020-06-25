@@ -1,4 +1,5 @@
-var SRTlib = require('SRT-util');
+/*global browser, expect*/
+const SRTlib = require('SRT-util');
 const crypto = require('crypto');
 const lorem = require('@jamen/lorem');
 const {selectFakeFile} = require('../utils');
@@ -9,6 +10,7 @@ describe('Chaos monkey', function () {
     SRTlib.send(`{ "testSuiteName": "Chaos%20monkey", "fileName": "${__filename}", "calls" : [`);
   });
 
+  // 5 minutes
   this.timeout(5 * 60 * 1000);
   beforeEach(async () => {
         SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
@@ -47,6 +49,7 @@ describe('Chaos monkey', function () {
     function cancelFile() {
       return browser.execute(function () {
         window.addLogMessage('Cancelling a file');
+        // prefer deleting a file that is uploading right now
         var selector = Math.random() <= 0.7 ? '.is-inprogress .uppy-DashboardItem-action--remove' : '.uppy-DashboardItem-action--remove';
         var buttons = document.querySelectorAll(selector);
         var del = buttons[Math.floor(Math.random() * buttons.length)];
@@ -81,12 +84,16 @@ describe('Chaos monkey', function () {
         await cancelAll();
       } else if (v < 75) {
         await startUploadIfAnyWaitingFiles();
-      } else {}
+      } else {
+        // wait
+      }
     }
     await cancelAll();
     const errorMessage = await browser.execute(function () {
       return window.anyError;
     });
+    // yikes chai, why can this not be a function call
+    // eslint-disable-line no-unused-expressions
     expect(errorMessage).to.not.exist;
   });
     afterEach(() => {

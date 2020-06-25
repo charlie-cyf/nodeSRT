@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 var fs = require('fs');
 var chalk = require('chalk');
 var mkdirp = require('mkdirp');
@@ -64,6 +64,7 @@ const methods = [buildBundle('./packages/uppy/bundle.js', './packages/uppy/dist/
   standalone: 'Robodog',
   minify: true
 })];
+// Build minified versions of all the locales
 const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', '*.js');
 glob.sync(localePackagePath).forEach(localePath => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);

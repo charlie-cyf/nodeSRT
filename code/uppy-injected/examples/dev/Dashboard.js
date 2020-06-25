@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Uppy = require('@uppy/core/src');
 const Dashboard = require('@uppy/dashboard/src');
 const Instagram = require('@uppy/instagram/src');
@@ -15,13 +15,21 @@ const AwsS3 = require('@uppy/aws-s3/src');
 const XHRUpload = require('@uppy/xhr-upload/src');
 const Transloadit = require('@uppy/transloadit/src');
 const Form = require('@uppy/form/src');
+// DEV CONFIG: pick an uploader
 const UPLOADER = 'tus';
+// const UPLOADER = 's3'
+// const UPLOADER = 'xhr'
+// const UPLOADER = 'transloadit'
+// DEV CONFIG: Endpoint URLs
 const COMPANION_URL = 'http://localhost:3020';
 const TUS_ENDPOINT = 'https://master.tus.io/files/';
 const XHR_ENDPOINT = 'https://upload-endpoint.uppy.io/upload';
+// DEV CONFIG: Transloadit keys
 const TRANSLOADIT_KEY = '...';
 const TRANSLOADIT_TEMPLATE = '...';
+// DEV CONFIG: enable or disable Golden Retriever
 const RESTORE = false;
+// Rest is implementation! Obviously edit as necessary...
 module.exports = () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -33,6 +41,7 @@ module.exports = () => {
     }
   }).use(Dashboard, {
     trigger: '#pick-files',
+    // inline: true,
     target: '.foo',
     metaFields: [{
       id: 'license',

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const gl_ES = {};
 gl_ES.strings = {
   addMore: 'añadir más',

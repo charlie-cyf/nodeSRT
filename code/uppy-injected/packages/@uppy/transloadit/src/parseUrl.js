@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 module.exports = function parseUrl(url) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.parseUrl","fileName":"${__filename}","paramsNumber":1},`);
 

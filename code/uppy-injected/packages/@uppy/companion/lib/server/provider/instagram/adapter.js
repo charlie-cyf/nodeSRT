@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 exports.isFolder = item => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -69,6 +69,7 @@ exports.getItemName = item => {
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
+    // adding both date and carousel_id, so the name is unique
     return `Instagram ${name}${item.carousel_id ? ' ' + item.carousel_id : ''}.${ext}`;
   }
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');

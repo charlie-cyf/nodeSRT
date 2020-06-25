@@ -1,4 +1,5 @@
-var SRTlib = require('SRT-util');
+/*eslint camelcase: 0*/
+const SRTlib = require('SRT-util');
 const nb_NO = {};
 nb_NO.strings = {
   chooseFile: 'Velg en fil',

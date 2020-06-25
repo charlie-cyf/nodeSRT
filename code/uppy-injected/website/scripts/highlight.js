@@ -1,10 +1,15 @@
-var SRTlib = require('SRT-util');
+/*global hexo*/
+const SRTlib = require('SRT-util');
 const Prism = require('prismjs');
 const entities = require('he');
 const {promisify} = require('util');
 const readFile = promisify(require('fs').readFile);
 const path = require('path');
+// oof
+// I think this is the way to add Prism components that it doesn't include
+// in the default build?
 global.Prism = Prism;
+// the / is needed to force it to resolve to the directory
 require('prismjs/components/')();
 delete global.Prism;
 const unhighlightedCodeRx = /<pre><code class="([^"]*)?">([\s\S]*?)<\/code><\/pre>/igm;
@@ -80,6 +85,7 @@ async function includeCode(args) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"includeCode","paramsNumber":1},');
 
 }
+// Highlight as many things as we possibly can
 hexo.extend.tag.register('code', code, true);
 hexo.extend.tag.register('codeblock', code, true);
 hexo.extend.tag.register('include_code', includeCode, {
@@ -88,4 +94,7 @@ hexo.extend.tag.register('include_code', includeCode, {
 hexo.extend.tag.register('include-code', includeCode, {
   async: true
 });
+// Hexo includes its own code block handling by default which may
+// cause the above to miss some things, so do another pass when the page
+// is done rendering to pick up any code blocks we may have missed.
 hexo.extend.filter.register('after_post_render', prismify);

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const isTouchDevice = require('./isTouchDevice');
 describe('isTouchDevice', () => {
     beforeAll(() => {

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const querystring = require('querystring');
 exports.isFolder = item => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
@@ -108,6 +108,7 @@ exports.sortImages = images => {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
 
+  // sort in ascending order of dimension
   return images.slice().sort((a, b) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":2},`);
 

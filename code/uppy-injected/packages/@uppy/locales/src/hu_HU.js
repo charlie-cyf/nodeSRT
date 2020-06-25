@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const hu_HU = {};
 hu_HU.contributors = ['nagyv'];
 hu_HU.strings = {

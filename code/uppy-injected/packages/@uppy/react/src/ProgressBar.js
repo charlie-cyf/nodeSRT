@@ -1,9 +1,12 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const React = require('react');
 const PropTypes = require('prop-types');
 const ProgressBarPlugin = require('@uppy/progress-bar');
 const uppyPropType = require('./propTypes').uppy;
 const h = React.createElement;
+/**
+* React component that renders a progress bar at the top of the page.
+*/
 class ProgressBar extends React.Component {
   componentDidMount() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProgressBar"}},`);

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const supportsMediaRecorder = require('./supportsMediaRecorder');
 describe('supportsMediaRecorder', () => {
     beforeAll(() => {

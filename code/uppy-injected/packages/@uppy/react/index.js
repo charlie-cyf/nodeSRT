@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 exports.Dashboard = require('./lib/Dashboard');
 exports.DashboardModal = require('./lib/DashboardModal');
 exports.DragDrop = require('./lib/DragDrop');

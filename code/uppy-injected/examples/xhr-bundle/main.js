@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Uppy = require('@uppy/core');
 const Dashboard = require('@uppy/dashboard');
 const XHRUpload = require('@uppy/xhr-upload');

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const cs_CZ = {};
 cs_CZ.strings = {
   addMore: 'Přidat další',

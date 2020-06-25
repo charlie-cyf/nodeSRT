@@ -1,5 +1,4 @@
-var SRTlib = require('SRT-util');
-
+const SRTlib = require('SRT-util');
 var he_IL = {};
 he_IL.strings = {
   addMore: 'הוסף עוד',
@@ -136,22 +135,21 @@ he_IL.strings = {
     '2': 'עליך לבחור לפחות ב %{smart_count} קבצים'
   }
 };
-
 he_IL.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"he_IL.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"he_IL.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"he_IL.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"he_IL.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"he_IL.pluralize"},');
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"he_IL.pluralize"},');
   return 1;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"he_IL.pluralize"},');
-};
+    SRTlib.send('{"type":"FUNCTIONEND","function":"he_IL.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.he_IL = he_IL;
 }
-
 module.exports = he_IL;

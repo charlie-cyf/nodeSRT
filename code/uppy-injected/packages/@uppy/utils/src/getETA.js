@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const getSpeed = require('./getSpeed');
 const getBytesRemaining = require('./getBytesRemaining');
 module.exports = function getETA(fileProgress) {

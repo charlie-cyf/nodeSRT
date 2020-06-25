@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const vi_VN = {};
 vi_VN.strings = {
   addMore: 'Thêm',

@@ -1,4 +1,8 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
+// We listen for hexo changes on *.es6 extensions.
+// We fire our own build-examples.js and tell it which example to build -
+// that script then writes temporary js files
+// which we return via the callback.
 var exec = require('child_process').exec;
 var path = require('path');
 var fs = require('fs');
@@ -16,9 +20,11 @@ function parseExamplesBrowserify(data, options, callback) {
   if (!data.path.match(/\/examples\//)) {
     callback(null, data.text);
   }
+  // var slug    = data.path.replace(/[^a-zA-Z0-9\_\.]/g, '-')
   var slug = uuid.v4();
   var tmpFile = '/tmp/' + slug + '.js';
   var cmd = 'node ' + browserifyScript + ' ' + data.path + ' ' + tmpFile + ' --colors';
+  // hexo.log.i('hexo-renderer-uppyexamples: change detected in examples. running: ' + cmd);
   exec(cmd, function (err, stdout, stderr) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exec2","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -36,6 +42,10 @@ function parseExamplesBrowserify(data, options, callback) {
 
         return callback(err);
       }
+      // hexo.log.i('hexo-renderer-uppyexamples: read: ' + tmpFile);
+      // @TODO remove this hack
+      // once this is resolved: https://github.com/hexojs/hexo/issues/1663
+      // bundledJS = bundledJS.replace(/</g, ' < ');
       bundledJS = bundledJS.replace(/<(?!=)/g, ' < ');
       callback(null, bundledJS);
             SRTlib.send('{"type":"FUNCTIONEND","function":"exec"},');

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Transloadit = require('@uppy/transloadit');
 const has = require('@uppy/utils/lib/hasProperty');
 const TransloaditResults = require('./TransloaditResultsPlugin');
@@ -15,6 +15,7 @@ function addTransloaditPlugin(uppy, opts) {
 
   });
   uppy.use(Transloadit, transloaditOptions);
+  // Adds a `results` key to the upload result data containing a flat array of all results from all Assemblies.
   if (transloaditOptions.waitForEncoding) {
     uppy.use(TransloaditResults);
   }

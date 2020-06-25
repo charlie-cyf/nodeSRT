@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 module.exports = function isPreviewSupported(fileType) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isPreviewSupported","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -8,6 +8,7 @@ module.exports = function isPreviewSupported(fileType) {
     return false;
   }
   const fileTypeSpecific = fileType.split('/')[1];
+  // list of images that browsers can preview
   if ((/^(jpe?g|gif|png|svg|svg\+xml|bmp|webp)$/).test(fileTypeSpecific)) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.isPreviewSupported"},');
 

@@ -1,40 +1,42 @@
-var SRTlib = require('SRT-util');
-
+const SRTlib = require('SRT-util');
 module.exports = function dataURItoBlob(dataURI, opts, toFile) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.dataURItoBlob\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
-  var data = dataURI.split(',')[1];
-  var mimeType = opts.mimeType || dataURI.split(',')[0].split(':')[1].split(';')[0];
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.dataURItoBlob","fileName":"${__filename}","paramsNumber":3},`);
 
+  // get the base64 data
+  // user may provide mime type, if not get it from data URI
+  var data = dataURI.split(',')[1];
+  // default to plain/text if data URI has no mimeType
+  var mimeType = opts.mimeType || dataURI.split(',')[0].split(':')[1].split(';')[0];
   if (mimeType == null) {
     mimeType = 'plain/text';
   }
-
   var binary = atob(data);
   var array = [];
-
   for (var i = 0; i < binary.length; i++) {
     array.push(binary.charCodeAt(i));
   }
-
   var bytes;
-
   try {
+    // eslint-disable-line compat/compat
     bytes = new Uint8Array(array);
   } catch (err) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+
     return null;
   }
-
+  // Convert to a File?
   if (toFile) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+
     return new File([bytes], opts.name || '', {
       type: mimeType
     });
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
   return new Blob([bytes], {
     type: mimeType
   });
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+
 };

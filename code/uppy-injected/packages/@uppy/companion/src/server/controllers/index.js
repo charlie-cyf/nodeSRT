@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 module.exports = {
   callback: require('./callback'),
   sendToken: require('./send-token'),

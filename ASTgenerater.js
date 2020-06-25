@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { Parser } = require("acorn")
+const Astravel = require('astravel')
 
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
@@ -10,16 +11,23 @@ const Path = require('path');
 
 
 function generaterHelper(path, ASTpath) {
-    console.log("path", path)
-    console.log("AST Path", ASTpath)
     let files = fs.readdirSync(path);
     files.forEach(file => {
         if (Path.extname(file) === '.js') {
             try {
                 let content = fs.readFileSync(path + '/' + file);
-                fs.writeFileSync(ASTpath + "/" + file + '.json', JSON.stringify(ASTParser.parse(content)))
+                let comments = [];
+                // don't parse file contain '// @ts-ignore'
+                // if(!content.includes('// @ts-ignore'))
+                let tree = ASTParser.parse(content, {
+                    locations: true,
+                    onComment: comments
+                })
+                Astravel.attachComments(tree, comments);
+                fs.writeFileSync(ASTpath + "/" + file + '.json', JSON.stringify(tree))
+
             } catch (error) {
-                console.log(error)
+                console.log(Path.join(path, file), error)
             }
         } else if (fs.lstatSync(path + "/" + file).isDirectory() && file !== 'node_modules') {
             let dirName = file.split('/').pop();

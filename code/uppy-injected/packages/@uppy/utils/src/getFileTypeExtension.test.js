@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const getFileTypeExtension = require('./getFileTypeExtension');
 describe('getFileTypeExtension', () => {
     beforeAll(() => {
@@ -14,6 +14,7 @@ describe('getFileTypeExtension', () => {
     expect(getFileTypeExtension('video/ogg')).toEqual('ogv');
     expect(getFileTypeExtension('audio/ogg')).toEqual('ogg');
     expect(getFileTypeExtension('video/webm')).toEqual('webm');
+    // Supports mime types with additional data
     expect(getFileTypeExtension('video/webm;codecs=vp8,opus')).toEqual('webm');
     expect(getFileTypeExtension('video/x-matroska;codecs=avc1')).toEqual('mkv');
     expect(getFileTypeExtension('audio/webm')).toEqual('webm');

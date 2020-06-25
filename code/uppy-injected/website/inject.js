@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
@@ -24,6 +24,8 @@ const defaultConfig = {
   uppy_bundle_kb_sizes: {},
   config: {}
 };
+// Keeping a whitelist so utils etc are excluded
+// It may be easier to maintain a blacklist instead
 const packages = ['uppy', '@uppy/robodog', '@uppy/react', '@uppy/core', '@uppy/aws-s3', '@uppy/aws-s3-multipart', '@uppy/dashboard', '@uppy/drag-drop', '@uppy/dropbox', '@uppy/file-input', '@uppy/form', '@uppy/golden-retriever', '@uppy/google-drive', '@uppy/informer', '@uppy/instagram', '@uppy/progress-bar', '@uppy/screen-capture', '@uppy/status-bar', '@uppy/thumbnail-generator', '@uppy/transloadit', '@uppy/tus', '@uppy/url', '@uppy/webcam', '@uppy/xhr-upload', '@uppy/store-default', '@uppy/store-redux'];
 const excludes = {
   '@uppy/react': ['react']
@@ -44,6 +46,7 @@ async function getMinifiedSize(pkg, name) {
   const version = JSON.parse(packageJSON).version;
   if (name !== '@uppy/core' && name !== 'uppy') {
     b.exclude('@uppy/core');
+    // Already unconditionally included through @uppy/core
     b.exclude('preact');
   }
   if (excludes[name]) {
@@ -82,6 +85,7 @@ async function injectSizes(config) {
     console.info(chalk.green(`  ✓ ${pkg}: ${(' ').repeat(padTarget - pkg.length)}` + `${prettierBytes(result.minified)} min`.padEnd(10) + ` / ${prettierBytes(result.gzipped)} gz`));
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
+    // ✓ @uppy/pkgname:     10.0 kB min  / 2.0 kB gz
     return Object.assign(result, {
       prettyMinified: prettierBytes(result.minified),
       prettyGzipped: prettierBytes(result.gzipped)
@@ -124,6 +128,8 @@ async function injectBundles() {
     SRTlib.send('{"type":"FUNCTIONEND","function":"injectBundles","paramsNumber":0},');
 
 }
+// re-enable after rate limiter issue is fixed
+// 
 async function injectGhStars() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectGhStars","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -153,6 +159,7 @@ async function injectMarkdown() {
   };
   for (const src in sources) {
     const dst = sources[src];
+    // strip yaml frontmatter:
     const srcpath = path.join(uppyRoot, `/../../${src}`);
     const dstpath = path.join(webRoot, dst);
     const parts = fs.readFileSync(srcpath, 'utf-8').split(/---\s*\n/);
@@ -181,6 +188,8 @@ function injectLocaleList() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
     const localeName = path.basename(localePath, '.js');
+    // we renamed the es_GL → gl_ES locale, and kept the old name
+    // for backwards-compat, see https://github.com/transloadit/uppy/pull/1929
     if (localeName === 'es_GL') {
             SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 

@@ -1,5 +1,4 @@
-var SRTlib = require('SRT-util');
-
+const SRTlib = require('SRT-util');
 var sr_RS_Latin = {};
 sr_RS_Latin.strings = {
   addMore: 'Dodaj još',
@@ -134,22 +133,21 @@ sr_RS_Latin.strings = {
   unselectFileNamed: 'Isključite fajl %{name}',
   openFolderNamed: 'Otvori folder %{name}'
 };
-
 sr_RS_Latin.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"sr_RS_Latin.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sr_RS_Latin.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');
   return 1;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');
-};
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.sr_RS_Latin = sr_RS_Latin;
 }
-
 module.exports = sr_RS_Latin;

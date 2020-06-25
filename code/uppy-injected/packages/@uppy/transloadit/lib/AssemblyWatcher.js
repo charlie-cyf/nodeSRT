@@ -1,152 +1,175 @@
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+const SRTlib = require('SRT-util');
+function _assertThisInitialized(self) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
 
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+  if (self === void 0) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
-var SRTlib = require('SRT-util');
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
 
+  return self;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized","paramsNumber":1},');
+
+}
+function _inheritsLoose(subClass, superClass) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
+
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
+
+}
 var Emitter = require('component-emitter');
+/**
+* Track completion of multiple assemblies.
+*
+* Emits 'assembly-complete' when an assembly completes.
+* Emits 'assembly-error' when an assembly fails.
+* Exposes a `.promise` property that resolves when all assemblies have
+* completed (or failed).
+*/
+var TransloaditAssemblyWatcher = (function (_Emitter) {
+  /*#__PURE__*/
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssemblyWatcher","fileName":"${__filename}","paramsNumber":1},`);
 
-var TransloaditAssemblyWatcher = /*#__PURE__*/function (_Emitter) {
   _inheritsLoose(TransloaditAssemblyWatcher, _Emitter);
-
   function TransloaditAssemblyWatcher(uppy, assemblyIDs) {
-    var _this;
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"TransloaditAssemblyWatcher","fileName":"${__filename}","paramsNumber":2},`);
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
+    var _this;
     _this = _Emitter.call(this) || this;
     _this._uppy = uppy;
     _this._assemblyIDs = assemblyIDs;
     _this._remaining = assemblyIDs.length;
     _this.promise = new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.promise","fileName":"${__filename}","paramsNumber":2},`);
+
       _this._resolve = resolve;
       _this._reject = reject;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.promise"},');
+
     });
     _this._onAssemblyComplete = _this._onAssemblyComplete.bind(_assertThisInitialized(_this));
     _this._onAssemblyCancel = _this._onAssemblyCancel.bind(_assertThisInitialized(_this));
     _this._onAssemblyError = _this._onAssemblyError.bind(_assertThisInitialized(_this));
     _this._onImportError = _this._onImportError.bind(_assertThisInitialized(_this));
-
     _this._addListeners();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
     return _this;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher","paramsNumber":2},');
+
   }
-
+  /**
+  * Are we watching this assembly ID?
+  */
   var _proto = TransloaditAssemblyWatcher.prototype;
-
   _proto._watching = function _watching(id) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_watching\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_watching"},');
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssemblyWatcher._proto._watching._watching","fileName":"${__filename}","paramsNumber":1},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._watching._watching"},');
+
     return this._assemblyIDs.indexOf(id) !== -1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_watching"},');
-  };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._watching._watching"},');
 
+  };
   _proto._onAssemblyComplete = function _onAssemblyComplete(assembly) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onAssemblyComplete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssemblyWatcher._proto._onAssemblyComplete._onAssemblyComplete","fileName":"${__filename}","paramsNumber":1},`);
 
     if (!this._watching(assembly.assembly_id)) {
-      SRTlib.send('{"type":"FUNCTIONEND","function":"_onAssemblyComplete"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._onAssemblyComplete._onAssemblyComplete"},');
+
       return;
     }
-
     this._uppy.log("[Transloadit] AssemblyWatcher: Got Assembly finish " + assembly.assembly_id);
-
     this.emit('assembly-complete', assembly.assembly_id);
-
     this._checkAllComplete();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._onAssemblyComplete._onAssemblyComplete"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_onAssemblyComplete"},');
   };
-
   _proto._onAssemblyCancel = function _onAssemblyCancel(assembly) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onAssemblyCancel\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssemblyWatcher._proto._onAssemblyCancel._onAssemblyCancel","fileName":"${__filename}","paramsNumber":1},`);
 
     if (!this._watching(assembly.assembly_id)) {
-      SRTlib.send('{"type":"FUNCTIONEND","function":"_onAssemblyCancel"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._onAssemblyCancel._onAssemblyCancel"},');
+
       return;
     }
-
     this._checkAllComplete();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._onAssemblyCancel._onAssemblyCancel"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_onAssemblyCancel"},');
   };
-
   _proto._onAssemblyError = function _onAssemblyError(assembly, error) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onAssemblyError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssemblyWatcher._proto._onAssemblyError._onAssemblyError","fileName":"${__filename}","paramsNumber":2},`);
 
     if (!this._watching(assembly.assembly_id)) {
-      SRTlib.send('{"type":"FUNCTIONEND","function":"_onAssemblyError"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._onAssemblyError._onAssemblyError"},');
+
       return;
     }
-
     this._uppy.log("[Transloadit] AssemblyWatcher: Got Assembly error " + assembly.assembly_id);
-
     this._uppy.log(error);
-
     this.emit('assembly-error', assembly.assembly_id, error);
-
     this._checkAllComplete();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._onAssemblyError._onAssemblyError"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_onAssemblyError"},');
   };
-
   _proto._onImportError = function _onImportError(assembly, fileID, error) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onImportError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssemblyWatcher._proto._onImportError._onImportError","fileName":"${__filename}","paramsNumber":3},`);
 
+    // Not sure if we should be doing something when it's just one file failing.
     if (!this._watching(assembly.assembly_id)) {
-      SRTlib.send('{"type":"FUNCTIONEND","function":"_onImportError"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._onImportError._onImportError"},');
+
       return;
     }
-
+    // ATM, the only options are 1) ignoring or 2) failing the entire upload.
+    // I think failing the upload is better than silently ignoring.
+    // In the future we should maybe have a way to resolve uploads with some failures,
+    // like returning an object with `{ successful, failed }` uploads.
     this._onAssemblyError(assembly, error);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._onImportError._onImportError"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_onImportError"},');
   };
-
   _proto._checkAllComplete = function _checkAllComplete() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_checkAllComplete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssemblyWatcher._proto._checkAllComplete._checkAllComplete","fileName":"${__filename}","paramsNumber":0},`);
+
     this._remaining -= 1;
-
     if (this._remaining === 0) {
+      // We're done, these listeners can be removed
       this._removeListeners();
-
       this._resolve();
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._checkAllComplete._checkAllComplete"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_checkAllComplete"},');
   };
-
   _proto._removeListeners = function _removeListeners() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_removeListeners\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssemblyWatcher._proto._removeListeners._removeListeners","fileName":"${__filename}","paramsNumber":0},`);
 
     this._uppy.off('transloadit:complete', this._onAssemblyComplete);
-
     this._uppy.off('transloadit:assembly-cancel', this._onAssemblyCancel);
-
     this._uppy.off('transloadit:assembly-error', this._onAssemblyError);
-
     this._uppy.off('transloadit:import-error', this._onImportError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._removeListeners._removeListeners"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_removeListeners"},');
   };
-
   _proto._addListeners = function _addListeners() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_addListeners\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssemblyWatcher._proto._addListeners._addListeners","fileName":"${__filename}","paramsNumber":0},`);
 
     this._uppy.on('transloadit:complete', this._onAssemblyComplete);
-
     this._uppy.on('transloadit:assembly-cancel', this._onAssemblyCancel);
-
     this._uppy.on('transloadit:assembly-error', this._onAssemblyError);
-
     this._uppy.on('transloadit:import-error', this._onImportError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher._proto._addListeners._addListeners"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_addListeners"},');
   };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher"},');
 
   return TransloaditAssemblyWatcher;
-}(Emitter);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssemblyWatcher"},');
 
+})(Emitter);
 module.exports = TransloaditAssemblyWatcher;

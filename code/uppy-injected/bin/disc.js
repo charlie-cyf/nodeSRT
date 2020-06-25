@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const fs = require('fs');
 const path = require('path');
 const {PassThrough} = require('stream');

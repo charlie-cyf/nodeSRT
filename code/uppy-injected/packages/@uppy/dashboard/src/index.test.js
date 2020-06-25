@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Core = require('@uppy/core');
 const DashboardPlugin = require('./index');
 const StatusBarPlugin = require('@uppy/status-bar');

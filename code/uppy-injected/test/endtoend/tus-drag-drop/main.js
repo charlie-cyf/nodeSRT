@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 require('es6-promise/auto');
 require('whatwg-fetch');
 const Uppy = require('@uppy/core');
@@ -7,6 +7,7 @@ const Tus = require('@uppy/tus');
 const ProgressBar = require('@uppy/progress-bar');
 const isOnTravis = !!(process.env.TRAVIS && process.env.CI);
 const endpoint = isOnTravis ? 'http://companion.test:1080' : 'http://localhost:1080';
+// Initialise Uppy with Drag & Drop
 const uppyDragDrop = Uppy({
   id: 'uppyDragDrop',
   debug: true,

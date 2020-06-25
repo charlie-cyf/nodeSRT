@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 module.exports = function getBytesRemaining(fileProgress) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getBytesRemaining","fileName":"${__filename}","paramsNumber":1},`);
 

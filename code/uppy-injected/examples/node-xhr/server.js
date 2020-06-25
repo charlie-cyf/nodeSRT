@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 var formidable = require('formidable');
 var http = require('http');
 http.createServer(function (req, res) {
@@ -8,7 +8,9 @@ http.createServer(function (req, res) {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+    // 30 days
     'Access-Control-Max-Age': 2592000
+    /** add other headers as per requirement*/
   };
   if (req.method === 'OPTIONS') {
     res.writeHead(204, headers);
@@ -18,6 +20,7 @@ http.createServer(function (req, res) {
     return;
   }
   if (req.url === '/upload' && req.method.toLowerCase() === 'post') {
+    // parse a file upload
     var form = new formidable.IncomingForm();
     form.uploadDir = './uploads';
     form.keepExtensions = true;

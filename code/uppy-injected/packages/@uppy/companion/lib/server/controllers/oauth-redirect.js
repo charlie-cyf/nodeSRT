@@ -1,8 +1,14 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const qs = require('querystring');
+// eslint-disable-line node/no-deprecated-api
 const parseUrl = require('url').parse;
 const {hasMatch} = require('../helpers/utils');
 const oAuthState = require('../helpers/oauth-state');
+/**
+*
+* @param {object} req
+* @param {object} res
+*/
 module.exports = function oauthRedirect(req, res) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.oauthRedirect","fileName":"${__filename}","paramsNumber":2},`);
 

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Uppy = require('@uppy/core');
 const Webcam = require('./index');
 describe('Webcam', () => {

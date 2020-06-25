@@ -1,1 +1,1 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');

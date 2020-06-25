@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const tokenService = require('./helpers/jwt');
 const logger = require('./logger');
 exports.hasSessionAndProvider = (req, res, next) => {
@@ -47,6 +47,7 @@ exports.verifyToken = (req, res, next) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 };
+// does not fail if token is invalid
 exports.gentleVerifyToken = (req, res, next) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":3},`);
 

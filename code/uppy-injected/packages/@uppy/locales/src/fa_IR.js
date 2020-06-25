@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const fa_IR = {};
 fa_IR.strings = {
   addMoreFiles: 'افزودن فایل‌های بیشتر',

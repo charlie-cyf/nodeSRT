@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 require('es6-promise/auto');
 require('whatwg-fetch');
 const Uppy = require('@uppy/core');
@@ -11,6 +11,7 @@ window.setup = function (options) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup","fileName":"${__filename}","paramsNumber":1},`);
 
   id += 1;
+  // Initialise Uppy with Drag & Drop
   const uppy = Uppy({
     id: `uppy${id}`,
     debug: true

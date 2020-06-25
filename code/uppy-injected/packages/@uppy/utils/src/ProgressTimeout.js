@@ -1,4 +1,10 @@
-var SRTlib = require('SRT-util');
+/**
+* Helper to abort upload requests if there has not been any progress for `timeout` ms.
+* Create an instance using `timer = new ProgressTimeout(10000, onTimeout)`
+* Call `timer.progress()` to signal that there has been progress of any kind.
+* Call `timer.done()` when the upload has completed.
+*/
+const SRTlib = require('SRT-util');
 class ProgressTimeout {
   constructor(timeout, timeoutHandler) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProgressTimeout"}},`);
@@ -14,6 +20,9 @@ class ProgressTimeout {
   progress() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"progress","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProgressTimeout"}},`);
 
+    // Some browsers fire another progress event when the upload is
+    // cancelled, so we have to ignore progress after the timer was
+    // told to stop.
     if (this._isDone) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"progress"},');
 

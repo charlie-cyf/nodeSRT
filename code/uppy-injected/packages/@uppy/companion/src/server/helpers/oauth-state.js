@@ -1,6 +1,7 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const {encrypt, decrypt} = require('./utils');
 const crypto = require('crypto');
+// @ts-ignore
 const atob = require('atob');
 module.exports.generateState = secret => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);

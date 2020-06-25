@@ -1,6 +1,11 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const tokenService = require('../helpers/jwt');
 const {errorToResponse} = require('../provider/error');
+/**
+*
+* @param {object} req
+* @param {object} res
+*/
 function logout(req, res, next) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":3},`);
 

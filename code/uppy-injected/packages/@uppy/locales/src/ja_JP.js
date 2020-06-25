@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const ja_JP = {};
 ja_JP.strings = {
   addMore: 'さらに追加',

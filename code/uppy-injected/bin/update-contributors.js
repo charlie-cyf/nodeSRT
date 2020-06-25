@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const execa = require('execa');
 const fs = require('fs');
 const README_FILE_NAME = 'README.md';

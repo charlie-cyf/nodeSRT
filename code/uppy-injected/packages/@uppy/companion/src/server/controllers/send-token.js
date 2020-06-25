@@ -1,13 +1,25 @@
-var SRTlib = require('SRT-util');
+/**
+*
+* sends auth token to uppy client
+*/
+const SRTlib = require('SRT-util');
 const tokenService = require('../helpers/jwt');
+// eslint-disable-line node/no-deprecated-api
 const parseUrl = require('url').parse;
 const {hasMatch, sanitizeHtml} = require('../helpers/utils');
 const oAuthState = require('../helpers/oauth-state');
 const versionCmp = require('../helpers/version');
+/**
+*
+* @param {object} req
+* @param {object} res
+* @param {function} next
+*/
 module.exports = function sendToken(req, res, next) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sendToken","fileName":"${__filename}","paramsNumber":3},`);
 
   const uppyAuthToken = req.companion.authToken;
+  // some providers need the token in cookies for thumbnail/image requests
   if (req.companion.provider.needsCookieAuth) {
     tokenService.addToCookies(res, uppyAuthToken, req.companion.options, req.companion.provider.authProvider);
   }
@@ -17,6 +29,7 @@ module.exports = function sendToken(req, res, next) {
     const origin = oAuthState.getFromState(state, 'origin', req.companion.options.secret);
     const clientVersion = oAuthState.getFromState(state, 'clientVersion', req.companion.options.secret);
     const allowedClients = req.companion.options.clients;
+    // if no preset clients then allow any client
     if (!allowedClients || hasMatch(origin, allowedClients) || hasMatch(parseUrl(origin).host, allowedClients)) {
       const allowsStringMessage = versionCmp.gte(clientVersion, '1.0.2');
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sendToken"},');
@@ -28,6 +41,11 @@ module.exports = function sendToken(req, res, next) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sendToken"},');
 
 };
+/**
+*
+* @param {string} token uppy auth token
+* @param {string} origin url string
+*/
 const htmlContent = (token, origin) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"htmlContent","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -48,6 +66,11 @@ const htmlContent = (token, origin) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"htmlContent"},');
 
 };
+/**
+* @todo remove this function in next major release
+* @param {string} token uppy auth token
+* @param {string} origin url string
+*/
 const oldHtmlContent = (token, origin) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"oldHtmlContent","fileName":"${__filename}","paramsNumber":2},`);
 

@@ -1,4 +1,5 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
+// oauth configuration for provider services that are used.
 module.exports = () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 

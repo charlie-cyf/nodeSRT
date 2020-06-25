@@ -1,4 +1,9 @@
-var SRTlib = require('SRT-util');
+/**
+* Check if an object is a DOM element. Duck-typing based on `nodeType`.
+*
+* @param {*} obj
+*/
+const SRTlib = require('SRT-util');
 module.exports = function isDOMElement(obj) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isDOMElement","fileName":"${__filename}","paramsNumber":1},`);
 

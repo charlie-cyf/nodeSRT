@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Uppy = require('@uppy/core');
 const Dashboard = require('@uppy/dashboard');
 const AwsS3 = require('@uppy/aws-s3');
@@ -15,8 +15,10 @@ uppy.use(AwsS3, {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters"},');
 
+    // Send a request to our PHP signing endpoint.
     return fetch('/s3-sign.php', {
       method: 'post',
+      // Send and receive JSON.
       headers: {
         accept: 'application/json',
         'content-type': 'application/json'
@@ -30,6 +32,7 @@ uppy.use(AwsS3, {
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
+      // Parse the JSON response.
       return response.json();
             SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
@@ -38,6 +41,7 @@ uppy.use(AwsS3, {
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
+      // Return an object in the correct shape.
       return {
         method: data.method,
         url: data.url,

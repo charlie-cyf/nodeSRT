@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Uploader = require('../Uploader');
 const logger = require('../logger');
 const {errorToResponse} = require('../provider/error');
@@ -9,6 +9,7 @@ function get(req, res, next) {
   const id = req.params.id;
   const token = req.companion.providerTokens[providerName];
   const provider = req.companion.provider;
+  // get the file size before proceeding
   provider.size({
     id,
     token,
@@ -46,7 +47,10 @@ function get(req, res, next) {
 
       return;
     }
+    // wait till the client has connected to the socket, before starting
+    // the download, so that the client can receive all download/upload progress.
     logger.debug('Waiting for socket connection before beginning remote download.', null, req.id);
+    // waiting for socketReady.
     uploader.onSocketReady(() => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 

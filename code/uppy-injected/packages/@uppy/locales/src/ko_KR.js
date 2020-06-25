@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const ko_KR = {};
 ko_KR.strings = {
   addMore: '파일 추가',

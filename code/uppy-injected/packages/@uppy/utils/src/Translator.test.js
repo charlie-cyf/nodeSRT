@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Translator = require('./Translator');
 const english = {
   strings: {
@@ -71,6 +71,7 @@ describe('Translator', () => {
       expect(translator.translateArray('test', {
         who: who
       })).toEqual(['Hello ', who, '!']);
+      // No empty string at the end.
       expect(translator.translateArray('test2', {
         who: who
       })).toEqual(['Hello ', who]);

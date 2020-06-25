@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 require('es6-promise/auto');
 require('whatwg-fetch');
 const Uppy = require('@uppy/core');
@@ -32,6 +32,7 @@ if (window.location.search === '?socketerr=true') {
   const emitError = (file, data) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitError","fileName":"${__filename}","paramsNumber":2},`);
 
+    // trigger fake socket error
     data.uploader.uploaderSockets[file.id].emit('error', {
       error: {
         message: 'nobody likes me, thats ok'

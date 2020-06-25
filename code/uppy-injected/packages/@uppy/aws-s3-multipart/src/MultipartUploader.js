@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const MB = 1024 * 1024;
 const defaultOptions = {
   limit: 1,
@@ -61,6 +61,7 @@ class MultipartUploader {
       ...defaultOptions,
       ...options
     };
+    // Use default `getChunkSize` if it was null or something
     if (!this.options.getChunkSize) {
       this.options.getChunkSize = defaultOptions.getChunkSize;
     }
@@ -68,12 +69,21 @@ class MultipartUploader {
     this.key = this.options.key || null;
     this.uploadId = this.options.uploadId || null;
     this.parts = this.options.parts || [];
+    // Do `this.createdPromise.then(OP)` to execute an operation `OP` _only_ if the
+    // upload was created already. That also ensures that the sequencing is right
+    // (so the `OP` definitely happens if the upload is created).
+    // 
+    // This mostly exists to make `_abortUpload` work well: only sending the abort request if
+    // the upload was already created, and if the createMultipartUpload request is still in flight,
+    // aborting it immediately after it finishes.
+    // eslint-disable-line prefer-promise-reject-errors
     this.createdPromise = Promise.reject();
     this.isPaused = false;
     this.chunks = null;
     this.chunkState = null;
     this.uploading = [];
     this._initChunks();
+    // silence uncaught rejection warning
     this.createdPromise.catch(() => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -88,6 +98,7 @@ class MultipartUploader {
 
     const chunks = [];
     const desiredChunkSize = this.options.getChunkSize(this.file);
+    // at least 5MB per request, at most 10k requests
     const minChunkSize = Math.max(5 * MB, Math.ceil(this.file.size / 10000));
     const chunkSize = Math.max(desiredChunkSize, minChunkSize);
     for (let i = 0; i < this.file.size; i += chunkSize) {
@@ -178,6 +189,7 @@ class MultipartUploader {
           etag: part.ETag,
           done: true
         };
+        // Only add if we did not yet know about this part.
         if (!this.parts.some(p => {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -222,6 +234,7 @@ class MultipartUploader {
 
       return;
     }
+    // All parts are uploaded.
     if (this.chunkState.every(state => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -386,6 +399,7 @@ class MultipartUploader {
         return;
       }
       this._onPartProgress(index, body.size, body.size);
+      // NOTE This must be allowed by CORS.
       const etag = ev.target.getResponseHeader('ETag');
       if (etag === null) {
         this._onError(new Error('AwsS3/Multipart: Could not read the ETag header. This likely means CORS is not configured correctly on the S3 Bucket. Seee https://uppy.io/docs/aws-s3-multipart#S3-Bucket-Configuration for instructions.'));
@@ -415,6 +429,7 @@ class MultipartUploader {
   _completeUpload() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_completeUpload","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MultipartUploader"}},`);
 
+    // Parts may not have completed uploading in sorted order, if limit > 1.
     this.parts.sort((a, b) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey23","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -474,6 +489,7 @@ class MultipartUploader {
             SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey28"},');
 
     }, () => {
+      // if the creation failed we do not need to abort
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey29","fileName":"${__filename}","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey29"},');

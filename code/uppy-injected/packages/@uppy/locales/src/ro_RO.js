@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const ro_RO = {};
 ro_RO.strings = {
   addBulkFilesFailed: {

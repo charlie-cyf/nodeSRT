@@ -1,9 +1,20 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
+// @ts-ignore
 const NRP = require('node-redis-pubsub');
+/**
+* This class simulates the builtin events.EventEmitter but with the use of redis.
+* This is useful for when companion is running on multiple instances and events need
+* to be distributed across.
+*/
 class RedisEmitter extends NRP {
   constructor(redisUrl) {
+    /**
+    *
+    * @param {string} redisUrl redis URL
+    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
+    // @ts-ignore
     super({
       url: redisUrl
     });
@@ -11,6 +22,11 @@ class RedisEmitter extends NRP {
 
   }
   once(eventName, handler) {
+    /**
+    * Add a one-off event listener
+    * @param {string} eventName name of the event
+    * @param {function} handler the handler of the event
+    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"once","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
     const removeListener = this.on(eventName, message => {
@@ -25,6 +41,11 @@ class RedisEmitter extends NRP {
 
   }
   emit(eventName, message) {
+    /**
+    * Announce the occurence of an event
+    * @param {string} eventName name of the event
+    * @param {object} message the message to pass along with the event
+    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emit","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emit"},');
@@ -34,6 +55,11 @@ class RedisEmitter extends NRP {
 
   }
   removeListener(eventName, handler) {
+    /**
+    * Remove an event listener
+    * @param {string} eventName name of the event
+    * @param {function} handler the handler of the event to remove
+    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeListener","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
     this.receiver.removeListener(eventName, handler);
@@ -42,6 +68,10 @@ class RedisEmitter extends NRP {
 
   }
   removeAllListeners(eventName) {
+    /**
+    * Remove all listeners of an event
+    * @param {string} eventName name of the event
+    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeAllListeners","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
     this.receiver.removeAllListeners(eventName);

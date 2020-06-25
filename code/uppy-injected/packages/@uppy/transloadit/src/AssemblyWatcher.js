@@ -1,5 +1,13 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Emitter = require('component-emitter');
+/**
+* Track completion of multiple assemblies.
+*
+* Emits 'assembly-complete' when an assembly completes.
+* Emits 'assembly-error' when an assembly fails.
+* Exposes a `.promise` property that resolves when all assemblies have
+* completed (or failed).
+*/
 class TransloaditAssemblyWatcher extends Emitter {
   constructor(uppy, assemblyIDs) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
@@ -25,6 +33,9 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _watching(id) {
+    /**
+    * Are we watching this assembly ID?
+    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_watching","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"_watching"},');
@@ -82,6 +93,11 @@ class TransloaditAssemblyWatcher extends Emitter {
 
       return;
     }
+    // Not sure if we should be doing something when it's just one file failing.
+    // ATM, the only options are 1) ignoring or 2) failing the entire upload.
+    // I think failing the upload is better than silently ignoring.
+    // In the future we should maybe have a way to resolve uploads with some failures,
+    // like returning an object with `{ successful, failed }` uploads.
     this._onAssemblyError(assembly, error);
         SRTlib.send('{"type":"FUNCTIONEND","function":"_onImportError"},');
 
@@ -91,6 +107,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
     this._remaining -= 1;
     if (this._remaining === 0) {
+      // We're done, these listeners can be removed
       this._removeListeners();
       this._resolve();
     }

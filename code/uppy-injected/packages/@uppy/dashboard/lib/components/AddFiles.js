@@ -1,41 +1,54 @@
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+const SRTlib = require('SRT-util');
+function _inheritsLoose(subClass, superClass) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
-var _require = require('./icons'),
-    iconMyDevice = _require.iconMyDevice;
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
 
-var _require2 = require('preact'),
-    h = _require2.h,
-    Component = _require2.Component;
+}
+var _require = require('./icons'), iconMyDevice = _require.iconMyDevice;
+var _require2 = require('preact'), h = _require2.h, Component = _require2.Component;
+var AddFiles = (function (_Component) {
+  /*#__PURE__*/
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"AddFiles","fileName":"${__filename}","paramsNumber":1},`);
 
-var AddFiles = /*#__PURE__*/function (_Component) {
   _inheritsLoose(AddFiles, _Component);
-
   function AddFiles() {
-    var _this;
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AddFiles","fileName":"${__filename}","paramsNumber":0},`);
 
+    var _this;
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
     _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-
     _this.triggerFileInputClick = function () {
-      _this.fileInput.click();
-    };
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.triggerFileInputClick","fileName":"${__filename}","paramsNumber":0},`);
 
+      _this.fileInput.click();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.triggerFileInputClick"},');
+
+    };
     _this.onFileInputChange = function (event) {
-      _this.props.handleInputChange(event); // We clear the input after a file is selected, because otherwise
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.onFileInputChange","fileName":"${__filename}","paramsNumber":1},`);
+
+      // We clear the input after a file is selected, because otherwise
+      _this.props.handleInputChange(event);
       // change event is not fired in Chrome and Safari when a file
       // with the same name is selected.
       // ___Why not use value="" on <input/> instead?
-      //    Because if we use that method of clearing the input,
-      //    Chrome will not trigger change if we drop the same file twice (Issue #768).
-
-
+      // Because if we use that method of clearing the input,
+      // Chrome will not trigger change if we drop the same file twice (Issue #768).
       event.target.value = null;
-    };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.onFileInputChange"},');
 
+    };
     _this.renderCloudIcon = function () {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderCloudIcon","fileName":"${__filename}","paramsNumber":0},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderCloudIcon"},');
+
       return h("svg", {
         class: "uppy-Dashboard-dropFilesIcon",
         "aria-hidden": "true",
@@ -48,9 +61,14 @@ var AddFiles = /*#__PURE__*/function (_Component) {
         fill: "#E2E2E2",
         "fill-rule": "nonzero"
       }));
-    };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderCloudIcon"},');
 
+    };
     _this.renderHiddenFileInput = function () {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderHiddenFileInput","fileName":"${__filename}","paramsNumber":0},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderHiddenFileInput"},');
+
       return h("input", {
         class: "uppy-Dashboard-input",
         hidden: true,
@@ -62,12 +80,21 @@ var AddFiles = /*#__PURE__*/function (_Component) {
         onchange: _this.onFileInputChange,
         accept: _this.props.allowedFileTypes,
         ref: function ref(_ref) {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderHiddenFileInput.ReturnStatement.h.ref.ref","fileName":"${__filename}","paramsNumber":1},`);
+
           _this.fileInput = _ref;
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderHiddenFileInput.ReturnStatement.h.ref.ref"},');
+
         }
       });
-    };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderHiddenFileInput"},');
 
+    };
     _this.renderMyDeviceAcquirer = function () {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderMyDeviceAcquirer","fileName":"${__filename}","paramsNumber":0},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMyDeviceAcquirer"},');
+
       return h("div", {
         class: "uppy-DashboardTab",
         role: "presentation"
@@ -81,9 +108,12 @@ var AddFiles = /*#__PURE__*/function (_Component) {
       }, iconMyDevice(), h("div", {
         class: "uppy-DashboardTab-name"
       }, _this.props.i18n('myDevice'))));
-    };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMyDeviceAcquirer"},');
 
+    };
     _this.renderDropPasteBrowseTagline = function () {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderDropPasteBrowseTagline","fileName":"${__filename}","paramsNumber":0},`);
+
       var numberOfAcquirers = _this.props.acquirers.length;
       var browse = h("button", {
         type: "button",
@@ -91,6 +121,8 @@ var AddFiles = /*#__PURE__*/function (_Component) {
         onclick: _this.triggerFileInputClick,
         "data-uppy-super-focusable": numberOfAcquirers === 0
       }, _this.props.i18n('browse'));
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderDropPasteBrowseTagline"},');
+
       return h("div", {
         class: "uppy-Dashboard-AddFiles-title"
       }, numberOfAcquirers > 0 ? _this.props.i18nArray('dropPasteImport', {
@@ -98,9 +130,14 @@ var AddFiles = /*#__PURE__*/function (_Component) {
       }) : _this.props.i18nArray('dropPaste', {
         browse: browse
       }));
-    };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderDropPasteBrowseTagline"},');
 
+    };
     _this.renderAcquirer = function (acquirer) {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirer","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirer"},');
+
       return h("div", {
         class: "uppy-DashboardTab",
         role: "presentation"
@@ -113,37 +150,66 @@ var AddFiles = /*#__PURE__*/function (_Component) {
         "aria-selected": _this.props.activePickerPanel.id === acquirer.id,
         "data-uppy-super-focusable": true,
         onclick: function onclick() {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirer.ReturnStatement.h.h.onclick.onclick","fileName":"${__filename}","paramsNumber":0},`);
+
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirer.ReturnStatement.h.h.onclick.onclick"},');
+
           return _this.props.showPanel(acquirer.id);
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirer.ReturnStatement.h.h.onclick.onclick"},');
+
         }
       }, acquirer.icon(), h("div", {
         class: "uppy-DashboardTab-name"
       }, acquirer.name)));
-    };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirer"},');
 
+    };
     _this.renderAcquirers = function (acquirers) {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirers","fileName":"${__filename}","paramsNumber":1},`);
+
       // Group last two buttons, so we don’t end up with
       // just one button on a new line
       var acquirersWithoutLastTwo = [].concat(acquirers);
       var lastTwoAcquirers = acquirersWithoutLastTwo.splice(acquirers.length - 2, acquirers.length);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers"},');
+
       return h("div", {
         class: "uppy-Dashboard-AddFiles-list",
         role: "tablist"
       }, _this.renderMyDeviceAcquirer(), acquirersWithoutLastTwo.map(function (acquirer) {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirers.ReturnStatement.h","fileName":"${__filename}","paramsNumber":1},`);
+
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers.ReturnStatement.h"},');
+
         return _this.renderAcquirer(acquirer);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers.ReturnStatement.h"},');
+
       }), h("span", {
         role: "presentation",
         style: "white-space: nowrap;"
       }, lastTwoAcquirers.map(function (acquirer) {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirers.ReturnStatement.h.h","fileName":"${__filename}","paramsNumber":1},`);
+
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers.ReturnStatement.h.h"},');
+
         return _this.renderAcquirer(acquirer);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers.ReturnStatement.h.h"},');
+
       })));
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers"},');
+
     };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles"},');
 
     return _this;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles","paramsNumber":0},');
+
   }
-
   var _proto = AddFiles.prototype;
-
   _proto.renderPoweredByUppy = function renderPoweredByUppy() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"AddFiles._proto.renderPoweredByUppy.renderPoweredByUppy","fileName":"${__filename}","paramsNumber":0},`);
+
+    // Support both the old word-order-insensitive string `poweredBy` and the new word-order-sensitive string `poweredBy2`
     var uppyBranding = h("span", null, h("svg", {
       "aria-hidden": "true",
       focusable: "false",
@@ -156,12 +222,13 @@ var AddFiles = /*#__PURE__*/function (_Component) {
       "fill-rule": "evenodd"
     })), h("span", {
       class: "uppy-Dashboard-poweredByUppy"
-    }, "Uppy")); // Support both the old word-order-insensitive string `poweredBy` and the new word-order-sensitive string `poweredBy2`
-
+    }, "Uppy"));
     var linkText = this.props.i18nArray('poweredBy2', {
       backwardsCompat: this.props.i18n('poweredBy'),
       uppy: uppyBranding
     });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles._proto.renderPoweredByUppy.renderPoweredByUppy"},');
+
     return h("a", {
       tabindex: "-1",
       href: "https://uppy.io",
@@ -169,9 +236,14 @@ var AddFiles = /*#__PURE__*/function (_Component) {
       target: "_blank",
       class: "uppy-Dashboard-poweredBy"
     }, linkText);
-  };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles._proto.renderPoweredByUppy.renderPoweredByUppy"},');
 
+  };
   _proto.render = function render() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"AddFiles._proto.render.render","fileName":"${__filename}","paramsNumber":0},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles._proto.render.render"},');
+
     return h("div", {
       class: "uppy-Dashboard-AddFiles"
     }, this.renderHiddenFileInput(), this.renderDropPasteBrowseTagline(), this.props.acquirers.length > 0 && this.renderAcquirers(this.props.acquirers), h("div", {
@@ -179,9 +251,13 @@ var AddFiles = /*#__PURE__*/function (_Component) {
     }, this.props.note && h("div", {
       class: "uppy-Dashboard-note"
     }, this.props.note), this.props.proudlyDisplayPoweredByUppy && this.renderPoweredByUppy(this.props)));
+        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles._proto.render.render"},');
+
   };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles"},');
 
   return AddFiles;
-}(Component);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles"},');
 
+})(Component);
 module.exports = AddFiles;

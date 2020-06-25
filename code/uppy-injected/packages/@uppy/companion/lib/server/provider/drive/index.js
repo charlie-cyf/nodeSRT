@@ -1,6 +1,7 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Provider = require('../Provider');
 const request = require('request');
+// @ts-ignore
 const purest = require('purest')({
   request
 });
@@ -9,7 +10,11 @@ const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../error');
 const DRIVE_FILE_FIELDS = 'kind,id,name,mimeType,ownedByMe,permissions(role,emailAddress),size,modifiedTime,iconLink,thumbnailLink,teamDriveId';
 const DRIVE_FILES_FIELDS = `kind,nextPageToken,incompleteSearch,files(${DRIVE_FILE_FIELDS})`;
+// using wildcard to get all 'drive' fields because specifying fields seems no to work for the /drives endpoint
 const SHARED_DRIVE_FIELDS = '*';
+/**
+* Adapter for API https://developers.google.com/drive/api/v3/
+*/
 class Drive extends Provider {
   constructor(options) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
@@ -245,6 +250,7 @@ class Drive extends Provider {
   thumbnail(_, done) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
+    // not implementing this because a public thumbnail from googledrive will be used instead
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.drive.thumbnail.error');
         SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail"},');
@@ -272,6 +278,11 @@ class Drive extends Provider {
         return done(err);
       }
       if (adapter.isGsuiteFile(body.mimeType)) {
+        // Not all GSuite file sizes can be predetermined
+        // also for files whose size can be predetermined,
+        // the request to get it can be sometimes expesnive, depending
+        // on the file size. So we default the size to the size export limit
+        // 10 MB
         const maxExportFileSize = 10 * 1024 * 1024;
         done(null, maxExportFileSize);
       } else {
@@ -328,6 +339,8 @@ class Drive extends Provider {
         modifiedDate: adapter.getItemModifiedDate(item),
         size: adapter.getItemSize(item),
         custom: {
+          // @todo isTeamDrive is left for backward compatibility. We should remove it in the next
+          // major release.
           isTeamDrive: adapter.isSharedDrive(item),
           isSharedDrive: adapter.isSharedDrive(item)
         }

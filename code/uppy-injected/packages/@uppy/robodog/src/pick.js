@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const createUppy = require('./createUppy');
 const addDashboardPlugin = require('./addDashboardPlugin');
 const addTransloaditPlugin = require('./addTransloaditPlugin');
@@ -21,6 +21,7 @@ function pick(opts = {}) {
   if (Array.isArray(opts.providers)) {
     addProviders(uppy, opts.providers, {
       ...opts,
+      // Install providers into the Dashboard.
       target: uppy.getPlugin(pluginId)
     });
   }

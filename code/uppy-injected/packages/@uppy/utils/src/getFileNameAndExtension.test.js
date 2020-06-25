@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const getFileNameAndExtension = require('./getFileNameAndExtension');
 describe('getFileNameAndExtension', () => {
     beforeAll(() => {

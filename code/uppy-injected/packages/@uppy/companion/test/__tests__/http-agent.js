@@ -1,4 +1,5 @@
-var SRTlib = require('SRT-util');
+/*global test:false, expect:false, describe:false,*/
+const SRTlib = require('SRT-util');
 const {getProtectedHttpAgent, FORBIDDEN_IP_ADDRESS} = require('../../src/server/helpers/request');
 const request = require('request');
 const http = require('http');

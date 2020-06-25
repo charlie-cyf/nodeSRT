@@ -38,7 +38,7 @@ module.exports = class Instrumentor {
                 let tree = JSON.parse(fs.readFileSync(fullPath));
 
                 //add require to the top
-                tree.body.unshift(ASTParser.parse("var SRTlib = require('SRT-util');").body[0]);
+                tree.body.unshift(ASTParser.parse("const SRTlib = require('SRT-util');").body[0]);
 
                 const getSuiteName = this.getSuiteName;
                 const codebase = this.codebaseName
@@ -175,7 +175,7 @@ module.exports = class Instrumentor {
                     }
 
                     //  write to outputDir
-                    fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(tree))
+                    fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(tree, {comments: true}))
 
 
                 } catch (err) {

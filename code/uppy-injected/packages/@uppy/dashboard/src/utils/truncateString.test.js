@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const truncateString = require('./truncateString');
 describe('truncateString', () => {
     beforeAll(() => {

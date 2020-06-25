@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const ThumbnailGeneratorPlugin = require('./index');
 const {Plugin} = require('@uppy/core');
 const emitter = require('namespace-emitter');
@@ -38,13 +38,16 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
     expect(plugin instanceof Plugin).toEqual(true);
   });
   it('should accept the thumbnailWidth and thumbnailHeight option and override the default', () => {
+    // eslint-disable-line no-new
     const plugin1 = new ThumbnailGeneratorPlugin(new MockCore());
     expect(plugin1.opts.thumbnailWidth).toEqual(null);
     expect(plugin1.opts.thumbnailHeight).toEqual(null);
+    // eslint-disable-line no-new
     const plugin2 = new ThumbnailGeneratorPlugin(new MockCore(), {
       thumbnailWidth: 100
     });
     expect(plugin2.opts.thumbnailWidth).toEqual(100);
+    // eslint-disable-line no-new
     const plugin3 = new ThumbnailGeneratorPlugin(new MockCore(), {
       thumbnailHeight: 100
     });
@@ -211,6 +214,7 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
         core.mockFile(file2.id, file2);
         core.emit('file-added', file2);
         expect(plugin.queue).toHaveLength(1);
+        // should drop it from the queue
         core.emit('file-removed', file2);
         expect(plugin.queue).toHaveLength(0);
         expect(plugin.createThumbnail).toHaveBeenCalledTimes(1);

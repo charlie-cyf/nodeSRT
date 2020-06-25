@@ -1,4 +1,5 @@
-var SRTlib = require('SRT-util');
+/*global jest:false, test:false, expect:false, describe:false*/
+const SRTlib = require('SRT-util');
 jest.mock('tus-js-client');
 jest.mock('purest');
 jest.mock('../../src/server/helpers/oauth-state', () => {
@@ -329,6 +330,7 @@ describe('test authentication', () => {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey32"},');
 
+    // see mock ../../src/server/helpers/oauth-state above for state values
     return request(authServer).get(`/dropbox/send-token?uppyAuthToken=${token}&state=state-with-newer-version`).expect(200).expect(res => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey31","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -358,6 +360,7 @@ describe('test authentication', () => {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey34"},');
 
+    // see mock ../../src/server/helpers/oauth-state above for state values
     return request(authServer).get(`/drive/send-token?uppyAuthToken=${token}&state=state-with-older-version`).expect(200).expect(res => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey33","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -385,6 +388,7 @@ describe('test authentication', () => {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey36"},');
 
+    // see mock ../../src/server/helpers/oauth-state above for state values
     return request(authServer).get(`/drive/send-token?uppyAuthToken=${token}&state=state-with-newer-version-old-style`).expect(200).expect(res => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey35","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -466,6 +470,7 @@ describe('handle oauth redirect', () => {
   test('do not redirect to invalid uppy instances', () => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey44","fileName":"${__filename}","paramsNumber":0},`);
 
+    // see mock ../../src/server/helpers/oauth-state above
     const state = 'state-with-invalid-instance-url';
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey44"},');
 

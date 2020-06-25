@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 module.exports = function secondsToTime(rawSeconds) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.secondsToTime","fileName":"${__filename}","paramsNumber":1},`);
 

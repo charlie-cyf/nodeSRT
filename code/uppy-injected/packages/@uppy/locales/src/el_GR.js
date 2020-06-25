@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const el_GR = {};
 el_GR.strings = {
   addMore: 'Προσθέστε περισσότερα',

@@ -1,5 +1,7 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const express = require('express');
+// the ../../../packages is just to use the local version
+// instead of the npm version—in a real app use `require('@uppy/companion')`
 const uppy = require('../../../packages/@uppy/companion');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -20,6 +22,7 @@ app.use((req, res, next) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });
+// Routes
 app.get('/', (req, res) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -28,6 +31,7 @@ app.get('/', (req, res) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 });
+// initialize uppy
 const uppyOptions = {
   providerOptions: {
     google: {
@@ -38,6 +42,7 @@ const uppyOptions = {
   customProviders: {
     mycustomprovider: {
       config: {
+        // your oauth handlers
         authorize_url: 'http://localhost:3020/oauth/authorize',
         access_url: 'http://localhost:3020/oauth/token',
         oauth: 2,
@@ -45,6 +50,7 @@ const uppyOptions = {
         secret: '**',
         scope: ['read', 'write']
       },
+      // you provider module
       module: require('./customprovider')
     }
   },
@@ -59,11 +65,14 @@ const uppyOptions = {
 app.get('/oauth/authorize', (req, res) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":2},`);
 
+  // skips the default oauth process.
+  // ideally this endpoint should handle the actual oauth process
   res.redirect(`http://localhost:3020/mycustomprovider/callback?state=${req.query.state}&access_token=randombytes`);
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
 });
 app.use(uppy.app(uppyOptions));
+// handle 404
 app.use((req, res, next) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -75,6 +84,7 @@ app.use((req, res, next) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
 });
+// handle server errors
 app.use((err, req, res, next) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":4},`);
 

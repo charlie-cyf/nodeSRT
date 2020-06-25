@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const Uppy = require('@uppy/core');
 const Form = require('@uppy/form');
 const StatusBar = require('@uppy/status-bar');
@@ -55,6 +55,7 @@ function form(target, opts) {
     target,
     triggerUploadOnSubmit: true,
     submitOnSuccess,
+    // using custom implementation instead
     addResultToForm: false
   };
   if (has(opts, 'triggerUploadOnSubmit')) {
@@ -97,6 +98,8 @@ function form(target, opts) {
   if (opts.statusBar) {
     uppy.use(StatusBar, {
       target: opts.statusBar,
+      // hide most of the things to keep our api simple,
+      // we can change this in the future if someone needs it
       hideUploadButton: true,
       hideAfterFinish: true,
       hideRetryButton: true,

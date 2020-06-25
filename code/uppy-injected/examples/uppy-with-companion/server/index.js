@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const express = require('express');
 const companion = require('../../../packages/@uppy/companion');
 const bodyParser = require('body-parser');
@@ -20,6 +20,7 @@ app.use((req, res, next) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });
+// Routes
 app.get('/', (req, res) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
 
 });
+// initialize uppy
 const uppyOptions = {
   providerOptions: {
     google: {
@@ -38,6 +40,7 @@ const uppyOptions = {
       key: 'your instagram key',
       secret: 'your instagram secret'
     }
+    // you can also add options for dropbox here
   },
   server: {
     host: 'localhost:3020',
@@ -48,6 +51,7 @@ const uppyOptions = {
   debug: true
 };
 app.use(companion.app(uppyOptions));
+// handle 404
 app.use((req, res, next) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -59,6 +63,7 @@ app.use((req, res, next) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
 });
+// handle server errors
 app.use((err, req, res, next) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":4},`);
 

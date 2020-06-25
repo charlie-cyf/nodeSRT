@@ -1,28 +1,48 @@
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+const SRTlib = require('SRT-util');
+function _extends() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
+  _extends = Object.assign || (function (target) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
+
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
+
+    return target;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
+
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
+
+  return _extends.apply(this, arguments);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
+
+}
 var classNames = require('classnames');
-
 var Breadcrumbs = require('./Breadcrumbs');
-
 var Filter = require('./Filter');
-
 var ItemList = require('./ItemList');
-
 var FooterActions = require('./FooterActions');
-
-var _require = require('preact'),
-    h = _require.h;
-
+var _require = require('preact'), h = _require.h;
 var Browser = function Browser(props) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Browser","fileName":"${__filename}","paramsNumber":1},`);
+
   var filteredFolders = props.folders;
   var filteredFiles = props.files;
-
   if (props.filterInput !== '') {
     filteredFolders = props.filterItems(props.folders);
     filteredFiles = props.filterItems(props.files);
   }
-
   var selected = props.currentSelection.length;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"Browser"},');
+
   return h("div", {
     class: classNames('uppy-ProviderBrowser', "uppy-ProviderBrowser-viewType--" + props.viewType)
   }, h("div", {
@@ -61,6 +81,7 @@ var Browser = function Browser(props) {
   }), selected > 0 && h(FooterActions, _extends({
     selected: selected
   }, props)));
-};
+    SRTlib.send('{"type":"FUNCTIONEND","function":"Browser"},');
 
+};
 module.exports = Browser;

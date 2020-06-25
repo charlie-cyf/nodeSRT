@@ -1,11 +1,19 @@
-var SRTlib = require('SRT-util');
+/*eslint-disable*/
+const SRTlib = require('SRT-util');
 var jumpToCode = (function init() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"jumpToCode.init","fileName":"${__filename}","paramsNumber":0},`);
 
+  // Classes of code we would like to highlight in the file view
   var missingCoverageClasses = ['.cbranch-no', '.cstat-no', '.fstat-no'];
+  // Elements to highlight in the file listing view
   var fileListingElements = ['td.pct.low'];
+  // We don't want to select elements that are direct descendants of another match
+  // becomes `:not(a):not(b) > `
   var notSelector = ':not(' + missingCoverageClasses.join('):not(') + ') > ';
+  // Selecter that finds elements on the page to which we can jump
+  // becomes `:not(a):not(b) > a, :not(a):not(b) > b`
   var selector = fileListingElements.join(', ') + ', ' + notSelector + missingCoverageClasses.join(', ' + notSelector);
+  // The NodeList of matching elements
   var missingCoverageElements = document.querySelectorAll(selector);
   var currentIndex;
   function toggleClass(index) {
@@ -59,13 +67,18 @@ var jumpToCode = (function init() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"jumpToCode.init.ReturnStatement.jump","fileName":"${__filename}","paramsNumber":1},`);
 
     switch (event.which) {
+      // n
       case 78:
       case 74:
+        // j
         goToNext();
         break;
+      // b
       case 66:
+      // k
       case 75:
       case 80:
+        // p
         goToPrevious();
         break;
     }

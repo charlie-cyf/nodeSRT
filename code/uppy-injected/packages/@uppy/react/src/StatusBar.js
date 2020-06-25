@@ -1,9 +1,13 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const React = require('react');
 const PropTypes = require('prop-types');
 const StatusBarPlugin = require('@uppy/status-bar');
 const uppyPropType = require('./propTypes').uppy;
 const h = React.createElement;
+/**
+* React component that renders a status bar containing upload progress and speed,
+* processing progress and pause/resume/cancel controls.
+*/
 class StatusBar extends React.Component {
   componentDidMount() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"StatusBar"}},`);

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const isMobileDevice = require('./isMobileDevice');
 let fakeUserAgent = null;
 Object.defineProperty(global.navigator, 'userAgent', {

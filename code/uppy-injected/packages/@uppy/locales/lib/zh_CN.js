@@ -1,5 +1,4 @@
-var SRTlib = require('SRT-util');
-
+const SRTlib = require('SRT-util');
 var zh_CN = {};
 zh_CN.strings = {
   addMoreFiles: '添加更多文件',
@@ -134,22 +133,21 @@ zh_CN.strings = {
   unselectFileNamed: '取消选择文件 %{name}',
   openFolderNamed: '打开文件夹 %{name}'
 };
-
 zh_CN.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"zh_CN.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"zh_CN.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
   return 1;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
-};
+    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.zh_CN = zh_CN;
 }
-
 module.exports = zh_CN;

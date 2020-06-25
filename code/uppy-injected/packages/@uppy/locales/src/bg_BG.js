@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const bg_BG = {};
 bg_BG.strings = {
   addBulkFilesFailed: {

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const sr_RS_Latin = {};
 sr_RS_Latin.strings = {
   addMore: 'Dodaj još',

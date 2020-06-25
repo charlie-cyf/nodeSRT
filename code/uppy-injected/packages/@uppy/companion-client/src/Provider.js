@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 'use strict';
 const RequestClient = require('./RequestClient');
 const tokenStorage = require('./tokenStorage');
@@ -83,6 +83,7 @@ module.exports = class Provider extends RequestClient {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"setAuthToken"},');
 
+    // @todo(i.olarewaju) consider whether or not this method should be exposed
     return this.uppy.getPlugin(this.pluginId).storage.setItem(this.tokenKey, token);
         SRTlib.send('{"type":"FUNCTIONEND","function":"setAuthToken"},');
 
@@ -167,6 +168,7 @@ module.exports = class Provider extends RequestClient {
     }
     if (opts.companionAllowedHosts) {
       const pattern = opts.companionAllowedHosts;
+      // validate companionAllowedHosts param
       if (typeof pattern !== 'string' && !Array.isArray(pattern) && !(pattern instanceof RegExp)) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"initPlugin"},');
 
@@ -174,6 +176,7 @@ module.exports = class Provider extends RequestClient {
       }
       plugin.opts.companionAllowedHosts = pattern;
     } else {
+      // does not start with https://
       if ((/^(?!https?:\/\/).*$/i).test(opts.companionUrl)) {
         plugin.opts.companionAllowedHosts = `https://${opts.companionUrl.replace(/^\/\//, '')}`;
       } else {

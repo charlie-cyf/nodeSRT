@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const spawn = require('child_process').spawn;
 const path = require('path');
 const fs = require('fs');
@@ -44,6 +44,7 @@ console.log('bundling...');
 bundle().on('finish', () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
 
+  // Start the PHP delevopment server.
   spawn('php', ['-S', `localhost:${port}`], {
     stdio: 'inherit'
   });

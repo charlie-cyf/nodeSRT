@@ -1,6 +1,15 @@
-var SRTlib = require('SRT-util');
+/**
+* oAuth callback.  Encrypts the access token and sends the new token with the response,
+*/
+const SRTlib = require('SRT-util');
 const tokenService = require('../helpers/jwt');
 const logger = require('../logger');
+/**
+*
+* @param {object} req
+* @param {object} res
+* @param {function} next
+*/
 module.exports = function callback(req, res, next) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.callback","fileName":"${__filename}","paramsNumber":3},`);
 

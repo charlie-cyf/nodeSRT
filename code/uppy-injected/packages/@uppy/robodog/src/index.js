@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const form = require('./form');
 const dashboard = require('./dashboard');
 const pick = require('./pick');

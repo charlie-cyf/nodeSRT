@@ -1,4 +1,5 @@
-var SRTlib = require('SRT-util');
+/*eslint-disable*/
+const SRTlib = require('SRT-util');
 require('es6-promise/auto');
 require('whatwg-fetch');
 const Uppy = require('@uppy/core');
@@ -24,6 +25,7 @@ uppyThumbnails.on('file-added', file => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
 });
+// Dump errors to the screen so saucelabs shows them in screenshots.
 uppyThumbnails.on('thumbnail:error', (file, err) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
 

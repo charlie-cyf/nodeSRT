@@ -1,12 +1,17 @@
-var SRTlib = require('SRT-util');
+/*eslint-disable compat/compat*/
+/*global window, capabilities*/
+const SRTlib = require('SRT-util');
 const path = require('path');
 const {spawn} = require('child_process');
 const {promisify} = require('util');
+// This function must be valid ES5, because it is run in the browser
+// and IE10/IE11 do not support new syntax features
 function selectFakeFile(uppyID, name, type, b64) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"selectFakeFile","fileName":"${__filename}","paramsNumber":4},`);
 
   if (!b64) b64 = 'PHN2ZyB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNTAiLz4KPC9zdmc+Cg==';
   if (!type) type = 'image/svg+xml';
+  // https://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
   function base64toBlob(base64Data, contentType) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"base64toBlob","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -57,13 +62,10 @@ function ensureInputVisible(selector) {
 function supportsChooseFile() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"supportsChooseFile","fileName":"${__filename}","paramsNumber":0},`);
 
-  if (process.env.CI) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"supportsChooseFile"},');
-
-    return false;
-  }
+  if (process.env.CI) return false;
     SRTlib.send('{"type":"FUNCTIONEND","function":"supportsChooseFile"},');
 
+  // Webdriver for Safari and Edge doesn’t support .chooseFile
   return capabilities.browserName !== 'Safari' && capabilities.browserName !== 'MicrosoftEdge' && capabilities.platformName !== 'Android';
     SRTlib.send('{"type":"FUNCTIONEND","function":"supportsChooseFile","paramsNumber":0},');
 
@@ -215,11 +217,14 @@ class TusService {
 
       proxy.web(req, res, {
         target: 'http://localhost:1080',
+        // 200 kbps max upload, checking the rate limit every 20ms
         buffer: req.pipe(brake({
           period: 20,
           rate: 200 * 1024 / 50
         }))
       }, err => {
+        // eslint-disable-line handle-callback-err
+        // ignore, typically a cancelled request
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');

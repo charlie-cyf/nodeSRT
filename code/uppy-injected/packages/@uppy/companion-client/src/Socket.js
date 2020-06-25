@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const ee = require('namespace-emitter');
 module.exports = class UppySocket {
   constructor(opts) {
@@ -59,6 +59,7 @@ module.exports = class UppySocket {
   send(action, payload) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"send","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"UppySocket"}},`);
 
+    // attach uuid
     if (!this.isOpen) {
       this._queued.push({
         action,

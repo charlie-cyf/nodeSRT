@@ -1,8 +1,12 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const React = require('react');
 const DragDropPlugin = require('@uppy/drag-drop');
 const propTypes = require('./propTypes');
 const h = React.createElement;
+/**
+* React component that renders an area in which files can be dropped to be
+* uploaded.
+*/
 class DragDrop extends React.Component {
   componentDidMount() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop"}},`);

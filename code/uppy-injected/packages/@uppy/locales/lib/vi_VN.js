@@ -1,5 +1,4 @@
-var SRTlib = require('SRT-util');
-
+const SRTlib = require('SRT-util');
 var vi_VN = {};
 vi_VN.strings = {
   addMore: 'Thêm',
@@ -137,22 +136,21 @@ vi_VN.strings = {
     '2': 'Chọn ít nhất %{smart_count} tập tin'
   }
 };
-
 vi_VN.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"vi_VN.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"vi_VN.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"vi_VN.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"vi_VN.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"vi_VN.pluralize"},');
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"vi_VN.pluralize"},');
   return 1;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"vi_VN.pluralize"},');
-};
+    SRTlib.send('{"type":"FUNCTIONEND","function":"vi_VN.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.vi_VN = vi_VN;
 }
-
 module.exports = vi_VN;

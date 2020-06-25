@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const createSuperFocus = require('./createSuperFocus');
 describe('createSuperFocus', () => {
     beforeAll(() => {
@@ -10,6 +10,7 @@ describe('createSuperFocus', () => {
     SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
   });
 
+  // superFocus.cancel() is used in dashboard
   it('should return a function that can be cancelled', () => {
     const superFocus = createSuperFocus();
     expect(typeof superFocus).toBe('function');

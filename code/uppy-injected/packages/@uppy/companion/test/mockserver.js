@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const {app} = require('../src/standalone');
 const express = require('express');
 const session = require('express-session');

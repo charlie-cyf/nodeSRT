@@ -1,10 +1,12 @@
-var SRTlib = require('SRT-util');
-
+const SRTlib = require('SRT-util');
 var ee = require('namespace-emitter');
+module.exports = (function () {
+  /*#__PURE__*/
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
 
-module.exports = /*#__PURE__*/function () {
   function UppySocket(opts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"UppySocket\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UppySocket","fileName":"${__filename}","paramsNumber":1},`);
+
     this.opts = opts;
     this._queued = [];
     this.isOpen = false;
@@ -15,97 +17,93 @@ module.exports = /*#__PURE__*/function () {
     this.on = this.on.bind(this);
     this.once = this.once.bind(this);
     this.send = this.send.bind(this);
-
     if (!opts || opts.autoOpen !== false) {
       this.open();
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"UppySocket","paramsNumber":1},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
   }
-
   var _proto = UppySocket.prototype;
-
   _proto.open = function open() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.open.open","fileName":"${__filename}","paramsNumber":0},`);
+
     var _this = this;
-
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"open\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UppySocket\"}},");
     this.socket = new WebSocket(this.opts.target);
-
     this.socket.onopen = function (e) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      _this.isOpen = true;
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.open.open.socket.onopen","fileName":"${__filename}","paramsNumber":1},`);
 
+      _this.isOpen = true;
       while (_this._queued.length > 0 && _this.isOpen) {
         var first = _this._queued[0];
-
         _this.send(first.action, first.payload);
-
         _this._queued = _this._queued.slice(1);
       }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.open.open.socket.onopen"},');
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
     };
-
     this.socket.onclose = function (e) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.open.open.socket.onclose","fileName":"${__filename}","paramsNumber":1},`);
+
       _this.isOpen = false;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.open.open.socket.onclose"},');
+
     };
-
     this.socket.onmessage = this._handleMessage;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"open"},');
-  };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.open.open"},');
 
+  };
   _proto.close = function close() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"close\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UppySocket\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.close.close","fileName":"${__filename}","paramsNumber":0},`);
 
     if (this.socket) {
       this.socket.close();
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.close.close"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"close"},');
   };
-
   _proto.send = function send(action, payload) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"send\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"UppySocket\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.send.send","fileName":"${__filename}","paramsNumber":2},`);
 
+    // attach uuid
     if (!this.isOpen) {
       this._queued.push({
         action: action,
         payload: payload
       });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.send.send"},');
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"send"},');
       return;
     }
-
     this.socket.send(JSON.stringify({
       action: action,
       payload: payload
     }));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"send"},');
-  };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.send.send"},');
 
+  };
   _proto.on = function on(action, handler) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"on\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"UppySocket\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.on.on","fileName":"${__filename}","paramsNumber":2},`);
+
     this.emitter.on(action, handler);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
-  };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.on.on"},');
 
+  };
   _proto.emit = function emit(action, payload) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"emit\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"UppySocket\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.emit.emit","fileName":"${__filename}","paramsNumber":2},`);
+
     this.emitter.emit(action, payload);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emit"},');
-  };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.emit.emit"},');
 
+  };
   _proto.once = function once(action, handler) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"once\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"UppySocket\"}},");
-    this.emitter.once(action, handler);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"once"},');
-  };
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.once.once","fileName":"${__filename}","paramsNumber":2},`);
 
+    this.emitter.once(action, handler);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.once.once"},');
+
+  };
   _proto._handleMessage = function _handleMessage(e) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_handleMessage\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"UppySocket\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._handleMessage._handleMessage","fileName":"${__filename}","paramsNumber":1},`);
 
     try {
       var message = JSON.parse(e.data);
@@ -113,9 +111,12 @@ module.exports = /*#__PURE__*/function () {
     } catch (err) {
       console.log(err);
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._handleMessage._handleMessage"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_handleMessage"},');
   };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return UppySocket;
-}();
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+})();

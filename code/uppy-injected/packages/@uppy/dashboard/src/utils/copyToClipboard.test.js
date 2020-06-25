@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const copyToClipboard = require('./copyToClipboard');
 describe('copyToClipboard', () => {
     beforeAll(() => {

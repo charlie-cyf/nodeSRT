@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const da_DK = {};
 da_DK.strings = {
   addMore: 'Tilføj flere',

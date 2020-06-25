@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 var app = require('express')();
 var cors = require('cors');
 var multer = require('multer');

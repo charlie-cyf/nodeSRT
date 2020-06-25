@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 const ru_RU = {};
 ru_RU.strings = {
   addMoreFiles: 'Добавить еще файлы',
@@ -15,7 +15,9 @@ ru_RU.strings = {
   chooseFiles: 'Выбрать файлы',
   closeModal: 'Закрыть окно',
   companionError: 'Не удалось подключиться к Companion',
+  // «Готово» вместо «загрузка завершена», потому что кроме загрузки бывает encoding — транскодирование файлов
   complete: 'Готово',
+  // «Нет подключения к интернету» — «Подключено к интернету»
   connectedToInternet: 'Подключено к интернету',
   copyLink: 'Скопировать ссылку',
   copyLinkToClipboardFallback: 'Скопируйте ссылку',
