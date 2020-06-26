@@ -1,5 +1,6 @@
 /*global browser, expect, capabilities*/
 const SRTlib = require('SRT-util');
+
 const http = require('http');
 const tempWrite = require('temp-write');
 const {Writable} = require('stream');

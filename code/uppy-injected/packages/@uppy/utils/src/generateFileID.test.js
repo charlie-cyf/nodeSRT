@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const generateFileID = require('./generateFileID');
 describe('generateFileID', () => {
     beforeAll(() => {

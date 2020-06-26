@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const secondsToTime = require('./secondsToTime');
 module.exports = function prettyETA(seconds) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.prettyETA","fileName":"${__filename}","paramsNumber":1},`);

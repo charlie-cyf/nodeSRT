@@ -7,6 +7,7 @@
 * @returns {string}
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function truncateString(string, maxLength) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.truncateString","fileName":"${__filename}","paramsNumber":2},`);
 

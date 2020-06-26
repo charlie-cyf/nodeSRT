@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const Assembly = require('./Assembly');
 describe('Transloadit/Assembly', () => {
     beforeAll(() => {

@@ -3,6 +3,7 @@
 * sends auth token to uppy client
 */
 const SRTlib = require('SRT-util');
+
 const tokenService = require('../helpers/jwt');
 // eslint-disable-line node/no-deprecated-api
 const parseUrl = require('url').parse;

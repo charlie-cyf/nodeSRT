@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const Uppy = require('@uppy/core');
 const has = require('@uppy/utils/lib/hasProperty');
 const eventNames = {

@@ -3,6 +3,7 @@
 * an http error while communication with its corresponding provider
 */
 const SRTlib = require('SRT-util');
+
 class ProviderApiError extends Error {
   constructor(message, statusCode) {
     /**

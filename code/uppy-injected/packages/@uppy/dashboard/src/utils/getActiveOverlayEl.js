@@ -2,6 +2,7 @@
 * @returns {HTMLElement} - either dashboard element, or the overlay that's most on top
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function getActiveOverlayEl(dashboardEl, activeOverlayType) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getActiveOverlayEl","fileName":"${__filename}","paramsNumber":2},`);
 

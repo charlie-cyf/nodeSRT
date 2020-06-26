@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const webkitGetAsEntryApi = require('./utils/webkitGetAsEntryApi/index');
 const fallbackApi = require('./utils/fallbackApi');
 /**

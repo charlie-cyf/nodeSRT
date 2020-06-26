@@ -8,6 +8,11 @@ const path = require('path')
 const SRTlibPath = './instrument/SRTlib.js'
 const InstrumentorSrc = './instrument/'
 const child_process = require('child_process');
+const excepts = [
+    './code/uppy/packages/@uppy/companion/src/server/Uploader.js',
+    './code/uppy/packages/@uppy/companion/src/server/helpers/jwt.js',
+    './code/uppy/packages/@uppy/companion/src/standalone/index.js',
+]
 
 
 //init
@@ -24,7 +29,7 @@ fs.writeFileSync("./.env", envfile.stringify(parsedEnv))
 require("dotenv").config()
 
 // generate AST for codebase
-generate(codeBase)
+generate(codeBase, excepts)
 
 console.log("env", process.env.SRT_PATH)
 

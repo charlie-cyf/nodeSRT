@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const has = require('./hasProperty');
 /**
 * Translates strings with interpolation & pluralization support.

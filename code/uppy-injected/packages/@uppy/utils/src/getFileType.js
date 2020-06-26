@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const getFileNameAndExtension = require('./getFileNameAndExtension');
 const mimeTypes = require('./mimeTypes');
 module.exports = function getFileType(file) {

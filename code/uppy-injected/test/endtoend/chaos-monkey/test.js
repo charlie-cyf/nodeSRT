@@ -1,5 +1,6 @@
 /*global browser, expect*/
 const SRTlib = require('SRT-util');
+
 const crypto = require('crypto');
 const lorem = require('@jamen/lorem');
 const {selectFakeFile} = require('../utils');

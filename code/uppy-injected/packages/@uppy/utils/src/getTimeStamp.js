@@ -2,6 +2,7 @@
 * Returns a timestamp in the format of `hours:minutes:seconds`
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function getTimeStamp() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getTimeStamp","fileName":"${__filename}","paramsNumber":0},`);
 

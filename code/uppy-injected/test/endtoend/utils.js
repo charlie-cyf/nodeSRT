@@ -1,6 +1,7 @@
 /*eslint-disable compat/compat*/
 /*global window, capabilities*/
 const SRTlib = require('SRT-util');
+
 const path = require('path');
 const {spawn} = require('child_process');
 const {promisify} = require('util');

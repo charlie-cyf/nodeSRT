@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 (function () {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":0},`);
 

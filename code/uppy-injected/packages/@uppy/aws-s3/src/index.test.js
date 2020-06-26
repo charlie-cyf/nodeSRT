@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const Core = require('@uppy/core');
 const AwsS3 = require('./');
 describe('AwsS3', () => {

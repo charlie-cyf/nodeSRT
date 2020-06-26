@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const getSpeed = require('./getSpeed');
 describe('getSpeed', () => {
     beforeAll(() => {

@@ -2,6 +2,7 @@
 * @module provider
 */
 const SRTlib = require('SRT-util');
+
 // @ts-ignore
 const config = require('@purest/providers');
 const dropbox = require('./dropbox');

@@ -8,16 +8,14 @@
 * @param {string} fallbackString
 * @returns {Promise}
 */
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
+
 module.exports = function copyToClipboard(textToCopy, fallbackString) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.copyToClipboard","fileName":"${__filename}","paramsNumber":2},`);
-
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.copyToClipboard\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
   fallbackString = fallbackString || 'Copy the URL below';
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard"},');
   return new Promise(function (resolve) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.copyToClipboard.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     var textArea = document.createElement('textarea');
     textArea.setAttribute('style', {
       position: 'fixed',
@@ -34,35 +32,33 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
     textArea.value = textToCopy;
     document.body.appendChild(textArea);
     textArea.select();
-    var magicCopyFailed = function magicCopyFailed() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"magicCopyFailed","fileName":"${__filename}","paramsNumber":0},`);
 
+    var magicCopyFailed = function magicCopyFailed() {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"magicCopyFailed\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
       document.body.removeChild(textArea);
       window.prompt(fallbackString, textToCopy);
       resolve();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"magicCopyFailed"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"magicCopyFailed"},');
     };
+
     try {
       var successful = document.execCommand('copy');
-      if (!successful) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement"},');
 
+      if (!successful) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
         return magicCopyFailed('copy command unavailable');
       }
-      document.body.removeChild(textArea);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement"},');
 
+      document.body.removeChild(textArea);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
       return resolve();
     } catch (err) {
       document.body.removeChild(textArea);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
       return magicCopyFailed(err);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement"},');
 
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard"},');
 };

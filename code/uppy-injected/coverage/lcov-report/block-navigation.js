@@ -1,5 +1,6 @@
 /*eslint-disable*/
 const SRTlib = require('SRT-util');
+
 var jumpToCode = (function init() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"jumpToCode.init","fileName":"${__filename}","paramsNumber":0},`);
 

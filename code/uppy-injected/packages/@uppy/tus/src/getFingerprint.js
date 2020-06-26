@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const tus = require('tus-js-client');
 function isCordova() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isCordova","fileName":"${__filename}","paramsNumber":0},`);

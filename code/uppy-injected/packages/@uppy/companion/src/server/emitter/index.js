@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const nodeEmitter = require('./default-emitter');
 const redisEmitter = require('./redis-emitter');
 let emitter;

@@ -1,5 +1,6 @@
 /*eslint-disable*/
 const SRTlib = require('SRT-util');
+
 require('es6-promise/auto');
 require('whatwg-fetch');
 const Uppy = require('@uppy/core');

@@ -5,6 +5,7 @@
 * @returns {boolean}
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function isMobileDevice() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isMobileDevice","fileName":"${__filename}","paramsNumber":0},`);
 

@@ -1,4 +1,5 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
+
 var ko_KR = {};
 ko_KR.strings = {
   addMore: '파일 추가',
@@ -135,21 +136,22 @@ ko_KR.strings = {
     '2': '최소 %{smart_count}개의 파일을 선택해야 합니다'
   }
 };
+
 ko_KR.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ko_KR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ko_KR.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (n === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');
     return 0;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');
   return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.ko_KR = ko_KR;
 }
+
 module.exports = ko_KR;

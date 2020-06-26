@@ -6,6 +6,7 @@
 * @returns {string|null} - if file is not in a folder - return null (this is to be consistent with .relativePath-s of files selected from My Device). If file is in a folder - return its fullPath, e.g. '/simpsons/hi.jpeg'.
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function getRelativePath(fileEntry) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getRelativePath","fileName":"${__filename}","paramsNumber":1},`);
 

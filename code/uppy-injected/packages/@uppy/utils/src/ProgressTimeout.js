@@ -5,6 +5,7 @@
 * Call `timer.done()` when the upload has completed.
 */
 const SRTlib = require('SRT-util');
+
 class ProgressTimeout {
   constructor(timeout, timeoutHandler) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProgressTimeout"}},`);

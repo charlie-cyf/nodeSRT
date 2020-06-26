@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const toArray = require('@uppy/utils/lib/toArray');
 const createUppy = require('./createUppy');
 const addTransloaditPlugin = require('./addTransloaditPlugin');

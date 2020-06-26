@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const express = require('express');
 // the ../../../packages is just to use the local version
 // instead of the npm version—in a real app use `require('@uppy/companion')`

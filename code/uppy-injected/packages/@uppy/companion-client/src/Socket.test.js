@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const UppySocket = require('./Socket');
 describe('Socket', () => {
     beforeAll(() => {

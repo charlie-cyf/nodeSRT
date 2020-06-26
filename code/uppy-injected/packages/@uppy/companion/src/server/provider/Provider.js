@@ -2,6 +2,7 @@
 * Provider interface defines the specifications of any provider implementation
 */
 const SRTlib = require('SRT-util');
+
 class Provider {
   constructor(options) {
     /**

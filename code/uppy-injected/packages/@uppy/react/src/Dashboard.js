@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const React = require('react');
 const DashboardPlugin = require('@uppy/dashboard');
 const basePropTypes = require('./propTypes').dashboard;

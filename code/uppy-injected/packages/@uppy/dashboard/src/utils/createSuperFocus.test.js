@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const createSuperFocus = require('./createSuperFocus');
 describe('createSuperFocus', () => {
     beforeAll(() => {

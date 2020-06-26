@@ -1,5 +1,6 @@
 /*global jest:false, test:false, expect:false, describe:false, beforeEach:false*/
 const SRTlib = require('SRT-util');
+
 const providerManager = require('../../src/server/provider');
 const {getCompanionOptions} = require('../../src/standalone/helper');
 let grantConfig;

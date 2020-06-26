@@ -1,5 +1,6 @@
 /*eslint-disable*/
 const SRTlib = require('SRT-util');
+
 const isSupported = typeof navigator !== 'undefined' && ('serviceWorker' in navigator);
 function waitForServiceWorker() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"waitForServiceWorker","fileName":"${__filename}","paramsNumber":0},`);

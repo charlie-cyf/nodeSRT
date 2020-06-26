@@ -1,5 +1,6 @@
 /*global browser, expect, $, $$*/
 const SRTlib = require('SRT-util');
+
 const testURL = 'http://localhost:4567/create-react-app';
 describe('webpack build', () => {
     beforeAll(() => {

@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const prettierBytes = require('@transloadit/prettier-bytes');
 const indexedDB = typeof window !== 'undefined' && (window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB);
 const isSupported = !!indexedDB;

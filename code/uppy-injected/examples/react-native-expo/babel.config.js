@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 module.exports = function (api) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 

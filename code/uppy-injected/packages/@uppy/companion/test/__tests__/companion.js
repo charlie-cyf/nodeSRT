@@ -1,5 +1,6 @@
 /*global jest:false, test:false, expect:false, describe:false*/
 const SRTlib = require('SRT-util');
+
 jest.mock('tus-js-client');
 jest.mock('purest');
 jest.mock('../../src/server/helpers/oauth-state', () => {

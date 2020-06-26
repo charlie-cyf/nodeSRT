@@ -9,6 +9,7 @@
 * @returns {Promise}
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function copyToClipboard(textToCopy, fallbackString) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.copyToClipboard","fileName":"${__filename}","paramsNumber":2},`);
 

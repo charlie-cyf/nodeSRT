@@ -4,6 +4,7 @@
 * @param {object} res
 */
 const SRTlib = require('SRT-util');
+
 function thumbnail(req, res, next) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":3},`);
 

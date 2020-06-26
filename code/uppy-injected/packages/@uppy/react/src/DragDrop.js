@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const React = require('react');
 const DragDropPlugin = require('@uppy/drag-drop');
 const propTypes = require('./propTypes');

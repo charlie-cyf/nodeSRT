@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const querystring = require('querystring');
 exports.getUsername = data => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);

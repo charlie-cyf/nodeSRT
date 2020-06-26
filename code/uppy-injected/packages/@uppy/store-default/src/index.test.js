@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const DefaultStore = require('./index');
 describe('DefaultStore', () => {
     beforeAll(() => {

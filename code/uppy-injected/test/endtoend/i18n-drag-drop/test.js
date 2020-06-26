@@ -1,5 +1,6 @@
 /*global browser, expect, capabilities*/
 const SRTlib = require('SRT-util');
+
 const path = require('path');
 const {selectFakeFile, supportsChooseFile, ensureInputVisible} = require('../utils');
 const testURL = 'http://localhost:4567/i18n-drag-drop';

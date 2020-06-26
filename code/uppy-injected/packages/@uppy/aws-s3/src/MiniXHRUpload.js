@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const cuid = require('cuid');
 const {Provider, RequestClient, Socket} = require('@uppy/companion-client');
 const emitSocketProgress = require('@uppy/utils/lib/emitSocketProgress');

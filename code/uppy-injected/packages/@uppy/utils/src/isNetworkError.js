@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 function isNetworkError(xhr) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isNetworkError","fileName":"${__filename}","paramsNumber":1},`);
 

@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 exports.isFolder = item => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 

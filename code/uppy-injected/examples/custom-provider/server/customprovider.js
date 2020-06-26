@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const fs = require('fs');
 const path = require('path');
 const DUMM_FILE = path.join(__dirname, 'fixtures/image.jpg');

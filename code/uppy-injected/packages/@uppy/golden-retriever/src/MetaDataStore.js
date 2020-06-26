@@ -2,6 +2,7 @@
 * Get uppy instance IDs for which state is stored.
 */
 const SRTlib = require('SRT-util');
+
 function findUppyInstances() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findUppyInstances","fileName":"${__filename}","paramsNumber":0},`);
 

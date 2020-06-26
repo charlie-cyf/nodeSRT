@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 // ignore drop/paste events if they are not in input or textarea —
 // otherwise when Url plugin adds drop/paste listeners to this.el,
 // draging UI elements or pasting anything into any field triggers those events —

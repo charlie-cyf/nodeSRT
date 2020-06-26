@@ -36,4 +36,5 @@
 
 ## design decisions
 1. since the selection is at method level, if a modification is on a uncovered method, we will run all tests have dependencies on this file. ThereFore static analysis in unnecessary.
+2. Although astring can handle comments, some special comments are misplaced after injection. e.g. @ts-ignore Therefore, they need to be ignore when doing code injection. Otherwise we will have a build error.
 

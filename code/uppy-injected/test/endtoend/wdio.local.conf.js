@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const base = require('./wdio.base.conf');
 const args = require('minimist')(process.argv.slice(2));
 // Use "npm run test:endtoend:local -- -b chrome" to test in chrome

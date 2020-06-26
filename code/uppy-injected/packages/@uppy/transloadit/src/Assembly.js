@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const io = requireSocketIo;
 const Emitter = require('component-emitter');
 const has = require('@uppy/utils/lib/hasProperty');

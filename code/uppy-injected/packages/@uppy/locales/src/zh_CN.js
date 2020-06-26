@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const zh_CN = {};
 zh_CN.strings = {
   addMoreFiles: '添加更多文件',

@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const isDOMElement = require('./isDOMElement');
 /**
 * Find a DOM element.

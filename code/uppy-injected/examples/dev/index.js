@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 // Polyfills, primarily for testing in IE11
 require('es6-promise/auto');
 require('whatwg-fetch');

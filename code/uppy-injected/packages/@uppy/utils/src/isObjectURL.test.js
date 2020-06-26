@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const isObjectURL = require('./isObjectURL');
 describe('isObjectURL', () => {
     beforeAll(() => {

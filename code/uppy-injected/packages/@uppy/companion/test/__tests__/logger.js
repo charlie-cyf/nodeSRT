@@ -1,5 +1,6 @@
 /*global test:false, expect:false, describe:false, beforeAll:false,*/
 const SRTlib = require('SRT-util');
+
 const logger = require('../../src/server/logger');
 const chalk = require('chalk');
 describe('Test Logger secret mask', () => {

@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const id_ID = {};
 id_ID.strings = {
   addMore: 'Tambahkan lebih banyak',

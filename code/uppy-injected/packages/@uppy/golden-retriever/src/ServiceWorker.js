@@ -1,5 +1,6 @@
 /*globals clients*/
 const SRTlib = require('SRT-util');
+
 const fileCache = Object.create(null);
 function getCache(name) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getCache","fileName":"${__filename}","paramsNumber":1},`);

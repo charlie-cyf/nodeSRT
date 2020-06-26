@@ -1,5 +1,6 @@
 /*global browser, expect*/
 const SRTlib = require('SRT-util');
+
 describe('Project compiled with Uppy\'s TypeScript typings', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");

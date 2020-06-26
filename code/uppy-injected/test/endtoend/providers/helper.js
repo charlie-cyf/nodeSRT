@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 exports.finishUploadTest = async browser => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
 

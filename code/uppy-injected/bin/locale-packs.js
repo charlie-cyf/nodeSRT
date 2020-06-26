@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const glob = require('glob');
 const Uppy = require('../packages/@uppy/core');
 const chalk = require('chalk');

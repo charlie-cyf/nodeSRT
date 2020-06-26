@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const fr_FR = {};
 fr_FR.strings = {
   addBulkFilesFailed: {

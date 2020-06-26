@@ -1,5 +1,6 @@
 /*eslint-env browser*/
 const SRTlib = require('SRT-util');
+
 const marked = require('marked');
 const dragdrop = require('drag-drop');
 const robodog = require('@uppy/robodog');

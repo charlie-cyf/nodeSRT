@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const dataURItoBlob = require('./dataURItoBlob');
 const sampleImageDataURI = require('./sampleImageDataURI');
 describe('dataURItoBlob', () => {

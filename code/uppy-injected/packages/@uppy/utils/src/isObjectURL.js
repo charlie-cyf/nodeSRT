@@ -5,6 +5,7 @@
 * @returns {boolean}
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function isObjectURL(url) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isObjectURL","fileName":"${__filename}","paramsNumber":1},`);
 

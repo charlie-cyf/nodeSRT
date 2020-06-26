@@ -4,6 +4,7 @@
 * @returns {boolean}
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function isDragDropSupported() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isDragDropSupported","fileName":"${__filename}","paramsNumber":0},`);
 

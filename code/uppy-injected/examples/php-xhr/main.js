@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const Uppy = require('@uppy/core');
 const Webcam = require('@uppy/webcam');
 const Dashboard = require('@uppy/dashboard');

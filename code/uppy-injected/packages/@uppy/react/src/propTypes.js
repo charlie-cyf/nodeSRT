@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const PropTypes = require('prop-types');
 const UppyCore = require('@uppy/core').Uppy;
 // The `uppy` prop receives the Uppy core instance.

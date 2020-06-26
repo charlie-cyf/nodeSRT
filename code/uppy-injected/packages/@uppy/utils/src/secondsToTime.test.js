@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const secondsToTime = require('./secondsToTime');
 describe('secondsToTime', () => {
     beforeAll(() => {

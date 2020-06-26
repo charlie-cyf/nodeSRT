@@ -1,5 +1,6 @@
 /*eslint-disable*/
 const SRTlib = require('SRT-util');
+
 window.PR_SHOULD_USE_CONTINUATION = true;
 (function () {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);

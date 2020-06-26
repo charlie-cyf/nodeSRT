@@ -2,6 +2,7 @@
 * Converts list into array
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function toArray(list) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.toArray","fileName":"${__filename}","paramsNumber":1},`);
 

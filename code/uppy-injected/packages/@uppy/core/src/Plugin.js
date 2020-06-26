@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const preact = require('preact');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');
 /**

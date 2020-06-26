@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const Uppy = require('@uppy/core/src');
 const Tus = require('@uppy/tus/src');
 const DragDrop = require('@uppy/drag-drop/src');

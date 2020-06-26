@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 // Core
 exports.Core = require('@uppy/core');
 exports.debugLogger = exports.Core.debugLogger;

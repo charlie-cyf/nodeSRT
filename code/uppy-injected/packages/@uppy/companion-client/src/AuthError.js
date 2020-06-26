@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 'use strict';
 class AuthError extends Error {
   constructor() {

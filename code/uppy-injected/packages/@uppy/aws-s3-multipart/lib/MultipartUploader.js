@@ -1,101 +1,60 @@
-const SRTlib = require('SRT-util');
-function _extends() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-  _extends = Object.assign || (function (target) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
+var SRTlib = require('SRT-util');
 
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
-
-    return target;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
-
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
-
-  return _extends.apply(this, arguments);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
-
-}
 var MB = 1024 * 1024;
 var defaultOptions = {
   limit: 1,
   getChunkSize: function getChunkSize(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.getChunkSize.getChunkSize","fileName":"${__filename}","paramsNumber":1},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getChunkSize.getChunkSize"},');
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"defaultOptions.getChunkSize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getChunkSize"},');
     return Math.ceil(file.size / 10000);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getChunkSize.getChunkSize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getChunkSize"},');
   },
   onStart: function onStart() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onStart.onStart","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onStart.onStart"},');
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"defaultOptions.onStart\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onStart"},');
   },
   onProgress: function onProgress() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onProgress.onProgress","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onProgress.onProgress"},');
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"defaultOptions.onProgress\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onProgress"},');
   },
   onPartComplete: function onPartComplete() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onPartComplete.onPartComplete","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onPartComplete.onPartComplete"},');
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"defaultOptions.onPartComplete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onPartComplete"},');
   },
   onSuccess: function onSuccess() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onSuccess.onSuccess","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onSuccess.onSuccess"},');
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"defaultOptions.onSuccess\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onSuccess"},');
   },
   onError: function onError(err) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onError.onError","fileName":"${__filename}","paramsNumber":1},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onError.onError"},');
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"defaultOptions.onError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onError"},');
     throw err;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onError.onError"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onError"},');
   }
 };
-function remove(arr, el) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"remove","fileName":"${__filename}","paramsNumber":2},`);
 
+function remove(arr, el) {
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"remove\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
   var i = arr.indexOf(el);
   if (i !== -1) arr.splice(i, 1);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"remove","paramsNumber":2},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"remove","paramsNumber":2},');
 }
-var MultipartUploader = (function () {
-  /*#__PURE__*/
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader","fileName":"${__filename}","paramsNumber":0},`);
 
+var MultipartUploader = /*#__PURE__*/function () {
   function MultipartUploader(file, options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"MultipartUploader","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
+    this.options = _extends({}, defaultOptions, {}, options); // Use default `getChunkSize` if it was null or something
 
-    // Use default `getChunkSize` if it was null or something
-    this.options = _extends({}, defaultOptions, {}, options);
     if (!this.options.getChunkSize) {
       this.options.getChunkSize = defaultOptions.getChunkSize;
     }
+
     this.file = file;
     this.key = this.options.key || null;
     this.uploadId = this.options.uploadId || null;
-    // Do `this.createdPromise.then(OP)` to execute an operation `OP` _only_ if the
-    this.parts = this.options.parts || [];
+    this.parts = this.options.parts || []; // Do `this.createdPromise.then(OP)` to execute an operation `OP` _only_ if the
     // upload was created already. That also ensures that the sequencing is right
     // (so the `OP` definitely happens if the upload is created).
     // 
@@ -103,268 +62,256 @@ var MultipartUploader = (function () {
     // the upload was already created, and if the createMultipartUpload request is still in flight,
     // aborting it immediately after it finishes.
     // eslint-disable-line prefer-promise-reject-errors
+
     this.createdPromise = Promise.reject();
     this.isPaused = false;
     this.chunks = null;
     this.chunkState = null;
     this.uploading = [];
-    this._initChunks();
-    // silence uncaught rejection warning
+
+    this._initChunks(); // silence uncaught rejection warning
+
+
     this.createdPromise.catch(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdPromise.catch","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.catch"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader","paramsNumber":2},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
   }
-  var _proto = MultipartUploader.prototype;
-  _proto._initChunks = function _initChunks() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._initChunks._initChunks","fileName":"${__filename}","paramsNumber":0},`);
 
+  var _proto = MultipartUploader.prototype;
+
+  _proto._initChunks = function _initChunks() {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_initChunks\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     var chunks = [];
-    // at least 5MB per request, at most 10k requests
-    var desiredChunkSize = this.options.getChunkSize(this.file);
+    var desiredChunkSize = this.options.getChunkSize(this.file); // at least 5MB per request, at most 10k requests
+
     var minChunkSize = Math.max(5 * MB, Math.ceil(this.file.size / 10000));
     var chunkSize = Math.max(desiredChunkSize, minChunkSize);
+
     for (var i = 0; i < this.file.size; i += chunkSize) {
       var end = Math.min(this.file.size, i + chunkSize);
       chunks.push(this.file.slice(i, end));
     }
+
     this.chunks = chunks;
     this.chunkState = chunks.map(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._initChunks._initChunks.chunkState","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._initChunks._initChunks.chunkState"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
       return {
         uploaded: 0,
         busy: false,
         done: false
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._initChunks._initChunks.chunkState"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._initChunks._initChunks"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_initChunks"},');
   };
+
   _proto._createUpload = function _createUpload() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._createUpload._createUpload","fileName":"${__filename}","paramsNumber":0},`);
-
     var _this = this;
+
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_createUpload\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     this.createdPromise = Promise.resolve().then(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._createUpload._createUpload.createdPromise.then","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._createUpload._createUpload.createdPromise.then"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
       return _this.options.createMultipartUpload();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._createUpload._createUpload.createdPromise.then"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._createUpload._createUpload"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_createUpload"},');
     return this.createdPromise.then(function (result) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._createUpload._createUpload.ReturnStatement.createdPromise.then.catch.createdPromise.then","fileName":"${__filename}","paramsNumber":1},`);
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var valid = typeof result === 'object' && result && typeof result.uploadId === 'string' && typeof result.key === 'string';
-      if (!valid) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._createUpload._createUpload.ReturnStatement.createdPromise.then.catch.createdPromise.then"},');
 
+      if (!valid) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
         throw new TypeError('AwsS3/Multipart: Got incorrect result from `createMultipartUpload()`, expected an object `{ uploadId, key }`.');
       }
+
       _this.key = result.key;
       _this.uploadId = result.uploadId;
-      _this.options.onStart(result);
-      _this._uploadParts();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._createUpload._createUpload.ReturnStatement.createdPromise.then.catch.createdPromise.then"},');
 
+      _this.options.onStart(result);
+
+      _this._uploadParts();
+
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
     }).catch(function (err) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._createUpload._createUpload.ReturnStatement.createdPromise.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this._onError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._createUpload._createUpload.ReturnStatement.createdPromise.then.catch"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._createUpload._createUpload"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_createUpload"},');
   };
+
   _proto._resumeUpload = function _resumeUpload() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._resumeUpload._resumeUpload","fileName":"${__filename}","paramsNumber":0},`);
-
     var _this2 = this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._resumeUpload._resumeUpload"},');
 
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_resumeUpload\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_resumeUpload"},');
     return Promise.resolve().then(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then.then","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then.then"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
       return _this2.options.listParts({
         uploadId: _this2.uploadId,
         key: _this2.key
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then.then"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
     }).then(function (parts) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then2","fileName":"${__filename}","paramsNumber":1},`);
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       parts.forEach(function (part) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then","fileName":"${__filename}","paramsNumber":1},`);
-
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         var i = part.PartNumber - 1;
-        // Only add if we did not yet know about this part.
         _this2.chunkState[i] = {
           uploaded: part.Size,
           etag: part.ETag,
           done: true
-        };
+        }; // Only add if we did not yet know about this part.
+
         if (!_this2.parts.some(function (p) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then._this2.parts.some","fileName":"${__filename}","paramsNumber":1},`);
-
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then._this2.parts.some"},');
-
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
           return p.PartNumber === part.PartNumber;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then._this2.parts.some"},');
-
+          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
         })) {
           _this2.parts.push({
             PartNumber: part.PartNumber,
             ETag: part.ETag
           });
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then"},');
 
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
       });
-      _this2._uploadParts();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch.then.then2"},');
 
+      _this2._uploadParts();
+
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
     }).catch(function (err) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this2._onError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._resumeUpload._resumeUpload.ReturnStatement.then.then.catch"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._resumeUpload._resumeUpload"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_resumeUpload"},');
   };
+
   _proto._uploadParts = function _uploadParts() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadParts._uploadParts2","fileName":"${__filename}","paramsNumber":0},`);
-
     var _this3 = this;
-    if (this.isPaused) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadParts._uploadParts2"},');
 
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_uploadParts\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
+
+    if (this.isPaused) {
+      SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadParts"},');
       return;
     }
+
     var need = this.options.limit - this.uploading.length;
-    if (need === 0) return;
+
+    if (need === 0) {
+      SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadParts"},');
+      return;
+    } // All parts are uploaded.
+
+
     if (this.chunkState.every(function (state) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadParts._uploadParts.chunkState.every","fileName":"${__filename}","paramsNumber":1},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadParts._uploadParts.chunkState.every"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey11\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
       return state.done;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadParts._uploadParts.chunkState.every"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
     })) {
       this._completeUpload();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadParts._uploadParts2"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadParts"},');
       return;
     }
+
     var candidates = [];
+
     for (var i = 0; i < this.chunkState.length; i++) {
       var state = this.chunkState[i];
       if (state.done || state.busy) continue;
       candidates.push(i);
+
       if (candidates.length >= need) {
         break;
       }
     }
+
     candidates.forEach(function (index) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadParts._uploadParts","fileName":"${__filename}","paramsNumber":1},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey12\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this3._uploadPart(index);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadParts._uploadParts"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadParts._uploadParts2"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadParts"},');
   };
-  _proto._uploadPart = function _uploadPart(index) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPart._uploadPart","fileName":"${__filename}","paramsNumber":1},`);
 
+  _proto._uploadPart = function _uploadPart(index) {
     var _this4 = this;
+
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_uploadPart\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     var body = this.chunks[index];
     this.chunkState[index].busy = true;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPart._uploadPart"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadPart"},');
     return Promise.resolve().then(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then.then.then.then","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then.then.then.then"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey13\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
       return _this4.options.prepareUploadPart({
         key: _this4.key,
         uploadId: _this4.uploadId,
         body: body,
         number: index + 1
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then.then.then.then"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
     }).then(function (result) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey14\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var valid = typeof result === 'object' && result && typeof result.url === 'string';
-      if (!valid) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then.then.then"},');
 
+      if (!valid) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
         throw new TypeError('AwsS3/Multipart: Got incorrect result from `prepareUploadPart()`, expected an object `{ url }`.');
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then.then.then"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
       return result;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then.then.then"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
     }).then(function (_ref) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
+      var url = _ref.url,
+          headers = _ref.headers;
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey15\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
-      var url = _ref.url, headers = _ref.headers;
       _this4._uploadPartBytes(index, url, headers);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
     }, function (err) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey16\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this4._onError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPart._uploadPart.ReturnStatement.then.then.then2"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey16"},');
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPart._uploadPart"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadPart"},');
   };
-  _proto._onPartProgress = function _onPartProgress(index, sent, total) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._onPartProgress._onPartProgress","fileName":"${__filename}","paramsNumber":3},`);
 
+  _proto._onPartProgress = function _onPartProgress(index, sent, total) {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onPartProgress\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     this.chunkState[index].uploaded = sent;
     var totalUploaded = this.chunkState.reduce(function (n, c) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._onPartProgress._onPartProgress.totalUploaded.chunkState.reduce","fileName":"${__filename}","paramsNumber":2},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._onPartProgress._onPartProgress.totalUploaded.chunkState.reduce"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey17\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey17"},');
       return n + c.uploaded;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._onPartProgress._onPartProgress.totalUploaded.chunkState.reduce"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey17"},');
     }, 0);
     this.options.onProgress(totalUploaded, this.file.size);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._onPartProgress._onPartProgress"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_onPartProgress"},');
   };
-  _proto._onPartComplete = function _onPartComplete(index, etag) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._onPartComplete._onPartComplete","fileName":"${__filename}","paramsNumber":2},`);
 
+  _proto._onPartComplete = function _onPartComplete(index, etag) {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onPartComplete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     this.chunkState[index].etag = etag;
     this.chunkState[index].done = true;
     var part = {
@@ -373,216 +320,205 @@ var MultipartUploader = (function () {
     };
     this.parts.push(part);
     this.options.onPartComplete(part);
+
     this._uploadParts();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._onPartComplete._onPartComplete"},');
 
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_onPartComplete"},');
   };
-  _proto._uploadPartBytes = function _uploadPartBytes(index, url, headers) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes4","fileName":"${__filename}","paramsNumber":3},`);
 
+  _proto._uploadPartBytes = function _uploadPartBytes(index, url, headers) {
     var _this5 = this;
+
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_uploadPartBytes\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     var body = this.chunks[index];
     var xhr = new XMLHttpRequest();
     xhr.open('PUT', url, true);
+
     if (headers) {
       Object.keys(headers).map(function (key) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes.map","fileName":"${__filename}","paramsNumber":1},`);
-
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey18\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         xhr.setRequestHeader(key, headers[key]);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes.map"},');
-
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey18"},');
       });
     }
+
     xhr.responseType = 'text';
     this.uploading.push(xhr);
     xhr.upload.addEventListener('progress', function (ev) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes.xhr.upload.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey19\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (!ev.lengthComputable) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes.xhr.upload.addEventListener"},');
-
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey19"},');
         return;
       }
-      _this5._onPartProgress(index, ev.loaded, ev.total);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes.xhr.upload.addEventListener"},');
 
+      _this5._onPartProgress(index, ev.loaded, ev.total);
+
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey19"},');
     });
     xhr.addEventListener('abort', function (ev) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes","fileName":"${__filename}","paramsNumber":1},`);
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey20\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       remove(_this5.uploading, ev.target);
       _this5.chunkState[index].busy = false;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey20"},');
     });
     xhr.addEventListener('load', function (ev) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes2","fileName":"${__filename}","paramsNumber":1},`);
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey21\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       remove(_this5.uploading, ev.target);
       _this5.chunkState[index].busy = false;
+
       if (ev.target.status < 200 || ev.target.status >= 300) {
         _this5._onError(new Error('Non 2xx'));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes2"},');
 
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey21"},');
         return;
       }
-      // NOTE This must be allowed by CORS.
-      _this5._onPartProgress(index, body.size, body.size);
+
+      _this5._onPartProgress(index, body.size, body.size); // NOTE This must be allowed by CORS.
+
+
       var etag = ev.target.getResponseHeader('ETag');
+
       if (etag === null) {
         _this5._onError(new Error('AwsS3/Multipart: Could not read the ETag header. This likely means CORS is not configured correctly on the S3 Bucket. Seee https://uppy.io/docs/aws-s3-multipart#S3-Bucket-Configuration for instructions.'));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes2"},');
 
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey21"},');
         return;
       }
-      _this5._onPartComplete(index, etag);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes2"},');
 
+      _this5._onPartComplete(index, etag);
+
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey21"},');
     });
     xhr.addEventListener('error', function (ev) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes3","fileName":"${__filename}","paramsNumber":1},`);
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey22\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       remove(_this5.uploading, ev.target);
       _this5.chunkState[index].busy = false;
       var error = new Error('Unknown error');
       error.source = ev.target;
-      _this5._onError(error);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes3"},');
 
+      _this5._onError(error);
+
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey22"},');
     });
     xhr.send(body);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._uploadPartBytes._uploadPartBytes4"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadPartBytes"},');
   };
+
   _proto._completeUpload = function _completeUpload() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._completeUpload._completeUpload","fileName":"${__filename}","paramsNumber":0},`);
-
     var _this6 = this;
-    // Parts may not have completed uploading in sorted order, if limit > 1.
+
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_completeUpload\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},"); // Parts may not have completed uploading in sorted order, if limit > 1.
+
     this.parts.sort(function (a, b) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._completeUpload._completeUpload.parts.sort","fileName":"${__filename}","paramsNumber":2},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._completeUpload._completeUpload.parts.sort"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey23\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey23"},');
       return a.PartNumber - b.PartNumber;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._completeUpload._completeUpload.parts.sort"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey23"},');
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._completeUpload._completeUpload"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_completeUpload"},');
     return Promise.resolve().then(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._completeUpload._completeUpload.ReturnStatement.then.then.then","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._completeUpload._completeUpload.ReturnStatement.then.then.then"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey24\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey24"},');
       return _this6.options.completeMultipartUpload({
         key: _this6.key,
         uploadId: _this6.uploadId,
         parts: _this6.parts
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._completeUpload._completeUpload.ReturnStatement.then.then.then"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey24"},');
     }).then(function (result) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._completeUpload._completeUpload.ReturnStatement.then.then","fileName":"${__filename}","paramsNumber":1},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey25\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this6.options.onSuccess(result);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._completeUpload._completeUpload.ReturnStatement.then.then"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey25"},');
     }, function (err) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._completeUpload._completeUpload.ReturnStatement.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey26\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this6._onError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._completeUpload._completeUpload.ReturnStatement.then.then2"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey26"},');
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._completeUpload._completeUpload"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_completeUpload"},');
   };
+
   _proto._abortUpload = function _abortUpload() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._abortUpload._abortUpload","fileName":"${__filename}","paramsNumber":0},`);
-
     var _this7 = this;
+
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_abortUpload\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     this.uploading.slice().forEach(function (xhr) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._abortUpload._abortUpload.uploading.slice.forEach","fileName":"${__filename}","paramsNumber":1},`);
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey27\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       xhr.abort();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._abortUpload._abortUpload.uploading.slice.forEach"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey27"},');
     });
     this.createdPromise.then(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._abortUpload._abortUpload.createdPromise.then","fileName":"${__filename}","paramsNumber":0},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey28\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this7.options.abortMultipartUpload({
         key: _this7.key,
         uploadId: _this7.uploadId
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._abortUpload._abortUpload.createdPromise.then"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey28"},');
     }, function () {
       // if the creation failed we do not need to abort
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._abortUpload._abortUpload.createdPromise.then2","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._abortUpload._abortUpload.createdPromise.then2"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey29\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey29"},');
     });
     this.uploading = [];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._abortUpload._abortUpload"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_abortUpload"},');
   };
+
   _proto._onError = function _onError(err) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto._onError._onError","fileName":"${__filename}","paramsNumber":1},`);
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     this.options.onError(err);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto._onError._onError"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_onError"},');
   };
-  _proto.start = function start() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto.start.start","fileName":"${__filename}","paramsNumber":0},`);
 
+  _proto.start = function start() {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"start\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     this.isPaused = false;
+
     if (this.uploadId) {
       this._resumeUpload();
     } else {
       this._createUpload();
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto.start.start"},');
 
+    SRTlib.send('{"type":"FUNCTIONEND","function":"start"},');
   };
-  _proto.pause = function pause() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto.pause.pause2","fileName":"${__filename}","paramsNumber":0},`);
 
+  _proto.pause = function pause() {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"pause\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     var inProgress = this.uploading.slice();
     inProgress.forEach(function (xhr) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto.pause.pause","fileName":"${__filename}","paramsNumber":1},`);
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey30\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       xhr.abort();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto.pause.pause"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey30"},');
     });
     this.isPaused = true;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto.pause.pause2"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"pause"},');
   };
-  _proto.abort = function abort(opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MultipartUploader._proto.abort.abort","fileName":"${__filename}","paramsNumber":1},`);
 
+  _proto.abort = function abort(opts) {
     if (opts === void 0) {
       opts = {};
     }
-    var really = opts.really || false;
-    if (!really) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto.abort.abort"},');
 
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"abort\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
+    var really = opts.really || false;
+
+    if (!really) {
+      SRTlib.send('{"type":"FUNCTIONEND","function":"abort"},');
       return this.pause();
     }
-    this._abortUpload();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader._proto.abort.abort"},');
 
+    this._abortUpload();
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"abort"},');
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader"},');
 
   return MultipartUploader;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"MultipartUploader"},');
+}();
 
-})();
 module.exports = MultipartUploader;

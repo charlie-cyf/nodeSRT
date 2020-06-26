@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const isNetworkError = require('./isNetworkError');
 describe('isNetworkError', () => {
     beforeAll(() => {

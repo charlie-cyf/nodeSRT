@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const ThumbnailGeneratorPlugin = require('./index');
 const {Plugin} = require('@uppy/core');
 const emitter = require('namespace-emitter');

@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const supportsUploadProgress = require('./supportsUploadProgress');
 describe('supportsUploadProgress', () => {
     beforeAll(() => {

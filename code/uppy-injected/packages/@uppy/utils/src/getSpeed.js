@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 module.exports = function getSpeed(fileProgress) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getSpeed","fileName":"${__filename}","paramsNumber":1},`);
 

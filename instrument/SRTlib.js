@@ -2,20 +2,6 @@ const axios = require('axios')
 
 
 module.exports = class SRTlib {
-    // message to send to backend
-    static message;
-
-    static basePath;
-
-    static logFile;
-
-    static threshold = 100;
-
-    static endPontUrl;
-
-    static started = false;
-
-    // call this function to initialize the logger
     /*
     *   param: 
     *       base: absolute path to original project

@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const isPreviewSupported = require('./isPreviewSupported');
 describe('isPreviewSupported', () => {
     beforeAll(() => {

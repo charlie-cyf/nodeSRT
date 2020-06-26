@@ -1,5 +1,6 @@
 /*global browser*/
 const SRTlib = require('SRT-util');
+
 describe('File upload with URL plugin', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");

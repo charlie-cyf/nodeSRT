@@ -10,21 +10,26 @@ const ASTParser = Parser.extend(
 const Path = require('path');
 
 
-function generaterHelper(path, ASTpath) {
+function generaterHelper(path, ASTpath, excepts) {
     let files = fs.readdirSync(path);
+
     files.forEach(file => {
         if (Path.extname(file) === '.js') {
             try {
                 let content = fs.readFileSync(path + '/' + file);
                 let comments = [];
-                // don't parse file contain '// @ts-ignore'
-                // if(!content.includes('// @ts-ignore'))
-                let tree = ASTParser.parse(content, {
-                    locations: true,
-                    onComment: comments
-                })
-                Astravel.attachComments(tree, comments);
-                fs.writeFileSync(ASTpath + "/" + file + '.json', JSON.stringify(tree))
+                
+                
+                if( excepts.filter(ele => { return Path.resolve(path + '/' + file) === Path.resolve(ele) }).length <= 0 ){
+                    
+                    let tree = ASTParser.parse(content, {
+                        locations: true,
+                        onComment: comments
+                    })
+                    Astravel.attachComments(tree, comments);
+                    fs.writeFileSync(ASTpath + "/" + file + '.json', JSON.stringify(tree))
+                }
+
 
             } catch (error) {
                 console.log(Path.join(path, file), error)
@@ -33,18 +38,18 @@ function generaterHelper(path, ASTpath) {
             let dirName = file.split('/').pop();
             if (!fs.existsSync(ASTpath + "/" + dirName))
                 fs.mkdirSync(ASTpath + "/" + dirName);
-            generaterHelper(path + "/" + file, ASTpath + "/" + dirName)
+            generaterHelper(path + "/" + file, ASTpath + "/" + dirName, excepts)
         }
 
-    })
+    }, this)
 }
 
 
 
 module.exports = class ASTgenerater {
 
-
-    static generate(path) {
+    // will ignore paths in excepts
+    static generate(path, excepts) {
         if (path.endsWith('/')) {
             path = path.substring(0, path.length - 1)
         }
@@ -52,7 +57,8 @@ module.exports = class ASTgenerater {
         const ASTpath = path + "/../" + filename + "-AST"
         if (!fs.existsSync(ASTpath))
             fs.mkdirSync(ASTpath);
-        generaterHelper(path, path + "/../" + filename + "-AST")
+
+        generaterHelper(path, path + "/../" + filename + "-AST", excepts)
     }
 
     static copyDir(source, distination) {

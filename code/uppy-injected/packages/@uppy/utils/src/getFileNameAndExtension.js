@@ -5,6 +5,7 @@
 * @returns {object} {name, extension}
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function getFileNameAndExtension(fullFileName) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFileNameAndExtension","fileName":"${__filename}","paramsNumber":1},`);
 

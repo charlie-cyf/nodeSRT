@@ -38,7 +38,7 @@ module.exports = class Instrumentor {
                 let tree = JSON.parse(fs.readFileSync(fullPath));
 
                 //add require to the top
-                tree.body.unshift(ASTParser.parse("const SRTlib = require('SRT-util');").body[0]);
+                tree.body.unshift(ASTParser.parse("const SRTlib = require('SRT-util');"));
 
                 const getSuiteName = this.getSuiteName;
                 const codebase = this.codebaseName

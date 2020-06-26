@@ -6,6 +6,7 @@
 * @returns {string} the fileID
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function generateFileID(file) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.generateFileID","fileName":"${__filename}","paramsNumber":1},`);
 

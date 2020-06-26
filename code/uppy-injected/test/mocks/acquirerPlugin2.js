@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const {Plugin} = require('../../packages/@uppy/core');
 module.exports = class TestSelector2 extends Plugin {
   constructor(uppy, opts) {

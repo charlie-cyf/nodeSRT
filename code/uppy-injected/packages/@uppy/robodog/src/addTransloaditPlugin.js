@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const Transloadit = require('@uppy/transloadit');
 const has = require('@uppy/utils/lib/hasProperty');
 const TransloaditResults = require('./TransloaditResultsPlugin');

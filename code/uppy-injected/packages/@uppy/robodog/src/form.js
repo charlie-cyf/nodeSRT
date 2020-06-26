@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const Uppy = require('@uppy/core');
 const Form = require('@uppy/form');
 const StatusBar = require('@uppy/status-bar');

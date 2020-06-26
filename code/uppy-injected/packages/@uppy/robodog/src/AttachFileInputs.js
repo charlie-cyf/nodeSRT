@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const {Plugin} = require('@uppy/core');
 const toArray = require('@uppy/utils/lib/toArray');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');

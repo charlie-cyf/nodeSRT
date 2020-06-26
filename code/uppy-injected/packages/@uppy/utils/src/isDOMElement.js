@@ -4,6 +4,7 @@
 * @param {*} obj
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function isDOMElement(obj) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isDOMElement","fileName":"${__filename}","paramsNumber":1},`);
 

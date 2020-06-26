@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const toArray = require('../../../toArray');
 const getRelativePath = require('./getRelativePath');
 const getFilesAndDirectoriesFromDirectory = require('./getFilesAndDirectoriesFromDirectory');

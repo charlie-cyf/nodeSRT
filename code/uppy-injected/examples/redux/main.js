@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const {createStore, compose, combineReducers, applyMiddleware} = require('redux');
 const logger = require('redux-logger').default;
 const Uppy = require('@uppy/core');

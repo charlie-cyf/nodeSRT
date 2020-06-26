@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const debounce = require('lodash.debounce');
 const FOCUSABLE_ELEMENTS = require('@uppy/utils/lib/FOCUSABLE_ELEMENTS');
 const getActiveOverlayEl = require('./getActiveOverlayEl');

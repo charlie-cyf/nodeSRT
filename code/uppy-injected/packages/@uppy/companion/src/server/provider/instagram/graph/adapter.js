@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const querystring = require('querystring');
 const MEDIA_TYPES = Object.freeze({
   video: 'VIDEO',

@@ -1,46 +1,31 @@
-const SRTlib = require('SRT-util');
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
+var SRTlib = require('SRT-util');
 
-}
 var ProviderViews = require('@uppy/provider-views');
-module.exports = (function (_ProviderViews) {
-  /*#__PURE__*/
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
+module.exports = /*#__PURE__*/function (_ProviderViews) {
   _inheritsLoose(DriveProviderViews, _ProviderViews);
+
   function DriveProviderViews() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"DriveProviderViews","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DriveProviderViews"},');
-
     return _ProviderViews.apply(this, arguments) || this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DriveProviderViews","paramsNumber":0},');
-
   }
-  var _proto = DriveProviderViews.prototype;
-  _proto.toggleCheckbox = function toggleCheckbox(e, file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.toggleCheckbox.toggleCheckbox","fileName":"${__filename}","paramsNumber":2},`);
 
+  var _proto = DriveProviderViews.prototype;
+
+  _proto.toggleCheckbox = function toggleCheckbox(e, file) {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"toggleCheckbox\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"DriveProviderViews\",\"superClass\":\"ProviderViews\"}},");
     e.stopPropagation();
-    // Shared Drives aren't selectable; for all else, defer to the base ProviderView.
-    e.preventDefault();
+    e.preventDefault(); // Shared Drives aren't selectable; for all else, defer to the base ProviderView.
     // @todo isTeamDrive is left for backward compatibility. We should remove it in the next
     // major release.
+
     if (!file.custom.isTeamDrive && !file.custom.isSharedDrive) {
       _ProviderViews.prototype.toggleCheckbox.call(this, e, file);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.toggleCheckbox.toggleCheckbox"},');
 
+    SRTlib.send('{"type":"FUNCTIONEND","function":"toggleCheckbox"},');
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return DriveProviderViews;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-})(ProviderViews);
+}(ProviderViews);

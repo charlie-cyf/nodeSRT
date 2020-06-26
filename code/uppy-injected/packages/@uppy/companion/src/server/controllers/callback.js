@@ -2,6 +2,7 @@
 * oAuth callback.  Encrypts the access token and sends the new token with the response,
 */
 const SRTlib = require('SRT-util');
+
 const tokenService = require('../helpers/jwt');
 const logger = require('../logger');
 /**

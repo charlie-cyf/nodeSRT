@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 module.exports = function isTouchDevice() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isTouchDevice","fileName":"${__filename}","paramsNumber":0},`);
 

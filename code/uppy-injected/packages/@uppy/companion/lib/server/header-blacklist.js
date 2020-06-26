@@ -16,47 +16,35 @@ const forbiddenRegex = [/^proxy-.*$/, /^sec-.*$/];
 */
 const isForbiddenHeader = header => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isForbiddenHeader","fileName":"${__filename}","paramsNumber":1},`);
-
-  const headerLower = header.toLowerCase();
-  const forbidden = forbiddenNames.indexOf(headerLower) >= 0 || forbiddenRegex.findIndex(regex => {
+    const headerLower = header.toLowerCase();
+    const forbidden = forbiddenNames.indexOf(headerLower) >= 0 || forbiddenRegex.findIndex(regex => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
-
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
-
-    return regex.test(headerLower);
+        return regex.test(headerLower);
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
-
-  }) >= 0;
-  if (forbidden) {
-    logger.warn(`Header forbidden: ${header}`, 'header.forbidden');
-  }
+    }) >= 0;
+    if (forbidden) {
+        logger.warn(`Header forbidden: ${header}`, 'header.forbidden');
+    }
     SRTlib.send('{"type":"FUNCTIONEND","function":"isForbiddenHeader"},');
-
-  return forbidden;
+    return forbidden;
     SRTlib.send('{"type":"FUNCTIONEND","function":"isForbiddenHeader"},');
-
 };
 module.exports = headers => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
-
-  if (!isObject(headers)) {
+    if (!isObject(headers)) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
-
-    return {};
-  }
-  const headersCloned = Object.assign({}, headers);
-  Object.keys(headersCloned).forEach(header => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
-
-    if (isForbiddenHeader(header)) {
-      delete headersCloned[header];
+        return {};
     }
+    const headersCloned = Object.assign({}, headers);
+    Object.keys(headersCloned).forEach(header => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+        if (isForbiddenHeader(header)) {
+            delete headersCloned[header];
+        }
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
-
-  });
+    });
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
-
-  return headersCloned;
+    return headersCloned;
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
-
 };

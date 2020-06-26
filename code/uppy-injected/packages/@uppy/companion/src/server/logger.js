@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const chalk = require('chalk');
 const escapeStringRegexp = require('escape-string-regexp');
 const valuesToMask = [];

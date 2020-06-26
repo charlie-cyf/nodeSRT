@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const ru_RU = {};
 ru_RU.strings = {
   addMoreFiles: 'Добавить еще файлы',

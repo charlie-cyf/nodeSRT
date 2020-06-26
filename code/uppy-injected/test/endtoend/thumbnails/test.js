@@ -1,5 +1,6 @@
 /*global browser, capabilities, expect, $, $$*/
 const SRTlib = require('SRT-util');
+
 const path = require('path');
 const fs = require('fs');
 const {selectFakeFile, supportsChooseFile} = require('../utils');

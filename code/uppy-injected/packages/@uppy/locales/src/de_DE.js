@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const de_DE = {};
 de_DE.strings = {
   addMoreFiles: 'Dateien hinzufügen',

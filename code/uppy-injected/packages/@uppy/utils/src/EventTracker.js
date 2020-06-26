@@ -3,6 +3,7 @@
 * all events that were added using the wrapped emitter.
 */
 const SRTlib = require('SRT-util');
+
 module.exports = class EventTracker {
   constructor(emitter) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"EventTracker"}},`);

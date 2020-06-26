@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const {iconFile, iconText, iconImage, iconAudio, iconVideo, iconPDF, iconArchive} = require('../components/icons');
 module.exports = function getIconByMime(fileType) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getIconByMime","fileName":"${__filename}","paramsNumber":1},`);

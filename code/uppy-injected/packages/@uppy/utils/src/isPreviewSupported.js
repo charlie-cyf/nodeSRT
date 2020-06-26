@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 module.exports = function isPreviewSupported(fileType) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isPreviewSupported","fileName":"${__filename}","paramsNumber":1},`);
 

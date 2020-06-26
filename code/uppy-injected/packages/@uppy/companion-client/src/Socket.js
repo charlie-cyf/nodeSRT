@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const ee = require('namespace-emitter');
 module.exports = class UppySocket {
   constructor(opts) {

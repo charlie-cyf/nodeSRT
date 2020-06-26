@@ -6,6 +6,7 @@
 *
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function formatSeconds(seconds) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.formatSeconds","fileName":"${__filename}","paramsNumber":1},`);
 

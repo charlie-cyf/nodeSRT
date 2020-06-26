@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const pt_BR = {};
 pt_BR.strings = {
   addMore: 'Adicione mais',

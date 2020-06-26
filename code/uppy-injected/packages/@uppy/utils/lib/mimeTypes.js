@@ -1,8 +1,9 @@
-const SRTlib = require('SRT-util');
-// ___Why not add the mime-types package?
+var SRTlib = require('SRT-util'); // ___Why not add the mime-types package?
 // It's 19.7kB gzipped, and we only need mime types for well-known extensions (for file previews).
 // ___Where to take new extensions from?
 // https://github.com/jshttp/mime-db/blob/master/db.json
+
+
 module.exports = {
   md: 'text/markdown',
   markdown: 'text/markdown',

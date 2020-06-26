@@ -1,4 +1,5 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
+
 var isDOMElement = require('./isDOMElement');
 /**
 * Find one or more DOM elements.
@@ -6,20 +7,21 @@ var isDOMElement = require('./isDOMElement');
 * @param {string} element
 * @returns {Array|null}
 */
+
+
 module.exports = function findAllDOMElements(element) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.findAllDOMElements","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.findAllDOMElements\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (typeof element === 'string') {
     var elements = [].slice.call(document.querySelectorAll(element));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.findAllDOMElements"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.findAllDOMElements"},');
     return elements.length > 0 ? elements : null;
   }
-  if (typeof element === 'object' && isDOMElement(element)) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.findAllDOMElements"},');
 
+  if (typeof element === 'object' && isDOMElement(element)) {
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.findAllDOMElements"},');
     return [element];
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.findAllDOMElements"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.findAllDOMElements"},');
 };

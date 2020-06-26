@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const toArray = require('./toArray');
 describe('toArray', () => {
     beforeAll(() => {

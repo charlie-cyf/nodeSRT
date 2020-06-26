@@ -7,6 +7,7 @@
 * @param {Function} callback - called with ([ all files and directories in that directoryReader ])
 */
 const SRTlib = require('SRT-util');
+
 module.exports = function getFilesAndDirectoriesFromDirectory(directoryReader, oldEntries, logDropError, {onSuccess}) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFilesAndDirectoriesFromDirectory","fileName":"${__filename}","paramsNumber":4},`);
 

@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const prettyETA = require('./prettyETA');
 describe('prettyETA', () => {
     beforeAll(() => {

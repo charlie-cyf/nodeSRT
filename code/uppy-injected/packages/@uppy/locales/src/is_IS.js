@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const is_IS = {};
 is_IS.strings = {
   addMore: 'Bæta við',

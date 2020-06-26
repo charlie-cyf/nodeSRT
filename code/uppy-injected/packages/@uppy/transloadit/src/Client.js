@@ -2,6 +2,7 @@
 * A Barebones HTTP API client for Transloadit.
 */
 const SRTlib = require('SRT-util');
+
 module.exports = class Client {
   constructor(opts = {}) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Client"}},`);

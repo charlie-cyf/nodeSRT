@@ -1,70 +1,56 @@
-const SRTlib = require('SRT-util');
-var _require = require('preact'), h = _require.h;
-// if folder:
-var getAriaLabelOfCheckbox = function getAriaLabelOfCheckbox(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getAriaLabelOfCheckbox","fileName":"${__filename}","paramsNumber":1},`);
+var _require = require('preact'),
+    h = _require.h;
 
+var getAriaLabelOfCheckbox = function getAriaLabelOfCheckbox(props) {
   if (props.type === 'folder') {
     if (props.isChecked) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"getAriaLabelOfCheckbox"},');
-
       return props.i18n('unselectAllFilesFromFolderNamed', {
         name: props.title
       });
     } else {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"getAriaLabelOfCheckbox"},');
-
       return props.i18n('selectAllFilesFromFolderNamed', {
         name: props.title
       });
     }
   } else {
     if (props.isChecked) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"getAriaLabelOfCheckbox"},');
-
       return props.i18n('unselectFileNamed', {
         name: props.title
       });
     } else {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"getAriaLabelOfCheckbox"},');
-
       return props.i18n('selectFileNamed', {
         name: props.title
       });
     }
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"getAriaLabelOfCheckbox"},');
-
-};
-// + checkbox (selects all files from folder)
-// + folder name (opens folder)
+}; // if folder:
+//   + checkbox (selects all files from folder)
+//   + folder name (opens folder)
 // if file:
-// + checkbox (selects file)
-// + file name (selects file)
+//   + checkbox (selects file)
+//   + file name (selects file)
+
+
 module.exports = function (props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
   return h("li", {
     class: props.className
   }, h("button", {
     type: "button",
     class: "uppy-u-reset uppy-ProviderBrowserItem-fakeCheckbox " + (props.isChecked ? 'uppy-ProviderBrowserItem-fakeCheckbox--is-checked' : ''),
-    // for the <label/>
-    onClick: props.toggleCheckbox,
+    onClick: props.toggleCheckbox // for the <label/>
+    ,
     id: props.id,
     role: "option",
     "aria-label": getAriaLabelOfCheckbox(props),
     "aria-selected": props.isChecked,
     "aria-disabled": props.isDisabled,
     "data-uppy-super-focusable": true
-  }), props.type === 'file' ? h("label", {
-    // label for a checkbox
+  }), props.type === 'file' ? // label for a checkbox
+  h("label", {
     for: props.id,
     className: "uppy-u-reset uppy-ProviderBrowserItem-inner"
-  }, props.itemIconEl, props.showTitles && props.title) : h("button", {
-    // button to open a folder
+  }, props.itemIconEl, props.showTitles && props.title) : // button to open a folder
+  h("button", {
     type: "button",
     class: "uppy-u-reset uppy-ProviderBrowserItem-inner",
     onclick: props.handleFolderClick,
@@ -72,6 +58,4 @@ module.exports = function (props) {
       name: props.title
     })
   }, props.itemIconEl, props.showTitles && props.title));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
 };

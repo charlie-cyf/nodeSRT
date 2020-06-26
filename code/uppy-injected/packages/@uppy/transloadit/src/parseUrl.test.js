@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const parseUrl = require('./parseUrl');
 describe('Transloadit/parseUrl', () => {
     beforeAll(() => {

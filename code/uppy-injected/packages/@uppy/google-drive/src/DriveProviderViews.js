@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const ProviderViews = require('@uppy/provider-views');
 module.exports = class DriveProviderViews extends ProviderViews {
   toggleCheckbox(e, file) {

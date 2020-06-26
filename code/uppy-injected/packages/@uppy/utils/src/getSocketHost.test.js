@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const getSocketHost = require('./getSocketHost');
 describe('getSocketHost', () => {
     beforeAll(() => {

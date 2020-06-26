@@ -9,6 +9,7 @@ SSL encryption may not be enabled between the running companion and the testing 
 Hence, provider tokens (Google, Instagram, Dropbox) may be at risk of getting hijacked.
 */
 const SRTlib = require('SRT-util');
+
 const {finishUploadTest, startUploadTest, uploadWithRetry} = require('./helper');
 const testURL = 'http://localhost:4567/providers';
 describe('File upload with Dropbox Provider', () => {

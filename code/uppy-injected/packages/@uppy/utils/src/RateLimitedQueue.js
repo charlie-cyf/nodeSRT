@@ -2,6 +2,7 @@
 * Array.prototype.findIndex ponyfill for old browsers.
 */
 const SRTlib = require('SRT-util');
+
 function findIndex(array, predicate) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findIndex","fileName":"${__filename}","paramsNumber":2},`);
 

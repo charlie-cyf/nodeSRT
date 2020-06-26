@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const dataURItoBlob = require('./dataURItoBlob');
 /**
 * Save a <canvas> element's content to a Blob object.

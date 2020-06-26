@@ -2,6 +2,7 @@
 * Check that Assembly parameters are present and include all required fields.
 */
 const SRTlib = require('SRT-util');
+
 function validateParams(params) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateParams","fileName":"${__filename}","paramsNumber":1},`);
 

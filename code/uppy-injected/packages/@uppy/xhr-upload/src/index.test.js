@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const nock = require('nock');
 const Core = require('@uppy/core');
 const XHRUpload = require('./index');

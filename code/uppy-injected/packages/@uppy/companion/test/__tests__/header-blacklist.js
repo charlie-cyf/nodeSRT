@@ -1,5 +1,6 @@
 /*global test:false, expect:false, describe:false,*/
 const SRTlib = require('SRT-util');
+
 const headerSanitize = require('../../src/server/header-blacklist');
 describe('Header black-list testing', () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":0},`);

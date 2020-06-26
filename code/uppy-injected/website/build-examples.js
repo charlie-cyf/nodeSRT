@@ -21,6 +21,7 @@
 * the Set when it has been bundled.
 */
 const SRTlib = require('SRT-util');
+
 const createStream = require('fs').createWriteStream;
 const glob = require('multi-glob').glob;
 const chalk = require('chalk');

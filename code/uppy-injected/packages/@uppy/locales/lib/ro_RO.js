@@ -1,4 +1,5 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
+
 var ro_RO = {};
 ro_RO.strings = {
   addBulkFilesFailed: {
@@ -134,21 +135,22 @@ ro_RO.strings = {
     '1': 'Selectează cel puțin %{smart_count} fișiere'
   }
 };
+
 ro_RO.pluralize = function (count) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ro_RO.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ro_RO.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (count === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ro_RO.pluralize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ro_RO.pluralize"},');
     return 0;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ro_RO.pluralize"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"ro_RO.pluralize"},');
   return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ro_RO.pluralize"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"ro_RO.pluralize"},');
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.ro_RO = ro_RO;
 }
+
 module.exports = ro_RO;

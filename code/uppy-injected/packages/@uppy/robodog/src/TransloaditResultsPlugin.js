@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const {Plugin} = require('@uppy/core');
 /**
 * Add a `results` key to the upload result data, containing all Transloadit Assembly results.

@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const ReduxStore = require('./index');
 const Redux = require('redux');
 describe('ReduxStore', () => {

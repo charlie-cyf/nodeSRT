@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const getTimeStamp = require('@uppy/utils/lib/getTimeStamp');
 // Swallow all logs, except errors.
 // default if logger is not set or debug: false
