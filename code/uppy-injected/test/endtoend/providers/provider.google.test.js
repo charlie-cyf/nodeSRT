@@ -13,13 +13,13 @@ const SRTlib = require('SRT-util');
 const {finishUploadTest, startUploadTest, uploadWithRetry} = require('./helper');
 const testURL = 'http://localhost:4567/providers';
 describe('File upload with Google Drive Provider', () => {
-    beforeAll(() => {
+    before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20Google%20Drive%20Provider", "fileName": "${__filename}", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -43,10 +43,10 @@ describe('File upload with Google Drive Provider', () => {
     await uploadWithRetry(browser, 'GoogleDrive', testURL);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
+    SRTlib.send(`], "endTestName": "${this.test}" },`);
   });
 
-    afterAll(async () => {
+    after(async () => {
     SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20Google%20Drive%20Provider" },`);
     await SRTlib.endLogger();
   });

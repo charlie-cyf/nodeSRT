@@ -5,14 +5,14 @@ const path = require('path');
 const {selectFakeFile, supportsChooseFile, ensureInputVisible} = require('../utils');
 const testURL = 'http://localhost:4567/tus-drag-drop';
 describe('File upload with DragDrop + Tus', function () {
-    beforeAll(() => {
+    before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20DragDrop%20+%20Tus", "fileName": "${__filename}", "calls" : [`);
   });
 
   this.retries(2);
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -30,10 +30,10 @@ describe('File upload with DragDrop + Tus', function () {
     expect(parseInt(html)).to.be.equal(100);
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
+    SRTlib.send(`], "endTestName": "${this.test}" },`);
   });
 
-    afterAll(async () => {
+    after(async () => {
     SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20DragDrop%20+%20Tus" },`);
     await SRTlib.endLogger();
   });

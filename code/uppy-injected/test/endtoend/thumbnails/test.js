@@ -11,13 +11,13 @@ const notImages = [{
   file: __filename
 }];
 describe('ThumbnailGenerator', () => {
-    beforeAll(() => {
+    before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "ThumbnailGenerator", "fileName": "${__filename}", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -84,10 +84,10 @@ describe('ThumbnailGenerator', () => {
     }
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
+    SRTlib.send(`], "endTestName": "${this.test}" },`);
   });
 
-    afterAll(async () => {
+    after(async () => {
     SRTlib.send(`], "endTestSuiteName": "ThumbnailGenerator" },`);
     await SRTlib.endLogger();
   });

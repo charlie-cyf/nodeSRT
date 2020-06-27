@@ -9,13 +9,13 @@ function setTransloaditKeyAndInit(transloaditKey) {
   window.initUppyTransloadit(transloaditKey);
 }
 describe('Transloadit file processing', () => {
-    beforeAll(() => {
+    before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "Transloadit%20file%20processing", "fileName": "${__filename}", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -47,10 +47,10 @@ describe('Transloadit file processing', () => {
     expect(text).to.be.equal('ok');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
+    SRTlib.send(`], "endTestName": "${this.test}" },`);
   });
 
-    afterAll(async () => {
+    after(async () => {
     SRTlib.send(`], "endTestSuiteName": "Transloadit%20file%20processing" },`);
     await SRTlib.endLogger();
   });

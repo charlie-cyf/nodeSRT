@@ -12,6 +12,9 @@ const excepts = [
     './code/uppy/packages/@uppy/companion/src/server/Uploader.js',
     './code/uppy/packages/@uppy/companion/src/server/helpers/jwt.js',
     './code/uppy/packages/@uppy/companion/src/standalone/index.js',
+    './code/uppy/test/endtoend/utils.js',
+    './code/uppy/test/endtoend/wdio.local.conf.js',
+    './code/uppy/test/endtoend/wdio.base.conf.js',
 ]
 
 

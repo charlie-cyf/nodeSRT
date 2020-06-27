@@ -5,14 +5,14 @@ const path = require('path');
 const {selectFakeFile, supportsChooseFile, ensureInputVisible} = require('../utils');
 const testURL = 'http://localhost:4567/i18n-drag-drop';
 describe('File upload with DragDrop + XHRUpload, i18n translated string', function () {
-    beforeAll(() => {
+    before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20DragDrop%20+%20XHRUpload%2C%20i18n%20translated%20string", "fileName": "${__filename}", "calls" : [`);
   });
 
   this.retries(2);
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
     await browser.execute(ensureInputVisible, '#uppyi18n .uppy-DragDrop-input');
@@ -36,10 +36,10 @@ describe('File upload with DragDrop + XHRUpload, i18n translated string', functi
     expect(text.trim()).to.be.equal('Перенесите файлы сюда или выберите');
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
+    SRTlib.send(`], "endTestName": "${this.test}" },`);
   });
 
-    afterAll(async () => {
+    after(async () => {
     SRTlib.send(`], "endTestSuiteName": "File%20upload%20with%20DragDrop%20+%20XHRUpload%2C%20i18n%20translated%20string" },`);
     await SRTlib.endLogger();
   });

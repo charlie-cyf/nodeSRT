@@ -6,7 +6,7 @@ const lorem = require('@jamen/lorem');
 const {selectFakeFile} = require('../utils');
 const testURL = 'http://localhost:4567/chaos-monkey';
 describe('Chaos monkey', function () {
-    beforeAll(() => {
+    before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "Chaos%20monkey", "fileName": "${__filename}", "calls" : [`);
   });
@@ -14,7 +14,7 @@ describe('Chaos monkey', function () {
   // 5 minutes
   this.timeout(5 * 60 * 1000);
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -98,10 +98,10 @@ describe('Chaos monkey', function () {
     expect(errorMessage).to.not.exist;
   });
     afterEach(() => {
-    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
+    SRTlib.send(`], "endTestName": "${this.test}" },`);
   });
 
-    afterAll(async () => {
+    after(async () => {
     SRTlib.send(`], "endTestSuiteName": "Chaos%20monkey" },`);
     await SRTlib.endLogger();
   });
