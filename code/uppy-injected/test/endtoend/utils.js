@@ -102,22 +102,22 @@ class CompanionService {
         SRTlib.send('{"type":"FUNCTIONEND","function":"onPrepare"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
 
       this.companion.on('error', reject);
       this.companion.stdout.on('data', chunk => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"companion.stdout.on","fileName":"${__filename}","paramsNumber":1},`);
 
         if (`${chunk}`.includes('Listening on')) {
           resolve();
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"companion.stdout.on"},');
 
       });
       this.companion.on('error', console.error);
       this.companion.stderr.pipe(process.stderr);
       this.companion.on('exit', prematureExit);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onPrepare"},');
@@ -129,20 +129,20 @@ class CompanionService {
         SRTlib.send('{"type":"FUNCTIONEND","function":"onComplete"},');
 
     return new Promise(resolve => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":1},`);
 
       this.companion.removeListener('exit', prematureExit);
       this.companion.on('exit', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"companion.on","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"companion.on"},');
 
         return resolve();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"companion.on"},');
 
       });
       this.companion.kill('SIGINT');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onComplete"},');
@@ -214,7 +214,7 @@ class TusService {
     });
     const proxy = httpProxy.createProxyServer();
     this.slowServer = http.createServer((req, res) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"slowServer.http.createServer","fileName":"${__filename}","paramsNumber":2},`);
 
       proxy.web(req, res, {
         target: 'http://localhost:1080',
@@ -226,12 +226,12 @@ class TusService {
       }, err => {
         // eslint-disable-line handle-callback-err
         // ignore, typically a cancelled request
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"proxy.web","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"proxy.web"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"slowServer.http.createServer"},');
 
     });
     const listen = promisify(this.tusServer.listen.bind(this.tusServer));

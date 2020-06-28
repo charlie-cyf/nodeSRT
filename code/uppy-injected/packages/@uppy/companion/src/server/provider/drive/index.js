@@ -46,24 +46,24 @@ class Drive extends Provider {
     const shouldListSharedDrives = directory === 'root' && !query.cursor;
     if (shouldListSharedDrives) {
       sharedDrivesPromise = new Promise(resolve => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sharedDrivesPromise","fileName":"${__filename}","paramsNumber":1},`);
 
         this.client.query().get('drives').qs({
           fields: SHARED_DRIVE_FIELDS
         }).auth(options.token).request((err, resp) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.query.get.qs.auth.request","fileName":"${__filename}","paramsNumber":2},`);
 
           if (err) {
             logger.error(err, 'provider.drive.sharedDrive.error');
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"client.query.get.qs.auth.request"},');
 
             return;
           }
           resolve(resp);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"client.query.get.qs.auth.request"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"sharedDrivesPromise"},');
 
       });
     }
@@ -75,37 +75,37 @@ class Drive extends Provider {
       supportsAllDrives: true
     };
     const filesPromise = new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filesPromise","fileName":"${__filename}","paramsNumber":2},`);
 
       this.client.query().get('files').qs(where).auth(options.token).request((err, resp) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.query.get.qs.auth.request2","fileName":"${__filename}","paramsNumber":2},`);
 
         if (err || resp.statusCode !== 200) {
           reject(this._error(err, resp));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"client.query.get.qs.auth.request2"},');
 
           return;
         }
         resolve(resp);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.query.get.qs.auth.request2"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"filesPromise"},');
 
     });
     Promise.all([sharedDrivesPromise, filesPromise]).then(([sharedDrives, filesResponse]) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then","fileName":"${__filename}","paramsNumber":1},`);
 
       const returnData = this.adaptData(filesResponse.body, sharedDrives && sharedDrives.body, directory, query);
       done(null, returnData);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"then"},');
 
     }, reqErr => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then2","fileName":"${__filename}","paramsNumber":1},`);
 
       logger.error(reqErr, 'provider.drive.list.error');
       done(reqErr);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"then2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
@@ -142,27 +142,27 @@ class Drive extends Provider {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_waitForFailedResponse"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
 
       let data = '';
       resp.on('data', chunk => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on.resp.on","fileName":"${__filename}","paramsNumber":1},`);
 
         data += chunk;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on.resp.on"},');
 
       }).on('end', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on","fileName":"${__filename}","paramsNumber":0},`);
 
         try {
           resolve(JSON.parse(data.toString()));
         } catch (error) {
           reject(error);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_waitForFailedResponse"},');
@@ -175,12 +175,12 @@ class Drive extends Provider {
       id,
       token
     }, (err, _, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey16","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"stats","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err) {
         logger.error(err, 'provider.drive.download.stats.error');
         onData(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey16"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"stats"},');
 
         return;
       }
@@ -194,55 +194,55 @@ class Drive extends Provider {
         }).auth(token).request();
       }
       requestStream.on('response', resp => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey13","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on.on.on.requestStream.on","fileName":"${__filename}","paramsNumber":1},`);
 
         if (resp.statusCode !== 200) {
           this._waitForFailedResponse(resp).then(jsonResp => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_waitForFailedResponse.then.catch._waitForFailedResponse.then","fileName":"${__filename}","paramsNumber":1},`);
 
             resp.body = jsonResp;
             onData(this._error(null, resp));
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_waitForFailedResponse.then.catch._waitForFailedResponse.then"},');
 
           }).catch(err => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_waitForFailedResponse.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_waitForFailedResponse.then.catch"},');
 
             return onData(this._error(err, resp));
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_waitForFailedResponse.then.catch"},');
 
           });
         } else {
           resp.on('data', chunk => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey12","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
             return onData(null, chunk);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
           });
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on.on.on.requestStream.on"},');
 
       }).on('end', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey14","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on.on.on","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on.on.on"},');
 
         return onData(null, null);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on.on.on"},');
 
       }).on('error', err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey15","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on.on","fileName":"${__filename}","paramsNumber":1},`);
 
         logger.error(err, 'provider.drive.download.error');
         onData(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on.on"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey16"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"stats"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
@@ -269,12 +269,12 @@ class Drive extends Provider {
       id,
       token
     }, (err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey17","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.stats","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.drive.size.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey17"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.stats"},');
 
         return done(err);
       }
@@ -289,7 +289,7 @@ class Drive extends Provider {
       } else {
         done(null, parseInt(body.size));
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey17"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.stats"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
@@ -303,19 +303,19 @@ class Drive extends Provider {
     return this.client.get('https://accounts.google.com/o/oauth2/revoke').qs({
       token
     }).request((err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey18","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.request","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err || resp.statusCode !== 200) {
         logger.error(err, 'provider.drive.logout.error');
         done(this._error(err, resp));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey18"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.request"},');
 
         return;
       }
       done(null, {
         revoked: true
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey18"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.request"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');

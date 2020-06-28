@@ -38,12 +38,12 @@ module.exports = class Translator {
     };
     if (Array.isArray(locales)) {
       locales.forEach(locale => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.locales.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.locales.forEach"},');
 
         return this._apply(locale);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.locales.forEach"},');
 
       });
     } else {
@@ -109,19 +109,19 @@ module.exports = class Translator {
 
       const newParts = [];
       source.forEach(chunk => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"source.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         // When the source contains multiple placeholders for interpolation,
         // we should ignore chunks that are not strings, because those
         // can be JSX objects and will be otherwise incorrectly turned into strings.
         // Without this condition we’d get this: [object Object] hello [object Object] my <button>
         if (typeof chunk !== 'string') {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"source.forEach"},');
 
           return newParts.push(chunk);
         }
         split.call(chunk, rx).forEach((raw, i, list) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":3},`);
 
           if (raw !== '') {
             newParts.push(raw);
@@ -130,10 +130,10 @@ module.exports = class Translator {
           if (i < list.length - 1) {
             newParts.push(replacement);
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"source.forEach"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"insertReplacement"},');

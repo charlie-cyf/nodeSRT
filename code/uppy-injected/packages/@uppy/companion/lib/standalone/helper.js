@@ -15,12 +15,12 @@ const {version} = require('../../package.json');
 * @returns {object}
 */
 exports.getCompanionOptions = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getCompanionOptions","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getCompanionOptions"},');
 
   return merge({}, getConfigFromEnv(), getConfigFromFile());
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getCompanionOptions"},');
 
 };
 /**
@@ -177,33 +177,33 @@ const getConfigPath = () => {
 * @param {string} url
 */
 exports.hasProtocol = url => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasProtocol","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.hasProtocol"},');
 
   return url.startsWith('http://') || url.startsWith('https://');
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.hasProtocol"},');
 
 };
 exports.buildHelpfulStartupMessage = companionOptions => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.buildHelpfulStartupMessage","fileName":"${__filename}","paramsNumber":1},`);
 
   const buildURL = utils.getURLBuilder(companionOptions);
   const callbackURLs = [];
   Object.keys(companionOptions.providerOptions).forEach(providerName => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     // s3 does not need redirect_uris
     if (providerName === 's3') {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
       return;
     }
     callbackURLs.push(buildURL(`/connect/${providerName}/callback`, true));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.buildHelpfulStartupMessage"},');
 
   return stripIndent`
     Welcome to Companion v${version}
@@ -222,6 +222,6 @@ exports.buildHelpfulStartupMessage = companionOptions => {
 
     So quit lollygagging, start uploading and experience the future!
   `;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.buildHelpfulStartupMessage"},');
 
 };

@@ -41,9 +41,9 @@ function createUppy(opts, overrides) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createUppy\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
   var uppyOptions = {};
   uppyOptionNames.forEach(function (name) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppyOptionNames.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     if (has(opts, name)) uppyOptions[name] = opts[name];
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"uppyOptionNames.forEach"},');
   });
 
   _extends(uppyOptions, overrides);
@@ -51,25 +51,25 @@ function createUppy(opts, overrides) {
   var uppy = Uppy(uppyOptions); // Builtin event aliases
 
   Object.keys(eventNames).forEach(function (optionName) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     var eventName = eventNames[optionName];
 
     if (typeof opts[optionName] === 'function') {
       uppy.on(eventName, opts[optionName]);
     }
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
   }); // Custom events (these should probably be added to core)
 
   if (typeof opts.onProgress === 'function') {
     uppy.on('upload-progress', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.on\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       var _uppy$getState = uppy.getState(),
           totalProgress = _uppy$getState.totalProgress;
 
       opts.onProgress.call(uppy, totalProgress);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on"},');
     });
   }
 

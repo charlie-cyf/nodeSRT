@@ -2,15 +2,15 @@ const SRTlib = require('SRT-util');
 
 const router = require('express').Router;
 module.exports = function s3(config) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.s3","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
   if (typeof config.acl !== 'string') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.s3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     throw new TypeError('s3: The `acl` option must be a string');
   }
   if (typeof config.getKey !== 'function') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.s3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     throw new TypeError('s3: The `getKey` option must be a function');
   }
@@ -50,10 +50,10 @@ module.exports = function s3(config) {
       'content-type': req.query.type
     };
     Object.keys(metadata).forEach(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       fields[`x-amz-meta-${key}`] = metadata[key];
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
     });
     client.createPresignedPost({
@@ -62,11 +62,11 @@ module.exports = function s3(config) {
       Fields: fields,
       Conditions: config.conditions
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.createPresignedPost","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err) {
         next(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.createPresignedPost"},');
 
         return;
       }
@@ -75,7 +75,7 @@ module.exports = function s3(config) {
         url: data.url,
         fields: data.fields
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.createPresignedPost"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters","paramsNumber":3},');
@@ -124,11 +124,11 @@ module.exports = function s3(config) {
       Metadata: metadata,
       Expires: config.expires
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.createMultipartUpload","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err) {
         next(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.createMultipartUpload"},');
 
         return;
       }
@@ -136,7 +136,7 @@ module.exports = function s3(config) {
         key: data.Key,
         uploadId: data.UploadId
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.createMultipartUpload"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"createMultipartUpload","paramsNumber":3},');
@@ -180,11 +180,11 @@ module.exports = function s3(config) {
         UploadId: uploadId,
         PartNumberMarker: startAt
       }, (err, data) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.listParts","fileName":"${__filename}","paramsNumber":2},`);
 
         if (err) {
           next(err);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"client.listParts"},');
 
           return;
         }
@@ -195,7 +195,7 @@ module.exports = function s3(config) {
         } else {
           done();
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.listParts"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"listPartsPage","paramsNumber":1},');
@@ -251,18 +251,18 @@ module.exports = function s3(config) {
       Body: '',
       Expires: config.expires
     }, (err, url) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.getSignedUrl","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err) {
         next(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.getSignedUrl"},');
 
         return;
       }
       res.json({
         url
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.getSignedUrl"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"signPartUpload","paramsNumber":3},');
@@ -297,16 +297,16 @@ module.exports = function s3(config) {
       Key: key,
       UploadId: uploadId
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.abortMultipartUpload","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err) {
         next(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.abortMultipartUpload"},');
 
         return;
       }
       res.json({});
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.abortMultipartUpload"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"abortMultipartUpload","paramsNumber":3},');
@@ -354,27 +354,27 @@ module.exports = function s3(config) {
         Parts: parts
       }
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.completeMultipartUpload","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err) {
         next(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.completeMultipartUpload"},');
 
         return;
       }
       res.json({
         location: data.Location
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.completeMultipartUpload"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"completeMultipartUpload","paramsNumber":3},');
 
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.s3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return router().get('/params', getUploadParameters).post('/multipart', createMultipartUpload).get('/multipart/:uploadId', getUploadedParts).get('/multipart/:uploadId/:partNumber', signPartUpload).post('/multipart/:uploadId/complete', completeMultipartUpload).delete('/multipart/:uploadId', abortMultipartUpload);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.s3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };
 function isValidPart(part) {

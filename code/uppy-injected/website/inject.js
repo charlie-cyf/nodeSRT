@@ -32,11 +32,11 @@ const excludes = {
   '@uppy/react': ['react']
 };
 inject().catch(err => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inject.catch","fileName":"${__filename}","paramsNumber":1},`);
 
   console.error(err);
   process.exit(1);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"inject.catch"},');
 
 });
 async function getMinifiedSize(pkg, name) {
@@ -71,43 +71,43 @@ async function injectSizes(config) {
 
   console.info(chalk.grey('Generating bundle sizes…'));
   const padTarget = packages.reduce((max, cur) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"padTarget.packages.reduce","fileName":"${__filename}","paramsNumber":2},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"padTarget.packages.reduce"},');
 
     return Math.max(max, cur.length);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"padTarget.packages.reduce"},');
 
   }, 0) + 2;
   const sizesPromise = Promise.all(packages.map(async pkg => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizesPromise.then.Promise.all.packages.map","fileName":"${__filename}","paramsNumber":1},`);
 
     const result = await getMinifiedSize(path.join(__dirname, '../packages', pkg), pkg);
     console.info(chalk.green(`  ✓ ${pkg}: ${(' ').repeat(padTarget - pkg.length)}` + `${prettierBytes(result.minified)} min`.padEnd(10) + ` / ${prettierBytes(result.gzipped)} gz`));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sizesPromise.then.Promise.all.packages.map"},');
 
     // ✓ @uppy/pkgname:     10.0 kB min  / 2.0 kB gz
     return Object.assign(result, {
       prettyMinified: prettierBytes(result.minified),
       prettyGzipped: prettierBytes(result.gzipped)
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sizesPromise.then.Promise.all.packages.map"},');
 
   })).then(list => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizesPromise.then","fileName":"${__filename}","paramsNumber":1},`);
 
     const map = {};
     list.forEach((size, i) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"list.forEach","fileName":"${__filename}","paramsNumber":2},`);
 
       map[packages[i]] = size;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"list.forEach"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sizesPromise.then"},');
 
     return map;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sizesPromise.then"},');
 
   });
   config.uppy_bundle_kb_sizes = await sizesPromise;
@@ -186,13 +186,13 @@ function injectLocaleList() {
   const localePackagePath = path.join(localesRoot, 'src', '*.js');
   const localePackageVersion = require(path.join(localesRoot, 'package.json')).version;
   glob.sync(localePackagePath).forEach(localePath => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     const localeName = path.basename(localePath, '.js');
     // we renamed the es_GL → gl_ES locale, and kept the old name
     // for backwards-compat, see https://github.com/transloadit/uppy/pull/1929
     if (localeName === 'es_GL') {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
       return;
     }
@@ -213,7 +213,7 @@ function injectLocaleList() {
     const mdTableRow = `| ${languageName}<br/> <small>${countryName}</small>${variant ? `<br /><small>(${variant})</small>` : ''} | ${npmPath} | ${cdnPath} | ✏️ ${githubSource} |`;
     mdRows.push(mdTableRow);
     localeList[localeName] = `${languageName} (${countryName}${variant ? ` ${variant}` : ''})`;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
   });
   const resultingMdTable = mdTable.concat(mdRows.sort()).join('\n').replace('%count%', mdRows.length);

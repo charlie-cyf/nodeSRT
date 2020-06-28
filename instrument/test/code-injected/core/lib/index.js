@@ -64,21 +64,21 @@ function _wrapNativeSuper(Class) {
 
   var _cache = typeof Map === "function" ? new Map() : undefined;
   _wrapNativeSuper = function _wrapNativeSuper(Class) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_wrapNativeSuper._wrapNativeSuper","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_wrapNativeSuper","fileName":"${__filename}","paramsNumber":1},`);
 
     if (Class === null || !_isNativeFunction(Class)) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper._wrapNativeSuper"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
 
       return Class;
     }
     if (typeof Class !== "function") {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper._wrapNativeSuper"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
 
       throw new TypeError("Super expression must either be null or a function");
     }
     if (typeof _cache !== "undefined") {
       if (_cache.has(Class)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper._wrapNativeSuper"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
 
         return _cache.get(Class);
       }
@@ -101,10 +101,10 @@ function _wrapNativeSuper(Class) {
         configurable: true
       }
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper._wrapNativeSuper"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
 
     return _setPrototypeOf(Wrapper, Class);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper._wrapNativeSuper"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
 
   };
     SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
@@ -120,17 +120,17 @@ function _construct(Parent, args, Class) {
     _construct = Reflect.construct;
   } else {
     _construct = function _construct(Parent, args, Class) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_construct._construct","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_construct","fileName":"${__filename}","paramsNumber":3},`);
 
       var a = [null];
       a.push.apply(a, args);
       var Constructor = Function.bind.apply(Parent, a);
       var instance = new Constructor();
       if (Class) _setPrototypeOf(instance, Class.prototype);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_construct._construct"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_construct"},');
 
       return instance;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_construct._construct"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_construct"},');
 
     };
   }
@@ -189,13 +189,13 @@ function _setPrototypeOf(o, p) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_setPrototypeOf","fileName":"${__filename}","paramsNumber":2},`);
 
   _setPrototypeOf = Object.setPrototypeOf || (function _setPrototypeOf(o, p) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_setPrototypeOf._setPrototypeOf","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_setPrototypeOf","fileName":"${__filename}","paramsNumber":2},`);
 
     o.__proto__ = p;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf._setPrototypeOf"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf"},');
 
     return o;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf._setPrototypeOf"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf"},');
@@ -208,12 +208,12 @@ function _getPrototypeOf(o) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getPrototypeOf","fileName":"${__filename}","paramsNumber":1},`);
 
   _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getPrototypeOf._getPrototypeOf","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getPrototypeOf","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf._getPrototypeOf"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf"},');
 
     return o.__proto__ || Object.getPrototypeOf(o);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf._getPrototypeOf"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf"},');
 
   };
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf"},');
@@ -328,21 +328,21 @@ var Uppy = (function () {
       },
       meta: {},
       onBeforeFileAdded: function onBeforeFileAdded(currentFile, files) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onBeforeFileAdded.onBeforeFileAdded","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onBeforeFileAdded","fileName":"${__filename}","paramsNumber":2},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeFileAdded.onBeforeFileAdded"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeFileAdded"},');
 
         return currentFile;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeFileAdded.onBeforeFileAdded"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeFileAdded"},');
 
       },
       onBeforeUpload: function onBeforeUpload(files) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onBeforeUpload.onBeforeUpload","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onBeforeUpload","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeUpload.onBeforeUpload"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeUpload"},');
 
         return files;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeUpload.onBeforeUpload"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeUpload"},');
 
       },
       store: DefaultStore(),
@@ -430,27 +430,27 @@ var Uppy = (function () {
   }
   var _proto = Uppy.prototype;
   _proto.on = function on(event, callback) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.on.on","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.on","fileName":"${__filename}","paramsNumber":2},`);
 
     this.emitter.on(event, callback);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.on.on"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.on"},');
 
     return this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.on.on"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.on"},');
 
   };
   _proto.off = function off(event, callback) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.off.off","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.off","fileName":"${__filename}","paramsNumber":2},`);
 
     this.emitter.off(event, callback);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.off.off"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.off"},');
 
     return this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.off.off"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.off"},');
 
   };
   _proto.updateAll = function updateAll(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.updateAll.updateAll","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.updateAll","fileName":"${__filename}","paramsNumber":1},`);
 
     this.iteratePlugins(function (plugin) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.updateAll.updateAll.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
@@ -459,52 +459,52 @@ var Uppy = (function () {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.updateAll.updateAll.iteratePlugins"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.updateAll.updateAll"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.updateAll"},');
 
   };
   _proto.setState = function setState(patch) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setState.setState","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setState","fileName":"${__filename}","paramsNumber":1},`);
 
     this.store.setState(patch);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setState.setState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setState"},');
 
   };
   _proto.getState = function getState() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getState.getState","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getState","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getState.getState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getState"},');
 
     return this.store.getState();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getState.getState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getState"},');
 
   };
   _proto.setFileState = function setFileState(fileID, state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setFileState.setFileState","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setFileState","fileName":"${__filename}","paramsNumber":2},`);
 
     var _extends2;
     if (!this.getState().files[fileID]) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setFileState.setFileState"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setFileState"},');
 
       throw new Error("Can\u2019t set state for " + fileID + " (the file could have been removed)");
     }
     this.setState({
       files: _extends({}, this.getState().files, (_extends2 = {}, _extends2[fileID] = _extends({}, this.getState().files[fileID], state), _extends2))
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setFileState.setFileState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setFileState"},');
 
   };
   _proto.i18nInit = function i18nInit() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.i18nInit.i18nInit","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.i18nInit","fileName":"${__filename}","paramsNumber":0},`);
 
     this.translator = new Translator([this.defaultLocale, this.opts.locale]);
     this.locale = this.translator.locale;
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.i18nInit.i18nInit"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.i18nInit"},');
 
   };
   _proto.setOptions = function setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setOptions.setOptions","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setOptions","fileName":"${__filename}","paramsNumber":1},`);
 
     this.opts = _extends({}, this.opts, {}, newOpts, {
       restrictions: _extends({}, this.opts.restrictions, {}, newOpts && newOpts.restrictions)
@@ -523,11 +523,11 @@ var Uppy = (function () {
       });
     }
     this.setState();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setOptions.setOptions"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setOptions"},');
 
   };
   _proto.resetProgress = function resetProgress() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.resetProgress.resetProgress","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.resetProgress","fileName":"${__filename}","paramsNumber":0},`);
 
     var defaultProgress = {
       percentage: 0,
@@ -551,62 +551,62 @@ var Uppy = (function () {
       totalProgress: 0
     });
     this.emit('reset-progress');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.resetProgress.resetProgress"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.resetProgress"},');
 
   };
   _proto.addPreProcessor = function addPreProcessor(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addPreProcessor.addPreProcessor","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addPreProcessor","fileName":"${__filename}","paramsNumber":1},`);
 
     this.preProcessors.push(fn);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addPreProcessor.addPreProcessor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addPreProcessor"},');
 
   };
   _proto.removePreProcessor = function removePreProcessor(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removePreProcessor.removePreProcessor","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removePreProcessor","fileName":"${__filename}","paramsNumber":1},`);
 
     var i = this.preProcessors.indexOf(fn);
     if (i !== -1) {
       this.preProcessors.splice(i, 1);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removePreProcessor.removePreProcessor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removePreProcessor"},');
 
   };
   _proto.addPostProcessor = function addPostProcessor(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addPostProcessor.addPostProcessor","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addPostProcessor","fileName":"${__filename}","paramsNumber":1},`);
 
     this.postProcessors.push(fn);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addPostProcessor.addPostProcessor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addPostProcessor"},');
 
   };
   _proto.removePostProcessor = function removePostProcessor(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removePostProcessor.removePostProcessor","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removePostProcessor","fileName":"${__filename}","paramsNumber":1},`);
 
     var i = this.postProcessors.indexOf(fn);
     if (i !== -1) {
       this.postProcessors.splice(i, 1);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removePostProcessor.removePostProcessor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removePostProcessor"},');
 
   };
   _proto.addUploader = function addUploader(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addUploader.addUploader","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addUploader","fileName":"${__filename}","paramsNumber":1},`);
 
     this.uploaders.push(fn);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addUploader.addUploader"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addUploader"},');
 
   };
   _proto.removeUploader = function removeUploader(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removeUploader.removeUploader","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removeUploader","fileName":"${__filename}","paramsNumber":1},`);
 
     var i = this.uploaders.indexOf(fn);
     if (i !== -1) {
       this.uploaders.splice(i, 1);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removeUploader.removeUploader"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removeUploader"},');
 
   };
   _proto.setMeta = function setMeta(data) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setMeta.setMeta","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setMeta","fileName":"${__filename}","paramsNumber":1},`);
 
     var updatedMeta = _extends({}, this.getState().meta, data);
     var updatedFiles = _extends({}, this.getState().files);
@@ -625,16 +625,16 @@ var Uppy = (function () {
       meta: updatedMeta,
       files: updatedFiles
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setMeta.setMeta"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setMeta"},');
 
   };
   _proto.setFileMeta = function setFileMeta(fileID, data) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setFileMeta.setFileMeta","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setFileMeta","fileName":"${__filename}","paramsNumber":2},`);
 
     var updatedFiles = _extends({}, this.getState().files);
     if (!updatedFiles[fileID]) {
       this.log('Was trying to set metadata for a file that has been removed: ', fileID);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setFileMeta.setFileMeta"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setFileMeta"},');
 
       return;
     }
@@ -645,23 +645,23 @@ var Uppy = (function () {
     this.setState({
       files: updatedFiles
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setFileMeta.setFileMeta"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setFileMeta"},');
 
   };
   _proto.getFile = function getFile(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getFile.getFile","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getFile","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFile.getFile"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFile"},');
 
     return this.getState().files[fileID];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFile.getFile"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFile"},');
 
   };
   _proto.getFiles = function getFiles() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getFiles.getFiles","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getFiles","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this$getState = this.getState(), files = _this$getState.files;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFiles.getFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFiles"},');
 
     return Object.keys(files).map(function (fileID) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getFiles.getFiles.ReturnStatement.map","fileName":"${__filename}","paramsNumber":1},`);
@@ -672,30 +672,30 @@ var Uppy = (function () {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFiles.getFiles.ReturnStatement.map"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFiles.getFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFiles"},');
 
   };
   _proto._checkMinNumberOfFiles = function _checkMinNumberOfFiles(files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkMinNumberOfFiles._checkMinNumberOfFiles","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkMinNumberOfFiles","fileName":"${__filename}","paramsNumber":1},`);
 
     var minNumberOfFiles = this.opts.restrictions.minNumberOfFiles;
     if (Object.keys(files).length < minNumberOfFiles) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkMinNumberOfFiles._checkMinNumberOfFiles"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkMinNumberOfFiles"},');
 
       throw new RestrictionError("" + this.i18n('youHaveToAtLeastSelectX', {
         smart_count: minNumberOfFiles
       }));
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkMinNumberOfFiles._checkMinNumberOfFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkMinNumberOfFiles"},');
 
   };
   _proto._checkRestrictions = function _checkRestrictions(files, file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkRestrictions._checkRestrictions","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkRestrictions","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this$opts$restrictio = this.opts.restrictions, maxFileSize = _this$opts$restrictio.maxFileSize, maxNumberOfFiles = _this$opts$restrictio.maxNumberOfFiles, allowedFileTypes = _this$opts$restrictio.allowedFileTypes;
     if (maxNumberOfFiles) {
       if (Object.keys(files).length + 1 > maxNumberOfFiles) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions._checkRestrictions"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions"},');
 
         throw new RestrictionError("" + this.i18n('youCanOnlyUploadX', {
           smart_count: maxNumberOfFiles
@@ -729,7 +729,7 @@ var Uppy = (function () {
       });
       if (!isCorrectFileType) {
         var allowedFileTypesString = allowedFileTypes.join(', ');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions._checkRestrictions"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions"},');
 
         throw new RestrictionError(this.i18n('youCanOnlyUploadFileTypes', {
           types: allowedFileTypesString
@@ -738,7 +738,7 @@ var Uppy = (function () {
     }
     if (maxFileSize && file.data.size != null) {
       if (file.data.size > maxFileSize) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions._checkRestrictions"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions"},');
 
         throw new RestrictionError(this.i18n('exceedsSize2', {
           backwardsCompat: this.i18n('exceedsSize'),
@@ -746,11 +746,11 @@ var Uppy = (function () {
         }));
       }
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions._checkRestrictions"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions"},');
 
   };
   _proto._showOrLogErrorAndThrow = function _showOrLogErrorAndThrow(err, _temp) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._showOrLogErrorAndThrow._showOrLogErrorAndThrow","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._showOrLogErrorAndThrow","fileName":"${__filename}","paramsNumber":2},`);
 
     var _ref = _temp === void 0 ? {} : _temp, _ref$showInformer = _ref.showInformer, showInformer = _ref$showInformer === void 0 ? true : _ref$showInformer, _ref$file = _ref.file, file = _ref$file === void 0 ? null : _ref$file, _ref$throwErr = _ref.throwErr, throwErr = _ref$throwErr === void 0 ? true : _ref$throwErr;
     var message = typeof err === 'object' ? err.message : err;
@@ -772,15 +772,15 @@ var Uppy = (function () {
       }, 'error', 5000);
     }
     if (throwErr) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._showOrLogErrorAndThrow._showOrLogErrorAndThrow"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._showOrLogErrorAndThrow"},');
 
       throw typeof err === 'object' ? err : new Error(err);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._showOrLogErrorAndThrow._showOrLogErrorAndThrow"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._showOrLogErrorAndThrow"},');
 
   };
   _proto._assertNewUploadAllowed = function _assertNewUploadAllowed(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._assertNewUploadAllowed._assertNewUploadAllowed","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._assertNewUploadAllowed","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this$getState2 = this.getState(), allowNewUpload = _this$getState2.allowNewUpload;
     if (allowNewUpload === false) {
@@ -788,11 +788,11 @@ var Uppy = (function () {
         file: file
       });
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._assertNewUploadAllowed._assertNewUploadAllowed"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._assertNewUploadAllowed"},');
 
   };
   _proto._checkAndCreateFileStateObject = function _checkAndCreateFileStateObject(files, file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkAndCreateFileStateObject._checkAndCreateFileStateObject","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkAndCreateFileStateObject","fileName":"${__filename}","paramsNumber":2},`);
 
     var fileType = getFileType(file);
     file.type = fileType;
@@ -855,14 +855,14 @@ var Uppy = (function () {
         file: newFile
       });
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkAndCreateFileStateObject._checkAndCreateFileStateObject"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkAndCreateFileStateObject"},');
 
     return newFile;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkAndCreateFileStateObject._checkAndCreateFileStateObject"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkAndCreateFileStateObject"},');
 
   };
   _proto._startIfAutoProceed = function _startIfAutoProceed() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._startIfAutoProceed._startIfAutoProceed","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._startIfAutoProceed","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this3 = this;
     if (this.opts.autoProceed && !this.scheduledAutoProceed) {
@@ -883,11 +883,11 @@ var Uppy = (function () {
 
       }, 4);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._startIfAutoProceed._startIfAutoProceed"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._startIfAutoProceed"},');
 
   };
   _proto.addFile = function addFile(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addFile.addFile","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addFile","fileName":"${__filename}","paramsNumber":1},`);
 
     var _extends3;
     this._assertNewUploadAllowed(file);
@@ -899,14 +899,14 @@ var Uppy = (function () {
     this.emit('file-added', newFile);
     this.log("Added file: " + newFile.name + ", " + newFile.id + ", mime type: " + newFile.type);
     this._startIfAutoProceed();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addFile.addFile"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addFile"},');
 
     return newFile.id;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addFile.addFile"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addFile"},');
 
   };
   _proto.addFiles = function addFiles(fileDescriptors) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addFiles.addFiles3","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addFiles","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this4 = this;
     this._assertNewUploadAllowed();
@@ -965,15 +965,15 @@ var Uppy = (function () {
       }, 'error', 5000);
       var err = new Error(message);
       err.errors = errors;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addFiles.addFiles3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addFiles"},');
 
       throw err;
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addFiles.addFiles3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addFiles"},');
 
   };
   _proto.removeFiles = function removeFiles(fileIDs) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removeFiles.removeFiles4","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removeFiles","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this5 = this;
     var _this$getState4 = this.getState(), files = _this$getState4.files, currentUploads = _this$getState4.currentUploads;
@@ -1046,21 +1046,21 @@ var Uppy = (function () {
     } else {
       this.log("Removed files: " + removedFileIDs.join(', '));
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removeFiles.removeFiles4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removeFiles"},');
 
   };
   _proto.removeFile = function removeFile(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removeFile.removeFile","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removeFile","fileName":"${__filename}","paramsNumber":1},`);
 
     this.removeFiles([fileID]);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removeFile.removeFile"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removeFile"},');
 
   };
   _proto.pauseResume = function pauseResume(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.pauseResume.pauseResume","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.pauseResume","fileName":"${__filename}","paramsNumber":1},`);
 
     if (!this.getState().capabilities.resumableUploads || this.getFile(fileID).uploadComplete) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.pauseResume.pauseResume"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.pauseResume"},');
 
       return;
     }
@@ -1070,14 +1070,14 @@ var Uppy = (function () {
       isPaused: isPaused
     });
     this.emit('upload-pause', fileID, isPaused);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.pauseResume.pauseResume"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.pauseResume"},');
 
     return isPaused;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.pauseResume.pauseResume"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.pauseResume"},');
 
   };
   _proto.pauseAll = function pauseAll() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.pauseAll.pauseAll2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.pauseAll","fileName":"${__filename}","paramsNumber":0},`);
 
     var updatedFiles = _extends({}, this.getState().files);
     var inProgressUpdatedFiles = Object.keys(updatedFiles).filter(function (file) {
@@ -1103,11 +1103,11 @@ var Uppy = (function () {
       files: updatedFiles
     });
     this.emit('pause-all');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.pauseAll.pauseAll2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.pauseAll"},');
 
   };
   _proto.resumeAll = function resumeAll() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.resumeAll.resumeAll2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.resumeAll","fileName":"${__filename}","paramsNumber":0},`);
 
     var updatedFiles = _extends({}, this.getState().files);
     var inProgressUpdatedFiles = Object.keys(updatedFiles).filter(function (file) {
@@ -1134,11 +1134,11 @@ var Uppy = (function () {
       files: updatedFiles
     });
     this.emit('resume-all');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.resumeAll.resumeAll2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.resumeAll"},');
 
   };
   _proto.retryAll = function retryAll() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.retryAll.retryAll2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.retryAll","fileName":"${__filename}","paramsNumber":0},`);
 
     var updatedFiles = _extends({}, this.getState().files);
     var filesToRetry = Object.keys(updatedFiles).filter(function (file) {
@@ -1169,14 +1169,14 @@ var Uppy = (function () {
     var uploadID = this._createUpload(filesToRetry, {
       forceAllowNewUpload: true
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryAll.retryAll2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryAll"},');
 
     return this._runUpload(uploadID);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryAll.retryAll2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryAll"},');
 
   };
   _proto.cancelAll = function cancelAll() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.cancelAll.cancelAll","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.cancelAll","fileName":"${__filename}","paramsNumber":0},`);
 
     this.emit('cancel-all');
     var _this$getState5 = this.getState(), files = _this$getState5.files;
@@ -1188,11 +1188,11 @@ var Uppy = (function () {
       totalProgress: 0,
       error: null
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.cancelAll.cancelAll"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.cancelAll"},');
 
   };
   _proto.retryUpload = function retryUpload(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.retryUpload.retryUpload","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.retryUpload","fileName":"${__filename}","paramsNumber":1},`);
 
     this.setFileState(fileID, {
       error: null,
@@ -1202,25 +1202,25 @@ var Uppy = (function () {
     var uploadID = this._createUpload([fileID], {
       forceAllowNewUpload: true
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryUpload.retryUpload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryUpload"},');
 
     return this._runUpload(uploadID);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryUpload.retryUpload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryUpload"},');
 
   };
   _proto.reset = function reset() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.reset.reset","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.reset","fileName":"${__filename}","paramsNumber":0},`);
 
     this.cancelAll();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.reset.reset"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.reset"},');
 
   };
   _proto._calculateProgress = function _calculateProgress(file, data) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._calculateProgress._calculateProgress","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._calculateProgress","fileName":"${__filename}","paramsNumber":2},`);
 
     if (!this.getFile(file.id)) {
       this.log("Not setting progress for a file that has been removed: " + file.id);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateProgress._calculateProgress"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateProgress"},');
 
       return;
     }
@@ -1233,11 +1233,11 @@ var Uppy = (function () {
       })
     });
     this._calculateTotalProgress();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateProgress._calculateProgress"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateProgress"},');
 
   };
   _proto._calculateTotalProgress = function _calculateTotalProgress() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._calculateTotalProgress._calculateTotalProgress3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._calculateTotalProgress","fileName":"${__filename}","paramsNumber":0},`);
 
     var files = this.getFiles();
     var inProgress = files.filter(function (file) {
@@ -1254,7 +1254,7 @@ var Uppy = (function () {
       this.setState({
         totalProgress: 0
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateTotalProgress._calculateTotalProgress3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateTotalProgress"},');
 
       return;
     }
@@ -1291,7 +1291,7 @@ var Uppy = (function () {
       this.setState({
         totalProgress: _totalProgress
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateTotalProgress._calculateTotalProgress3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateTotalProgress"},');
 
       return;
     }
@@ -1329,11 +1329,11 @@ var Uppy = (function () {
       totalProgress: totalProgress
     });
     this.emit('progress', totalProgress);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateTotalProgress._calculateTotalProgress3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateTotalProgress"},');
 
   };
   _proto._addListeners = function _addListeners() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this6 = this;
     this.on('error', function (error) {
@@ -1554,11 +1554,11 @@ var Uppy = (function () {
 
       }, 3000);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners"},');
 
   };
   _proto.updateOnlineStatus = function updateOnlineStatus() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.updateOnlineStatus.updateOnlineStatus","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.updateOnlineStatus","fileName":"${__filename}","paramsNumber":0},`);
 
     var online = typeof window.navigator.onLine !== 'undefined' ? window.navigator.onLine : true;
     if (!online) {
@@ -1573,24 +1573,24 @@ var Uppy = (function () {
         this.wasOffline = false;
       }
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.updateOnlineStatus.updateOnlineStatus"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.updateOnlineStatus"},');
 
   };
   _proto.getID = function getID() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getID.getID","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getID","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getID.getID"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getID"},');
 
     return this.opts.id;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getID.getID"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getID"},');
 
   };
   _proto.use = function use(Plugin, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.use.use","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.use","fileName":"${__filename}","paramsNumber":2},`);
 
     if (typeof Plugin !== 'function') {
       var msg = "Expected a plugin class, but got " + (Plugin === null ? 'null' : typeof Plugin) + "." + ' Please verify that the plugin was imported and spelled correctly.';
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use.use"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use"},');
 
       throw new TypeError(msg);
     }
@@ -1598,19 +1598,19 @@ var Uppy = (function () {
     var pluginId = plugin.id;
     this.plugins[plugin.type] = this.plugins[plugin.type] || [];
     if (!pluginId) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use.use"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use"},');
 
       throw new Error('Your plugin must have an id');
     }
     if (!plugin.type) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use.use"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use"},');
 
       throw new Error('Your plugin must have a type');
     }
     var existsPluginAlready = this.getPlugin(pluginId);
     if (existsPluginAlready) {
       var _msg = "Already found a plugin named '" + existsPluginAlready.id + "'. " + ("Tried to use: '" + pluginId + "'.\n") + 'Uppy plugins must have unique `id` options. See https://uppy.io/docs/plugins/#id.';
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use.use"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use"},');
 
       throw new Error(_msg);
     }
@@ -1619,14 +1619,14 @@ var Uppy = (function () {
     }
     this.plugins[plugin.type].push(plugin);
     plugin.install();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use.use"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use"},');
 
     return this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use.use"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use"},');
 
   };
   _proto.getPlugin = function getPlugin(id) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getPlugin.getPlugin","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getPlugin","fileName":"${__filename}","paramsNumber":1},`);
 
     var foundPlugin = null;
     this.iteratePlugins(function (plugin) {
@@ -1641,14 +1641,14 @@ var Uppy = (function () {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getPlugin.getPlugin.iteratePlugins"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getPlugin.getPlugin"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getPlugin"},');
 
     return foundPlugin;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getPlugin.getPlugin"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getPlugin"},');
 
   };
   _proto.iteratePlugins = function iteratePlugins(method) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.iteratePlugins.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this7 = this;
     Object.keys(this.plugins).forEach(function (pluginType) {
@@ -1658,11 +1658,11 @@ var Uppy = (function () {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.iteratePlugins.iteratePlugins.forEach"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.iteratePlugins.iteratePlugins"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.iteratePlugins"},');
 
   };
   _proto.removePlugin = function removePlugin(instance) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removePlugin.removePlugin","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removePlugin","fileName":"${__filename}","paramsNumber":1},`);
 
     this.log("Removing plugin " + instance.id);
     this.emit('plugin-remove', instance);
@@ -1678,11 +1678,11 @@ var Uppy = (function () {
     var updatedState = this.getState();
     delete updatedState.plugins[instance.id];
     this.setState(updatedState);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removePlugin.removePlugin"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removePlugin"},');
 
   };
   _proto.close = function close() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.close.close","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.close","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this8 = this;
     this.log("Closing Uppy instance " + this.opts.id + ": removing all files and uninstalling plugins");
@@ -1695,11 +1695,11 @@ var Uppy = (function () {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.close.close.iteratePlugins"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.close.close"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.close"},');
 
   };
   _proto.info = function info(message, type, duration) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.info.info","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.info","fileName":"${__filename}","paramsNumber":3},`);
 
     if (type === void 0) {
       type = 'info';
@@ -1720,16 +1720,16 @@ var Uppy = (function () {
     clearTimeout(this.infoTimeoutID);
     if (duration === 0) {
       this.infoTimeoutID = undefined;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.info.info"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.info"},');
 
       return;
     }
     this.infoTimeoutID = setTimeout(this.hideInfo, duration);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.info.info"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.info"},');
 
   };
   _proto.hideInfo = function hideInfo() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.hideInfo.hideInfo","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.hideInfo","fileName":"${__filename}","paramsNumber":0},`);
 
     var newInfo = _extends({}, this.getState().info, {
       isHidden: true
@@ -1738,11 +1738,11 @@ var Uppy = (function () {
       info: newInfo
     });
     this.emit('info-hidden');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.hideInfo.hideInfo"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.hideInfo"},');
 
   };
   _proto.log = function log(message, type) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.log.log","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.log","fileName":"${__filename}","paramsNumber":2},`);
 
     var logger = this.opts.logger;
     switch (type) {
@@ -1756,37 +1756,37 @@ var Uppy = (function () {
         logger.debug(message);
         break;
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.log.log"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.log"},');
 
   };
   _proto.run = function run() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.run.run","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.run","fileName":"${__filename}","paramsNumber":0},`);
 
     this.log('Calling run() is no longer necessary.', 'warning');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.run.run"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.run"},');
 
     return this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.run.run"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.run"},');
 
   };
   _proto.restore = function restore(uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.restore.restore","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.restore","fileName":"${__filename}","paramsNumber":1},`);
 
     this.log("Core: attempting to restore upload \"" + uploadID + "\"");
     if (!this.getState().currentUploads[uploadID]) {
       this._removeUpload(uploadID);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.restore.restore"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.restore"},');
 
       return Promise.reject(new Error('Nonexistent upload'));
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.restore.restore"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.restore"},');
 
     return this._runUpload(uploadID);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.restore.restore"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.restore"},');
 
   };
   _proto._createUpload = function _createUpload(fileIDs, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._createUpload._createUpload","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._createUpload","fileName":"${__filename}","paramsNumber":2},`);
 
     var _extends4;
     if (opts === void 0) {
@@ -1795,7 +1795,7 @@ var Uppy = (function () {
     var _opts = opts, _opts$forceAllowNewUp = _opts.forceAllowNewUpload, forceAllowNewUpload = _opts$forceAllowNewUp === void 0 ? false : _opts$forceAllowNewUp;
     var _this$getState6 = this.getState(), allowNewUpload = _this$getState6.allowNewUpload, currentUploads = _this$getState6.currentUploads;
     if (!allowNewUpload && !forceAllowNewUpload) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._createUpload._createUpload"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._createUpload"},');
 
       throw new Error('Cannot create a new upload: already uploading.');
     }
@@ -1812,29 +1812,29 @@ var Uppy = (function () {
         result: {}
       }, _extends4))
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._createUpload._createUpload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._createUpload"},');
 
     return uploadID;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._createUpload._createUpload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._createUpload"},');
 
   };
   _proto._getUpload = function _getUpload(uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._getUpload._getUpload","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._getUpload","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this$getState7 = this.getState(), currentUploads = _this$getState7.currentUploads;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._getUpload._getUpload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._getUpload"},');
 
     return currentUploads[uploadID];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._getUpload._getUpload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._getUpload"},');
 
   };
   _proto.addResultData = function addResultData(uploadID, data) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addResultData.addResultData","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addResultData","fileName":"${__filename}","paramsNumber":2},`);
 
     var _extends5;
     if (!this._getUpload(uploadID)) {
       this.log("Not setting result for an upload that has been removed: " + uploadID);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addResultData.addResultData"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addResultData"},');
 
       return;
     }
@@ -1845,22 +1845,22 @@ var Uppy = (function () {
     this.setState({
       currentUploads: _extends({}, currentUploads, (_extends5 = {}, _extends5[uploadID] = currentUpload, _extends5))
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addResultData.addResultData"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addResultData"},');
 
   };
   _proto._removeUpload = function _removeUpload(uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._removeUpload._removeUpload","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._removeUpload","fileName":"${__filename}","paramsNumber":1},`);
 
     var currentUploads = _extends({}, this.getState().currentUploads);
     delete currentUploads[uploadID];
     this.setState({
       currentUploads: currentUploads
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._removeUpload._removeUpload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._removeUpload"},');
 
   };
   _proto._runUpload = function _runUpload(uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._runUpload._runUpload3","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._runUpload","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this9 = this;
     var uploadData = this.getState().currentUploads[uploadID];
@@ -1917,7 +1917,7 @@ var Uppy = (function () {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload._runUpload2"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload._runUpload3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload"},');
 
     return lastStep.then(function () {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._runUpload._runUpload.ReturnStatement.then.then.then","fileName":"${__filename}","paramsNumber":0},`);
@@ -1993,11 +1993,11 @@ var Uppy = (function () {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload._runUpload.ReturnStatement.then.then"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload._runUpload3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload"},');
 
   };
   _proto.upload = function upload() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.upload.upload","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.upload","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this10 = this;
     if (!this.plugins.uploader) {
@@ -2006,7 +2006,7 @@ var Uppy = (function () {
     var files = this.getState().files;
     var onBeforeUploadResult = this.opts.onBeforeUpload(files);
     if (onBeforeUploadResult === false) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.upload.upload"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.upload"},');
 
       return Promise.reject(new Error('Not starting the upload because onBeforeUpload returned false'));
     }
@@ -2016,7 +2016,7 @@ var Uppy = (function () {
         files: files
       });
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.upload.upload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.upload"},');
 
     return Promise.resolve().then(function () {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.upload.upload.ReturnStatement.then.catch.then.catch.then.catch.then.then.catch.then","fileName":"${__filename}","paramsNumber":0},`);
@@ -2071,18 +2071,18 @@ var Uppy = (function () {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.upload.upload.ReturnStatement.then.catch.then.catch"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.upload.upload"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.upload"},');
 
   };
   _createClass(Uppy, [{
     key: "state",
     get: function get() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._createClass.get.get","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._createClass.get","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._createClass.get.get"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._createClass.get"},');
 
       return this.getState();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._createClass.get.get"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._createClass.get"},');
 
     }
   }]);

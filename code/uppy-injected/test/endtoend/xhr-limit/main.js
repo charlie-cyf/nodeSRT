@@ -22,17 +22,17 @@ function startXHRLimitTest(endpoint) {
   uppy.uploadsStarted = 0;
   uppy.uploadsComplete = 0;
   uppy.on('upload-started', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on","fileName":"${__filename}","paramsNumber":0},`);
 
     uppy.uploadsStarted++;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on"},');
 
   });
   uppy.on('upload-success', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on2","fileName":"${__filename}","paramsNumber":0},`);
 
     uppy.uploadsComplete++;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on2"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"startXHRLimitTest","paramsNumber":1},');

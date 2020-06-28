@@ -37,13 +37,13 @@ function useSourcePackages(b) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"useSourcePackages","fileName":"${__filename}","paramsNumber":1},`);
 
   b._bresolve = (id, opts, cb) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"b._bresolve","fileName":"${__filename}","paramsNumber":3},`);
 
     bresolve(id, opts, (err, result, pkg) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bresolve","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"bresolve"},');
 
         return cb(err);
       }
@@ -51,10 +51,10 @@ function useSourcePackages(b) {
         result = result.replace(/packages\/@uppy\/(.*?)\/lib\//, 'packages/@uppy/$1/src/');
       }
       cb(err, result, pkg);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"bresolve"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"b._bresolve"},');
 
   };
     SRTlib.send('{"type":"FUNCTIONEND","function":"useSourcePackages","paramsNumber":1},');
@@ -78,10 +78,10 @@ if (!watchifyEnabled && process.argv[2]) {
 }
 // Find each app.es6 file with glob.
 glob(srcPattern, (err, files) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob","fileName":"${__filename}","paramsNumber":2},`);
 
   if (err) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"glob"},');
 
     throw new Error(err);
   }
@@ -91,7 +91,7 @@ glob(srcPattern, (err, files) => {
   const muted = new Set();
   // Create a new watchify instance for each file.
   files.forEach(file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     const b = browserify(file, {
       cache: {},
@@ -109,11 +109,11 @@ glob(srcPattern, (err, files) => {
     });
     // Listeners for changes, errors, and completion.
     b.on('update', bundle).on('error', onError).on('file', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on.on","fileName":"${__filename}","paramsNumber":1},`);
 
       // When file completes, unmute it.
       muted.delete(file);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on.on"},');
 
     });
     // Call bundle() manually to start watch processes.
@@ -129,13 +129,13 @@ glob(srcPattern, (err, files) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"bundle","fileName":"${__filename}","paramsNumber":1},`);
 
       ids.forEach(id => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ids.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         if (!muted.has(id)) {
           console.info(chalk.cyan('change:'), path.relative(process.cwd(), id));
           muted.add(id);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ids.forEach"},');
 
       });
       const exampleName = path.basename(path.dirname(file));
@@ -144,19 +144,19 @@ glob(srcPattern, (err, files) => {
       mkdirp.sync(parentDir);
       console.info(chalk.grey(`⏳ building: ${path.relative(process.cwd(), file)}`));
       b.bundle().on('error', onError).pipe(createStream(output)).on('finish', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on.pipe.on","fileName":"${__filename}","paramsNumber":0},`);
 
         console.info(chalk.green(`✓ built: ${path.relative(process.cwd(), file)}`));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on.pipe.on"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"bundle","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach"},');
 
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"glob"},');
 
 });
 /**

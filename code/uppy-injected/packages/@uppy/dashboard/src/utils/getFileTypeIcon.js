@@ -2,14 +2,14 @@ const SRTlib = require('SRT-util');
 
 const {iconFile, iconText, iconImage, iconAudio, iconVideo, iconPDF, iconArchive} = require('../components/icons');
 module.exports = function getIconByMime(fileType) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getIconByMime","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
   const defaultChoice = {
     color: '#838999',
     icon: iconFile()
   };
   if (!fileType) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getIconByMime"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return defaultChoice;
   }
@@ -17,7 +17,7 @@ module.exports = function getIconByMime(fileType) {
   const fileTypeSpecific = fileType.split('/')[1];
   // Text
   if (fileTypeGeneral === 'text') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getIconByMime"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return {
       color: '#5a5e69',
@@ -26,7 +26,7 @@ module.exports = function getIconByMime(fileType) {
   }
   // Image
   if (fileTypeGeneral === 'image') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getIconByMime"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return {
       color: '#686de0',
@@ -35,7 +35,7 @@ module.exports = function getIconByMime(fileType) {
   }
   // Audio
   if (fileTypeGeneral === 'audio') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getIconByMime"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return {
       color: '#068dbb',
@@ -44,7 +44,7 @@ module.exports = function getIconByMime(fileType) {
   }
   // Video
   if (fileTypeGeneral === 'video') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getIconByMime"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return {
       color: '#19af67',
@@ -53,7 +53,7 @@ module.exports = function getIconByMime(fileType) {
   }
   // PDF
   if (fileTypeGeneral === 'application' && fileTypeSpecific === 'pdf') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getIconByMime"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return {
       color: '#e25149',
@@ -63,16 +63,16 @@ module.exports = function getIconByMime(fileType) {
   // Archive
   const archiveTypes = ['zip', 'x-7z-compressed', 'x-rar-compressed', 'x-gtar', 'x-apple-diskimage', 'x-diskcopy'];
   if (fileTypeGeneral === 'application' && archiveTypes.indexOf(fileTypeSpecific) !== -1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getIconByMime"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return {
       color: '#00C469',
       icon: iconArchive()
     };
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getIconByMime"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return defaultChoice;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getIconByMime"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

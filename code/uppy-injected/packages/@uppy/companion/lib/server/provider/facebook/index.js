@@ -48,24 +48,24 @@ class Facebook extends Provider {
       qs.fields = 'icon,images,name,width,height,created_time';
     }
     this.client.get(`https://graph.facebook.com/${path}`).qs(qs).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.facebook.list.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request"},');
 
         return done(err);
       } else {
         this._getUsername(token, (err, username) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getUsername","fileName":"${__filename}","paramsNumber":2},`);
 
           err ? done(err) : done(null, this.adaptData(body, username, directory, query));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_getUsername"},');
 
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
@@ -77,18 +77,18 @@ class Facebook extends Provider {
     this.client.get('me').qs({
       fields: 'email'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request2","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.facebook.user.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request2"},');
 
         return done(err);
       } else {
         done(null, body.email);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_getUsername"},');
@@ -112,51 +112,51 @@ class Facebook extends Provider {
     return this.client.get(`https://graph.facebook.com/${id}`).qs({
       fields: 'images'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.facebook.download.error');
         onData(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request"},');
 
         return;
       }
       request(this._getMediaUrl(body)).on('response', resp => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on.request.on","fileName":"${__filename}","paramsNumber":1},`);
 
         if (resp.statusCode !== 200) {
           onData(this._error(null, resp));
         } else {
           resp.on('data', chunk => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
             return onData(null, chunk);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
           });
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on.request.on"},');
 
       }).on('end', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
         return onData(null, null);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
       }).on('error', err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
 
         logger.error(err, 'provider.facebook.download.url.error');
         onData(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
@@ -182,32 +182,32 @@ class Facebook extends Provider {
     return this.client.get(`https://graph.facebook.com/${id}`).qs({
       fields: 'images'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request2","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.facebook.size.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request2"},');
 
         return done(err);
       }
       utils.getURLMeta(this._getMediaUrl(body)).then(({size}) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch.then","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
 
         return done(null, size);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
         logger.error(err, 'provider.facebook.size.error');
         done();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
@@ -219,19 +219,19 @@ class Facebook extends Provider {
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
 
     return this.client.delete('me/permissions').auth(token).request((err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey12","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.delete.auth.request","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err || resp.statusCode !== 200) {
         logger.error(err, 'provider.facebook.logout.error');
         done(this._error(err, resp));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.delete.auth.request"},');
 
         return;
       }
       done(null, {
         revoked: true
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.delete.auth.request"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
@@ -246,7 +246,7 @@ class Facebook extends Provider {
     };
     const items = adapter.getItemSubList(res);
     items.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey13","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"items.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       data.items.push({
         isFolder: adapter.isFolder(item),
@@ -258,7 +258,7 @@ class Facebook extends Provider {
         requestPath: adapter.getItemRequestPath(item),
         modifiedDate: adapter.getItemModifiedDate(item)
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"items.forEach"},');
 
     });
     data.nextPagePath = adapter.getNextPagePath(res, currentQuery, directory);

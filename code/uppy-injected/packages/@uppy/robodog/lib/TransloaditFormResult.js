@@ -38,7 +38,7 @@ var TransloaditFormResult = /*#__PURE__*/function (_Plugin) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getAssemblyStatuses\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"TransloaditFormResult\",\"superClass\":\"Plugin\"}},");
     var assemblyIds = [];
     fileIDs.forEach(function (fileID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var file = _this2.uppy.getFile(fileID);
 
@@ -48,15 +48,15 @@ var TransloaditFormResult = /*#__PURE__*/function (_Plugin) {
         assemblyIds.push(assembly);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach"},');
     });
     var tl = this.uppy.getPlugin(this.opts.transloaditPluginId || 'Transloadit');
     SRTlib.send('{"type":"FUNCTIONEND","function":"getAssemblyStatuses"},');
     return assemblyIds.map(function (id) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.assemblyIds.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.assemblyIds.map"},');
       return tl.getAssembly(id);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.assemblyIds.map"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"getAssemblyStatuses"},');
   };

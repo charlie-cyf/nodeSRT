@@ -63,10 +63,10 @@ class ProgressBar extends React.Component {
 
     return h('div', {
       ref: container => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h.ref","fileName":"${__filename}","paramsNumber":1},`);
 
         this.container = container;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.ref"},');
 
       }
     });

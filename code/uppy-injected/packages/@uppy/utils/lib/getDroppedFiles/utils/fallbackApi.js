@@ -4,9 +4,9 @@ var toArray = require('../../toArray'); // .files fallback, should be implemente
 
 
 module.exports = function fallbackApi(dataTransfer) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.fallbackApi\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   var files = toArray(dataTransfer.files);
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.fallbackApi"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return Promise.resolve(files);
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.fallbackApi"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

@@ -69,12 +69,12 @@ class Uploader {
       // no executable files
       mode: 0o666
     }).on('error', err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.on","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.on"},');
 
       return logger.error(`${err}`, 'uploader.write.error', this.shortToken);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.on"},');
 
     });
     /** @type {number}*/
@@ -83,27 +83,27 @@ class Uploader {
     this._paused = false;
     if (this.options.protocol === PROTOCOLS.tus) {
       emitter().on(`pause:${this.token}`, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on","fileName":"${__filename}","paramsNumber":0},`);
 
         this._paused = true;
         if (this.tus) {
           this.tus.abort();
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.on"},');
 
       });
       emitter().on(`resume:${this.token}`, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on2","fileName":"${__filename}","paramsNumber":0},`);
 
         this._paused = false;
         if (this.tus) {
           this.tus.start();
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.on2"},');
 
       });
       emitter().on(`cancel:${this.token}`, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on3","fileName":"${__filename}","paramsNumber":0},`);
 
         this._paused = true;
         if (this.tus) {
@@ -111,7 +111,7 @@ class Uploader {
           this.tus.abort(shouldTerminate);
         }
         this.cleanUp();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.on3"},');
 
       });
     }
@@ -223,12 +223,12 @@ class Uploader {
     // validate protocol
     // @todo this validation should not be conditional once the protocol field is mandatory
     if (options.protocol && !Object.keys(PROTOCOLS).some(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"some","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"some"},');
 
       return PROTOCOLS[key] === options.protocol;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"some"},');
 
     })) {
       this._errRespMessage = 'unsupported protocol specified';
@@ -257,25 +257,25 @@ class Uploader {
         SRTlib.send('{"type":"FUNCTIONEND","function":"validateOptions"},');
 
     return [options.endpoint, options.uploadUrl].every(url => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.every","fileName":"${__filename}","paramsNumber":1},`);
 
       if (url && !validator.isURL(url, validatorOpts)) {
         this._errRespMessage = 'invalid destination url';
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.every"},');
 
         return false;
       }
       const allowedUrls = options.companionOptions.uploadUrls;
       if (allowedUrls && url && !hasMatch(url, allowedUrls)) {
         this._errRespMessage = 'upload destination does not match any allowed destinations';
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.every"},');
 
         return false;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.every"},');
 
       return true;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.every"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"validateOptions"},');
@@ -312,12 +312,12 @@ class Uploader {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onSocketReady","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     emitter().once(`connection:${this.token}`, () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.once","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.once"},');
 
       return callback();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.once"},');
 
     });
     logger.debug('waiting for connection', 'uploader.socket.wait', this.shortToken);
@@ -328,12 +328,12 @@ class Uploader {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanUp","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     fs.unlink(this.path, err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fs.unlink","fileName":"${__filename}","paramsNumber":1},`);
 
       if (err) {
         logger.error(`cleanup failed for: ${this.path} err: ${err}`, 'uploader.cleanup.error');
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"fs.unlink"},');
 
     });
     emitter().removeAllListeners(`pause:${this.token}`);
@@ -369,7 +369,7 @@ class Uploader {
     // The download has completed; close the file and start an upload if necessary.
     if (chunk === null) {
       this.writeStream.on('finish', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.on2","fileName":"${__filename}","paramsNumber":0},`);
 
         this.streamsEnded = true;
         switch (protocol) {
@@ -393,7 +393,7 @@ class Uploader {
             }
             break;
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.on2"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"handleChunk"},');
@@ -401,13 +401,13 @@ class Uploader {
       return this.endStreams();
     }
     this.writeStream.write(chunk, () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.write","fileName":"${__filename}","paramsNumber":0},`);
 
       logger.debug(`${this.bytesWritten} bytes`, 'uploader.download.progress', this.shortToken);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.write"},');
 
       return this.emitIllusiveProgress();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.write"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"handleChunk"},');
@@ -662,11 +662,11 @@ class Uploader {
     // upload progress
     let bytesUploaded = 0;
     file.on('data', data => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"file.on","fileName":"${__filename}","paramsNumber":1},`);
 
       bytesUploaded += data.length;
       this.emitIllusiveProgress(bytesUploaded);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"file.on"},');
 
     });
     const httpMethod = (this.options.httpMethod || '').toLowerCase() === 'put' ? 'put' : 'post';
@@ -690,12 +690,12 @@ class Uploader {
       reqOptions.body = file;
     }
     request[httpMethod](reqOptions, (error, response, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey12","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.httpMethod","fileName":"${__filename}","paramsNumber":3},`);
 
       if (error) {
         logger.error(error, 'upload.multipart.error');
         this.emitError(error);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"request.httpMethod"},');
 
         return;
       }
@@ -722,7 +722,7 @@ class Uploader {
         });
       }
       this.cleanUp();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"request.httpMethod"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"uploadMultipart"},');
@@ -764,14 +764,14 @@ class Uploader {
     });
     this.s3Upload = upload;
     upload.on('httpUploadProgress', ({loaded, total}) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey13","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"upload.on","fileName":"${__filename}","paramsNumber":1},`);
 
       this.emitProgress(loaded, total);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"upload.on"},');
 
     });
     upload.send((error, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey14","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"upload.send","fileName":"${__filename}","paramsNumber":2},`);
 
       this.s3Upload = null;
       if (error) {
@@ -788,7 +788,7 @@ class Uploader {
         });
       }
       this.cleanUp();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"upload.send"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadS3MultipartStream"},');

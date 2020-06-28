@@ -60,15 +60,15 @@ function trapFocus(event, activeOverlayType, dashboardEl) {
 module.exports = {
   // Traps focus inside of the currently open overlay (e.g. Dashboard, or e.g. Instagram), never lets focus disappear from the modal.
   forModal: (event, activeOverlayType, dashboardEl) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.forModal","fileName":"${__filename}","paramsNumber":3},`);
 
     trapFocus(event, activeOverlayType, dashboardEl);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forModal"},');
 
   },
   // Traps focus inside of the currently open overlay, unless overlay is null - then let the user tab away.
   forInline: (event, activeOverlayType, dashboardEl) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.forInline","fileName":"${__filename}","paramsNumber":3},`);
 
     // ___When we're in the bare 'Drop files here, paste, browse or import from' screen
     if (activeOverlayType === null) {
@@ -79,7 +79,7 @@ module.exports = {
       // User can close the overlay (click 'Done') if they want to travel away from Uppy.
       trapFocus(event, activeOverlayType, dashboardEl);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forInline"},');
 
   }
 };

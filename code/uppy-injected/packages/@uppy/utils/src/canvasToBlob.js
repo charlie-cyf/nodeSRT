@@ -8,30 +8,30 @@ const dataURItoBlob = require('./dataURItoBlob');
 * @returns {Promise}
 */
 module.exports = function canvasToBlob(canvas, type, quality) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.canvasToBlob","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":3},`);
 
   if (canvas.toBlob) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.canvasToBlob"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return new Promise(resolve => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.canvasToBlob.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
       canvas.toBlob(resolve, type, quality);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.canvasToBlob.ReturnStatement"},');
 
     });
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.canvasToBlob"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return Promise.resolve().then(() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.canvasToBlob.ReturnStatement.then","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.canvasToBlob.ReturnStatement.then"},');
 
     return dataURItoBlob(canvas.toDataURL(type, quality), {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.canvasToBlob.ReturnStatement.then"},');
 
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.canvasToBlob"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

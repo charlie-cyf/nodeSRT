@@ -35,12 +35,12 @@ const defaultOptions = {
       conditions: [],
       useAccelerateEndpoint: false,
       getKey: (req, filename) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.providerOptions.s3.getKey","fileName":"${__filename}","paramsNumber":2},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.providerOptions.s3.getKey"},');
 
         return filename;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.providerOptions.s3.getKey"},');
 
       },
       expires: ms('5 minutes') / 1000
@@ -59,7 +59,7 @@ module.exports.errors = {
 * @param {object} options
 */
 module.exports.app = (options = {}) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.app","fileName":"${__filename}","paramsNumber":1},`);
 
   validateConfig(options);
   options = merge({}, defaultOptions, options);
@@ -84,7 +84,7 @@ module.exports.app = (options = {}) => {
   app.use(interceptGrantErrorResponse);
   app.use(Grant(grantConfig));
   app.use((req, res, next) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use","fileName":"${__filename}","paramsNumber":3},`);
 
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE');
     res.header('Access-Control-Allow-Headers', ['uppy-auth-token', 'uppy-versions', res.get('Access-Control-Allow-Headers')].join(','));
@@ -101,7 +101,7 @@ module.exports.app = (options = {}) => {
     }
     res.header('Access-Control-Expose-Headers', exposedHeaders.join(','));
     next();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"app.use"},');
 
   });
   // add uppy options to the request object so it can be accessed by subsequent handlers.
@@ -120,10 +120,10 @@ module.exports.app = (options = {}) => {
   if (app.get('env') !== 'test') {
     jobs.startCleanUpJob(options.filePath);
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.app"},');
 
   return app;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.app"},');
 
 };
 /**
@@ -132,7 +132,7 @@ module.exports.app = (options = {}) => {
 * @param {object} server
 */
 module.exports.socket = server => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket","fileName":"${__filename}","paramsNumber":1},`);
 
   const wss = new SocketServer({
     server
@@ -142,7 +142,7 @@ module.exports.socket = server => {
   // or when connection fails while an upload is on-going and,
   // client attempts to reconnect.
   wss.on('connection', (ws, req) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"wss.on","fileName":"${__filename}","paramsNumber":2},`);
 
     // @ts-ignore
     const fullPath = req.url;
@@ -158,10 +158,10 @@ module.exports.socket = server => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sendProgress","fileName":"${__filename}","paramsNumber":1},`);
 
       ws.send(jsonStringify(data), err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.send","fileName":"${__filename}","paramsNumber":1},`);
 
         if (err) logger.error(err, 'socket.progress.error', shortenToken(token));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ws.send"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"sendProgress","paramsNumber":1},');
@@ -171,63 +171,63 @@ module.exports.socket = server => {
     // if we have any already stored progress data on the upload.
     if (redisClient) {
       redisClient.get(`${STORAGE_PREFIX}:${token}`, (err, data) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"redisClient.get","fileName":"${__filename}","paramsNumber":2},`);
 
         if (err) logger.error(err, 'socket.redis.error', shortenToken(token));
         if (data) {
           const dataObj = JSON.parse(data.toString());
           if (dataObj.action) sendProgress(dataObj);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"redisClient.get"},');
 
       });
     }
     emitter().emit(`connection:${token}`);
     emitter().on(token, sendProgress);
     ws.on('message', jsonData => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.on","fileName":"${__filename}","paramsNumber":1},`);
 
       const data = JSON.parse(jsonData.toString());
       // whitelist triggered actions
       if (['pause', 'resume', 'cancel'].includes(data.action)) {
         emitter().emit(`${data.action}:${token}`);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ws.on"},');
 
     });
     ws.on('close', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.on2","fileName":"${__filename}","paramsNumber":0},`);
 
       emitter().removeListener(token, sendProgress);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ws.on2"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"wss.on"},');
 
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.socket"},');
 
 };
 // intercepts grantJS' default response error when something goes
 // wrong during oauth process.
 const interceptGrantErrorResponse = interceptor((req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey12","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"interceptGrantErrorResponse.interceptor","fileName":"${__filename}","paramsNumber":2},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"interceptGrantErrorResponse.interceptor"},');
 
   return {
     isInterceptable: () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.isInterceptable","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.isInterceptable"},');
 
       // match grant.js' callback url
       return (/^\/connect\/\w+\/callback/).test(req.path);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.isInterceptable"},');
 
     },
     intercept: (body, send) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.intercept","fileName":"${__filename}","paramsNumber":2},`);
 
       const unwantedBody = 'error=Grant%3A%20missing%20session%20or%20misconfigured%20provider';
       if (body === unwantedBody) {
@@ -238,11 +238,11 @@ const interceptGrantErrorResponse = interceptor((req, res) => {
       } else {
         send(body);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.intercept"},');
 
     }
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"interceptGrantErrorResponse.interceptor"},');
 
 });
 /**
@@ -323,22 +323,22 @@ const maskLogger = companionOptions => {
   const secrets = [];
   const {providerOptions, customProviders} = companionOptions;
   Object.keys(providerOptions).forEach(provider => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey13","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     if (providerOptions[provider].secret) {
       secrets.push(providerOptions[provider].secret);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
   });
   if (customProviders) {
     Object.keys(customProviders).forEach(provider => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey14","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (customProviders[provider].config && customProviders[provider].config.secret) {
         secrets.push(customProviders[provider].config.secret);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach2"},');
 
     });
   }
@@ -360,19 +360,19 @@ const validateConfig = companionOptions => {
   /** @type {string[]}*/
   const unspecified = [];
   mandatoryOptions.forEach(i => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey16","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"mandatoryOptions.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     const value = i.split('.').reduce((prev, curr) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey15","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"value.reduce","fileName":"${__filename}","paramsNumber":2},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"value.reduce"},');
 
       return prev ? prev[curr] : undefined;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"value.reduce"},');
 
     }, companionOptions);
     if (!value) unspecified.push(`"${i}"`);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey16"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"mandatoryOptions.forEach"},');
 
   });
   // vaidate that all required config is specified

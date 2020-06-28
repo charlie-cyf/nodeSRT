@@ -93,7 +93,7 @@ class DropBox extends Provider {
 
     };
     this.stats(options, (err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"stats","fileName":"${__filename}","paramsNumber":2},`);
 
       statsDone = true;
       stats = resp;
@@ -101,11 +101,11 @@ class DropBox extends Provider {
       if (userInfoDone) {
         finishReq();
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"stats"},');
 
     });
     this._userInfo(options, (err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_userInfo","fileName":"${__filename}","paramsNumber":2},`);
 
       userInfoDone = true;
       userInfo = resp;
@@ -113,7 +113,7 @@ class DropBox extends Provider {
       if (statsDone) {
         finishReq();
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_userInfo"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
@@ -153,37 +153,37 @@ class DropBox extends Provider {
         })
       }
     }).auth(token).request().on('response', resp => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on.client.post.options.auth.request.on","fileName":"${__filename}","paramsNumber":1},`);
 
       if (resp.statusCode !== 200) {
         onData(this._error(null, resp));
       } else {
         resp.on('data', chunk => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
           return onData(null, chunk);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on.client.post.options.auth.request.on"},');
 
     }).on('end', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on"},');
 
       return onData(null, null);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on"},');
 
     }).on('error', err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
 
       logger.error(err, 'provider.dropbox.download.error');
       onData(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.on"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
@@ -203,23 +203,23 @@ class DropBox extends Provider {
         })
       }
     }).auth(token).request().on('response', resp => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.client.post.options.auth.request.on","fileName":"${__filename}","paramsNumber":1},`);
 
       if (resp.statusCode !== 200) {
         const err = this._error(null, resp);
         logger.error(err, 'provider.dropbox.thumbnail.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.client.post.options.auth.request.on"},');
 
         return done(err);
       }
       done(null, resp);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.client.post.options.auth.request.on"},');
 
     }).on('error', err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on","fileName":"${__filename}","paramsNumber":1},`);
 
       logger.error(err, 'provider.dropbox.thumbnail.error');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail"},');
@@ -235,17 +235,17 @@ class DropBox extends Provider {
     }).auth(token).json({
       path: id
     }).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.json.request","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.dropbox.size.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.json.request"},');
 
         return done(err);
       }
       done(null, parseInt(body.size));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.json.request"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
@@ -259,19 +259,19 @@ class DropBox extends Provider {
     return this.client.post('auth/token/revoke').options({
       version: '2'
     }).auth(token).request((err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err || resp.statusCode !== 200) {
         logger.error(err, 'provider.dropbox.size.error');
         done(this._error(err, resp));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request"},');
 
         return;
       }
       done(null, {
         revoked: true
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
@@ -286,7 +286,7 @@ class DropBox extends Provider {
     };
     const items = adapter.getItemSubList(res);
     items.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"items.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       data.items.push({
         isFolder: adapter.isFolder(item),
@@ -299,7 +299,7 @@ class DropBox extends Provider {
         modifiedDate: adapter.getItemModifiedDate(item),
         size: adapter.getItemSize(item)
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"items.forEach"},');
 
     });
     data.nextPagePath = adapter.getNextPagePath(res);

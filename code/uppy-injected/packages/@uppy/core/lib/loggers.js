@@ -6,32 +6,32 @@ var getTimeStamp = require('@uppy/utils/lib/getTimeStamp'); // Swallow all logs,
 
 var justErrorsLogger = {
   debug: function debug() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"justErrorsLogger.debug\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"justErrorsLogger.debug"},');
   },
   warn: function warn() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"justErrorsLogger.warn\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"justErrorsLogger.warn"},');
   },
   error: function error() {
     var _console;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"justErrorsLogger.error\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"justErrorsLogger.error"},');
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
     return (_console = console).error.apply(_console, ["[Uppy] [" + getTimeStamp() + "]"].concat(args));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"justErrorsLogger.error"},');
   }
 }; // Print logs to console with namespace + timestamp,
 // set by logger: Uppy.debugLogger or debug: true
 
 var debugLogger = {
   debug: function debug() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // IE 10 doesn’t support console.debug
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"debugLogger.debug\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // IE 10 doesn’t support console.debug
 
     var debug = console.debug || console.log;
 
@@ -40,33 +40,33 @@ var debugLogger = {
     }
 
     debug.call.apply(debug, [console, "[Uppy] [" + getTimeStamp() + "]"].concat(args));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"debugLogger.debug"},');
   },
   warn: function warn() {
     var _console2;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"debugLogger.warn\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"debugLogger.warn"},');
 
     for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
       args[_key3] = arguments[_key3];
     }
 
     return (_console2 = console).warn.apply(_console2, ["[Uppy] [" + getTimeStamp() + "]"].concat(args));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"debugLogger.warn"},');
   },
   error: function error() {
     var _console3;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"debugLogger.error\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"debugLogger.error"},');
 
     for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
       args[_key4] = arguments[_key4];
     }
 
     return (_console3 = console).error.apply(_console3, ["[Uppy] [" + getTimeStamp() + "]"].concat(args));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"debugLogger.error"},');
   }
 };
 module.exports = {

@@ -29,12 +29,12 @@ app.use('/companion', companion.app({
       // This is the crucial part; set an endpoint template for the service you want to use.
       endpoint: 'https://{region}.digitaloceanspaces.com',
       getKey: (req, filename) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use.companion.app.providerOptions.s3.getKey","fileName":"${__filename}","paramsNumber":2},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"app.use.companion.app.providerOptions.s3.getKey"},');
 
         return `uploads/${filename}`;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"app.use.companion.app.providerOptions.s3.getKey"},');
 
       },
       key: process.env.COMPANION_AWS_KEY,
@@ -49,11 +49,11 @@ app.use('/companion', companion.app({
 }));
 // Serve the built CSS file.
 app.get('/uppy.min.css', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get","fileName":"${__filename}","paramsNumber":2},`);
 
   res.setHeader('content-type', 'text/css');
   fs.createReadStream(path.join('../../packages/uppy/dist/uppy.min.css')).pipe(res);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"app.get"},');
 
 });
 // Start the development server, budo.

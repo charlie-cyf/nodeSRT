@@ -8,7 +8,7 @@
 var SRTlib = require('SRT-util');
 
 module.exports = function generateFileID(file) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.generateFileID\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // It's tempting to do `[items].filter(Boolean).join('-')` here, but that
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // It's tempting to do `[items].filter(Boolean).join('-')` here, but that
   // is slower! simple string concatenation is fast
 
   var id = 'uppy';
@@ -33,9 +33,9 @@ module.exports = function generateFileID(file) {
     id += '-' + file.data.lastModified;
   }
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateFileID"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return id;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateFileID"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };
 
 function encodeFilename(name) {
@@ -43,11 +43,11 @@ function encodeFilename(name) {
   var suffix = '';
   SRTlib.send('{"type":"FUNCTIONEND","function":"encodeFilename"},');
   return name.replace(/[^A-Z0-9]/ig, function (character) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.name.replace\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     suffix += '-' + encodeCharacter(character);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.name.replace"},');
     return '/';
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.name.replace"},');
   }) + suffix;
   SRTlib.send('{"type":"FUNCTIONEND","function":"encodeFilename","paramsNumber":1},');
 }

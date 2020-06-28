@@ -49,11 +49,11 @@ class MyCustomProvider {
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
 
     return fs.readFile(DUMM_FILE, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.fs.readFile","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err) console.error(err);
       onData(data);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.fs.readFile"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');

@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 
 module.exports = function settle(promises) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.settle\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   var resolutions = [];
   var rejections = [];
 
@@ -18,20 +18,20 @@ module.exports = function settle(promises) {
   }
 
   var wait = Promise.all(promises.map(function (promise) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.settle.wait.Promise.all.promises.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.settle.wait.Promise.all.promises.map"},');
     return promise.then(resolved, rejected);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.settle.wait.Promise.all.promises.map"},');
   }));
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.settle"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return wait.then(function () {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.settle.ReturnStatement.wait.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.settle.ReturnStatement.wait.then"},');
     return {
       successful: resolutions,
       failed: rejections
     };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.settle.ReturnStatement.wait.then"},');
   });
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.settle"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

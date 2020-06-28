@@ -26,18 +26,18 @@ function logout(req, res, next) {
     req.companion.provider.logout({
       token
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.companion.provider.logout","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err) {
         const errResp = errorToResponse(err);
         if (errResp) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"req.companion.provider.logout"},');
 
           return res.status(errResp.code).json({
             message: errResp.message
           });
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"req.companion.provider.logout"},');
 
         return next(err);
       }
@@ -47,7 +47,7 @@ function logout(req, res, next) {
       res.json(Object.assign({
         ok: true
       }, data));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"req.companion.provider.logout"},');
 
     });
   } else {

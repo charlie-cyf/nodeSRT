@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 
 module.exports = function dataURItoBlob(dataURI, opts, toFile) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.dataURItoBlob\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},"); // get the base64 data
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},"); // get the base64 data
 
   var data = dataURI.split(',')[1]; // user may provide mime type, if not get it from data URI
 
@@ -24,21 +24,21 @@ module.exports = function dataURItoBlob(dataURI, opts, toFile) {
     // eslint-disable-line compat/compat
     bytes = new Uint8Array(array);
   } catch (err) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return null;
   } // Convert to a File?
 
 
   if (toFile) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return new File([bytes], opts.name || '', {
       type: mimeType
     });
   }
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return new Blob([bytes], {
     type: mimeType
   });
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.dataURItoBlob"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

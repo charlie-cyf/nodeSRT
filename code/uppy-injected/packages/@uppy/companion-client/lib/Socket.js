@@ -32,7 +32,7 @@ module.exports = /*#__PURE__*/function () {
     this.socket = new WebSocket(this.opts.target);
 
     this.socket.onopen = function (e) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.socket.onopen\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       _this.isOpen = true;
 
       while (_this._queued.length > 0 && _this.isOpen) {
@@ -43,13 +43,13 @@ module.exports = /*#__PURE__*/function () {
         _this._queued = _this._queued.slice(1);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.socket.onopen"},');
     };
 
     this.socket.onclose = function (e) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.socket.onclose\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       _this.isOpen = false;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.socket.onclose"},');
     };
 
     this.socket.onmessage = this._handleMessage;

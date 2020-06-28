@@ -38,16 +38,16 @@ async function compileCSS() {
           filename: from,
           extensions: ['.scss']
         }, (err, res) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"scssResult.renderScss.importer.resolve","fileName":"${__filename}","paramsNumber":2},`);
 
           if (err) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"scssResult.renderScss.importer.resolve"},');
 
             return done(err);
           }
           res = fs.realpathSync(res);
           if (this.options.importedFiles.has(res)) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"scssResult.renderScss.importer.resolve"},');
 
             return done({
               contents: ''
@@ -57,7 +57,7 @@ async function compileCSS() {
           done({
             file: res
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"scssResult.renderScss.importer.resolve"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"scssResult.renderScss.importer"},');
@@ -107,9 +107,9 @@ async function compileCSS() {
 
 }
 compileCSS().then(() => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"compileCSS.then","fileName":"${__filename}","paramsNumber":0},`);
 
   console.info(chalk.yellow('✓ CSS Bundles 🎉'));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"compileCSS.then"},');
 
 }, handleErr);

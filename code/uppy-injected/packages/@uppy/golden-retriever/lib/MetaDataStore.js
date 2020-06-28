@@ -112,18 +112,18 @@ module.exports = /*#__PURE__*/function () {
     var instanceIDs = findUppyInstances();
     var now = Date.now();
     instanceIDs.forEach(function (id) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.instanceIDs.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var data = localStorage.getItem("uppyState:" + id);
 
       if (!data) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.instanceIDs.forEach"},');
         return null;
       }
 
       var obj = maybeParse(data);
 
       if (!obj) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.instanceIDs.forEach"},');
         return null;
       }
 
@@ -131,7 +131,7 @@ module.exports = /*#__PURE__*/function () {
         localStorage.removeItem("uppyState:" + id);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.instanceIDs.forEach"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"cleanup"},');
   };

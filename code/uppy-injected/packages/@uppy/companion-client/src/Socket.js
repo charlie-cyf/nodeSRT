@@ -26,7 +26,7 @@ module.exports = class UppySocket {
 
     this.socket = new WebSocket(this.opts.target);
     this.socket.onopen = e => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket.onopen","fileName":"${__filename}","paramsNumber":1},`);
 
       this.isOpen = true;
       while (this._queued.length > 0 && this.isOpen) {
@@ -34,14 +34,14 @@ module.exports = class UppySocket {
         this.send(first.action, first.payload);
         this._queued = this._queued.slice(1);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.socket.onopen"},');
 
     };
     this.socket.onclose = e => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket.onclose","fileName":"${__filename}","paramsNumber":1},`);
 
       this.isOpen = false;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.socket.onclose"},');
 
     };
     this.socket.onmessage = this._handleMessage;

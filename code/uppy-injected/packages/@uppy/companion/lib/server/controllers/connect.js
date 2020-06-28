@@ -10,7 +10,7 @@ const atob = require('atob');
 * @param {object} res
 */
 module.exports = function connect(req, res) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.connect","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":2},`);
 
   const secret = req.companion.options.secret;
   let state = oAuthState.generateState(secret);
@@ -30,6 +30,6 @@ module.exports = function connect(req, res) {
     }, secret);
   }
   res.redirect(req.companion.buildURL(`/connect/${req.companion.provider.authProvider}?state=${state}`, true));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.connect"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

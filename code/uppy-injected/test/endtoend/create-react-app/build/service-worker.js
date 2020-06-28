@@ -15,12 +15,12 @@ const SRTlib = require('SRT-util');
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 importScripts("/create-react-app/precache-manifest.45257bf494ba85aa3cb4c622183219a7.js");
 self.addEventListener('message', event => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"self.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
 
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener"},');
 
 });
 workbox.core.clientsClaim();

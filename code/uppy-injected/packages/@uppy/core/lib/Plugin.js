@@ -16,7 +16,7 @@ function debounce(fn) {
   var latestArgs = null;
   SRTlib.send('{"type":"FUNCTIONEND","function":"debounce"},');
   return function () {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26,21 +26,21 @@ function debounce(fn) {
 
     if (!calling) {
       calling = Promise.resolve().then(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"calling.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
         calling = null;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},'); // At this point `args` may be different from the most
+        SRTlib.send('{"type":"FUNCTIONEND","function":"calling.then"},'); // At this point `args` may be different from the most
         // recent state, if multiple calls happened since this task
         // was queued. So we use the `latestArgs`, which definitely
         // is the most recent call.
 
         return fn.apply(void 0, latestArgs);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"calling.then"},');
       });
     }
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
     return calling;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
   };
   SRTlib.send('{"type":"FUNCTIONEND","function":"debounce","paramsNumber":1},');
 }
@@ -153,12 +153,12 @@ module.exports = /*#__PURE__*/function () {
       this.isTargetDOMEl = true; // API for plugins that require a synchronous rerender.
 
       this.rerender = function (state) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // plugin could be removed, but this.rerender is debounced below,
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.rerender\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // plugin could be removed, but this.rerender is debounced below,
         // so it could still be called even after uppy.removePlugin or uppy.close
         // hence the check
 
         if (!_this.uppy.getPlugin(_this.id)) {
-          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.rerender"},');
           return;
         }
 
@@ -166,7 +166,7 @@ module.exports = /*#__PURE__*/function () {
 
         _this.afterUpdate();
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.rerender"},');
       };
 
       this._updateUI = debounce(this.rerender);
@@ -192,15 +192,15 @@ module.exports = /*#__PURE__*/function () {
       var Target = target; // Find the target plugin instance.
 
       this.uppy.iteratePlugins(function (plugin) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.iteratePlugins\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
         if (plugin instanceof Target) {
           targetPlugin = plugin;
-          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.iteratePlugins"},');
           return false;
         }
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.iteratePlugins"},');
       });
     }
 

@@ -42,10 +42,10 @@ module.exports = /*#__PURE__*/function () {
 
     if (Array.isArray(locales)) {
       locales.forEach(function (locale) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.locales.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.locales.forEach"},');
         return _this._apply(locale);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.locales.forEach"},');
       });
     } else {
       this._apply(locales);
@@ -117,18 +117,18 @@ module.exports = /*#__PURE__*/function () {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"insertReplacement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
       var newParts = [];
       source.forEach(function (chunk) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // When the source contains multiple placeholders for interpolation,
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"source.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // When the source contains multiple placeholders for interpolation,
         // we should ignore chunks that are not strings, because those
         // can be JSX objects and will be otherwise incorrectly turned into strings.
         // Without this condition we’d get this: [object Object] hello [object Object] my <button>
 
         if (typeof chunk !== 'string') {
-          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"source.forEach"},');
           return newParts.push(chunk);
         }
 
         split.call(chunk, rx).forEach(function (raw, i, list) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
 
           if (raw !== '') {
             newParts.push(raw);
@@ -139,9 +139,9 @@ module.exports = /*#__PURE__*/function () {
             newParts.push(replacement);
           }
 
-          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
         });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"source.forEach"},');
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"insertReplacement"},');
       return newParts;

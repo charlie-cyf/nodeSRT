@@ -45,7 +45,7 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addFiles\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
     var files = toArray(input.files);
     files.forEach(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"files.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       try {
         _this2.uppy.addFile({
@@ -60,7 +60,7 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
         }
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"addFiles"},');
   };
@@ -79,7 +79,7 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
     var restrictions = this.uppy.opts.restrictions;
     this.inputs = this.el.querySelectorAll('input[type="file"]');
     this.inputs.forEach(function (input) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inputs.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       input.addEventListener('change', _this3.handleChange);
 
       if (!input.hasAttribute('multiple')) {
@@ -98,7 +98,7 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
 
       _this3.addFiles(input);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"inputs.forEach"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
   };
@@ -108,9 +108,9 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
     this.inputs.forEach(function (input) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inputs.forEach2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       input.removeEventListener('change', _this4.handleChange);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"inputs.forEach2"},');
     });
     this.inputs = null;
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');

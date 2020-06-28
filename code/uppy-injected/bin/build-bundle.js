@@ -68,13 +68,13 @@ const methods = [buildBundle('./packages/uppy/bundle.js', './packages/uppy/dist/
 // Build minified versions of all the locales
 const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', '*.js');
 glob.sync(localePackagePath).forEach(localePath => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
   const localeName = path.basename(localePath, '.js');
   methods.push(buildBundle(`./packages/@uppy/locales/src/${localeName}.js`, `./packages/@uppy/locales/dist/${localeName}.min.js`, {
     minify: true
   }));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
 });
 Promise.all(methods).then(function () {

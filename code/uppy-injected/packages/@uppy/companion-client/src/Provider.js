@@ -9,12 +9,12 @@ const _getName = id => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getName"},');
 
   return id.split('-').map(s => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.map.join.map","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.map.join.map"},');
 
     return s.charAt(0).toUpperCase() + s.slice(1);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.map.join.map"},');
 
   }).join(' ');
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getName"},');
@@ -40,24 +40,24 @@ module.exports = class Provider extends RequestClient {
         SRTlib.send('{"type":"FUNCTIONEND","function":"headers"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
 
       super.headers().then(headers => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"headers.then.catch.headers.then","fileName":"${__filename}","paramsNumber":1},`);
 
         this.getAuthToken().then(token => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"getAuthToken.then","fileName":"${__filename}","paramsNumber":1},`);
 
           resolve(Object.assign({}, headers, {
             'uppy-auth-token': token
           }));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"getAuthToken.then"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"headers.then.catch.headers.then"},');
 
       }).catch(reject);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"headers"},');
@@ -131,24 +131,24 @@ module.exports = class Provider extends RequestClient {
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement2","fileName":"${__filename}","paramsNumber":2},`);
 
       this.get(`${this.id}/logout`).then(res => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"get.then.catch.get.then","fileName":"${__filename}","paramsNumber":1},`);
 
         this.uppy.getPlugin(this.pluginId).storage.removeItem(this.tokenKey).then(() => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"storage.removeItem.then.catch.storage.removeItem.then","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"storage.removeItem.then.catch.storage.removeItem.then"},');
 
           return resolve(res);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"storage.removeItem.then.catch.storage.removeItem.then"},');
 
         }).catch(reject);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"get.then.catch.get.then"},');
 
       }).catch(reject);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');

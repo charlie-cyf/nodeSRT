@@ -12,25 +12,25 @@ function list({query, params, companion}, res, next) {
     directory: params.id,
     query
   }, (err, data) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"companion.provider.list","fileName":"${__filename}","paramsNumber":2},`);
 
     if (err) {
       const errResp = errorToResponse(err);
       if (errResp) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"companion.provider.list"},');
 
         return res.status(errResp.code).json({
           message: errResp.message
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"companion.provider.list"},');
 
       return next(err);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"companion.provider.list"},');
 
     return res.json(data);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"companion.provider.list"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"list","paramsNumber":3},');

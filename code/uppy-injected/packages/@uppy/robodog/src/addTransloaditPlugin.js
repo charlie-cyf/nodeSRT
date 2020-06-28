@@ -9,10 +9,10 @@ function addTransloaditPlugin(uppy, opts) {
 
   const transloaditOptions = {};
   transloaditOptionNames.forEach(name => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"transloaditOptionNames.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, name)) transloaditOptions[name] = opts[name];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"transloaditOptionNames.forEach"},');
 
   });
   uppy.use(Transloadit, transloaditOptions);

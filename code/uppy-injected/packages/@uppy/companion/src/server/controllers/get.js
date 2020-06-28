@@ -16,24 +16,24 @@ function get(req, res, next) {
     token,
     query: req.query
   }, (err, size) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.size","fileName":"${__filename}","paramsNumber":2},`);
 
     if (err) {
       const errResp = errorToResponse(err);
       if (errResp) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"provider.size"},');
 
         return res.status(errResp.code).json({
           message: errResp.message
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"provider.size"},');
 
       return next(err);
     }
     if (!size) {
       logger.error('unable to determine file size', 'controller.get.provider.size', req.id);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"provider.size"},');
 
       return res.status(400).json({
         message: 'unable to determine file size'
@@ -44,7 +44,7 @@ function get(req, res, next) {
     if (uploader.hasError()) {
       const response = uploader.getResponse();
       res.status(response.status).json(response.body);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"provider.size"},');
 
       return;
     }
@@ -53,7 +53,7 @@ function get(req, res, next) {
     logger.debug('Waiting for socket connection before beginning remote download.', null, req.id);
     // waiting for socketReady.
     uploader.onSocketReady(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploader.onSocketReady","fileName":"${__filename}","paramsNumber":0},`);
 
       logger.debug('Socket connection received. Starting remote download.', null, req.id);
       provider.download({
@@ -61,12 +61,12 @@ function get(req, res, next) {
         token,
         query: req.query
       }, uploader.handleChunk.bind(uploader));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uploader.onSocketReady"},');
 
     });
     const response = uploader.getResponse();
     res.status(response.status).json(response.body);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"provider.size"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"get","paramsNumber":3},');

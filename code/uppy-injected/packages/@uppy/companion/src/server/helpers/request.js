@@ -87,16 +87,16 @@ function isPrivateIP(ipAddress) {
 }
 module.exports.FORBIDDEN_IP_ADDRESS = FORBIDDEN_IP_ADDRESS;
 module.exports.getRedirectEvaluator = (requestURL, blockPrivateIPs) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getRedirectEvaluator","fileName":"${__filename}","paramsNumber":2},`);
 
   const protocol = new URL(requestURL).protocol;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getRedirectEvaluator"},');
 
   return res => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
     if (!blockPrivateIPs) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
       return true;
     }
@@ -105,13 +105,13 @@ module.exports.getRedirectEvaluator = (requestURL, blockPrivateIPs) => {
     if (!shouldRedirect) {
       logger.info(`blocking redirect from ${requestURL} to ${redirectURL}`, 'redirect.protection');
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     return shouldRedirect;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getRedirectEvaluator"},');
 
 };
 /**
@@ -120,28 +120,28 @@ module.exports.getRedirectEvaluator = (requestURL, blockPrivateIPs) => {
 * @param {boolean} blockPrivateIPs if set to false, this protection will be disabled
 */
 module.exports.getProtectedHttpAgent = (protocol, blockPrivateIPs) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getProtectedHttpAgent","fileName":"${__filename}","paramsNumber":2},`);
 
   if (blockPrivateIPs) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getProtectedHttpAgent"},');
 
     return protocol.startsWith('https') ? HttpsAgent : HttpAgent;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getProtectedHttpAgent"},');
 
   return protocol.startsWith('https') ? https.Agent : http.Agent;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getProtectedHttpAgent"},');
 
 };
 function dnsLookup(hostname, options, callback) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"dnsLookup","fileName":"${__filename}","paramsNumber":3},`);
 
   dns.lookup(hostname, options, (err, addresses, maybeFamily) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"dns.lookup","fileName":"${__filename}","paramsNumber":3},`);
 
     if (err) {
       callback(err, addresses, maybeFamily);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"dns.lookup"},');
 
       return;
     }
@@ -151,13 +151,13 @@ function dnsLookup(hostname, options, callback) {
     for (const record of toValidate) {
       if (isPrivateIP(record.address)) {
         callback(new Error(FORBIDDEN_IP_ADDRESS), addresses, maybeFamily);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"dns.lookup"},');
 
         return;
       }
     }
     callback(err, addresses, maybeFamily);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"dns.lookup"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"dnsLookup","paramsNumber":3},');

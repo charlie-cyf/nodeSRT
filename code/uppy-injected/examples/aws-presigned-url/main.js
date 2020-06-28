@@ -12,9 +12,9 @@ uppy.use(Dashboard, {
 });
 uppy.use(AwsS3, {
   getUploadParameters(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"getUploadParameters","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.use.getUploadParameters","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters"},');
 
     // Send a request to our PHP signing endpoint.
     return fetch('/s3-sign.php', {
@@ -29,18 +29,18 @@ uppy.use(AwsS3, {
         contentType: file.type
       })
     }).then(response => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then.fetch.then","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then.fetch.then"},');
 
       // Parse the JSON response.
       return response.json();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then.fetch.then"},');
 
     }).then(data => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then"},');
 
       // Return an object in the correct shape.
       return {
@@ -49,10 +49,10 @@ uppy.use(AwsS3, {
         fields: data.fields,
         headers: data.headers
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters"},');
 
   }
 });

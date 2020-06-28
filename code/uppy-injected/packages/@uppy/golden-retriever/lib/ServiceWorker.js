@@ -16,32 +16,32 @@ function getCache(name) {
 }
 
 self.addEventListener('install', function (event) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"self.addEventListener\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   console.log('Installing Uppy Service Worker...');
   event.waitUntil(Promise.resolve().then(function () {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"event.waitUntil.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"event.waitUntil.then"},');
     return self.skipWaiting();
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"event.waitUntil.then"},');
   }));
-  SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener"},');
 });
 self.addEventListener('activate', function (event) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"self.addEventListener2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   event.waitUntil(self.clients.claim());
-  SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener2"},');
 });
 
 function sendMessageToAllClients(msg) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"sendMessageToAllClients\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   clients.matchAll().then(function (clients) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     clients.forEach(function (client) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"clients.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       client.postMessage(msg);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"clients.forEach"},');
     });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"then"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"sendMessageToAllClients","paramsNumber":1},');
 }
@@ -71,7 +71,7 @@ function getFiles(store) {
 }
 
 self.addEventListener('message', function (event) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"self.addEventListener3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   switch (event.data.type) {
     case 'uppy/ADD_FILE':
@@ -87,5 +87,5 @@ self.addEventListener('message', function (event) {
       break;
   }
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener3"},');
 });

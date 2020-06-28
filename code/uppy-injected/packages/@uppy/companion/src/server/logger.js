@@ -9,17 +9,17 @@ const valuesToMask = [];
 * @param {Array} maskables a list of strings to be masked
 */
 exports.setMaskables = maskables => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.setMaskables","fileName":"${__filename}","paramsNumber":1},`);
 
   maskables.forEach(i => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"maskables.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     valuesToMask.push(escapeStringRegexp(i));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"maskables.forEach"},');
 
   });
   Object.freeze(valuesToMask);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.setMaskables"},');
 
 };
 /**
@@ -29,10 +29,10 @@ exports.setMaskables = maskables => {
 * @param {string=} traceId a unique id to easily trace logs tied to a request
 */
 exports.info = (msg, tag, traceId) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.info","fileName":"${__filename}","paramsNumber":3},`);
 
   log(msg, tag, 'info', traceId);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.info"},');
 
 };
 /**
@@ -42,11 +42,11 @@ exports.info = (msg, tag, traceId) => {
 * @param {string=} traceId a unique id to easily trace logs tied to a request
 */
 exports.warn = (msg, tag, traceId) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.warn","fileName":"${__filename}","paramsNumber":3},`);
 
   // @ts-ignore
   log(msg, tag, 'warn', traceId, chalk.bold.yellow);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.warn"},');
 
 };
 /**
@@ -57,11 +57,11 @@ exports.warn = (msg, tag, traceId) => {
 * @param {boolean=} shouldLogStackTrace when set to true, errors will be logged with their stack trace
 */
 exports.error = (msg, tag, traceId, shouldLogStackTrace) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":4},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.error","fileName":"${__filename}","paramsNumber":4},`);
 
   // @ts-ignore
   log(msg, tag, 'error', traceId, chalk.bold.red, shouldLogStackTrace);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.error"},');
 
 };
 /**
@@ -71,12 +71,12 @@ exports.error = (msg, tag, traceId, shouldLogStackTrace) => {
 * @param {string=} traceId a unique id to easily trace logs tied to a request
 */
 exports.debug = (msg, tag, traceId) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.debug","fileName":"${__filename}","paramsNumber":3},`);
 
   if (process.env.NODE_ENV !== 'production') {
     log(msg, tag, 'debug', traceId);
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.debug"},');
 
 };
 /**
@@ -96,12 +96,12 @@ const log = (msg, tag, level, id, color, shouldLogStackTrace) => {
   id = id || '';
   const whitespace = tag && id ? ' ' : '';
   color = color || (message => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"color","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"color"},');
 
     return message;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"color"},');
 
   });
   if (typeof msg === 'string') {

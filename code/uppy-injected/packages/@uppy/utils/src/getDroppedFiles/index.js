@@ -12,24 +12,24 @@ const fallbackApi = require('./utils/fallbackApi');
 * @returns {Promise} - Array<File>
 */
 module.exports = function getDroppedFiles(dataTransfer, {logDropError = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getDroppedFiles","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDroppedFiles"},');
 
 }} = {}) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getDroppedFiles","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":2},`);
 
   // Get all files from all subdirs. Works (at least) in Chrome, Mozilla, and Safari
   if (dataTransfer.items && dataTransfer.items[0] && ('webkitGetAsEntry' in dataTransfer.items[0])) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDroppedFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return webkitGetAsEntryApi(dataTransfer, logDropError);
       // Otherwise just return all first-order files
 } else {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDroppedFiles"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return fallbackApi(dataTransfer);
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDroppedFiles"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

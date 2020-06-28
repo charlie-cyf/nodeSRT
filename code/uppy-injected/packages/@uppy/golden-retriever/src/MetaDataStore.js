@@ -107,24 +107,24 @@ module.exports = class MetaDataStore {
     const instanceIDs = findUppyInstances();
     const now = Date.now();
     instanceIDs.forEach(id => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.instanceIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       const data = localStorage.getItem(`uppyState:${id}`);
       if (!data) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.instanceIDs.forEach"},');
 
         return null;
       }
       const obj = maybeParse(data);
       if (!obj) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.instanceIDs.forEach"},');
 
         return null;
       }
       if (obj.expires && obj.expires < now) {
         localStorage.removeItem(`uppyState:${id}`);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.instanceIDs.forEach"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"cleanup"},');

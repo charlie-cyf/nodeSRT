@@ -27,10 +27,10 @@ var TransloaditAssemblyWatcher = /*#__PURE__*/function (_Emitter) {
     _this._assemblyIDs = assemblyIDs;
     _this._remaining = assemblyIDs.length;
     _this.promise = new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"promise\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       _this._resolve = resolve;
       _this._reject = reject;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"promise"},');
     });
     _this._onAssemblyComplete = _this._onAssemblyComplete.bind(_assertThisInitialized(_this));
     _this._onAssemblyCancel = _this._onAssemblyCancel.bind(_assertThisInitialized(_this));

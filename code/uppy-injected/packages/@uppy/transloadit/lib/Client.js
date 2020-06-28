@@ -46,9 +46,9 @@ module.exports = /*#__PURE__*/function () {
     }
 
     Object.keys(fields).forEach(function (key) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       data.append(key, fields[key]);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forEach"},');
     });
     data.append('num_expected_upload_files', expectedFiles);
     var url = this.opts.service + "/assemblies";
@@ -58,12 +58,12 @@ module.exports = /*#__PURE__*/function () {
       headers: this._headers,
       body: data
     }).then(function (response) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then.fetchWithNetworkError.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then.fetchWithNetworkError.then"},');
       return response.json();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then.fetchWithNetworkError.then"},');
     }).then(function (assembly) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (assembly.error) {
         var error = new Error(assembly.error);
@@ -74,21 +74,21 @@ module.exports = /*#__PURE__*/function () {
           error.details += ' ' + ("Assembly ID: " + assembly.assembly_id);
         }
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then"},');
         throw error;
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then"},');
       return assembly;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then"},');
     }).catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch"},');
       return _this._reportError(err, {
         url: url,
         type: 'API_ERROR'
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.then.catch"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"createAssembly"},');
   };
@@ -110,20 +110,20 @@ module.exports = /*#__PURE__*/function () {
       method: 'post',
       headers: this._headers
     }).then(function (response) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then"},');
       return response.json();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then"},');
     }).catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch"},');
       return _this2._reportError(err, {
         assembly: assembly,
         file: file,
         url: url,
         type: 'API_ERROR'
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"reserveFile"},');
   };
@@ -155,20 +155,20 @@ module.exports = /*#__PURE__*/function () {
       method: 'post',
       headers: this._headers
     }).then(function (response) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then2"},');
       return response.json();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then2"},');
     }).catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.catch2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch2"},');
       return _this3._reportError(err, {
         assembly: assembly,
         file: file,
         url: url,
         type: 'API_ERROR'
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"addFile"},');
   };
@@ -188,18 +188,18 @@ module.exports = /*#__PURE__*/function () {
       method: 'delete',
       headers: this._headers
     }).then(function (response) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then3"},');
       return response.json();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then3"},');
     }).catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.catch3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch3"},');
       return _this4._reportError(err, {
         url: url,
         type: 'API_ERROR'
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch3"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"cancelAssembly"},');
   };
@@ -217,18 +217,18 @@ module.exports = /*#__PURE__*/function () {
     return fetchWithNetworkError(url, {
       headers: this._headers
     }).then(function (response) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey11\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then4"},');
       return response.json();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch.fetchWithNetworkError.then4"},');
     }).catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey12\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then.catch4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch4"},');
       return _this5._reportError(err, {
         url: url,
         type: 'STATUS_ERROR'
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then.catch4"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"getAssemblyStatus"},');
   };
@@ -251,10 +251,10 @@ module.exports = /*#__PURE__*/function () {
         error: message
       })
     }).then(function (response) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey13\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.fetchWithNetworkError.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then"},');
       return response.json();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.fetchWithNetworkError.then"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"submitError"},');
   };
@@ -282,8 +282,8 @@ module.exports = /*#__PURE__*/function () {
 
     this.submitError(err, opts).catch(function (_) {
       // not much we can do then is there
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey14\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.submitError.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.submitError.catch"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_reportError"},');
     throw err;

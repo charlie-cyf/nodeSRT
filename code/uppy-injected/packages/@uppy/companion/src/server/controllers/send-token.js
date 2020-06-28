@@ -16,7 +16,7 @@ const versionCmp = require('../helpers/version');
 * @param {function} next
 */
 module.exports = function sendToken(req, res, next) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sendToken","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":3},`);
 
   const uppyAuthToken = req.companion.authToken;
   // some providers need the token in cookies for thumbnail/image requests
@@ -32,13 +32,13 @@ module.exports = function sendToken(req, res, next) {
     // if no preset clients then allow any client
     if (!allowedClients || hasMatch(origin, allowedClients) || hasMatch(new URL(origin).host, allowedClients)) {
       const allowsStringMessage = versionCmp.gte(clientVersion, '1.0.2');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sendToken"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
       return res.send(allowsStringMessage ? htmlContent(uppyAuthToken, origin) : oldHtmlContent(uppyAuthToken, origin));
     }
   }
   next();
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sendToken"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };
 /**

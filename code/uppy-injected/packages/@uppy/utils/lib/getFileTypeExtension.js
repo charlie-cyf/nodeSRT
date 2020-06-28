@@ -23,10 +23,10 @@ var mimeToExtensions = {
 };
 
 module.exports = function getFileTypeExtension(mimeType) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getFileTypeExtension\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // Remove the ; bit in 'video/x-matroska;codecs=avc1'
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // Remove the ; bit in 'video/x-matroska;codecs=avc1'
 
   mimeType = mimeType.replace(/;.*$/, '');
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFileTypeExtension"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return mimeToExtensions[mimeType] || null;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFileTypeExtension"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

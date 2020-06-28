@@ -90,12 +90,12 @@ const SRTlib = require('SRT-util');
       enumerable: !0,
       value: e
     }), 2 & r && "string" != typeof e)) for (var n in e) u.d(t, n, (function (r) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"u.t.bind","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"u.t.u.d.bind","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"u.t.bind"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"u.t.u.d.bind"},');
 
       return e[r];
-            SRTlib.send('{"type":"FUNCTIONEND","function":"u.t.bind"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"u.t.u.d.bind"},');
 
     }).bind(null, n));
         SRTlib.send('{"type":"FUNCTIONEND","function":"u.t"},');

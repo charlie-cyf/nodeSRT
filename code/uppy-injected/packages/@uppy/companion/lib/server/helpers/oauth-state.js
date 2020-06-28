@@ -5,33 +5,33 @@ const crypto = require('crypto');
 // @ts-ignore
 const atob = require('atob');
 module.exports.generateState = secret => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.generateState","fileName":"${__filename}","paramsNumber":1},`);
 
   const state = {};
   state.id = crypto.randomBytes(10).toString('hex');
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateState"},');
 
   return setState(state, secret);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateState"},');
 
 };
 module.exports.addToState = (state, data, secret) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addToState","fileName":"${__filename}","paramsNumber":3},`);
 
   const stateObj = getState(state, secret);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.addToState"},');
 
   return setState(Object.assign(stateObj, data), secret);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.addToState"},');
 
 };
 module.exports.getFromState = (state, name, secret) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFromState","fileName":"${__filename}","paramsNumber":3},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFromState"},');
 
   return getState(state, secret)[name];
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFromState"},');
 
 };
 const setState = (state, secret) => {

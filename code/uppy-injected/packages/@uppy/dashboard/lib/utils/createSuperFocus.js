@@ -14,7 +14,7 @@ Focuses on some element in the currently topmost overlay.
 
 
 module.exports = function createSuperFocus() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.createSuperFocus\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
   var lastFocusWasOnSuperFocusableEl = false;
 
   var superFocus = function superFocus(dashboardEl, activeOverlayType) {
@@ -52,12 +52,12 @@ module.exports = function createSuperFocus() {
     SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
   };
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},'); // ___Why do we need to debounce?
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},'); // ___Why do we need to debounce?
   // 1. To deal with animations: overlay changes via animations, which results in the DOM updating AFTER plugin.update() already executed.
   // [Practical check] without debounce, if we open the Url overlay, and click 'Done', Dashboard won't get focused again.
   // [Practical check] if we delay 250ms instead of 260ms - IE11 won't get focused in same situation.
   // 2. Performance: there can be many state update()s in a second, and this function is called every time.
 
   return debounce(superFocus, 260);
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

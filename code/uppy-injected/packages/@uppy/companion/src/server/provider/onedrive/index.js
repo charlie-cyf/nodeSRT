@@ -56,33 +56,33 @@ class OneDrive extends Provider {
       qs.$skiptoken = query.cursor;
     }
     this.client.get(`${rootPath}/${path}/children`).qs(qs).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.onedrive.list.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request"},');
 
         return done(err);
       } else {
         this._userInfo({
           token
         }, (err, infoResp) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_userInfo","fileName":"${__filename}","paramsNumber":2},`);
 
           if (err || infoResp.statusCode !== 200) {
             err = this._error(err, infoResp);
             logger.error(err, 'provider.onedrive.user.error');
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_userInfo"},');
 
             return done(err);
           }
           done(null, this.adaptData(body, infoResp.body.mail || infoResp.body.userPrincipalName));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_userInfo"},');
 
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
@@ -95,37 +95,37 @@ class OneDrive extends Provider {
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
 
     return this.client.get(`${rootPath}/items/${id}/content`).auth(token).request().on('response', resp => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.auth.request.on.on.on.client.get.auth.request.on.on.client.get.auth.request.on","fileName":"${__filename}","paramsNumber":1},`);
 
       if (resp.statusCode !== 200) {
         onData(this._error(null, resp));
       } else {
         resp.on('data', chunk => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
           return onData(null, chunk);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request.on.on.on.client.get.auth.request.on.on.client.get.auth.request.on"},');
 
     }).on('end', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.auth.request.on.on.on.client.get.auth.request.on.on","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request.on.on.on.client.get.auth.request.on.on"},');
 
       return onData(null, null);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request.on.on.on.client.get.auth.request.on.on"},');
 
     }).on('error', err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.auth.request.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
 
       logger.error(err, 'provider.onedrive.download.error');
       onData(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request.on.on.on"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
@@ -150,18 +150,18 @@ class OneDrive extends Provider {
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
     return this.client.get(`${rootPath}/items/${id}`).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.auth.request","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.onedrive.size.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request"},');
 
         return done(err);
       } else {
         done(null, body.size);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
@@ -187,7 +187,7 @@ class OneDrive extends Provider {
     };
     const items = adapter.getItemSubList(res);
     items.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"items.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       data.items.push({
         isFolder: adapter.isFolder(item),
@@ -200,7 +200,7 @@ class OneDrive extends Provider {
         modifiedDate: adapter.getItemModifiedDate(item),
         size: adapter.getItemSize(item)
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"items.forEach"},');
 
     });
     data.nextPagePath = adapter.getNextPagePath(res);

@@ -3,10 +3,10 @@ const SRTlib = require('SRT-util');
 
 const headerSanitize = require('../../src/server/header-blacklist');
 describe('Header black-list testing', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"${__filename}","paramsNumber":0},`);
 
   test('All headers invalid by name', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"${__filename}","paramsNumber":0},`);
 
     const headers = headerSanitize({
       origin: 'http://www.transloadit.com',
@@ -14,11 +14,11 @@ describe('Header black-list testing', () => {
       'content-Length': 1234
     });
     expect(headers).toEqual({});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test"},');
 
   });
   test('All headers invalid by regex', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test2","fileName":"${__filename}","paramsNumber":0},`);
 
     const headers = headerSanitize({
       'Proxy-header-fake': 'proxy-header-fake',
@@ -30,22 +30,22 @@ describe('Header black-list testing', () => {
       'sec-header-fake': 'sec-header-fake'
     });
     expect(headers).toEqual({});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test2"},');
 
   });
   test('All headers invalid by name and regex', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test3","fileName":"${__filename}","paramsNumber":0},`);
 
     const headers = headerSanitize({
       'Proxy-header-fake': 'proxy-header-fake',
       'Sec-header-fake': 'sec-header-fake'
     });
     expect(headers).toEqual({});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test3"},');
 
   });
   test('Returning only allowed headers', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test4","fileName":"${__filename}","paramsNumber":0},`);
 
     const headers = headerSanitize({
       Authorization: 'Basic Xxxxxx',
@@ -58,20 +58,20 @@ describe('Header black-list testing', () => {
     expect(headers).toHaveProperty('Authorization');
     expect(headers).toHaveProperty('Content-Type');
     expect(headers).toHaveProperty('Expires');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test4"},');
 
   });
   test('Return empty object when headers is not an object', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test5","fileName":"${__filename}","paramsNumber":0},`);
 
     expect(headerSanitize({})).toEqual({});
     expect(headerSanitize(null)).toEqual({});
     expect(headerSanitize(undefined)).toEqual({});
     expect(headerSanitize('Authorization: Basic 1234')).toEqual({});
     expect(headerSanitize(['Authorization', 'Basic 1234'])).toEqual({});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test5"},');
 
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"describe"},');
 
 });

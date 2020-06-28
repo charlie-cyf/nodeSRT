@@ -14,13 +14,13 @@ function uploadRoute(req, res) {
 
   res.json({
     files: req.files.map(function (file) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.req.files.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"res.json.files.req.files.map","fileName":"${__filename}","paramsNumber":1},`);
 
       delete file.buffer;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"files.req.files.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"res.json.files.req.files.map"},');
 
       return file;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"files.req.files.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"res.json.files.req.files.map"},');
 
     })
   });

@@ -83,9 +83,9 @@ var ProgressBar = /*#__PURE__*/function (_React$Component) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return h('div', {
       ref: function ref(container) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.h.ref\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         _this.container = container;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.ref"},');
       }
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');

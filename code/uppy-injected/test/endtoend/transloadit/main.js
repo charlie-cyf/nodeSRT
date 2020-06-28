@@ -35,7 +35,7 @@ function initUppyTransloadit(transloaditKey) {
     waitForEncoding: true
   });
   uppyTransloadit.on('transloadit:result', (stepName, result) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyTransloadit.on","fileName":"${__filename}","paramsNumber":2},`);
 
     // use transloadit encoding result here.
     console.log('Result here ====>', stepName, result);
@@ -52,7 +52,7 @@ function initUppyTransloadit(transloaditKey) {
 
     };
     img.src = result.url;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uppyTransloadit.on"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"initUppyTransloadit","paramsNumber":1},');

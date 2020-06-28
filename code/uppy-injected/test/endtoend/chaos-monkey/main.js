@@ -26,7 +26,7 @@ window.setup = function (options) {
     limit: options.limit
   });
   uppy.on('file-added', file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup.uppy.on","fileName":"${__filename}","paramsNumber":1},`);
 
     randomColorImage(function (blob) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"randomColorImage","fileName":"${__filename}","paramsNumber":1},`);
@@ -37,7 +37,7 @@ window.setup = function (options) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"randomColorImage"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"window.setup.uppy.on"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"window.setup"},');
@@ -54,12 +54,12 @@ function randomColorImage(callback) {
   canvas.height = 140;
   const context = canvas.getContext('2d');
   context.fillStyle = ('#xxxxxx').replace(/x/g, () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"context.fillStyle.replace","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"context.fillStyle.replace"},');
 
     return ('0123456789ABCDEF')[Math.floor(Math.random() * 16)];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"context.fillStyle.replace"},');
 
   });
   context.fillRect(0, 0, 140, 140);

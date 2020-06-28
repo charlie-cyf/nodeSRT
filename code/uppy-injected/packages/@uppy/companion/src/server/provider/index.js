@@ -29,7 +29,7 @@ module.exports.getProviderMiddleware = providers => {
   * @param {function} next
   * @param {string} providerName
   */
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getProviderMiddleware","fileName":"${__filename}","paramsNumber":1},`);
 
   const middleware = (req, res, next, providerName) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"middleware","fileName":"${__filename}","paramsNumber":4},`);
@@ -46,10 +46,10 @@ module.exports.getProviderMiddleware = providers => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"middleware"},');
 
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getProviderMiddleware"},');
 
   return middleware;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getProviderMiddleware"},');
 
 };
 /**
@@ -57,7 +57,7 @@ module.exports.getProviderMiddleware = providers => {
 * @return {Object.<string, typeof Provider>}
 */
 module.exports.getDefaultProviders = companionOptions => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getDefaultProviders","fileName":"${__filename}","paramsNumber":1},`);
 
   const {providerOptions} = companionOptions || ({
     providerOptions: null
@@ -84,10 +84,10 @@ module.exports.getDefaultProviders = companionOptions => {
   } else {
     providers.instagram = instagram;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDefaultProviders"},');
 
   return providers;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDefaultProviders"},');
 
 };
 /**
@@ -99,10 +99,10 @@ module.exports.getDefaultProviders = companionOptions => {
 * @param {object} grantConfig
 */
 module.exports.addCustomProviders = (customProviders, providers, grantConfig) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addCustomProviders","fileName":"${__filename}","paramsNumber":3},`);
 
   Object.keys(customProviders).forEach(providerName => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     providers[providerName] = customProviders[providerName].module;
     const providerConfig = Object.assign({}, customProviders[providerName].config);
@@ -112,10 +112,10 @@ module.exports.addCustomProviders = (customProviders, providers, grantConfig) =>
     providerConfig.callback = `/${providerName}/callback`;
     providerConfig.transport = 'session';
     grantConfig[providerName] = providerConfig;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.addCustomProviders"},');
 
 };
 /**
@@ -124,14 +124,14 @@ module.exports.addCustomProviders = (customProviders, providers, grantConfig) =>
 * @param {object} grantConfig
 */
 module.exports.addProviderOptions = (companionOptions, grantConfig) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addProviderOptions","fileName":"${__filename}","paramsNumber":2},`);
 
   const {server, providerOptions} = companionOptions;
   if (!validOptions({
     server
   })) {
     logger.warn('invalid provider options detected. Providers will not be loaded', 'provider.options.invalid');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.addProviderOptions"},');
 
     return;
   }
@@ -142,16 +142,16 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
   };
   const {oauthDomain} = server;
   const keys = Object.keys(providerOptions).filter(key => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"keys.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"keys.filter"},');
 
     return key !== 'server';
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"keys.filter"},');
 
   });
   keys.forEach(authProvider => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     if (grantConfig[authProvider]) {
       // explicitly add providerOptions so users don't override other providerOptions.
@@ -176,10 +176,10 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
     } else if (authProvider !== 's3') {
       logger.warn(`skipping one found unsupported provider "${authProvider}".`, 'provider.options.skip');
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"keys.forEach"},');
 
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.addProviderOptions"},');
 
 };
 /**

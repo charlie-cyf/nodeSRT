@@ -9,23 +9,23 @@ function addDashboardPlugin(uppy, opts, overrideOpts) {
 
   const dashboardOpts = {};
   dashboardOptionNames.forEach(key => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"dashboardOptionNames.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, key)) {
       dashboardOpts[key] = opts[key];
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"dashboardOptionNames.forEach"},');
 
   });
   const inline = overrideOpts.inline == null ? dashboardOpts.inline : overrideOpts.inline;
   if (!inline) {
     modalDashboardOptionNames.forEach(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"modalDashboardOptionNames.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       if (has(opts, key)) {
         dashboardOpts[key] = opts[key];
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"modalDashboardOptionNames.forEach"},');
 
     });
   }

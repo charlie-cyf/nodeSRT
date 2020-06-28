@@ -10,7 +10,7 @@ authServer.use(session({
   saveUninitialized: true
 }));
 authServer.all('*/callback', (req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"authServer.all","fileName":"${__filename}","paramsNumber":3},`);
 
   req.session.grant = {
     response: {
@@ -18,11 +18,11 @@ authServer.all('*/callback', (req, res, next) => {
     }
   };
   next();
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"authServer.all"},');
 
 });
 authServer.all(['*/send-token', '*/redirect'], (req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"authServer.all2","fileName":"${__filename}","paramsNumber":3},`);
 
   req.session.grant = {
     dynamic: {
@@ -30,7 +30,7 @@ authServer.all(['*/send-token', '*/redirect'], (req, res, next) => {
     }
   };
   next();
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"authServer.all2"},');
 
 });
 authServer.use(app);

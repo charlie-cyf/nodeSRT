@@ -5,6 +5,7 @@ const Astravel = require('astravel')
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
     require("acorn-bigint"),
+    require('acorn-static-class-features')
 
 )
 const Path = require('path');

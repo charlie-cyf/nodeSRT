@@ -8,34 +8,34 @@ class MockPurest {
     const methodsToMock = ['query', 'select', 'where', 'qs', 'auth', 'json'];
     const httpMethodsToMock = ['get', 'put', 'post', 'options', 'head'];
     methodsToMock.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"methodsToMock.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       this[item] = () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"item"},');
 
         return this;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"item"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"methodsToMock.forEach"},');
 
     });
     httpMethodsToMock.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"httpMethodsToMock.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       this[item] = url => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item2","fileName":"${__filename}","paramsNumber":1},`);
 
         this._requestUrl = url;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"item2"},');
 
         return this;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"item2"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"httpMethodsToMock.forEach"},');
 
     });
     this.opts = opts;
@@ -113,19 +113,19 @@ class MockPurest {
   }
 }
 module.exports = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return options => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     return new MockPurest(options);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

@@ -12,9 +12,9 @@ function addTransloaditPlugin(uppy, opts) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addTransloaditPlugin\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
   var transloaditOptions = {};
   transloaditOptionNames.forEach(function (name) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"transloaditOptionNames.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     if (has(opts, name)) transloaditOptions[name] = opts[name];
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"transloaditOptionNames.forEach"},');
   });
   uppy.use(Transloadit, transloaditOptions); // Adds a `results` key to the upload result data containing a flat array of all results from all Assemblies.
 

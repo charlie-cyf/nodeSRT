@@ -4,14 +4,14 @@
 var SRTlib = require('SRT-util');
 
 module.exports = function getTimeStamp() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getTimeStamp\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
   var date = new Date();
   var hours = pad(date.getHours().toString());
   var minutes = pad(date.getMinutes().toString());
   var seconds = pad(date.getSeconds().toString());
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getTimeStamp"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return hours + ':' + minutes + ':' + seconds;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getTimeStamp"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };
 /**
 * Adds zero to strings shorter than two characters

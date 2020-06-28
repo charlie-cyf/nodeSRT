@@ -10,25 +10,25 @@ function debounce(fn) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"debounce"},');
 
   return (...args) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
     latestArgs = args;
     if (!calling) {
       calling = Promise.resolve().then(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"calling.then","fileName":"${__filename}","paramsNumber":0},`);
 
         calling = null;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"calling.then"},');
 
         return fn(...latestArgs);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"calling.then"},');
 
       });
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     return calling;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
   };
     SRTlib.send('{"type":"FUNCTIONEND","function":"debounce","paramsNumber":1},');
@@ -118,16 +118,16 @@ module.exports = class Plugin {
     if (targetElement) {
       this.isTargetDOMEl = true;
       this.rerender = state => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.rerender","fileName":"${__filename}","paramsNumber":1},`);
 
         if (!this.uppy.getPlugin(this.id)) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.rerender"},');
 
           return;
         }
         this.el = preact.render(this.render(state), targetElement, this.el);
         this.afterUpdate();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.rerender"},');
 
       };
       this._updateUI = debounce(this.rerender);
@@ -147,15 +147,15 @@ module.exports = class Plugin {
     } else if (typeof target === 'function') {
       const Target = target;
       this.uppy.iteratePlugins(plugin => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
 
         if (plugin instanceof Target) {
           targetPlugin = plugin;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.iteratePlugins"},');
 
           return false;
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.iteratePlugins"},');
 
       });
     }

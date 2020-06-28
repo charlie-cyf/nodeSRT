@@ -58,49 +58,49 @@ function render() {
 render();
 store.subscribe(render);
 document.querySelector('#increment').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick","fileName":"${__filename}","paramsNumber":0},`);
 
   store.dispatch({
     type: 'INCREMENT'
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick"},');
 
 };
 document.querySelector('#decrement').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick2","fileName":"${__filename}","paramsNumber":0},`);
 
   store.dispatch({
     type: 'DECREMENT'
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick2"},');
 
 };
 document.querySelector('#incrementIfOdd').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick3","fileName":"${__filename}","paramsNumber":0},`);
 
   if (getCounter() % 2 !== 0) {
     store.dispatch({
       type: 'INCREMENT'
     });
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick3"},');
 
 };
 document.querySelector('#incrementAsync').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick4","fileName":"${__filename}","paramsNumber":0},`);
 
   setTimeout(() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
 
     return store.dispatch({
       type: 'INCREMENT'
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
 
   }, 1000);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick4"},');
 
 };
 // Uppy using the same store

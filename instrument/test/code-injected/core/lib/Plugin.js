@@ -80,62 +80,62 @@ module.exports = (function () {
   }
   var _proto = Plugin.prototype;
   _proto.getPluginState = function getPluginState() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.getPluginState.getPluginState","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.getPluginState","fileName":"${__filename}","paramsNumber":0},`);
 
     var _this$uppy$getState = this.uppy.getState(), plugins = _this$uppy$getState.plugins;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.getPluginState.getPluginState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.getPluginState"},');
 
     return plugins[this.id] || ({});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.getPluginState.getPluginState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.getPluginState"},');
 
   };
   _proto.setPluginState = function setPluginState(update) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.setPluginState.setPluginState","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.setPluginState","fileName":"${__filename}","paramsNumber":1},`);
 
     var _extends2;
     var _this$uppy$getState2 = this.uppy.getState(), plugins = _this$uppy$getState2.plugins;
     this.uppy.setState({
       plugins: _extends({}, plugins, (_extends2 = {}, _extends2[this.id] = _extends({}, plugins[this.id], {}, update), _extends2))
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.setPluginState.setPluginState"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.setPluginState"},');
 
   };
   _proto.setOptions = function setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.setOptions.setOptions","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.setOptions","fileName":"${__filename}","paramsNumber":1},`);
 
     this.opts = _extends({}, this.opts, {}, newOpts);
     this.setPluginState();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.setOptions.setOptions"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.setOptions"},');
 
   };
   _proto.update = function update(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.update.update","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.update","fileName":"${__filename}","paramsNumber":1},`);
 
     if (typeof this.el === 'undefined') {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.update.update"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.update"},');
 
       return;
     }
     if (this._updateUI) {
       this._updateUI(state);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.update.update"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.update"},');
 
   };
   _proto.afterUpdate = function afterUpdate() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.afterUpdate.afterUpdate","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.afterUpdate","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.afterUpdate.afterUpdate"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.afterUpdate"},');
 
   };
   _proto.onMount = function onMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.onMount.onMount","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.onMount","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.onMount.onMount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.onMount"},');
 
   };
   _proto.mount = function mount(target, plugin) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.mount.mount","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.mount","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this = this;
     var callerPluginName = plugin.id;
@@ -162,7 +162,7 @@ module.exports = (function () {
       }
       this.el = preact.render(this.render(this.uppy.getState()), targetElement);
       this.onMount();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.mount.mount"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.mount"},');
 
       return this.el;
     }
@@ -189,7 +189,7 @@ module.exports = (function () {
       this.parent = targetPlugin;
       this.el = targetPlugin.addTarget(plugin);
       this.onMount();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.mount.mount"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.mount"},');
 
       return this.el;
     }
@@ -200,50 +200,50 @@ module.exports = (function () {
     } else {
       message += 'If you meant to target an HTML element, please make sure that the element exists. ' + 'Check that the <script> tag initializing Uppy is right before the closing </body> tag at the end of the page. ' + '(see https://github.com/transloadit/uppy/issues/1042)\n\n' + 'If you meant to target a plugin, please confirm that your `import` statements or `require` calls are correct.';
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.mount.mount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.mount"},');
 
     throw new Error(message);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.mount.mount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.mount"},');
 
   };
   _proto.render = function render(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render.render","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render"},');
 
     throw new Error('Extend the render method to add your plugin to a DOM element');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render.render"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render"},');
 
   };
   _proto.addTarget = function addTarget(plugin) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.addTarget.addTarget","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.addTarget","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.addTarget.addTarget"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.addTarget"},');
 
     throw new Error('Extend the addTarget method to add your plugin to another plugin\'s target');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.addTarget.addTarget"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.addTarget"},');
 
   };
   _proto.unmount = function unmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.unmount.unmount","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.unmount","fileName":"${__filename}","paramsNumber":0},`);
 
     if (this.isTargetDOMEl && this.el && this.el.parentNode) {
       this.el.parentNode.removeChild(this.el);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.unmount.unmount"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.unmount"},');
 
   };
   _proto.install = function install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.install.install","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.install","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.install.install"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.install"},');
 
   };
   _proto.uninstall = function uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.uninstall.uninstall","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.uninstall","fileName":"${__filename}","paramsNumber":0},`);
 
     this.unmount();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.uninstall.uninstall"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.uninstall"},');
 
   };
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

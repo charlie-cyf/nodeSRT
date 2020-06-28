@@ -367,7 +367,7 @@ module.exports = class Instrumentor {
 
 
     getListOfId(ancestors, idList) {
-        let ancestorIdx = ancestors.length - 1;
+        let ancestorIdx = ancestors.length - 2;
         const memberExpHandler = function (node) {
             let temp = node.object;
             if (node.property.type === 'Identifier') {
@@ -382,7 +382,9 @@ module.exports = class Instrumentor {
         }
         while (ancestorIdx >= 0) {
             const ancestor = ancestors[ancestorIdx--];
+            // console.log('ancestor', ancestor)
             switch (ancestor.type) {
+                // TODO handle new Promise
                 case 'FunctionExpression':
                     if (ancestor.id && ancestor.id.type === 'Identifier') {
                         idList.unshift(ancestor.id.name)
@@ -404,21 +406,29 @@ module.exports = class Instrumentor {
                         idList.unshift(ancestor.callee.name);
                     } else if (ancestor.callee.type === 'MemberExpression') {
                         let callee = ancestor.callee;
-                        while (callee.object && callee.object.type !== "Identifier") {
+                         do {
+                            
+
                             if (callee.property.type === "Identifier") {
                                 idList.unshift(callee.property.name)
                             }
 
                             if (callee.object.type === 'CallExpression') {
-                                callee = callee.object.callee
+                                callee = callee.object.callee;
+                                if(callee.type === 'Identifier'){
+                                    idList.unshift(callee.name);
+                                    break;
+                                }
                             } else if (callee.object.type === 'MemberExpression') {
                                 memberExpHandler(callee.object);
                                 break;
+                            } else if (callee.object.type === "Identifier") {
+                                idList.unshift(callee.object.name)
                             }
                             else {
                                 break;
                             }
-                        }
+                        } while (callee.object && callee.object.type !== "Identifier");
                     }
                     break;
                 case 'Property':

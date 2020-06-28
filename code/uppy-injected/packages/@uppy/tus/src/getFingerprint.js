@@ -28,9 +28,9 @@ function isReactNative() {
 // For React Native and Cordova, we let tus-js-client’s default
 // fingerprint handling take charge.
 module.exports = function getFingerprint(uppyFileObj) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFingerprint","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return function (file, options) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFingerprint.ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
@@ -47,6 +47,6 @@ module.exports = function getFingerprint(uppyFileObj) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint.ReturnStatement"},');
 
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

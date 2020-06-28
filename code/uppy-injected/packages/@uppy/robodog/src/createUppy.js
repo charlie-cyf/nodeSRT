@@ -33,33 +33,33 @@ function createUppy(opts, overrides = {}) {
 
   const uppyOptions = {};
   uppyOptionNames.forEach(name => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyOptionNames.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     if (has(opts, name)) uppyOptions[name] = opts[name];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uppyOptionNames.forEach"},');
 
   });
   Object.assign(uppyOptions, overrides);
   const uppy = Uppy(uppyOptions);
   // Builtin event aliases
   Object.keys(eventNames).forEach(optionName => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     const eventName = eventNames[optionName];
     if (typeof opts[optionName] === 'function') {
       uppy.on(eventName, opts[optionName]);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
 
   });
   // Custom events (these should probably be added to core)
   if (typeof opts.onProgress === 'function') {
     uppy.on('upload-progress', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on","fileName":"${__filename}","paramsNumber":0},`);
 
       const {totalProgress} = uppy.getState();
       opts.onProgress.call(uppy, totalProgress);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on"},');
 
     });
   }

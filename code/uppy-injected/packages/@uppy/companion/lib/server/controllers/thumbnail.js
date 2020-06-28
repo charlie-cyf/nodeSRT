@@ -16,13 +16,13 @@ function thumbnail(req, res, next) {
     id,
     token
   }, (err, response) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.thumbnail","fileName":"${__filename}","paramsNumber":2},`);
 
     if (err) {
       err.isAuthError ? res.sendStatus(401) : next(err);
     }
     response ? response.pipe(res) : res.sendStatus(404);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"provider.thumbnail"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail","paramsNumber":3},');

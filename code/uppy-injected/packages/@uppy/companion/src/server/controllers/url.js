@@ -9,12 +9,12 @@ const utils = require('../helpers/utils');
 const {getProtectedHttpAgent, getRedirectEvaluator} = require('../helpers/request');
 const logger = require('../logger');
 module.exports = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return router().post('/meta', meta).post('/get', get);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };
 /**
@@ -37,24 +37,24 @@ const meta = (req, res) => {
     });
   }
   utils.getURLMeta(req.body.url, !debug).then(meta => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch.then","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
 
     return res.json(meta);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
 
   }).catch(err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
     logger.error(err, 'controller.url.meta.error', req.id);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch"},');
 
     // @todo send more meaningful error message and status code to client if possible
     return res.status(err.status || 500).json({
       message: 'failed to fetch URL metadata'
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"meta"},');
@@ -81,7 +81,7 @@ const get = (req, res) => {
     });
   }
   utils.getURLMeta(req.body.url, !debug).then(({size}) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch.then2","fileName":"${__filename}","paramsNumber":1},`);
 
     // @ts-ignore
     logger.debug('Instantiating uploader.', null, req.id);
@@ -89,34 +89,34 @@ const get = (req, res) => {
     if (uploader.hasError()) {
       const response = uploader.getResponse();
       res.status(response.status).json(response.body);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then2"},');
 
       return;
     }
     logger.debug('Waiting for socket connection before beginning remote download.', null, req.id);
     uploader.onSocketReady(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploader.onSocketReady","fileName":"${__filename}","paramsNumber":0},`);
 
       logger.debug('Socket connection received. Starting remote download.', null, req.id);
       downloadURL(req.body.url, uploader.handleChunk.bind(uploader), !debug, req.id);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uploader.onSocketReady"},');
 
     });
     const response = uploader.getResponse();
     res.status(response.status).json(response.body);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then2"},');
 
   }).catch(err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch2","fileName":"${__filename}","paramsNumber":1},`);
 
     logger.error(err, 'controller.url.get.error', req.id);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch2"},');
 
     // @todo send more meaningful error message and status code to client if possible
     return res.status(err.status || 500).json({
       message: 'failed to fetch URL metadata'
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch2"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');
@@ -170,38 +170,38 @@ const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
     agentClass: getProtectedHttpAgent(new URL(url).protocol, blockLocalIPs)
   };
   request(opts).on('response', resp => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on.request.on","fileName":"${__filename}","paramsNumber":1},`);
 
     if (resp.statusCode >= 300) {
       const err = new Error(`URL server responded with status: ${resp.statusCode}`);
       onDataChunk(err, null);
     } else {
       resp.on('data', chunk => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
         return onDataChunk(null, chunk);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
       });
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on.request.on"},');
 
   }).on('end', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
     return onDataChunk(null, null);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
   }).on('error', err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
 
     logger.error(err, 'controller.url.download.error', traceId);
     onDataChunk(err, null);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"downloadURL"},');

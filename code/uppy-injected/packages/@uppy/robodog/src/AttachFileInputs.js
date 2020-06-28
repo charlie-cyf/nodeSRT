@@ -30,7 +30,7 @@ class AttachFileInputs extends Plugin {
 
     const files = toArray(input.files);
     files.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       try {
         this.uppy.addFile({
@@ -44,7 +44,7 @@ class AttachFileInputs extends Plugin {
           this.uppy.log(err);
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"addFiles"},');
@@ -62,7 +62,7 @@ class AttachFileInputs extends Plugin {
     const {restrictions} = this.uppy.opts;
     this.inputs = this.el.querySelectorAll('input[type="file"]');
     this.inputs.forEach(input => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inputs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       input.addEventListener('change', this.handleChange);
       if (!input.hasAttribute('multiple')) {
@@ -78,7 +78,7 @@ class AttachFileInputs extends Plugin {
       // Check if this input already contains files (eg. user selected them before Uppy loaded,
       // or the page was refreshed and the browser kept files selected)
       this.addFiles(input);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"inputs.forEach"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
@@ -88,10 +88,10 @@ class AttachFileInputs extends Plugin {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     this.inputs.forEach(input => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inputs.forEach2","fileName":"${__filename}","paramsNumber":1},`);
 
       input.removeEventListener('change', this.handleChange);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"inputs.forEach2"},');
 
     });
     this.inputs = null;

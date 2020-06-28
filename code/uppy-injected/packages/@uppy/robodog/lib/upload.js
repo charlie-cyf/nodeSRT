@@ -22,14 +22,14 @@ function upload(files, opts) {
   });
   addTransloaditPlugin(uppy, opts);
   files.forEach(function (file) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"files.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     uppy.addFile({
       data: file,
       type: file.type,
       name: file.name,
       meta: file.meta || {}
     });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"upload"},');
   return uppy.upload();

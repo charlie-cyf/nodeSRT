@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const secondsToTime = require('./secondsToTime');
 module.exports = function prettyETA(seconds) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.prettyETA","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
   const time = secondsToTime(seconds);
   // Only display hours and minutes if they are greater than 0 but always
@@ -13,9 +13,9 @@ module.exports = function prettyETA(seconds) {
   const minutesStr = minutesVal ? minutesVal + 'm' : '';
   const secondsVal = minutesVal ? ('0' + time.seconds).substr(-2) : time.seconds;
   const secondsStr = time.hours ? '' : minutesVal ? ' ' + secondsVal + 's' : secondsVal + 's';
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.prettyETA"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return `${hoursStr}${minutesStr}${secondsStr}`;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.prettyETA"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

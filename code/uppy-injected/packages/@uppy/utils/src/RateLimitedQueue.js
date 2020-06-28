@@ -60,10 +60,10 @@ module.exports = class RateLimitedQueue {
 
     return {
       abort: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.abort","fileName":"${__filename}","paramsNumber":0},`);
 
         if (done) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.abort"},');
 
           return;
         }
@@ -71,21 +71,21 @@ module.exports = class RateLimitedQueue {
         this.activeRequests -= 1;
         cancelActive();
         this._queueNext();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.abort"},');
 
       },
       done: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.done","fileName":"${__filename}","paramsNumber":0},`);
 
         if (done) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.done"},');
 
           return;
         }
         done = true;
         this.activeRequests -= 1;
         this._queueNext();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.done"},');
 
       }
     };
@@ -99,10 +99,10 @@ module.exports = class RateLimitedQueue {
     // one by one without continuously _advancing_ it (and starting new tasks before immediately
     // aborting them)
     Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.then","fileName":"${__filename}","paramsNumber":0},`);
 
       this._next();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.then"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_queueNext"},');
@@ -138,29 +138,29 @@ module.exports = class RateLimitedQueue {
       fn,
       priority: options.priority || 0,
       abort: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.handler.abort","fileName":"${__filename}","paramsNumber":0},`);
 
         this._dequeue(handler);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.handler.abort"},');
 
       },
       done: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.handler.done","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.handler.done"},');
 
         throw new Error('Cannot mark a queued request as done: this indicates a bug');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.handler.done"},');
 
       }
     };
     const index = findIndex(this.queuedHandlers, other => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.index.findIndex","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.index.findIndex"},');
 
       return handler.priority > other.priority;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.index.findIndex"},');
 
     });
     if (index === -1) {
@@ -204,14 +204,14 @@ module.exports = class RateLimitedQueue {
         SRTlib.send('{"type":"FUNCTIONEND","function":"wrapPromiseFunction"},');
 
     return (...args) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey13","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
       let queuedRequest;
       const outerPromise = new Promise((resolve, reject) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"outerPromise","fileName":"${__filename}","paramsNumber":2},`);
 
         queuedRequest = this.run(() => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.run","fileName":"${__filename}","paramsNumber":0},`);
 
           let cancelError;
           let innerPromise;
@@ -221,7 +221,7 @@ module.exports = class RateLimitedQueue {
             innerPromise = Promise.reject(err);
           }
           innerPromise.then(result => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"innerPromise.then","fileName":"${__filename}","paramsNumber":1},`);
 
             if (cancelError) {
               reject(cancelError);
@@ -229,10 +229,10 @@ module.exports = class RateLimitedQueue {
               queuedRequest.done();
               resolve(result);
             }
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"innerPromise.then"},');
 
           }, err => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"innerPromise.then2","fileName":"${__filename}","paramsNumber":1},`);
 
             if (cancelError) {
               reject(cancelError);
@@ -240,35 +240,35 @@ module.exports = class RateLimitedQueue {
               queuedRequest.done();
               reject(err);
             }
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"innerPromise.then2"},');
 
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.run"},');
 
           return () => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
 
             cancelError = createCancelError();
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
           };
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.run"},');
 
         }, queueOptions);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"outerPromise"},');
 
       });
       outerPromise.abort = () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey12","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"outerPromise.abort","fileName":"${__filename}","paramsNumber":0},`);
 
         queuedRequest.abort();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"outerPromise.abort"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
 
       return outerPromise;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
 
     };
         SRTlib.send('{"type":"FUNCTIONEND","function":"wrapPromiseFunction"},');

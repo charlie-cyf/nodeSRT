@@ -11,11 +11,11 @@
 var SRTlib = require('SRT-util');
 
 module.exports = function copyToClipboard(textToCopy, fallbackString) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.copyToClipboard\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
   fallbackString = fallbackString || 'Copy the URL below';
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return new Promise(function (resolve) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.copyToClipboard.ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     var textArea = document.createElement('textarea');
     textArea.setAttribute('style', {
       position: 'fixed',
@@ -45,20 +45,20 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
       var successful = document.execCommand('copy');
 
       if (!successful) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement"},');
         return magicCopyFailed('copy command unavailable');
       }
 
       document.body.removeChild(textArea);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement"},');
       return resolve();
     } catch (err) {
       document.body.removeChild(textArea);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement"},');
       return magicCopyFailed(err);
     }
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement"},');
   });
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

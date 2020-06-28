@@ -48,21 +48,21 @@ var TransloaditResultsPlugin = /*#__PURE__*/function (_Plugin) {
 
     var assemblyResults = [];
     assemblies.forEach(function (assembly) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"assemblies.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       Object.keys(assembly.results).forEach(function (stepName) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         var results = assembly.results[stepName];
         results.forEach(function (result) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"results.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           assemblyResults.push(_extends({}, result, {
             assemblyId: assembly.assembly_id,
             stepName: stepName
           }));
-          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"results.forEach"},');
         });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"assemblies.forEach"},');
     });
     this.uppy.addResultData(uploadID, {
       results: assemblyResults

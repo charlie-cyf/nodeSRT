@@ -35,21 +35,21 @@ function prismify(data) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prismify","fileName":"${__filename}","paramsNumber":1},`);
 
   data.content = data.content.replace(unhighlightedCodeRx, (_, lang, code) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"data.content.data.content.replace","fileName":"${__filename}","paramsNumber":3},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"data.content.data.content.replace"},');
 
     return highlight(lang, entities.decode(code));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"data.content.data.content.replace"},');
 
   });
   data.excerpt = data.excerpt.replace(unhighlightedCodeRx, (_, lang, code) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"data.excerpt.data.excerpt.replace","fileName":"${__filename}","paramsNumber":3},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"data.excerpt.data.excerpt.replace"},');
 
     return highlight(lang, entities.decode(code));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"data.excerpt.data.excerpt.replace"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"prismify"},');

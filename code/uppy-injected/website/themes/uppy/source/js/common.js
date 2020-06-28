@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 (function () {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 
   var each = [].forEach;
   var doc = document.documentElement;
@@ -99,10 +99,10 @@ const SRTlib = require('SRT-util');
         container.className = 'menu-sub';
       }
       h3s.forEach(function (h) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"h3s.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         container.appendChild(makeLink(h));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"h3s.forEach"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"makeSubLinks"},');
@@ -140,19 +140,19 @@ const SRTlib = require('SRT-util');
 
     }
     menuButton.addEventListener('click', function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"menuButton.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
 
       menu.classList.toggle('is-open');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"menuButton.addEventListener"},');
 
     });
     body.addEventListener('click', function (e) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"body.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
 
       if (e.target !== menuButton && !menu.contains(e.target)) {
         menu.classList.remove('is-open');
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"body.addEventListener"},');
 
     });
     function initSubHeaders() {
@@ -181,7 +181,7 @@ const SRTlib = require('SRT-util');
         var h2s = content.querySelectorAll('h2');
         if (h2s.length) {
           each.call(h2s, function (h) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"each.call","fileName":"${__filename}","paramsNumber":1},`);
 
             sectionContainer.appendChild(makeLink(h));
             var h3s = collectH3s(h);
@@ -190,22 +190,22 @@ const SRTlib = require('SRT-util');
             if (h3s.length) {
               sectionContainer.appendChild(makeSubLinks(h3s, isDocs));
             }
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"each.call"},');
 
           });
         } else {
           var h3s = content.querySelectorAll('h3');
           each.call(h3s, function (h) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"each.call2","fileName":"${__filename}","paramsNumber":1},`);
 
             sectionContainer.appendChild(makeLink(h));
             allLinks.push(h);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"each.call2"},');
 
           });
         }
         sectionContainer.addEventListener('click', function (e) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sectionContainer.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
 
           e.preventDefault();
           if (e.target.classList.contains('section-link')) {
@@ -213,14 +213,14 @@ const SRTlib = require('SRT-util');
             setActive(e.target);
             animating = true;
             setTimeout(function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sectionContainer.addEventListener.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
               animating = false;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"sectionContainer.addEventListener.setTimeout"},');
 
             }, 400);
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"sectionContainer.addEventListener"},');
 
         }, true);
         // make links clickable
@@ -251,7 +251,7 @@ const SRTlib = require('SRT-util');
 
     // Tabs
     window.addEventListener('load', function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
 
       var tabs = document.querySelectorAll('.Tabs-link');
       function myTabClicks(tabClickEvent) {
@@ -280,7 +280,7 @@ const SRTlib = require('SRT-util');
       for (var i = 0; i < tabs.length; i++) {
         tabs[i].addEventListener('click', myTabClicks);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener"},');
 
     });
     var tagline = document.querySelector('.MainHeader-tagline');
@@ -317,11 +317,11 @@ const SRTlib = require('SRT-util');
 
       tagline.classList.remove('is-visible');
       setTimeout(function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
         taglinePart.innerHTML = taglineText;
         tagline.classList.add('is-visible');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
 
       }, 800);
             SRTlib.send('{"type":"FUNCTIONEND","function":"showTagline","paramsNumber":1},');
@@ -333,7 +333,7 @@ const SRTlib = require('SRT-util');
         SRTlib.send('{"type":"FUNCTIONEND","function":"IndexPage","paramsNumber":0},');
 
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   // Search with SwiftType
   // @todo get our own swifttype

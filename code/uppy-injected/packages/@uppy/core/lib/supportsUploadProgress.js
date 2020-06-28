@@ -4,7 +4,7 @@ var SRTlib = require('SRT-util'); // Edge 15.x does not fire 'progress' events o
 
 
 module.exports = function supportsUploadProgress(userAgent) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.supportsUploadProgress\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // Allow passing in userAgent for tests
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // Allow passing in userAgent for tests
 
   if (userAgent == null) {
     userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : null;
@@ -14,7 +14,7 @@ module.exports = function supportsUploadProgress(userAgent) {
   var m = /Edge\/(\d+\.\d+)/.exec(userAgent);
 
   if (!m) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.supportsUploadProgress"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return true;
   }
 
@@ -30,19 +30,19 @@ module.exports = function supportsUploadProgress(userAgent) {
   // Microsoft EdgeHTML 15.15063
 
   if (major < 15 || major === 15 && minor < 15063) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.supportsUploadProgress"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return true;
   } // Fixed in:
   // Microsoft EdgeHTML 18.18218
 
 
   if (major > 18 || major === 18 && minor >= 18218) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.supportsUploadProgress"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return true;
   }
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.supportsUploadProgress"},'); // other versions don't work.
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},'); // other versions don't work.
 
   return false;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.supportsUploadProgress"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

@@ -23,17 +23,17 @@ function onrequest(req, res) {
   }
   let body = '';
   req.on('data', chunk => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.on","fileName":"${__filename}","paramsNumber":1},`);
 
     body += chunk;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"req.on"},');
 
   });
   req.on('end', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.on2","fileName":"${__filename}","paramsNumber":0},`);
 
     onbody(body);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"req.on2"},');
 
   });
   function onbody(body) {
@@ -45,10 +45,10 @@ function onrequest(req, res) {
     res.write(Header());
     res.write(FormFields(fields));
     assemblies.forEach(assembly => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"assemblies.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       res.write(AssemblyResult(assembly));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"assemblies.forEach"},');
 
     });
     res.end(Footer());

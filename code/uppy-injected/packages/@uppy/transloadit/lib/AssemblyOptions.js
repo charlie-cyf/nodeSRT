@@ -56,9 +56,9 @@ var AssemblyOptions = /*#__PURE__*/function () {
       var fieldNames = assemblyOptions.fields;
       assemblyOptions.fields = {};
       fieldNames.forEach(function (fieldName) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fieldNames.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         assemblyOptions.fields[fieldName] = file.meta[fieldName];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"fieldNames.forEach"},');
       });
     }
 
@@ -81,24 +81,24 @@ var AssemblyOptions = /*#__PURE__*/function () {
     var options = this.opts;
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getAssemblyOptions"},');
     return Promise.resolve().then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then.then.then.then.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then.then"},');
       return options.getAssemblyOptions(file, options);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then.then"},');
     }).then(function (assemblyOptions) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then.then.then.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then"},');
       return _this._normalizeAssemblyOptions(file, assemblyOptions);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then"},');
     }).then(function (assemblyOptions) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       validateParams(assemblyOptions.params);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then"},');
       return {
         fileIDs: [file.id],
         options: assemblyOptions
       };
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getAssemblyOptions"},');
   };
@@ -113,7 +113,7 @@ var AssemblyOptions = /*#__PURE__*/function () {
     list.forEach(function (_ref) {
       var fileIDs = _ref.fileIDs,
           options = _ref.options;
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"list.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var id = JSON.stringify(options);
 
       if (dedupeMap[id]) {
@@ -127,14 +127,14 @@ var AssemblyOptions = /*#__PURE__*/function () {
         };
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"list.forEach"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_dedupe"},');
     return Object.keys(dedupeMap).map(function (id) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.map"},');
       return dedupeMap[id];
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.map"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_dedupe"},');
   };
@@ -154,15 +154,15 @@ var AssemblyOptions = /*#__PURE__*/function () {
     if (this.files.length > 0) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"build"},');
       return Promise.all(this.files.map(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then.Promise.all.files.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.Promise.all.files.map"},');
         return _this2._getAssemblyOptions(file);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.Promise.all.files.map"},');
       })).then(function (list) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then"},');
         return _this2._dedupe(list);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then"},');
       });
     }
 
@@ -170,19 +170,19 @@ var AssemblyOptions = /*#__PURE__*/function () {
       SRTlib.send('{"type":"FUNCTIONEND","function":"build"},'); // No files, just generate one Assembly
 
       return Promise.resolve(options.getAssemblyOptions(null, options)).then(function (assemblyOptions) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         validateParams(assemblyOptions.params);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then2"},');
         return [{
           fileIDs: _this2.files.map(function (file) {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.fileIDs.files.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.fileIDs.files.map"},');
             return file.id;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.fileIDs.files.map"},');
           }),
           options: assemblyOptions
         }];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then2"},');
       });
     }
 

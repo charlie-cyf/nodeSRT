@@ -28,10 +28,10 @@ function bundle() {
     SRTlib.send('{"type":"FUNCTIONEND","function":"bundle"},');
 
   return b.bundle((err, data) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.pipe.b.bundle","fileName":"${__filename}","paramsNumber":2},`);
 
     if (err) console.error(err.stack); else console.log('bundle complete');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.pipe.b.bundle"},');
 
   }).pipe(createWriteStream(path.join(__dirname, './bundle.js')));
     SRTlib.send('{"type":"FUNCTIONEND","function":"bundle","paramsNumber":0},');
@@ -43,12 +43,12 @@ b.on('error', console.error);
 fs.createReadStream(path.join(__dirname, '../../packages/uppy/dist/uppy.min.css')).pipe(fs.createWriteStream(path.join(__dirname, './uppy.min.css')));
 console.log('bundling...');
 bundle().on('finish', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bundle.on","fileName":"${__filename}","paramsNumber":0},`);
 
   // Start the PHP delevopment server.
   spawn('php', ['-S', `localhost:${port}`], {
     stdio: 'inherit'
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"bundle.on"},');
 
 });

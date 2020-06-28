@@ -10,7 +10,7 @@ Focuses on some element in the currently topmost overlay.
 2. If there are no [data-uppy-super-focusable] elements yet (or ever) - focuses on the first focusable element, but switches focus if superfocusable elements appear on next render.
 */
 module.exports = function createSuperFocus() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.createSuperFocus","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
 
   let lastFocusWasOnSuperFocusableEl = false;
   const superFocus = (dashboardEl, activeOverlayType) => {
@@ -48,7 +48,7 @@ module.exports = function createSuperFocus() {
         SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
 
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   // ___Why do we need to debounce?
   // 1. To deal with animations: overlay changes via animations, which results in the DOM updating AFTER plugin.update() already executed.
@@ -56,6 +56,6 @@ module.exports = function createSuperFocus() {
   // [Practical check] if we delay 250ms instead of 260ms - IE11 won't get focused in same situation.
   // 2. Performance: there can be many state update()s in a second, and this function is called every time.
   return debounce(superFocus, 260);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createSuperFocus"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

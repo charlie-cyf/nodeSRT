@@ -23,26 +23,26 @@ class TransloaditFormResult extends Plugin {
 
     const assemblyIds = [];
     fileIDs.forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       const file = this.uppy.getFile(fileID);
       const assembly = file.transloadit && file.transloadit.assembly;
       if (assembly && assemblyIds.indexOf(assembly) === -1) {
         assemblyIds.push(assembly);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach"},');
 
     });
     const tl = this.uppy.getPlugin(this.opts.transloaditPluginId || 'Transloadit');
         SRTlib.send('{"type":"FUNCTIONEND","function":"getAssemblyStatuses"},');
 
     return assemblyIds.map(id => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.assemblyIds.map","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.assemblyIds.map"},');
 
       return tl.getAssembly(id);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.assemblyIds.map"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"getAssemblyStatuses"},');

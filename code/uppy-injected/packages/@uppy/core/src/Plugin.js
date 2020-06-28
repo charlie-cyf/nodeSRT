@@ -13,29 +13,29 @@ function debounce(fn) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"debounce"},');
 
   return (...args) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
     latestArgs = args;
     if (!calling) {
       calling = Promise.resolve().then(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"calling.then","fileName":"${__filename}","paramsNumber":0},`);
 
         calling = null;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"calling.then"},');
 
         // At this point `args` may be different from the most
         // recent state, if multiple calls happened since this task
         // was queued. So we use the `latestArgs`, which definitely
         // is the most recent call.
         return fn(...latestArgs);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"calling.then"},');
 
       });
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     return calling;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
   };
     SRTlib.send('{"type":"FUNCTIONEND","function":"debounce","paramsNumber":1},');
@@ -151,19 +151,19 @@ module.exports = class Plugin {
       this.isTargetDOMEl = true;
       // API for plugins that require a synchronous rerender.
       this.rerender = state => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.rerender","fileName":"${__filename}","paramsNumber":1},`);
 
         // plugin could be removed, but this.rerender is debounced below,
         // so it could still be called even after uppy.removePlugin or uppy.close
         // hence the check
         if (!this.uppy.getPlugin(this.id)) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.rerender"},');
 
           return;
         }
         this.el = preact.render(this.render(state), targetElement, this.el);
         this.afterUpdate();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.rerender"},');
 
       };
       this._updateUI = debounce(this.rerender);
@@ -187,15 +187,15 @@ module.exports = class Plugin {
       const Target = target;
       // Find the target plugin instance.
       this.uppy.iteratePlugins(plugin => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
 
         if (plugin instanceof Target) {
           targetPlugin = plugin;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.iteratePlugins"},');
 
           return false;
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.iteratePlugins"},');
 
       });
     }

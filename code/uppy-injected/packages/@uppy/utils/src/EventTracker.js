@@ -27,10 +27,10 @@ module.exports = class EventTracker {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"remove","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"EventTracker"}},`);
 
     this._events.forEach(([event, fn]) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._events.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       this._emitter.off(event, fn);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._events.forEach"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"remove"},');

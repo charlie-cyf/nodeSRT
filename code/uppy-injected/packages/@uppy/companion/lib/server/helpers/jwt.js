@@ -8,16 +8,16 @@ const {encrypt, decrypt} = require('./utils');
 * @param {string} secret
 */
 module.exports.generateToken = (payload, secret) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.generateToken","fileName":"${__filename}","paramsNumber":2},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateToken"},');
 
   return encrypt(jwt.sign({
     data: payload
   }, secret, {
     expiresIn: 60 * 60 * 24
   }), secret);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateToken"},');
 
 };
 /**
@@ -26,23 +26,23 @@ module.exports.generateToken = (payload, secret) => {
 * @param {string} secret
 */
 module.exports.verifyToken = (token, secret) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.verifyToken","fileName":"${__filename}","paramsNumber":2},`);
 
   try {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.verifyToken"},');
 
     // @ts-ignore
     return {
       payload: jwt.verify(decrypt(token, secret), secret, {}).data
     };
   } catch (err) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.verifyToken"},');
 
     return {
       err
     };
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.verifyToken"},');
 
 };
 /**
@@ -53,7 +53,7 @@ module.exports.verifyToken = (token, secret) => {
 * @param {string} providerName
 */
 module.exports.addToCookies = (res, token, companionOptions, providerName) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":4},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addToCookies","fileName":"${__filename}","paramsNumber":4},`);
 
   const cookieOptions = {
     maxAge: 1000 * 60 * 60 * 24 * 30,
@@ -64,7 +64,7 @@ module.exports.addToCookies = (res, token, companionOptions, providerName) => {
   }
   // send signed token to client.
   res.cookie(`uppyAuthToken--${providerName}`, token, cookieOptions);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.addToCookies"},');
 
 };
 /**
@@ -74,7 +74,7 @@ module.exports.addToCookies = (res, token, companionOptions, providerName) => {
 * @param {string} providerName
 */
 module.exports.removeFromCookies = (res, companionOptions, providerName) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.removeFromCookies","fileName":"${__filename}","paramsNumber":3},`);
 
   const cookieOptions = {
     maxAge: 1000 * 60 * 60 * 24 * 30,
@@ -84,6 +84,6 @@ module.exports.removeFromCookies = (res, companionOptions, providerName) => {
     cookieOptions.domain = companionOptions.cookieDomain;
   }
   res.clearCookie(`uppyAuthToken--${providerName}`, cookieOptions);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.removeFromCookies"},');
 
 };

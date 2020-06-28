@@ -13,25 +13,25 @@ function addDashboardPlugin(uppy, opts, overrideOpts) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addDashboardPlugin\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
   var dashboardOpts = {};
   dashboardOptionNames.forEach(function (key) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"dashboardOptionNames.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
     if (has(opts, key)) {
       dashboardOpts[key] = opts[key];
     }
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"dashboardOptionNames.forEach"},');
   });
   var inline = overrideOpts.inline == null ? dashboardOpts.inline : overrideOpts.inline;
 
   if (!inline) {
     modalDashboardOptionNames.forEach(function (key) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"modalDashboardOptionNames.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (has(opts, key)) {
         dashboardOpts[key] = opts[key];
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"modalDashboardOptionNames.forEach"},');
     });
   }
 

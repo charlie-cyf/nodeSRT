@@ -25,8 +25,8 @@ function isReactNative() {
 
 
 module.exports = function getFingerprint(uppyFileObj) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getFingerprint\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint"},');
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return function (file, options) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getFingerprint.ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
@@ -40,5 +40,5 @@ module.exports = function getFingerprint(uppyFileObj) {
     return Promise.resolve(uppyFingerprint);
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint.ReturnStatement"},');
   };
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint"},');
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

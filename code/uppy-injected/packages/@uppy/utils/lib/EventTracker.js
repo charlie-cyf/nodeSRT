@@ -32,11 +32,11 @@ module.exports = /*#__PURE__*/function () {
     this._events.forEach(function (_ref) {
       var event = _ref[0],
           fn = _ref[1];
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports._events.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this._emitter.off(event, fn);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._events.forEach"},');
     });
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"remove"},');

@@ -8,19 +8,19 @@
 const SRTlib = require('SRT-util');
 
 module.exports = function getRelativePath(fileEntry) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getRelativePath","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
   // fileEntry.fullPath - "/simpsons/hi.jpeg" or undefined (for browsers that don't support it)
   // fileEntry.name - "hi.jpeg"
   if (!fileEntry.fullPath || fileEntry.fullPath === '/' + fileEntry.name) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getRelativePath"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return null;
   } else {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getRelativePath"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return fileEntry.fullPath;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getRelativePath"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };

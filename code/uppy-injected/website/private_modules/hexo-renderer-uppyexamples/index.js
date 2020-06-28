@@ -27,19 +27,19 @@ function parseExamplesBrowserify(data, options, callback) {
   var cmd = 'node ' + browserifyScript + ' ' + data.path + ' ' + tmpFile + ' --colors';
   // hexo.log.i('hexo-renderer-uppyexamples: change detected in examples. running: ' + cmd);
   exec(cmd, function (err, stdout, stderr) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exec2","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exec","fileName":"${__filename}","paramsNumber":3},`);
 
     if (err) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exec2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exec"},');
 
       return callback(err);
     }
     hexo.log.i('hexo-renderer-uppyexamples: ' + stdout.trim());
     fs.readFile(tmpFile, 'utf-8', function (err, bundledJS) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exec","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exec.fs.readFile","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"exec"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"exec.fs.readFile"},');
 
         return callback(err);
       }
@@ -49,10 +49,10 @@ function parseExamplesBrowserify(data, options, callback) {
       // bundledJS = bundledJS.replace(/</g, ' < ');
       bundledJS = bundledJS.replace(/<(?!=)/g, ' < ');
       callback(null, bundledJS);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exec"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exec.fs.readFile"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"exec2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"exec"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"parseExamplesBrowserify","paramsNumber":3},');
