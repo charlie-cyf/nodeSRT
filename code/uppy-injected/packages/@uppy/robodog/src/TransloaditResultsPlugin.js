@@ -35,7 +35,7 @@ class TransloaditResultsPlugin extends Plugin {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"assemblies.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       Object.keys(assembly.results).forEach(stepName => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         const results = assembly.results[stepName];
         results.forEach(result => {
@@ -49,7 +49,7 @@ class TransloaditResultsPlugin extends Plugin {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"results.forEach"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"assemblies.forEach"},');

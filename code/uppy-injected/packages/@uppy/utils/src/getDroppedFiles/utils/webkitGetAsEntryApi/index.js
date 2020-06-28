@@ -20,7 +20,7 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"createPromiseToAddFileOrParseDirectory"},');
 
     return new Promise(resolve => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"NewExpression","fileName":"${__filename}","paramsNumber":1},`);
 
       // This is a base call
       if (entry.isFile) {
@@ -59,12 +59,12 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
 
             });
             Promise.all(promises).then(() => {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"then"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.all.then"},');
 
               return resolve();
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"then"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.all.then"},');
 
             });
                         SRTlib.send('{"type":"FUNCTIONEND","function":"getFilesAndDirectoriesFromDirectory.onSuccess"},');
@@ -72,7 +72,7 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
           }
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"NewExpression"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"createPromiseToAddFileOrParseDirectory"},');
@@ -93,12 +93,12 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return Promise.all(rootPromises).then(() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.webkitGetAsEntryApi.ReturnStatement.then","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.webkitGetAsEntryApi.ReturnStatement.Promise.all.then","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.ReturnStatement.then"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.ReturnStatement.Promise.all.then"},');
 
     return files;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.ReturnStatement.then"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.ReturnStatement.Promise.all.then"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

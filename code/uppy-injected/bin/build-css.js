@@ -68,10 +68,10 @@ async function compileCSS() {
       from: file
     });
     postcssResult.warnings().forEach(function (warn) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"postcssResult.warnings.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       console.warn(warn.toString());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"postcssResult.warnings.forEach"},');
 
     });
     const outdir = path.join(path.dirname(file), '../dist');
@@ -94,10 +94,10 @@ async function compileCSS() {
       from: outfile
     });
     minifiedResult.warnings().forEach(function (warn) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"minifiedResult.warnings.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       console.warn(warn.toString());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"minifiedResult.warnings.forEach"},');
 
     });
     await writeFile(outfile.replace(/\.css$/, '.min.css'), minifiedResult.css);

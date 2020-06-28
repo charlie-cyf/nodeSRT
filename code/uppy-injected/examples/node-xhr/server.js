@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 var formidable = require('formidable');
 var http = require('http');
 http.createServer(function (req, res) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"listen.http.createServer","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"http.createServer.listen.http.createServer","fileName":"${__filename}","paramsNumber":2},`);
 
   const headers = {
     'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ http.createServer(function (req, res) {
   if (req.method === 'OPTIONS') {
     res.writeHead(204, headers);
     res.end();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"listen.http.createServer"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"http.createServer.listen.http.createServer"},');
 
     return;
   }
@@ -26,13 +26,13 @@ http.createServer(function (req, res) {
     form.uploadDir = './uploads';
     form.keepExtensions = true;
     form.parse(req, function (err, fields, files) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"listen.http.createServer.form.parse","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"http.createServer.listen.http.createServer.form.parse","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err) {
         console.log('some error', err);
         res.writeHead(200, headers);
         res.write(JSON.stringify(err));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"listen.http.createServer.form.parse"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"http.createServer.listen.http.createServer.form.parse"},');
 
         return res.end();
       }
@@ -46,19 +46,19 @@ http.createServer(function (req, res) {
         fields,
         files
       }));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"listen.http.createServer.form.parse"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"http.createServer.listen.http.createServer.form.parse"},');
 
       return res.end();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"listen.http.createServer.form.parse"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"http.createServer.listen.http.createServer.form.parse"},');
 
     });
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"listen.http.createServer"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"http.createServer.listen.http.createServer"},');
 
 }).listen(3020, () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"listen","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"http.createServer.listen","fileName":"${__filename}","paramsNumber":0},`);
 
   console.log('server started');
-    SRTlib.send('{"type":"FUNCTIONEND","function":"listen"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"http.createServer.listen"},');
 
 });

@@ -28,12 +28,12 @@ function getSources(pluginName) {
   };
   const globPath = path.join(__dirname, '..', 'packages', '@uppy', pluginName, 'lib', '**', '*.js');
   let contents = glob.sync(globPath).map(file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"contents.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"contents.glob.sync.map","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"contents.map"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"contents.glob.sync.map"},');
 
     return fs.readFileSync(file, 'utf-8');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"contents.map"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"contents.glob.sync.map"},');
 
   });
   if (dependencies[pluginName]) {
@@ -128,9 +128,9 @@ function buildPluginsList() {
         plugin = new Plugin({
           store: {
             dispatch: () => {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"plugin.store.dispatch","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"plugin.NewExpression.store.dispatch","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"plugin.store.dispatch"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"plugin.NewExpression.store.dispatch"},');
 
             }
           }
@@ -209,13 +209,13 @@ function sortObjectAlphabetically(obj, sortFunc) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"sortObjectAlphabetically"},');
 
   return Object.keys(obj).sort(sortFunc).reduce(function (result, key) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.sort.reduce","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Object.keys.sort.reduce","fileName":"${__filename}","paramsNumber":2},`);
 
     result[key] = obj[key];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.sort.reduce"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Object.keys.sort.reduce"},');
 
     return result;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.sort.reduce"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Object.keys.sort.reduce"},');
 
   }, {});
     SRTlib.send('{"type":"FUNCTIONEND","function":"sortObjectAlphabetically","paramsNumber":2},');
@@ -225,12 +225,12 @@ function createTypeScriptLocale(plugin, pluginName) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createTypeScriptLocale","fileName":"${__filename}","paramsNumber":2},`);
 
   const allowedStringTypes = Object.keys(plugin.defaultLocale.strings).map(key => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"allowedStringTypes.map.join.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"allowedStringTypes.Object.keys.map.join.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"allowedStringTypes.map.join.map"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"allowedStringTypes.Object.keys.map.join.Object.keys.map"},');
 
     return `  | '${key}'`;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"allowedStringTypes.map.join.map"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"allowedStringTypes.Object.keys.map.join.Object.keys.map"},');
 
   }).join('\n');
   const pluginClassName = pluginName === 'core' ? 'Core' : plugin.id;
@@ -276,13 +276,13 @@ function test() {
   const followerValues = {};
   const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', '*.js');
   glob.sync(localePackagePath).forEach(localePath => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob.sync.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     const localeName = path.basename(localePath, '.js');
     // we renamed the es_GL → gl_ES locale, and kept the old name
     // for backwards-compat, see https://github.com/transloadit/uppy/pull/1929
     if (localeName === 'es_GL') {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"glob.sync.forEach"},');
 
       return;
     }
@@ -290,7 +290,7 @@ function test() {
     // We do not check nested items because different languages may have different amounts of plural forms.
     followerValues[localeName] = require(localePath).strings;
     followerLocales[localeName] = Object.keys(followerValues[localeName]);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"glob.sync.forEach"},');
 
   });
   // Take aside our leading locale: en_US

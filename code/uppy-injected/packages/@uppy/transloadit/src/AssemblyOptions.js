@@ -80,32 +80,32 @@ class AssemblyOptions {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_getAssemblyOptions"},');
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.then.then.then.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then.Promise.resolve.then"},');
 
       return options.getAssemblyOptions(file, options);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then.Promise.resolve.then"},');
 
     }).then(assemblyOptions => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then"},');
 
       return this._normalizeAssemblyOptions(file, assemblyOptions);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then"},');
 
     }).then(assemblyOptions => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
 
       validateParams(assemblyOptions.params);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then"},');
 
       return {
         fileIDs: [file.id],
         options: assemblyOptions
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_getAssemblyOptions"},');
@@ -137,12 +137,12 @@ class AssemblyOptions {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_dedupe"},');
 
     return Object.keys(dedupeMap).map(id => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Object.keys.map"},');
 
       return dedupeMap[id];
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Object.keys.map"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_dedupe"},');
@@ -162,20 +162,20 @@ class AssemblyOptions {
             SRTlib.send('{"type":"FUNCTIONEND","function":"build"},');
 
       return Promise.all(this.files.map(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.Promise.all.files.map","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.all.then.Promise.all.files.map","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.Promise.all.files.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.all.then.Promise.all.files.map"},');
 
         return this._getAssemblyOptions(file);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.Promise.all.files.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.all.then.Promise.all.files.map"},');
 
       })).then(list => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.all.then","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.all.then"},');
 
         return this._dedupe(list);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.all.then"},');
 
       });
     }
@@ -184,10 +184,10 @@ class AssemblyOptions {
 
       // No files, just generate one Assembly
       return Promise.resolve(options.getAssemblyOptions(null, options)).then(assemblyOptions => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then","fileName":"${__filename}","paramsNumber":1},`);
 
         validateParams(assemblyOptions.params);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then"},');
 
         return [{
           fileIDs: this.files.map(file => {
@@ -201,7 +201,7 @@ class AssemblyOptions {
           }),
           options: assemblyOptions
         }];
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then"},');
 
       });
     }

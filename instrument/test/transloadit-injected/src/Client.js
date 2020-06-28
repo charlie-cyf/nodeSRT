@@ -30,10 +30,10 @@ module.exports = class Client {
       data.append('signature', signature);
     }
     Object.keys(fields).forEach(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       data.append(key, fields[key]);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Object.keys.forEach"},');
 
     });
     data.append('num_expected_upload_files', expectedFiles);

@@ -37,24 +37,24 @@ const meta = (req, res) => {
     });
   }
   utils.getURLMeta(req.body.url, !debug).then(meta => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch.then","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
     return res.json(meta);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
   }).catch(err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
     logger.error(err, 'controller.url.meta.error', req.id);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch"},');
 
     // @todo send more meaningful error message and status code to client if possible
     return res.status(err.status || 500).json({
       message: 'failed to fetch URL metadata'
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"meta"},');
@@ -81,7 +81,7 @@ const get = (req, res) => {
     });
   }
   utils.getURLMeta(req.body.url, !debug).then(({size}) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch.then2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then2","fileName":"${__filename}","paramsNumber":1},`);
 
     // @ts-ignore
     logger.debug('Instantiating uploader.', null, req.id);
@@ -89,7 +89,7 @@ const get = (req, res) => {
     if (uploader.hasError()) {
       const response = uploader.getResponse();
       res.status(response.status).json(response.body);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then2"},');
 
       return;
     }
@@ -104,19 +104,19 @@ const get = (req, res) => {
     });
     const response = uploader.getResponse();
     res.status(response.status).json(response.body);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then2"},');
 
   }).catch(err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch2","fileName":"${__filename}","paramsNumber":1},`);
 
     logger.error(err, 'controller.url.get.error', req.id);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch2"},');
 
     // @todo send more meaningful error message and status code to client if possible
     return res.status(err.status || 500).json({
       message: 'failed to fetch URL metadata'
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch2"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');

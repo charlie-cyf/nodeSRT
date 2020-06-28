@@ -130,7 +130,7 @@ class MarkdownTextarea {
         SRTlib.send('{"type":"FUNCTIONEND","function":"matchFilesAndThumbs"},');
 
     return Object.keys(filesById).reduce((acc, key) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.reduce","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Object.keys.reduce","fileName":"${__filename}","paramsNumber":2},`);
 
       const file = filesById[key];
       const thumb = thumbsById[key];
@@ -138,10 +138,10 @@ class MarkdownTextarea {
         file,
         thumb
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.reduce"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Object.keys.reduce"},');
 
       return acc;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.reduce"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Object.keys.reduce"},');
 
     }, []);
         SRTlib.send('{"type":"FUNCTIONEND","function":"matchFilesAndThumbs"},');
@@ -159,18 +159,18 @@ class MarkdownTextarea {
         template_id: TRANSLOADIT_EXAMPLE_TEMPLATE
       }
     }).then(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then.catch.robodog.upload.then","fileName":"${__filename}","paramsNumber":1},`);
 
       if (result == null) return;
       this.insertAttachments(this.matchFilesAndThumbs(result.results));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then.catch.robodog.upload.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       console.error(err);
       this.reportUploadError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then.catch"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"uploadFiles"},');
@@ -188,18 +188,18 @@ class MarkdownTextarea {
         template_id: TRANSLOADIT_EXAMPLE_TEMPLATE
       }
     }).then(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.pick.then.catch.robodog.pick.then","fileName":"${__filename}","paramsNumber":1},`);
 
       if (result == null) return;
       this.insertAttachments(this.matchFilesAndThumbs(result.results));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.pick.then.catch.robodog.pick.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.pick.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       console.error(err);
       this.reportUploadError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.pick.then.catch"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"pickFiles"},');
@@ -245,7 +245,7 @@ function loadSnippets() {
 
 }
 document.querySelector('#new').addEventListener('submit', event => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"addEventListener","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"document.querySelector.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
 
   event.preventDefault();
   const title = event.target.querySelector('input[name="title"]').value || 'Unnamed Snippet';
@@ -254,7 +254,7 @@ document.querySelector('#new').addEventListener('submit', event => {
   renderSnippet(title, text);
   event.target.querySelector('input').value = '';
   event.target.querySelector('textarea').value = '';
-    SRTlib.send('{"type":"FUNCTIONEND","function":"addEventListener"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"document.querySelector.addEventListener"},');
 
 });
 window.addEventListener('DOMContentLoaded', () => {

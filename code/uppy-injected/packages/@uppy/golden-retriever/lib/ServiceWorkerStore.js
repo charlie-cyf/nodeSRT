@@ -7,7 +7,7 @@ function waitForServiceWorker() {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"waitForServiceWorker\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"waitForServiceWorker"},');
   return new Promise(function (resolve, reject) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
     if (!isSupported) {
       reject(new Error('Unsupported'));
@@ -22,7 +22,7 @@ function waitForServiceWorker() {
       });
     }
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"waitForServiceWorker","paramsNumber":0},');
 }
@@ -43,10 +43,10 @@ var ServiceWorkerStore = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"list\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
     var defer = {};
     var promise = new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"promise\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"promise.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       defer.resolve = resolve;
       defer.reject = reject;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"promise"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"promise.NewExpression"},');
     });
     console.log('Loading stored blobs from Service Worker');
 

@@ -109,11 +109,11 @@ glob(srcPattern, (err, files) => {
     });
     // Listeners for changes, errors, and completion.
     b.on('update', bundle).on('error', onError).on('file', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"b.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
 
       // When file completes, unmute it.
       muted.delete(file);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on.on"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"b.on.on.on"},');
 
     });
     // Call bundle() manually to start watch processes.
@@ -144,10 +144,10 @@ glob(srcPattern, (err, files) => {
       mkdirp.sync(parentDir);
       console.info(chalk.grey(`⏳ building: ${path.relative(process.cwd(), file)}`));
       b.bundle().on('error', onError).pipe(createStream(output)).on('finish', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on.pipe.on","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"b.bundle.on.pipe.on","fileName":"${__filename}","paramsNumber":0},`);
 
         console.info(chalk.green(`✓ built: ${path.relative(process.cwd(), file)}`));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"on.pipe.on"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"b.bundle.on.pipe.on"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"bundle","paramsNumber":1},');

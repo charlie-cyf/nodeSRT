@@ -111,12 +111,12 @@ exports.sortImages = images => {
 
   // sort in ascending order of dimension
   return images.slice().sort((a, b) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.sort","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.images.slice.sort","fileName":"${__filename}","paramsNumber":2},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.sort"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.images.slice.sort"},');
 
     return a.width - b.width;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.sort"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.images.slice.sort"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sortImages"},');

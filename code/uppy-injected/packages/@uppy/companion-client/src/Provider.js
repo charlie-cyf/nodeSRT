@@ -9,12 +9,12 @@ const _getName = id => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getName"},');
 
   return id.split('-').map(s => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.map.join.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.id.split.map.join.id.split.map","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.map.join.map"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.id.split.map.join.id.split.map"},');
 
     return s.charAt(0).toUpperCase() + s.slice(1);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.map.join.map"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.id.split.map.join.id.split.map"},');
 
   }).join(' ');
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getName"},');
@@ -40,7 +40,7 @@ module.exports = class Provider extends RequestClient {
         SRTlib.send('{"type":"FUNCTIONEND","function":"headers"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
       super.headers().then(headers => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"headers.then.catch.headers.then","fileName":"${__filename}","paramsNumber":1},`);
@@ -57,7 +57,7 @@ module.exports = class Provider extends RequestClient {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"headers.then.catch.headers.then"},');
 
       }).catch(reject);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"headers"},');
@@ -131,7 +131,7 @@ module.exports = class Provider extends RequestClient {
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
 
       this.get(`${this.id}/logout`).then(res => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"get.then.catch.get.then","fileName":"${__filename}","paramsNumber":1},`);
@@ -148,7 +148,7 @@ module.exports = class Provider extends RequestClient {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"get.then.catch.get.then"},');
 
       }).catch(reject);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');

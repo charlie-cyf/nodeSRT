@@ -51,14 +51,14 @@ function createUppy(opts, overrides) {
   var uppy = Uppy(uppyOptions); // Builtin event aliases
 
   Object.keys(eventNames).forEach(function (optionName) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     var eventName = eventNames[optionName];
 
     if (typeof opts[optionName] === 'function') {
       uppy.on(eventName, opts[optionName]);
     }
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
   }); // Custom events (these should probably be added to core)
 
   if (typeof opts.onProgress === 'function') {

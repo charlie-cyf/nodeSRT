@@ -99,10 +99,10 @@ module.exports = class RateLimitedQueue {
     // one by one without continuously _advancing_ it (and starting new tasks before immediately
     // aborting them)
     Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
       this._next();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Promise.resolve.then"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_queueNext"},');
@@ -208,7 +208,7 @@ module.exports = class RateLimitedQueue {
 
       let queuedRequest;
       const outerPromise = new Promise((resolve, reject) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"outerPromise","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"outerPromise.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
         queuedRequest = this.run(() => {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.run","fileName":"${__filename}","paramsNumber":0},`);
@@ -255,7 +255,7 @@ module.exports = class RateLimitedQueue {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.run"},');
 
         }, queueOptions);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"outerPromise"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"outerPromise.NewExpression"},');
 
       });
       outerPromise.abort = () => {

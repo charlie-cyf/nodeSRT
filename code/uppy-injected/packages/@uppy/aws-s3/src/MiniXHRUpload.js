@@ -224,7 +224,7 @@ module.exports = class MiniXHRUpload {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadLocalFile"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
       // This is done in index.js in the S3 plugin.
       // this.uppy.emit('upload-started', file)
@@ -232,7 +232,7 @@ module.exports = class MiniXHRUpload {
       const xhr = new XMLHttpRequest();
       this.uploaderEvents[file.id] = new EventTracker(this.uppy);
       const timer = new ProgressTimeout(opts.timeout, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"timer","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"timer.NewExpression","fileName":"${__filename}","paramsNumber":0},`);
 
         xhr.abort();
         queuedRequest.done();
@@ -241,7 +241,7 @@ module.exports = class MiniXHRUpload {
         }));
         this.uppy.emit('upload-error', file, error);
         reject(error);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"timer"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"timer.NewExpression"},');
 
       });
       const id = cuid();
@@ -335,10 +335,10 @@ module.exports = class MiniXHRUpload {
         xhr.responseType = opts.responseType;
       }
       Object.keys(opts.headers).forEach(header => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         xhr.setRequestHeader(header, opts.headers[header]);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
       });
       const queuedRequest = this.requests.run(() => {
@@ -376,7 +376,7 @@ module.exports = class MiniXHRUpload {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"_onCancelAll"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadLocalFile"},');
@@ -389,7 +389,7 @@ module.exports = class MiniXHRUpload {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadRemoteFile"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
 
       // This is done in index.js in the S3 plugin.
       // this.uppy.emit('upload-started', file)
@@ -415,7 +415,7 @@ module.exports = class MiniXHRUpload {
         useFormData: opts.formData,
         headers: opts.headers
       }).then(res => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.catch.client.post.then","fileName":"${__filename}","paramsNumber":1},`);
 
         const token = res.token;
         const host = getSocketHost(file.remote.companionUrl);
@@ -527,17 +527,17 @@ module.exports = class MiniXHRUpload {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run2"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.catch.client.post.then"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
         this.uppy.emit('upload-error', file, err);
         reject(err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.catch"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadRemoteFile"},');

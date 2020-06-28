@@ -50,10 +50,10 @@ module.exports = function s3(config) {
       'content-type': req.query.type
     };
     Object.keys(metadata).forEach(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       fields[`x-amz-meta-${key}`] = metadata[key];
-            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
     });
     client.createPresignedPost({

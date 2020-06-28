@@ -39,7 +39,7 @@ function connect(dbName) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"connect"},');
 
   return new Promise((resolve, reject) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
     request.onupgradeneeded = event => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onupgradeneeded","fileName":"${__filename}","paramsNumber":1},`);
@@ -81,7 +81,7 @@ function connect(dbName) {
 
     };
     request.onerror = reject;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"connect","paramsNumber":1},');
@@ -93,7 +93,7 @@ function waitForRequest(request) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"waitForRequest"},');
 
   return new Promise((resolve, reject) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
 
     request.onsuccess = event => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess3","fileName":"${__filename}","paramsNumber":1},`);
@@ -103,7 +103,7 @@ function waitForRequest(request) {
 
     };
     request.onerror = reject;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression2"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"waitForRequest","paramsNumber":1},');
@@ -243,7 +243,7 @@ class IndexedDBStore {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then"},');
 
       return new Promise((resolve, reject) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement3","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression3","fileName":"${__filename}","paramsNumber":2},`);
 
         let size = 0;
         request.onsuccess = event => {
@@ -266,7 +266,7 @@ class IndexedDBStore {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"request.onerror"},');
 
         };
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression3"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then"},');
@@ -361,7 +361,7 @@ class IndexedDBStore {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');
 
       return new Promise((resolve, reject) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement4","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression4","fileName":"${__filename}","paramsNumber":2},`);
 
         request.onsuccess = event => {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess5","fileName":"${__filename}","paramsNumber":1},`);
@@ -380,7 +380,7 @@ class IndexedDBStore {
 
         };
         request.onerror = reject;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression4"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');

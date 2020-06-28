@@ -18,11 +18,11 @@ class TransloaditAssemblyWatcher extends Emitter {
     this._assemblyIDs = assemblyIDs;
     this._remaining = assemblyIDs.length;
     this.promise = new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
       this._resolve = resolve;
       this._reject = reject;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"promise"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"promise.NewExpression"},');
 
     });
     this._onAssemblyComplete = this._onAssemblyComplete.bind(this);

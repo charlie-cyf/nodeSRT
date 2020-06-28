@@ -384,7 +384,6 @@ module.exports = class Instrumentor {
             const ancestor = ancestors[ancestorIdx--];
             // console.log('ancestor', ancestor)
             switch (ancestor.type) {
-                // TODO handle new Promise
                 case 'FunctionExpression':
                     if (ancestor.id && ancestor.id.type === 'Identifier') {
                         idList.unshift(ancestor.id.name)
@@ -424,11 +423,12 @@ module.exports = class Instrumentor {
                                 break;
                             } else if (callee.object.type === "Identifier") {
                                 idList.unshift(callee.object.name)
+                                break;
                             }
                             else {
                                 break;
                             }
-                        } while (callee.object && callee.object.type !== "Identifier");
+                        } while (callee.object); //&& callee.object.type !== "Identifier"
                     }
                     break;
                 case 'Property':
@@ -443,6 +443,10 @@ module.exports = class Instrumentor {
                     break;
                 case "ReturnStatement":
                     idList.unshift('ReturnStatement')
+                    break;
+                case "NewExpression":
+                    idList.unshift('NewExpression');
+                    break;
                 default:
                     break;
             }

@@ -38,10 +38,10 @@ module.exports = (function () {
       data.append('signature', signature);
     }
     Object.keys(fields).forEach(function (key) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.createAssembly.createAssembly.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.createAssembly.createAssembly.Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       data.append(key, fields[key]);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.createAssembly.createAssembly.forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.createAssembly.createAssembly.Object.keys.forEach"},');
 
     });
     data.append('num_expected_upload_files', expectedFiles);

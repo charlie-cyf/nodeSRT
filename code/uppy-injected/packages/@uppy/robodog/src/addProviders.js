@@ -73,12 +73,12 @@ function addProviders(uppy, names, opts = {}) {
     } else {
       const validNames = [...Object.keys(remoteProviders), ...Object.keys(localProviders)];
       const expectedNameString = validNames.sort().map(validName => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"expectedNameString.map.join.map","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"expectedNameString.validNames.sort.map.join.validNames.sort.map","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"expectedNameString.map.join.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"expectedNameString.validNames.sort.map.join.validNames.sort.map"},');
 
         return `'${validName}'`;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"expectedNameString.map.join.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"expectedNameString.validNames.sort.map.join.validNames.sort.map"},');
 
       }).join(', ');
             SRTlib.send('{"type":"FUNCTIONEND","function":"names.forEach"},');

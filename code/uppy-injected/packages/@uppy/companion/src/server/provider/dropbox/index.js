@@ -19,12 +19,12 @@ function httpHeaderSafeJson(v) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"httpHeaderSafeJson"},');
 
   return JSON.stringify(v).replace(charsToEncode, function (c) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.replace","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.JSON.stringify.replace","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.replace"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.JSON.stringify.replace"},');
 
     return '\\u' + ('000' + c.charCodeAt(0).toString(16)).slice(-4);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.replace"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.JSON.stringify.replace"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"httpHeaderSafeJson","paramsNumber":1},');

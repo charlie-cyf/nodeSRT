@@ -123,20 +123,20 @@ window.doUpload = event => {
       template_id: TEMPLATE_ID
     }
   }).then(result => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then","fileName":"${__filename}","paramsNumber":1},`);
 
     resultEl.classList.remove('hidden');
     errorEl.classList.add('hidden');
     resultEl.textContent = inspect(result.results);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"then"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then"},');
 
   }, err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then2","fileName":"${__filename}","paramsNumber":1},`);
 
     resultEl.classList.add('hidden');
     errorEl.classList.remove('hidden');
     errorEl.textContent = err.message;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"then2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then2"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"window.doUpload"},');

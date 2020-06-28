@@ -19,10 +19,10 @@ self.addEventListener('install', function (event) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"self.addEventListener\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   console.log('Installing Uppy Service Worker...');
   event.waitUntil(Promise.resolve().then(function () {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"event.waitUntil.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"event.waitUntil.then"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"event.waitUntil.Promise.resolve.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"event.waitUntil.Promise.resolve.then"},');
     return self.skipWaiting();
-    SRTlib.send('{"type":"FUNCTIONEND","function":"event.waitUntil.then"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"event.waitUntil.Promise.resolve.then"},');
   }));
   SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener"},');
 });
@@ -35,13 +35,13 @@ self.addEventListener('activate', function (event) {
 function sendMessageToAllClients(msg) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"sendMessageToAllClients\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   clients.matchAll().then(function (clients) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"clients.matchAll.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     clients.forEach(function (client) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"clients.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       client.postMessage(msg);
       SRTlib.send('{"type":"FUNCTIONEND","function":"clients.forEach"},');
     });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"then"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"clients.matchAll.then"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"sendMessageToAllClients","paramsNumber":1},');
 }

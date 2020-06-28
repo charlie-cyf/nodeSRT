@@ -69,12 +69,12 @@ class Uploader {
       // no executable files
       mode: 0o666
     }).on('error', err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.fs.createWriteStream.on","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.on"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.fs.createWriteStream.on"},');
 
       return logger.error(`${err}`, 'uploader.write.error', this.shortToken);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.on"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.fs.createWriteStream.on"},');
 
     });
     /** @type {number}*/
@@ -223,12 +223,12 @@ class Uploader {
     // validate protocol
     // @todo this validation should not be conditional once the protocol field is mandatory
     if (options.protocol && !Object.keys(PROTOCOLS).some(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"some","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.some","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"some"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.some"},');
 
       return PROTOCOLS[key] === options.protocol;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"some"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.some"},');
 
     })) {
       this._errRespMessage = 'unsupported protocol specified';
@@ -369,7 +369,7 @@ class Uploader {
     // The download has completed; close the file and start an upload if necessary.
     if (chunk === null) {
       this.writeStream.on('finish', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.on2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.on","fileName":"${__filename}","paramsNumber":0},`);
 
         this.streamsEnded = true;
         switch (protocol) {
@@ -393,7 +393,7 @@ class Uploader {
             }
             break;
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.on2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.on"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"handleChunk"},');
@@ -621,11 +621,11 @@ class Uploader {
       * @param {Error} error
       */
       onError(error) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.onError","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onError","fileName":"${__filename}","paramsNumber":1},`);
 
         logger.error(error, 'uploader.tus.error');
         uploader.emitError(error);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"tus.onError"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"tus.NewExpression.onError"},');
 
       },
       /**
@@ -634,18 +634,18 @@ class Uploader {
       * @param {number} bytesTotal
       */
       onProgress(bytesUploaded, bytesTotal) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.onProgress","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onProgress","fileName":"${__filename}","paramsNumber":2},`);
 
         uploader.emitIllusiveProgress(bytesUploaded);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"tus.onProgress"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"tus.NewExpression.onProgress"},');
 
       },
       onSuccess() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.onSuccess","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onSuccess","fileName":"${__filename}","paramsNumber":0},`);
 
         uploader.emitSuccess(uploader.tus.url);
         uploader.cleanUp();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"tus.onSuccess"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"tus.NewExpression.onSuccess"},');
 
       }
     });

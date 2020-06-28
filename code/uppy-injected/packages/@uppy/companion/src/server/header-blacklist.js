@@ -47,12 +47,12 @@ module.exports = headers => {
   }
   const headersCloned = Object.assign({}, headers);
   Object.keys(headersCloned).forEach(header => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     if (isForbiddenHeader(header)) {
       delete headersCloned[header];
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

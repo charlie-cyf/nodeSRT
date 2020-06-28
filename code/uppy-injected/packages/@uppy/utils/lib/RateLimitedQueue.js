@@ -103,11 +103,11 @@ module.exports = /*#__PURE__*/function () {
     // aborting them)
 
     Promise.resolve().then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Promise.resolve.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this2._next();
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.then"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Promise.resolve.then"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_queueNext"},');
   };
@@ -217,7 +217,7 @@ module.exports = /*#__PURE__*/function () {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var queuedRequest;
       var outerPromise = new Promise(function (resolve, reject) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"outerPromise\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"outerPromise.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
         queuedRequest = _this4.run(function () {
           SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.run\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
           var cancelError;
@@ -260,7 +260,7 @@ module.exports = /*#__PURE__*/function () {
           };
           SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.run"},');
         }, queueOptions);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"outerPromise"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"outerPromise.NewExpression"},');
       });
 
       outerPromise.abort = function () {

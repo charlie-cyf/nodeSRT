@@ -323,22 +323,22 @@ const maskLogger = companionOptions => {
   const secrets = [];
   const {providerOptions, customProviders} = companionOptions;
   Object.keys(providerOptions).forEach(provider => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     if (providerOptions[provider].secret) {
       secrets.push(providerOptions[provider].secret);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
   });
   if (customProviders) {
     Object.keys(customProviders).forEach(provider => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (customProviders[provider].config && customProviders[provider].config.secret) {
         secrets.push(customProviders[provider].config.secret);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach2"},');
 
     });
   }
@@ -363,12 +363,12 @@ const validateConfig = companionOptions => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"mandatoryOptions.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     const value = i.split('.').reduce((prev, curr) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"value.reduce","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"value.i.split.reduce","fileName":"${__filename}","paramsNumber":2},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"value.reduce"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"value.i.split.reduce"},');
 
       return prev ? prev[curr] : undefined;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"value.reduce"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"value.i.split.reduce"},');
 
     }, companionOptions);
     if (!value) unspecified.push(`"${i}"`);

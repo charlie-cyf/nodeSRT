@@ -192,19 +192,19 @@ class Facebook extends Provider {
         return done(err);
       }
       utils.getURLMeta(this._getMediaUrl(body)).then(({size}) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
         return done(null, size);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
         logger.error(err, 'provider.facebook.size.error');
         done();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"then.catch"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request2"},');

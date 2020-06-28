@@ -8,7 +8,7 @@ function waitForServiceWorker() {
     SRTlib.send('{"type":"FUNCTIONEND","function":"waitForServiceWorker"},');
 
   return new Promise((resolve, reject) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
     if (!isSupported) {
       reject(new Error('Unsupported'));
@@ -24,7 +24,7 @@ function waitForServiceWorker() {
 
       });
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"waitForServiceWorker","paramsNumber":0},');
@@ -44,11 +44,11 @@ class ServiceWorkerStore {
 
     const defer = {};
     const promise = new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
       defer.resolve = resolve;
       defer.reject = reject;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"promise"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"promise.NewExpression"},');
 
     });
     console.log('Loading stored blobs from Service Worker');

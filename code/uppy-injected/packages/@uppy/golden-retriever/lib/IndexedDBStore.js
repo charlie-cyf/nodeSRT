@@ -40,7 +40,7 @@ function connect(dbName) {
   var request = indexedDB.open(dbName, DB_VERSION);
   SRTlib.send('{"type":"FUNCTIONEND","function":"connect"},');
   return new Promise(function (resolve, reject) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
     request.onupgradeneeded = function (event) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onupgradeneeded\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -84,7 +84,7 @@ function connect(dbName) {
     };
 
     request.onerror = reject;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"connect","paramsNumber":1},');
 }
@@ -93,7 +93,7 @@ function waitForRequest(request) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"waitForRequest\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"waitForRequest"},');
   return new Promise(function (resolve, reject) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
     request.onsuccess = function (event) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -102,7 +102,7 @@ function waitForRequest(request) {
     };
 
     request.onerror = reject;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression2"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"waitForRequest","paramsNumber":1},');
 }
@@ -227,7 +227,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
       var request = store.index('store').openCursor(IDBKeyRange.only(_this4.name));
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then"},');
       return new Promise(function (resolve, reject) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
         var size = 0;
 
         request.onsuccess = function (event) {
@@ -250,7 +250,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
           SRTlib.send('{"type":"FUNCTIONEND","function":"request.onerror"},');
         };
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression3"},');
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then"},');
     });
@@ -332,7 +332,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
       var request = store.index('expires').openCursor(IDBKeyRange.upperBound(Date.now()));
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');
       return new Promise(function (resolve, reject) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
         request.onsuccess = function (event) {
           SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -352,7 +352,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
         };
 
         request.onerror = reject;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression4"},');
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');
     }).then(function (db) {

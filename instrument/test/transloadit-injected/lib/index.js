@@ -558,13 +558,13 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var _this9 = this;
     var _this$getPluginState2 = this.getPluginState(), uploadsAssemblies = _this$getPluginState2.uploadsAssemblies;
     var assemblyIDs = Object.keys(uploadsAssemblies).reduce(function (acc, uploadID) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.assemblyIDs.reduce","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.assemblyIDs.Object.keys.reduce","fileName":"${__filename}","paramsNumber":2},`);
 
       acc.push.apply(acc, uploadsAssemblies[uploadID]);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.assemblyIDs.reduce"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.assemblyIDs.Object.keys.reduce"},');
 
       return acc;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.assemblyIDs.reduce"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.assemblyIDs.Object.keys.reduce"},');
 
     }, []);
     var cancelPromises = assemblyIDs.map(function (assemblyID) {
@@ -578,10 +578,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     });
     Promise.all(cancelPromises).catch(function (err) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.Promise.all.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       _this9.uppy.log(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onCancelAll._onCancelAll.Promise.all.catch"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onCancelAll"},');
@@ -628,11 +628,11 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var files = {};
       var results = [];
       Object.keys(assemblies).forEach(function (id) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         var status = assemblies[id];
         status.uploads.forEach(function (uploadedFile) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.forEach.status.uploads.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.Object.keys.forEach.status.uploads.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
           var file = _this10._findFile(uploadedFile);
           files[uploadedFile.id] = {
@@ -640,15 +640,15 @@ module.exports = (_temp = _class = (function (_Plugin) {
             assembly: id,
             uploadedFile: uploadedFile
           };
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.forEach.status.uploads.forEach"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.Object.keys.forEach.status.uploads.forEach"},');
 
         });
         var state = _this10.getPluginState();
         Object.keys(status.results).forEach(function (stepName) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.forEach.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.Object.keys.forEach.Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
           status.results[stepName].forEach(function (result) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.forEach.forEach.status.results.stepName.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.Object.keys.forEach.Object.keys.forEach.status.results.stepName.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
             var file = state.files[result.original_id];
             result.localId = file ? file.id : null;
@@ -658,13 +658,13 @@ module.exports = (_temp = _class = (function (_Plugin) {
               stepName: stepName,
               assembly: id
             });
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.forEach.forEach.status.results.stepName.forEach"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.Object.keys.forEach.Object.keys.forEach.status.results.stepName.forEach"},');
 
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.forEach.forEach"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.Object.keys.forEach.Object.keys.forEach"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreState.restoreState.Object.keys.forEach"},');
 
       });
       _this10.setPluginState({
@@ -682,30 +682,30 @@ module.exports = (_temp = _class = (function (_Plugin) {
       // Set up the assembly watchers again for all the ongoing uploads.
       var _this10$getPluginStat = _this10.getPluginState(), assemblies = _this10$getPluginStat.assemblies, uploadsAssemblies = _this10$getPluginStat.uploadsAssemblies;
       Object.keys(uploadsAssemblies).forEach(function (uploadID) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         var assemblyIDs = uploadsAssemblies[uploadID];
         var fileIDsInUpload = assemblyIDs.reduce(function (acc, assemblyID) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.forEach.fileIDsInUpload.assemblyIDs.reduce","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.Object.keys.forEach.fileIDsInUpload.assemblyIDs.reduce","fileName":"${__filename}","paramsNumber":2},`);
 
           var fileIDsInAssembly = _this10.getAssemblyFiles(assemblyID).map(function (file) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.forEach.fileIDsInUpload.assemblyIDs.reduce.fileIDsInAssembly.map","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.Object.keys.forEach.fileIDsInUpload.assemblyIDs.reduce.fileIDsInAssembly._this10.getAssemblyFiles.map","fileName":"${__filename}","paramsNumber":1},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.forEach.fileIDsInUpload.assemblyIDs.reduce.fileIDsInAssembly.map"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.Object.keys.forEach.fileIDsInUpload.assemblyIDs.reduce.fileIDsInAssembly._this10.getAssemblyFiles.map"},');
 
             return file.id;
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.forEach.fileIDsInUpload.assemblyIDs.reduce.fileIDsInAssembly.map"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.Object.keys.forEach.fileIDsInUpload.assemblyIDs.reduce.fileIDsInAssembly._this10.getAssemblyFiles.map"},');
 
           });
           acc.push.apply(acc, fileIDsInAssembly);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.forEach.fileIDsInUpload.assemblyIDs.reduce"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.Object.keys.forEach.fileIDsInUpload.assemblyIDs.reduce"},');
 
           return acc;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.forEach.fileIDsInUpload.assemblyIDs.reduce"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.Object.keys.forEach.fileIDsInUpload.assemblyIDs.reduce"},');
 
         }, []);
         _this10._createAssemblyWatcher(assemblyIDs, fileIDsInUpload, uploadID);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.Object.keys.forEach"},');
 
       });
       var allAssemblyIDs = Object.keys(assemblies);
@@ -729,33 +729,33 @@ module.exports = (_temp = _class = (function (_Plugin) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"updateAssemblies"},');
 
       return Promise.all(Object.keys(assemblies).map(function (id) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.updateAssemblies.updateAssemblies.ReturnStatement.Promise.all.map","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.updateAssemblies.updateAssemblies.ReturnStatement.Promise.all.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.updateAssemblies.updateAssemblies.ReturnStatement.Promise.all.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.updateAssemblies.updateAssemblies.ReturnStatement.Promise.all.Object.keys.map"},');
 
         return _this10.activeAssemblies[id].update();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.updateAssemblies.updateAssemblies.ReturnStatement.Promise.all.map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.updateAssemblies.updateAssemblies.ReturnStatement.Promise.all.Object.keys.map"},');
 
       }));
             SRTlib.send('{"type":"FUNCTIONEND","function":"updateAssemblies"},');
 
     };
     this.restored = Promise.resolve().then(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restored.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restored.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
       restoreState(previousAssemblies);
       restoreAssemblies();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restored.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restored.Promise.resolve.then"},');
 
       return updateAssemblies();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restored.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restored.Promise.resolve.then"},');
 
     });
     this.restored.then(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restored.then2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restored.then","fileName":"${__filename}","paramsNumber":0},`);
 
       _this10.restored = null;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restored.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored._onRestored.restored.then"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored"},');
@@ -837,18 +837,18 @@ module.exports = (_temp = _class = (function (_Plugin) {
     }
     // eslint-disable-next-line no-unused-vars
     var connected = new Promise(function (resolve, reject) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.connected.then","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.connected.then.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
       assembly.once('connect', resolve);
       assembly.once('status', resolve);
       assembly.once('error', reject);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.connected.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.connected.then.NewExpression"},');
 
     }).then(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.connected.then2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.connected.then","fileName":"${__filename}","paramsNumber":0},`);
 
       _this11.uppy.log('[Transloadit] Socket is ready');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.connected.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.connected.then"},');
 
     });
     assembly.connect();
@@ -891,50 +891,50 @@ module.exports = (_temp = _class = (function (_Plugin) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"createAssembly"},');
 
       return _this12._createAssembly(fileIDs, uploadID, options).then(function (assembly) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch._this12._createAssembly.then.then._this12._createAssembly.then","fileName":"${__filename}","paramsNumber":1},`);
 
         createdAssembly = assembly;
         if (_this12.opts.importFromUploadURLs) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then.then"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch._this12._createAssembly.then.then._this12._createAssembly.then"},');
 
           return _this12._reserveFiles(assembly, fileIDs);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch._this12._createAssembly.then.then._this12._createAssembly.then"},');
 
       }).then(function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch._this12._createAssembly.then.then","fileName":"${__filename}","paramsNumber":0},`);
 
         fileIDs.forEach(function (fileID) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch._this12._createAssembly.then.then.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
           var file = _this12.uppy.getFile(fileID);
           _this12.uppy.emit('preprocess-complete', file);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then.fileIDs.forEach"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch._this12._createAssembly.then.then.fileIDs.forEach"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch._this12._createAssembly.then.then"},');
 
         return createdAssembly;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.then.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch._this12._createAssembly.then.then"},');
 
       }).catch(function (err) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
         fileIDs.forEach(function (fileID) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
           // Clear preprocessing state when the Assembly could not be created,
           var file = _this12.uppy.getFile(fileID);
           // otherwise the UI gets confused about the lingering progress keys
           _this12.uppy.emit('preprocess-complete', file);
           _this12.uppy.emit('upload-error', file, err);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch.fileIDs.forEach"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch.fileIDs.forEach"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch"},');
 
         throw err;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement.then.then.catch"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"createAssembly"},');
@@ -957,55 +957,55 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload"},');
 
     return assemblyOptions.build().then(function (assemblies) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then"},');
 
       return Promise.all(assemblies.map(createAssembly)).then(function (createdAssemblies) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.ReturnStatement.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.ReturnStatement.Promise.all.then","fileName":"${__filename}","paramsNumber":1},`);
 
         var assemblyIDs = createdAssemblies.map(function (assembly) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.ReturnStatement.then.assemblyIDs.createdAssemblies.map","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.ReturnStatement.Promise.all.then.assemblyIDs.createdAssemblies.map","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.ReturnStatement.then.assemblyIDs.createdAssemblies.map"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.ReturnStatement.Promise.all.then.assemblyIDs.createdAssemblies.map"},');
 
           return assembly.status.assembly_id;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.ReturnStatement.then.assemblyIDs.createdAssemblies.map"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.ReturnStatement.Promise.all.then.assemblyIDs.createdAssemblies.map"},');
 
         });
         _this12._createAssemblyWatcher(assemblyIDs, fileIDs, uploadID);
         createdAssemblies.map(function (assembly) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.ReturnStatement.then.createdAssemblies.map","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.ReturnStatement.Promise.all.then.createdAssemblies.map","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.ReturnStatement.then.createdAssemblies.map"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.ReturnStatement.Promise.all.then.createdAssemblies.map"},');
 
           return _this12._connectAssembly(assembly);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.ReturnStatement.then.createdAssemblies.map"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.ReturnStatement.Promise.all.then.createdAssemblies.map"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.ReturnStatement.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.ReturnStatement.Promise.all.then"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then"},');
 
     }, function (err) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then2","fileName":"${__filename}","paramsNumber":1},`);
 
       // If something went wrong before any Assemblies could be created,
       // clear all processing state.
       fileIDs.forEach(function (fileID) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         var file = _this12.uppy.getFile(fileID);
         _this12.uppy.emit('preprocess-complete', file);
         _this12.uppy.emit('upload-error', file, err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then.fileIDs.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.fileIDs.forEach"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then2"},');
 
       throw err;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload"},');
@@ -1026,20 +1026,20 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     });
     fileIDs = files.filter(function (file) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.map.files.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.files.filter.map.files.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.map.files.filter"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.files.filter.map.files.filter"},');
 
       return !file.error;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.map.files.filter"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.files.filter.map.files.filter"},');
 
     }).map(function (file) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.files.filter.map","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.files.filter.map"},');
 
       return file.id;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.files.filter.map"},');
 
     });
     // If we're still restoring state, wait for that to be done.

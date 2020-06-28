@@ -303,26 +303,26 @@ class TransloaditAssembly extends Emitter {
     }
     // Find new uploaded files.
     Object.keys(next.uploads).filter(upload => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filter.map.forEach.filter.map.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.filter.map.forEach.Object.keys.filter.map.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"filter.map.forEach.filter.map.filter"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.filter.map.forEach.Object.keys.filter.map.Object.keys.filter"},');
 
       return !has(prev.uploads, upload);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"filter.map.forEach.filter.map.filter"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.filter.map.forEach.Object.keys.filter.map.Object.keys.filter"},');
 
     }).map(upload => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filter.map.forEach.filter.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.filter.map.forEach.Object.keys.filter.map","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"filter.map.forEach.filter.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.filter.map.forEach.Object.keys.filter.map"},');
 
       return next.uploads[upload];
-            SRTlib.send('{"type":"FUNCTIONEND","function":"filter.map.forEach.filter.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.filter.map.forEach.Object.keys.filter.map"},');
 
     }).forEach(upload => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filter.map.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.filter.map.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       this.emit('upload', upload);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"filter.map.forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.filter.map.forEach"},');
 
     });
     if (nowExecuting) {
@@ -330,14 +330,14 @@ class TransloaditAssembly extends Emitter {
     }
     // Find new results.
     Object.keys(next.results).forEach(stepName => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       const nextResults = next.results[stepName];
       const prevResults = prev.results[stepName];
       nextResults.filter(n => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach.nextResults.filter","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"nextResults.filter.forEach.nextResults.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"forEach.nextResults.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"nextResults.filter.forEach.nextResults.filter"},');
 
         return !prevResults || !prevResults.some(p => {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"prevResults.some","fileName":"${__filename}","paramsNumber":1},`);
@@ -348,16 +348,16 @@ class TransloaditAssembly extends Emitter {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"prevResults.some"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"forEach.nextResults.filter"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"nextResults.filter.forEach.nextResults.filter"},');
 
       }).forEach(result => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"nextResults.filter.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
         this.emit('result', stepName, result);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"nextResults.filter.forEach"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
     });
     if (isStatus(nextStatus, ASSEMBLY_COMPLETED) && !isStatus(prevStatus, ASSEMBLY_COMPLETED)) {

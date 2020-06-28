@@ -127,12 +127,12 @@ class MultipartUploader {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_createUpload","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MultipartUploader"}},`);
 
     this.createdPromise = Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdPromise.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdPromise.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.Promise.resolve.then"},');
 
       return this.options.createMultipartUpload();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.Promise.resolve.then"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_createUpload"},');
@@ -168,18 +168,18 @@ class MultipartUploader {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_resumeUpload"},');
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.catch.then.then.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.catch.Promise.resolve.then.then.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.catch.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.catch.Promise.resolve.then.then.Promise.resolve.then"},');
 
       return this.options.listParts({
         uploadId: this.uploadId,
         key: this.key
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.catch.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.catch.Promise.resolve.then.then.Promise.resolve.then"},');
 
     }).then(parts => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.catch.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.catch.Promise.resolve.then.then","fileName":"${__filename}","paramsNumber":1},`);
 
       parts.forEach(part => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"parts.forEach","fileName":"${__filename}","paramsNumber":1},`);
@@ -209,13 +209,13 @@ class MultipartUploader {
 
       });
       this._uploadParts();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.catch.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.catch.Promise.resolve.then.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       this._onError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.catch"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.catch"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_resumeUpload"},');
@@ -277,9 +277,9 @@ class MultipartUploader {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadPart"},');
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.then.then.then.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then.Promise.resolve.then"},');
 
       return this.options.prepareUploadPart({
         key: this.key,
@@ -287,33 +287,33 @@ class MultipartUploader {
         body,
         number: index + 1
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then.Promise.resolve.then"},');
 
     }).then(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then","fileName":"${__filename}","paramsNumber":1},`);
 
       const valid = typeof result === 'object' && result && typeof result.url === 'string';
       if (!valid) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then"},');
 
         throw new TypeError('AwsS3/Multipart: Got incorrect result from `prepareUploadPart()`, expected an object `{ url }`.');
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then"},');
 
       return result;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then.Promise.resolve.then.then"},');
 
     }).then(({url, headers}) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
 
       this._uploadPartBytes(index, url, headers);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then"},');
 
     }, err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.then2","fileName":"${__filename}","paramsNumber":1},`);
 
       this._onError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadPart"},');
@@ -359,10 +359,10 @@ class MultipartUploader {
     xhr.open('PUT', url, true);
     if (headers) {
       Object.keys(headers).map(key => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"map","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
 
         xhr.setRequestHeader(key, headers[key]);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"map"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.map"},');
 
       });
     }
@@ -443,28 +443,28 @@ class MultipartUploader {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_completeUpload"},');
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then.then3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.Promise.resolve.then"},');
 
       return this.options.completeMultipartUpload({
         key: this.key,
         uploadId: this.uploadId,
         parts: this.parts
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then.then3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.Promise.resolve.then"},');
 
     }).then(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then","fileName":"${__filename}","paramsNumber":1},`);
 
       this.options.onSuccess(result);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then"},');
 
     }, err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then2","fileName":"${__filename}","paramsNumber":1},`);
 
       this._onError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_completeUpload"},');
@@ -481,19 +481,19 @@ class MultipartUploader {
 
     });
     this.createdPromise.then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdPromise.then2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdPromise.then","fileName":"${__filename}","paramsNumber":0},`);
 
       this.options.abortMultipartUpload({
         key: this.key,
         uploadId: this.uploadId
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then"},');
 
     }, () => {
       // if the creation failed we do not need to abort
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdPromise.then3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdPromise.then2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then2"},');
 
     });
     this.uploading = [];

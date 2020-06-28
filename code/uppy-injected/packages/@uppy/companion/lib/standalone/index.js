@@ -61,10 +61,10 @@ function censorQuery(rawQuery) {
   const query = {};
   let censored = false;
   Object.keys(rawQuery).forEach(key => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     if (typeof rawQuery[key] !== 'string') {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
       return;
     }
@@ -75,7 +75,7 @@ function censorQuery(rawQuery) {
     } else {
       query[key] = rawQuery[key];
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"censorQuery"},');

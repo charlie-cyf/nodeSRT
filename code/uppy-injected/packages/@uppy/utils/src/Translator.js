@@ -121,7 +121,7 @@ module.exports = class Translator {
           return newParts.push(chunk);
         }
         split.call(chunk, rx).forEach((raw, i, list) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"split.call.forEach","fileName":"${__filename}","paramsNumber":3},`);
 
           if (raw !== '') {
             newParts.push(raw);
@@ -130,7 +130,7 @@ module.exports = class Translator {
           if (i < list.length - 1) {
             newParts.push(replacement);
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"split.call.forEach"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"source.forEach"},');

@@ -191,16 +191,16 @@ exports.buildHelpfulStartupMessage = companionOptions => {
   const buildURL = utils.getURLBuilder(companionOptions);
   const callbackURLs = [];
   Object.keys(companionOptions.providerOptions).forEach(providerName => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     // s3 does not need redirect_uris
     if (providerName === 's3') {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
       return;
     }
     callbackURLs.push(buildURL(`/connect/${providerName}/callback`, true));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.buildHelpfulStartupMessage"},');

@@ -21,7 +21,7 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createPromiseToAddFileOrParseDirectory\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"createPromiseToAddFileOrParseDirectory"},');
     return new Promise(function (resolve) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // This is a base call
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // This is a base call
 
       if (entry.isFile) {
         // Creates a new File object which can be used to read the file.
@@ -50,17 +50,17 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
               SRTlib.send('{"type":"FUNCTIONEND","function":"promises.entries.map"},');
             });
             Promise.all(promises).then(function () {
-              SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-              SRTlib.send('{"type":"FUNCTIONEND","function":"then"},');
+              SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Promise.all.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+              SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.all.then"},');
               return resolve();
-              SRTlib.send('{"type":"FUNCTIONEND","function":"then"},');
+              SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.all.then"},');
             });
             SRTlib.send('{"type":"FUNCTIONEND","function":"getFilesAndDirectoriesFromDirectory.onSuccess"},');
           }
         });
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"NewExpression"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"createPromiseToAddFileOrParseDirectory"},');
   }; // For each dropped item, - make sure it's a file/directory, and start deepening in!
@@ -78,10 +78,10 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return Promise.all(rootPromises).then(function () {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.webkitGetAsEntryApi.ReturnStatement.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.ReturnStatement.then"},');
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.webkitGetAsEntryApi.ReturnStatement.Promise.all.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.ReturnStatement.Promise.all.then"},');
     return files;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.ReturnStatement.then"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.ReturnStatement.Promise.all.then"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

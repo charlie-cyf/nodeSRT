@@ -46,11 +46,11 @@ var TransloaditAssemblyWatcher = (function (_Emitter) {
     _this._assemblyIDs = assemblyIDs;
     _this._remaining = assemblyIDs.length;
     _this.promise = new Promise(function (resolve, reject) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.promise","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.promise.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
       _this._resolve = resolve;
       _this._reject = reject;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.promise"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.promise.NewExpression"},');
 
     });
     _this._onAssemblyComplete = _this._onAssemblyComplete.bind(_assertThisInitialized(_this));

@@ -128,7 +128,7 @@ module.exports = /*#__PURE__*/function () {
         }
 
         split.call(chunk, rx).forEach(function (raw, i, list) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"split.call.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
 
           if (raw !== '') {
             newParts.push(raw);
@@ -139,7 +139,7 @@ module.exports = /*#__PURE__*/function () {
             newParts.push(replacement);
           }
 
-          SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"split.call.forEach"},');
         });
         SRTlib.send('{"type":"FUNCTIONEND","function":"source.forEach"},');
       });

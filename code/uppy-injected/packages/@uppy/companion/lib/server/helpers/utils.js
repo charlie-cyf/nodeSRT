@@ -102,7 +102,7 @@ exports.getURLMeta = (url, blockLocalIPs = false) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getURLMeta"},');
 
   return new Promise((resolve, reject) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
     const opts = {
       uri: url,
@@ -124,7 +124,7 @@ exports.getURLMeta = (url, blockLocalIPs = false) => {
             SRTlib.send('{"type":"FUNCTIONEND","function":"request"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getURLMeta"},');

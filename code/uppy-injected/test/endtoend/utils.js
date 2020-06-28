@@ -102,7 +102,7 @@ class CompanionService {
         SRTlib.send('{"type":"FUNCTIONEND","function":"onPrepare"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
       this.companion.on('error', reject);
       this.companion.stdout.on('data', chunk => {
@@ -117,7 +117,7 @@ class CompanionService {
       this.companion.on('error', console.error);
       this.companion.stderr.pipe(process.stderr);
       this.companion.on('exit', prematureExit);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onPrepare"},');
@@ -129,7 +129,7 @@ class CompanionService {
         SRTlib.send('{"type":"FUNCTIONEND","function":"onComplete"},');
 
     return new Promise(resolve => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":1},`);
 
       this.companion.removeListener('exit', prematureExit);
       this.companion.on('exit', () => {
@@ -142,7 +142,7 @@ class CompanionService {
 
       });
       this.companion.kill('SIGINT');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onComplete"},');

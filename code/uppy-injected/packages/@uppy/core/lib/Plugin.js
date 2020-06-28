@@ -26,15 +26,15 @@ function debounce(fn) {
 
     if (!calling) {
       calling = Promise.resolve().then(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"calling.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"calling.Promise.resolve.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
         calling = null;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"calling.then"},'); // At this point `args` may be different from the most
+        SRTlib.send('{"type":"FUNCTIONEND","function":"calling.Promise.resolve.then"},'); // At this point `args` may be different from the most
         // recent state, if multiple calls happened since this task
         // was queued. So we use the `latestArgs`, which definitely
         // is the most recent call.
 
         return fn.apply(void 0, latestArgs);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"calling.then"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"calling.Promise.resolve.then"},');
       });
     }
 

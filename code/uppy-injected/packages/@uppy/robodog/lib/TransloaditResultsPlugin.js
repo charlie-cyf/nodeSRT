@@ -50,7 +50,7 @@ var TransloaditResultsPlugin = /*#__PURE__*/function (_Plugin) {
     assemblies.forEach(function (assembly) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"assemblies.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       Object.keys(assembly.results).forEach(function (stepName) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         var results = assembly.results[stepName];
         results.forEach(function (result) {
           SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"results.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -60,7 +60,7 @@ var TransloaditResultsPlugin = /*#__PURE__*/function (_Plugin) {
           }));
           SRTlib.send('{"type":"FUNCTIONEND","function":"results.forEach"},');
         });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"assemblies.forEach"},');
     });

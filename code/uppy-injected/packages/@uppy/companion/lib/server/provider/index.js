@@ -102,11 +102,11 @@ module.exports.addCustomProviders = (customProviders, providers, grantConfig) =>
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addCustomProviders","fileName":"${__filename}","paramsNumber":3},`);
 
   Object.keys(customProviders).forEach(providerName => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     providers[providerName] = customProviders[providerName].module;
     grantConfig[providerName] = customProviders[providerName].config;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"forEach"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.addCustomProviders"},');
@@ -136,12 +136,12 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
   };
   const {oauthDomain} = server;
   const keys = Object.keys(providerOptions).filter(key => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"keys.filter","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"keys.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"keys.filter"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"keys.Object.keys.filter"},');
 
     return key !== 'server';
-        SRTlib.send('{"type":"FUNCTIONEND","function":"keys.filter"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"keys.Object.keys.filter"},');
 
   });
   keys.forEach(authProvider => {

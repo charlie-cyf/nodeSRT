@@ -28,10 +28,10 @@ function bundle() {
     SRTlib.send('{"type":"FUNCTIONEND","function":"bundle"},');
 
   return b.bundle((err, data) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.pipe.b.bundle","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.b.bundle.pipe.b.bundle","fileName":"${__filename}","paramsNumber":2},`);
 
     if (err) console.error(err.stack); else console.log('bundle complete');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.pipe.b.bundle"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.b.bundle.pipe.b.bundle"},');
 
   }).pipe(createWriteStream(path.join(__dirname, './bundle.js')));
     SRTlib.send('{"type":"FUNCTIONEND","function":"bundle","paramsNumber":0},');
