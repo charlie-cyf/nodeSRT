@@ -5,7 +5,7 @@ function FileIcon() {
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "UppyIcon",
+    class: "uppy-c-icon",
     width: 11,
     height: 14.5,
     viewBox: "0 0 44 58"
@@ -18,7 +18,7 @@ function FolderIcon() {
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "UppyIcon",
+    class: "uppy-c-icon",
     style: {
       width: 16,
       marginRight: 3

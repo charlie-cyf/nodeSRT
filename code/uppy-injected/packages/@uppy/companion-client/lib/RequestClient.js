@@ -10,7 +10,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var AuthError = require('./AuthError');
 
-var NetworkError = require('@uppy/utils/lib/NetworkError'); // Remove the trailing slash so we can always safely append /xyz.
+var fetchWithNetworkError = require('@uppy/utils/lib/fetchWithNetworkError'); // Remove the trailing slash so we can always safely append /xyz.
 
 
 function stripSlash(url) {
@@ -140,16 +140,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
 
     return new Promise(function (resolve, reject) {
       _this4.preflightAndHeaders(path).then(function (headers) {
-        fetch(_this4._getUrl(path), {
+        fetchWithNetworkError(_this4._getUrl(path), {
           method: 'get',
           headers: headers,
           credentials: 'same-origin'
-        }).catch(function (err) {
-          if (err.name === 'AbortError') {
-            throw err;
-          } else {
-            throw new NetworkError(err);
-          }
         }).then(_this4._getPostResponseFunc(skipPostResponse)).then(function (res) {
           return _this4._json(res).then(resolve);
         }).catch(function (err) {
@@ -165,17 +159,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
 
     return new Promise(function (resolve, reject) {
       _this5.preflightAndHeaders(path).then(function (headers) {
-        fetch(_this5._getUrl(path), {
+        fetchWithNetworkError(_this5._getUrl(path), {
           method: 'post',
           headers: headers,
           credentials: 'same-origin',
           body: JSON.stringify(data)
-        }).catch(function (err) {
-          if (err.name === 'AbortError') {
-            throw err;
-          } else {
-            throw new NetworkError(err);
-          }
         }).then(_this5._getPostResponseFunc(skipPostResponse)).then(function (res) {
           return _this5._json(res).then(resolve);
         }).catch(function (err) {
@@ -191,17 +179,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
 
     return new Promise(function (resolve, reject) {
       _this6.preflightAndHeaders(path).then(function (headers) {
-        fetch(_this6.hostname + "/" + path, {
+        fetchWithNetworkError(_this6.hostname + "/" + path, {
           method: 'delete',
           headers: headers,
           credentials: 'same-origin',
           body: data ? JSON.stringify(data) : null
-        }).catch(function (err) {
-          if (err.name === 'AbortError') {
-            throw err;
-          } else {
-            throw new NetworkError(err);
-          }
         }).then(_this6._getPostResponseFunc(skipPostResponse)).then(function (res) {
           return _this6._json(res).then(resolve);
         }).catch(function (err) {

@@ -170,7 +170,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
 
     var tus = _extends({}, file.tus, {
-      endpoint: status.tus_url
+      endpoint: status.tus_url,
+      // Include X-Request-ID headers for better debugging.
+      addRequestId: true
     }); // Set Companion location. We only add this, if 'file' has the attribute
     // remote, because this is the criteria to identify remote files.
     // We only replace the hostname for Transloadit's companions, so that
@@ -832,7 +834,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
   _proto._onTusError = function _onTusError(err) {
     if (err && /^tus: /.test(err.message)) {
-      var url = err.originalRequest && err.originalRequest.responseURL ? err.originalRequest.responseURL : null;
+      var xhr = err.originalRequest ? err.originalRequest.getUnderlyingObject() : null;
+      var url = xhr && xhr.responseURL ? xhr.responseURL : null;
       this.client.submitError(err, {
         url: url,
         type: 'TUS_ERROR'
@@ -865,7 +868,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         // were added to the Assembly, so we can properly complete it. All that state is handled by
         // Golden Retriever. So, Golden Retriever is required to do resumability with the Transloadit plugin,
         // and we disable Tus's default resume implementation to prevent bad behaviours.
-        resume: false,
+        storeFingerprintForResuming: false,
         // Disable Companion's retry optimisation; we need to change the endpoint on retry
         // so it can't just reuse the same tus.Upload instance server-side.
         useFastRemoteRetry: false,

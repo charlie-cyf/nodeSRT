@@ -1,11 +1,6 @@
 var _require = require('preact'),
     h = _require.h;
 
-var _require2 = require('../../icons'),
-    iconRetry = _require2.iconRetry;
-
-var PauseResumeCancelIcon = require('./PauseResumeCancelIcon');
-
 function onPauseResumeCancelRetry(props) {
   if (props.isUploaded) return;
 
@@ -14,13 +9,9 @@ function onPauseResumeCancelRetry(props) {
     return;
   }
 
-  if (props.hidePauseResumeCancelButtons) {
-    return;
-  }
-
-  if (props.resumableUploads) {
+  if (props.resumableUploads && !props.hidePauseResumeButton) {
     props.pauseUpload(props.file.id);
-  } else if (props.individualCancellation) {
+  } else if (props.individualCancellation && !props.hideCancelButton) {
     props.cancelUpload(props.file.id);
   }
 }
@@ -47,34 +38,143 @@ function progressIndicatorTitle(props) {
   return '';
 }
 
+function ProgressIndicatorButton(props) {
+  return h("div", {
+    class: "uppy-Dashboard-Item-progress"
+  }, h("button", {
+    class: "uppy-u-reset uppy-Dashboard-Item-progressIndicator",
+    type: "button",
+    "aria-label": progressIndicatorTitle(props),
+    title: progressIndicatorTitle(props),
+    onclick: function onclick() {
+      return onPauseResumeCancelRetry(props);
+    }
+  }, props.children));
+}
+
+function ProgressCircleContainer(_ref) {
+  var children = _ref.children;
+  return h("svg", {
+    "aria-hidden": "true",
+    focusable: "false",
+    width: "70",
+    height: "70",
+    viewBox: "0 0 36 36",
+    class: "uppy-c-icon uppy-Dashboard-Item-progressIcon--circle"
+  }, children);
+}
+
+function ProgressCircle(_ref2) {
+  var progress = _ref2.progress;
+  // circle length equals 2 * PI * R
+  var circleLength = 2 * Math.PI * 15;
+  return h("g", null, h("circle", {
+    class: "uppy-Dashboard-Item-progressIcon--bg",
+    r: "15",
+    cx: "18",
+    cy: "18",
+    "stroke-width": "2",
+    fill: "none"
+  }), h("circle", {
+    class: "uppy-Dashboard-Item-progressIcon--progress",
+    r: "15",
+    cx: "18",
+    cy: "18",
+    transform: "rotate(-90, 18, 18)",
+    "stroke-width": "2",
+    fill: "none",
+    "stroke-dasharray": circleLength,
+    "stroke-dashoffset": circleLength - circleLength / 100 * progress
+  }));
+}
+
 module.exports = function FileProgress(props) {
-  if (props.hideRetryButton && props.error || props.isUploaded && props.showRemoveButtonAfterComplete) {
+  // Nothing if upload has not started
+  if (!props.file.progress.uploadStarted) {
+    return null;
+  } // Green checkmark when complete
+
+
+  if (props.isUploaded) {
     return h("div", {
-      class: "uppy-DashboardItem-progress"
-    });
-  } else if (props.isUploaded || props.hidePauseResumeCancelButtons && !props.error) {
-    return h("div", {
-      class: "uppy-DashboardItem-progress"
+      class: "uppy-Dashboard-Item-progress"
     }, h("div", {
-      class: "uppy-DashboardItem-progressIndicator"
-    }, h(PauseResumeCancelIcon, {
-      progress: props.file.progress.percentage,
-      hidePauseResumeCancelButtons: props.hidePauseResumeCancelButtons
+      class: "uppy-Dashboard-Item-progressIndicator"
+    }, h(ProgressCircleContainer, null, h("circle", {
+      r: "15",
+      cx: "18",
+      cy: "18",
+      fill: "#1bb240"
+    }), h("polygon", {
+      class: "uppy-Dashboard-Item-progressIcon--check",
+      transform: "translate(2, 3)",
+      points: "14 22.5 7 15.2457065 8.99985857 13.1732815 14 18.3547104 22.9729883 9 25 11.1005634"
+    }))));
+  } // Retry button for error
+
+
+  if (props.error && !props.hideRetryButton) {
+    return h(ProgressIndicatorButton, props, h("svg", {
+      "aria-hidden": "true",
+      focusable: "false",
+      class: "uppy-c-icon uppy-Dashboard-Item-progressIcon--retry",
+      width: "28",
+      height: "31",
+      viewBox: "0 0 16 19"
+    }, h("path", {
+      d: "M16 11a8 8 0 1 1-8-8v2a6 6 0 1 0 6 6h2z"
+    }), h("path", {
+      d: "M7.9 3H10v2H7.9z"
+    }), h("path", {
+      d: "M8.536.5l3.535 3.536-1.414 1.414L7.12 1.914z"
+    }), h("path", {
+      d: "M10.657 2.621l1.414 1.415L8.536 7.57 7.12 6.157z"
     })));
-  } else {
-    return h("div", {
-      class: "uppy-DashboardItem-progress"
-    }, h("button", {
-      class: "uppy-u-reset uppy-DashboardItem-progressIndicator",
-      type: "button",
-      "aria-label": progressIndicatorTitle(props),
-      title: progressIndicatorTitle(props),
-      onclick: function onclick() {
-        return onPauseResumeCancelRetry(props);
-      }
-    }, props.error ? props.hideRetryButton ? null : iconRetry() : h(PauseResumeCancelIcon, {
-      progress: props.file.progress.percentage,
-      hidePauseResumeCancelButtons: props.hidePauseResumeCancelButtons
+  } // Pause/resume button for resumable uploads
+
+
+  if (props.resumableUploads && !props.hidePauseResumeButton) {
+    return h(ProgressIndicatorButton, props, h(ProgressCircleContainer, null, h(ProgressCircle, {
+      progress: props.file.progress.percentage
+    }), props.file.isPaused ? h("polygon", {
+      class: "uppy-Dashboard-Item-progressIcon--play",
+      transform: "translate(3, 3)",
+      points: "12 20 12 10 20 15"
+    }) : h("g", {
+      class: "uppy-Dashboard-Item-progressIcon--pause",
+      transform: "translate(14.5, 13)"
+    }, h("rect", {
+      x: "0",
+      y: "0",
+      width: "2",
+      height: "10",
+      rx: "0"
+    }), h("rect", {
+      x: "5",
+      y: "0",
+      width: "2",
+      height: "10",
+      rx: "0"
+    }))));
+  } // Cancel button for non-resumable uploads if individualCancellation is supported (not bundled)
+
+
+  if (!props.resumableUploads && props.individualCancellation && !props.hideCancelButton) {
+    return h(ProgressIndicatorButton, props, h(ProgressCircleContainer, null, h(ProgressCircle, {
+      progress: props.file.progress.percentage
+    }), h("polygon", {
+      class: "cancel",
+      transform: "translate(2, 2)",
+      points: "19.8856516 11.0625 16 14.9481516 12.1019737 11.0625 11.0625 12.1143484 14.9481516 16 11.0625 19.8980263 12.1019737 20.9375 16 17.0518484 19.8856516 20.9375 20.9375 19.8980263 17.0518484 16 20.9375 12"
     })));
-  }
+  } // Just progress when buttons are disabled
+
+
+  return h("div", {
+    class: "uppy-Dashboard-Item-progress"
+  }, h("div", {
+    class: "uppy-Dashboard-Item-progressIndicator"
+  }, h(ProgressCircleContainer, null, h(ProgressCircle, {
+    progress: props.file.progress.percentage
+  }))));
 };

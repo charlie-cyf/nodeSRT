@@ -1,10 +1,11 @@
-const {generate, copyDir} = require("./ASTgenerater");
+const { generate, copyDir } = require("./ASTgenerater");
 const fs = require("fs");
 const madge = require('madge'); // use madge to construct file dependency
 const envfile = require('envfile')
 const Injector = require('./instrument/instrumentor')
 let codeBase = "./code/uppy/"
 const path = require('path')
+const axios = require('axios');
 const SRTlibPath = './instrument/SRTlib.js'
 const InstrumentorSrc = './instrument/'
 const child_process = require('child_process');
@@ -15,55 +16,75 @@ const excepts = [
     './code/uppy/test/endtoend/utils.js',
     './code/uppy/test/endtoend/wdio.local.conf.js',
     './code/uppy/test/endtoend/wdio.base.conf.js',
-]
+];
+
+(async () => {
+    //init
+    if (codeBase.endsWith('/')) {
+        codeBase = codeBase.substring(0, codeBase.length - 1)
+    }
+
+    let injectedCodebase = codeBase + '-injected';
+
+    let parsedEnv = envfile.parse(fs.readFileSync('.env'));
+    parsedEnv.SRT_PATH = __dirname;
+    fs.writeFileSync("./.env", envfile.stringify(parsedEnv))
+    require("dotenv").config()
 
 
-//init
-if(codeBase.endsWith('/')){
-    codeBase = codeBase.substring(0, codeBase.length -1)
-}
+    // generate AST for codebase
+    // generate(codeBase, excepts)
 
-let injectedCodebase = codeBase+'-injected';
+    console.log("env", process.env.SRT_PATH)
 
-let parsedEnv = envfile.parse(fs.readFileSync('.env'));
-parsedEnv.SRT_PATH = __dirname;
-fs.writeFileSync("./.env", envfile.stringify(parsedEnv))
+    if (!fs.existsSync(process.env.SRT_PATH + '/tmp'))
+        fs.mkdirSync(process.env.SRT_PATH + '/tmp');
 
-require("dotenv").config()
+    // madge('./code/uppy').then((res) => {
+    // 	console.log(res)
+    // });
 
-// generate AST for codebase
-generate(codeBase, excepts)
+    copyDir(codeBase, injectedCodebase)
+    console.log('copy success!')
 
-console.log("env", process.env.SRT_PATH)
+    const codeInjector = new Injector(codeBase)
 
-if(!fs.existsSync(process.env.SRT_PATH+'/tmp'))
-    fs.mkdirSync(process.env.SRT_PATH+'/tmp');
+    codeInjector.getInjected()
 
-// madge('./code/uppy').then((res) => {
-// 	console.log(res)
-// });
+    // update package.json jest configuration
+    const injectedPackageJson = JSON.parse(fs.readFileSync(path.join(injectedCodebase, 'package.json')));
+    injectedPackageJson.jest.setupFilesAfterEnv = ["./jest.setup.js"]
+    fs.writeFileSync(injectedCodebase + '/package.json', JSON.stringify(injectedPackageJson));
 
-copyDir(codeBase, injectedCodebase)
-console.log('copy success!')
+    fs.copyFileSync(path.join(InstrumentorSrc, 'jest.setup.js'), path.join(injectedCodebase, 'jest.setup.js'))
 
-const codeInjector = new Injector(codeBase)
+    // run npm install in injected folder
+    child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm install', { stdio: [0, 1, 2] });
 
-codeInjector.getInjected()
+    // copy SRTlib.js to injected node_modules
+    const SRTUtilFolder = path.join(injectedCodebase, 'node_modules', 'SRT-util');
+    if (!fs.existsSync(SRTUtilFolder)) {
+        fs.mkdirSync(SRTUtilFolder);
+    }
+    fs.copyFileSync(SRTlibPath, path.join(SRTUtilFolder, 'index.js'))
 
-// update package.json jest configuration
-const injectedPackageJson = JSON.parse(fs.readFileSync(path.join(injectedCodebase, 'package.json')));
-injectedPackageJson.jest.setupFilesAfterEnv = ["./jest.setup.js"]
-fs.writeFileSync(injectedCodebase+'/package.json', JSON.stringify(injectedPackageJson));
 
-fs.copyFileSync(path.join(InstrumentorSrc, 'jest.setup.js'), path.join(injectedCodebase, 'jest.setup.js'))
+    // run tests in injected codebase
+    child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm run test:unit', { stdio: [0, 1, 2] })
 
-// run npm install in injected folder
-child_process.execSync('cd '+injectedCodebase+' && pwd && npm install',{stdio:[0,1,2]});
+    // get call graph
+    let callGraph;
 
-// copy SRTlib.js to injected node_modules
-const SRTUtilFolder = path.join(injectedCodebase, 'node_modules', 'SRT-util');
-if(!fs.existsSync(SRTUtilFolder)){
-    fs.mkdirSync(SRTUtilFolder);
-}
-fs.copyFileSync(SRTlibPath, path.join(SRTUtilFolder, 'index.js'))
+    await axios.get('http://localhost:8888/log-path').then(res => {
+        callGraph = fs.readFileSync(res.data.path);
+        callGraph = '[' + callGraph + ']'
+        callGraph = callGraph.replace(/,]/g, ']');
+        fs.writeFileSync(res.data.path + '.json', callGraph)
+    });
+    // console.log('callgraph in axios', JSON.parse(callGraph))
+
+
+})()
+
+
 

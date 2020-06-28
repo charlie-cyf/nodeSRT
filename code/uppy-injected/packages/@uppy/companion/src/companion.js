@@ -300,8 +300,6 @@ const getOptionsMiddleware = options => {
       buildURL: getURLBuilder(options)
     };
     logger.info(`uppy client version ${req.companion.clientVersion}`, 'companion.client.version');
-    // @todo remove req.uppy in next major release
-    req.uppy = req.companion;
     next();
         SRTlib.send('{"type":"FUNCTIONEND","function":"middleware"},');
 

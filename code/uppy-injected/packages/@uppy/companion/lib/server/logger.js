@@ -1,4 +1,5 @@
 const SRTlib = require('SRT-util');
+
 const chalk = require('chalk');
 const escapeStringRegexp = require('escape-string-regexp');
 const valuesToMask = [];
@@ -9,13 +10,17 @@ const valuesToMask = [];
 */
 exports.setMaskables = maskables => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
-    maskables.forEach(i => {
+
+  maskables.forEach(i => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
-        valuesToMask.push(escapeStringRegexp(i));
+
+    valuesToMask.push(escapeStringRegexp(i));
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
-    });
-    Object.freeze(valuesToMask);
+
+  });
+  Object.freeze(valuesToMask);
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+
 };
 /**
 * INFO level log
@@ -25,8 +30,10 @@ exports.setMaskables = maskables => {
 */
 exports.info = (msg, tag, traceId) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":3},`);
-    log(msg, tag, 'info', traceId);
+
+  log(msg, tag, 'info', traceId);
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+
 };
 /**
 * WARN level log
@@ -36,9 +43,11 @@ exports.info = (msg, tag, traceId) => {
 */
 exports.warn = (msg, tag, traceId) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":3},`);
-    // @ts-ignore
-    log(msg, tag, 'warn', traceId, chalk.bold.yellow);
+
+  // @ts-ignore
+  log(msg, tag, 'warn', traceId, chalk.bold.yellow);
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+
 };
 /**
 * ERROR level log
@@ -49,9 +58,11 @@ exports.warn = (msg, tag, traceId) => {
 */
 exports.error = (msg, tag, traceId, shouldLogStackTrace) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":4},`);
-    // @ts-ignore
-    log(msg, tag, 'error', traceId, chalk.bold.red, shouldLogStackTrace);
+
+  // @ts-ignore
+  log(msg, tag, 'error', traceId, chalk.bold.red, shouldLogStackTrace);
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+
 };
 /**
 * DEBUG level log
@@ -61,10 +72,12 @@ exports.error = (msg, tag, traceId, shouldLogStackTrace) => {
 */
 exports.debug = (msg, tag, traceId) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":3},`);
-    if (process.env.NODE_ENV !== 'production') {
-        log(msg, tag, 'debug', traceId);
-    }
+
+  if (process.env.NODE_ENV !== 'production') {
+    log(msg, tag, 'debug', traceId);
+  }
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+
 };
 /**
 * message log
@@ -77,34 +90,39 @@ exports.debug = (msg, tag, traceId) => {
 */
 const log = (msg, tag, level, id, color, shouldLogStackTrace) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"log","fileName":"${__filename}","paramsNumber":6},`);
-    const time = new Date().toISOString();
-    tag = tag || '';
-    id = id || '';
-    const whitespace = tag && id ? ' ' : '';
-    color = color || (message => {
+
+  const time = new Date().toISOString();
+  tag = tag || '';
+  id = id || '';
+  const whitespace = tag && id ? ' ' : '';
+  color = color || (message => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
+
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
-        return message;
+
+    return message;
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
-    });
-    if (typeof msg === 'string') {
-        msg = maskMessage(msg);
-    }
-    else if (msg && typeof msg.message === 'string') {
-        msg.message = maskMessage(msg.message);
-    }
-    if (shouldLogStackTrace && msg instanceof Error && typeof msg.stack === 'string') {
-        msg.stack = maskMessage(msg.stack);
-        // exclude msg from template string so values such as error objects
-        // can be well formatted
-        console.log(color(`companion: ${time} [${level}] ${id}${whitespace}${tag}`), color(msg.stack));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"log"},');
-        return;
-    }
+
+  });
+  if (typeof msg === 'string') {
+    msg = maskMessage(msg);
+  } else if (msg && typeof msg.message === 'string') {
+    msg.message = maskMessage(msg.message);
+  }
+  if (shouldLogStackTrace && msg instanceof Error && typeof msg.stack === 'string') {
+    msg.stack = maskMessage(msg.stack);
     // exclude msg from template string so values such as error objects
     // can be well formatted
-    console.log(color(`companion: ${time} [${level}] ${id}${whitespace}${tag}`), color(msg));
+    console.log(color(`companion: ${time} [${level}] ${id}${whitespace}${tag}`), color(msg.stack));
+        SRTlib.send('{"type":"FUNCTIONEND","function":"log"},');
+
+    return;
+  }
+  // exclude msg from template string so values such as error objects
+  // can be well formatted
+  console.log(color(`companion: ${time} [${level}] ${id}${whitespace}${tag}`), color(msg));
     SRTlib.send('{"type":"FUNCTIONEND","function":"log"},');
+
 };
 /**
 * Mask the secret content of a message
@@ -113,11 +131,14 @@ const log = (msg, tag, level, id, color, shouldLogStackTrace) => {
 */
 const maskMessage = msg => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"maskMessage","fileName":"${__filename}","paramsNumber":1},`);
-    for (const toBeMasked of valuesToMask) {
-        const toBeReplaced = new RegExp(toBeMasked, 'gi');
-        msg = msg.replace(toBeReplaced, '******');
-    }
+
+  for (const toBeMasked of valuesToMask) {
+    const toBeReplaced = new RegExp(toBeMasked, 'gi');
+    msg = msg.replace(toBeReplaced, '******');
+  }
     SRTlib.send('{"type":"FUNCTIONEND","function":"maskMessage"},');
-    return msg;
+
+  return msg;
     SRTlib.send('{"type":"FUNCTIONEND","function":"maskMessage"},');
+
 };

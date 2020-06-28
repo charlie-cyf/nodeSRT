@@ -35,6 +35,8 @@ var hasProperty = require('@uppy/utils/lib/hasProperty');
 var getFingerprint = require('./getFingerprint');
 /** @typedef {import('..').TusOptions} TusOptions */
 
+/** @typedef {import('tus-js-client').UploadOptions} RawTusOptions */
+
 /** @typedef {import('@uppy/core').Uppy} Uppy */
 
 /** @typedef {import('@uppy/core').UppyFile} UppyFile */
@@ -45,24 +47,29 @@ var getFingerprint = require('./getFingerprint');
  * Extracted from https://github.com/tus/tus-js-client/blob/master/lib/upload.js#L13
  * excepted we removed 'fingerprint' key to avoid adding more dependencies
  *
- * @type {TusOptions}
+ * @type {RawTusOptions}
  */
 
 
 var tusDefaultOptions = {
   endpoint: '',
-  resume: true,
+  uploadUrl: null,
+  metadata: {},
+  uploadSize: null,
   onProgress: null,
   onChunkComplete: null,
   onSuccess: null,
   onError: null,
-  headers: {},
-  chunkSize: Infinity,
-  withCredentials: false,
-  uploadUrl: null,
-  uploadSize: null,
   overridePatchMethod: false,
-  retryDelays: null
+  headers: {},
+  addRequestId: false,
+  chunkSize: Infinity,
+  retryDelays: [0, 1000, 3000, 5000],
+  parallelUploads: 1,
+  storeFingerprintForResuming: true,
+  removeFingerprintOnSuccess: false,
+  uploadLengthDeferred: false,
+  uploadDataDuringCreation: false
 };
 /**
  * Tus resumable file uploader
@@ -84,8 +91,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     _this.title = 'Tus'; // set default options
 
     var defaultOptions = {
-      resume: true,
       autoRetry: true,
+      resume: true,
       useFastRemoteRetry: true,
       limit: 0,
       retryDelays: [0, 1000, 3000, 5000]
@@ -209,20 +216,32 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     return new Promise(function (resolve, reject) {
       _this2.uppy.emit('upload-started', file);
 
-      var optsTus = _extends({}, tusDefaultOptions, _this2.opts, // Install file-specific upload overrides.
-      file.tus || {}); // We override tus fingerprint to uppy’s `file.id`, since the `file.id`
+      var opts = _extends({}, _this2.opts, {}, file.tus || {});
+      /** @type {RawTusOptions} */
+
+
+      var uploadOptions = _extends({}, tusDefaultOptions, {}, opts);
+
+      delete uploadOptions.resume; // Make `resume: true` work like it did in tus-js-client v1.
+      // TODO: Remove in @uppy/tus v2
+
+      if (opts.resume) {
+        uploadOptions.storeFingerprintForResuming = true;
+      } // We override tus fingerprint to uppy’s `file.id`, since the `file.id`
       // now also includes `relativePath` for files added from folders.
       // This means you can add 2 identical files, if one is in folder a,
       // the other in folder b.
 
 
-      optsTus.fingerprint = getFingerprint(file);
+      uploadOptions.fingerprint = getFingerprint(file);
 
-      optsTus.onError = function (err) {
+      uploadOptions.onError = function (err) {
         _this2.uppy.log(err);
 
-        if (isNetworkError(err.originalRequest)) {
-          err = new NetworkError(err, err.originalRequest);
+        var xhr = err.originalRequest ? err.originalRequest.getUnderlyingObject() : null;
+
+        if (isNetworkError(xhr)) {
+          err = new NetworkError(err, xhr);
         }
 
         _this2.resetUploaderReferences(file.id);
@@ -234,7 +253,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         reject(err);
       };
 
-      optsTus.onProgress = function (bytesUploaded, bytesTotal) {
+      uploadOptions.onProgress = function (bytesUploaded, bytesTotal) {
         _this2.onReceiveUploadUrl(file, upload.url);
 
         _this2.uppy.emit('upload-progress', file, {
@@ -244,7 +263,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         });
       };
 
-      optsTus.onSuccess = function () {
+      uploadOptions.onSuccess = function () {
         var uploadResp = {
           uploadURL: upload.url
         };
@@ -267,9 +286,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           obj[destProp] = obj[srcProp];
         }
       };
+      /** @type {{ [name: string]: string }} */
+
 
       var meta = {};
-      var metaFields = Array.isArray(optsTus.metaFields) ? optsTus.metaFields // Send along all fields by default.
+      var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields // Send along all fields by default.
       : Object.keys(file.meta);
       metaFields.forEach(function (item) {
         meta[item] = file.meta[item];
@@ -277,14 +298,31 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       copyProp(meta, 'type', 'filetype');
       copyProp(meta, 'name', 'filename');
-      optsTus.metadata = meta;
-      var upload = new tus.Upload(file.data, optsTus);
+      uploadOptions.metadata = meta;
+      var upload = new tus.Upload(file.data, uploadOptions);
       _this2.uploaders[file.id] = upload;
-      _this2.uploaderEvents[file.id] = new EventTracker(_this2.uppy);
+      _this2.uploaderEvents[file.id] = new EventTracker(_this2.uppy); // Make `resume: true` work like it did in tus-js-client v1.
+      // TODO: Remove in @uppy/tus v2.
+
+      if (opts.resume) {
+        upload.findPreviousUploads().then(function (previousUploads) {
+          var previousUpload = previousUploads[0];
+
+          if (previousUploads) {
+            _this2.uppy.log("[Tus] Resuming upload of " + file.id + " started at " + previousUpload.creationTime);
+
+            upload.resumeFromPreviousUpload(previousUpload);
+          }
+        });
+      }
 
       var queuedRequest = _this2.requests.run(function () {
         if (!file.isPaused) {
-          upload.start();
+          // Ensure this gets scheduled to run _after_ `findPreviousUploads()` returns.
+          // TODO: Remove in @uppy/tus v2.
+          Promise.resolve().then(function () {
+            upload.start();
+          });
         } // Don't do anything here, the caller will take care of cancelling the upload itself
         // using resetUploaderReferences(). This is because resetUploaderReferences() has to be
         // called when this request is still in the queue, and has not been started yet, too. At

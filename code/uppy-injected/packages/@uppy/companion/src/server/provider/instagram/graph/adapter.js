@@ -40,25 +40,13 @@ exports.getItemSubList = item => {
   item.data.forEach(subItem => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":1},`);
 
-    // exclude videos because of bug https://developers.facebook.com/support/bugs/801145630390846/
-    // @todo remove this clause when bug is fixed
-    if (isVideo(subItem)) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
-
-      return;
-    }
     if (subItem.media_type === MEDIA_TYPES.carousel) {
       subItem.children.data.forEach(i => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":1},`);
 
-        // exclude videos because of bug https://developers.facebook.com/support/bugs/801145630390846/
-        // @todo remove this clause when bug is fixed
-        if (isVideo(i)) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
-          return;
-        }
-        newItems.push(i);
+        return newItems.push(i);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
       });

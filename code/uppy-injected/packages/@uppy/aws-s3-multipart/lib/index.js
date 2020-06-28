@@ -167,8 +167,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this2.uppy.setFileState(file.id, {
           s3Multipart: _extends({}, cFile.s3Multipart, {
             key: data.key,
-            uploadId: data.uploadId,
-            parts: []
+            uploadId: data.uploadId
           })
         });
       };
@@ -211,18 +210,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       };
 
       var onPartComplete = function onPartComplete(part) {
-        // Store completed parts in state.
         var cFile = _this2.uppy.getFile(file.id);
 
         if (!cFile) {
           return;
         }
-
-        _this2.uppy.setFileState(file.id, {
-          s3Multipart: _extends({}, cFile.s3Multipart, {
-            parts: [].concat(cFile.s3Multipart.parts, [part])
-          })
-        });
 
         _this2.uppy.emit('s3-multipart:part-uploaded', cFile, part);
       };

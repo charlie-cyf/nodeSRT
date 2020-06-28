@@ -46,7 +46,7 @@ module.exports = /*#__PURE__*/function (_Component) {
     }), h("svg", {
       "aria-hidden": "true",
       focusable: "false",
-      class: "UppyIcon uppy-ProviderBrowser-searchIcon",
+      class: "uppy-c-icon uppy-ProviderBrowser-searchIcon",
       width: "12",
       height: "12",
       viewBox: "0 0 12 12"
@@ -61,7 +61,7 @@ module.exports = /*#__PURE__*/function (_Component) {
     }, h("svg", {
       "aria-hidden": "true",
       focusable: "false",
-      class: "UppyIcon",
+      class: "uppy-c-icon",
       viewBox: "0 0 19 19"
     }, h("path", {
       d: "M17.318 17.232L9.94 9.854 9.586 9.5l-.354.354-7.378 7.378h.707l-.62-.62v.706L9.318 9.94l.354-.354-.354-.354L1.94 1.854v.707l.62-.62h-.706l7.378 7.378.354.354.354-.354 7.378-7.378h-.707l.622.62v-.706L9.854 9.232l-.354.354.354.354 7.378 7.378.708-.707-7.38-7.378v.708l7.38-7.38.353-.353-.353-.353-.622-.622-.353-.353-.354.352-7.378 7.38h.708L2.56 1.23 2.208.88l-.353.353-.622.62-.353.355.352.353 7.38 7.38v-.708l-7.38 7.38-.353.353.352.353.622.622.353.353.354-.353 7.38-7.38h-.708l7.38 7.38z"

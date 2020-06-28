@@ -105,7 +105,17 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
     this.clearSelection = this.clearSelection.bind(this); // Visual
 
     this.render = this.render.bind(this);
-    this.clearSelection();
+    this.clearSelection(); // Set default state for the plugin
+
+    this.plugin.setPluginState({
+      authenticated: false,
+      files: [],
+      folders: [],
+      directories: [],
+      activeRow: -1,
+      filterInput: '',
+      isSearchVisible: false
+    });
   }
 
   var _proto2 = ProviderView.prototype;

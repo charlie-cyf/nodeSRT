@@ -22,7 +22,7 @@ module.exports = function SubmitButton(_ref) {
     }, h("svg", {
       "aria-hidden": "true",
       focusable: "false",
-      class: "UppyIcon",
+      class: "uppy-c-icon",
       width: "48",
       height: "48",
       viewBox: "0 0 48 48"

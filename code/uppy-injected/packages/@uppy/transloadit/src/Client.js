@@ -1,8 +1,9 @@
+const SRTlib = require('SRT-util');
+
+const fetchWithNetworkError = require('@uppy/utils/lib/fetchWithNetworkError');
 /**
 * A Barebones HTTP API client for Transloadit.
 */
-const SRTlib = require('SRT-util');
-
 module.exports = class Client {
   constructor(opts = {}) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Client"}},`);
@@ -39,7 +40,7 @@ module.exports = class Client {
     const url = `${this.opts.service}/assemblies`;
         SRTlib.send('{"type":"FUNCTIONEND","function":"createAssembly"},');
 
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       method: 'post',
       headers: this._headers,
       body: data
@@ -98,7 +99,7 @@ module.exports = class Client {
     const url = `${assembly.assembly_ssl_url}/reserve_file?size=${size}`;
         SRTlib.send('{"type":"FUNCTIONEND","function":"reserveFile"},');
 
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       method: 'post',
       headers: this._headers
     }).then(response => {
@@ -148,7 +149,7 @@ module.exports = class Client {
     const url = `${assembly.assembly_ssl_url}/add_file?${qs}`;
         SRTlib.send('{"type":"FUNCTIONEND","function":"addFile"},');
 
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       method: 'post',
       headers: this._headers
     }).then(response => {
@@ -187,7 +188,7 @@ module.exports = class Client {
     const url = assembly.assembly_ssl_url;
         SRTlib.send('{"type":"FUNCTIONEND","function":"cancelAssembly"},');
 
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       method: 'delete',
       headers: this._headers
     }).then(response => {
@@ -223,7 +224,7 @@ module.exports = class Client {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getAssemblyStatus"},');
 
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       headers: this._headers
     }).then(response => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":1},`);
@@ -254,7 +255,7 @@ module.exports = class Client {
     const message = err.details ? `${err.message} (${err.details})` : err.message;
         SRTlib.send('{"type":"FUNCTIONEND","function":"submitError"},');
 
-    return fetch('https://status.transloadit.com/client_error', {
+    return fetchWithNetworkError('https://status.transloadit.com/client_error', {
       method: 'post',
       body: JSON.stringify({
         endpoint,

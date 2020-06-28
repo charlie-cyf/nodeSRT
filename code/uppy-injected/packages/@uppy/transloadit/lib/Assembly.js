@@ -10,7 +10,11 @@ var Emitter = require('component-emitter');
 
 var has = require('@uppy/utils/lib/hasProperty');
 
-var parseUrl = require('./parseUrl'); // Lazy load socket.io to avoid a console error
+var parseUrl = require('./parseUrl');
+
+var NetworkError = require('@uppy/utils/lib/NetworkError');
+
+var fetchWithNetworkError = require('@uppy/utils/lib/fetchWithNetworkError'); // Lazy load socket.io to avoid a console error
 // in IE 10 when the Transloadit plugin is not used.
 // (The console.error call comes from `buffer`. I
 // think we actually don't use that part of socket.io
@@ -111,37 +115,45 @@ var TransloaditAssembly = /*#__PURE__*/function (_Emitter) {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
     });
-    socket.on('error', function () {
+    socket.on('connect_failed', function () {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-      socket.disconnect();
+
+      _this2._onError(new NetworkError('Transloadit Socket.io connection error'));
+
       _this2.socket = null;
       SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
     });
-    socket.on('assembly_finished', function () {
+    socket.on('error', function () {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      socket.disconnect();
+      _this2.socket = null;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+    });
+    socket.on('assembly_finished', function () {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this2._onFinished();
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
     });
     socket.on('assembly_upload_finished', function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this2.emit('upload', file);
 
       _this2.status.uploads.push(file);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
     });
     socket.on('assembly_uploading_finished', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this2.emit('executing');
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
     });
     socket.on('assembly_upload_meta_data_extracted', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this2.emit('metadata');
 
@@ -149,10 +161,10 @@ var TransloaditAssembly = /*#__PURE__*/function (_Emitter) {
         diff: false
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
     });
     socket.on('assembly_result_finished', function (stepName, result) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       _this2.emit('result', stepName, result);
 
@@ -162,10 +174,10 @@ var TransloaditAssembly = /*#__PURE__*/function (_Emitter) {
 
       _this2.status.results[stepName].push(result);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
     });
     socket.on('assembly_error', function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this2._onError(err); // Refetch for updated status code
 
@@ -174,7 +186,7 @@ var TransloaditAssembly = /*#__PURE__*/function (_Emitter) {
         diff: false
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
     });
     this.socket = socket;
     SRTlib.send('{"type":"FUNCTIONEND","function":"_connectSocket"},');
@@ -197,13 +209,13 @@ var TransloaditAssembly = /*#__PURE__*/function (_Emitter) {
     */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_beginPolling\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"TransloaditAssembly\",\"superClass\":\"Emitter\"}},");
     this.pollInterval = setInterval(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       if (!_this3.socket || !_this3.socket.connected) {
         _this3._fetchStatus();
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
     }, 2000);
     SRTlib.send('{"type":"FUNCTIONEND","function":"_beginPolling"},');
   };
@@ -224,13 +236,13 @@ var TransloaditAssembly = /*#__PURE__*/function (_Emitter) {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_fetchStatus\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"TransloaditAssembly\",\"superClass\":\"Emitter\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"_fetchStatus"},');
-    return fetch(this.status.assembly_ssl_url).then(function (response) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
-      return response.json();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
-    }).then(function (status) {
+    return fetchWithNetworkError(this.status.assembly_ssl_url).then(function (response) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey11\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+      return response.json();
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+    }).then(function (status) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey12\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       if (_this4.closed) return;
 
       _this4.emit('status', status);
@@ -241,7 +253,12 @@ var TransloaditAssembly = /*#__PURE__*/function (_Emitter) {
         _this4.status = status;
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+    }).catch(function (err) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey13\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+      return _this4._onError(err);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_fetchStatus"},');
   };
@@ -309,21 +326,21 @@ var TransloaditAssembly = /*#__PURE__*/function (_Emitter) {
 
 
     Object.keys(next.uploads).filter(function (upload) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey12\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
-      return !has(prev.uploads, upload);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
-    }).map(function (upload) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey13\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
-      return next.uploads[upload];
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
-    }).forEach(function (upload) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey14\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
+      return !has(prev.uploads, upload);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
+    }).map(function (upload) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey15\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
+      return next.uploads[upload];
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
+    }).forEach(function (upload) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey16\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this5.emit('upload', upload);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey16"},');
     });
 
     if (nowExecuting) {
@@ -332,27 +349,27 @@ var TransloaditAssembly = /*#__PURE__*/function (_Emitter) {
 
 
     Object.keys(next.results).forEach(function (stepName) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey18\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey20\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var nextResults = next.results[stepName];
       var prevResults = prev.results[stepName];
       nextResults.filter(function (n) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey16\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey16"},');
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey18\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey18"},');
         return !prevResults || !prevResults.some(function (p) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey15\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey17\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey17"},');
           return p.id === n.id;
-          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey17"},');
         });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey16"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey18"},');
       }).forEach(function (result) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey17\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey19\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
         _this5.emit('result', stepName, result);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey17"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey19"},');
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey18"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey20"},');
     });
 
     if (isStatus(nextStatus, ASSEMBLY_COMPLETED) && !isStatus(prevStatus, ASSEMBLY_COMPLETED)) {

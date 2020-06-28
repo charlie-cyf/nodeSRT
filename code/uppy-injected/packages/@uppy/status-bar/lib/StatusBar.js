@@ -160,7 +160,7 @@ var RetryBtn = function RetryBtn(props) {
   }, h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "UppyIcon",
+    class: "uppy-c-icon",
     width: "8",
     height: "10",
     viewBox: "0 0 8 10"
@@ -180,7 +180,7 @@ var CancelBtn = function CancelBtn(props) {
   }, h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "UppyIcon",
+    class: "uppy-c-icon",
     width: "16",
     height: "16",
     viewBox: "0 0 16 16"
@@ -214,7 +214,7 @@ var PauseResumeButton = function PauseResumeButton(props) {
   }, isAllPaused ? h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "UppyIcon",
+    class: "uppy-c-icon",
     width: "16",
     height: "16",
     viewBox: "0 0 16 16"
@@ -232,7 +232,7 @@ var PauseResumeButton = function PauseResumeButton(props) {
   }))) : h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "UppyIcon",
+    class: "uppy-c-icon",
     width: "16",
     height: "16",
     viewBox: "0 0 16 16"
@@ -355,7 +355,7 @@ var ProgressBarComplete = function ProgressBarComplete(_ref) {
   }, h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "uppy-StatusBar-statusIndicator UppyIcon",
+    class: "uppy-StatusBar-statusIndicator uppy-c-icon",
     width: "15",
     height: "11",
     viewBox: "0 0 15 11"
@@ -386,7 +386,7 @@ var ProgressBarError = function ProgressBarError(_ref2) {
   }, h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "uppy-StatusBar-statusIndicator UppyIcon",
+    class: "uppy-StatusBar-statusIndicator uppy-c-icon",
     width: "11",
     height: "11",
     viewBox: "0 0 11 11"

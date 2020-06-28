@@ -48,7 +48,8 @@ module.exports = function (props) {
     individualCancellation: props.individualCancellation,
     // visual options
     hideRetryButton: props.hideRetryButton,
-    hidePauseResumeCancelButtons: props.hidePauseResumeCancelButtons,
+    hidePauseResumeButton: props.hidePauseResumeButton,
+    hideCancelButton: props.hideCancelButton,
     showLinkToFileUploadResult: props.showLinkToFileUploadResult,
     showRemoveButtonAfterComplete: props.showRemoveButtonAfterComplete,
     isWide: props.isWide,

@@ -1,7 +1,10 @@
+var SRTlib = require('SRT-util');
+
+var fetchWithNetworkError = require('@uppy/utils/lib/fetchWithNetworkError');
 /**
 * A Barebones HTTP API client for Transloadit.
 */
-var SRTlib = require('SRT-util');
+
 
 module.exports = /*#__PURE__*/function () {
   function Client(opts) {
@@ -50,7 +53,7 @@ module.exports = /*#__PURE__*/function () {
     data.append('num_expected_upload_files', expectedFiles);
     var url = this.opts.service + "/assemblies";
     SRTlib.send('{"type":"FUNCTIONEND","function":"createAssembly"},');
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       method: 'post',
       headers: this._headers,
       body: data
@@ -103,7 +106,7 @@ module.exports = /*#__PURE__*/function () {
     var size = encodeURIComponent(file.size);
     var url = assembly.assembly_ssl_url + "/reserve_file?size=" + size;
     SRTlib.send('{"type":"FUNCTIONEND","function":"reserveFile"},');
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       method: 'post',
       headers: this._headers
     }).then(function (response) {
@@ -148,7 +151,7 @@ module.exports = /*#__PURE__*/function () {
     var qs = "size=" + size + "&filename=" + filename + "&fieldname=" + fieldname + "&s3Url=" + uploadUrl;
     var url = assembly.assembly_ssl_url + "/add_file?" + qs;
     SRTlib.send('{"type":"FUNCTIONEND","function":"addFile"},');
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       method: 'post',
       headers: this._headers
     }).then(function (response) {
@@ -181,7 +184,7 @@ module.exports = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"cancelAssembly\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Client\"}},");
     var url = assembly.assembly_ssl_url;
     SRTlib.send('{"type":"FUNCTIONEND","function":"cancelAssembly"},');
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       method: 'delete',
       headers: this._headers
     }).then(function (response) {
@@ -211,7 +214,7 @@ module.exports = /*#__PURE__*/function () {
     */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getAssemblyStatus\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Client\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"getAssemblyStatus"},');
-    return fetch(url, {
+    return fetchWithNetworkError(url, {
       headers: this._headers
     }).then(function (response) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey11\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -237,7 +240,7 @@ module.exports = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"submitError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Client\"}},");
     var message = err.details ? err.message + " (" + err.details + ")" : err.message;
     SRTlib.send('{"type":"FUNCTIONEND","function":"submitError"},');
-    return fetch('https://status.transloadit.com/client_error', {
+    return fetchWithNetworkError('https://status.transloadit.com/client_error', {
       method: 'post',
       body: JSON.stringify({
         endpoint: endpoint,

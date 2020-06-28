@@ -54,7 +54,7 @@ var MultipartUploader = /*#__PURE__*/function () {
     this.file = file;
     this.key = this.options.key || null;
     this.uploadId = this.options.uploadId || null;
-    this.parts = this.options.parts || []; // Do `this.createdPromise.then(OP)` to execute an operation `OP` _only_ if the
+    this.parts = []; // Do `this.createdPromise.then(OP)` to execute an operation `OP` _only_ if the
     // upload was created already. That also ensures that the sequencing is right
     // (so the `OP` definitely happens if the upload is created).
     // 

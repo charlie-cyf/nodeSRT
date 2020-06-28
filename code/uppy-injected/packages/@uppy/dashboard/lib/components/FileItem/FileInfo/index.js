@@ -15,7 +15,7 @@ var renderAcquirerIcon = function renderAcquirerIcon(acquirer, props) {
 
 var renderFileSource = function renderFileSource(props) {
   return props.file.source && props.file.source !== props.id && h("div", {
-    class: "uppy-DashboardItem-sourceIcon"
+    class: "uppy-Dashboard-Item-sourceIcon"
   }, props.acquirers.map(function (acquirer) {
     if (acquirer.id === props.file.source) {
       return renderAcquirerIcon(acquirer, props);
@@ -36,14 +36,14 @@ var renderFileName = function renderFileName(props) {
   }
 
   return h("div", {
-    class: "uppy-DashboardItem-name",
+    class: "uppy-Dashboard-Item-name",
     title: props.file.meta.name
   }, truncateString(props.file.meta.name, maxNameLength));
 };
 
 var renderFileSize = function renderFileSize(props) {
   return props.file.data.size && h("div", {
-    class: "uppy-DashboardItem-statusSize"
+    class: "uppy-Dashboard-Item-statusSize"
   }, prettierBytes(props.file.data.size));
 };
 
@@ -53,7 +53,7 @@ var ErrorButton = function ErrorButton(_ref) {
 
   if (file.error) {
     return h("span", {
-      class: "uppy-DashboardItem-errorDetails",
+      class: "uppy-Dashboard-Item-errorDetails",
       "aria-label": file.error,
       "data-microtip-position": "bottom",
       "data-microtip-size": "medium",
@@ -67,10 +67,10 @@ var ErrorButton = function ErrorButton(_ref) {
 
 module.exports = function FileInfo(props) {
   return h("div", {
-    class: "uppy-DashboardItem-fileInfo",
+    class: "uppy-Dashboard-Item-fileInfo",
     "data-uppy-file-source": props.file.source
   }, renderFileName(props), h("div", {
-    class: "uppy-DashboardItem-status"
+    class: "uppy-Dashboard-Item-status"
   }, renderFileSize(props), renderFileSource(props), h(ErrorButton, {
     file: props.file,
     onClick: function onClick() {
