@@ -24,7 +24,7 @@ module.exports.getDiffs = function (AST1, AST2) {
                         console.log('set true in 2', node1.type)
                         attrDiffer = true;
                     } else {
-                        diffAncestors = getDiffAncestors(node1[k], node2[k], diffAncestors);
+                        diffAncestors = getDiffAncestors(node1[k], node2[k], diffAncestors, true);
                     }
                 }
             } else {
