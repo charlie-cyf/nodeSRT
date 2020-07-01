@@ -10,7 +10,6 @@ uppy.use(Dashboard, {
   inline: true,
   target: 'body'
 });
-// No client side changes needed!
 uppy.use(AwsS3, {
   companionUrl: '/companion'
 });

@@ -1,7 +1,3 @@
-/**
-* Create a wrapper around an event emitter with a `remove` method to remove
-* all events that were added using the wrapped emitter.
-*/
 const SRTlib = require('SRT-util');
 
 module.exports = class EventTracker {

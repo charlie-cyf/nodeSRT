@@ -1,4 +1,3 @@
-/*global test:false, expect:false, describe:false, beforeAll:false,*/
 const SRTlib = require('SRT-util');
 
 const logger = require('../../src/server/logger');
@@ -17,7 +16,6 @@ describe('Test Logger secret mask', () => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"${__filename}","paramsNumber":0},`);
 
     let loggedMessage = null;
-    // override the default console.log to capture the logged message
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log","fileName":"${__filename}","paramsNumber":2},`);
@@ -28,7 +26,6 @@ describe('Test Logger secret mask', () => {
 
     };
     logger.info('this info has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2');
-    // restore the default console.log before using "expect" to avoid weird log behaviors
     console.log = defaultConsoleLog;
     const exptectedMsg = 'this info has ****** and ****** and case-insensitive ******';
     expect(loggedMessage).toBeTruthy();
@@ -40,7 +37,6 @@ describe('Test Logger secret mask', () => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test2","fileName":"${__filename}","paramsNumber":0},`);
 
     let loggedMessage = null;
-    // override the default console.log to capture the logged message
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log2","fileName":"${__filename}","paramsNumber":2},`);
@@ -51,7 +47,6 @@ describe('Test Logger secret mask', () => {
 
     };
     logger.warn('this warning has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2');
-    // restore the default console.log before using "expect" to avoid weird log behaviors
     console.log = defaultConsoleLog;
     const exptectedMsg = chalk.bold.yellow('this warning has ****** and ****** and case-insensitive ******');
     expect(loggedMessage).toBeTruthy();
@@ -63,7 +58,6 @@ describe('Test Logger secret mask', () => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test3","fileName":"${__filename}","paramsNumber":0},`);
 
     let loggedMessage = null;
-    // override the default console.log to capture the logged message
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log3","fileName":"${__filename}","paramsNumber":2},`);
@@ -74,7 +68,6 @@ describe('Test Logger secret mask', () => {
 
     };
     logger.error(new Error('this error has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2'));
-    // restore the default console.log before using "expect" to avoid weird log behaviors
     console.log = defaultConsoleLog;
     const exptectedMsg = chalk.bold.red('Error: this error has ****** and ****** and case-insensitive ******');
     expect(loggedMessage).toBeTruthy();
@@ -86,7 +79,6 @@ describe('Test Logger secret mask', () => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test4","fileName":"${__filename}","paramsNumber":0},`);
 
     let loggedMessage = null;
-    // override the default console.log to capture the logged message
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log4","fileName":"${__filename}","paramsNumber":2},`);
@@ -98,7 +90,6 @@ describe('Test Logger secret mask', () => {
     };
     const err = new Error('this error has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2');
     logger.error(err, '', '', true);
-    // restore the default console.log before using "expect" to avoid weird log behaviors
     console.log = defaultConsoleLog;
     const exptectedMsg = chalk.bold.red('Error: this error has ****** and ****** and case-insensitive ******');
     expect(loggedMessage).toBeTruthy();
@@ -113,7 +104,6 @@ describe('Test Logger secret mask', () => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test5","fileName":"${__filename}","paramsNumber":0},`);
 
     let loggedMessage = null;
-    // override the default console.log to capture the logged message
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log5","fileName":"${__filename}","paramsNumber":2},`);
@@ -124,7 +114,6 @@ describe('Test Logger secret mask', () => {
 
     };
     logger.warn('this warning has ToBeMasked(And)?Escaped but not toBeMaskedEscaped ');
-    // restore the default console.log before using "expect" to avoid weird log behaviors
     console.log = defaultConsoleLog;
     const exptectedMsg = chalk.bold.yellow('this warning has ****** but not toBeMaskedEscaped ');
     expect(loggedMessage).toBeTruthy();

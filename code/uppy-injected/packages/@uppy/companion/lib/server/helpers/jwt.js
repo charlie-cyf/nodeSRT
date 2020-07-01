@@ -2,11 +2,6 @@ const SRTlib = require('SRT-util');
 
 const jwt = require('jsonwebtoken');
 const {encrypt, decrypt} = require('./utils');
-/**
-*
-* @param {*} payload
-* @param {string} secret
-*/
 module.exports.generateToken = (payload, secret) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.generateToken","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -20,18 +15,12 @@ module.exports.generateToken = (payload, secret) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateToken"},');
 
 };
-/**
-*
-* @param {string} token
-* @param {string} secret
-*/
 module.exports.verifyToken = (token, secret) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.verifyToken","fileName":"${__filename}","paramsNumber":2},`);
 
   try {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.verifyToken"},');
 
-    // @ts-ignore
     return {
       payload: jwt.verify(decrypt(token, secret), secret, {}).data
     };
@@ -45,13 +34,6 @@ module.exports.verifyToken = (token, secret) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.verifyToken"},');
 
 };
-/**
-*
-* @param {object} res
-* @param {string} token
-* @param {object=} companionOptions
-* @param {string} providerName
-*/
 module.exports.addToCookies = (res, token, companionOptions, providerName) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addToCookies","fileName":"${__filename}","paramsNumber":4},`);
 
@@ -62,17 +44,10 @@ module.exports.addToCookies = (res, token, companionOptions, providerName) => {
   if (companionOptions.cookieDomain) {
     cookieOptions.domain = companionOptions.cookieDomain;
   }
-  // send signed token to client.
   res.cookie(`uppyAuthToken--${providerName}`, token, cookieOptions);
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.addToCookies"},');
 
 };
-/**
-*
-* @param {object} res
-* @param {object=} companionOptions
-* @param {string} providerName
-*/
 module.exports.removeFromCookies = (res, companionOptions, providerName) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.removeFromCookies","fileName":"${__filename}","paramsNumber":3},`);
 

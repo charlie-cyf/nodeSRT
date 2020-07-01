@@ -1,6 +1,3 @@
-/**
-* Array.prototype.findIndex ponyfill for old browsers.
-*/
 var SRTlib = require('SRT-util');
 
 function findIndex(array, predicate) {
@@ -98,10 +95,7 @@ module.exports = /*#__PURE__*/function () {
   _proto._queueNext = function _queueNext() {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_queueNext\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"RateLimitedQueue\"}},"); // Do it soon but not immediately, this allows clearing out the entire queue synchronously
-    // one by one without continuously _advancing_ it (and starting new tasks before immediately
-    // aborting them)
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_queueNext\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"RateLimitedQueue\"}},");
     Promise.resolve().then(function () {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Promise.resolve.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
@@ -123,10 +117,7 @@ module.exports = /*#__PURE__*/function () {
     if (this.queuedHandlers.length === 0) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"_next"},');
       return;
-    } // Dispatch the next request, and update the abort/done handlers
-    // so that cancelling it does the Right Thing (and doesn't just try
-    // to dequeue an already-running request).
-
+    }
 
     var next = this.queuedHandlers.shift();
 

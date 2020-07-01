@@ -65,7 +65,6 @@ const methods = [buildBundle('./packages/uppy/bundle.js', './packages/uppy/dist/
   standalone: 'Robodog',
   minify: true
 })];
-// Build minified versions of all the locales
 const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', '*.js');
 glob.sync(localePackagePath).forEach(localePath => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob.sync.forEach","fileName":"${__filename}","paramsNumber":1},`);

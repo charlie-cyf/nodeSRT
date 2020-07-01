@@ -10,21 +10,14 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
   var files = [];
   var rootPromises = [];
-  /**
-  * Returns a resolved promise, when :files array is enhanced
-  *
-  * @param {(FileSystemFileEntry|FileSystemDirectoryEntry)} entry
-  * @returns {Promise} - empty promise that resolves when :files is enhanced with a file
-  */
 
   var createPromiseToAddFileOrParseDirectory = function createPromiseToAddFileOrParseDirectory(entry) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createPromiseToAddFileOrParseDirectory\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"createPromiseToAddFileOrParseDirectory"},');
     return new Promise(function (resolve) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // This is a base call
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (entry.isFile) {
-        // Creates a new File object which can be used to read the file.
         entry.file(function (file) {
           SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"entry.file\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           file.relativePath = getRelativePath(entry);
@@ -32,12 +25,11 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
           resolve();
           SRTlib.send('{"type":"FUNCTIONEND","function":"entry.file"},');
         }, function (error) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"entry.file2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // Make sure we resolve on error anyway, it's fine if only one file couldn't be read!
-
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"entry.file2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           logDropError(error);
           resolve();
           SRTlib.send('{"type":"FUNCTIONEND","function":"entry.file2"},');
-        }); // This is a recursive call
+        });
       } else if (entry.isDirectory) {
         var directoryReader = entry.createReader();
         getFilesAndDirectoriesFromDirectory(directoryReader, [], logDropError, {
@@ -63,12 +55,11 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"NewExpression"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"createPromiseToAddFileOrParseDirectory"},');
-  }; // For each dropped item, - make sure it's a file/directory, and start deepening in!
-
+  };
 
   toArray(dataTransfer.items).forEach(function (item) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.webkitGetAsEntryApi.toArray.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-    var entry = item.webkitGetAsEntry(); // :entry can be null when we drop the url e.g.
+    var entry = item.webkitGetAsEntry();
 
     if (entry) {
       rootPromises.push(createPromiseToAddFileOrParseDirectory(entry));

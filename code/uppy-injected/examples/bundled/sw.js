@@ -1,9 +1,5 @@
 const SRTlib = require('SRT-util');
 
-// This service worker is needed for Golden Retriever plugin,
-// only include if you’ve enabled it
-// https://uppy.io/docs/golden-retriever/
-/*globals clients*/
 const fileCache = Object.create(null);
 function getCache(name) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getCache","fileName":"${__filename}","paramsNumber":1},`);

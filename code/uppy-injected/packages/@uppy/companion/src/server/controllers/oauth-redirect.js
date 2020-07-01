@@ -4,11 +4,6 @@ const qs = require('querystring');
 const {URL} = require('url');
 const {hasMatch} = require('../helpers/utils');
 const oAuthState = require('../helpers/oauth-state');
-/**
-*
-* @param {object} req
-* @param {object} res
-*/
 module.exports = function oauthRedirect(req, res) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":2},`);
 

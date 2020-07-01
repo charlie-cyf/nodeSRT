@@ -3,9 +3,6 @@ const SRTlib = require('SRT-util');
 const {Plugin} = require('@uppy/core');
 const toArray = require('@uppy/utils/lib/toArray');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');
-/**
-* Add files from existing file inputs to Uppy.
-*/
 class AttachFileInputs extends Plugin {
   constructor(uppy, opts) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
@@ -75,8 +72,6 @@ class AttachFileInputs extends Plugin {
       if (!input.hasAttribute('accept') && restrictions.allowedFileTypes) {
         input.setAttribute('accept', restrictions.allowedFileTypes.join(','));
       }
-      // Check if this input already contains files (eg. user selected them before Uppy loaded,
-      // or the page was refreshed and the browser kept files selected)
       this.addFiles(input);
             SRTlib.send('{"type":"FUNCTIONEND","function":"inputs.forEach"},');
 

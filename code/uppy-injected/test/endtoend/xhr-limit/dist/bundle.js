@@ -61,17 +61,6 @@ const SRTlib = require('SRT-util');
 
 })()({
   1: [function (require, module, exports) {
-    /**
-    * cuid.js
-    * Collision-resistant UID generator for browsers and node.
-    * Sequential for fast db lookups and recency sorting.
-    * Safe for element IDs and server-side lookups.
-    *
-    * Extracted from CLCTR
-    *
-    * Copyright (c) Eric Elliott 2012
-    * MIT License
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
 
     var fingerprint = require('./lib/fingerprint.js');
@@ -91,7 +80,6 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"safeCounter","fileName":"${__filename}","paramsNumber":0},`);
 
       c = c < discreteValues ? c : 0;
-      // this is not subliminal
       c++;
             SRTlib.send('{"type":"FUNCTIONEND","function":"safeCounter"},');
 
@@ -102,20 +90,9 @@ const SRTlib = require('SRT-util');
     function cuid() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cuid","fileName":"${__filename}","paramsNumber":0},`);
 
-      // Starting with a lowercase letter makes
-      // it HTML element ID friendly.
       var letter = 'c', timestamp = new Date().getTime().toString(base), counter = pad(safeCounter().toString(base), blockSize), print = fingerprint(), random = randomBlock() + randomBlock();
             SRTlib.send('{"type":"FUNCTIONEND","function":"cuid"},');
 
-      // hard-coded allows for sequential access
-      // timestamp
-      // warning: this exposes the exact date and time
-      // that the uid was created.
-      // Prevent same-machine collisions.
-      // A few chars to generate distinct ids for different
-      // clients (so different computers are far less
-      // likely to generate the same id)
-      // Grab some more chars from Math.random()
       return letter + timestamp + counter + print + random;
             SRTlib.send('{"type":"FUNCTIONEND","function":"cuid","paramsNumber":0},');
 
@@ -242,8 +219,6 @@ const SRTlib = require('SRT-util');
   5: [function (require, module, exports) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":3},`);
 
-    // This file can be required in Browserify and Node.js for automatic polyfill
-    // To use it:  require('es6-promise/auto');
     'use strict';
     module.exports = require('./').polyfill();
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
@@ -255,13 +230,6 @@ const SRTlib = require('SRT-util');
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process, global) {
-      /*!
-      * @overview es6-promise - a tiny implementation of Promises/A+.
-      * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
-      * @license   Licensed under MIT license
-      *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
-      * @version   v4.2.8+1e68dce6
-      */
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call3","fileName":"${__filename}","paramsNumber":2},`);
 
       (function (global, factory) {
@@ -318,9 +286,6 @@ const SRTlib = require('SRT-util');
           queue[len + 1] = arg;
           len += 2;
           if (len === 2) {
-            // If len is 2, that means that we need to schedule an async flush.
-            // If additional callbacks are queued before the queue is flushed, they
-            // will be processed by this flush that we are scheduling.
             if (customSchedulerFn) {
               customSchedulerFn(flush);
             } else {
@@ -348,16 +313,12 @@ const SRTlib = require('SRT-util');
         var browserGlobal = browserWindow || ({});
         var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.WebKitMutationObserver;
         var isNode = typeof self === 'undefined' && typeof process !== 'undefined' && ({}).toString.call(process) === '[object process]';
-        // test for web worker but not in IE10
         var isWorker = typeof Uint8ClampedArray !== 'undefined' && typeof importScripts !== 'undefined' && typeof MessageChannel !== 'undefined';
-        // node
         function useNextTick() {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"useNextTick","fileName":"${__filename}","paramsNumber":0},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useNextTick"},');
 
-          // node version 0.10.x displays a deprecation warning when nextTick is used recursively
-          // see https://github.com/cujojs/when/issues/410 for details
           return function () {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -370,7 +331,6 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useNextTick","paramsNumber":0},');
 
         }
-        // vertx
         function useVertxTimer() {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"useVertxTimer","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -412,7 +372,6 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useMutationObserver","paramsNumber":0},');
 
         }
-        // web worker
         function useMessageChannel() {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"useMessageChannel","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -435,8 +394,6 @@ const SRTlib = require('SRT-util');
         function useSetTimeout() {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"useSetTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
-          // Store setTimeout reference so es6-promise will be unaffected by
-          // other code modifying setTimeout (like sinon.useFakeTimers())
           var globalSetTimeout = setTimeout;
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useSetTimeout"},');
 
@@ -485,7 +442,6 @@ const SRTlib = require('SRT-util');
 
         }
         var scheduleFlush = void 0;
-        // Decide what async method to use to triggering processing of queued callbacks:
         if (isNode) {
           scheduleFlush = useNextTick();
         } else if (BrowserMutationObserver) {
@@ -526,39 +482,7 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"then","paramsNumber":2},');
 
         }
-        /**
-        `Promise.resolve` returns a promise that will become resolved with the
-        passed `value`. It is shorthand for the following:
-        
-        ```javascript
-        let promise = new Promise(function(resolve, reject){
-        resolve(1);
-        });
-        
-        promise.then(function(value){
-        // value === 1
-        });
-        ```
-        
-        Instead of writing the above, your code now simply becomes the following:
-        
-        ```javascript
-        let promise = Promise.resolve(1);
-        
-        promise.then(function(value){
-        // value === 1
-        });
-        ```
-        
-        @method resolve
-        @static
-        @param {Any} value value that the returned promise will be resolved with
-        Useful for tooling.
-        @return {Promise} a promise that will become fulfilled with the given
-        `value`
-        */
         function resolve$1(object) {
-          /*jshint validthis:true*/
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resolve$1","fileName":"${__filename}","paramsNumber":1},`);
 
           var Constructor = this;
@@ -829,9 +753,7 @@ const SRTlib = require('SRT-util');
           } else {
             value = detail;
           }
-          if (promise._state !== PENDING) {
-            // noop
-          } else if (hasCallback && succeeded) {
+          if (promise._state !== PENDING) {} else if (hasCallback && succeeded) {
             resolve(promise, value);
           } else if (succeeded === false) {
             reject(promise, error);
@@ -1027,53 +949,6 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.Enumerator"},');
 
         })();
-        /**
-        `Promise.all` accepts an array of promises, and returns a new promise which
-        is fulfilled with an array of fulfillment values for the passed promises, or
-        rejected with the reason of the first passed promise to be rejected. It casts all
-        elements of the passed iterable to promises as it runs this algorithm.
-        
-        Example:
-        
-        ```javascript
-        let promise1 = resolve(1);
-        let promise2 = resolve(2);
-        let promise3 = resolve(3);
-        let promises = [ promise1, promise2, promise3 ];
-        
-        Promise.all(promises).then(function(array){
-        // The array here would be [ 1, 2, 3 ];
-        });
-        ```
-        
-        If any of the `promises` given to `all` are rejected, the first promise
-        that is rejected will be given as an argument to the returned promises's
-        rejection handler. For example:
-        
-        Example:
-        
-        ```javascript
-        let promise1 = resolve(1);
-        let promise2 = reject(new Error("2"));
-        let promise3 = reject(new Error("3"));
-        let promises = [ promise1, promise2, promise3 ];
-        
-        Promise.all(promises).then(function(array){
-        // Code here never runs because there are rejected promises!
-        }, function(error) {
-        // error.message === "2"
-        });
-        ```
-        
-        @method all
-        @static
-        @param {Array} entries array of promises
-        @param {String} label optional string for labeling the promise.
-        Useful for tooling.
-        @return {Promise} promise that is fulfilled when all `promises` have been
-        fulfilled, or rejected if any of them become rejected.
-        @static
-        */
         function all(entries) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"all","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -1083,73 +958,7 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"all","paramsNumber":1},');
 
         }
-        /**
-        `Promise.race` returns a new promise which is settled in the same way as the
-        first passed promise to settle.
-        
-        Example:
-        
-        ```javascript
-        let promise1 = new Promise(function(resolve, reject){
-        setTimeout(function(){
-        resolve('promise 1');
-        }, 200);
-        });
-        
-        let promise2 = new Promise(function(resolve, reject){
-        setTimeout(function(){
-        resolve('promise 2');
-        }, 100);
-        });
-        
-        Promise.race([promise1, promise2]).then(function(result){
-        // result === 'promise 2' because it was resolved before promise1
-        // was resolved.
-        });
-        ```
-        
-        `Promise.race` is deterministic in that only the state of the first
-        settled promise matters. For example, even if other promises given to the
-        `promises` array argument are resolved, but the first settled promise has
-        become rejected before the other promises became fulfilled, the returned
-        promise will become rejected:
-        
-        ```javascript
-        let promise1 = new Promise(function(resolve, reject){
-        setTimeout(function(){
-        resolve('promise 1');
-        }, 200);
-        });
-        
-        let promise2 = new Promise(function(resolve, reject){
-        setTimeout(function(){
-        reject(new Error('promise 2'));
-        }, 100);
-        });
-        
-        Promise.race([promise1, promise2]).then(function(result){
-        // Code here never runs
-        }, function(reason){
-        // reason.message === 'promise 2' because promise 2 became rejected before
-        // promise 1 became fulfilled
-        });
-        ```
-        
-        An example real-world use case is implementing timeouts:
-        
-        ```javascript
-        Promise.race([ajax('foo.json'), timeout(5000)])
-        ```
-        
-        @method race
-        @static
-        @param {Array} promises array of promises to observe
-        Useful for tooling.
-        @return {Promise} a promise which settles in the same way as the first passed
-        promise to settle.
-        */
         function race(entries) {
-          /*jshint validthis:true*/
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"race","fileName":"${__filename}","paramsNumber":1},`);
 
           var Constructor = this;
@@ -1182,42 +991,7 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"race","paramsNumber":1},');
 
         }
-        /**
-        `Promise.reject` returns a promise rejected with the passed `reason`.
-        It is shorthand for the following:
-        
-        ```javascript
-        let promise = new Promise(function(resolve, reject){
-        reject(new Error('WHOOPS'));
-        });
-        
-        promise.then(function(value){
-        // Code here doesn't run because the promise is rejected!
-        }, function(reason){
-        // reason.message === 'WHOOPS'
-        });
-        ```
-        
-        Instead of writing the above, your code now simply becomes the following:
-        
-        ```javascript
-        let promise = Promise.reject(new Error('WHOOPS'));
-        
-        promise.then(function(value){
-        // Code here doesn't run because the promise is rejected!
-        }, function(reason){
-        // reason.message === 'WHOOPS'
-        });
-        ```
-        
-        @method reject
-        @static
-        @param {Any} reason value that the returned promise will be rejected with.
-        Useful for tooling.
-        @return {Promise} a promise rejected with the given `reason`.
-        */
         function reject$1(reason) {
-          /*jshint validthis:true*/
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"reject$1","fileName":"${__filename}","paramsNumber":1},`);
 
           var Constructor = this;
@@ -1247,109 +1021,6 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"needsNew","paramsNumber":0},');
 
         }
-        /**
-        Promise objects represent the eventual result of an asynchronous operation. The
-        primary way of interacting with a promise is through its `then` method, which
-        registers callbacks to receive either a promise's eventual value or the reason
-        why the promise cannot be fulfilled.
-        
-        Terminology
-        -----------
-        
-        - `promise` is an object or function with a `then` method whose behavior conforms to this specification.
-        - `thenable` is an object or function that defines a `then` method.
-        - `value` is any legal JavaScript value (including undefined, a thenable, or a promise).
-        - `exception` is a value that is thrown using the throw statement.
-        - `reason` is a value that indicates why a promise was rejected.
-        - `settled` the final resting state of a promise, fulfilled or rejected.
-        
-        A promise can be in one of three states: pending, fulfilled, or rejected.
-        
-        Promises that are fulfilled have a fulfillment value and are in the fulfilled
-        state.  Promises that are rejected have a rejection reason and are in the
-        rejected state.  A fulfillment value is never a thenable.
-        
-        Promises can also be said to *resolve* a value.  If this value is also a
-        promise, then the original promise's settled state will match the value's
-        settled state.  So a promise that *resolves* a promise that rejects will
-        itself reject, and a promise that *resolves* a promise that fulfills will
-        itself fulfill.
-        
-        
-        Basic Usage:
-        ------------
-        
-        ```js
-        let promise = new Promise(function(resolve, reject) {
-        // on success
-        resolve(value);
-        
-        // on failure
-        reject(reason);
-        });
-        
-        promise.then(function(value) {
-        // on fulfillment
-        }, function(reason) {
-        // on rejection
-        });
-        ```
-        
-        Advanced Usage:
-        ---------------
-        
-        Promises shine when abstracting away asynchronous interactions such as
-        `XMLHttpRequest`s.
-        
-        ```js
-        function getJSON(url) {
-        return new Promise(function(resolve, reject){
-        let xhr = new XMLHttpRequest();
-        
-        xhr.open('GET', url);
-        xhr.onreadystatechange = handler;
-        xhr.responseType = 'json';
-        xhr.setRequestHeader('Accept', 'application/json');
-        xhr.send();
-        
-        function handler() {
-        if (this.readyState === this.DONE) {
-        if (this.status === 200) {
-        resolve(this.response);
-        } else {
-        reject(new Error('getJSON: `' + url + '` failed with status: [' + this.status + ']'));
-        }
-        }
-        };
-        });
-        }
-        
-        getJSON('/posts.json').then(function(json) {
-        // on fulfillment
-        }, function(reason) {
-        // on rejection
-        });
-        ```
-        
-        Unlike callbacks, promises are great composable primitives.
-        
-        ```js
-        Promise.all([
-        getJSON('/posts'),
-        getJSON('/comments')
-        ]).then(function(values){
-        values[0] // => postsJSON
-        values[1] // => commentsJSON
-        
-        return values;
-        });
-        ```
-        
-        @class Promise
-        @param {Function} resolver
-        Useful for tooling.
-        @constructor
-        */
         var Promise$1 = (function () {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Promise$1","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -1366,189 +1037,6 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"Promise","paramsNumber":1},');
 
           }
-          /**
-          The primary way of interacting with a promise is through its `then` method,
-          which registers callbacks to receive either a promise's eventual value or the
-          reason why the promise cannot be fulfilled.
-          ```js
-          findUser().then(function(user){
-          // user is available
-          }, function(reason){
-          // user is unavailable, and you are given the reason why
-          });
-          ```
-          Chaining
-          --------
-          The return value of `then` is itself a promise.  This second, 'downstream'
-          promise is resolved with the return value of the first promise's fulfillment
-          or rejection handler, or rejected if the handler throws an exception.
-          ```js
-          findUser().then(function (user) {
-          return user.name;
-          }, function (reason) {
-          return 'default name';
-          }).then(function (userName) {
-          // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
-          // will be `'default name'`
-          });
-          findUser().then(function (user) {
-          throw new Error('Found user, but still unhappy');
-          }, function (reason) {
-          throw new Error('`findUser` rejected and we're unhappy');
-          }).then(function (value) {
-          // never reached
-          }, function (reason) {
-          // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
-          // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
-          });
-          ```
-          If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
-          ```js
-          findUser().then(function (user) {
-          throw new PedagogicalException('Upstream error');
-          }).then(function (value) {
-          // never reached
-          }).then(function (value) {
-          // never reached
-          }, function (reason) {
-          // The `PedgagocialException` is propagated all the way down to here
-          });
-          ```
-          Assimilation
-          ------------
-          Sometimes the value you want to propagate to a downstream promise can only be
-          retrieved asynchronously. This can be achieved by returning a promise in the
-          fulfillment or rejection handler. The downstream promise will then be pending
-          until the returned promise is settled. This is called *assimilation*.
-          ```js
-          findUser().then(function (user) {
-          return findCommentsByAuthor(user);
-          }).then(function (comments) {
-          // The user's comments are now available
-          });
-          ```
-          If the assimliated promise rejects, then the downstream promise will also reject.
-          ```js
-          findUser().then(function (user) {
-          return findCommentsByAuthor(user);
-          }).then(function (comments) {
-          // If `findCommentsByAuthor` fulfills, we'll have the value here
-          }, function (reason) {
-          // If `findCommentsByAuthor` rejects, we'll have the reason here
-          });
-          ```
-          Simple Example
-          --------------
-          Synchronous Example
-          ```javascript
-          let result;
-          try {
-          result = findResult();
-          // success
-          } catch(reason) {
-          // failure
-          }
-          ```
-          Errback Example
-          ```js
-          findResult(function(result, err){
-          if (err) {
-          // failure
-          } else {
-          // success
-          }
-          });
-          ```
-          Promise Example;
-          ```javascript
-          findResult().then(function(result){
-          // success
-          }, function(reason){
-          // failure
-          });
-          ```
-          Advanced Example
-          --------------
-          Synchronous Example
-          ```javascript
-          let author, books;
-          try {
-          author = findAuthor();
-          books  = findBooksByAuthor(author);
-          // success
-          } catch(reason) {
-          // failure
-          }
-          ```
-          Errback Example
-          ```js
-          function foundBooks(books) {
-          }
-          function failure(reason) {
-          }
-          findAuthor(function(author, err){
-          if (err) {
-          failure(err);
-          // failure
-          } else {
-          try {
-          findBoooksByAuthor(author, function(books, err) {
-          if (err) {
-          failure(err);
-          } else {
-          try {
-          foundBooks(books);
-          } catch(reason) {
-          failure(reason);
-          }
-          }
-          });
-          } catch(error) {
-          failure(err);
-          }
-          // success
-          }
-          });
-          ```
-          Promise Example;
-          ```javascript
-          findAuthor().
-          then(findBooksByAuthor).
-          then(function(books){
-          // found books
-          }).catch(function(reason){
-          // something went wrong
-          });
-          ```
-          @method then
-          @param {Function} onFulfilled
-          @param {Function} onRejected
-          Useful for tooling.
-          @return {Promise}
-          */
-          /**
-          `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
-          as the catch block of a try/catch statement.
-          ```js
-          function findAuthor(){
-          throw new Error('couldn't find that author');
-          }
-          // synchronous
-          try {
-          findAuthor();
-          } catch(reason) {
-          // something went wrong
-          }
-          // async with promises
-          findAuthor().catch(function(reason){
-          // something went wrong
-          });
-          ```
-          @method catch
-          @param {Function} onRejection
-          Useful for tooling.
-          @return {Promise}
-          */
           Promise.prototype.catch = function _catch(onRejection) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Promise$1.Promise.prototype.catch","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -1558,44 +1046,6 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.catch"},');
 
           };
-          /**
-          `finally` will be invoked regardless of the promise's fate just as native
-          try/catch/finally behaves
-          
-          Synchronous example:
-          
-          ```js
-          findAuthor() {
-          if (Math.random() > 0.5) {
-          throw new Error();
-          }
-          return new Author();
-          }
-          
-          try {
-          return findAuthor(); // succeed or fail
-          } catch(error) {
-          return findOtherAuther();
-          } finally {
-          // always runs
-          // doesn't affect the return value
-          }
-          ```
-          
-          Asynchronous example:
-          
-          ```js
-          findAuthor().catch(function(reason){
-          return findOtherAuther();
-          }).finally(function(){
-          // author was either found, or not
-          });
-          ```
-          
-          @method finally
-          @param {Function} callback
-          @return {Promise}
-          */
           Promise.prototype.finally = function _finally(callback) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Promise$1.Promise.prototype.finally","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -1658,7 +1108,6 @@ const SRTlib = require('SRT-util');
         Promise$1._setScheduler = setScheduler;
         Promise$1._setAsap = setAsap;
         Promise$1._asap = asap;
-        /*global self*/
         function polyfill() {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"polyfill","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -1681,9 +1130,7 @@ const SRTlib = require('SRT-util');
             var promiseToString = null;
             try {
               promiseToString = Object.prototype.toString.call(P.resolve());
-            } catch (e) {
-              // silently ignored
-            }
+            } catch (e) {}
             if (promiseToString === '[object Promise]' && !P.cast) {
                             SRTlib.send('{"type":"FUNCTIONEND","function":"polyfill"},');
 
@@ -1694,7 +1141,6 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"polyfill","paramsNumber":0},');
 
         }
-        // Strange compat..
         Promise$1.polyfill = polyfill;
         Promise$1.Promise = Promise$1;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"call2"},');
@@ -1715,64 +1161,22 @@ const SRTlib = require('SRT-util');
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global) {
-      /**
-      * lodash (Custom Build) <https://lodash.com/>
-      * Build: `lodash modularize exports="npm" -o ./`
-      * Copyright jQuery Foundation and other contributors <https://jquery.org/>
-      * Released under MIT license <https://lodash.com/license>
-      * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-      * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-      */
-      /** Used as the `TypeError` message for "Functions" methods.*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call4","fileName":"${__filename}","paramsNumber":1},`);
 
       var FUNC_ERROR_TEXT = 'Expected a function';
-      /** Used as references for various `Number` constants.*/
       var NAN = 0 / 0;
-      /** `Object#toString` result references.*/
       var symbolTag = '[object Symbol]';
-      /** Used to match leading and trailing whitespace.*/
       var reTrim = /^\s+|\s+$/g;
-      /** Used to detect bad signed hexadecimal string values.*/
       var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-      /** Used to detect binary string values.*/
       var reIsBinary = /^0b[01]+$/i;
-      /** Used to detect octal string values.*/
       var reIsOctal = /^0o[0-7]+$/i;
-      /** Built-in method references without a dependency on `root`.*/
       var freeParseInt = parseInt;
-      /** Detect free variable `global` from Node.js.*/
       var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
-      /** Detect free variable `self`.*/
       var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-      /** Used as a reference to the global object.*/
       var root = freeGlobal || freeSelf || Function('return this')();
-      /** Used for built-in method references.*/
       var objectProto = Object.prototype;
-      /**
-      * Used to resolve the
-      * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
-      * of values.
-      */
       var objectToString = objectProto.toString;
-      /*Built-in method references for those with the same name as other `lodash` methods.*/
       var nativeMax = Math.max, nativeMin = Math.min;
-      /**
-      * Gets the timestamp of the number of milliseconds that have elapsed since
-      * the Unix epoch (1 January 1970 00:00:00 UTC).
-      *
-      * @static
-      * @memberOf _
-      * @since 2.4.0
-      * @category Date
-      * @returns {number} Returns the timestamp.
-      * @example
-      *
-      * _.defer(function(stamp) {
-      *   console.log(_.now() - stamp);
-      * }, _.now());
-      * // => Logs the number of milliseconds it took for the deferred invocation.
-      */
       var now = function () {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"now","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -1782,60 +1186,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"now"},');
 
       };
-      /**
-      * Creates a debounced function that delays invoking `func` until after `wait`
-      * milliseconds have elapsed since the last time the debounced function was
-      * invoked. The debounced function comes with a `cancel` method to cancel
-      * delayed `func` invocations and a `flush` method to immediately invoke them.
-      * Provide `options` to indicate whether `func` should be invoked on the
-      * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
-      * with the last arguments provided to the debounced function. Subsequent
-      * calls to the debounced function return the result of the last `func`
-      * invocation.
-      *
-      * **Note:** If `leading` and `trailing` options are `true`, `func` is
-      * invoked on the trailing edge of the timeout only if the debounced function
-      * is invoked more than once during the `wait` timeout.
-      *
-      * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
-      * until to the next tick, similar to `setTimeout` with a timeout of `0`.
-      *
-      * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
-      * for details over the differences between `_.debounce` and `_.throttle`.
-      *
-      * @static
-      * @memberOf _
-      * @since 0.1.0
-      * @category Function
-      * @param {Function} func The function to debounce.
-      * @param {number} [wait=0] The number of milliseconds to delay.
-      * @param {Object} [options={}] The options object.
-      * @param {boolean} [options.leading=false]
-      *  Specify invoking on the leading edge of the timeout.
-      * @param {number} [options.maxWait]
-      *  The maximum time `func` is allowed to be delayed before it's invoked.
-      * @param {boolean} [options.trailing=true]
-      *  Specify invoking on the trailing edge of the timeout.
-      * @returns {Function} Returns the new debounced function.
-      * @example
-      *
-      * // Avoid costly calculations while the window size is in flux.
-      * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
-      *
-      * // Invoke `sendMail` when clicked, debouncing subsequent calls.
-      * jQuery(element).on('click', _.debounce(sendMail, 300, {
-      *   'leading': true,
-      *   'trailing': false
-      * }));
-      *
-      * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
-      * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
-      * var source = new EventSource('/stream');
-      * jQuery(source).on('message', debounced);
-      *
-      * // Cancel the trailing debounced invocation.
-      * jQuery(window).on('popstate', debounced.cancel);
-      */
       function debounce(func, wait, options) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"debounce","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -1868,13 +1218,10 @@ const SRTlib = require('SRT-util');
         function leadingEdge(time) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"leadingEdge","fileName":"${__filename}","paramsNumber":1},`);
 
-          // Reset any `maxWait` timer.
           lastInvokeTime = time;
-          // Start the timer for the trailing edge.
           timerId = setTimeout(timerExpired, wait);
                     SRTlib.send('{"type":"FUNCTIONEND","function":"leadingEdge"},');
 
-          // Invoke the leading edge.
           return leading ? invokeFunc(time) : result;
                     SRTlib.send('{"type":"FUNCTIONEND","function":"leadingEdge","paramsNumber":1},');
 
@@ -1895,9 +1242,6 @@ const SRTlib = require('SRT-util');
           var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
                     SRTlib.send('{"type":"FUNCTIONEND","function":"shouldInvoke"},');
 
-          // Either this is the first call, activity has stopped and we're at the
-          // trailing edge, the system time has gone backwards and we're treating
-          // it as the trailing edge, or we've hit the `maxWait` limit.
           return lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
                     SRTlib.send('{"type":"FUNCTIONEND","function":"shouldInvoke","paramsNumber":1},');
 
@@ -1911,7 +1255,6 @@ const SRTlib = require('SRT-util');
 
             return trailingEdge(time);
           }
-          // Restart the timer.
           timerId = setTimeout(timerExpired, remainingWait(time));
                     SRTlib.send('{"type":"FUNCTIONEND","function":"timerExpired","paramsNumber":0},');
 
@@ -1920,8 +1263,6 @@ const SRTlib = require('SRT-util');
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"trailingEdge","fileName":"${__filename}","paramsNumber":1},`);
 
           timerId = undefined;
-          // Only invoke if we have `lastArgs` which means `func` has been
-          // debounced at least once.
           if (trailing && lastArgs) {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"trailingEdge"},');
 
@@ -1968,7 +1309,6 @@ const SRTlib = require('SRT-util');
               return leadingEdge(lastCallTime);
             }
             if (maxing) {
-              // Handle invocations in a tight loop.
               timerId = setTimeout(timerExpired, wait);
                             SRTlib.send('{"type":"FUNCTIONEND","function":"debounced"},');
 
@@ -1992,50 +1332,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"debounce","paramsNumber":3},');
 
       }
-      /**
-      * Creates a throttled function that only invokes `func` at most once per
-      * every `wait` milliseconds. The throttled function comes with a `cancel`
-      * method to cancel delayed `func` invocations and a `flush` method to
-      * immediately invoke them. Provide `options` to indicate whether `func`
-      * should be invoked on the leading and/or trailing edge of the `wait`
-      * timeout. The `func` is invoked with the last arguments provided to the
-      * throttled function. Subsequent calls to the throttled function return the
-      * result of the last `func` invocation.
-      *
-      * **Note:** If `leading` and `trailing` options are `true`, `func` is
-      * invoked on the trailing edge of the timeout only if the throttled function
-      * is invoked more than once during the `wait` timeout.
-      *
-      * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
-      * until to the next tick, similar to `setTimeout` with a timeout of `0`.
-      *
-      * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
-      * for details over the differences between `_.throttle` and `_.debounce`.
-      *
-      * @static
-      * @memberOf _
-      * @since 0.1.0
-      * @category Function
-      * @param {Function} func The function to throttle.
-      * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
-      * @param {Object} [options={}] The options object.
-      * @param {boolean} [options.leading=true]
-      *  Specify invoking on the leading edge of the timeout.
-      * @param {boolean} [options.trailing=true]
-      *  Specify invoking on the trailing edge of the timeout.
-      * @returns {Function} Returns the new throttled function.
-      * @example
-      *
-      * // Avoid excessively updating the position while scrolling.
-      * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
-      *
-      * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
-      * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
-      * jQuery(element).on('click', throttled);
-      *
-      * // Cancel the trailing throttled invocation.
-      * jQuery(window).on('popstate', throttled.cancel);
-      */
       function throttle(func, wait, options) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"throttle","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -2059,31 +1355,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"throttle","paramsNumber":3},');
 
       }
-      /**
-      * Checks if `value` is the
-      * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
-      * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-      *
-      * @static
-      * @memberOf _
-      * @since 0.1.0
-      * @category Lang
-      * @param {*} value The value to check.
-      * @returns {boolean} Returns `true` if `value` is an object, else `false`.
-      * @example
-      *
-      * _.isObject({});
-      * // => true
-      *
-      * _.isObject([1, 2, 3]);
-      * // => true
-      *
-      * _.isObject(_.noop);
-      * // => true
-      *
-      * _.isObject(null);
-      * // => false
-      */
       function isObject(value) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isObject","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -2094,30 +1365,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"isObject","paramsNumber":1},');
 
       }
-      /**
-      * Checks if `value` is object-like. A value is object-like if it's not `null`
-      * and has a `typeof` result of "object".
-      *
-      * @static
-      * @memberOf _
-      * @since 4.0.0
-      * @category Lang
-      * @param {*} value The value to check.
-      * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-      * @example
-      *
-      * _.isObjectLike({});
-      * // => true
-      *
-      * _.isObjectLike([1, 2, 3]);
-      * // => true
-      *
-      * _.isObjectLike(_.noop);
-      * // => false
-      *
-      * _.isObjectLike(null);
-      * // => false
-      */
       function isObjectLike(value) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isObjectLike","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -2127,23 +1374,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"isObjectLike","paramsNumber":1},');
 
       }
-      /**
-      * Checks if `value` is classified as a `Symbol` primitive or object.
-      *
-      * @static
-      * @memberOf _
-      * @since 4.0.0
-      * @category Lang
-      * @param {*} value The value to check.
-      * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
-      * @example
-      *
-      * _.isSymbol(Symbol.iterator);
-      * // => true
-      *
-      * _.isSymbol('abc');
-      * // => false
-      */
       function isSymbol(value) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isSymbol","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -2153,29 +1383,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"isSymbol","paramsNumber":1},');
 
       }
-      /**
-      * Converts `value` to a number.
-      *
-      * @static
-      * @memberOf _
-      * @since 4.0.0
-      * @category Lang
-      * @param {*} value The value to process.
-      * @returns {number} Returns the number.
-      * @example
-      *
-      * _.toNumber(3.2);
-      * // => 3.2
-      *
-      * _.toNumber(Number.MIN_VALUE);
-      * // => 5e-324
-      *
-      * _.toNumber(Infinity);
-      * // => Infinity
-      *
-      * _.toNumber('3.2');
-      * // => 3.2
-      */
       function toNumber(value) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"toNumber","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -2218,17 +1425,6 @@ const SRTlib = require('SRT-util');
 
     var wildcard = require('wildcard');
     var reMimePartSplit = /[\/\+\.]/;
-    /**
-    # mime-match
-    
-    A simple function to checker whether a target mime type matches a mime-type
-    pattern (e.g. image/jpeg matches image/jpeg OR image/*).
-    
-    ## Example Usage
-    
-    <<< example.js
-    
-    **/
     module.exports = function (target, pattern) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports3","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -2238,7 +1434,6 @@ const SRTlib = require('SRT-util');
         var result = wildcard(pattern, target, reMimePartSplit);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"test"},');
 
-        // ensure that we have a valid mime type (should have two parts)
         return result && result.length >= 2;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"test","paramsNumber":1},');
 
@@ -2255,20 +1450,6 @@ const SRTlib = require('SRT-util');
     "wildcard": 13
   }],
   9: [function (require, module, exports) {
-    /**
-    * Create an event emitter with namespaces
-    * @name createNamespaceEmitter
-    * @example
-    * var emitter = require('./index')()
-    *
-    * emitter.on('*', function () {
-    *   console.log('all events emitted', this.event)
-    * })
-    *
-    * emitter.on('example', function () {
-    *   console.log('example event emitted')
-    * })
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function createNamespaceEmitter() {
@@ -2276,16 +1457,6 @@ const SRTlib = require('SRT-util');
 
       var emitter = {};
       var _fns = emitter._fns = {};
-      /**
-      * Emit an event. Optionally namespace the event. Handlers are fired in the order in which they were added with exact matches taking precedence. Separate the namespace and event with a `:`
-      * @name emit
-      * @param {String} event – the name of the event, with optional namespace
-      * @param {...*} data – up to 6 arguments that are passed to the event listener
-      * @example
-      * emitter.emit('example')
-      * emitter.emit('demo:test')
-      * emitter.emit('data', { example: true}, 'a string', 1)
-      */
       emitter.emit = function emit(event, arg1, arg2, arg3, arg4, arg5, arg6) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.createNamespaceEmitter.emitter.emit","fileName":"${__filename}","paramsNumber":7},`);
 
@@ -2296,15 +1467,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createNamespaceEmitter.emitter.emit"},');
 
       };
-      /**
-      * Create en event listener.
-      * @name on
-      * @param {String} event
-      * @param {Function} fn
-      * @example
-      * emitter.on('example', function () {})
-      * emitter.on('demo', function () {})
-      */
       emitter.on = function on(event, fn) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.createNamespaceEmitter.emitter.on","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -2315,15 +1477,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createNamespaceEmitter.emitter.on"},');
 
       };
-      /**
-      * Create en event listener that fires once.
-      * @name once
-      * @param {String} event
-      * @param {Function} fn
-      * @example
-      * emitter.once('example', function () {})
-      * emitter.once('demo', function () {})
-      */
       emitter.once = function once(event, fn) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.createNamespaceEmitter.emitter.once","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -2339,17 +1492,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.createNamespaceEmitter.emitter.once"},');
 
       };
-      /**
-      * Stop listening to an event. Stop all listeners on an event by only passing the event name. Stop a single listener by passing that event handler as a callback.
-      * You must be explicit about what will be unsubscribed: `emitter.off('demo')` will unsubscribe an `emitter.on('demo')` listener,
-      * `emitter.off('demo:example')` will unsubscribe an `emitter.on('demo:example')` listener
-      * @name off
-      * @param {String} event
-      * @param {Function} [fn] – the specific handler
-      * @example
-      * emitter.off('example')
-      * emitter.off('demo', function () {})
-      */
       emitter.off = function off(event, fn) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.createNamespaceEmitter.emitter.off","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -3009,12 +2151,7 @@ const SRTlib = require('SRT-util');
   11: [function (require, module, exports) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey14","fileName":"${__filename}","paramsNumber":3},`);
 
-    // shim for using process in browser
     var process = module.exports = {};
-    // cached from whatever global is present so that test runners that stub it
-    // don't break things.  But we need to wrap it in a try catch in case it is
-    // wrapped in strict mode code which doesn't define any globals.  It's inside a
-    // function because try/catches deoptimize in certain engines.
     var cachedSetTimeout;
     var cachedClearTimeout;
     function defaultSetTimout() {
@@ -3065,10 +2202,8 @@ const SRTlib = require('SRT-util');
       if (cachedSetTimeout === setTimeout) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"runTimeout"},');
 
-        // normal enviroments in sane situations
         return setTimeout(fun, 0);
       }
-      // if setTimeout wasn't available but was latter defined
       if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
         cachedSetTimeout = setTimeout;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"runTimeout"},');
@@ -3078,18 +2213,15 @@ const SRTlib = require('SRT-util');
       try {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"runTimeout"},');
 
-        // when when somebody has screwed with setTimeout but no I.E. maddness
         return cachedSetTimeout(fun, 0);
       } catch (e) {
         try {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"runTimeout"},');
 
-          // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
           return cachedSetTimeout.call(null, fun, 0);
         } catch (e) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"runTimeout"},');
 
-          // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
           return cachedSetTimeout.call(this, fun, 0);
         }
       }
@@ -3102,10 +2234,8 @@ const SRTlib = require('SRT-util');
       if (cachedClearTimeout === clearTimeout) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"runClearTimeout"},');
 
-        // normal enviroments in sane situations
         return clearTimeout(marker);
       }
-      // if clearTimeout wasn't available but was latter defined
       if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
         cachedClearTimeout = clearTimeout;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"runClearTimeout"},');
@@ -3115,19 +2245,15 @@ const SRTlib = require('SRT-util');
       try {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"runClearTimeout"},');
 
-        // when when somebody has screwed with setTimeout but no I.E. maddness
         return cachedClearTimeout(marker);
       } catch (e) {
         try {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"runClearTimeout"},');
 
-          // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
           return cachedClearTimeout.call(null, marker);
         } catch (e) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"runClearTimeout"},');
 
-          // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-          // Some versions of I.E. have different rules for clearTimeout vs setTimeout
           return cachedClearTimeout.call(this, marker);
         }
       }
@@ -3202,7 +2328,6 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"process.nextTick"},');
 
     };
-    // v8 likes predictible objects
     function Item(fun, array) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Item","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -3222,7 +2347,6 @@ const SRTlib = require('SRT-util');
     process.browser = true;
     process.env = {};
     process.argv = [];
-    // empty string to avoid regexp issues
     process.version = '';
     process.versions = {};
     function noop() {
@@ -3373,7 +2497,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"normalizeValue","paramsNumber":1},');
 
       }
-      // Build a destructive iterator for the value list
       function iteratorFor(items) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"iteratorFor","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -3664,7 +2787,6 @@ const SRTlib = require('SRT-util');
             this._bodyText = body.toString();
           } else if (support.arrayBuffer && support.blob && isDataView(body)) {
             this._bodyArrayBuffer = bufferClone(body.buffer);
-            // IE 10-11 can't handle a DataView body.
             this._bodyInit = new Blob([this._bodyArrayBuffer]);
           } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
             this._bodyArrayBuffer = bufferClone(body);
@@ -3784,7 +2906,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Body","paramsNumber":0},');
 
       }
-      // HTTP methods whose capitalization should be normalized
       var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
       function normalizeMethod(method) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"normalizeMethod","fileName":"${__filename}","paramsNumber":1},`);
@@ -3876,8 +2997,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"parseHeaders","fileName":"${__filename}","paramsNumber":1},`);
 
         var headers = new Headers();
-        // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
-        // https://tools.ietf.org/html/rfc7230#section-3.2
         var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
         preProcessedHeaders.split(/\r?\n/).forEach(function (line) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preProcessedHeaders.split.forEach","fileName":"${__filename}","paramsNumber":1},`);
@@ -4058,7 +3177,6 @@ const SRTlib = require('SRT-util');
             xhr.onreadystatechange = function () {
                             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression.xhr.onreadystatechange","fileName":"${__filename}","paramsNumber":0},`);
 
-              // DONE (success or failure)
               if (xhr.readyState === 4) {
                 request.signal.removeEventListener('abort', abortXhr);
               }
@@ -4094,36 +3212,9 @@ const SRTlib = require('SRT-util');
 
   }, {}],
   13: [function (require, module, exports) {
-    /*jshint node: true*/
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey18","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
-    /**
-    # wildcard
-    
-    Very simple wildcard matching, which is designed to provide the same
-    functionality that is found in the
-    [eve](https://github.com/adobe-webplatform/eve) eventing library.
-    
-    ## Usage
-    
-    It works with strings:
-    
-    <<< examples/strings.js
-    
-    Arrays:
-    
-    <<< examples/arrays.js
-    
-    Objects (matching against keys):
-    
-    <<< examples/objects.js
-    
-    While the library works in Node, if you are are looking for file-based
-    wildcard matching then you should have a look at:
-    
-    <https://github.com/isaacs/node-glob>
-    **/
     function WildcardMatcher(text, separator) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"WildcardMatcher","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -4156,7 +3247,6 @@ const SRTlib = require('SRT-util');
               matches = false;
             }
           }
-          // If matches, then return the component parts
           matches = matches && testParts;
         }
       } else if (typeof input.splice == 'function') {
@@ -4375,7 +3465,6 @@ const SRTlib = require('SRT-util');
 
     }
     var AuthError = (function (_Error) {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"AuthError","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(AuthError, _Error);
@@ -4398,7 +3487,6 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"AuthError"},');
 
     })(_wrapNativeSuper(Error));
-    /*#__PURE__*/
     module.exports = AuthError;
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey19"},');
 
@@ -4462,7 +3550,6 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = (function (_RequestClient) {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports6","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Provider, _RequestClient);
@@ -4530,7 +3617,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.onReceiveResponse"},');
 
       };
-      // @todo(i.olarewaju) consider whether or not this method should be exposed
       _proto.setAuthToken = function setAuthToken(token) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.setAuthToken","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -4620,7 +3706,6 @@ const SRTlib = require('SRT-util');
           throw new Error('`serverUrl` and `serverPattern` have been renamed to `companionUrl` and `companionAllowedHosts` respectively in the 0.30.5 release. Please consult the docs (for example, https://uppy.io/docs/instagram/ for the Instagram plugin) and use the updated options.`');
         }
         if (opts.companionAllowedHosts) {
-          // validate companionAllowedHosts param
           var pattern = opts.companionAllowedHosts;
           if (typeof pattern !== 'string' && !Array.isArray(pattern) && !(pattern instanceof RegExp)) {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Provider.initPlugin"},');
@@ -4629,7 +3714,6 @@ const SRTlib = require('SRT-util');
           }
           plugin.opts.companionAllowedHosts = pattern;
         } else {
-          // does not start with https://
           if ((/^(?!https?:\/\/).*$/i).test(opts.companionUrl)) {
             plugin.opts.companionAllowedHosts = "https://" + opts.companionUrl.replace(/^\/\//, '');
           } else {
@@ -4708,7 +3792,6 @@ const SRTlib = require('SRT-util');
 
     }
     var AuthError = require('./AuthError');
-    // Remove the trailing slash so we can always safely append /xyz.
     var NetworkError = require('@uppy/utils/lib/NetworkError');
     function stripSlash(url) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"stripSlash","fileName":"${__filename}","paramsNumber":1},`);
@@ -4720,7 +3803,6 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = (_temp = _class = (function () {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class","fileName":"${__filename}","paramsNumber":0},`);
 
       function RequestClient(uppy, opts) {
@@ -4774,7 +3856,6 @@ const SRTlib = require('SRT-util');
         var state = this.uppy.getState();
         var companion = state.companion || ({});
         var host = this.opts.companionUrl;
-        // Store the self-identified domain name for the Companion instance we just hit.
         var headers = response.headers;
         if (headers.has('i-am') && headers.get('i-am') !== companion[host]) {
           var _extends2;
@@ -4899,7 +3980,6 @@ const SRTlib = require('SRT-util');
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.preflightAndHeaders.preflightAndHeaders.ReturnStatement.Promise.all.then","fileName":"${__filename}","paramsNumber":1},`);
 
           var allowedHeaders = _ref[0], headers = _ref[1];
-          // filter to keep only allowed Headers
           Object.keys(headers).forEach(function (header) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.preflightAndHeaders.preflightAndHeaders.ReturnStatement.Promise.all.then.Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -5133,7 +4213,6 @@ const SRTlib = require('SRT-util');
 
     var ee = require('namespace-emitter');
     module.exports = (function () {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports7","fileName":"${__filename}","paramsNumber":0},`);
 
       function UppySocket(opts) {
@@ -5196,7 +4275,6 @@ const SRTlib = require('SRT-util');
       _proto.send = function send(action, payload) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.send","fileName":"${__filename}","paramsNumber":2},`);
 
-        // attach uuid
         if (!this.isOpen) {
           this._queued.push({
             action: action,
@@ -5261,9 +4339,6 @@ const SRTlib = require('SRT-util');
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey23","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
-    /**
-    * Manages communications with Companion
-    */
     var RequestClient = require('./RequestClient');
     var Provider = require('./Provider');
     var Socket = require('./Socket');
@@ -5283,9 +4358,6 @@ const SRTlib = require('SRT-util');
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey24","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
-    /**
-    * This module serves as an Async wrapper for LocalStorage
-    */
     module.exports.setItem = function (key, value) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.setItem","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -5388,9 +4460,6 @@ const SRTlib = require('SRT-util');
     }
     var preact = require('preact');
     var findDOMElement = require('@uppy/utils/lib/findDOMElement');
-    /**
-    * Defer a frequent call to the microtask queue.
-    */
     function debounce(fn) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"debounce","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -5409,13 +4478,9 @@ const SRTlib = require('SRT-util');
           calling = Promise.resolve().then(function () {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.calling.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
-            // At this point `args` may be different from the most
             calling = null;
                         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.calling.Promise.resolve.then"},');
 
-            // recent state, if multiple calls happened since this task
-            // was queued. So we use the `latestArgs`, which definitely
-            // is the most recent call.
             return fn.apply(void 0, latestArgs);
                         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.calling.Promise.resolve.then"},');
 
@@ -5430,17 +4495,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"debounce","paramsNumber":1},');
 
     }
-    /**
-    * Boilerplate that all Plugins share - and should not be used
-    * directly. It also shows which methods final plugins should implement/override,
-    * this deciding on structure.
-    *
-    * @param {object} main Uppy core object
-    * @param {object} object with plugin options
-    * @returns {Array|string} files or success/fail message
-    */
     module.exports = (function () {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports8","fileName":"${__filename}","paramsNumber":0},`);
 
       function Plugin(uppy, opts) {
@@ -5481,7 +4536,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.setOptions","fileName":"${__filename}","paramsNumber":1},`);
 
         this.opts = _extends({}, this.opts, {}, newOpts);
-        // so that UI re-renders with new options
         this.setPluginState();
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.setOptions"},');
 
@@ -5500,33 +4554,18 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.update"},');
 
       };
-      // Called after every state update, after everything's mounted. Debounced.
       _proto.afterUpdate = function afterUpdate() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.afterUpdate","fileName":"${__filename}","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.afterUpdate"},');
 
       };
-      /**
-      * Called when plugin is mounted, whether in DOM or into another plugin.
-      * Needed because sometimes plugins are mounted separately/after `install`,
-      * so this.el and this.parent might not be available in `install`.
-      * This is the case with @uppy/react plugins, for example.
-      */
       _proto.onMount = function onMount() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.onMount","fileName":"${__filename}","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.onMount"},');
 
       };
-      /**
-      * Check if supplied `target` is a DOM element or an `object`.
-      * If it’s an object — target is a plugin, and we search `plugins`
-      * for a plugin with same name and return its target.
-      *
-      * @param {string|object} target
-      *
-      */
       _proto.mount = function mount(target, plugin) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.mount","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -5534,14 +4573,10 @@ const SRTlib = require('SRT-util');
         var callerPluginName = plugin.id;
         var targetElement = findDOMElement(target);
         if (targetElement) {
-          // API for plugins that require a synchronous rerender.
           this.isTargetDOMEl = true;
           this.rerender = function (state) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.mount.mount.rerender","fileName":"${__filename}","paramsNumber":1},`);
 
-            // plugin could be removed, but this.rerender is debounced below,
-            // so it could still be called even after uppy.removePlugin or uppy.close
-            // hence the check
             if (!_this.uppy.getPlugin(_this.id)) {
                             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.mount.mount.rerender"},');
 
@@ -5553,7 +4588,6 @@ const SRTlib = require('SRT-util');
 
           };
           this._updateUI = debounce(this.rerender);
-          // clear everything inside the target container
           this.uppy.log("Installing " + callerPluginName + " to a DOM element '" + target + "'");
           if (this.opts.replaceTargetContent) {
             targetElement.innerHTML = '';
@@ -5566,11 +4600,8 @@ const SRTlib = require('SRT-util');
         }
         var targetPlugin;
         if (typeof target === 'object' && target instanceof Plugin) {
-          // Targeting a plugin *instance*
           targetPlugin = target;
         } else if (typeof target === 'function') {
-          // Targeting a plugin type
-          // Find the target plugin instance.
           var Target = target;
           this.uppy.iteratePlugins(function (plugin) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.mount.mount.uppy.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
@@ -5896,10 +4927,8 @@ const SRTlib = require('SRT-util');
     var generateFileID = require('@uppy/utils/lib/generateFileID');
     var supportsUploadProgress = require('./supportsUploadProgress');
     var _require = require('./loggers'), justErrorsLogger = _require.justErrorsLogger, debugLogger = _require.debugLogger;
-    // Exported from here.
     var Plugin = require('./Plugin');
     var RestrictionError = (function (_Error) {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"RestrictionError","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(RestrictionError, _Error);
@@ -5924,19 +4953,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"RestrictionError"},');
 
     })(_wrapNativeSuper(Error));
-    /*#__PURE__*/
-    /**
-    * Uppy Core module.
-    * Manages plugins, state updates, acts as an event bus,
-    * adds/removes files and metadata.
-    */
     var Uppy = (function () {
-      /*#__PURE__*/
-      /**
-      * Instantiate Uppy
-      *
-      * @param {object} opts — Uppy options
-      */
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy","fileName":"${__filename}","paramsNumber":0},`);
 
       function Uppy(opts) {
@@ -5957,11 +4974,6 @@ const SRTlib = require('SRT-util');
               0: 'You have to select at least %{smart_count} file',
               1: 'You have to select at least %{smart_count} files'
             },
-            // The default `exceedsSize2` string only combines the `exceedsSize` string (%{backwardsCompat}) with the size.
-            // Locales can override `exceedsSize2` to specify a different word order. This is for backwards compat with
-            // Uppy 1.9.x and below which did a naive concatenation of `exceedsSize2 + size` instead of using a locale-specific
-            // substitution.
-            // TODO: In 2.0 `exceedsSize2` should be removed in and `exceedsSize` updated to use substitution.
             exceedsSize2: '%{backwardsCompat} %{size}',
             exceedsSize: 'This file exceeds maximum allowed size of',
             youCanOnlyUploadFileTypes: 'You can only upload: %{types}',
@@ -5972,7 +4984,6 @@ const SRTlib = require('SRT-util');
             failedToUpload: 'Failed to upload %{file}',
             noInternetConnection: 'No Internet connection',
             connectedToInternet: 'Connected to the Internet',
-            // Strings for remote providers
             noFilesFound: 'You have no files or folders here',
             selectX: {
               0: 'Select %{smart_count}',
@@ -5997,7 +5008,6 @@ const SRTlib = require('SRT-util');
             }
           }
         };
-        // Merge default options with the ones set by user,
         var defaultOptions = {
           id: 'uppy',
           autoProceed: false,
@@ -6031,12 +5041,9 @@ const SRTlib = require('SRT-util');
           store: DefaultStore(),
           logger: justErrorsLogger
         };
-        // making sure to merge restrictions too
-        // Support debug: true for backwards-compatability, unless logger is set in opts
         this.opts = _extends({}, defaultOptions, {}, opts, {
           restrictions: _extends({}, defaultOptions.restrictions, {}, opts && opts.restrictions)
         });
-        // opts instead of this.opts to avoid comparing objects — we set logger: justErrorsLogger in defaultOptions
         if (opts && opts.logger && opts.debug) {
           this.log('You are using a custom `logger`, but also set `debug: true`, which uses built-in logger to output logs to console. Ignoring `debug: true` and using your custom `logger`.', 'warning');
         } else if (opts && opts.debug) {
@@ -6048,7 +5055,6 @@ const SRTlib = require('SRT-util');
 
           throw new TypeError('`restrictions.allowedFileTypes` must be an array');
         }
-        // Container for different types of plugins
         this.i18nInit();
         this.plugins = {};
         this.getState = this.getState.bind(this);
@@ -6060,12 +5066,7 @@ const SRTlib = require('SRT-util');
         this.hideInfo = this.hideInfo.bind(this);
         this.addFile = this.addFile.bind(this);
         this.removeFile = this.removeFile.bind(this);
-        // ___Why throttle at 500ms?
         this.pauseResume = this.pauseResume.bind(this);
-        // - We must throttle at >250ms for superfocus in Dashboard to work well (because animation takes 0.25s, and we want to wait for all animations to be over before refocusing).
-        // [Practical Check]: if thottle is at 100ms, then if you are uploading a file, and click 'ADD MORE FILES', - focus won't activate in Firefox.
-        // - We must throttle at around >500ms to avoid performance lags.
-        // [Practical Check] Firefox, try to upload a big file for a prolonged period of time. Laptop will start to heat up.
         this._calculateProgress = throttle(this._calculateProgress.bind(this), 500, {
           leading: true,
           trailing: true
@@ -6105,7 +5106,6 @@ const SRTlib = require('SRT-util');
             message: ''
           }
         });
-        // Exposing uppy object on window for debugging and testing
         this._storeUnsubscribe = this.store.subscribe(function (prevState, nextState, patch) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_storeUnsubscribe.store.subscribe","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -6117,21 +5117,10 @@ const SRTlib = require('SRT-util');
         if (this.opts.debug && typeof window !== 'undefined') {
           window[this.opts.id] = this;
         }
-        // Re-enable if we’ll need some capabilities on boot, like isMobileDevice
         this._addListeners();
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy","paramsNumber":1},');
 
-              // this._setCapabilities()
-}
-      // _setCapabilities = () => {
-      // const capabilities = {
-      // isMobileDevice: isMobileDevice()
-      // }
-      // this.setState({
-      // ...this.getState().capabilities,
-      // capabilities
-      // })
-      // }
+      }
       var _proto = Uppy.prototype;
       _proto.on = function on(event, callback) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.on","fileName":"${__filename}","paramsNumber":2},`);
@@ -6153,11 +5142,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.off"},');
 
       };
-      /**
-      * Iterate on all plugins and run `update` on them.
-      * Called each time state changes.
-      *
-      */
       _proto.updateAll = function updateAll(state) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.updateAll","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -6171,11 +5155,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.updateAll"},');
 
       };
-      /**
-      * Updates state with a patch
-      *
-      * @param {object} patch {foo: 'bar'}
-      */
       _proto.setState = function setState(patch) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setState","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -6183,11 +5162,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setState"},');
 
       };
-      /**
-      * Returns current state.
-      *
-      * @returns {object}
-      */
       _proto.getState = function getState() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getState","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -6197,12 +5171,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getState"},');
 
       };
-      /**
-      * Back compat for when uppy.state is used instead of uppy.getState().
-      */
-      /**
-      * Shorthand to set state for a specific file.
-      */
       _proto.setFileState = function setFileState(fileID, state) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.setFileState","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -6247,7 +5215,6 @@ const SRTlib = require('SRT-util');
 
           });
         }
-        // so that UI re-renders with new options
         this.setState();
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setOptions"},');
 
@@ -6374,11 +5341,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.setFileMeta"},');
 
       };
-      /**
-      * Get a file object.
-      *
-      * @param {string} fileID The ID of the file object to return.
-      */
       _proto.getFile = function getFile(fileID) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getFile","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -6388,9 +5350,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFile"},');
 
       };
-      /**
-      * Get all files in an array.
-      */
       _proto.getFiles = function getFiles() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getFiles","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -6409,11 +5368,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getFiles"},');
 
       };
-      /**
-      * Check if minNumberOfFiles restriction is reached before uploading.
-      *
-      * @private
-      */
       _proto._checkMinNumberOfFiles = function _checkMinNumberOfFiles(files) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkMinNumberOfFiles","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -6428,14 +5382,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkMinNumberOfFiles"},');
 
       };
-      /**
-      * Check if file passes a set of restrictions set in options: maxFileSize,
-      * maxNumberOfFiles and allowedFileTypes.
-      *
-      * @param {object} files Object of IDs → files already added
-      * @param {object} file object to check
-      * @private
-      */
       _proto._checkRestrictions = function _checkRestrictions(files, file) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkRestrictions","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -6453,8 +5399,6 @@ const SRTlib = require('SRT-util');
           var isCorrectFileType = allowedFileTypes.some(function (type) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkRestrictions._checkRestrictions.isCorrectFileType.allowedFileTypes.some","fileName":"${__filename}","paramsNumber":1},`);
 
-            // is this is a mime-type
-            // otherwise this is likely an extension
             if (type.indexOf('/') > -1) {
               if (!file.type) {
                                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions._checkRestrictions.isCorrectFileType.allowedFileTypes.some"},');
@@ -6485,7 +5429,6 @@ const SRTlib = require('SRT-util');
             }));
           }
         }
-        // We can't check maxFileSize if the size is unknown.
         if (maxFileSize && file.data.size != null) {
           if (file.data.size > maxFileSize) {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions"},');
@@ -6499,37 +5442,22 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkRestrictions"},');
 
       };
-      /**
-      * Logs an error, sets Informer message, then throws the error.
-      * Emits a 'restriction-failed' event if it’s a restriction error
-      *
-      * @param {object | string} err — Error object or plain string message
-      * @param {object} [options]
-      * @param {boolean} [options.showInformer=true] — Sometimes developer might want to show Informer manually
-      * @param {object} [options.file=null] — File object used to emit the restriction error
-      * @param {boolean} [options.throwErr=true] — Errors shouldn’t be thrown, for example, in `upload-error` event
-      * @private
-      */
       _proto._showOrLogErrorAndThrow = function _showOrLogErrorAndThrow(err, _temp) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._showOrLogErrorAndThrow","fileName":"${__filename}","paramsNumber":2},`);
 
         var _ref = _temp === void 0 ? {} : _temp, _ref$showInformer = _ref.showInformer, showInformer = _ref$showInformer === void 0 ? true : _ref$showInformer, _ref$file = _ref.file, file = _ref$file === void 0 ? null : _ref$file, _ref$throwErr = _ref.throwErr, throwErr = _ref$throwErr === void 0 ? true : _ref$throwErr;
         var message = typeof err === 'object' ? err.message : err;
-        // Restriction errors should be logged, but not as errors,
         var details = typeof err === 'object' && err.details ? err.details : '';
-        // as they are expected and shown in the UI.
         var logMessageWithDetails = message;
         if (details) {
           logMessageWithDetails += ' ' + details;
         }
-        // Sometimes informer has to be shown manually by the developer,
         if (err.isRestriction) {
           this.log(logMessageWithDetails);
           this.emit('restriction-failed', file, err);
         } else {
           this.log(logMessageWithDetails, 'error');
         }
-        // for example, in `onBeforeFileAdded`.
         if (showInformer) {
           this.info({
             message: message,
@@ -6556,13 +5484,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._assertNewUploadAllowed"},');
 
       };
-      /**
-      * Create a file state object based on user-provided `addFile()` options.
-      *
-      * Note this is extremely side-effectful and should only be done when a file state object will be added to state immediately afterward!
-      *
-      * The `files` value is passed in because it may be updated by the caller without updating the store.
-      */
       _proto._checkAndCreateFileStateObject = function _checkAndCreateFileStateObject(files, file) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._checkAndCreateFileStateObject","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -6570,7 +5491,6 @@ const SRTlib = require('SRT-util');
         file.type = fileType;
         var onBeforeFileAddedResult = this.opts.onBeforeFileAdded(file, files);
         if (onBeforeFileAddedResult === false) {
-          // Don’t show UI info for this error, as it should be done by the developer
           this._showOrLogErrorAndThrow(new RestrictionError('Cannot add the file because onBeforeFileAdded returned false.'), {
             showInformer: false,
             file: file
@@ -6599,7 +5519,6 @@ const SRTlib = require('SRT-util');
         }
         var meta = file.meta || ({});
         meta.name = fileName;
-        // `null` means the size is unknown.
         meta.type = fileType;
         var size = isFinite(file.data.size) ? file.data.size : null;
         var newFile = {
@@ -6635,7 +5554,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._checkAndCreateFileStateObject"},');
 
       };
-      // Schedule an upload if `autoProceed` is enabled.
       _proto._startIfAutoProceed = function _startIfAutoProceed() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._startIfAutoProceed","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -6661,14 +5579,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._startIfAutoProceed"},');
 
       };
-      /**
-      * Add a new file to `state.files`. This will run `onBeforeFileAdded`,
-      * try to guess file type in a clever way, check file against restrictions,
-      * and start an upload if `autoProceed === true`.
-      *
-      * @param {object} file object to add
-      * @returns {string} id for the added file
-      */
       _proto.addFile = function addFile(file) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addFile","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -6688,18 +5598,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addFile"},');
 
       };
-      /**
-      * Add multiple files to `state.files`. See the `addFile()` documentation.
-      *
-      * This cuts some corners for performance, so should typically only be used in cases where there may be a lot of files.
-      *
-      * If an error occurs while adding a file, it is logged and the user is notified. This is good for UI plugins, but not for programmatic use. Programmatic users should usually still use `addFile()` on individual files.
-      */
       _proto.addFiles = function addFiles(fileDescriptors) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addFiles","fileName":"${__filename}","paramsNumber":1},`);
 
         var _this4 = this;
-        // create a copy of the files object only once
         this._assertNewUploadAllowed();
         var files = _extends({}, this.getState().files);
         var newFiles = [];
@@ -6771,7 +5673,6 @@ const SRTlib = require('SRT-util');
         var updatedFiles = _extends({}, files);
         var updatedUploads = _extends({}, currentUploads);
         var removedFiles = Object.create(null);
-        // Remove files from the `fileIDs` list in each upload.
         fileIDs.forEach(function (fileID) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removeFiles.removeFiles.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -6795,7 +5696,6 @@ const SRTlib = require('SRT-util');
         Object.keys(updatedUploads).forEach(function (uploadID) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removeFiles.removeFiles.Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-          // Remove the upload if no files are associated with it anymore.
           var newFileIDs = currentUploads[uploadID].fileIDs.filter(fileIsNotRemoved);
           if (newFileIDs.length === 0) {
             uploadsToRemove.push(uploadID);
@@ -6816,7 +5716,6 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removeFiles.removeFiles.uploadsToRemove.forEach"},');
 
         });
-        // If all files were removed - allow new uploads!
         var stateUpdate = {
           currentUploads: updatedUploads,
           files: updatedFiles
@@ -6961,7 +5860,6 @@ const SRTlib = require('SRT-util');
         });
         this.emit('retry-all', filesToRetry);
         var uploadID = this._createUpload(filesToRetry, {
-          // create new upload even if allowNewUpload: false
           forceAllowNewUpload: true
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryAll"},');
@@ -6995,7 +5893,6 @@ const SRTlib = require('SRT-util');
         });
         this.emit('upload-retry', fileID);
         var uploadID = this._createUpload([fileID], {
-          // create new upload even if allowNewUpload: false
           forceAllowNewUpload: true
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.retryUpload"},');
@@ -7014,7 +5911,6 @@ const SRTlib = require('SRT-util');
       _proto._calculateProgress = function _calculateProgress(file, data) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._calculateProgress","fileName":"${__filename}","paramsNumber":2},`);
 
-        // bytesTotal may be null or zero; in that case we can't divide by it
         if (!this.getFile(file.id)) {
           this.log("Not setting progress for a file that has been removed: " + file.id);
                     SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateProgress"},');
@@ -7027,8 +5923,6 @@ const SRTlib = require('SRT-util');
             bytesUploaded: data.bytesUploaded,
             bytesTotal: data.bytesTotal,
             percentage: canHavePercentage ? Math.round(data.bytesUploaded / data.bytesTotal * 100) : 0
-            // TODO(goto-bus-stop) flooring this should probably be the choice of the UI?
-            // we get more accurate calculations if we don't round this at all.
           })
         });
         this._calculateTotalProgress();
@@ -7038,8 +5932,6 @@ const SRTlib = require('SRT-util');
       _proto._calculateTotalProgress = function _calculateTotalProgress() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._calculateTotalProgress","fileName":"${__filename}","paramsNumber":0},`);
 
-        // calculate total progress, using the number of files currently uploading,
-        // multiplied by 100 and the summ of individual progress of each file
         var files = this.getFiles();
         var inProgress = files.filter(function (file) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._calculateTotalProgress._calculateTotalProgress.inProgress.files.filter","fileName":"${__filename}","paramsNumber":1},`);
@@ -7122,9 +6014,7 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateTotalProgress._calculateTotalProgress.unsizedFiles.forEach"},');
 
         });
-        // hot fix, because:
         var totalProgress = totalSize === 0 ? 0 : Math.round(uploadedSize / totalSize * 100);
-        // uploadedSize ended up larger than totalSize, resulting in 1325% total
         if (totalProgress > 100) {
           totalProgress = 100;
         }
@@ -7135,10 +6025,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._calculateTotalProgress"},');
 
       };
-      /**
-      * Registers listeners for all global actions, like:
-      * `error`, `file-removed`, `upload-progress`
-      */
       _proto._addListeners = function _addListeners() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -7318,10 +6204,7 @@ const SRTlib = require('SRT-util');
           files[file.id] = _extends({}, files[file.id], {
             progress: _extends({}, files[file.id].progress)
           });
-          // TODO should we set some kind of `fullyComplete` property on the file object
           delete files[file.id].progress.postprocess;
-          // so it's easier to see that the file is upload…fully complete…rather than
-          // what we have to do now (`uploadComplete && !postprocess`)
           _this6.setState({
             files: files
           });
@@ -7331,12 +6214,10 @@ const SRTlib = require('SRT-util');
         this.on('restored', function () {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on10","fileName":"${__filename}","paramsNumber":0},`);
 
-          // Files may have changed--ensure progress is still accurate.
           _this6._calculateTotalProgress();
                     SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on10"},');
 
         });
-        // show informer if offline
         if (typeof window !== 'undefined' && window.addEventListener) {
           window.addEventListener('online', function () {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.window.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
@@ -7397,17 +6278,9 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getID"},');
 
       };
-      /**
-      * Registers a plugin with Core.
-      *
-      * @param {object} Plugin object
-      * @param {object} [opts] object with options to be passed to Plugin
-      * @returns {object} self for chaining
-      */
       _proto.use = function use(Plugin, opts) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.use","fileName":"${__filename}","paramsNumber":2},`);
 
-        // Instantiate
         if (typeof Plugin !== 'function') {
           var msg = "Expected a plugin class, but got " + (Plugin === null ? 'null' : typeof Plugin) + "." + ' Please verify that the plugin was imported and spelled correctly.';
                     SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use"},');
@@ -7445,12 +6318,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.use"},');
 
       };
-      /**
-      * Find one Plugin by name.
-      *
-      * @param {string} id plugin id
-      * @returns {object|boolean}
-      */
       _proto.getPlugin = function getPlugin(id) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.getPlugin","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -7473,11 +6340,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.getPlugin"},');
 
       };
-      /**
-      * Iterate through all `use`d plugins.
-      *
-      * @param {Function} method that will be run on each plugin
-      */
       _proto.iteratePlugins = function iteratePlugins(method) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -7492,11 +6354,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.iteratePlugins"},');
 
       };
-      /**
-      * Uninstall and remove a plugin.
-      *
-      * @param {object} instance The plugin instance to remove.
-      */
       _proto.removePlugin = function removePlugin(instance) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.removePlugin","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -7517,9 +6374,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.removePlugin"},');
 
       };
-      /**
-      * Uninstall all plugins and close down this Uppy instance.
-      */
       _proto.close = function close() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.close","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -7537,14 +6391,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.close"},');
 
       };
-      /**
-      * Set info message in `state.info`, so that UI plugins like `Informer`
-      * can display the message.
-      *
-      * @param {string | object} message Message to be displayed by the informer
-      * @param {string} [type]
-      * @param {number} [duration]
-      */
       _proto.info = function info(message, type, duration) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.info","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -7565,7 +6411,6 @@ const SRTlib = require('SRT-util');
         });
         this.emit('info-visible');
         clearTimeout(this.infoTimeoutID);
-        // hide the informer after `duration` milliseconds
         if (duration === 0) {
           this.infoTimeoutID = undefined;
                     SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.info"},');
@@ -7589,13 +6434,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.hideInfo"},');
 
       };
-      /**
-      * Passes messages to a function, provided in `opts.logger`.
-      * If `opts.logger: Uppy.debugLogger` or `opts.debug: true`, logs to the browser console.
-      *
-      * @param {string|object} message to log
-      * @param {string} [type] optional `error` or `warning`
-      */
       _proto.log = function log(message, type) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.log","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -7614,9 +6452,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.log"},');
 
       };
-      /**
-      * Obsolete, event listeners are now added in the constructor.
-      */
       _proto.run = function run() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.run","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -7627,9 +6462,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.run"},');
 
       };
-      /**
-      * Restore an upload by its ID.
-      */
       _proto.restore = function restore(uploadID) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.restore","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -7646,12 +6478,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.restore"},');
 
       };
-      /**
-      * Create an upload for a bunch of files.
-      *
-      * @param {Array<string>} fileIDs File IDs to include in this upload.
-      * @returns {string} ID of this upload.
-      */
       _proto._createUpload = function _createUpload(fileIDs, opts) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._createUpload","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -7695,12 +6521,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._getUpload"},');
 
       };
-      /**
-      * Add data to an upload's result object.
-      *
-      * @param {string} uploadID The ID of the upload.
-      * @param {object} data Data properties to add to the result object.
-      */
       _proto.addResultData = function addResultData(uploadID, data) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.addResultData","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -7721,11 +6541,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto.addResultData"},');
 
       };
-      /**
-      * Remove an upload, eg. if it has been canceled or completed.
-      *
-      * @param {string} uploadID The ID of the upload.
-      */
       _proto._removeUpload = function _removeUpload(uploadID) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._removeUpload","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -7737,11 +6552,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._removeUpload"},');
 
       };
-      /**
-      * Run an upload. This picks up where it left off in case the upload is being restored.
-      *
-      * @private
-      */
       _proto._runUpload = function _runUpload(uploadID) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._runUpload","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -7753,7 +6563,6 @@ const SRTlib = require('SRT-util');
         steps.forEach(function (fn, step) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._runUpload._runUpload.steps.forEach","fileName":"${__filename}","paramsNumber":2},`);
 
-          // Skip this step if we are restoring and have already completed this step before.
           if (step < restoreStep) {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload._runUpload.steps.forEach"},');
 
@@ -7773,13 +6582,11 @@ const SRTlib = require('SRT-util');
             var updatedUpload = _extends({}, currentUpload, {
               step: step
             });
-            // TODO give this the `updatedUpload` object as its only parameter maybe?
             _this9.setState({
               currentUploads: _extends({}, currentUploads, (_extends6 = {}, _extends6[uploadID] = updatedUpload, _extends6))
             });
                         SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload._runUpload.steps.forEach.lastStep.lastStep.then.then.lastStep.then"},');
 
-            // Otherwise when more metadata may be added to the upload this would keep getting more parameters
             return fn(updatedUpload.fileIDs, uploadID);
                         SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload._runUpload.steps.forEach.lastStep.lastStep.then.then.lastStep.then"},');
 
@@ -7795,8 +6602,6 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload._runUpload.steps.forEach"},');
 
         });
-        // Not returning the `catch`ed promise, because we still want to return a rejected
-        // promise from this method if the upload failed.
         lastStep.catch(function (err) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._runUpload._runUpload.lastStep.catch","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -7810,7 +6615,6 @@ const SRTlib = require('SRT-util');
         return lastStep.then(function () {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._runUpload._runUpload.ReturnStatement.lastStep.then.then.then.lastStep.then.then.lastStep.then","fileName":"${__filename}","paramsNumber":0},`);
 
-          // Set result data.
           var _this9$getState2 = _this9.getState(), currentUploads = _this9$getState2.currentUploads;
           var currentUpload = currentUploads[uploadID];
           if (!currentUpload) {
@@ -7855,10 +6659,6 @@ const SRTlib = require('SRT-util');
         }).then(function () {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._runUpload._runUpload.ReturnStatement.lastStep.then.then.then.lastStep.then.then","fileName":"${__filename}","paramsNumber":0},`);
 
-          // Emit completion events.
-          // This is in a separate function so that the `currentUploads` variable
-          // always refers to the latest state. In the handler right above it refers
-          // to an outdated object without the `.result` property.
           var _this9$getState3 = _this9.getState(), currentUploads = _this9$getState3.currentUploads;
           if (!currentUploads[uploadID]) {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload._runUpload.ReturnStatement.lastStep.then.then.then.lastStep.then.then"},');
@@ -7889,11 +6689,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._runUpload"},');
 
       };
-      /**
-      * Start an upload for all the files that are not currently being uploaded.
-      *
-      * @returns {Promise}
-      */
       _proto.upload = function upload() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.upload","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -7909,9 +6704,7 @@ const SRTlib = require('SRT-util');
           return Promise.reject(new Error('Not starting the upload because onBeforeUpload returned false'));
         }
         if (onBeforeUploadResult && typeof onBeforeUploadResult === 'object') {
-          // Updating files in state, because uploader plugins receive file IDs,
           files = onBeforeUploadResult;
-          // and then fetch the actual file object from state
           this.setState({
             files: files
           });
@@ -7935,7 +6728,6 @@ const SRTlib = require('SRT-util');
         }).then(function () {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.upload.upload.ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then","fileName":"${__filename}","paramsNumber":0},`);
 
-          // get a list of files that are currently assigned to uploads
           var _this10$getState = _this10.getState(), currentUploads = _this10$getState.currentUploads;
           var currentlyUploadingFiles = Object.keys(currentUploads).reduce(function (prev, curr) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.upload.upload.ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then.currentlyUploadingFiles.Object.keys.reduce","fileName":"${__filename}","paramsNumber":2},`);
@@ -7950,7 +6742,6 @@ const SRTlib = require('SRT-util');
           Object.keys(files).forEach(function (fileID) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto.upload.upload.ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then.Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-            // if the file hasn't started uploading and hasn't already been assigned to an upload..
             var file = _this10.getFile(fileID);
             if (!file.progress.uploadStarted && currentlyUploadingFiles.indexOf(fileID) === -1) {
               waitingFileIDs.push(file.id);
@@ -7995,7 +6786,6 @@ const SRTlib = require('SRT-util');
 
     })();
     Uppy.VERSION = require('../package.json').version;
-    // Expose class constructor.
     module.exports = function (opts) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports9","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -8029,10 +6819,7 @@ const SRTlib = require('SRT-util');
   23: [function (require, module, exports) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey28","fileName":"${__filename}","paramsNumber":3},`);
 
-    // Swallow all logs, except errors.
     var getTimeStamp = require('@uppy/utils/lib/getTimeStamp');
-    // default if logger is not set or debug: false
-    // Print logs to console with namespace + timestamp,
     var justErrorsLogger = {
       debug: function debug() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"justErrorsLogger.debug","fileName":"${__filename}","paramsNumber":0},`);
@@ -8060,12 +6847,10 @@ const SRTlib = require('SRT-util');
 
       }
     };
-    // set by logger: Uppy.debugLogger or debug: true
     var debugLogger = {
       debug: function debug() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"debugLogger.debug","fileName":"${__filename}","paramsNumber":0},`);
 
-        // IE 10 doesn’t support console.debug
         var debug = console.debug || console.log;
         for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
           args[_key2] = arguments[_key2];
@@ -8113,14 +6898,9 @@ const SRTlib = require('SRT-util');
   24: [function (require, module, exports) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey29","fileName":"${__filename}","paramsNumber":3},`);
 
-    // Edge 15.x does not fire 'progress' events on uploads.
-    // See https://github.com/transloadit/uppy/issues/945
-    // And https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/12224510/
     module.exports = function supportsUploadProgress(userAgent) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports10","fileName":"${__filename}","paramsNumber":1},`);
 
-      // Allow passing in userAgent for tests
-      // Assume it works because basically everything supports progress events.
       if (userAgent == null) {
         userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : null;
       }
@@ -8138,18 +6918,12 @@ const SRTlib = require('SRT-util');
       var edgeVersion = m[1];
       var _edgeVersion$split = edgeVersion.split('.'), major = _edgeVersion$split[0], minor = _edgeVersion$split[1];
       major = parseInt(major, 10);
-      // Worked before:
       minor = parseInt(minor, 10);
-      // Edge 40.15063.0.0
-      // Microsoft EdgeHTML 15.15063
-      // Fixed in:
       if (major < 15 || major === 15 && minor < 15063) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
 
         return true;
       }
-      // Microsoft EdgeHTML 18.18218
-      // other versions don't work.
       if (major > 18 || major === 18 && minor >= 18218) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
 
@@ -8167,9 +6941,6 @@ const SRTlib = require('SRT-util');
   25: [function (require, module, exports) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey30","fileName":"${__filename}","paramsNumber":3},`);
 
-    // Adapted from https://github.com/Flet/prettier-bytes/
-    // Changing 1000 bytes to 1024, so we can keep uppercase KB vs kB
-    // ISC License (c) Dan Flettre https://github.com/Flet/prettier-bytes/blob/master/LICENSE
     module.exports = function prettierBytes(num) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports11","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -8194,8 +6965,6 @@ const SRTlib = require('SRT-util');
       if (num >= 10 || num % 1 === 0) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports11"},');
 
-        // Do not show decimals when the number is two-digit, or if the number has no
-        // decimal component.
         return (neg ? '-' : '') + num.toFixed(0) + ' ' + unit;
       } else {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports11"},');
@@ -8300,7 +7069,6 @@ const SRTlib = require('SRT-util');
     var Translator = require('@uppy/utils/lib/Translator');
     var _require2 = require('preact'), h = _require2.h;
     module.exports = (_temp = _class = (function (_Plugin) {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class2","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(FileInput, _Plugin);
@@ -8314,14 +7082,9 @@ const SRTlib = require('SRT-util');
         _this.type = 'acquirer';
         _this.defaultLocale = {
           strings: {
-            // The same key is used for the same purpose by @uppy/robodog's `form()` API, but our
-            // locale pack scripts can't access it in Robodog. If it is updated here, it should
-            // also be updated there!
             chooseFiles: 'Choose files'
           }
         };
-        // Default options
-        // Merge default options with the ones set by user
         var defaultOptions = {
           target: null,
           pretty: true,
@@ -8353,7 +7116,6 @@ const SRTlib = require('SRT-util');
         this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
         this.i18n = this.translator.translate.bind(this.translator);
         this.i18nArray = this.translator.translateArray.bind(this.translator);
-        // so that UI re-renders and we see the updated locale
         this.setPluginState();
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit"},');
 
@@ -8389,13 +7151,7 @@ const SRTlib = require('SRT-util');
 
         this.uppy.log('[FileInput] Something selected through input...');
         var files = toArray(event.target.files);
-        // We clear the input after a file is selected, because otherwise
         this.addFiles(files);
-        // change event is not fired in Chrome and Safari when a file
-        // with the same name is selected.
-        // ___Why not use value="" on <input/> instead?
-        // Because if we use that method of clearing the input,
-        // Chrome will not trigger change if we drop the same file twice (Issue #768).
         event.target.value = null;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.handleInputChange"},');
 
@@ -8411,7 +7167,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render","fileName":"${__filename}","paramsNumber":1},`);
 
         var _this3 = this;
-        /*http://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/*/
         var hiddenInputStyle = {
           width: '0.1px',
           height: '0.1px',
@@ -8541,11 +7296,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
 
     }
-    /**
-    * Default store that keeps state in a simple object.
-    */
     var DefaultStore = (function () {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DefaultStore","fileName":"${__filename}","paramsNumber":0},`);
 
       function DefaultStore() {
@@ -8586,7 +7337,6 @@ const SRTlib = require('SRT-util');
         return function () {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DefaultStore._proto.subscribe.subscribe.ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
 
-          // Remove the listener.
           _this.callbacks.splice(_this.callbacks.indexOf(listener), 1);
                     SRTlib.send('{"type":"FUNCTIONEND","function":"DefaultStore._proto.subscribe.subscribe.ReturnStatement"},');
 
@@ -8655,14 +7405,9 @@ const SRTlib = require('SRT-util');
 
   }, {}],
   31: [function (require, module, exports) {
-    /**
-    * Create a wrapper around an event emitter with a `remove` method to remove
-    * all events that were added using the wrapped emitter.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey36","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = (function () {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports13","fileName":"${__filename}","paramsNumber":0},`);
 
       function EventTracker(emitter) {
@@ -8884,7 +7629,6 @@ const SRTlib = require('SRT-util');
 
     }
     var NetworkError = (function (_Error) {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"NetworkError","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(NetworkError, _Error);
@@ -8910,22 +7654,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"NetworkError"},');
 
     })(_wrapNativeSuper(Error));
-    /*#__PURE__*/
     module.exports = NetworkError;
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey37"},');
 
   }, {}],
   33: [function (require, module, exports) {
-    /**
-    * Helper to abort upload requests if there has not been any progress for `timeout` ms.
-    * Create an instance using `timer = new ProgressTimeout(10000, onTimeout)`
-    * Call `timer.progress()` to signal that there has been progress of any kind.
-    * Call `timer.done()` when the upload has completed.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey38","fileName":"${__filename}","paramsNumber":3},`);
 
     var ProgressTimeout = (function () {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ProgressTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
       function ProgressTimeout(timeout, timeoutHandler) {
@@ -8943,9 +7679,6 @@ const SRTlib = require('SRT-util');
       _proto.progress = function progress() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ProgressTimeout._proto.progress","fileName":"${__filename}","paramsNumber":0},`);
 
-        // Some browsers fire another progress event when the upload is
-        // cancelled, so we have to ignore progress after the timer was
-        // told to stop.
         if (this._isDone) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressTimeout._proto.progress"},');
 
@@ -8980,9 +7713,6 @@ const SRTlib = require('SRT-util');
 
   }, {}],
   34: [function (require, module, exports) {
-    /**
-    * Array.prototype.findIndex ponyfill for old browsers.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey39","fileName":"${__filename}","paramsNumber":3},`);
 
     function findIndex(array, predicate) {
@@ -9011,7 +7741,6 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = (function () {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports14","fileName":"${__filename}","paramsNumber":0},`);
 
       function RateLimitedQueue(limit) {
@@ -9083,9 +7812,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._queueNext","fileName":"${__filename}","paramsNumber":0},`);
 
         var _this2 = this;
-        // Do it soon but not immediately, this allows clearing out the entire queue synchronously
-        // one by one without continuously _advancing_ it (and starting new tasks before immediately
-        // aborting them)
         Promise.resolve().then(function () {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._queueNext._queueNext.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -9104,14 +7830,11 @@ const SRTlib = require('SRT-util');
 
           return;
         }
-        // Dispatch the next request, and update the abort/done handlers
         if (this.queuedHandlers.length === 0) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._next"},');
 
           return;
         }
-        // so that cancelling it does the Right Thing (and doesn't just try
-        // to dequeue an already-running request).
         var next = this.queuedHandlers.shift();
         var handler = this._call(next.fn);
         next.abort = handler.abort;
@@ -9309,22 +8032,7 @@ const SRTlib = require('SRT-util');
 
     }
     var has = require('./hasProperty');
-    /**
-    * Translates strings with interpolation & pluralization support.
-    * Extensible with custom dictionaries and pluralization functions.
-    *
-    * Borrows heavily from and inspired by Polyglot https://github.com/airbnb/polyglot.js,
-    * basically a stripped-down version of it. Differences: pluralization functions are not hardcoded
-    * and can be easily added among with dictionaries, nested objects are used for pluralization
-    * as opposed to `||||` delimeter
-    *
-    * Usage example: `translator.translate('files_chosen', {smart_count: 3})`
-    */
     module.exports = (function () {
-      /*#__PURE__*/
-      /**
-      * @param {object|Array<object>} locales - locale or list of locales.
-      */
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports15","fileName":"${__filename}","paramsNumber":0},`);
 
       function Translator(locales) {
@@ -9381,17 +8089,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._apply"},');
 
       };
-      /**
-      * Takes a string with placeholder variables like `%{smart_count} file selected`
-      * and replaces it with values from options `{smart_count: 5}`
-      *
-      * @license https://github.com/airbnb/polyglot.js/blob/master/LICENSE
-      * taken from https://github.com/airbnb/polyglot.js/blob/master/lib/polyglot.js#L299
-      *
-      * @param {string} phrase that needs interpolation, with placeholders
-      * @param {object} options with values that will be used to replace placeholders
-      * @returns {string} interpolated
-      */
       _proto.interpolate = function interpolate(phrase, options) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.interpolate","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -9401,16 +8098,10 @@ const SRTlib = require('SRT-util');
         var interpolated = [phrase];
         for (var arg in options) {
           if (arg !== '_' && has(options, arg)) {
-            // Ensure replacement value is escaped to prevent special $-prefixed
-            // regex replace tokens. the "$$$$" is needed because each "$" needs to
-            // be escaped with "$" itself, and we need two in the resulting output.
             var replacement = options[arg];
-            // We create a new `RegExp` each time instead of using a more-efficient
             if (typeof replacement === 'string') {
               replacement = replace.call(options[arg], dollarRegex, dollarBillsYall);
             }
-            // string replace so that the same argument can be replaced multiple times
-            // in the same phrase.
             interpolated = insertReplacement(interpolated, new RegExp('%\\{' + arg + '\\}', 'g'), replacement);
           }
         }
@@ -9424,10 +8115,6 @@ const SRTlib = require('SRT-util');
           source.forEach(function (chunk) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"source.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-            // When the source contains multiple placeholders for interpolation,
-            // we should ignore chunks that are not strings, because those
-            // can be JSX objects and will be otherwise incorrectly turned into strings.
-            // Without this condition we’d get this: [object Object] hello [object Object] my <button>
             if (typeof chunk !== 'string') {
                             SRTlib.send('{"type":"FUNCTIONEND","function":"source.forEach"},');
 
@@ -9436,7 +8123,6 @@ const SRTlib = require('SRT-util');
             split.call(chunk, rx).forEach(function (raw, i, list) {
                             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"source.forEach.split.call.forEach","fileName":"${__filename}","paramsNumber":3},`);
 
-              // Interlace with the `replacement` value
               if (raw !== '') {
                 newParts.push(raw);
               }
@@ -9458,13 +8144,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.interpolate"},');
 
       };
-      /**
-      * Public translate method
-      *
-      * @param {string} key
-      * @param {object} options with values that will be used later to replace placeholders in string
-      * @returns {string} translated (and interpolated)
-      */
       _proto.translate = function translate(key, options) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.translate","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -9474,13 +8153,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.translate"},');
 
       };
-      /**
-      * Get a translation and return the translated and interpolated parts as an array.
-      *
-      * @param {string} key
-      * @param {object} options with values that will be used to replace placeholders
-      * @returns {Array} The translated and interpolated parts, in order.
-      */
       _proto.translateArray = function translateArray(key, options) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.translateArray","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -9547,12 +8219,6 @@ const SRTlib = require('SRT-util');
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey42","fileName":"${__filename}","paramsNumber":3},`);
 
     var isDOMElement = require('./isDOMElement');
-    /**
-    * Find a DOM element.
-    *
-    * @param {Node|string} element
-    * @returns {Node|null}
-    */
     module.exports = function findDOMElement(element, context) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports16","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -9578,20 +8244,11 @@ const SRTlib = require('SRT-util');
     "./isDOMElement": 44
   }],
   38: [function (require, module, exports) {
-    /**
-    * Takes a file object and turns it into fileID, by converting file.name to lowercase,
-    * removing extra characters and adding type, size and lastModified
-    *
-    * @param {object} file
-    * @returns {string} the fileID
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey43","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function generateFileID(file) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports17","fileName":"${__filename}","paramsNumber":1},`);
 
-      // It's tempting to do `[items].filter(Boolean).join('-')` here, but that
-      // is slower! simple string concatenation is fast
       var id = 'uppy';
       if (typeof file.name === 'string') {
         id += '-' + encodeFilename(file.name.toLowerCase());
@@ -9646,18 +8303,11 @@ const SRTlib = require('SRT-util');
 
   }, {}],
   39: [function (require, module, exports) {
-    /**
-    * Takes a full filename string and returns an object {name, extension}
-    *
-    * @param {string} fullFileName
-    * @returns {object} {name, extension}
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey44","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getFileNameAndExtension(fullFileName) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports18","fileName":"${__filename}","paramsNumber":1},`);
 
-      // these count as no extension: "no-dot", "trailing-dot."
       var lastDot = fullFileName.lastIndexOf('.');
       if (lastDot === -1 || lastDot === fullFileName.length - 1) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports18"},');
@@ -9693,17 +8343,14 @@ const SRTlib = require('SRT-util');
       if (file.type) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports19"},');
 
-        // if mime type is set in the file object already, use that
         return file.type;
       } else if (fileExtension && mimeTypes[fileExtension]) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports19"},');
 
-        // else, see if we can map extension to a mime type
         return mimeTypes[fileExtension];
       } else {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports19"},');
 
-        // if all fails, fall back to a generic byte stream type
         return 'application/octet-stream';
       }
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports19"},');
@@ -9721,7 +8368,6 @@ const SRTlib = require('SRT-util');
     module.exports = function getSocketHost(url) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports20","fileName":"${__filename}","paramsNumber":1},`);
 
-      // get the host domain
       var regex = /^(?:https?:\/\/|\/\/)?(?:[^@\n]+@)?(?:www\.)?([^\n]+)/i;
       var host = regex.exec(url)[1];
       var socketProtocol = (/^http:\/\//i).test(url) ? 'ws' : 'wss';
@@ -9735,9 +8381,6 @@ const SRTlib = require('SRT-util');
 
   }, {}],
   42: [function (require, module, exports) {
-    /**
-    * Returns a timestamp in the format of `hours:minutes:seconds`
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey47","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getTimeStamp() {
@@ -9753,9 +8396,6 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports21"},');
 
     };
-    /**
-    * Adds zero to strings shorter than two characters
-    */
     function pad(str) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pad","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -9784,11 +8424,6 @@ const SRTlib = require('SRT-util');
 
   }, {}],
   44: [function (require, module, exports) {
-    /**
-    * Check if an object is a DOM element. Duck-typing based on `nodeType`.
-    *
-    * @param {*} obj
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey49","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function isDOMElement(obj) {
@@ -9827,10 +8462,6 @@ const SRTlib = require('SRT-util');
   46: [function (require, module, exports) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey51","fileName":"${__filename}","paramsNumber":3},`);
 
-    // ___Why not add the mime-types package?
-    // It's 19.7kB gzipped, and we only need mime types for well-known extensions (for file previews).
-    // ___Where to take new extensions from?
-    // https://github.com/jshttp/mime-db/blob/master/db.json
     module.exports = {
       md: 'text/markdown',
       markdown: 'text/markdown',
@@ -9931,9 +8562,6 @@ const SRTlib = require('SRT-util');
 
   }, {}],
   48: [function (require, module, exports) {
-    /**
-    * Converts list into array
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey53","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function toArray(list) {
@@ -10016,10 +8644,7 @@ const SRTlib = require('SRT-util');
     function buildResponseError(xhr, error) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildResponseError","fileName":"${__filename}","paramsNumber":2},`);
 
-      // No error message
-      // Got an error message string
       if (!error) error = new Error('Upload error');
-      // Got something else
       if (typeof error === 'string') error = new Error(error);
       if (!(error instanceof Error)) {
         error = _extends(new Error('Upload error'), {
@@ -10039,14 +8664,6 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"buildResponseError","paramsNumber":2},');
 
     }
-    /**
-    * Set `data.type` in the blob to `file.meta.type`,
-    * because we might have detected a more accurate file type in Uppy
-    * https://stackoverflow.com/a/50875615
-    *
-    * @param {object} file File object with `data`, `size` and `meta` properties
-    * @returns {object} blob updated with the new `type` set from `file.meta.type`
-    */
     function setTypeInBlob(file) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setTypeInBlob","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -10058,7 +8675,6 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = (_temp = _class = (function (_Plugin) {
-      /*#__PURE__*/
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class3","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(XHRUpload, _Plugin);
@@ -10070,7 +8686,6 @@ const SRTlib = require('SRT-util');
         _this.type = 'uploader';
         _this.id = _this.opts.id || 'XHRUpload';
         _this.title = 'XHRUpload';
-        // Default options
         _this.defaultLocale = {
           strings: {
             timedOut: 'Upload stalled for %{seconds} seconds, aborting.'
@@ -10088,16 +8703,6 @@ const SRTlib = require('SRT-util');
           limit: 0,
           withCredentials: false,
           responseType: '',
-          /**
-          * @typedef respObj
-          * @property {string} responseText
-          * @property {number} status
-          * @property {string} statusText
-          * @property {object.<string, string>} headers
-          *
-          * @param {string} responseText the response body string
-          * @param {XMLHttpRequest | respObj} response the response object (XHR or similar)
-          */
           getResponseData: function getResponseData(responseText, response) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.getResponseData","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -10113,11 +8718,6 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getResponseData"},');
 
           },
-          /**
-          *
-          * @param {string} responseText the response body string
-          * @param {XMLHttpRequest | respObj} response the response object (XHR or similar)
-          */
           getResponseError: function getResponseError(responseText, response) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.getResponseError","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -10131,13 +8731,6 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getResponseError"},');
 
           },
-          /**
-          * Check if the response from the upload endpoint indicates that the upload was successful.
-          *
-          * @param {number} status the response status code
-          * @param {string} responseText the response body string
-          * @param {XMLHttpRequest | respObj} response the response object (XHR or similar)
-          */
           validateStatus: function validateStatus(status, responseText, response) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.validateStatus","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -10150,9 +8743,7 @@ const SRTlib = require('SRT-util');
         };
         _this.opts = _extends({}, defaultOptions, {}, opts);
         _this.i18nInit();
-        // Simultaneous upload limiting is shared across all uploads with this plugin.
         _this.handleUpload = _this.handleUpload.bind(_assertThisInitialized(_this));
-        // __queue is for internal Uppy use only!
         if (_this.opts.__queue instanceof RateLimitedQueue) {
           _this.requests = _this.opts.__queue;
         } else {
@@ -10184,7 +8775,6 @@ const SRTlib = require('SRT-util');
 
         this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
         this.i18n = this.translator.translate.bind(this.translator);
-        // so that UI re-renders and we see the updated locale
         this.setPluginState();
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit2"},');
 
@@ -10213,7 +8803,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.addMetadata","fileName":"${__filename}","paramsNumber":3},`);
 
         var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(meta);
-        // Send along all fields by default.
         metaFields.forEach(function (item) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.addMetadata.addMetadata.metaFields.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -10315,9 +8904,7 @@ const SRTlib = require('SRT-util');
           xhr.upload.addEventListener('progress', function (ev) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.upload.upload.ReturnStatement.NewExpression.xhr.upload.addEventListener2","fileName":"${__filename}","paramsNumber":1},`);
 
-            // Begin checking for timeouts when progress starts, instead of loading,
             _this3.uppy.log("[XHRUpload] " + id + " progress: " + ev.loaded + " / " + ev.total);
-            // to avoid timing out requests on browser concurrency queue
             timer.progress();
             if (ev.lengthComputable) {
               _this3.uppy.emit('upload-progress', file, {
@@ -10387,9 +8974,7 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.upload.upload.ReturnStatement.NewExpression.xhr.addEventListener2"},');
 
           });
-          // IE10 does not allow setting `withCredentials` and `responseType`
           xhr.open(opts.method.toUpperCase(), opts.endpoint, true);
-          // before `open()` is called.
           xhr.withCredentials = opts.withCredentials;
           if (opts.responseType !== '') {
             xhr.responseType = opts.responseType;
@@ -10453,7 +9038,6 @@ const SRTlib = require('SRT-util');
           _this4.uppy.emit('upload-started', file);
           var fields = {};
           var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(file.meta);
-          // Send along all fields by default.
           metaFields.forEach(function (name) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uploadRemote.uploadRemote.ReturnStatement.NewExpression.metaFields.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -10720,9 +9304,7 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uploadBundle.uploadBundle.ReturnStatement.NewExpression._this5.uppy.on"},');
 
           });
-          // IE10 does not allow setting `withCredentials` and `responseType`
           xhr.open(method.toUpperCase(), endpoint, true);
-          // before `open()` is called.
           xhr.withCredentials = _this5.opts.withCredentials;
           if (_this5.opts.responseType !== '') {
             xhr.responseType = _this5.opts.responseType;
@@ -10849,7 +9431,6 @@ const SRTlib = require('SRT-util');
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.handleUpload","fileName":"${__filename}","paramsNumber":1},`);
 
         var _this9 = this;
-        // no limit configured by the user, and no RateLimitedQueue passed in by a "parent" plugin (basically just AwsS3) using the top secret `__queue` option
         if (fileIDs.length === 0) {
           this.uppy.log('[XHRUpload] No files to upload!');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.handleUpload"},');
@@ -10870,7 +9451,6 @@ const SRTlib = require('SRT-util');
 
         });
         if (this.opts.bundle) {
-          // if bundle: true, we don’t support remote uploads
           var isSomeFileRemote = files.some(function (file) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.handleUpload.handleUpload.isSomeFileRemote.files.some","fileName":"${__filename}","paramsNumber":1},`);
 

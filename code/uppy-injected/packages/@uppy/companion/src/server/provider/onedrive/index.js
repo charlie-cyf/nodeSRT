@@ -8,9 +8,6 @@ const purest = require('purest')({
 const logger = require('../../logger');
 const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../error');
-/**
-* Adapter for API https://docs.microsoft.com/en-us/onedrive/developer/rest-api/
-*/
 class OneDrive extends Provider {
   constructor(options) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"OneDrive","superClass":"Provider"}},`);
@@ -38,13 +35,6 @@ class OneDrive extends Provider {
 
   }
   list({directory, query, token}, done) {
-    /**
-    * Makes 2 requests in parallel - 1. to get files, 2. to get user email
-    * it then waits till both requests are done before proceeding with the callback
-    *
-    * @param {object} options
-    * @param {function} done
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"OneDrive","superClass":"Provider"}},`);
 
     const path = directory ? `items/${directory}` : 'root';
@@ -134,7 +124,6 @@ class OneDrive extends Provider {
   thumbnail(_, done) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"OneDrive","superClass":"Provider"}},`);
 
-    // not implementing this because a public thumbnail from onedrive will be used instead
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.onedrive.thumbnail.error');
         SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail"},');
@@ -170,7 +159,6 @@ class OneDrive extends Provider {
   logout(_, done) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"OneDrive","superClass":"Provider"}},`);
 
-    // access revoke is not supported by Microsoft/OneDrive's API
     done(null, {
       revoked: false,
       manual_revoke_url: 'https://account.live.com/consent/Manage'

@@ -1,9 +1,6 @@
 const SRTlib = require('SRT-util');
 
 const NetworkError = require('@uppy/utils/lib/NetworkError');
-/**
-* Wrapper around window.fetch that throws a NetworkError when appropriate
-*/
 module.exports = function fetchWithNetworkError(...options) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 

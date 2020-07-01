@@ -13,10 +13,6 @@ var DashboardPlugin = require('@uppy/dashboard');
 var basePropTypes = require('./propTypes').dashboard;
 
 var h = React.createElement;
-/**
-* React Component that renders a Dashboard for an Uppy instance in a Modal
-* dialog. Visibility of the Modal is toggled using the `open` prop.
-*/
 
 var DashboardModal = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(DashboardModal, _React$Component);
@@ -111,7 +107,6 @@ var DashboardModal = /*#__PURE__*/function (_React$Component) {
 }(React.Component);
 
 DashboardModal.propTypes = _extends({
-  // Only check this prop type in the browser.
   target: typeof window !== 'undefined' ? PropTypes.instanceOf(window.HTMLElement) : PropTypes.any,
   open: PropTypes.bool,
   onRequestClose: PropTypes.func,

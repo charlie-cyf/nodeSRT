@@ -12,7 +12,6 @@ window.setup = function (options) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup","fileName":"${__filename}","paramsNumber":1},`);
 
   id += 1;
-  // Initialise Uppy with Drag & Drop
   const uppy = Uppy({
     id: `uppy${id}`,
     debug: true

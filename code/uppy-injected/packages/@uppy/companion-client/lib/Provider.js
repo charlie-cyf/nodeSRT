@@ -85,8 +85,7 @@ module.exports = /*#__PURE__*/function (_RequestClient) {
 
   _proto.setAuthToken = function setAuthToken(token) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setAuthToken\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Provider\",\"superClass\":\"RequestClient\"}},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"setAuthToken"},'); // @todo(i.olarewaju) consider whether or not this method should be exposed
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"setAuthToken"},');
     return this.uppy.getPlugin(this.pluginId).storage.setItem(this.tokenKey, token);
     SRTlib.send('{"type":"FUNCTIONEND","function":"setAuthToken"},');
   };
@@ -160,7 +159,7 @@ module.exports = /*#__PURE__*/function (_RequestClient) {
     }
 
     if (opts.companionAllowedHosts) {
-      var pattern = opts.companionAllowedHosts; // validate companionAllowedHosts param
+      var pattern = opts.companionAllowedHosts;
 
       if (typeof pattern !== 'string' && !Array.isArray(pattern) && !(pattern instanceof RegExp)) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"initPlugin"},');
@@ -169,7 +168,6 @@ module.exports = /*#__PURE__*/function (_RequestClient) {
 
       plugin.opts.companionAllowedHosts = pattern;
     } else {
-      // does not start with https://
       if (/^(?!https?:\/\/).*$/i.test(opts.companionUrl)) {
         plugin.opts.companionAllowedHosts = "https://" + opts.companionUrl.replace(/^\/\//, '');
       } else {

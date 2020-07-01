@@ -11,10 +11,6 @@ var DragDropPlugin = require('@uppy/drag-drop');
 var propTypes = require('./propTypes');
 
 var h = React.createElement;
-/**
-* React component that renders an area in which files can be dropped to be
-* uploaded.
-*/
 
 var DragDrop = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(DragDrop, _React$Component);

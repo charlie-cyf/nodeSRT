@@ -1,16 +1,7 @@
-/**
-* Takes a file object and turns it into fileID, by converting file.name to lowercase,
-* removing extra characters and adding type, size and lastModified
-*
-* @param {object} file
-* @returns {string} the fileID
-*/
 var SRTlib = require('SRT-util');
 
 module.exports = function generateFileID(file) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // It's tempting to do `[items].filter(Boolean).join('-')` here, but that
-  // is slower! simple string concatenation is fast
-
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   var id = 'uppy';
 
   if (typeof file.name === 'string') {

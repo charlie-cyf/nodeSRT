@@ -25,9 +25,6 @@ function focusOnLastNode(event, nodes) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"focusOnLastNode","paramsNumber":2},');
 
 }
-// ___Why not just use (focusedItemIndex === -1)?
-// Firefox thinks <ul> is focusable, but we don't have <ul>s in our FOCUSABLE_ELEMENTS. Which means that if we tab into the <ul>, code will think that we are not in the active overlay, and we should focusOnFirstNode() of the currently active overlay!
-// [Practical check] if we use (focusedItemIndex === -1), instagram provider in firefox will never get focus on its pics in the <ul>.
 function isFocusInOverlay(activeOverlayEl) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isFocusInOverlay","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -43,22 +40,17 @@ function trapFocus(event, activeOverlayType, dashboardEl) {
   const activeOverlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
   const focusableNodes = toArray(activeOverlayEl.querySelectorAll(FOCUSABLE_ELEMENTS));
   const focusedItemIndex = focusableNodes.indexOf(document.activeElement);
-  // If we pressed tab, and focus is not yet within the current overlay - focus on the first element within the current overlay.
-  // This is a safety measure (for when user returns from another tab e.g.), most plugins will try to focus on some important element as it loads.
   if (!isFocusInOverlay(activeOverlayEl)) {
     focusOnFirstNode(event, focusableNodes);
-      // If we pressed shift + tab, and we're on the first element of a modal
-} else if (event.shiftKey && focusedItemIndex === 0) {
+  } else if (event.shiftKey && focusedItemIndex === 0) {
     focusOnLastNode(event, focusableNodes);
-      // If we pressed tab, and we're on the last element of the modal
-} else if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
+  } else if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
     focusOnFirstNode(event, focusableNodes);
   }
     SRTlib.send('{"type":"FUNCTIONEND","function":"trapFocus","paramsNumber":3},');
 
 }
 module.exports = {
-  // Traps focus inside of the currently open overlay (e.g. Dashboard, or e.g. Instagram), never lets focus disappear from the modal.
   forModal: (event, activeOverlayType, dashboardEl) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.forModal","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -66,17 +58,10 @@ module.exports = {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forModal"},');
 
   },
-  // Traps focus inside of the currently open overlay, unless overlay is null - then let the user tab away.
   forInline: (event, activeOverlayType, dashboardEl) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.forInline","fileName":"${__filename}","paramsNumber":3},`);
 
-    // ___When we're in the bare 'Drop files here, paste, browse or import from' screen
-    if (activeOverlayType === null) {
-      // Do nothing and let the browser handle it, user can tab away from Uppy to other elements on the page
-      // ___When there is some overlay with 'Done' button
-    } else {
-      // Trap the focus inside this overlay!
-      // User can close the overlay (click 'Done') if they want to travel away from Uppy.
+    if (activeOverlayType === null) {} else {
       trapFocus(event, activeOverlayType, dashboardEl);
     }
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forInline"},');

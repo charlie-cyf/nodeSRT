@@ -1,6 +1,3 @@
-/**
-* Array.prototype.findIndex ponyfill for old browsers.
-*/
 const SRTlib = require('SRT-util');
 
 function findIndex(array, predicate) {
@@ -95,9 +92,6 @@ module.exports = class RateLimitedQueue {
   _queueNext() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_queueNext","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"RateLimitedQueue"}},`);
 
-    // Do it soon but not immediately, this allows clearing out the entire queue synchronously
-    // one by one without continuously _advancing_ it (and starting new tasks before immediately
-    // aborting them)
     Promise.resolve().then(() => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -121,9 +115,6 @@ module.exports = class RateLimitedQueue {
 
       return;
     }
-    // Dispatch the next request, and update the abort/done handlers
-    // so that cancelling it does the Right Thing (and doesn't just try
-    // to dequeue an already-running request).
     const next = this.queuedHandlers.shift();
     const handler = this._call(next.fn);
     next.abort = handler.abort;

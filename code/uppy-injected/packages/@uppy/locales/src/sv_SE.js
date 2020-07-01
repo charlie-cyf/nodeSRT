@@ -84,7 +84,6 @@ sv_SE.strings = {
     '1': 'Välj %{smart_count}',
     '2': 'Välj %{smart_count}'
   },
-  // translates to "Say cheese!" - which works well in this context in Swedish
   smile: 'Säg omelett!',
   startRecording: 'Starta inspelning',
   stopRecording: 'Avbryt inspelning',

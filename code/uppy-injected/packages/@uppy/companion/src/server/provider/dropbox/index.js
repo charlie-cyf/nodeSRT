@@ -8,10 +8,6 @@ const purest = require('purest')({
 const logger = require('../../logger');
 const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../error');
-// From https://www.dropbox.com/developers/reference/json-encoding:
-// 
-// This function is simple and has OK performance compared to more
-// complicated ones: http://jsperf.com/json-escape-unicode/4
 const charsToEncode = /[\u007f-\uffff]/g;
 function httpHeaderSafeJson(v) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"httpHeaderSafeJson","fileName":"${__filename}","paramsNumber":1},`);
@@ -30,9 +26,6 @@ function httpHeaderSafeJson(v) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"httpHeaderSafeJson","paramsNumber":1},');
 
 }
-/**
-* Adapter for API https://www.dropbox.com/developers/documentation/http/documentation
-*/
 class DropBox extends Provider {
   constructor(options) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
@@ -40,7 +33,6 @@ class DropBox extends Provider {
     super(options);
     this.authProvider = options.provider = DropBox.authProvider;
     this.client = purest(options);
-    // needed for the thumbnails fetched via companion
     this.needsCookieAuth = true;
         SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
@@ -64,13 +56,6 @@ class DropBox extends Provider {
 
   }
   list(options, done) {
-    /**
-    * Makes 2 requests in parallel - 1. to get files, 2. to get user email
-    * it then waits till both requests are done before proceeding with the callback
-    *
-    * @param {object} options
-    * @param {function} done
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
     let userInfoDone = false;

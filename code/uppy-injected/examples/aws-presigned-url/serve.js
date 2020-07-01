@@ -45,7 +45,6 @@ console.log('bundling...');
 bundle().on('finish', () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bundle.on","fileName":"${__filename}","paramsNumber":0},`);
 
-  // Start the PHP delevopment server.
   spawn('php', ['-S', `localhost:${port}`], {
     stdio: 'inherit'
   });

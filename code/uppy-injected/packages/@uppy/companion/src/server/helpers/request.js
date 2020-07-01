@@ -18,26 +18,13 @@ function isIPAddress(address) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"isIPAddress","paramsNumber":1},');
 
 }
-/**
-* Determine if a IP address provided is a private one.
-* Return TRUE if it's the case, FALSE otherwise.
-* Excerpt from:
-* https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html#case-2---application-can-send-requests-to-any-external-ip-address-or-domain-name
-*
-* @param {string} ipAddress the ip address to validate
-* @returns {boolean}
-*/
 function isPrivateIP(ipAddress) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isPrivateIP","fileName":"${__filename}","paramsNumber":1},`);
 
   let isPrivate = false;
-  // Build the list of IP prefix for V4 and V6 addresses
   const ipPrefix = [];
-  // Add prefix for loopback addresses
   ipPrefix.push('127.');
   ipPrefix.push('0.');
-  // Add IP V4 prefix for private addresses
-  // See https://en.wikipedia.org/wiki/Private_network
   ipPrefix.push('10.');
   ipPrefix.push('172.16.');
   ipPrefix.push('172.17.');
@@ -57,22 +44,12 @@ function isPrivateIP(ipAddress) {
   ipPrefix.push('172.31.');
   ipPrefix.push('192.168.');
   ipPrefix.push('169.254.');
-  // Add IP V6 prefix for private addresses
-  // See https://en.wikipedia.org/wiki/Unique_local_address
-  // See https://en.wikipedia.org/wiki/Private_network
-  // See https://simpledns.com/private-ipv6
   ipPrefix.push('fc');
   ipPrefix.push('fd');
   ipPrefix.push('fe');
   ipPrefix.push('ff');
   ipPrefix.push('::1');
-  // Verify the provided IP address
-  // Remove whitespace characters from the beginning/end of the string
-  // and convert it to lower case
-  // Lower case is for preventing any IPV6 case bypass using mixed case
-  // depending on the source used to get the IP address
   const ipToVerify = ipAddress.trim().toLowerCase();
-  // Perform the check against the list of prefix
   for (const prefix of ipPrefix) {
     if (ipToVerify.startsWith(prefix)) {
       isPrivate = true;
@@ -114,11 +91,6 @@ module.exports.getRedirectEvaluator = (requestURL, blockPrivateIPs) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getRedirectEvaluator"},');
 
 };
-/**
-* Returns http Agent that will prevent requests to private IPs (to preven SSRF)
-* @param {string} protocol http or http: or https: or https protocol needed for the request
-* @param {boolean} blockPrivateIPs if set to false, this protection will be disabled
-*/
 module.exports.getProtectedHttpAgent = (protocol, blockPrivateIPs) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getProtectedHttpAgent","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -176,7 +148,6 @@ class HttpAgent extends http.Agent {
     }
         SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
-    // @ts-ignore
     return super.createConnection(options, callback);
         SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
@@ -195,7 +166,6 @@ class HttpsAgent extends https.Agent {
     }
         SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
-    // @ts-ignore
     return super.createConnection(options, callback);
         SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 

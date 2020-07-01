@@ -1,4 +1,3 @@
-/*global browser, expect*/
 const SRTlib = require('SRT-util');
 
 describe('Project compiled with Uppy\'s TypeScript typings', () => {
@@ -20,9 +19,7 @@ describe('Project compiled with Uppy\'s TypeScript typings', () => {
     const typeofUppy = await browser.execute(function () {
       return typeof window.uppy;
     });
-    // It was initialized correctly
     expect(typeofUppy).to.equal('object');
-    // The dashboard is shown
     const dashboard = await browser.$('.uppy-Dashboard');
     expect(await dashboard.isDisplayed()).to.equal(true);
   });

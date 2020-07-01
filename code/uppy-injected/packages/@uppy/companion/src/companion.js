@@ -2,7 +2,6 @@ const SRTlib = require('SRT-util');
 
 const fs = require('fs');
 const express = require('express');
-// @ts-ignore
 const Grant = require('grant').express();
 const grantConfig = require('./config/grant')();
 const providerManager = require('./server/provider');
@@ -48,16 +47,10 @@ const defaultOptions = {
   },
   debug: true
 };
-// make the errors available publicly for custom providers
 module.exports.errors = {
   ProviderApiError,
   ProviderAuthError
 };
-/**
-* Entry point into initializing the Companion app.
-*
-* @param {object} options
-*/
 module.exports.app = (options = {}) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.app","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -69,9 +62,7 @@ module.exports.app = (options = {}) => {
   if (customProviders) {
     providerManager.addCustomProviders(customProviders, providers, grantConfig);
   }
-  // mask provider secrets from log messages
   maskLogger(options);
-  // create singleton redis client
   if (options.redisUrl) {
     redis.client(merge({
       url: options.redisUrl
@@ -79,7 +70,6 @@ module.exports.app = (options = {}) => {
   }
   emitter(options.multipleInstances && options.redisUrl);
   const app = express();
-  // server tokens are added to cookies
   app.use(cookieParser());
   app.use(interceptGrantErrorResponse);
   app.use(Grant(grantConfig));
@@ -90,13 +80,11 @@ module.exports.app = (options = {}) => {
     res.header('Access-Control-Allow-Headers', ['uppy-auth-token', 'uppy-versions', res.get('Access-Control-Allow-Headers')].join(','));
     const exposedHeaders = ['Access-Control-Allow-Headers'];
     if (options.sendSelfEndpoint) {
-      // add it to the exposed headers.
       exposedHeaders.push('i-am');
       const {protocol} = options.server;
       res.header('i-am', `${protocol}://${options.sendSelfEndpoint}`);
     }
     if (res.get('Access-Control-Expose-Headers')) {
-      // if the header had been previously set, the values should be added too
       exposedHeaders.push(res.get('Access-Control-Expose-Headers'));
     }
     res.header('Access-Control-Expose-Headers', exposedHeaders.join(','));
@@ -104,7 +92,6 @@ module.exports.app = (options = {}) => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"app.use"},');
 
   });
-  // add uppy options to the request object so it can be accessed by subsequent handlers.
   app.use('*', getOptionsMiddleware(options));
   app.use('/s3', s3(options.providerOptions.s3));
   app.use('/url', url());
@@ -126,11 +113,6 @@ module.exports.app = (options = {}) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.app"},');
 
 };
-/**
-* the socket is used to send progress events during an upload
-*
-* @param {object} server
-*/
 module.exports.socket = server => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -138,22 +120,12 @@ module.exports.socket = server => {
     server
   });
   const redisClient = redis.client();
-  // A new connection is usually created when an upload begins,
-  // or when connection fails while an upload is on-going and,
-  // client attempts to reconnect.
   wss.on('connection', (ws, req) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"wss.on","fileName":"${__filename}","paramsNumber":2},`);
 
-    // @ts-ignore
     const fullPath = req.url;
-    // the token identifies which ongoing upload's progress, the socket
-    // connection wishes to listen to.
     const token = fullPath.replace(/^.*\/api\//, '');
     logger.info(`connection received from ${token}`, 'socket.connect');
-    /**
-    *
-    * @param {{action: string, payload: object}} data
-    */
     function sendProgress(data) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sendProgress","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -167,8 +139,6 @@ module.exports.socket = server => {
             SRTlib.send('{"type":"FUNCTIONEND","function":"sendProgress","paramsNumber":1},');
 
     }
-    // if the redisClient is available, then we attempt to check the storage
-    // if we have any already stored progress data on the upload.
     if (redisClient) {
       redisClient.get(`${STORAGE_PREFIX}:${token}`, (err, data) => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"redisClient.get","fileName":"${__filename}","paramsNumber":2},`);
@@ -188,7 +158,6 @@ module.exports.socket = server => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.on","fileName":"${__filename}","paramsNumber":1},`);
 
       const data = JSON.parse(jsonData.toString());
-      // whitelist triggered actions
       if (['pause', 'resume', 'cancel'].includes(data.action)) {
         emitter().emit(`${data.action}:${token}`);
       }
@@ -208,8 +177,6 @@ module.exports.socket = server => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.socket"},');
 
 };
-// intercepts grantJS' default response error when something goes
-// wrong during oauth process.
 const interceptGrantErrorResponse = interceptor((req, res) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"interceptGrantErrorResponse.interceptor","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -221,7 +188,6 @@ const interceptGrantErrorResponse = interceptor((req, res) => {
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.isInterceptable"},');
 
-      // match grant.js' callback url
       return (/^\/connect\/\w+\/callback/).test(req.path);
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.isInterceptable"},');
 
@@ -245,10 +211,6 @@ const interceptGrantErrorResponse = interceptor((req, res) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"interceptGrantErrorResponse.interceptor"},');
 
 });
-/**
-*
-* @param {object} options
-*/
 const getOptionsMiddleware = options => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getOptionsMiddleware","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -272,22 +234,13 @@ const getOptionsMiddleware = options => {
       signatureVersion: 'v4',
       endpoint: s3ProviderOptions.endpoint,
       region: s3ProviderOptions.region,
-      // backwards compat
       useAccelerateEndpoint: s3ProviderOptions.useAccelerateEndpoint
     }, rawClientOptions);
-    // Use credentials to allow assumed roles to pass STS sessions in.
-    // If the user doesn't specify key and secret, the default credentials (process-env)
-    // will be used by S3 in calls below.
     if (s3ProviderOptions.key && s3ProviderOptions.secret && !s3ClientOptions.credentials) {
       s3ClientOptions.credentials = new AWS.Credentials(s3ProviderOptions.key, s3ProviderOptions.secret, s3ProviderOptions.sessionToken);
     }
     s3Client = new S3(s3ClientOptions);
   }
-  /**
-  * @param {object} req
-  * @param {object} res
-  * @param {function} next
-  */
   const middleware = (req, res, next) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"middleware","fileName":"${__filename}","paramsNumber":3},`);
 
@@ -310,11 +263,6 @@ const getOptionsMiddleware = options => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"getOptionsMiddleware"},');
 
 };
-/**
-* Informs the logger about all provider secrets that should be masked
-* if they are found in a log message
-* @param {object} companionOptions
-*/
 const maskLogger = companionOptions => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"maskLogger","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -344,18 +292,10 @@ const maskLogger = companionOptions => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"maskLogger"},');
 
 };
-/**
-* validates that the mandatory companion options are set.
-* If it is invalid, it will console an error of unset options and exits the process.
-* If it is valid, nothing happens.
-*
-* @param {object} companionOptions
-*/
 const validateConfig = companionOptions => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateConfig","fileName":"${__filename}","paramsNumber":1},`);
 
   const mandatoryOptions = ['secret', 'filePath', 'server.host'];
-  /** @type {string[]}*/
   const unspecified = [];
   mandatoryOptions.forEach(i => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"mandatoryOptions.forEach","fileName":"${__filename}","paramsNumber":1},`);
@@ -373,16 +313,13 @@ const validateConfig = companionOptions => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"mandatoryOptions.forEach"},');
 
   });
-  // vaidate that all required config is specified
   if (unspecified.length) {
     const messagePrefix = 'Please specify the following options to use companion:';
         SRTlib.send('{"type":"FUNCTIONEND","function":"validateConfig"},');
 
     throw new Error(`${messagePrefix}\n${unspecified.join(',\n')}`);
   }
-  // validate that specified filePath is writeable/readable.
   try {
-    // @ts-ignore
     fs.accessSync(`${companionOptions.filePath}`, fs.R_OK | fs.W_OK);
   } catch (err) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"validateConfig"},');

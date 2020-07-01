@@ -1,10 +1,6 @@
 var SRTlib = require('SRT-util');
 
 'use strict';
-/**
-* Manages communications with Companion
-*/
-
 
 var RequestClient = require('./RequestClient');
 

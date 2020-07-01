@@ -40,8 +40,6 @@ exports.getItemSubList = item => {
   item.data.forEach(subItem => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item.data.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-    // exclude videos because of bug https://developers.facebook.com/support/bugs/801145630390846/
-    // @todo remove this clause when bug is fixed
     if (isVideo(subItem)) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"item.data.forEach"},');
 
@@ -51,8 +49,6 @@ exports.getItemSubList = item => {
       subItem.children.data.forEach(i => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"subItem.children.data.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-        // exclude videos because of bug https://developers.facebook.com/support/bugs/801145630390846/
-        // @todo remove this clause when bug is fixed
         if (isVideo(i)) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"subItem.children.data.forEach"},');
 
@@ -80,7 +76,6 @@ exports.getItemName = (item, index) => {
   const ext = isVideo(item) ? 'mp4' : 'jpeg';
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
 
-  // adding index, so the name is unique
   return `Instagram ${item.timestamp}${index}.${ext}`;
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
 

@@ -3,9 +3,6 @@ const SRTlib = require('SRT-util');
 const fs = require('fs');
 const path = require('path');
 const DUMM_FILE = path.join(__dirname, 'fixtures/image.jpg');
-/**
-* an example of a custom provider module. It implements @uppy/companion's Provider interface
-*/
 class MyCustomProvider {
   constructor(options) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider"}},`);

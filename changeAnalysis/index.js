@@ -1,6 +1,9 @@
 var _ = require('underscore');
 
 // Compare AST2 to AST1 to output a list of changes' ancestors
+// ! same modification might be pushed twice to diffList, need to check function name to remove dup.
+// TODO handle cases when changes happend outside a function.
+// TODO handle cases when cahnges happend outside a function and  class.
 module.exports.getDiffs = function (AST1, AST2) {
     let diffList = [];
 
@@ -9,6 +12,7 @@ module.exports.getDiffs = function (AST1, AST2) {
         let tancestors = Array.from(ancestors)
         tancestors.push(node1);
         if(node1.type !== node2.type) {
+            console.log('pushed to res for different type', node1.type, node2.type)
             diffList.push(tancestors);
             return;
         }

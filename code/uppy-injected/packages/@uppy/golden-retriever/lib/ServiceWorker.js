@@ -1,4 +1,3 @@
-/*globals clients*/
 var SRTlib = require('SRT-util');
 
 var fileCache = Object.create(null);

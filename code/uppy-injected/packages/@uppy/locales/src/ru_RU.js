@@ -16,9 +16,7 @@ ru_RU.strings = {
   chooseFiles: 'Выбрать файлы',
   closeModal: 'Закрыть окно',
   companionError: 'Не удалось подключиться к Companion',
-  // «Готово» вместо «загрузка завершена», потому что кроме загрузки бывает encoding — транскодирование файлов
   complete: 'Готово',
-  // «Нет подключения к интернету» — «Подключено к интернету»
   connectedToInternet: 'Подключено к интернету',
   copyLink: 'Скопировать ссылку',
   copyLinkToClipboardFallback: 'Скопируйте ссылку',

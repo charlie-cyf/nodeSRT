@@ -7,36 +7,28 @@ const SRTlib = require('SRT-util');
   var doc = document.documentElement;
   var body = document.body;
   var isIndex = body.classList.contains('page-index');
-  // On index page
   if (isIndex) {
     IndexPage();
-      // On inner pages
-} else {
+  } else {
     InnerPage();
   }
   function InnerPage() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"InnerPage","fileName":"${__filename}","paramsNumber":0},`);
 
-    // var main = document.querySelector('.js-MainContent')
     var menuButton = document.querySelector('.js-MenuBtn');
     var header = document.querySelector('.js-MainHeader');
     var menu = document.querySelector('.js-Sidebar');
     var content = document.querySelector('.js-Content');
     var animating = false;
     var allLinks = [];
-    // // listen for scroll event to do positioning & highlights
-    // window.addEventListener('scroll', updateSidebar)
-    // window.addEventListener('resize', updateSidebar)
     function updateSidebar() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateSidebar","fileName":"${__filename}","paramsNumber":0},`);
 
       var top = doc && doc.scrollTop || body.scrollTop;
       var headerHeight = header.offsetHeight;
       if (top > headerHeight - 25) {
-        // main.classList.add('fix-sidebar')
         header.classList.add('fix-header');
       } else {
-        // main.classList.remove('fix-sidebar')
         header.classList.remove('fix-header');
       }
       if (animating || !allLinks) {
@@ -65,7 +57,6 @@ const SRTlib = require('SRT-util');
 
       var link = document.createElement('li');
       var text = h.textContent.replace(/\(.*\)$/, '');
-      // make sure the ids are link-able...
       h.id = h.id.replace(/\(.*\)$/, '').replace(/\$/, '');
       link.innerHTML = '<a class="section-link" data-scroll href="#' + h.id + '">' + text + '</a>';
             SRTlib.send('{"type":"FUNCTIONEND","function":"makeLink"},');
@@ -158,7 +149,6 @@ const SRTlib = require('SRT-util');
     function initSubHeaders() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initSubHeaders","fileName":"${__filename}","paramsNumber":0},`);
 
-      // build sidebar
       var currentPageAnchor = menu.querySelector('.sidebar-link.current');
       var isDocs = content.classList.contains('docs');
       if (!isDocs) {
@@ -168,13 +158,6 @@ const SRTlib = require('SRT-util');
       }
       if (currentPageAnchor) {
         var sectionContainer;
-        // if (false && isAPI) {
-        // sectionContainer = document.querySelector('.menu-root')
-        // } else {
-        // sectionContainer = document.createElement('ul')
-        // sectionContainer.className = 'menu-sub'
-        // currentPageAnchor.parentNode.appendChild(sectionContainer)
-        // }
         sectionContainer = document.createElement('ul');
         sectionContainer.className = 'menu-sub';
         currentPageAnchor.parentNode.appendChild(sectionContainer);
@@ -223,17 +206,11 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"sectionContainer.addEventListener"},');
 
         }, true);
-        // make links clickable
         allLinks.forEach(makeLinkClickable);
-        // init smooth scroll
         window.smoothScroll.init({
           speed: 400
-          // offset: window.innerWidth > 720
-          // ? 40
-          // : 58
         });
       }
-      // listen for scroll event to do positioning & highlights
       window.addEventListener('scroll', updateSidebar);
       window.addEventListener('resize', updateSidebar);
             SRTlib.send('{"type":"FUNCTIONEND","function":"initSubHeaders","paramsNumber":0},');
@@ -249,7 +226,6 @@ const SRTlib = require('SRT-util');
   function IndexPage() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"IndexPage","fileName":"${__filename}","paramsNumber":0},`);
 
-    // Tabs
     window.addEventListener('load', function () {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -268,8 +244,6 @@ const SRTlib = require('SRT-util');
         for (i = 0; i < myContentPanes.length; i++) {
           myContentPanes[i].classList.remove('TabPane--active');
         }
-        // storing reference to event.currentTarget, otherwise we get
-        // all the children like SVGs, instead of our target — the link element
         var anchorReference = tabClickEvent.currentTarget;
         var activePaneId = anchorReference.getAttribute('href');
         var activePane = document.querySelector(activePaneId);
@@ -335,22 +309,4 @@ const SRTlib = require('SRT-util');
   }
     SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
-  // Search with SwiftType
-  // @todo get our own swifttype
-  // (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-  // (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-  // e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  // })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-  // _st('install','HgpxvBc7pUaPUWmG9sgv','2.0.0');
-  // version select
-  // document.querySelector('.version-select').addEventListener('change', function (e) {
-  // var version = e.target.value
-  // if (version.indexOf('1.') !== 0) {
-  // version = version.replace('.', '')
-  // var section = window.location.pathname.match(/\/(\w+?)\//)[1]
-  // window.location.assign('http://' + version + '.uppy.io/' + section + '/')
-  // } else {
-  // // TODO when 1.x is out
-  // }
-  // })
 })();

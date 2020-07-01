@@ -1,4 +1,3 @@
-/*global browser, expect, capabilities, $*/
 const SRTlib = require('SRT-util');
 
 const path = require('path');
@@ -37,11 +36,7 @@ describe('Transloadit file processing', () => {
     } else {
       const img = path.join(__dirname, '../../resources/image.jpg');
       await browser.execute(selectFakeFile, 'uppyTransloadit', path.basename(img), 'image/jpeg', fs.readFileSync(img, 'base64'));
-          // name
-      // type
-      // b64
-      // browser.execute(selectFakeFile, 'uppyTransloadit')
-}
+    }
     await result.waitForExist(25000);
     const text = await result.getText();
     expect(text).to.be.equal('ok');

@@ -19,15 +19,12 @@ var ProgressTimeout = require('@uppy/utils/lib/ProgressTimeout');
 
 var NetworkError = require('@uppy/utils/lib/NetworkError');
 
-var isNetworkError = require('@uppy/utils/lib/isNetworkError'); // See XHRUpload
-
+var isNetworkError = require('@uppy/utils/lib/isNetworkError');
 
 function buildResponseError(xhr, error) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"buildResponseError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},"); // No error message
-
-  if (!error) error = new Error('Upload error'); // Got an error message string
-
-  if (typeof error === 'string') error = new Error(error); // Got something else
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"buildResponseError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  if (!error) error = new Error('Upload error');
+  if (typeof error === 'string') error = new Error(error);
 
   if (!(error instanceof Error)) {
     error = _extends(new Error('Upload error'), {
@@ -45,8 +42,7 @@ function buildResponseError(xhr, error) {
   SRTlib.send('{"type":"FUNCTIONEND","function":"buildResponseError"},');
   return error;
   SRTlib.send('{"type":"FUNCTIONEND","function":"buildResponseError","paramsNumber":2},');
-} // See XHRUpload
-
+}
 
 function setTypeInBlob(file) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setTypeInBlob\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -118,8 +114,7 @@ module.exports = /*#__PURE__*/function () {
 
   _proto._addMetadata = function _addMetadata(formData, meta, opts) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_addMetadata\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"MiniXHRUpload\"}},");
-    var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(meta); // Send along all fields by default.
-
+    var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(meta);
     metaFields.forEach(function (item) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.metaFields.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       formData.append(item, meta[item]);
@@ -224,9 +219,7 @@ module.exports = /*#__PURE__*/function () {
     this.uppy.log("uploading " + current + " of " + total);
     SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadLocalFile"},');
     return new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},"); // This is done in index.js in the S3 plugin.
-      // this.uppy.emit('upload-started', file)
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       var data = opts.formData ? _this3._createFormDataUpload(file, opts) : _this3._createBareUpload(file, opts);
       var xhr = new XMLHttpRequest();
       _this3.uploaderEvents[file.id] = new EventTracker(_this3.uppy);
@@ -254,9 +247,7 @@ module.exports = /*#__PURE__*/function () {
       xhr.upload.addEventListener('progress', function (ev) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"xhr.upload.addEventListener2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
-        _this3.uppy.log("[AwsS3/XHRUpload] " + id + " progress: " + ev.loaded + " / " + ev.total); // Begin checking for timeouts when progress starts, instead of loading,
-        // to avoid timing out requests on browser concurrency queue
-
+        _this3.uppy.log("[AwsS3/XHRUpload] " + id + " progress: " + ev.loaded + " / " + ev.total);
 
         timer.progress();
 
@@ -340,9 +331,7 @@ module.exports = /*#__PURE__*/function () {
         return reject(error);
         SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener2"},');
       });
-      xhr.open(opts.method.toUpperCase(), opts.endpoint, true); // IE10 does not allow setting `withCredentials` and `responseType`
-      // before `open()` is called.
-
+      xhr.open(opts.method.toUpperCase(), opts.endpoint, true);
       xhr.withCredentials = opts.withCredentials;
 
       if (opts.responseType !== '') {
@@ -398,12 +387,9 @@ module.exports = /*#__PURE__*/function () {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadRemoteFile"},');
     return new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},"); // This is done in index.js in the S3 plugin.
-      // this.uppy.emit('upload-started', file)
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       var fields = {};
-      var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(file.meta); // Send along all fields by default.
-
+      var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(file.meta);
       metaFields.forEach(function (name) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"metaFields.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         fields[name] = file.meta[name];

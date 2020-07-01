@@ -1,4 +1,3 @@
-/*eslint camelcase: 0*/
 const SRTlib = require('SRT-util');
 
 const nb_NO = {};

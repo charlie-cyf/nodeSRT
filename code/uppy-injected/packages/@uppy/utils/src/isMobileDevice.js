@@ -1,9 +1,3 @@
-/**
-* Checks if current device reports itself as “mobile”.
-* Very simple, not very reliable.
-*
-* @returns {boolean}
-*/
 const SRTlib = require('SRT-util');
 
 module.exports = function isMobileDevice() {

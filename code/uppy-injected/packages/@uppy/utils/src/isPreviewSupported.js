@@ -9,7 +9,6 @@ module.exports = function isPreviewSupported(fileType) {
     return false;
   }
   const fileTypeSpecific = fileType.split('/')[1];
-  // list of images that browsers can preview
   if ((/^(jpe?g|gif|png|svg|svg\+xml|bmp|webp)$/).test(fileTypeSpecific)) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 

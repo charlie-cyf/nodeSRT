@@ -1,4 +1,3 @@
-/*eslint-disable*/
 const SRTlib = require('SRT-util');
 
 require('es6-promise/auto');
@@ -26,7 +25,6 @@ uppyThumbnails.on('file-added', file => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"uppyThumbnails.on"},');
 
 });
-// Dump errors to the screen so saucelabs shows them in screenshots.
 uppyThumbnails.on('thumbnail:error', (file, err) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on2","fileName":"${__filename}","paramsNumber":2},`);
 

@@ -1,4 +1,3 @@
-/*global browser, expect, $, $$*/
 const SRTlib = require('SRT-util');
 
 const testURL = 'http://localhost:4567/create-react-app';
@@ -17,7 +16,6 @@ describe('webpack build', () => {
     const el = await $('#inline-dashboard .uppy-Dashboard-inner');
     await el.waitForExist();
     const bgColor = await el.getCSSProperty('background-color');
-    // computed value is rgb() or rgba(), not hex (but listing it here to show the expected value too)
     expect((/^rgba?\(250, ?250, ?250(?:, ?1)?\)$|^#fafafa$/).test(bgColor.value)).to.equal(true);
   });
     afterEach(() => {
@@ -60,20 +58,13 @@ describe('React: Dashboard', () => {
       await button.click();
       await browser.pause(250);
     }
-    // close
     await toggle();
-    // open
     await toggle();
-    // close
     await toggle();
-    // open
     await toggle();
-    // open GDrive panel
     const gdriveButton = await $('.uppy-DashboardTab:nth-child(1) button');
     await gdriveButton.click();
     await browser.pause(500);
-    // side effecting property access, not a function!
-    // eslint-disable-next-line no-unused-expressions
     expect(await $('.uppy-Provider-authBtn')).to.exist;
   });
     afterEach(() => {
@@ -104,14 +95,10 @@ describe('React: DashboardModal', () => {
     await modalToggle.waitForExist();
     expect(await modalWrapper.getAttribute('aria-hidden')).to.equal('true');
     await modalToggle.click();
-    // wait for the animation to start
     await browser.pause(50);
-    // Edge appears to report empty string while others report null
     expect(await modalWrapper.getAttribute('aria-hidden')).to.be.oneOf([null, '']);
-    // wait for the animation to complete
     await browser.pause(500);
     await modalClose.click();
-    // wait for the animation to complete
     await browser.pause(500);
     expect(await modalWrapper.getAttribute('aria-hidden')).to.equal('true');
   });

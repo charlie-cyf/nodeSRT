@@ -4,10 +4,6 @@ const React = require('react');
 const DashboardPlugin = require('@uppy/dashboard');
 const basePropTypes = require('./propTypes').dashboard;
 const h = React.createElement;
-/**
-* React Component that renders a Dashboard for an Uppy instance. This component
-* renders the Dashboard inline, so you can put it anywhere you want.
-*/
 class Dashboard extends React.Component {
   componentDidMount() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);

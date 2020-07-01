@@ -5,15 +5,6 @@ function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.crea
 var SRTlib = require('SRT-util');
 
 var Emitter = require('component-emitter');
-/**
-* Track completion of multiple assemblies.
-*
-* Emits 'assembly-complete' when an assembly completes.
-* Emits 'assembly-error' when an assembly fails.
-* Exposes a `.promise` property that resolves when all assemblies have
-* completed (or failed).
-*/
-
 
 var TransloaditAssemblyWatcher = /*#__PURE__*/function (_Emitter) {
   _inheritsLoose(TransloaditAssemblyWatcher, _Emitter);
@@ -46,9 +37,6 @@ var TransloaditAssemblyWatcher = /*#__PURE__*/function (_Emitter) {
   var _proto = TransloaditAssemblyWatcher.prototype;
 
   _proto._watching = function _watching(id) {
-    /**
-    * Are we watching this assembly ID?
-    */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_watching\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"TransloaditAssemblyWatcher\",\"superClass\":\"Emitter\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"_watching"},');
     return this._assemblyIDs.indexOf(id) !== -1;
@@ -110,12 +98,7 @@ var TransloaditAssemblyWatcher = /*#__PURE__*/function (_Emitter) {
     if (!this._watching(assembly.assembly_id)) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"_onImportError"},');
       return;
-    } // Not sure if we should be doing something when it's just one file failing.
-    // ATM, the only options are 1) ignoring or 2) failing the entire upload.
-    // I think failing the upload is better than silently ignoring.
-    // In the future we should maybe have a way to resolve uploads with some failures,
-    // like returning an object with `{ successful, failed }` uploads.
-
+    }
 
     this._onAssemblyError(assembly, error);
 
@@ -127,7 +110,6 @@ var TransloaditAssemblyWatcher = /*#__PURE__*/function (_Emitter) {
     this._remaining -= 1;
 
     if (this._remaining === 0) {
-      // We're done, these listeners can be removed
       this._removeListeners();
 
       this._resolve();

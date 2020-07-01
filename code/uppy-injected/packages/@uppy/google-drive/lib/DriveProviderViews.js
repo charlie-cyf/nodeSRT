@@ -16,9 +16,7 @@ module.exports = /*#__PURE__*/function (_ProviderViews) {
   _proto.toggleCheckbox = function toggleCheckbox(e, file) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"toggleCheckbox\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"DriveProviderViews\",\"superClass\":\"ProviderViews\"}},");
     e.stopPropagation();
-    e.preventDefault(); // Shared Drives aren't selectable; for all else, defer to the base ProviderView.
-    // @todo isTeamDrive is left for backward compatibility. We should remove it in the next
-    // major release.
+    e.preventDefault();
 
     if (!file.custom.isTeamDrive && !file.custom.isSharedDrive) {
       _ProviderViews.prototype.toggleCheckbox.call(this, e, file);

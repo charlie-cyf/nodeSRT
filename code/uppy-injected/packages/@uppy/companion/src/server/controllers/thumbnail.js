@@ -1,8 +1,3 @@
-/**
-*
-* @param {object} req
-* @param {object} res
-*/
 const SRTlib = require('SRT-util');
 
 function thumbnail(req, res, next) {

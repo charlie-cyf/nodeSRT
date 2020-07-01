@@ -186,7 +186,6 @@ describe('src/Core', () => {
       expect(core.plugins.acquirer[0].mocks.update.mock.calls[1]).toEqual([newState]);
       expect(core.plugins.acquirer[1].mocks.update.mock.calls[1]).toEqual([newState]);
       expect(stateUpdateEventMock.mock.calls.length).toEqual(2);
-      // current state
       expect(stateUpdateEventMock.mock.calls[1][0]).toEqual({
         bee: 'boo',
         capabilities: {
@@ -207,7 +206,6 @@ describe('src/Core', () => {
         plugins: {},
         totalProgress: 0
       });
-      // new state
       expect(stateUpdateEventMock.mock.calls[1][1]).toEqual({
         bee: 'boo',
         capabilities: {
@@ -250,7 +248,6 @@ describe('src/Core', () => {
   });
   it('should reset when the reset method is called', () => {
     const core = new Core();
-    // const corePauseEventMock = jest.fn()
     const coreCancelEventMock = jest.fn();
     const coreStateUpdateEventMock = jest.fn();
     core.on('cancel-all', coreCancelEventMock);
@@ -318,7 +315,6 @@ describe('src/Core', () => {
     core.on('cancel-all', coreCancelEventMock);
     core.on('state-update', coreStateUpdateEventMock);
     core.close();
-    // expect(corePauseEventMock.mock.calls.length).toEqual(1)
     expect(coreCancelEventMock.mock.calls.length).toEqual(1);
     expect(coreStateUpdateEventMock.mock.calls.length).toEqual(1);
     expect(coreStateUpdateEventMock.mock.calls[0][1]).toEqual({
@@ -574,8 +570,6 @@ describe('src/Core', () => {
       });
       return core.upload().then(() => {
         expect(postprocessor1.mock.calls.length).toEqual(1);
-        // const lastModifiedTime = new Date()
-        // const fileId = 'foojpg' + lastModifiedTime.getTime()
         const fileId = 'uppy-foo/jpg-1e-image';
         expect(postprocessor1.mock.calls[0][0].length).toEqual(1);
         expect(postprocessor1.mock.calls[0][0][0].substring(0, 17)).toEqual(fileId.substring(0, 17));
@@ -884,7 +878,6 @@ describe('src/Core', () => {
         const core = new Core({
           allowMultipleUploads: false
         });
-        // adding 2 files
         const fileId1 = core.addFile({
           source: 'jest',
           name: '1.jpg',
@@ -901,7 +894,6 @@ describe('src/Core', () => {
             type: 'image/jpeg'
           })
         });
-        // removing 1 file
         core.removeFile(fileId1);
         await expect(core.upload()).resolves.toBeDefined();
       });
@@ -909,7 +901,6 @@ describe('src/Core', () => {
         const core = new Core({
           allowMultipleUploads: false
         });
-        // adding 2 files
         const fileId1 = core.addFile({
           source: 'jest',
           name: '1.jpg',
@@ -926,7 +917,6 @@ describe('src/Core', () => {
             type: 'image/jpeg'
           })
         });
-        // removing 2 files
         core.removeFile(fileId1);
         core.removeFile(fileId2);
         await expect(core.upload()).resolves.toBeDefined();
@@ -1583,12 +1573,10 @@ describe('src/Core', () => {
       expect(core.getFiles()[0].size).toBeNull();
       expect(core.getFiles()[0].progress).toMatchObject({
         bytesUploaded: 0,
-        // null indicates unsized
         bytesTotal: null,
         percentage: 0
       });
       proceedUpload();
-      // wait for progress event
       await promise;
       expect(core.getFiles()[0].size).toBeNull();
       expect(core.getFiles()[0].progress).toMatchObject({
@@ -1598,7 +1586,6 @@ describe('src/Core', () => {
       });
       expect(core.getState().totalProgress).toBe(36);
       finishUpload();
-      // wait for success event
       await finishPromise;
       expect(core.getFiles()[0].size).toBeNull();
       expect(core.getFiles()[0].progress).toMatchObject({
@@ -1638,7 +1625,6 @@ describe('src/Core', () => {
         data: {}
       });
       core._calculateTotalProgress();
-      // foo.jpg at 35%, bar.jpg at 0%
       expect(core.getState().totalProgress).toBe(18);
       core.close();
     });
@@ -1769,7 +1755,6 @@ describe('src/Core', () => {
           maxNumberOfFiles: 1
         }
       });
-      // add 2 files
       core.addFile({
         source: 'jest',
         name: 'foo1.jpg',
@@ -2227,8 +2212,6 @@ describe('src/Core', () => {
       core.log('test test', 'error');
       core.log('test test', 'error');
       core.log('test test', 'warning');
-      // logger.debug should have been called 1 time above,
-      // but we call log in Core’s constructor to output VERSION, hence +1 here
       expect(core.opts.logger.debug.mock.calls.length).toBe(2);
       expect(core.opts.logger.error.mock.calls.length).toBe(2);
       expect(core.opts.logger.warn.mock.calls.length).toBe(1);
@@ -2247,12 +2230,8 @@ describe('src/Core', () => {
       core.log('test test', 'error');
       core.log('test test', 'error');
       core.log('test test', 'warning');
-      // logger.debug should have been called 1 time above,
-      // but we call log in Core’s constructor to output VERSION, hence +1 here
       expect(core.opts.logger.debug.mock.calls.length).toBe(2);
       expect(core.opts.logger.error.mock.calls.length).toBe(2);
-      // logger.warn should have been called 1 time above,
-      // but we warn in Core when using both logger and debug: true, hence +1 here
       expect(core.opts.logger.warn.mock.calls.length).toBe(2);
     });
     it('should log to console when logger: Uppy.debugLogger or debug: true is set', () => {
@@ -2264,8 +2243,6 @@ describe('src/Core', () => {
       core.log('test test');
       core.log('beep boop');
       core.log('beep beep', 'error');
-      // console.debug debug should have been called 2 times above,
-      // ibut we call log n Core’ constructor to output VERSION, hence +1 here
       expect(console.debug.mock.calls.length).toBe(3);
       expect(console.error.mock.calls.length).toBe(1);
       console.debug.mockClear();
@@ -2276,8 +2253,6 @@ describe('src/Core', () => {
       core2.log('test test');
       core2.log('beep boop');
       core2.log('beep beep', 'error');
-      // console.debug debug should have been called 2 times here,
-      // but we call log in Core constructor to output VERSION, hence +1 here
       expect(console.debug.mock.calls.length).toBe(3);
       expect(console.error.mock.calls.length).toBe(1);
     });

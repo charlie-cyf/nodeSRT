@@ -21,28 +21,6 @@ const PROTOCOLS = Object.freeze({
 });
 class Uploader {
   constructor(options) {
-    /**
-    * Uploads file to destination based on the supplied protocol (tus, s3-multipart, multipart)
-    * For tus uploads, the deferredLength option is enabled, because file size value can be unreliable
-    * for some providers (Instagram particularly)
-    *
-    * @typedef {object} UploaderOptions
-    * @property {string} endpoint
-    * @property {string=} uploadUrl
-    * @property {string} protocol
-    * @property {number} size
-    * @property {string=} fieldname
-    * @property {string} pathPrefix
-    * @property {any=} s3
-    * @property {any} metadata
-    * @property {any} companionOptions
-    * @property {any=} storage
-    * @property {any=} headers
-    * @property {string=} httpMethod
-    * @property {boolean=} useFormData
-    *
-    * @param {UploaderOptions} options
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     if (!this.validateOptions(options)) {
@@ -60,13 +38,7 @@ class Uploader {
     this.streamsEnded = false;
     this.uploadStopped = false;
     this.duplexStream = null;
-    // @TODO disabling parallel uploads and downloads for now
-    // if (this.options.protocol === PROTOCOLS.tus) {
-    // this.duplexStream = new stream.PassThrough()
-    // .on('error', (err) => logger.error(`${this.shortToken} ${err}`, 'uploader.duplex.error'))
-    // }
     this.writeStream = fs.createWriteStream(this.path, {
-      // no executable files
       mode: 0o666
     }).on('error', err => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.fs.createWriteStream.on","fileName":"${__filename}","paramsNumber":1},`);
@@ -77,7 +49,6 @@ class Uploader {
             SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.fs.createWriteStream.on"},');
 
     });
-    /** @type {number}*/
     this.emittedProgress = 0;
     this.storage = options.storage;
     this._paused = false;
@@ -119,13 +90,6 @@ class Uploader {
 
   }
   static shortenToken(token) {
-    /**
-    * returns a substring of the token. Used as traceId for logging
-    * we avoid using the entire token because this is meant to be a short term
-    * access token between uppy client and companion websocket
-    * @param {string} token the token to Shorten
-    * @returns {string}
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shortenToken","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"shortenToken"},');
@@ -163,9 +127,6 @@ class Uploader {
 
   }
   get bytesWritten() {
-    /**
-    * the number of bytes written into the streams
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"bytesWritten","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"bytesWritten"},');
@@ -175,15 +136,8 @@ class Uploader {
 
   }
   validateOptions(options) {
-    /**
-    * Validate the options passed down to the uplaoder
-    *
-    * @param {UploaderOptions} options
-    * @returns {boolean}
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
-    // validate HTTP Method
     if (options.httpMethod) {
       if (typeof options.httpMethod !== 'string') {
         this._errRespMessage = 'unsupported HTTP METHOD specified';
@@ -199,29 +153,24 @@ class Uploader {
         return false;
       }
     }
-    // validate fieldname
     if (options.fieldname && typeof options.fieldname !== 'string') {
       this._errRespMessage = 'fieldname must be a string';
             SRTlib.send('{"type":"FUNCTIONEND","function":"validateOptions"},');
 
       return false;
     }
-    // validate metadata
     if (options.metadata && !isObject(options.metadata)) {
       this._errRespMessage = 'metadata must be an object';
             SRTlib.send('{"type":"FUNCTIONEND","function":"validateOptions"},');
 
       return false;
     }
-    // validate headers
     if (options.headers && !isObject(options.headers)) {
       this._errRespMessage = 'headers must be an object';
             SRTlib.send('{"type":"FUNCTIONEND","function":"validateOptions"},');
 
       return false;
     }
-    // validate protocol
-    // @todo this validation should not be conditional once the protocol field is mandatory
     if (options.protocol && !Object.keys(PROTOCOLS).some(key => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.some","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -236,9 +185,6 @@ class Uploader {
 
       return false;
     }
-    // s3 uploads don't require upload destination
-    // validation, because the destination is determined
-    // by the server's s3 config
     if (options.protocol === PROTOCOLS.s3Multipart) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"validateOptions"},');
 
@@ -291,11 +237,6 @@ class Uploader {
 
   }
   get shortToken() {
-    /**
-    * returns a substring of the token. Used as traceId for logging
-    * we avoid using the entire token because this is meant to be a short term
-    * access token between uppy client and companion websocket
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shortToken","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"shortToken"},');
@@ -305,10 +246,6 @@ class Uploader {
 
   }
   onSocketReady(callback) {
-    /**
-    *
-    * @param {function} callback
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onSocketReady","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     emitter().once(`connection:${this.token}`, () => {
@@ -344,11 +281,6 @@ class Uploader {
 
   }
   handleChunk(err, chunk) {
-    /**
-    *
-    * @param {Error} err
-    * @param {string | Buffer | Buffer[]} chunk
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleChunk","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     if (this.uploadStopped) {
@@ -364,9 +296,7 @@ class Uploader {
 
       return;
     }
-    // @todo a default protocol should not be set. We should ensure that the user specifies their protocol.
     const protocol = this.options.protocol || PROTOCOLS.multipart;
-    // The download has completed; close the file and start an upload if necessary.
     if (chunk === null) {
       this.writeStream.on('finish', () => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.on","fileName":"${__filename}","paramsNumber":0},`);
@@ -414,10 +344,6 @@ class Uploader {
 
   }
   writeToStreams(chunk, cb) {
-    /**
-    * @param {Buffer | Buffer[]} chunk
-    * @param {function} cb
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"writeToStreams","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     const done = [];
@@ -474,10 +400,6 @@ class Uploader {
 
   }
   saveState(state) {
-    /**
-    * @typedef {{action: string, payload: object}} State
-    * @param {State} state
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"saveState","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     if (!this.storage) {
@@ -490,13 +412,6 @@ class Uploader {
 
   }
   emitIllusiveProgress(bytesUploaded = 0) {
-    /**
-    * This method emits upload progress but also creates an "upload progress" illusion
-    * for the waiting period while only download is happening. Hence, it combines both
-    * download and upload into an upload progress.
-    * @see emitProgress
-    * @param {number=} bytesUploaded the bytes actually Uploaded so far
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitIllusiveProgress","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     if (this._paused) {
@@ -508,8 +423,6 @@ class Uploader {
     if (!this.streamsEnded) {
       bytesTotal = Math.max(bytesTotal, this.bytesWritten);
     }
-    // for a 10MB file, 10MB of download will account for 5MB upload progress
-    // and 10MB of actual upload will account for the other 5MB upload progress.
     const illusiveBytesUploaded = this.bytesWritten / 2 + bytesUploaded / 2;
     logger.debug(`${bytesUploaded} ${illusiveBytesUploaded} ${bytesTotal}`, 'uploader.illusive.progress', this.shortToken);
     this.emitProgress(illusiveBytesUploaded, bytesTotal);
@@ -517,11 +430,6 @@ class Uploader {
 
   }
   emitProgress(bytesUploaded, bytesTotal) {
-    /**
-    *
-    * @param {number} bytesUploaded
-    * @param {number | null} bytesTotal
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitProgress","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     bytesTotal = bytesTotal || this.options.size;
@@ -540,7 +448,6 @@ class Uploader {
       }
     };
     this.saveState(dataToEmit);
-    // avoid flooding the client with progress events.
     const roundedPercentage = Math.floor(percentage);
     if (this.emittedProgress !== roundedPercentage) {
       this.emittedProgress = roundedPercentage;
@@ -549,13 +456,7 @@ class Uploader {
         SRTlib.send('{"type":"FUNCTIONEND","function":"emitProgress"},');
 
   }
-  emitSuccess(url, extraData = {
-    /**
-    *
-    * @param {string} url
-    * @param {object} extraData
-    */
-  }) {
+  emitSuccess(url, extraData = {}) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitSuccess","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     const emitData = {
@@ -570,17 +471,10 @@ class Uploader {
         SRTlib.send('{"type":"FUNCTIONEND","function":"emitSuccess"},');
 
   }
-  emitError(err, extraData = {
-    /**
-    *
-    * @param {Error} err
-    * @param {object=} extraData
-    */
-  }) {
+  emitError(err, extraData = {}) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitError","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     const serializedErr = serializeError(err);
-    // delete stack to avoid sending server info to client
     delete serializedErr.stack;
     const dataToEmit = {
       action: 'error',
@@ -594,32 +488,21 @@ class Uploader {
 
   }
   uploadTus() {
-    /**
-    * start the tus upload
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadTus","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     const file = fs.createReadStream(this.path);
     const uploader = this;
-    // @ts-ignore
     this.tus = new tus.Upload(file, {
       endpoint: this.options.endpoint,
       uploadUrl: this.options.uploadUrl,
-      // @ts-ignore
       uploadLengthDeferred: false,
       resume: true,
       retryDelays: [0, 1000, 3000, 5000],
       uploadSize: this.bytesWritten,
       metadata: Object.assign({
-        // file name and type as required by the tusd tus server
-        // https://github.com/tus/tusd/blob/5b376141903c1fd64480c06dde3dfe61d191e53d/unrouted_handler.go#L614-L646
         filename: this.uploadFileName,
         filetype: this.options.metadata.type
       }, this.options.metadata),
-      /**
-      *
-      * @param {Error} error
-      */
       onError(error) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onError","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -628,11 +511,6 @@ class Uploader {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"tus.NewExpression.onError"},');
 
       },
-      /**
-      *
-      * @param {number} bytesUploaded
-      * @param {number} bytesTotal
-      */
       onProgress(bytesUploaded, bytesTotal) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onProgress","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -659,7 +537,6 @@ class Uploader {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadMultipart","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     const file = fs.createReadStream(this.path);
-    // upload progress
     let bytesUploaded = 0;
     file.on('data', data => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"file.on","fileName":"${__filename}","paramsNumber":1},`);
@@ -700,7 +577,6 @@ class Uploader {
         return;
       }
       const headers = response.headers;
-      // remove browser forbidden headers
       delete headers['set-cookie'];
       delete headers['set-cookie2'];
       const respObj = {
@@ -729,9 +605,6 @@ class Uploader {
 
   }
   uploadS3Multipart() {
-    /**
-    * Upload the file to S3 using a Multipart upload.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadS3Multipart","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     const file = fs.createReadStream(this.path);
@@ -742,9 +615,6 @@ class Uploader {
 
   }
   _uploadS3MultipartStream(stream) {
-    /**
-    * Upload a stream to S3.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_uploadS3MultipartStream","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     if (!this.options.s3) {

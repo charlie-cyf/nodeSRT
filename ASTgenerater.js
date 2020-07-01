@@ -5,7 +5,8 @@ const Astravel = require('astravel')
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
     require("acorn-bigint"),
-    require('acorn-static-class-features')
+    require('acorn-static-class-features'),
+    require('acorn-stage3')
 
 )
 const Path = require('path');
@@ -25,9 +26,12 @@ function generaterHelper(path, ASTpath, excepts) {
                     
                     let tree = ASTParser.parse(content, {
                         locations: true,
-                        onComment: comments
+                        onComment: comments,
+                        sourceType: "module",
+                        allowHashBang: true
                     })
-                    Astravel.attachComments(tree, comments);
+                    
+                    // Astravel.attachComments(tree, comments);
                     fs.writeFileSync(ASTpath + "/" + file + '.json', JSON.stringify(tree))
                 }
 

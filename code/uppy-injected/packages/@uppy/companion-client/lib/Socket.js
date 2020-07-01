@@ -67,7 +67,7 @@ module.exports = /*#__PURE__*/function () {
   };
 
   _proto.send = function send(action, payload) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"send\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"UppySocket\"}},"); // attach uuid
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"send\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"UppySocket\"}},");
 
     if (!this.isOpen) {
       this._queued.push({

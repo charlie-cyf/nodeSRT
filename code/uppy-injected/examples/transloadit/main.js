@@ -3,22 +3,7 @@ const SRTlib = require('SRT-util');
 const {inspect} = require('util');
 const robodog = require('@uppy/robodog');
 const TRANSLOADIT_KEY = '35c1aed03f5011e982b6afe82599b6a0';
-// A trivial template that resizes images, just for example purposes.
-// 
-// "steps": {
-// ":original": { "robot": "/upload/handle" },
-// "resize": {
-// "use": ":original",
-// "robot": "/image/resize",
-// "width": 100,
-// "height": 100,
-// "imagemagick_stack": "v1.0.0"
-// }
-// }
 const TEMPLATE_ID = 'bbc273f69e0c4694a5a9d1b587abc1bc';
-/**
-* robodog.form
-*/
 const formUppy = robodog.form('#test-form', {
   debug: true,
   fields: ['message'],
@@ -79,9 +64,6 @@ const dashboard = robodog.dashboard('#dashboard', {
   }
 });
 window.dashboard = dashboard;
-/**
-* robodog.modal
-*/
 function openModal() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"openModal","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -97,18 +79,11 @@ function openModal() {
       template_id: TEMPLATE_ID
     },
     providers: ['webcam']
-    // if providers need custom config
-    // webcam: {
-    // option: 'whatever'
-    // }
   }).then(console.log, console.error);
     SRTlib.send('{"type":"FUNCTIONEND","function":"openModal","paramsNumber":0},');
 
 }
 window.openModal = openModal;
-/**
-* robodog.upload
-*/
 window.doUpload = event => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.doUpload","fileName":"${__filename}","paramsNumber":1},`);
 

@@ -2,9 +2,6 @@ const SRTlib = require('SRT-util');
 
 const preact = require('preact');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');
-/**
-* Defer a frequent call to the microtask queue.
-*/
 function debounce(fn) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"debounce","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -23,10 +20,6 @@ function debounce(fn) {
         calling = null;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"calling.Promise.resolve.then"},');
 
-        // At this point `args` may be different from the most
-        // recent state, if multiple calls happened since this task
-        // was queued. So we use the `latestArgs`, which definitely
-        // is the most recent call.
         return fn(...latestArgs);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"calling.Promise.resolve.then"},');
 
@@ -41,15 +34,6 @@ function debounce(fn) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"debounce","paramsNumber":1},');
 
 }
-/**
-* Boilerplate that all Plugins share - and should not be used
-* directly. It also shows which methods final plugins should implement/override,
-* this deciding on structure.
-*
-* @param {object} main Uppy core object
-* @param {object} object with plugin options
-* @returns {Array|string} files or success/fail message
-*/
 module.exports = class Plugin {
   constructor(uppy, opts) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Plugin"}},`);
@@ -96,7 +80,6 @@ module.exports = class Plugin {
       ...this.opts,
       ...newOpts
     };
-    // so that UI re-renders with new options
     this.setPluginState();
         SRTlib.send('{"type":"FUNCTIONEND","function":"setOptions"},');
 
@@ -116,46 +99,27 @@ module.exports = class Plugin {
 
   }
   afterUpdate() {
-    // Called after every state update, after everything's mounted. Debounced.
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"afterUpdate","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"afterUpdate"},');
 
   }
   onMount() {
-    /**
-    * Called when plugin is mounted, whether in DOM or into another plugin.
-    * Needed because sometimes plugins are mounted separately/after `install`,
-    * so this.el and this.parent might not be available in `install`.
-    * This is the case with @uppy/react plugins, for example.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"onMount"},');
 
   }
   mount(target, plugin) {
-    /**
-    * Check if supplied `target` is a DOM element or an `object`.
-    * If it’s an object — target is a plugin, and we search `plugins`
-    * for a plugin with same name and return its target.
-    *
-    * @param {string|object} target
-    *
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"mount","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Plugin"}},`);
 
     const callerPluginName = plugin.id;
     const targetElement = findDOMElement(target);
     if (targetElement) {
       this.isTargetDOMEl = true;
-      // API for plugins that require a synchronous rerender.
       this.rerender = state => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.rerender","fileName":"${__filename}","paramsNumber":1},`);
 
-        // plugin could be removed, but this.rerender is debounced below,
-        // so it could still be called even after uppy.removePlugin or uppy.close
-        // hence the check
         if (!this.uppy.getPlugin(this.id)) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.rerender"},');
 
@@ -168,7 +132,6 @@ module.exports = class Plugin {
       };
       this._updateUI = debounce(this.rerender);
       this.uppy.log(`Installing ${callerPluginName} to a DOM element '${target}'`);
-      // clear everything inside the target container
       if (this.opts.replaceTargetContent) {
         targetElement.innerHTML = '';
       }
@@ -180,12 +143,9 @@ module.exports = class Plugin {
     }
     let targetPlugin;
     if (typeof target === 'object' && target instanceof Plugin) {
-      // Targeting a plugin *instance*
       targetPlugin = target;
     } else if (typeof target === 'function') {
-      // Targeting a plugin type
       const Target = target;
-      // Find the target plugin instance.
       this.uppy.iteratePlugins(plugin => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
 

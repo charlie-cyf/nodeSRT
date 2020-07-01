@@ -13,10 +13,6 @@ var StatusBarPlugin = require('@uppy/status-bar');
 var uppyPropType = require('./propTypes').uppy;
 
 var h = React.createElement;
-/**
-* React component that renders a status bar containing upload progress and speed,
-* processing progress and pause/resume/cancel controls.
-*/
 
 var StatusBar = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(StatusBar, _React$Component);

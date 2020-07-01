@@ -1,12 +1,6 @@
 const SRTlib = require('SRT-util');
 
 const isDOMElement = require('./isDOMElement');
-/**
-* Find one or more DOM elements.
-*
-* @param {string} element
-* @returns {Array|null}
-*/
 module.exports = function findAllDOMElements(element) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 

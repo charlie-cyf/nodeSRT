@@ -1,9 +1,6 @@
 const SRTlib = require('SRT-util');
 
 'use strict';
-/**
-* This module serves as an Async wrapper for LocalStorage
-*/
 module.exports.setItem = (key, value) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.setItem","fileName":"${__filename}","paramsNumber":2},`);
 

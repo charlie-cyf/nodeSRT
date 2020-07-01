@@ -1,13 +1,3 @@
-/**
-* Copies text to clipboard by creating an almost invisible textarea,
-* adding text there, then running execCommand('copy').
-* Falls back to prompt() when the easy way fails (hello, Safari!)
-* From http://stackoverflow.com/a/30810322
-*
-* @param {string} textToCopy
-* @param {string} fallbackString
-* @returns {Promise}
-*/
 var SRTlib = require('SRT-util');
 
 module.exports = function copyToClipboard(textToCopy, fallbackString) {

@@ -10,10 +10,6 @@ var _require = require('@uppy/core'),
 var toArray = require('@uppy/utils/lib/toArray');
 
 var findDOMElement = require('@uppy/utils/lib/findDOMElement');
-/**
-* Add files from existing file inputs to Uppy.
-*/
-
 
 var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
   _inheritsLoose(AttachFileInputs, _Plugin);
@@ -92,9 +88,7 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
 
       if (!input.hasAttribute('accept') && restrictions.allowedFileTypes) {
         input.setAttribute('accept', restrictions.allowedFileTypes.join(','));
-      } // Check if this input already contains files (eg. user selected them before Uppy loaded,
-      // or the page was refreshed and the browser kept files selected)
-
+      }
 
       _this3.addFiles(input);
 

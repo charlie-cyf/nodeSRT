@@ -1,0 +1,13 @@
+set true in 1 ObjectExpression
+res length 1
+ele length Program
+ele length ExpressionStatement
+ele length AssignmentExpression
+ele length ClassExpression
+ele length ClassBody
+ele length FieldDefinition
+ele length ArrowFunctionExpression
+ele length BlockStatement
+ele length ReturnStatement
+ele length CallExpression
+ele length ObjectExpression

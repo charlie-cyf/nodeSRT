@@ -1,6 +1,5 @@
 const SRTlib = require('SRT-util');
 
-// oauth configuration for provider services that are used.
 module.exports = () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
 

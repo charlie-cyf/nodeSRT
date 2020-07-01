@@ -4,12 +4,6 @@ const request = require('request');
 const {URL} = require('url');
 const crypto = require('crypto');
 const {getProtectedHttpAgent, getRedirectEvaluator} = require('./request');
-/**
-*
-* @param {string} value
-* @param {string[]} criteria
-* @returns {boolean}
-*/
 exports.hasMatch = (value, criteria) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasMatch","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -27,11 +21,6 @@ exports.hasMatch = (value, criteria) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.hasMatch"},');
 
 };
-/**
-*
-* @param {object} data
-* @returns {string}
-*/
 exports.jsonStringify = data => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.jsonStringify","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -45,7 +34,6 @@ exports.jsonStringify = data => {
       if (cache.indexOf(value) !== -1) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.JSON.stringify"},');
 
-        // Circular reference found, discard key
         return;
       }
       cache.push(value);
@@ -59,11 +47,6 @@ exports.jsonStringify = data => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.jsonStringify"},');
 
 };
-/**
-* Does a simple html sanitization on the passed value
-*
-* @param {string} text
-*/
 exports.sanitizeHtml = text => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.sanitizeHtml","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -73,13 +56,6 @@ exports.sanitizeHtml = text => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sanitizeHtml"},');
 
 };
-/**
-* Gets the size and content type of a url's content
-*
-* @param {string} url
-* @param {boolean=} blockLocalIPs
-* @return {Promise}
-*/
 exports.getURLMeta = (url, blockLocalIPs = false) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getURLMeta","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -98,8 +74,6 @@ exports.getURLMeta = (url, blockLocalIPs = false) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request","fileName":"${__filename}","paramsNumber":2},`);
 
       if (err || response.statusCode >= 300) {
-        // @todo possibly set a status code in the error object to get a more helpful
-        // hint at what the cause of error is.
         err = err || new Error(`URL server responded with status: ${response.statusCode}`);
         reject(err);
       } else {
@@ -117,27 +91,13 @@ exports.getURLMeta = (url, blockLocalIPs = false) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getURLMeta"},');
 
 };
-// all paths are assumed to be '/' prepended
-/**
-* Returns a url builder
-*
-* @param {object} options companion options
-*/
 module.exports.getURLBuilder = options => {
-  /**
-  * Builds companion targeted url
-  *
-  * @param {string} path the tail path of the url
-  * @param {boolean} isExternal if the url is for the external world
-  * @param {boolean=} excludeHost if the server domain and protocol should be included
-  */
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getURLBuilder","fileName":"${__filename}","paramsNumber":1},`);
 
   const buildURL = (path, isExternal, excludeHost) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildURL","fileName":"${__filename}","paramsNumber":3},`);
 
     let url = path;
-    // supports for no path specified too
     if (isExternal) {
       url = `${options.server.implicitPath || ''}${url}`;
     }
@@ -157,12 +117,6 @@ module.exports.getURLBuilder = options => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getURLBuilder"},');
 
 };
-/**
-* Ensure that a user-provided `secret` is 32 bytes long (the length required
-* for an AES256 key) by hashing it with SHA256.
-*
-* @param {string|Buffer} secret
-*/
 function createSecret(secret) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createSecret","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -174,11 +128,6 @@ function createSecret(secret) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"createSecret","paramsNumber":1},');
 
 }
-/**
-* Create an initialization vector for AES256.
-*
-* @return {Buffer}
-*/
 function createIv() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createIv","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -207,13 +156,6 @@ function urlDecode(encoded) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"urlDecode","paramsNumber":1},');
 
 }
-/**
-* Encrypt a buffer or string with AES256 and a random iv.
-*
-* @param {string} input
-* @param {string|Buffer} secret
-* @return {string} Ciphertext as a hex string, prefixed with 32 hex characters containing the iv.
-*/
 module.exports.encrypt = (input, secret) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.encrypt","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -223,22 +165,13 @@ module.exports.encrypt = (input, secret) => {
   encrypted += cipher.final('base64');
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.encrypt"},');
 
-  // add iv to encrypted string to use for decryption
   return iv.toString('hex') + urlEncode(encrypted);
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.encrypt"},');
 
 };
-/**
-* Decrypt an iv-prefixed or string with AES256. The iv should be in the first 32 hex characters.
-*
-* @param {string} encrypted
-* @param {string|Buffer} secret
-* @return {string} Decrypted value.
-*/
 module.exports.decrypt = (encrypted, secret) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.decrypt","fileName":"${__filename}","paramsNumber":2},`);
 
-  // Need at least 32 chars for the iv
   if (encrypted.length < 32) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.decrypt"},');
 

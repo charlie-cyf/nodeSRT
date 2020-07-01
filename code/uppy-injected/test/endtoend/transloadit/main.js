@@ -37,7 +37,6 @@ function initUppyTransloadit(transloaditKey) {
   uppyTransloadit.on('transloadit:result', (stepName, result) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyTransloadit.on","fileName":"${__filename}","paramsNumber":2},`);
 
-    // use transloadit encoding result here.
     console.log('Result here ====>', stepName, result);
     console.log('Cropped image url is here ====>', result.url);
     var img = new Image();

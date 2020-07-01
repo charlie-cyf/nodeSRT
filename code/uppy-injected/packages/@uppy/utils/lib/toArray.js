@@ -1,6 +1,3 @@
-/**
-* Converts list into array
-*/
 var SRTlib = require('SRT-util');
 
 module.exports = function toArray(list) {

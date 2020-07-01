@@ -1,8 +1,4 @@
-var SRTlib = require('SRT-util'); // TODO Check which types are actually supported in browsers. Chrome likes webm
-// from my testing, but we may need more.
-// We could use a library but they tend to contain dozens of KBs of mappings,
-// most of which will go unused, so not sure if that's worth it.
-
+var SRTlib = require('SRT-util');
 
 var mimeToExtensions = {
   'audio/mp3': 'mp3',
@@ -23,8 +19,7 @@ var mimeToExtensions = {
 };
 
 module.exports = function getFileTypeExtension(mimeType) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // Remove the ; bit in 'video/x-matroska;codecs=avc1'
-
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   mimeType = mimeType.replace(/;.*$/, '');
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return mimeToExtensions[mimeType] || null;

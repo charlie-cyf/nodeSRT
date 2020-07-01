@@ -1,4 +1,3 @@
-/*global browser, expect*/
 const SRTlib = require('SRT-util');
 
 const path = require('path');

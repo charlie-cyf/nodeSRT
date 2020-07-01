@@ -6,14 +6,7 @@ const stripIndent = require('common-tags/lib/stripIndent');
 const utils = require('../server/helpers/utils');
 const logger = require('../server/logger');
 const crypto = require('crypto');
-// @ts-ignore
 const {version} = require('../../package.json');
-/**
-* Reads all companion configuration set via environment variables
-* and via the config file path
-*
-* @returns {object}
-*/
 exports.getCompanionOptions = () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getCompanionOptions","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -23,11 +16,6 @@ exports.getCompanionOptions = () => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getCompanionOptions"},');
 
 };
-/**
-* Loads the config from environment variables
-*
-* @returns {object}
-*/
 const getConfigFromEnv = () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigFromEnv","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -79,29 +67,17 @@ const getConfigFromEnv = () => {
     },
     filePath: process.env.COMPANION_DATADIR,
     redisUrl: process.env.COMPANION_REDIS_URL,
-    // adding redisOptions to keep all companion options easily visible
-    // redisOptions refers to https://www.npmjs.com/package/redis#options-object-properties
     redisOptions: {},
     sendSelfEndpoint: process.env.COMPANION_SELF_ENDPOINT,
     uploadUrls: uploadUrls ? uploadUrls.split(',') : null,
     secret: getSecret('COMPANION_SECRET') || generateSecret(),
     debug: process.env.NODE_ENV && process.env.NODE_ENV !== 'production',
-    // TODO: this is a temporary hack to support distributed systems.
-    // it is not documented, because it should be changed soon.
     cookieDomain: process.env.COMPANION_COOKIE_DOMAIN,
     multipleInstances: true
   };
     SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigFromEnv"},');
 
 };
-/**
-* Tries to read the secret from a file if the according environment variable is set.
-* Otherwise it falls back to the standard secret environment variable.
-*
-* @param {string} baseEnvVar
-*
-* @returns {string}
-*/
 const getSecret = baseEnvVar => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSecret","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -112,11 +88,6 @@ const getSecret = baseEnvVar => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"getSecret"},');
 
 };
-/**
-* Auto-generates server secret
-*
-* @returns {string}
-*/
 const generateSecret = () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"generateSecret","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -127,11 +98,6 @@ const generateSecret = () => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"generateSecret"},');
 
 };
-/**
-* Loads the config from a file and returns it as an object
-*
-* @returns {object}
-*/
 const getConfigFromFile = () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigFromFile","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -144,16 +110,10 @@ const getConfigFromFile = () => {
   const rawdata = fs.readFileSync(getConfigPath());
     SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigFromFile"},');
 
-  // @ts-ignore
   return JSON.parse(rawdata);
     SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigFromFile"},');
 
 };
-/**
-* Returns the config path specified via cli arguments
-*
-* @returns {string}
-*/
 const getConfigPath = () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigPath","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -172,10 +132,6 @@ const getConfigPath = () => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigPath"},');
 
 };
-/**
-*
-* @param {string} url
-*/
 exports.hasProtocol = url => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasProtocol","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -193,7 +149,6 @@ exports.buildHelpfulStartupMessage = companionOptions => {
   Object.keys(companionOptions.providerOptions).forEach(providerName => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-    // s3 does not need redirect_uris
     if (providerName === 's3') {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 

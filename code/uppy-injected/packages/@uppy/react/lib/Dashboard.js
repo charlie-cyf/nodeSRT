@@ -11,10 +11,6 @@ var DashboardPlugin = require('@uppy/dashboard');
 var basePropTypes = require('./propTypes').dashboard;
 
 var h = React.createElement;
-/**
-* React Component that renders a Dashboard for an Uppy instance. This component
-* renders the Dashboard inline, so you can put it anywhere you want.
-*/
 
 var Dashboard = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(Dashboard, _React$Component);

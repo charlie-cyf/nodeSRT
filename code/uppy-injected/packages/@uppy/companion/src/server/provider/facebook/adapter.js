@@ -109,7 +109,6 @@ exports.sortImages = images => {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sortImages"},');
 
-  // sort in ascending order of dimension
   return images.slice().sort((a, b) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.images.slice.sort","fileName":"${__filename}","paramsNumber":2},`);
 

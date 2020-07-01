@@ -1,13 +1,6 @@
 var SRTlib = require('SRT-util');
 
 var isDOMElement = require('./isDOMElement');
-/**
-* Find a DOM element.
-*
-* @param {Node|string} element
-* @returns {Node|null}
-*/
-
 
 module.exports = function findDOMElement(element, context) {
   if (context === void 0) {

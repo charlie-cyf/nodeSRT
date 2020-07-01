@@ -68,7 +68,6 @@ exports.getItemName = (item, index) => {
   const ext = isVideo(item) ? 'mp4' : 'jpeg';
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
 
-  // adding index, so the name is unique
   return `Instagram ${item.timestamp}${index}.${ext}`;
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
 

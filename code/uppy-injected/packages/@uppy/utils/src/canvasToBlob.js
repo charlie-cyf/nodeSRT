@@ -1,12 +1,6 @@
 const SRTlib = require('SRT-util');
 
 const dataURItoBlob = require('./dataURItoBlob');
-/**
-* Save a <canvas> element's content to a Blob object.
-*
-* @param {HTMLCanvasElement} canvas
-* @returns {Promise}
-*/
 module.exports = function canvasToBlob(canvas, type, quality) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":3},`);
 

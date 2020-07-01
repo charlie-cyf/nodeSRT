@@ -16,10 +16,8 @@ uppy.use(AwsS3, {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters"},');
 
-    // Send a request to our PHP signing endpoint.
     return fetch('/s3-sign.php', {
       method: 'post',
-      // Send and receive JSON.
       headers: {
         accept: 'application/json',
         'content-type': 'application/json'
@@ -33,7 +31,6 @@ uppy.use(AwsS3, {
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then.fetch.then"},');
 
-      // Parse the JSON response.
       return response.json();
             SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then.fetch.then"},');
 
@@ -42,7 +39,6 @@ uppy.use(AwsS3, {
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then"},');
 
-      // Return an object in the correct shape.
       return {
         method: data.method,
         url: data.url,

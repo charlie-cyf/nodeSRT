@@ -1,4 +1,3 @@
-/*eslint-disable*/
 var SRTlib = require('SRT-util');
 
 var isSupported = typeof navigator !== 'undefined' && 'serviceWorker' in navigator;
@@ -12,7 +11,6 @@ function waitForServiceWorker() {
     if (!isSupported) {
       reject(new Error('Unsupported'));
     } else if (navigator.serviceWorker.controller) {
-      // A serviceWorker is already registered and active.
       resolve();
     } else {
       navigator.serviceWorker.addEventListener('controllerchange', function () {

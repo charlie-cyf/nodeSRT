@@ -1,7 +1,6 @@
 const SRTlib = require('SRT-util');
 
 const toArray = require('../../toArray');
-// .files fallback, should be implemented in any browser
 module.exports = function fallbackApi(dataTransfer) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 

@@ -23,7 +23,6 @@ function getSources(pluginName) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSources","fileName":"${__filename}","paramsNumber":1},`);
 
   const dependencies = {
-    // because 'provider-views' doesn't have its own locale, it uses Core's defaultLocale
     core: ['provider-views']
   };
   const globPath = path.join(__dirname, '..', 'packages', '@uppy', pluginName, 'lib', '**', '*.js');
@@ -54,9 +53,6 @@ function getSources(pluginName) {
 function buildPluginsList() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildPluginsList","fileName":"${__filename}","paramsNumber":0},`);
 
-  // Go over all uppy plugins, check if they are constructors
-  // and instanciate them, check for defaultLocale property,
-  // then add to plugins object
   const packagesGlobPath = path.join(__dirname, '..', 'packages', '@uppy', '*', 'package.json');
   const files = glob.sync(packagesGlobPath);
   console.log('--> Checked plugins could be instantiated and have defaultLocale in them:\n');
@@ -68,10 +64,6 @@ function buildPluginsList() {
     }
     const Plugin = require(dirName);
     let plugin;
-    // A few hacks to emulate browser environment because e.g.:
-    // GoldenRetrieves calls upon MetaDataStore in the constructor, which uses localStorage
-    // @TODO Consider rewriting constructors so they don't make imperative calls that rely on
-    // browser environment (OR: just keep this browser mocking, if it's only causing issues for this script, it doesn't matter)
     global.location = {
       protocol: 'https'
     };
@@ -279,25 +271,19 @@ function test() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob.sync.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     const localeName = path.basename(localePath, '.js');
-    // we renamed the es_GL → gl_ES locale, and kept the old name
-    // for backwards-compat, see https://github.com/transloadit/uppy/pull/1929
     if (localeName === 'es_GL') {
             SRTlib.send('{"type":"FUNCTIONEND","function":"glob.sync.forEach"},');
 
       return;
     }
-    // Builds array with items like: 'uploadingXFiles'
-    // We do not check nested items because different languages may have different amounts of plural forms.
     followerValues[localeName] = require(localePath).strings;
     followerLocales[localeName] = Object.keys(followerValues[localeName]);
         SRTlib.send('{"type":"FUNCTIONEND","function":"glob.sync.forEach"},');
 
   });
-  // Take aside our leading locale: en_US
   const leadingLocale = followerLocales[leadingLocaleName];
   const leadingValues = followerValues[leadingLocaleName];
   delete followerLocales[leadingLocaleName];
-  // Compare all follower Locales (RU, DE, etc) with our leader en_US
   const warnings = [];
   const fatals = [];
   for (const followerName in followerLocales) {
@@ -323,11 +309,8 @@ function test() {
     missing.forEach(key => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"missing.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-      // Items missing are a non-fatal warning because we don't want CI to bum out over all languages
-      // as soon as we add some English
       let value = leadingValues[key];
       if (typeof value === 'object') {
-        // For values with plural forms, just take the first one right now
         value = value[Object.keys(value)[0]];
       }
       warnings.push(`${chalk.cyan(followerName)} locale has missing string: '${chalk.red(key)}' that is present in ${chalk.cyan(leadingLocaleName)} with value: ${chalk.yellow(leadingValues[key])}`);
@@ -337,7 +320,6 @@ function test() {
     excess.forEach(key => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"excess.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-      // Items in excess are a fatal because we should clean up follower languages once we remove English strings
       fatals.push(`${chalk.cyan(followerName)} locale has excess string: '${chalk.yellow(key)}' that is not present in ${chalk.cyan(leadingLocaleName)}. `);
             SRTlib.send('{"type":"FUNCTIONEND","function":"excess.forEach"},');
 

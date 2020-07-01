@@ -9,9 +9,6 @@ const utils = require('../../helpers/utils');
 const logger = require('../../logger');
 const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../error');
-/**
-* Adapter for API https://developers.facebook.com/docs/graph-api/using-graph-api/
-*/
 class Facebook extends Provider {
   constructor(options) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
@@ -165,7 +162,6 @@ class Facebook extends Provider {
   thumbnail(_, done) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
-    // not implementing this because a public thumbnail from facebook will be used instead
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.facebook.thumbnail.error');
         SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail"},');
@@ -275,7 +271,6 @@ class Facebook extends Provider {
       if (resp.body && resp.body.error.code === 190) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"_error"},');
 
-        // Invalid OAuth 2.0 Access Token
         return new ProviderAuthError();
       }
       const fallbackMessage = `request to ${this.authProvider} returned ${resp.statusCode}`;

@@ -46,7 +46,6 @@ describe('Socket', () => {
     }) instanceof UppySocket);
   });
   it('should setup a new WebSocket', () => {
-    // eslint-disable-line no-new
     new UppySocket({
       target: 'foo'
     });

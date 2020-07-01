@@ -93,8 +93,6 @@ describe('ReduxStore', () => {
       uppy: ReduxStore.reducer
     });
     const r = Redux.createStore((state, action) => {
-      // Add a `SET` action that can change Uppy state without going through the Uppy reducer or action creator.
-      // Emulates Redux Devtools.
       if (action.type === 'SET') return action.payload;
       return reducer(state, action);
     });
@@ -123,7 +121,6 @@ describe('ReduxStore', () => {
     }, {
       b: 2
     }];
-    // redux-devtools's `JUMP_TO_STATE` is similar to this.
     r.dispatch({
       type: 'SET',
       payload: {

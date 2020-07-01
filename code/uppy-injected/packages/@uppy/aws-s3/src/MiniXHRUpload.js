@@ -8,15 +8,11 @@ const EventTracker = require('@uppy/utils/lib/EventTracker');
 const ProgressTimeout = require('@uppy/utils/lib/ProgressTimeout');
 const NetworkError = require('@uppy/utils/lib/NetworkError');
 const isNetworkError = require('@uppy/utils/lib/isNetworkError');
-// See XHRUpload
 function buildResponseError(xhr, error) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildResponseError","fileName":"${__filename}","paramsNumber":2},`);
 
-  // No error message
   if (!error) error = new Error('Upload error');
-  // Got an error message string
   if (typeof error === 'string') error = new Error(error);
-  // Got something else
   if (!(error instanceof Error)) {
     error = Object.assign(new Error('Upload error'), {
       data: error
@@ -35,7 +31,6 @@ function buildResponseError(xhr, error) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"buildResponseError","paramsNumber":2},');
 
 }
-// See XHRUpload
 function setTypeInBlob(file) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setTypeInBlob","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -115,7 +110,6 @@ module.exports = class MiniXHRUpload {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_addMetadata","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"MiniXHRUpload"}},`);
 
     const metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(meta);
-    // Send along all fields by default.
     metaFields.forEach(item => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.metaFields.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -226,8 +220,6 @@ module.exports = class MiniXHRUpload {
     return new Promise((resolve, reject) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
-      // This is done in index.js in the S3 plugin.
-      // this.uppy.emit('upload-started', file)
       const data = opts.formData ? this._createFormDataUpload(file, opts) : this._createBareUpload(file, opts);
       const xhr = new XMLHttpRequest();
       this.uploaderEvents[file.id] = new EventTracker(this.uppy);
@@ -256,8 +248,6 @@ module.exports = class MiniXHRUpload {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener2","fileName":"${__filename}","paramsNumber":1},`);
 
         this.uppy.log(`[AwsS3/XHRUpload] ${id} progress: ${ev.loaded} / ${ev.total}`);
-        // Begin checking for timeouts when progress starts, instead of loading,
-        // to avoid timing out requests on browser concurrency queue
         timer.progress();
         if (ev.lengthComputable) {
           this.uppy.emit('upload-progress', file, {
@@ -328,8 +318,6 @@ module.exports = class MiniXHRUpload {
 
       });
       xhr.open(opts.method.toUpperCase(), opts.endpoint, true);
-      // IE10 does not allow setting `withCredentials` and `responseType`
-      // before `open()` is called.
       xhr.withCredentials = opts.withCredentials;
       if (opts.responseType !== '') {
         xhr.responseType = opts.responseType;
@@ -391,11 +379,8 @@ module.exports = class MiniXHRUpload {
     return new Promise((resolve, reject) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
 
-      // This is done in index.js in the S3 plugin.
-      // this.uppy.emit('upload-started', file)
       const fields = {};
       const metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(file.meta);
-      // Send along all fields by default.
       metaFields.forEach(name => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"metaFields.forEach","fileName":"${__filename}","paramsNumber":1},`);
 

@@ -14,14 +14,12 @@ const localProviders = {
   webcam: require('@uppy/webcam')
 };
 const remoteProviderOptionNames = ['companionUrl', 'companionAllowedHosts', 'companionHeaders', 'serverHeaders', 'target'];
-// No shared options.
 const localProviderOptionNames = ['target'];
 function addRemoteProvider(uppy, name, opts) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addRemoteProvider","fileName":"${__filename}","paramsNumber":3},`);
 
   const Provider = remoteProviders[name];
   const providerOptions = {
-    // Default to the :tl: Companion servers.
     companionUrl: Transloadit.COMPANION,
     companionAllowedHosts: Transloadit.COMPANION_PATTERN
   };
@@ -32,7 +30,6 @@ function addRemoteProvider(uppy, name, opts) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"remoteProviderOptionNames.forEach"},');
 
   });
-  // Apply overrides for a specific provider plugin.
   if (typeof opts[name] === 'object') {
     Object.assign(providerOptions, opts[name]);
   }
@@ -52,7 +49,6 @@ function addLocalProvider(uppy, name, opts) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"localProviderOptionNames.forEach"},');
 
   });
-  // Apply overrides for a specific provider plugin.
   if (typeof opts[name] === 'object') {
     Object.assign(providerOptions, opts[name]);
   }

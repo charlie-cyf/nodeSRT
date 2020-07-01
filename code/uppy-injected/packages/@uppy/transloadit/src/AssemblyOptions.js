@@ -1,6 +1,3 @@
-/**
-* Check that Assembly parameters are present and include all required fields.
-*/
 const SRTlib = require('SRT-util');
 
 function validateParams(params) {
@@ -15,7 +12,6 @@ function validateParams(params) {
     try {
       params = JSON.parse(params);
     } catch (err) {
-      // Tell the user that this is not an Uppy bug!
       err.message = 'Transloadit: The `params` option is a malformed JSON string: ' + err.message;
             SRTlib.send('{"type":"FUNCTIONEND","function":"validateParams"},');
 
@@ -30,10 +26,6 @@ function validateParams(params) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"validateParams","paramsNumber":1},');
 
 }
-/**
-* Turn Transloadit plugin options and a list of files into a list of Assembly
-* options.
-*/
 class AssemblyOptions {
   constructor(files, opts) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AssemblyOptions"}},`);
@@ -44,10 +36,6 @@ class AssemblyOptions {
 
   }
   _normalizeAssemblyOptions(file, assemblyOptions) {
-    /**
-    * Normalize Uppy-specific Assembly option features to a Transloadit-
-    * compatible object.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_normalizeAssemblyOptions","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AssemblyOptions"}},`);
 
     if (Array.isArray(assemblyOptions.fields)) {
@@ -71,9 +59,6 @@ class AssemblyOptions {
 
   }
   _getAssemblyOptions(file) {
-    /**
-    * Get Assembly options for a file.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getAssemblyOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AssemblyOptions"}},`);
 
     const options = this.opts;
@@ -112,10 +97,6 @@ class AssemblyOptions {
 
   }
   _dedupe(list) {
-    /**
-    * Combine Assemblies with the same options into a single Assembly for all the
-    * relevant files.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_dedupe","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AssemblyOptions"}},`);
 
     const dedupeMap = Object.create(null);
@@ -149,12 +130,6 @@ class AssemblyOptions {
 
   }
   build() {
-    /**
-    * Generate a set of Assemblies that will handle the upload.
-    * Returns a Promise for an object with keys:
-    *  - fileIDs - an array of file IDs to add to this Assembly
-    *  - options - Assembly options
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"build","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AssemblyOptions"}},`);
 
     const options = this.opts;
@@ -182,7 +157,6 @@ class AssemblyOptions {
     if (options.alwaysRunAssembly) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"build"},');
 
-      // No files, just generate one Assembly
       return Promise.resolve(options.getAssemblyOptions(null, options)).then(assemblyOptions => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -207,8 +181,6 @@ class AssemblyOptions {
     }
         SRTlib.send('{"type":"FUNCTIONEND","function":"build"},');
 
-    // If there are no files and we do not `alwaysRunAssembly`,
-    // don't do anything.
     return Promise.resolve([]);
         SRTlib.send('{"type":"FUNCTIONEND","function":"build"},');
 

@@ -1,6 +1,3 @@
-/**
-* Get uppy instance IDs for which state is stored.
-*/
 const SRTlib = require('SRT-util');
 
 function findUppyInstances() {
@@ -19,9 +16,6 @@ function findUppyInstances() {
     SRTlib.send('{"type":"FUNCTIONEND","function":"findUppyInstances","paramsNumber":0},');
 
 }
-/**
-* Try to JSON-parse a string, return null on failure.
-*/
 function maybeParse(str) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"maybeParse","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -43,7 +37,6 @@ module.exports = class MetaDataStore {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MetaDataStore"}},`);
 
     this.opts = Object.assign({
-      // 24 hours
       expires: 24 * 60 * 60 * 1000
     }, opts);
     this.name = `uppyState:${opts.storeName}`;
@@ -55,9 +48,6 @@ module.exports = class MetaDataStore {
 
   }
   load() {
-    /**
-    *
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"load","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MetaDataStore"}},`);
 
     const savedState = localStorage.getItem(this.name);
@@ -72,8 +62,6 @@ module.exports = class MetaDataStore {
 
       return null;
     }
-    // Upgrade pre-0.20.0 uppyState: it used to be just a flat object,
-    // without `expires`.
     if (!data.metadata) {
       this.save(data);
             SRTlib.send('{"type":"FUNCTIONEND","function":"load"},');
@@ -99,9 +87,6 @@ module.exports = class MetaDataStore {
 
   }
   static cleanup() {
-    /**
-    * Remove all expired state.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanup","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MetaDataStore"}},`);
 
     const instanceIDs = findUppyInstances();

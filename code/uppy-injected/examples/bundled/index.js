@@ -49,11 +49,6 @@ const uppy = Uppy({
 }).use(Tus, {
   endpoint: TUS_ENDPOINT
 });
-// You can optinally enable the Golden Retriever plugin — it will
-// restore files after a browser crash / accidental closed window
-// see more at https://uppy.io/docs/golden-retriever/
-// 
-// .use(GoldenRetriever, { serviceWorker: true })
 uppy.on('complete', result => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -67,17 +62,3 @@ uppy.on('complete', result => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on"},');
 
 });
-// uncomment if you enable Golden Retriever
-// 
-/*eslint-disable compat/compat*/
-// if ('serviceWorker' in navigator) {
-// navigator.serviceWorker
-// .register('/sw.js')
-// .then((registration) => {
-// console.log('ServiceWorker registration successful with scope: ', registration.scope)
-// })
-// .catch((error) => {
-// console.log('Registration failed with ' + error)
-// })
-// }
-/*eslint-enable*/

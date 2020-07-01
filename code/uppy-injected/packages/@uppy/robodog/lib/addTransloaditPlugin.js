@@ -16,7 +16,7 @@ function addTransloaditPlugin(uppy, opts) {
     if (has(opts, name)) transloaditOptions[name] = opts[name];
     SRTlib.send('{"type":"FUNCTIONEND","function":"transloaditOptionNames.forEach"},');
   });
-  uppy.use(Transloadit, transloaditOptions); // Adds a `results` key to the upload result data containing a flat array of all results from all Assemblies.
+  uppy.use(Transloadit, transloaditOptions);
 
   if (transloaditOptions.waitForEncoding) {
     uppy.use(TransloaditResults);

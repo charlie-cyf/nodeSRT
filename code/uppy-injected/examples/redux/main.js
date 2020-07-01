@@ -28,8 +28,6 @@ function counter(state = 0, action) {
 }
 const reducer = combineReducers({
   counter: counter,
-  // You don't have to use the `uppy` key. But if you don't,
-  // you need to provide a custom `selector` to the `uppyReduxStore` call below.
   uppy: uppyReduxStore.reducer
 });
 let enhancer = applyMiddleware(uppyReduxStore.middleware(), logger);
@@ -37,7 +35,6 @@ if (window.__REDUX_DEVTOOLS_EXTENSION__) {
   enhancer = compose(enhancer, window.__REDUX_DEVTOOLS_EXTENSION__());
 }
 const store = createStore(reducer, enhancer);
-// Counter example from https://github.com/reactjs/redux/blob/master/examples/counter-vanilla/index.html
 const valueEl = document.querySelector('#value');
 function getCounter() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getCounter","fileName":"${__filename}","paramsNumber":0},`);
@@ -103,20 +100,11 @@ document.querySelector('#incrementAsync').onclick = () => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"onclick4"},');
 
 };
-// Uppy using the same store
 const uppy = Uppy({
   id: 'redux',
   store: uppyReduxStore({
     store: store
   }),
-  // If we had placed our `reducer` elsewhere in Redux, eg. under an `uppy` key in the state for a profile page,
-  // we'd do something like:
-  // 
-  // store: uppyReduxStore({
-  // store: store,
-  // id: 'avatar',
-  // selector: state => state.pages.profile.uppy
-  // }),
   debug: true
 });
 uppy.use(Dashboard, {

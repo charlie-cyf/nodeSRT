@@ -8,12 +8,6 @@ var _require = require('@uppy/core'),
     Plugin = _require.Plugin;
 
 var findDOMElement = require('@uppy/utils/lib/findDOMElement');
-/**
-* After an upload completes, inject result data from Transloadit in a hidden input.
-*
-* Must be added _after_ the Transloadit plugin.
-*/
-
 
 var TransloaditFormResult = /*#__PURE__*/function (_Plugin) {
   _inheritsLoose(TransloaditFormResult, _Plugin);

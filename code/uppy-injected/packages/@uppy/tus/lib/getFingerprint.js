@@ -14,15 +14,7 @@ function isReactNative() {
   SRTlib.send('{"type":"FUNCTIONEND","function":"isReactNative"},');
   return typeof navigator !== 'undefined' && typeof navigator.product === 'string' && navigator.product.toLowerCase() === 'reactnative';
   SRTlib.send('{"type":"FUNCTIONEND","function":"isReactNative","paramsNumber":0},');
-} // We override tus fingerprint to uppy’s `file.id`, since the `file.id`
-// now also includes `relativePath` for files added from folders.
-// This means you can add 2 identical files, if one is in folder a,
-// the other in folder b — `a/file.jpg` and `b/file.jpg`, when added
-// together with a folder, will be treated as 2 separate files.
-// 
-// For React Native and Cordova, we let tus-js-client’s default
-// fingerprint handling take charge.
-
+}
 
 module.exports = function getFingerprint(uppyFileObj) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");

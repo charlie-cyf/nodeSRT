@@ -1,9 +1,6 @@
 const SRTlib = require('SRT-util');
 
 const {Plugin} = require('@uppy/core');
-/**
-* Add a `results` key to the upload result data, containing all Transloadit Assembly results.
-*/
 class TransloaditResultsPlugin extends Plugin {
   constructor(uppy, opts) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"TransloaditResultsPlugin","superClass":"Plugin"}},`);
@@ -28,8 +25,6 @@ class TransloaditResultsPlugin extends Plugin {
     const {currentUploads} = this.uppy.getState();
     const {result} = currentUploads[uploadID];
     const assemblies = result && Array.isArray(result.transloadit) ? result.transloadit : [];
-    // Merge the assembly.results[*] arrays and add `stepName` and
-    // `assemblyId` properties.
     const assemblyResults = [];
     assemblies.forEach(assembly => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"assemblies.forEach","fileName":"${__filename}","paramsNumber":1},`);

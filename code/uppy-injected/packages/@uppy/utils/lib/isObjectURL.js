@@ -1,9 +1,3 @@
-/**
-* Check if a URL string is an object URL from `URL.createObjectURL`.
-*
-* @param {string} url
-* @returns {boolean}
-*/
 var SRTlib = require('SRT-util');
 
 module.exports = function isObjectURL(url) {

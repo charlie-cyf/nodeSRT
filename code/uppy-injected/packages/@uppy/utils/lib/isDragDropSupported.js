@@ -1,8 +1,3 @@
-/**
-* Checks if the browser supports Drag & Drop (not supported on mobile devices, for example).
-*
-* @returns {boolean}
-*/
 var SRTlib = require('SRT-util');
 
 module.exports = function isDragDropSupported() {

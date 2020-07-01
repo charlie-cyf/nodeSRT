@@ -48,7 +48,6 @@ exports.verifyToken = (req, res, next) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.verifyToken"},');
 
 };
-// does not fail if token is invalid
 exports.gentleVerifyToken = (req, res, next) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.gentleVerifyToken","fileName":"${__filename}","paramsNumber":3},`);
 

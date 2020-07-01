@@ -1,4 +1,3 @@
-/*eslint-env browser*/
 const SRTlib = require('SRT-util');
 
 const marked = require('marked');
@@ -6,17 +5,6 @@ const dragdrop = require('drag-drop');
 const robodog = require('@uppy/robodog');
 const TRANSLOADIT_EXAMPLE_KEY = '35c1aed03f5011e982b6afe82599b6a0';
 const TRANSLOADIT_EXAMPLE_TEMPLATE = '0b2ee2bc25dc43619700c2ce0a75164a';
-/**
-* A textarea for markdown text, with support for file attachments.
-*
-* ## Usage
-*
-* ```js
-* const element = document.querySelector('textarea')
-* const mdtxt = new MarkdownTextarea(element)
-* mdtxt.install()
-* ```
-*/
 class MarkdownTextarea {
   constructor(element) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
@@ -161,7 +149,11 @@ class MarkdownTextarea {
     }).then(result => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then.catch.robodog.upload.then","fileName":"${__filename}","paramsNumber":1},`);
 
-      if (result == null) return;
+      if (result == null) {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then.catch.robodog.upload.then"},');
+
+        return;
+      }
       this.insertAttachments(this.matchFilesAndThumbs(result.results));
             SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then.catch.robodog.upload.then"},');
 
@@ -190,7 +182,11 @@ class MarkdownTextarea {
     }).then(result => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.pick.then.catch.robodog.pick.then","fileName":"${__filename}","paramsNumber":1},`);
 
-      if (result == null) return;
+      if (result == null) {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.pick.then.catch.robodog.pick.then"},');
+
+        return;
+      }
       this.insertAttachments(this.matchFilesAndThumbs(result.results));
             SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.pick.then.catch.robodog.pick.then"},');
 

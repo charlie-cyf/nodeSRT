@@ -29,7 +29,6 @@ function dashboard(target, opts) {
 
   if (Array.isArray(opts.providers)) {
     addProviders(uppy, opts.providers, _extends({}, opts, {
-      // Install providers into the Dashboard.
       target: uppy.getPlugin(pluginId)
     }));
   }

@@ -16,7 +16,6 @@ function addTransloaditPlugin(uppy, opts) {
 
   });
   uppy.use(Transloadit, transloaditOptions);
-  // Adds a `results` key to the upload result data containing a flat array of all results from all Assemblies.
   if (transloaditOptions.waitForEncoding) {
     uppy.use(TransloaditResults);
   }

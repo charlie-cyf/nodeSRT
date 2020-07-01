@@ -1,6 +1,3 @@
-/**
-* Returns a timestamp in the format of `hours:minutes:seconds`
-*/
 const SRTlib = require('SRT-util');
 
 module.exports = function getTimeStamp() {
@@ -16,9 +13,6 @@ module.exports = function getTimeStamp() {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
 };
-/**
-* Adds zero to strings shorter than two characters
-*/
 function pad(str) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pad","fileName":"${__filename}","paramsNumber":1},`);
 

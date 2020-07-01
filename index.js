@@ -33,7 +33,7 @@ const excepts = [
 
 
     // generate AST for codebase
-    // generate(codeBase, excepts)
+    generate(codeBase, excepts)
 
     console.log("env", process.env.SRT_PATH)
 

@@ -45,7 +45,7 @@ function remove(arr, el) {
 var MultipartUploader = /*#__PURE__*/function () {
   function MultipartUploader(file, options) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
-    this.options = _extends({}, defaultOptions, {}, options); // Use default `getChunkSize` if it was null or something
+    this.options = _extends({}, defaultOptions, {}, options);
 
     if (!this.options.getChunkSize) {
       this.options.getChunkSize = defaultOptions.getChunkSize;
@@ -54,23 +54,14 @@ var MultipartUploader = /*#__PURE__*/function () {
     this.file = file;
     this.key = this.options.key || null;
     this.uploadId = this.options.uploadId || null;
-    this.parts = []; // Do `this.createdPromise.then(OP)` to execute an operation `OP` _only_ if the
-    // upload was created already. That also ensures that the sequencing is right
-    // (so the `OP` definitely happens if the upload is created).
-    // 
-    // This mostly exists to make `_abortUpload` work well: only sending the abort request if
-    // the upload was already created, and if the createMultipartUpload request is still in flight,
-    // aborting it immediately after it finishes.
-    // eslint-disable-line prefer-promise-reject-errors
-
+    this.parts = [];
     this.createdPromise = Promise.reject();
     this.isPaused = false;
     this.chunks = null;
     this.chunkState = null;
     this.uploading = [];
 
-    this._initChunks(); // silence uncaught rejection warning
-
+    this._initChunks();
 
     this.createdPromise.catch(function () {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"createdPromise.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
@@ -84,8 +75,7 @@ var MultipartUploader = /*#__PURE__*/function () {
   _proto._initChunks = function _initChunks() {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_initChunks\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     var chunks = [];
-    var desiredChunkSize = this.options.getChunkSize(this.file); // at least 5MB per request, at most 10k requests
-
+    var desiredChunkSize = this.options.getChunkSize(this.file);
     var minChunkSize = Math.max(5 * MB, Math.ceil(this.file.size / 10000));
     var chunkSize = Math.max(desiredChunkSize, minChunkSize);
 
@@ -168,7 +158,7 @@ var MultipartUploader = /*#__PURE__*/function () {
           uploaded: part.Size,
           etag: part.ETag,
           done: true
-        }; // Only add if we did not yet know about this part.
+        };
 
         if (!_this2.parts.some(function (p) {
           SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"parts.some\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -213,8 +203,7 @@ var MultipartUploader = /*#__PURE__*/function () {
     if (need === 0) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadParts"},');
       return;
-    } // All parts are uploaded.
-
+    }
 
     if (this.chunkState.every(function (state) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"chunkState.every\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -374,8 +363,7 @@ var MultipartUploader = /*#__PURE__*/function () {
         return;
       }
 
-      _this5._onPartProgress(index, body.size, body.size); // NOTE This must be allowed by CORS.
-
+      _this5._onPartProgress(index, body.size, body.size);
 
       var etag = ev.target.getResponseHeader('ETag');
 
@@ -408,8 +396,7 @@ var MultipartUploader = /*#__PURE__*/function () {
   _proto._completeUpload = function _completeUpload() {
     var _this6 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_completeUpload\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},"); // Parts may not have completed uploading in sorted order, if limit > 1.
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_completeUpload\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     this.parts.sort(function (a, b) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"parts.sort\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"parts.sort"},');
@@ -461,7 +448,6 @@ var MultipartUploader = /*#__PURE__*/function () {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then"},');
     }, function () {
-      // if the creation failed we do not need to abort
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"createdPromise.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then2"},');
     });

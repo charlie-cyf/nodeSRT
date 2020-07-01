@@ -3,7 +3,6 @@ const SRTlib = require('SRT-util');
 exports.finishUploadTest = async browser => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.finishUploadTest","fileName":"${__filename}","paramsNumber":1},`);
 
-  // switch back to uppy tab
   await browser.switchWindow(/localhost/);
   const fileItem = await browser.$('.uppy-ProviderBrowser-list li.uppy-ProviderBrowserItem:last-child button');
   await fileItem.waitForDisplayed();
@@ -25,7 +24,6 @@ exports.startUploadTest = async (browser, providerName, tabMatch) => {
   await authButton.waitForDisplayed();
   await authButton.click();
   await browser.pause(5000);
-  // move control to provider oauth tab
   await browser.switchWindow(tabMatch);
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.startUploadTest"},');
 

@@ -10,16 +10,13 @@ module.exports = function getFileType(file) {
   fileExtension = fileExtension ? fileExtension.toLowerCase() : null;
 
   if (file.type) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},'); // if mime type is set in the file object already, use that
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return file.type;
   } else if (fileExtension && mimeTypes[fileExtension]) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},'); // else, see if we can map extension to a mime type
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return mimeTypes[fileExtension];
   } else {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},'); // if all fails, fall back to a generic byte stream type
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return 'application/octet-stream';
   }
 

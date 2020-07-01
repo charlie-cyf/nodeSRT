@@ -1,12 +1,8 @@
-/*eslint-disable compat/compat*/
 const SRTlib = require('SRT-util');
 
 const http = require('http');
 const qs = require('querystring');
 const e = require('he').encode;
-/**
-* A very haxxor server that outputs some of the data it receives in a POST form parameter.
-*/
 const server = http.createServer(onrequest);
 server.listen(9967);
 function onrequest(req, res) {

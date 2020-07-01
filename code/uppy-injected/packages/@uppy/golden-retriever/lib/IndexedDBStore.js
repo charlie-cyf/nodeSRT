@@ -6,12 +6,10 @@ var prettierBytes = require('@transloadit/prettier-bytes');
 
 var indexedDB = typeof window !== 'undefined' && (window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB);
 var isSupported = !!indexedDB;
-var DB_NAME = 'uppy-blobs'; // maybe have a thumbnail store in the future
-
-var STORE_NAME = 'files'; // 24 hours
-
+var DB_NAME = 'uppy-blobs';
+var STORE_NAME = 'files';
 var DEFAULT_EXPIRY = 24 * 60 * 60 * 1000;
-var DB_VERSION = 3; // Set default `expires` dates on existing stored blobs.
+var DB_VERSION = 3;
 
 function migrateExpiration(store) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"migrateExpiration\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -48,7 +46,6 @@ function connect(dbName) {
       var transaction = event.currentTarget.transaction;
 
       if (event.oldVersion < 2) {
-        // Added in v2: DB structure changed to a single shared object store
         var store = db.createObjectStore(STORE_NAME, {
           keyPath: 'id'
         });
@@ -58,7 +55,6 @@ function connect(dbName) {
       }
 
       if (event.oldVersion < 3) {
-        // Added in v3
         var _store = transaction.objectStore(STORE_NAME);
 
         _store.createIndex('expires', 'expires', {
@@ -117,11 +113,8 @@ var IndexedDBStore = /*#__PURE__*/function () {
     this.opts = _extends({
       dbName: DB_NAME,
       storeName: 'default',
-      // 24 hours
       expires: DEFAULT_EXPIRY,
-      // 10 MB
       maxFileSize: 10 * 1024 * 1024,
-      // 300 MB
       maxTotalSize: 300 * 1024 * 1024
     }, opts);
     this.name = this.opts.storeName;
@@ -155,9 +148,6 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.list = function list() {
     var _this2 = this;
 
-    /**
-    * List all file blobs currently in the store.
-    */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"list\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
     return this.ready.then(function (db) {
@@ -186,9 +176,6 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.get = function get(fileID) {
     var _this3 = this;
 
-    /**
-    * Get one file blob from the store.
-    */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"get\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');
     return this.ready.then(function (db) {
@@ -213,11 +200,6 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.getSize = function getSize() {
     var _this4 = this;
 
-    /**
-    * Get the total size of all stored files.
-    *
-    * @private
-    */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getSize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"getSize"},');
     return this.ready.then(function (db) {
@@ -260,9 +242,6 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.put = function put(file) {
     var _this5 = this;
 
-    /**
-    * Save a file in the store.
-    */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"put\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
 
     if (file.data.size > this.opts.maxFileSize) {
@@ -302,9 +281,6 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.delete = function _delete(fileID) {
     var _this6 = this;
 
-    /**
-    * Delete a file blob from the store.
-    */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"delete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
     return this.ready.then(function (db) {
@@ -319,10 +295,6 @@ var IndexedDBStore = /*#__PURE__*/function () {
   };
 
   IndexedDBStore.cleanup = function cleanup() {
-    /**
-    * Delete all stored blobs that have an expiry date that is before Date.now().
-    * This is a static method because it deletes expired blobs from _all_ Uppy instances.
-    */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"cleanup\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"cleanup"},');
     return connect(DB_NAME).then(function (db) {
@@ -340,8 +312,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
 
           if (cursor) {
             var entry = cursor.value;
-            console.log('[IndexedDBStore] Deleting record', entry.fileID, 'of size', prettierBytes(entry.data.size), '- expired on', new Date(entry.expires)); // Ignoring return value … it's not terrible if this goes wrong.
-
+            console.log('[IndexedDBStore] Deleting record', entry.fileID, 'of size', prettierBytes(entry.data.size), '- expired on', new Date(entry.expires));
             cursor.delete();
             cursor.continue();
           } else {

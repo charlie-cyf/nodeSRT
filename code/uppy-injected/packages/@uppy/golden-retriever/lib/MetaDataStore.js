@@ -1,8 +1,5 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-/**
-* Get uppy instance IDs for which state is stored.
-*/
 var SRTlib = require('SRT-util');
 
 function findUppyInstances() {
@@ -21,10 +18,6 @@ function findUppyInstances() {
   return instances;
   SRTlib.send('{"type":"FUNCTIONEND","function":"findUppyInstances","paramsNumber":0},');
 }
-/**
-* Try to JSON-parse a string, return null on failure.
-*/
-
 
 function maybeParse(str) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"maybeParse\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -46,7 +39,6 @@ module.exports = /*#__PURE__*/function () {
   function MetaDataStore(opts) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
     this.opts = _extends({
-      // 24 hours
       expires: 24 * 60 * 60 * 1000
     }, opts);
     this.name = "uppyState:" + opts.storeName;
@@ -62,9 +54,6 @@ module.exports = /*#__PURE__*/function () {
   var _proto = MetaDataStore.prototype;
 
   _proto.load = function load() {
-    /**
-    *
-    */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"load\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
     var savedState = localStorage.getItem(this.name);
 
@@ -78,9 +67,7 @@ module.exports = /*#__PURE__*/function () {
     if (!data) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"load"},');
       return null;
-    } // Upgrade pre-0.20.0 uppyState: it used to be just a flat object,
-    // without `expires`.
-
+    }
 
     if (!data.metadata) {
       this.save(data);
@@ -105,9 +92,6 @@ module.exports = /*#__PURE__*/function () {
   };
 
   MetaDataStore.cleanup = function cleanup() {
-    /**
-    * Remove all expired state.
-    */
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"cleanup\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
     var instanceIDs = findUppyInstances();
     var now = Date.now();

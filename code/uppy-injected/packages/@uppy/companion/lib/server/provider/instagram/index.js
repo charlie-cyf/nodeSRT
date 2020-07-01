@@ -9,9 +9,6 @@ const utils = require('../../helpers/utils');
 const logger = require('../../logger');
 const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../error');
-/**
-* Adapter for API https://www.instagram.com/developer/endpoints/
-*/
 class Instagram extends Provider {
   constructor(options) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
@@ -166,7 +163,6 @@ class Instagram extends Provider {
   thumbnail(_, done) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
-    // not implementing this because a public thumbnail from instagram will be used instead
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.instagram.thumbnail.error');
         SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail"},');
@@ -217,7 +213,6 @@ class Instagram extends Provider {
   logout(_, done) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
-    // access revoke is not supported by Instagram's API
     done(null, {
       revoked: false,
       manual_revoke_url: 'https://www.instagram.com/accounts/manage_access/'

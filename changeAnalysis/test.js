@@ -5,15 +5,19 @@ const { Parser } = require("acorn")
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
     require("acorn-bigint"),
-    require('acorn-static-class-features')
+    require('acorn-static-class-features'),
+    require('acorn-stage3')
 
 )
 
-const before = fs.readFileSync('./sample/buttons-index.js')
-const after = fs.readFileSync('./sample/buttons-index-after.js');
+const before = fs.readFileSync('./sample/index.js')
+const after = fs.readFileSync('./sample/index-after.js');
 
 const beforeAst = ASTParser.parse(before);
 const afterAst = ASTParser.parse(after);
 
 const res = getDiffs(beforeAst, afterAst)
-console.log(JSON.stringify(res))
+console.log('res length', res.length)
+res[0].forEach(ele => {
+    console.log('ele length', ele.type)
+})

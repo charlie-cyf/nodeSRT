@@ -10,17 +10,14 @@ module.exports = function getFileType(file) {
   if (file.type) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-    // if mime type is set in the file object already, use that
     return file.type;
   } else if (fileExtension && mimeTypes[fileExtension]) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-    // else, see if we can map extension to a mime type
     return mimeTypes[fileExtension];
   } else {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-    // if all fails, fall back to a generic byte stream type
     return 'application/octet-stream';
   }
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

@@ -1,4 +1,3 @@
-/*global test:false, expect:false, describe:false,*/
 const SRTlib = require('SRT-util');
 
 const headerSanitize = require('../../src/server/header-blacklist');

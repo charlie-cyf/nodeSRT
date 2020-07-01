@@ -1,8 +1,6 @@
 var SRTlib = require('SRT-util');
 
-var getTimeStamp = require('@uppy/utils/lib/getTimeStamp'); // Swallow all logs, except errors.
-// default if logger is not set or debug: false
-
+var getTimeStamp = require('@uppy/utils/lib/getTimeStamp');
 
 var justErrorsLogger = {
   debug: function debug() {
@@ -26,13 +24,10 @@ var justErrorsLogger = {
     return (_console = console).error.apply(_console, ["[Uppy] [" + getTimeStamp() + "]"].concat(args));
     SRTlib.send('{"type":"FUNCTIONEND","function":"justErrorsLogger.error"},');
   }
-}; // Print logs to console with namespace + timestamp,
-// set by logger: Uppy.debugLogger or debug: true
-
+};
 var debugLogger = {
   debug: function debug() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"debugLogger.debug\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},"); // IE 10 doesn’t support console.debug
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"debugLogger.debug\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     var debug = console.debug || console.log;
 
     for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {

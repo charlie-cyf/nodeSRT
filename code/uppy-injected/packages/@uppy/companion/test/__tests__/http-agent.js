@@ -1,4 +1,3 @@
-/*global test:false, expect:false, describe:false,*/
 const SRTlib = require('SRT-util');
 
 const {getProtectedHttpAgent, getRedirectEvaluator, FORBIDDEN_IP_ADDRESS} = require('../../src/server/helpers/request');

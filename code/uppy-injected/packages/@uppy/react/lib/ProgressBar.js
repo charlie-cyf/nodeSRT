@@ -13,9 +13,6 @@ var ProgressBarPlugin = require('@uppy/progress-bar');
 var uppyPropType = require('./propTypes').uppy;
 
 var h = React.createElement;
-/**
-* React component that renders a progress bar at the top of the page.
-*/
 
 var ProgressBar = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(ProgressBar, _React$Component);

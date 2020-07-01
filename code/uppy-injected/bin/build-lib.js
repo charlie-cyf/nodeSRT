@@ -11,9 +11,7 @@ const transformFile = promisify(babel.transformFile);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
 const SOURCE = 'packages/{*,@uppy/*}/src/**/*.js';
-// Files not to build (such as tests)
 const IGNORE = /\.test\.js$|__mocks__|companion\//;
-// Files that should trigger a rebuild of everything on change
 const META_FILES = ['babel.config.js', 'package.json', 'package-lock.json', 'bin/build-lib.js'];
 function lastModified(file) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"lastModified","fileName":"${__filename}","paramsNumber":1},`);
@@ -49,10 +47,8 @@ async function buildLib() {
   for (const file of files) {
     if (IGNORE.test(file)) continue;
     const libFile = file.replace('/src/', '/lib/');
-    // on a fresh build, rebuild everything.
     if (!process.env.FRESH) {
       const srcMtime = await lastModified(file);
-      // probably doesn't exist
       const libMtime = await lastModified(libFile).catch(() => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"libMtime.lastModified.catch","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -62,7 +58,6 @@ async function buildLib() {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"libMtime.lastModified.catch"},');
 
       });
-      // Skip files that haven't changed
       if (srcMtime < libMtime && metaMtime < libMtime) {
         continue;
       }

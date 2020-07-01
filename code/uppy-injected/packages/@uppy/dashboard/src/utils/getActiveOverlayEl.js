@@ -1,6 +1,3 @@
-/**
-* @returns {HTMLElement} - either dashboard element, or the overlay that's most on top
-*/
 const SRTlib = require('SRT-util');
 
 module.exports = function getActiveOverlayEl(dashboardEl, activeOverlayType) {
@@ -8,7 +5,11 @@ module.exports = function getActiveOverlayEl(dashboardEl, activeOverlayType) {
 
   if (activeOverlayType) {
     const overlayEl = dashboardEl.querySelector(`[data-uppy-paneltype="${activeOverlayType}"]`);
-    if (overlayEl) return overlayEl;
+    if (overlayEl) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+      return overlayEl;
+    }
   }
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 

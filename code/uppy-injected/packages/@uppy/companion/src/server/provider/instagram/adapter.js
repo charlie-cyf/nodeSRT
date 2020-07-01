@@ -70,7 +70,6 @@ exports.getItemName = item => {
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
 
-    // adding both date and carousel_id, so the name is unique
     return `Instagram ${name}${item.carousel_id ? ' ' + item.carousel_id : ''}.${ext}`;
   }
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
