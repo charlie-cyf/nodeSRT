@@ -9,8 +9,8 @@ const ASTParser = Parser.extend(
 
 )
 
-const before = fs.readFileSync('./sample/core-index.js')
-const after = fs.readFileSync('./sample/core-index-after.js');
+const before = fs.readFileSync('./sample/buttons-index.js')
+const after = fs.readFileSync('./sample/buttons-index-after.js');
 
 const beforeAst = ASTParser.parse(before);
 const afterAst = ASTParser.parse(after);
