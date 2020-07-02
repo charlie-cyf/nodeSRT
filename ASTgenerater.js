@@ -19,19 +19,12 @@ function generaterHelper(path, ASTpath, excepts) {
         if (Path.extname(file) === '.js') {
             try {
                 let content = fs.readFileSync(path + '/' + file);
-                let comments = [];
-                
-                
-                if( excepts.filter(ele => { return Path.resolve(path + '/' + file) === Path.resolve(ele) }).length <= 0 ){
-                    
-                    let tree = ASTParser.parse(content, {
-                        locations: true,
-                        onComment: comments,
-                        sourceType: "module",
-                        allowHashBang: true
-                    })
-                    
-                    // Astravel.attachComments(tree, comments);
+
+
+                if (excepts.filter(ele => { return Path.resolve(path + '/' + file) === Path.resolve(ele) }).length <= 0) {
+
+                    let tree = this.parse(content)
+
                     fs.writeFileSync(ASTpath + "/" + file + '.json', JSON.stringify(tree))
                 }
 
@@ -53,6 +46,17 @@ function generaterHelper(path, ASTpath, excepts) {
 
 module.exports = class ASTgenerater {
 
+    // take source code, return parsed ast
+    static parse(code) {
+        let comments = [];
+        return ASTParser.parse(code, {
+            locations: true,
+            onComment: comments,
+            sourceType: "module",
+            allowHashBang: true
+        })
+    }
+
     // will ignore paths in excepts
     static generate(path, excepts) {
         if (path.endsWith('/')) {
@@ -70,16 +74,16 @@ module.exports = class ASTgenerater {
         const copy = function (source, distination) {
 
             fs.readdirSync(source).forEach(file => {
-                if(file === '.git' || file === 'node_modules') return;
+                if (file === '.git' || file === 'node_modules') return;
                 const name = file.split('/').pop();
                 if (fs.lstatSync(Path.join(source, file)).isDirectory()) {
-                    if(!fs.existsSync(Path.join(distination, file)))
+                    if (!fs.existsSync(Path.join(distination, file)))
                         fs.mkdirSync(Path.join(distination, file))
                     copy(Path.join(source, file), Path.join(distination, file))
                 } else {
                     try {
                         fs.copyFileSync(Path.join(source, file), Path.join(distination, file))
-                    } catch(error) {
+                    } catch (error) {
                         console.log("copy Error!", error)
                     }
                 }

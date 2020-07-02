@@ -1,5 +1,5 @@
 const fs = require('fs');
-const getDiffs = require('./index').getDiffs;
+const changeAnalysis = require('./index');
 const { Parser } = require("acorn")
 
 const ASTParser = Parser.extend(
@@ -16,8 +16,15 @@ const after = fs.readFileSync('./sample/index-after.js');
 const beforeAst = ASTParser.parse(before);
 const afterAst = ASTParser.parse(after);
 
-const res = getDiffs(beforeAst, afterAst)
+const res = changeAnalysis.getDiffs(beforeAst, afterAst)
 console.log('res length', res.length)
 res[0].forEach(ele => {
     console.log('ele length', ele.type)
+})
+const diffFile = fs.readFileSync('./diff-ab886-9fb7b8.patch', "utf8");
+
+const changes = changeAnalysis.getChangesAncestors('../code/uppy', diffFile);
+
+changes.forEach(c => {
+    console.log("Logger:", c.filename, c.diffAncestors)
 })

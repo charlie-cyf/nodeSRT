@@ -1,0 +1,76 @@
+diff --git a/packages/@uppy/dashboard/src/components/FileItem/Buttons/index.js b/packages/@uppy/dashboard/src/components/FileItem/Buttons/index.js
+index c616a6b0..f398342b 100644
+--- a/packages/@uppy/dashboard/src/components/FileItem/Buttons/index.js
++++ b/packages/@uppy/dashboard/src/components/FileItem/Buttons/index.js
+@@ -112,7 +112,12 @@ module.exports = function Buttons (props) {
+           i18n={i18n}
+           info={props.info}
+           log={props.log}
+-          onClick={() => removeFile(file.id)}
++          onClick={() => {
++            removeFile(file.id)
++            // So that developers can distinguish when users manually removed
++            // files in the UI, vs uppy.reset() (see #2301)
++            this.props.emit('dashboard:file-removed-ui', file)
++          }}
+         />
+       ) : null}
+     </div>
+diff --git a/packages/@uppy/dashboard/src/components/FileItem/index.js b/packages/@uppy/dashboard/src/components/FileItem/index.js
+index 893cfc7b..ed4c690a 100644
+--- a/packages/@uppy/dashboard/src/components/FileItem/index.js
++++ b/packages/@uppy/dashboard/src/components/FileItem/index.js
+@@ -106,6 +106,7 @@ module.exports = class FileItem extends Component {
+             i18n={this.props.i18n}
+             log={this.props.log}
+             info={this.props.info}
++            emit={this.props.emit}
+           />
+         </div>
+       </div>
+diff --git a/packages/@uppy/dashboard/src/components/FileList.js b/packages/@uppy/dashboard/src/components/FileList.js
+index 84ee466e..186ad8d6 100644
+--- a/packages/@uppy/dashboard/src/components/FileList.js
++++ b/packages/@uppy/dashboard/src/components/FileList.js
+@@ -41,6 +41,7 @@ module.exports = (props) => {
+     i18n: props.i18n,
+     log: props.log,
+     info: props.info,
++    emit: props.emit,
+     // features
+     acquirers: props.acquirers,
+     resumableUploads: props.resumableUploads,
+diff --git a/packages/@uppy/dashboard/src/index.js b/packages/@uppy/dashboard/src/index.js
+index 51d9532d..93348ece 100644
+--- a/packages/@uppy/dashboard/src/index.js
++++ b/packages/@uppy/dashboard/src/index.js
+@@ -842,6 +842,7 @@ module.exports = class Dashboard extends Plugin {
+       i18nArray: this.i18nArray,
+       removeFile: this.uppy.removeFile,
+       info: this.uppy.info,
++      emit: this.uppy.emit,
+       note: this.opts.note,
+       metaFields: pluginState.metaFields,
+       resumableUploads: capabilities.resumableUploads || false,
+diff --git a/website/src/docs/dashboard.md b/website/src/docs/dashboard.md
+index 3f844367..4ac8c0af 100644
+--- a/website/src/docs/dashboard.md
++++ b/website/src/docs/dashboard.md
+@@ -193,6 +193,8 @@ See also `disableStatusBar` option, which can hide the progress and upload butto
+ 
+ Sometimes you might want to let users remove an uploaded file. Enabling this option only shows the remove `X` button in the Dashboard UI, but to actually send a request you should listen to [`file-removed`](https://uppy.io/docs/uppy/#file-removed) event and add your logic there.
+ 
++> For an implementation example, please see [#2301](https://github.com/transloadit/uppy/issues/2301#issue-628931176)).
++
+ ### `note: null`
+ 
+ Optionally, specify a string of text that explains something about the upload for the user. This is a place to explain any `restrictions` that are put in place. For example: `'Images and video only, 2–3 files, up to 1 MB'`.
+@@ -432,3 +434,8 @@ Fired when the user clicks “edit” icon next to a file in the Dashboard. The
+ ### `dashboard:file-edit-complete`
+ 
+ Fired when the user finished editing the file metadata.
++
++### `dashboard:file-removed-ui`
++
++This event is useful if you are using the [`showRemoveButtonAfterComplete: true`](/docs/dashboard/#showRemoveButtonAfterComplete-false) option, and want to distinguish when a user has manually removed file in the UI, vs when “cancel all” has been pressed or `uppy.close()` or `uppy.reset()` has been called.
++(See [#2301](https://github.com/transloadit/uppy/issues/2301#issue-628931176)).
