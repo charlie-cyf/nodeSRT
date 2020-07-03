@@ -89,6 +89,7 @@ module.exports.getChangesAncestors = function (codeBase, diff) {
             const beforeAST = ASTgenerator.parse(fs.readFileSync(change.filename, 'utf8'));
             const afterAST = ASTgenerator.parse(change.content);
             change.diffAncestors = this.getDiffs(beforeAST, afterAST);
+            // TODO unify function name
         } 
     })
 
