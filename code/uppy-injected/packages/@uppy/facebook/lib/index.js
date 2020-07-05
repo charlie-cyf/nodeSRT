@@ -1,57 +1,38 @@
-const SRTlib = require('SRT-util');
-
 var _class, _temp;
-function _assertThisInitialized(self) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
 
-  if (self === void 0) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-  return self;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized","paramsNumber":1},');
+var _require = require('@uppy/core'),
+    Plugin = _require.Plugin;
 
-}
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
+var _require2 = require('@uppy/companion-client'),
+    Provider = _require2.Provider;
 
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
-
-}
-var _require = require('@uppy/core'), Plugin = _require.Plugin;
-var _require2 = require('@uppy/companion-client'), Provider = _require2.Provider;
 var ProviderViews = require('@uppy/provider-views');
-var _require3 = require('preact'), h = _require3.h;
-module.exports = (_temp = _class = (function (_Plugin) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class","fileName":"${__filename}","paramsNumber":1},`);
 
+var _require3 = require('preact'),
+    h = _require3.h;
+
+module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _inheritsLoose(Facebook, _Plugin);
-  function Facebook(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Facebook","fileName":"${__filename}","paramsNumber":2},`);
 
+  function Facebook(uppy, opts) {
     var _this;
+
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.id = _this.opts.id || 'Facebook';
     Provider.initPlugin(_assertThisInitialized(_this), opts);
     _this.title = _this.opts.title || 'Facebook';
+
     _this.icon = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.icon","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon"},');
-
       return h("svg", {
         "aria-hidden": "true",
         focusable: "false",
         width: "32",
         height: "32",
-        viewBox: "0 0 32 32",
-        xmlns: "http://www.w3.org/2000/svg"
+        viewBox: "0 0 32 32"
       }, h("g", {
         fill: "none",
         "fill-rule": "evenodd"
@@ -65,9 +46,8 @@ module.exports = (_temp = _class = (function (_Plugin) {
         fill: "#FFF",
         "fill-rule": "nonzero"
       })));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon"},');
-
     };
+
     _this.provider = new Provider(uppy, {
       companionUrl: _this.opts.companionUrl,
       companionHeaders: _this.opts.companionHeaders || _this.opts.serverHeaders,
@@ -76,70 +56,42 @@ module.exports = (_temp = _class = (function (_Plugin) {
     });
     _this.onFirstRender = _this.onFirstRender.bind(_assertThisInitialized(_this));
     _this.render = _this.render.bind(_assertThisInitialized(_this));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Facebook"},');
-
     return _this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Facebook","paramsNumber":2},');
-
   }
-  var _proto = Facebook.prototype;
-  _proto.install = function install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install","fileName":"${__filename}","paramsNumber":0},`);
 
+  var _proto = Facebook.prototype;
+
+  _proto.install = function install() {
     this.view = new ProviderViews(this, {
       provider: this.provider
     });
-    this.setPluginState({
-      authenticated: false,
-      files: [],
-      folders: [],
-      directories: [],
-      activeRow: -1,
-      filterInput: '',
-      isSearchVisible: false
-    });
     var target = this.opts.target;
+
     if (target) {
       this.mount(target, this);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install"},');
-
   };
-  _proto.uninstall = function uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall","fileName":"${__filename}","paramsNumber":0},`);
 
+  _proto.uninstall = function uninstall() {
     this.view.tearDown();
     this.unmount();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall"},');
-
   };
+
   _proto.onFirstRender = function onFirstRender() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.onFirstRender","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onFirstRender"},');
-
     return this.view.getFolder();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onFirstRender"},');
-
   };
-  _proto.render = function render(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render","fileName":"${__filename}","paramsNumber":1},`);
 
+  _proto.render = function render(state) {
     var viewOptions = {};
+
     if (this.getPluginState().files.length && !this.getPluginState().folders.length) {
       viewOptions.viewType = 'grid';
       viewOptions.showFilter = false;
       viewOptions.showTitles = false;
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render"},');
 
     return this.view.render(state, viewOptions);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render"},');
-
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
   return Facebook;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
-
-})(Plugin), _class.VERSION = require('../package.json').version, _temp);
+}(Plugin), _class.VERSION = require('../package.json').version, _temp);

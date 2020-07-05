@@ -1,4 +1,4 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
 
 var bg_BG = {};
 bg_BG.strings = {
@@ -142,21 +142,22 @@ bg_BG.strings = {
     '1': 'Трябва да изберете поне %{smart_count} файла'
   }
 };
+
 bg_BG.pluralize = function (count) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bg_BG.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"bg_BG.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (count === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"bg_BG.pluralize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"bg_BG.pluralize"},');
     return 0;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"bg_BG.pluralize"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"bg_BG.pluralize"},');
   return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"bg_BG.pluralize"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"bg_BG.pluralize"},');
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.bg_BG = bg_BG;
 }
+
 module.exports = bg_BG;

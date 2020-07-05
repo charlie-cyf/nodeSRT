@@ -1,4 +1,4 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
 
 var ru_RU = {};
 ru_RU.strings = {
@@ -134,26 +134,27 @@ ru_RU.strings = {
   unselectFileNamed: 'Отменить выбор файла %{name}',
   openFolderNamed: 'Открыть папку %{name}'
 };
+
 ru_RU.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ru_RU.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ru_RU.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (n % 10 === 1 && n % 100 !== 11) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ru_RU.pluralize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ru_RU.pluralize"},');
     return 0;
   }
-  if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ru_RU.pluralize"},');
 
+  if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) {
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ru_RU.pluralize"},');
     return 1;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ru_RU.pluralize"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"ru_RU.pluralize"},');
   return 2;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ru_RU.pluralize"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"ru_RU.pluralize"},');
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.ru_RU = ru_RU;
 }
+
 module.exports = ru_RU;

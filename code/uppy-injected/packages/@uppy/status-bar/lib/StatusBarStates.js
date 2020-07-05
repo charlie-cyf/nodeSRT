@@ -1,4 +1,4 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
 
 module.exports = {
   STATE_ERROR: 'error',

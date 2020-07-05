@@ -1,4 +1,4 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
 
 var id_ID = {};
 id_ID.strings = {
@@ -134,21 +134,22 @@ id_ID.strings = {
     '2': 'Anda harus memilih minimal %{smart_count} berkas'
   }
 };
+
 id_ID.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"id_ID.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"id_ID.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (n === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"id_ID.pluralize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"id_ID.pluralize"},');
     return 0;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"id_ID.pluralize"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"id_ID.pluralize"},');
   return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"id_ID.pluralize"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"id_ID.pluralize"},');
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.id_ID = id_ID;
 }
+
 module.exports = id_ID;

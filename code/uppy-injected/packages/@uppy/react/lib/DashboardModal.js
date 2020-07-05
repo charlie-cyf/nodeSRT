@@ -1,144 +1,111 @@
-const SRTlib = require('SRT-util');
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _extends() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-  _extends = Object.assign || (function (target) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends","fileName":"${__filename}","paramsNumber":1},`);
+var SRTlib = require('SRT-util');
 
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
-
-    return target;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
-
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
-
-  return _extends.apply(this, arguments);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_extends","paramsNumber":0},');
-
-}
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
-
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
-
-}
 var React = require('react');
+
 var PropTypes = require('prop-types');
+
 var DashboardPlugin = require('@uppy/dashboard');
+
 var basePropTypes = require('./propTypes').dashboard;
+
 var h = React.createElement;
-var DashboardModal = (function (_React$Component) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DashboardModal","fileName":"${__filename}","paramsNumber":1},`);
 
+var DashboardModal = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(DashboardModal, _React$Component);
+
   function DashboardModal() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"DashboardModal","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal"},');
-
     return _React$Component.apply(this, arguments) || this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal","paramsNumber":0},');
-
   }
+
   var _proto = DashboardModal.prototype;
+
   _proto.componentDidMount = function componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DashboardModal._proto.componentDidMount","fileName":"${__filename}","paramsNumber":0},`);
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DashboardModal\"}},");
     this.installPlugin();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal._proto.componentDidMount"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
   };
+
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DashboardModal._proto.componentDidUpdate","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidUpdate\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DashboardModal\"}},");
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
       this.installPlugin();
     }
+
     if (prevProps.open && !this.props.open) {
       this.plugin.closeModal();
     } else if (!prevProps.open && this.props.open) {
       this.plugin.openModal();
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal._proto.componentDidUpdate"},');
 
+    SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidUpdate"},');
   };
+
   _proto.componentWillUnmount = function componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DashboardModal._proto.componentWillUnmount","fileName":"${__filename}","paramsNumber":0},`);
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DashboardModal\"}},");
     this.uninstallPlugin();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal._proto.componentWillUnmount"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
   };
-  _proto.installPlugin = function installPlugin() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DashboardModal._proto.installPlugin","fileName":"${__filename}","paramsNumber":0},`);
 
+  _proto.installPlugin = function installPlugin() {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"installPlugin\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DashboardModal\"}},");
     var uppy = this.props.uppy;
+
     var options = _extends({
       id: 'react:DashboardModal'
     }, this.props, {
       onRequestCloseModal: this.props.onRequestClose
     });
+
     if (!options.target) {
       options.target = this.container;
     }
+
     delete options.uppy;
     uppy.use(DashboardPlugin, options);
     this.plugin = uppy.getPlugin(options.id);
+
     if (this.props.open) {
       this.plugin.openModal();
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal._proto.installPlugin"},');
 
+    SRTlib.send('{"type":"FUNCTIONEND","function":"installPlugin"},');
   };
-  _proto.uninstallPlugin = function uninstallPlugin(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DashboardModal._proto.uninstallPlugin","fileName":"${__filename}","paramsNumber":1},`);
 
+  _proto.uninstallPlugin = function uninstallPlugin(props) {
     if (props === void 0) {
       props = this.props;
     }
+
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstallPlugin\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DashboardModal\"}},");
     var uppy = props.uppy;
     uppy.removePlugin(this.plugin);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal._proto.uninstallPlugin"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"uninstallPlugin"},');
   };
+
   _proto.render = function render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DashboardModal._proto.render","fileName":"${__filename}","paramsNumber":0},`);
-
     var _this = this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal._proto.render"},');
 
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DashboardModal\"}},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return h('div', {
       ref: function ref(container) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DashboardModal._proto.render.render.ReturnStatement.h.ref","fileName":"${__filename}","paramsNumber":1},`);
-
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.h.ref\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         _this.container = container;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal._proto.render.render.ReturnStatement.h.ref"},');
-
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.ref"},');
       }
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal._proto.render"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal"},');
 
   return DashboardModal;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"DashboardModal"},');
+}(React.Component);
 
-})(React.Component);
 DashboardModal.propTypes = _extends({
   target: typeof window !== 'undefined' ? PropTypes.instanceOf(window.HTMLElement) : PropTypes.any,
   open: PropTypes.bool,

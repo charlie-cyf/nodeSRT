@@ -1,11 +1,8 @@
-const SRTlib = require('SRT-util');
+var _require = require('preact'),
+    h = _require.h; // it could be a <li><button class="fake-checkbox"/> <button/></li>
 
-var _require = require('preact'), h = _require.h;
+
 module.exports = function (props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
   return h("li", {
     class: props.className
   }, h("div", {
@@ -25,6 +22,4 @@ module.exports = function (props) {
     "aria-disabled": props.isDisabled,
     "data-uppy-super-focusable": true
   }, props.itemIconEl, props.showTitles && props.title));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
 };

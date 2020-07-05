@@ -1,18 +1,13 @@
-const SRTlib = require('SRT-util');
+var _require = require('preact'),
+    h = _require.h;
 
-var _require = require('preact'), h = _require.h;
 module.exports = function () {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
   return h("svg", {
     "aria-hidden": "true",
     focusable: "false",
     width: "32",
     height: "32",
-    viewBox: "0 0 32 32",
-    xmlns: "http://www.w3.org/2000/svg"
+    viewBox: "0 0 32 32"
   }, h("g", {
     fill: "none",
     "fill-rule": "evenodd"
@@ -31,6 +26,4 @@ module.exports = function () {
     cy: "16",
     r: "2"
   })));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
 };

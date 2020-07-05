@@ -7,8 +7,6 @@ const ASTgenerator = require('../ASTgenerater');
 
 // Compare AST2 to AST1 to output a list of changes' ancestors
 // ! same modification might be pushed twice to diffList, need to check function name to remove dup.
-// TODO handle cases when changes happend outside a function.
-// TODO handle cases when cahnges happend outside a function and  class.
 module.exports.getDiffs = function (AST1, AST2) {
     let diffList = [];
 

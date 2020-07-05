@@ -1,3 +1,3 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
 
 module.exports = require('./gl_ES');
