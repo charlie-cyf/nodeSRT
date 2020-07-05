@@ -23,7 +23,7 @@ function generaterHelper(path, ASTpath, excepts) {
 
                 if (excepts.filter(ele => { return Path.resolve(path + '/' + file) === Path.resolve(ele) }).length <= 0) {
 
-                    let tree = this.parse(content)
+                    let tree = parseHelper(content)
 
                     fs.writeFileSync(ASTpath + "/" + file + '.json', JSON.stringify(tree))
                 }
@@ -42,19 +42,23 @@ function generaterHelper(path, ASTpath, excepts) {
     }, this)
 }
 
+function parseHelper(code) {
+    let comments = [];
+    return ASTParser.parse(code, {
+        locations: true,
+        onComment: comments,
+        sourceType: "module",
+        allowHashBang: true
+    })
+}
+
 
 
 module.exports = class ASTgenerater {
 
     // take source code, return parsed ast
     static parse(code) {
-        let comments = [];
-        return ASTParser.parse(code, {
-            locations: true,
-            onComment: comments,
-            sourceType: "module",
-            allowHashBang: true
-        })
+        return parseHelper(code)
     }
 
     // will ignore paths in excepts

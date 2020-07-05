@@ -1,42 +1,45 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 
-module.exports = /*#__PURE__*/function () {
+module.exports = (function () {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+
   function EventTracker(emitter) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"EventTracker\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"EventTracker","fileName":"${__filename}","paramsNumber":1},`);
+
     this._events = [];
     this._emitter = emitter;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"EventTracker","paramsNumber":1},');
+
   }
-
   var _proto = EventTracker.prototype;
-
   _proto.on = function on(event, fn) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"on\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"EventTracker\"}},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.on","fileName":"${__filename}","paramsNumber":2},`);
 
     this._events.push([event, fn]);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.on"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
     return this._emitter.on(event, fn);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
-  };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.on"},');
 
+  };
   _proto.remove = function remove() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.remove","fileName":"${__filename}","paramsNumber":0},`);
+
     var _this = this;
-
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"remove\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"EventTracker\"}},");
-
     this._events.forEach(function (_ref) {
-      var event = _ref[0],
-          fn = _ref[1];
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports._events.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.remove.remove._events.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
+      var event = _ref[0], fn = _ref[1];
       _this._emitter.off(event, fn);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.remove.remove._events.forEach"},');
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._events.forEach"},');
     });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.remove"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"remove"},');
   };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return EventTracker;
-}();
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+})();

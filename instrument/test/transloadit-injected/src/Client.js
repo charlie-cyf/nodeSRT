@@ -1,9 +1,6 @@
 const SRTlib = require('SRT-util');
 
 const fetchWithNetworkError = require('@uppy/utils/lib/fetchWithNetworkError');
-/**
-* A Barebones HTTP API client for Transloadit.
-*/
 module.exports = class Client {
   constructor(opts = {}) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Client"}},`);
@@ -17,11 +14,6 @@ module.exports = class Client {
 
   }
   createAssembly({templateId, params, fields, signature, expectedFiles}) {
-    /**
-    * Create a new assembly.
-    *
-    * @param {object} options
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createAssembly","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Client"}},`);
 
     const data = new FormData();
@@ -87,12 +79,6 @@ module.exports = class Client {
 
   }
   reserveFile(assembly, file) {
-    /**
-    * Reserve resources for a file in an Assembly. Then addFile can be used later.
-    *
-    * @param {object} assembly
-    * @param {UppyFile} file
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"reserveFile","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Client"}},`);
 
     const size = encodeURIComponent(file.size);
@@ -128,12 +114,6 @@ module.exports = class Client {
 
   }
   addFile(assembly, file) {
-    /**
-    * Import a remote file to an Assembly.
-    *
-    * @param {object} assembly
-    * @param {UppyFile} file
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFile","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Client"}},`);
 
     if (!file.uploadURL) {
@@ -178,11 +158,6 @@ module.exports = class Client {
 
   }
   cancelAssembly(assembly) {
-    /**
-    * Cancel a running Assembly.
-    *
-    * @param {object} assembly
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cancelAssembly","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Client"}},`);
 
     const url = assembly.assembly_ssl_url;
@@ -215,11 +190,6 @@ module.exports = class Client {
 
   }
   getAssemblyStatus(url) {
-    /**
-    * Get the current status for an assembly.
-    *
-    * @param {string} url The status endpoint of the assembly.
-    */
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getAssemblyStatus","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Client"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getAssemblyStatus"},');
@@ -296,7 +266,6 @@ module.exports = class Client {
       opts.endpoint = params.url;
     }
     this.submitError(err, opts).catch(_ => {
-      // not much we can do then is there
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.submitError.catch","fileName":"${__filename}","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.submitError.catch"},');

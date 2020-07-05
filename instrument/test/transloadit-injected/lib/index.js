@@ -71,17 +71,11 @@ function defaultGetAssemblyOptions(file, options) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetAssemblyOptions","paramsNumber":2},');
 
 }
-// Regex matching acceptable postMessage() origins for authentication feedback from companion.
 var COMPANION = 'https://api2.transloadit.com/companion';
-// Regex used to check if a Companion address is run by Transloadit.
 var ALLOWED_COMPANION_PATTERN = /\.transloadit\.com$/;
 var TL_COMPANION = /https?:\/\/api2(?:-\w+)?\.transloadit\.com\/companion/;
 var TL_UPPY_SERVER = /https?:\/\/api2(?:-\w+)?\.transloadit\.com\/uppy-server/;
-/**
-* Upload files to Transloadit using Tus.
-*/
 module.exports = (_temp = _class = (function (_Plugin) {
-  /*#__PURE__*/
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(Transloadit, _Plugin);
@@ -127,19 +121,14 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (_this.opts.params) {
       AssemblyOptions.validateParams(_this.opts.params);
     } else if (!hasCustomAssemblyOptions) {
-      // Throw the same error that we'd throw if the `params` returned from a
-      // `getAssemblyOptions()` function is null.
       AssemblyOptions.validateParams(null);
     }
-    // Contains Assembly instances for in-progress Assemblies.
     _this.client = new Client({
       service: _this.opts.service,
       client: _this._getClientVersion(),
       errorReporting: _this.opts.errorReporting
     });
-    // Contains a mapping of uploadID to AssemblyWatcher
     _this.activeAssemblies = {};
-    // Contains a file IDs that have completed postprocessing before the upload they belong to has entered the postprocess stage.
     _this.assemblyWatchers = {};
     _this.completedFiles = Object.create(null);
         SRTlib.send('{"type":"FUNCTIONEND","function":"Transloadit"},');
@@ -163,7 +152,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
-    // so that UI re-renders and we see the updated locale
     this.setPluginState();
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit"},');
 
@@ -200,45 +188,25 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._getClientVersion"},');
 
   };
-  /**
-  * Attach metadata to files to configure the Tus plugin to upload to Transloadit.
-  * Also use Transloadit's Companion
-  *
-  * See: https://github.com/tus/tusd/wiki/Uploading-to-Transloadit-using-tus#uploading-using-tus
-  *
-  * @param {object} file
-  * @param {object} status
-  */
   _proto._attachAssemblyMetadata = function _attachAssemblyMetadata(file, status) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._attachAssemblyMetadata","fileName":"${__filename}","paramsNumber":2},`);
 
-    // Add the metadata parameters Transloadit needs.
-    // Add Assembly-specific Tus endpoint.
     var meta = _extends({}, file.meta, {
       assembly_url: status.assembly_url,
       filename: file.name,
       fieldname: 'file'
     });
-    // Set Companion location. We only add this, if 'file' has the attribute
     var tus = _extends({}, file.tus, {
       endpoint: status.tus_url
     });
-    // remote, because this is the criteria to identify remote files.
-    // We only replace the hostname for Transloadit's companions, so that
-    // people can also self-host them while still using Transloadit for encoding.
     var remote = file.remote;
     if (file.remote && TL_UPPY_SERVER.test(file.remote.companionUrl)) {
-      // Explicitly log this error here because it is caught by the `createAssembly`
       var err = new Error('The https://api2.transloadit.com/uppy-server endpoint was renamed to ' + 'https://api2.transloadit.com/companion, please update your `companionUrl` ' + 'options accordingly.');
-      // Promise further along.
-      // That's fine, but createAssembly only shows the informer, we need something a
-      // little more noisy.
       this.uppy.log(err);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._attachAssemblyMetadata"},');
 
       throw err;
     }
-    // Store the Assembly ID this file is in on the file under the `transloadit` key.
     if (file.remote && TL_COMPANION.test(file.remote.companionUrl)) {
       var newHost = status.companion_url.replace(/\/$/, '');
       var path = file.remote.url.replace(file.remote.companionUrl, '').replace(/^\//, '');
@@ -247,7 +215,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         url: newHost + "/" + path
       });
     }
-    // Only configure the Tus plugin if we are uploading straight to Transloadit (the default).
     var newFile = _extends({}, file, {
       transloadit: {
         assembly: status.assembly_id
@@ -287,9 +254,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
       var assemblyID = status.assembly_id;
       var _this3$getPluginState = _this3.getPluginState(), assemblies = _this3$getPluginState.assemblies, uploadsAssemblies = _this3$getPluginState.uploadsAssemblies;
       _this3.setPluginState({
-        // Store the Assembly status.
         assemblies: _extends({}, assemblies, (_extends2 = {}, _extends2[assemblyID] = status, _extends2)),
-        // Store the list of Assemblies related to this upload.
         uploadsAssemblies: _extends({}, uploadsAssemblies, (_extends3 = {}, _extends3[uploadID] = [].concat(uploadsAssemblies[uploadID], [assemblyID]), _extends3))
       });
       var _this3$uppy$getState = _this3.uppy.getState(), files = _this3$uppy$getState.files;
@@ -314,7 +279,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
     }).catch(function (err) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._createAssembly._createAssembly.ReturnStatement.client.createAssembly.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
-      // Reject the promise.
       err.message = _this3.i18n('creatingAssemblyFailed') + ": " + err.message;
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._createAssembly._createAssembly.ReturnStatement.client.createAssembly.then.catch"},');
 
@@ -329,7 +293,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._createAssemblyWatcher","fileName":"${__filename}","paramsNumber":3},`);
 
     var _this4 = this;
-    // AssemblyWatcher tracks completion states of all Assemblies in this upload.
     var watcher = new AssemblyWatcher(this.uppy, assemblyID);
     watcher.on('assembly-complete', function (id) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on","fileName":"${__filename}","paramsNumber":1},`);
@@ -349,12 +312,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
     watcher.on('assembly-error', function (id, error) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on2","fileName":"${__filename}","paramsNumber":2},`);
 
-      // Clear postprocessing state for all our files.
       var files = _this4.getAssemblyFiles(id);
       files.forEach(function (file) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on.files.forEach2","fileName":"${__filename}","paramsNumber":1},`);
 
-        // TODO Maybe make a postprocess-error event here?
         _this4.uppy.emit('upload-error', file, error);
         _this4.uppy.emit('postprocess-complete', file);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on.files.forEach2"},');
@@ -376,10 +337,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._shouldWaitAfterUpload"},');
 
   };
-  /**
-  * Used when `importFromUploadURLs` is enabled: reserves all files in
-  * the Assembly.
-  */
   _proto._reserveFiles = function _reserveFiles(assembly, fileIDs) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._reserveFiles","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -399,10 +356,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._reserveFiles"},');
 
   };
-  /**
-  * Used when `importFromUploadURLs` is enabled: adds files to the Assembly
-  * once they have been fully uploaded.
-  */
   _proto._onFileUploadURLAvailable = function _onFileUploadURLAvailable(file) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onFileUploadURLAvailable","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -430,9 +383,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
     var files = this.uppy.getFiles();
     for (var i = 0; i < files.length; i++) {
-      // Completed file upload.
       var file = files[i];
-      // In-progress file upload.
       if (file.uploadURL === uploadedFile.tus_upload_url) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._findFile"},');
 
@@ -444,7 +395,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         return file;
       }
       if (!uploadedFile.is_tus_file) {
-        // Fingers-crossed check for non-tus uploads, eg imported from S3.
         if (file.name === uploadedFile.name && file.size === uploadedFile.size) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._findFile"},');
 
@@ -478,18 +428,10 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onFileUploadComplete"},');
 
   };
-  /**
-  * Callback when a new Assembly result comes in.
-  *
-  * @param {string} assemblyId
-  * @param {string} stepName
-  * @param {object} result
-  */
   _proto._onResult = function _onResult(assemblyId, stepName, result) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onResult","fileName":"${__filename}","paramsNumber":3},`);
 
     var state = this.getPluginState();
-    // The `file` may not exist if an import robot was used instead of a file upload.
     var file = state.files[result.original_id];
     result.localId = file ? file.id : null;
     var entry = {
@@ -505,12 +447,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onResult"},');
 
   };
-  /**
-  * When an Assembly has finished processing, get the final state
-  * and emit it.
-  *
-  * @param {object} status
-  */
   _proto._onAssemblyFinished = function _onAssemblyFinished(status) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onAssemblyFinished","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -541,7 +477,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
     return this.client.cancelAssembly(assembly).then(function () {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._cancelAssembly._cancelAssembly.ReturnStatement.client.cancelAssembly.then","fileName":"${__filename}","paramsNumber":0},`);
 
-      // TODO bubble this through AssemblyWatcher so its event handlers can clean up correctly
       _this8.uppy.emit('transloadit:assembly-cancelled', assembly);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._cancelAssembly._cancelAssembly.ReturnStatement.client.cancelAssembly.then"},');
 
@@ -549,9 +484,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._cancelAssembly"},');
 
   };
-  /**
-  * When all files are removed, cancel in-progress Assemblies.
-  */
   _proto._onCancelAll = function _onCancelAll() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onCancelAll","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -587,12 +519,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onCancelAll"},');
 
   };
-  /**
-  * Custom state serialization for the Golden Retriever plugin.
-  * It will pass this back to the `_onRestored` function.
-  *
-  * @param {Function} setData
-  */
   _proto._getPersistentData = function _getPersistentData(setData) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._getPersistentData","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -617,11 +543,8 @@ module.exports = (_temp = _class = (function (_Plugin) {
     if (Object.keys(uploadsAssemblies).length === 0) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onRestored"},');
 
-      // Nothing to restore.
       return;
     }
-    // Convert loaded Assembly statuses to a Transloadit plugin state object.
-    // Set up the Assembly instances and AssemblyWatchers for existing Assemblies.
     var restoreState = function restoreState(assemblies) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"restoreState","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -679,7 +602,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var restoreAssemblies = function restoreAssemblies() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"restoreAssemblies","fileName":"${__filename}","paramsNumber":0},`);
 
-      // Set up the assembly watchers again for all the ongoing uploads.
       var _this10$getPluginStat = _this10.getPluginState(), assemblies = _this10$getPluginStat.assemblies, uploadsAssemblies = _this10$getPluginStat.uploadsAssemblies;
       Object.keys(uploadsAssemblies).forEach(function (uploadID) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onRestored._onRestored.restoreAssemblies.restoreAssemblies.Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
@@ -720,8 +642,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"restoreAssemblies"},');
 
     };
-    // Force-update all Assemblies to check for missed events.
-    // Restore all Assembly state.
     var updateAssemblies = function updateAssemblies() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateAssemblies","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -767,7 +687,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
     var _this11 = this;
     var status = assembly.status;
     var id = status.assembly_id;
-    // Sync local `assemblies` state
     this.activeAssemblies[id] = assembly;
     assembly.on('status', function (newStatus) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on","fileName":"${__filename}","paramsNumber":1},`);
@@ -811,7 +730,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       });
     }
-    // No need to connect to the socket if the Assembly has completed by now.
     if (this.opts.waitForEncoding) {
       assembly.on('finished', function () {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on6","fileName":"${__filename}","paramsNumber":0},`);
@@ -829,13 +747,11 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       });
     }
-    // TODO Do we still need this for anything…?
     if (assembly.ok === 'ASSEMBLY_COMPLETE') {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly"},');
 
       return assembly;
     }
-    // eslint-disable-next-line no-unused-vars
     var connected = new Promise(function (resolve, reject) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.connected.then.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -862,7 +778,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this12 = this, _extends7;
-    // Only use files without errors
     fileIDs = fileIDs.filter(function (file) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.fileIDs.fileIDs.filter","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -923,9 +838,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
         fileIDs.forEach(function (fileID) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-          // Clear preprocessing state when the Assembly could not be created,
           var file = _this12.uppy.getFile(fileID);
-          // otherwise the UI gets confused about the lingering progress keys
           _this12.uppy.emit('preprocess-complete', file);
           _this12.uppy.emit('upload-error', file, err);
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.createAssembly.createAssembly.ReturnStatement._this12._createAssembly.then.then.catch.fileIDs.forEach"},');
@@ -991,8 +904,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
     }, function (err) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then2","fileName":"${__filename}","paramsNumber":1},`);
 
-      // If something went wrong before any Assemblies could be created,
-      // clear all processing state.
       fileIDs.forEach(function (fileID) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -1015,7 +926,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._afterUpload","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this13 = this;
-    // Only use files without errors
     var files = fileIDs.map(function (fileID) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._afterUpload._afterUpload.files.fileIDs.map","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -1042,7 +952,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.fileIDs.files.filter.map"},');
 
     });
-    // If we're still restoring state, wait for that to be done.
     var state = this.getPluginState();
     if (this.restored) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload"},');
@@ -1057,10 +966,7 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       });
     }
-    // If we don't have to wait for encoding metadata or results, we can close
     var assemblyIDs = state.uploadsAssemblies[uploadID];
-    // the socket immediately and finish the upload.
-    // If no Assemblies were created for this upload, we also do not have to wait.
     if (!this._shouldWaitAfterUpload()) {
       assemblyIDs.forEach(function (assemblyID) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._afterUpload._afterUpload.assemblyIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
@@ -1087,7 +993,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
 
       return Promise.resolve();
     }
-    // There's also no sockets or anything to close, so just return immediately.
     if (assemblyIDs.length === 0) {
       this.uppy.addResultData(uploadID, {
         transloadit: []
@@ -1121,7 +1026,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
     return watcher.promise.then(function () {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._afterUpload._afterUpload.ReturnStatement.watcher.promise.then","fileName":"${__filename}","paramsNumber":0},`);
 
-      // Remove the Assembly ID list for this upload,
       var assemblies = assemblyIDs.map(function (id) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._afterUpload._afterUpload.ReturnStatement.watcher.promise.then.assemblies.assemblyIDs.map","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -1131,7 +1035,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._afterUpload._afterUpload.ReturnStatement.watcher.promise.then.assemblies.assemblyIDs.map"},');
 
       });
-      // it's no longer going to be used anywhere.
       var state = _this13.getPluginState();
       var uploadsAssemblies = _extends({}, state.uploadsAssemblies);
       delete uploadsAssemblies[uploadID];
@@ -1177,7 +1080,6 @@ module.exports = (_temp = _class = (function (_Plugin) {
         url: url,
         type: 'TUS_ERROR'
       }).then(function (_) {
-        // if we can't report the error that sucks
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._onTusError._onTusError.client.submitError.then","fileName":"${__filename}","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._onTusError._onTusError.client.submitError.then"},');
@@ -1191,50 +1093,28 @@ module.exports = (_temp = _class = (function (_Plugin) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install","fileName":"${__filename}","paramsNumber":0},`);
 
     this.uppy.addPreProcessor(this._prepareUpload);
-    // We may need to close socket.io connections on error.
     this.uppy.addPostProcessor(this._afterUpload);
-    // Handle cancellation.
     this.uppy.on('error', this._onError);
-    // For error reporting.
     this.uppy.on('cancel-all', this._onCancelAll);
     this.uppy.on('upload-error', this._onTusError);
     if (this.opts.importFromUploadURLs) {
-      // No uploader needed when importing; instead we take the upload URL from an existing uploader.
       this.uppy.on('upload-success', this._onFileUploadURLAvailable);
     } else {
       this.uppy.use(Tus, {
-        // Disable tus-js-client fingerprinting, otherwise uploading the same file at different times
-        // will upload to an outdated Assembly, and we won't get socket events for it.
-        // 
-        // To resume a Transloadit upload, we need to reconnect to the websocket, and the state that's
-        // required to do that is not saved by tus-js-client's fingerprinting. We need the tus URL,
-        // the Assembly URL, and the WebSocket URL, at least. We also need to know _all_ the files that
-        // were added to the Assembly, so we can properly complete it. All that state is handled by
-        // Golden Retriever. So, Golden Retriever is required to do resumability with the Transloadit plugin,
-        // and we disable Tus's default resume implementation to prevent bad behaviours.
         resume: false,
-        // Disable Companion's retry optimisation; we need to change the endpoint on retry
-        // so it can't just reuse the same tus.Upload instance server-side.
         useFastRemoteRetry: false,
-        // Only send Assembly metadata to the tus endpoint.
         metaFields: ['assembly_url', 'filename', 'fieldname'],
-        // Pass the limit option to @uppy/tus
         limit: this.opts.limit
       });
     }
     this.uppy.on('restore:get-data', this._getPersistentData);
     this.uppy.on('restored', this._onRestored);
     this.setPluginState({
-      // Contains Assembly status objects, indexed by their ID.
       assemblies: {},
-      // Contains arrays of Assembly IDs, indexed by the upload ID that they belong to.
       uploadsAssemblies: {},
-      // Contains file data from Transloadit, indexed by their Transloadit-assigned ID.
       files: {},
-      // Contains result data from Transloadit.
       results: []
     });
-    // We cannot cancel individual files because Assemblies tend to contain many files.
     var _this$uppy$getState = this.uppy.getState(), capabilities = _this$uppy$getState.capabilities;
     this.uppy.setState({
       capabilities: _extends({}, capabilities, {

@@ -1,10 +1,6 @@
-/**
-* A Barebones HTTP API client for Transloadit.
-*/
 const SRTlib = require('SRT-util');
 
 module.exports = (function () {
-  /*#__PURE__*/
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
 
   function Client(opts) {
@@ -21,11 +17,6 @@ module.exports = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"Client","paramsNumber":1},');
 
   }
-  /**
-  * Create a new assembly.
-  *
-  * @param {object} options
-  */
   var _proto = Client.prototype;
   _proto.createAssembly = function createAssembly(_ref) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.createAssembly","fileName":"${__filename}","paramsNumber":1},`);
@@ -94,12 +85,6 @@ module.exports = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.createAssembly"},');
 
   };
-  /**
-  * Reserve resources for a file in an Assembly. Then addFile can be used later.
-  *
-  * @param {object} assembly
-  * @param {UppyFile} file
-  */
   _proto.reserveFile = function reserveFile(assembly, file) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.reserveFile","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -136,12 +121,6 @@ module.exports = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.reserveFile"},');
 
   };
-  /**
-  * Import a remote file to an Assembly.
-  *
-  * @param {object} assembly
-  * @param {UppyFile} file
-  */
   _proto.addFile = function addFile(assembly, file) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.addFile","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -187,11 +166,6 @@ module.exports = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.addFile"},');
 
   };
-  /**
-  * Cancel a running Assembly.
-  *
-  * @param {object} assembly
-  */
   _proto.cancelAssembly = function cancelAssembly(assembly) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.cancelAssembly","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -225,11 +199,6 @@ module.exports = (function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.cancelAssembly"},');
 
   };
-  /**
-  * Get the current status for an assembly.
-  *
-  * @param {string} url The status endpoint of the assembly.
-  */
   _proto.getAssemblyStatus = function getAssemblyStatus(url) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.getAssemblyStatus","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -309,7 +278,6 @@ module.exports = (function () {
       opts.endpoint = params.url;
     }
     this.submitError(err, opts).catch(function (_) {
-      // not much we can do then is there
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto._reportError._reportError.submitError.catch","fileName":"${__filename}","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._reportError._reportError.submitError.catch"},');

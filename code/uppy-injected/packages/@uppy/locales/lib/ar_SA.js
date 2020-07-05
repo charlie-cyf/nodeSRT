@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 
 var ar_SA = {};
 ar_SA.strings = {
@@ -134,22 +134,21 @@ ar_SA.strings = {
   unselectFileNamed: 'إلغاء تحديد الملف %{name}',
   openFolderNamed: 'افتح المجلد %{name}'
 };
-
 ar_SA.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ar_SA.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ar_SA.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
   return 1;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
-};
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.ar_SA = ar_SA;
 }
-
 module.exports = ar_SA;

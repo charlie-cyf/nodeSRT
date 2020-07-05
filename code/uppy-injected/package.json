@@ -262,9 +262,6 @@
     ],
     "testMatch": [
       "**/packages/**/*.test.js"
-    ],
-    "setupFilesAfterEnv": [
-      "./jest.setup.js"
     ]
   }
 }

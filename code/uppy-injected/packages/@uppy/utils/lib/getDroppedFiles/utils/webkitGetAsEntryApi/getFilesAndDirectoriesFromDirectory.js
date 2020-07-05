@@ -1,30 +1,36 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 
 module.exports = function getFilesAndDirectoriesFromDirectory(directoryReader, oldEntries, logDropError, _ref) {
-  var onSuccess = _ref.onSuccess;
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":4},");
-  directoryReader.readEntries(function (entries) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-    var newEntries = [].concat(oldEntries, entries);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":4},`);
 
+  var onSuccess = _ref.onSuccess;
+  directoryReader.readEntries(function (entries) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries","fileName":"${__filename}","paramsNumber":1},`);
+
+    var newEntries = [].concat(oldEntries, entries);
     if (entries.length) {
       setTimeout(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"setTimeout\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+
         getFilesAndDirectoriesFromDirectory(directoryReader, newEntries, logDropError, {
           onSuccess: onSuccess
         });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries.setTimeout"},');
+
       }, 0);
     } else {
       onSuccess(newEntries);
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries"},');
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries"},');
   }, function (error) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries2","fileName":"${__filename}","paramsNumber":1},`);
+
     logDropError(error);
     onSuccess(oldEntries);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries2"},');
+
   });
-  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
 };

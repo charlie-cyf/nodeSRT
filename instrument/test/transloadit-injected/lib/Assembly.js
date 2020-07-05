@@ -38,12 +38,7 @@ function _inheritsLoose(subClass, superClass) {
 var io = requireSocketIo;
 var Emitter = require('component-emitter');
 var has = require('@uppy/utils/lib/hasProperty');
-// Lazy load socket.io to avoid a console error
 var parseUrl = require('./parseUrl');
-// in IE 10 when the Transloadit plugin is not used.
-// (The console.error call comes from `buffer`. I
-// think we actually don't use that part of socket.io
-// at all…)
 var socketIo;
 function requireSocketIo() {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"requireSocketIo","fileName":"${__filename}","paramsNumber":0},`);
@@ -61,16 +56,6 @@ var ASSEMBLY_UPLOADING = 'ASSEMBLY_UPLOADING';
 var ASSEMBLY_EXECUTING = 'ASSEMBLY_EXECUTING';
 var ASSEMBLY_COMPLETED = 'ASSEMBLY_COMPLETED';
 var statusOrder = [ASSEMBLY_UPLOADING, ASSEMBLY_EXECUTING, ASSEMBLY_COMPLETED];
-/**
-* Check that an assembly status is equal to or larger than some desired status.
-* It checks for things that are larger so that a comparison like this works,
-* when the old assembly status is UPLOADING but the new is FINISHED:
-*
-* !isStatus(oldStatus, ASSEMBLY_EXECUTING) && isStatus(newState, ASSEMBLY_EXECUTING)
-*
-* …so that we can emit the 'executing' event even if the execution step was so
-* fast that we missed it.
-*/
 function isStatus(status, test) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isStatus","fileName":"${__filename}","paramsNumber":2},`);
 
@@ -81,7 +66,6 @@ function isStatus(status, test) {
 
 }
 var TransloaditAssembly = (function (_Emitter) {
-  /*#__PURE__*/
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly","fileName":"${__filename}","paramsNumber":1},`);
 
   _inheritsLoose(TransloaditAssembly, _Emitter);
@@ -89,13 +73,9 @@ var TransloaditAssembly = (function (_Emitter) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"TransloaditAssembly","fileName":"${__filename}","paramsNumber":1},`);
 
     var _this;
-    // The current assembly status.
     _this = _Emitter.call(this) || this;
-    // The socket.io connection.
     _this.status = assembly;
-    // The interval timer for full status updates.
     _this.socket = null;
-    // Whether this assembly has been closed (finished or errored)
     _this.pollInterval = null;
     _this.closed = false;
         SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly"},');
@@ -194,7 +174,6 @@ var TransloaditAssembly = (function (_Emitter) {
     socket.on('assembly_error', function (err) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on8","fileName":"${__filename}","paramsNumber":1},`);
 
-      // Refetch for updated status code
       _this2._onError(err);
       _this2._fetchStatus({
         diff: false
@@ -213,12 +192,6 @@ var TransloaditAssembly = (function (_Emitter) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._onError"},');
 
   };
-  /**
-  * Begin polling for assembly status changes. This sends a request to the
-  * assembly status endpoint every so often, if the socket is not connected.
-  * If the socket connection fails or takes a long time, we won't miss any
-  * events.
-  */
   _proto._beginPolling = function _beginPolling() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._beginPolling","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -235,12 +208,6 @@ var TransloaditAssembly = (function (_Emitter) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._beginPolling"},');
 
   };
-  /**
-  * Reload assembly status. Useful if the socket doesn't work.
-  *
-  * Pass `diff: false` to avoid emitting diff events, instead only emitting
-  * 'status'.
-  */
   _proto._fetchStatus = function _fetchStatus(_temp) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._fetchStatus","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -259,7 +226,11 @@ var TransloaditAssembly = (function (_Emitter) {
     }).then(function (status) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._fetchStatus._fetchStatus.ReturnStatement.fetch.then.then","fileName":"${__filename}","paramsNumber":1},`);
 
-      if (_this4.closed) return;
+      if (_this4.closed) {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._fetchStatus._fetchStatus.ReturnStatement.fetch.then.then"},');
+
+        return;
+      }
       _this4.emit('status', status);
       if (diff) {
         _this4.updateStatus(status);
@@ -283,12 +254,6 @@ var TransloaditAssembly = (function (_Emitter) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto.update"},');
 
   };
-  /**
-  * Update this assembly's status with a full new object. Events will be
-  * emitted for status changes, new files, and new results.
-  *
-  * @param {object} next The new assembly status object.
-  */
   _proto.updateStatus = function updateStatus(next) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto.updateStatus","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -297,41 +262,21 @@ var TransloaditAssembly = (function (_Emitter) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto.updateStatus"},');
 
   };
-  /**
-  * Diff two assembly statuses, and emit the events necessary to go from `prev`
-  * to `next`.
-  *
-  * @param {object} prev The previous assembly status.
-  * @param {object} next The new assembly status.
-  */
   _proto._diffStatus = function _diffStatus(prev, next) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._diffStatus","fileName":"${__filename}","paramsNumber":2},`);
 
     var _this5 = this;
     var prevStatus = prev.ok;
     var nextStatus = next.ok;
-    // Desired emit order:
     if (next.error && !prev.error) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._diffStatus"},');
 
       return this._onError(next);
     }
-    // - executing
-    // - (n × upload)
-    // - metadata
-    // - (m × result)
-    // - finished
-    // The below checks run in this order, that way even if we jump from
-    // UPLOADING straight to FINISHED all the events are emitted as expected.
     var nowExecuting = isStatus(nextStatus, ASSEMBLY_EXECUTING) && !isStatus(prevStatus, ASSEMBLY_EXECUTING);
     if (nowExecuting) {
-      // Without WebSockets, this is our only way to tell if uploading finished.
-      // Hence, we emit this just before the 'upload's and before the 'metadata'
-      // event for the most intuitive ordering, corresponding to the _usual_
-      // ordering (if not guaranteed) that you'd get on the WebSocket.
       this.emit('executing');
     }
-    // Find new uploaded files.
     Object.keys(next.uploads).filter(function (upload) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._diffStatus._diffStatus.Object.keys.filter.map.forEach.Object.keys.filter.map.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -355,7 +300,6 @@ var TransloaditAssembly = (function (_Emitter) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._diffStatus._diffStatus.Object.keys.filter.map.forEach"},');
 
     });
-    // Find new results.
     if (nowExecuting) {
       this.emit('metadata');
     }
@@ -396,9 +340,6 @@ var TransloaditAssembly = (function (_Emitter) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._diffStatus"},');
 
   };
-  /**
-  * Stop updating this assembly.
-  */
   _proto.close = function close() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto.close","fileName":"${__filename}","paramsNumber":0},`);
 

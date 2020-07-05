@@ -1,9 +1,7 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 
 var PropTypes = require('prop-types');
-
 var UppyCore = require('@uppy/core').Uppy;
-
 var uppy = PropTypes.instanceOf(UppyCore).isRequired;
 var plugins = PropTypes.arrayOf(PropTypes.string);
 var locale = PropTypes.shape({
