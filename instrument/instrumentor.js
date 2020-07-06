@@ -162,7 +162,7 @@ module.exports = class Instrumentor {
                         })
                     } else {
                         let functionMap = new Map();
-                        const getListOfId = this.getListOfId;
+                        const getListOfId = Instrumentor.getListOfId;
                         const functionHandler = this.functionHandler;
                         const insertBeforeReturn = this.insertBeforeReturn;
                         
@@ -366,7 +366,7 @@ module.exports = class Instrumentor {
     }
 
 
-    getListOfId(ancestors, idList) {
+     static getListOfId(ancestors, idList) {
         let ancestorIdx = ancestors.length - 2;
         const memberExpHandler = function (node) {
             let temp = node.object;

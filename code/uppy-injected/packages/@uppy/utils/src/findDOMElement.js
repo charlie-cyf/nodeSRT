@@ -1,19 +1,17 @@
-const SRTlib = require('SRT-util');
+const isDOMElement = require('./isDOMElement')
 
-const isDOMElement = require('./isDOMElement');
-module.exports = function findDOMElement(element, context = document) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":2},`);
-
+/**
+ * Find a DOM element.
+ *
+ * @param {Node|string} element
+ * @returns {Node|null}
+ */
+module.exports = function findDOMElement (element, context = document) {
   if (typeof element === 'string') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-    return context.querySelector(element);
+    return context.querySelector(element)
   }
+
   if (isDOMElement(element)) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-    return element;
+    return element
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-};
+}

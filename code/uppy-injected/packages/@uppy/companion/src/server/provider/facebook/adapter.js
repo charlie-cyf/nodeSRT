@@ -1,123 +1,56 @@
-const SRTlib = require('SRT-util');
+const querystring = require('querystring')
 
-const querystring = require('querystring');
-exports.isFolder = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"${__filename}","paramsNumber":1},`);
+exports.isFolder = (item) => {
+  return !!item.type
+}
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isFolder"},');
-
-  return !!item.type;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isFolder"},');
-
-};
-exports.getItemIcon = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"${__filename}","paramsNumber":1},`);
-
+exports.getItemIcon = (item) => {
   if (exports.isFolder(item)) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemIcon"},');
-
-    return 'folder';
+    return 'folder'
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemIcon"},');
+  return exports.sortImages(item.images)[0].source
+}
 
-  return exports.sortImages(item.images)[0].source;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemIcon"},');
+exports.getItemSubList = (item) => {
+  return item.data
+}
 
-};
-exports.getItemSubList = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"${__filename}","paramsNumber":1},`);
+exports.getItemName = (item) => {
+  return item.name || `${item.id} ${item.created_time}`
+}
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemSubList"},');
+exports.getMimeType = (item) => {
+  return exports.isFolder(item) ? null : 'image/jpeg'
+}
 
-  return item.data;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemSubList"},');
+exports.getItemId = (item) => {
+  return `${item.id}`
+}
 
-};
-exports.getItemName = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"${__filename}","paramsNumber":1},`);
+exports.getItemRequestPath = (item) => {
+  return `${item.id}`
+}
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
+exports.getItemModifiedDate = (item) => {
+  return item.created_time
+}
 
-  return item.name || `${item.id} ${item.created_time}`;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
+exports.getItemThumbnailUrl = (item) => {
+  return exports.isFolder(item) ? null : exports.sortImages(item.images)[0].source
+}
 
-};
-exports.getMimeType = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getMimeType"},');
-
-  return exports.isFolder(item) ? null : 'image/jpeg';
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getMimeType"},');
-
-};
-exports.getItemId = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemId"},');
-
-  return `${item.id}`;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemId"},');
-
-};
-exports.getItemRequestPath = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemRequestPath"},');
-
-  return `${item.id}`;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemRequestPath"},');
-
-};
-exports.getItemModifiedDate = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemModifiedDate"},');
-
-  return item.created_time;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemModifiedDate"},');
-
-};
-exports.getItemThumbnailUrl = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemThumbnailUrl"},');
-
-  return exports.isFolder(item) ? null : exports.sortImages(item.images)[0].source;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemThumbnailUrl"},');
-
-};
 exports.getNextPagePath = (data, currentQuery, currentPath) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"${__filename}","paramsNumber":3},`);
-
   if (!data.paging || !data.paging.cursors) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getNextPagePath"},');
-
-    return null;
+    return null
   }
+
   const query = Object.assign({}, currentQuery, {
     cursor: data.paging.cursors.after
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getNextPagePath"},');
+  })
+  return `${currentPath || ''}?${querystring.stringify(query)}`
+}
 
-  return `${currentPath || ''}?${querystring.stringify(query)}`;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getNextPagePath"},');
-
-};
-exports.sortImages = images => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.sortImages","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sortImages"},');
-
-  return images.slice().sort((a, b) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.images.slice.sort","fileName":"${__filename}","paramsNumber":2},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.images.slice.sort"},');
-
-    return a.width - b.width;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.images.slice.sort"},');
-
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sortImages"},');
-
-};
+exports.sortImages = (images) => {
+  // sort in ascending order of dimension
+  return images.slice().sort((a, b) => a.width - b.width)
+}

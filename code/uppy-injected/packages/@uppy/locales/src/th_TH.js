@@ -1,6 +1,5 @@
-const SRTlib = require('SRT-util');
+const th_TH = {}
 
-const th_TH = {};
 th_TH.strings = {
   addMore: 'เพิ่ม',
   addMoreFiles: 'เพิ่มไฟล์',
@@ -135,22 +134,17 @@ th_TH.strings = {
     '1': 'คุณต้องเลือกอย่างน้อย %{smart_count} ไฟล์',
     '2': 'คุณต้องเลือกอย่างน้อย %{smart_count} ไฟล์'
   }
-};
-th_TH.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"th_TH.pluralize","fileName":"${__filename}","paramsNumber":1},`);
-
-  if (n === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"th_TH.pluralize"},');
-
-    return 0;
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"th_TH.pluralize"},');
-
-  return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"th_TH.pluralize"},');
-
-};
-if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.th_TH = th_TH;
 }
-module.exports = th_TH;
+
+th_TH.pluralize = function (n) {
+  if (n === 1) {
+    return 0
+  }
+  return 1
+}
+
+if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
+  window.Uppy.locales.th_TH = th_TH
+}
+
+module.exports = th_TH

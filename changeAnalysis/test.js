@@ -1,6 +1,7 @@
 const fs = require('fs');
 const changeAnalysis = require('./index');
 const { Parser } = require("acorn")
+const TestSelector = require("../testSelector")
 
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
@@ -18,6 +19,7 @@ const afterAst = ASTParser.parse(after);
 
 const res = changeAnalysis.getDiffs(beforeAst, afterAst)
 console.log('res length', res.length)
+
 res[0].forEach(ele => {
     console.log('ele length', ele.type)
 })
@@ -25,6 +27,9 @@ const diffFile = fs.readFileSync('./diff-ab886-9fb7b8.patch', "utf8");
 
 const changes = changeAnalysis.getChangesAncestors('../code/uppy', diffFile);
 
-changes.forEach(c => {
-    console.log("Logger:", c.filename, c.diffAncestors)
-})
+// changes.forEach(c => {
+//     console.log(c.filename)
+// })
+
+const testSelector = new TestSelector(undefined, undefined, undefined);
+testSelector.getReducedTests(changes)

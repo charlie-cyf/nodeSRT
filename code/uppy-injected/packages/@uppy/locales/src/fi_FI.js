@@ -1,6 +1,5 @@
-const SRTlib = require('SRT-util');
+const fi_FI = {}
 
-const fi_FI = {};
 fi_FI.strings = {
   addMore: 'Lisää',
   addMoreFiles: 'Lisää tiedostoja',
@@ -140,22 +139,17 @@ fi_FI.strings = {
   streamPassive: 'Jako passiivinen',
   micDisabled: 'Käyttäjä on estänyt mikrofonin',
   recording: 'Tallennetaan'
-};
-fi_FI.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fi_FI.pluralize","fileName":"${__filename}","paramsNumber":1},`);
-
-  if (n === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"fi_FI.pluralize"},');
-
-    return 0;
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"fi_FI.pluralize"},');
-
-  return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"fi_FI.pluralize"},');
-
-};
-if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.fi_FI = fi_FI;
 }
-module.exports = fi_FI;
+
+fi_FI.pluralize = function (n) {
+  if (n === 1) {
+    return 0
+  }
+  return 1
+}
+
+if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
+  window.Uppy.locales.fi_FI = fi_FI
+}
+
+module.exports = fi_FI

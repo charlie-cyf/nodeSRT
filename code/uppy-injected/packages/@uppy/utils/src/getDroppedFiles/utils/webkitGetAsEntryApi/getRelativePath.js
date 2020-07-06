@@ -1,17 +1,16 @@
-const SRTlib = require('SRT-util');
-
-module.exports = function getRelativePath(fileEntry) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
-
+/**
+ * Get the relative path from the FileEntry#fullPath, because File#webkitRelativePath is always '', at least onDrop.
+ *
+ * @param {FileEntry} fileEntry
+ *
+ * @returns {string|null} - if file is not in a folder - return null (this is to be consistent with .relativePath-s of files selected from My Device). If file is in a folder - return its fullPath, e.g. '/simpsons/hi.jpeg'.
+ */
+module.exports = function getRelativePath (fileEntry) {
+  // fileEntry.fullPath - "/simpsons/hi.jpeg" or undefined (for browsers that don't support it)
+  // fileEntry.name - "hi.jpeg"
   if (!fileEntry.fullPath || fileEntry.fullPath === '/' + fileEntry.name) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-    return null;
+    return null
   } else {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-    return fileEntry.fullPath;
+    return fileEntry.fullPath
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-};
+}

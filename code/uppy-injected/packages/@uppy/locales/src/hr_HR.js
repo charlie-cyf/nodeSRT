@@ -1,6 +1,5 @@
-const SRTlib = require('SRT-util');
+const hr_HR = {}
 
-const hr_HR = {};
 hr_HR.strings = {
   addMore: 'Dodaj još',
   addMoreFiles: 'Dodaj još datoteka',
@@ -133,22 +132,17 @@ hr_HR.strings = {
   selectFileNamed: 'Izaberite datoteku %{name}',
   unselectFileNamed: 'Isključite datoteku %{name}',
   openFolderNamed: 'Otvori mapu %{name}'
-};
-hr_HR.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"hr_HR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
-
-  if (n === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');
-
-    return 0;
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');
-
-  return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');
-
-};
-if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.hr_HR = hr_HR;
 }
-module.exports = hr_HR;
+
+hr_HR.pluralize = function (n) {
+  if (n === 1) {
+    return 0
+  }
+  return 1
+}
+
+if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
+  window.Uppy.locales.hr_HR = hr_HR
+}
+
+module.exports = hr_HR

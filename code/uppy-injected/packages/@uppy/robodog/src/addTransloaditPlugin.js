@@ -1,25 +1,30 @@
-const SRTlib = require('SRT-util');
+const Transloadit = require('@uppy/transloadit')
+const has = require('@uppy/utils/lib/hasProperty')
+const TransloaditResults = require('./TransloaditResultsPlugin')
 
-const Transloadit = require('@uppy/transloadit');
-const has = require('@uppy/utils/lib/hasProperty');
-const TransloaditResults = require('./TransloaditResultsPlugin');
-const transloaditOptionNames = ['service', 'waitForEncoding', 'waitForMetadata', 'alwaysRunAssembly', 'importFromUploadURLs', 'signature', 'params', 'fields', 'getAssemblyOptions'];
-function addTransloaditPlugin(uppy, opts) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addTransloaditPlugin","fileName":"${__filename}","paramsNumber":2},`);
+const transloaditOptionNames = [
+  'service',
+  'waitForEncoding',
+  'waitForMetadata',
+  'alwaysRunAssembly',
+  'importFromUploadURLs',
+  'signature',
+  'params',
+  'fields',
+  'getAssemblyOptions'
+]
 
-  const transloaditOptions = {};
-  transloaditOptionNames.forEach(name => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"transloaditOptionNames.forEach","fileName":"${__filename}","paramsNumber":1},`);
+function addTransloaditPlugin (uppy, opts) {
+  const transloaditOptions = {}
+  transloaditOptionNames.forEach((name) => {
+    if (has(opts, name)) transloaditOptions[name] = opts[name]
+  })
+  uppy.use(Transloadit, transloaditOptions)
 
-    if (has(opts, name)) transloaditOptions[name] = opts[name];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"transloaditOptionNames.forEach"},');
-
-  });
-  uppy.use(Transloadit, transloaditOptions);
+  // Adds a `results` key to the upload result data containing a flat array of all results from all Assemblies.
   if (transloaditOptions.waitForEncoding) {
-    uppy.use(TransloaditResults);
+    uppy.use(TransloaditResults)
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"addTransloaditPlugin","paramsNumber":2},');
-
 }
-module.exports = addTransloaditPlugin;
+
+module.exports = addTransloaditPlugin

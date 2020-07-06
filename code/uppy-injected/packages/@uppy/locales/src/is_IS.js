@@ -1,14 +1,15 @@
-const SRTlib = require('SRT-util');
+const is_IS = {}
 
-const is_IS = {};
 is_IS.strings = {
   addMore: 'Bæta við',
   addMoreFiles: 'Bæta við fleiri skrám',
   addingMoreFiles: 'Bæti við fleiri skrám',
-  allowAccessDescription: 'Vinsamlegast gefðu aðgang að myndavélinni þinni, til þess að taka myndir eða taka upp myndband með myndavélinni þinni.',
+  allowAccessDescription:
+        'Vinsamlegast gefðu aðgang að myndavélinni þinni, til þess að taka myndir eða taka upp myndband með myndavélinni þinni.',
   allowAccessTitle: 'Vinsamlegast gefðu aðgang að myndavélinni þinni.',
   authenticateWith: 'Tengjast %{pluginName}',
-  authenticateWithTitle: 'Vinsamlegast auðkenndu %{pluginName} til þess að velja skrár',
+  authenticateWithTitle:
+        'Vinsamlegast auðkenndu %{pluginName} til þess að velja skrár',
   back: 'Til baka',
   browse: 'skoða',
   cancel: 'Hætta við',
@@ -16,7 +17,8 @@ is_IS.strings = {
   chooseFiles: 'Veldu skrár',
   closeModal: 'Loka glugga',
   companionError: 'Tengin mistókst',
-  companionUnauthorizeHint: 'Til þess að leyfa aðgang að %{provider}, vinsamlegast smelltu hér: %{url}',
+  companionUnauthorizeHint:
+        'Til þess að leyfa aðgang að %{provider}, vinsamlegast smelltu hér: %{url}',
   complete: 'Lokið',
   connectedToInternet: 'Tengdur við internet',
   copyLink: 'Afrita hlekk',
@@ -36,10 +38,12 @@ is_IS.strings = {
   editing: 'Breyti %{file}',
   emptyFolderAdded: 'Engum skrám var bætt við frá tómri möppu',
   encoding: 'Dulkóða...',
-  enterCorrectUrl: 'Röng slóð: Vinsamlegast passaðu að þú sért að bæta við hlekk sem vísar beint á skrá',
+  enterCorrectUrl:
+        'Röng slóð: Vinsamlegast passaðu að þú sért að bæta við hlekk sem vísar beint á skrá',
   enterUrlToImport: 'Settu inn hlekk til að bæta við skrá',
   exceedsSize: 'Þessi skrá er stærri en hún má vera ',
-  failedToFetch: 'Það tókst ekki að sækja þennan hlekk, vinsamlegast passaðu að hann sé réttur',
+  failedToFetch:
+        'Það tókst ekki að sækja þennan hlekk, vinsamlegast passaðu að hann sé réttur',
   failedToUpload: 'Mistókst að upphala %{file}',
   fileSource: 'Uppruni skráar: %{name}',
   filesUploadedOfTotal: {
@@ -135,22 +139,17 @@ is_IS.strings = {
     '1': 'Þú verður að velja lágmark %{smart_count} skrár',
     '2': 'Þú verður að velja lágmark %{smart_count} skrár'
   }
-};
-is_IS.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"is_IS.pluralize","fileName":"${__filename}","paramsNumber":1},`);
-
-  if (n === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');
-
-    return 0;
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');
-
-  return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');
-
-};
-if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.is_IS = is_IS;
 }
-module.exports = is_IS;
+
+is_IS.pluralize = function (n) {
+  if (n === 1) {
+    return 0
+  }
+  return 1
+}
+
+if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
+  window.Uppy.locales.is_IS = is_IS
+}
+
+module.exports = is_IS

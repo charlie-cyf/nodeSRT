@@ -1,62 +1,62 @@
-const SRTlib = require('SRT-util');
+// @ts-ignore
+const NRP = require('node-redis-pubsub')
 
-const NRP = require('node-redis-pubsub');
+/**
+ * This class simulates the builtin events.EventEmitter but with the use of redis.
+ * This is useful for when companion is running on multiple instances and events need
+ * to be distributed across.
+ */
 class RedisEmitter extends NRP {
-  constructor(redisUrl) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
-
-    super({
-      url: redisUrl
-    });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
-
+  /**
+   *
+   * @param {string} redisUrl redis URL
+   */
+  constructor (redisUrl) {
+    // @ts-ignore
+    super({ url: redisUrl })
   }
-  once(eventName, handler) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"once","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
-    const removeListener = this.on(eventName, message => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"removeListener.on","fileName":"${__filename}","paramsNumber":1},`);
-
-      handler(message);
-      removeListener();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"removeListener.on"},');
-
-    });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"once"},');
-
+  /**
+   * Add a one-off event listener
+   * @param {string} eventName name of the event
+   * @param {function} handler the handler of the event
+   */
+  once (eventName, handler) {
+    const removeListener = this.on(eventName, (message) => {
+      handler(message)
+      removeListener()
+    })
   }
-  emit(eventName, message) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emit","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emit"},');
-
-    return super.emit(eventName, message || ({}));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emit"},');
-
+  /**
+   * Announce the occurence of an event
+   * @param {string} eventName name of the event
+   * @param {object} message the message to pass along with the event
+   */
+  emit (eventName, message) {
+    return super.emit(eventName, message || {})
   }
-  removeListener(eventName, handler) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeListener","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
-    this.receiver.removeListener(eventName, handler);
-    this.receiver.punsubscribe(this.prefix + eventName);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"removeListener"},');
-
+  /**
+   * Remove an event listener
+   * @param {string} eventName name of the event
+   * @param {function} handler the handler of the event to remove
+   */
+  removeListener (eventName, handler) {
+    this.receiver.removeListener(eventName, handler)
+    this.receiver.punsubscribe(this.prefix + eventName)
   }
-  removeAllListeners(eventName) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeAllListeners","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
-    this.receiver.removeAllListeners(eventName);
-    this.receiver.punsubscribe(this.prefix + eventName);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"removeAllListeners"},');
-
+  /**
+   * Remove all listeners of an event
+   * @param {string} eventName name of the event
+   */
+  removeAllListeners (eventName) {
+    this.receiver.removeAllListeners(eventName)
+    this.receiver.punsubscribe(this.prefix + eventName)
   }
 }
-module.exports = redisUrl => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-  return new RedisEmitter(redisUrl);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-};
+module.exports = (redisUrl) => {
+  return new RedisEmitter(redisUrl)
+}

@@ -1,6 +1,5 @@
-const SRTlib = require('SRT-util');
+const pt_BR = {}
 
-const pt_BR = {};
 pt_BR.strings = {
   addMore: 'Adicione mais',
   addMoreFiles: 'Adicionar mais arquivos',
@@ -133,22 +132,17 @@ pt_BR.strings = {
   selectFileNamed: 'Selecione o arquivo %{name}',
   unselectFileNamed: 'Deselecionar arquivo %{name}',
   openFolderNamed: 'Pasta aberta %{name}'
-};
-pt_BR.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"pt_BR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
-
-  if (n === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"pt_BR.pluralize"},');
-
-    return 0;
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"pt_BR.pluralize"},');
-
-  return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"pt_BR.pluralize"},');
-
-};
-if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.pt_BR = pt_BR;
 }
-module.exports = pt_BR;
+
+pt_BR.pluralize = function (n) {
+  if (n === 1) {
+    return 0
+  }
+  return 1
+}
+
+if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
+  window.Uppy.locales.pt_BR = pt_BR
+}
+
+module.exports = pt_BR

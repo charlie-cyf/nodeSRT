@@ -62,6 +62,9 @@ module.exports.getDiffs = function (AST1, AST2) {
  *      codebase - Path to codeBase
  *      diff - diff content
  * 
+ * returns: 
+ *      list of object {filename, content: file content after change}
+ * 
 */
 module.exports.parseAndApplyDiff = function (codebase, diff) {
     let objList = [];
@@ -79,6 +82,17 @@ module.exports.parseAndApplyDiff = function (codebase, diff) {
     return objList;
     
 }
+
+/* 
+* call getDiffs on each changed file, return a list of all changes and file information
+* returns: 
+*   [ {
+*       filename,
+*       content,
+*       diffAncestors: [ [{node(changeAncestors)}, {} ...], [], [] ... ]
+*     } ] 
+* 
+*/
 
 module.exports.getChangesAncestors = function (codeBase, diff) {
     let allChanges = this.parseAndApplyDiff(codeBase, diff);

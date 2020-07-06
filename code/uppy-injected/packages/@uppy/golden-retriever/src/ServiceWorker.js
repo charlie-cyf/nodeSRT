@@ -1,101 +1,61 @@
-const SRTlib = require('SRT-util');
+/* globals clients */
 
-const fileCache = Object.create(null);
-function getCache(name) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getCache","fileName":"${__filename}","paramsNumber":1},`);
+const fileCache = Object.create(null)
 
+function getCache (name) {
   if (!fileCache[name]) {
-    fileCache[name] = Object.create(null);
+    fileCache[name] = Object.create(null)
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"getCache"},');
-
-  return fileCache[name];
-    SRTlib.send('{"type":"FUNCTIONEND","function":"getCache","paramsNumber":1},');
-
+  return fileCache[name]
 }
-self.addEventListener('install', event => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"self.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
 
-  console.log('Installing Uppy Service Worker...');
-  event.waitUntil(Promise.resolve().then(() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"event.waitUntil.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
+self.addEventListener('install', (event) => {
+  console.log('Installing Uppy Service Worker...')
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"event.waitUntil.Promise.resolve.then"},');
+  event.waitUntil(Promise.resolve()
+    .then(() => self.skipWaiting()))
+})
 
-    return self.skipWaiting();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"event.waitUntil.Promise.resolve.then"},');
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim())
+})
 
-  }));
-    SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener"},');
-
-});
-self.addEventListener('activate', event => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"self.addEventListener2","fileName":"${__filename}","paramsNumber":1},`);
-
-  event.waitUntil(self.clients.claim());
-    SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener2"},');
-
-});
-function sendMessageToAllClients(msg) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sendMessageToAllClients","fileName":"${__filename}","paramsNumber":1},`);
-
-  clients.matchAll().then(clients => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"clients.matchAll.then","fileName":"${__filename}","paramsNumber":1},`);
-
-    clients.forEach(client => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"clients.forEach","fileName":"${__filename}","paramsNumber":1},`);
-
-      client.postMessage(msg);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"clients.forEach"},');
-
-    });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"clients.matchAll.then"},');
-
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"sendMessageToAllClients","paramsNumber":1},');
-
+function sendMessageToAllClients (msg) {
+  clients.matchAll().then((clients) => {
+    clients.forEach((client) => {
+      client.postMessage(msg)
+    })
+  })
 }
-function addFile(store, file) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFile","fileName":"${__filename}","paramsNumber":2},`);
 
-  getCache(store)[file.id] = file.data;
-  console.log('Added file blob to service worker cache:', file.data);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"addFile","paramsNumber":2},');
-
+function addFile (store, file) {
+  getCache(store)[file.id] = file.data
+  console.log('Added file blob to service worker cache:', file.data)
 }
-function removeFile(store, fileID) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFile","fileName":"${__filename}","paramsNumber":2},`);
 
-  delete getCache(store)[fileID];
-  console.log('Removed file blob from service worker cache:', fileID);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"removeFile","paramsNumber":2},');
-
+function removeFile (store, fileID) {
+  delete getCache(store)[fileID]
+  console.log('Removed file blob from service worker cache:', fileID)
 }
-function getFiles(store) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getFiles","fileName":"${__filename}","paramsNumber":1},`);
 
+function getFiles (store) {
   sendMessageToAllClients({
     type: 'uppy/ALL_FILES',
     store: store,
     files: getCache(store)
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"getFiles","paramsNumber":1},');
-
+  })
 }
-self.addEventListener('message', event => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"self.addEventListener3","fileName":"${__filename}","paramsNumber":1},`);
 
+self.addEventListener('message', (event) => {
   switch (event.data.type) {
     case 'uppy/ADD_FILE':
-      addFile(event.data.store, event.data.file);
-      break;
+      addFile(event.data.store, event.data.file)
+      break
     case 'uppy/REMOVE_FILE':
-      removeFile(event.data.store, event.data.fileID);
-      break;
+      removeFile(event.data.store, event.data.fileID)
+      break
     case 'uppy/GET_FILES':
-      getFiles(event.data.store);
-      break;
+      getFiles(event.data.store)
+      break
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener3"},');
-
-});
+})

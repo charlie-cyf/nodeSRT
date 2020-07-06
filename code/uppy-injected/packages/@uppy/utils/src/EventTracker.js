@@ -1,35 +1,21 @@
-const SRTlib = require('SRT-util');
-
+/**
+ * Create a wrapper around an event emitter with a `remove` method to remove
+ * all events that were added using the wrapped emitter.
+ */
 module.exports = class EventTracker {
-  constructor(emitter) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"EventTracker"}},`);
-
-    this._events = [];
-    this._emitter = emitter;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
-
+  constructor (emitter) {
+    this._events = []
+    this._emitter = emitter
   }
-  on(event, fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"EventTracker"}},`);
 
-    this._events.push([event, fn]);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
-
-    return this._emitter.on(event, fn);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
-
+  on (event, fn) {
+    this._events.push([event, fn])
+    return this._emitter.on(event, fn)
   }
-  remove() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"remove","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"EventTracker"}},`);
 
+  remove () {
     this._events.forEach(([event, fn]) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._events.forEach","fileName":"${__filename}","paramsNumber":1},`);
-
-      this._emitter.off(event, fn);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._events.forEach"},');
-
-    });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"remove"},');
-
+      this._emitter.off(event, fn)
+    })
   }
-};
+}

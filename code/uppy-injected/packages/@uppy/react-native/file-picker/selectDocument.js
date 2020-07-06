@@ -1,25 +1,13 @@
-const SRTlib = require('SRT-util');
+import * as Expo from 'expo'
 
-import * as Expo from 'expo';
-function selectDocumentWithExpo(options) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"selectDocumentWithExpo","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"selectDocumentWithExpo"},');
-
+function selectDocumentWithExpo (options) {
   return Expo.DocumentPicker.getDocumentAsync({
     copyToCacheDirectory: false
-  }).then(result => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Expo.DocumentPicker.getDocumentAsync.then","fileName":"${__filename}","paramsNumber":1},`);
-
+  }).then((result) => {
     if (!result.cancelled && result.type !== 'cancel') {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Expo.DocumentPicker.getDocumentAsync.then"},');
-
-      return result;
+      return result
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Expo.DocumentPicker.getDocumentAsync.then"},');
-
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"selectDocumentWithExpo","paramsNumber":1},');
-
+  })
 }
-export default selectDocumentWithExpo;
+
+export default selectDocumentWithExpo

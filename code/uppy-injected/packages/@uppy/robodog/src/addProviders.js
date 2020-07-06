@@ -1,7 +1,6 @@
-const SRTlib = require('SRT-util');
+const Transloadit = require('@uppy/transloadit')
+const has = require('@uppy/utils/lib/hasProperty')
 
-const Transloadit = require('@uppy/transloadit');
-const has = require('@uppy/utils/lib/hasProperty');
 const remoteProviders = {
   dropbox: require('@uppy/dropbox'),
   'google-drive': require('@uppy/google-drive'),
@@ -9,82 +8,77 @@ const remoteProviders = {
   facebook: require('@uppy/facebook'),
   onedrive: require('@uppy/onedrive'),
   url: require('@uppy/url')
-};
+}
+
 const localProviders = {
   webcam: require('@uppy/webcam')
-};
-const remoteProviderOptionNames = ['companionUrl', 'companionAllowedHosts', 'companionHeaders', 'serverHeaders', 'target'];
-const localProviderOptionNames = ['target'];
-function addRemoteProvider(uppy, name, opts) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addRemoteProvider","fileName":"${__filename}","paramsNumber":3},`);
+}
 
-  const Provider = remoteProviders[name];
+const remoteProviderOptionNames = [
+  'companionUrl',
+  'companionAllowedHosts',
+  'companionHeaders',
+  'serverHeaders',
+  'target'
+]
+
+// No shared options.
+const localProviderOptionNames = [
+  'target'
+]
+
+function addRemoteProvider (uppy, name, opts) {
+  const Provider = remoteProviders[name]
   const providerOptions = {
+    // Default to the :tl: Companion servers.
     companionUrl: Transloadit.COMPANION,
     companionAllowedHosts: Transloadit.COMPANION_PATTERN
-  };
-  remoteProviderOptionNames.forEach(name => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"remoteProviderOptionNames.forEach","fileName":"${__filename}","paramsNumber":1},`);
-
-    if (has(opts, name)) providerOptions[name] = opts[name];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"remoteProviderOptionNames.forEach"},');
-
-  });
-  if (typeof opts[name] === 'object') {
-    Object.assign(providerOptions, opts[name]);
   }
-  uppy.use(Provider, providerOptions);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"addRemoteProvider","paramsNumber":3},');
 
-}
-function addLocalProvider(uppy, name, opts) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addLocalProvider","fileName":"${__filename}","paramsNumber":3},`);
-
-  const Provider = localProviders[name];
-  const providerOptions = {};
-  localProviderOptionNames.forEach(name => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"localProviderOptionNames.forEach","fileName":"${__filename}","paramsNumber":1},`);
-
-    if (has(opts, name)) providerOptions[name] = opts[name];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"localProviderOptionNames.forEach"},');
-
-  });
+  remoteProviderOptionNames.forEach((name) => {
+    if (has(opts, name)) providerOptions[name] = opts[name]
+  })
+  // Apply overrides for a specific provider plugin.
   if (typeof opts[name] === 'object') {
-    Object.assign(providerOptions, opts[name]);
+    Object.assign(providerOptions, opts[name])
   }
-  uppy.use(Provider, providerOptions);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"addLocalProvider","paramsNumber":3},');
 
+  uppy.use(Provider, providerOptions)
 }
-function addProviders(uppy, names, opts = {}) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addProviders","fileName":"${__filename}","paramsNumber":3},`);
 
-  names.forEach(name => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"names.forEach","fileName":"${__filename}","paramsNumber":1},`);
+function addLocalProvider (uppy, name, opts) {
+  const Provider = localProviders[name]
+  const providerOptions = {}
 
+  localProviderOptionNames.forEach((name) => {
+    if (has(opts, name)) providerOptions[name] = opts[name]
+  })
+  // Apply overrides for a specific provider plugin.
+  if (typeof opts[name] === 'object') {
+    Object.assign(providerOptions, opts[name])
+  }
+
+  uppy.use(Provider, providerOptions)
+}
+
+function addProviders (uppy, names, opts = {}) {
+  names.forEach((name) => {
     if (has(remoteProviders, name)) {
-      addRemoteProvider(uppy, name, opts);
+      addRemoteProvider(uppy, name, opts)
     } else if (has(localProviders, name)) {
-      addLocalProvider(uppy, name, opts);
+      addLocalProvider(uppy, name, opts)
     } else {
-      const validNames = [...Object.keys(remoteProviders), ...Object.keys(localProviders)];
-      const expectedNameString = validNames.sort().map(validName => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"expectedNameString.validNames.sort.map.join.validNames.sort.map","fileName":"${__filename}","paramsNumber":1},`);
-
-                SRTlib.send('{"type":"FUNCTIONEND","function":"expectedNameString.validNames.sort.map.join.validNames.sort.map"},');
-
-        return `'${validName}'`;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"expectedNameString.validNames.sort.map.join.validNames.sort.map"},');
-
-      }).join(', ');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"names.forEach"},');
-
-      throw new Error(`Unexpected provider '${name}', expected one of [${expectedNameString}]`);
+      const validNames = [
+        ...Object.keys(remoteProviders),
+        ...Object.keys(localProviders)
+      ]
+      const expectedNameString = validNames
+        .sort()
+        .map((validName) => `'${validName}'`)
+        .join(', ')
+      throw new Error(`Unexpected provider '${name}', expected one of [${expectedNameString}]`)
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"names.forEach"},');
-
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"addProviders","paramsNumber":3},');
-
+  })
 }
-module.exports = addProviders;
+
+module.exports = addProviders

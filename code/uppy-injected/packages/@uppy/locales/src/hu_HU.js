@@ -1,7 +1,7 @@
-const SRTlib = require('SRT-util');
+const hu_HU = {}
 
-const hu_HU = {};
-hu_HU.contributors = ['nagyv'];
+hu_HU.contributors = ['nagyv']
+
 hu_HU.strings = {
   addMore: 'Adj hozzá többet',
   addMoreFiles: 'További fájlok hozzáadása',
@@ -134,17 +134,14 @@ hu_HU.strings = {
   selectFileNamed: 'Válaszd ki a fájlt %{name}',
   unselectFileNamed: 'A fájl törlése %{name}',
   openFolderNamed: 'Nyitott mappa %{name}'
-};
-hu_HU.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"hu_HU.pluralize","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"hu_HU.pluralize"},');
-
-  return 0;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"hu_HU.pluralize"},');
-
-};
-if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.hu_HU = hu_HU;
 }
-module.exports = hu_HU;
+
+hu_HU.pluralize = function (n) {
+  return 0
+}
+
+if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
+  window.Uppy.locales.hu_HU = hu_HU
+}
+
+module.exports = hu_HU

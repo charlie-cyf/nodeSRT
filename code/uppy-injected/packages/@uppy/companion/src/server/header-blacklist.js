@@ -1,52 +1,64 @@
-const SRTlib = require('SRT-util');
+const isObject = require('isobject')
+const logger = require('./logger')
 
-const isObject = require('isobject');
-const logger = require('./logger');
-const forbiddenNames = ['accept-charset', 'accept-encoding', 'access-control-request-headers', 'access-control-request-method', 'connection', 'content-length', 'cookie', 'cookie2', 'date', 'dnt', 'expect', 'host', 'keep-alive', 'origin', 'referer', 'te', 'trailer', 'transfer-encoding', 'upgrade', 'via'];
-const forbiddenRegex = [/^proxy-.*$/, /^sec-.*$/];
-const isForbiddenHeader = header => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isForbiddenHeader","fileName":"${__filename}","paramsNumber":1},`);
+/**
+ * Forbidden header names.
+ */
+const forbiddenNames = [
+  'accept-charset',
+  'accept-encoding',
+  'access-control-request-headers',
+  'access-control-request-method',
+  'connection',
+  'content-length',
+  'cookie',
+  'cookie2',
+  'date',
+  'dnt',
+  'expect',
+  'host',
+  'keep-alive',
+  'origin',
+  'referer',
+  'te',
+  'trailer',
+  'transfer-encoding',
+  'upgrade',
+  'via'
+]
 
-  const headerLower = header.toLowerCase();
-  const forbidden = forbiddenNames.indexOf(headerLower) >= 0 || forbiddenRegex.findIndex(regex => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"forbidden.forbiddenRegex.findIndex","fileName":"${__filename}","paramsNumber":1},`);
+/**
+ * Forbidden header regexs.
+ */
+const forbiddenRegex = [/^proxy-.*$/, /^sec-.*$/]
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"forbidden.forbiddenRegex.findIndex"},');
+/**
+ * Check if the header in parameter is a forbidden header.
+ * @param {string} header Header to check
+ * @return True if header is forbidden, false otherwise.
+ */
+const isForbiddenHeader = (header) => {
+  const headerLower = header.toLowerCase()
+  const forbidden =
+    forbiddenNames.indexOf(headerLower) >= 0 ||
+    forbiddenRegex.findIndex((regex) => regex.test(headerLower)) >= 0
 
-    return regex.test(headerLower);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"forbidden.forbiddenRegex.findIndex"},');
-
-  }) >= 0;
   if (forbidden) {
-    logger.warn(`Header forbidden: ${header}`, 'header.forbidden');
+    logger.warn(`Header forbidden: ${header}`, 'header.forbidden')
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"isForbiddenHeader"},');
+  return forbidden
+}
 
-  return forbidden;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"isForbiddenHeader"},');
-
-};
-module.exports = headers => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
-
+module.exports = (headers) => {
   if (!isObject(headers)) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-    return {};
+    return {}
   }
-  const headersCloned = Object.assign({}, headers);
-  Object.keys(headersCloned).forEach(header => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
+  const headersCloned = Object.assign({}, headers)
+  Object.keys(headersCloned).forEach((header) => {
     if (isForbiddenHeader(header)) {
-      delete headersCloned[header];
+      delete headersCloned[header]
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
-
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-  return headersCloned;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-};
+  })
+  return headersCloned
+}

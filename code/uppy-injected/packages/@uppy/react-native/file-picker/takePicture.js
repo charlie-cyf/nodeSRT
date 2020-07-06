@@ -1,46 +1,20 @@
-const SRTlib = require('SRT-util');
+import * as Expo from 'expo'
 
-import * as Expo from 'expo';
-function takePictureWithExpo(options) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"takePictureWithExpo","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"takePictureWithExpo"},');
-
+function takePictureWithExpo (options) {
   return new Promise((resolve, reject) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
-
-    return Expo.Permissions.askAsync(Expo.Permissions.CAMERA).then(isAllowed => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Expo.Permissions.askAsync.then","fileName":"${__filename}","paramsNumber":1},`);
-
+    return Expo.Permissions.askAsync(Expo.Permissions.CAMERA).then((isAllowed) => {
       if (!isAllowed) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Expo.Permissions.askAsync.then"},');
-
-        return reject(new Error('Permissions denied'));
+        return reject(new Error('Permissions denied'))
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Expo.Permissions.askAsync.then"},');
 
-      return Expo.ImagePicker.launchCameraAsync({
-        allowsEditing: true
-      }).then(result => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Expo.ImagePicker.launchCameraAsync.then","fileName":"${__filename}","paramsNumber":1},`);
-
-        if (!result.cancelled) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Expo.ImagePicker.launchCameraAsync.then"},');
-
-          return resolve(result);
-        }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Expo.ImagePicker.launchCameraAsync.then"},');
-
-      });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Expo.Permissions.askAsync.then"},');
-
-    });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
-
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"takePictureWithExpo","paramsNumber":1},');
-
+      return Expo.ImagePicker.launchCameraAsync({ allowsEditing: true })
+        .then((result) => {
+          if (!result.cancelled) {
+            return resolve(result)
+          }
+        })
+    })
+  })
 }
-export default takePictureWithExpo;
+
+export default takePictureWithExpo

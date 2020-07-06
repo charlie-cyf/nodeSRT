@@ -1,17 +1,16 @@
-const SRTlib = require('SRT-util');
+const nodeEmitter = require('./default-emitter')
+const redisEmitter = require('./redis-emitter')
+let emitter
 
-const nodeEmitter = require('./default-emitter');
-const redisEmitter = require('./redis-emitter');
-let emitter;
-module.exports = redisUrl => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
-
+/**
+ * Singleton event emitter that is shared between modules throughout the lifetime of the server.
+ * Used to transmit events (such as progress, upload completion) from controllers,
+ * such as the Google Drive 'get' controller, along to the client.
+ */
+module.exports = (redisUrl) => {
   if (!emitter) {
-    emitter = redisUrl ? redisEmitter(redisUrl) : nodeEmitter();
+    emitter = redisUrl ? redisEmitter(redisUrl) : nodeEmitter()
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  return emitter;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
-};
+  return emitter
+}
