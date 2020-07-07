@@ -1,33 +1,32 @@
-import React from 'react' // eslint-disable-line no-unused-vars
-import { View, Text } from 'react-native'
+const SRTlib = require('SRT-util');
 
-export default function ProgressBar (props) {
-  const progress = props.progress
+import React from 'react';
+import {View, Text} from 'react-native';
+export default function ProgressBar(props) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBar","fileName":"${__filename}","paramsNumber":1},`);
 
-  const colorGreen = '#0b8600'
-  const colorBlue = '#006bb7'
+  const progress = props.progress;
+  const colorGreen = '#0b8600';
+  const colorBlue = '#006bb7';
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBar"},');
 
-  return (
-    <View style={{
-      marginTop: 15,
-      marginBottom: 15
-    }}
-    >
-      <View
-        style={{
-          height: 5,
-          overflow: 'hidden',
-          backgroundColor: '#dee1e3'
-        }}
-      >
+  return <View style={{
+    marginTop: 15,
+    marginBottom: 15
+  }}>
+      <View style={{
+    height: 5,
+    overflow: 'hidden',
+    backgroundColor: '#dee1e3'
+  }}>
         <View style={{
-          height: 5,
-          backgroundColor: progress === 100 ? colorGreen : colorBlue,
-          width: progress + '%'
-        }}
-        />
+    height: 5,
+    backgroundColor: progress === 100 ? colorGreen : colorBlue,
+    width: progress + '%'
+  }} />
       </View>
       <Text>{progress ? progress + '%' : null}</Text>
-    </View>
-  )
+    </View>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBar","paramsNumber":1},');
+
 }

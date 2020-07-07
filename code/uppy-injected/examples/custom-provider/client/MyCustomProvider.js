@@ -1,38 +1,42 @@
-const { Plugin } = require('@uppy/core')
-const { Provider } = require('@uppy/companion-client')
-const ProviderViews = require('@uppy/provider-views')
-const { h } = require('preact')
+const SRTlib = require('SRT-util');
 
+const {Plugin} = require('@uppy/core');
+const {Provider} = require('@uppy/companion-client');
+const ProviderViews = require('@uppy/provider-views');
+const {h} = require('preact');
 module.exports = class MyCustomProvider extends Plugin {
-  constructor (uppy, opts) {
-    super(uppy, opts)
-    this.type = 'acquirer'
-    this.id = this.opts.id || 'MyCustomProvider'
-    Provider.initPlugin(this, opts)
+  constructor(uppy, opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
-    this.title = 'MyCustomProvider'
-    this.icon = () => (
-      <img src="https://uppy.io/images/logos/uppy-dog-head-arrow.svg" width="23" />
-    )
+    super(uppy, opts);
+    this.type = 'acquirer';
+    this.id = this.opts.id || 'MyCustomProvider';
+    Provider.initPlugin(this, opts);
+    this.title = 'MyCustomProvider';
+    this.icon = () => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.icon","fileName":"${__filename}","paramsNumber":0},`);
 
-    // writing out the key explicitly for readability the key used to store
-    // the provider instance must be equal to this.id.
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.icon"},');
+
+      return <img src="https://uppy.io/images/logos/uppy-dog-head-arrow.svg" width="23" />;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.icon"},');
+
+    };
     this[this.id] = new Provider(uppy, {
       companionUrl: this.opts.companionUrl,
       provider: 'mycustomprovider'
-    })
+    });
+    this.files = [];
+    this.onAuth = this.onAuth.bind(this);
+    this.render = this.render.bind(this);
+    this.opts = Object.assign({}, opts);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-    this.files = []
-    this.onAuth = this.onAuth.bind(this)
-    this.render = this.render.bind(this)
-
-    // merge default options with the ones set by user
-    this.opts = Object.assign({}, opts)
   }
+  install() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
-  install () {
-    this.view = new ProviderViews(this)
-    // Set default state
+    this.view = new ProviderViews(this);
     this.setPluginState({
       authenticated: false,
       files: [],
@@ -41,72 +45,140 @@ module.exports = class MyCustomProvider extends Plugin {
       activeRow: -1,
       filterInput: '',
       isSearchVisible: false
-    })
-
-    const target = this.opts.target
+    });
+    const target = this.opts.target;
     if (target) {
-      this.mount(target, this)
+      this.mount(target, this);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
-  uninstall () {
-    this.view.tearDown()
-    this.unmount()
   }
+  uninstall() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
-  onAuth (authenticated) {
-    this.setPluginState({ authenticated })
+    this.view.tearDown();
+    this.unmount();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
+
+  }
+  onAuth(authenticated) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onAuth","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+
+    this.setPluginState({
+      authenticated
+    });
     if (authenticated) {
-      this.view.getFolder()
+      this.view.getFolder();
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onAuth"},');
 
-  isFolder (item) {
-    return false
   }
+  isFolder(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isFolder","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
-  getItemData (item) {
-    return item
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isFolder"},');
 
-  getItemIcon (item) {
-    return 'https://uppy.io/images/logos/uppy-dog-head-arrow.svg'
-  }
+    return false;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isFolder"},');
 
-  getItemSubList (item) {
-    return item.entries
   }
+  getItemData(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemData","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
-  getItemName (item) {
-    return item.name
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemData"},');
 
-  getMimeType (item) {
-    // mime types aren't supported.
-    return null
-  }
+    return item;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemData"},');
 
-  getItemId (item) {
-    return item.name
   }
+  getItemIcon(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemIcon","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
-  getItemRequestPath (item) {
-    return encodeURIComponent(item.name)
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemIcon"},');
 
-  getItemModifiedDate (item) {
-    return Date.now()
-  }
+    return 'https://uppy.io/images/logos/uppy-dog-head-arrow.svg';
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemIcon"},');
 
-  getItemThumbnailUrl (item) {
-    return 'https://uppy.io/images/logos/uppy-dog-head-arrow.svg'
   }
+  getItemSubList(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemSubList","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
-  getUsername () {
-    return 'Cool Dog'
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemSubList"},');
 
-  render (state) {
-    return this.view.render(state)
+    return item.entries;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemSubList"},');
+
   }
-}
+  getItemName(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemName","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemName"},');
+
+    return item.name;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemName"},');
+
+  }
+  getMimeType(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMimeType","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getMimeType"},');
+
+    return null;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getMimeType"},');
+
+  }
+  getItemId(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemId","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemId"},');
+
+    return item.name;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemId"},');
+
+  }
+  getItemRequestPath(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemRequestPath","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemRequestPath"},');
+
+    return encodeURIComponent(item.name);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemRequestPath"},');
+
+  }
+  getItemModifiedDate(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemModifiedDate","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemModifiedDate"},');
+
+    return Date.now();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemModifiedDate"},');
+
+  }
+  getItemThumbnailUrl(item) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemThumbnailUrl","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemThumbnailUrl"},');
+
+    return 'https://uppy.io/images/logos/uppy-dog-head-arrow.svg';
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getItemThumbnailUrl"},');
+
+  }
+  getUsername() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUsername","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getUsername"},');
+
+    return 'Cool Dog';
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getUsername"},');
+
+  }
+  render(state) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+    return this.view.render(state);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+  }
+};

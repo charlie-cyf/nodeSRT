@@ -1,84 +1,107 @@
-const { h } = require('preact')
-const prettierBytes = require('@transloadit/prettier-bytes')
-const truncateString = require('../../../utils/truncateString')
+const SRTlib = require('SRT-util');
 
-const renderAcquirerIcon = (acquirer, props) =>
-  <span title={props.i18n('fileSource', { name: acquirer.name })}>
+const {h} = require('preact');
+const prettierBytes = require('@transloadit/prettier-bytes');
+const truncateString = require('../../../utils/truncateString');
+const renderAcquirerIcon = (acquirer, props) => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderAcquirerIcon","fileName":"${__filename}","paramsNumber":2},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderAcquirerIcon"},');
+
+  return <span title={props.i18n('fileSource', {
+    name: acquirer.name
+  })}>
     {acquirer.icon()}
-  </span>
+  </span>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderAcquirerIcon"},');
 
-const renderFileSource = (props) => (
-  props.file.source &&
-  props.file.source !== props.id &&
-    <div class="uppy-Dashboard-Item-sourceIcon">
+};
+const renderFileSource = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileSource","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSource"},');
+
+  return props.file.source && props.file.source !== props.id && <div class="uppy-Dashboard-Item-sourceIcon">
       {props.acquirers.map(acquirer => {
-        if (acquirer.id === props.file.source) {
-          return renderAcquirerIcon(acquirer, props)
-        }
-      })}
-    </div>
-)
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"props.acquirers.map","fileName":"${__filename}","paramsNumber":1},`);
 
-const renderFileName = (props) => {
-  // Take up at most 2 lines on any screen
-  let maxNameLength
-  // For very small mobile screens
+    if (acquirer.id === props.file.source) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"props.acquirers.map"},');
+
+      return renderAcquirerIcon(acquirer, props);
+    }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"props.acquirers.map"},');
+
+  })}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSource"},');
+
+};
+const renderFileName = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileName","fileName":"${__filename}","paramsNumber":1},`);
+
+  let maxNameLength;
   if (props.containerWidth <= 352) {
-    maxNameLength = 35
-  // For regular mobile screens
+    maxNameLength = 35;
   } else if (props.containerWidth <= 576) {
-    maxNameLength = 60
-  // For desktops
+    maxNameLength = 60;
   } else {
-    maxNameLength = 30
+    maxNameLength = 30;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileName"},');
 
-  return (
-    <div class="uppy-Dashboard-Item-name" title={props.file.meta.name}>
+  return <div class="uppy-Dashboard-Item-name" title={props.file.meta.name}>
       {truncateString(props.file.meta.name, maxNameLength)}
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileName"},');
 
-const renderFileSize = (props) => (
-  props.file.data.size &&
-    <div class="uppy-Dashboard-Item-statusSize">
+};
+const renderFileSize = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileSize","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSize"},');
+
+  return props.file.data.size && <div class="uppy-Dashboard-Item-statusSize">
       {prettierBytes(props.file.data.size)}
-    </div>
-)
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSize"},');
 
-const ErrorButton = ({ file, onClick }) => {
+};
+const ErrorButton = ({file, onClick}) => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ErrorButton","fileName":"${__filename}","paramsNumber":1},`);
+
   if (file.error) {
-    return (
-      <span
-        class="uppy-Dashboard-Item-errorDetails"
-        aria-label={file.error}
-        data-microtip-position="bottom"
-        data-microtip-size="medium"
-        role="tooltip"
-        onclick={onClick}
-      >
-        ?
-      </span>
-    )
-  }
-  return null
-}
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
 
-module.exports = function FileInfo (props) {
-  return (
-    <div class="uppy-Dashboard-Item-fileInfo" data-uppy-file-source={props.file.source}>
+    return <span class="uppy-Dashboard-Item-errorDetails" aria-label={file.error} data-microtip-position="bottom" data-microtip-size="medium" role="tooltip" onclick={onClick}>
+        ?
+      </span>;
+  }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
+
+  return null;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
+
+};
+module.exports = function FileInfo(props) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+  return <div class="uppy-Dashboard-Item-fileInfo" data-uppy-file-source={props.file.source}>
       {renderFileName(props)}
       <div class="uppy-Dashboard-Item-status">
         {renderFileSize(props)}
         {renderFileSource(props)}
-        <ErrorButton
-          file={props.file}
-          onClick={() => {
-            alert(props.file.error)
-          }}
-        />
+        <ErrorButton file={props.file} onClick={() => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.FileInfo.ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
+
+    alert(props.file.error);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FileInfo.ReturnStatement"},');
+
+  }} />
       </div>
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

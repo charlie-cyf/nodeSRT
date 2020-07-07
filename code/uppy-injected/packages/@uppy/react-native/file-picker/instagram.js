@@ -1,105 +1,157 @@
-import React from 'react'
-import {
-  AsyncStorage,
-  View,
-  FlatList,
-  Image,
-  WebView
-} from 'react-native'
-import Instagram from '@uppy/instagram'
+const SRTlib = require('SRT-util');
 
-function getQueryParamValueFromUrl (name, url) {
-  name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]')
-  var regexS = '[\\?&]' + name + '=([^&#]*)'
-  var regex = new RegExp(regexS)
-  var results = regex.exec(url)
-  return results == null ? null : results[1]
+import React from 'react';
+import {AsyncStorage, View, FlatList, Image, WebView} from 'react-native';
+import Instagram from '@uppy/instagram';
+function getQueryParamValueFromUrl(name, url) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getQueryParamValueFromUrl","fileName":"${__filename}","paramsNumber":2},`);
+
+  name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+  var regexS = '[\\?&]' + name + '=([^&#]*)';
+  var regex = new RegExp(regexS);
+  var results = regex.exec(url);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getQueryParamValueFromUrl"},');
+
+  return results == null ? null : results[1];
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getQueryParamValueFromUrl","paramsNumber":2},');
+
 }
-
-// how instagram provider can be render, not ready
 export default class UppyRNInstagram extends React.Component {
-  constructor () {
-    super()
+  constructor() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
 
+    super();
     this.state = {
       instagram: {
         user: 'bla@gmail.com',
-        items: [
-          { caption: Date.now(), url: 'http://lorempixel.com/200/200/cats/1' },
-          { caption: Date.now(), url: 'http://lorempixel.com/200/200/cats/2' },
-          { caption: Date.now(), url: 'http://lorempixel.com/200/200/cats/3' },
-          { caption: Date.now(), url: 'http://lorempixel.com/200/200/cats/4' },
-          { caption: Date.now(), url: 'http://lorempixel.com/200/200/cats/5' },
-          { caption: Date.now(), url: 'http://lorempixel.com/200/200/' },
-          { caption: Date.now(), url: 'http://lorempixel.com/200/200/' },
-          { caption: Date.now(), url: 'http://lorempixel.com/200/200/' },
-          { caption: Date.now(), url: 'http://lorempixel.com/200/200/' }
-        ]
+        items: [{
+          caption: Date.now(),
+          url: 'http://lorempixel.com/200/200/cats/1'
+        }, {
+          caption: Date.now(),
+          url: 'http://lorempixel.com/200/200/cats/2'
+        }, {
+          caption: Date.now(),
+          url: 'http://lorempixel.com/200/200/cats/3'
+        }, {
+          caption: Date.now(),
+          url: 'http://lorempixel.com/200/200/cats/4'
+        }, {
+          caption: Date.now(),
+          url: 'http://lorempixel.com/200/200/cats/5'
+        }, {
+          caption: Date.now(),
+          url: 'http://lorempixel.com/200/200/'
+        }, {
+          caption: Date.now(),
+          url: 'http://lorempixel.com/200/200/'
+        }, {
+          caption: Date.now(),
+          url: 'http://lorempixel.com/200/200/'
+        }, {
+          caption: Date.now(),
+          url: 'http://lorempixel.com/200/200/'
+        }]
       }
-    }
+    };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
+
   }
+  componentDidMount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
 
-  componentDidMount () {
-    const uppy = this.props.uppy
-    const options = Object.assign(
-      { id: 'uppyRN:Instagram' },
-      this.props,
-      { storage: AsyncStorage }
-    )
-    delete options.uppy
-    uppy.use(Instagram, options)
-    this.plugin = uppy.getPlugin(options.id)
-
+    const uppy = this.props.uppy;
+    const options = Object.assign({
+      id: 'uppyRN:Instagram'
+    }, this.props, {
+      storage: AsyncStorage
+    });
+    delete options.uppy;
+    uppy.use(Instagram, options);
+    this.plugin = uppy.getPlugin(options.id);
     this.setState({
       authUrl: this.plugin.provider.authUrl()
-    })
-  }
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
 
-  componentWillUnmount () {
-    const uppy = this.props.uppy
-    uppy.removePlugin(this.plugin)
   }
+  componentWillUnmount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
 
-  renderGrid (items) {
-    return (
-      <View style={styles.container}>
-        <FlatList
-          data={items}
-          renderItem={({ item }) => (
-            <View style={{ flex: 1, flexDirection: 'column', margin: 1 }}>
-              <Image style={styles.item} source={{ uri: item.url }} />
-            </View>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-          numColumns={3}
-        />
-      </View>
-    )
+    const uppy = this.props.uppy;
+    uppy.removePlugin(this.plugin);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
+
   }
+  renderGrid(items) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderGrid","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyRNInstagram"}},`);
 
-  renderInstagram () {
-    console.log(this.state.authUrl)
-    return (
-      <WebView
-        source={{ uri: this.state.authUrl }}
-        style={{ marginTop: 20 }}
-        onNavigationStateChange={(ev) => {
-          const url = ev.url
-          const token = getQueryParamValueFromUrl('uppyAuthToken', url)
-          console.log(token)
-          this.plugin.provider.setAuthToken(token)
-          console.log(this.plugin.provider.list('recent'))
-          // return this.renderGrid(this.state.instagram.items)
-        }}
-      />
-    )
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderGrid"},');
+
+    return <View style={styles.container}>
+        <FlatList data={items} renderItem={({item}) => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+      return <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        margin: 1
+      }}>
+              <Image style={styles.item} source={{
+        uri: item.url
+      }} />
+            </View>;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+    }} keyExtractor={(item, index) => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":2},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+
+      return index.toString();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+
+    }} numColumns={3} />
+      </View>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderGrid"},');
+
   }
+  renderInstagram() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderInstagram","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
 
-  render () {
-    return this.renderInstagram()
+    console.log(this.state.authUrl);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderInstagram"},');
+
+    return <WebView source={{
+      uri: this.state.authUrl
+    }} style={{
+      marginTop: 20
+    }} onNavigationStateChange={ev => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement3","fileName":"${__filename}","paramsNumber":1},`);
+
+      const url = ev.url;
+      const token = getQueryParamValueFromUrl('uppyAuthToken', url);
+      console.log(token);
+      this.plugin.provider.setAuthToken(token);
+      console.log(this.plugin.provider.list('recent'));
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+
+    }} />;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderInstagram"},');
+
+  }
+  render() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+    return this.renderInstagram();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -111,4 +163,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 100
   }
-})
+});

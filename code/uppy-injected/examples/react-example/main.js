@@ -1,8 +1,6 @@
-/* eslint-disable */
-const React = require('react')
-const ReactDOM = require('react-dom')
-const App = require('./App')
+const SRTlib = require('SRT-util');
 
-ReactDOM.render((
-  <App />
-), document.querySelector('#app'))
+const React = require('react');
+const ReactDOM = require('react-dom');
+const App = require('./App');
+ReactDOM.render(<App />, document.querySelector('#app'));

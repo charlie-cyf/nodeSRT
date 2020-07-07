@@ -1,9 +1,14 @@
-const { h } = require('preact')
+const SRTlib = require('SRT-util');
 
-module.exports = (props) => {
-  return (
-    <div class="uppy-Provider-loading">
+const {h} = require('preact');
+module.exports = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+  return <div class="uppy-Provider-loading">
       <span>{props.i18n('loading')}</span>
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

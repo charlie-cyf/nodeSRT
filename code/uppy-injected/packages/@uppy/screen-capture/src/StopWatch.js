@@ -1,24 +1,26 @@
-const { h, Component } = require('preact')
+const SRTlib = require('SRT-util');
 
+const {h, Component} = require('preact');
 class Stopwatch extends Component {
-  constructor (props) {
-    super(props)
-    this.state = { elapsedTime: 0 }
+  constructor(props) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
+    super(props);
+    this.state = {
+      elapsedTime: 0
+    };
     this.wrapperStyle = {
       width: '100%',
       height: '100%',
       display: 'flex'
-    }
-
+    };
     this.overlayStyle = {
       position: 'absolute',
       width: '100%',
       height: '100%',
       background: 'black',
       opacity: 0.7
-    }
-
+    };
     this.infoContainerStyle = {
       marginLeft: 'auto',
       marginRight: 'auto',
@@ -26,15 +28,13 @@ class Stopwatch extends Component {
       marginBottom: 'auto',
       zIndex: 1,
       color: 'white'
-    }
-
+    };
     this.infotextStyle = {
       marginLeft: 'auto',
       marginRight: 'auto',
       marginBottom: '1rem',
       fontSize: '1.5rem'
-    }
-
+    };
     this.timeStyle = {
       display: 'block',
       fontWeight: 'bold',
@@ -42,48 +42,71 @@ class Stopwatch extends Component {
       marginRight: 'auto',
       fontSize: '3rem',
       fontFamily: 'Courier New'
-    }
-  }
+    };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-  startTimer () {
-    this.timerTick()
-    this.timerRunning = true
   }
+  startTimer() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"startTimer","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
-  resetTimer () {
-    clearTimeout(this.timer)
-    this.setState({ elapsedTime: 0 })
-    this.timerRunning = false
+    this.timerTick();
+    this.timerRunning = true;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"startTimer"},');
+
   }
+  resetTimer() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resetTimer","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
-  timerTick () {
+    clearTimeout(this.timer);
+    this.setState({
+      elapsedTime: 0
+    });
+    this.timerRunning = false;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"resetTimer"},');
+
+  }
+  timerTick() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"timerTick","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
+
     this.timer = setTimeout(() => {
-      this.setState({ elapsedTime: this.state.elapsedTime + 1 })
-      this.timerTick()
-    }, 1000)
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"timer.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+
+      this.setState({
+        elapsedTime: this.state.elapsedTime + 1
+      });
+      this.timerTick();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"timer.setTimeout"},');
+
+    }, 1000);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"timerTick"},');
+
   }
+  fmtMSS(s) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"fmtMSS","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
-  fmtMSS (s) {
-    return (s - (s %= 60)) / 60 + (s > 9 ? ':' : ':0') + s
+        SRTlib.send('{"type":"FUNCTIONEND","function":"fmtMSS"},');
+
+    return (s - (s %= 60)) / 60 + (s > 9 ? ':' : ':0') + s;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"fmtMSS"},');
+
   }
+  render() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
-  render () {
-    const { recording, i18n } = { ...this.props }
-
-    // second to minutes and seconds
-    const minAndSec = this.fmtMSS(this.state.elapsedTime)
-
+    const {recording, i18n} = {
+      ...this.props
+    };
+    const minAndSec = this.fmtMSS(this.state.elapsedTime);
     if (recording && !this.timerRunning) {
-      this.startTimer()
+      this.startTimer();
     }
-
     if (!recording && this.timerRunning) {
-      this.resetTimer()
+      this.resetTimer();
     }
-
     if (recording) {
-      return (
-        <div style={this.wrapperStyle}>
+            SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+      return <div style={this.wrapperStyle}>
           <div style={this.overlayStyle} />
           <div style={this.infoContainerStyle}>
             <div style={this.infotextStyle}>
@@ -94,12 +117,14 @@ class Stopwatch extends Component {
             </div>
           </div>
 
-        </div>
-      )
+        </div>;
     } else {
-      return null
+            SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+      return null;
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
   }
 }
-
-module.exports = Stopwatch
+module.exports = Stopwatch;

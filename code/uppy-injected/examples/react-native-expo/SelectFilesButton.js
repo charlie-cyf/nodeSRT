@@ -1,17 +1,18 @@
-import React from 'react' // eslint-disable-line no-unused-vars
-import { Text, TouchableHighlight, StyleSheet } from 'react-native'
+const SRTlib = require('SRT-util');
 
-export default function SelectFiles (props) {
-  return (
-    <TouchableHighlight
-      onPress={props.showFilePicker}
-      style={styles.button}
-    >
+import React from 'react';
+import {Text, TouchableHighlight, StyleSheet} from 'react-native';
+export default function SelectFiles(props) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"SelectFiles","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"SelectFiles"},');
+
+  return <TouchableHighlight onPress={props.showFilePicker} style={styles.button}>
       <Text style={styles.text}>Select files</Text>
-    </TouchableHighlight>
-  )
-}
+    </TouchableHighlight>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"SelectFiles","paramsNumber":1},');
 
+}
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#cc0077',
@@ -22,4 +23,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 17
   }
-})
+});

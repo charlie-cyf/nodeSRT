@@ -1,35 +1,45 @@
-const { h } = require('preact')
+const SRTlib = require('SRT-util');
 
-// TODO use Fragment when upgrading to preact X
-const Breadcrumb = (props) => {
-  return (
-    <span>
-      <button
-        type="button"
-        class="uppy-u-reset"
-        onclick={props.getFolder}
-      >
+const {h} = require('preact');
+const Breadcrumb = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Breadcrumb","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"Breadcrumb"},');
+
+  return <span>
+      <button type="button" class="uppy-u-reset" onclick={props.getFolder}>
         {props.title}
       </button>
       {!props.isLast ? ' / ' : ''}
-    </span>
-  )
-}
+    </span>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"Breadcrumb"},');
 
-module.exports = (props) => {
-  return (
-    <div class="uppy-Provider-breadcrumbs">
+};
+module.exports = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+  return <div class="uppy-Provider-breadcrumbs">
       <div class="uppy-Provider-breadcrumbsIcon">{props.breadcrumbsIcon}</div>
-      {
-        props.directories.map((directory, i) => (
-          <Breadcrumb
-            key={directory.id}
-            getFolder={() => props.getFolder(directory.id)}
-            title={i === 0 ? props.title : directory.title}
-            isLast={i + 1 === props.directories.length}
-          />
-        ))
-      }
-    </div>
-  )
-}
+      {props.directories.map((directory, i) => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.props.directories.map","fileName":"${__filename}","paramsNumber":2},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.props.directories.map"},');
+
+    return <Breadcrumb key={directory.id} getFolder={() => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+
+      return props.getFolder(directory.id);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+
+    }} title={i === 0 ? props.title : directory.title} isLast={i + 1 === props.directories.length} />;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.props.directories.map"},');
+
+  })}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

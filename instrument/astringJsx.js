@@ -68,6 +68,16 @@ var generator = Object.assign({
     this[node.expression.type](node.expression, state);
     output.write('}');
   },
+
+  JSXEmptyExpression: function JSXEmptyExpression(node, state) {
+
+  },
+
+  // text
+  JSXText: function JSXExpressionContainer(node, state) {
+    var output = state;
+    output.write(node.value);
+  },
 }, astring.baseGenerator);
 
 function astringJsx (ast, options) {

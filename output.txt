@@ -39,17 +39,6 @@ inject to: ./code/uppy-AST/examples/aws-presigned-url/serve.js.json
 inject to: ./code/uppy-AST/examples/bundled/index.js.json
 inject to: ./code/uppy-AST/examples/bundled/sw.js.json
 inject to: ./code/uppy-AST/examples/custom-provider/client/MyCustomProvider.js.json
-injection to ./code/uppy-AST/examples/custom-provider/client/MyCustomProvider.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:649:10)
 inject to: ./code/uppy-AST/examples/custom-provider/client/main.js.json
 inject to: ./code/uppy-AST/examples/custom-provider/server/customprovider.js.json
 inject to: ./code/uppy-AST/examples/custom-provider/server/index.js.json
@@ -66,89 +55,23 @@ inject to: ./code/uppy-AST/examples/php-xhr/main.js.json
 inject to: ./code/uppy-AST/examples/python-xhr/main.js.json
 inject to: ./code/uppy-AST/examples/react-example/.babelrc.js.json
 inject to: ./code/uppy-AST/examples/react-example/App.js.json
-injection to ./code/uppy-AST/examples/react-example/App.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:649:10)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
 inject to: ./code/uppy-AST/examples/react-example/main.js.json
-injection to ./code/uppy-AST/examples/react-example/main.js.json failed! TypeError: generator[nodes[0].type] is not a function
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/examples/react-native-expo/App.js.json
-injection to ./code/uppy-AST/examples/react-native-expo/App.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/examples/react-native-expo/FileList.js.json
-injection to ./code/uppy-AST/examples/react-native-expo/FileList.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/examples/react-native-expo/FileList.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
     at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
-    at Array.forEach (<anonymous>)
+    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:238:91
 inject to: ./code/uppy-AST/examples/react-native-expo/PauseResumeButton.js.json
-injection to ./code/uppy-AST/examples/react-native-expo/PauseResumeButton.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
 inject to: ./code/uppy-AST/examples/react-native-expo/ProgressBar.js.json
-injection to ./code/uppy-AST/examples/react-native-expo/ProgressBar.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
 inject to: ./code/uppy-AST/examples/react-native-expo/SelectFilesButton.js.json
-injection to ./code/uppy-AST/examples/react-native-expo/SelectFilesButton.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
 inject to: ./code/uppy-AST/examples/react-native-expo/babel.config.js.json
 inject to: ./code/uppy-AST/examples/react-native-expo/tusFileReader.js.json
 inject to: ./code/uppy-AST/examples/redux/main.js.json
@@ -368,7 +291,10 @@ injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFiles.js
     at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
     at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFilesPanel.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFilesPanel.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFilesPanel.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
@@ -376,21 +302,18 @@ injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFilesPan
     at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
     at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/Dashboard.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/Dashboard.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/Dashboard.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at formatBinaryExpressionPart (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:133:25)
+    at Object.BinaryExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:907:5)
+    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileCard/index.js.json
 injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileCard/index.js.json failed! TypeError: baseVisitor[type] is not a function
     at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
@@ -404,79 +327,12 @@ injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileCard/in
     at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
     at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/Buttons/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/Buttons/index.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FilePreviewAndLink/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FilePreviewAndLink/index.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileProgress/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileProgress/index.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
-    at Array.forEach (<anonymous>)
-inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/index.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:649:10)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileList.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileList.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FilePreview.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FilePreview.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileProgress/index.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
@@ -485,32 +341,33 @@ injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FilePreview
     at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
     at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/index.js.json
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileList.js.json
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileList.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
+    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
+    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
+    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
+    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
+    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
+    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
+inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FilePreview.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelContent.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelContent.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
     at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
-    at Array.forEach (<anonymous>)
+    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:238:91
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/VirtualList.js.json
 injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/VirtualList.js.json failed! TypeError: baseVisitor[type] is not a function
     at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
@@ -542,17 +399,6 @@ inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/createSuperFocus.j
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/createSuperFocus.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/getActiveOverlayEl.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/getFileTypeIcon.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/utils/getFileTypeIcon.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/ignoreEvent.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/trapFocus.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/truncateString.js.json
@@ -832,137 +678,71 @@ inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/ItemList.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Loader.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/AuthView.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/AuthView.js.json failed! TypeError: this[node.init.type] is not a function
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/AuthView.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
+    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Breadcrumbs.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Breadcrumbs.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Browser.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Browser.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Browser.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at formatBinaryExpressionPart (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:133:25)
+    at Object.BinaryExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:907:5)
+    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
     at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Filter.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Filter.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:649:10)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/FooterActions.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/FooterActions.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/GridLi.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/GridLi.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/GridLi.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
     at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
     at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ItemIcon.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ItemIcon.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ListLi.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ListLi.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ListLi.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
     at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
     at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/index.js.json failed! TypeError: this[node.init.type] is not a function
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
+injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/index.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
+    at Object.SwitchStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:376:29)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
     at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
     at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
     at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/ItemList.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/ItemList.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Loader.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Loader.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/index.js.json
 injection to ./code/uppy-AST/packages/@uppy/provider-views/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
     at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
@@ -985,20 +765,12 @@ inject to: ./code/uppy-AST/packages/@uppy/react/lib/Wrapper.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/lib/propTypes.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/Dashboard.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/Dashboard.test.js.json
-injection to ./code/uppy-AST/packages/@uppy/react/src/Dashboard.test.js.json failed! TypeError: generator[nodes[0].type] is not a function
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:90:28)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
 inject to: ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.test.js.json
-injection to ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.test.js.json failed! TypeError: generator[nodes[0].type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.test.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
     at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
     at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
     at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
@@ -1006,48 +778,12 @@ injection to ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.test.js.jso
     at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:90:28)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
 inject to: ./code/uppy-AST/packages/@uppy/react/src/DragDrop.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/DragDrop.test.js.json
-injection to ./code/uppy-AST/packages/@uppy/react/src/DragDrop.test.js.json failed! TypeError: generator[nodes[0].type] is not a function
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:90:28)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
 inject to: ./code/uppy-AST/packages/@uppy/react/src/ProgressBar.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/ProgressBar.test.js.json
-injection to ./code/uppy-AST/packages/@uppy/react/src/ProgressBar.test.js.json failed! TypeError: generator[nodes[0].type] is not a function
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:90:28)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
 inject to: ./code/uppy-AST/packages/@uppy/react/src/StatusBar.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/StatusBar.test.js.json
-injection to ./code/uppy-AST/packages/@uppy/react/src/StatusBar.test.js.json failed! TypeError: generator[nodes[0].type] is not a function
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:90:28)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
 inject to: ./code/uppy-AST/packages/@uppy/react/src/Wrapper.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/DashboardPlugin.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/DragDropPlugin.js.json
@@ -1055,43 +791,23 @@ inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/ProgressBarPlugin.
 inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/StatusBarPlugin.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/propTypes.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/index.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/index.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.ConditionalExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:924:31)
+    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/instagram.js.json
-injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/instagram.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/provider-grid.js.json
-injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/provider-grid.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/provider.js.json
-injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/provider.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/provider.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
@@ -1100,23 +816,21 @@ injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/provider.js
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
     at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/selectDocument.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/selectImage.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/takePicture.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/url.js.json
-injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/url.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/url.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
     at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/packages/@uppy/redux-dev-tools/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/redux-dev-tools/src/index.js.json
 injection to ./code/uppy-AST/packages/@uppy/redux-dev-tools/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
@@ -1165,19 +879,22 @@ inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/StreamStatus.js.jso
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/SubmitButton.js.json
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/CaptureScreen.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/CaptureScreen.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/CaptureScreen.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/RecordButton.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/RecordButton.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/RecordButton.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
@@ -1185,47 +902,14 @@ injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/RecordButton.js.j
     at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
     at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
     at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/ScreenRecIcon.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/ScreenRecIcon.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/StopWatch.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/StopWatch.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/StreamStatus.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/StreamStatus.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/SubmitButton.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/SubmitButton.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/SubmitButton.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
@@ -1233,9 +917,6 @@ injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/SubmitButton.js.j
     at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
     at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
     at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/index.js.json
 injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
     at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
@@ -1252,17 +933,17 @@ inject to: ./code/uppy-AST/packages/@uppy/status-bar/lib/StatusBar.js.json
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/lib/StatusBarStates.js.json
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBar.js.json
-injection to ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBar.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBar.js.json failed! TypeError: this[attr.type] is not a function
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.ConditionalExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:924:31)
+    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
     at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBarStates.js.json
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/src/index.js.json
 injection to ./code/uppy-AST/packages/@uppy/status-bar/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
@@ -1364,17 +1045,17 @@ inject to: ./code/uppy-AST/packages/@uppy/url/lib/UrlUI.js.json
 inject to: ./code/uppy-AST/packages/@uppy/url/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/url/lib/utils/forEachDroppedOrPastedUrl.js.json
 inject to: ./code/uppy-AST/packages/@uppy/url/src/UrlUI.js.json
-injection to ./code/uppy-AST/packages/@uppy/url/src/UrlUI.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/url/src/UrlUI.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/url/src/index.js.json
 injection to ./code/uppy-AST/packages/@uppy/url/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
     at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
@@ -1502,43 +1183,24 @@ inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/formatSeconds.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/supportsMediaRecorder.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/CameraIcon.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/CameraIcon.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/CameraScreen.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/CameraScreen.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/webcam/src/CameraScreen.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/PermissionsScreen.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/PermissionsScreen.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/RecordButton.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/RecordButton.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/webcam/src/RecordButton.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
@@ -1546,23 +1208,12 @@ injection to ./code/uppy-AST/packages/@uppy/webcam/src/RecordButton.js.json fail
     at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
     at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
     at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/RecordingLength.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/RecordingLength.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/SnapshotButton.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/SnapshotButton.js.json failed! TypeError: this[node.argument.type] is not a function
+injection to ./code/uppy-AST/packages/@uppy/webcam/src/SnapshotButton.js.json failed! TypeError: Cannot read property 'type' of null
+    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
+    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
+    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
     at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
     at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
     at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
@@ -1570,9 +1221,6 @@ injection to ./code/uppy-AST/packages/@uppy/webcam/src/SnapshotButton.js.json fa
     at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
     at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
     at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/formatSeconds.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/formatSeconds.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/index.js.json
@@ -1618,29 +1266,7 @@ inject to: ./code/uppy-AST/test/endtoend/create-react-app/build/static/js/2.20f5
 inject to: ./code/uppy-AST/test/endtoend/create-react-app/build/static/js/main.4cd3aa3a.chunk.js.json
 inject to: ./code/uppy-AST/test/endtoend/create-react-app/build/static/js/runtime~main.7bfddab4.js.json
 inject to: ./code/uppy-AST/test/endtoend/create-react-app/src/App.js.json
-injection to ./code/uppy-AST/test/endtoend/create-react-app/src/App.js.json failed! TypeError: this[node.argument.type] is not a function
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
 inject to: ./code/uppy-AST/test/endtoend/create-react-app/src/index.js.json
-injection to ./code/uppy-AST/test/endtoend/create-react-app/src/index.js.json failed! TypeError: generator[nodes[0].type] is not a function
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:232:91
-    at Array.forEach (<anonymous>)
-    at Instrumentor.injectHelper (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:38:32)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:244:22
-    at Array.forEach (<anonymous>)
 inject to: ./code/uppy-AST/test/endtoend/create-react-app/test.js.json
 inject to: ./code/uppy-AST/test/endtoend/i18n-drag-drop/dist/bundle.js.json
 inject to: ./code/uppy-AST/test/endtoend/i18n-drag-drop/main.js.json
