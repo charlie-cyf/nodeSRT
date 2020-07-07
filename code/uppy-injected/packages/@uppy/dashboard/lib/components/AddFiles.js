@@ -1,68 +1,43 @@
-const SRTlib = require('SRT-util');
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
+var SRTlib = require('SRT-util');
 
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
+var _require = require('preact'),
+    h = _require.h,
+    Component = _require.Component;
 
-}
-var _require = require('./icons'), iconMyDevice = _require.iconMyDevice;
-var _require2 = require('preact'), h = _require2.h, Component = _require2.Component;
-var AddFiles = (function (_Component) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"AddFiles","fileName":"${__filename}","paramsNumber":1},`);
-
+var AddFiles = /*#__PURE__*/function (_Component) {
   _inheritsLoose(AddFiles, _Component);
-  function AddFiles() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AddFiles","fileName":"${__filename}","paramsNumber":0},`);
 
+  function AddFiles() {
     var _this;
+
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
+
     _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
     _this.triggerFileInputClick = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.triggerFileInputClick","fileName":"${__filename}","paramsNumber":0},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this.fileInput.click();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.triggerFileInputClick"},');
 
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
     };
+
     _this.onFileInputChange = function (event) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.onFileInputChange","fileName":"${__filename}","paramsNumber":1},`);
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this.props.handleInputChange(event);
+
       event.target.value = null;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.onFileInputChange"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
     };
-    _this.renderCloudIcon = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderCloudIcon","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderCloudIcon"},');
-
-      return h("svg", {
-        class: "uppy-Dashboard-dropFilesIcon",
-        "aria-hidden": "true",
-        width: "64",
-        height: "45",
-        viewBox: "0 0 64 45",
-        xmlns: "http://www.w3.org/2000/svg"
-      }, h("path", {
-        d: "M38 44.932V31h8L33 15 20 31h8v13.932H13.538C6.075 44.932 0 38.774 0 31.202c0-6.1 4.06-11.512 9.873-13.162l.005-.017c.345-5.8 5.248-10.534 10.922-10.534.502 0 1.164.017 1.868.16C25.9 2.85 31.225 0 36.923 0c9.5 0 17.23 7.838 17.23 17.473l-.011.565.012.002C60.039 19.685 64 24.975 64 31.203c0 7.57-6.075 13.729-13.538 13.729H38z",
-        fill: "#E2E2E2",
-        "fill-rule": "nonzero"
-      }));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderCloudIcon"},');
-
-    };
     _this.renderHiddenFileInput = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderHiddenFileInput","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderHiddenFileInput"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
       return h("input", {
         class: "uppy-Dashboard-input",
         hidden: true,
@@ -74,21 +49,17 @@ var AddFiles = (function (_Component) {
         onchange: _this.onFileInputChange,
         accept: _this.props.allowedFileTypes,
         ref: function ref(_ref) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderHiddenFileInput.ReturnStatement.h.ref","fileName":"${__filename}","paramsNumber":1},`);
-
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           _this.fileInput = _ref;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderHiddenFileInput.ReturnStatement.h.ref"},');
-
+          SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
         }
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderHiddenFileInput"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
     };
+
     _this.renderMyDeviceAcquirer = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderMyDeviceAcquirer","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMyDeviceAcquirer"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
       return h("div", {
         class: "uppy-DashboardTab",
         role: "presentation"
@@ -99,15 +70,31 @@ var AddFiles = (function (_Component) {
         tabindex: 0,
         "data-uppy-super-focusable": true,
         onclick: _this.triggerFileInputClick
-      }, iconMyDevice(), h("div", {
+      }, h("svg", {
+        "aria-hidden": "true",
+        focusable: "false",
+        width: "32",
+        height: "32",
+        viewBox: "0 0 32 32"
+      }, h("g", {
+        fill: "none",
+        "fill-rule": "evenodd"
+      }, h("rect", {
+        width: "32",
+        height: "32",
+        rx: "16",
+        fill: "#2275D7"
+      }), h("path", {
+        d: "M21.973 21.152H9.863l-1.108-5.087h14.464l-1.246 5.087zM9.935 11.37h3.958l.886 1.444a.673.673 0 0 0 .585.316h6.506v1.37H9.935v-3.13zm14.898 3.44a.793.793 0 0 0-.616-.31h-.978v-2.126c0-.379-.275-.613-.653-.613H15.75l-.886-1.445a.673.673 0 0 0-.585-.316H9.232c-.378 0-.667.209-.667.587V14.5h-.782a.793.793 0 0 0-.61.303.795.795 0 0 0-.155.663l1.45 6.633c.078.36.396.618.764.618h13.354c.36 0 .674-.246.76-.595l1.631-6.636a.795.795 0 0 0-.144-.675z",
+        fill: "#FFF"
+      }))), h("div", {
         class: "uppy-DashboardTab-name"
       }, _this.props.i18n('myDevice'))));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderMyDeviceAcquirer"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
     };
-    _this.renderDropPasteBrowseTagline = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderDropPasteBrowseTagline","fileName":"${__filename}","paramsNumber":0},`);
 
+    _this.renderDropPasteBrowseTagline = function () {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
       var numberOfAcquirers = _this.props.acquirers.length;
       var browse = h("button", {
         type: "button",
@@ -115,8 +102,7 @@ var AddFiles = (function (_Component) {
         onclick: _this.triggerFileInputClick,
         "data-uppy-super-focusable": numberOfAcquirers === 0
       }, _this.props.i18n('browse'));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderDropPasteBrowseTagline"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
       return h("div", {
         class: "uppy-Dashboard-AddFiles-title"
       }, numberOfAcquirers > 0 ? _this.props.i18nArray('dropPasteImport', {
@@ -124,14 +110,12 @@ var AddFiles = (function (_Component) {
       }) : _this.props.i18nArray('dropPaste', {
         browse: browse
       }));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderDropPasteBrowseTagline"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
     };
+
     _this.renderAcquirer = function (acquirer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirer","fileName":"${__filename}","paramsNumber":1},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirer"},');
-
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
       return h("div", {
         class: "uppy-DashboardTab",
         role: "presentation"
@@ -144,67 +128,53 @@ var AddFiles = (function (_Component) {
         "aria-selected": _this.props.activePickerPanel.id === acquirer.id,
         "data-uppy-super-focusable": true,
         onclick: function onclick() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirer.ReturnStatement.h.h.onclick","fileName":"${__filename}","paramsNumber":0},`);
-
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirer.ReturnStatement.h.h.onclick"},');
-
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+          SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
           return _this.props.showPanel(acquirer.id);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirer.ReturnStatement.h.h.onclick"},');
-
+          SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
         }
       }, acquirer.icon(), h("div", {
         class: "uppy-DashboardTab-name"
       }, acquirer.name)));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirer"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
     };
-    _this.renderAcquirers = function (acquirers) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirers","fileName":"${__filename}","paramsNumber":1},`);
 
+    _this.renderAcquirers = function (acquirers) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var acquirersWithoutLastTwo = [].concat(acquirers);
       var lastTwoAcquirers = acquirersWithoutLastTwo.splice(acquirers.length - 2, acquirers.length);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
       return h("div", {
         class: "uppy-Dashboard-AddFiles-list",
         role: "tablist"
       }, _this.renderMyDeviceAcquirer(), acquirersWithoutLastTwo.map(function (acquirer) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirers.ReturnStatement.h.acquirersWithoutLastTwo.map","fileName":"${__filename}","paramsNumber":1},`);
-
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers.ReturnStatement.h.acquirersWithoutLastTwo.map"},');
-
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.acquirersWithoutLastTwo.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.acquirersWithoutLastTwo.map"},');
         return _this.renderAcquirer(acquirer);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers.ReturnStatement.h.acquirersWithoutLastTwo.map"},');
-
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.acquirersWithoutLastTwo.map"},');
       }), h("span", {
         role: "presentation",
         style: "white-space: nowrap;"
       }, lastTwoAcquirers.map(function (acquirer) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.renderAcquirers.ReturnStatement.h.h.lastTwoAcquirers.map","fileName":"${__filename}","paramsNumber":1},`);
-
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers.ReturnStatement.h.h.lastTwoAcquirers.map"},');
-
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.lastTwoAcquirers.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.lastTwoAcquirers.map"},');
         return _this.renderAcquirer(acquirer);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers.ReturnStatement.h.h.lastTwoAcquirers.map"},');
-
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.lastTwoAcquirers.map"},');
       })));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_this.renderAcquirers"},');
-
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles"},');
 
     return _this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles","paramsNumber":0},');
-
   }
-  var _proto = AddFiles.prototype;
-  _proto.renderPoweredByUppy = function renderPoweredByUppy() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"AddFiles._proto.renderPoweredByUppy","fileName":"${__filename}","paramsNumber":0},`);
 
+  var _proto = AddFiles.prototype;
+
+  _proto.renderPoweredByUppy = function renderPoweredByUppy() {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderPoweredByUppy\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AddFiles\",\"superClass\":\"Component\"}},");
     var uppyBranding = h("span", null, h("svg", {
       "aria-hidden": "true",
       focusable: "false",
-      class: "UppyIcon uppy-Dashboard-poweredByIcon",
+      class: "uppy-c-icon uppy-Dashboard-poweredByIcon",
       width: "11",
       height: "11",
       viewBox: "0 0 11 11"
@@ -218,8 +188,7 @@ var AddFiles = (function (_Component) {
       backwardsCompat: this.props.i18n('poweredBy'),
       uppy: uppyBranding
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles._proto.renderPoweredByUppy"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderPoweredByUppy"},');
     return h("a", {
       tabindex: "-1",
       href: "https://uppy.io",
@@ -227,14 +196,12 @@ var AddFiles = (function (_Component) {
       target: "_blank",
       class: "uppy-Dashboard-poweredBy"
     }, linkText);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles._proto.renderPoweredByUppy"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderPoweredByUppy"},');
   };
+
   _proto.render = function render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"AddFiles._proto.render","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles._proto.render"},');
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AddFiles\",\"superClass\":\"Component\"}},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return h("div", {
       class: "uppy-Dashboard-AddFiles"
     }, this.renderHiddenFileInput(), this.renderDropPasteBrowseTagline(), this.props.acquirers.length > 0 && this.renderAcquirers(this.props.acquirers), h("div", {
@@ -242,13 +209,10 @@ var AddFiles = (function (_Component) {
     }, this.props.note && h("div", {
       class: "uppy-Dashboard-note"
     }, this.props.note), this.props.proudlyDisplayPoweredByUppy && this.renderPoweredByUppy(this.props)));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles._proto.render"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles"},');
 
   return AddFiles;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"AddFiles"},');
+}(Component);
 
-})(Component);
 module.exports = AddFiles;

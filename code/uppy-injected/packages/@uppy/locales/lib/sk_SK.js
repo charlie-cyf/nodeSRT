@@ -1,4 +1,4 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
 
 var sk_SK = {};
 sk_SK.strings = {
@@ -151,21 +151,22 @@ sk_SK.strings = {
     '2': 'Musíte vybrať aspoň %{smart_count} súborov'
   }
 };
+
 sk_SK.pluralize = function (count) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sk_SK.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"sk_SK.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
   if (count === 1) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
     return 0;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
   return 1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
-
+  SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
 };
+
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.sk_SK = sk_SK;
 }
+
 module.exports = sk_SK;

@@ -1,76 +1,56 @@
-const SRTlib = require('SRT-util');
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _assertThisInitialized(self) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-  if (self === void 0) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
+var SRTlib = require('SRT-util');
 
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized"},');
+var _require = require('preact'),
+    h = _require.h,
+    Component = _require.Component;
 
-  return self;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_assertThisInitialized","paramsNumber":1},');
-
-}
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
-
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
-
-}
-var _require = require('preact'), h = _require.h, Component = _require.Component;
-var UrlUI = (function (_Component) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UrlUI","fileName":"${__filename}","paramsNumber":1},`);
-
+var UrlUI = /*#__PURE__*/function (_Component) {
   _inheritsLoose(UrlUI, _Component);
-  function UrlUI(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UrlUI","fileName":"${__filename}","paramsNumber":1},`);
 
+  function UrlUI(props) {
     var _this;
+
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
     _this = _Component.call(this, props) || this;
     _this.handleKeyPress = _this.handleKeyPress.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
     return _this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI","paramsNumber":1},');
-
   }
+
   var _proto = UrlUI.prototype;
+
   _proto.componentDidMount = function componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UrlUI._proto.componentDidMount","fileName":"${__filename}","paramsNumber":0},`);
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
     this.input.value = '';
-        SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI._proto.componentDidMount"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
   };
+
   _proto.handleKeyPress = function handleKeyPress(ev) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UrlUI._proto.handleKeyPress","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleKeyPress\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
 
     if (ev.keyCode === 13) {
       this.props.addFile(this.input.value);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI._proto.handleKeyPress"},');
 
+    SRTlib.send('{"type":"FUNCTIONEND","function":"handleKeyPress"},');
   };
+
   _proto.handleClick = function handleClick() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UrlUI._proto.handleClick","fileName":"${__filename}","paramsNumber":0},`);
-
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleClick\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
     this.props.addFile(this.input.value);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI._proto.handleClick"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"handleClick"},');
   };
+
   _proto.render = function render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UrlUI._proto.render","fileName":"${__filename}","paramsNumber":0},`);
-
     var _this2 = this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI._proto.render"},');
 
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return h("div", {
       class: "uppy-Url"
     }, h("input", {
@@ -80,11 +60,9 @@ var UrlUI = (function (_Component) {
       placeholder: this.props.i18n('enterUrlToImport'),
       onkeyup: this.handleKeyPress,
       ref: function ref(input) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"UrlUI._proto.render.render.ReturnStatement.h.h.ref","fileName":"${__filename}","paramsNumber":1},`);
-
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         _this2.input = input;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI._proto.render.render.ReturnStatement.h.h.ref"},');
-
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
       },
       "data-uppy-super-focusable": true
     }), h("button", {
@@ -92,13 +70,10 @@ var UrlUI = (function (_Component) {
       type: "button",
       onclick: this.handleClick
     }, this.props.i18n('import')));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI._proto.render"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
   };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI"},');
 
   return UrlUI;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"UrlUI"},');
+}(Component);
 
-})(Component);
 module.exports = UrlUI;

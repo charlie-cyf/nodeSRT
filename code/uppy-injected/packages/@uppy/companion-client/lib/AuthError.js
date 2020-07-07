@@ -1,199 +1,36 @@
-const SRTlib = require('SRT-util');
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var SRTlib = require('SRT-util');
 
 'use strict';
-function _inheritsLoose(subClass, superClass) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
 
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_inheritsLoose","paramsNumber":2},');
-
-}
-function _wrapNativeSuper(Class) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_wrapNativeSuper","fileName":"${__filename}","paramsNumber":1},`);
-
-  var _cache = typeof Map === "function" ? new Map() : undefined;
-  _wrapNativeSuper = function _wrapNativeSuper(Class) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_wrapNativeSuper","fileName":"${__filename}","paramsNumber":1},`);
-
-    if (Class === null || !_isNativeFunction(Class)) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
-
-      return Class;
-    }
-    if (typeof Class !== "function") {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
-
-      throw new TypeError("Super expression must either be null or a function");
-    }
-    if (typeof _cache !== "undefined") {
-      if (_cache.has(Class)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
-
-        return _cache.get(Class);
-      }
-      _cache.set(Class, Wrapper);
-    }
-    function Wrapper() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Wrapper","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Wrapper"},');
-
-      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Wrapper","paramsNumber":0},');
-
-    }
-    Wrapper.prototype = Object.create(Class.prototype, {
-      constructor: {
-        value: Wrapper,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
-
-    return _setPrototypeOf(Wrapper, Class);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
-
-  };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
-
-  return _wrapNativeSuper(Class);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper","paramsNumber":1},');
-
-}
-function _construct(Parent, args, Class) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_construct","fileName":"${__filename}","paramsNumber":3},`);
-
-  if (_isNativeReflectConstruct()) {
-    _construct = Reflect.construct;
-  } else {
-    _construct = function _construct(Parent, args, Class) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_construct","fileName":"${__filename}","paramsNumber":3},`);
-
-      var a = [null];
-      a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
-      var instance = new Constructor();
-      if (Class) _setPrototypeOf(instance, Class.prototype);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_construct"},');
-
-      return instance;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_construct"},');
-
-    };
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct"},');
-
-  return _construct.apply(null, arguments);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct","paramsNumber":3},');
-
-}
-function _isNativeReflectConstruct() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_isNativeReflectConstruct","fileName":"${__filename}","paramsNumber":0},`);
-
-  if (typeof Reflect === "undefined" || !Reflect.construct) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeReflectConstruct"},');
-
-    return false;
-  }
-  if (Reflect.construct.sham) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeReflectConstruct"},');
-
-    return false;
-  }
-  if (typeof Proxy === "function") {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeReflectConstruct"},');
-
-    return true;
-  }
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Date.prototype.toString.call.Reflect.construct","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Date.prototype.toString.call.Reflect.construct"},');
-
-    }));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeReflectConstruct"},');
-
-    return true;
-  } catch (e) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeReflectConstruct"},');
-
-    return false;
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeReflectConstruct","paramsNumber":0},');
-
-}
-function _isNativeFunction(fn) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_isNativeFunction","fileName":"${__filename}","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeFunction"},');
-
-  return Function.toString.call(fn).indexOf("[native code]") !== -1;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeFunction","paramsNumber":1},');
-
-}
-function _setPrototypeOf(o, p) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_setPrototypeOf","fileName":"${__filename}","paramsNumber":2},`);
-
-  _setPrototypeOf = Object.setPrototypeOf || (function _setPrototypeOf(o, p) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_setPrototypeOf","fileName":"${__filename}","paramsNumber":2},`);
-
-    o.__proto__ = p;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf"},');
-
-    return o;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf"},');
-
-  });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf"},');
-
-  return _setPrototypeOf(o, p);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf","paramsNumber":2},');
-
-}
-function _getPrototypeOf(o) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getPrototypeOf","fileName":"${__filename}","paramsNumber":1},`);
-
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getPrototypeOf","fileName":"${__filename}","paramsNumber":1},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf"},');
-
-    return o.__proto__ || Object.getPrototypeOf(o);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf"},');
-
-  };
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf"},');
-
-  return _getPrototypeOf(o);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf","paramsNumber":1},');
-
-}
-var AuthError = (function (_Error) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"AuthError","fileName":"${__filename}","paramsNumber":1},`);
-
+var AuthError = /*#__PURE__*/function (_Error) {
   _inheritsLoose(AuthError, _Error);
-  function AuthError() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AuthError","fileName":"${__filename}","paramsNumber":0},`);
 
+  function AuthError() {
     var _this;
+
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AuthError\",\"superClass\":\"Error\"}},");
     _this = _Error.call(this, 'Authorization required') || this;
     _this.name = 'AuthError';
     _this.isAuthError = true;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"AuthError"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
     return _this;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"AuthError","paramsNumber":0},');
-
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"AuthError"},');
 
   return AuthError;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"AuthError"},');
+}( /*#__PURE__*/_wrapNativeSuper(Error));
 
-})(_wrapNativeSuper(Error));
 module.exports = AuthError;

@@ -1,13 +1,17 @@
-const SRTlib = require('SRT-util');
+var SRTlib = require('SRT-util');
 
-var _require = require('preact'), h = _require.h;
+var _require = require('preact'),
+    h = _require.h;
+
 module.exports = function SubmitButton(_ref) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+  var recording = _ref.recording,
+      recordedVideo = _ref.recordedVideo,
+      onSubmit = _ref.onSubmit,
+      i18n = _ref.i18n;
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
-  var recording = _ref.recording, recordedVideo = _ref.recordedVideo, onSubmit = _ref.onSubmit, i18n = _ref.i18n;
   if (recordedVideo && !recording) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return h("button", {
       class: "uppy-u-reset uppy-c-btn uppy-ScreenCapture-button uppy-ScreenCapture-button--submit",
       type: "button",
@@ -18,7 +22,7 @@ module.exports = function SubmitButton(_ref) {
     }, h("svg", {
       "aria-hidden": "true",
       focusable: "false",
-      class: "UppyIcon",
+      class: "uppy-c-icon",
       width: "48",
       height: "48",
       viewBox: "0 0 48 48"
@@ -29,10 +33,9 @@ module.exports = function SubmitButton(_ref) {
       d: "M38.71 20.07c-1.36-6.88-7.43-12.07-14.71-12.07-5.78 0-10.79 3.28-13.3 8.07-6.01.65-10.7 5.74-10.7 11.93 0 6.63 5.37 12 12 12h26c5.52 0 10-4.48 10-10 0-5.28-4.11-9.56-9.29-9.93zm-10.71 5.93v8h-8v-8h-6l10-10 10 10h-6z"
     })));
   } else {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return null;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
+  SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };
