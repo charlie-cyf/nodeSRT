@@ -1,360 +1,352 @@
-const throttle = require('lodash.throttle')
-const classNames = require('classnames')
-const statusBarStates = require('./StatusBarStates')
-const prettierBytes = require('@transloadit/prettier-bytes')
-const prettyETA = require('@uppy/utils/lib/prettyETA')
-const { h } = require('preact')
+const SRTlib = require('SRT-util');
 
-function calculateProcessingProgress (files) {
-  // Collect pre or postprocessing progress states.
-  const progresses = []
-  Object.keys(files).forEach((fileID) => {
-    const { progress } = files[fileID]
+const throttle = require('lodash.throttle');
+const classNames = require('classnames');
+const statusBarStates = require('./StatusBarStates');
+const prettierBytes = require('@transloadit/prettier-bytes');
+const prettyETA = require('@uppy/utils/lib/prettyETA');
+const {h} = require('preact');
+function calculateProcessingProgress(files) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"calculateProcessingProgress","fileName":"${__filename}","paramsNumber":1},`);
+
+  const progresses = [];
+  Object.keys(files).forEach(fileID => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
+    const {progress} = files[fileID];
     if (progress.preprocess) {
-      progresses.push(progress.preprocess)
+      progresses.push(progress.preprocess);
     }
     if (progress.postprocess) {
-      progresses.push(progress.postprocess)
+      progresses.push(progress.postprocess);
     }
-  })
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
-  // In the future we should probably do this differently. For now we'll take the
-  // mode and message from the first file…
-  const { mode, message } = progresses[0]
+  });
+  const {mode, message} = progresses[0];
   const value = progresses.filter(isDeterminate).reduce((total, progress, index, all) => {
-    return total + progress.value / all.length
-  }, 0)
-  function isDeterminate (progress) {
-    return progress.mode === 'determinate'
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"value.progresses.filter.reduce","fileName":"${__filename}","paramsNumber":4},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"value.progresses.filter.reduce"},');
+
+    return total + progress.value / all.length;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"value.progresses.filter.reduce"},');
+
+  }, 0);
+  function isDeterminate(progress) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isDeterminate","fileName":"${__filename}","paramsNumber":1},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isDeterminate"},');
+
+    return progress.mode === 'determinate';
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isDeterminate","paramsNumber":1},');
+
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"calculateProcessingProgress"},');
 
   return {
     mode,
     message,
     value
-  }
+  };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"calculateProcessingProgress","paramsNumber":1},');
+
 }
+function togglePauseResume(props) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"togglePauseResume","fileName":"${__filename}","paramsNumber":1},`);
 
-function togglePauseResume (props) {
-  if (props.isAllComplete) return
+  if (props.isAllComplete) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume"},');
 
+    return;
+  }
   if (!props.resumableUploads) {
-    return props.cancelAll()
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume"},');
 
+    return props.cancelAll();
+  }
   if (props.isAllPaused) {
-    return props.resumeAll()
+        SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume"},');
+
+    return props.resumeAll();
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume"},');
 
-  return props.pauseAll()
+  return props.pauseAll();
+    SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume","paramsNumber":1},');
+
 }
+module.exports = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
-module.exports = (props) => {
-  props = props || {}
-
-  const {
-    newFiles,
-    allowNewUpload,
-    isUploadInProgress,
-    isAllPaused,
-    resumableUploads,
-    error,
-    hideUploadButton,
-    hidePauseResumeButton,
-    hideCancelButton,
-    hideRetryButton
-  } = props
-
-  const uploadState = props.uploadState
-
-  let progressValue = props.totalProgress
-  let progressMode
-  let progressBarContent
-
+  props = props || ({});
+  const {newFiles, allowNewUpload, isUploadInProgress, isAllPaused, resumableUploads, error, hideUploadButton, hidePauseResumeButton, hideCancelButton, hideRetryButton} = props;
+  const uploadState = props.uploadState;
+  let progressValue = props.totalProgress;
+  let progressMode;
+  let progressBarContent;
   if (uploadState === statusBarStates.STATE_PREPROCESSING || uploadState === statusBarStates.STATE_POSTPROCESSING) {
-    const progress = calculateProcessingProgress(props.files)
-    progressMode = progress.mode
+    const progress = calculateProcessingProgress(props.files);
+    progressMode = progress.mode;
     if (progressMode === 'determinate') {
-      progressValue = progress.value * 100
+      progressValue = progress.value * 100;
     }
-
-    progressBarContent = ProgressBarProcessing(progress)
+    progressBarContent = ProgressBarProcessing(progress);
   } else if (uploadState === statusBarStates.STATE_COMPLETE) {
-    progressBarContent = ProgressBarComplete(props)
+    progressBarContent = ProgressBarComplete(props);
   } else if (uploadState === statusBarStates.STATE_UPLOADING) {
     if (!props.supportsUploadProgress) {
-      progressMode = 'indeterminate'
-      progressValue = null
+      progressMode = 'indeterminate';
+      progressValue = null;
     }
-
-    progressBarContent = ProgressBarUploading(props)
+    progressBarContent = ProgressBarUploading(props);
   } else if (uploadState === statusBarStates.STATE_ERROR) {
-    progressValue = undefined
-    progressBarContent = ProgressBarError(props)
+    progressValue = undefined;
+    progressBarContent = ProgressBarError(props);
   }
-
-  const width = typeof progressValue === 'number' ? progressValue : 100
-  const isHidden = (uploadState === statusBarStates.STATE_WAITING && props.hideUploadButton) ||
-    (uploadState === statusBarStates.STATE_WAITING && !props.newFiles > 0) ||
-    (uploadState === statusBarStates.STATE_COMPLETE && props.hideAfterFinish)
-
-  const showUploadBtn = !error && newFiles &&
-    !isUploadInProgress && !isAllPaused &&
-    allowNewUpload && !hideUploadButton
-  const showCancelBtn = !hideCancelButton &&
-    uploadState !== statusBarStates.STATE_WAITING &&
-    uploadState !== statusBarStates.STATE_COMPLETE
-  const showPauseResumeBtn = resumableUploads && !hidePauseResumeButton &&
-    uploadState === statusBarStates.STATE_UPLOADING
-
-  const showRetryBtn = error && !hideRetryButton
-
+  const width = typeof progressValue === 'number' ? progressValue : 100;
+  const isHidden = uploadState === statusBarStates.STATE_WAITING && props.hideUploadButton || uploadState === statusBarStates.STATE_WAITING && !props.newFiles > 0 || uploadState === statusBarStates.STATE_COMPLETE && props.hideAfterFinish;
+  const showUploadBtn = !error && newFiles && !isUploadInProgress && !isAllPaused && allowNewUpload && !hideUploadButton;
+  const showCancelBtn = !hideCancelButton && uploadState !== statusBarStates.STATE_WAITING && uploadState !== statusBarStates.STATE_COMPLETE;
+  const showPauseResumeBtn = resumableUploads && !hidePauseResumeButton && uploadState === statusBarStates.STATE_UPLOADING;
+  const showRetryBtn = error && !hideRetryButton;
   const progressClassNames = `uppy-StatusBar-progress
-                           ${progressMode ? 'is-' + progressMode : ''}`
+                           ${progressMode ? 'is-' + progressMode : ''}`;
+  const statusBarClassNames = classNames({
+    'uppy-Root': props.isTargetDOMEl
+  }, 'uppy-StatusBar', `is-${uploadState}`);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  const statusBarClassNames = classNames(
-    { 'uppy-Root': props.isTargetDOMEl },
-    'uppy-StatusBar',
-    `is-${uploadState}`
-  )
-
-  return (
-    <div class={statusBarClassNames} aria-hidden={isHidden}>
-      <div
-        class={progressClassNames}
-        style={{ width: width + '%' }}
-        role="progressbar"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        aria-valuenow={progressValue}
-      />
+  return <div class={statusBarClassNames} aria-hidden={isHidden}>
+      <div class={progressClassNames} style={{
+    width: width + '%'
+  }} role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={progressValue} />
       {progressBarContent}
       <div class="uppy-StatusBar-actions">
-        {showUploadBtn ? <UploadBtn {...props} uploadState={uploadState} /> : null}
-        {showRetryBtn ? <RetryBtn {...props} /> : null}
-        {showPauseResumeBtn ? <PauseResumeButton {...props} /> : null}
-        {showCancelBtn ? <CancelBtn {...props} /> : null}
+        {showUploadBtn ? <UploadBtn  {...props} uploadState={uploadState} /> : null}
+        {showRetryBtn ? <RetryBtn  {...props} /> : null}
+        {showPauseResumeBtn ? <PauseResumeButton  {...props} /> : null}
+        {showCancelBtn ? <CancelBtn  {...props} /> : null}
       </div>
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-const UploadBtn = (props) => {
-  const uploadBtnClassNames = classNames(
-    'uppy-u-reset',
-    'uppy-c-btn',
-    'uppy-StatusBar-actionBtn',
-    'uppy-StatusBar-actionBtn--upload',
-    { 'uppy-c-btn-primary': props.uploadState === statusBarStates.STATE_WAITING }
-  )
+};
+const UploadBtn = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UploadBtn","fileName":"${__filename}","paramsNumber":1},`);
 
-  return (
-    <button
-      type="button"
-      class={uploadBtnClassNames}
-      aria-label={props.i18n('uploadXFiles', { smart_count: props.newFiles })}
-      onclick={props.startUpload}
-      data-uppy-super-focusable
-    >
-      {props.newFiles && props.isUploadStarted
-        ? props.i18n('uploadXNewFiles', { smart_count: props.newFiles })
-        : props.i18n('uploadXFiles', { smart_count: props.newFiles })}
-    </button>
-  )
-}
+  const uploadBtnClassNames = classNames('uppy-u-reset', 'uppy-c-btn', 'uppy-StatusBar-actionBtn', 'uppy-StatusBar-actionBtn--upload', {
+    'uppy-c-btn-primary': props.uploadState === statusBarStates.STATE_WAITING
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadBtn"},');
 
-const RetryBtn = (props) => {
-  return (
-    <button
-      type="button"
-      class="uppy-u-reset uppy-c-btn uppy-StatusBar-actionBtn uppy-StatusBar-actionBtn--retry"
-      aria-label={props.i18n('retryUpload')}
-      onclick={props.retryAll}
-      data-uppy-super-focusable
-    >
+  return <button type="button" class={uploadBtnClassNames} aria-label={props.i18n('uploadXFiles', {
+    smart_count: props.newFiles
+  })} onclick={props.startUpload} data-uppy-super-focusable>
+      {props.newFiles && props.isUploadStarted ? props.i18n('uploadXNewFiles', {
+    smart_count: props.newFiles
+  }) : props.i18n('uploadXFiles', {
+    smart_count: props.newFiles
+  })}
+    </button>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadBtn"},');
+
+};
+const RetryBtn = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"RetryBtn","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"RetryBtn"},');
+
+  return <button type="button" class="uppy-u-reset uppy-c-btn uppy-StatusBar-actionBtn uppy-StatusBar-actionBtn--retry" aria-label={props.i18n('retryUpload')} onclick={props.retryAll} data-uppy-super-focusable>
       <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="8" height="10" viewBox="0 0 8 10">
         <path d="M4 2.408a2.75 2.75 0 1 0 2.75 2.75.626.626 0 0 1 1.25.018v.023a4 4 0 1 1-4-4.041V.25a.25.25 0 0 1 .389-.208l2.299 1.533a.25.25 0 0 1 0 .416l-2.3 1.533A.25.25 0 0 1 4 3.316v-.908z" />
       </svg>
       {props.i18n('retry')}
-    </button>
-  )
-}
+    </button>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"RetryBtn"},');
 
-const CancelBtn = (props) => {
-  return (
-    <button
-      type="button"
-      class="uppy-u-reset uppy-StatusBar-actionCircleBtn"
-      title={props.i18n('cancel')}
-      aria-label={props.i18n('cancel')}
-      onclick={props.cancelAll}
-      data-uppy-super-focusable
-    >
+};
+const CancelBtn = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"CancelBtn","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"CancelBtn"},');
+
+  return <button type="button" class="uppy-u-reset uppy-StatusBar-actionCircleBtn" title={props.i18n('cancel')} aria-label={props.i18n('cancel')} onclick={props.cancelAll} data-uppy-super-focusable>
       <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="16" height="16" viewBox="0 0 16 16">
         <g fill="none" fill-rule="evenodd">
           <circle fill="#888" cx="8" cy="8" r="8" />
           <path fill="#FFF" d="M9.283 8l2.567 2.567-1.283 1.283L8 9.283 5.433 11.85 4.15 10.567 6.717 8 4.15 5.433 5.433 4.15 8 6.717l2.567-2.567 1.283 1.283z" />
         </g>
       </svg>
-    </button>
-  )
-}
+    </button>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"CancelBtn"},');
 
-const PauseResumeButton = (props) => {
-  const { isAllPaused, i18n } = props
-  const title = isAllPaused ? i18n('resume') : i18n('pause')
+};
+const PauseResumeButton = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"PauseResumeButton","fileName":"${__filename}","paramsNumber":1},`);
 
-  return (
-    <button
-      title={title}
-      aria-label={title}
-      class="uppy-u-reset uppy-StatusBar-actionCircleBtn"
-      type="button"
-      onclick={() => togglePauseResume(props)}
-      data-uppy-super-focusable
-    >
-      {isAllPaused ? (
-        <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="16" height="16" viewBox="0 0 16 16">
+  const {isAllPaused, i18n} = props;
+  const title = isAllPaused ? i18n('resume') : i18n('pause');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"PauseResumeButton"},');
+
+  return <button title={title} aria-label={title} class="uppy-u-reset uppy-StatusBar-actionCircleBtn" type="button" onclick={() => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+    return togglePauseResume(props);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+  }} data-uppy-super-focusable>
+      {isAllPaused ? <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="16" height="16" viewBox="0 0 16 16">
           <g fill="none" fill-rule="evenodd">
             <circle fill="#888" cx="8" cy="8" r="8" />
             <path fill="#FFF" d="M6 4.25L11.5 8 6 11.75z" />
           </g>
-        </svg>
-      ) : (
-        <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="16" height="16" viewBox="0 0 16 16">
+        </svg> : <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="16" height="16" viewBox="0 0 16 16">
           <g fill="none" fill-rule="evenodd">
             <circle fill="#888" cx="8" cy="8" r="8" />
             <path d="M5 4.5h2v7H5v-7zm4 0h2v7H9v-7z" fill="#FFF" />
           </g>
-        </svg>
-      )}
-    </button>
-  )
-}
+        </svg>}
+    </button>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"PauseResumeButton"},');
 
+};
 const LoadingSpinner = () => {
-  return (
-    <svg class="uppy-StatusBar-spinner" aria-hidden="true" focusable="false" width="14" height="14">
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"LoadingSpinner","fileName":"${__filename}","paramsNumber":0},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"LoadingSpinner"},');
+
+  return <svg class="uppy-StatusBar-spinner" aria-hidden="true" focusable="false" width="14" height="14">
       <path d="M13.983 6.547c-.12-2.509-1.64-4.893-3.939-5.936-2.48-1.127-5.488-.656-7.556 1.094C.524 3.367-.398 6.048.162 8.562c.556 2.495 2.46 4.52 4.94 5.183 2.932.784 5.61-.602 7.256-3.015-1.493 1.993-3.745 3.309-6.298 2.868-2.514-.434-4.578-2.349-5.153-4.84a6.226 6.226 0 0 1 2.98-6.778C6.34.586 9.74 1.1 11.373 3.493c.407.596.693 1.282.842 1.988.127.598.073 1.197.161 1.794.078.525.543 1.257 1.15.864.525-.341.49-1.05.456-1.592-.007-.15.02.3 0 0" fill-rule="evenodd" />
-    </svg>
-  )
-}
+    </svg>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"LoadingSpinner"},');
 
-const ProgressBarProcessing = (props) => {
-  const value = Math.round(props.value * 100)
+};
+const ProgressBarProcessing = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBarProcessing","fileName":"${__filename}","paramsNumber":1},`);
 
-  return (
-    <div class="uppy-StatusBar-content">
+  const value = Math.round(props.value * 100);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarProcessing"},');
+
+  return <div class="uppy-StatusBar-content">
       <LoadingSpinner />
       {props.mode === 'determinate' ? `${value}% \u00B7 ` : ''}
       {props.message}
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarProcessing"},');
 
-const renderDot = () =>
-  ' \u00B7 '
+};
+const renderDot = () => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderDot","fileName":"${__filename}","paramsNumber":0},`);
 
-const ProgressDetails = (props) => {
-  const ifShowFilesUploadedOfTotal = props.numUploads > 1
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderDot"},');
 
-  return (
-    <div class="uppy-StatusBar-statusSecondary">
-      {
-        ifShowFilesUploadedOfTotal &&
-        props.i18n('filesUploadedOfTotal', {
-          complete: props.complete,
-          smart_count: props.numUploads
-        })
-      }
+  return ' \u00B7 ';
+    SRTlib.send('{"type":"FUNCTIONEND","function":"renderDot"},');
+
+};
+const ProgressDetails = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressDetails","fileName":"${__filename}","paramsNumber":1},`);
+
+  const ifShowFilesUploadedOfTotal = props.numUploads > 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressDetails"},');
+
+  return <div class="uppy-StatusBar-statusSecondary">
+      {ifShowFilesUploadedOfTotal && props.i18n('filesUploadedOfTotal', {
+    complete: props.complete,
+    smart_count: props.numUploads
+  })}
       <span class="uppy-StatusBar-additionalInfo">
-        {/* When should we render this dot?
-          1. .-additionalInfo is shown (happens only on desktops)
-          2. AND 'filesUploadedOfTotal' was shown
-        */}
+        {}
         {ifShowFilesUploadedOfTotal && renderDot()}
 
-        {
-          props.i18n('dataUploadedOfTotal', {
-            complete: prettierBytes(props.totalUploadedSize),
-            total: prettierBytes(props.totalSize)
-          })
-        }
+        {props.i18n('dataUploadedOfTotal', {
+    complete: prettierBytes(props.totalUploadedSize),
+    total: prettierBytes(props.totalSize)
+  })}
 
         {renderDot()}
 
-        {
-          props.i18n('xTimeLeft', {
-            time: prettyETA(props.totalETA)
-          })
-        }
+        {props.i18n('xTimeLeft', {
+    time: prettyETA(props.totalETA)
+  })}
       </span>
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressDetails"},');
 
-const UnknownProgressDetails = (props) => {
-  return (
-    <div class="uppy-StatusBar-statusSecondary">
-      {props.i18n('filesUploadedOfTotal', { complete: props.complete, smart_count: props.numUploads })}
-    </div>
-  )
-}
+};
+const UnknownProgressDetails = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UnknownProgressDetails","fileName":"${__filename}","paramsNumber":1},`);
 
-const UploadNewlyAddedFiles = (props) => {
-  const uploadBtnClassNames = classNames(
-    'uppy-u-reset',
-    'uppy-c-btn',
-    'uppy-StatusBar-actionBtn',
-    'uppy-StatusBar-actionBtn--uploadNewlyAdded'
-  )
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UnknownProgressDetails"},');
 
-  return (
-    <div class="uppy-StatusBar-statusSecondary">
+  return <div class="uppy-StatusBar-statusSecondary">
+      {props.i18n('filesUploadedOfTotal', {
+    complete: props.complete,
+    smart_count: props.numUploads
+  })}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UnknownProgressDetails"},');
+
+};
+const UploadNewlyAddedFiles = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UploadNewlyAddedFiles","fileName":"${__filename}","paramsNumber":1},`);
+
+  const uploadBtnClassNames = classNames('uppy-u-reset', 'uppy-c-btn', 'uppy-StatusBar-actionBtn', 'uppy-StatusBar-actionBtn--uploadNewlyAdded');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadNewlyAddedFiles"},');
+
+  return <div class="uppy-StatusBar-statusSecondary">
       <div class="uppy-StatusBar-statusSecondaryHint">
-        {props.i18n('xMoreFilesAdded', { smart_count: props.newFiles })}
+        {props.i18n('xMoreFilesAdded', {
+    smart_count: props.newFiles
+  })}
       </div>
-      <button
-        type="button"
-        class={uploadBtnClassNames}
-        aria-label={props.i18n('uploadXFiles', { smart_count: props.newFiles })}
-        onclick={props.startUpload}
-      >
+      <button type="button" class={uploadBtnClassNames} aria-label={props.i18n('uploadXFiles', {
+    smart_count: props.newFiles
+  })} onclick={props.startUpload}>
         {props.i18n('upload')}
       </button>
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"UploadNewlyAddedFiles"},');
 
-const ThrottledProgressDetails = throttle(ProgressDetails, 500, { leading: true, trailing: true })
+};
+const ThrottledProgressDetails = throttle(ProgressDetails, 500, {
+  leading: true,
+  trailing: true
+});
+const ProgressBarUploading = props => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBarUploading","fileName":"${__filename}","paramsNumber":1},`);
 
-const ProgressBarUploading = (props) => {
   if (!props.isUploadStarted || props.isAllComplete) {
-    return null
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarUploading"},');
+
+    return null;
   }
+  const title = props.isAllPaused ? props.i18n('paused') : props.i18n('uploading');
+  const showUploadNewlyAddedFiles = props.newFiles && props.isUploadStarted;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarUploading"},');
 
-  const title = props.isAllPaused ? props.i18n('paused') : props.i18n('uploading')
-  const showUploadNewlyAddedFiles = props.newFiles && props.isUploadStarted
-
-  return (
-    <div class="uppy-StatusBar-content" aria-label={title} title={title}>
+  return <div class="uppy-StatusBar-content" aria-label={title} title={title}>
       {!props.isAllPaused ? <LoadingSpinner /> : null}
       <div class="uppy-StatusBar-status">
         <div class="uppy-StatusBar-statusPrimary">
           {props.supportsUploadProgress ? `${title}: ${props.totalProgress}%` : title}
         </div>
-        {!props.isAllPaused && !showUploadNewlyAddedFiles && props.showProgressDetails
-          ? (props.supportsUploadProgress ? <ThrottledProgressDetails {...props} /> : <UnknownProgressDetails {...props} />)
-          : null}
-        {showUploadNewlyAddedFiles ? <UploadNewlyAddedFiles {...props} /> : null}
+        {!props.isAllPaused && !showUploadNewlyAddedFiles && props.showProgressDetails ? props.supportsUploadProgress ? <ThrottledProgressDetails  {...props} /> : <UnknownProgressDetails  {...props} /> : null}
+        {showUploadNewlyAddedFiles ? <UploadNewlyAddedFiles  {...props} /> : null}
       </div>
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarUploading"},');
 
-const ProgressBarComplete = ({ totalProgress, i18n }) => {
-  return (
-    <div class="uppy-StatusBar-content" role="status" title={i18n('complete')}>
+};
+const ProgressBarComplete = ({totalProgress, i18n}) => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBarComplete","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarComplete"},');
+
+  return <div class="uppy-StatusBar-content" role="status" title={i18n('complete')}>
       <div class="uppy-StatusBar-status">
         <div class="uppy-StatusBar-statusPrimary">
           <svg aria-hidden="true" focusable="false" class="uppy-StatusBar-statusIndicator uppy-c-icon" width="15" height="11" viewBox="0 0 15 11">
@@ -363,18 +355,24 @@ const ProgressBarComplete = ({ totalProgress, i18n }) => {
           {i18n('complete')}
         </div>
       </div>
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarComplete"},');
 
-const ProgressBarError = ({ error, retryAll, hideRetryButton, i18n }) => {
-  function displayErrorAlert () {
-    const errorMessage = `${i18n('uploadFailed')} \n\n ${error}`
-    alert(errorMessage)
+};
+const ProgressBarError = ({error, retryAll, hideRetryButton, i18n}) => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBarError","fileName":"${__filename}","paramsNumber":1},`);
+
+  function displayErrorAlert() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"displayErrorAlert","fileName":"${__filename}","paramsNumber":0},`);
+
+    const errorMessage = `${i18n('uploadFailed')} \n\n ${error}`;
+    alert(errorMessage);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"displayErrorAlert","paramsNumber":0},');
+
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarError"},');
 
-  return (
-    <div class="uppy-StatusBar-content" role="alert" title={i18n('uploadFailed')}>
+  return <div class="uppy-StatusBar-content" role="alert" title={i18n('uploadFailed')}>
       <div class="uppy-StatusBar-status">
         <div class="uppy-StatusBar-statusPrimary">
           <svg aria-hidden="true" focusable="false" class="uppy-StatusBar-statusIndicator uppy-c-icon" width="11" height="11" viewBox="0 0 11 11">
@@ -383,16 +381,10 @@ const ProgressBarError = ({ error, retryAll, hideRetryButton, i18n }) => {
           {i18n('uploadFailed')}
         </div>
       </div>
-      <span
-        class="uppy-StatusBar-details"
-        aria-label={error}
-        data-microtip-position="top-right"
-        data-microtip-size="medium"
-        role="tooltip"
-        onclick={displayErrorAlert}
-      >
+      <span class="uppy-StatusBar-details" aria-label={error} data-microtip-position="top-right" data-microtip-size="medium" role="tooltip" onclick={displayErrorAlert}>
         ?
       </span>
-    </div>
-  )
-}
+    </div>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarError"},');
+
+};

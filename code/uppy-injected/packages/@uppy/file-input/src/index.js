@@ -1,90 +1,102 @@
-const { Plugin } = require('@uppy/core')
-const toArray = require('@uppy/utils/lib/toArray')
-const Translator = require('@uppy/utils/lib/Translator')
-const { h } = require('preact')
+const SRTlib = require('SRT-util');
 
+const {Plugin} = require('@uppy/core');
+const toArray = require('@uppy/utils/lib/toArray');
+const Translator = require('@uppy/utils/lib/Translator');
+const {h} = require('preact');
 module.exports = class FileInput extends Plugin {
   static VERSION = require('../package.json').version
+  constructor(uppy, opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
-  constructor (uppy, opts) {
-    super(uppy, opts)
-    this.id = this.opts.id || 'FileInput'
-    this.title = 'File Input'
-    this.type = 'acquirer'
-
+    super(uppy, opts);
+    this.id = this.opts.id || 'FileInput';
+    this.title = 'File Input';
+    this.type = 'acquirer';
     this.defaultLocale = {
       strings: {
-        // The same key is used for the same purpose by @uppy/robodog's `form()` API, but our
-        // locale pack scripts can't access it in Robodog. If it is updated here, it should
-        // also be updated there!
         chooseFiles: 'Choose files'
       }
-    }
-
-    // Default options
+    };
     const defaultOptions = {
       target: null,
       pretty: true,
       inputName: 'files[]'
-    }
+    };
+    this.opts = {
+      ...defaultOptions,
+      ...opts
+    };
+    this.i18nInit();
+    this.render = this.render.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-    // Merge default options with the ones set by user
-    this.opts = { ...defaultOptions, ...opts }
-
-    this.i18nInit()
-
-    this.render = this.render.bind(this)
-    this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
   }
+  setOptions(newOpts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
-  setOptions (newOpts) {
-    super.setOptions(newOpts)
-    this.i18nInit()
+    super.setOptions(newOpts);
+    this.i18nInit();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setOptions"},');
+
   }
+  i18nInit() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
-  i18nInit () {
-    this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale])
-    this.i18n = this.translator.translate.bind(this.translator)
-    this.i18nArray = this.translator.translateArray.bind(this.translator)
-    this.setPluginState() // so that UI re-renders and we see the updated locale
+    this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
+    this.i18n = this.translator.translate.bind(this.translator);
+    this.i18nArray = this.translator.translateArray.bind(this.translator);
+    this.setPluginState();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"i18nInit"},');
+
   }
+  addFiles(files) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
-  addFiles (files) {
-    const descriptors = files.map((file) => ({
-      source: this.id,
-      name: file.name,
-      type: file.type,
-      data: file
-    }))
+    const descriptors = files.map(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.descriptors.files.map","fileName":"${__filename}","paramsNumber":1},`);
 
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.descriptors.files.map"},');
+
+      return {
+        source: this.id,
+        name: file.name,
+        type: file.type,
+        data: file
+      };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.descriptors.files.map"},');
+
+    });
     try {
-      this.uppy.addFiles(descriptors)
+      this.uppy.addFiles(descriptors);
     } catch (err) {
-      this.uppy.log(err)
+      this.uppy.log(err);
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"addFiles"},');
+
   }
+  handleInputChange(event) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleInputChange","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
-  handleInputChange (event) {
-    this.uppy.log('[FileInput] Something selected through input...')
-    const files = toArray(event.target.files)
-    this.addFiles(files)
+    this.uppy.log('[FileInput] Something selected through input...');
+    const files = toArray(event.target.files);
+    this.addFiles(files);
+    event.target.value = null;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleInputChange"},');
 
-    // We clear the input after a file is selected, because otherwise
-    // change event is not fired in Chrome and Safari when a file
-    // with the same name is selected.
-    // ___Why not use value="" on <input/> instead?
-    //    Because if we use that method of clearing the input,
-    //    Chrome will not trigger change if we drop the same file twice (Issue #768).
-    event.target.value = null
   }
+  handleClick(ev) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleClick","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
-  handleClick (ev) {
-    this.input.click()
+    this.input.click();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleClick"},');
+
   }
+  render(state) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
-  render (state) {
-    /* http://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/ */
     const hiddenInputStyle = {
       width: '0.1px',
       height: '0.1px',
@@ -92,43 +104,41 @@ module.exports = class FileInput extends Plugin {
       overflow: 'hidden',
       position: 'absolute',
       zIndex: -1
-    }
+    };
+    const restrictions = this.uppy.opts.restrictions;
+    const accept = restrictions.allowedFileTypes ? restrictions.allowedFileTypes.join(',') : null;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
-    const restrictions = this.uppy.opts.restrictions
-    const accept = restrictions.allowedFileTypes ? restrictions.allowedFileTypes.join(',') : null
+    return <div class="uppy-Root uppy-FileInput-container">
+        <input class="uppy-FileInput-input" style={this.opts.pretty && hiddenInputStyle} type="file" name={this.opts.inputName} onchange={this.handleInputChange} multiple={restrictions.maxNumberOfFiles !== 1} accept={accept} ref={input => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
-    return (
-      <div class="uppy-Root uppy-FileInput-container">
-        <input
-          class="uppy-FileInput-input"
-          style={this.opts.pretty && hiddenInputStyle}
-          type="file"
-          name={this.opts.inputName}
-          onchange={this.handleInputChange}
-          multiple={restrictions.maxNumberOfFiles !== 1}
-          accept={accept}
-          ref={(input) => { this.input = input }}
-        />
-        {this.opts.pretty &&
-          <button
-            class="uppy-FileInput-btn"
-            type="button"
-            onclick={this.handleClick}
-          >
+      this.input = input;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
+
+    }} />
+        {this.opts.pretty && <button class="uppy-FileInput-btn" type="button" onclick={this.handleClick}>
             {this.i18n('chooseFiles')}
           </button>}
-      </div>
-    )
-  }
+      </div>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
-  install () {
-    const target = this.opts.target
+  }
+  install() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+
+    const target = this.opts.target;
     if (target) {
-      this.mount(target, this)
+      this.mount(target, this);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
-  uninstall () {
-    this.unmount()
   }
-}
+  uninstall() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+
+    this.unmount();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
+
+  }
+};

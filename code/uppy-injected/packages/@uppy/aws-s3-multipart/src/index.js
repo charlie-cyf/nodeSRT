@@ -1,30 +1,38 @@
-const { Plugin } = require('@uppy/core')
-const { Socket, Provider, RequestClient } = require('@uppy/companion-client')
-const EventTracker = require('@uppy/utils/lib/EventTracker')
-const emitSocketProgress = require('@uppy/utils/lib/emitSocketProgress')
-const getSocketHost = require('@uppy/utils/lib/getSocketHost')
-const RateLimitedQueue = require('@uppy/utils/lib/RateLimitedQueue')
-const Uploader = require('./MultipartUploader')
+const SRTlib = require('SRT-util');
 
-function assertServerError (res) {
+const {Plugin} = require('@uppy/core');
+const {Socket, Provider, RequestClient} = require('@uppy/companion-client');
+const EventTracker = require('@uppy/utils/lib/EventTracker');
+const emitSocketProgress = require('@uppy/utils/lib/emitSocketProgress');
+const getSocketHost = require('@uppy/utils/lib/getSocketHost');
+const RateLimitedQueue = require('@uppy/utils/lib/RateLimitedQueue');
+const Uploader = require('./MultipartUploader');
+function assertServerError(res) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"assertServerError","fileName":"${__filename}","paramsNumber":1},`);
+
   if (res && res.error) {
-    const error = new Error(res.message)
-    Object.assign(error, res.error)
-    throw error
-  }
-  return res
-}
+    const error = new Error(res.message);
+    Object.assign(error, res.error);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"assertServerError"},');
 
+    throw error;
+  }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"assertServerError"},');
+
+  return res;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"assertServerError","paramsNumber":1},');
+
+}
 module.exports = class AwsS3Multipart extends Plugin {
   static VERSION = require('../package.json').version
+  constructor(uppy, opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  constructor (uppy, opts) {
-    super(uppy, opts)
-    this.type = 'uploader'
-    this.id = this.opts.id || 'AwsS3Multipart'
-    this.title = 'AWS S3 Multipart'
-    this.client = new RequestClient(uppy, opts)
-
+    super(uppy, opts);
+    this.type = 'uploader';
+    this.id = this.opts.id || 'AwsS3Multipart';
+    this.title = 'AWS S3 Multipart';
+    this.client = new RequestClient(uppy, opts);
     const defaultOptions = {
       timeout: 30 * 1000,
       limit: 0,
@@ -33,456 +41,718 @@ module.exports = class AwsS3Multipart extends Plugin {
       prepareUploadPart: this.prepareUploadPart.bind(this),
       abortMultipartUpload: this.abortMultipartUpload.bind(this),
       completeMultipartUpload: this.completeMultipartUpload.bind(this)
-    }
+    };
+    this.opts = {
+      ...defaultOptions,
+      ...opts
+    };
+    this.upload = this.upload.bind(this);
+    this.requests = new RateLimitedQueue(this.opts.limit);
+    this.uploaders = Object.create(null);
+    this.uploaderEvents = Object.create(null);
+    this.uploaderSockets = Object.create(null);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-    this.opts = { ...defaultOptions, ...opts }
-
-    this.upload = this.upload.bind(this)
-
-    this.requests = new RateLimitedQueue(this.opts.limit)
-
-    this.uploaders = Object.create(null)
-    this.uploaderEvents = Object.create(null)
-    this.uploaderSockets = Object.create(null)
   }
+  resetUploaderReferences(fileID, opts = {}) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resetUploaderReferences","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  /**
-   * Clean up all references for a file's upload: the MultipartUploader instance,
-   * any events related to the file, and the Companion WebSocket connection.
-   *
-   * Set `opts.abort` to tell S3 that the multipart upload is cancelled and must be removed.
-   * This should be done when the user cancels the upload, not when the upload is completed or errored.
-   */
-  resetUploaderReferences (fileID, opts = {}) {
     if (this.uploaders[fileID]) {
-      this.uploaders[fileID].abort({ really: opts.abort || false })
-      this.uploaders[fileID] = null
+      this.uploaders[fileID].abort({
+        really: opts.abort || false
+      });
+      this.uploaders[fileID] = null;
     }
     if (this.uploaderEvents[fileID]) {
-      this.uploaderEvents[fileID].remove()
-      this.uploaderEvents[fileID] = null
+      this.uploaderEvents[fileID].remove();
+      this.uploaderEvents[fileID] = null;
     }
     if (this.uploaderSockets[fileID]) {
-      this.uploaderSockets[fileID].close()
-      this.uploaderSockets[fileID] = null
+      this.uploaderSockets[fileID].close();
+      this.uploaderSockets[fileID] = null;
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"resetUploaderReferences"},');
 
-  assertHost () {
+  }
+  assertHost() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"assertHost","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
+
     if (!this.opts.companionUrl) {
-      throw new Error('Expected a `companionUrl` option containing a Companion address.')
+            SRTlib.send('{"type":"FUNCTIONEND","function":"assertHost"},');
+
+      throw new Error('Expected a `companionUrl` option containing a Companion address.');
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"assertHost"},');
+
   }
+  createMultipartUpload(file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createMultipartUpload","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  createMultipartUpload (file) {
-    this.assertHost()
-
-    const metadata = {}
-
+    this.assertHost();
+    const metadata = {};
     Object.keys(file.meta).map(key => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
+
       if (file.meta[key] != null) {
-        metadata[key] = file.meta[key].toString()
+        metadata[key] = file.meta[key].toString();
       }
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Object.keys.map"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"createMultipartUpload"},');
 
     return this.client.post('s3/multipart', {
       filename: file.name,
       type: file.type,
       metadata
-    }).then(assertServerError)
+    }).then(assertServerError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"createMultipartUpload"},');
+
   }
+  listParts(file, {key, uploadId}) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"listParts","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  listParts (file, { key, uploadId }) {
-    this.assertHost()
+    this.assertHost();
+    const filename = encodeURIComponent(key);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"listParts"},');
 
-    const filename = encodeURIComponent(key)
-    return this.client.get(`s3/multipart/${uploadId}?key=${filename}`)
-      .then(assertServerError)
+    return this.client.get(`s3/multipart/${uploadId}?key=${filename}`).then(assertServerError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"listParts"},');
+
   }
+  prepareUploadPart(file, {key, uploadId, number}) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prepareUploadPart","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  prepareUploadPart (file, { key, uploadId, number }) {
-    this.assertHost()
+    this.assertHost();
+    const filename = encodeURIComponent(key);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"prepareUploadPart"},');
 
-    const filename = encodeURIComponent(key)
-    return this.client.get(`s3/multipart/${uploadId}/${number}?key=${filename}`)
-      .then(assertServerError)
+    return this.client.get(`s3/multipart/${uploadId}/${number}?key=${filename}`).then(assertServerError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"prepareUploadPart"},');
+
   }
+  completeMultipartUpload(file, {key, uploadId, parts}) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"completeMultipartUpload","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  completeMultipartUpload (file, { key, uploadId, parts }) {
-    this.assertHost()
+    this.assertHost();
+    const filename = encodeURIComponent(key);
+    const uploadIdEnc = encodeURIComponent(uploadId);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"completeMultipartUpload"},');
 
-    const filename = encodeURIComponent(key)
-    const uploadIdEnc = encodeURIComponent(uploadId)
-    return this.client.post(`s3/multipart/${uploadIdEnc}/complete?key=${filename}`, { parts })
-      .then(assertServerError)
+    return this.client.post(`s3/multipart/${uploadIdEnc}/complete?key=${filename}`, {
+      parts
+    }).then(assertServerError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"completeMultipartUpload"},');
+
   }
+  abortMultipartUpload(file, {key, uploadId}) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"abortMultipartUpload","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  abortMultipartUpload (file, { key, uploadId }) {
-    this.assertHost()
+    this.assertHost();
+    const filename = encodeURIComponent(key);
+    const uploadIdEnc = encodeURIComponent(uploadId);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"abortMultipartUpload"},');
 
-    const filename = encodeURIComponent(key)
-    const uploadIdEnc = encodeURIComponent(uploadId)
-    return this.client.delete(`s3/multipart/${uploadIdEnc}?key=${filename}`)
-      .then(assertServerError)
+    return this.client.delete(`s3/multipart/${uploadIdEnc}?key=${filename}`).then(assertServerError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"abortMultipartUpload"},');
+
   }
+  uploadFile(file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadFile","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  uploadFile (file) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uploadFile"},');
+
     return new Promise((resolve, reject) => {
-      const onStart = (data) => {
-        const cFile = this.uppy.getFile(file.id)
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+
+      const onStart = data => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onStart","fileName":"${__filename}","paramsNumber":1},`);
+
+        const cFile = this.uppy.getFile(file.id);
         this.uppy.setFileState(file.id, {
           s3Multipart: {
             ...cFile.s3Multipart,
             key: data.key,
             uploadId: data.uploadId
           }
-        })
-      }
+        });
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onStart"},');
 
+      };
       const onProgress = (bytesUploaded, bytesTotal) => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onProgress","fileName":"${__filename}","paramsNumber":2},`);
+
         this.uppy.emit('upload-progress', file, {
           uploader: this,
           bytesUploaded: bytesUploaded,
           bytesTotal: bytesTotal
-        })
-      }
+        });
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onProgress"},');
 
-      const onError = (err) => {
-        this.uppy.log(err)
-        this.uppy.emit('upload-error', file, err)
+      };
+      const onError = err => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onError","fileName":"${__filename}","paramsNumber":1},`);
 
-        queuedRequest.done()
-        this.resetUploaderReferences(file.id)
-        reject(err)
-      }
+        this.uppy.log(err);
+        this.uppy.emit('upload-error', file, err);
+        queuedRequest.done();
+        this.resetUploaderReferences(file.id);
+        reject(err);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onError"},');
 
-      const onSuccess = (result) => {
+      };
+      const onSuccess = result => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onSuccess","fileName":"${__filename}","paramsNumber":1},`);
+
         const uploadResp = {
           uploadURL: result.location
-        }
-
-        queuedRequest.done()
-        this.resetUploaderReferences(file.id)
-
-        this.uppy.emit('upload-success', file, uploadResp)
-
+        };
+        queuedRequest.done();
+        this.resetUploaderReferences(file.id);
+        this.uppy.emit('upload-success', file, uploadResp);
         if (result.location) {
-          this.uppy.log('Download ' + upload.file.name + ' from ' + result.location)
+          this.uppy.log('Download ' + upload.file.name + ' from ' + result.location);
         }
+        resolve(upload);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onSuccess"},');
 
-        resolve(upload)
-      }
+      };
+      const onPartComplete = part => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPartComplete","fileName":"${__filename}","paramsNumber":1},`);
 
-      const onPartComplete = (part) => {
-        const cFile = this.uppy.getFile(file.id)
+        const cFile = this.uppy.getFile(file.id);
         if (!cFile) {
-          return
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"onPartComplete"},');
+
+          return;
         }
+        this.uppy.emit('s3-multipart:part-uploaded', cFile, part);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onPartComplete"},');
 
-        this.uppy.emit('s3-multipart:part-uploaded', cFile, part)
-      }
-
+      };
       const upload = new Uploader(file.data, {
-        // .bind to pass the file object to each handler.
         createMultipartUpload: this.opts.createMultipartUpload.bind(this, file),
         listParts: this.opts.listParts.bind(this, file),
         prepareUploadPart: this.opts.prepareUploadPart.bind(this, file),
         completeMultipartUpload: this.opts.completeMultipartUpload.bind(this, file),
         abortMultipartUpload: this.opts.abortMultipartUpload.bind(this, file),
         getChunkSize: this.opts.getChunkSize ? this.opts.getChunkSize.bind(this) : null,
-
         onStart,
         onProgress,
         onError,
         onSuccess,
         onPartComplete,
-
         limit: this.opts.limit || 5,
         ...file.s3Multipart
-      })
-
-      this.uploaders[file.id] = upload
-      this.uploaderEvents[file.id] = new EventTracker(this.uppy)
-
+      });
+      this.uploaders[file.id] = upload;
+      this.uploaderEvents[file.id] = new EventTracker(this.uppy);
       let queuedRequest = this.requests.run(() => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run","fileName":"${__filename}","paramsNumber":0},`);
+
         if (!file.isPaused) {
-          upload.start()
+          upload.start();
         }
-        // Don't do anything here, the caller will take care of cancelling the upload itself
-        // using resetUploaderReferences(). This is because resetUploaderReferences() has to be
-        // called when this request is still in the queue, and has not been started yet, too. At
-        // that point this cancellation function is not going to be called.
-        return () => {}
-      })
+                SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run"},');
 
-      this.onFileRemove(file.id, (removed) => {
-        queuedRequest.abort()
-        this.resetUploaderReferences(file.id, { abort: true })
-        resolve(`upload ${removed.id} was removed`)
-      })
+        return () => {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
 
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+        };
+                SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run"},');
+
+      });
+      this.onFileRemove(file.id, removed => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFileRemove","fileName":"${__filename}","paramsNumber":1},`);
+
+        queuedRequest.abort();
+        this.resetUploaderReferences(file.id, {
+          abort: true
+        });
+        resolve(`upload ${removed.id} was removed`);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onFileRemove"},');
+
+      });
       this.onCancelAll(file.id, () => {
-        queuedRequest.abort()
-        this.resetUploaderReferences(file.id, { abort: true })
-        resolve(`upload ${file.id} was canceled`)
-      })
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onCancelAll","fileName":"${__filename}","paramsNumber":0},`);
 
-      this.onFilePause(file.id, (isPaused) => {
+        queuedRequest.abort();
+        this.resetUploaderReferences(file.id, {
+          abort: true
+        });
+        resolve(`upload ${file.id} was canceled`);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onCancelAll"},');
+
+      });
+      this.onFilePause(file.id, isPaused => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFilePause","fileName":"${__filename}","paramsNumber":1},`);
+
         if (isPaused) {
-          // Remove this file from the queue so another file can start in its place.
-          queuedRequest.abort()
-          upload.pause()
+          queuedRequest.abort();
+          upload.pause();
         } else {
-          // Resuming an upload should be queued, else you could pause and then resume a queued upload to make it skip the queue.
-          queuedRequest.abort()
+          queuedRequest.abort();
           queuedRequest = this.requests.run(() => {
-            upload.start()
-            return () => {}
-          })
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run2","fileName":"${__filename}","paramsNumber":0},`);
+
+            upload.start();
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run2"},');
+
+            return () => {
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+
+            };
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run2"},');
+
+          });
         }
-      })
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onFilePause"},');
 
+      });
       this.onPauseAll(file.id, () => {
-        queuedRequest.abort()
-        upload.pause()
-      })
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onPauseAll","fileName":"${__filename}","paramsNumber":0},`);
 
+        queuedRequest.abort();
+        upload.pause();
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onPauseAll"},');
+
+      });
       this.onResumeAll(file.id, () => {
-        queuedRequest.abort()
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onResumeAll","fileName":"${__filename}","paramsNumber":0},`);
+
+        queuedRequest.abort();
         if (file.error) {
-          upload.abort()
+          upload.abort();
         }
         queuedRequest = this.requests.run(() => {
-          upload.start()
-          return () => {}
-        })
-      })
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run3","fileName":"${__filename}","paramsNumber":0},`);
 
+          upload.start();
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run3"},');
+
+          return () => {
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement3","fileName":"${__filename}","paramsNumber":0},`);
+
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+
+          };
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run3"},');
+
+        });
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll"},');
+
+      });
       if (!file.isRestored) {
-        this.uppy.emit('upload-started', file, upload)
+        this.uppy.emit('upload-started', file, upload);
       }
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uploadFile"},');
+
   }
+  uploadRemote(file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadRemote","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  uploadRemote (file) {
-    this.resetUploaderReferences(file.id)
-
-    this.uppy.emit('upload-started', file)
+    this.resetUploaderReferences(file.id);
+    this.uppy.emit('upload-started', file);
     if (file.serverToken) {
-      return this.connectToServerSocket(file)
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uploadRemote"},');
+
+      return this.connectToServerSocket(file);
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uploadRemote"},');
 
     return new Promise((resolve, reject) => {
-      const Client = file.remote.providerOptions.provider ? Provider : RequestClient
-      const client = new Client(this.uppy, file.remote.providerOptions)
-      client.post(
-        file.remote.url,
-        {
-          ...file.remote.body,
-          protocol: 's3-multipart',
-          size: file.data.size,
-          metadata: file.meta
-        }
-      ).then((res) => {
-        this.uppy.setFileState(file.id, { serverToken: res.token })
-        file = this.uppy.getFile(file.id)
-        return file
-      }).then((file) => {
-        return this.connectToServerSocket(file)
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
+
+      const Client = file.remote.providerOptions.provider ? Provider : RequestClient;
+      const client = new Client(this.uppy, file.remote.providerOptions);
+      client.post(file.remote.url, {
+        ...file.remote.body,
+        protocol: 's3-multipart',
+        size: file.data.size,
+        metadata: file.meta
+      }).then(res => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.then.then.catch.client.post.then.then.then.client.post.then.then.client.post.then","fileName":"${__filename}","paramsNumber":1},`);
+
+        this.uppy.setFileState(file.id, {
+          serverToken: res.token
+        });
+        file = this.uppy.getFile(file.id);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.then.then.catch.client.post.then.then.then.client.post.then.then.client.post.then"},');
+
+        return file;
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.then.then.catch.client.post.then.then.then.client.post.then.then.client.post.then"},');
+
+      }).then(file => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.then.then.catch.client.post.then.then.then.client.post.then.then","fileName":"${__filename}","paramsNumber":1},`);
+
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.then.then.catch.client.post.then.then.then.client.post.then.then"},');
+
+        return this.connectToServerSocket(file);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.then.then.catch.client.post.then.then.then.client.post.then.then"},');
+
       }).then(() => {
-        resolve()
-      }).catch((err) => {
-        this.uppy.emit('upload-error', file, err)
-        reject(err)
-      })
-    })
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.then.then.catch.client.post.then.then.then","fileName":"${__filename}","paramsNumber":0},`);
+
+        resolve();
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.then.then.catch.client.post.then.then.then"},');
+
+      }).catch(err => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.then.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+        this.uppy.emit('upload-error', file, err);
+        reject(err);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.then.then.catch"},');
+
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uploadRemote"},');
+
   }
+  connectToServerSocket(file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"connectToServerSocket","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  connectToServerSocket (file) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"connectToServerSocket"},');
+
     return new Promise((resolve, reject) => {
-      const token = file.serverToken
-      const host = getSocketHost(file.remote.companionUrl)
-      const socket = new Socket({ target: `${host}/api/${token}`, autoOpen: false })
-      this.uploaderSockets[file.id] = socket
-      this.uploaderEvents[file.id] = new EventTracker(this.uppy)
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression3","fileName":"${__filename}","paramsNumber":2},`);
 
-      this.onFileRemove(file.id, (removed) => {
-        queuedRequest.abort()
-        socket.send('pause', {})
-        this.resetUploaderReferences(file.id, { abort: true })
-        resolve(`upload ${file.id} was removed`)
-      })
+      const token = file.serverToken;
+      const host = getSocketHost(file.remote.companionUrl);
+      const socket = new Socket({
+        target: `${host}/api/${token}`,
+        autoOpen: false
+      });
+      this.uploaderSockets[file.id] = socket;
+      this.uploaderEvents[file.id] = new EventTracker(this.uppy);
+      this.onFileRemove(file.id, removed => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFileRemove2","fileName":"${__filename}","paramsNumber":1},`);
 
-      this.onFilePause(file.id, (isPaused) => {
+        queuedRequest.abort();
+        socket.send('pause', {});
+        this.resetUploaderReferences(file.id, {
+          abort: true
+        });
+        resolve(`upload ${file.id} was removed`);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onFileRemove2"},');
+
+      });
+      this.onFilePause(file.id, isPaused => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFilePause2","fileName":"${__filename}","paramsNumber":1},`);
+
         if (isPaused) {
-          // Remove this file from the queue so another file can start in its place.
-          queuedRequest.abort()
-          socket.send('pause', {})
+          queuedRequest.abort();
+          socket.send('pause', {});
         } else {
-          // Resuming an upload should be queued, else you could pause and then resume a queued upload to make it skip the queue.
-          queuedRequest.abort()
+          queuedRequest.abort();
           queuedRequest = this.requests.run(() => {
-            socket.send('resume', {})
-            return () => {}
-          })
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run4","fileName":"${__filename}","paramsNumber":0},`);
+
+            socket.send('resume', {});
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run4"},');
+
+            return () => {
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement4","fileName":"${__filename}","paramsNumber":0},`);
+
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement4"},');
+
+            };
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run4"},');
+
+          });
         }
-      })
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onFilePause2"},');
 
+      });
       this.onPauseAll(file.id, () => {
-        queuedRequest.abort()
-        socket.send('pause', {})
-      })
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onPauseAll2","fileName":"${__filename}","paramsNumber":0},`);
 
+        queuedRequest.abort();
+        socket.send('pause', {});
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onPauseAll2"},');
+
+      });
       this.onCancelAll(file.id, () => {
-        queuedRequest.abort()
-        socket.send('pause', {})
-        this.resetUploaderReferences(file.id)
-        resolve(`upload ${file.id} was canceled`)
-      })
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onCancelAll2","fileName":"${__filename}","paramsNumber":0},`);
 
+        queuedRequest.abort();
+        socket.send('pause', {});
+        this.resetUploaderReferences(file.id);
+        resolve(`upload ${file.id} was canceled`);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onCancelAll2"},');
+
+      });
       this.onResumeAll(file.id, () => {
-        queuedRequest.abort()
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onResumeAll2","fileName":"${__filename}","paramsNumber":0},`);
+
+        queuedRequest.abort();
         if (file.error) {
-          socket.send('pause', {})
+          socket.send('pause', {});
         }
         queuedRequest = this.requests.run(() => {
-          socket.send('resume', {})
-        })
-      })
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run5","fileName":"${__filename}","paramsNumber":0},`);
 
+          socket.send('resume', {});
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run5"},');
+
+        });
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll2"},');
+
+      });
       this.onRetry(file.id, () => {
-        // Only do the retry if the upload is actually in progress;
-        // else we could try to send these messages when the upload is still queued.
-        // We may need a better check for this since the socket may also be closed
-        // for other reasons, like network failures.
-        if (socket.isOpen) {
-          socket.send('pause', {})
-          socket.send('resume', {})
-        }
-      })
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onRetry","fileName":"${__filename}","paramsNumber":0},`);
 
+        if (socket.isOpen) {
+          socket.send('pause', {});
+          socket.send('resume', {});
+        }
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onRetry"},');
+
+      });
       this.onRetryAll(file.id, () => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onRetryAll","fileName":"${__filename}","paramsNumber":0},`);
+
         if (socket.isOpen) {
-          socket.send('pause', {})
-          socket.send('resume', {})
+          socket.send('pause', {});
+          socket.send('resume', {});
         }
-      })
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onRetryAll"},');
 
-      socket.on('progress', (progressData) => emitSocketProgress(this, progressData, file))
+      });
+      socket.on('progress', progressData => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on","fileName":"${__filename}","paramsNumber":1},`);
 
-      socket.on('error', (errData) => {
-        this.uppy.emit('upload-error', file, new Error(errData.error))
-        this.resetUploaderReferences(file.id)
-        queuedRequest.done()
-        reject(new Error(errData.error))
-      })
+                SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on"},');
 
-      socket.on('success', (data) => {
+        return emitSocketProgress(this, progressData, file);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on"},');
+
+      });
+      socket.on('error', errData => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on2","fileName":"${__filename}","paramsNumber":1},`);
+
+        this.uppy.emit('upload-error', file, new Error(errData.error));
+        this.resetUploaderReferences(file.id);
+        queuedRequest.done();
+        reject(new Error(errData.error));
+                SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on2"},');
+
+      });
+      socket.on('success', data => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on3","fileName":"${__filename}","paramsNumber":1},`);
+
         const uploadResp = {
           uploadURL: data.url
-        }
+        };
+        this.uppy.emit('upload-success', file, uploadResp);
+        this.resetUploaderReferences(file.id);
+        queuedRequest.done();
+        resolve();
+                SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on3"},');
 
-        this.uppy.emit('upload-success', file, uploadResp)
-        this.resetUploaderReferences(file.id)
-        queuedRequest.done()
-        resolve()
-      })
-
+      });
       let queuedRequest = this.requests.run(() => {
-        socket.open()
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run6","fileName":"${__filename}","paramsNumber":0},`);
+
+        socket.open();
         if (file.isPaused) {
-          socket.send('pause', {})
+          socket.send('pause', {});
         }
+                SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run6"},');
 
-        return () => {}
-      })
-    })
+        return () => {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement5","fileName":"${__filename}","paramsNumber":0},`);
+
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement5"},');
+
+        };
+                SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run6"},');
+
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression3"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"connectToServerSocket"},');
+
   }
+  upload(fileIDs) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"upload","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  upload (fileIDs) {
-    if (fileIDs.length === 0) return Promise.resolve()
+    if (fileIDs.length === 0) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"upload"},');
 
-    const promises = fileIDs.map((id) => {
-      const file = this.uppy.getFile(id)
+      return Promise.resolve();
+    }
+    const promises = fileIDs.map(id => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promises.fileIDs.map","fileName":"${__filename}","paramsNumber":1},`);
+
+      const file = this.uppy.getFile(id);
       if (file.isRemote) {
-        return this.uploadRemote(file)
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promises.fileIDs.map"},');
+
+        return this.uploadRemote(file);
       }
-      return this.uploadFile(file)
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promises.fileIDs.map"},');
 
-    return Promise.all(promises)
+      return this.uploadFile(file);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promises.fileIDs.map"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"upload"},');
+
+    return Promise.all(promises);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"upload"},');
+
   }
+  onFileRemove(fileID, cb) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onFileRemove","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  onFileRemove (fileID, cb) {
-    this.uploaderEvents[fileID].on('file-removed', (file) => {
-      if (fileID === file.id) cb(file.id)
-    })
+    this.uploaderEvents[fileID].on('file-removed', file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on","fileName":"${__filename}","paramsNumber":1},`);
+
+      if (fileID === file.id) cb(file.id);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onFileRemove"},');
+
   }
+  onFilePause(fileID, cb) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onFilePause","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-  onFilePause (fileID, cb) {
     this.uploaderEvents[fileID].on('upload-pause', (targetFileID, isPaused) => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on2","fileName":"${__filename}","paramsNumber":2},`);
+
       if (fileID === targetFileID) {
-        // const isPaused = this.uppy.pauseResume(fileID)
-        cb(isPaused)
+        cb(isPaused);
       }
-    })
-  }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on2"},');
 
-  onRetry (fileID, cb) {
-    this.uploaderEvents[fileID].on('upload-retry', (targetFileID) => {
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onFilePause"},');
+
+  }
+  onRetry(fileID, cb) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onRetry","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
+
+    this.uploaderEvents[fileID].on('upload-retry', targetFileID => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on3","fileName":"${__filename}","paramsNumber":1},`);
+
       if (fileID === targetFileID) {
-        cb()
+        cb();
       }
-    })
-  }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on3"},');
 
-  onRetryAll (fileID, cb) {
-    this.uploaderEvents[fileID].on('retry-all', (filesToRetry) => {
-      if (!this.uppy.getFile(fileID)) return
-      cb()
-    })
-  }
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onRetry"},');
 
-  onPauseAll (fileID, cb) {
+  }
+  onRetryAll(fileID, cb) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onRetryAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
+
+    this.uploaderEvents[fileID].on('retry-all', filesToRetry => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on4","fileName":"${__filename}","paramsNumber":1},`);
+
+      if (!this.uppy.getFile(fileID)) {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on4"},');
+
+        return;
+      }
+      cb();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on4"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onRetryAll"},');
+
+  }
+  onPauseAll(fileID, cb) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPauseAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
+
     this.uploaderEvents[fileID].on('pause-all', () => {
-      if (!this.uppy.getFile(fileID)) return
-      cb()
-    })
-  }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on5","fileName":"${__filename}","paramsNumber":0},`);
 
-  onCancelAll (fileID, cb) {
+      if (!this.uppy.getFile(fileID)) {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on5"},');
+
+        return;
+      }
+      cb();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on5"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onPauseAll"},');
+
+  }
+  onCancelAll(fileID, cb) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onCancelAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
+
     this.uploaderEvents[fileID].on('cancel-all', () => {
-      if (!this.uppy.getFile(fileID)) return
-      cb()
-    })
-  }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on6","fileName":"${__filename}","paramsNumber":0},`);
 
-  onResumeAll (fileID, cb) {
+      if (!this.uppy.getFile(fileID)) {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on6"},');
+
+        return;
+      }
+      cb();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on6"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onCancelAll"},');
+
+  }
+  onResumeAll(fileID, cb) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onResumeAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
+
     this.uploaderEvents[fileID].on('resume-all', () => {
-      if (!this.uppy.getFile(fileID)) return
-      cb()
-    })
-  }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on7","fileName":"${__filename}","paramsNumber":0},`);
 
-  install () {
-    const { capabilities } = this.uppy.getState()
+      if (!this.uppy.getFile(fileID)) {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on7"},');
+
+        return;
+      }
+      cb();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on7"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll"},');
+
+  }
+  install() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
+
+    const {capabilities} = this.uppy.getState();
     this.uppy.setState({
       capabilities: {
         ...capabilities,
         resumableUploads: true
       }
-    })
-    this.uppy.addUploader(this.upload)
-  }
+    });
+    this.uppy.addUploader(this.upload);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
-  uninstall () {
-    const { capabilities } = this.uppy.getState()
+  }
+  uninstall() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
+
+    const {capabilities} = this.uppy.getState();
     this.uppy.setState({
       capabilities: {
         ...capabilities,
         resumableUploads: false
       }
-    })
-    this.uppy.removeUploader(this.upload)
+    });
+    this.uppy.removeUploader(this.upload);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
+
   }
-}
+};

@@ -1,227 +1,268 @@
-const { Plugin } = require('@uppy/core')
-const Translator = require('@uppy/utils/lib/Translator')
-const toArray = require('@uppy/utils/lib/toArray')
-const isDragDropSupported = require('@uppy/utils/lib/isDragDropSupported')
-const getDroppedFiles = require('@uppy/utils/lib/getDroppedFiles')
-const { h } = require('preact')
+const SRTlib = require('SRT-util');
 
-/**
- * Drag & Drop plugin
- *
- */
+const {Plugin} = require('@uppy/core');
+const Translator = require('@uppy/utils/lib/Translator');
+const toArray = require('@uppy/utils/lib/toArray');
+const isDragDropSupported = require('@uppy/utils/lib/isDragDropSupported');
+const getDroppedFiles = require('@uppy/utils/lib/getDroppedFiles');
+const {h} = require('preact');
 module.exports = class DragDrop extends Plugin {
   static VERSION = require('../package.json').version
+  constructor(uppy, opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-  constructor (uppy, opts) {
-    super(uppy, opts)
-    this.type = 'acquirer'
-    this.id = this.opts.id || 'DragDrop'
-    this.title = 'Drag & Drop'
-
+    super(uppy, opts);
+    this.type = 'acquirer';
+    this.id = this.opts.id || 'DragDrop';
+    this.title = 'Drag & Drop';
     this.defaultLocale = {
       strings: {
         dropHereOr: 'Drop files here or %{browse}',
         browse: 'browse'
       }
-    }
-
-    // Default options
+    };
     const defaultOpts = {
       target: null,
       inputName: 'files[]',
       width: '100%',
       height: '100%',
       note: null
-    }
+    };
+    this.opts = {
+      ...defaultOpts,
+      ...opts
+    };
+    this.isDragDropSupported = isDragDropSupported();
+    this.removeDragOverClassTimeout = null;
+    this.i18nInit();
+    this.onInputChange = this.onInputChange.bind(this);
+    this.handleDragOver = this.handleDragOver.bind(this);
+    this.handleDragLeave = this.handleDragLeave.bind(this);
+    this.handleDrop = this.handleDrop.bind(this);
+    this.addFiles = this.addFiles.bind(this);
+    this.render = this.render.bind(this);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-    // Merge default options with the ones set by user
-    this.opts = { ...defaultOpts, ...opts }
-
-    // Check for browser dragDrop support
-    this.isDragDropSupported = isDragDropSupported()
-    this.removeDragOverClassTimeout = null
-
-    this.i18nInit()
-
-    // Bind `this` to class methods
-    this.onInputChange = this.onInputChange.bind(this)
-    this.handleDragOver = this.handleDragOver.bind(this)
-    this.handleDragLeave = this.handleDragLeave.bind(this)
-    this.handleDrop = this.handleDrop.bind(this)
-    this.addFiles = this.addFiles.bind(this)
-    this.render = this.render.bind(this)
   }
+  setOptions(newOpts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-  setOptions (newOpts) {
-    super.setOptions(newOpts)
-    this.i18nInit()
+    super.setOptions(newOpts);
+    this.i18nInit();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setOptions"},');
+
   }
+  i18nInit() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-  i18nInit () {
-    this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale])
-    this.i18n = this.translator.translate.bind(this.translator)
-    this.i18nArray = this.translator.translateArray.bind(this.translator)
-    this.setPluginState() // so that UI re-renders and we see the updated locale
+    this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
+    this.i18n = this.translator.translate.bind(this.translator);
+    this.i18nArray = this.translator.translateArray.bind(this.translator);
+    this.setPluginState();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"i18nInit"},');
+
   }
+  addFiles(files) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-  addFiles (files) {
-    const descriptors = files.map((file) => ({
-      source: this.id,
-      name: file.name,
-      type: file.type,
-      data: file,
-      meta: {
-        // path of the file relative to the ancestor directory the user selected.
-        // e.g. 'docs/Old Prague/airbnb.pdf'
-        relativePath: file.relativePath || null
-      }
-    }))
+    const descriptors = files.map(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.descriptors.files.map","fileName":"${__filename}","paramsNumber":1},`);
 
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.descriptors.files.map"},');
+
+      return {
+        source: this.id,
+        name: file.name,
+        type: file.type,
+        data: file,
+        meta: {
+          relativePath: file.relativePath || null
+        }
+      };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.descriptors.files.map"},');
+
+    });
     try {
-      this.uppy.addFiles(descriptors)
+      this.uppy.addFiles(descriptors);
     } catch (err) {
-      this.uppy.log(err)
+      this.uppy.log(err);
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"addFiles"},');
+
   }
+  onInputChange(event) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onInputChange","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-  onInputChange (event) {
-    this.uppy.log('[DragDrop] Files selected through input')
-    const files = toArray(event.target.files)
-    this.addFiles(files)
+    this.uppy.log('[DragDrop] Files selected through input');
+    const files = toArray(event.target.files);
+    this.addFiles(files);
+    event.target.value = null;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onInputChange"},');
 
-    // We clear the input after a file is selected, because otherwise
-    // change event is not fired in Chrome and Safari when a file
-    // with the same name is selected.
-    // ___Why not use value="" on <input/> instead?
-    //    Because if we use that method of clearing the input,
-    //    Chrome will not trigger change if we drop the same file twice (Issue #768).
-    event.target.value = null
   }
+  handleDrop(event, dropCategory) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleDrop","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-  handleDrop (event, dropCategory) {
-    event.preventDefault()
-    event.stopPropagation()
-    clearTimeout(this.removeDragOverClassTimeout)
+    event.preventDefault();
+    event.stopPropagation();
+    clearTimeout(this.removeDragOverClassTimeout);
+    this.setPluginState({
+      isDraggingOver: false
+    });
+    this.uppy.log('[DragDrop] Files were dropped');
+    const logDropError = error => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logDropError","fileName":"${__filename}","paramsNumber":1},`);
 
-    // 2. Remove dragover class
-    this.setPluginState({ isDraggingOver: false })
+      this.uppy.log(error, 'error');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"logDropError"},');
 
-    // 3. Add all dropped files
-    this.uppy.log('[DragDrop] Files were dropped')
-    const logDropError = (error) => {
-      this.uppy.log(error, 'error')
-    }
-    getDroppedFiles(event.dataTransfer, { logDropError })
-      .then((files) => this.addFiles(files))
+    };
+    getDroppedFiles(event.dataTransfer, {
+      logDropError
+    }).then(files => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getDroppedFiles.then","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDroppedFiles.then"},');
+
+      return this.addFiles(files);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDroppedFiles.then"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleDrop"},');
+
   }
+  handleDragOver(event) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleDragOver","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-  handleDragOver (event) {
-    event.preventDefault()
-    event.stopPropagation()
+    event.preventDefault();
+    event.stopPropagation();
+    event.dataTransfer.dropEffect = 'copy';
+    clearTimeout(this.removeDragOverClassTimeout);
+    this.setPluginState({
+      isDraggingOver: true
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleDragOver"},');
 
-    // 1. Add a small (+) icon on drop
-    // (and prevent browsers from interpreting this as files being _moved_ into the browser, https://github.com/transloadit/uppy/issues/1978)
-    event.dataTransfer.dropEffect = 'copy'
-
-    clearTimeout(this.removeDragOverClassTimeout)
-    this.setPluginState({ isDraggingOver: true })
   }
+  handleDragLeave(event) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleDragLeave","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-  handleDragLeave (event) {
-    event.preventDefault()
-    event.stopPropagation()
-
-    clearTimeout(this.removeDragOverClassTimeout)
-    // Timeout against flickering, this solution is taken from drag-drop library. Solution with 'pointer-events: none' didn't work across browsers.
+    event.preventDefault();
+    event.stopPropagation();
+    clearTimeout(this.removeDragOverClassTimeout);
     this.removeDragOverClassTimeout = setTimeout(() => {
-      this.setPluginState({ isDraggingOver: false })
-    }, 50)
-  }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.removeDragOverClassTimeout.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
-  renderHiddenFileInput () {
-    const restrictions = this.uppy.opts.restrictions
-    return (
-      <input
-        class="uppy-DragDrop-input"
-        type="file"
-        hidden
-        ref={(ref) => { this.fileInputRef = ref }}
-        name={this.opts.inputName}
-        multiple={restrictions.maxNumberOfFiles !== 1}
-        accept={restrictions.allowedFileTypes}
-        onchange={this.onInputChange}
-      />
-    )
-  }
+      this.setPluginState({
+        isDraggingOver: false
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.removeDragOverClassTimeout.setTimeout"},');
 
-  renderArrowSvg () {
-    return (
-      <svg aria-hidden="true" focusable="false" class="uppy-c-icon uppy-DragDrop-arrow" width="16" height="16" viewBox="0 0 16 16">
+    }, 50);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleDragLeave"},');
+
+  }
+  renderHiddenFileInput() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderHiddenFileInput","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+
+    const restrictions = this.uppy.opts.restrictions;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderHiddenFileInput"},');
+
+    return <input class="uppy-DragDrop-input" type="file" hidden ref={ref => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+
+      this.fileInputRef = ref;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
+
+    }} name={this.opts.inputName} multiple={restrictions.maxNumberOfFiles !== 1} accept={restrictions.allowedFileTypes} onchange={this.onInputChange} />;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderHiddenFileInput"},');
+
+  }
+  renderArrowSvg() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderArrowSvg","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderArrowSvg"},');
+
+    return <svg aria-hidden="true" focusable="false" class="uppy-c-icon uppy-DragDrop-arrow" width="16" height="16" viewBox="0 0 16 16">
         <path d="M11 10V0H5v10H2l6 6 6-6h-3zm0 0" fill-rule="evenodd" />
-      </svg>
-    )
-  }
+      </svg>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderArrowSvg"},');
 
-  renderLabel () {
-    return (
-      <div class="uppy-DragDrop-label">
+  }
+  renderLabel() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderLabel","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderLabel"},');
+
+    return <div class="uppy-DragDrop-label">
         {this.i18nArray('dropHereOr', {
-          browse: <span class="uppy-DragDrop-browse">{this.i18n('browse')}</span>
-        })}
-      </div>
-    )
-  }
+      browse: <span class="uppy-DragDrop-browse">{this.i18n('browse')}</span>
+    })}
+      </div>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderLabel"},');
 
-  renderNote () {
-    return (
-      <span class="uppy-DragDrop-note">{this.opts.note}</span>
-    )
   }
+  renderNote() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderNote","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-  render (state) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderNote"},');
+
+    return <span class="uppy-DragDrop-note">{this.opts.note}</span>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderNote"},');
+
+  }
+  render(state) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+
     const dragDropClass = `uppy-Root
       uppy-u-reset
       uppy-DragDrop-container
       ${this.isDragDropSupported ? 'uppy-DragDrop--isDragDropSupported' : ''}
       ${this.getPluginState().isDraggingOver ? 'uppy-DragDrop--isDraggingOver' : ''}
-    `
-
+    `;
     const dragDropStyle = {
       width: this.opts.width,
       height: this.opts.height
-    }
+    };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
-    return (
-      <button
-        type="button"
-        class={dragDropClass}
-        style={dragDropStyle}
-        onClick={() => this.fileInputRef.click()}
-        onDragOver={this.handleDragOver}
-        onDragLeave={this.handleDragLeave}
-        onDrop={this.handleDrop}
-      >
+    return <button type="button" class={dragDropClass} style={dragDropStyle} onClick={() => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+
+      return this.fileInputRef.click();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+
+    }} onDragOver={this.handleDragOver} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
         {this.renderHiddenFileInput()}
         <div class="uppy-DragDrop-inner">
           {this.renderArrowSvg()}
           {this.renderLabel()}
           {this.renderNote()}
         </div>
-      </button>
-    )
-  }
+      </button>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
-  install () {
+  }
+  install() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+
     this.setPluginState({
       isDraggingOver: false
-    })
-    const target = this.opts.target
+    });
+    const target = this.opts.target;
     if (target) {
-      this.mount(target, this)
+      this.mount(target, this);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
-  uninstall () {
-    this.unmount()
   }
-}
+  uninstall() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+
+    this.unmount();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
+
+  }
+};

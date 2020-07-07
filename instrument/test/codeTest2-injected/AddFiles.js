@@ -2,14 +2,14 @@ const SRTlib = require('SRT-util');
 
 const {h, Component} = require('preact');
 class AddFiles extends Component {
-  triggerFileInputClick = () => {
+  triggerFileInputClick=() => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
 
     this.fileInput.click();
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   }
-  onFileInputChange = event => {
+  onFileInputChange=event => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
 
     this.props.handleInputChange(event);
@@ -38,7 +38,7 @@ class AddFiles extends Component {
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderPoweredByUppy"},');
 
   }
-  renderHiddenFileInput = () => {
+  renderHiddenFileInput=() => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
@@ -53,7 +53,7 @@ class AddFiles extends Component {
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
 
   }
-  renderMyDeviceAcquirer = () => {
+  renderMyDeviceAcquirer=() => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
@@ -72,7 +72,7 @@ class AddFiles extends Component {
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
 
   }
-  renderDropPasteBrowseTagline = () => {
+  renderDropPasteBrowseTagline=() => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
 
     const numberOfAcquirers = this.props.acquirers.length;
@@ -91,7 +91,7 @@ class AddFiles extends Component {
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
 
   }
-  renderAcquirer = acquirer => {
+  renderAcquirer=acquirer => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
@@ -113,7 +113,7 @@ class AddFiles extends Component {
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
 
   }
-  renderAcquirers = acquirers => {
+  renderAcquirers=acquirers => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
 
     const acquirersWithoutLastTwo = [...acquirers];

@@ -51,6 +51,7 @@ const excepts = [
 
     codeInjector.getInjected()
 
+    console.log('injection complete!')
     // update package.json jest configuration
     const injectedPackageJson = JSON.parse(fs.readFileSync(path.join(injectedCodebase, 'package.json')));
     injectedPackageJson.jest.setupFilesAfterEnv = ["./jest.setup.js"]

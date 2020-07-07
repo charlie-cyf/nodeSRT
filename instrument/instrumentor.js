@@ -10,6 +10,11 @@ const { t } = require('typy')
 var _ = require('underscore');
 const { para } = require('acorn-jsx/xhtml')
 const { extend } = require('acorn-jsx-walk')
+
+acornWalk.base.FieldDefinition = (node, st, c) => {
+    if (node.computed) c(node.key, st, "Expression")
+    c(node.value, st, "Expression")
+}
  
 extend(acornWalk.base)
 

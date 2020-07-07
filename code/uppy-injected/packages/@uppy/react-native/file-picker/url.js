@@ -1,79 +1,90 @@
-import React from 'react'
+const SRTlib = require('SRT-util');
 
-import {
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  TextInput,
-  View
-} from 'react-native'
-import Url from '@uppy/url'
-
+import React from 'react';
+import {StyleSheet, TouchableOpacity, Text, TextInput, View} from 'react-native';
+import Url from '@uppy/url';
 export default class UppyRNUrl extends React.Component {
-  constructor () {
-    super()
+  constructor() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
+    super();
     this.state = {
       url: null
-    }
+    };
+    this.onPressImport = this.onPressImport.bind(this);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-    this.onPressImport = this.onPressImport.bind(this)
   }
+  componentDidMount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
-  componentDidMount () {
-    const uppy = this.props.uppy
-    const options = Object.assign(
-      { id: 'uppyRN:Url' },
-      this.props,
-      { }
-    )
-    delete options.uppy
+    const uppy = this.props.uppy;
+    const options = Object.assign({
+      id: 'uppyRN:Url'
+    }, this.props, {});
+    delete options.uppy;
+    uppy.use(Url, options);
+    this.plugin = uppy.getPlugin(options.id);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
 
-    uppy.use(Url, options)
-    this.plugin = uppy.getPlugin(options.id)
   }
+  componentWillUnmount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
-  componentWillUnmount () {
-    const uppy = this.props.uppy
-    uppy.removePlugin(this.plugin)
+    const uppy = this.props.uppy;
+    uppy.removePlugin(this.plugin);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
+
   }
+  onPressImport() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPressImport","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
-  onPressImport () {
-    this.plugin.addFile(this.state.url)
-      .then(this.props.onDone)
-      .catch((err) => {
-        console.log(err)
-      })
+    this.plugin.addFile(this.state.url).then(this.props.onDone).catch(err => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"plugin.addFile.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+      console.log(err);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"plugin.addFile.then.catch"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onPressImport"},');
+
   }
+  render() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
-  render () {
-    return (
-      <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          autoFocus
-          onChangeText={(text) => this.setState({
-            url: text
-          })}
-          placeholder="Enter URL to import a file"
-        />
-        <TouchableOpacity
-          style={styles.buttonImport}
-          onPress={this.onPressImport}
-        >
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+    return <View style={styles.container}>
+        <TextInput style={styles.input} autoFocus onChangeText={text => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+      return this.setState({
+        url: text
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+    }} placeholder="Enter URL to import a file" />
+        <TouchableOpacity style={styles.buttonImport} onPress={this.onPressImport}>
           <Text style={styles.buttonImportText}>Import</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonCancel}
-          onPress={ev => this.props.onDone()}
-        >
+        <TouchableOpacity style={styles.buttonCancel} onPress={ev => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+
+      return this.props.onDone();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+
+    }}>
           <Text style={styles.buttonCancelText}>Cancel</Text>
         </TouchableOpacity>
-      </View>
-    )
+      </View>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -109,4 +120,4 @@ const styles = StyleSheet.create({
   buttonCancelText: {
     color: '#0077cc'
   }
-})
+});

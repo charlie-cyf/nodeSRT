@@ -1,51 +1,60 @@
-const { Plugin } = require('@uppy/core')
-const Translator = require('@uppy/utils/lib/Translator')
-const DashboardUI = require('./components/Dashboard')
-const StatusBar = require('@uppy/status-bar')
-const Informer = require('@uppy/informer')
-const ThumbnailGenerator = require('@uppy/thumbnail-generator')
-const findAllDOMElements = require('@uppy/utils/lib/findAllDOMElements')
-const toArray = require('@uppy/utils/lib/toArray')
-const getDroppedFiles = require('@uppy/utils/lib/getDroppedFiles')
-const trapFocus = require('./utils/trapFocus')
-const cuid = require('cuid')
-const ResizeObserver = require('resize-observer-polyfill').default || require('resize-observer-polyfill')
-const createSuperFocus = require('./utils/createSuperFocus')
-const memoize = require('memoize-one').default || require('memoize-one')
+const SRTlib = require('SRT-util');
 
-const TAB_KEY = 9
-const ESC_KEY = 27
+const {Plugin} = require('@uppy/core');
+const Translator = require('@uppy/utils/lib/Translator');
+const DashboardUI = require('./components/Dashboard');
+const StatusBar = require('@uppy/status-bar');
+const Informer = require('@uppy/informer');
+const ThumbnailGenerator = require('@uppy/thumbnail-generator');
+const findAllDOMElements = require('@uppy/utils/lib/findAllDOMElements');
+const toArray = require('@uppy/utils/lib/toArray');
+const getDroppedFiles = require('@uppy/utils/lib/getDroppedFiles');
+const trapFocus = require('./utils/trapFocus');
+const cuid = require('cuid');
+const ResizeObserver = require('resize-observer-polyfill').default || require('resize-observer-polyfill');
+const createSuperFocus = require('./utils/createSuperFocus');
+const memoize = require('memoize-one').default || require('memoize-one');
+const TAB_KEY = 9;
+const ESC_KEY = 27;
+function createPromise() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createPromise","fileName":"${__filename}","paramsNumber":0},`);
 
-function createPromise () {
-  const o = {}
+  const o = {};
   o.promise = new Promise((resolve, reject) => {
-    o.resolve = resolve
-    o.reject = reject
-  })
-  return o
-}
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"o.promise.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
-function defaultPickerIcon () {
-  return (
-    <svg aria-hidden="true" focusable="false" width="30" height="30" viewBox="0 0 30 30">
+    o.resolve = resolve;
+    o.reject = reject;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"o.promise.NewExpression"},');
+
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createPromise"},');
+
+  return o;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createPromise","paramsNumber":0},');
+
+}
+function defaultPickerIcon() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"defaultPickerIcon","fileName":"${__filename}","paramsNumber":0},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultPickerIcon"},');
+
+  return <svg aria-hidden="true" focusable="false" width="30" height="30" viewBox="0 0 30 30">
       <path d="M15 30c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15C6.716 0 0 6.716 0 15c0 8.284 6.716 15 15 15zm4.258-12.676v6.846h-8.426v-6.846H5.204l9.82-12.364 9.82 12.364H19.26z" />
-    </svg>
-  )
-}
+    </svg>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultPickerIcon","paramsNumber":0},');
 
-/**
- * Dashboard UI with previews, metadata editing, tabs for various services and more
- */
+}
 module.exports = class Dashboard extends Plugin {
   static VERSION = require('../package.json').version
+  constructor(uppy, opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Dashboard","superClass":"Plugin"}},`);
 
-  constructor (uppy, opts) {
-    super(uppy, opts)
-    this.id = this.opts.id || 'Dashboard'
-    this.title = 'Dashboard'
-    this.type = 'orchestrator'
-    this.modalName = `uppy-Dashboard-${cuid()}`
-
+    super(uppy, opts);
+    this.id = this.opts.id || 'Dashboard';
+    this.title = 'Dashboard';
+    this.type = 'orchestrator';
+    this.modalName = `uppy-Dashboard-${cuid()}`;
     this.defaultLocale = {
       strings: {
         closeModal: 'Close Modal',
@@ -90,17 +99,10 @@ module.exports = class Dashboard extends Plugin {
           0: 'Processing %{smart_count} file',
           1: 'Processing %{smart_count} files'
         },
-        // The default `poweredBy2` string only combines the `poweredBy` string (%{backwardsCompat}) with the size.
-        // Locales can override `poweredBy2` to specify a different word order. This is for backwards compat with
-        // Uppy 1.9.x and below which did a naive concatenation of `poweredBy2 + size` instead of using a locale-specific
-        // substitution.
-        // TODO: In 2.0 `poweredBy2` should be removed in and `poweredBy` updated to use substitution.
         poweredBy2: '%{backwardsCompat} %{uppy}',
         poweredBy: 'Powered by'
       }
-    }
-
-    // set default options
+    };
     const defaultOptions = {
       target: 'body',
       metaFields: [],
@@ -127,681 +129,826 @@ module.exports = class Dashboard extends Plugin {
       disablePageScrollWhenModalOpen: true,
       animateOpenClose: true,
       proudlyDisplayPoweredByUppy: true,
-      onRequestCloseModal: () => this.closeModal(),
+      onRequestCloseModal: () => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.defaultOptions.onRequestCloseModal","fileName":"${__filename}","paramsNumber":0},`);
+
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.defaultOptions.onRequestCloseModal"},');
+
+        return this.closeModal();
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.defaultOptions.onRequestCloseModal"},');
+
+      },
       showSelectedFiles: true,
       showRemoveButtonAfterComplete: false,
       browserBackButtonClose: false,
       theme: 'light'
-    }
+    };
+    this.opts = {
+      ...defaultOptions,
+      ...opts
+    };
+    this.i18nInit();
+    this.superFocus = createSuperFocus();
+    this.ifFocusedOnUppyRecently = false;
+    this.makeDashboardInsidesVisibleAnywayTimeout = null;
+    this.removeDragOverClassTimeout = null;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-    // merge default options with the ones set by user
-    this.opts = { ...defaultOptions, ...opts }
-
-    this.i18nInit()
-
-    this.superFocus = createSuperFocus()
-    this.ifFocusedOnUppyRecently = false
-
-    // Timeouts
-    this.makeDashboardInsidesVisibleAnywayTimeout = null
-    this.removeDragOverClassTimeout = null
   }
+  setOptions = newOpts => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
-  setOptions = (newOpts) => {
-    super.setOptions(newOpts)
-    this.i18nInit()
+    super.setOptions(newOpts);
+    this.i18nInit();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
   }
-
   i18nInit = () => {
-    this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale])
-    this.i18n = this.translator.translate.bind(this.translator)
-    this.i18nArray = this.translator.translateArray.bind(this.translator)
-    this.setPluginState() // so that UI re-renders and we see the updated locale
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports2","fileName":"${__filename}","paramsNumber":0},`);
+
+    this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
+    this.i18n = this.translator.translate.bind(this.translator);
+    this.i18nArray = this.translator.translateArray.bind(this.translator);
+    this.setPluginState();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports2"},');
+
   }
+  removeTarget = plugin => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports3","fileName":"${__filename}","paramsNumber":1},`);
 
-  removeTarget = (plugin) => {
-    const pluginState = this.getPluginState()
-    // filter out the one we want to remove
-    const newTargets = pluginState.targets.filter(target => target.id !== plugin.id)
+    const pluginState = this.getPluginState();
+    const newTargets = pluginState.targets.filter(target => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"newTargets.pluginState.targets.filter","fileName":"${__filename}","paramsNumber":1},`);
 
+            SRTlib.send('{"type":"FUNCTIONEND","function":"newTargets.pluginState.targets.filter"},');
+
+      return target.id !== plugin.id;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"newTargets.pluginState.targets.filter"},');
+
+    });
     this.setPluginState({
       targets: newTargets
-    })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports3"},');
+
   }
+  addTarget = plugin => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports4","fileName":"${__filename}","paramsNumber":1},`);
 
-  addTarget = (plugin) => {
-    const callerPluginId = plugin.id || plugin.constructor.name
-    const callerPluginName = plugin.title || callerPluginId
-    const callerPluginType = plugin.type
+    const callerPluginId = plugin.id || plugin.constructor.name;
+    const callerPluginName = plugin.title || callerPluginId;
+    const callerPluginType = plugin.type;
+    if (callerPluginType !== 'acquirer' && callerPluginType !== 'progressindicator' && callerPluginType !== 'presenter') {
+      const msg = 'Dashboard: Modal can only be used by plugins of types: acquirer, progressindicator, presenter';
+      this.uppy.log(msg, 'error');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
 
-    if (callerPluginType !== 'acquirer' &&
-        callerPluginType !== 'progressindicator' &&
-        callerPluginType !== 'presenter') {
-      const msg = 'Dashboard: Modal can only be used by plugins of types: acquirer, progressindicator, presenter'
-      this.uppy.log(msg, 'error')
-      return
+      return;
     }
-
     const target = {
       id: callerPluginId,
       name: callerPluginName,
       type: callerPluginType
-    }
-
-    const state = this.getPluginState()
-    const newTargets = state.targets.slice()
-    newTargets.push(target)
-
+    };
+    const state = this.getPluginState();
+    const newTargets = state.targets.slice();
+    newTargets.push(target);
     this.setPluginState({
       targets: newTargets
-    })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
 
-    return this.el
+    return this.el;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
+
   }
-
   hideAllPanels = () => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports5","fileName":"${__filename}","paramsNumber":0},`);
+
     const update = {
       activePickerPanel: false,
       showAddFilesPanel: false,
       activeOverlayType: null
-    }
+    };
+    const current = this.getPluginState();
+    if (current.activePickerPanel === update.activePickerPanel && current.showAddFilesPanel === update.showAddFilesPanel && current.activeOverlayType === update.activeOverlayType) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports5"},');
 
-    const current = this.getPluginState()
-    if (current.activePickerPanel === update.activePickerPanel &&
-        current.showAddFilesPanel === update.showAddFilesPanel &&
-        current.activeOverlayType === update.activeOverlayType) {
-      // avoid doing a state update if nothing changed
-      return
+      return;
     }
+    this.setPluginState(update);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports5"},');
 
-    this.setPluginState(update)
   }
+  showPanel = id => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports6","fileName":"${__filename}","paramsNumber":1},`);
 
-  showPanel = (id) => {
-    const { targets } = this.getPluginState()
+    const {targets} = this.getPluginState();
+    const activePickerPanel = targets.filter(target => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"activePickerPanel.targets.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-    const activePickerPanel = targets.filter((target) => {
-      return target.type === 'acquirer' && target.id === id
-    })[0]
+            SRTlib.send('{"type":"FUNCTIONEND","function":"activePickerPanel.targets.filter"},');
 
+      return target.type === 'acquirer' && target.id === id;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"activePickerPanel.targets.filter"},');
+
+    })[0];
     this.setPluginState({
       activePickerPanel: activePickerPanel,
       activeOverlayType: 'PickerPanel'
-    })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports6"},');
+
   }
-
   openModal = () => {
-    const { promise, resolve } = createPromise()
-    // save scroll position
-    this.savedScrollPosition = window.pageYOffset
-    // save active element, so we can restore focus when modal is closed
-    this.savedActiveElement = document.activeElement
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports7","fileName":"${__filename}","paramsNumber":0},`);
 
+    const {promise, resolve} = createPromise();
+    this.savedScrollPosition = window.pageYOffset;
+    this.savedActiveElement = document.activeElement;
     if (this.opts.disablePageScrollWhenModalOpen) {
-      document.body.classList.add('uppy-Dashboard-isFixed')
+      document.body.classList.add('uppy-Dashboard-isFixed');
     }
-
     if (this.opts.animateOpenClose && this.getPluginState().isClosing) {
       const handler = () => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handler","fileName":"${__filename}","paramsNumber":0},`);
+
         this.setPluginState({
           isHidden: false
-        })
-        this.el.removeEventListener('animationend', handler, false)
-        resolve()
-      }
-      this.el.addEventListener('animationend', handler, false)
+        });
+        this.el.removeEventListener('animationend', handler, false);
+        resolve();
+                SRTlib.send('{"type":"FUNCTIONEND","function":"handler"},');
+
+      };
+      this.el.addEventListener('animationend', handler, false);
     } else {
       this.setPluginState({
         isHidden: false
-      })
-      resolve()
+      });
+      resolve();
     }
-
     if (this.opts.browserBackButtonClose) {
-      this.updateBrowserHistory()
+      this.updateBrowserHistory();
     }
+    document.addEventListener('keydown', this.handleKeyDownInModal);
+    this.uppy.emit('dashboard:modal-open');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports7"},');
 
-    // handle ESC and TAB keys in modal dialog
-    document.addEventListener('keydown', this.handleKeyDownInModal)
+    return promise;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports7"},');
 
-    this.uppy.emit('dashboard:modal-open')
-
-    return promise
   }
-
   closeModal = (opts = {}) => {
-    const {
-      manualClose = true // Whether the modal is being closed by the user (`true`) or by other means (e.g. browser back button)
-    } = opts
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports8","fileName":"${__filename}","paramsNumber":1},`);
 
-    const { isHidden, isClosing } = this.getPluginState()
+    const {manualClose = true} = opts;
+    const {isHidden, isClosing} = this.getPluginState();
     if (isHidden || isClosing) {
-      // short-circuit if animation is ongoing
-      return
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
+
+      return;
     }
-
-    const { promise, resolve } = createPromise()
-
+    const {promise, resolve} = createPromise();
     if (this.opts.disablePageScrollWhenModalOpen) {
-      document.body.classList.remove('uppy-Dashboard-isFixed')
+      document.body.classList.remove('uppy-Dashboard-isFixed');
     }
-
     if (this.opts.animateOpenClose) {
       this.setPluginState({
         isClosing: true
-      })
+      });
       const handler = () => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handler","fileName":"${__filename}","paramsNumber":0},`);
+
         this.setPluginState({
           isHidden: true,
           isClosing: false
-        })
+        });
+        this.superFocus.cancel();
+        this.savedActiveElement.focus();
+        this.el.removeEventListener('animationend', handler, false);
+        resolve();
+                SRTlib.send('{"type":"FUNCTIONEND","function":"handler"},');
 
-        this.superFocus.cancel()
-        this.savedActiveElement.focus()
-
-        this.el.removeEventListener('animationend', handler, false)
-        resolve()
-      }
-      this.el.addEventListener('animationend', handler, false)
+      };
+      this.el.addEventListener('animationend', handler, false);
     } else {
       this.setPluginState({
         isHidden: true
-      })
-
-      this.superFocus.cancel()
-      this.savedActiveElement.focus()
-
-      resolve()
+      });
+      this.superFocus.cancel();
+      this.savedActiveElement.focus();
+      resolve();
     }
-
-    // handle ESC and TAB keys in modal dialog
-    document.removeEventListener('keydown', this.handleKeyDownInModal)
-
+    document.removeEventListener('keydown', this.handleKeyDownInModal);
     if (manualClose) {
       if (this.opts.browserBackButtonClose) {
-        // Make sure that the latest entry in the history state is our modal name
         if (history.state && history.state[this.modalName]) {
-          // Go back in history to clear out the entry we created (ultimately closing the modal)
-          history.go(-1)
+          history.go(-1);
         }
       }
     }
+    this.uppy.emit('dashboard:modal-closed');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
 
-    this.uppy.emit('dashboard:modal-closed')
+    return promise;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
 
-    return promise
   }
-
   isModalOpen = () => {
-    return !this.getPluginState().isHidden || false
-  }
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports9","fileName":"${__filename}","paramsNumber":0},`);
 
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports9"},');
+
+    return !this.getPluginState().isHidden || false;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports9"},');
+
+  }
   requestCloseModal = () => {
-    if (this.opts.onRequestCloseModal) {
-      return this.opts.onRequestCloseModal()
-    }
-    return this.closeModal()
-  }
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports10","fileName":"${__filename}","paramsNumber":0},`);
 
-  setDarkModeCapability = (isDarkModeOn) => {
-    const { capabilities } = this.uppy.getState()
+    if (this.opts.onRequestCloseModal) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
+
+      return this.opts.onRequestCloseModal();
+    }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
+
+    return this.closeModal();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
+
+  }
+  setDarkModeCapability = isDarkModeOn => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports11","fileName":"${__filename}","paramsNumber":1},`);
+
+    const {capabilities} = this.uppy.getState();
     this.uppy.setState({
       capabilities: {
         ...capabilities,
         darkMode: isDarkModeOn
       }
-    })
-  }
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports11"},');
 
-  handleSystemDarkModeChange = (event) => {
-    const isDarkModeOnNow = event.matches
-    this.uppy.log(`[Dashboard] Dark mode is ${isDarkModeOnNow ? 'on' : 'off'}`)
-    this.setDarkModeCapability(isDarkModeOnNow)
   }
+  handleSystemDarkModeChange = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports12","fileName":"${__filename}","paramsNumber":1},`);
 
-  toggleFileCard = (fileId) => {
+    const isDarkModeOnNow = event.matches;
+    this.uppy.log(`[Dashboard] Dark mode is ${isDarkModeOnNow ? 'on' : 'off'}`);
+    this.setDarkModeCapability(isDarkModeOnNow);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports12"},');
+
+  }
+  toggleFileCard = fileId => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports13","fileName":"${__filename}","paramsNumber":1},`);
+
     if (fileId) {
-      this.uppy.emit('dashboard:file-edit-start')
+      this.uppy.emit('dashboard:file-edit-start');
     } else {
-      this.uppy.emit('dashboard:file-edit-complete')
+      this.uppy.emit('dashboard:file-edit-complete');
     }
-
     this.setPluginState({
       fileCardFor: fileId || null,
       activeOverlayType: fileId ? 'FileCard' : null
-    })
-  }
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports13"},');
 
-  toggleAddFilesPanel = (show) => {
+  }
+  toggleAddFilesPanel = show => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports14","fileName":"${__filename}","paramsNumber":1},`);
+
     this.setPluginState({
       showAddFilesPanel: show,
       activeOverlayType: show ? 'AddFiles' : null
-    })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports14"},');
+
   }
+  addFiles = files => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports15","fileName":"${__filename}","paramsNumber":1},`);
 
-  addFiles = (files) => {
-    const descriptors = files.map((file) => ({
-      source: this.id,
-      name: file.name,
-      type: file.type,
-      data: file,
-      meta: {
-        // path of the file relative to the ancestor directory the user selected.
-        // e.g. 'docs/Old Prague/airbnb.pdf'
-        relativePath: file.relativePath || null
-      }
-    }))
+    const descriptors = files.map(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"descriptors.files.map","fileName":"${__filename}","paramsNumber":1},`);
 
+            SRTlib.send('{"type":"FUNCTIONEND","function":"descriptors.files.map"},');
+
+      return {
+        source: this.id,
+        name: file.name,
+        type: file.type,
+        data: file,
+        meta: {
+          relativePath: file.relativePath || null
+        }
+      };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"descriptors.files.map"},');
+
+    });
     try {
-      this.uppy.addFiles(descriptors)
+      this.uppy.addFiles(descriptors);
     } catch (err) {
-      this.uppy.log(err)
+      this.uppy.log(err);
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports15"},');
+
   }
-
-  // ___Why make insides of Dashboard invisible until first ResizeObserver event is emitted?
-  //    ResizeOberserver doesn't emit the first resize event fast enough, users can see the jump from one .uppy-size-- to another (e.g. in Safari)
-  // ___Why not apply visibility property to .uppy-Dashboard-inner?
-  //    Because ideally, acc to specs, ResizeObserver should see invisible elements as of width 0. So even though applying invisibility to .uppy-Dashboard-inner works now, it may not work in the future.
   startListeningToResize = () => {
-    // Watch for Dashboard container (`.uppy-Dashboard-inner`) resize
-    // and update containerWidth/containerHeight in plugin state accordingly.
-    // Emits first event on initialization.
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports16","fileName":"${__filename}","paramsNumber":0},`);
+
     this.resizeObserver = new ResizeObserver((entries, observer) => {
-      const uppyDashboardInnerEl = entries[0]
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resizeObserver.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
-      const { width, height } = uppyDashboardInnerEl.contentRect
-
-      this.uppy.log(`[Dashboard] resized: ${width} / ${height}`, 'debug')
-
+      const uppyDashboardInnerEl = entries[0];
+      const {width, height} = uppyDashboardInnerEl.contentRect;
+      this.uppy.log(`[Dashboard] resized: ${width} / ${height}`, 'debug');
       this.setPluginState({
         containerWidth: width,
         containerHeight: height,
         areInsidesReadyToBeVisible: true
-      })
-    })
-    this.resizeObserver.observe(this.el.querySelector('.uppy-Dashboard-inner'))
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"resizeObserver.NewExpression"},');
 
-    // If ResizeObserver fails to emit an event telling us what size to use - default to the mobile view
+    });
+    this.resizeObserver.observe(this.el.querySelector('.uppy-Dashboard-inner'));
     this.makeDashboardInsidesVisibleAnywayTimeout = setTimeout(() => {
-      const pluginState = this.getPluginState()
-      const isModalAndClosed = !this.opts.inline && pluginState.isHidden
-      if (
-        // if ResizeObserver hasn't yet fired,
-        !pluginState.areInsidesReadyToBeVisible &&
-        // and it's not due to the modal being closed
-        !isModalAndClosed
-      ) {
-        this.uppy.log("[Dashboard] resize event didn't fire on time: defaulted to mobile layout", 'debug')
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"makeDashboardInsidesVisibleAnywayTimeout.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
+      const pluginState = this.getPluginState();
+      const isModalAndClosed = !this.opts.inline && pluginState.isHidden;
+      if (!pluginState.areInsidesReadyToBeVisible && !isModalAndClosed) {
+        this.uppy.log("[Dashboard] resize event didn't fire on time: defaulted to mobile layout", 'debug');
         this.setPluginState({
           areInsidesReadyToBeVisible: true
-        })
+        });
       }
-    }, 1000)
-  }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"makeDashboardInsidesVisibleAnywayTimeout.setTimeout"},');
 
+    }, 1000);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports16"},');
+
+  }
   stopListeningToResize = () => {
-    this.resizeObserver.disconnect()
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports17","fileName":"${__filename}","paramsNumber":0},`);
 
-    clearTimeout(this.makeDashboardInsidesVisibleAnywayTimeout)
+    this.resizeObserver.disconnect();
+    clearTimeout(this.makeDashboardInsidesVisibleAnywayTimeout);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports17"},');
+
   }
+  recordIfFocusedOnUppyRecently = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports18","fileName":"${__filename}","paramsNumber":1},`);
 
-  // Records whether we have been interacting with uppy right now, which is then used to determine whether state updates should trigger a refocusing.
-  recordIfFocusedOnUppyRecently = (event) => {
     if (this.el.contains(event.target)) {
-      this.ifFocusedOnUppyRecently = true
+      this.ifFocusedOnUppyRecently = true;
     } else {
-      this.ifFocusedOnUppyRecently = false
-      // ___Why run this.superFocus.cancel here when it already runs in superFocusOnEachUpdate?
-      //    Because superFocus is debounced, when we move from Uppy to some other element on the page,
-      //    previously run superFocus sometimes hits and moves focus back to Uppy.
-      this.superFocus.cancel()
+      this.ifFocusedOnUppyRecently = false;
+      this.superFocus.cancel();
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports18"},');
 
+  }
   updateBrowserHistory = () => {
-    // Ensure history state does not already contain our modal name to avoid double-pushing
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports19","fileName":"${__filename}","paramsNumber":0},`);
+
     if (!history.state || !history.state[this.modalName]) {
-      // Push to history so that the page is not lost on browser back button press
       history.pushState({
         ...history.state,
         [this.modalName]: true
-      }, '')
+      }, '');
     }
+    window.addEventListener('popstate', this.handlePopState, false);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports19"},');
 
-    // Listen for back button presses
-    window.addEventListener('popstate', this.handlePopState, false)
   }
+  handlePopState = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports20","fileName":"${__filename}","paramsNumber":1},`);
 
-  handlePopState = (event) => {
-    // Close the modal if the history state no longer contains our modal name
     if (this.isModalOpen() && (!event.state || !event.state[this.modalName])) {
-      this.closeModal({ manualClose: false })
+      this.closeModal({
+        manualClose: false
+      });
     }
-
-    // When the browser back button is pressed and uppy is now the latest entry in the history but the modal is closed, fix the history by removing the uppy history entry
-    // This occurs when another entry is added into the history state while the modal is open, and then the modal gets manually closed
-    // Solves PR #575 (https://github.com/transloadit/uppy/pull/575)
     if (!this.isModalOpen() && event.state && event.state[this.modalName]) {
-      history.go(-1)
+      history.go(-1);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports20"},');
 
-  handleKeyDownInModal = (event) => {
-    // close modal on esc key press
-    if (event.keyCode === ESC_KEY) this.requestCloseModal(event)
-    // trap focus on tab key press
-    if (event.keyCode === TAB_KEY) trapFocus.forModal(event, this.getPluginState().activeOverlayType, this.el)
   }
+  handleKeyDownInModal = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports21","fileName":"${__filename}","paramsNumber":1},`);
 
+    if (event.keyCode === ESC_KEY) this.requestCloseModal(event);
+    if (event.keyCode === TAB_KEY) trapFocus.forModal(event, this.getPluginState().activeOverlayType, this.el);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports21"},');
+
+  }
   handleClickOutside = () => {
-    if (this.opts.closeModalOnClickOutside) this.requestCloseModal()
-  }
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports22","fileName":"${__filename}","paramsNumber":0},`);
 
-  handlePaste = (event) => {
-    // 1. Let any acquirer plugin (Url/Webcam/etc.) handle pastes to the root
-    this.uppy.iteratePlugins((plugin) => {
+    if (this.opts.closeModalOnClickOutside) this.requestCloseModal();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports22"},');
+
+  }
+  handlePaste = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports23","fileName":"${__filename}","paramsNumber":1},`);
+
+    this.uppy.iteratePlugins(plugin => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
+
       if (plugin.type === 'acquirer') {
-        // Every Plugin with .type acquirer can define handleRootPaste(event)
-        plugin.handleRootPaste && plugin.handleRootPaste(event)
+        plugin.handleRootPaste && plugin.handleRootPaste(event);
       }
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.iteratePlugins"},');
 
-    // 2. Add all dropped files
-    const files = toArray(event.clipboardData.files)
-    this.addFiles(files)
+    });
+    const files = toArray(event.clipboardData.files);
+    this.addFiles(files);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports23"},');
+
   }
+  handleInputChange = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports24","fileName":"${__filename}","paramsNumber":1},`);
 
-  handleInputChange = (event) => {
-    event.preventDefault()
-    const files = toArray(event.target.files)
-    this.addFiles(files)
+    event.preventDefault();
+    const files = toArray(event.target.files);
+    this.addFiles(files);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports24"},');
+
   }
+  handleDragOver = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports25","fileName":"${__filename}","paramsNumber":1},`);
 
-  handleDragOver = (event) => {
-    event.preventDefault()
-    event.stopPropagation()
+    event.preventDefault();
+    event.stopPropagation();
+    event.dataTransfer.dropEffect = 'copy';
+    clearTimeout(this.removeDragOverClassTimeout);
+    this.setPluginState({
+      isDraggingOver: true
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports25"},');
 
-    // 1. Add a small (+) icon on drop
-    // (and prevent browsers from interpreting this as files being _moved_ into the browser, https://github.com/transloadit/uppy/issues/1978)
-    event.dataTransfer.dropEffect = 'copy'
-
-    clearTimeout(this.removeDragOverClassTimeout)
-    this.setPluginState({ isDraggingOver: true })
   }
+  handleDragLeave = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports26","fileName":"${__filename}","paramsNumber":1},`);
 
-  handleDragLeave = (event) => {
-    event.preventDefault()
-    event.stopPropagation()
-
-    clearTimeout(this.removeDragOverClassTimeout)
-    // Timeout against flickering, this solution is taken from drag-drop library. Solution with 'pointer-events: none' didn't work across browsers.
+    event.preventDefault();
+    event.stopPropagation();
+    clearTimeout(this.removeDragOverClassTimeout);
     this.removeDragOverClassTimeout = setTimeout(() => {
-      this.setPluginState({ isDraggingOver: false })
-    }, 50)
-  }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"removeDragOverClassTimeout.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
 
+      this.setPluginState({
+        isDraggingOver: false
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"removeDragOverClassTimeout.setTimeout"},');
+
+    }, 50);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports26"},');
+
+  }
   handleDrop = (event, dropCategory) => {
-    event.preventDefault()
-    event.stopPropagation()
-    clearTimeout(this.removeDragOverClassTimeout)
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports27","fileName":"${__filename}","paramsNumber":2},`);
 
-    // 2. Remove dragover class
-    this.setPluginState({ isDraggingOver: false })
+    event.preventDefault();
+    event.stopPropagation();
+    clearTimeout(this.removeDragOverClassTimeout);
+    this.setPluginState({
+      isDraggingOver: false
+    });
+    this.uppy.iteratePlugins(plugin => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.iteratePlugins2","fileName":"${__filename}","paramsNumber":1},`);
 
-    // 3. Let any acquirer plugin (Url/Webcam/etc.) handle drops to the root
-    this.uppy.iteratePlugins((plugin) => {
       if (plugin.type === 'acquirer') {
-        // Every Plugin with .type acquirer can define handleRootDrop(event)
-        plugin.handleRootDrop && plugin.handleRootDrop(event)
+        plugin.handleRootDrop && plugin.handleRootDrop(event);
       }
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.iteratePlugins2"},');
 
-    // 4. Add all dropped files
-    let executedDropErrorOnce = false
-    const logDropError = (error) => {
-      this.uppy.log(error, 'error')
+    });
+    let executedDropErrorOnce = false;
+    const logDropError = error => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logDropError","fileName":"${__filename}","paramsNumber":1},`);
 
-      // In practice all drop errors are most likely the same, so let's just show one to avoid overwhelming the user
+      this.uppy.log(error, 'error');
       if (!executedDropErrorOnce) {
-        this.uppy.info(error.message, 'error')
-        executedDropErrorOnce = true
+        this.uppy.info(error.message, 'error');
+        executedDropErrorOnce = true;
       }
-    }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"logDropError"},');
 
-    getDroppedFiles(event.dataTransfer, { logDropError })
-      .then((files) => {
-        if (files.length > 0) {
-          this.uppy.log('[Dashboard] Files were dropped')
-          this.addFiles(files)
-        }
-      })
+    };
+    getDroppedFiles(event.dataTransfer, {
+      logDropError
+    }).then(files => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"getDroppedFiles.then","fileName":"${__filename}","paramsNumber":1},`);
+
+      if (files.length > 0) {
+        this.uppy.log('[Dashboard] Files were dropped');
+        this.addFiles(files);
+      }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"getDroppedFiles.then"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports27"},');
+
   }
+  handleRequestThumbnail = file => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports28","fileName":"${__filename}","paramsNumber":1},`);
 
-  handleRequestThumbnail = (file) => {
     if (!this.opts.waitForThumbnailsBeforeUpload) {
-      this.uppy.emit('thumbnail:request', file)
+      this.uppy.emit('thumbnail:request', file);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports28"},');
 
-  /**
-   * We cancel thumbnail requests when a file item component unmounts to avoid clogging up the queue when the user scrolls past many elements.
-   */
-  handleCancelThumbnail = (file) => {
+  }
+  handleCancelThumbnail = file => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports29","fileName":"${__filename}","paramsNumber":1},`);
+
     if (!this.opts.waitForThumbnailsBeforeUpload) {
-      this.uppy.emit('thumbnail:cancel', file)
+      this.uppy.emit('thumbnail:cancel', file);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports29"},');
 
-  handleKeyDownInInline = (event) => {
-    // Trap focus on tab key press.
-    if (event.keyCode === TAB_KEY) trapFocus.forInline(event, this.getPluginState().activeOverlayType, this.el)
   }
+  handleKeyDownInInline = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports30","fileName":"${__filename}","paramsNumber":1},`);
 
-  // ___Why do we listen to the 'paste' event on a document instead of onPaste={props.handlePaste} prop, or this.el.addEventListener('paste')?
-  //    Because (at least) Chrome doesn't handle paste if focus is on some button, e.g. 'My Device'.
-  //    => Therefore, the best option is to listen to all 'paste' events, and only react to them when we are focused on our particular Uppy instance.
-  // ___Why do we still need onPaste={props.handlePaste} for the DashboardUi?
-  //    Because if we click on the 'Drop files here' caption e.g., `document.activeElement` will be 'body'. Which means our standard determination of whether we're pasting into our Uppy instance won't work.
-  //    => Therefore, we need a traditional onPaste={props.handlePaste} handler too.
-  handlePasteOnBody = (event) => {
-    const isFocusInOverlay = this.el.contains(document.activeElement)
+    if (event.keyCode === TAB_KEY) trapFocus.forInline(event, this.getPluginState().activeOverlayType, this.el);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports30"},');
+
+  }
+  handlePasteOnBody = event => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports31","fileName":"${__filename}","paramsNumber":1},`);
+
+    const isFocusInOverlay = this.el.contains(document.activeElement);
     if (isFocusInOverlay) {
-      this.handlePaste(event)
+      this.handlePaste(event);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
 
-  handleComplete = ({ failed, uploadID }) => {
+  }
+  handleComplete = ({failed, uploadID}) => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports32","fileName":"${__filename}","paramsNumber":1},`);
+
     if (this.opts.closeAfterFinish && failed.length === 0) {
-      // All uploads are done
-      this.requestCloseModal()
+      this.requestCloseModal();
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports32"},');
 
+  }
   initEvents = () => {
-    // Modal open button
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports33","fileName":"${__filename}","paramsNumber":0},`);
+
     if (this.opts.trigger && !this.opts.inline) {
-      const showModalTrigger = findAllDOMElements(this.opts.trigger)
+      const showModalTrigger = findAllDOMElements(this.opts.trigger);
       if (showModalTrigger) {
-        showModalTrigger.forEach(trigger => trigger.addEventListener('click', this.openModal))
+        showModalTrigger.forEach(trigger => {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"showModalTrigger.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach"},');
+
+          return trigger.addEventListener('click', this.openModal);
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach"},');
+
+        });
       } else {
-        this.uppy.log('Dashboard modal trigger not found. Make sure `trigger` is set in Dashboard options, unless you are planning to call `dashboard.openModal()` method yourself', 'warning')
+        this.uppy.log('Dashboard modal trigger not found. Make sure `trigger` is set in Dashboard options, unless you are planning to call `dashboard.openModal()` method yourself', 'warning');
       }
     }
-
-    this.startListeningToResize()
-    document.addEventListener('paste', this.handlePasteOnBody)
-
-    this.uppy.on('plugin-remove', this.removeTarget)
-    this.uppy.on('file-added', this.hideAllPanels)
-    this.uppy.on('dashboard:modal-closed', this.hideAllPanels)
-    this.uppy.on('complete', this.handleComplete)
-
-    // ___Why fire on capture?
-    //    Because this.ifFocusedOnUppyRecently needs to change before onUpdate() fires.
-    document.addEventListener('focus', this.recordIfFocusedOnUppyRecently, true)
-    document.addEventListener('click', this.recordIfFocusedOnUppyRecently, true)
-
+    this.startListeningToResize();
+    document.addEventListener('paste', this.handlePasteOnBody);
+    this.uppy.on('plugin-remove', this.removeTarget);
+    this.uppy.on('file-added', this.hideAllPanels);
+    this.uppy.on('dashboard:modal-closed', this.hideAllPanels);
+    this.uppy.on('complete', this.handleComplete);
+    document.addEventListener('focus', this.recordIfFocusedOnUppyRecently, true);
+    document.addEventListener('click', this.recordIfFocusedOnUppyRecently, true);
     if (this.opts.inline) {
-      this.el.addEventListener('keydown', this.handleKeyDownInInline)
+      this.el.addEventListener('keydown', this.handleKeyDownInInline);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports33"},');
 
+  }
   removeEvents = () => {
-    const showModalTrigger = findAllDOMElements(this.opts.trigger)
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports34","fileName":"${__filename}","paramsNumber":0},`);
+
+    const showModalTrigger = findAllDOMElements(this.opts.trigger);
     if (!this.opts.inline && showModalTrigger) {
-      showModalTrigger.forEach(trigger => trigger.removeEventListener('click', this.openModal))
+      showModalTrigger.forEach(trigger => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"showModalTrigger.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+
+                SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach2"},');
+
+        return trigger.removeEventListener('click', this.openModal);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach2"},');
+
+      });
     }
-
-    this.stopListeningToResize()
-    document.removeEventListener('paste', this.handlePasteOnBody)
-
-    window.removeEventListener('popstate', this.handlePopState, false)
-    this.uppy.off('plugin-remove', this.removeTarget)
-    this.uppy.off('file-added', this.hideAllPanels)
-    this.uppy.off('dashboard:modal-closed', this.hideAllPanels)
-    this.uppy.off('complete', this.handleComplete)
-
-    document.removeEventListener('focus', this.recordIfFocusedOnUppyRecently)
-    document.removeEventListener('click', this.recordIfFocusedOnUppyRecently)
-
+    this.stopListeningToResize();
+    document.removeEventListener('paste', this.handlePasteOnBody);
+    window.removeEventListener('popstate', this.handlePopState, false);
+    this.uppy.off('plugin-remove', this.removeTarget);
+    this.uppy.off('file-added', this.hideAllPanels);
+    this.uppy.off('dashboard:modal-closed', this.hideAllPanels);
+    this.uppy.off('complete', this.handleComplete);
+    document.removeEventListener('focus', this.recordIfFocusedOnUppyRecently);
+    document.removeEventListener('click', this.recordIfFocusedOnUppyRecently);
     if (this.opts.inline) {
-      this.el.removeEventListener('keydown', this.handleKeyDownInInline)
+      this.el.removeEventListener('keydown', this.handleKeyDownInInline);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports34"},');
 
+  }
   superFocusOnEachUpdate = () => {
-    const isFocusInUppy = this.el.contains(document.activeElement)
-    // When focus is lost on the page (== focus is on body for most browsers, or focus is null for IE11)
-    const isFocusNowhere = document.activeElement === document.body || document.activeElement === null
-    const isInformerHidden = this.uppy.getState().info.isHidden
-    const isModal = !this.opts.inline
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports35","fileName":"${__filename}","paramsNumber":0},`);
 
-    if (
-      // If update is connected to showing the Informer - let the screen reader calmly read it.
-      isInformerHidden &&
-      (
-        // If we are in a modal - always superfocus without concern for other elements on the page (user is unlikely to want to interact with the rest of the page)
-        isModal ||
-        // If we are already inside of Uppy, or
-        isFocusInUppy ||
-        // If we are not focused on anything BUT we have already, at least once, focused on uppy
-        //   1. We focus when isFocusNowhere, because when the element we were focused on disappears (e.g. an overlay), - focus gets lost. If user is typing something somewhere else on the page, - focus won't be 'nowhere'.
-        //   2. We only focus when focus is nowhere AND this.ifFocusedOnUppyRecently, to avoid focus jumps if we do something else on the page.
-        //   [Practical check] Without '&& this.ifFocusedOnUppyRecently', in Safari, in inline mode, when file is uploading, - navigate via tab to the checkbox, try to press space multiple times. Focus will jump to Uppy.
-        (isFocusNowhere && this.ifFocusedOnUppyRecently)
-      )
-    ) {
-      this.superFocus(this.el, this.getPluginState().activeOverlayType)
+    const isFocusInUppy = this.el.contains(document.activeElement);
+    const isFocusNowhere = document.activeElement === document.body || document.activeElement === null;
+    const isInformerHidden = this.uppy.getState().info.isHidden;
+    const isModal = !this.opts.inline;
+    if (isInformerHidden && (isModal || isFocusInUppy || isFocusNowhere && this.ifFocusedOnUppyRecently)) {
+      this.superFocus(this.el, this.getPluginState().activeOverlayType);
     } else {
-      this.superFocus.cancel()
+      this.superFocus.cancel();
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports35"},');
 
+  }
   afterUpdate = () => {
-    this.superFocusOnEachUpdate()
-  }
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports36","fileName":"${__filename}","paramsNumber":0},`);
 
-  cancelUpload = (fileID) => {
-    this.uppy.removeFile(fileID)
-  }
+    this.superFocusOnEachUpdate();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports36"},');
 
+  }
+  cancelUpload = fileID => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports37","fileName":"${__filename}","paramsNumber":1},`);
+
+    this.uppy.removeFile(fileID);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports37"},');
+
+  }
   saveFileCard = (meta, fileID) => {
-    this.uppy.setFileMeta(fileID, meta)
-    this.toggleFileCard()
-  }
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports38","fileName":"${__filename}","paramsNumber":2},`);
 
-  _attachRenderFunctionToTarget = (target) => {
-    const plugin = this.uppy.getPlugin(target.id)
+    this.uppy.setFileMeta(fileID, meta);
+    this.toggleFileCard();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports38"},');
+
+  }
+  _attachRenderFunctionToTarget = target => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports39","fileName":"${__filename}","paramsNumber":1},`);
+
+    const plugin = this.uppy.getPlugin(target.id);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports39"},');
+
     return {
       ...target,
       icon: plugin.icon || this.opts.defaultPickerIcon,
       render: plugin.render
-    }
-  }
+    };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports39"},');
 
-  _isTargetSupported = (target) => {
-    const plugin = this.uppy.getPlugin(target.id)
-    // If the plugin does not provide a `supported` check, assume the plugin works everywhere.
+  }
+  _isTargetSupported = target => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports40","fileName":"${__filename}","paramsNumber":1},`);
+
+    const plugin = this.uppy.getPlugin(target.id);
     if (typeof plugin.isSupported !== 'function') {
-      return true
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports40"},');
+
+      return true;
     }
-    return plugin.isSupported()
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports40"},');
+
+    return plugin.isSupported();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports40"},');
+
   }
+  _getAcquirers = memoize(targets => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.memoize","fileName":"${__filename}","paramsNumber":1},`);
 
-  _getAcquirers = memoize((targets) => {
-    return targets
-      .filter(target => target.type === 'acquirer' && this._isTargetSupported(target))
-      .map(this._attachRenderFunctionToTarget)
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize"},');
+
+    return targets.filter(target => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.targets.filter.map.targets.filter","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter"},');
+
+      return target.type === 'acquirer' && this._isTargetSupported(target);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter"},');
+
+    }).map(this._attachRenderFunctionToTarget);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize"},');
+
   })
+  _getProgressIndicators = memoize(targets => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.memoize2","fileName":"${__filename}","paramsNumber":1},`);
 
-  _getProgressIndicators = memoize((targets) => {
-    return targets
-      .filter(target => target.type === 'progressindicator')
-      .map(this._attachRenderFunctionToTarget)
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize2"},');
+
+    return targets.filter(target => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.targets.filter.map.targets.filter2","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter2"},');
+
+      return target.type === 'progressindicator';
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter2"},');
+
+    }).map(this._attachRenderFunctionToTarget);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize2"},');
+
   })
+  render = state => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports41","fileName":"${__filename}","paramsNumber":1},`);
 
-  render = (state) => {
-    const pluginState = this.getPluginState()
-    const { files, capabilities, allowNewUpload } = state
+    const pluginState = this.getPluginState();
+    const {files, capabilities, allowNewUpload} = state;
+    const newFiles = Object.keys(files).filter(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"newFiles.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-    // TODO: move this to Core, to share between Status Bar and Dashboard
-    // (and any other plugin that might need it, too)
-    const newFiles = Object.keys(files).filter((file) => {
-      return !files[file].progress.uploadStarted
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"newFiles.Object.keys.filter"},');
 
-    const uploadStartedFiles = Object.keys(files).filter((file) => {
-      return files[file].progress.uploadStarted
-    })
+      return !files[file].progress.uploadStarted;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"newFiles.Object.keys.filter"},');
 
-    const pausedFiles = Object.keys(files).filter((file) => {
-      return files[file].isPaused
-    })
+    });
+    const uploadStartedFiles = Object.keys(files).filter(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploadStartedFiles.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-    const completeFiles = Object.keys(files).filter((file) => {
-      return files[file].progress.uploadComplete
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uploadStartedFiles.Object.keys.filter"},');
 
-    const erroredFiles = Object.keys(files).filter((file) => {
-      return files[file].error
-    })
+      return files[file].progress.uploadStarted;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uploadStartedFiles.Object.keys.filter"},');
 
-    const inProgressFiles = Object.keys(files).filter((file) => {
-      return !files[file].progress.uploadComplete &&
-             files[file].progress.uploadStarted
-    })
+    });
+    const pausedFiles = Object.keys(files).filter(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"pausedFiles.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-    const inProgressNotPausedFiles = inProgressFiles.filter((file) => {
-      return !files[file].isPaused
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"pausedFiles.Object.keys.filter"},');
 
-    const processingFiles = Object.keys(files).filter((file) => {
-      return files[file].progress.preprocess || files[file].progress.postprocess
-    })
+      return files[file].isPaused;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"pausedFiles.Object.keys.filter"},');
 
-    const isUploadStarted = uploadStartedFiles.length > 0
+    });
+    const completeFiles = Object.keys(files).filter(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"completeFiles.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-    const isAllComplete = state.totalProgress === 100 &&
-      completeFiles.length === Object.keys(files).length &&
-      processingFiles.length === 0
+            SRTlib.send('{"type":"FUNCTIONEND","function":"completeFiles.Object.keys.filter"},');
 
-    const isAllErrored = isUploadStarted &&
-      erroredFiles.length === uploadStartedFiles.length
+      return files[file].progress.uploadComplete;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"completeFiles.Object.keys.filter"},');
 
-    const isAllPaused = inProgressFiles.length !== 0 &&
-      pausedFiles.length === inProgressFiles.length
+    });
+    const erroredFiles = Object.keys(files).filter(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"erroredFiles.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
 
-    const acquirers = this._getAcquirers(pluginState.targets)
-    const progressindicators = this._getProgressIndicators(pluginState.targets)
+            SRTlib.send('{"type":"FUNCTIONEND","function":"erroredFiles.Object.keys.filter"},');
 
-    let theme
+      return files[file].error;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"erroredFiles.Object.keys.filter"},');
+
+    });
+    const inProgressFiles = Object.keys(files).filter(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressFiles.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressFiles.Object.keys.filter"},');
+
+      return !files[file].progress.uploadComplete && files[file].progress.uploadStarted;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressFiles.Object.keys.filter"},');
+
+    });
+    const inProgressNotPausedFiles = inProgressFiles.filter(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressNotPausedFiles.inProgressFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressNotPausedFiles.inProgressFiles.filter"},');
+
+      return !files[file].isPaused;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressNotPausedFiles.inProgressFiles.filter"},');
+
+    });
+    const processingFiles = Object.keys(files).filter(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"processingFiles.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"processingFiles.Object.keys.filter"},');
+
+      return files[file].progress.preprocess || files[file].progress.postprocess;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"processingFiles.Object.keys.filter"},');
+
+    });
+    const isUploadStarted = uploadStartedFiles.length > 0;
+    const isAllComplete = state.totalProgress === 100 && completeFiles.length === Object.keys(files).length && processingFiles.length === 0;
+    const isAllErrored = isUploadStarted && erroredFiles.length === uploadStartedFiles.length;
+    const isAllPaused = inProgressFiles.length !== 0 && pausedFiles.length === inProgressFiles.length;
+    const acquirers = this._getAcquirers(pluginState.targets);
+    const progressindicators = this._getProgressIndicators(pluginState.targets);
+    let theme;
     if (this.opts.theme === 'auto') {
-      theme = capabilities.darkMode ? 'dark' : 'light'
+      theme = capabilities.darkMode ? 'dark' : 'light';
     } else {
-      theme = this.opts.theme
+      theme = this.opts.theme;
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports41"},');
 
     return DashboardUI({
       state,
@@ -874,24 +1021,32 @@ module.exports = class Dashboard extends Plugin {
       showSelectedFiles: this.opts.showSelectedFiles,
       handleRequestThumbnail: this.handleRequestThumbnail,
       handleCancelThumbnail: this.handleCancelThumbnail,
-      // drag props
       isDraggingOver: pluginState.isDraggingOver,
       handleDragOver: this.handleDragOver,
       handleDragLeave: this.handleDragLeave,
       handleDrop: this.handleDrop
-    })
-  }
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports41"},');
 
+  }
   discoverProviderPlugins = () => {
-    this.uppy.iteratePlugins((plugin) => {
-      if (plugin && !plugin.target && plugin.opts && plugin.opts.target === this.constructor) {
-        this.addTarget(plugin)
-      }
-    })
-  }
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports42","fileName":"${__filename}","paramsNumber":0},`);
 
+    this.uppy.iteratePlugins(plugin => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.iteratePlugins3","fileName":"${__filename}","paramsNumber":1},`);
+
+      if (plugin && !plugin.target && plugin.opts && plugin.opts.target === this.constructor) {
+        this.addTarget(plugin);
+      }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.iteratePlugins3"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports42"},');
+
+  }
   install = () => {
-    // Set default state for Dashboard
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports43","fileName":"${__filename}","paramsNumber":0},`);
+
     this.setPluginState({
       isHidden: true,
       fileCardFor: null,
@@ -900,34 +1055,34 @@ module.exports = class Dashboard extends Plugin {
       activePickerPanel: false,
       metaFields: this.opts.metaFields,
       targets: [],
-      // We'll make them visible once .containerWidth is determined
       areInsidesReadyToBeVisible: false,
       isDraggingOver: false
-    })
-
-    const { inline, closeAfterFinish } = this.opts
+    });
+    const {inline, closeAfterFinish} = this.opts;
     if (inline && closeAfterFinish) {
-      throw new Error('[Dashboard] `closeAfterFinish: true` cannot be used on an inline Dashboard, because an inline Dashboard cannot be closed at all. Either set `inline: false`, or disable the `closeAfterFinish` option.')
-    }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports43"},');
 
-    const { allowMultipleUploads } = this.uppy.opts
+      throw new Error('[Dashboard] `closeAfterFinish: true` cannot be used on an inline Dashboard, because an inline Dashboard cannot be closed at all. Either set `inline: false`, or disable the `closeAfterFinish` option.');
+    }
+    const {allowMultipleUploads} = this.uppy.opts;
     if (allowMultipleUploads && closeAfterFinish) {
-      this.uppy.log('[Dashboard] When using `closeAfterFinish`, we recommended setting the `allowMultipleUploads` option to `false` in the Uppy constructor. See https://uppy.io/docs/uppy/#allowMultipleUploads-true', 'warning')
+      this.uppy.log('[Dashboard] When using `closeAfterFinish`, we recommended setting the `allowMultipleUploads` option to `false` in the Uppy constructor. See https://uppy.io/docs/uppy/#allowMultipleUploads-true', 'warning');
     }
-
-    const { target } = this.opts
+    const {target} = this.opts;
     if (target) {
-      this.mount(target, this)
+      this.mount(target, this);
     }
+    const plugins = this.opts.plugins || [];
+    plugins.forEach(pluginID => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"plugins.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-    const plugins = this.opts.plugins || []
-    plugins.forEach((pluginID) => {
-      const plugin = this.uppy.getPlugin(pluginID)
+      const plugin = this.uppy.getPlugin(pluginID);
       if (plugin) {
-        plugin.mount(this, plugin)
+        plugin.mount(this, plugin);
       }
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"plugins.forEach"},');
 
+    });
     if (!this.opts.disableStatusBar) {
       this.uppy.use(StatusBar, {
         id: `${this.id}:StatusBar`,
@@ -939,72 +1094,64 @@ module.exports = class Dashboard extends Plugin {
         showProgressDetails: this.opts.showProgressDetails,
         hideAfterFinish: this.opts.hideProgressAfterFinish,
         locale: this.opts.locale
-      })
+      });
     }
-
     if (!this.opts.disableInformer) {
       this.uppy.use(Informer, {
         id: `${this.id}:Informer`,
         target: this
-      })
+      });
     }
-
     if (!this.opts.disableThumbnailGenerator) {
       this.uppy.use(ThumbnailGenerator, {
         id: `${this.id}:ThumbnailGenerator`,
         thumbnailWidth: this.opts.thumbnailWidth,
         waitForThumbnailsBeforeUpload: this.opts.waitForThumbnailsBeforeUpload,
-        // If we don't block on thumbnails, we can lazily generate them
         lazy: !this.opts.waitForThumbnailsBeforeUpload
-      })
+      });
     }
-
-    // Dark Mode / theme
-    this.darkModeMediaQuery = (typeof window !== 'undefined' && window.matchMedia)
-      ? window.matchMedia('(prefers-color-scheme: dark)')
-      : null
-
-    const isDarkModeOnFromTheStart = this.darkModeMediaQuery ? this.darkModeMediaQuery.matches : false
-    this.uppy.log(`[Dashboard] Dark mode is ${isDarkModeOnFromTheStart ? 'on' : 'off'}`)
-    this.setDarkModeCapability(isDarkModeOnFromTheStart)
-
+    this.darkModeMediaQuery = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    const isDarkModeOnFromTheStart = this.darkModeMediaQuery ? this.darkModeMediaQuery.matches : false;
+    this.uppy.log(`[Dashboard] Dark mode is ${isDarkModeOnFromTheStart ? 'on' : 'off'}`);
+    this.setDarkModeCapability(isDarkModeOnFromTheStart);
     if (this.opts.theme === 'auto') {
-      this.darkModeMediaQuery.addListener(this.handleSystemDarkModeChange)
+      this.darkModeMediaQuery.addListener(this.handleSystemDarkModeChange);
     }
+    this.discoverProviderPlugins();
+    this.initEvents();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports43"},');
 
-    this.discoverProviderPlugins()
-    this.initEvents()
   }
-
   uninstall = () => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports44","fileName":"${__filename}","paramsNumber":0},`);
+
     if (!this.opts.disableInformer) {
-      const informer = this.uppy.getPlugin(`${this.id}:Informer`)
-      // Checking if this plugin exists, in case it was removed by uppy-core
-      // before the Dashboard was.
-      if (informer) this.uppy.removePlugin(informer)
+      const informer = this.uppy.getPlugin(`${this.id}:Informer`);
+      if (informer) this.uppy.removePlugin(informer);
     }
-
     if (!this.opts.disableStatusBar) {
-      const statusBar = this.uppy.getPlugin(`${this.id}:StatusBar`)
-      if (statusBar) this.uppy.removePlugin(statusBar)
+      const statusBar = this.uppy.getPlugin(`${this.id}:StatusBar`);
+      if (statusBar) this.uppy.removePlugin(statusBar);
     }
-
     if (!this.opts.disableThumbnailGenerator) {
-      const thumbnail = this.uppy.getPlugin(`${this.id}:ThumbnailGenerator`)
-      if (thumbnail) this.uppy.removePlugin(thumbnail)
+      const thumbnail = this.uppy.getPlugin(`${this.id}:ThumbnailGenerator`);
+      if (thumbnail) this.uppy.removePlugin(thumbnail);
     }
+    const plugins = this.opts.plugins || [];
+    plugins.forEach(pluginID => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"plugins.forEach2","fileName":"${__filename}","paramsNumber":1},`);
 
-    const plugins = this.opts.plugins || []
-    plugins.forEach((pluginID) => {
-      const plugin = this.uppy.getPlugin(pluginID)
-      if (plugin) plugin.unmount()
-    })
+      const plugin = this.uppy.getPlugin(pluginID);
+      if (plugin) plugin.unmount();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"plugins.forEach2"},');
 
+    });
     if (this.opts.theme === 'auto') {
-      this.darkModeMediaQuery.removeListener(this.handleSystemDarkModeChange)
+      this.darkModeMediaQuery.removeListener(this.handleSystemDarkModeChange);
     }
+    this.unmount();
+    this.removeEvents();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports44"},');
 
-    this.unmount()
-    this.removeEvents()
   }
-}
+};

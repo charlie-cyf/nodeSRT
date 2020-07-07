@@ -1,44 +1,70 @@
-/**
- * Default store that keeps state in a simple object.
- */
+const SRTlib = require('SRT-util');
+
 class DefaultStore {
   static VERSION = require('../package.json').version
+  constructor() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DefaultStore"}},`);
 
-  constructor () {
-    this.state = {}
-    this.callbacks = []
+    this.state = {};
+    this.callbacks = [];
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
+
   }
+  getState() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getState","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DefaultStore"}},`);
 
-  getState () {
-    return this.state
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getState"},');
+
+    return this.state;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getState"},');
+
   }
+  setState(patch) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setState","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DefaultStore"}},`);
 
-  setState (patch) {
-    const prevState = Object.assign({}, this.state)
-    const nextState = Object.assign({}, this.state, patch)
+    const prevState = Object.assign({}, this.state);
+    const nextState = Object.assign({}, this.state, patch);
+    this.state = nextState;
+    this._publish(prevState, nextState, patch);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setState"},');
 
-    this.state = nextState
-    this._publish(prevState, nextState, patch)
   }
+  subscribe(listener) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"subscribe","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DefaultStore"}},`);
 
-  subscribe (listener) {
-    this.callbacks.push(listener)
+    this.callbacks.push(listener);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"subscribe"},');
+
     return () => {
-      // Remove the listener.
-      this.callbacks.splice(
-        this.callbacks.indexOf(listener),
-        1
-      )
-    }
-  }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
 
-  _publish (...args) {
-    this.callbacks.forEach((listener) => {
-      listener(...args)
-    })
+      this.callbacks.splice(this.callbacks.indexOf(listener), 1);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+    };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"subscribe"},');
+
+  }
+  _publish(...args) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_publish","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DefaultStore"}},`);
+
+    this.callbacks.forEach(listener => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"callbacks.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
+      listener(...args);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"callbacks.forEach"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_publish"},');
+
   }
 }
+module.exports = function defaultStore() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
 
-module.exports = function defaultStore () {
-  return new DefaultStore()
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+  return new DefaultStore();
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

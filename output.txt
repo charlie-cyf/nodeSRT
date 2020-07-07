@@ -1,22 +1,17 @@
 
-> nodesrt@1.0.0 start /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT
+> nodesrt@1.0.0 start /home/centos/nodeSRT
 > npm-run-all --parallel start:server start:index
 
 
-> nodesrt@1.0.0 start:server /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT
-> nodemon instrument/server.js
+> nodesrt@1.0.0 start:server /home/centos/nodeSRT
+> node instrument/server.js
 
 
-> nodesrt@1.0.0 start:index /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT
+> nodesrt@1.0.0 start:index /home/centos/nodeSRT
 > node index.js
 
-[33m[nodemon] 2.0.4[39m
-[33m[nodemon] to restart at any time, enter `rs`[39m
-[33m[nodemon] watching path(s): *.*[39m
-[33m[nodemon] watching extensions: js,mjs,json[39m
-[32m[nodemon] starting `node instrument/server.js`[39m
 app listening at http://localhost:8888
-env /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT
+env /home/centos/nodeSRT
 copy success!
 inject to: ./code/uppy-AST/.browsersync.js.json
 inject to: ./code/uppy-AST/babel.config.js.json
@@ -58,17 +53,6 @@ inject to: ./code/uppy-AST/examples/react-example/App.js.json
 inject to: ./code/uppy-AST/examples/react-example/main.js.json
 inject to: ./code/uppy-AST/examples/react-native-expo/App.js.json
 inject to: ./code/uppy-AST/examples/react-native-expo/FileList.js.json
-injection to ./code/uppy-AST/examples/react-native-expo/FileList.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:238:91
 inject to: ./code/uppy-AST/examples/react-native-expo/PauseResumeButton.js.json
 inject to: ./code/uppy-AST/examples/react-native-expo/ProgressBar.js.json
 inject to: ./code/uppy-AST/examples/react-native-expo/SelectFilesButton.js.json
@@ -85,33 +69,11 @@ inject to: ./code/uppy-AST/packages/@uppy/aws-s3/lib/MiniXHRUpload.js.json
 inject to: ./code/uppy-AST/packages/@uppy/aws-s3/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/aws-s3/src/MiniXHRUpload.js.json
 inject to: ./code/uppy-AST/packages/@uppy/aws-s3/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/aws-s3/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/aws-s3/src/index.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/aws-s3-multipart/lib/MultipartUploader.js.json
 inject to: ./code/uppy-AST/packages/@uppy/aws-s3-multipart/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/aws-s3-multipart/src/MultipartUploader.js.json
 inject to: ./code/uppy-AST/packages/@uppy/aws-s3-multipart/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/aws-s3-multipart/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/companion/lib/companion.js.json
 inject to: ./code/uppy-AST/packages/@uppy/companion/lib/config/grant.js.json
 inject to: ./code/uppy-AST/packages/@uppy/companion/lib/server/Uploader.js.json
@@ -216,17 +178,6 @@ inject to: ./code/uppy-AST/packages/@uppy/companion-client/lib/tokenStorage.js.j
 inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/AuthError.js.json
 inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/Provider.js.json
 inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/RequestClient.js.json
-injection to ./code/uppy-AST/packages/@uppy/companion-client/src/RequestClient.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/RequestClient.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/Socket.js.json
 inject to: ./code/uppy-AST/packages/@uppy/companion-client/src/Socket.test.js.json
@@ -239,17 +190,6 @@ inject to: ./code/uppy-AST/packages/@uppy/core/lib/supportsUploadProgress.js.jso
 inject to: ./code/uppy-AST/packages/@uppy/core/src/Plugin.js.json
 inject to: ./code/uppy-AST/packages/@uppy/core/src/Plugin.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/core/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/core/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
 inject to: ./code/uppy-AST/packages/@uppy/core/src/index.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/core/src/loggers.js.json
 inject to: ./code/uppy-AST/packages/@uppy/core/src/supportsUploadProgress.js.json
@@ -279,119 +219,20 @@ inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/ignoreEvent.js.jso
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/trapFocus.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/lib/utils/truncateString.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFiles.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFiles.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFilesPanel.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/AddFilesPanel.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/Dashboard.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/Dashboard.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at formatBinaryExpressionPart (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:133:25)
-    at Object.BinaryExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:907:5)
-    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileCard/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileCard/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/Buttons/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FilePreviewAndLink/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileProgress/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/FileProgress/index.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileItem/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileList.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/FileList.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/FilePreview.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelContent.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
-    at /windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/instrumentor.js:238:91
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/components/VirtualList.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/components/VirtualList.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/dashboard/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/index.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/copyToClipboard.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/copyToClipboard.test.js.json
@@ -405,69 +246,14 @@ inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/truncateString.js.
 inject to: ./code/uppy-AST/packages/@uppy/dashboard/src/utils/truncateString.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/drag-drop/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/drag-drop/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/drag-drop/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/dropbox/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/dropbox/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/dropbox/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/facebook/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/facebook/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/facebook/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/file-input/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/file-input/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/file-input/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/form/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/form/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/form/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/lib/IndexedDBStore.js.json
 inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/lib/MetaDataStore.js.json
 inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/lib/ServiceWorker.js.json
@@ -480,58 +266,14 @@ inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/src/ServiceWorker.js.
 inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js.json
 inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/src/cleanup.js.json
 inject to: ./code/uppy-AST/packages/@uppy/golden-retriever/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/golden-retriever/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/google-drive/lib/DriveProviderViews.js.json
 inject to: ./code/uppy-AST/packages/@uppy/google-drive/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/google-drive/src/DriveProviderViews.js.json
 inject to: ./code/uppy-AST/packages/@uppy/google-drive/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/google-drive/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/informer/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/informer/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/informer/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/instagram/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/instagram/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/instagram/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/locales/dist/ar_SA.min.js.json
 inject to: ./code/uppy-AST/packages/@uppy/locales/dist/bg_BG.min.js.json
 inject to: ./code/uppy-AST/packages/@uppy/locales/dist/cs_CZ.min.js.json
@@ -641,30 +383,8 @@ inject to: ./code/uppy-AST/packages/@uppy/locales/src/zh_TW.js.json
 inject to: ./code/uppy-AST/packages/@uppy/locales/template.js.json
 inject to: ./code/uppy-AST/packages/@uppy/onedrive/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/onedrive/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/onedrive/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/progress-bar/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/progress-bar/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/progress-bar/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/AuthView.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Breadcrumbs.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Browser.js.json
@@ -678,83 +398,17 @@ inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/ItemList.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/Loader.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/AuthView.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/AuthView.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Breadcrumbs.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Browser.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Browser.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at formatBinaryExpressionPart (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:133:25)
-    at Object.BinaryExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:907:5)
-    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Filter.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/FooterActions.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/GridLi.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/GridLi.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ItemIcon.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ListLi.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/components/ListLi.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Item/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/Item/index.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.SwitchStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:376:29)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/ItemList.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/Loader.js.json
 inject to: ./code/uppy-AST/packages/@uppy/provider-views/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/provider-views/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/react/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/lib/Dashboard.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/lib/DashboardModal.js.json
@@ -767,17 +421,6 @@ inject to: ./code/uppy-AST/packages/@uppy/react/src/Dashboard.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/Dashboard.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.test.js.json
-injection to ./code/uppy-AST/packages/@uppy/react/src/DashboardModal.test.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at formatSequence (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:84:29)
-    at Object.CallExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:950:5)
-    at Object.VariableDeclarator (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:498:27)
-    at formatVariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:194:15)
-    at Object.VariableDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:490:5)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
 inject to: ./code/uppy-AST/packages/@uppy/react/src/DragDrop.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/DragDrop.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/ProgressBar.js.json
@@ -791,59 +434,15 @@ inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/ProgressBarPlugin.
 inject to: ./code/uppy-AST/packages/@uppy/react/src/__mocks__/StatusBarPlugin.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react/src/propTypes.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/index.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ConditionalExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:924:31)
-    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/instagram.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/provider-grid.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/provider.js.json
-injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/provider.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/selectDocument.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/selectImage.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/takePicture.js.json
 inject to: ./code/uppy-AST/packages/@uppy/react-native/file-picker/url.js.json
-injection to ./code/uppy-AST/packages/@uppy/react-native/file-picker/url.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.ExportDefaultDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:568:32)
 inject to: ./code/uppy-AST/packages/@uppy/redux-dev-tools/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/redux-dev-tools/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/redux-dev-tools/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/robodog/bundle.js.json
 inject to: ./code/uppy-AST/packages/@uppy/robodog/dist/robodog.js.json
 inject to: ./code/uppy-AST/packages/@uppy/robodog/dist/robodog.min.js.json
@@ -879,125 +478,26 @@ inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/StreamStatus.js.jso
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/SubmitButton.js.json
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/CaptureScreen.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/CaptureScreen.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/RecordButton.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/RecordButton.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/ScreenRecIcon.js.json
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/StopWatch.js.json
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/StreamStatus.js.json
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/SubmitButton.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/SubmitButton.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
 inject to: ./code/uppy-AST/packages/@uppy/screen-capture/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/screen-capture/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/lib/StatusBar.js.json
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/lib/StatusBarStates.js.json
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBar.js.json
-injection to ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBar.js.json failed! TypeError: this[attr.type] is not a function
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ConditionalExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:924:31)
-    at Object.JSXExpressionContainer (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:68:31)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/src/StatusBarStates.js.json
 inject to: ./code/uppy-AST/packages/@uppy/status-bar/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/status-bar/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/store-default/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/store-default/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/store-default/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
 inject to: ./code/uppy-AST/packages/@uppy/store-default/src/index.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/store-redux/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/store-redux/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/store-redux/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Program.base.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:198:7)
 inject to: ./code/uppy-AST/packages/@uppy/store-redux/src/index.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/thumbnail-generator/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/thumbnail-generator/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/thumbnail-generator/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/thumbnail-generator/src/index.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/Assembly.js.json
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/lib/AssemblyOptions.js.json
@@ -1012,17 +512,6 @@ inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/AssemblyOptions.test.j
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/AssemblyWatcher.js.json
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/Client.js.json
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/transloadit/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/index.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/parseUrl.js.json
 inject to: ./code/uppy-AST/packages/@uppy/transloadit/src/parseUrl.test.js.json
@@ -1030,44 +519,11 @@ inject to: ./code/uppy-AST/packages/@uppy/tus/lib/getFingerprint.js.json
 inject to: ./code/uppy-AST/packages/@uppy/tus/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/tus/src/getFingerprint.js.json
 inject to: ./code/uppy-AST/packages/@uppy/tus/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/tus/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/url/lib/UrlUI.js.json
 inject to: ./code/uppy-AST/packages/@uppy/url/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/url/lib/utils/forEachDroppedOrPastedUrl.js.json
 inject to: ./code/uppy-AST/packages/@uppy/url/src/UrlUI.js.json
-injection to ./code/uppy-AST/packages/@uppy/url/src/UrlUI.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
 inject to: ./code/uppy-AST/packages/@uppy/url/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/url/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/url/src/utils/forEachDroppedOrPastedUrl.js.json
 inject to: ./code/uppy-AST/packages/@uppy/utils/lib/EventTracker.js.json
 inject to: ./code/uppy-AST/packages/@uppy/utils/lib/FOCUSABLE_ELEMENTS.js.json
@@ -1184,73 +640,18 @@ inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/lib/supportsMediaRecorder.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/CameraIcon.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/CameraScreen.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/CameraScreen.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:14:25)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.MethodDefinition (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:646:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ClassDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:510:10)
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/PermissionsScreen.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/RecordButton.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/RecordButton.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.IfStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:299:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.FunctionDeclaration (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:486:25)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/RecordingLength.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/SnapshotButton.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/SnapshotButton.js.json failed! TypeError: Cannot read property 'type' of null
-    at Object.JSXAttribute (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:55:21)
-    at Object.JSXOpeningElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:29:22)
-    at Object.JSXElement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/astringJsx.js:9:35)
-    at Object.ReturnStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:389:31)
-    at Object.BlockStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:258:29)
-    at Object.ArrowFunctionExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:670:27)
-    at Object.AssignmentExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:891:26)
-    at Object.ExpressionStatement (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:290:33)
-    at Object.Program (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:225:27)
-    at Object.generate (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/astring/dist/astring.js:1093:29)
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/formatSeconds.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/formatSeconds.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/webcam/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/index.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/supportsMediaRecorder.js.json
 inject to: ./code/uppy-AST/packages/@uppy/webcam/src/supportsMediaRecorder.test.js.json
 inject to: ./code/uppy-AST/packages/@uppy/xhr-upload/lib/index.js.json
 inject to: ./code/uppy-AST/packages/@uppy/xhr-upload/src/index.js.json
-injection to ./code/uppy-AST/packages/@uppy/xhr-upload/src/index.js.json failed! TypeError: baseVisitor[type] is not a function
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassBody (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:439:7)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.Class (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:432:5)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.ClassDeclaration.base.ClassExpression (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:428:82)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.skipThrough (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:186:39)
-    at c (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:44:24)
-    at Object.base.AssignmentExpression.base.AssignmentPattern (/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/node_modules/acorn-walk/dist/walk.js:381:5)
 inject to: ./code/uppy-AST/packages/@uppy/xhr-upload/src/index.test.js.json
 inject to: ./code/uppy-AST/packages/uppy/bundle.js.json
 inject to: ./code/uppy-AST/packages/uppy/dist/uppy.js.json
@@ -1356,3 +757,4 @@ inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/robodog.js.json
 inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/robodog.min.js.json
 inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/uppy.js.json
 inject to: ./code/uppy-AST/website/themes/uppy/source/uppy/uppy.min.js.json
+injection complete!

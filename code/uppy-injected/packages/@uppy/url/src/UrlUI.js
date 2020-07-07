@@ -1,48 +1,58 @@
-const { h, Component } = require('preact')
+const SRTlib = require('SRT-util');
 
+const {h, Component} = require('preact');
 class UrlUI extends Component {
-  constructor (props) {
-    super(props)
-    this.handleKeyPress = this.handleKeyPress.bind(this)
-    this.handleClick = this.handleClick.bind(this)
-  }
+  constructor(props) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UrlUI","superClass":"Component"}},`);
 
-  componentDidMount () {
-    this.input.value = ''
-  }
+    super(props);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-  handleKeyPress (ev) {
+  }
+  componentDidMount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UrlUI","superClass":"Component"}},`);
+
+    this.input.value = '';
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
+
+  }
+  handleKeyPress(ev) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleKeyPress","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UrlUI","superClass":"Component"}},`);
+
     if (ev.keyCode === 13) {
-      this.props.addFile(this.input.value)
+      this.props.addFile(this.input.value);
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleKeyPress"},');
 
-  handleClick () {
-    this.props.addFile(this.input.value)
   }
+  handleClick() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleClick","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UrlUI","superClass":"Component"}},`);
 
-  render () {
-    return (
-      <div class="uppy-Url">
-        <input
-          class="uppy-u-reset uppy-c-textInput uppy-Url-input"
-          type="text"
-          aria-label={this.props.i18n('enterUrlToImport')}
-          placeholder={this.props.i18n('enterUrlToImport')}
-          onkeyup={this.handleKeyPress}
-          ref={(input) => { this.input = input }}
-          data-uppy-super-focusable
-        />
-        <button
-          class="uppy-u-reset uppy-c-btn uppy-c-btn-primary uppy-Url-importButton"
-          type="button"
-          onclick={this.handleClick}
-        >
+    this.props.addFile(this.input.value);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleClick"},');
+
+  }
+  render() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UrlUI","superClass":"Component"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+    return <div class="uppy-Url">
+        <input class="uppy-u-reset uppy-c-textInput uppy-Url-input" type="text" aria-label={this.props.i18n('enterUrlToImport')} placeholder={this.props.i18n('enterUrlToImport')} onkeyup={this.handleKeyPress} ref={input => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+
+      this.input = input;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+    }} data-uppy-super-focusable />
+        <button class="uppy-u-reset uppy-c-btn uppy-c-btn-primary uppy-Url-importButton" type="button" onclick={this.handleClick}>
           {this.props.i18n('import')}
         </button>
-      </div>
-    )
+      </div>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
   }
 }
-
-module.exports = UrlUI
+module.exports = UrlUI;

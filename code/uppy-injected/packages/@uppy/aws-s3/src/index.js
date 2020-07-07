@@ -1,288 +1,320 @@
-/**
- * This plugin is currently a A Big Hack™! The core reason for that is how this plugin
- * interacts with Uppy's current pipeline design. The pipeline can handle files in steps,
- * including preprocessing, uploading, and postprocessing steps. This plugin initially
- * was designed to do its work in a preprocessing step, and let XHRUpload deal with the
- * actual file upload as an uploading step. However, Uppy runs steps on all files at once,
- * sequentially: first, all files go through a preprocessing step, then, once they are all
- * done, they go through the uploading step.
- *
- * For S3, this causes severely broken behaviour when users upload many files. The
- * preprocessing step will request S3 upload URLs that are valid for a short time only,
- * but it has to do this for _all_ files, which can take a long time if there are hundreds
- * or even thousands of files. By the time the uploader step starts, the first URLs may
- * already have expired. If not, the uploading might take such a long time that later URLs
- * will expire before some files can be uploaded.
- *
- * The long-term solution to this problem is to change the upload pipeline so that files
- * can be sent to the next step individually. That requires a breakig change, so it is
- * planned for Uppy v2.
- *
- * In the mean time, this plugin is stuck with a hackier approach: the necessary parts
- * of the XHRUpload implementation were copied into this plugin, as the MiniXHRUpload
- * class, and this plugin calls into it immediately once it receives an upload URL.
- * This isn't as nicely modular as we'd like and requires us to maintain two copies of
- * the XHRUpload code, but at least it's not horrifically broken :)
- */
+const SRTlib = require('SRT-util');
 
-// If global `URL` constructor is available, use it
-const URL_ = typeof URL === 'function' ? URL : require('url-parse')
-const { Plugin } = require('@uppy/core')
-const RateLimitedQueue = require('@uppy/utils/lib/RateLimitedQueue')
-const settle = require('@uppy/utils/lib/settle')
-const hasProperty = require('@uppy/utils/lib/hasProperty')
-const { RequestClient } = require('@uppy/companion-client')
-const qsStringify = require('qs-stringify')
-const MiniXHRUpload = require('./MiniXHRUpload')
+const URL_ = typeof URL === 'function' ? URL : require('url-parse');
+const {Plugin} = require('@uppy/core');
+const RateLimitedQueue = require('@uppy/utils/lib/RateLimitedQueue');
+const settle = require('@uppy/utils/lib/settle');
+const hasProperty = require('@uppy/utils/lib/hasProperty');
+const {RequestClient} = require('@uppy/companion-client');
+const qsStringify = require('qs-stringify');
+const MiniXHRUpload = require('./MiniXHRUpload');
+function resolveUrl(origin, link) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resolveUrl","fileName":"${__filename}","paramsNumber":2},`);
 
-function resolveUrl (origin, link) {
-  return origin
-    ? new URL_(link, origin).toString()
-    : new URL_(link).toString()
+    SRTlib.send('{"type":"FUNCTIONEND","function":"resolveUrl"},');
+
+  return origin ? new URL_(link, origin).toString() : new URL_(link).toString();
+    SRTlib.send('{"type":"FUNCTIONEND","function":"resolveUrl","paramsNumber":2},');
+
 }
+function isXml(content, xhr) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isXml","fileName":"${__filename}","paramsNumber":2},`);
 
-function isXml (content, xhr) {
-  const rawContentType = (xhr.headers ? xhr.headers['content-type'] : xhr.getResponseHeader('Content-Type'))
-
+  const rawContentType = xhr.headers ? xhr.headers['content-type'] : xhr.getResponseHeader('Content-Type');
   if (rawContentType === null) {
-    return false
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isXml"},');
 
-  // Get rid of mime parameters like charset=utf-8
-  const contentType = rawContentType.replace(/;.*$/, '').toLowerCase()
+    return false;
+  }
+  const contentType = rawContentType.replace(/;.*$/, '').toLowerCase();
   if (typeof contentType === 'string') {
     if (contentType === 'application/xml' || contentType === 'text/xml') {
-      return true
+            SRTlib.send('{"type":"FUNCTIONEND","function":"isXml"},');
+
+      return true;
     }
-    // GCS uses text/html for some reason
-    // https://github.com/transloadit/uppy/issues/896
-    if (contentType === 'text/html' && /^<\?xml /.test(content)) {
-      return true
+    if (contentType === 'text/html' && (/^<\?xml /).test(content)) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"isXml"},');
+
+      return true;
     }
   }
-  return false
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isXml"},');
 
-function getXmlValue (source, key) {
-  const start = source.indexOf(`<${key}>`)
-  const end = source.indexOf(`</${key}>`, start)
-  return start !== -1 && end !== -1
-    ? source.slice(start + key.length + 2, end)
-    : ''
-}
+  return false;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isXml","paramsNumber":2},');
 
-function assertServerError (res) {
+}
+function getXmlValue(source, key) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getXmlValue","fileName":"${__filename}","paramsNumber":2},`);
+
+  const start = source.indexOf(`<${key}>`);
+  const end = source.indexOf(`</${key}>`, start);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getXmlValue"},');
+
+  return start !== -1 && end !== -1 ? source.slice(start + key.length + 2, end) : '';
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getXmlValue","paramsNumber":2},');
+
+}
+function assertServerError(res) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"assertServerError","fileName":"${__filename}","paramsNumber":1},`);
+
   if (res && res.error) {
-    const error = new Error(res.message)
-    Object.assign(error, res.error)
-    throw error
+    const error = new Error(res.message);
+    Object.assign(error, res.error);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"assertServerError"},');
+
+    throw error;
   }
-  return res
+    SRTlib.send('{"type":"FUNCTIONEND","function":"assertServerError"},');
+
+  return res;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"assertServerError","paramsNumber":1},');
+
 }
-
-// warning deduplication flag: see `getResponseData()` XHRUpload option definition
-let warnedSuccessActionStatus = false
-
+let warnedSuccessActionStatus = false;
 module.exports = class AwsS3 extends Plugin {
   static VERSION = require('../package.json').version
+  constructor(uppy, opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3","superClass":"Plugin"}},`);
 
-  constructor (uppy, opts) {
-    super(uppy, opts)
-    this.type = 'uploader'
-    this.id = this.opts.id || 'AwsS3'
-    this.title = 'AWS S3'
-
+    super(uppy, opts);
+    this.type = 'uploader';
+    this.id = this.opts.id || 'AwsS3';
+    this.title = 'AWS S3';
     const defaultOptions = {
       timeout: 30 * 1000,
       limit: 0,
-      metaFields: [], // have to opt in
+      metaFields: [],
       getUploadParameters: this.getUploadParameters.bind(this)
-    }
+    };
+    this.opts = {
+      ...defaultOptions,
+      ...opts
+    };
+    this.client = new RequestClient(uppy, opts);
+    this.handleUpload = this.handleUpload.bind(this);
+    this.requests = new RateLimitedQueue(this.opts.limit);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-    this.opts = { ...defaultOptions, ...opts }
-
-    this.client = new RequestClient(uppy, opts)
-    this.handleUpload = this.handleUpload.bind(this)
-    this.requests = new RateLimitedQueue(this.opts.limit)
   }
+  getUploadParameters(file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUploadParameters","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AwsS3","superClass":"Plugin"}},`);
 
-  getUploadParameters (file) {
     if (!this.opts.companionUrl) {
-      throw new Error('Expected a `companionUrl` option containing a Companion address.')
-    }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters"},');
 
-    const filename = file.meta.name
-    const type = file.meta.type
-    const metadata = {}
-    this.opts.metaFields.forEach((key) => {
+      throw new Error('Expected a `companionUrl` option containing a Companion address.');
+    }
+    const filename = file.meta.name;
+    const type = file.meta.type;
+    const metadata = {};
+    this.opts.metaFields.forEach(key => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.opts.metaFields.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
       if (file.meta[key] != null) {
-        metadata[key] = file.meta[key].toString()
+        metadata[key] = file.meta[key].toString();
       }
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.metaFields.forEach"},');
 
-    const query = qsStringify({ filename, type, metadata })
-    return this.client.get(`s3/params?${query}`)
-      .then(assertServerError)
+    });
+    const query = qsStringify({
+      filename,
+      type,
+      metadata
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters"},');
+
+    return this.client.get(`s3/params?${query}`).then(assertServerError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters"},');
+
   }
+  validateParameters(file, params) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateParameters","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AwsS3","superClass":"Plugin"}},`);
 
-  validateParameters (file, params) {
-    const valid = typeof params === 'object' && params &&
-      typeof params.url === 'string' &&
-      (typeof params.fields === 'object' || params.fields == null) &&
-      (params.method == null || /^(put|post)$/i.test(params.method))
-
+    const valid = typeof params === 'object' && params && typeof params.url === 'string' && (typeof params.fields === 'object' || params.fields == null) && (params.method == null || (/^(put|post)$/i).test(params.method));
     if (!valid) {
-      const err = new TypeError(`AwsS3: got incorrect result from 'getUploadParameters()' for file '${file.name}', expected an object '{ url, method, fields, headers }'.\nSee https://uppy.io/docs/aws-s3/#getUploadParameters-file for more on the expected format.`)
-      console.error(err)
-      throw err
+      const err = new TypeError(`AwsS3: got incorrect result from 'getUploadParameters()' for file '${file.name}', expected an object '{ url, method, fields, headers }'.\nSee https://uppy.io/docs/aws-s3/#getUploadParameters-file for more on the expected format.`);
+      console.error(err);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"validateParameters"},');
+
+      throw err;
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"validateParameters"},');
+
   }
+  handleUpload(fileIDs) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleUpload","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AwsS3","superClass":"Plugin"}},`);
 
-  handleUpload (fileIDs) {
-    /**
-     * keep track of `getUploadParameters()` responses
-     * so we can cancel the calls individually using just a file ID
-     *
-     * @type {object.<string, Promise>}
-     */
-    const paramsPromises = Object.create(null)
+    const paramsPromises = Object.create(null);
+    function onremove(file) {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onremove","fileName":"${__filename}","paramsNumber":1},`);
 
-    function onremove (file) {
-      const { id } = file
+      const {id} = file;
       if (hasProperty(paramsPromises, id)) {
-        paramsPromises[id].abort()
+        paramsPromises[id].abort();
       }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"onremove","paramsNumber":1},');
+
     }
-    this.uppy.on('file-removed', onremove)
+    this.uppy.on('file-removed', onremove);
+    fileIDs.forEach(id => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-    fileIDs.forEach((id) => {
-      const file = this.uppy.getFile(id)
-      this.uppy.emit('upload-started', file)
-    })
+      const file = this.uppy.getFile(id);
+      this.uppy.emit('upload-started', file);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.fileIDs.forEach"},');
 
-    const getUploadParameters = this.requests.wrapPromiseFunction((file) => {
-      return this.opts.getUploadParameters(file)
-    })
+    });
+    const getUploadParameters = this.requests.wrapPromiseFunction(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getUploadParameters.requests.wrapPromiseFunction","fileName":"${__filename}","paramsNumber":1},`);
 
-    const numberOfFiles = fileIDs.length
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getUploadParameters.requests.wrapPromiseFunction"},');
+
+      return this.opts.getUploadParameters(file);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getUploadParameters.requests.wrapPromiseFunction"},');
+
+    });
+    const numberOfFiles = fileIDs.length;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleUpload"},');
 
     return settle(fileIDs.map((id, index) => {
-      paramsPromises[id] = getUploadParameters(this.uppy.getFile(id))
-      return paramsPromises[id].then((params) => {
-        delete paramsPromises[id]
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.settle.then.settle.fileIDs.map","fileName":"${__filename}","paramsNumber":2},`);
 
-        const file = this.uppy.getFile(id)
-        this.validateParameters(file, params)
+      paramsPromises[id] = getUploadParameters(this.uppy.getFile(id));
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.settle.then.settle.fileIDs.map"},');
 
-        const {
-          method = 'post',
-          url,
-          fields,
-          headers
-        } = params
+      return paramsPromises[id].then(params => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then","fileName":"${__filename}","paramsNumber":1},`);
+
+        delete paramsPromises[id];
+        const file = this.uppy.getFile(id);
+        this.validateParameters(file, params);
+        const {method = 'post', url, fields, headers} = params;
         const xhrOpts = {
           method,
           formData: method.toLowerCase() === 'post',
           endpoint: url,
           metaFields: fields ? Object.keys(fields) : []
-        }
-
+        };
         if (headers) {
-          xhrOpts.headers = headers
+          xhrOpts.headers = headers;
         }
-
         this.uppy.setFileState(file.id, {
-          meta: { ...file.meta, ...fields },
+          meta: {
+            ...file.meta,
+            ...fields
+          },
           xhrUpload: xhrOpts
-        })
+        });
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then"},');
 
-        return this._uploader.uploadFile(file.id, index, numberOfFiles)
-      }).catch((error) => {
-        delete paramsPromises[id]
+        return this._uploader.uploadFile(file.id, index, numberOfFiles);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then"},');
 
-        const file = this.uppy.getFile(id)
-        this.uppy.emit('upload-error', file, error)
-      })
-    })).then((settled) => {
-      // cleanup.
-      this.uppy.off('file-removed', onremove)
-      return settled
-    })
+      }).catch(error => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.paramsPromises.id.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+        delete paramsPromises[id];
+        const file = this.uppy.getFile(id);
+        this.uppy.emit('upload-error', file, error);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.paramsPromises.id.then.catch"},');
+
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.settle.then.settle.fileIDs.map"},');
+
+    })).then(settled => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.settle.then","fileName":"${__filename}","paramsNumber":1},`);
+
+      this.uppy.off('file-removed', onremove);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.settle.then"},');
+
+      return settled;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.settle.then"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleUpload"},');
+
   }
+  install() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AwsS3","superClass":"Plugin"}},`);
 
-  install () {
-    const uppy = this.uppy
-    this.uppy.addUploader(this.handleUpload)
+    const uppy = this.uppy;
+    this.uppy.addUploader(this.handleUpload);
+    function defaultGetResponseData(content, xhr) {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"defaultGetResponseData","fileName":"${__filename}","paramsNumber":2},`);
 
-    // Get the response data from a successful XMLHttpRequest instance.
-    // `content` is the S3 response as a string.
-    // `xhr` is the XMLHttpRequest instance.
-    function defaultGetResponseData (content, xhr) {
-      const opts = this
-
-      // If no response, we've hopefully done a PUT request to the file
-      // in the bucket on its full URL.
+      const opts = this;
       if (!isXml(content, xhr)) {
         if (opts.method.toUpperCase() === 'POST') {
           if (!warnedSuccessActionStatus) {
-            uppy.log('[AwsS3] No response data found, make sure to set the success_action_status AWS SDK option to 201. See https://uppy.io/docs/aws-s3/#POST-Uploads', 'warning')
-            warnedSuccessActionStatus = true
+            uppy.log('[AwsS3] No response data found, make sure to set the success_action_status AWS SDK option to 201. See https://uppy.io/docs/aws-s3/#POST-Uploads', 'warning');
+            warnedSuccessActionStatus = true;
           }
-          // The responseURL won't contain the object key. Give up.
-          return { location: null }
-        }
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetResponseData"},');
 
-        // responseURL is not available in older browsers.
+          return {
+            location: null
+          };
+        }
         if (!xhr.responseURL) {
-          return { location: null }
-        }
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetResponseData"},');
 
-        // Trim the query string because it's going to be a bunch of presign
-        // parameters for a PUT request—doing a GET request with those will
-        // always result in an error
-        return { location: xhr.responseURL.replace(/\?.*$/, '') }
+          return {
+            location: null
+          };
+        }
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetResponseData"},');
+
+        return {
+          location: xhr.responseURL.replace(/\?.*$/, '')
+        };
       }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetResponseData"},');
 
       return {
-        // Some S3 alternatives do not reply with an absolute URL.
-        // Eg DigitalOcean Spaces uses /$bucketName/xyz
         location: resolveUrl(xhr.responseURL, getXmlValue(content, 'Location')),
         bucket: getXmlValue(content, 'Bucket'),
         key: getXmlValue(content, 'Key'),
         etag: getXmlValue(content, 'ETag')
-      }
-    }
+      };
+            SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetResponseData","paramsNumber":2},');
 
-    // Get the error data from a failed XMLHttpRequest instance.
-    // `content` is the S3 response as a string.
-    // `xhr` is the XMLHttpRequest instance.
-    function defaultGetResponseError (content, xhr) {
-      // If no response, we don't have a specific error message, use the default.
+    }
+    function defaultGetResponseError(content, xhr) {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"defaultGetResponseError","fileName":"${__filename}","paramsNumber":2},`);
+
       if (!isXml(content, xhr)) {
-        return
-      }
-      const error = getXmlValue(content, 'Message')
-      return new Error(error)
-    }
+                SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetResponseError"},');
 
+        return;
+      }
+      const error = getXmlValue(content, 'Message');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetResponseError"},');
+
+      return new Error(error);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetResponseError","paramsNumber":2},');
+
+    }
     const xhrOptions = {
       fieldName: 'file',
       responseUrlFieldName: 'location',
       timeout: this.opts.timeout,
-      // Share the rate limiting queue with XHRUpload.
       __queue: this.requests,
       responseType: 'text',
       getResponseData: this.opts.getResponseData || defaultGetResponseData,
       getResponseError: defaultGetResponseError
-    }
+    };
+    this._uploader = new MiniXHRUpload(this.uppy, xhrOptions);
+    this._uploader.i18n = this.uppy.i18n;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
-    // Revert to `this.uppy.use(XHRUpload)` once the big comment block at the top of
-    // this file is solved
-    this._uploader = new MiniXHRUpload(this.uppy, xhrOptions)
-    this._uploader.i18n = this.uppy.i18n
   }
+  uninstall() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AwsS3","superClass":"Plugin"}},`);
 
-  uninstall () {
-    this.uppy.removePreProcessor(this.handleUpload)
+    this.uppy.removePreProcessor(this.handleUpload);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
+
   }
-}
+};

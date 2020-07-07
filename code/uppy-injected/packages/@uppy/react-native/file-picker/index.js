@@ -1,162 +1,218 @@
-import React from 'react'
-import {
-  StyleSheet,
-  Modal,
-  Text,
-  ScrollView,
-  TouchableOpacity
-} from 'react-native'
-import takePicture from './takePicture'
-import selectImage from './selectImage'
-import selectDocument from './selectDocument'
-import Provider from './provider'
+const SRTlib = require('SRT-util');
 
+import React from 'react';
+import {StyleSheet, Modal, Text, ScrollView, TouchableOpacity} from 'react-native';
+import takePicture from './takePicture';
+import selectImage from './selectImage';
+import selectDocument from './selectDocument';
+import Provider from './provider';
 export default class UppyReactNativeFilePicker extends React.Component {
-  constructor () {
-    super()
+  constructor() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
+    super();
     this.state = {
-      providers: [
-        { id: 'LocalImages', title: 'Pick Local Images/Videos' },
-        { id: 'LocalDocuments', title: 'Pick Documents' },
-        { id: 'LocalCamera', title: 'Take a Picture' },
-        { id: 'Url', title: 'Url' }
-        // { id: 'GoogleDrive', title: 'Google Drive' },
-        // { id: 'Instagram', title: 'Instagram' }
-      ],
+      providers: [{
+        id: 'LocalImages',
+        title: 'Pick Local Images/Videos'
+      }, {
+        id: 'LocalDocuments',
+        title: 'Pick Documents'
+      }, {
+        id: 'LocalCamera',
+        title: 'Take a Picture'
+      }, {
+        id: 'Url',
+        title: 'Url'
+      }],
       openProvider: null
-    }
+    };
+    this.takePicture = this.takePicture.bind(this);
+    this.selectImage = this.selectImage.bind(this);
+    this.selectDocument = this.selectDocument.bind(this);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-    this.takePicture = this.takePicture.bind(this)
-    this.selectImage = this.selectImage.bind(this)
-    this.selectDocument = this.selectDocument.bind(this)
   }
+  componentDidMount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
-  componentDidMount () {
-    this.uppy = this.props.uppy
+    this.uppy = this.props.uppy;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
+
   }
+  takePicture() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"takePicture","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
-  takePicture () {
-    takePicture().then((file) => {
+    takePicture().then(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"takePicture.then.catch.takePicture.then","fileName":"${__filename}","paramsNumber":1},`);
+
       this.uppy.addFile({
         source: 'React Native',
         name: `media_${Date.now()}.jpg`,
         type: file.type,
         data: file
-      })
-      this.props.onRequestClose()
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
+      });
+      this.props.onRequestClose();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"takePicture.then.catch.takePicture.then"},');
 
-  selectImage () {
-    selectImage({ exif: true }).then((file) => {
+    }).catch(err => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"takePicture.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+      console.log(err);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"takePicture.then.catch"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"takePicture"},');
+
+  }
+  selectImage() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"selectImage","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+
+    selectImage({
+      exif: true
+    }).then(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectImage.then.catch.selectImage.then","fileName":"${__filename}","paramsNumber":1},`);
+
       this.uppy.addFile({
         source: 'React Native',
         name: `media_${Date.now()}.jpg`,
         type: file.type,
         data: file
-      })
-      this.props.onRequestClose()
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
+      });
+      this.props.onRequestClose();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"selectImage.then.catch.selectImage.then"},');
 
-  selectDocument () {
-    selectDocument().then((file) => {
+    }).catch(err => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectImage.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+      console.log(err);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"selectImage.then.catch"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"selectImage"},');
+
+  }
+  selectDocument() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"selectDocument","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+
+    selectDocument().then(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectDocument.then.catch.selectDocument.then","fileName":"${__filename}","paramsNumber":1},`);
+
       this.uppy.addFile({
         source: 'React Native',
         name: file.name,
         data: file
-      })
-      this.props.onRequestClose()
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
+      });
+      this.props.onRequestClose();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"selectDocument.then.catch.selectDocument.then"},');
 
-  openProvider (id) {
-    console.log('Open provider:', id)
+    }).catch(err => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectDocument.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+      console.log(err);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"selectDocument.then.catch"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"selectDocument"},');
+
+  }
+  openProvider(id) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"openProvider","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+
+    console.log('Open provider:', id);
     this.setState({
       openProvider: id
-    })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"openProvider"},');
+
   }
+  chooseProvider(id) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"chooseProvider","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
-  chooseProvider (id) {
-    console.log('Provider selected:', id)
-
+    console.log('Provider selected:', id);
     switch (id) {
       case 'LocalImages':
-        this.selectImage()
-        return
-      case 'LocalDocuments':
-        this.selectDocument()
-        return
-      case 'LocalCamera':
-        this.takePicture()
-        return
-      default:
-        this.openProvider(id)
-    }
-  }
+                SRTlib.send('{"type":"FUNCTIONEND","function":"chooseProvider"},');
 
-  renderSourceList () {
-    return (
-      <ScrollView
-        contentContainerStyle={styles.providerList}
-      >
+        this.selectImage();
+        return;
+      case 'LocalDocuments':
+                SRTlib.send('{"type":"FUNCTIONEND","function":"chooseProvider"},');
+
+        this.selectDocument();
+        return;
+      case 'LocalCamera':
+                SRTlib.send('{"type":"FUNCTIONEND","function":"chooseProvider"},');
+
+        this.takePicture();
+        return;
+      default:
+        this.openProvider(id);
+    }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"chooseProvider"},');
+
+  }
+  renderSourceList() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderSourceList","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderSourceList"},');
+
+    return <ScrollView contentContainerStyle={styles.providerList}>
         {this.state.providers.map((item, index) => {
-          return (
-            <TouchableOpacity
-              style={styles.providerButton}
-              key={index}
-              onPress={ev => this.chooseProvider(item.id)}
-            >
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.state.providers.map","fileName":"${__filename}","paramsNumber":2},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.state.providers.map"},');
+
+      return <TouchableOpacity style={styles.providerButton} key={index} onPress={ev => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+        return this.chooseProvider(item.id);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+      }}>
               <Text style={styles.providerButtonText}>{item.title}</Text>
-            </TouchableOpacity>
-          )
-        })}
-        <TouchableOpacity
-          style={styles.cancelButton}
-          onPress={ev => this.props.onRequestClose()}
-        >
+            </TouchableOpacity>;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.state.providers.map"},');
+
+    })}
+        <TouchableOpacity style={styles.cancelButton} onPress={ev => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+
+      return this.props.onRequestClose();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+
+    }}>
           <Text style={styles.cancelButtonText}>Cancel</Text>
         </TouchableOpacity>
-      </ScrollView>
-    )
-  }
+      </ScrollView>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"renderSourceList"},');
 
-  render () {
-    return (
-      <Modal
-        animationType="slide"
-        transparent={false}
-        visible={this.props.show}
-        supportedOrientations={['portrait', 'portrait-upside-down', 'landscape', 'landscape-left', 'landscape-right']}
-        onRequestClose={this.props.onRequestClose}
-      >
-        {this.state.openProvider ? (
-          <Provider
-            providerID={this.state.openProvider}
-            uppy={this.uppy}
-            onDone={() => {
-              this.setState({
-                openProvider: null
-              })
-              this.props.onRequestClose()
-            }}
-            {...this.props}
-          />
-        ) : (
-          this.renderSourceList()
-        )}
-      </Modal>
-    )
+  }
+  render() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+    return <Modal animationType="slide" transparent={false} visible={this.props.show} supportedOrientations={['portrait', 'portrait-upside-down', 'landscape', 'landscape-left', 'landscape-right']} onRequestClose={this.props.onRequestClose}>
+        {this.state.openProvider ? <Provider providerID={this.state.openProvider} uppy={this.uppy} onDone={() => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement3","fileName":"${__filename}","paramsNumber":0},`);
+
+      this.setState({
+        openProvider: null
+      });
+      this.props.onRequestClose();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+
+    }}  {...this.props} /> : this.renderSourceList()}
+      </Modal>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
   }
 }
-
 const styles = StyleSheet.create({
   providerList: {
     flex: 1,
@@ -188,4 +244,4 @@ const styles = StyleSheet.create({
   cancelButtonText: {
     color: '#0077cc'
   }
-})
+});

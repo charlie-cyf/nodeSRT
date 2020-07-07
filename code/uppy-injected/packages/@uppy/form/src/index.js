@@ -1,23 +1,18 @@
-const { Plugin } = require('@uppy/core')
-const findDOMElement = require('@uppy/utils/lib/findDOMElement')
-const toArray = require('@uppy/utils/lib/toArray')
-// Rollup uses get-form-data's ES modules build, and rollup-plugin-commonjs automatically resolves `.default`.
-// So, if we are being built using rollup, this require() won't have a `.default` property.
-const getFormData = require('get-form-data').default || require('get-form-data')
+const SRTlib = require('SRT-util');
 
-/**
- * Form
- */
+const {Plugin} = require('@uppy/core');
+const findDOMElement = require('@uppy/utils/lib/findDOMElement');
+const toArray = require('@uppy/utils/lib/toArray');
+const getFormData = require('get-form-data').default || require('get-form-data');
 module.exports = class Form extends Plugin {
   static VERSION = require('../package.json').version
+  constructor(uppy, opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
-  constructor (uppy, opts) {
-    super(uppy, opts)
-    this.type = 'acquirer'
-    this.id = this.opts.id || 'Form'
-    this.title = 'Form'
-
-    // set default options
+    super(uppy, opts);
+    this.type = 'acquirer';
+    this.id = this.opts.id || 'Form';
+    this.title = 'Form';
     const defaultOptions = {
       target: null,
       resultName: 'uppyResult',
@@ -26,130 +21,164 @@ module.exports = class Form extends Plugin {
       multipleResults: false,
       submitOnSuccess: false,
       triggerUploadOnSubmit: false
-    }
+    };
+    this.opts = {
+      ...defaultOptions,
+      ...opts
+    };
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleUploadStart = this.handleUploadStart.bind(this);
+    this.handleSuccess = this.handleSuccess.bind(this);
+    this.addResultToForm = this.addResultToForm.bind(this);
+    this.getMetaFromForm = this.getMetaFromForm.bind(this);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-    // merge default options with the ones set by user
-    this.opts = { ...defaultOptions, ...opts }
-
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.handleUploadStart = this.handleUploadStart.bind(this)
-    this.handleSuccess = this.handleSuccess.bind(this)
-    this.addResultToForm = this.addResultToForm.bind(this)
-    this.getMetaFromForm = this.getMetaFromForm.bind(this)
   }
+  handleUploadStart() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleUploadStart","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
-  handleUploadStart () {
     if (this.opts.getMetaFromForm) {
-      this.getMetaFromForm()
+      this.getMetaFromForm();
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleUploadStart"},');
 
-  handleSuccess (result) {
+  }
+  handleSuccess(result) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleSuccess","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+
     if (this.opts.addResultToForm) {
-      this.addResultToForm(result)
+      this.addResultToForm(result);
     }
-
     if (this.opts.submitOnSuccess) {
-      this.form.submit()
+      this.form.submit();
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleSuccess"},');
 
-  handleFormSubmit (ev) {
+  }
+  handleFormSubmit(ev) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleFormSubmit","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+
     if (this.opts.triggerUploadOnSubmit) {
-      ev.preventDefault()
-      const elements = toArray(ev.target.elements)
-      const disabledByUppy = []
-      elements.forEach((el) => {
-        const isButton = el.tagName === 'BUTTON' || (el.tagName === 'INPUT' && el.type === 'submit')
+      ev.preventDefault();
+      const elements = toArray(ev.target.elements);
+      const disabledByUppy = [];
+      elements.forEach(el => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.elements.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
+        const isButton = el.tagName === 'BUTTON' || el.tagName === 'INPUT' && el.type === 'submit';
         if (isButton && !el.disabled) {
-          el.disabled = true
-          disabledByUppy.push(el)
+          el.disabled = true;
+          disabledByUppy.push(el);
         }
-      })
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.elements.forEach"},');
+
+      });
       this.uppy.upload().then(() => {
-        disabledByUppy.forEach((button) => {
-          button.disabled = false
-        })
-      }, (err) => {
-        disabledByUppy.forEach((button) => {
-          button.disabled = false
-        })
-        return Promise.reject(err)
-      }).catch((err) => {
-        this.uppy.log(err.stack || err.message || err)
-      })
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.upload.then.catch.uppy.upload.then","fileName":"${__filename}","paramsNumber":0},`);
+
+        disabledByUppy.forEach(button => {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"disabledByUppy.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
+          button.disabled = false;
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"disabledByUppy.forEach"},');
+
+        });
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then"},');
+
+      }, err => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.upload.then.catch.uppy.upload.then2","fileName":"${__filename}","paramsNumber":1},`);
+
+        disabledByUppy.forEach(button => {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"disabledByUppy.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+
+          button.disabled = false;
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"disabledByUppy.forEach2"},');
+
+        });
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then2"},');
+
+        return Promise.reject(err);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then2"},');
+
+      }).catch(err => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.upload.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+        this.uppy.log(err.stack || err.message || err);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch"},');
+
+      });
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleFormSubmit"},');
+
   }
+  addResultToForm(result) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addResultToForm","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
-  addResultToForm (result) {
-    this.uppy.log('[Form] Adding result to the original form:')
-    this.uppy.log(result)
-
-    let resultInput = this.form.querySelector(`[name="${this.opts.resultName}"]`)
+    this.uppy.log('[Form] Adding result to the original form:');
+    this.uppy.log(result);
+    let resultInput = this.form.querySelector(`[name="${this.opts.resultName}"]`);
     if (resultInput) {
       if (this.opts.multipleResults) {
-        // Append new result to the previous result array.
-        // If the previous result is empty, or not an array,
-        // set it to an empty array.
-        let updatedResult
+        let updatedResult;
         try {
-          updatedResult = JSON.parse(resultInput.value)
-        } catch (err) {
-          // Nothing, since we check for array below anyway
-        }
-
+          updatedResult = JSON.parse(resultInput.value);
+        } catch (err) {}
         if (!Array.isArray(updatedResult)) {
-          updatedResult = []
+          updatedResult = [];
         }
-        updatedResult.push(result)
-        resultInput.value = JSON.stringify(updatedResult)
+        updatedResult.push(result);
+        resultInput.value = JSON.stringify(updatedResult);
       } else {
-        // Replace existing result with the newer result on `complete` event.
-        // This behavior is not ideal, since you most likely want to always keep
-        // all results in the input. This is kept for backwards compatability until 2.0.
-        resultInput.value = JSON.stringify(result)
+        resultInput.value = JSON.stringify(result);
       }
-      return
+            SRTlib.send('{"type":"FUNCTIONEND","function":"addResultToForm"},');
+
+      return;
     }
-
-    resultInput = document.createElement('input')
-    resultInput.name = this.opts.resultName
-    resultInput.type = 'hidden'
-
+    resultInput = document.createElement('input');
+    resultInput.name = this.opts.resultName;
+    resultInput.type = 'hidden';
     if (this.opts.multipleResults) {
-      // Wrap result in an array so we can have multiple results
-      resultInput.value = JSON.stringify([result])
+      resultInput.value = JSON.stringify([result]);
     } else {
-      // Result is an object, kept for backwards compatability until 2.0
-      resultInput.value = JSON.stringify(result)
+      resultInput.value = JSON.stringify(result);
     }
+    this.form.appendChild(resultInput);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"addResultToForm"},');
 
-    this.form.appendChild(resultInput)
   }
+  getMetaFromForm() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMetaFromForm","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
-  getMetaFromForm () {
-    const formMeta = getFormData(this.form)
-    // We want to exclude meta the the Form plugin itself has added
-    // See https://github.com/transloadit/uppy/issues/1637
-    delete formMeta[this.opts.resultName]
-    this.uppy.setMeta(formMeta)
+    const formMeta = getFormData(this.form);
+    delete formMeta[this.opts.resultName];
+    this.uppy.setMeta(formMeta);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getMetaFromForm"},');
+
   }
+  install() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
-  install () {
-    this.form = findDOMElement(this.opts.target)
+    this.form = findDOMElement(this.opts.target);
     if (!this.form || this.form.nodeName !== 'FORM') {
-      this.uppy.log('Form plugin requires a <form> target element passed in options to operate, none was found', 'error')
-      return
+      this.uppy.log('Form plugin requires a <form> target element passed in options to operate, none was found', 'error');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
+
+      return;
     }
+    this.form.addEventListener('submit', this.handleFormSubmit);
+    this.uppy.on('upload', this.handleUploadStart);
+    this.uppy.on('complete', this.handleSuccess);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
-    this.form.addEventListener('submit', this.handleFormSubmit)
-    this.uppy.on('upload', this.handleUploadStart)
-    this.uppy.on('complete', this.handleSuccess)
   }
+  uninstall() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
-  uninstall () {
-    this.form.removeEventListener('submit', this.handleFormSubmit)
-    this.uppy.off('upload', this.handleUploadStart)
-    this.uppy.off('complete', this.handleSuccess)
+    this.form.removeEventListener('submit', this.handleFormSubmit);
+    this.uppy.off('upload', this.handleUploadStart);
+    this.uppy.off('complete', this.handleSuccess);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
+
   }
-}
+};

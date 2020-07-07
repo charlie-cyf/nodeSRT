@@ -1,32 +1,42 @@
-const { h, Component } = require('preact')
-const SnapshotButton = require('./SnapshotButton')
-const RecordButton = require('./RecordButton')
-const RecordingLength = require('./RecordingLength')
+const SRTlib = require('SRT-util');
 
-function isModeAvailable (modes, mode) {
-  return modes.indexOf(mode) !== -1
+const {h, Component} = require('preact');
+const SnapshotButton = require('./SnapshotButton');
+const RecordButton = require('./RecordButton');
+const RecordingLength = require('./RecordingLength');
+function isModeAvailable(modes, mode) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isModeAvailable","fileName":"${__filename}","paramsNumber":2},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isModeAvailable"},');
+
+  return modes.indexOf(mode) !== -1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isModeAvailable","paramsNumber":2},');
+
 }
-
 class CameraScreen extends Component {
-  componentDidMount () {
-    this.props.onFocus()
+  componentDidMount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"CameraScreen","superClass":"Component"}},`);
+
+    this.props.onFocus();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
+
   }
+  componentWillUnmount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"CameraScreen","superClass":"Component"}},`);
 
-  componentWillUnmount () {
-    this.props.onStop()
+    this.props.onStop();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
+
   }
+  render() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"CameraScreen","superClass":"Component"}},`);
 
-  render () {
-    const shouldShowRecordButton = this.props.supportsRecording && (
-      isModeAvailable(this.props.modes, 'video-only') ||
-      isModeAvailable(this.props.modes, 'audio-only') ||
-      isModeAvailable(this.props.modes, 'video-audio')
-    )
-    const shouldShowSnapshotButton = isModeAvailable(this.props.modes, 'picture')
-    const shouldShowRecordingLength = this.props.supportsRecording && this.props.showRecordingLength
+    const shouldShowRecordButton = this.props.supportsRecording && (isModeAvailable(this.props.modes, 'video-only') || isModeAvailable(this.props.modes, 'audio-only') || isModeAvailable(this.props.modes, 'video-audio'));
+    const shouldShowSnapshotButton = isModeAvailable(this.props.modes, 'picture');
+    const shouldShowRecordingLength = this.props.supportsRecording && this.props.showRecordingLength;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
-    return (
-      <div class="uppy uppy-Webcam-container">
+    return <div class="uppy uppy-Webcam-container">
         <div class="uppy-Webcam-videoContainer">
           <video class={`uppy-Webcam-video  ${this.props.mirror ? 'uppy-Webcam-video--mirrored' : ''}`} autoplay muted playsinline srcObject={this.props.src || ''} />
         </div>
@@ -37,9 +47,9 @@ class CameraScreen extends Component {
           {' '}
           {shouldShowRecordButton ? RecordButton(this.props) : null}
         </div>
-      </div>
-    )
+      </div>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
   }
 }
-
-module.exports = CameraScreen
+module.exports = CameraScreen;

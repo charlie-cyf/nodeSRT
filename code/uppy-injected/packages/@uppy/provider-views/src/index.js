@@ -1,92 +1,99 @@
-const { h, Component } = require('preact')
-const AuthView = require('./AuthView')
-const Browser = require('./Browser')
-const LoaderView = require('./Loader')
-const generateFileID = require('@uppy/utils/lib/generateFileID')
-const getFileType = require('@uppy/utils/lib/getFileType')
-const isPreviewSupported = require('@uppy/utils/lib/isPreviewSupported')
+const SRTlib = require('SRT-util');
 
-/**
- * Array.prototype.findIndex ponyfill for old browsers.
- */
-function findIndex (array, predicate) {
+const {h, Component} = require('preact');
+const AuthView = require('./AuthView');
+const Browser = require('./Browser');
+const LoaderView = require('./Loader');
+const generateFileID = require('@uppy/utils/lib/generateFileID');
+const getFileType = require('@uppy/utils/lib/getFileType');
+const isPreviewSupported = require('@uppy/utils/lib/isPreviewSupported');
+function findIndex(array, predicate) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findIndex","fileName":"${__filename}","paramsNumber":2},`);
+
   for (let i = 0; i < array.length; i++) {
-    if (predicate(array[i])) return i
-  }
-  return -1
-}
+    if (predicate(array[i])) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"findIndex"},');
 
-// location.origin does not exist in IE
-function getOrigin () {
-  if ('origin' in location) {
-    return location.origin // eslint-disable-line compat/compat
+      return i;
+    }
   }
-  return `${location.protocol}//${location.hostname}${location.port ? `:${location.port}` : ''}`
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"findIndex"},');
 
+  return -1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"findIndex","paramsNumber":2},');
+
+}
+function getOrigin() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getOrigin","fileName":"${__filename}","paramsNumber":0},`);
+
+  if (('origin' in location)) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getOrigin"},');
+
+    return location.origin;
+  }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getOrigin"},');
+
+  return `${location.protocol}//${location.hostname}${location.port ? `:${location.port}` : ''}`;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getOrigin","paramsNumber":0},');
+
+}
 class CloseWrapper extends Component {
-  componentWillUnmount () {
-    this.props.onUnmount()
-  }
+  componentWillUnmount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"CloseWrapper","superClass":"Component"}},`);
 
-  render () {
-    return this.props.children[0]
+    this.props.onUnmount();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
+
+  }
+  render() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"CloseWrapper","superClass":"Component"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+    return this.props.children[0];
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
   }
 }
-
-/**
- * Class to easily generate generic views for Provider plugins
- */
 module.exports = class ProviderView {
   static VERSION = require('../package.json').version
+  constructor(plugin, opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
-  /**
-   * @param {object} plugin instance of the plugin
-   * @param {object} opts
-   */
-  constructor (plugin, opts) {
-    this.plugin = plugin
-    this.provider = opts.provider
-
-    // set default options
+    this.plugin = plugin;
+    this.provider = opts.provider;
     const defaultOptions = {
       viewType: 'list',
       showTitles: true,
       showFilter: true,
       showBreadcrumbs: true
-    }
-
-    // merge default options with the ones set by user
-    this.opts = { ...defaultOptions, ...opts }
-
-    // Logic
-    this.addFile = this.addFile.bind(this)
-    this.filterItems = this.filterItems.bind(this)
-    this.filterQuery = this.filterQuery.bind(this)
-    this.toggleSearch = this.toggleSearch.bind(this)
-    this.getFolder = this.getFolder.bind(this)
-    this.getNextFolder = this.getNextFolder.bind(this)
-    this.logout = this.logout.bind(this)
-    this.preFirstRender = this.preFirstRender.bind(this)
-    this.handleAuth = this.handleAuth.bind(this)
-    this.sortByTitle = this.sortByTitle.bind(this)
-    this.sortByDate = this.sortByDate.bind(this)
-    this.isActiveRow = this.isActiveRow.bind(this)
-    this.isChecked = this.isChecked.bind(this)
-    this.toggleCheckbox = this.toggleCheckbox.bind(this)
-    this.handleError = this.handleError.bind(this)
-    this.handleScroll = this.handleScroll.bind(this)
-    this.listAllFiles = this.listAllFiles.bind(this)
-    this.donePicking = this.donePicking.bind(this)
-    this.cancelPicking = this.cancelPicking.bind(this)
-    this.clearSelection = this.clearSelection.bind(this)
-
-    // Visual
-    this.render = this.render.bind(this)
-
-    this.clearSelection()
-
-    // Set default state for the plugin
+    };
+    this.opts = {
+      ...defaultOptions,
+      ...opts
+    };
+    this.addFile = this.addFile.bind(this);
+    this.filterItems = this.filterItems.bind(this);
+    this.filterQuery = this.filterQuery.bind(this);
+    this.toggleSearch = this.toggleSearch.bind(this);
+    this.getFolder = this.getFolder.bind(this);
+    this.getNextFolder = this.getNextFolder.bind(this);
+    this.logout = this.logout.bind(this);
+    this.preFirstRender = this.preFirstRender.bind(this);
+    this.handleAuth = this.handleAuth.bind(this);
+    this.sortByTitle = this.sortByTitle.bind(this);
+    this.sortByDate = this.sortByDate.bind(this);
+    this.isActiveRow = this.isActiveRow.bind(this);
+    this.isChecked = this.isChecked.bind(this);
+    this.toggleCheckbox = this.toggleCheckbox.bind(this);
+    this.handleError = this.handleError.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.listAllFiles = this.listAllFiles.bind(this);
+    this.donePicking = this.donePicking.bind(this);
+    this.cancelPicking = this.cancelPicking.bind(this);
+    this.clearSelection = this.clearSelection.bind(this);
+    this.render = this.render.bind(this);
+    this.clearSelection();
     this.plugin.setPluginState({
       authenticated: false,
       files: [],
@@ -95,77 +102,99 @@ module.exports = class ProviderView {
       activeRow: -1,
       filterInput: '',
       isSearchVisible: false
-    })
-  }
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-  tearDown () {
-    // Nothing.
   }
+  tearDown() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"tearDown","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
-  _updateFilesAndFolders (res, files, folders) {
-    this.nextPagePath = res.nextPagePath
-    res.items.forEach((item) => {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"tearDown"},');
+
+  }
+  _updateFilesAndFolders(res, files, folders) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_updateFilesAndFolders","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"ProviderView"}},`);
+
+    this.nextPagePath = res.nextPagePath;
+    res.items.forEach(item => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.res.items.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
       if (item.isFolder) {
-        folders.push(item)
+        folders.push(item);
       } else {
-        files.push(item)
+        files.push(item);
       }
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.res.items.forEach"},');
 
-    this.plugin.setPluginState({ folders, files })
+    });
+    this.plugin.setPluginState({
+      folders,
+      files
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_updateFilesAndFolders"},');
+
   }
+  preFirstRender() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"preFirstRender","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
-  /**
-   * Called only the first time the provider view is rendered.
-   * Kind of like an init function.
-   */
-  preFirstRender () {
-    this.plugin.setPluginState({ didFirstRender: true })
-    this.plugin.onFirstRender()
+    this.plugin.setPluginState({
+      didFirstRender: true
+    });
+    this.plugin.onFirstRender();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"preFirstRender"},');
+
   }
+  getFolder(id, name) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getFolder","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
-  /**
-   * Based on folder ID, fetch a new folder and update it to state
-   *
-   * @param  {string} id Folder id
-   * @returns {Promise}   Folders/files in folder
-   */
-  getFolder (id, name) {
-    return this._loaderWrapper(
-      this.provider.list(id),
-      (res) => {
-        const folders = []
-        const files = []
-        let updatedDirectories
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getFolder"},');
 
-        const state = this.plugin.getPluginState()
-        const index = findIndex(state.directories, (dir) => id === dir.id)
+    return this._loaderWrapper(this.provider.list(id), res => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement._loaderWrapper","fileName":"${__filename}","paramsNumber":1},`);
 
-        if (index !== -1) {
-          updatedDirectories = state.directories.slice(0, index + 1)
-        } else {
-          updatedDirectories = state.directories.concat([{ id, title: name }])
-        }
+      const folders = [];
+      const files = [];
+      let updatedDirectories;
+      const state = this.plugin.getPluginState();
+      const index = findIndex(state.directories, dir => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"index.findIndex","fileName":"${__filename}","paramsNumber":1},`);
 
-        this.username = this.username ? this.username : res.username
-        this._updateFilesAndFolders(res, files, folders)
-        this.plugin.setPluginState({ directories: updatedDirectories })
-      },
-      this.handleError)
+                SRTlib.send('{"type":"FUNCTIONEND","function":"index.findIndex"},');
+
+        return id === dir.id;
+                SRTlib.send('{"type":"FUNCTIONEND","function":"index.findIndex"},');
+
+      });
+      if (index !== -1) {
+        updatedDirectories = state.directories.slice(0, index + 1);
+      } else {
+        updatedDirectories = state.directories.concat([{
+          id,
+          title: name
+        }]);
+      }
+      this.username = this.username ? this.username : res.username;
+      this._updateFilesAndFolders(res, files, folders);
+      this.plugin.setPluginState({
+        directories: updatedDirectories
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement._loaderWrapper"},');
+
+    }, this.handleError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getFolder"},');
+
   }
+  getNextFolder(folder) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getNextFolder","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
-  /**
-   * Fetches new folder
-   *
-   * @param  {object} Folder
-   * @param  {string} title Folder title
-   */
-  getNextFolder (folder) {
-    this.getFolder(folder.requestPath, folder.name)
-    this.lastCheckbox = undefined
+    this.getFolder(folder.requestPath, folder.name);
+    this.lastCheckbox = undefined;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getNextFolder"},');
+
   }
+  addFile(file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFile","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
-  addFile (file) {
     const tagFile = {
       id: this.providerFileToId(file),
       source: this.plugin.id,
@@ -184,427 +213,672 @@ module.exports = class ProviderView {
         },
         providerOptions: this.provider.opts
       }
-    }
-
-    const fileType = getFileType(tagFile)
-    // TODO Should we just always use the thumbnail URL if it exists?
+    };
+    const fileType = getFileType(tagFile);
     if (fileType && isPreviewSupported(fileType)) {
-      tagFile.preview = file.thumbnail
+      tagFile.preview = file.thumbnail;
     }
-    this.plugin.uppy.log('Adding remote file')
+    this.plugin.uppy.log('Adding remote file');
     try {
-      this.plugin.uppy.addFile(tagFile)
+      this.plugin.uppy.addFile(tagFile);
     } catch (err) {
       if (!err.isRestriction) {
-        this.plugin.uppy.log(err)
+        this.plugin.uppy.log(err);
       }
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"addFile"},');
 
-  removeFile (id) {
-    const { currentSelection } = this.plugin.getPluginState()
+  }
+  removeFile(id) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFile","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+
+    const {currentSelection} = this.plugin.getPluginState();
     this.plugin.setPluginState({
-      currentSelection: currentSelection.filter((file) => file.id !== id)
-    })
+      currentSelection: currentSelection.filter(file => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter","fileName":"${__filename}","paramsNumber":1},`);
+
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter"},');
+
+        return file.id !== id;
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter"},');
+
+      })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"removeFile"},');
+
   }
+  logout() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
-  /**
-   * Removes session token on client side.
-   */
-  logout () {
-    this.provider.logout()
-      .then((res) => {
-        if (res.ok) {
-          if (!res.revoked) {
-            const message = this.plugin.uppy.i18n('companionUnauthorizeHint', {
-              provider: this.plugin.title,
-              url: res.manual_revoke_url
-            })
-            this.plugin.uppy.info(message, 'info', 7000)
-          }
+    this.provider.logout().then(res => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.provider.logout.then.catch.provider.logout.then","fileName":"${__filename}","paramsNumber":1},`);
 
-          const newState = {
-            authenticated: false,
-            files: [],
-            folders: [],
-            directories: []
-          }
-          this.plugin.setPluginState(newState)
+      if (res.ok) {
+        if (!res.revoked) {
+          const message = this.plugin.uppy.i18n('companionUnauthorizeHint', {
+            provider: this.plugin.title,
+            url: res.manual_revoke_url
+          });
+          this.plugin.uppy.info(message, 'info', 7000);
         }
-      }).catch(this.handleError)
-  }
+        const newState = {
+          authenticated: false,
+          files: [],
+          folders: [],
+          directories: []
+        };
+        this.plugin.setPluginState(newState);
+      }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.provider.logout.then.catch.provider.logout.then"},');
 
-  filterQuery (e) {
-    const state = this.plugin.getPluginState()
+    }).catch(this.handleError);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
+
+  }
+  filterQuery(e) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"filterQuery","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+
+    const state = this.plugin.getPluginState();
     this.plugin.setPluginState(Object.assign({}, state, {
       filterInput: e ? e.target.value : ''
-    }))
+    }));
+        SRTlib.send('{"type":"FUNCTIONEND","function":"filterQuery"},');
+
   }
+  toggleSearch(inputEl) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"toggleSearch","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
-  toggleSearch (inputEl) {
-    const state = this.plugin.getPluginState()
-
+    const state = this.plugin.getPluginState();
     this.plugin.setPluginState({
       isSearchVisible: !state.isSearchVisible,
       filterInput: ''
-    })
-  }
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"toggleSearch"},');
 
-  filterItems (items) {
-    const state = this.plugin.getPluginState()
+  }
+  filterItems(items) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"filterItems","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+
+    const state = this.plugin.getPluginState();
     if (!state.filterInput || state.filterInput === '') {
-      return items
+            SRTlib.send('{"type":"FUNCTIONEND","function":"filterItems"},');
+
+      return items;
     }
-    return items.filter((folder) => {
-      return folder.name.toLowerCase().indexOf(state.filterInput.toLowerCase()) !== -1
-    })
+        SRTlib.send('{"type":"FUNCTIONEND","function":"filterItems"},');
+
+    return items.filter(folder => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.items.filter","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.items.filter"},');
+
+      return folder.name.toLowerCase().indexOf(state.filterInput.toLowerCase()) !== -1;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.items.filter"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"filterItems"},');
+
   }
+  sortByTitle() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortByTitle","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
-  sortByTitle () {
-    const state = Object.assign({}, this.plugin.getPluginState())
-    const { files, folders, sorting } = state
-
+    const state = Object.assign({}, this.plugin.getPluginState());
+    const {files, folders, sorting} = state;
     const sortedFiles = files.sort((fileA, fileB) => {
-      if (sorting === 'titleDescending') {
-        return fileB.name.localeCompare(fileA.name)
-      }
-      return fileA.name.localeCompare(fileB.name)
-    })
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFiles.files.sort","fileName":"${__filename}","paramsNumber":2},`);
 
+      if (sorting === 'titleDescending') {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort"},');
+
+        return fileB.name.localeCompare(fileA.name);
+      }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort"},');
+
+      return fileA.name.localeCompare(fileB.name);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort"},');
+
+    });
     const sortedFolders = folders.sort((folderA, folderB) => {
-      if (sorting === 'titleDescending') {
-        return folderB.name.localeCompare(folderA.name)
-      }
-      return folderA.name.localeCompare(folderB.name)
-    })
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFolders.folders.sort","fileName":"${__filename}","paramsNumber":2},`);
 
+      if (sorting === 'titleDescending') {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort"},');
+
+        return folderB.name.localeCompare(folderA.name);
+      }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort"},');
+
+      return folderA.name.localeCompare(folderB.name);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort"},');
+
+    });
     this.plugin.setPluginState(Object.assign({}, state, {
       files: sortedFiles,
       folders: sortedFolders,
-      sorting: (sorting === 'titleDescending') ? 'titleAscending' : 'titleDescending'
-    }))
+      sorting: sorting === 'titleDescending' ? 'titleAscending' : 'titleDescending'
+    }));
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sortByTitle"},');
+
   }
+  sortByDate() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortByDate","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
-  sortByDate () {
-    const state = Object.assign({}, this.plugin.getPluginState())
-    const { files, folders, sorting } = state
-
+    const state = Object.assign({}, this.plugin.getPluginState());
+    const {files, folders, sorting} = state;
     const sortedFiles = files.sort((fileA, fileB) => {
-      const a = new Date(fileA.modifiedDate)
-      const b = new Date(fileB.modifiedDate)
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFiles.files.sort2","fileName":"${__filename}","paramsNumber":2},`);
 
+      const a = new Date(fileA.modifiedDate);
+      const b = new Date(fileB.modifiedDate);
       if (sorting === 'dateDescending') {
-        return a > b ? -1 : a < b ? 1 : 0
-      }
-      return a > b ? 1 : a < b ? -1 : 0
-    })
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort2"},');
 
+        return a > b ? -1 : a < b ? 1 : 0;
+      }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort2"},');
+
+      return a > b ? 1 : a < b ? -1 : 0;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort2"},');
+
+    });
     const sortedFolders = folders.sort((folderA, folderB) => {
-      const a = new Date(folderA.modifiedDate)
-      const b = new Date(folderB.modifiedDate)
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFolders.folders.sort2","fileName":"${__filename}","paramsNumber":2},`);
 
+      const a = new Date(folderA.modifiedDate);
+      const b = new Date(folderB.modifiedDate);
       if (sorting === 'dateDescending') {
-        return a > b ? -1 : a < b ? 1 : 0
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort2"},');
+
+        return a > b ? -1 : a < b ? 1 : 0;
       }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort2"},');
 
-      return a > b ? 1 : a < b ? -1 : 0
-    })
+      return a > b ? 1 : a < b ? -1 : 0;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort2"},');
 
+    });
     this.plugin.setPluginState(Object.assign({}, state, {
       files: sortedFiles,
       folders: sortedFolders,
-      sorting: (sorting === 'dateDescending') ? 'dateAscending' : 'dateDescending'
-    }))
+      sorting: sorting === 'dateDescending' ? 'dateAscending' : 'dateDescending'
+    }));
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sortByDate"},');
+
   }
+  sortBySize() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortBySize","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
-  sortBySize () {
-    const state = Object.assign({}, this.plugin.getPluginState())
-    const { files, sorting } = state
-
-    // check that plugin supports file sizes
+    const state = Object.assign({}, this.plugin.getPluginState());
+    const {files, sorting} = state;
     if (!files.length || !this.plugin.getItemData(files[0]).size) {
-      return
+            SRTlib.send('{"type":"FUNCTIONEND","function":"sortBySize"},');
+
+      return;
     }
-
     const sortedFiles = files.sort((fileA, fileB) => {
-      const a = fileA.size
-      const b = fileB.size
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFiles.files.sort3","fileName":"${__filename}","paramsNumber":2},`);
 
+      const a = fileA.size;
+      const b = fileB.size;
       if (sorting === 'sizeDescending') {
-        return a > b ? -1 : a < b ? 1 : 0
-      }
-      return a > b ? 1 : a < b ? -1 : 0
-    })
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort3"},');
 
+        return a > b ? -1 : a < b ? 1 : 0;
+      }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort3"},');
+
+      return a > b ? 1 : a < b ? -1 : 0;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort3"},');
+
+    });
     this.plugin.setPluginState(Object.assign({}, state, {
       files: sortedFiles,
-      sorting: (sorting === 'sizeDescending') ? 'sizeAscending' : 'sizeDescending'
-    }))
-  }
+      sorting: sorting === 'sizeDescending' ? 'sizeAscending' : 'sizeDescending'
+    }));
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sortBySize"},');
 
-  isActiveRow (file) {
-    return this.plugin.getPluginState().activeRow === this.plugin.getItemId(file)
   }
+  isActiveRow(file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isActiveRow","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
-  isChecked (file) {
-    const { currentSelection } = this.plugin.getPluginState()
-    // comparing id instead of the file object, because the reference to the object
-    // changes when we switch folders, and the file list is updated
-    return currentSelection.some((item) => item.id === file.id)
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isActiveRow"},');
+
+    return this.plugin.getPluginState().activeRow === this.plugin.getItemId(file);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isActiveRow"},');
+
   }
+  isChecked(file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isChecked","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
-  /**
-   * Adds all files found inside of specified folder.
-   *
-   * Uses separated state while folder contents are being fetched and
-   * mantains list of selected folders, which are separated from files.
-   */
-  addFolder (folder) {
-    const folderId = this.providerFileToId(folder)
-    let state = this.plugin.getPluginState()
-    const folders = state.selectedFolders || {}
-    if (folderId in folders && folders[folderId].loading) {
-      return
+    const {currentSelection} = this.plugin.getPluginState();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isChecked"},');
+
+    return currentSelection.some(item => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.currentSelection.some","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.currentSelection.some"},');
+
+      return item.id === file.id;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.currentSelection.some"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isChecked"},');
+
+  }
+  addFolder(folder) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFolder","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+
+    const folderId = this.providerFileToId(folder);
+    let state = this.plugin.getPluginState();
+    const folders = state.selectedFolders || ({});
+    if ((folderId in folders) && folders[folderId].loading) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"addFolder"},');
+
+      return;
     }
-    folders[folderId] = { loading: true, files: [] }
-    this.plugin.setPluginState({ selectedFolders: folders })
-    return this.listAllFiles(folder.requestPath).then((files) => {
-      files.forEach((file) => {
-        this.addFile(file)
-      })
-      const ids = files.map(this.providerFileToId)
-      state = this.plugin.getPluginState()
-      state.selectedFolders[folderId] = { loading: false, files: ids }
-      this.plugin.setPluginState({ selectedFolders: folders })
+    folders[folderId] = {
+      loading: true,
+      files: []
+    };
+    this.plugin.setPluginState({
+      selectedFolders: folders
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"addFolder"},');
 
-      let message
+    return this.listAllFiles(folder.requestPath).then(files => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.listAllFiles.then.catch.listAllFiles.then","fileName":"${__filename}","paramsNumber":1},`);
+
+      files.forEach(file => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
+        this.addFile(file);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach"},');
+
+      });
+      const ids = files.map(this.providerFileToId);
+      state = this.plugin.getPluginState();
+      state.selectedFolders[folderId] = {
+        loading: false,
+        files: ids
+      };
+      this.plugin.setPluginState({
+        selectedFolders: folders
+      });
+      let message;
       if (files.length) {
         message = this.plugin.uppy.i18n('folderAdded', {
-          smart_count: files.length, folder: folder.name
-        })
+          smart_count: files.length,
+          folder: folder.name
+        });
       } else {
-        message = this.plugin.uppy.i18n('emptyFolderAdded')
+        message = this.plugin.uppy.i18n('emptyFolderAdded');
       }
-      this.plugin.uppy.info(message)
-    }).catch((e) => {
-      state = this.plugin.getPluginState()
-      delete state.selectedFolders[folderId]
-      this.plugin.setPluginState({ selectedFolders: state.selectedFolders })
-      this.handleError(e)
-    })
+      this.plugin.uppy.info(message);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.listAllFiles.then.catch.listAllFiles.then"},');
+
+    }).catch(e => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.listAllFiles.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+      state = this.plugin.getPluginState();
+      delete state.selectedFolders[folderId];
+      this.plugin.setPluginState({
+        selectedFolders: state.selectedFolders
+      });
+      this.handleError(e);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.listAllFiles.then.catch"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"addFolder"},');
+
   }
+  toggleCheckbox(e, file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"toggleCheckbox","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
-  /**
-   * Toggles file/folder checkbox to on/off state while updating files list.
-   *
-   * Note that some extra complexity comes from supporting shift+click to
-   * toggle multiple checkboxes at once, which is done by getting all files
-   * in between last checked file and current one.
-   */
-  toggleCheckbox (e, file) {
-    e.stopPropagation()
-    e.preventDefault()
-    e.currentTarget.focus()
-    const { folders, files } = this.plugin.getPluginState()
-    const items = this.filterItems(folders.concat(files))
-
-    // Shift-clicking selects a single consecutive list of items
-    // starting at the previous click and deselects everything else.
+    e.stopPropagation();
+    e.preventDefault();
+    e.currentTarget.focus();
+    const {folders, files} = this.plugin.getPluginState();
+    const items = this.filterItems(folders.concat(files));
     if (this.lastCheckbox && e.shiftKey) {
-      let currentSelection
-      const prevIndex = items.indexOf(this.lastCheckbox)
-      const currentIndex = items.indexOf(file)
+      let currentSelection;
+      const prevIndex = items.indexOf(this.lastCheckbox);
+      const currentIndex = items.indexOf(file);
       if (prevIndex < currentIndex) {
-        currentSelection = items.slice(prevIndex, currentIndex + 1)
+        currentSelection = items.slice(prevIndex, currentIndex + 1);
       } else {
-        currentSelection = items.slice(currentIndex, prevIndex + 1)
+        currentSelection = items.slice(currentIndex, prevIndex + 1);
       }
-      this.plugin.setPluginState({ currentSelection })
-      return
-    }
+      this.plugin.setPluginState({
+        currentSelection
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"toggleCheckbox"},');
 
-    this.lastCheckbox = file
-    const { currentSelection } = this.plugin.getPluginState()
+      return;
+    }
+    this.lastCheckbox = file;
+    const {currentSelection} = this.plugin.getPluginState();
     if (this.isChecked(file)) {
       this.plugin.setPluginState({
-        currentSelection: currentSelection.filter((item) => item.id !== file.id)
-      })
+        currentSelection: currentSelection.filter(item => {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter2","fileName":"${__filename}","paramsNumber":1},`);
+
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter2"},');
+
+          return item.id !== file.id;
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter2"},');
+
+        })
+      });
     } else {
       this.plugin.setPluginState({
         currentSelection: currentSelection.concat([file])
-      })
+      });
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"toggleCheckbox"},');
 
-  providerFileToId (file) {
+  }
+  providerFileToId(file) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"providerFileToId","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"providerFileToId"},');
+
     return generateFileID({
       data: file,
       name: file.name || file.id,
       type: file.mimeType
-    })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"providerFileToId"},');
+
   }
+  handleAuth() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleAuth","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
-  handleAuth () {
-    const authState = btoa(JSON.stringify({ origin: getOrigin() }))
-    const clientVersion = encodeURIComponent(`@uppy/provider-views=${ProviderView.VERSION}`)
-    const link = `${this.provider.authUrl()}?state=${authState}&uppyVersions=${clientVersion}`
+    const authState = btoa(JSON.stringify({
+      origin: getOrigin()
+    }));
+    const clientVersion = encodeURIComponent(`@uppy/provider-views=${ProviderView.VERSION}`);
+    const link = `${this.provider.authUrl()}?state=${authState}&uppyVersions=${clientVersion}`;
+    const authWindow = window.open(link, '_blank');
+    const handleToken = e => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleToken","fileName":"${__filename}","paramsNumber":1},`);
 
-    const authWindow = window.open(link, '_blank')
-    const handleToken = (e) => {
       if (!this._isOriginAllowed(e.origin, this.plugin.opts.companionAllowedHosts) || e.source !== authWindow) {
-        this.plugin.uppy.log(`rejecting event from ${e.origin} vs allowed pattern ${this.plugin.opts.companionAllowedHosts}`)
-        return
+        this.plugin.uppy.log(`rejecting event from ${e.origin} vs allowed pattern ${this.plugin.opts.companionAllowedHosts}`);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"handleToken"},');
+
+        return;
       }
-
-      // Check if it's a string before doing the JSON.parse to maintain support
-      // for older Companion versions that used object references
-      const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data
-
+      const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
       if (!data.token) {
-        this.plugin.uppy.log('did not receive token from auth window')
-        return
+        this.plugin.uppy.log('did not receive token from auth window');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"handleToken"},');
+
+        return;
       }
+      authWindow.close();
+      window.removeEventListener('message', handleToken);
+      this.provider.setAuthToken(data.token);
+      this.preFirstRender();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"handleToken"},');
 
-      authWindow.close()
-      window.removeEventListener('message', handleToken)
-      this.provider.setAuthToken(data.token)
-      this.preFirstRender()
-    }
-    window.addEventListener('message', handleToken)
+    };
+    window.addEventListener('message', handleToken);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleAuth"},');
+
   }
+  _isOriginAllowed(origin, allowedOrigin) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_isOriginAllowed","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
-  _isOriginAllowed (origin, allowedOrigin) {
-    const getRegex = (value) => {
+    const getRegex = value => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getRegex","fileName":"${__filename}","paramsNumber":1},`);
+
       if (typeof value === 'string') {
-        return new RegExp(`^${value}$`)
+                SRTlib.send('{"type":"FUNCTIONEND","function":"getRegex"},');
+
+        return new RegExp(`^${value}$`);
       } else if (value instanceof RegExp) {
-        return value
+                SRTlib.send('{"type":"FUNCTIONEND","function":"getRegex"},');
+
+        return value;
       }
-    }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"getRegex"},');
 
-    const patterns = Array.isArray(allowedOrigin) ? allowedOrigin.map(getRegex) : [getRegex(allowedOrigin)]
-    return patterns
-      .filter((pattern) => pattern != null) // loose comparison to catch undefined
-      .some((pattern) => pattern.test(origin) || pattern.test(`${origin}/`)) // allowing for trailing '/'
+    };
+    const patterns = Array.isArray(allowedOrigin) ? allowedOrigin.map(getRegex) : [getRegex(allowedOrigin)];
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_isOriginAllowed"},');
+
+    return patterns.filter(pattern => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.patterns.filter.some.patterns.filter","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.patterns.filter.some.patterns.filter"},');
+
+      return pattern != null;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.patterns.filter.some.patterns.filter"},');
+
+    }).some(pattern => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.patterns.filter.some","fileName":"${__filename}","paramsNumber":1},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.patterns.filter.some"},');
+
+      return pattern.test(origin) || pattern.test(`${origin}/`);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.patterns.filter.some"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_isOriginAllowed"},');
+
   }
+  handleError(error) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleError","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
-  handleError (error) {
-    const uppy = this.plugin.uppy
-    uppy.log(error.toString())
+    const uppy = this.plugin.uppy;
+    uppy.log(error.toString());
     if (error.isAuthError) {
-      return
+            SRTlib.send('{"type":"FUNCTIONEND","function":"handleError"},');
+
+      return;
     }
-    const message = uppy.i18n('companionError')
-    uppy.info({ message: message, details: error.toString() }, 'error', 5000)
+    const message = uppy.i18n('companionError');
+    uppy.info({
+      message: message,
+      details: error.toString()
+    }, 'error', 5000);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleError"},');
+
   }
+  handleScroll(e) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleScroll","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
-  handleScroll (e) {
-    const scrollPos = e.target.scrollHeight - (e.target.scrollTop + e.target.offsetHeight)
-    const path = this.nextPagePath || null
-
+    const scrollPos = e.target.scrollHeight - (e.target.scrollTop + e.target.offsetHeight);
+    const path = this.nextPagePath || null;
     if (scrollPos < 50 && path && !this._isHandlingScroll) {
-      this.provider.list(path)
-        .then((res) => {
-          const { files, folders } = this.plugin.getPluginState()
-          this._updateFilesAndFolders(res, files, folders)
-        }).catch(this.handleError)
-        .then(() => { this._isHandlingScroll = false }) // always called
+      this.provider.list(path).then(res => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.provider.list.then.catch.then.provider.list.then.catch.provider.list.then","fileName":"${__filename}","paramsNumber":1},`);
 
-      this._isHandlingScroll = true
+        const {files, folders} = this.plugin.getPluginState();
+        this._updateFilesAndFolders(res, files, folders);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.provider.list.then.catch.then.provider.list.then.catch.provider.list.then"},');
+
+      }).catch(this.handleError).then(() => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.provider.list.then.catch.then","fileName":"${__filename}","paramsNumber":0},`);
+
+        this._isHandlingScroll = false;
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.provider.list.then.catch.then"},');
+
+      });
+      this._isHandlingScroll = true;
     }
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"handleScroll"},');
 
-  listAllFiles (path, files = null) {
-    files = files || []
+  }
+  listAllFiles(path, files = null) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"listAllFiles","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
+
+    files = files || [];
+        SRTlib.send('{"type":"FUNCTIONEND","function":"listAllFiles"},');
+
     return new Promise((resolve, reject) => {
-      this.provider.list(path).then((res) => {
-        res.items.forEach((item) => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+
+      this.provider.list(path).then(res => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.list.then.catch.provider.list.then","fileName":"${__filename}","paramsNumber":1},`);
+
+        res.items.forEach(item => {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"res.items.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
           if (!item.isFolder) {
-            files.push(item)
+            files.push(item);
           }
-        })
-        const moreFiles = res.nextPagePath || null
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"res.items.forEach"},');
+
+        });
+        const moreFiles = res.nextPagePath || null;
         if (moreFiles) {
-          return this.listAllFiles(moreFiles, files)
-            .then((files) => resolve(files))
-            .catch(e => reject(e))
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"provider.list.then.catch.provider.list.then"},');
+
+          return this.listAllFiles(moreFiles, files).then(files => {
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.listAllFiles.then.catch.listAllFiles.then","fileName":"${__filename}","paramsNumber":1},`);
+
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.listAllFiles.then.catch.listAllFiles.then"},');
+
+            return resolve(files);
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.listAllFiles.then.catch.listAllFiles.then"},');
+
+          }).catch(e => {
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.listAllFiles.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.listAllFiles.then.catch"},');
+
+            return reject(e);
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.listAllFiles.then.catch"},');
+
+          });
         } else {
-          return resolve(files)
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"provider.list.then.catch.provider.list.then"},');
+
+          return resolve(files);
         }
-      }).catch(e => reject(e))
-    })
-  }
+                SRTlib.send('{"type":"FUNCTIONEND","function":"provider.list.then.catch.provider.list.then"},');
 
-  donePicking () {
-    const { currentSelection } = this.plugin.getPluginState()
-    const promises = currentSelection.map((file) => {
+      }).catch(e => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.list.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+                SRTlib.send('{"type":"FUNCTIONEND","function":"provider.list.then.catch"},');
+
+        return reject(e);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"provider.list.then.catch"},');
+
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"listAllFiles"},');
+
+  }
+  donePicking() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"donePicking","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+
+    const {currentSelection} = this.plugin.getPluginState();
+    const promises = currentSelection.map(file => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promises.currentSelection.map","fileName":"${__filename}","paramsNumber":1},`);
+
       if (file.isFolder) {
-        return this.addFolder(file)
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promises.currentSelection.map"},');
+
+        return this.addFolder(file);
       } else {
-        return this.addFile(file)
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promises.currentSelection.map"},');
+
+        return this.addFile(file);
       }
-    })
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promises.currentSelection.map"},');
 
+    });
     this._loaderWrapper(Promise.all(promises), () => {
-      this.clearSelection()
-    }, () => {})
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._loaderWrapper","fileName":"${__filename}","paramsNumber":0},`);
+
+      this.clearSelection();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._loaderWrapper"},');
+
+    }, () => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._loaderWrapper2","fileName":"${__filename}","paramsNumber":0},`);
+
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._loaderWrapper2"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"donePicking"},');
+
   }
+  cancelPicking() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cancelPicking","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
-  cancelPicking () {
-    this.clearSelection()
+    this.clearSelection();
+    const dashboard = this.plugin.uppy.getPlugin('Dashboard');
+    if (dashboard) dashboard.hideAllPanels();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"cancelPicking"},');
 
-    const dashboard = this.plugin.uppy.getPlugin('Dashboard')
-    if (dashboard) dashboard.hideAllPanels()
   }
+  clearSelection() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"clearSelection","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
-  clearSelection () {
-    this.plugin.setPluginState({ currentSelection: [] })
+    this.plugin.setPluginState({
+      currentSelection: []
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"clearSelection"},');
+
   }
+  _loaderWrapper(promise, then, catch_) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_loaderWrapper","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"ProviderView"}},`);
 
-  // displays loader view while asynchronous request is being made.
-  _loaderWrapper (promise, then, catch_) {
-    promise
-      .then((result) => {
-        this.plugin.setPluginState({ loading: false })
-        then(result)
-      }).catch((err) => {
-        this.plugin.setPluginState({ loading: false })
-        catch_(err)
-      })
-    this.plugin.setPluginState({ loading: true })
+    promise.then(result => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promise.then.catch.promise.then","fileName":"${__filename}","paramsNumber":1},`);
+
+      this.plugin.setPluginState({
+        loading: false
+      });
+      then(result);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promise.then.catch.promise.then"},');
+
+    }).catch(err => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promise.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+
+      this.plugin.setPluginState({
+        loading: false
+      });
+      catch_(err);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promise.then.catch"},');
+
+    });
+    this.plugin.setPluginState({
+      loading: true
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_loaderWrapper"},');
+
   }
+  render(state, viewOptions = {}) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
-  render (state, viewOptions = {}) {
-    const { authenticated, didFirstRender } = this.plugin.getPluginState()
+    const {authenticated, didFirstRender} = this.plugin.getPluginState();
     if (!didFirstRender) {
-      this.preFirstRender()
+      this.preFirstRender();
     }
-
-    // reload pluginState for "loading" attribute because it might
-    // have changed above.
     if (this.plugin.getPluginState().loading) {
-      return (
-        <CloseWrapper onUnmount={this.clearSelection}>
+            SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
+      return <CloseWrapper onUnmount={this.clearSelection}>
           <LoaderView i18n={this.plugin.uppy.i18n} />
-        </CloseWrapper>
-      )
+        </CloseWrapper>;
     }
-
     if (!authenticated) {
-      return (
-        <CloseWrapper onUnmount={this.clearSelection}>
-          <AuthView
-            pluginName={this.plugin.title}
-            pluginIcon={this.plugin.icon}
-            handleAuth={this.handleAuth}
-            i18n={this.plugin.uppy.i18n}
-            i18nArray={this.plugin.uppy.i18nArray}
-          />
-        </CloseWrapper>
-      )
-    }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
-    const targetViewOptions = { ...this.opts, ...viewOptions }
+      return <CloseWrapper onUnmount={this.clearSelection}>
+          <AuthView pluginName={this.plugin.title} pluginIcon={this.plugin.icon} handleAuth={this.handleAuth} i18n={this.plugin.uppy.i18n} i18nArray={this.plugin.uppy.i18nArray} />
+        </CloseWrapper>;
+    }
+    const targetViewOptions = {
+      ...this.opts,
+      ...viewOptions
+    };
     const browserProps = Object.assign({}, this.plugin.getPluginState(), {
       username: this.username,
       getNextFolder: this.getNextFolder,
@@ -629,12 +903,13 @@ module.exports = class ProviderView {
       showBreadcrumbs: targetViewOptions.showBreadcrumbs,
       pluginIcon: this.plugin.icon,
       i18n: this.plugin.uppy.i18n
-    })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
-    return (
-      <CloseWrapper onUnmount={this.clearSelection}>
-        <Browser {...browserProps} />
-      </CloseWrapper>
-    )
+    return <CloseWrapper onUnmount={this.clearSelection}>
+        <Browser  {...browserProps} />
+      </CloseWrapper>;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
   }
-}
+};
