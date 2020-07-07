@@ -1,39 +1,68 @@
-require('es6-promise/auto')
-require('whatwg-fetch')
-const Uppy = require('@uppy/core')
-const Dashboard = require('@uppy/dashboard')
-const Tus = require('@uppy/tus')
+const SRTlib = require('SRT-util');
 
-const isOnTravis = !!(process.env.TRAVIS && process.env.CI)
-const endpoint = isOnTravis ? 'http://companion.test:1081' : 'http://localhost:1081'
-
-let id = 0
+require('es6-promise/auto');
+require('whatwg-fetch');
+const Uppy = require('@uppy/core');
+const Dashboard = require('@uppy/dashboard');
+const Tus = require('@uppy/tus');
+const isOnTravis = !!(process.env.TRAVIS && process.env.CI);
+const endpoint = isOnTravis ? 'http://companion.test:1081' : 'http://localhost:1081';
+let id = 0;
 window.setup = function (options) {
-  id += 1
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup","fileName":"${__filename}","paramsNumber":1},`);
 
-  // Initialise Uppy with Drag & Drop
-  const uppy = Uppy({ id: `uppy${id}`, debug: true })
-
-  uppy.use(Dashboard, { inline: true, target: '#dash' })
+  id += 1;
+  const uppy = Uppy({
+    id: `uppy${id}`,
+    debug: true
+  });
+  uppy.use(Dashboard, {
+    inline: true,
+    target: '#dash'
+  });
   uppy.use(Tus, {
     endpoint: `${endpoint}/files/`,
     limit: options.limit
-  })
-  uppy.on('file-added', (file) => {
+  });
+  uppy.on('file-added', file => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup.uppy.on","fileName":"${__filename}","paramsNumber":1},`);
+
     randomColorImage(function (blob) {
-      uppy.setFileState(file.id, { preview: URL.createObjectURL(blob) })
-    })
-  })
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"randomColorImage","fileName":"${__filename}","paramsNumber":1},`);
 
-  return uppy
-}
+      uppy.setFileState(file.id, {
+        preview: URL.createObjectURL(blob)
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"randomColorImage"},');
 
-function randomColorImage (callback) {
-  const canvas = document.createElement('canvas')
-  canvas.width = 140
-  canvas.height = 140
-  const context = canvas.getContext('2d')
-  context.fillStyle = '#xxxxxx'.replace(/x/g, () => '0123456789ABCDEF'[Math.floor(Math.random() * 16)])
-  context.fillRect(0, 0, 140, 140)
-  canvas.toBlob(callback)
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"window.setup.uppy.on"},');
+
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"window.setup"},');
+
+  return uppy;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"window.setup"},');
+
+};
+function randomColorImage(callback) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"randomColorImage","fileName":"${__filename}","paramsNumber":1},`);
+
+  const canvas = document.createElement('canvas');
+  canvas.width = 140;
+  canvas.height = 140;
+  const context = canvas.getContext('2d');
+  context.fillStyle = ('#xxxxxx').replace(/x/g, () => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"context.fillStyle.replace","fileName":"${__filename}","paramsNumber":0},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"context.fillStyle.replace"},');
+
+    return ('0123456789ABCDEF')[Math.floor(Math.random() * 16)];
+        SRTlib.send('{"type":"FUNCTIONEND","function":"context.fillStyle.replace"},');
+
+  });
+  context.fillRect(0, 0, 140, 140);
+  canvas.toBlob(callback);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"randomColorImage","paramsNumber":1},');
+
 }

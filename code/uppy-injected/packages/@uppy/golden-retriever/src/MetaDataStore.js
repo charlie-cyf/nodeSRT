@@ -1,85 +1,118 @@
-/**
- * Get uppy instance IDs for which state is stored.
- */
-function findUppyInstances () {
-  const instances = []
+const SRTlib = require('SRT-util');
+
+function findUppyInstances() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findUppyInstances","fileName":"${__filename}","paramsNumber":0},`);
+
+  const instances = [];
   for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i)
-    if (/^uppyState:/.test(key)) {
-      instances.push(key.slice('uppyState:'.length))
+    const key = localStorage.key(i);
+    if ((/^uppyState:/).test(key)) {
+      instances.push(key.slice(('uppyState:').length));
     }
   }
-  return instances
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"findUppyInstances"},');
 
-/**
- * Try to JSON-parse a string, return null on failure.
- */
-function maybeParse (str) {
+  return instances;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"findUppyInstances","paramsNumber":0},');
+
+}
+function maybeParse(str) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"maybeParse","fileName":"${__filename}","paramsNumber":1},`);
+
   try {
-    return JSON.parse(str)
+        SRTlib.send('{"type":"FUNCTIONEND","function":"maybeParse"},');
+
+    return JSON.parse(str);
   } catch (err) {
-    return null
+        SRTlib.send('{"type":"FUNCTIONEND","function":"maybeParse"},');
+
+    return null;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"maybeParse","paramsNumber":1},');
+
 }
-
-let cleanedUp = false
+let cleanedUp = false;
 module.exports = class MetaDataStore {
-  constructor (opts) {
+  constructor(opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MetaDataStore"}},`);
+
     this.opts = Object.assign({
-      expires: 24 * 60 * 60 * 1000 // 24 hours
-    }, opts)
-    this.name = `uppyState:${opts.storeName}`
-
+      expires: 24 * 60 * 60 * 1000
+    }, opts);
+    this.name = `uppyState:${opts.storeName}`;
     if (!cleanedUp) {
-      cleanedUp = true
-      MetaDataStore.cleanup()
+      cleanedUp = true;
+      MetaDataStore.cleanup();
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
+
   }
+  load() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"load","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MetaDataStore"}},`);
 
-  /**
-   *
-   */
-  load () {
-    const savedState = localStorage.getItem(this.name)
-    if (!savedState) return null
-    const data = maybeParse(savedState)
-    if (!data) return null
+    const savedState = localStorage.getItem(this.name);
+    if (!savedState) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"load"},');
 
-    // Upgrade pre-0.20.0 uppyState: it used to be just a flat object,
-    // without `expires`.
+      return null;
+    }
+    const data = maybeParse(savedState);
+    if (!data) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"load"},');
+
+      return null;
+    }
     if (!data.metadata) {
-      this.save(data)
-      return data
+      this.save(data);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"load"},');
+
+      return data;
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"load"},');
 
-    return data.metadata
+    return data.metadata;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"load"},');
+
   }
+  save(metadata) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"save","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MetaDataStore"}},`);
 
-  save (metadata) {
-    const expires = Date.now() + this.opts.expires
+    const expires = Date.now() + this.opts.expires;
     const state = JSON.stringify({
       metadata,
       expires
-    })
-    localStorage.setItem(this.name, state)
+    });
+    localStorage.setItem(this.name, state);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"save"},');
+
   }
+  static cleanup() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanup","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MetaDataStore"}},`);
 
-  /**
-   * Remove all expired state.
-   */
-  static cleanup () {
-    const instanceIDs = findUppyInstances()
-    const now = Date.now()
-    instanceIDs.forEach((id) => {
-      const data = localStorage.getItem(`uppyState:${id}`)
-      if (!data) return null
-      const obj = maybeParse(data)
-      if (!obj) return null
+    const instanceIDs = findUppyInstances();
+    const now = Date.now();
+    instanceIDs.forEach(id => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.instanceIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
-      if (obj.expires && obj.expires < now) {
-        localStorage.removeItem(`uppyState:${id}`)
+      const data = localStorage.getItem(`uppyState:${id}`);
+      if (!data) {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.instanceIDs.forEach"},');
+
+        return null;
       }
-    })
+      const obj = maybeParse(data);
+      if (!obj) {
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.instanceIDs.forEach"},');
+
+        return null;
+      }
+      if (obj.expires && obj.expires < now) {
+        localStorage.removeItem(`uppyState:${id}`);
+      }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.instanceIDs.forEach"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"cleanup"},');
+
   }
-}
+};

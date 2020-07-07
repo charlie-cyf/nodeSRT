@@ -1,42 +1,69 @@
-const fs = require('fs')
-const path = require('path')
-const DUMM_FILE = path.join(__dirname, 'fixtures/image.jpg')
+const SRTlib = require('SRT-util');
 
-/**
- * an example of a custom provider module. It implements @uppy/companion's Provider interface
- */
+const fs = require('fs');
+const path = require('path');
+const DUMM_FILE = path.join(__dirname, 'fixtures/image.jpg');
 class MyCustomProvider {
-  constructor (options) {
-    this.authProvider = MyCustomProvider.authProvider
-  }
+  constructor(options) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider"}},`);
 
-  static get authProvider () {
-    return 'mycustomprovider'
-  }
+    this.authProvider = MyCustomProvider.authProvider;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
 
-  list (options, done) {
+  }
+  static get authProvider() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MyCustomProvider"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
+
+    return 'mycustomprovider';
+        SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
+
+  }
+  list(options, done) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MyCustomProvider"}},`);
+
     const response = {
       body: {
-        entries: [
-          { name: 'file1.jpg' },
-          { name: 'file2.jpg' },
-          { name: 'file3.jpg' }
-        ]
+        entries: [{
+          name: 'file1.jpg'
+        }, {
+          name: 'file2.jpg'
+        }, {
+          name: 'file3.jpg'
+        }]
       }
-    }
-    return done(null, response, response.body)
-  }
+    };
+        SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
 
-  download ({ id, token }, onData) {
+    return done(null, response, response.body);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
+
+  }
+  download({id, token}, onData) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MyCustomProvider"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
+
     return fs.readFile(DUMM_FILE, (err, data) => {
-      if (err) console.error(err)
-      onData(data)
-    })
-  }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.fs.readFile","fileName":"${__filename}","paramsNumber":2},`);
 
-  size ({ id, token }, done) {
-    return done(fs.statSync(DUMM_FILE).size)
+      if (err) console.error(err);
+      onData(data);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.fs.readFile"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
+
+  }
+  size({id, token}, done) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MyCustomProvider"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
+
+    return done(fs.statSync(DUMM_FILE).size);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
+
   }
 }
-
-module.exports = MyCustomProvider
+module.exports = MyCustomProvider;

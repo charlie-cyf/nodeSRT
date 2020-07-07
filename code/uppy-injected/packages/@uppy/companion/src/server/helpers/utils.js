@@ -1,176 +1,190 @@
-const request = require('request')
-const { URL } = require('url')
-const crypto = require('crypto')
-const { getProtectedHttpAgent, getRedirectEvaluator } = require('./request')
+const SRTlib = require('SRT-util');
 
-/**
- *
- * @param {string} value
- * @param {string[]} criteria
- * @returns {boolean}
- */
+const request = require('request');
+const {URL} = require('url');
+const crypto = require('crypto');
+const {getProtectedHttpAgent, getRedirectEvaluator} = require('./request');
 exports.hasMatch = (value, criteria) => {
-  return criteria.some((i) => {
-    return value === i || (new RegExp(i)).test(value)
-  })
-}
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasMatch","fileName":"${__filename}","paramsNumber":2},`);
 
-/**
- *
- * @param {object} data
- * @returns {string}
- */
-exports.jsonStringify = (data) => {
-  const cache = []
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.hasMatch"},');
+
+  return criteria.some(i => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.criteria.some","fileName":"${__filename}","paramsNumber":1},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.criteria.some"},');
+
+    return value === i || new RegExp(i).test(value);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.criteria.some"},');
+
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.hasMatch"},');
+
+};
+exports.jsonStringify = data => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.jsonStringify","fileName":"${__filename}","paramsNumber":1},`);
+
+  const cache = [];
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.jsonStringify"},');
+
   return JSON.stringify(data, (key, value) => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.JSON.stringify","fileName":"${__filename}","paramsNumber":2},`);
+
     if (typeof value === 'object' && value !== null) {
       if (cache.indexOf(value) !== -1) {
-        // Circular reference found, discard key
-        return
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.JSON.stringify"},');
+
+        return;
       }
-      cache.push(value)
+      cache.push(value);
     }
-    return value
-  })
-}
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.JSON.stringify"},');
 
-/**
- * Does a simple html sanitization on the passed value
- *
- * @param {string} text
- */
-exports.sanitizeHtml = (text) => {
-  return text ? text.replace(/<\/?[^>]+(>|$)/g, '') : text
-}
+    return value;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.JSON.stringify"},');
 
-/**
- * Gets the size and content type of a url's content
- *
- * @param {string} url
- * @param {boolean=} blockLocalIPs
- * @return {Promise}
- */
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.jsonStringify"},');
+
+};
+exports.sanitizeHtml = text => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.sanitizeHtml","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sanitizeHtml"},');
+
+  return text ? text.replace(/<\/?[^>]+(>|$)/g, '') : text;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sanitizeHtml"},');
+
+};
 exports.getURLMeta = (url, blockLocalIPs = false) => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getURLMeta","fileName":"${__filename}","paramsNumber":2},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getURLMeta"},');
+
   return new Promise((resolve, reject) => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+
     const opts = {
       uri: url,
       method: 'HEAD',
       followRedirect: getRedirectEvaluator(url, blockLocalIPs),
-      agentClass: getProtectedHttpAgent((new URL(url)).protocol, blockLocalIPs)
-    }
-
+      agentClass: getProtectedHttpAgent(new URL(url).protocol, blockLocalIPs)
+    };
     request(opts, (err, response) => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request","fileName":"${__filename}","paramsNumber":2},`);
+
       if (err || response.statusCode >= 300) {
-        // @todo possibly set a status code in the error object to get a more helpful
-        // hint at what the cause of error is.
-        err = err || new Error(`URL server responded with status: ${response.statusCode}`)
-        reject(err)
+        err = err || new Error(`URL server responded with status: ${response.statusCode}`);
+        reject(err);
       } else {
         resolve({
           type: response.headers['content-type'],
           size: parseInt(response.headers['content-length'])
-        })
+        });
       }
-    })
-  })
-}
+            SRTlib.send('{"type":"FUNCTIONEND","function":"request"},');
 
-// all paths are assumed to be '/' prepended
-/**
- * Returns a url builder
- *
- * @param {object} options companion options
- */
-module.exports.getURLBuilder = (options) => {
-  /**
-   * Builds companion targeted url
-   *
-   * @param {string} path the tail path of the url
-   * @param {boolean} isExternal if the url is for the external world
-   * @param {boolean=} excludeHost if the server domain and protocol should be included
-   */
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
+
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getURLMeta"},');
+
+};
+module.exports.getURLBuilder = options => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getURLBuilder","fileName":"${__filename}","paramsNumber":1},`);
+
   const buildURL = (path, isExternal, excludeHost) => {
-    let url = path
-    // supports for no path specified too
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildURL","fileName":"${__filename}","paramsNumber":3},`);
+
+    let url = path;
     if (isExternal) {
-      url = `${options.server.implicitPath || ''}${url}`
+      url = `${options.server.implicitPath || ''}${url}`;
     }
-
-    url = `${options.server.path || ''}${url}`
-
+    url = `${options.server.path || ''}${url}`;
     if (!excludeHost) {
-      url = `${options.server.protocol}://${options.server.host}${url}`
+      url = `${options.server.protocol}://${options.server.host}${url}`;
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"buildURL"},');
 
-    return url
-  }
+    return url;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"buildURL"},');
 
-  return buildURL
+  };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getURLBuilder"},');
+
+  return buildURL;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getURLBuilder"},');
+
+};
+function createSecret(secret) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createSecret","fileName":"${__filename}","paramsNumber":1},`);
+
+  const hash = crypto.createHash('sha256');
+  hash.update(secret);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createSecret"},');
+
+  return hash.digest();
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createSecret","paramsNumber":1},');
+
 }
+function createIv() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createIv","fileName":"${__filename}","paramsNumber":0},`);
 
-/**
- * Ensure that a user-provided `secret` is 32 bytes long (the length required
- * for an AES256 key) by hashing it with SHA256.
- *
- * @param {string|Buffer} secret
- */
-function createSecret (secret) {
-  const hash = crypto.createHash('sha256')
-  hash.update(secret)
-  return hash.digest()
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createIv"},');
+
+  return crypto.randomBytes(16);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"createIv","paramsNumber":0},');
+
 }
+function urlEncode(unencoded) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"urlEncode","fileName":"${__filename}","paramsNumber":1},`);
 
-/**
- * Create an initialization vector for AES256.
- *
- * @return {Buffer}
- */
-function createIv () {
-  return crypto.randomBytes(16)
+    SRTlib.send('{"type":"FUNCTIONEND","function":"urlEncode"},');
+
+  return unencoded.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '~');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"urlEncode","paramsNumber":1},');
+
 }
+function urlDecode(encoded) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"urlDecode","fileName":"${__filename}","paramsNumber":1},`);
 
-function urlEncode (unencoded) {
-  return unencoded.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '~')
+  encoded = encoded.replace(/-/g, '+').replace(/_/g, '/').replace(/~/g, '=');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"urlDecode"},');
+
+  return encoded;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"urlDecode","paramsNumber":1},');
+
 }
-
-function urlDecode (encoded) {
-  encoded = encoded.replace(/-/g, '+').replace(/_/g, '/').replace(/~/g, '=')
-  return encoded
-}
-
-/**
- * Encrypt a buffer or string with AES256 and a random iv.
- *
- * @param {string} input
- * @param {string|Buffer} secret
- * @return {string} Ciphertext as a hex string, prefixed with 32 hex characters containing the iv.
- */
 module.exports.encrypt = (input, secret) => {
-  const iv = createIv()
-  const cipher = crypto.createCipheriv('aes256', createSecret(secret), iv)
-  let encrypted = cipher.update(input, 'utf8', 'base64')
-  encrypted += cipher.final('base64')
-  // add iv to encrypted string to use for decryption
-  return iv.toString('hex') + urlEncode(encrypted)
-}
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.encrypt","fileName":"${__filename}","paramsNumber":2},`);
 
-/**
- * Decrypt an iv-prefixed or string with AES256. The iv should be in the first 32 hex characters.
- *
- * @param {string} encrypted
- * @param {string|Buffer} secret
- * @return {string} Decrypted value.
- */
+  const iv = createIv();
+  const cipher = crypto.createCipheriv('aes256', createSecret(secret), iv);
+  let encrypted = cipher.update(input, 'utf8', 'base64');
+  encrypted += cipher.final('base64');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.encrypt"},');
+
+  return iv.toString('hex') + urlEncode(encrypted);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.encrypt"},');
+
+};
 module.exports.decrypt = (encrypted, secret) => {
-  // Need at least 32 chars for the iv
-  if (encrypted.length < 32) {
-    throw new Error('Invalid encrypted value. Maybe it was generated with an old Companion version?')
-  }
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.decrypt","fileName":"${__filename}","paramsNumber":2},`);
 
-  const iv = Buffer.from(encrypted.slice(0, 32), 'hex')
-  const encryptionWithoutIv = encrypted.slice(32)
-  const decipher = crypto.createDecipheriv('aes256', createSecret(secret), iv)
-  let decrypted = decipher.update(urlDecode(encryptionWithoutIv), 'base64', 'utf8')
-  decrypted += decipher.final('utf8')
-  return decrypted
-}
+  if (encrypted.length < 32) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.decrypt"},');
+
+    throw new Error('Invalid encrypted value. Maybe it was generated with an old Companion version?');
+  }
+  const iv = Buffer.from(encrypted.slice(0, 32), 'hex');
+  const encryptionWithoutIv = encrypted.slice(32);
+  const decipher = crypto.createDecipheriv('aes256', createSecret(secret), iv);
+  let decrypted = decipher.update(urlDecode(encryptionWithoutIv), 'base64', 'utf8');
+  decrypted += decipher.final('utf8');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.decrypt"},');
+
+  return decrypted;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.decrypt"},');
+
+};

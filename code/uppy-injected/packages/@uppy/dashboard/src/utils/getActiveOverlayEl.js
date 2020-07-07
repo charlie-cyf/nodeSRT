@@ -1,11 +1,19 @@
-/**
- * @returns {HTMLElement} - either dashboard element, or the overlay that's most on top
- */
-module.exports = function getActiveOverlayEl (dashboardEl, activeOverlayType) {
+const SRTlib = require('SRT-util');
+
+module.exports = function getActiveOverlayEl(dashboardEl, activeOverlayType) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":2},`);
+
   if (activeOverlayType) {
-    const overlayEl = dashboardEl.querySelector(`[data-uppy-paneltype="${activeOverlayType}"]`)
-    // if an overlay is already mounted
-    if (overlayEl) return overlayEl
+    const overlayEl = dashboardEl.querySelector(`[data-uppy-paneltype="${activeOverlayType}"]`);
+    if (overlayEl) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+      return overlayEl;
+    }
   }
-  return dashboardEl
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+  return dashboardEl;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

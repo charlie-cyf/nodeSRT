@@ -1,5 +1,6 @@
-const tr_TR = {}
+const SRTlib = require('SRT-util');
 
+const tr_TR = {};
 tr_TR.strings = {
   addMore: 'Daha ekle',
   addMoreFiles: 'Daha fazla dosya ekle',
@@ -132,17 +133,22 @@ tr_TR.strings = {
   selectFileNamed: 'Dosya Seç %{name}',
   unselectFileNamed: 'Dosya seçimini kaldır %{name}',
   openFolderNamed: 'Açık dosya %{name}'
-}
-
+};
 tr_TR.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tr_TR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"tr_TR.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"tr_TR.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"tr_TR.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.tr_TR = tr_TR
+  window.Uppy.locales.tr_TR = tr_TR;
 }
-
-module.exports = tr_TR
+module.exports = tr_TR;

@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const parseUrl = require('./parseUrl');
 describe('Transloadit/parseUrl', () => {
     beforeAll(() => {
-    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/transloadit", "http://localhost:8888/instrument-message");
+    SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/transloadit", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "Transloadit/parseUrl", "fileName": "${__filename}", "calls" : [`);
   });
 

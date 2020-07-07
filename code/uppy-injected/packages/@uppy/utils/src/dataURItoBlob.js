@@ -1,32 +1,38 @@
-module.exports = function dataURItoBlob (dataURI, opts, toFile) {
-  // get the base64 data
-  const data = dataURI.split(',')[1]
+const SRTlib = require('SRT-util');
 
-  // user may provide mime type, if not get it from data URI
-  let mimeType = opts.mimeType || dataURI.split(',')[0].split(':')[1].split(';')[0]
+module.exports = function dataURItoBlob(dataURI, opts, toFile) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":3},`);
 
-  // default to plain/text if data URI has no mimeType
+  const data = dataURI.split(',')[1];
+  let mimeType = opts.mimeType || dataURI.split(',')[0].split(':')[1].split(';')[0];
   if (mimeType == null) {
-    mimeType = 'plain/text'
+    mimeType = 'plain/text';
   }
-
-  const binary = atob(data)
-  const array = []
+  const binary = atob(data);
+  const array = [];
   for (let i = 0; i < binary.length; i++) {
-    array.push(binary.charCodeAt(i))
+    array.push(binary.charCodeAt(i));
   }
-
-  let bytes
+  let bytes;
   try {
-    bytes = new Uint8Array(array) // eslint-disable-line compat/compat
+    bytes = new Uint8Array(array);
   } catch (err) {
-    return null
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  // Convert to a File?
+    return null;
+  }
   if (toFile) {
-    return new File([bytes], opts.name || '', { type: mimeType })
-  }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  return new Blob([bytes], { type: mimeType })
-}
+    return new File([bytes], opts.name || '', {
+      type: mimeType
+    });
+  }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+  return new Blob([bytes], {
+    type: mimeType
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

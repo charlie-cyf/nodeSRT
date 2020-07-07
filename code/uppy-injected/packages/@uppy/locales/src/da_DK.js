@@ -1,5 +1,6 @@
-const da_DK = {}
+const SRTlib = require('SRT-util');
 
+const da_DK = {};
 da_DK.strings = {
   addMore: 'Tilføj flere',
   addMoreFiles: 'Tilføj flere filer',
@@ -132,17 +133,22 @@ da_DK.strings = {
     '1': 'Du skal vælge mindst %{smart_count} filer',
     '2': 'Du skal vælge mindst %{smart_count} filer'
   }
-}
-
+};
 da_DK.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"da_DK.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"da_DK.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"da_DK.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"da_DK.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.da_DK = da_DK
+  window.Uppy.locales.da_DK = da_DK;
 }
-
-module.exports = da_DK
+module.exports = da_DK;

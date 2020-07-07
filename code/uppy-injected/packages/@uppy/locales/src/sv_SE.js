@@ -1,5 +1,6 @@
-const sv_SE = {}
+const SRTlib = require('SRT-util');
 
+const sv_SE = {};
 sv_SE.strings = {
   addMore: 'Lägg till',
   addMoreFiles: 'Lägg till filer',
@@ -83,7 +84,7 @@ sv_SE.strings = {
     '1': 'Välj %{smart_count}',
     '2': 'Välj %{smart_count}'
   },
-  smile: 'Säg omelett!', // translates to "Say cheese!" - which works well in this context in Swedish
+  smile: 'Säg omelett!',
   startRecording: 'Starta inspelning',
   stopRecording: 'Avbryt inspelning',
   takePicture: 'Ta bild',
@@ -132,17 +133,22 @@ sv_SE.strings = {
     '1': 'Du måste välja minst %{smart_count} filer',
     '2': 'Du måste välja minst %{smart_count} filer'
   }
-}
-
+};
 sv_SE.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sv_SE.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sv_SE.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sv_SE.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sv_SE.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.sv_SE = sv_SE
+  window.Uppy.locales.sv_SE = sv_SE;
 }
-
-module.exports = sv_SE
+module.exports = sv_SE;

@@ -1,11 +1,14 @@
-// oauth configuration for provider services that are used.
+const SRTlib = require('SRT-util');
+
 module.exports = () => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
   return {
     google: {
       transport: 'session',
-      scope: [
-        'https://www.googleapis.com/auth/drive.readonly'
-      ],
+      scope: ['https://www.googleapis.com/auth/drive.readonly'],
       callback: '/drive/callback'
     },
     dropbox: {
@@ -28,5 +31,7 @@ module.exports = () => {
       scope: ['files.read.all', 'offline_access', 'User.Read'],
       callback: '/onedrive/callback'
     }
-  }
-}
+  };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

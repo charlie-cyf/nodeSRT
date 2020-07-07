@@ -2,10 +2,16 @@ const fs = require('fs')
 const acornWalk = require('acorn-walk')
 const path = require('path')
 const { Parser } = require("acorn")
-const astring = require('astring')
+const astring = require('astring');
+
+const {JsxGenerator} = require("./astringJsx");
+
 const { t } = require('typy')
 var _ = require('underscore');
 const { para } = require('acorn-jsx/xhtml')
+const { extend } = require('acorn-jsx-walk')
+ 
+extend(acornWalk.base)
 
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
@@ -14,6 +20,8 @@ const ASTParser = Parser.extend(
 )
 
 module.exports = class Instrumentor {
+
+    
     // codebase: path to codebase   
     constructor(codebase) {
         if (codebase.endsWith('/')) {
@@ -226,8 +234,9 @@ module.exports = class Instrumentor {
                     }
 
                     //  write to outputDir
-                    fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(tree, {comments: true}))
-
+                    // fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(tree, {comments: true}))
+                    fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(tree, {generator: JsxGenerator,
+                         comments: true}))
 
                 } catch (err) {
                     // throw err;

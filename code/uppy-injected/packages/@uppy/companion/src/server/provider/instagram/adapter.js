@@ -1,74 +1,138 @@
-exports.isFolder = (item) => {
-  return false
-}
+const SRTlib = require('SRT-util');
 
-exports.getItemIcon = (item) => {
+exports.isFolder = item => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isFolder"},');
+
+  return false;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isFolder"},');
+
+};
+exports.getItemIcon = item => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"${__filename}","paramsNumber":1},`);
+
   if (!item.images) {
-    return 'video'
-  }
-  return item.images.low_resolution.url
-}
+        SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemIcon"},');
 
-exports.getItemSubList = (item) => {
-  const subItems = []
-  item.data.forEach((subItem) => {
+    return 'video';
+  }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemIcon"},');
+
+  return item.images.low_resolution.url;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemIcon"},');
+
+};
+exports.getItemSubList = item => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"${__filename}","paramsNumber":1},`);
+
+  const subItems = [];
+  item.data.forEach(subItem => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item.data.forEach","fileName":"${__filename}","paramsNumber":1},`);
+
     if (subItem.carousel_media) {
       subItem.carousel_media.forEach((i, index) => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"subItem.carousel_media.forEach","fileName":"${__filename}","paramsNumber":2},`);
+
         const newSubItem = Object.assign({}, i, {
           id: subItem.id,
           created_time: subItem.created_time,
           carousel_id: index
-        })
-        subItems.push(newSubItem)
-      })
-    } else {
-      subItems.push(subItem)
-    }
-  })
-  return subItems
-}
+        });
+        subItems.push(newSubItem);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"subItem.carousel_media.forEach"},');
 
-exports.getItemName = (item) => {
+      });
+    } else {
+      subItems.push(subItem);
+    }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"item.data.forEach"},');
+
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemSubList"},');
+
+  return subItems;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemSubList"},');
+
+};
+exports.getItemName = item => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"${__filename}","paramsNumber":1},`);
+
   if (item && item.created_time) {
-    const ext = item.type === 'video' ? 'mp4' : 'jpeg'
-    const date = new Date(item.created_time * 1000)
+    const ext = item.type === 'video' ? 'mp4' : 'jpeg';
+    const date = new Date(item.created_time * 1000);
     const name = date.toLocaleDateString([], {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
       hour: 'numeric',
       minute: 'numeric'
-    })
-    // adding both date and carousel_id, so the name is unique
-    return `Instagram ${name}${item.carousel_id ? ' ' + item.carousel_id : ''}.${ext}`
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
+
+    return `Instagram ${name}${item.carousel_id ? ' ' + item.carousel_id : ''}.${ext}`;
   }
-  return ''
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
 
-exports.getMimeType = (item) => {
-  return item.type === 'video' ? 'video/mp4' : 'image/jpeg'
-}
+  return '';
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
 
-exports.getItemId = (item) => {
-  return `${item.id}${item.carousel_id || ''}`
-}
+};
+exports.getMimeType = item => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"${__filename}","paramsNumber":1},`);
 
-exports.getItemRequestPath = (item) => {
-  const suffix = isNaN(item.carousel_id) ? '' : `?carousel_id=${item.carousel_id}`
-  return `${item.id}${suffix}`
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getMimeType"},');
 
-exports.getItemModifiedDate = (item) => {
-  return item.created_time
-}
+  return item.type === 'video' ? 'video/mp4' : 'image/jpeg';
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getMimeType"},');
 
-exports.getItemThumbnailUrl = (item) => {
-  return item.images ? item.images.thumbnail.url : null
-}
+};
+exports.getItemId = item => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"${__filename}","paramsNumber":1},`);
 
-exports.getNextPagePath = (data) => {
-  const items = exports.getItemSubList(data)
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemId"},');
+
+  return `${item.id}${item.carousel_id || ''}`;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemId"},');
+
+};
+exports.getItemRequestPath = item => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"${__filename}","paramsNumber":1},`);
+
+  const suffix = isNaN(item.carousel_id) ? '' : `?carousel_id=${item.carousel_id}`;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemRequestPath"},');
+
+  return `${item.id}${suffix}`;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemRequestPath"},');
+
+};
+exports.getItemModifiedDate = item => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemModifiedDate"},');
+
+  return item.created_time;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemModifiedDate"},');
+
+};
+exports.getItemThumbnailUrl = item => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"${__filename}","paramsNumber":1},`);
+
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemThumbnailUrl"},');
+
+  return item.images ? item.images.thumbnail.url : null;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemThumbnailUrl"},');
+
+};
+exports.getNextPagePath = data => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"${__filename}","paramsNumber":1},`);
+
+  const items = exports.getItemSubList(data);
   if (items.length) {
-    return `recent?cursor=${exports.getItemId(items[items.length - 1])}`
+        SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getNextPagePath"},');
+
+    return `recent?cursor=${exports.getItemId(items[items.length - 1])}`;
   }
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getNextPagePath"},');
+
+};

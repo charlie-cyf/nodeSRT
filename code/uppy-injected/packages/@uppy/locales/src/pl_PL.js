@@ -1,5 +1,6 @@
-const pl_PL = {}
+const SRTlib = require('SRT-util');
 
+const pl_PL = {};
 pl_PL.strings = {
   addBulkFilesFailed: {
     '0': 'Dodanie %{smart_count} pliku nie powiodło się powodu błędu',
@@ -141,17 +142,22 @@ pl_PL.strings = {
     '1': 'Musisz wybrać przynajmniej %{smart_count} pliki',
     '2': 'Musisz wybrać przynajmniej %{smart_count} pliki'
   }
-}
-
+};
 pl_PL.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"pl_PL.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"pl_PL.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"pl_PL.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"pl_PL.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.pl_PL = pl_PL
+  window.Uppy.locales.pl_PL = pl_PL;
 }
-
-module.exports = pl_PL
+module.exports = pl_PL;

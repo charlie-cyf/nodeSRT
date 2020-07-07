@@ -1,31 +1,38 @@
-/* global jest:false, test:false, expect:false, describe:false, beforeEach:false */
+const SRTlib = require('SRT-util');
 
-const providerManager = require('../../src/server/provider')
-const { getCompanionOptions } = require('../../src/standalone/helper')
-let grantConfig
-let companionOptions
-
+const providerManager = require('../../src/server/provider');
+const {getCompanionOptions} = require('../../src/standalone/helper');
+let grantConfig;
+let companionOptions;
 describe('Test Provider options', () => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"${__filename}","paramsNumber":0},`);
+
   beforeEach(() => {
-    grantConfig = require('../../src/config/grant')()
-    companionOptions = getCompanionOptions()
-  })
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"beforeEach","fileName":"${__filename}","paramsNumber":0},`);
 
+    grantConfig = require('../../src/config/grant')();
+    companionOptions = getCompanionOptions();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"beforeEach"},');
+
+  });
   test('adds provider options', () => {
-    providerManager.addProviderOptions(companionOptions, grantConfig)
-    expect(grantConfig.dropbox.key).toBe('dropbox_key')
-    expect(grantConfig.dropbox.secret).toBe('dropbox_secret')
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"${__filename}","paramsNumber":0},`);
 
-    expect(grantConfig.google.key).toBe('google_key')
-    expect(grantConfig.google.secret).toBe('google_secret')
+    providerManager.addProviderOptions(companionOptions, grantConfig);
+    expect(grantConfig.dropbox.key).toBe('dropbox_key');
+    expect(grantConfig.dropbox.secret).toBe('dropbox_secret');
+    expect(grantConfig.google.key).toBe('google_key');
+    expect(grantConfig.google.secret).toBe('google_secret');
+    expect(grantConfig.instagram.key).toBe('instagram_key');
+    expect(grantConfig.instagram.secret).toBe('instagram_secret');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test"},');
 
-    expect(grantConfig.instagram.key).toBe('instagram_key')
-    expect(grantConfig.instagram.secret).toBe('instagram_secret')
-  })
-
+  });
   test('adds extra provider config', () => {
-    process.env.COMPANION_INSTAGRAM_KEY = '123456'
-    providerManager.addProviderOptions(getCompanionOptions(), grantConfig)
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test2","fileName":"${__filename}","paramsNumber":0},`);
+
+    process.env.COMPANION_INSTAGRAM_KEY = '123456';
+    providerManager.addProviderOptions(getCompanionOptions(), grantConfig);
     expect(grantConfig.instagram).toEqual({
       transport: 'session',
       callback: '/instagram/callback',
@@ -33,8 +40,7 @@ describe('Test Provider options', () => {
       secret: 'instagram_secret',
       protocol: 'https',
       scope: ['user_profile', 'user_media']
-    })
-
+    });
     expect(grantConfig.dropbox).toEqual({
       key: 'dropbox_key',
       secret: 'dropbox_secret',
@@ -42,61 +48,67 @@ describe('Test Provider options', () => {
       authorize_url: 'https://www.dropbox.com/oauth2/authorize',
       access_url: 'https://api.dropbox.com/oauth2/token',
       callback: '/dropbox/callback'
-    })
-
+    });
     expect(grantConfig.google).toEqual({
       key: 'google_key',
       secret: 'google_secret',
       transport: 'session',
-      scope: [
-        'https://www.googleapis.com/auth/drive.readonly'
-      ],
+      scope: ['https://www.googleapis.com/auth/drive.readonly'],
       callback: '/drive/callback'
-    })
-  })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test2"},');
 
+  });
   test('adds provider options for secret files', () => {
-    process.env.COMPANION_DROPBOX_SECRET_FILE = process.env.PWD + '/test/resources/dropbox_secret_file'
-    process.env.COMPANION_GOOGLE_SECRET_FILE = process.env.PWD + '/test/resources/google_secret_file'
-    process.env.COMPANION_INSTAGRAM_SECRET_FILE = process.env.PWD + '/test/resources/instagram_secret_file'
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test3","fileName":"${__filename}","paramsNumber":0},`);
 
-    companionOptions = getCompanionOptions()
+    process.env.COMPANION_DROPBOX_SECRET_FILE = process.env.PWD + '/test/resources/dropbox_secret_file';
+    process.env.COMPANION_GOOGLE_SECRET_FILE = process.env.PWD + '/test/resources/google_secret_file';
+    process.env.COMPANION_INSTAGRAM_SECRET_FILE = process.env.PWD + '/test/resources/instagram_secret_file';
+    companionOptions = getCompanionOptions();
+    providerManager.addProviderOptions(companionOptions, grantConfig);
+    expect(grantConfig.dropbox.secret).toBe('xobpord');
+    expect(grantConfig.google.secret).toBe('elgoog');
+    expect(grantConfig.instagram.secret).toBe('margatsni');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test3"},');
 
-    providerManager.addProviderOptions(companionOptions, grantConfig)
-
-    expect(grantConfig.dropbox.secret).toBe('xobpord')
-    expect(grantConfig.google.secret).toBe('elgoog')
-    expect(grantConfig.instagram.secret).toBe('margatsni')
-  })
-
+  });
   test('does not add provider options if protocol and host are not set', () => {
-    delete companionOptions.server.host
-    delete companionOptions.server.protocol
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test4","fileName":"${__filename}","paramsNumber":0},`);
 
-    providerManager.addProviderOptions(companionOptions, grantConfig)
-    expect(grantConfig.dropbox.key).toBeUndefined()
-    expect(grantConfig.dropbox.secret).toBeUndefined()
+    delete companionOptions.server.host;
+    delete companionOptions.server.protocol;
+    providerManager.addProviderOptions(companionOptions, grantConfig);
+    expect(grantConfig.dropbox.key).toBeUndefined();
+    expect(grantConfig.dropbox.secret).toBeUndefined();
+    expect(grantConfig.google.key).toBeUndefined();
+    expect(grantConfig.google.secret).toBeUndefined();
+    expect(grantConfig.instagram.key).toBeUndefined();
+    expect(grantConfig.instagram.secret).toBeUndefined();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test4"},');
 
-    expect(grantConfig.google.key).toBeUndefined()
-    expect(grantConfig.google.secret).toBeUndefined()
-
-    expect(grantConfig.instagram.key).toBeUndefined()
-    expect(grantConfig.instagram.secret).toBeUndefined()
-  })
-
+  });
   test('sets a master redirect uri, if oauthDomain is set', () => {
-    companionOptions.server.oauthDomain = 'domain.com'
-    providerManager.addProviderOptions(companionOptions, grantConfig)
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test5","fileName":"${__filename}","paramsNumber":0},`);
 
-    expect(grantConfig.dropbox.redirect_uri).toBe('http://domain.com/dropbox/redirect')
-    expect(grantConfig.google.redirect_uri).toBe('http://domain.com/drive/redirect')
-    expect(grantConfig.instagram.redirect_uri).toBe('http://domain.com/instagram/redirect')
-  })
-})
+    companionOptions.server.oauthDomain = 'domain.com';
+    providerManager.addProviderOptions(companionOptions, grantConfig);
+    expect(grantConfig.dropbox.redirect_uri).toBe('http://domain.com/dropbox/redirect');
+    expect(grantConfig.google.redirect_uri).toBe('http://domain.com/drive/redirect');
+    expect(grantConfig.instagram.redirect_uri).toBe('http://domain.com/instagram/redirect');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test5"},');
 
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"describe"},');
+
+});
 describe('Test Custom Provider options', () => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe2","fileName":"${__filename}","paramsNumber":0},`);
+
   test('adds custom provider options', () => {
-    const providers = providerManager.getDefaultProviders()
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test6","fileName":"${__filename}","paramsNumber":0},`);
+
+    const providers = providerManager.getDefaultProviders();
     providerManager.addCustomProviders({
       foo: {
         config: {
@@ -105,10 +117,13 @@ describe('Test Custom Provider options', () => {
         },
         module: jest.mock()
       }
-    }, providers, grantConfig)
+    }, providers, grantConfig);
+    expect(grantConfig.foo.key).toBe('foo_key');
+    expect(grantConfig.foo.secret).toBe('foo_secret');
+    expect(providers.foo).toBeTruthy();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test6"},');
 
-    expect(grantConfig.foo.key).toBe('foo_key')
-    expect(grantConfig.foo.secret).toBe('foo_secret')
-    expect(providers.foo).toBeTruthy()
-  })
-})
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"describe2"},');
+
+});

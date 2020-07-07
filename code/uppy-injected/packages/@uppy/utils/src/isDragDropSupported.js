@@ -1,22 +1,27 @@
-/**
- * Checks if the browser supports Drag & Drop (not supported on mobile devices, for example).
- *
- * @returns {boolean}
- */
-module.exports = function isDragDropSupported () {
-  const div = document.createElement('div')
+const SRTlib = require('SRT-util');
 
-  if (!('draggable' in div) || !('ondragstart' in div && 'ondrop' in div)) {
-    return false
+module.exports = function isDragDropSupported() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+
+  const div = document.createElement('div');
+  if (!(('draggable' in div)) || !(('ondragstart' in div) && ('ondrop' in div))) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+    return false;
   }
+  if (!(('FormData' in window))) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  if (!('FormData' in window)) {
-    return false
+    return false;
   }
+  if (!(('FileReader' in window))) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  if (!('FileReader' in window)) {
-    return false
+    return false;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  return true
-}
+  return true;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

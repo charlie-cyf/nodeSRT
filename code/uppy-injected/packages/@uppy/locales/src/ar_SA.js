@@ -1,5 +1,6 @@
-const ar_SA = {}
+const SRTlib = require('SRT-util');
 
+const ar_SA = {};
 ar_SA.strings = {
   addMore: 'أضف المزيد',
   addMoreFiles: 'اضف المزيد من الملفات',
@@ -132,17 +133,22 @@ ar_SA.strings = {
   selectFileNamed: 'اختر الملف %{name}',
   unselectFileNamed: 'إلغاء تحديد الملف %{name}',
   openFolderNamed: 'افتح المجلد %{name}'
-}
-
+};
 ar_SA.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ar_SA.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.ar_SA = ar_SA
+  window.Uppy.locales.ar_SA = ar_SA;
 }
-
-module.exports = ar_SA
+module.exports = ar_SA;

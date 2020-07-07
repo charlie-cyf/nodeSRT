@@ -1,5 +1,6 @@
-const de_DE = {}
+const SRTlib = require('SRT-util');
 
+const de_DE = {};
 de_DE.strings = {
   addMoreFiles: 'Dateien hinzufügen',
   addingMoreFiles: 'Dateien hinzufügen',
@@ -30,7 +31,6 @@ de_DE.strings = {
   dropHint: 'Dateien können über Drag/Drop hinzugefügt werden',
   dropPaste: 'Dateien können über Drag/Drop, Einfügen oder per %{browse} hinzugefügt werden',
   dropPasteImport: 'Dateien können über Drag/Drop, Einfügen, per %{browse} oder von folgenden Services hinzugefügt werden',
-
   editFile: 'Datei bearbeiten',
   editing: '%{file} bearbeiten',
   emptyFolderAdded: 'Keine Dateien konnten hinzugefügt werden, da der Ordner leer war',
@@ -136,17 +136,22 @@ de_DE.strings = {
   selectFileNamed: 'Datei aussuchen %{name}',
   unselectFileNamed: 'Datei abwählen %{name}',
   openFolderNamed: 'Ordner öffnen %{name}'
-}
-
+};
 de_DE.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"de_DE.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"de_DE.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"de_DE.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"de_DE.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.de_DE = de_DE
+  window.Uppy.locales.de_DE = de_DE;
 }
-
-module.exports = de_DE
+module.exports = de_DE;

@@ -1,7 +1,6 @@
-/* eslint camelcase: 0 */
+const SRTlib = require('SRT-util');
 
-const nb_NO = {}
-
+const nb_NO = {};
 nb_NO.strings = {
   chooseFile: 'Velg en fil',
   youHaveChosen: 'Du har valgt: %{fileName}',
@@ -38,17 +37,22 @@ nb_NO.strings = {
   fileProgress: 'Filstatus: Opplastingshastighet og ETA',
   numberOfSelectedFiles: 'Antall valgte filer',
   uploadAllNewFiles: 'Last opp alle nye filer'
-}
-
+};
 nb_NO.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"nb_NO.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"nb_NO.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"nb_NO.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"nb_NO.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.nb_NO = nb_NO
+  window.Uppy.locales.nb_NO = nb_NO;
 }
-
-module.exports = nb_NO
+module.exports = nb_NO;

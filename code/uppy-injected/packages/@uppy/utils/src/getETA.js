@@ -1,12 +1,21 @@
-const getSpeed = require('./getSpeed')
-const getBytesRemaining = require('./getBytesRemaining')
+const SRTlib = require('SRT-util');
 
-module.exports = function getETA (fileProgress) {
-  if (!fileProgress.bytesUploaded) return 0
+const getSpeed = require('./getSpeed');
+const getBytesRemaining = require('./getBytesRemaining');
+module.exports = function getETA(fileProgress) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
 
-  const uploadSpeed = getSpeed(fileProgress)
-  const bytesRemaining = getBytesRemaining(fileProgress)
-  const secondsRemaining = Math.round(bytesRemaining / uploadSpeed * 10) / 10
+  if (!fileProgress.bytesUploaded) {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  return secondsRemaining
-}
+    return 0;
+  }
+  const uploadSpeed = getSpeed(fileProgress);
+  const bytesRemaining = getBytesRemaining(fileProgress);
+  const secondsRemaining = Math.round(bytesRemaining / uploadSpeed * 10) / 10;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+  return secondsRemaining;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

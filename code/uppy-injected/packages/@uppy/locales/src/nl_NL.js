@@ -1,5 +1,6 @@
-const nl_NL = {}
+const SRTlib = require('SRT-util');
 
+const nl_NL = {};
 nl_NL.strings = {
   addMoreFiles: 'Extra bestanden toevoegen',
   addingMoreFiles: 'Bezig met extra bestanden toe te voegen',
@@ -125,17 +126,22 @@ nl_NL.strings = {
   selectFileNamed: 'Selecteer bestand %{name}',
   unselectFileNamed: 'Deselecteer bestand %{name}',
   openFolderNamed: 'Open map %{name}'
-}
-
+};
 nl_NL.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"nl_NL.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"nl_NL.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"nl_NL.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"nl_NL.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.nl_NL = nl_NL
+  window.Uppy.locales.nl_NL = nl_NL;
 }
-
-module.exports = nl_NL
+module.exports = nl_NL;

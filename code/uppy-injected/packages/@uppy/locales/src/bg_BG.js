@@ -1,5 +1,6 @@
-const bg_BG = {}
+const SRTlib = require('SRT-util');
 
+const bg_BG = {};
 bg_BG.strings = {
   addBulkFilesFailed: {
     '0': 'Файлът %{smart_count} не може да бъде добавен поради вътрешна грешка',
@@ -140,17 +141,22 @@ bg_BG.strings = {
     '0': 'Трябва да изберете поне %{smart_count} файл',
     '1': 'Трябва да изберете поне %{smart_count} файла'
   }
-}
-
+};
 bg_BG.pluralize = function (count) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bg_BG.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (count === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"bg_BG.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"bg_BG.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"bg_BG.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.bg_BG = bg_BG
+  window.Uppy.locales.bg_BG = bg_BG;
 }
-
-module.exports = bg_BG
+module.exports = bg_BG;

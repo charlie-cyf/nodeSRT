@@ -1,101 +1,188 @@
-'use strict'
+const SRTlib = require('SRT-util');
 
-const RequestClient = require('./RequestClient')
-const tokenStorage = require('./tokenStorage')
+'use strict';
+const RequestClient = require('./RequestClient');
+const tokenStorage = require('./tokenStorage');
+const _getName = id => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getName","fileName":"${__filename}","paramsNumber":1},`);
 
-const _getName = (id) => {
-  return id.split('-').map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join(' ')
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_getName"},');
 
+  return id.split('-').map(s => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.id.split.map.join.id.split.map","fileName":"${__filename}","paramsNumber":1},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.id.split.map.join.id.split.map"},');
+
+    return s.charAt(0).toUpperCase() + s.slice(1);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.id.split.map.join.id.split.map"},');
+
+  }).join(' ');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_getName"},');
+
+};
 module.exports = class Provider extends RequestClient {
-  constructor (uppy, opts) {
-    super(uppy, opts)
-    this.provider = opts.provider
-    this.id = this.provider
-    this.authProvider = opts.authProvider || this.provider
-    this.name = this.opts.name || _getName(this.id)
-    this.pluginId = this.opts.pluginId
-    this.tokenKey = `companion-${this.pluginId}-auth-token`
-  }
+  constructor(uppy, opts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
-  headers () {
+    super(uppy, opts);
+    this.provider = opts.provider;
+    this.id = this.provider;
+    this.authProvider = opts.authProvider || this.provider;
+    this.name = this.opts.name || _getName(this.id);
+    this.pluginId = this.opts.pluginId;
+    this.tokenKey = `companion-${this.pluginId}-auth-token`;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
+
+  }
+  headers() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"headers","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"headers"},');
+
     return new Promise((resolve, reject) => {
-      super.headers().then((headers) => {
-        this.getAuthToken().then((token) => {
-          resolve(Object.assign({}, headers, { 'uppy-auth-token': token }))
-        })
-      }).catch(reject)
-    })
-  }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
-  onReceiveResponse (response) {
-    response = super.onReceiveResponse(response)
-    const plugin = this.uppy.getPlugin(this.pluginId)
-    const oldAuthenticated = plugin.getPluginState().authenticated
-    const authenticated = oldAuthenticated ? response.status !== 401 : response.status < 400
-    plugin.setPluginState({ authenticated })
-    return response
-  }
+      super.headers().then(headers => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"headers.then.catch.headers.then","fileName":"${__filename}","paramsNumber":1},`);
 
-  // @todo(i.olarewaju) consider whether or not this method should be exposed
-  setAuthToken (token) {
-    return this.uppy.getPlugin(this.pluginId).storage.setItem(this.tokenKey, token)
-  }
+        this.getAuthToken().then(token => {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"getAuthToken.then","fileName":"${__filename}","paramsNumber":1},`);
 
-  getAuthToken () {
-    return this.uppy.getPlugin(this.pluginId).storage.getItem(this.tokenKey)
-  }
+          resolve(Object.assign({}, headers, {
+            'uppy-auth-token': token
+          }));
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"getAuthToken.then"},');
 
-  authUrl () {
-    return `${this.hostname}/${this.id}/connect`
-  }
+        });
+                SRTlib.send('{"type":"FUNCTIONEND","function":"headers.then.catch.headers.then"},');
 
-  fileUrl (id) {
-    return `${this.hostname}/${this.id}/get/${id}`
-  }
+      }).catch(reject);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression"},');
 
-  list (directory) {
-    return this.get(`${this.id}/list/${directory || ''}`)
-  }
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"headers"},');
 
-  logout () {
+  }
+  onReceiveResponse(response) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onReceiveResponse","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+
+    response = super.onReceiveResponse(response);
+    const plugin = this.uppy.getPlugin(this.pluginId);
+    const oldAuthenticated = plugin.getPluginState().authenticated;
+    const authenticated = oldAuthenticated ? response.status !== 401 : response.status < 400;
+    plugin.setPluginState({
+      authenticated
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onReceiveResponse"},');
+
+    return response;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onReceiveResponse"},');
+
+  }
+  setAuthToken(token) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setAuthToken","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setAuthToken"},');
+
+    return this.uppy.getPlugin(this.pluginId).storage.setItem(this.tokenKey, token);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setAuthToken"},');
+
+  }
+  getAuthToken() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getAuthToken","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getAuthToken"},');
+
+    return this.uppy.getPlugin(this.pluginId).storage.getItem(this.tokenKey);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"getAuthToken"},');
+
+  }
+  authUrl() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authUrl","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"authUrl"},');
+
+    return `${this.hostname}/${this.id}/connect`;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"authUrl"},');
+
+  }
+  fileUrl(id) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"fileUrl","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"fileUrl"},');
+
+    return `${this.hostname}/${this.id}/get/${id}`;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"fileUrl"},');
+
+  }
+  list(directory) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
+
+    return this.get(`${this.id}/list/${directory || ''}`);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
+
+  }
+  logout() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
+
     return new Promise((resolve, reject) => {
-      this.get(`${this.id}/logout`)
-        .then((res) => {
-          this.uppy.getPlugin(this.pluginId).storage.removeItem(this.tokenKey)
-            .then(() => resolve(res))
-            .catch(reject)
-        }).catch(reject)
-    })
-  }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
 
-  static initPlugin (plugin, opts, defaultOpts) {
-    plugin.type = 'acquirer'
-    plugin.files = []
+      this.get(`${this.id}/logout`).then(res => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"get.then.catch.get.then","fileName":"${__filename}","paramsNumber":1},`);
+
+        this.uppy.getPlugin(this.pluginId).storage.removeItem(this.tokenKey).then(() => {
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"storage.removeItem.then.catch.storage.removeItem.then","fileName":"${__filename}","paramsNumber":0},`);
+
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"storage.removeItem.then.catch.storage.removeItem.then"},');
+
+          return resolve(res);
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"storage.removeItem.then.catch.storage.removeItem.then"},');
+
+        }).catch(reject);
+                SRTlib.send('{"type":"FUNCTIONEND","function":"get.then.catch.get.then"},');
+
+      }).catch(reject);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
+
+  }
+  static initPlugin(plugin, opts, defaultOpts) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initPlugin","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+
+    plugin.type = 'acquirer';
+    plugin.files = [];
     if (defaultOpts) {
-      plugin.opts = Object.assign({}, defaultOpts, opts)
+      plugin.opts = Object.assign({}, defaultOpts, opts);
     }
-
     if (opts.serverUrl || opts.serverPattern) {
-      throw new Error('`serverUrl` and `serverPattern` have been renamed to `companionUrl` and `companionAllowedHosts` respectively in the 0.30.5 release. Please consult the docs (for example, https://uppy.io/docs/instagram/ for the Instagram plugin) and use the updated options.`')
-    }
+            SRTlib.send('{"type":"FUNCTIONEND","function":"initPlugin"},');
 
+      throw new Error('`serverUrl` and `serverPattern` have been renamed to `companionUrl` and `companionAllowedHosts` respectively in the 0.30.5 release. Please consult the docs (for example, https://uppy.io/docs/instagram/ for the Instagram plugin) and use the updated options.`');
+    }
     if (opts.companionAllowedHosts) {
-      const pattern = opts.companionAllowedHosts
-      // validate companionAllowedHosts param
+      const pattern = opts.companionAllowedHosts;
       if (typeof pattern !== 'string' && !Array.isArray(pattern) && !(pattern instanceof RegExp)) {
-        throw new TypeError(`${plugin.id}: the option "companionAllowedHosts" must be one of string, Array, RegExp`)
+                SRTlib.send('{"type":"FUNCTIONEND","function":"initPlugin"},');
+
+        throw new TypeError(`${plugin.id}: the option "companionAllowedHosts" must be one of string, Array, RegExp`);
       }
-      plugin.opts.companionAllowedHosts = pattern
+      plugin.opts.companionAllowedHosts = pattern;
     } else {
-      // does not start with https://
-      if (/^(?!https?:\/\/).*$/i.test(opts.companionUrl)) {
-        plugin.opts.companionAllowedHosts = `https://${opts.companionUrl.replace(/^\/\//, '')}`
+      if ((/^(?!https?:\/\/).*$/i).test(opts.companionUrl)) {
+        plugin.opts.companionAllowedHosts = `https://${opts.companionUrl.replace(/^\/\//, '')}`;
       } else {
-        plugin.opts.companionAllowedHosts = opts.companionUrl
+        plugin.opts.companionAllowedHosts = opts.companionUrl;
       }
     }
+    plugin.storage = plugin.opts.storage || tokenStorage;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"initPlugin"},');
 
-    plugin.storage = plugin.opts.storage || tokenStorage
   }
-}
+};

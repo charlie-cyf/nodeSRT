@@ -37,12 +37,12 @@ module.exports.getDiffs = function (AST1, AST2) {
                     if(!node2[k] && node1[k] !== node2[k]) {
                         // console.log('set true in 2', node1.type);
                         diffList.push(tancestors);
-                    } else {
+                    } else if( k !== 'start' && k !== 'end' ){
                         getDiffAncestors(node1[k], node2[k], tancestors);
                     }
                 }
             } else {
-                if(node1[k] !== node2[k] && k !== 'start' && k !== 'end' && k !== 'comments') {
+                if(node1[k] !== node2[k] && k !== 'start' && k !== 'end' && k !== 'comments' && k !== 'line' && k !== 'column') {
                     // console.log('set true in 3', node1.type, k);
                     diffList.push(tancestors);
                 }

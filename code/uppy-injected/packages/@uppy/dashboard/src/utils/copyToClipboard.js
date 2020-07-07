@@ -1,18 +1,15 @@
-/**
- * Copies text to clipboard by creating an almost invisible textarea,
- * adding text there, then running execCommand('copy').
- * Falls back to prompt() when the easy way fails (hello, Safari!)
- * From http://stackoverflow.com/a/30810322
- *
- * @param {string} textToCopy
- * @param {string} fallbackString
- * @returns {Promise}
- */
-module.exports = function copyToClipboard (textToCopy, fallbackString) {
-  fallbackString = fallbackString || 'Copy the URL below'
+const SRTlib = require('SRT-util');
 
-  return new Promise((resolve) => {
-    const textArea = document.createElement('textarea')
+module.exports = function copyToClipboard(textToCopy, fallbackString) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":2},`);
+
+  fallbackString = fallbackString || 'Copy the URL below';
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+  return new Promise(resolve => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.copyToClipboard.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":1},`);
+
+    const textArea = document.createElement('textarea');
     textArea.setAttribute('style', {
       position: 'fixed',
       top: 0,
@@ -24,28 +21,39 @@ module.exports = function copyToClipboard (textToCopy, fallbackString) {
       outline: 'none',
       boxShadow: 'none',
       background: 'transparent'
-    })
-
-    textArea.value = textToCopy
-    document.body.appendChild(textArea)
-    textArea.select()
-
+    });
+    textArea.value = textToCopy;
+    document.body.appendChild(textArea);
+    textArea.select();
     const magicCopyFailed = () => {
-      document.body.removeChild(textArea)
-      window.prompt(fallbackString, textToCopy)
-      resolve()
-    }
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"magicCopyFailed","fileName":"${__filename}","paramsNumber":0},`);
 
+      document.body.removeChild(textArea);
+      window.prompt(fallbackString, textToCopy);
+      resolve();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"magicCopyFailed"},');
+
+    };
     try {
-      const successful = document.execCommand('copy')
+      const successful = document.execCommand('copy');
       if (!successful) {
-        return magicCopyFailed('copy command unavailable')
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement.NewExpression"},');
+
+        return magicCopyFailed('copy command unavailable');
       }
-      document.body.removeChild(textArea)
-      return resolve()
+      document.body.removeChild(textArea);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement.NewExpression"},');
+
+      return resolve();
     } catch (err) {
-      document.body.removeChild(textArea)
-      return magicCopyFailed(err)
+      document.body.removeChild(textArea);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement.NewExpression"},');
+
+      return magicCopyFailed(err);
     }
-  })
-}
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement.NewExpression"},');
+
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
+
+};

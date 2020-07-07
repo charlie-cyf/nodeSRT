@@ -4,7 +4,7 @@ const Core = require('@uppy/core');
 const Transloadit = require('./');
 describe('Transloadit', () => {
     beforeAll(() => {
-    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/transloadit", "http://localhost:8888/instrument-message");
+    SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/transloadit", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "Transloadit", "fileName": "${__filename}", "calls" : [`);
   });
 

@@ -1,5 +1,6 @@
-const sk_SK = {}
+const SRTlib = require('SRT-util');
 
+const sk_SK = {};
 sk_SK.strings = {
   addBulkFilesFailed: {
     '0': 'Súbor %{smart_count} sa nepodarilo pridať z dôvodu vnútornej chyby',
@@ -149,17 +150,22 @@ sk_SK.strings = {
     '1': 'Musíte vybrať aspoň %{smart_count} súbory',
     '2': 'Musíte vybrať aspoň %{smart_count} súborov'
   }
-}
-
+};
 sk_SK.pluralize = function (count) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sk_SK.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (count === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"sk_SK.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.sk_SK = sk_SK
+  window.Uppy.locales.sk_SK = sk_SK;
 }
-
-module.exports = sk_SK
+module.exports = sk_SK;

@@ -1,4 +1,4 @@
-var SRTlib = require('SRT-util');
+const SRTlib = require('SRT-util');
 
 var zh_TW = {};
 zh_TW.strings = {
@@ -143,22 +143,21 @@ zh_TW.strings = {
     '2': '您至少要選擇%{smart_count}個檔案'
   }
 };
-
 zh_TW.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"zh_TW.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"zh_TW.pluralize","fileName":"${__filename}","paramsNumber":1},`);
 
   if (n === 1) {
-    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_TW.pluralize"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"zh_TW.pluralize"},');
+
     return 0;
   }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_TW.pluralize"},');
 
-  SRTlib.send('{"type":"FUNCTIONEND","function":"zh_TW.pluralize"},');
   return 1;
-  SRTlib.send('{"type":"FUNCTIONEND","function":"zh_TW.pluralize"},');
-};
+    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_TW.pluralize"},');
 
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
   window.Uppy.locales.zh_TW = zh_TW;
 }
-
 module.exports = zh_TW;

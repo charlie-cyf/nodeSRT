@@ -58,30 +58,30 @@ const excepts = [
 
     fs.copyFileSync(path.join(InstrumentorSrc, 'jest.setup.js'), path.join(injectedCodebase, 'jest.setup.js'))
 
-    // run npm install in injected folder
-    child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm install', { stdio: [0, 1, 2] });
+    // // run npm install in injected folder
+    // child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm install', { stdio: [0, 1, 2] });
 
-    // copy SRTlib.js to injected node_modules
-    const SRTUtilFolder = path.join(injectedCodebase, 'node_modules', 'SRT-util');
-    if (!fs.existsSync(SRTUtilFolder)) {
-        fs.mkdirSync(SRTUtilFolder);
-    }
-    fs.copyFileSync(SRTlibPath, path.join(SRTUtilFolder, 'index.js'))
+    // // copy SRTlib.js to injected node_modules
+    // const SRTUtilFolder = path.join(injectedCodebase, 'node_modules', 'SRT-util');
+    // if (!fs.existsSync(SRTUtilFolder)) {
+    //     fs.mkdirSync(SRTUtilFolder);
+    // }
+    // fs.copyFileSync(SRTlibPath, path.join(SRTUtilFolder, 'index.js'))
 
 
-    // run tests in injected codebase
-    child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm run test:unit', { stdio: [0, 1, 2] })
+    // // run tests in injected codebase
+    // child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm run test:unit', { stdio: [0, 1, 2] })
 
-    // get call graph
-    let callGraph;
+    // // get call graph
+    // let callGraph;
 
-    await axios.get('http://localhost:8888/log-path').then(res => {
-        callGraph = fs.readFileSync(res.data.path);
-        callGraph = '[' + callGraph + ']'
-        callGraph = callGraph.replace(/,]/g, ']');
-        fs.writeFileSync(res.data.path + '.json', callGraph)
-    });
-    // console.log('callgraph in axios', JSON.parse(callGraph))
+    // await axios.get('http://localhost:8888/log-path').then(res => {
+    //     callGraph = fs.readFileSync(res.data.path);
+    //     callGraph = '[' + callGraph + ']'
+    //     callGraph = callGraph.replace(/,]/g, ']');
+    //     fs.writeFileSync(res.data.path + '.json', callGraph)
+    // });
+    // // console.log('callgraph in axios', JSON.parse(callGraph))
 
 
 })()

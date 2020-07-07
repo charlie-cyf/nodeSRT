@@ -1,39 +1,58 @@
-const tokenService = require('../helpers/jwt')
-const { errorToResponse } = require('../provider/error')
+const SRTlib = require('SRT-util');
 
-/**
- *
- * @param {object} req
- * @param {object} res
- */
-function logout (req, res, next) {
+const tokenService = require('../helpers/jwt');
+const {errorToResponse} = require('../provider/error');
+function logout(req, res, next) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":3},`);
+
   const cleanSession = () => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanSession","fileName":"${__filename}","paramsNumber":0},`);
+
     if (req.session.grant) {
-      req.session.grant.state = null
-      req.session.grant.dynamic = null
+      req.session.grant.state = null;
+      req.session.grant.dynamic = null;
     }
-  }
-  const providerName = req.params.providerName
-  const token = req.companion.providerTokens ? req.companion.providerTokens[providerName] : null
+        SRTlib.send('{"type":"FUNCTIONEND","function":"cleanSession"},');
+
+  };
+  const providerName = req.params.providerName;
+  const token = req.companion.providerTokens ? req.companion.providerTokens[providerName] : null;
   if (token) {
-    req.companion.provider.logout({ token }, (err, data) => {
+    req.companion.provider.logout({
+      token
+    }, (err, data) => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.companion.provider.logout","fileName":"${__filename}","paramsNumber":2},`);
+
       if (err) {
-        const errResp = errorToResponse(err)
+        const errResp = errorToResponse(err);
         if (errResp) {
-          return res.status(errResp.code).json({ message: errResp.message })
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"req.companion.provider.logout"},');
+
+          return res.status(errResp.code).json({
+            message: errResp.message
+          });
         }
-        return next(err)
+                SRTlib.send('{"type":"FUNCTIONEND","function":"req.companion.provider.logout"},');
+
+        return next(err);
       }
+      delete req.companion.providerTokens[providerName];
+      tokenService.removeFromCookies(res, req.companion.options, req.companion.provider.authProviderName);
+      cleanSession();
+      res.json(Object.assign({
+        ok: true
+      }, data));
+            SRTlib.send('{"type":"FUNCTIONEND","function":"req.companion.provider.logout"},');
 
-      delete req.companion.providerTokens[providerName]
-      tokenService.removeFromCookies(res, req.companion.options, req.companion.provider.authProviderName)
-      cleanSession()
-      res.json(Object.assign({ ok: true }, data))
-    })
+    });
   } else {
-    cleanSession()
-    res.json({ ok: true, revoked: false })
+    cleanSession();
+    res.json({
+      ok: true,
+      revoked: false
+    });
   }
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"logout","paramsNumber":3},');
 
-module.exports = logout
+}
+module.exports = logout;

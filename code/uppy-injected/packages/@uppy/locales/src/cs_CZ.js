@@ -1,5 +1,6 @@
-const cs_CZ = {}
+const SRTlib = require('SRT-util');
 
+const cs_CZ = {};
 cs_CZ.strings = {
   addMore: 'Přidat další',
   addMoreFiles: 'Přidat další soubory',
@@ -133,17 +134,22 @@ cs_CZ.strings = {
     '1': 'Je třeba vybrat alespoň %{smart_count} souborů',
     '2': 'Je třeba vybrat alespoň %{smart_count} souborů'
   }
-}
-
+};
 cs_CZ.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cs_CZ.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"cs_CZ.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"cs_CZ.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"cs_CZ.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.cs_CZ = cs_CZ
+  window.Uppy.locales.cs_CZ = cs_CZ;
 }
-
-module.exports = cs_CZ
+module.exports = cs_CZ;

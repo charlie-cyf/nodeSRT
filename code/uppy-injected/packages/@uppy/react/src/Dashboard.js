@@ -1,62 +1,77 @@
-const React = require('react')
-const DashboardPlugin = require('@uppy/dashboard')
-const basePropTypes = require('./propTypes').dashboard
+const SRTlib = require('SRT-util');
 
-const h = React.createElement
-
-/**
- * React Component that renders a Dashboard for an Uppy instance. This component
- * renders the Dashboard inline, so you can put it anywhere you want.
- */
-
+const React = require('react');
+const DashboardPlugin = require('@uppy/dashboard');
+const basePropTypes = require('./propTypes').dashboard;
+const h = React.createElement;
 class Dashboard extends React.Component {
-  componentDidMount () {
-    this.installPlugin()
-  }
+  componentDidMount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
 
-  componentDidUpdate (prevProps) {
+    this.installPlugin();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
+
+  }
+  componentDidUpdate(prevProps) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidUpdate","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Dashboard"}},`);
+
     if (prevProps.uppy !== this.props.uppy) {
-      this.uninstallPlugin(prevProps)
-      this.installPlugin()
+      this.uninstallPlugin(prevProps);
+      this.installPlugin();
     }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidUpdate"},');
+
   }
+  componentWillUnmount() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
 
-  componentWillUnmount () {
-    this.uninstallPlugin()
+    this.uninstallPlugin();
+        SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
+
   }
+  installPlugin() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"installPlugin","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
 
-  installPlugin () {
-    const uppy = this.props.uppy
-    const options = Object.assign(
-      { id: 'react:Dashboard' },
-      this.props,
-      { target: this.container }
-    )
-    delete options.uppy
-    uppy.use(DashboardPlugin, options)
+    const uppy = this.props.uppy;
+    const options = Object.assign({
+      id: 'react:Dashboard'
+    }, this.props, {
+      target: this.container
+    });
+    delete options.uppy;
+    uppy.use(DashboardPlugin, options);
+    this.plugin = uppy.getPlugin(options.id);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"installPlugin"},');
 
-    this.plugin = uppy.getPlugin(options.id)
   }
+  uninstallPlugin(props = this.props) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstallPlugin","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Dashboard"}},`);
 
-  uninstallPlugin (props = this.props) {
-    const uppy = props.uppy
+    const uppy = props.uppy;
+    uppy.removePlugin(this.plugin);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uninstallPlugin"},');
 
-    uppy.removePlugin(this.plugin)
   }
+  render() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
 
-  render () {
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
     return h('div', {
-      ref: (container) => {
-        this.container = container
+      ref: container => {
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h.ref","fileName":"${__filename}","paramsNumber":1},`);
+
+        this.container = container;
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.ref"},');
+
       }
-    })
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
+
   }
 }
-
-Dashboard.propTypes = basePropTypes
-
+Dashboard.propTypes = basePropTypes;
 Dashboard.defaultProps = {
   inline: true
-}
-
-module.exports = Dashboard
+};
+module.exports = Dashboard;

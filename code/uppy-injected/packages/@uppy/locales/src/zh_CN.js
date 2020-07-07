@@ -1,5 +1,6 @@
-const zh_CN = {}
+const SRTlib = require('SRT-util');
 
+const zh_CN = {};
 zh_CN.strings = {
   addBulkFilesFailed: {
     '0': '内部错误导致添加 %{smart_count} 个文件失败',
@@ -142,17 +143,22 @@ zh_CN.strings = {
     '0': '您至少要选择 %{smart_count} 个文件',
     '1': '您至少要选择 %{smart_count} 个文件'
   }
-}
-
+};
 zh_CN.pluralize = function (n) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"zh_CN.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+
   if (n === 1) {
-    return 0
+        SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
+
+    return 0;
   }
-  return 1
-}
+    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
 
+  return 1;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');
+
+};
 if (typeof window !== 'undefined' && typeof window.Uppy !== 'undefined') {
-  window.Uppy.locales.zh_CN = zh_CN
+  window.Uppy.locales.zh_CN = zh_CN;
 }
-
-module.exports = zh_CN
+module.exports = zh_CN;

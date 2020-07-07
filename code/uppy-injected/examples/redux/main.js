@@ -1,82 +1,118 @@
-const { createStore, compose, combineReducers, applyMiddleware } = require('redux')
-const logger = require('redux-logger').default
-const Uppy = require('@uppy/core')
-const uppyReduxStore = require('@uppy/store-redux')
-const Dashboard = require('@uppy/dashboard')
-const Tus = require('@uppy/tus')
+const SRTlib = require('SRT-util');
 
-function counter (state = 0, action) {
+const {createStore, compose, combineReducers, applyMiddleware} = require('redux');
+const logger = require('redux-logger').default;
+const Uppy = require('@uppy/core');
+const uppyReduxStore = require('@uppy/store-redux');
+const Dashboard = require('@uppy/dashboard');
+const Tus = require('@uppy/tus');
+function counter(state = 0, action) {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"counter","fileName":"${__filename}","paramsNumber":2},`);
+
   switch (action.type) {
     case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
-    default:
-      return state
-  }
-}
+            SRTlib.send('{"type":"FUNCTIONEND","function":"counter"},');
 
+      return state + 1;
+    case 'DECREMENT':
+            SRTlib.send('{"type":"FUNCTIONEND","function":"counter"},');
+
+      return state - 1;
+    default:
+            SRTlib.send('{"type":"FUNCTIONEND","function":"counter"},');
+
+      return state;
+  }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"counter","paramsNumber":2},');
+
+}
 const reducer = combineReducers({
   counter: counter,
-  // You don't have to use the `uppy` key. But if you don't,
-  // you need to provide a custom `selector` to the `uppyReduxStore` call below.
   uppy: uppyReduxStore.reducer
-})
-
-let enhancer = applyMiddleware(
-  uppyReduxStore.middleware(),
-  logger
-)
+});
+let enhancer = applyMiddleware(uppyReduxStore.middleware(), logger);
 if (window.__REDUX_DEVTOOLS_EXTENSION__) {
-  enhancer = compose(enhancer, window.__REDUX_DEVTOOLS_EXTENSION__())
+  enhancer = compose(enhancer, window.__REDUX_DEVTOOLS_EXTENSION__());
 }
+const store = createStore(reducer, enhancer);
+const valueEl = document.querySelector('#value');
+function getCounter() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getCounter","fileName":"${__filename}","paramsNumber":0},`);
 
-const store = createStore(reducer, enhancer)
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getCounter"},');
 
-// Counter example from https://github.com/reactjs/redux/blob/master/examples/counter-vanilla/index.html
-const valueEl = document.querySelector('#value')
+  return store.getState().counter;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"getCounter","paramsNumber":0},');
 
-function getCounter () { return store.getState().counter }
-function render () {
-  valueEl.innerHTML = getCounter().toString()
 }
-render()
-store.subscribe(render)
+function render() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0},`);
 
+  valueEl.innerHTML = getCounter().toString();
+    SRTlib.send('{"type":"FUNCTIONEND","function":"render","paramsNumber":0},');
+
+}
+render();
+store.subscribe(render);
 document.querySelector('#increment').onclick = () => {
-  store.dispatch({ type: 'INCREMENT' })
-}
-document.querySelector('#decrement').onclick = () => {
-  store.dispatch({ type: 'DECREMENT' })
-}
-document.querySelector('#incrementIfOdd').onclick = () => {
-  if (getCounter() % 2 !== 0) {
-    store.dispatch({ type: 'INCREMENT' })
-  }
-}
-document.querySelector('#incrementAsync').onclick = () => {
-  setTimeout(() => store.dispatch({ type: 'INCREMENT' }), 1000)
-}
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick","fileName":"${__filename}","paramsNumber":0},`);
 
-// Uppy using the same store
+  store.dispatch({
+    type: 'INCREMENT'
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick"},');
+
+};
+document.querySelector('#decrement').onclick = () => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick2","fileName":"${__filename}","paramsNumber":0},`);
+
+  store.dispatch({
+    type: 'DECREMENT'
+  });
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick2"},');
+
+};
+document.querySelector('#incrementIfOdd').onclick = () => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick3","fileName":"${__filename}","paramsNumber":0},`);
+
+  if (getCounter() % 2 !== 0) {
+    store.dispatch({
+      type: 'INCREMENT'
+    });
+  }
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick3"},');
+
+};
+document.querySelector('#incrementAsync').onclick = () => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick4","fileName":"${__filename}","paramsNumber":0},`);
+
+  setTimeout(() => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
+
+    return store.dispatch({
+      type: 'INCREMENT'
+    });
+        SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
+
+  }, 1000);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick4"},');
+
+};
 const uppy = Uppy({
   id: 'redux',
-  store: uppyReduxStore({ store: store }),
-  // If we had placed our `reducer` elsewhere in Redux, eg. under an `uppy` key in the state for a profile page,
-  // we'd do something like:
-  //
-  // store: uppyReduxStore({
-  //   store: store,
-  //   id: 'avatar',
-  //   selector: state => state.pages.profile.uppy
-  // }),
+  store: uppyReduxStore({
+    store: store
+  }),
   debug: true
-})
+});
 uppy.use(Dashboard, {
   target: '#app',
   inline: true,
   width: 400
-})
-uppy.use(Tus, { endpoint: 'https://master.tus.io/' })
-
-window.uppy = uppy
+});
+uppy.use(Tus, {
+  endpoint: 'https://master.tus.io/'
+});
+window.uppy = uppy;

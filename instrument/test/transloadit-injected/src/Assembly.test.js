@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const Assembly = require('./Assembly');
 describe('Transloadit/Assembly', () => {
     beforeAll(() => {
-    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/transloadit", "http://localhost:8888/instrument-message");
+    SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/transloadit", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "Transloadit/Assembly", "fileName": "${__filename}", "calls" : [`);
   });
 
@@ -13,7 +13,7 @@ describe('Transloadit/Assembly', () => {
 
   describe('status diffing', () => {
         beforeAll(() => {
-      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/transloadit", "http://localhost:8888/instrument-message");
+      SRTlib.startLogger("/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/instrument/test/transloadit", "http://localhost:8888/instrument-message");
       SRTlib.send(`{ "testSuiteName": "status%20diffing", "fileName": "${__filename}", "calls" : [`);
     });
 
