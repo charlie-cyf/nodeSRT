@@ -31,5 +31,7 @@ const changes = changeAnalysis.getChangesAncestors('../../uppy', diffFile);
 //     console.log(c.filename)
 // })
 
-const testSelector = new TestSelector(undefined, undefined, undefined);
-testSelector.getReducedTests(changes)
+const callGraph = JSON.parse(fs.readFileSync('../tmp/uppy.log.json'));
+const testSelector = new TestSelector('../code/uppy', callGraph, undefined, undefined);
+const selected = testSelector.getReducedTests(changes)
+console.log(selected)

@@ -1,9 +1,10 @@
-const { findKey } = require("underscore");
+const { findKey, select } = require("underscore");
 const Instrumentor = require('../instrument/instrumentor')
 
 
 module.exports = class TestSelector {
-    constructor(callGraph, fileDependency, classDependency) {
+    constructor(codebase, callGraph, fileDependency, classDependency) {
+        this.codebase = codebase;
         this.callGraph = callGraph;
         this.fileDependency = fileDependency;
         this.classDependency = classDependency;
@@ -22,12 +23,9 @@ module.exports = class TestSelector {
         * 
         */
         changes.forEach(change => {
-            console.log(change.filename);
             let unifiedChanges = [];
             if(change.diffAncestors) {
                 change.diffAncestors.forEach(ancestors => {
-                    // TODO handle cases when changes happend outside a function.
-                    // TODO handle cases when cahnges happend outside a function and class.
                     unifiedChanges.push({
                         functionName: this.getUnifiedChangeName(ancestors),
                         className: this.findClassName(ancestors)
@@ -35,7 +33,6 @@ module.exports = class TestSelector {
                 })
             }
             change.unifiedChanges = unifiedChanges;
-            console.log(change.unifiedChanges);
         });
 
 
@@ -43,13 +40,47 @@ module.exports = class TestSelector {
         /*
         *   selectedTests:
         *   [
-        *       {filename, suiteName, testName}
+        *       {testFile, suiteName, testName}
         *   ]
         */
         let selectedTests = [];
-        const graphVisitor = function(graph) {
-            
+        const theCodeBase = this.codebase;
+        const graphVisitor = function(node, suiteName, testName, testFile) {
+            if(node.testSuiteName){
+                suiteName = node.testSuiteName;
+                node.calls.forEach(test => {
+                    graphVisitor(test, suiteName, testName, testFile)
+                })
+            } else if (node.testName) {
+                node.calls.forEach(ele => {                    
+                    graphVisitor(ele, suiteName, node.testName, node.fileName);
+                })
+            } else if (node.type && node.type === 'FUNCTIONSTART') {
+                changes.forEach(change => {
+                    if(change.filename === node.fileName.replace(theCodeBase, "")) {
+                        change.unifiedChanges.forEach(ele => {
+                            // check if change function is node
+                            if(ele.functionName.anonymous === node.anonymous && ele.functionName.paramsNumber === node.paramsNumber && ele.functionName.functionName === node.function.split('###')[0]){
+                                if(selectedTests.filter(t => t.testFile === testFile && t.suiteName === suiteName && t.testFile === testFile).length === 0){
+                                    selectedTests.push({testFile, suiteName, testName});
+                                }
+                                // mark change selected
+                                ele.selected = true;
+                            }
+                        })
+                    }
+                })
+            }
         }
+
+        this.callGraph.forEach(node => graphVisitor(node))
+
+        // TODO handle cases when changes happend outside a function.
+        // TODO handle cases when cahnges happend outside a function and class.
+        // TODO select new added tests
+                    
+
+        return selectedTests;
 
         
     }

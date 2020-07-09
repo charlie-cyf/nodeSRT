@@ -102,6 +102,7 @@ module.exports.getChangesAncestors = function (codeBase, diff) {
             const afterAST = ASTgenerator.parse(change.content);
             change.diffAncestors = this.getDiffs(beforeAST, afterAST);
         } 
+        change.filename = change.filename.replace(path.resolve(codeBase), "");
     })
 
     return allChanges;
