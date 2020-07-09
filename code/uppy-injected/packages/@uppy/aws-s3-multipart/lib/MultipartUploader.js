@@ -277,11 +277,11 @@ var MultipartUploader = /*#__PURE__*/function () {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then"},');
     }, function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.Promise.resolve.then.then.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.Promise.resolve.then.then.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this4._onError(err);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadPart"},');
   };
@@ -352,14 +352,14 @@ var MultipartUploader = /*#__PURE__*/function () {
       SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener"},');
     });
     xhr.addEventListener('load', function (ev) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"xhr.addEventListener2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"xhr.addEventListener###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       remove(_this5.uploading, ev.target);
       _this5.chunkState[index].busy = false;
 
       if (ev.target.status < 200 || ev.target.status >= 300) {
         _this5._onError(new Error('Non 2xx'));
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###2"},');
         return;
       }
 
@@ -370,16 +370,16 @@ var MultipartUploader = /*#__PURE__*/function () {
       if (etag === null) {
         _this5._onError(new Error('AwsS3/Multipart: Could not read the ETag header. This likely means CORS is not configured correctly on the S3 Bucket. Seee https://uppy.io/docs/aws-s3-multipart#S3-Bucket-Configuration for instructions.'));
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###2"},');
         return;
       }
 
       _this5._onPartComplete(index, etag);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###2"},');
     });
     xhr.addEventListener('error', function (ev) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"xhr.addEventListener3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"xhr.addEventListener###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       remove(_this5.uploading, ev.target);
       _this5.chunkState[index].busy = false;
       var error = new Error('Unknown error');
@@ -387,7 +387,7 @@ var MultipartUploader = /*#__PURE__*/function () {
 
       _this5._onError(error);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###3"},');
     });
     xhr.send(body);
     SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadPartBytes"},');
@@ -420,11 +420,11 @@ var MultipartUploader = /*#__PURE__*/function () {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then"},');
     }, function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.Promise.resolve.then.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.Promise.resolve.then.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this6._onError(err);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_completeUpload"},');
   };
@@ -448,8 +448,8 @@ var MultipartUploader = /*#__PURE__*/function () {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then"},');
     }, function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"createdPromise.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"createdPromise.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then###2"},');
     });
     this.uploading = [];
     SRTlib.send('{"type":"FUNCTIONEND","function":"_abortUpload"},');

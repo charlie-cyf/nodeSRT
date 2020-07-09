@@ -103,13 +103,13 @@ var ServiceWorkerStore = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"delete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
     return this.ready.then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
       navigator.serviceWorker.controller.postMessage({
         type: 'uppy/REMOVE_FILE',
         store: _this3.name,
         fileID: fileID
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
   };

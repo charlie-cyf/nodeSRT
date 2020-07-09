@@ -383,32 +383,32 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
         folders = state.folders,
         sorting = state.sorting;
     var sortedFiles = files.sort(function (fileA, fileB) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.sortedFiles.files.sort2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.sortedFiles.files.sort###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       var a = new Date(fileA.modifiedDate);
       var b = new Date(fileB.modifiedDate);
 
       if (sorting === 'dateDescending') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort###2"},');
         return a > b ? -1 : a < b ? 1 : 0;
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort###2"},');
       return a > b ? 1 : a < b ? -1 : 0;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort###2"},');
     });
     var sortedFolders = folders.sort(function (folderA, folderB) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.sortedFolders.folders.sort2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.sortedFolders.folders.sort###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       var a = new Date(folderA.modifiedDate);
       var b = new Date(folderB.modifiedDate);
 
       if (sorting === 'dateDescending') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort###2"},');
         return a > b ? -1 : a < b ? 1 : 0;
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort###2"},');
       return a > b ? 1 : a < b ? -1 : 0;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort###2"},');
     });
     this.plugin.setPluginState(_extends({}, state, {
       files: sortedFiles,
@@ -432,18 +432,18 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
     }
 
     var sortedFiles = files.sort(function (fileA, fileB) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.sortedFiles.files.sort3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.sortedFiles.files.sort###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       var a = fileA.size;
       var b = fileB.size;
 
       if (sorting === 'sizeDescending') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort###3"},');
         return a > b ? -1 : a < b ? 1 : 0;
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort###3"},');
       return a > b ? 1 : a < b ? -1 : 0;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort###3"},');
     });
     this.plugin.setPluginState(_extends({}, state, {
       files: sortedFiles,
@@ -585,10 +585,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
     if (this.isChecked(file)) {
       this.plugin.setPluginState({
         currentSelection: currentSelection.filter(function (item) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter2"},');
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter###2"},');
           return item.id !== file.id;
-          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter2"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter###2"},');
         })
       });
     } else {
@@ -821,8 +821,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._loaderWrapper"},');
     }, function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports._loaderWrapper2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._loaderWrapper2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports._loaderWrapper###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._loaderWrapper###2"},');
     });
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"donePicking"},');

@@ -21,10 +21,10 @@ module.exports = function getFilesAndDirectoriesFromDirectory(directoryReader, o
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries"},');
   }, function (error) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     logDropError(error);
     onSuccess(oldEntries);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries###2"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

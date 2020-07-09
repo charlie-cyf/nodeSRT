@@ -55,13 +55,13 @@ export default class App extends React.Component {
 
     });
     this.uppy.on('upload-success', (file, response) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###2","fileName":"${__filename}","paramsNumber":2},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###2"},');
 
     });
     this.uppy.on('complete', result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###3","fileName":"${__filename}","paramsNumber":1},`);
 
       this.setState({
         status: 'Upload complete ✅',
@@ -70,27 +70,27 @@ export default class App extends React.Component {
         uploadStarted: false
       });
       console.log('Upload complete:', result);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###3"},');
 
     });
     this.uppy.on('info-visible', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on4","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###4","fileName":"${__filename}","paramsNumber":0},`);
 
       const info = this.uppy.getState().info;
       this.setState({
         info: info
       });
       console.log('uppy-info:', info);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###4"},');
 
     });
     this.uppy.on('info-hidden', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on5","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###5","fileName":"${__filename}","paramsNumber":0},`);
 
       this.setState({
         info: null
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###5"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');

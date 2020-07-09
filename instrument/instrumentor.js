@@ -363,7 +363,8 @@ module.exports = class Instrumentor {
             fname = fname ? fname : 'emptyKey';
             if (functionMap.has(fname)) {
                 functionMap.set(fname, functionMap.get(fname) + 1);
-                fname = fname + functionMap.get(fname);
+                // add special seperater ### between number and function name
+                fname = fname +"###"+ functionMap.get(fname);
             } else {
                 functionMap.set(fname, 1)
                 fname = fname;

@@ -346,7 +346,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on"},');
     });
     this.uppy.on('file-removed', function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (_this7.ServiceWorkerStore) {
         _this7.ServiceWorkerStore.delete(file.id).catch(function (err) {
@@ -370,11 +370,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"IndexedDBStore.delete.catch"},');
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on###2"},');
     });
     this.uppy.on('complete', function (_ref) {
       var successful = _ref.successful;
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var fileIDs = successful.map(function (file) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.successful.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.successful.map"},');
@@ -398,11 +398,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"deleteBlobs.then.catch"},');
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on###3"},');
     });
     this.uppy.on('state-update', this.saveFilesStateToLocalStorage);
     this.uppy.on('restored', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       var _this7$uppy$getState = _this7.uppy.getState(),
           currentUploads = _this7$uppy$getState.currentUploads;
@@ -417,7 +417,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         });
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on###4"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
   };

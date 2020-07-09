@@ -28,10 +28,10 @@ formUppy.on('error', err => {
 
 });
 formUppy.on('upload-error', (file, err) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"formUppy.on2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"formUppy.on###2","fileName":"${__filename}","paramsNumber":2},`);
 
   document.querySelector('#test-form .error').textContent = err.message;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"formUppy.on2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"formUppy.on###2"},');
 
 });
 window.formUppy = formUppy;
@@ -106,12 +106,12 @@ window.doUpload = event => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then"},');
 
   }, err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
     resultEl.classList.add('hidden');
     errorEl.classList.remove('hidden');
     errorEl.textContent = err.message;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then###2"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"window.doUpload"},');

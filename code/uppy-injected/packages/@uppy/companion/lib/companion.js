@@ -165,10 +165,10 @@ module.exports.socket = server => {
 
     });
     ws.on('close', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.on2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.on###2","fileName":"${__filename}","paramsNumber":0},`);
 
       emitter().removeListener(token, sendProgress);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ws.on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ws.on###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"wss.on"},');
@@ -280,12 +280,12 @@ const maskLogger = companionOptions => {
   });
   if (customProviders) {
     Object.keys(customProviders).forEach(provider => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (customProviders[provider].config && customProviders[provider].config.secret) {
         secrets.push(customProviders[provider].config.secret);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###2"},');
 
     });
   }

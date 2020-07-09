@@ -26,13 +26,13 @@ class MockPurest {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"httpMethodsToMock.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
       this[item] = url => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item###2","fileName":"${__filename}","paramsNumber":1},`);
 
         this._requestUrl = url;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"item2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"item###2"},');
 
         return this;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"item2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"item###2"},');
 
       };
             SRTlib.send('{"type":"FUNCTIONEND","function":"httpMethodsToMock.forEach"},');

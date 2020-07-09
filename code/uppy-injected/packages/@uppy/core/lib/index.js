@@ -316,9 +316,9 @@ var Uppy = /*#__PURE__*/function () {
 
     if (newOpts.locale) {
       this.iteratePlugins(function (plugin) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"iteratePlugins2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"iteratePlugins###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         plugin.setOptions();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###2"},');
       });
     }
 
@@ -414,11 +414,11 @@ var Uppy = /*#__PURE__*/function () {
     var updatedFiles = _extends({}, this.getState().files);
 
     Object.keys(updatedFiles).forEach(function (fileID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       updatedFiles[fileID] = _extends({}, updatedFiles[fileID], {
         meta: _extends({}, updatedFiles[fileID].meta, data)
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###2"},');
     });
     this.log('Adding metadata:');
     this.log(data);
@@ -774,11 +774,11 @@ var Uppy = /*#__PURE__*/function () {
       this.log("Added batch of " + newFiles.length + " files");
     } else {
       Object.keys(newFiles).forEach(function (fileID) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
         _this4.log("Added file: " + newFiles[fileID].name + "\n id: " + newFiles[fileID].id + "\n type: " + newFiles[fileID].type);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###3"},');
       });
     }
 
@@ -842,19 +842,19 @@ var Uppy = /*#__PURE__*/function () {
 
     var uploadsToRemove = [];
     Object.keys(updatedUploads).forEach(function (uploadID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var newFileIDs = currentUploads[uploadID].fileIDs.filter(fileIsNotRemoved);
 
       if (newFileIDs.length === 0) {
         uploadsToRemove.push(uploadID);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###4"},');
         return;
       }
 
       updatedUploads[uploadID] = _extends({}, currentUploads[uploadID], {
         fileIDs: newFileIDs
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###4"},');
     });
     uploadsToRemove.forEach(function (uploadID) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uploadsToRemove.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -952,13 +952,13 @@ var Uppy = /*#__PURE__*/function () {
     var updatedFiles = _extends({}, this.getState().files);
 
     var inProgressUpdatedFiles = Object.keys(updatedFiles).filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inProgressUpdatedFiles.Object.keys.filter2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inProgressUpdatedFiles.Object.keys.filter###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter###2"},');
       return !updatedFiles[file].progress.uploadComplete && updatedFiles[file].progress.uploadStarted;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter###2"},');
     });
     inProgressUpdatedFiles.forEach(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inProgressUpdatedFiles.forEach2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inProgressUpdatedFiles.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var updatedFile = _extends({}, updatedFiles[file], {
         isPaused: false,
@@ -966,7 +966,7 @@ var Uppy = /*#__PURE__*/function () {
       });
 
       updatedFiles[file] = updatedFile;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.forEach2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.forEach###2"},');
     });
     this.setState({
       files: updatedFiles
@@ -1183,7 +1183,7 @@ var Uppy = /*#__PURE__*/function () {
       SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
     });
     this.on('upload-error', function (file, error, response) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
       var errorMsg = 'Unknown error';
 
       if (error.message) {
@@ -1224,24 +1224,24 @@ var Uppy = /*#__PURE__*/function () {
         });
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"on2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"on###2"},');
     });
     this.on('upload', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this6.setState({
         error: null
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"on3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"on###3"},');
     });
     this.on('upload-started', function (file, upload) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       if (!_this6.getFile(file.id)) {
         _this6.log("Not setting progress for a file that has been removed: " + file.id);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"on4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"on###4"},');
         return;
       }
 
@@ -1255,16 +1255,16 @@ var Uppy = /*#__PURE__*/function () {
         }
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"on4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"on###4"},');
     });
     this.on('upload-progress', this._calculateProgress);
     this.on('upload-success', function (file, uploadResp) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       if (!_this6.getFile(file.id)) {
         _this6.log("Not setting progress for a file that has been removed: " + file.id);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"on5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"on###5"},');
         return;
       }
 
@@ -1283,15 +1283,15 @@ var Uppy = /*#__PURE__*/function () {
 
       _this6._calculateTotalProgress();
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"on5"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"on###5"},');
     });
     this.on('preprocess-progress', function (file, progress) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on###6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       if (!_this6.getFile(file.id)) {
         _this6.log("Not setting progress for a file that has been removed: " + file.id);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"on6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"on###6"},');
         return;
       }
 
@@ -1301,15 +1301,15 @@ var Uppy = /*#__PURE__*/function () {
         })
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"on6"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"on###6"},');
     });
     this.on('preprocess-complete', function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on###7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (!_this6.getFile(file.id)) {
         _this6.log("Not setting progress for a file that has been removed: " + file.id);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"on7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"on###7"},');
         return;
       }
 
@@ -1324,15 +1324,15 @@ var Uppy = /*#__PURE__*/function () {
         files: files
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"on7"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"on###7"},');
     });
     this.on('postprocess-progress', function (file, progress) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on###8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       if (!_this6.getFile(file.id)) {
         _this6.log("Not setting progress for a file that has been removed: " + file.id);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"on8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"on###8"},');
         return;
       }
 
@@ -1342,15 +1342,15 @@ var Uppy = /*#__PURE__*/function () {
         })
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"on8"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"on###8"},');
     });
     this.on('postprocess-complete', function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on###9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (!_this6.getFile(file.id)) {
         _this6.log("Not setting progress for a file that has been removed: " + file.id);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"on9"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"on###9"},');
         return;
       }
 
@@ -1365,14 +1365,14 @@ var Uppy = /*#__PURE__*/function () {
         files: files
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"on9"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"on###9"},');
     });
     this.on('restored', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"on###10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this6._calculateTotalProgress();
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"on10"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"on###10"},');
     });
 
     if (typeof window !== 'undefined' && window.addEventListener) {
@@ -1383,10 +1383,10 @@ var Uppy = /*#__PURE__*/function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener"},');
       });
       window.addEventListener('offline', function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"window.addEventListener2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener2"},');
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"window.addEventListener###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener###2"},');
         return _this6.updateOnlineStatus();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener###2"},');
       });
       setTimeout(function () {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"setTimeout\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
@@ -1474,15 +1474,15 @@ var Uppy = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getPlugin\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Uppy\"}},");
     var foundPlugin = null;
     this.iteratePlugins(function (plugin) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"iteratePlugins3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"iteratePlugins###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (plugin.id === id) {
         foundPlugin = plugin;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###3"},');
         return false;
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###3"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"getPlugin"},');
     return foundPlugin;
@@ -1494,11 +1494,11 @@ var Uppy = /*#__PURE__*/function () {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iteratePlugins\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Uppy\"}},");
     Object.keys(this.plugins).forEach(function (pluginType) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this7.plugins[pluginType].forEach(method);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach5"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###5"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins"},');
   };
@@ -1536,11 +1536,11 @@ var Uppy = /*#__PURE__*/function () {
     this._storeUnsubscribe();
 
     this.iteratePlugins(function (plugin) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"iteratePlugins4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"iteratePlugins###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this8.removePlugin(plugin);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###4"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"close"},');
   };
@@ -1905,7 +1905,7 @@ var Uppy = /*#__PURE__*/function () {
       }, []);
       var waitingFileIDs = [];
       Object.keys(files).forEach(function (fileID) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach###6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
         var file = _this10.getFile(fileID);
 
@@ -1913,7 +1913,7 @@ var Uppy = /*#__PURE__*/function () {
           waitingFileIDs.push(file.id);
         }
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###6"},');
       });
 
       var uploadID = _this10._createUpload(waitingFileIDs);

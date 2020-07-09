@@ -163,12 +163,12 @@ module.exports = class MiniXHRUpload {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onRetry","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MiniXHRUpload"}},`);
 
     this.uploaderEvents[fileID].on('upload-retry', targetFileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (fileID === targetFileID) {
         cb();
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_onRetry"},');
@@ -178,15 +178,15 @@ module.exports = class MiniXHRUpload {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onRetryAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MiniXHRUpload"}},`);
 
     this.uploaderEvents[fileID].on('retry-all', filesToRetry => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###3","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!this.uppy.getFile(fileID)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###3"},');
 
         return;
       }
       cb();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###3"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_onRetryAll"},');
@@ -196,15 +196,15 @@ module.exports = class MiniXHRUpload {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onCancelAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MiniXHRUpload"}},`);
 
     this.uploaderEvents[fileID].on('cancel-all', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on4","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###4","fileName":"${__filename}","paramsNumber":0},`);
 
       if (!this.uppy.getFile(fileID)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###4"},');
 
         return;
       }
       cb();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###4"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_onCancelAll"},');
@@ -245,7 +245,7 @@ module.exports = class MiniXHRUpload {
 
       });
       xhr.upload.addEventListener('progress', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener###2","fileName":"${__filename}","paramsNumber":1},`);
 
         this.uppy.log(`[AwsS3/XHRUpload] ${id} progress: ${ev.loaded} / ${ev.total}`);
         timer.progress();
@@ -256,7 +256,7 @@ module.exports = class MiniXHRUpload {
             bytesTotal: ev.total
           });
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.upload.addEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.upload.addEventListener###2"},');
 
       });
       xhr.addEventListener('load', ev => {
@@ -300,7 +300,7 @@ module.exports = class MiniXHRUpload {
 
       });
       xhr.addEventListener('error', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener###2","fileName":"${__filename}","paramsNumber":1},`);
 
         this.uppy.log(`[AwsS3/XHRUpload] ${id} errored`);
         timer.done();
@@ -311,10 +311,10 @@ module.exports = class MiniXHRUpload {
         }
         const error = buildResponseError(xhr, opts.getResponseError(xhr.responseText, xhr));
         this.uppy.emit('upload-error', file, error);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###2"},');
 
         return reject(error);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###2"},');
 
       });
       xhr.open(opts.method.toUpperCase(), opts.endpoint, true);
@@ -377,7 +377,7 @@ module.exports = class MiniXHRUpload {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadRemoteFile"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"${__filename}","paramsNumber":2},`);
 
       const fields = {};
       const metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(file.meta);
@@ -410,21 +410,21 @@ module.exports = class MiniXHRUpload {
         });
         this.uploaderEvents[file.id] = new EventTracker(this.uppy);
         this._onFileRemoved(file.id, () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_onFileRemoved2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_onFileRemoved###2","fileName":"${__filename}","paramsNumber":0},`);
 
           socket.send('pause', {});
           queuedRequest.abort();
           resolve(`upload ${file.id} was removed`);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_onFileRemoved2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_onFileRemoved###2"},');
 
         });
         this._onCancelAll(file.id, () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_onCancelAll2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_onCancelAll###2","fileName":"${__filename}","paramsNumber":0},`);
 
           socket.send('pause', {});
           queuedRequest.abort();
           resolve(`upload ${file.id} was canceled`);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_onCancelAll2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_onCancelAll###2"},');
 
         });
         this._onRetry(file.id, () => {
@@ -453,7 +453,7 @@ module.exports = class MiniXHRUpload {
 
         });
         socket.on('success', data => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###2","fileName":"${__filename}","paramsNumber":1},`);
 
           const body = opts.getResponseData(data.response.responseText, data.response);
           const uploadURL = body[opts.responseUrlFieldName];
@@ -468,14 +468,14 @@ module.exports = class MiniXHRUpload {
             this.uploaderEvents[file.id].remove();
             this.uploaderEvents[file.id] = null;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###2"},');
 
           return resolve();
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###2"},');
 
         });
         socket.on('error', errData => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###3","fileName":"${__filename}","paramsNumber":1},`);
 
           const resp = errData.response;
           const error = resp ? opts.getResponseError(resp.responseText, resp) : Object.assign(new Error(errData.error.message), {
@@ -488,28 +488,28 @@ module.exports = class MiniXHRUpload {
             this.uploaderEvents[file.id] = null;
           }
           reject(error);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###3"},');
 
         });
         const queuedRequest = this.requests.run(() => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run###2","fileName":"${__filename}","paramsNumber":0},`);
 
           socket.open();
           if (file.isPaused) {
             socket.send('pause', {});
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###2"},');
 
           return () => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
             return socket.close();
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
           };
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.catch.client.post.then"},');
@@ -522,7 +522,7 @@ module.exports = class MiniXHRUpload {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.catch"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadRemoteFile"},');

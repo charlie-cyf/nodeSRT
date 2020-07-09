@@ -106,12 +106,12 @@ export default class UppyRNInstagram extends React.Component {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     }} keyExtractor={(item, index) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":2},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
       return index.toString();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
     }} numColumns={3} />
       </View>;
@@ -129,14 +129,14 @@ export default class UppyRNInstagram extends React.Component {
     }} style={{
       marginTop: 20
     }} onNavigationStateChange={ev => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###3","fileName":"${__filename}","paramsNumber":1},`);
 
       const url = ev.url;
       const token = getQueryParamValueFromUrl('uppyAuthToken', url);
       console.log(token);
       this.plugin.provider.setAuthToken(token);
       console.log(this.plugin.provider.list('recent'));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###3"},');
 
     }} />;
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderInstagram"},');

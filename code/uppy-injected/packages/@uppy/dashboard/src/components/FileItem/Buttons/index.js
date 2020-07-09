@@ -38,12 +38,12 @@ function RemoveButton({i18n, onClick}) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"RemoveButton"},');
 
   return <button class="uppy-u-reset uppy-Dashboard-Item-action uppy-Dashboard-Item-action--remove" type="button" aria-label={i18n('removeFile')} title={i18n('removeFile')} onclick={() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
     return onClick();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
   }}>
       <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="18" height="18" viewBox="0 0 18 18">
@@ -84,12 +84,12 @@ function CopyLinkButton(props) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"CopyLinkButton"},');
 
   return <button class="uppy-u-reset uppy-Dashboard-Item-action uppy-Dashboard-Item-action--copyLink" type="button" aria-label={props.i18n('copyLink')} title={props.i18n('copyLink')} onclick={event => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement3","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###3","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###3"},');
 
     return copyLinkToClipboard(event, props);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###3"},');
 
   }}>
       <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="14" height="14" viewBox="0 0 14 12">
@@ -117,12 +117,12 @@ module.exports = function Buttons(props) {
   }} />
       {showLinkToFileUploadResult && file.uploadURL ? <CopyLinkButton file={file} i18n={i18n} info={info} log={log} /> : null}
       {showRemoveButton ? <RemoveButton i18n={i18n} info={props.info} log={props.log} onClick={() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Buttons.ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Buttons.ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement###2"},');
 
     return removeFile(file.id);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement###2"},');
 
   }} /> : null}
     </div>;

@@ -297,10 +297,10 @@ class MultipartUploader {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then"},');
 
     }, err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
       this._onError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then.then###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_uploadPart"},');
@@ -376,13 +376,13 @@ class MultipartUploader {
 
     });
     xhr.addEventListener('load', ev => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener###2","fileName":"${__filename}","paramsNumber":1},`);
 
       remove(this.uploading, ev.target);
       this.chunkState[index].busy = false;
       if (ev.target.status < 200 || ev.target.status >= 300) {
         this._onError(new Error('Non 2xx'));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###2"},');
 
         return;
       }
@@ -390,23 +390,23 @@ class MultipartUploader {
       const etag = ev.target.getResponseHeader('ETag');
       if (etag === null) {
         this._onError(new Error('AwsS3/Multipart: Could not read the ETag header. This likely means CORS is not configured correctly on the S3 Bucket. Seee https://uppy.io/docs/aws-s3-multipart#S3-Bucket-Configuration for instructions.'));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###2"},');
 
         return;
       }
       this._onPartComplete(index, etag);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###2"},');
 
     });
     xhr.addEventListener('error', ev => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener###3","fileName":"${__filename}","paramsNumber":1},`);
 
       remove(this.uploading, ev.target);
       this.chunkState[index].busy = false;
       const error = new Error('Unknown error');
       error.source = ev.target;
       this._onError(error);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.addEventListener###3"},');
 
     });
     xhr.send(body);
@@ -446,10 +446,10 @@ class MultipartUploader {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then"},');
 
     }, err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
       this._onError(err);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.then###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_completeUpload"},');
@@ -475,9 +475,9 @@ class MultipartUploader {
             SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then"},');
 
     }, () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdPromise.then2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdPromise.then###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"createdPromise.then###2"},');
 
     });
     this.uploading = [];

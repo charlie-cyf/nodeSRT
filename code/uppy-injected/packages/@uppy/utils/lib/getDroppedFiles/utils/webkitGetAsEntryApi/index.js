@@ -25,10 +25,10 @@ module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
           resolve();
           SRTlib.send('{"type":"FUNCTIONEND","function":"entry.file"},');
         }, function (error) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"entry.file2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"entry.file###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           logDropError(error);
           resolve();
-          SRTlib.send('{"type":"FUNCTIONEND","function":"entry.file2"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"entry.file###2"},');
         });
       } else if (entry.isDirectory) {
         var directoryReader = entry.createReader();

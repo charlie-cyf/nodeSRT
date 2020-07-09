@@ -74,9 +74,9 @@ function connect(dbName) {
     };
 
     request.onsuccess = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       resolve(event.target.result);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess###2"},');
     };
 
     request.onerror = reject;
@@ -89,16 +89,16 @@ function waitForRequest(request) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"waitForRequest\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"waitForRequest"},');
   return new Promise(function (resolve, reject) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
     request.onsuccess = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       resolve(event.target.result);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess###3"},');
     };
 
     request.onerror = reject;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression###2"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"waitForRequest","paramsNumber":1},');
 }
@@ -179,20 +179,20 @@ var IndexedDBStore = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"get\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');
     return this.ready.then(function (db) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then.ready.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then.ready.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var transaction = db.transaction([STORE_NAME], 'readonly');
       var request = transaction.objectStore(STORE_NAME).get(_this3.key(fileID));
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then.ready.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then.ready.then###2"},');
       return waitForRequest(request);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then.ready.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then.ready.then###2"},');
     }).then(function (result) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then###2"},');
       return {
         id: result.data.fileID,
         data: result.data.data
       };
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');
   };
@@ -209,11 +209,11 @@ var IndexedDBStore = /*#__PURE__*/function () {
       var request = store.index('store').openCursor(IDBKeyRange.only(_this4.name));
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then"},');
       return new Promise(function (resolve, reject) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
         var size = 0;
 
         request.onsuccess = function (event) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           var cursor = event.target.result;
 
           if (cursor) {
@@ -223,7 +223,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
             resolve(size);
           }
 
-          SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess4"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess###4"},');
         };
 
         request.onerror = function () {
@@ -232,7 +232,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
           SRTlib.send('{"type":"FUNCTIONEND","function":"request.onerror"},');
         };
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression###3"},');
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then"},');
     });
@@ -284,12 +284,12 @@ var IndexedDBStore = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"delete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
     return this.ready.then(function (db) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var transaction = db.transaction([STORE_NAME], 'readwrite');
       var request = transaction.objectStore(STORE_NAME).delete(_this6.key(fileID));
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then###2"},');
       return waitForRequest(request);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
   };
@@ -304,10 +304,10 @@ var IndexedDBStore = /*#__PURE__*/function () {
       var request = store.index('expires').openCursor(IDBKeyRange.upperBound(Date.now()));
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');
       return new Promise(function (resolve, reject) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
         request.onsuccess = function (event) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           var cursor = event.target.result;
 
           if (cursor) {
@@ -319,11 +319,11 @@ var IndexedDBStore = /*#__PURE__*/function () {
             resolve(db);
           }
 
-          SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess5"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess###5"},');
         };
 
         request.onerror = reject;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression###4"},');
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');
     }).then(function (db) {

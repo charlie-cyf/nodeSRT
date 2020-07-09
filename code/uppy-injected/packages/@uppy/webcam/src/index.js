@@ -403,14 +403,14 @@ module.exports = class Webcam extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then"},');
 
     }, error => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.stopped.then.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.stopped.then.then.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
       this.recordingChunks = null;
       this.recorder = null;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then###2"},');
 
       throw error;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_stopRecording"},');
@@ -532,13 +532,13 @@ module.exports = class Webcam extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then"},');
 
     }, error => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.opts.onBeforeSnapshot.catch.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.opts.onBeforeSnapshot.catch.then.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
       this.captureInProgress = false;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then###2"},');
 
       throw error;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_takeSnapshot"},');

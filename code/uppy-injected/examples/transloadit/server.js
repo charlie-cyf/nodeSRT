@@ -26,10 +26,10 @@ function onrequest(req, res) {
 
   });
   req.on('end', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.on2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.on###2","fileName":"${__filename}","paramsNumber":0},`);
 
     onbody(body);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"req.on2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"req.on###2"},');
 
   });
   function onbody(body) {

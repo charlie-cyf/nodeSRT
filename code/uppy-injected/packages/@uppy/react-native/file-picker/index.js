@@ -178,12 +178,12 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
     })}
         <TouchableOpacity style={styles.cancelButton} onPress={ev => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
       return this.props.onRequestClose();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
     }}>
           <Text style={styles.cancelButtonText}>Cancel</Text>
@@ -199,13 +199,13 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
     return <Modal animationType="slide" transparent={false} visible={this.props.show} supportedOrientations={['portrait', 'portrait-upside-down', 'landscape', 'landscape-left', 'landscape-right']} onRequestClose={this.props.onRequestClose}>
         {this.state.openProvider ? <Provider providerID={this.state.openProvider} uppy={this.uppy} onDone={() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###3","fileName":"${__filename}","paramsNumber":0},`);
 
       this.setState({
         openProvider: null
       });
       this.props.onRequestClose();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###3"},');
 
     }}  {...this.props} /> : this.renderSourceList()}
       </Modal>;

@@ -45,7 +45,7 @@ class VirtualList extends Component {
 
   }
   handleScroll = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###2","fileName":"${__filename}","paramsNumber":0},`);
 
     this.setState({
       offset: this.base.scrollTop
@@ -53,7 +53,7 @@ class VirtualList extends Component {
     if (this.props.sync) {
       this.forceUpdate();
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###2"},');
 
   }
   componentWillUpdate() {

@@ -66,10 +66,10 @@ function RemoveButton(_ref2) {
     "aria-label": i18n('removeFile'),
     title: i18n('removeFile'),
     onclick: function onclick() {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
       return onClick();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
     }
   }, h("svg", {
     "aria-hidden": "true",
@@ -114,10 +114,10 @@ function CopyLinkButton(props) {
     "aria-label": props.i18n('copyLink'),
     title: props.i18n('copyLink'),
     onclick: function onclick(event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###3"},');
       return copyLinkToClipboard(event, props);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###3"},');
     }
   }, h("svg", {
     "aria-hidden": "true",
@@ -168,10 +168,10 @@ module.exports = function Buttons(props) {
     info: props.info,
     log: props.log,
     onClick: function onClick() {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Buttons.ReturnStatement2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Buttons.ReturnStatement###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement###2"},');
       return removeFile(file.id);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement###2"},');
     }
   }) : null);
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

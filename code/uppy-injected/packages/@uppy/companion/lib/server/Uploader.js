@@ -64,17 +64,17 @@ class Uploader {
 
       });
       emitter().on(`resume:${this.token}`, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on###2","fileName":"${__filename}","paramsNumber":0},`);
 
         this._paused = false;
         if (this.tus) {
           this.tus.start();
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.on2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.on###2"},');
 
       });
       emitter().on(`cancel:${this.token}`, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on3","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on###3","fileName":"${__filename}","paramsNumber":0},`);
 
         this._paused = true;
         if (this.tus) {
@@ -82,7 +82,7 @@ class Uploader {
           this.tus.abort(shouldTerminate);
         }
         this.cleanUp();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.on3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.on###3"},');
 
       });
     }

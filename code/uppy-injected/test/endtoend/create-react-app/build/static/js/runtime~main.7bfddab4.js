@@ -115,12 +115,12 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"u.n.r"},');
 
     } : function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"u.n.r2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"u.n.r###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"u.n.r2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"u.n.r###2"},');
 
       return e;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"u.n.r2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"u.n.r###2"},');
 
     };
         SRTlib.send('{"type":"FUNCTIONEND","function":"u.n"},');

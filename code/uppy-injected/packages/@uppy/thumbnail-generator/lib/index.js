@@ -41,7 +41,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.onCancelRequest = function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var index = _this.queue.indexOf(file.id);
 
@@ -49,11 +49,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this.queue.splice(index, 1);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###2"},');
     };
 
     _this.onFileRemoved = function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var index = _this.queue.indexOf(file.id);
 
@@ -65,11 +65,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         URL.revokeObjectURL(file.preview);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###3"},');
     };
 
     _this.onRestored = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       var _this$uppy$getState = _this.uppy.getState(),
           files = _this$uppy$getState.files;
@@ -91,13 +91,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach"},');
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###4"},');
     };
 
     _this.waitUntilAllProcessed = function (fileIDs) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       fileIDs.forEach(function (fileID) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
         var file = _this.uppy.getFile(fileID);
 
@@ -106,24 +106,24 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           message: _this.i18n('generatingThumbnails')
         });
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach###2"},');
       });
 
       var emitPreprocessCompleteForAll = function emitPreprocessCompleteForAll() {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"emitPreprocessCompleteForAll\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
         fileIDs.forEach(function (fileID) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
           var file = _this.uppy.getFile(fileID);
 
           _this.uppy.emit('preprocess-complete', file);
 
-          SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach3"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach###3"},');
         });
         SRTlib.send('{"type":"FUNCTIONEND","function":"emitPreprocessCompleteForAll"},');
       };
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports5"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###5"},');
       return new Promise(function (resolve, reject) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
@@ -141,7 +141,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports5"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###5"},');
     };
 
     _this.type = 'modifier';
@@ -209,10 +209,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"image.addEventListener"},');
       });
       image.addEventListener('error', function (event) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"image.addEventListener2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"image.addEventListener###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         URL.revokeObjectURL(originalUrl);
         reject(event.error || new Error('Could not create thumbnail'));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"image.addEventListener2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"image.addEventListener###2"},');
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.onload.NewExpression"},');
     });

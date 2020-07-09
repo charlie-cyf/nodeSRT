@@ -63,9 +63,9 @@ export default function FileList(props) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
   }} numColumns={2} renderItem={({item}) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
     return <View style={styles.item}>
               {item.type === 'image' ? <Image style={styles.itemImage} source={{
@@ -74,7 +74,7 @@ export default function FileList(props) {
               <Text style={styles.itemName}>{truncateString(item.name, 20)}</Text>
               <Text style={styles.itemType}>{item.type}</Text>
             </View>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
   }} />
     </View>;

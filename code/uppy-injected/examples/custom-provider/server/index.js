@@ -58,33 +58,33 @@ const uppyOptions = {
   debug: true
 };
 app.get('/oauth/authorize', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get###2","fileName":"${__filename}","paramsNumber":2},`);
 
   res.redirect(`http://localhost:3020/mycustomprovider/callback?state=${req.query.state}&access_token=randombytes`);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"app.get2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"app.get###2"},');
 
 });
 app.use(uppy.app(uppyOptions));
 app.use((req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use2","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###2","fileName":"${__filename}","paramsNumber":3},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use###2"},');
 
   return res.status(404).json({
     message: 'Not Found'
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use###2"},');
 
 });
 app.use((err, req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use3","fileName":"${__filename}","paramsNumber":4},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###3","fileName":"${__filename}","paramsNumber":4},`);
 
   console.error('\x1b[31m', err.stack, '\x1b[0m');
   res.status(err.status || 500).json({
     message: err.message,
     error: err
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use###3"},');
 
 });
 uppy.socket(app.listen(3020), uppyOptions);

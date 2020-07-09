@@ -223,10 +223,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     if (this.audioStream) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"selectAudioStreamSource"},');
       return new Promise(function (resolve) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
         return resolve(_this4.audioStream);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
       });
     }
 
@@ -338,9 +338,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.stopped.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       _this6.recorder.addEventListener('stop', function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"recorder.addEventListener2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"recorder.addEventListener###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
         resolve();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"recorder.addEventListener2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"recorder.addEventListener###2"},');
       });
 
       _this6.recorder.stop();
@@ -373,12 +373,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       _this6.recorder = null;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then"},');
     }, function (error) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       _this6.recordingChunks = null;
       _this6.recorder = null;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then###2"},');
       throw error;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"stopRecording"},');
   };

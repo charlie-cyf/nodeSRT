@@ -109,14 +109,14 @@ class ServiceWorkerStore {
         SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
 
     return this.ready.then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then###2","fileName":"${__filename}","paramsNumber":0},`);
 
       navigator.serviceWorker.controller.postMessage({
         type: 'uppy/REMOVE_FILE',
         store: this.name,
         fileID: fileID
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');

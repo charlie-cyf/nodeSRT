@@ -223,7 +223,7 @@ module.exports = class RateLimitedQueue {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"innerPromise.then"},');
 
           }, err => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"innerPromise.then2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"innerPromise.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
             if (cancelError) {
               reject(cancelError);
@@ -231,7 +231,7 @@ module.exports = class RateLimitedQueue {
               queuedRequest.done();
               reject(err);
             }
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"innerPromise.then2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"innerPromise.then###2"},');
 
           });
                     SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.run"},');

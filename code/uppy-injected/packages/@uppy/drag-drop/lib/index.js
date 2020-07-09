@@ -258,10 +258,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       class: dragDropClass,
       style: dragDropStyle,
       onClick: function onClick() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
         return _this6.fileInputRef.click();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
       },
       onDragOver: this.handleDragOver,
       onDragLeave: this.handleDragLeave,

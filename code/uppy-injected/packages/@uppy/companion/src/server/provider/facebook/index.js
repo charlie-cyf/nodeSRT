@@ -74,18 +74,18 @@ class Facebook extends Provider {
     this.client.get('me').qs({
       fields: 'email'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.facebook.user.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request###2"},');
 
         return done(err);
       } else {
         done(null, body.email);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_getUsername"},');
@@ -178,12 +178,12 @@ class Facebook extends Provider {
     return this.client.get(`https://graph.facebook.com/${id}`).qs({
       fields: 'images'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.facebook.size.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request###2"},');
 
         return done(err);
       }
@@ -203,7 +203,7 @@ class Facebook extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');

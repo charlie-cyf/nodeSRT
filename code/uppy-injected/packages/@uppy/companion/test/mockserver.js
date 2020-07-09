@@ -22,7 +22,7 @@ authServer.all('*/callback', (req, res, next) => {
 
 });
 authServer.all(['*/send-token', '*/redirect'], (req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"authServer.all2","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"authServer.all###2","fileName":"${__filename}","paramsNumber":3},`);
 
   req.session.grant = {
     dynamic: {
@@ -30,7 +30,7 @@ authServer.all(['*/send-token', '*/redirect'], (req, res, next) => {
     }
   };
   next();
-    SRTlib.send('{"type":"FUNCTIONEND","function":"authServer.all2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"authServer.all###2"},');
 
 });
 authServer.use(app);

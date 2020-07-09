@@ -277,13 +277,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleRootPaste\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     forEachDroppedOrPastedUrl(e.clipboardData, 'paste', function (url) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.forEachDroppedOrPastedUrl2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.forEachDroppedOrPastedUrl###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this5.uppy.log("[URL] Adding file from pasted url: " + url);
 
       _this5.addFile(url);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forEachDroppedOrPastedUrl2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forEachDroppedOrPastedUrl###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleRootPaste"},');
   };

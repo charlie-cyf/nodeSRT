@@ -257,18 +257,18 @@ module.exports = class Tus extends Plugin {
         } else {
           queuedRequest.abort();
           queuedRequest = this.requests.run(() => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run2","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run###2","fileName":"${__filename}","paramsNumber":0},`);
 
             upload.start();
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###2"},');
 
             return () => {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
             };
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###2"},');
 
           });
         }
@@ -302,18 +302,18 @@ module.exports = class Tus extends Plugin {
           upload.abort();
         }
         queuedRequest = this.requests.run(() => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run3","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run###3","fileName":"${__filename}","paramsNumber":0},`);
 
           upload.start();
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###3"},');
 
           return () => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement3","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###3","fileName":"${__filename}","paramsNumber":0},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###3"},');
 
           };
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###3"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll"},');
@@ -403,7 +403,7 @@ module.exports = class Tus extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"connectToServerSocket"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"${__filename}","paramsNumber":2},`);
 
       const token = file.serverToken;
       const host = getSocketHost(file.remote.companionUrl);
@@ -414,18 +414,18 @@ module.exports = class Tus extends Plugin {
       this.uploaderSockets[file.id] = socket;
       this.uploaderEvents[file.id] = new EventTracker(this.uppy);
       this.onFileRemove(file.id, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFileRemove2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFileRemove###2","fileName":"${__filename}","paramsNumber":0},`);
 
         queuedRequest.abort();
         socket.send('pause', {});
         socket.send('cancel', {});
         this.resetUploaderReferences(file.id);
         resolve(`upload ${file.id} was removed`);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"onFileRemove2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onFileRemove###2"},');
 
       });
       this.onPause(file.id, isPaused => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onPause2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onPause###2","fileName":"${__filename}","paramsNumber":1},`);
 
         if (isPaused) {
           queuedRequest.abort();
@@ -433,66 +433,66 @@ module.exports = class Tus extends Plugin {
         } else {
           queuedRequest.abort();
           queuedRequest = this.requests.run(() => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run4","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run###4","fileName":"${__filename}","paramsNumber":0},`);
 
             socket.send('resume', {});
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###4"},');
 
             return () => {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement4","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###4","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###4"},');
 
             };
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###4"},');
 
           });
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"onPause2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onPause###2"},');
 
       });
       this.onPauseAll(file.id, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onPauseAll2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onPauseAll###2","fileName":"${__filename}","paramsNumber":0},`);
 
         queuedRequest.abort();
         socket.send('pause', {});
-                SRTlib.send('{"type":"FUNCTIONEND","function":"onPauseAll2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onPauseAll###2"},');
 
       });
       this.onCancelAll(file.id, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onCancelAll2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onCancelAll###2","fileName":"${__filename}","paramsNumber":0},`);
 
         queuedRequest.abort();
         socket.send('pause', {});
         socket.send('cancel', {});
         this.resetUploaderReferences(file.id);
         resolve(`upload ${file.id} was canceled`);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"onCancelAll2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onCancelAll###2"},');
 
       });
       this.onResumeAll(file.id, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onResumeAll2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onResumeAll###2","fileName":"${__filename}","paramsNumber":0},`);
 
         queuedRequest.abort();
         if (file.error) {
           socket.send('pause', {});
         }
         queuedRequest = this.requests.run(() => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run5","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run###5","fileName":"${__filename}","paramsNumber":0},`);
 
           socket.send('resume', {});
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###5"},');
 
           return () => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement5","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###5","fileName":"${__filename}","paramsNumber":0},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###5"},');
 
           };
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###5"},');
 
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll###2"},');
 
       });
       this.onRetry(file.id, () => {
@@ -525,7 +525,7 @@ module.exports = class Tus extends Plugin {
 
       });
       socket.on('error', errData => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###2","fileName":"${__filename}","paramsNumber":1},`);
 
         const {message} = errData.error;
         const error = Object.assign(new Error(message), {
@@ -542,11 +542,11 @@ module.exports = class Tus extends Plugin {
         this.uppy.emit('upload-error', file, error);
         queuedRequest.done();
         reject(error);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###2"},');
 
       });
       socket.on('success', data => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###3","fileName":"${__filename}","paramsNumber":1},`);
 
         const uploadResp = {
           uploadURL: data.url
@@ -555,28 +555,28 @@ module.exports = class Tus extends Plugin {
         this.resetUploaderReferences(file.id);
         queuedRequest.done();
         resolve();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###3"},');
 
       });
       let queuedRequest = this.requests.run(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run6","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run###6","fileName":"${__filename}","paramsNumber":0},`);
 
         socket.open();
         if (file.isPaused) {
           socket.send('pause', {});
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###6"},');
 
         return () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement6","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###6","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement6"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###6"},');
 
         };
-                SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###6"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"connectToServerSocket"},');
@@ -619,12 +619,12 @@ module.exports = class Tus extends Plugin {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPause","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Tus","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('upload-pause', (targetFileID, isPaused) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###2","fileName":"${__filename}","paramsNumber":2},`);
 
       if (fileID === targetFileID) {
         cb(isPaused);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onPause"},');
@@ -634,12 +634,12 @@ module.exports = class Tus extends Plugin {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onRetry","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Tus","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('upload-retry', targetFileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###3","fileName":"${__filename}","paramsNumber":1},`);
 
       if (fileID === targetFileID) {
         cb();
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###3"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onRetry"},');
@@ -649,15 +649,15 @@ module.exports = class Tus extends Plugin {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onRetryAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Tus","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('retry-all', filesToRetry => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###4","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!this.uppy.getFile(fileID)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###4"},');
 
         return;
       }
       cb();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###4"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onRetryAll"},');
@@ -667,15 +667,15 @@ module.exports = class Tus extends Plugin {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPauseAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Tus","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('pause-all', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on5","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###5","fileName":"${__filename}","paramsNumber":0},`);
 
       if (!this.uppy.getFile(fileID)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###5"},');
 
         return;
       }
       cb();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###5"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onPauseAll"},');
@@ -685,15 +685,15 @@ module.exports = class Tus extends Plugin {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onCancelAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Tus","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('cancel-all', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on6","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###6","fileName":"${__filename}","paramsNumber":0},`);
 
       if (!this.uppy.getFile(fileID)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###6"},');
 
         return;
       }
       cb();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###6"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onCancelAll"},');
@@ -703,15 +703,15 @@ module.exports = class Tus extends Plugin {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onResumeAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Tus","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('resume-all', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on7","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###7","fileName":"${__filename}","paramsNumber":0},`);
 
       if (!this.uppy.getFile(fileID)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###7"},');
 
         return;
       }
       cb();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###7"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll"},');

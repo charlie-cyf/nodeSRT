@@ -34,16 +34,16 @@ describe('Test Logger secret mask', () => {
 
   });
   test('masks secret values present in log.warn messages', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"${__filename}","paramsNumber":0},`);
 
     let loggedMessage = null;
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###2","fileName":"${__filename}","paramsNumber":2},`);
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"console.log2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"console.log###2"},');
 
     };
     logger.warn('this warning has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2');
@@ -51,20 +51,20 @@ describe('Test Logger secret mask', () => {
     const exptectedMsg = chalk.bold.yellow('this warning has ****** and ****** and case-insensitive ******');
     expect(loggedMessage).toBeTruthy();
     expect(loggedMessage).toBe(exptectedMsg);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"test2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test###2"},');
 
   });
   test('masks secret values present in log.error messages', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"${__filename}","paramsNumber":0},`);
 
     let loggedMessage = null;
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log3","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###3","fileName":"${__filename}","paramsNumber":2},`);
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"console.log3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"console.log###3"},');
 
     };
     logger.error(new Error('this error has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2'));
@@ -72,20 +72,20 @@ describe('Test Logger secret mask', () => {
     const exptectedMsg = chalk.bold.red('Error: this error has ****** and ****** and case-insensitive ******');
     expect(loggedMessage).toBeTruthy();
     expect(loggedMessage).toBe(exptectedMsg);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"test3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test###3"},');
 
   });
   test('masks secret values present in log.error stack trace', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"${__filename}","paramsNumber":0},`);
 
     let loggedMessage = null;
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log4","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###4","fileName":"${__filename}","paramsNumber":2},`);
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"console.log4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"console.log###4"},');
 
     };
     const err = new Error('this error has ToBeMasked1 and toBeMasked2 and case-insensitive TOBEMasKED2');
@@ -97,20 +97,20 @@ describe('Test Logger secret mask', () => {
     expect(loggedMessage.includes('ToBeMasked1')).toBe(false);
     expect(loggedMessage.includes('toBeMasked2')).toBe(false);
     expect(loggedMessage.includes('TOBEMasKED2')).toBe(false);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"test4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test###4"},');
 
   });
   test('escape regex characters from secret values before masking them', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test5","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"${__filename}","paramsNumber":0},`);
 
     let loggedMessage = null;
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log5","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###5","fileName":"${__filename}","paramsNumber":2},`);
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"console.log5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"console.log###5"},');
 
     };
     logger.warn('this warning has ToBeMasked(And)?Escaped but not toBeMaskedEscaped ');
@@ -118,7 +118,7 @@ describe('Test Logger secret mask', () => {
     const exptectedMsg = chalk.bold.yellow('this warning has ****** but not toBeMaskedEscaped ');
     expect(loggedMessage).toBeTruthy();
     expect(loggedMessage).toBe(exptectedMsg);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"test5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test###5"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"describe"},');

@@ -204,12 +204,12 @@ module.exports = class ScreenCapture extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"selectAudioStreamSource"},');
 
       return new Promise(resolve => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
 
         return resolve(this.audioStream);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
 
       });
     }
@@ -314,10 +314,10 @@ module.exports = class ScreenCapture extends Plugin {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.stopped.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
       this.recorder.addEventListener('stop', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"recorder.addEventListener2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"recorder.addEventListener###2","fileName":"${__filename}","paramsNumber":0},`);
 
         resolve();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"recorder.addEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"recorder.addEventListener###2"},');
 
       });
       this.recorder.stop();
@@ -354,14 +354,14 @@ module.exports = class ScreenCapture extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then"},');
 
     }, error => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.stopped.then.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.stopped.then.then.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
       this.recordingChunks = null;
       this.recorder = null;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then###2"},');
 
       throw error;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"stopRecording"},');

@@ -38,6 +38,19 @@ module.exports = class TestSelector {
             console.log(change.unifiedChanges);
         });
 
+
+        // select affected tests by changed function name
+        /*
+        *   selectedTests:
+        *   [
+        *       {filename, suiteName, testName}
+        *   ]
+        */
+        let selectedTests = [];
+        const graphVisitor = function(graph) {
+            
+        }
+
         
     }
 

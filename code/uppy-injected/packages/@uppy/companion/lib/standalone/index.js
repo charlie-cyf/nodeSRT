@@ -79,18 +79,18 @@ morgan.token('url', (req, res) => {
 
 });
 morgan.token('referrer', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"morgan.token2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"morgan.token###2","fileName":"${__filename}","paramsNumber":2},`);
 
   const ref = req.headers.referer || req.headers.referrer;
   if (typeof ref === 'string') {
     const parsed = parseURL(ref);
     const rawQuery = qs.parse(parsed.search.replace('?', ''));
     const {query, censored} = censorQuery(rawQuery);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"morgan.token2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"morgan.token###2"},');
 
     return censored ? `${parsed.href.split('?')[0]}?${qs.stringify(query)}` : parsed.href;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"morgan.token2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"morgan.token###2"},');
 
 });
 app.use(metricsMiddleware);
@@ -174,7 +174,7 @@ if (process.env.COMPANION_PATH) {
 }
 if (process.env.COMPANION_ONEDRIVE_DOMAIN_VALIDATION === 'true' && process.env.COMPANION_ONEDRIVE_KEY) {
   app.get('/.well-known/microsoft-identity-association.json', (req, res) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get2","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get###2","fileName":"${__filename}","paramsNumber":2},`);
 
     const content = JSON.stringify({
       associatedApplications: [{
@@ -187,23 +187,23 @@ if (process.env.COMPANION_ONEDRIVE_DOMAIN_VALIDATION === 'true' && process.env.C
     });
     res.write(content);
     res.end();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"app.get2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"app.get###2"},');
 
   });
 }
 app.use((req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use2","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###2","fileName":"${__filename}","paramsNumber":3},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use###2"},');
 
   return res.status(404).json({
     message: 'Not Found'
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use###2"},');
 
 });
 app.use((err, req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use3","fileName":"${__filename}","paramsNumber":4},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###3","fileName":"${__filename}","paramsNumber":4},`);
 
   const logStackTrace = true;
   if (app.get('env') === 'production') {
@@ -224,7 +224,7 @@ app.use((err, req, res, next) => {
       requestId: req.id
     });
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"app.use###3"},');
 
 });
 module.exports = {

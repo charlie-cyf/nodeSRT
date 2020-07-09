@@ -130,7 +130,7 @@ module.exports = class Provider extends RequestClient {
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"${__filename}","paramsNumber":2},`);
 
       this.get(`${this.id}/logout`).then(res => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"get.then.catch.get.then","fileName":"${__filename}","paramsNumber":1},`);
@@ -147,7 +147,7 @@ module.exports = class Provider extends RequestClient {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"get.then.catch.get.then"},');
 
       }).catch(reject);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');

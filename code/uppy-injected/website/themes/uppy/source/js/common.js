@@ -179,11 +179,11 @@ const SRTlib = require('SRT-util');
         } else {
           var h3s = content.querySelectorAll('h3');
           each.call(h3s, function (h) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"each.call2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"each.call###2","fileName":"${__filename}","paramsNumber":1},`);
 
             sectionContainer.appendChild(makeLink(h));
             allLinks.push(h);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"each.call2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"each.call###2"},');
 
           });
         }

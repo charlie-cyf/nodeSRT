@@ -300,7 +300,7 @@ module.exports = class GoldenRetriever extends Plugin {
 
     });
     this.uppy.on('file-removed', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.on2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.on###2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (this.ServiceWorkerStore) {
         this.ServiceWorkerStore.delete(file.id).catch(err => {
@@ -320,11 +320,11 @@ module.exports = class GoldenRetriever extends Plugin {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"IndexedDBStore.delete.catch"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on###2"},');
 
     });
     this.uppy.on('complete', ({successful}) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.on3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.on###3","fileName":"${__filename}","paramsNumber":1},`);
 
       const fileIDs = successful.map(file => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.successful.map","fileName":"${__filename}","paramsNumber":1},`);
@@ -349,12 +349,12 @@ module.exports = class GoldenRetriever extends Plugin {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"deleteBlobs.then.catch"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on###3"},');
 
     });
     this.uppy.on('state-update', this.saveFilesStateToLocalStorage);
     this.uppy.on('restored', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.on4","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.on###4","fileName":"${__filename}","paramsNumber":0},`);
 
       const {currentUploads} = this.uppy.getState();
       if (currentUploads) {
@@ -366,7 +366,7 @@ module.exports = class GoldenRetriever extends Plugin {
 
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on###4"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');

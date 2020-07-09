@@ -305,14 +305,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         } else {
           queuedRequest.abort();
           queuedRequest = _this2.requests.run(function () {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
             upload.start();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###2"},');
             return function () {
-              SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-              SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+              SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+              SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
             };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###2"},');
           });
         }
 
@@ -347,14 +347,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         }
 
         queuedRequest = _this2.requests.run(function () {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
           upload.start();
-          SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run3"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###3"},');
           return function () {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###3"},');
           };
-          SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run3"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###3"},');
         });
         SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll"},');
       });
@@ -437,7 +437,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"connectToServerSocket\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Tus\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"connectToServerSocket"},');
     return new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       var token = file.serverToken;
       var host = getSocketHost(file.remote.companionUrl);
       var socket = new Socket({
@@ -448,7 +448,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       _this4.uploaderEvents[file.id] = new EventTracker(_this4.uppy);
 
       _this4.onFileRemove(file.id, function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onFileRemove2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onFileRemove###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
         queuedRequest.abort();
         socket.send('pause', {});
         socket.send('cancel', {});
@@ -456,11 +456,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this4.resetUploaderReferences(file.id);
 
         resolve("upload " + file.id + " was removed");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"onFileRemove2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onFileRemove###2"},');
       });
 
       _this4.onPause(file.id, function (isPaused) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onPause2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onPause###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
         if (isPaused) {
           queuedRequest.abort();
@@ -468,29 +468,29 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         } else {
           queuedRequest.abort();
           queuedRequest = _this4.requests.run(function () {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
             socket.send('resume', {});
-            SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###4"},');
             return function () {
-              SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-              SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement4"},');
+              SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+              SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###4"},');
             };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###4"},');
           });
         }
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"onPause2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onPause###2"},');
       });
 
       _this4.onPauseAll(file.id, function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onPauseAll2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onPauseAll###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
         queuedRequest.abort();
         socket.send('pause', {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"onPauseAll2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onPauseAll###2"},');
       });
 
       _this4.onCancelAll(file.id, function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onCancelAll2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onCancelAll###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
         queuedRequest.abort();
         socket.send('pause', {});
         socket.send('cancel', {});
@@ -498,11 +498,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this4.resetUploaderReferences(file.id);
 
         resolve("upload " + file.id + " was canceled");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"onCancelAll2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onCancelAll###2"},');
       });
 
       _this4.onResumeAll(file.id, function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onResumeAll2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"onResumeAll###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
         queuedRequest.abort();
 
         if (file.error) {
@@ -510,16 +510,16 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         }
 
         queuedRequest = _this4.requests.run(function () {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
           socket.send('resume', {});
-          SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run5"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###5"},');
           return function () {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement5"},');
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###5"},');
           };
-          SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run5"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###5"},');
         });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll###2"},');
       });
 
       _this4.onRetry(file.id, function () {
@@ -551,7 +551,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on"},');
       });
       socket.on('error', function (errData) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"socket.on2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"socket.on###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         var message = errData.error.message;
 
         var error = _extends(new Error(message), {
@@ -572,10 +572,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
         queuedRequest.done();
         reject(error);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###2"},');
       });
       socket.on('success', function (data) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"socket.on3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"socket.on###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         var uploadResp = {
           uploadURL: data.url
         };
@@ -586,26 +586,26 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
         queuedRequest.done();
         resolve();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###3"},');
       });
 
       var queuedRequest = _this4.requests.run(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run###6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
         socket.open();
 
         if (file.isPaused) {
           socket.send('pause', {});
         }
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###6"},');
         return function () {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-          SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement6"},');
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement###6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+          SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###6"},');
         };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###6"},');
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"connectToServerSocket"},');
   };
@@ -644,13 +644,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.onPause = function onPause(fileID, cb) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onPause\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Tus\",\"superClass\":\"Plugin\"}},");
     this.uploaderEvents[fileID].on('upload-pause', function (targetFileID, isPaused) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       if (fileID === targetFileID) {
         cb(isPaused);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"onPause"},');
   };
@@ -658,13 +658,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.onRetry = function onRetry(fileID, cb) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onRetry\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Tus\",\"superClass\":\"Plugin\"}},");
     this.uploaderEvents[fileID].on('upload-retry', function (targetFileID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (fileID === targetFileID) {
         cb();
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###3"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"onRetry"},');
   };
@@ -674,15 +674,15 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onRetryAll\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Tus\",\"superClass\":\"Plugin\"}},");
     this.uploaderEvents[fileID].on('retry-all', function (filesToRetry) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (!_this5.uppy.getFile(fileID)) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###4"},');
         return;
       }
 
       cb();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###4"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"onRetryAll"},');
   };
@@ -692,15 +692,15 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onPauseAll\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Tus\",\"superClass\":\"Plugin\"}},");
     this.uploaderEvents[fileID].on('pause-all', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       if (!_this6.uppy.getFile(fileID)) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###5"},');
         return;
       }
 
       cb();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on5"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###5"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"onPauseAll"},');
   };
@@ -710,15 +710,15 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onCancelAll\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Tus\",\"superClass\":\"Plugin\"}},");
     this.uploaderEvents[fileID].on('cancel-all', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on###6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       if (!_this7.uppy.getFile(fileID)) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###6"},');
         return;
       }
 
       cb();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on6"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###6"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"onCancelAll"},');
   };
@@ -728,15 +728,15 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onResumeAll\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Tus\",\"superClass\":\"Plugin\"}},");
     this.uploaderEvents[fileID].on('resume-all', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploaderEvents.fileID.on###7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       if (!_this8.uppy.getFile(fileID)) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###7"},');
         return;
       }
 
       cb();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on7"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###7"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"onResumeAll"},');
   };

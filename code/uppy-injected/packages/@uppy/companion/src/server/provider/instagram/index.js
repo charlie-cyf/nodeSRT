@@ -179,12 +179,12 @@ class Instagram extends Provider {
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
     return this.client.get(`media/${id}`).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.auth.request2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.auth.request###2","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.instagram.size.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request###2"},');
 
         return done(err);
       }
@@ -204,7 +204,7 @@ class Instagram extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.auth.request###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');

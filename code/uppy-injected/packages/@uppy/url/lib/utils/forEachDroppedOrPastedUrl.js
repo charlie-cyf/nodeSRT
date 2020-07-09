@@ -35,10 +35,10 @@ module.exports = function forEachDroppedOrPastedUrl(dataTransfer, isDropOrPaste,
     case 'drop':
       {
         urlItems = items.filter(function (item) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.forEachDroppedOrPastedUrl.urlItems.items.filter2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forEachDroppedOrPastedUrl.urlItems.items.filter2"},');
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.forEachDroppedOrPastedUrl.urlItems.items.filter###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forEachDroppedOrPastedUrl.urlItems.items.filter###2"},');
           return item.kind === 'string' && item.type === 'text/uri-list';
-          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forEachDroppedOrPastedUrl.urlItems.items.filter2"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forEachDroppedOrPastedUrl.urlItems.items.filter###2"},');
         });
         break;
       }

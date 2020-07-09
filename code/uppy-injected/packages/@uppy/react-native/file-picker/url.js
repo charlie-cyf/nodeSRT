@@ -70,12 +70,12 @@ export default class UppyRNUrl extends React.Component {
           <Text style={styles.buttonImportText}>Import</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonCancel} onPress={ev => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
       return this.props.onDone();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
     }}>
           <Text style={styles.buttonCancelText}>Cancel</Text>

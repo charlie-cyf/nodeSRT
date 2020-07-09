@@ -73,16 +73,16 @@ class Drive extends Provider {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filesPromise.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
 
       this.client.query().get('files').qs(where).auth(options.token).request((err, resp) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.query.get.qs.auth.request2","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.query.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":2},`);
 
         if (err || resp.statusCode !== 200) {
           reject(this._error(err, resp));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"client.query.get.qs.auth.request2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"client.query.get.qs.auth.request###2"},');
 
           return;
         }
         resolve(resp);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"client.query.get.qs.auth.request2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.query.get.qs.auth.request###2"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"filesPromise.NewExpression"},');
@@ -96,11 +96,11 @@ class Drive extends Provider {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.all.then"},');
 
     }, reqErr => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
       logger.error(reqErr, 'provider.drive.list.error');
       done(reqErr);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.all.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.all.then###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');

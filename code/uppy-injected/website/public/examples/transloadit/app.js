@@ -61,7 +61,7 @@ const SRTlib = require('SRT-util');
 
 })()({
   1: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###2","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = after;
     function after(count, callback, err_cb) {
@@ -101,11 +101,11 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"noop","paramsNumber":0},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###2"},');
 
   }, {}],
   2: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###3","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function (arraybuffer, start, end) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":3},`);
@@ -143,11 +143,11 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###3"},');
 
   }, {}],
   3: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###4","fileName":"${__filename}","paramsNumber":3},`);
 
     var asn1 = exports;
     asn1.bignum = require('bn.js');
@@ -156,7 +156,7 @@ const SRTlib = require('SRT-util');
     asn1.constants = require('./asn1/constants');
     asn1.decoders = require('./asn1/decoders');
     asn1.encoders = require('./asn1/encoders');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###4"},');
 
   }, {
     "./asn1/api": 4,
@@ -167,7 +167,7 @@ const SRTlib = require('SRT-util');
     "bn.js": 21
   }],
   4: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###5","fileName":"${__filename}","paramsNumber":3},`);
 
     var asn1 = require('../asn1');
     var inherits = require('inherits');
@@ -261,7 +261,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Entity.prototype.encode"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###5"},');
 
   }, {
     "../asn1": 3,
@@ -269,7 +269,7 @@ const SRTlib = require('SRT-util');
     "vm": 234
   }],
   5: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###6","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var Reporter = require('../base').Reporter;
@@ -331,7 +331,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DecoderBuffer.prototype.readUInt8","fileName":"${__filename}","paramsNumber":1},`);
 
       if (this.offset + 1 <= this.length) return this.base.readUInt8(this.offset++, true); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###6"},');
 
         return this.base.readUInt8(this.offset++, true);
       }
@@ -434,7 +434,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"EncoderBuffer.prototype.join"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###6"},');
 
   }, {
     "../base": 6,
@@ -442,14 +442,14 @@ const SRTlib = require('SRT-util');
     "inherits": 133
   }],
   6: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###7","fileName":"${__filename}","paramsNumber":3},`);
 
     var base = exports;
     base.Reporter = require('./reporter').Reporter;
     base.DecoderBuffer = require('./buffer').DecoderBuffer;
     base.EncoderBuffer = require('./buffer').EncoderBuffer;
     base.Node = require('./node');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###7"},');
 
   }, {
     "./buffer": 5,
@@ -457,7 +457,7 @@ const SRTlib = require('SRT-util');
     "./reporter": 8
   }],
   7: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey8","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###8","fileName":"${__filename}","paramsNumber":3},`);
 
     var Reporter = require('../base').Reporter;
     var EncoderBuffer = require('../base').EncoderBuffer;
@@ -887,7 +887,7 @@ const SRTlib = require('SRT-util');
         return null;
       }
       if (tag === 'seqof' || tag === 'setof') return this._decodeList(input, tag, state.args[0], options); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###8"},');
 
         return this._decodeList(input, tag, state.args[0], options);
       }
@@ -1132,7 +1132,7 @@ const SRTlib = require('SRT-util');
 
       var state = this._baseState;
       if ((/str$/).test(tag)) return this._encodeStr(data, tag); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###8"},');
 
         return this._encodeStr(data, tag);
       }
@@ -1157,14 +1157,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Node.prototype._isPrintstr"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###8"},');
 
   }, {
     "../base": 6,
     "minimalistic-assert": 144
   }],
   8: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey9","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###9","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     function Reporter(options) {
@@ -1349,13 +1349,13 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReporterError.prototype.rethrow"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey9"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###9"},');
 
   }, {
     "inherits": 133
   }],
   9: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey10","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###10","fileName":"${__filename}","paramsNumber":3},`);
 
     var constants = require('../constants');
     exports.tagClass = {
@@ -1397,13 +1397,13 @@ const SRTlib = require('SRT-util');
       0x1e: 'bmpstr'
     };
     exports.tagByName = constants._reverse(exports.tag);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey10"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###10"},');
 
   }, {
     "../constants": 10
   }],
   10: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey11","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###11","fileName":"${__filename}","paramsNumber":3},`);
 
     var constants = exports;
     constants._reverse = function reverse(map) {
@@ -1426,13 +1426,13 @@ const SRTlib = require('SRT-util');
 
     };
     constants.der = require('./der');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey11"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###11"},');
 
   }, {
     "./der": 9
   }],
   11: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey12","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###12","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var asn1 = require('../../asn1');
@@ -1725,7 +1725,7 @@ const SRTlib = require('SRT-util');
 
       var res = buffer.readUInt8();
       if (buffer.isError(res)) return res; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###12"},');
 
         return res;
       }
@@ -1835,26 +1835,26 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"derDecodeLen","paramsNumber":3},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey12"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###12"},');
 
   }, {
     "../../asn1": 3,
     "inherits": 133
   }],
   12: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey13","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###13","fileName":"${__filename}","paramsNumber":3},`);
 
     var decoders = exports;
     decoders.der = require('./der');
     decoders.pem = require('./pem');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey13"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###13"},');
 
   }, {
     "./der": 11,
     "./pem": 13
   }],
   13: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey14","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###14","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var Buffer = require('buffer').Buffer;
@@ -1905,7 +1905,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"PEMDecoder.prototype.decode"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey14"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###14"},');
 
   }, {
     "./der": 11,
@@ -1913,7 +1913,7 @@ const SRTlib = require('SRT-util');
     "inherits": 133
   }],
   14: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey15","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###15","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var Buffer = require('buffer').Buffer;
@@ -2078,7 +2078,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"two","fileName":"${__filename}","paramsNumber":1},`);
 
       if (num < 10) return '0' + num; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###15"},');
 
         return '0' + num;
       }
@@ -2181,13 +2181,13 @@ const SRTlib = require('SRT-util');
 
     };
     DERNode.prototype._use = function use(entity, obj) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DERNode.prototype._use2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DERNode.prototype._use###2","fileName":"${__filename}","paramsNumber":2},`);
 
       if (typeof entity === 'function') entity = entity(obj);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"DERNode.prototype._use2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"DERNode.prototype._use###2"},');
 
       return entity._getEncoder('der').tree;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"DERNode.prototype._use2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"DERNode.prototype._use###2"},');
 
     };
     DERNode.prototype._skipDefault = function skipDefault(dataBuffer, reporter, parent) {
@@ -2241,7 +2241,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"encodeTag","paramsNumber":4},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey15"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###15"},');
 
   }, {
     "../../asn1": 3,
@@ -2249,19 +2249,19 @@ const SRTlib = require('SRT-util');
     "inherits": 133
   }],
   15: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey16","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###16","fileName":"${__filename}","paramsNumber":3},`);
 
     var encoders = exports;
     encoders.der = require('./der');
     encoders.pem = require('./pem');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey16"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###16"},');
 
   }, {
     "./der": 14,
     "./pem": 16
   }],
   16: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey17","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###17","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var DEREncoder = require('./der');
@@ -2290,14 +2290,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"PEMEncoder.prototype.encode"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey17"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###17"},');
 
   }, {
     "./der": 14,
     "inherits": 133
   }],
   17: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey18","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###18","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = Backoff;
     function Backoff(opts) {
@@ -2355,14 +2355,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Backoff.prototype.setJitter"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey18"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###18"},');
 
   }, {}],
   18: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey20","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###20","fileName":"${__filename}","paramsNumber":3},`);
 
     (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey19","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###19","fileName":"${__filename}","paramsNumber":0},`);
 
       "use strict";
       var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -2417,14 +2417,14 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decode"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey19"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###19"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey20"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###20"},');
 
   }, {}],
   19: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey21","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###21","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     exports.byteLength = byteLength;
@@ -2559,11 +2559,11 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"fromByteArray","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey21"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###21"},');
 
   }, {}],
   20: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey22","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###22","fileName":"${__filename}","paramsNumber":3},`);
 
     var BlobBuilder = typeof BlobBuilder !== 'undefined' ? BlobBuilder : typeof WebKitBlobBuilder !== 'undefined' ? WebKitBlobBuilder : typeof MSBlobBuilder !== 'undefined' ? MSBlobBuilder : typeof MozBlobBuilder !== 'undefined' ? MozBlobBuilder : false;
     var blobSupported = (function () {
@@ -2661,32 +2661,32 @@ const SRTlib = require('SRT-util');
       BlobConstructor.prototype = Blob.prototype;
     }
     module.exports = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###2","fileName":"${__filename}","paramsNumber":0},`);
 
       if (blobSupported) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###2"},');
 
         return blobSupportsArrayBufferView ? Blob : BlobConstructor;
       } else if (blobBuilderSupported) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###2"},');
 
         return BlobBuilderConstructor;
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###2"},');
 
         return undefined;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###2"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey22"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###22"},');
 
   }, {}],
   21: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey24","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###24","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (module, exports) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey23","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###23","fileName":"${__filename}","paramsNumber":2},`);
 
       'use strict';
       function assert(val, msg) {
@@ -3253,7 +3253,7 @@ const SRTlib = require('SRT-util');
         };
       } else {
         BN.prototype._countBits = function _countBits(w) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"BN.prototype._countBits2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"BN.prototype._countBits###2","fileName":"${__filename}","paramsNumber":1},`);
 
           var t = w;
           var r = 0;
@@ -3273,10 +3273,10 @@ const SRTlib = require('SRT-util');
             r += 2;
             t >>>= 2;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"BN.prototype._countBits2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"BN.prototype._countBits###2"},');
 
           return r + t;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"BN.prototype._countBits2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"BN.prototype._countBits###2"},');
 
         };
       }
@@ -6635,26 +6635,26 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Mont.prototype.invm"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey23"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###23"},');
 
     })(typeof module === 'undefined' || module, this);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey24"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###24"},');
 
   }, {
     "buffer": 23
   }],
   22: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey25","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###25","fileName":"${__filename}","paramsNumber":3},`);
 
     var r;
     module.exports = function rand(len) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###3","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!r) r = new Rand(null);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###3"},');
 
       return r.generate(len);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###3"},');
 
     };
     function Rand(rand) {
@@ -6693,36 +6693,36 @@ const SRTlib = require('SRT-util');
     if (typeof self === 'object') {
       if (self.crypto && self.crypto.getRandomValues) {
         Rand.prototype._rand = function _rand(n) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Rand.prototype._rand2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Rand.prototype._rand###2","fileName":"${__filename}","paramsNumber":1},`);
 
           var arr = new Uint8Array(n);
           self.crypto.getRandomValues(arr);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand###2"},');
 
           return arr;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand###2"},');
 
         };
       } else if (self.msCrypto && self.msCrypto.getRandomValues) {
         Rand.prototype._rand = function _rand(n) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Rand.prototype._rand3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Rand.prototype._rand###3","fileName":"${__filename}","paramsNumber":1},`);
 
           var arr = new Uint8Array(n);
           self.msCrypto.getRandomValues(arr);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand###3"},');
 
           return arr;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand###3"},');
 
         };
       } else if (typeof window === 'object') {
         Rand.prototype._rand = function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Rand.prototype._rand4","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Rand.prototype._rand###4","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand###4"},');
 
           throw new Error('Not implemented yet');
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand###4"},');
 
         };
       }
@@ -6730,34 +6730,34 @@ const SRTlib = require('SRT-util');
       try {
         var crypto = require('crypto');
         if (typeof crypto.randomBytes !== 'function') {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey25"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###25"},');
 
           throw new Error('Not supported');
         }
         Rand.prototype._rand = function _rand(n) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Rand.prototype._rand5","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Rand.prototype._rand###5","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand###5"},');
 
           return crypto.randomBytes(n);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Rand.prototype._rand###5"},');
 
         };
       } catch (e) {}
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey25"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###25"},');
 
   }, {
     "crypto": 23
   }],
   23: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey26","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###26","fileName":"${__filename}","paramsNumber":3},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey26"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###26"},');
 
   }, {}],
   24: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey27","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###27","fileName":"${__filename}","paramsNumber":3},`);
 
     var Buffer = require('safe-buffer').Buffer;
     function asUInt32Array(buf) {
@@ -6979,13 +6979,13 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports.AES = AES;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey27"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###27"},');
 
   }, {
     "safe-buffer": 190
   }],
   25: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey28","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###28","fileName":"${__filename}","paramsNumber":3},`);
 
     var aes = require('./aes');
     var Buffer = require('safe-buffer').Buffer;
@@ -7145,7 +7145,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = StreamCipher;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey28"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###28"},');
 
   }, {
     "./aes": 24,
@@ -7157,7 +7157,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   26: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey29","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###29","fileName":"${__filename}","paramsNumber":3},`);
 
     var ciphers = require('./encrypter');
     var deciphers = require('./decrypter');
@@ -7176,7 +7176,7 @@ const SRTlib = require('SRT-util');
     exports.createDecipher = exports.Decipher = deciphers.createDecipher;
     exports.createDecipheriv = exports.Decipheriv = deciphers.createDecipheriv;
     exports.listCiphers = exports.getCiphers = getCiphers;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey29"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###29"},');
 
   }, {
     "./decrypter": 27,
@@ -7184,7 +7184,7 @@ const SRTlib = require('SRT-util');
     "./modes/list.json": 38
   }],
   27: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey30","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###30","fileName":"${__filename}","paramsNumber":3},`);
 
     var AuthCipher = require('./authCipher');
     var Buffer = require('safe-buffer').Buffer;
@@ -7385,7 +7385,7 @@ const SRTlib = require('SRT-util');
     }
     exports.createDecipher = createDecipher;
     exports.createDecipheriv = createDecipheriv;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey30"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###30"},');
 
   }, {
     "./aes": 24,
@@ -7398,7 +7398,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   28: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey31","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###31","fileName":"${__filename}","paramsNumber":3},`);
 
     var MODES = require('./modes');
     var AuthCipher = require('./authCipher');
@@ -7477,30 +7477,30 @@ const SRTlib = require('SRT-util');
 
     }
     Splitter.prototype.add = function (data) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Splitter.prototype.add2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Splitter.prototype.add###2","fileName":"${__filename}","paramsNumber":1},`);
 
       this.cache = Buffer.concat([this.cache, data]);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.add2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.add###2"},');
 
     };
     Splitter.prototype.get = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Splitter.prototype.get2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Splitter.prototype.get###2","fileName":"${__filename}","paramsNumber":0},`);
 
       if (this.cache.length > 15) {
         var out = this.cache.slice(0, 16);
         this.cache = this.cache.slice(16);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.get2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.get###2"},');
 
         return out;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.get2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.get###2"},');
 
       return null;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.get2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.get###2"},');
 
     };
     Splitter.prototype.flush = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Splitter.prototype.flush2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Splitter.prototype.flush###2","fileName":"${__filename}","paramsNumber":0},`);
 
       var len = 16 - this.cache.length;
       var padBuff = Buffer.allocUnsafe(len);
@@ -7508,10 +7508,10 @@ const SRTlib = require('SRT-util');
       while (++i < len) {
         padBuff.writeUInt8(len, i);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.flush2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.flush###2"},');
 
       return Buffer.concat([this.cache, padBuff]);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.flush2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Splitter.prototype.flush###2"},');
 
     };
     function createCipheriv(suite, password, iv) {
@@ -7568,7 +7568,7 @@ const SRTlib = require('SRT-util');
     }
     exports.createCipheriv = createCipheriv;
     exports.createCipher = createCipher;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey31"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###31"},');
 
   }, {
     "./aes": 24,
@@ -7581,7 +7581,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   29: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey32","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###32","fileName":"${__filename}","paramsNumber":3},`);
 
     var Buffer = require('safe-buffer').Buffer;
     var ZEROES = Buffer.alloc(16, 0);
@@ -7683,13 +7683,13 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = GHASH;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey32"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###32"},');
 
   }, {
     "safe-buffer": 190
   }],
   30: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey33","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###33","fileName":"${__filename}","paramsNumber":3},`);
 
     function incr32(iv) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"incr32","fileName":"${__filename}","paramsNumber":1},`);
@@ -7710,11 +7710,11 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = incr32;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey33"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###33"},');
 
   }, {}],
   31: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey34","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###34","fileName":"${__filename}","paramsNumber":3},`);
 
     var xor = require('buffer-xor');
     exports.encrypt = function (self, block) {
@@ -7740,13 +7740,13 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decrypt"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey34"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###34"},');
 
   }, {
     "buffer-xor": 51
   }],
   32: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey35","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###35","fileName":"${__filename}","paramsNumber":3},`);
 
     var Buffer = require('safe-buffer').Buffer;
     var xor = require('buffer-xor');
@@ -7764,7 +7764,7 @@ const SRTlib = require('SRT-util');
 
     }
     exports.encrypt = function (self, data, decrypt) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt###2","fileName":"${__filename}","paramsNumber":3},`);
 
       var out = Buffer.allocUnsafe(0);
       var len;
@@ -7782,20 +7782,20 @@ const SRTlib = require('SRT-util');
           break;
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###2"},');
 
       return out;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###2"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey35"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###35"},');
 
   }, {
     "buffer-xor": 51,
     "safe-buffer": 190
   }],
   33: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey36","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###36","fileName":"${__filename}","paramsNumber":3},`);
 
     var Buffer = require('safe-buffer').Buffer;
     function encryptByte(self, byteParam, decrypt) {
@@ -7836,7 +7836,7 @@ const SRTlib = require('SRT-util');
 
     }
     exports.encrypt = function (self, chunk, decrypt) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt3","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt###3","fileName":"${__filename}","paramsNumber":3},`);
 
       var len = chunk.length;
       var out = Buffer.allocUnsafe(len);
@@ -7844,19 +7844,19 @@ const SRTlib = require('SRT-util');
       while (++i < len) {
         out[i] = encryptByte(self, chunk[i], decrypt);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###3"},');
 
       return out;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###3"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey36"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###36"},');
 
   }, {
     "safe-buffer": 190
   }],
   34: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey37","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###37","fileName":"${__filename}","paramsNumber":3},`);
 
     var Buffer = require('safe-buffer').Buffer;
     function encryptByte(self, byteParam, decrypt) {
@@ -7872,7 +7872,7 @@ const SRTlib = require('SRT-util');
 
     }
     exports.encrypt = function (self, chunk, decrypt) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt4","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt###4","fileName":"${__filename}","paramsNumber":3},`);
 
       var len = chunk.length;
       var out = Buffer.allocUnsafe(len);
@@ -7880,19 +7880,19 @@ const SRTlib = require('SRT-util');
       while (++i < len) {
         out[i] = encryptByte(self, chunk[i], decrypt);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###4"},');
 
       return out;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###4"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey37"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###37"},');
 
   }, {
     "safe-buffer": 190
   }],
   35: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey38","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###38","fileName":"${__filename}","paramsNumber":3},`);
 
     var xor = require('buffer-xor');
     var Buffer = require('safe-buffer').Buffer;
@@ -7910,7 +7910,7 @@ const SRTlib = require('SRT-util');
     }
     var blockSize = 16;
     exports.encrypt = function (self, chunk) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt5","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt###5","fileName":"${__filename}","paramsNumber":2},`);
 
       var chunkNum = Math.ceil(chunk.length / blockSize);
       var start = self._cache.length;
@@ -7925,13 +7925,13 @@ const SRTlib = require('SRT-util');
       }
       var pad = self._cache.slice(0, chunk.length);
       self._cache = self._cache.slice(chunk.length);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###5"},');
 
       return xor(chunk, pad);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###5"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey38"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###38"},');
 
   }, {
     "../incr32": 30,
@@ -7939,31 +7939,31 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   36: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey39","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###39","fileName":"${__filename}","paramsNumber":3},`);
 
     exports.encrypt = function (self, block) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt6","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encrypt###6","fileName":"${__filename}","paramsNumber":2},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###6"},');
 
       return self._cipher.encryptBlock(block);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encrypt###6"},');
 
     };
     exports.decrypt = function (self, block) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.decrypt2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.decrypt###2","fileName":"${__filename}","paramsNumber":2},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decrypt2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decrypt###2"},');
 
       return self._cipher.decryptBlock(block);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decrypt2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decrypt###2"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey39"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###39"},');
 
   }, {}],
   37: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey40","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###40","fileName":"${__filename}","paramsNumber":3},`);
 
     var modeModules = {
       ECB: require('./ecb'),
@@ -7980,7 +7980,7 @@ const SRTlib = require('SRT-util');
       modes[key].module = modeModules[modes[key].mode];
     }
     module.exports = modes;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey40"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###40"},');
 
   }, {
     "./cbc": 31,
@@ -7993,7 +7993,7 @@ const SRTlib = require('SRT-util');
     "./ofb": 39
   }],
   38: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey41","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###41","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "aes-128-ecb": {
@@ -8186,11 +8186,11 @@ const SRTlib = require('SRT-util');
         "type": "auth"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey41"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###41"},');
 
   }, {}],
   39: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey42","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###42","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call","fileName":"${__filename}","paramsNumber":1},`);
@@ -8223,14 +8223,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"call"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey42"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###42"},');
 
   }, {
     "buffer": 360,
     "buffer-xor": 51
   }],
   40: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey43","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###43","fileName":"${__filename}","paramsNumber":3},`);
 
     var aes = require('./aes');
     var Buffer = require('safe-buffer').Buffer;
@@ -8251,23 +8251,23 @@ const SRTlib = require('SRT-util');
     }
     inherits(StreamCipher, Transform);
     StreamCipher.prototype._update = function (chunk) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamCipher.prototype._update2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamCipher.prototype._update###2","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"StreamCipher.prototype._update2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"StreamCipher.prototype._update###2"},');
 
       return this._mode.encrypt(this, chunk, this._decrypt);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"StreamCipher.prototype._update2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"StreamCipher.prototype._update###2"},');
 
     };
     StreamCipher.prototype._final = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamCipher.prototype._final2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamCipher.prototype._final###2","fileName":"${__filename}","paramsNumber":0},`);
 
       this._cipher.scrub();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"StreamCipher.prototype._final2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"StreamCipher.prototype._final###2"},');
 
     };
     module.exports = StreamCipher;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey43"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###43"},');
 
   }, {
     "./aes": 24,
@@ -8276,7 +8276,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   41: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey44","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###44","fileName":"${__filename}","paramsNumber":3},`);
 
     var DES = require('browserify-des');
     var aes = require('browserify-aes/browser');
@@ -8392,7 +8392,7 @@ const SRTlib = require('SRT-util');
     exports.createDecipher = exports.Decipher = createDecipher;
     exports.createDecipheriv = exports.Decipheriv = createDecipheriv;
     exports.listCiphers = exports.getCiphers = getCiphers;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey44"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###44"},');
 
   }, {
     "browserify-aes/browser": 26,
@@ -8402,7 +8402,7 @@ const SRTlib = require('SRT-util');
     "evp_bytestokey": 112
   }],
   42: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey45","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###45","fileName":"${__filename}","paramsNumber":3},`);
 
     var CipherBase = require('cipher-base');
     var des = require('des.js');
@@ -8469,7 +8469,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"DES.prototype._final"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey45"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###45"},');
 
   }, {
     "cipher-base": 52,
@@ -8478,7 +8478,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   43: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey46","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###46","fileName":"${__filename}","paramsNumber":3},`);
 
     exports['des-ecb'] = {
       key: 8,
@@ -8504,14 +8504,14 @@ const SRTlib = require('SRT-util');
       key: 16,
       iv: 0
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey46"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###46"},');
 
   }, {}],
   44: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey47","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###47","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###2","fileName":"${__filename}","paramsNumber":1},`);
 
       var bn = require('bn.js');
       var randomBytes = require('randombytes');
@@ -8570,10 +8570,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"getr","paramsNumber":1},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###2"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey47"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###47"},');
 
   }, {
     "bn.js": 21,
@@ -8581,16 +8581,16 @@ const SRTlib = require('SRT-util');
     "randombytes": 170
   }],
   45: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey48","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###48","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = require('./browser/algorithms.json');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey48"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###48"},');
 
   }, {
     "./browser/algorithms.json": 46
   }],
   46: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey49","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###49","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "sha224WithRSAEncryption": {
@@ -8744,11 +8744,11 @@ const SRTlib = require('SRT-util');
         "id": "3020300c06082a864886f70d020505000410"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey49"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###49"},');
 
   }, {}],
   47: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey50","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###50","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "1.3.132.0.10": "secp256k1",
@@ -8758,14 +8758,14 @@ const SRTlib = require('SRT-util');
       "1.3.132.0.34": "p384",
       "1.3.132.0.35": "p521"
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey50"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###50"},');
 
   }, {}],
   48: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey51","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###51","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###3","fileName":"${__filename}","paramsNumber":1},`);
 
       var createHash = require('create-hash');
       var stream = require('stream');
@@ -8902,10 +8902,10 @@ const SRTlib = require('SRT-util');
         createSign: createSign,
         createVerify: createVerify
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###3"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey51"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###51"},');
 
   }, {
     "./algorithms.json": 46,
@@ -8917,10 +8917,10 @@ const SRTlib = require('SRT-util');
     "stream": 216
   }],
   49: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey52","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###52","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###4","fileName":"${__filename}","paramsNumber":1},`);
 
       var createHmac = require('create-hmac');
       var crt = require('browserify-rsa');
@@ -9122,10 +9122,10 @@ const SRTlib = require('SRT-util');
       module.exports = sign;
       module.exports.getKey = getKey;
       module.exports.makeKey = makeKey;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###4"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey52"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###52"},');
 
   }, {
     "./curves.json": 47,
@@ -9137,10 +9137,10 @@ const SRTlib = require('SRT-util');
     "parse-asn1": 151
   }],
   50: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey53","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###53","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call5","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###5","fileName":"${__filename}","paramsNumber":1},`);
 
       var BN = require('bn.js');
       var EC = require('elliptic').ec;
@@ -9259,10 +9259,10 @@ const SRTlib = require('SRT-util');
 
       }
       module.exports = verify;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###5"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey53"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###53"},');
 
   }, {
     "./curves.json": 47,
@@ -9272,10 +9272,10 @@ const SRTlib = require('SRT-util');
     "parse-asn1": 151
   }],
   51: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey54","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###54","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call6","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###6","fileName":"${__filename}","paramsNumber":1},`);
 
       module.exports = function xor(a, b) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.module.exports","fileName":"${__filename}","paramsNumber":2},`);
@@ -9291,16 +9291,16 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###6"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey54"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###54"},');
 
   }, {
     "buffer": 360
   }],
   52: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey55","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###55","fileName":"${__filename}","paramsNumber":3},`);
 
     var Buffer = require('safe-buffer').Buffer;
     var Transform = require('stream').Transform;
@@ -9447,7 +9447,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = CipherBase;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey55"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###55"},');
 
   }, {
     "inherits": 133,
@@ -9456,10 +9456,10 @@ const SRTlib = require('SRT-util');
     "string_decoder": 217
   }],
   53: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey57","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###57","fileName":"${__filename}","paramsNumber":3},`);
 
     (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey56","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###56","fileName":"${__filename}","paramsNumber":0},`);
 
       'use strict';
       var hasOwn = ({}).hasOwnProperty;
@@ -9508,27 +9508,27 @@ const SRTlib = require('SRT-util');
       } else {
         window.classNames = classNames;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey56"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###56"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey57"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###57"},');
 
   }, {}],
   54: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey58","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###58","fileName":"${__filename}","paramsNumber":3},`);
 
     var slice = [].slice;
     module.exports = function (obj, fn) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports4","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###4","fileName":"${__filename}","paramsNumber":2},`);
 
       if ('string' == typeof fn) fn = obj[fn];
       if ('function' != typeof fn) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###4"},');
 
         throw new Error('bind() requires a function');
       }
       var args = slice.call(arguments, 2);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###4"},');
 
       return function () {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
@@ -9539,14 +9539,14 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###4"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey58"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###58"},');
 
   }, {}],
   55: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey59","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###59","fileName":"${__filename}","paramsNumber":3},`);
 
     if (typeof module !== 'undefined') {
       module.exports = Emitter;
@@ -9683,14 +9683,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.hasListeners"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey59"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###59"},');
 
   }, {}],
   56: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey60","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###60","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function (a, b) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports5","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###5","fileName":"${__filename}","paramsNumber":2},`);
 
       var fn = function () {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"fn","fileName":"${__filename}","paramsNumber":0},`);
@@ -9701,17 +9701,17 @@ const SRTlib = require('SRT-util');
       fn.prototype = b.prototype;
       a.prototype = new fn();
       a.prototype.constructor = a;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###5"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey60"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###60"},');
 
   }, {}],
   57: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey61","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###61","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call7","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###7","fileName":"${__filename}","paramsNumber":1},`);
 
       function isArray(arg) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isArray","fileName":"${__filename}","paramsNumber":1},`);
@@ -9868,31 +9868,31 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"objectToString","paramsNumber":1},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###7"},');
 
     }).call(this, {
       "isBuffer": require("../../is-buffer/index.js")
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey61"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###61"},');
 
   }, {
     "../../is-buffer/index.js": 134
   }],
   58: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey62","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###62","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call8","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###8","fileName":"${__filename}","paramsNumber":1},`);
 
       var elliptic = require('elliptic');
       var BN = require('bn.js');
       module.exports = function createECDH(curve) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.module.exports2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.module.exports###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###2"},');
 
         return new ECDH(curve);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###2"},');
 
       };
       var aliases = {
@@ -10050,10 +10050,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"formatReturnValue","paramsNumber":3},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###8"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey62"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###62"},');
 
   }, {
     "bn.js": 21,
@@ -10061,7 +10061,7 @@ const SRTlib = require('SRT-util');
     "elliptic": 78
   }],
   59: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey63","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###63","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var inherits = require('inherits');
@@ -10095,26 +10095,26 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = function createHash(alg) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports6","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###6","fileName":"${__filename}","paramsNumber":1},`);
 
       alg = alg.toLowerCase();
       if (alg === 'md5') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###6"},');
 
         return new MD5();
       }
       if (alg === 'rmd160' || alg === 'ripemd160') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###6"},');
 
         return new RIPEMD160();
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###6"},');
 
       return new Hash(sha(alg));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###6"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey63"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###63"},');
 
   }, {
     "cipher-base": 52,
@@ -10124,25 +10124,25 @@ const SRTlib = require('SRT-util');
     "sha.js": 192
   }],
   60: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey64","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###64","fileName":"${__filename}","paramsNumber":3},`);
 
     var MD5 = require('md5.js');
     module.exports = function (buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports7","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###7","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###7"},');
 
       return new MD5().update(buffer).digest();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###7"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey64"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###64"},');
 
   }, {
     "md5.js": 140
   }],
   61: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey65","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###65","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var inherits = require('inherits');
@@ -10200,26 +10200,26 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = function createHmac(alg, key) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports8","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###8","fileName":"${__filename}","paramsNumber":2},`);
 
       alg = alg.toLowerCase();
       if (alg === 'rmd160' || alg === 'ripemd160') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###8"},');
 
         return new Hmac('rmd160', key);
       }
       if (alg === 'md5') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###8"},');
 
         return new Legacy(md5, key);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###8"},');
 
       return new Hmac(alg, key);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###8"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey65"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###65"},');
 
   }, {
     "./legacy": 62,
@@ -10231,7 +10231,7 @@ const SRTlib = require('SRT-util');
     "sha.js": 192
   }],
   62: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey66","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###66","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var inherits = require('inherits');
@@ -10265,24 +10265,24 @@ const SRTlib = require('SRT-util');
     }
     inherits(Hmac, Base);
     Hmac.prototype._update = function (data) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Hmac.prototype._update2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Hmac.prototype._update###2","fileName":"${__filename}","paramsNumber":1},`);
 
       this._hash.push(data);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Hmac.prototype._update2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Hmac.prototype._update###2"},');
 
     };
     Hmac.prototype._final = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Hmac.prototype._final2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Hmac.prototype._final###2","fileName":"${__filename}","paramsNumber":0},`);
 
       var h = this._alg(Buffer.concat(this._hash));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Hmac.prototype._final2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Hmac.prototype._final###2"},');
 
       return this._alg(Buffer.concat([this._opad, h]));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Hmac.prototype._final2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Hmac.prototype._final###2"},');
 
     };
     module.exports = Hmac;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey66"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###66"},');
 
   }, {
     "cipher-base": 52,
@@ -10290,7 +10290,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   63: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey67","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###67","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes');
@@ -10368,7 +10368,7 @@ const SRTlib = require('SRT-util');
       'POINT_CONVERSION_UNCOMPRESSED': 4,
       'POINT_CONVERSION_HYBRID': 6
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey67"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###67"},');
 
   }, {
     "browserify-cipher": 41,
@@ -10384,7 +10384,7 @@ const SRTlib = require('SRT-util');
     "randomfill": 171
   }],
   64: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey68","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###68","fileName":"${__filename}","paramsNumber":3},`);
 
     var fingerprint = require('./lib/fingerprint.js');
     var pad = require('./lib/pad.js');
@@ -10471,7 +10471,7 @@ const SRTlib = require('SRT-util');
     };
     cuid.fingerprint = fingerprint;
     module.exports = cuid;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey68"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###68"},');
 
   }, {
     "./lib/fingerprint.js": 65,
@@ -10479,7 +10479,7 @@ const SRTlib = require('SRT-util');
     "./lib/pad.js": 67
   }],
   65: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey69","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###69","fileName":"${__filename}","paramsNumber":3},`);
 
     var pad = require('./pad.js');
     var env = typeof window === 'object' ? window : self;
@@ -10487,21 +10487,21 @@ const SRTlib = require('SRT-util');
     var mimeTypesLength = navigator.mimeTypes ? navigator.mimeTypes.length : 0;
     var clientId = pad((mimeTypesLength + navigator.userAgent.length).toString(36) + globalCount.toString(36), 4);
     module.exports = function fingerprint() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports9","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###9","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###9"},');
 
       return clientId;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###9"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey69"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###69"},');
 
   }, {
     "./pad.js": 67
   }],
   66: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey70","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###70","fileName":"${__filename}","paramsNumber":3},`);
 
     var getRandomValue;
     var crypto = typeof window !== 'undefined' && (window.crypto || window.msCrypto) || typeof self !== 'undefined' && self.crypto;
@@ -10520,27 +10520,27 @@ const SRTlib = require('SRT-util');
       getRandomValue = Math.random;
     }
     module.exports = getRandomValue;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey70"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###70"},');
 
   }, {}],
   67: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey71","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###71","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function pad(num, size) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports10","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###10","fileName":"${__filename}","paramsNumber":2},`);
 
       var s = '000000000' + num;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###10"},');
 
       return s.substr(s.length - size);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###10"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey71"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###71"},');
 
   }, {}],
   68: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey72","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###72","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     exports.utils = require('./des/utils');
@@ -10548,7 +10548,7 @@ const SRTlib = require('SRT-util');
     exports.DES = require('./des/des');
     exports.CBC = require('./des/cbc');
     exports.EDE = require('./des/ede');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey72"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###72"},');
 
   }, {
     "./des/cbc": 69,
@@ -10558,7 +10558,7 @@ const SRTlib = require('SRT-util');
     "./des/utils": 73
   }],
   69: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey73","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###73","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var assert = require('minimalistic-assert');
@@ -10632,14 +10632,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"proto._update"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey73"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###73"},');
 
   }, {
     "inherits": 133,
     "minimalistic-assert": 144
   }],
   70: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey74","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###74","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var assert = require('minimalistic-assert');
@@ -10671,7 +10671,7 @@ const SRTlib = require('SRT-util');
         return [];
       }
       if (this.type === 'decrypt') return this._updateDecrypt(data); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey74"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###74"},');
 
         return this._updateDecrypt(data);
       }
@@ -10750,7 +10750,7 @@ const SRTlib = require('SRT-util');
       var last;
       if (this.type === 'encrypt') last = this._finalEncrypt(); else last = this._finalDecrypt();
       if (first) return first.concat(last); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey74"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###74"},');
 
         return first.concat(last);
       }
@@ -10809,13 +10809,13 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Cipher.prototype._finalDecrypt"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey74"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###74"},');
 
   }, {
     "minimalistic-assert": 144
   }],
   71: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey75","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###75","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var assert = require('minimalistic-assert');
@@ -10872,7 +10872,7 @@ const SRTlib = require('SRT-util');
 
     };
     DES.prototype._update = function _update(inp, inOff, out, outOff) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DES.prototype._update2","fileName":"${__filename}","paramsNumber":4},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"DES.prototype._update###2","fileName":"${__filename}","paramsNumber":4},`);
 
       var state = this._desState;
       var l = utils.readUInt32BE(inp, inOff);
@@ -10885,7 +10885,7 @@ const SRTlib = require('SRT-util');
       r = state.tmp[1];
       utils.writeUInt32BE(out, l, outOff);
       utils.writeUInt32BE(out, r, outOff + 4);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"DES.prototype._update2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"DES.prototype._update###2"},');
 
     };
     DES.prototype._pad = function _pad(buffer, off) {
@@ -10952,7 +10952,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"DES.prototype._decrypt"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey75"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###75"},');
 
   }, {
     "./cipher": 70,
@@ -10961,7 +10961,7 @@ const SRTlib = require('SRT-util');
     "minimalistic-assert": 144
   }],
   72: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey76","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###76","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var assert = require('minimalistic-assert');
@@ -11033,7 +11033,7 @@ const SRTlib = require('SRT-util');
     };
     EDE.prototype._pad = DES.prototype._pad;
     EDE.prototype._unpad = DES.prototype._unpad;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey76"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###76"},');
 
   }, {
     "./cipher": 70,
@@ -11042,7 +11042,7 @@ const SRTlib = require('SRT-util');
     "minimalistic-assert": 144
   }],
   73: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey77","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###77","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -11259,14 +11259,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"exports.padSplit"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey77"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###77"},');
 
   }, {}],
   74: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey78","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###78","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call9","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###9","fileName":"${__filename}","paramsNumber":1},`);
 
       var generatePrime = require('./lib/generatePrime');
       var primes = require('./lib/primes.json');
@@ -11317,10 +11317,10 @@ const SRTlib = require('SRT-util');
       }
       exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffieHellman = getDiffieHellman;
       exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###9"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey78"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###78"},');
 
   }, {
     "./lib/dh": 75,
@@ -11329,10 +11329,10 @@ const SRTlib = require('SRT-util');
     "buffer": 360
   }],
   75: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey79","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###79","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call10","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###10","fileName":"${__filename}","paramsNumber":1},`);
 
       var BN = require('bn.js');
       var MillerRabin = require('miller-rabin');
@@ -11556,10 +11556,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"formatReturnValue","paramsNumber":2},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###10"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey79"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###79"},');
 
   }, {
     "./generatePrime": 76,
@@ -11569,7 +11569,7 @@ const SRTlib = require('SRT-util');
     "randombytes": 170
   }],
   76: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey80","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###80","fileName":"${__filename}","paramsNumber":3},`);
 
     var randomBytes = require('randombytes');
     module.exports = findPrime;
@@ -11692,7 +11692,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"findPrime","paramsNumber":2},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey80"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###80"},');
 
   }, {
     "bn.js": 21,
@@ -11700,7 +11700,7 @@ const SRTlib = require('SRT-util');
     "randombytes": 170
   }],
   77: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey81","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###81","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "modp1": {
@@ -11736,11 +11736,11 @@ const SRTlib = require('SRT-util');
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey81"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###81"},');
 
   }, {}],
   78: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey82","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###82","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var elliptic = exports;
@@ -11751,7 +11751,7 @@ const SRTlib = require('SRT-util');
     elliptic.curves = require('./elliptic/curves');
     elliptic.ec = require('./elliptic/ec');
     elliptic.eddsa = require('./elliptic/eddsa');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey82"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###82"},');
 
   }, {
     "../package.json": 93,
@@ -11763,7 +11763,7 @@ const SRTlib = require('SRT-util');
     "brorand": 22
   }],
   79: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey83","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###83","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var BN = require('bn.js');
@@ -11946,7 +11946,7 @@ const SRTlib = require('SRT-util');
       }
       for (var i = 0; i < len; i++) wnd[i] = null;
       if (jacobianResult) return acc; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey83"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###83"},');
 
         return acc;
       }
@@ -12144,14 +12144,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"BasePoint.prototype.dblp"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey83"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###83"},');
 
   }, {
     "../utils": 92,
     "bn.js": 21
   }],
   80: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey84","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###84","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('../utils');
@@ -12183,7 +12183,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"EdwardsCurve.prototype._mulA","fileName":"${__filename}","paramsNumber":1},`);
 
       if (this.mOneA) return num.redNeg(); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey84"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###84"},');
 
         return num.redNeg();
       }
@@ -12194,7 +12194,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"EdwardsCurve.prototype._mulC","fileName":"${__filename}","paramsNumber":1},`);
 
       if (this.oneC) return num; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey84"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###84"},');
 
         return num;
       }
@@ -12244,7 +12244,7 @@ const SRTlib = require('SRT-util');
       var x2 = lhs.redMul(rhs.redInvm());
       if (x2.cmp(this.zero) === 0) {
         if (odd) throw new Error('invalid point'); else {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey84"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###84"},');
 
           throw new Error('invalid point');
         }
@@ -12428,7 +12428,7 @@ const SRTlib = require('SRT-util');
         return this;
       }
       if (this.curve.extended) return this._extDbl(); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey84"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###84"},');
 
         return this._extDbl();
       }
@@ -12497,7 +12497,7 @@ const SRTlib = require('SRT-util');
         return this;
       }
       if (this.curve.extended) return this._extAdd(p); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey84"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###84"},');
 
         return this._extAdd(p);
       }
@@ -12508,7 +12508,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.mul","fileName":"${__filename}","paramsNumber":1},`);
 
       if (this._hasDoubles(k)) return this.curve._fixedNafMul(this, k); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey84"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###84"},');
 
         return this.curve._fixedNafMul(this, k);
       }
@@ -12621,7 +12621,7 @@ const SRTlib = require('SRT-util');
     };
     Point.prototype.toP = Point.prototype.normalize;
     Point.prototype.mixedAdd = Point.prototype.add;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey84"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###84"},');
 
   }, {
     "../utils": 92,
@@ -12630,7 +12630,7 @@ const SRTlib = require('SRT-util');
     "inherits": 133
   }],
   81: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey85","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###85","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var curve = exports;
@@ -12638,7 +12638,7 @@ const SRTlib = require('SRT-util');
     curve.short = require('./short');
     curve.mont = require('./mont');
     curve.edwards = require('./edwards');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey85"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###85"},');
 
   }, {
     "./base": 79,
@@ -12647,7 +12647,7 @@ const SRTlib = require('SRT-util');
     "./short": 83
   }],
   82: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey86","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###86","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var BN = require('bn.js');
@@ -12741,39 +12741,39 @@ const SRTlib = require('SRT-util');
 
     };
     Point.fromJSON = function fromJSON(curve, obj) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.fromJSON2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.fromJSON###2","fileName":"${__filename}","paramsNumber":2},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON###2"},');
 
       return new Point(curve, obj[0], obj[1] || curve.one);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON###2"},');
 
     };
     Point.prototype.inspect = function inspect() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.inspect2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.inspect###2","fileName":"${__filename}","paramsNumber":0},`);
 
       if (this.isInfinity()) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect###2"},');
 
         return '<EC Point Infinity>';
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect###2"},');
 
       return '<EC Point x: ' + this.x.fromRed().toString(16, 2) + ' z: ' + this.z.fromRed().toString(16, 2) + '>';
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect###2"},');
 
     };
     Point.prototype.isInfinity = function isInfinity() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.isInfinity2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.isInfinity###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.isInfinity2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.isInfinity###2"},');
 
       return this.z.cmpn(0) === 0;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.isInfinity2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.isInfinity###2"},');
 
     };
     Point.prototype.dbl = function dbl() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.dbl2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.dbl###2","fileName":"${__filename}","paramsNumber":0},`);
 
       var a = this.x.redAdd(this.z);
       var aa = a.redSqr();
@@ -12782,19 +12782,19 @@ const SRTlib = require('SRT-util');
       var c = aa.redSub(bb);
       var nx = aa.redMul(bb);
       var nz = c.redMul(bb.redAdd(this.curve.a24.redMul(c)));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl###2"},');
 
       return this.curve.point(nx, nz);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl###2"},');
 
     };
     Point.prototype.add = function add() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.add2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.add###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add###2"},');
 
       throw new Error('Not supported on Montgomery curve');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add###2"},');
 
     };
     Point.prototype.diffAdd = function diffAdd(p, diff) {
@@ -12815,7 +12815,7 @@ const SRTlib = require('SRT-util');
 
     };
     Point.prototype.mul = function mul(k) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.mul2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.mul###2","fileName":"${__filename}","paramsNumber":1},`);
 
       var t = k.clone();
       var a = this;
@@ -12831,19 +12831,19 @@ const SRTlib = require('SRT-util');
           a = a.dbl();
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mul2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mul###2"},');
 
       return b;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mul2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mul###2"},');
 
     };
     Point.prototype.mulAdd = function mulAdd() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.mulAdd2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.mulAdd###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mulAdd2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mulAdd###2"},');
 
       throw new Error('Not supported on Montgomery curve');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mulAdd2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mulAdd###2"},');
 
     };
     Point.prototype.jumlAdd = function jumlAdd() {
@@ -12856,36 +12856,36 @@ const SRTlib = require('SRT-util');
 
     };
     Point.prototype.eq = function eq(other) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.eq2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.eq###2","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.eq2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.eq###2"},');
 
       return this.getX().cmp(other.getX()) === 0;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.eq2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.eq###2"},');
 
     };
     Point.prototype.normalize = function normalize() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.normalize2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.normalize###2","fileName":"${__filename}","paramsNumber":0},`);
 
       this.x = this.x.redMul(this.z.redInvm());
       this.z = this.curve.one;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.normalize2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.normalize###2"},');
 
       return this;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.normalize2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.normalize###2"},');
 
     };
     Point.prototype.getX = function getX() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.getX2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.getX###2","fileName":"${__filename}","paramsNumber":0},`);
 
       this.normalize();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getX2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getX###2"},');
 
       return this.x.fromRed();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getX2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getX###2"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey86"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###86"},');
 
   }, {
     "../utils": 92,
@@ -12894,7 +12894,7 @@ const SRTlib = require('SRT-util');
     "inherits": 133
   }],
   83: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey87","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###87","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('../utils');
@@ -13262,12 +13262,12 @@ const SRTlib = require('SRT-util');
 
     };
     Point.fromJSON = function fromJSON(curve, obj, red) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.fromJSON3","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.fromJSON###3","fileName":"${__filename}","paramsNumber":3},`);
 
       if (typeof obj === 'string') obj = JSON.parse(obj);
       var res = curve.point(obj[0], obj[1], red);
       if (!obj[2]) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON###3"},');
 
         return res;
       }
@@ -13292,60 +13292,60 @@ const SRTlib = require('SRT-util');
           points: [res].concat(pre.naf.points.map(obj2point))
         })
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON###3"},');
 
       return res;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.fromJSON###3"},');
 
     };
     Point.prototype.inspect = function inspect() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.inspect3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.inspect###3","fileName":"${__filename}","paramsNumber":0},`);
 
       if (this.isInfinity()) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect###3"},');
 
         return '<EC Point Infinity>';
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect###3"},');
 
       return '<EC Point x: ' + this.x.fromRed().toString(16, 2) + ' y: ' + this.y.fromRed().toString(16, 2) + '>';
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.inspect###3"},');
 
     };
     Point.prototype.isInfinity = function isInfinity() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.isInfinity3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.isInfinity###3","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.isInfinity3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.isInfinity###3"},');
 
       return this.inf;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.isInfinity3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.isInfinity###3"},');
 
     };
     Point.prototype.add = function add(p) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.add3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.add###3","fileName":"${__filename}","paramsNumber":1},`);
 
       if (this.inf) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add###3"},');
 
         return p;
       }
       if (p.inf) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add###3"},');
 
         return this;
       }
       if (this.eq(p)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add###3"},');
 
         return this.dbl();
       }
       if (this.neg().eq(p)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add###3"},');
 
         return this.curve.point(null, null);
       }
       if (this.x.cmp(p.x) === 0) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add###3"},');
 
         return this.curve.point(null, null);
       }
@@ -13353,23 +13353,23 @@ const SRTlib = require('SRT-util');
       if (c.cmpn(0) !== 0) c = c.redMul(this.x.redSub(p.x).redInvm());
       var nx = c.redSqr().redISub(this.x).redISub(p.x);
       var ny = c.redMul(this.x.redSub(nx)).redISub(this.y);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add###3"},');
 
       return this.curve.point(nx, ny);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.add###3"},');
 
     };
     Point.prototype.dbl = function dbl() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.dbl3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.dbl###3","fileName":"${__filename}","paramsNumber":0},`);
 
       if (this.inf) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl###3"},');
 
         return this;
       }
       var ys1 = this.y.redAdd(this.y);
       if (ys1.cmpn(0) === 0) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl###3"},');
 
         return this.curve.point(null, null);
       }
@@ -13379,82 +13379,82 @@ const SRTlib = require('SRT-util');
       var c = x2.redAdd(x2).redIAdd(x2).redIAdd(a).redMul(dyinv);
       var nx = c.redSqr().redISub(this.x.redAdd(this.x));
       var ny = c.redMul(this.x.redSub(nx)).redISub(this.y);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl###3"},');
 
       return this.curve.point(nx, ny);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.dbl###3"},');
 
     };
     Point.prototype.getX = function getX() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.getX3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.getX###3","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getX3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getX###3"},');
 
       return this.x.fromRed();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getX3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getX###3"},');
 
     };
     Point.prototype.getY = function getY() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.getY2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.getY###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getY2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getY###2"},');
 
       return this.y.fromRed();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getY2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.getY###2"},');
 
     };
     Point.prototype.mul = function mul(k) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.mul3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.mul###3","fileName":"${__filename}","paramsNumber":1},`);
 
       k = new BN(k, 16);
       if (this.isInfinity()) return this; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey87"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###87"},');
 
         return this;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mul3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mul###3"},');
 
     };
     Point.prototype.mulAdd = function mulAdd(k1, p2, k2) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.mulAdd3","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.mulAdd###3","fileName":"${__filename}","paramsNumber":3},`);
 
       var points = [this, p2];
       var coeffs = [k1, k2];
       if (this.curve.endo) return this.curve._endoWnafMulAdd(points, coeffs); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey87"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###87"},');
 
         return this.curve._endoWnafMulAdd(points, coeffs);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mulAdd3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.mulAdd###3"},');
 
     };
     Point.prototype.jmulAdd = function jmulAdd(k1, p2, k2) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.jmulAdd2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.jmulAdd###2","fileName":"${__filename}","paramsNumber":3},`);
 
       var points = [this, p2];
       var coeffs = [k1, k2];
       if (this.curve.endo) return this.curve._endoWnafMulAdd(points, coeffs, true); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey87"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###87"},');
 
         return this.curve._endoWnafMulAdd(points, coeffs, true);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.jmulAdd2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.jmulAdd###2"},');
 
     };
     Point.prototype.eq = function eq(p) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.eq3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.eq###3","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.eq3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.eq###3"},');
 
       return this === p || this.inf === p.inf && (this.inf || this.x.cmp(p.x) === 0 && this.y.cmp(p.y) === 0);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.eq3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.eq###3"},');
 
     };
     Point.prototype.neg = function neg(_precompute) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.neg2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Point.prototype.neg###2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (this.inf) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.neg2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.neg###2"},');
 
         return this;
       }
@@ -13481,10 +13481,10 @@ const SRTlib = require('SRT-util');
           })
         };
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.neg2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.neg###2"},');
 
       return res;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.neg2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Point.prototype.neg###2"},');
 
     };
     Point.prototype.toJ = function toJ() {
@@ -13582,7 +13582,7 @@ const SRTlib = require('SRT-util');
       var r = s1.redSub(s2);
       if (h.cmpn(0) === 0) {
         if (r.cmpn(0) !== 0) return this.curve.jpoint(null, null, null); else {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey87"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###87"},');
 
           return this.curve.jpoint(null, null, null);
         }
@@ -13621,7 +13621,7 @@ const SRTlib = require('SRT-util');
       var r = s1.redSub(s2);
       if (h.cmpn(0) === 0) {
         if (r.cmpn(0) !== 0) return this.curve.jpoint(null, null, null); else {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey87"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###87"},');
 
           return this.curve.jpoint(null, null, null);
         }
@@ -13701,7 +13701,7 @@ const SRTlib = require('SRT-util');
         return this;
       }
       if (this.curve.zeroA) return this._zeroDbl(); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey87"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###87"},');
 
         return this._zeroDbl();
       }
@@ -13952,7 +13952,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"JPoint.prototype.isInfinity"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey87"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###87"},');
 
   }, {
     "../utils": 92,
@@ -13961,7 +13961,7 @@ const SRTlib = require('SRT-util');
     "inherits": 133
   }],
   84: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey88","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###88","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var curves = exports;
@@ -14112,7 +14112,7 @@ const SRTlib = require('SRT-util');
       gRed: false,
       g: ['79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798', '483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8', pre]
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey88"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###88"},');
 
   }, {
     "./curve": 81,
@@ -14121,7 +14121,7 @@ const SRTlib = require('SRT-util');
     "hash.js": 118
   }],
   85: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey89","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###89","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var BN = require('bn.js');
@@ -14216,7 +14216,7 @@ const SRTlib = require('SRT-util');
       var delta = msg.byteLength() * 8 - this.n.bitLength();
       if (delta > 0) msg = msg.ushrn(delta);
       if (!truncOnly && msg.cmp(this.n) >= 0) return msg.sub(this.n); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey89"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###89"},');
 
         return msg.sub(this.n);
       }
@@ -14370,7 +14370,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"EC.prototype.getKeyRecoveryParam"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey89"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###89"},');
 
   }, {
     "../curves": 84,
@@ -14382,7 +14382,7 @@ const SRTlib = require('SRT-util');
     "hmac-drbg": 130
   }],
   86: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey90","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###90","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var BN = require('bn.js');
@@ -14494,7 +14494,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"KeyPair.prototype.getPrivate","fileName":"${__filename}","paramsNumber":1},`);
 
       if (enc === 'hex') return this.priv.toString(16, 2); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey90"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###90"},');
 
         return this.priv.toString(16, 2);
       }
@@ -14563,14 +14563,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.inspect"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey90"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###90"},');
 
   }, {
     "../utils": 92,
     "bn.js": 21
   }],
   87: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey91","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###91","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var BN = require('bn.js');
@@ -14741,14 +14741,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Signature.prototype.toDER"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey91"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###91"},');
 
   }, {
     "../utils": 92,
     "bn.js": 21
   }],
   88: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey92","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###92","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var hash = require('hash.js');
@@ -14908,7 +14908,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"EDDSA.prototype.isPoint"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey92"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###92"},');
 
   }, {
     "../curves": 84,
@@ -14918,7 +14918,7 @@ const SRTlib = require('SRT-util');
     "hash.js": 118
   }],
   89: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey93","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###93","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('../utils');
@@ -14935,19 +14935,19 @@ const SRTlib = require('SRT-util');
 
     }
     KeyPair.fromPublic = function fromPublic(eddsa, pub) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"KeyPair.fromPublic2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"KeyPair.fromPublic###2","fileName":"${__filename}","paramsNumber":2},`);
 
       if (pub instanceof KeyPair) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.fromPublic2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.fromPublic###2"},');
 
         return pub;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.fromPublic2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.fromPublic###2"},');
 
       return new KeyPair(eddsa, {
         pub: pub
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.fromPublic2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.fromPublic###2"},');
 
     };
     KeyPair.fromSecret = function fromSecret(eddsa, secret) {
@@ -14985,21 +14985,21 @@ const SRTlib = require('SRT-util');
 
     });
     cachedProperty(KeyPair, 'pub', function pub() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty###2","fileName":"${__filename}","paramsNumber":0},`);
 
       if (this._pubBytes) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###2"},');
 
         return this.eddsa.decodePoint(this._pubBytes);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###2"},');
 
       return this.eddsa.g.mul(this.priv());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###2"},');
 
     });
     cachedProperty(KeyPair, 'privBytes', function privBytes() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty###3","fileName":"${__filename}","paramsNumber":0},`);
 
       var eddsa = this.eddsa;
       var hash = this.hash();
@@ -15008,56 +15008,56 @@ const SRTlib = require('SRT-util');
       a[0] &= 248;
       a[lastIx] &= 127;
       a[lastIx] |= 64;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###3"},');
 
       return a;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###3"},');
 
     });
     cachedProperty(KeyPair, 'priv', function priv() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty4","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty###4","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###4"},');
 
       return this.eddsa.decodeInt(this.privBytes());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###4"},');
 
     });
     cachedProperty(KeyPair, 'hash', function hash() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty5","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty###5","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###5"},');
 
       return this.eddsa.hash().update(this.secret()).digest();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###5"},');
 
     });
     cachedProperty(KeyPair, 'messagePrefix', function messagePrefix() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty6","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty###6","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###6"},');
 
       return this.hash().slice(this.eddsa.encodingLength);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###6"},');
 
     });
     KeyPair.prototype.sign = function sign(message) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"KeyPair.prototype.sign2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"KeyPair.prototype.sign###2","fileName":"${__filename}","paramsNumber":1},`);
 
       assert(this._secret, 'KeyPair can only verify');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.sign2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.sign###2"},');
 
       return this.eddsa.sign(message, this);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.sign2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.sign###2"},');
 
     };
     KeyPair.prototype.verify = function verify(message, sig) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"KeyPair.prototype.verify2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"KeyPair.prototype.verify###2","fileName":"${__filename}","paramsNumber":2},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.verify2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.verify###2"},');
 
       return this.eddsa.verify(message, sig, this);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.verify2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.verify###2"},');
 
     };
     KeyPair.prototype.getSecret = function getSecret(enc) {
@@ -15071,22 +15071,22 @@ const SRTlib = require('SRT-util');
 
     };
     KeyPair.prototype.getPublic = function getPublic(enc) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"KeyPair.prototype.getPublic2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"KeyPair.prototype.getPublic###2","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.getPublic2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.getPublic###2"},');
 
       return utils.encode(this.pubBytes(), enc);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.getPublic2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"KeyPair.prototype.getPublic###2"},');
 
     };
     module.exports = KeyPair;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey93"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###93"},');
 
   }, {
     "../utils": 92
   }],
   90: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey94","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###94","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var BN = require('bn.js');
@@ -15114,39 +15114,39 @@ const SRTlib = require('SRT-util');
 
     }
     cachedProperty(Signature, 'S', function S() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty7","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty###7","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###7"},');
 
       return this.eddsa.decodeInt(this.Sencoded());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###7"},');
 
     });
     cachedProperty(Signature, 'R', function R() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty8","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty###8","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###8"},');
 
       return this.eddsa.decodePoint(this.Rencoded());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###8"},');
 
     });
     cachedProperty(Signature, 'Rencoded', function Rencoded() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty9","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty###9","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###9"},');
 
       return this.eddsa.encodePoint(this.R());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###9"},');
 
     });
     cachedProperty(Signature, 'Sencoded', function Sencoded() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty10","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cachedProperty###10","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###10"},');
 
       return this.eddsa.encodeInt(this.S());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"cachedProperty###10"},');
 
     });
     Signature.prototype.toBytes = function toBytes() {
@@ -15168,14 +15168,14 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = Signature;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey94"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###94"},');
 
   }, {
     "../utils": 92,
     "bn.js": 21
   }],
   91: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey95","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###95","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       doubles: {
@@ -15187,11 +15187,11 @@ const SRTlib = require('SRT-util');
         points: [['f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9', '388f7b0f632de8140fe337e62a37f3566500a99934c2231b6cb9fd7584b8e672'], ['2f8bde4d1a07209355b4a7250a5c5128e88b84bddc619ab7cba8d569b240efe4', 'd8ac222636e5e3d6d4dba9dda6c9c426f788271bab0d6840dca87d3aa6ac62d6'], ['5cbdf0646e5db4eaa398f365f2ea7a0e3d419b7e0330e39ce92bddedcac4f9bc', '6aebca40ba255960a3178d6d861a54dba813d0b813fde7b5a5082628087264da'], ['acd484e2f0c7f65309ad178a9f559abde09796974c57e714c35f110dfc27ccbe', 'cc338921b0a7d9fd64380971763b61e9add888a4375f8e0f05cc262ac64f9c37'], ['774ae7f858a9411e5ef4246b70c65aac5649980be5c17891bbec17895da008cb', 'd984a032eb6b5e190243dd56d7b7b365372db1e2dff9d6a8301d74c9c953c61b'], ['f28773c2d975288bc7d1d205c3748651b075fbc6610e58cddeeddf8f19405aa8', 'ab0902e8d880a89758212eb65cdaf473a1a06da521fa91f29b5cb52db03ed81'], ['d7924d4f7d43ea965a465ae3095ff41131e5946f3c85f79e44adbcf8e27e080e', '581e2872a86c72a683842ec228cc6defea40af2bd896d3a5c504dc9ff6a26b58'], ['defdea4cdb677750a420fee807eacf21eb9898ae79b9768766e4faa04a2d4a34', '4211ab0694635168e997b0ead2a93daeced1f4a04a95c0f6cfb199f69e56eb77'], ['2b4ea0a797a443d293ef5cff444f4979f06acfebd7e86d277475656138385b6c', '85e89bc037945d93b343083b5a1c86131a01f60c50269763b570c854e5c09b7a'], ['352bbf4a4cdd12564f93fa332ce333301d9ad40271f8107181340aef25be59d5', '321eb4075348f534d59c18259dda3e1f4a1b3b2e71b1039c67bd3d8bcf81998c'], ['2fa2104d6b38d11b0230010559879124e42ab8dfeff5ff29dc9cdadd4ecacc3f', '2de1068295dd865b64569335bd5dd80181d70ecfc882648423ba76b532b7d67'], ['9248279b09b4d68dab21a9b066edda83263c3d84e09572e269ca0cd7f5453714', '73016f7bf234aade5d1aa71bdea2b1ff3fc0de2a887912ffe54a32ce97cb3402'], ['daed4f2be3a8bf278e70132fb0beb7522f570e144bf615c07e996d443dee8729', 'a69dce4a7d6c98e8d4a1aca87ef8d7003f83c230f3afa726ab40e52290be1c55'], ['c44d12c7065d812e8acf28d7cbb19f9011ecd9e9fdf281b0e6a3b5e87d22e7db', '2119a460ce326cdc76c45926c982fdac0e106e861edf61c5a039063f0e0e6482'], ['6a245bf6dc698504c89a20cfded60853152b695336c28063b61c65cbd269e6b4', 'e022cf42c2bd4a708b3f5126f16a24ad8b33ba48d0423b6efd5e6348100d8a82'], ['1697ffa6fd9de627c077e3d2fe541084ce13300b0bec1146f95ae57f0d0bd6a5', 'b9c398f186806f5d27561506e4557433a2cf15009e498ae7adee9d63d01b2396'], ['605bdb019981718b986d0f07e834cb0d9deb8360ffb7f61df982345ef27a7479', '2972d2de4f8d20681a78d93ec96fe23c26bfae84fb14db43b01e1e9056b8c49'], ['62d14dab4150bf497402fdc45a215e10dcb01c354959b10cfe31c7e9d87ff33d', '80fc06bd8cc5b01098088a1950eed0db01aa132967ab472235f5642483b25eaf'], ['80c60ad0040f27dade5b4b06c408e56b2c50e9f56b9b8b425e555c2f86308b6f', '1c38303f1cc5c30f26e66bad7fe72f70a65eed4cbe7024eb1aa01f56430bd57a'], ['7a9375ad6167ad54aa74c6348cc54d344cc5dc9487d847049d5eabb0fa03c8fb', 'd0e3fa9eca8726909559e0d79269046bdc59ea10c70ce2b02d499ec224dc7f7'], ['d528ecd9b696b54c907a9ed045447a79bb408ec39b68df504bb51f459bc3ffc9', 'eecf41253136e5f99966f21881fd656ebc4345405c520dbc063465b521409933'], ['49370a4b5f43412ea25f514e8ecdad05266115e4a7ecb1387231808f8b45963', '758f3f41afd6ed428b3081b0512fd62a54c3f3afbb5b6764b653052a12949c9a'], ['77f230936ee88cbbd73df930d64702ef881d811e0e1498e2f1c13eb1fc345d74', '958ef42a7886b6400a08266e9ba1b37896c95330d97077cbbe8eb3c7671c60d6'], ['f2dac991cc4ce4b9ea44887e5c7c0bce58c80074ab9d4dbaeb28531b7739f530', 'e0dedc9b3b2f8dad4da1f32dec2531df9eb5fbeb0598e4fd1a117dba703a3c37'], ['463b3d9f662621fb1b4be8fbbe2520125a216cdfc9dae3debcba4850c690d45b', '5ed430d78c296c3543114306dd8622d7c622e27c970a1de31cb377b01af7307e'], ['f16f804244e46e2a09232d4aff3b59976b98fac14328a2d1a32496b49998f247', 'cedabd9b82203f7e13d206fcdf4e33d92a6c53c26e5cce26d6579962c4e31df6'], ['caf754272dc84563b0352b7a14311af55d245315ace27c65369e15f7151d41d1', 'cb474660ef35f5f2a41b643fa5e460575f4fa9b7962232a5c32f908318a04476'], ['2600ca4b282cb986f85d0f1709979d8b44a09c07cb86d7c124497bc86f082120', '4119b88753c15bd6a693b03fcddbb45d5ac6be74ab5f0ef44b0be9475a7e4b40'], ['7635ca72d7e8432c338ec53cd12220bc01c48685e24f7dc8c602a7746998e435', '91b649609489d613d1d5e590f78e6d74ecfc061d57048bad9e76f302c5b9c61'], ['754e3239f325570cdbbf4a87deee8a66b7f2b33479d468fbc1a50743bf56cc18', '673fb86e5bda30fb3cd0ed304ea49a023ee33d0197a695d0c5d98093c536683'], ['e3e6bd1071a1e96aff57859c82d570f0330800661d1c952f9fe2694691d9b9e8', '59c9e0bba394e76f40c0aa58379a3cb6a5a2283993e90c4167002af4920e37f5'], ['186b483d056a033826ae73d88f732985c4ccb1f32ba35f4b4cc47fdcf04aa6eb', '3b952d32c67cf77e2e17446e204180ab21fb8090895138b4a4a797f86e80888b'], ['df9d70a6b9876ce544c98561f4be4f725442e6d2b737d9c91a8321724ce0963f', '55eb2dafd84d6ccd5f862b785dc39d4ab157222720ef9da217b8c45cf2ba2417'], ['5edd5cc23c51e87a497ca815d5dce0f8ab52554f849ed8995de64c5f34ce7143', 'efae9c8dbc14130661e8cec030c89ad0c13c66c0d17a2905cdc706ab7399a868'], ['290798c2b6476830da12fe02287e9e777aa3fba1c355b17a722d362f84614fba', 'e38da76dcd440621988d00bcf79af25d5b29c094db2a23146d003afd41943e7a'], ['af3c423a95d9f5b3054754efa150ac39cd29552fe360257362dfdecef4053b45', 'f98a3fd831eb2b749a93b0e6f35cfb40c8cd5aa667a15581bc2feded498fd9c6'], ['766dbb24d134e745cccaa28c99bf274906bb66b26dcf98df8d2fed50d884249a', '744b1152eacbe5e38dcc887980da38b897584a65fa06cedd2c924f97cbac5996'], ['59dbf46f8c94759ba21277c33784f41645f7b44f6c596a58ce92e666191abe3e', 'c534ad44175fbc300f4ea6ce648309a042ce739a7919798cd85e216c4a307f6e'], ['f13ada95103c4537305e691e74e9a4a8dd647e711a95e73cb62dc6018cfd87b8', 'e13817b44ee14de663bf4bc808341f326949e21a6a75c2570778419bdaf5733d'], ['7754b4fa0e8aced06d4167a2c59cca4cda1869c06ebadfb6488550015a88522c', '30e93e864e669d82224b967c3020b8fa8d1e4e350b6cbcc537a48b57841163a2'], ['948dcadf5990e048aa3874d46abef9d701858f95de8041d2a6828c99e2262519', 'e491a42537f6e597d5d28a3224b1bc25df9154efbd2ef1d2cbba2cae5347d57e'], ['7962414450c76c1689c7b48f8202ec37fb224cf5ac0bfa1570328a8a3d7c77ab', '100b610ec4ffb4760d5c1fc133ef6f6b12507a051f04ac5760afa5b29db83437'], ['3514087834964b54b15b160644d915485a16977225b8847bb0dd085137ec47ca', 'ef0afbb2056205448e1652c48e8127fc6039e77c15c2378b7e7d15a0de293311'], ['d3cc30ad6b483e4bc79ce2c9dd8bc54993e947eb8df787b442943d3f7b527eaf', '8b378a22d827278d89c5e9be8f9508ae3c2ad46290358630afb34db04eede0a4'], ['1624d84780732860ce1c78fcbfefe08b2b29823db913f6493975ba0ff4847610', '68651cf9b6da903e0914448c6cd9d4ca896878f5282be4c8cc06e2a404078575'], ['733ce80da955a8a26902c95633e62a985192474b5af207da6df7b4fd5fc61cd4', 'f5435a2bd2badf7d485a4d8b8db9fcce3e1ef8e0201e4578c54673bc1dc5ea1d'], ['15d9441254945064cf1a1c33bbd3b49f8966c5092171e699ef258dfab81c045c', 'd56eb30b69463e7234f5137b73b84177434800bacebfc685fc37bbe9efe4070d'], ['a1d0fcf2ec9de675b612136e5ce70d271c21417c9d2b8aaaac138599d0717940', 'edd77f50bcb5a3cab2e90737309667f2641462a54070f3d519212d39c197a629'], ['e22fbe15c0af8ccc5780c0735f84dbe9a790badee8245c06c7ca37331cb36980', 'a855babad5cd60c88b430a69f53a1a7a38289154964799be43d06d77d31da06'], ['311091dd9860e8e20ee13473c1155f5f69635e394704eaa74009452246cfa9b3', '66db656f87d1f04fffd1f04788c06830871ec5a64feee685bd80f0b1286d8374'], ['34c1fd04d301be89b31c0442d3e6ac24883928b45a9340781867d4232ec2dbdf', '9414685e97b1b5954bd46f730174136d57f1ceeb487443dc5321857ba73abee'], ['f219ea5d6b54701c1c14de5b557eb42a8d13f3abbcd08affcc2a5e6b049b8d63', '4cb95957e83d40b0f73af4544cccf6b1f4b08d3c07b27fb8d8c2962a400766d1'], ['d7b8740f74a8fbaab1f683db8f45de26543a5490bca627087236912469a0b448', 'fa77968128d9c92ee1010f337ad4717eff15db5ed3c049b3411e0315eaa4593b'], ['32d31c222f8f6f0ef86f7c98d3a3335ead5bcd32abdd94289fe4d3091aa824bf', '5f3032f5892156e39ccd3d7915b9e1da2e6dac9e6f26e961118d14b8462e1661'], ['7461f371914ab32671045a155d9831ea8793d77cd59592c4340f86cbc18347b5', '8ec0ba238b96bec0cbdddcae0aa442542eee1ff50c986ea6b39847b3cc092ff6'], ['ee079adb1df1860074356a25aa38206a6d716b2c3e67453d287698bad7b2b2d6', '8dc2412aafe3be5c4c5f37e0ecc5f9f6a446989af04c4e25ebaac479ec1c8c1e'], ['16ec93e447ec83f0467b18302ee620f7e65de331874c9dc72bfd8616ba9da6b5', '5e4631150e62fb40d0e8c2a7ca5804a39d58186a50e497139626778e25b0674d'], ['eaa5f980c245f6f038978290afa70b6bd8855897f98b6aa485b96065d537bd99', 'f65f5d3e292c2e0819a528391c994624d784869d7e6ea67fb18041024edc07dc'], ['78c9407544ac132692ee1910a02439958ae04877151342ea96c4b6b35a49f51', 'f3e0319169eb9b85d5404795539a5e68fa1fbd583c064d2462b675f194a3ddb4'], ['494f4be219a1a77016dcd838431aea0001cdc8ae7a6fc688726578d9702857a5', '42242a969283a5f339ba7f075e36ba2af925ce30d767ed6e55f4b031880d562c'], ['a598a8030da6d86c6bc7f2f5144ea549d28211ea58faa70ebf4c1e665c1fe9b5', '204b5d6f84822c307e4b4a7140737aec23fc63b65b35f86a10026dbd2d864e6b'], ['c41916365abb2b5d09192f5f2dbeafec208f020f12570a184dbadc3e58595997', '4f14351d0087efa49d245b328984989d5caf9450f34bfc0ed16e96b58fa9913'], ['841d6063a586fa475a724604da03bc5b92a2e0d2e0a36acfe4c73a5514742881', '73867f59c0659e81904f9a1c7543698e62562d6744c169ce7a36de01a8d6154'], ['5e95bb399a6971d376026947f89bde2f282b33810928be4ded112ac4d70e20d5', '39f23f366809085beebfc71181313775a99c9aed7d8ba38b161384c746012865'], ['36e4641a53948fd476c39f8a99fd974e5ec07564b5315d8bf99471bca0ef2f66', 'd2424b1b1abe4eb8164227b085c9aa9456ea13493fd563e06fd51cf5694c78fc'], ['336581ea7bfbbb290c191a2f507a41cf5643842170e914faeab27c2c579f726', 'ead12168595fe1be99252129b6e56b3391f7ab1410cd1e0ef3dcdcabd2fda224'], ['8ab89816dadfd6b6a1f2634fcf00ec8403781025ed6890c4849742706bd43ede', '6fdcef09f2f6d0a044e654aef624136f503d459c3e89845858a47a9129cdd24e'], ['1e33f1a746c9c5778133344d9299fcaa20b0938e8acff2544bb40284b8c5fb94', '60660257dd11b3aa9c8ed618d24edff2306d320f1d03010e33a7d2057f3b3b6'], ['85b7c1dcb3cec1b7ee7f30ded79dd20a0ed1f4cc18cbcfcfa410361fd8f08f31', '3d98a9cdd026dd43f39048f25a8847f4fcafad1895d7a633c6fed3c35e999511'], ['29df9fbd8d9e46509275f4b125d6d45d7fbe9a3b878a7af872a2800661ac5f51', 'b4c4fe99c775a606e2d8862179139ffda61dc861c019e55cd2876eb2a27d84b'], ['a0b1cae06b0a847a3fea6e671aaf8adfdfe58ca2f768105c8082b2e449fce252', 'ae434102edde0958ec4b19d917a6a28e6b72da1834aff0e650f049503a296cf2'], ['4e8ceafb9b3e9a136dc7ff67e840295b499dfb3b2133e4ba113f2e4c0e121e5', 'cf2174118c8b6d7a4b48f6d534ce5c79422c086a63460502b827ce62a326683c'], ['d24a44e047e19b6f5afb81c7ca2f69080a5076689a010919f42725c2b789a33b', '6fb8d5591b466f8fc63db50f1c0f1c69013f996887b8244d2cdec417afea8fa3'], ['ea01606a7a6c9cdd249fdfcfacb99584001edd28abbab77b5104e98e8e3b35d4', '322af4908c7312b0cfbfe369f7a7b3cdb7d4494bc2823700cfd652188a3ea98d'], ['af8addbf2b661c8a6c6328655eb96651252007d8c5ea31be4ad196de8ce2131f', '6749e67c029b85f52a034eafd096836b2520818680e26ac8f3dfbcdb71749700'], ['e3ae1974566ca06cc516d47e0fb165a674a3dabcfca15e722f0e3450f45889', '2aeabe7e4531510116217f07bf4d07300de97e4874f81f533420a72eeb0bd6a4'], ['591ee355313d99721cf6993ffed1e3e301993ff3ed258802075ea8ced397e246', 'b0ea558a113c30bea60fc4775460c7901ff0b053d25ca2bdeee98f1a4be5d196'], ['11396d55fda54c49f19aa97318d8da61fa8584e47b084945077cf03255b52984', '998c74a8cd45ac01289d5833a7beb4744ff536b01b257be4c5767bea93ea57a4'], ['3c5d2a1ba39c5a1790000738c9e0c40b8dcdfd5468754b6405540157e017aa7a', 'b2284279995a34e2f9d4de7396fc18b80f9b8b9fdd270f6661f79ca4c81bd257'], ['cc8704b8a60a0defa3a99a7299f2e9c3fbc395afb04ac078425ef8a1793cc030', 'bdd46039feed17881d1e0862db347f8cf395b74fc4bcdc4e940b74e3ac1f1b13'], ['c533e4f7ea8555aacd9777ac5cad29b97dd4defccc53ee7ea204119b2889b197', '6f0a256bc5efdf429a2fb6242f1a43a2d9b925bb4a4b3a26bb8e0f45eb596096'], ['c14f8f2ccb27d6f109f6d08d03cc96a69ba8c34eec07bbcf566d48e33da6593', 'c359d6923bb398f7fd4473e16fe1c28475b740dd098075e6c0e8649113dc3a38'], ['a6cbc3046bc6a450bac24789fa17115a4c9739ed75f8f21ce441f72e0b90e6ef', '21ae7f4680e889bb130619e2c0f95a360ceb573c70603139862afd617fa9b9f'], ['347d6d9a02c48927ebfb86c1359b1caf130a3c0267d11ce6344b39f99d43cc38', '60ea7f61a353524d1c987f6ecec92f086d565ab687870cb12689ff1e31c74448'], ['da6545d2181db8d983f7dcb375ef5866d47c67b1bf31c8cf855ef7437b72656a', '49b96715ab6878a79e78f07ce5680c5d6673051b4935bd897fea824b77dc208a'], ['c40747cc9d012cb1a13b8148309c6de7ec25d6945d657146b9d5994b8feb1111', '5ca560753be2a12fc6de6caf2cb489565db936156b9514e1bb5e83037e0fa2d4'], ['4e42c8ec82c99798ccf3a610be870e78338c7f713348bd34c8203ef4037f3502', '7571d74ee5e0fb92a7a8b33a07783341a5492144cc54bcc40a94473693606437'], ['3775ab7089bc6af823aba2e1af70b236d251cadb0c86743287522a1b3b0dedea', 'be52d107bcfa09d8bcb9736a828cfa7fac8db17bf7a76a2c42ad961409018cf7'], ['cee31cbf7e34ec379d94fb814d3d775ad954595d1314ba8846959e3e82f74e26', '8fd64a14c06b589c26b947ae2bcf6bfa0149ef0be14ed4d80f448a01c43b1c6d'], ['b4f9eaea09b6917619f6ea6a4eb5464efddb58fd45b1ebefcdc1a01d08b47986', '39e5c9925b5a54b07433a4f18c61726f8bb131c012ca542eb24a8ac07200682a'], ['d4263dfc3d2df923a0179a48966d30ce84e2515afc3dccc1b77907792ebcc60e', '62dfaf07a0f78feb30e30d6295853ce189e127760ad6cf7fae164e122a208d54'], ['48457524820fa65a4f8d35eb6930857c0032acc0a4a2de422233eeda897612c4', '25a748ab367979d98733c38a1fa1c2e7dc6cc07db2d60a9ae7a76aaa49bd0f77'], ['dfeeef1881101f2cb11644f3a2afdfc2045e19919152923f367a1767c11cceda', 'ecfb7056cf1de042f9420bab396793c0c390bde74b4bbdff16a83ae09a9a7517'], ['6d7ef6b17543f8373c573f44e1f389835d89bcbc6062ced36c82df83b8fae859', 'cd450ec335438986dfefa10c57fea9bcc521a0959b2d80bbf74b190dca712d10'], ['e75605d59102a5a2684500d3b991f2e3f3c88b93225547035af25af66e04541f', 'f5c54754a8f71ee540b9b48728473e314f729ac5308b06938360990e2bfad125'], ['eb98660f4c4dfaa06a2be453d5020bc99a0c2e60abe388457dd43fefb1ed620c', '6cb9a8876d9cb8520609af3add26cd20a0a7cd8a9411131ce85f44100099223e'], ['13e87b027d8514d35939f2e6892b19922154596941888336dc3563e3b8dba942', 'fef5a3c68059a6dec5d624114bf1e91aac2b9da568d6abeb2570d55646b8adf1'], ['ee163026e9fd6fe017c38f06a5be6fc125424b371ce2708e7bf4491691e5764a', '1acb250f255dd61c43d94ccc670d0f58f49ae3fa15b96623e5430da0ad6c62b2'], ['b268f5ef9ad51e4d78de3a750c2dc89b1e626d43505867999932e5db33af3d80', '5f310d4b3c99b9ebb19f77d41c1dee018cf0d34fd4191614003e945a1216e423'], ['ff07f3118a9df035e9fad85eb6c7bfe42b02f01ca99ceea3bf7ffdba93c4750d', '438136d603e858a3a5c440c38eccbaddc1d2942114e2eddd4740d098ced1f0d8'], ['8d8b9855c7c052a34146fd20ffb658bea4b9f69e0d825ebec16e8c3ce2b526a1', 'cdb559eedc2d79f926baf44fb84ea4d44bcf50fee51d7ceb30e2e7f463036758'], ['52db0b5384dfbf05bfa9d472d7ae26dfe4b851ceca91b1eba54263180da32b63', 'c3b997d050ee5d423ebaf66a6db9f57b3180c902875679de924b69d84a7b375'], ['e62f9490d3d51da6395efd24e80919cc7d0f29c3f3fa48c6fff543becbd43352', '6d89ad7ba4876b0b22c2ca280c682862f342c8591f1daf5170e07bfd9ccafa7d'], ['7f30ea2476b399b4957509c88f77d0191afa2ff5cb7b14fd6d8e7d65aaab1193', 'ca5ef7d4b231c94c3b15389a5f6311e9daff7bb67b103e9880ef4bff637acaec'], ['5098ff1e1d9f14fb46a210fada6c903fef0fb7b4a1dd1d9ac60a0361800b7a00', '9731141d81fc8f8084d37c6e7542006b3ee1b40d60dfe5362a5b132fd17ddc0'], ['32b78c7de9ee512a72895be6b9cbefa6e2f3c4ccce445c96b9f2c81e2778ad58', 'ee1849f513df71e32efc3896ee28260c73bb80547ae2275ba497237794c8753c'], ['e2cb74fddc8e9fbcd076eef2a7c72b0ce37d50f08269dfc074b581550547a4f7', 'd3aa2ed71c9dd2247a62df062736eb0baddea9e36122d2be8641abcb005cc4a4'], ['8438447566d4d7bedadc299496ab357426009a35f235cb141be0d99cd10ae3a8', 'c4e1020916980a4da5d01ac5e6ad330734ef0d7906631c4f2390426b2edd791f'], ['4162d488b89402039b584c6fc6c308870587d9c46f660b878ab65c82c711d67e', '67163e903236289f776f22c25fb8a3afc1732f2b84b4e95dbda47ae5a0852649'], ['3fad3fa84caf0f34f0f89bfd2dcf54fc175d767aec3e50684f3ba4a4bf5f683d', 'cd1bc7cb6cc407bb2f0ca647c718a730cf71872e7d0d2a53fa20efcdfe61826'], ['674f2600a3007a00568c1a7ce05d0816c1fb84bf1370798f1c69532faeb1a86b', '299d21f9413f33b3edf43b257004580b70db57da0b182259e09eecc69e0d38a5'], ['d32f4da54ade74abb81b815ad1fb3b263d82d6c692714bcff87d29bd5ee9f08f', 'f9429e738b8e53b968e99016c059707782e14f4535359d582fc416910b3eea87'], ['30e4e670435385556e593657135845d36fbb6931f72b08cb1ed954f1e3ce3ff6', '462f9bce619898638499350113bbc9b10a878d35da70740dc695a559eb88db7b'], ['be2062003c51cc3004682904330e4dee7f3dcd10b01e580bf1971b04d4cad297', '62188bc49d61e5428573d48a74e1c655b1c61090905682a0d5558ed72dccb9bc'], ['93144423ace3451ed29e0fb9ac2af211cb6e84a601df5993c419859fff5df04a', '7c10dfb164c3425f5c71a3f9d7992038f1065224f72bb9d1d902a6d13037b47c'], ['b015f8044f5fcbdcf21ca26d6c34fb8197829205c7b7d2a7cb66418c157b112c', 'ab8c1e086d04e813744a655b2df8d5f83b3cdc6faa3088c1d3aea1454e3a1d5f'], ['d5e9e1da649d97d89e4868117a465a3a4f8a18de57a140d36b3f2af341a21b52', '4cb04437f391ed73111a13cc1d4dd0db1693465c2240480d8955e8592f27447a'], ['d3ae41047dd7ca065dbf8ed77b992439983005cd72e16d6f996a5316d36966bb', 'bd1aeb21ad22ebb22a10f0303417c6d964f8cdd7df0aca614b10dc14d125ac46'], ['463e2763d885f958fc66cdd22800f0a487197d0a82e377b49f80af87c897b065', 'bfefacdb0e5d0fd7df3a311a94de062b26b80c61fbc97508b79992671ef7ca7f'], ['7985fdfd127c0567c6f53ec1bb63ec3158e597c40bfe747c83cddfc910641917', '603c12daf3d9862ef2b25fe1de289aed24ed291e0ec6708703a5bd567f32ed03'], ['74a1ad6b5f76e39db2dd249410eac7f99e74c59cb83d2d0ed5ff1543da7703e9', 'cc6157ef18c9c63cd6193d83631bbea0093e0968942e8c33d5737fd790e0db08'], ['30682a50703375f602d416664ba19b7fc9bab42c72747463a71d0896b22f6da3', '553e04f6b018b4fa6c8f39e7f311d3176290d0e0f19ca73f17714d9977a22ff8'], ['9e2158f0d7c0d5f26c3791efefa79597654e7a2b2464f52b1ee6c1347769ef57', '712fcdd1b9053f09003a3481fa7762e9ffd7c8ef35a38509e2fbf2629008373'], ['176e26989a43c9cfeba4029c202538c28172e566e3c4fce7322857f3be327d66', 'ed8cc9d04b29eb877d270b4878dc43c19aefd31f4eee09ee7b47834c1fa4b1c3'], ['75d46efea3771e6e68abb89a13ad747ecf1892393dfc4f1b7004788c50374da8', '9852390a99507679fd0b86fd2b39a868d7efc22151346e1a3ca4726586a6bed8'], ['809a20c67d64900ffb698c4c825f6d5f2310fb0451c869345b7319f645605721', '9e994980d9917e22b76b061927fa04143d096ccc54963e6a5ebfa5f3f8e286c1'], ['1b38903a43f7f114ed4500b4eac7083fdefece1cf29c63528d563446f972c180', '4036edc931a60ae889353f77fd53de4a2708b26b6f5da72ad3394119daf408f9']]
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey95"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###95"},');
 
   }, {}],
   92: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey96","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###96","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = exports;
@@ -15307,7 +15307,7 @@ const SRTlib = require('SRT-util');
 
     }
     utils.intFromLE = intFromLE;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey96"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###96"},');
 
   }, {
     "bn.js": 21,
@@ -15315,7 +15315,7 @@ const SRTlib = require('SRT-util');
     "minimalistic-crypto-utils": 145
   }],
   93: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey97","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###97","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "_args": [["elliptic@6.5.2", "/windir/c/Users/presi/Documents/workspace/cs449-projects/uppy"]],
@@ -15392,22 +15392,22 @@ const SRTlib = require('SRT-util');
       },
       "version": "6.5.2"
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey97"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###97"},');
 
   }, {}],
   94: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey98","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###98","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = require('./socket');
     module.exports.parser = require('engine.io-parser');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey98"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###98"},');
 
   }, {
     "./socket": 95,
     "engine.io-parser": 107
   }],
   95: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey99","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###99","fileName":"${__filename}","paramsNumber":3},`);
 
     var transports = require('./transports/index');
     var Emitter = require('component-emitter');
@@ -16076,7 +16076,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Socket.prototype.filterUpgrades"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey99"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###99"},');
 
   }, {
     "./transport": 96,
@@ -16089,7 +16089,7 @@ const SRTlib = require('SRT-util');
     "parseuri": 153
   }],
   96: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey100","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###100","fileName":"${__filename}","paramsNumber":3},`);
 
     var parser = require('engine.io-parser');
     var Emitter = require('component-emitter');
@@ -16207,14 +16207,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Transport.prototype.onClose"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey100"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###100"},');
 
   }, {
     "component-emitter": 103,
     "engine.io-parser": 107
   }],
   97: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey101","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###101","fileName":"${__filename}","paramsNumber":3},`);
 
     var XMLHttpRequest = require('xmlhttprequest-ssl');
     var XHR = require('./polling-xhr');
@@ -16258,7 +16258,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"polling","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey101"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###101"},');
 
   }, {
     "./polling-jsonp": 98,
@@ -16267,10 +16267,10 @@ const SRTlib = require('SRT-util');
     "xmlhttprequest-ssl": 102
   }],
   98: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey102","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###102","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call11","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###11","fileName":"${__filename}","paramsNumber":1},`);
 
       var Polling = require('./polling');
       var inherit = require('component-inherit');
@@ -16459,17 +16459,17 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.JSONPPolling.prototype.doWrite"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###11"},');
 
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey102"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###102"},');
 
   }, {
     "./polling": 100,
     "component-inherit": 56
   }],
   99: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey103","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###103","fileName":"${__filename}","paramsNumber":3},`);
 
     var XMLHttpRequest = require('xmlhttprequest-ssl');
     var Polling = require('./polling');
@@ -16565,10 +16565,10 @@ const SRTlib = require('SRT-util');
 
       });
       req.on('error', function (err) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"XHR.prototype.doPoll.req.on2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"XHR.prototype.doPoll.req.on###2","fileName":"${__filename}","paramsNumber":1},`);
 
         self.onError('xhr poll error', err);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"XHR.prototype.doPoll.req.on2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"XHR.prototype.doPoll.req.on###2"},');
 
       });
       this.pollXhr = req;
@@ -16828,7 +16828,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"unloadHandler","paramsNumber":0},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey103"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###103"},');
 
   }, {
     "./polling": 100,
@@ -16838,7 +16838,7 @@ const SRTlib = require('SRT-util');
     "xmlhttprequest-ssl": 102
   }],
   100: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey104","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###104","fileName":"${__filename}","paramsNumber":3},`);
 
     var Transport = require('../transport');
     var parseqs = require('parseqs');
@@ -16912,11 +16912,11 @@ const SRTlib = require('SRT-util');
           debug('we are currently writing - waiting to pause');
           total++;
           this.once('drain', function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Polling.prototype.pause.once2","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Polling.prototype.pause.once###2","fileName":"${__filename}","paramsNumber":0},`);
 
             debug('pre-pause writing complete');
             --total || pause();
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Polling.prototype.pause.once2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Polling.prototype.pause.once###2"},');
 
           });
         }
@@ -17043,7 +17043,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Polling.prototype.uri"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey104"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###104"},');
 
   }, {
     "../transport": 96,
@@ -17055,10 +17055,10 @@ const SRTlib = require('SRT-util');
     "yeast": 237
   }],
   101: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey105","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###105","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call12","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###12","fileName":"${__filename}","paramsNumber":1},`);
 
       var Transport = require('../transport');
       var parser = require('engine.io-parser');
@@ -17181,7 +17181,7 @@ const SRTlib = require('SRT-util');
 
       };
       WS.prototype.write = function (packets) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.WS.prototype.write2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.WS.prototype.write###2","fileName":"${__filename}","paramsNumber":1},`);
 
         var self = this;
         this.writable = false;
@@ -17237,7 +17237,7 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"done","paramsNumber":0},');
 
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call.WS.prototype.write2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call.WS.prototype.write###2"},');
 
       };
       WS.prototype.onClose = function () {
@@ -17291,10 +17291,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.WS.prototype.check"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call12"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###12"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey105"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###105"},');
 
   }, {
     "../transport": 96,
@@ -17307,46 +17307,46 @@ const SRTlib = require('SRT-util');
     "yeast": 237
   }],
   102: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey106","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###106","fileName":"${__filename}","paramsNumber":3},`);
 
     var hasCORS = require('has-cors');
     module.exports = function (opts) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports11","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###11","fileName":"${__filename}","paramsNumber":1},`);
 
       var xdomain = opts.xdomain;
       var xscheme = opts.xscheme;
       var enablesXDR = opts.enablesXDR;
       try {
         if ('undefined' !== typeof XMLHttpRequest && (!xdomain || hasCORS)) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports11"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###11"},');
 
           return new XMLHttpRequest();
         }
       } catch (e) {}
       try {
         if ('undefined' !== typeof XDomainRequest && !xscheme && enablesXDR) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports11"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###11"},');
 
           return new XDomainRequest();
         }
       } catch (e) {}
       if (!xdomain) {
         try {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports11"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###11"},');
 
           return new self[['Active'].concat('Object').join('X')]('Microsoft.XMLHTTP');
         } catch (e) {}
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###11"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey106"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###106"},');
 
   }, {
     "has-cors": 116
   }],
   103: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey107","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###107","fileName":"${__filename}","paramsNumber":3},`);
 
     if (typeof module !== 'undefined') {
       module.exports = Emitter;
@@ -17376,18 +17376,18 @@ const SRTlib = require('SRT-util');
 
     }
     Emitter.prototype.on = Emitter.prototype.addEventListener = function (event, fn) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.on.Emitter.prototype.addEventListener2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.on.Emitter.prototype.addEventListener###2","fileName":"${__filename}","paramsNumber":2},`);
 
       this._callbacks = this._callbacks || ({});
       (this._callbacks['$' + event] = this._callbacks['$' + event] || []).push(fn);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.on.Emitter.prototype.addEventListener2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.on.Emitter.prototype.addEventListener###2"},');
 
       return this;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.on.Emitter.prototype.addEventListener2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.on.Emitter.prototype.addEventListener###2"},');
 
     };
     Emitter.prototype.once = function (event, fn) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.once2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.once###2","fileName":"${__filename}","paramsNumber":2},`);
 
       function on() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"${__filename}","paramsNumber":0},`);
@@ -17399,31 +17399,31 @@ const SRTlib = require('SRT-util');
       }
       on.fn = fn;
       this.on(event, on);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.once2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.once###2"},');
 
       return this;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.once2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.once###2"},');
 
     };
     Emitter.prototype.off = Emitter.prototype.removeListener = Emitter.prototype.removeAllListeners = Emitter.prototype.removeEventListener = function (event, fn) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener###2","fileName":"${__filename}","paramsNumber":2},`);
 
       this._callbacks = this._callbacks || ({});
       if (0 == arguments.length) {
         this._callbacks = {};
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener###2"},');
 
         return this;
       }
       var callbacks = this._callbacks['$' + event];
       if (!callbacks) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener###2"},');
 
         return this;
       }
       if (1 == arguments.length) {
         delete this._callbacks['$' + event];
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener###2"},');
 
         return this;
       }
@@ -17435,14 +17435,14 @@ const SRTlib = require('SRT-util');
           break;
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener###2"},');
 
       return this;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.off.Emitter.prototype.removeListener.Emitter.prototype.removeAllListeners.Emitter.prototype.removeEventListener###2"},');
 
     };
     Emitter.prototype.emit = function (event) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.emit2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.emit###2","fileName":"${__filename}","paramsNumber":1},`);
 
       this._callbacks = this._callbacks || ({});
       var args = [].slice.call(arguments, 1), callbacks = this._callbacks['$' + event];
@@ -17452,39 +17452,39 @@ const SRTlib = require('SRT-util');
           callbacks[i].apply(this, args);
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.emit2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.emit###2"},');
 
       return this;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.emit2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.emit###2"},');
 
     };
     Emitter.prototype.listeners = function (event) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.listeners2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.listeners###2","fileName":"${__filename}","paramsNumber":1},`);
 
       this._callbacks = this._callbacks || ({});
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.listeners2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.listeners###2"},');
 
       return this._callbacks['$' + event] || [];
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.listeners2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.listeners###2"},');
 
     };
     Emitter.prototype.hasListeners = function (event) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.hasListeners2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Emitter.prototype.hasListeners###2","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.hasListeners2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.hasListeners###2"},');
 
       return !!this.listeners(event).length;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.hasListeners2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Emitter.prototype.hasListeners###2"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey107"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###107"},');
 
   }, {}],
   104: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey108","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###108","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call13","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###13","fileName":"${__filename}","paramsNumber":1},`);
 
       exports = module.exports = require('./debug');
       exports.log = log;
@@ -17611,17 +17611,17 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"localstorage","paramsNumber":0},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call13"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###13"},');
 
     }).call(this, require('_process'));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey108"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###108"},');
 
   }, {
     "./debug": 105,
     "_process": 162
   }],
   105: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey109","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###109","fileName":"${__filename}","paramsNumber":3},`);
 
     exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
     exports.coerce = coerce;
@@ -17810,13 +17810,13 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"coerce","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey109"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###109"},');
 
   }, {
     "ms": 106
   }],
   106: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey110","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###110","fileName":"${__filename}","paramsNumber":3},`);
 
     var s = 1000;
     var m = s * 60;
@@ -17824,23 +17824,23 @@ const SRTlib = require('SRT-util');
     var d = h * 24;
     var y = d * 365.25;
     module.exports = function (val, options) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports12","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###12","fileName":"${__filename}","paramsNumber":2},`);
 
       options = options || ({});
       var type = typeof val;
       if (type === 'string' && val.length > 0) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports12"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###12"},');
 
         return parse(val);
       } else if (type === 'number' && isNaN(val) === false) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports12"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###12"},');
 
         return options.long ? fmtLong(val) : fmtShort(val);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports12"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###12"},');
 
       throw new Error('val is not a non-empty string or a valid number. val=' + JSON.stringify(val));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports12"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###12"},');
 
     };
     function parse(str) {
@@ -17866,7 +17866,7 @@ const SRTlib = require('SRT-util');
         case 'yrs':
         case 'yr':
         case 'y':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey110"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###110"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parse"},');
 
@@ -17874,7 +17874,7 @@ const SRTlib = require('SRT-util');
         case 'days':
         case 'day':
         case 'd':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey110"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###110"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parse"},');
 
@@ -17884,7 +17884,7 @@ const SRTlib = require('SRT-util');
         case 'hrs':
         case 'hr':
         case 'h':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey110"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###110"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parse"},');
 
@@ -17894,7 +17894,7 @@ const SRTlib = require('SRT-util');
         case 'mins':
         case 'min':
         case 'm':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey110"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###110"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parse"},');
 
@@ -17904,7 +17904,7 @@ const SRTlib = require('SRT-util');
         case 'secs':
         case 'sec':
         case 's':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey110"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###110"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parse"},');
 
@@ -17914,13 +17914,13 @@ const SRTlib = require('SRT-util');
         case 'msecs':
         case 'msec':
         case 'ms':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey110"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###110"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parse"},');
 
           return n;
         default:
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey110"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###110"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parse"},');
 
@@ -17986,11 +17986,11 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"plural","paramsNumber":3},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey110"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###110"},');
 
   }, {}],
   107: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey111","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###111","fileName":"${__filename}","paramsNumber":3},`);
 
     var keys = require('./keys');
     var hasBinary = require('has-binary2');
@@ -18312,10 +18312,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"encodeOne","fileName":"${__filename}","paramsNumber":2},`);
 
         exports.encodePacket(packet, !isBinary ? false : supportsBinary, false, function (message) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encodePacket2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encodePacket###2","fileName":"${__filename}","paramsNumber":1},`);
 
           doneCallback(null, setLengthHeader(message));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encodePacket2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encodePacket###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"encodeOne","paramsNumber":2},');
@@ -18431,12 +18431,12 @@ const SRTlib = require('SRT-util');
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"encodeOne","fileName":"${__filename}","paramsNumber":2},`);
 
         exports.encodePacket(packet, true, true, function (data) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encodePacket3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encodePacket###3","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encodePacket3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encodePacket###3"},');
 
           return doneCallback(null, data);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encodePacket3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encodePacket###3"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"encodeOne","paramsNumber":2},');
@@ -18507,7 +18507,7 @@ const SRTlib = require('SRT-util');
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"encodeOne","fileName":"${__filename}","paramsNumber":2},`);
 
         exports.encodePacket(packet, true, true, function (encoded) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encodePacket4","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encodePacket###4","fileName":"${__filename}","paramsNumber":1},`);
 
           var binaryIdentifier = new Uint8Array(1);
           binaryIdentifier[0] = 1;
@@ -18530,7 +18530,7 @@ const SRTlib = require('SRT-util');
             var blob = new Blob([binaryIdentifier.buffer, lengthAry.buffer, encoded]);
             doneCallback(null, blob);
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encodePacket4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encodePacket###4"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"encodeOne","paramsNumber":2},');
@@ -18598,7 +18598,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decodePayloadAsBinary"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey111"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###111"},');
 
   }, {
     "./keys": 108,
@@ -18610,10 +18610,10 @@ const SRTlib = require('SRT-util');
     "has-binary2": 114
   }],
   108: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey112","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###112","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = Object.keys || (function keys(obj) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports13","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###13","fileName":"${__filename}","paramsNumber":1},`);
 
       var arr = [];
       var has = Object.prototype.hasOwnProperty;
@@ -18622,17 +18622,17 @@ const SRTlib = require('SRT-util');
           arr.push(i);
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports13"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###13"},');
 
       return arr;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports13"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###13"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey112"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###112"},');
 
   }, {}],
   109: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey113","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###113","fileName":"${__filename}","paramsNumber":3},`);
 
     var stringFromCharCode = String.fromCharCode;
     function ucs2decode(string) {
@@ -18879,33 +18879,33 @@ const SRTlib = require('SRT-util');
       encode: utf8encode,
       decode: utf8decode
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey113"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###113"},');
 
   }, {}],
   110: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey114","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###114","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     module.exports = require('./').polyfill();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey114"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###114"},');
 
   }, {
     "./": 111
   }],
   111: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey115","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###115","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process, global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call16","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###16","fileName":"${__filename}","paramsNumber":2},`);
 
       (function (global, factory) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call14","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###14","fileName":"${__filename}","paramsNumber":2},`);
 
         typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.ES6Promise = factory();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call14"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###14"},');
 
       })(this, function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call15","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###15","fileName":"${__filename}","paramsNumber":0},`);
 
         'use strict';
         function objectOrFunction(x) {
@@ -19004,10 +19004,10 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"useVertxTimer"},');
 
             return function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
               vertxNext(flush);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
             };
           }
@@ -19029,10 +19029,10 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useMutationObserver"},');
 
           return function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement3","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###3","fileName":"${__filename}","paramsNumber":0},`);
 
             node.data = iterations = ++iterations % 2;
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement3"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###3"},');
 
           };
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useMutationObserver","paramsNumber":0},');
@@ -19046,12 +19046,12 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useMessageChannel"},');
 
           return function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement4","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###4","fileName":"${__filename}","paramsNumber":0},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###4"},');
 
             return channel.port2.postMessage(0);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###4"},');
 
           };
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useMessageChannel","paramsNumber":0},');
@@ -19064,12 +19064,12 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useSetTimeout"},');
 
           return function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement5","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###5","fileName":"${__filename}","paramsNumber":0},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###5"},');
 
             return globalSetTimeout(flush, 1);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###5"},');
 
           };
                     SRTlib.send('{"type":"FUNCTIONEND","function":"useSetTimeout","paramsNumber":0},');
@@ -19210,7 +19210,7 @@ const SRTlib = require('SRT-util');
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleForeignThenable","fileName":"${__filename}","paramsNumber":3},`);
 
           asap(function (promise) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"asap2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"asap###2","fileName":"${__filename}","paramsNumber":1},`);
 
             var sealed = false;
             var error = tryThen(then$$1, thenable, function (value) {
@@ -19230,23 +19230,23 @@ const SRTlib = require('SRT-util');
                             SRTlib.send('{"type":"FUNCTIONEND","function":"asap.error.tryThen"},');
 
             }, function (reason) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"asap.error.tryThen2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"asap.error.tryThen###2","fileName":"${__filename}","paramsNumber":1},`);
 
               if (sealed) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"asap.error.tryThen2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"asap.error.tryThen###2"},');
 
                 return;
               }
               sealed = true;
               reject(promise, reason);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"asap.error.tryThen2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"asap.error.tryThen###2"},');
 
             }, 'Settle: ' + (promise._label || ' unknown promise'));
             if (!sealed && error) {
               sealed = true;
               reject(promise, error);
             }
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"asap2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"asap###2"},');
 
           }, promise);
                     SRTlib.send('{"type":"FUNCTIONEND","function":"handleForeignThenable","paramsNumber":3},');
@@ -19269,12 +19269,12 @@ const SRTlib = require('SRT-util');
                             SRTlib.send('{"type":"FUNCTIONEND","function":"subscribe"},');
 
             }, function (reason) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"subscribe2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"subscribe###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"subscribe2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"subscribe###2"},');
 
               return reject(promise, reason);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"subscribe2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"subscribe###2"},');
 
             });
           }
@@ -19442,10 +19442,10 @@ const SRTlib = require('SRT-util');
                             SRTlib.send('{"type":"FUNCTIONEND","function":"resolver"},');
 
             }, function rejectPromise(reason) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resolver2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resolver###2","fileName":"${__filename}","paramsNumber":1},`);
 
               reject(promise, reason);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"resolver2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"resolver###2"},');
 
             });
           } catch (e) {
@@ -19598,12 +19598,12 @@ const SRTlib = require('SRT-util');
                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.Enumerator.Enumerator.prototype._willSettleAt._willSettleAt.subscribe"},');
 
             }, function (reason) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Enumerator.Enumerator.prototype._willSettleAt._willSettleAt.subscribe2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Enumerator.Enumerator.prototype._willSettleAt._willSettleAt.subscribe###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Enumerator.Enumerator.prototype._willSettleAt._willSettleAt.subscribe2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Enumerator.Enumerator.prototype._willSettleAt._willSettleAt.subscribe###2"},');
 
               return enumerator._settledAt(REJECTED, i, reason);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Enumerator.Enumerator.prototype._willSettleAt._willSettleAt.subscribe2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Enumerator.Enumerator.prototype._willSettleAt._willSettleAt.subscribe###2"},');
 
             });
                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.Enumerator.Enumerator.prototype._willSettleAt"},');
@@ -19644,13 +19644,13 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"race"},');
 
             return new Constructor(function (resolve, reject) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression2","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression###2","fileName":"${__filename}","paramsNumber":2},`);
 
               var length = entries.length;
               for (var i = 0; i < length; i++) {
                 Constructor.resolve(entries[i]).then(resolve, reject);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression###2"},');
 
             });
           }
@@ -19737,20 +19737,20 @@ const SRTlib = require('SRT-util');
                                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then"},');
 
               }, function (reason) {
-                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then2","fileName":"${__filename}","paramsNumber":1},`);
+                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then###2"},');
 
                 return constructor.resolve(callback()).then(function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then.ReturnStatement.constructor.resolve.then2","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then.ReturnStatement.constructor.resolve.then###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then.ReturnStatement.constructor.resolve.then2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then.ReturnStatement.constructor.resolve.then###2"},');
 
                   throw reason;
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then.ReturnStatement.constructor.resolve.then2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then.ReturnStatement.constructor.resolve.then###2"},');
 
                 });
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Promise$1.Promise.prototype.finally._finally.ReturnStatement.promise.then###2"},');
 
               });
             }
@@ -19809,22 +19809,22 @@ const SRTlib = require('SRT-util');
         }
         Promise$1.polyfill = polyfill;
         Promise$1.Promise = Promise$1;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call15"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###15"},');
 
         return Promise$1;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call15"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###15"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call16"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###16"},');
 
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey115"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###115"},');
 
   }, {
     "_process": 162
   }],
   112: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey116","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###116","fileName":"${__filename}","paramsNumber":3},`);
 
     var Buffer = require('safe-buffer').Buffer;
     var MD5 = require('md5.js');
@@ -19875,14 +19875,14 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = EVP_BytesToKey;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey116"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###116"},');
 
   }, {
     "md5.js": 140,
     "safe-buffer": 190
   }],
   113: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey117","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###117","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var hasOwn = Object.prototype.hasOwnProperty;
@@ -19963,7 +19963,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = function extend() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports14","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###14","fileName":"${__filename}","paramsNumber":0},`);
 
       var options, name, src, copy, copyIsArray, clone;
       var target = arguments[0];
@@ -20006,20 +20006,20 @@ const SRTlib = require('SRT-util');
           }
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports14"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###14"},');
 
       return target;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports14"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###14"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey117"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###117"},');
 
   }, {}],
   114: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey118","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###118","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call17","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###17","fileName":"${__filename}","paramsNumber":1},`);
 
       var isArray = require('isarray');
       var toString = Object.prototype.toString;
@@ -20069,44 +20069,44 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"hasBinary","paramsNumber":1},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call17"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###17"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey118"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###118"},');
 
   }, {
     "buffer": 360,
     "isarray": 115
   }],
   115: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey119","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###119","fileName":"${__filename}","paramsNumber":3},`);
 
     var toString = ({}).toString;
     module.exports = Array.isArray || (function (arr) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports15","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###15","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports15"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###15"},');
 
       return toString.call(arr) == '[object Array]';
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports15"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###15"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey119"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###119"},');
 
   }, {}],
   116: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey120","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###120","fileName":"${__filename}","paramsNumber":3},`);
 
     try {
       module.exports = typeof XMLHttpRequest !== 'undefined' && ('withCredentials' in new XMLHttpRequest());
     } catch (err) {
       module.exports = false;
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey120"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###120"},');
 
   }, {}],
   117: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey121","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###121","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var Buffer = require('safe-buffer').Buffer;
@@ -20230,7 +20230,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = HashBase;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey121"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###121"},');
 
   }, {
     "inherits": 133,
@@ -20238,7 +20238,7 @@ const SRTlib = require('SRT-util');
     "stream": 216
   }],
   118: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey122","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###122","fileName":"${__filename}","paramsNumber":3},`);
 
     var hash = exports;
     hash.utils = require('./hash/utils');
@@ -20252,7 +20252,7 @@ const SRTlib = require('SRT-util');
     hash.sha384 = hash.sha.sha384;
     hash.sha512 = hash.sha.sha512;
     hash.ripemd160 = hash.ripemd.ripemd160;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey122"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###122"},');
 
   }, {
     "./hash/common": 119,
@@ -20262,7 +20262,7 @@ const SRTlib = require('SRT-util');
     "./hash/utils": 129
   }],
   119: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey123","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###123","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('./utils');
@@ -20351,14 +20351,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"BlockHash.prototype._pad"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey123"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###123"},');
 
   }, {
     "./utils": 129,
     "minimalistic-assert": 144
   }],
   120: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey124","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###124","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('./utils');
@@ -20414,14 +20414,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Hmac.prototype.digest"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey124"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###124"},');
 
   }, {
     "./utils": 129,
     "minimalistic-assert": 144
   }],
   121: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey125","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###125","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('./utils');
@@ -20491,7 +20491,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"RIPEMD160.prototype._digest","fileName":"${__filename}","paramsNumber":1},`);
 
       if (enc === 'hex') return utils.toHex32(this.h, 'little'); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey125"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###125"},');
 
         return utils.toHex32(this.h, 'little');
       }
@@ -20502,7 +20502,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"f","fileName":"${__filename}","paramsNumber":4},`);
 
       if (j <= 15) return x ^ y ^ z; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey125"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###125"},');
 
         return x ^ y ^ z;
       }
@@ -20513,7 +20513,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"K","fileName":"${__filename}","paramsNumber":1},`);
 
       if (j <= 15) return 0x00000000; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey125"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###125"},');
 
         return 0x00000000;
       }
@@ -20524,7 +20524,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Kh","fileName":"${__filename}","paramsNumber":1},`);
 
       if (j <= 15) return 0x50a28be6; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey125"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###125"},');
 
         return 0x50a28be6;
       }
@@ -20535,14 +20535,14 @@ const SRTlib = require('SRT-util');
     var rh = [5, 14, 7, 0, 9, 2, 11, 4, 13, 6, 15, 8, 1, 10, 3, 12, 6, 11, 3, 7, 0, 13, 5, 10, 14, 15, 8, 12, 4, 9, 1, 2, 15, 5, 1, 3, 7, 14, 6, 9, 11, 8, 12, 2, 10, 0, 4, 13, 8, 6, 4, 1, 3, 11, 15, 0, 5, 12, 2, 13, 9, 7, 10, 14, 12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 3, 9, 11];
     var s = [11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12, 11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5, 11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12, 9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6];
     var sh = [8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey125"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###125"},');
 
   }, {
     "./common": 119,
     "./utils": 129
   }],
   122: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey126","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###126","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     exports.sha1 = require('./sha/1');
@@ -20550,7 +20550,7 @@ const SRTlib = require('SRT-util');
     exports.sha256 = require('./sha/256');
     exports.sha384 = require('./sha/384');
     exports.sha512 = require('./sha/512');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey126"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###126"},');
 
   }, {
     "./sha/1": 123,
@@ -20560,7 +20560,7 @@ const SRTlib = require('SRT-util');
     "./sha/512": 127
   }],
   123: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey127","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###127","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('../utils');
@@ -20624,14 +20624,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SHA1.prototype._digest","fileName":"${__filename}","paramsNumber":1},`);
 
       if (enc === 'hex') return utils.toHex32(this.h, 'big'); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey127"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###127"},');
 
         return utils.toHex32(this.h, 'big');
       }
             SRTlib.send('{"type":"FUNCTIONEND","function":"SHA1.prototype._digest"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey127"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###127"},');
 
   }, {
     "../common": 119,
@@ -20639,7 +20639,7 @@ const SRTlib = require('SRT-util');
     "./common": 128
   }],
   124: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey128","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###128","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('../utils');
@@ -20667,21 +20667,21 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SHA224.prototype._digest","fileName":"${__filename}","paramsNumber":1},`);
 
       if (enc === 'hex') return utils.toHex32(this.h.slice(0, 7), 'big'); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey128"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###128"},');
 
         return utils.toHex32(this.h.slice(0, 7), 'big');
       }
             SRTlib.send('{"type":"FUNCTIONEND","function":"SHA224.prototype._digest"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey128"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###128"},');
 
   }, {
     "../utils": 129,
     "./256": 125
   }],
   125: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey129","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###129","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('../utils');
@@ -20762,14 +20762,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SHA256.prototype._digest","fileName":"${__filename}","paramsNumber":1},`);
 
       if (enc === 'hex') return utils.toHex32(this.h, 'big'); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey129"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###129"},');
 
         return utils.toHex32(this.h, 'big');
       }
             SRTlib.send('{"type":"FUNCTIONEND","function":"SHA256.prototype._digest"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey129"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###129"},');
 
   }, {
     "../common": 119,
@@ -20778,7 +20778,7 @@ const SRTlib = require('SRT-util');
     "minimalistic-assert": 144
   }],
   126: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey130","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###130","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('../utils');
@@ -20806,21 +20806,21 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SHA384.prototype._digest","fileName":"${__filename}","paramsNumber":1},`);
 
       if (enc === 'hex') return utils.toHex32(this.h.slice(0, 12), 'big'); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey130"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###130"},');
 
         return utils.toHex32(this.h.slice(0, 12), 'big');
       }
             SRTlib.send('{"type":"FUNCTIONEND","function":"SHA384.prototype._digest"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey130"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###130"},');
 
   }, {
     "../utils": 129,
     "./512": 127
   }],
   127: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey131","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###131","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('../utils');
@@ -20953,7 +20953,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SHA512.prototype._digest","fileName":"${__filename}","paramsNumber":1},`);
 
       if (enc === 'hex') return utils.toHex32(this.h, 'big'); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey131"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###131"},');
 
         return utils.toHex32(this.h, 'big');
       }
@@ -21116,7 +21116,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"g1_512_lo","paramsNumber":2},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey131"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###131"},');
 
   }, {
     "../common": 119,
@@ -21124,7 +21124,7 @@ const SRTlib = require('SRT-util');
     "minimalistic-assert": 144
   }],
   128: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey132","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###132","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = require('../utils');
@@ -21221,13 +21221,13 @@ const SRTlib = require('SRT-util');
 
     }
     exports.g1_256 = g1_256;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey132"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###132"},');
 
   }, {
     "../utils": 129
   }],
   129: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey133","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###133","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var assert = require('minimalistic-assert');
@@ -21346,7 +21346,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"zero2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (word.length === 1) return '0' + word; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey133"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###133"},');
 
         return '0' + word;
       }
@@ -21358,7 +21358,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"zero8","fileName":"${__filename}","paramsNumber":1},`);
 
       if (word.length === 7) return '0' + word; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey133"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###133"},');
 
         return '0' + word;
       }
@@ -21610,14 +21610,14 @@ const SRTlib = require('SRT-util');
 
     }
     exports.shr64_lo = shr64_lo;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey133"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###133"},');
 
   }, {
     "inherits": 133,
     "minimalistic-assert": 144
   }],
   130: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey134","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###134","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var hash = require('hash.js');
@@ -21737,7 +21737,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"HmacDRBG.prototype.generate"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey134"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###134"},');
 
   }, {
     "hash.js": 118,
@@ -21745,7 +21745,7 @@ const SRTlib = require('SRT-util');
     "minimalistic-crypto-utils": 145
   }],
   131: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey135","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###135","fileName":"${__filename}","paramsNumber":3},`);
 
     exports.read = function (buffer, offset, isLE, mLen, nBytes) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.read","fileName":"${__filename}","paramsNumber":5},`);
@@ -21832,43 +21832,43 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"exports.write"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey135"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###135"},');
 
   }, {}],
   132: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey136","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###136","fileName":"${__filename}","paramsNumber":3},`);
 
     var indexOf = [].indexOf;
     module.exports = function (arr, obj) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports16","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###16","fileName":"${__filename}","paramsNumber":2},`);
 
       if (indexOf) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports16"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###16"},');
 
         return arr.indexOf(obj);
       }
       for (var i = 0; i < arr.length; ++i) {
         if (arr[i] === obj) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports16"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###16"},');
 
           return i;
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports16"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###16"},');
 
       return -1;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports16"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###16"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey136"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###136"},');
 
   }, {}],
   133: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey137","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###137","fileName":"${__filename}","paramsNumber":3},`);
 
     if (typeof Object.create === 'function') {
       module.exports = function inherits(ctor, superCtor) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports17","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###17","fileName":"${__filename}","paramsNumber":2},`);
 
         ctor.super_ = superCtor;
         ctor.prototype = Object.create(superCtor.prototype, {
@@ -21879,12 +21879,12 @@ const SRTlib = require('SRT-util');
             configurable: true
           }
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports17"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###17"},');
 
       };
     } else {
       module.exports = function inherits(ctor, superCtor) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports18","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###18","fileName":"${__filename}","paramsNumber":2},`);
 
         ctor.super_ = superCtor;
         var TempCtor = function () {
@@ -21896,23 +21896,23 @@ const SRTlib = require('SRT-util');
         TempCtor.prototype = superCtor.prototype;
         ctor.prototype = new TempCtor();
         ctor.prototype.constructor = ctor;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports18"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###18"},');
 
       };
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey137"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###137"},');
 
   }, {}],
   134: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey138","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###138","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function (obj) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports19","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###19","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports19"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###19"},');
 
       return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports19"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###19"},');
 
     };
     function isBuffer(obj) {
@@ -21933,54 +21933,54 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"isSlowBuffer","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey138"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###138"},');
 
   }, {}],
   135: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey139","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###139","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function isShallowEqual(a, b) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports20","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###20","fileName":"${__filename}","paramsNumber":2},`);
 
       if (a === b) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports20"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###20"},');
 
         return true;
       }
       for (var i in a) if (!((i in b))) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports20"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###20"},');
 
         return false;
       }
       for (var i in b) if (a[i] !== b[i]) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports20"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###20"},');
 
         return false;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports20"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###20"},');
 
       return true;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports20"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###20"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey139"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###139"},');
 
   }, {}],
   136: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey140","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###140","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call20","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###20","fileName":"${__filename}","paramsNumber":1},`);
 
       ;
       (function (global, factory) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call18","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###18","fileName":"${__filename}","paramsNumber":2},`);
 
         typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(global) : typeof define === 'function' && define.amd ? define(factory) : factory(global);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call18"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###18"},');
 
       })(typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : this, function (global) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call19","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###19","fileName":"${__filename}","paramsNumber":1},`);
 
         'use strict';
         global = global || ({});
@@ -22053,12 +22053,12 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.btoa"},');
 
         } : function (b) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.btoa2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.btoa###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.btoa2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.btoa###2"},');
 
           return b.replace(/[\s\S]{1,3}/g, cb_encode);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.btoa2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.btoa###2"},');
 
         };
         var _encode = function (u) {
@@ -22103,32 +22103,32 @@ const SRTlib = require('SRT-util');
 
           switch (cccc.length) {
             case 4:
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey140"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###140"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call20"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###20"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call19"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###19"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"cb_btou"},');
 
               var cp = (0x07 & cccc.charCodeAt(0)) << 18 | (0x3f & cccc.charCodeAt(1)) << 12 | (0x3f & cccc.charCodeAt(2)) << 6 | 0x3f & cccc.charCodeAt(3), offset = cp - 0x10000;
               return fromCharCode((offset >>> 10) + 0xD800) + fromCharCode((offset & 0x3FF) + 0xDC00);
             case 3:
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey140"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###140"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call20"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###20"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call19"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###19"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"cb_btou"},');
 
               return fromCharCode((0x0f & cccc.charCodeAt(0)) << 12 | (0x3f & cccc.charCodeAt(1)) << 6 | 0x3f & cccc.charCodeAt(2));
             default:
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey140"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###140"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call20"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###20"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call19"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###19"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"cb_btou"},');
 
@@ -22166,12 +22166,12 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call._atob"},');
 
         } : function (a) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call._atob2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call._atob###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._atob2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._atob###2"},');
 
           return a.replace(/\S{1,4}/g, cb_decode);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._atob2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._atob###2"},');
 
         };
         var atob = function (a) {
@@ -22192,20 +22192,20 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call._decode"},');
 
         } : function (a) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call._decode2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call._decode###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._decode2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._decode###2"},');
 
           return (a.constructor === buffer.constructor ? a : new buffer(a, 'base64')).toString();
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._decode2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._decode###2"},');
 
         } : function (a) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call._decode3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call._decode###3","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._decode3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._decode###3"},');
 
           return btou(_atob(a));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._decode3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call._decode###3"},');
 
         };
         var decode = function (a) {
@@ -22278,21 +22278,21 @@ const SRTlib = require('SRT-util');
 
             }));
             Object.defineProperty(String.prototype, 'toBase64', noEnum(function (urisafe) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.global.Base64.extendString.Object.defineProperty.noEnum2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.global.Base64.extendString.Object.defineProperty.noEnum###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.global.Base64.extendString.Object.defineProperty.noEnum2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.global.Base64.extendString.Object.defineProperty.noEnum###2"},');
 
               return encode(this, urisafe);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.global.Base64.extendString.Object.defineProperty.noEnum2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.global.Base64.extendString.Object.defineProperty.noEnum###2"},');
 
             }));
             Object.defineProperty(String.prototype, 'toBase64URI', noEnum(function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.global.Base64.extendString.Object.defineProperty.noEnum3","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.global.Base64.extendString.Object.defineProperty.noEnum###3","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.global.Base64.extendString.Object.defineProperty.noEnum3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.global.Base64.extendString.Object.defineProperty.noEnum###3"},');
 
               return encode(this, true);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.global.Base64.extendString.Object.defineProperty.noEnum3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.global.Base64.extendString.Object.defineProperty.noEnum###3"},');
 
             }));
                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.global.Base64.extendString"},');
@@ -22315,25 +22315,25 @@ const SRTlib = require('SRT-util');
 
           });
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call19"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###19"},');
 
         return {
           Base64: global.Base64
         };
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call19"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###19"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call20"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###20"},');
 
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey140"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###140"},');
 
   }, {}],
   137: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey141","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###141","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call21","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###21","fileName":"${__filename}","paramsNumber":1},`);
 
       var FUNC_ERROR_TEXT = 'Expected a function';
       var NAN = 0 / 0;
@@ -22563,17 +22563,17 @@ const SRTlib = require('SRT-util');
 
       }
       module.exports = debounce;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call21"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###21"},');
 
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey141"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###141"},');
 
   }, {}],
   138: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey142","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###142","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call22","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###22","fileName":"${__filename}","paramsNumber":1},`);
 
       var FUNC_ERROR_TEXT = 'Expected a function';
       var NAN = 0 / 0;
@@ -22826,30 +22826,30 @@ const SRTlib = require('SRT-util');
 
       }
       module.exports = throttle;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call22"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###22"},');
 
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey142"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###142"},');
 
   }, {}],
   139: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey143","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###143","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     module.exports = Math.log2 || (function (x) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports21","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###21","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports21"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###21"},');
 
       return Math.log(x) * Math.LOG2E;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports21"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###21"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey143"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###143"},');
 
   }, {}],
   140: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey144","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###144","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var inherits = require('inherits');
@@ -23018,7 +23018,7 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = MD5;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey144"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###144"},');
 
   }, {
     "hash-base": 117,
@@ -23026,7 +23026,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   141: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey145","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###145","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     function areInputsEqual(newInputs, lastInputs) {
@@ -23089,11 +23089,11 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = memoizeOne;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey145"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###145"},');
 
   }, {}],
   142: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey146","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###146","fileName":"${__filename}","paramsNumber":3},`);
 
     var bn = require('bn.js');
     var brorand = require('brorand');
@@ -23217,19 +23217,19 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"MillerRabin.prototype.getDivisor"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey146"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###146"},');
 
   }, {
     "bn.js": 21,
     "brorand": 22
   }],
   143: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey147","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###147","fileName":"${__filename}","paramsNumber":3},`);
 
     var wildcard = require('wildcard');
     var reMimePartSplit = /[\/\+\.]/;
     module.exports = function (target, pattern) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports22","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###22","fileName":"${__filename}","paramsNumber":2},`);
 
       function test(pattern) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"test","fileName":"${__filename}","paramsNumber":1},`);
@@ -23241,19 +23241,19 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"test","paramsNumber":1},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports22"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###22"},');
 
       return pattern ? test(pattern.split(';')[0]) : test;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports22"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###22"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey147"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###147"},');
 
   }, {
     "wildcard": 236
   }],
   144: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey148","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###148","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = assert;
     function assert(val, msg) {
@@ -23278,11 +23278,11 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"assert.equal"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey148"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###148"},');
 
   }, {}],
   145: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey149","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###149","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var utils = exports;
@@ -23329,7 +23329,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"zero2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (word.length === 1) return '0' + word; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey149"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###149"},');
 
         return '0' + word;
       }
@@ -23353,21 +23353,21 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.encode","fileName":"${__filename}","paramsNumber":2},`);
 
       if (enc === 'hex') return toHex(arr); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey149"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###149"},');
 
         return toHex(arr);
       }
             SRTlib.send('{"type":"FUNCTIONEND","function":"utils.encode"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey149"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###149"},');
 
   }, {}],
   146: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey150","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###150","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function createNamespaceEmitter() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports23","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###23","fileName":"${__filename}","paramsNumber":0},`);
 
       var emitter = {};
       var _fns = emitter._fns = {};
@@ -23462,17 +23462,17 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"emitAll","paramsNumber":3},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports23"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###23"},');
 
       return emitter;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports23"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###23"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey150"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###150"},');
 
   }, {}],
   147: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey151","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###151","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "2.16.840.1.101.3.4.1.1": "aes-128-ecb",
@@ -23488,11 +23488,11 @@ const SRTlib = require('SRT-util');
       "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
       "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey151"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###151"},');
 
   }, {}],
   148: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey152","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###152","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var asn1 = require('asn1.js');
@@ -23583,14 +23583,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"exports.signature.asn1.define"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey152"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###152"},');
 
   }, {
     "./certificate": 149,
     "asn1.js": 3
   }],
   149: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey153","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###153","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var asn = require('asn1.js');
@@ -23677,13 +23677,13 @@ const SRTlib = require('SRT-util');
 
     });
     module.exports = X509Certificate;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey153"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###153"},');
 
   }, {
     "asn1.js": 3
   }],
   150: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey154","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###154","fileName":"${__filename}","paramsNumber":3},`);
 
     var findProc = /Proc-Type: 4,ENCRYPTED[\n\r]+DEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)[\n\r]+([0-9A-z\n\r\+\/\=]+)[\n\r]+/m;
     var startRegex = /^-----BEGIN ((?:.*? KEY)|CERTIFICATE)-----/m;
@@ -23692,7 +23692,7 @@ const SRTlib = require('SRT-util');
     var ciphers = require('browserify-aes');
     var Buffer = require('safe-buffer').Buffer;
     module.exports = function (okey, password) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports24","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###24","fileName":"${__filename}","paramsNumber":2},`);
 
       var key = okey.toString();
       var match = key.match(findProc);
@@ -23712,16 +23712,16 @@ const SRTlib = require('SRT-util');
         decrypted = Buffer.concat(out);
       }
       var tag = key.match(startRegex)[1];
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports24"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###24"},');
 
       return {
         tag: tag,
         data: decrypted
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports24"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###24"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey154"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###154"},');
 
   }, {
     "browserify-aes": 26,
@@ -23729,7 +23729,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   151: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey155","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###155","fileName":"${__filename}","paramsNumber":3},`);
 
     var asn1 = require('./asn1');
     var aesid = require('./aesid.json');
@@ -23757,7 +23757,7 @@ const SRTlib = require('SRT-util');
         case 'CERTIFICATE':
           ndata = asn1.certificate.decode(data, 'der').tbsCertificate.subjectPublicKeyInfo;
         case 'PUBLIC KEY':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23767,13 +23767,13 @@ const SRTlib = require('SRT-util');
           subtype = ndata.algorithm.algorithm.join('.');
           switch (subtype) {
             case '1.2.840.113549.1.1.1':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
               return asn1.RSAPublicKey.decode(ndata.subjectPublicKey.data, 'der');
             case '1.2.840.10045.2.1':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23783,7 +23783,7 @@ const SRTlib = require('SRT-util');
                 data: ndata
               };
             case '1.2.840.10040.4.1':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23793,7 +23793,7 @@ const SRTlib = require('SRT-util');
                 data: ndata.algorithm.params
               };
             default:
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23804,7 +23804,7 @@ const SRTlib = require('SRT-util');
           data = asn1.EncryptedPrivateKey.decode(data, 'der');
           data = decrypt(data, password);
         case 'PRIVATE KEY':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23812,13 +23812,13 @@ const SRTlib = require('SRT-util');
           subtype = ndata.algorithm.algorithm.join('.');
           switch (subtype) {
             case '1.2.840.113549.1.1.1':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
               return asn1.RSAPrivateKey.decode(ndata.subjectPrivateKey, 'der');
             case '1.2.840.10045.2.1':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23827,7 +23827,7 @@ const SRTlib = require('SRT-util');
                 privateKey: asn1.ECPrivateKey.decode(ndata.subjectPrivateKey, 'der').privateKey
               };
             case '1.2.840.10040.4.1':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23837,7 +23837,7 @@ const SRTlib = require('SRT-util');
                 params: ndata.algorithm.params
               };
             default:
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23845,19 +23845,19 @@ const SRTlib = require('SRT-util');
           }
           throw new Error('unknown key type ' + type);
         case 'RSA PUBLIC KEY':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
           return asn1.RSAPublicKey.decode(data, 'der');
         case 'RSA PRIVATE KEY':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
           return asn1.RSAPrivateKey.decode(data, 'der');
         case 'DSA PRIVATE KEY':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23866,7 +23866,7 @@ const SRTlib = require('SRT-util');
             params: asn1.DSAPrivateKey.decode(data, 'der')
           };
         case 'EC PRIVATE KEY':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23876,7 +23876,7 @@ const SRTlib = require('SRT-util');
             privateKey: data.privateKey
           };
         default:
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"parseKeys"},');
 
@@ -23906,7 +23906,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"decrypt","paramsNumber":2},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey155"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###155"},');
 
   }, {
     "./aesid.json": 147,
@@ -23917,10 +23917,10 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   152: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey156","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###156","fileName":"${__filename}","paramsNumber":3},`);
 
     exports.encode = function (obj) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encode2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.encode###2","fileName":"${__filename}","paramsNumber":1},`);
 
       var str = '';
       for (var i in obj) {
@@ -23929,14 +23929,14 @@ const SRTlib = require('SRT-util');
           str += encodeURIComponent(i) + '=' + encodeURIComponent(obj[i]);
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encode2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encode###2"},');
 
       return str;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encode2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.encode###2"},');
 
     };
     exports.decode = function (qs) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.decode2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.decode###2","fileName":"${__filename}","paramsNumber":1},`);
 
       var qry = {};
       var pairs = qs.split('&');
@@ -23944,22 +23944,22 @@ const SRTlib = require('SRT-util');
         var pair = pairs[i].split('=');
         qry[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decode2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decode###2"},');
 
       return qry;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decode2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"exports.decode###2"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey156"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###156"},');
 
   }, {}],
   153: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey157","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###157","fileName":"${__filename}","paramsNumber":3},`);
 
     var re = /^(?:(?![^:@]+:[^:@\/]*@)(http|https|ws|wss):\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?((?:[a-f0-9]{0,4}:){2,7}[a-f0-9]{0,4}|[^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
     var parts = ['source', 'protocol', 'authority', 'userInfo', 'user', 'password', 'host', 'port', 'relative', 'path', 'directory', 'file', 'query', 'anchor'];
     module.exports = function parseuri(str) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports25","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###25","fileName":"${__filename}","paramsNumber":1},`);
 
       var src = str, b = str.indexOf('['), e = str.indexOf(']');
       if (b != -1 && e != -1) {
@@ -23975,31 +23975,31 @@ const SRTlib = require('SRT-util');
         uri.authority = uri.authority.replace('[', '').replace(']', '').replace(/;/g, ':');
         uri.ipv6uri = true;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports25"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###25"},');
 
       return uri;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports25"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###25"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey157"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###157"},');
 
   }, {}],
   154: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey158","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###158","fileName":"${__filename}","paramsNumber":3},`);
 
     exports.pbkdf2 = require('./lib/async');
     exports.pbkdf2Sync = require('./lib/sync');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey158"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###158"},');
 
   }, {
     "./lib/async": 155,
     "./lib/sync": 158
   }],
   155: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey159","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###159","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process, global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call23","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###23","fileName":"${__filename}","paramsNumber":2},`);
 
       var checkParameters = require('./precondition');
       var defaultEncoding = require('./default-encoding');
@@ -24112,23 +24112,23 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"promise.then"},');
 
         }, function (e) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise.then2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
           process.nextTick(function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise.then.process.nextTick2","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise.then.process.nextTick###2","fileName":"${__filename}","paramsNumber":0},`);
 
             callback(e);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"promise.then.process.nextTick2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"promise.then.process.nextTick###2"},');
 
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"promise.then2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"promise.then###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"resolvePromise","paramsNumber":2},');
 
       }
       module.exports = function (password, salt, iterations, keylen, digest, callback) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.module.exports3","fileName":"${__filename}","paramsNumber":6},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.module.exports###3","fileName":"${__filename}","paramsNumber":6},`);
 
         if (typeof digest === 'function') {
           callback = digest;
@@ -24137,7 +24137,7 @@ const SRTlib = require('SRT-util');
         digest = digest || 'sha1';
         var algo = toBrowser[digest.toLowerCase()];
         if (!algo || typeof global.Promise !== 'function') {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###3"},');
 
           return process.nextTick(function () {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.module.exports.ReturnStatement.process.nextTick","fileName":"${__filename}","paramsNumber":0},`);
@@ -24157,7 +24157,7 @@ const SRTlib = require('SRT-util');
         }
         checkParameters(password, salt, iterations, keylen);
         if (typeof callback !== 'function') {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###3"},');
 
           throw new Error('No callback provided to pbkdf2');
         }
@@ -24177,13 +24177,13 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports.resolvePromise.checkNative.then"},');
 
         }), callback);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###3"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call23"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###23"},');
 
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey159"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###159"},');
 
   }, {
     "./default-encoding": 156,
@@ -24193,10 +24193,10 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   156: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey160","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###160","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call24","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###24","fileName":"${__filename}","paramsNumber":1},`);
 
       var defaultEncoding;
       if (process.browser) {
@@ -24206,19 +24206,19 @@ const SRTlib = require('SRT-util');
         defaultEncoding = pVersionMajor >= 6 ? 'utf-8' : 'binary';
       }
       module.exports = defaultEncoding;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call24"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###24"},');
 
     }).call(this, require('_process'));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey160"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###160"},');
 
   }, {
     "_process": 162
   }],
   157: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey161","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###161","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call25","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###25","fileName":"${__filename}","paramsNumber":1},`);
 
       var MAX_ALLOC = Math.pow(2, 30) - 1;
       function checkBuffer(buf, name) {
@@ -24233,45 +24233,45 @@ const SRTlib = require('SRT-util');
 
       }
       module.exports = function (password, salt, iterations, keylen) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.module.exports4","fileName":"${__filename}","paramsNumber":4},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.module.exports###4","fileName":"${__filename}","paramsNumber":4},`);
 
         checkBuffer(password, 'Password');
         checkBuffer(salt, 'Salt');
         if (typeof iterations !== 'number') {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###4"},');
 
           throw new TypeError('Iterations not a number');
         }
         if (iterations < 0) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###4"},');
 
           throw new TypeError('Bad iterations');
         }
         if (typeof keylen !== 'number') {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###4"},');
 
           throw new TypeError('Key length not a number');
         }
         if (keylen < 0 || keylen > MAX_ALLOC || keylen !== keylen) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###4"},');
 
           throw new TypeError('Bad key length');
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call.module.exports###4"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call25"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###25"},');
 
     }).call(this, {
       "isBuffer": require("../../is-buffer/index.js")
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey161"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###161"},');
 
   }, {
     "../../is-buffer/index.js": 134
   }],
   158: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey162","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###162","fileName":"${__filename}","paramsNumber":3},`);
 
     var md5 = require('create-hash/md5');
     var RIPEMD160 = require('ripemd160');
@@ -24399,7 +24399,7 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = pbkdf2;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey162"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###162"},');
 
   }, {
     "./default-encoding": 156,
@@ -24410,16 +24410,16 @@ const SRTlib = require('SRT-util');
     "sha.js": 192
   }],
   159: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey165","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###165","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global, factory) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey163","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###163","fileName":"${__filename}","paramsNumber":2},`);
 
       typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('preact')) : typeof define === 'function' && define.amd ? define(['preact'], factory) : global.PreactCSSTransitionGroup = factory(global.preact);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey163"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###163"},');
 
     })(this, function (preact) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey164","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###164","fileName":"${__filename}","paramsNumber":1},`);
 
       'use strict';
       function getKey(vnode) {
@@ -24514,12 +24514,12 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"isShownInChildrenByKey"},');
 
         return find(children, function (c) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.find2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.find###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.find2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.find###2"},');
 
           return getKey(c) === key && c.props[showProp];
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.find2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.find###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"isShownInChildrenByKey","paramsNumber":3},');
@@ -24682,10 +24682,10 @@ const SRTlib = require('SRT-util');
           return;
         }
         endEvents.forEach(function (endEvent) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"endEvents.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"endEvents.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
 
           node.removeEventListener(endEvent, eventListener, false);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"endEvents.forEach2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"endEvents.forEach###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"removeEndEventListener","paramsNumber":2},');
@@ -25197,22 +25197,22 @@ const SRTlib = require('SRT-util');
         transitionEnter: true,
         transitionLeave: true
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey164"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###164"},');
 
       return CSSTransitionGroup;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey164"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###164"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey165"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###165"},');
 
   }, {
     "preact": 160
   }],
   160: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey167","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###167","fileName":"${__filename}","paramsNumber":3},`);
 
     !(function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey166","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###166","fileName":"${__filename}","paramsNumber":0},`);
 
       'use strict';
       function VNode() {
@@ -25292,7 +25292,7 @@ const SRTlib = require('SRT-util');
           return void 0 !== node.splitText;
         }
         if ('string' == typeof vnode.nodeName) return !node._componentConstructor && isNamedNode(node, vnode.nodeName); else {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey167"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###167"},');
 
           return !node._componentConstructor && isNamedNode(node, vnode.nodeName);
         }
@@ -25793,17 +25793,17 @@ const SRTlib = require('SRT-util');
         options: options
       };
       if ('undefined' != typeof module) module.exports = preact; else self.preact = preact;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey166"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###166"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey167"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###167"},');
 
   }, {}],
   161: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey168","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###168","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call26","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###26","fileName":"${__filename}","paramsNumber":1},`);
 
       'use strict';
       if (typeof process === 'undefined' || !process.version || process.version.indexOf('v0.') === 0 || process.version.indexOf('v1.') === 0 && process.version.indexOf('v1.8.') !== 0) {
@@ -25826,17 +25826,17 @@ const SRTlib = require('SRT-util');
         switch (len) {
           case 0:
           case 1:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey168"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###168"},');
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call26"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call###26"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"nextTick"},');
 
             return process.nextTick(fn);
           case 2:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey168"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###168"},');
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call26"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call###26"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"nextTick"},');
 
@@ -25848,37 +25848,37 @@ const SRTlib = require('SRT-util');
 
             });
           case 3:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey168"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###168"},');
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call26"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call###26"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"nextTick"},');
 
             return process.nextTick(function afterTickTwo() {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.process.nextTick2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.process.nextTick###2","fileName":"${__filename}","paramsNumber":0},`);
 
               fn.call(null, arg1, arg2);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.process.nextTick2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.process.nextTick###2"},');
 
             });
           case 4:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey168"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###168"},');
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call26"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call###26"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"nextTick"},');
 
             return process.nextTick(function afterTickThree() {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.process.nextTick3","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.process.nextTick###3","fileName":"${__filename}","paramsNumber":0},`);
 
               fn.call(null, arg1, arg2, arg3);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.process.nextTick3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.process.nextTick###3"},');
 
             });
           default:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey168"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###168"},');
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call26"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call###26"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"nextTick"},');
 
@@ -25888,26 +25888,26 @@ const SRTlib = require('SRT-util');
               args[i++] = arguments[i];
             }
             return process.nextTick(function afterTick() {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.process.nextTick4","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.process.nextTick###4","fileName":"${__filename}","paramsNumber":0},`);
 
               fn.apply(null, args);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.process.nextTick4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.process.nextTick###4"},');
 
             });
         }
                 SRTlib.send('{"type":"FUNCTIONEND","function":"nextTick","paramsNumber":4},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call26"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###26"},');
 
     }).call(this, require('_process'));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey168"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###168"},');
 
   }, {
     "_process": 162
   }],
   162: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey170","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###170","fileName":"${__filename}","paramsNumber":3},`);
 
     var process = module.exports = {};
     var cachedSetTimeout;
@@ -25931,7 +25931,7 @@ const SRTlib = require('SRT-util');
 
     }
     (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey169","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###169","fileName":"${__filename}","paramsNumber":0},`);
 
       try {
         if (typeof setTimeout === 'function') {
@@ -25951,7 +25951,7 @@ const SRTlib = require('SRT-util');
       } catch (e) {
         cachedClearTimeout = defaultClearTimeout;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey169"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###169"},');
 
     })();
     function runTimeout(fun) {
@@ -26167,11 +26167,11 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"process.umask"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey170"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###170"},');
 
   }, {}],
   163: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey171","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###171","fileName":"${__filename}","paramsNumber":3},`);
 
     exports.publicEncrypt = require('./publicEncrypt');
     exports.privateDecrypt = require('./privateDecrypt');
@@ -26193,19 +26193,19 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"exports.publicDecrypt"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey171"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###171"},');
 
   }, {
     "./privateDecrypt": 165,
     "./publicEncrypt": 166
   }],
   164: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey172","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###172","fileName":"${__filename}","paramsNumber":3},`);
 
     var createHash = require('create-hash');
     var Buffer = require('safe-buffer').Buffer;
     module.exports = function (seed, len) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports26","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###26","fileName":"${__filename}","paramsNumber":2},`);
 
       var t = Buffer.alloc(0);
       var i = 0;
@@ -26214,10 +26214,10 @@ const SRTlib = require('SRT-util');
         c = i2ops(i++);
         t = Buffer.concat([t, createHash('sha1').update(seed).update(c).digest()]);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports26"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###26"},');
 
       return t.slice(0, len);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports26"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###26"},');
 
     };
     function i2ops(c) {
@@ -26231,14 +26231,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"i2ops","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey172"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###172"},');
 
   }, {
     "create-hash": 59,
     "safe-buffer": 190
   }],
   165: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey173","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###173","fileName":"${__filename}","paramsNumber":3},`);
 
     var parseKeys = require('parse-asn1');
     var mgf = require('./mgf');
@@ -26249,7 +26249,7 @@ const SRTlib = require('SRT-util');
     var withPublic = require('./withPublic');
     var Buffer = require('safe-buffer').Buffer;
     module.exports = function privateDecrypt(privateKey, enc, reverse) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports27","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###27","fileName":"${__filename}","paramsNumber":3},`);
 
       var padding;
       if (privateKey.padding) {
@@ -26262,7 +26262,7 @@ const SRTlib = require('SRT-util');
       var key = parseKeys(privateKey);
       var k = key.modulus.byteLength();
       if (enc.length > k || new BN(enc).cmp(key.modulus) >= 0) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports27"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###27"},');
 
         throw new Error('decryption error');
       }
@@ -26275,23 +26275,23 @@ const SRTlib = require('SRT-util');
       var zBuffer = Buffer.alloc(k - msg.length);
       msg = Buffer.concat([zBuffer, msg], k);
       if (padding === 4) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports27"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###27"},');
 
         return oaep(key, msg);
       } else if (padding === 1) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports27"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###27"},');
 
         return pkcs1(key, msg, reverse);
       } else if (padding === 3) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports27"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###27"},');
 
         return msg;
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports27"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###27"},');
 
         throw new Error('unknown padding');
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports27"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###27"},');
 
     };
     function oaep(key, msg) {
@@ -26380,7 +26380,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"compare","paramsNumber":2},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey173"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###173"},');
 
   }, {
     "./mgf": 164,
@@ -26393,7 +26393,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   166: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey174","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###174","fileName":"${__filename}","paramsNumber":3},`);
 
     var parseKeys = require('parse-asn1');
     var randomBytes = require('randombytes');
@@ -26405,7 +26405,7 @@ const SRTlib = require('SRT-util');
     var crt = require('browserify-rsa');
     var Buffer = require('safe-buffer').Buffer;
     module.exports = function publicEncrypt(publicKey, msg, reverse) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports28","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###28","fileName":"${__filename}","paramsNumber":3},`);
 
       var padding;
       if (publicKey.padding) {
@@ -26424,25 +26424,25 @@ const SRTlib = require('SRT-util');
       } else if (padding === 3) {
         paddedMsg = new BN(msg);
         if (paddedMsg.cmp(key.modulus) >= 0) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports28"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###28"},');
 
           throw new Error('data too long for modulus');
         }
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports28"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###28"},');
 
         throw new Error('unknown padding');
       }
       if (reverse) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports28"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###28"},');
 
         return crt(paddedMsg, key);
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports28"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###28"},');
 
         return withPublic(paddedMsg, key);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports28"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###28"},');
 
     };
     function oaep(key, msg) {
@@ -26515,7 +26515,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"nonZero","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey174"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###174"},');
 
   }, {
     "./mgf": 164,
@@ -26529,7 +26529,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   167: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey175","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###175","fileName":"${__filename}","paramsNumber":3},`);
 
     var BN = require('bn.js');
     var Buffer = require('safe-buffer').Buffer;
@@ -26543,34 +26543,34 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = withPublic;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey175"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###175"},');
 
   }, {
     "bn.js": 21,
     "safe-buffer": 190
   }],
   168: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey176","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###176","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function xor(a, b) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports29","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###29","fileName":"${__filename}","paramsNumber":2},`);
 
       var len = a.length;
       var i = -1;
       while (++i < len) {
         a[i] ^= b[i];
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports29"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###29"},');
 
       return a;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports29"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###29"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey176"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###176"},');
 
   }, {}],
   169: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey177","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###177","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var has = Object.prototype.hasOwnProperty, undef;
@@ -26645,14 +26645,14 @@ const SRTlib = require('SRT-util');
     }
     exports.stringify = querystringify;
     exports.parse = querystring;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey177"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###177"},');
 
   }, {}],
   170: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey178","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###178","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process, global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call27","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###27","fileName":"${__filename}","paramsNumber":2},`);
 
       'use strict';
       var MAX_BYTES = 65536;
@@ -26695,10 +26695,10 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"randomBytes"},');
 
           return process.nextTick(function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.process.nextTick5","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.process.nextTick###5","fileName":"${__filename}","paramsNumber":0},`);
 
             cb(null, bytes);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.process.nextTick5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.process.nextTick###5"},');
 
           });
         }
@@ -26708,20 +26708,20 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"randomBytes","paramsNumber":2},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call27"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###27"},');
 
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey178"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###178"},');
 
   }, {
     "_process": 162,
     "safe-buffer": 190
   }],
   171: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey179","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###179","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process, global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call28","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###28","fileName":"${__filename}","paramsNumber":2},`);
 
       'use strict';
       function oldBrowser() {
@@ -26825,10 +26825,10 @@ const SRTlib = require('SRT-util');
           crypto.getRandomValues(uint);
           if (cb) {
             process.nextTick(function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"process.nextTick2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"process.nextTick###2","fileName":"${__filename}","paramsNumber":0},`);
 
               cb(null, buf);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"process.nextTick2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"process.nextTick###2"},');
 
             });
                         SRTlib.send('{"type":"FUNCTIONEND","function":"actualFill"},');
@@ -26885,10 +26885,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"randomFillSync","paramsNumber":3},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call28"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###28"},');
 
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey179"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###179"},');
 
   }, {
     "_process": 162,
@@ -26896,16 +26896,16 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   172: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey180","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###180","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = require('./lib/_stream_duplex.js');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey180"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###180"},');
 
   }, {
     "./lib/_stream_duplex.js": 173
   }],
   173: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey181","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###181","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var pna = require('process-nextick-args');
@@ -26956,12 +26956,12 @@ const SRTlib = require('SRT-util');
     Object.defineProperty(Duplex.prototype, 'writableHighWaterMark', {
       enumerable: false,
       get: function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.defineProperty.get2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.defineProperty.get###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get###2"},');
 
         return this._writableState.highWaterMark;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get###2"},');
 
       }
     });
@@ -26986,17 +26986,17 @@ const SRTlib = require('SRT-util');
     }
     Object.defineProperty(Duplex.prototype, 'destroyed', {
       get: function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.defineProperty.get3","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.defineProperty.get###3","fileName":"${__filename}","paramsNumber":0},`);
 
         if (this._readableState === undefined || this._writableState === undefined) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get###3"},');
 
           return false;
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get###3"},');
 
         return this._readableState.destroyed && this._writableState.destroyed;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get###3"},');
 
       },
       set: function (value) {
@@ -27022,7 +27022,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Duplex.prototype._destroy"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey181"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###181"},');
 
   }, {
     "./_stream_readable": 175,
@@ -27032,7 +27032,7 @@ const SRTlib = require('SRT-util');
     "process-nextick-args": 161
   }],
   174: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey182","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###182","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     module.exports = PassThrough;
@@ -27059,7 +27059,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"PassThrough.prototype._transform"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey182"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###182"},');
 
   }, {
     "./_stream_transform": 176,
@@ -27067,10 +27067,10 @@ const SRTlib = require('SRT-util');
     "inherits": 133
   }],
   175: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey183","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###183","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process, global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call29","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###29","fileName":"${__filename}","paramsNumber":2},`);
 
       'use strict';
       var pna = require('process-nextick-args');
@@ -27206,17 +27206,17 @@ const SRTlib = require('SRT-util');
       }
       Object.defineProperty(Readable.prototype, 'destroyed', {
         get: function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get###2","fileName":"${__filename}","paramsNumber":0},`);
 
           if (this._readableState === undefined) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###2"},');
 
             return false;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###2"},');
 
           return this._readableState.destroyed;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###2"},');
 
         },
         set: function (value) {
@@ -27407,7 +27407,7 @@ const SRTlib = require('SRT-util');
         }
         if (n !== n) {
           if (state.flowing && state.length) return state.buffer.head.data.length; else {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey183"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###183"},');
 
             return state.buffer.head.data.length;
           }
@@ -27698,7 +27698,7 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"pipeOnDrain"},');
 
         return function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement6","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###6","fileName":"${__filename}","paramsNumber":0},`);
 
           var state = src._readableState;
           debug('pipeOnDrain', state.awaitDrain);
@@ -27707,7 +27707,7 @@ const SRTlib = require('SRT-util');
             state.flowing = true;
             flow(src);
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement6"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###6"},');
 
         };
                 SRTlib.send('{"type":"FUNCTIONEND","function":"pipeOnDrain","paramsNumber":1},');
@@ -27885,12 +27885,12 @@ const SRTlib = require('SRT-util');
 
         });
         stream.on('data', function (chunk) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Readable.prototype.wrap.stream.on2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Readable.prototype.wrap.stream.on###2","fileName":"${__filename}","paramsNumber":1},`);
 
           debug('wrapped data');
           if (state.decoder) chunk = state.decoder.write(chunk);
           if (state.objectMode && (chunk === null || chunk === undefined)) return; else {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey183"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###183"},');
 
             return;
           }
@@ -27899,7 +27899,7 @@ const SRTlib = require('SRT-util');
             paused = true;
             stream.pause();
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Readable.prototype.wrap.stream.on2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Readable.prototype.wrap.stream.on###2"},');
 
         });
         for (var i in stream) {
@@ -27946,12 +27946,12 @@ const SRTlib = require('SRT-util');
       Object.defineProperty(Readable.prototype, 'readableHighWaterMark', {
         enumerable: false,
         get: function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get3","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get###3","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###3"},');
 
           return this._readableState.highWaterMark;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###3"},');
 
         }
       });
@@ -28101,10 +28101,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"indexOf","paramsNumber":2},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call29"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###29"},');
 
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey183"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###183"},');
 
   }, {
     "./_stream_duplex": 173,
@@ -28122,7 +28122,7 @@ const SRTlib = require('SRT-util');
     "util": 23
   }],
   176: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey184","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###184","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     module.exports = Transform;
@@ -28284,7 +28284,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"done","paramsNumber":3},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey184"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###184"},');
 
   }, {
     "./_stream_duplex": 173,
@@ -28292,10 +28292,10 @@ const SRTlib = require('SRT-util');
     "inherits": 133
   }],
   177: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey185","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###185","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process, global, setImmediate) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call31","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###31","fileName":"${__filename}","paramsNumber":3},`);
 
       'use strict';
       var pna = require('process-nextick-args');
@@ -28337,9 +28337,9 @@ const SRTlib = require('SRT-util');
       var Stream = require('./internal/streams/stream');
       var Buffer = require('safe-buffer').Buffer;
       var OurUint8Array = global.Uint8Array || (function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.OurUint8Array2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.OurUint8Array###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call.OurUint8Array2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call.OurUint8Array###2"},');
 
       });
       function _uint8ArrayToBuffer(chunk) {
@@ -28430,7 +28430,7 @@ const SRTlib = require('SRT-util');
 
       };
       (function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call30","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###30","fileName":"${__filename}","paramsNumber":0},`);
 
         try {
           Object.defineProperty(WritableState.prototype, 'buffer', {
@@ -28445,7 +28445,7 @@ const SRTlib = require('SRT-util');
             }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.', 'DEP0003')
           });
         } catch (_) {}
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call30"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###30"},');
 
       })();
       var realHasInstance;
@@ -28616,12 +28616,12 @@ const SRTlib = require('SRT-util');
       Object.defineProperty(Writable.prototype, 'writableHighWaterMark', {
         enumerable: false,
         get: function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get4","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get###4","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###4"},');
 
           return this._writableState.highWaterMark;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###4"},');
 
         }
       });
@@ -28918,29 +28918,29 @@ const SRTlib = require('SRT-util');
       }
       Object.defineProperty(Writable.prototype, 'destroyed', {
         get: function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get5","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get###5","fileName":"${__filename}","paramsNumber":0},`);
 
           if (this._writableState === undefined) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###5"},');
 
             return false;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###5"},');
 
           return this._writableState.destroyed;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###5"},');
 
         },
         set: function (value) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.set2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.set###2","fileName":"${__filename}","paramsNumber":1},`);
 
           if (!this._writableState) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.set2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.set###2"},');
 
             return;
           }
           this._writableState.destroyed = value;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.set2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.set###2"},');
 
         }
       });
@@ -28954,10 +28954,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.Writable.prototype._destroy"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call31"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###31"},');
 
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("timers").setImmediate);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey185"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###185"},');
 
   }, {
     "./_stream_duplex": 173,
@@ -28972,7 +28972,7 @@ const SRTlib = require('SRT-util');
     "util-deprecate": 233
   }],
   178: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey186","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###186","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     function _classCallCheck(instance, Constructor) {
@@ -28996,7 +28996,7 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports30","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###30","fileName":"${__filename}","paramsNumber":0},`);
 
       function BufferList() {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"BufferList","fileName":"${__filename}","paramsNumber":0},`);
@@ -29105,10 +29105,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.BufferList.prototype.concat"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports30"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###30"},');
 
       return BufferList;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports30"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###30"},');
 
     })();
     if (util && util.inspect && util.inspect.custom) {
@@ -29125,14 +29125,14 @@ const SRTlib = require('SRT-util');
 
       };
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey186"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###186"},');
 
   }, {
     "safe-buffer": 190,
     "util": 23
   }],
   179: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey187","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###187","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var pna = require('process-nextick-args');
@@ -29208,31 +29208,31 @@ const SRTlib = require('SRT-util');
       destroy: destroy,
       undestroy: undestroy
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey187"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###187"},');
 
   }, {
     "process-nextick-args": 161
   }],
   180: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey188","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###188","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = require('events').EventEmitter;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey188"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###188"},');
 
   }, {
     "events": 361
   }],
   181: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey189","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###189","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][115][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey189"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###189"},');
 
   }, {
     "dup": 115
   }],
   182: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey190","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###190","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var Buffer = require('safe-buffer').Buffer;
@@ -29252,13 +29252,13 @@ const SRTlib = require('SRT-util');
         case 'utf16le':
         case 'utf-16le':
         case 'raw':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey190"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###190"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"isEncoding"},');
 
           return true;
         default:
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey190"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###190"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"isEncoding"},');
 
@@ -29280,7 +29280,7 @@ const SRTlib = require('SRT-util');
         switch (enc) {
           case 'utf8':
           case 'utf-8':
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey190"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###190"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"_normalizeEncoding"},');
 
@@ -29289,14 +29289,14 @@ const SRTlib = require('SRT-util');
           case 'ucs-2':
           case 'utf16le':
           case 'utf-16le':
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey190"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###190"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"_normalizeEncoding"},');
 
             return 'utf16le';
           case 'latin1':
           case 'binary':
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey190"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###190"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"_normalizeEncoding"},');
 
@@ -29304,7 +29304,7 @@ const SRTlib = require('SRT-util');
           case 'base64':
           case 'ascii':
           case 'hex':
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey190"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###190"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"_normalizeEncoding"},');
 
@@ -29360,7 +29360,7 @@ const SRTlib = require('SRT-util');
           nb = 3;
           break;
         default:
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey190"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###190"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"StringDecoder"},');
 
@@ -29427,7 +29427,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"utf8CheckByte","fileName":"${__filename}","paramsNumber":1},`);
 
       if (byte <= 0x7F) return 0; else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey190"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###190"},');
 
         return 0;
       }
@@ -29669,22 +29669,22 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"simpleEnd","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey190"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###190"},');
 
   }, {
     "safe-buffer": 190
   }],
   183: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey191","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###191","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = require('./readable').PassThrough;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey191"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###191"},');
 
   }, {
     "./readable": 184
   }],
   184: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey192","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###192","fileName":"${__filename}","paramsNumber":3},`);
 
     exports = module.exports = require('./lib/_stream_readable.js');
     exports.Stream = exports;
@@ -29693,7 +29693,7 @@ const SRTlib = require('SRT-util');
     exports.Duplex = require('./lib/_stream_duplex.js');
     exports.Transform = require('./lib/_stream_transform.js');
     exports.PassThrough = require('./lib/_stream_passthrough.js');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey192"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###192"},');
 
   }, {
     "./lib/_stream_duplex.js": 173,
@@ -29703,94 +29703,94 @@ const SRTlib = require('SRT-util');
     "./lib/_stream_writable.js": 177
   }],
   185: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey193","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###193","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = require('./readable').Transform;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey193"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###193"},');
 
   }, {
     "./readable": 184
   }],
   186: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey194","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###194","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = require('./lib/_stream_writable.js');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey194"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###194"},');
 
   }, {
     "./lib/_stream_writable.js": 177
   }],
   187: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey195","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###195","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     module.exports = function required(port, protocol) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports31","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###31","fileName":"${__filename}","paramsNumber":2},`);
 
       protocol = protocol.split(':')[0];
       port = +port;
       if (!port) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###31"},');
 
         return false;
       }
       switch (protocol) {
         case 'http':
         case 'ws':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey195"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###195"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###31"},');
 
           return port !== 80;
         case 'https':
         case 'wss':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey195"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###195"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###31"},');
 
           return port !== 443;
         case 'ftp':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey195"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###195"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###31"},');
 
           return port !== 21;
         case 'gopher':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey195"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###195"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###31"},');
 
           return port !== 70;
         case 'file':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey195"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###195"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###31"},');
 
           return false;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###31"},');
 
       return port !== 0;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###31"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey195"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###195"},');
 
   }, {}],
   188: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey196","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###196","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call34","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###34","fileName":"${__filename}","paramsNumber":1},`);
 
       (function (global, factory) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call32","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###32","fileName":"${__filename}","paramsNumber":2},`);
 
         typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.ResizeObserver = factory();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call32"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###32"},');
 
       })(this, function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call33","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###33","fileName":"${__filename}","paramsNumber":0},`);
 
         'use strict';
         var MapShim = (function () {
@@ -30339,12 +30339,12 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.isSVGGraphicsElement"},');
 
           return function (target) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.isSVGGraphicsElement.ReturnStatement2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.isSVGGraphicsElement.ReturnStatement###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.isSVGGraphicsElement.ReturnStatement2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.isSVGGraphicsElement.ReturnStatement###2"},');
 
             return target instanceof getWindowOf(target).SVGElement && typeof target.getBBox === 'function';
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.isSVGGraphicsElement.ReturnStatement2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.isSVGGraphicsElement.ReturnStatement###2"},');
 
           };
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.isSVGGraphicsElement"},');
@@ -30686,20 +30686,20 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.index"},');
 
         })();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call33"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###33"},');
 
         return index;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call33"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###33"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call34"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###34"},');
 
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey196"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###196"},');
 
   }, {}],
   189: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey197","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###197","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var Buffer = require('buffer').Buffer;
@@ -30726,7 +30726,7 @@ const SRTlib = require('SRT-util');
     }
     inherits(RIPEMD160, HashBase);
     RIPEMD160.prototype._update = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"RIPEMD160.prototype._update2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"RIPEMD160.prototype._update###2","fileName":"${__filename}","paramsNumber":0},`);
 
       var words = ARRAY16;
       for (var j = 0; j < 16; ++j) words[j] = this._block.readInt32LE(j * 4);
@@ -30776,11 +30776,11 @@ const SRTlib = require('SRT-util');
       this._d = this._e + al + br | 0;
       this._e = this._a + bl + cr | 0;
       this._a = t;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"RIPEMD160.prototype._update2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"RIPEMD160.prototype._update###2"},');
 
     };
     RIPEMD160.prototype._digest = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"RIPEMD160.prototype._digest2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"RIPEMD160.prototype._digest###2","fileName":"${__filename}","paramsNumber":0},`);
 
       this._block[this._blockOffset++] = 0x80;
       if (this._blockOffset > 56) {
@@ -30798,10 +30798,10 @@ const SRTlib = require('SRT-util');
       buffer.writeInt32LE(this._c, 8);
       buffer.writeInt32LE(this._d, 12);
       buffer.writeInt32LE(this._e, 16);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"RIPEMD160.prototype._digest2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"RIPEMD160.prototype._digest###2"},');
 
       return buffer;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"RIPEMD160.prototype._digest2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"RIPEMD160.prototype._digest###2"},');
 
     };
     function rotl(x, n) {
@@ -30859,7 +30859,7 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = RIPEMD160;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey197"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###197"},');
 
   }, {
     "buffer": 360,
@@ -30867,7 +30867,7 @@ const SRTlib = require('SRT-util');
     "inherits": 133
   }],
   190: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey198","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###198","fileName":"${__filename}","paramsNumber":3},`);
 
     var buffer = require('buffer');
     var Buffer = buffer.Buffer;
@@ -30962,13 +30962,13 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafeSlow"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey198"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###198"},');
 
   }, {
     "buffer": 360
   }],
   191: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey199","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###199","fileName":"${__filename}","paramsNumber":3},`);
 
     var Buffer = require('safe-buffer').Buffer;
     function Hash(blockSize, finalSize) {
@@ -31039,22 +31039,22 @@ const SRTlib = require('SRT-util');
 
     };
     Hash.prototype._update = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Hash.prototype._update2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Hash.prototype._update###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Hash.prototype._update2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Hash.prototype._update###2"},');
 
       throw new Error('_update must be implemented by subclass');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Hash.prototype._update2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Hash.prototype._update###2"},');
 
     };
     module.exports = Hash;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey199"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###199"},');
 
   }, {
     "safe-buffer": 190
   }],
   192: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey200","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###200","fileName":"${__filename}","paramsNumber":3},`);
 
     var exports = module.exports = function SHA(algorithm) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.module.exports","fileName":"${__filename}","paramsNumber":1},`);
@@ -31078,7 +31078,7 @@ const SRTlib = require('SRT-util');
     exports.sha256 = require('./sha256');
     exports.sha384 = require('./sha384');
     exports.sha512 = require('./sha512');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey200"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###200"},');
 
   }, {
     "./sha": 193,
@@ -31089,7 +31089,7 @@ const SRTlib = require('SRT-util');
     "./sha512": 198
   }],
   193: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey201","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###201","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var Hash = require('./hash');
@@ -31201,7 +31201,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = Sha;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey201"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###201"},');
 
   }, {
     "./hash": 191,
@@ -31209,7 +31209,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   194: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey202","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###202","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var Hash = require('./hash');
@@ -31330,7 +31330,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = Sha1;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey202"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###202"},');
 
   }, {
     "./hash": 191,
@@ -31338,7 +31338,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   195: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey203","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###203","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var Sha256 = require('./sha256');
@@ -31390,7 +31390,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = Sha224;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey203"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###203"},');
 
   }, {
     "./hash": 191,
@@ -31399,7 +31399,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   196: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey204","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###204","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var Hash = require('./hash');
@@ -31543,7 +31543,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = Sha256;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey204"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###204"},');
 
   }, {
     "./hash": 191,
@@ -31551,7 +31551,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   197: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey205","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###205","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var SHA512 = require('./sha512');
@@ -31618,7 +31618,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = Sha384;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey205"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###205"},');
 
   }, {
     "./hash": 191,
@@ -31627,7 +31627,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   198: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey206","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###206","fileName":"${__filename}","paramsNumber":3},`);
 
     var inherits = require('inherits');
     var Hash = require('./hash');
@@ -31882,7 +31882,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = Sha512;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey206"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###206"},');
 
   }, {
     "./hash": 191,
@@ -31890,7 +31890,7 @@ const SRTlib = require('SRT-util');
     "safe-buffer": 190
   }],
   199: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey207","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###207","fileName":"${__filename}","paramsNumber":3},`);
 
     var url = require('./url');
     var parser = require('socket.io-parser');
@@ -31936,7 +31936,7 @@ const SRTlib = require('SRT-util');
     exports.connect = lookup;
     exports.Manager = require('./manager');
     exports.Socket = require('./socket');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey207"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###207"},');
 
   }, {
     "./manager": 200,
@@ -31946,7 +31946,7 @@ const SRTlib = require('SRT-util');
     "socket.io-parser": 209
   }],
   200: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey208","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###208","fileName":"${__filename}","paramsNumber":3},`);
 
     var eio = require('engine.io-client');
     var Socket = require('./socket');
@@ -32467,7 +32467,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Manager.prototype.onreconnect"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey208"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###208"},');
 
   }, {
     "./on": 201,
@@ -32481,7 +32481,7 @@ const SRTlib = require('SRT-util');
     "socket.io-parser": 209
   }],
   201: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey209","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###209","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = on;
     function on(obj, ev, fn) {
@@ -32502,11 +32502,11 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"on","paramsNumber":3},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey209"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###209"},');
 
   }, {}],
   202: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey210","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###210","fileName":"${__filename}","paramsNumber":3},`);
 
     var parser = require('socket.io-parser');
     var Emitter = require('component-emitter');
@@ -32852,7 +32852,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Socket.prototype.binary"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey210"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###210"},');
 
   }, {
     "./on": 201,
@@ -32865,7 +32865,7 @@ const SRTlib = require('SRT-util');
     "to-array": 220
   }],
   203: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey211","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###211","fileName":"${__filename}","paramsNumber":3},`);
 
     var parseuri = require('parseuri');
     var debug = require('debug')('socket.io-client:url');
@@ -32913,26 +32913,26 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"url","paramsNumber":2},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey211"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###211"},');
 
   }, {
     "debug": 205,
     "parseuri": 153
   }],
   204: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey212","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###212","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][103][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey212"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###212"},');
 
   }, {
     "dup": 103
   }],
   205: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey213","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###213","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call35","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###35","fileName":"${__filename}","paramsNumber":1},`);
 
       exports = module.exports = require('./debug');
       exports.log = log;
@@ -32962,18 +32962,18 @@ const SRTlib = require('SRT-util');
 
       }
       exports.formatters.j = function (v) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.exports.formatters.j2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.exports.formatters.j###2","fileName":"${__filename}","paramsNumber":1},`);
 
         try {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j###2"},');
 
           return JSON.stringify(v);
         } catch (err) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j###2"},');
 
           return '[UnexpectedJSONParseError]: ' + err.message;
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j###2"},');
 
       };
       function formatArgs(args) {
@@ -32991,10 +32991,10 @@ const SRTlib = require('SRT-util');
         var index = 0;
         var lastC = 0;
         args[0].replace(/%[a-zA-Z%]/g, function (match) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"args.replace2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"args.replace###2","fileName":"${__filename}","paramsNumber":1},`);
 
           if ('%%' === match) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"args.replace2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"args.replace###2"},');
 
             return;
           }
@@ -33002,7 +33002,7 @@ const SRTlib = require('SRT-util');
           if ('%c' === match) {
             lastC = index;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"args.replace2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"args.replace###2"},');
 
         });
         args.splice(lastC, 0, c);
@@ -33059,36 +33059,36 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"localstorage","paramsNumber":0},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call35"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###35"},');
 
     }).call(this, require('_process'));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey213"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###213"},');
 
   }, {
     "./debug": 206,
     "_process": 162
   }],
   206: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey214","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###214","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][105][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey214"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###214"},');
 
   }, {
     "dup": 105,
     "ms": 207
   }],
   207: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey215","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###215","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][106][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey215"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###215"},');
 
   }, {
     "dup": 106
   }],
   208: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey216","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###216","fileName":"${__filename}","paramsNumber":3},`);
 
     var isArray = require('isarray');
     var isBuf = require('./is-buffer');
@@ -33240,14 +33240,14 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"exports.removeBlobs"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey216"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###216"},');
 
   }, {
     "./is-buffer": 210,
     "isarray": 214
   }],
   209: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey217","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###217","fileName":"${__filename}","paramsNumber":3},`);
 
     var debug = require('debug')('socket.io-parser');
     var Emitter = require('component-emitter');
@@ -33527,7 +33527,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"error","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey217"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###217"},');
 
   }, {
     "./binary": 208,
@@ -33537,10 +33537,10 @@ const SRTlib = require('SRT-util');
     "isarray": 214
   }],
   210: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey218","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###218","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call36","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###36","fileName":"${__filename}","paramsNumber":1},`);
 
       module.exports = isBuf;
       var withNativeBuffer = typeof Buffer === 'function' && typeof Buffer.isBuffer === 'function';
@@ -33563,28 +33563,28 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"isBuf","paramsNumber":1},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call36"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###36"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey218"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###218"},');
 
   }, {
     "buffer": 360
   }],
   211: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey219","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###219","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][103][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey219"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###219"},');
 
   }, {
     "dup": 103
   }],
   212: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey220","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###220","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call37","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###37","fileName":"${__filename}","paramsNumber":1},`);
 
       exports = module.exports = require('./debug');
       exports.log = log;
@@ -33614,18 +33614,18 @@ const SRTlib = require('SRT-util');
 
       }
       exports.formatters.j = function (v) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.exports.formatters.j3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.exports.formatters.j###3","fileName":"${__filename}","paramsNumber":1},`);
 
         try {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j###3"},');
 
           return JSON.stringify(v);
         } catch (err) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j###3"},');
 
           return '[UnexpectedJSONParseError]: ' + err.message;
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.formatters.j###3"},');
 
       };
       function formatArgs(args) {
@@ -33643,10 +33643,10 @@ const SRTlib = require('SRT-util');
         var index = 0;
         var lastC = 0;
         args[0].replace(/%[a-zA-Z%]/g, function (match) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"args.replace3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"args.replace###3","fileName":"${__filename}","paramsNumber":1},`);
 
           if ('%%' === match) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"args.replace3"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"args.replace###3"},');
 
             return;
           }
@@ -33654,7 +33654,7 @@ const SRTlib = require('SRT-util');
           if ('%c' === match) {
             lastC = index;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"args.replace3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"args.replace###3"},');
 
         });
         args.splice(lastC, 0, c);
@@ -33711,45 +33711,45 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"localstorage","paramsNumber":0},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call37"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###37"},');
 
     }).call(this, require('_process'));
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey220"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###220"},');
 
   }, {
     "./debug": 213,
     "_process": 162
   }],
   213: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey221","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###221","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][105][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey221"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###221"},');
 
   }, {
     "dup": 105,
     "ms": 215
   }],
   214: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey222","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###222","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][115][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey222"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###222"},');
 
   }, {
     "dup": 115
   }],
   215: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey223","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###223","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][106][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey223"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###223"},');
 
   }, {
     "dup": 106
   }],
   216: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey224","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###224","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = Stream;
     var EE = require('events').EventEmitter;
@@ -33864,7 +33864,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"Stream.prototype.pipe"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey224"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###224"},');
 
   }, {
     "events": 361,
@@ -33876,17 +33876,17 @@ const SRTlib = require('SRT-util');
     "readable-stream/writable.js": 186
   }],
   217: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey225","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###225","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][182][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey225"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###225"},');
 
   }, {
     "dup": 182,
     "safe-buffer": 218
   }],
   218: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey226","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###226","fileName":"${__filename}","paramsNumber":3},`);
 
     var buffer = require('buffer');
     var Buffer = buffer.Buffer;
@@ -33917,24 +33917,24 @@ const SRTlib = require('SRT-util');
     SafeBuffer.prototype = Object.create(Buffer.prototype);
     copyProps(Buffer, SafeBuffer);
     SafeBuffer.from = function (arg, encodingOrOffset, length) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SafeBuffer.from2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SafeBuffer.from###2","fileName":"${__filename}","paramsNumber":3},`);
 
       if (typeof arg === 'number') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.from2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.from###2"},');
 
         throw new TypeError('Argument must not be a number');
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.from2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.from###2"},');
 
       return Buffer(arg, encodingOrOffset, length);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.from2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.from###2"},');
 
     };
     SafeBuffer.alloc = function (size, fill, encoding) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SafeBuffer.alloc2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SafeBuffer.alloc###2","fileName":"${__filename}","paramsNumber":3},`);
 
       if (typeof size !== 'number') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.alloc2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.alloc###2"},');
 
         throw new TypeError('Argument must be a number');
       }
@@ -33948,50 +33948,50 @@ const SRTlib = require('SRT-util');
       } else {
         buf.fill(0);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.alloc2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.alloc###2"},');
 
       return buf;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.alloc2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.alloc###2"},');
 
     };
     SafeBuffer.allocUnsafe = function (size) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SafeBuffer.allocUnsafe2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SafeBuffer.allocUnsafe###2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (typeof size !== 'number') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafe2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafe###2"},');
 
         throw new TypeError('Argument must be a number');
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafe2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafe###2"},');
 
       return Buffer(size);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafe2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafe###2"},');
 
     };
     SafeBuffer.allocUnsafeSlow = function (size) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SafeBuffer.allocUnsafeSlow2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"SafeBuffer.allocUnsafeSlow###2","fileName":"${__filename}","paramsNumber":1},`);
 
       if (typeof size !== 'number') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafeSlow2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafeSlow###2"},');
 
         throw new TypeError('Argument must be a number');
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafeSlow2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafeSlow###2"},');
 
       return buffer.SlowBuffer(size);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafeSlow2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"SafeBuffer.allocUnsafeSlow###2"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey226"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###226"},');
 
   }, {
     "buffer": 360
   }],
   219: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey227","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###227","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (setImmediate, clearImmediate) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call38","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###38","fileName":"${__filename}","paramsNumber":2},`);
 
       var nextTick = require('process/browser.js').nextTick;
       var apply = Function.prototype.apply;
@@ -34110,17 +34110,17 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.exports.clearImmediate"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call38"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###38"},');
 
     }).call(this, require("timers").setImmediate, require("timers").clearImmediate);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey227"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###227"},');
 
   }, {
     "process/browser.js": 162,
     "timers": 219
   }],
   220: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey228","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###228","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = toArray;
     function toArray(list, index) {
@@ -34137,11 +34137,11 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"toArray","paramsNumber":2},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey228"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###228"},');
 
   }, {}],
   221: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey229","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###229","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -34205,13 +34205,13 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"hashCode","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey229"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###229"},');
 
   }, {
     "./isReactNative": 223
   }],
   222: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey230","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###230","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -34227,11 +34227,11 @@ const SRTlib = require('SRT-util');
 
     };
     exports.default = isCordova;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey230"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###230"},');
 
   }, {}],
   223: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey231","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###231","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -34247,11 +34247,11 @@ const SRTlib = require('SRT-util');
 
     };
     exports.default = isReactNative;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey231"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###231"},');
 
   }, {}],
   224: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey232","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###232","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -34280,11 +34280,11 @@ const SRTlib = require('SRT-util');
 
     }
     exports.default = readAsByteArray;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey232"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###232"},');
 
   }, {}],
   225: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey233","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###233","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -34323,13 +34323,13 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"resolveUrl","paramsNumber":2},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey233"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###233"},');
 
   }, {
     "url-parse": 232
   }],
   226: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey235","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###235","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -34439,9 +34439,9 @@ const SRTlib = require('SRT-util');
       }, {
         key: "close",
         value: function close() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"FileSource._createClass.value2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"FileSource._createClass.value###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"FileSource._createClass.value2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"FileSource._createClass.value###2"},');
 
         }
       }]);
@@ -34486,14 +34486,14 @@ const SRTlib = require('SRT-util');
       }, {
         key: "_readUntilEnoughDataOrDone",
         value: function _readUntilEnoughDataOrDone(start, end, callback) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamSource._createClass.value2","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamSource._createClass.value###2","fileName":"${__filename}","paramsNumber":3},`);
 
           var _this = this;
           var hasEnoughData = end <= this._bufferOffset + len(this._buffer);
           if (this._done || hasEnoughData) {
             var value = this._getDataFromBuffer(start, end);
             callback(null, value, value == null ? this._done : false);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value###2"},');
 
             return;
           }
@@ -34518,13 +34518,13 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value._readUntilEnoughDataOrDone._reader.read.then.catch"},');
 
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value###2"},');
 
         }
       }, {
         key: "_getDataFromBuffer",
         value: function _getDataFromBuffer(start, end) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamSource._createClass.value3","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamSource._createClass.value###3","fileName":"${__filename}","paramsNumber":2},`);
 
           if (start > this._bufferOffset) {
             this._buffer = this._buffer.slice(start - this._bufferOffset);
@@ -34532,25 +34532,25 @@ const SRTlib = require('SRT-util');
           }
           var hasAllDataBeenRead = len(this._buffer) === 0;
           if (this._done && hasAllDataBeenRead) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value3"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value###3"},');
 
             return null;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value###3"},');
 
           return this._buffer.slice(0, end - start);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value###3"},');
 
         }
       }, {
         key: "close",
         value: function close() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamSource._createClass.value4","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"StreamSource._createClass.value###4","fileName":"${__filename}","paramsNumber":0},`);
 
           if (this._reader.cancel) {
             this._reader.cancel();
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"StreamSource._createClass.value###4"},');
 
         }
       }]);
@@ -34613,15 +34613,15 @@ const SRTlib = require('SRT-util');
 
       if ((0, _isReactNative2.default)() && input && typeof input.uri !== "undefined") {
         (0, _uriToBlob2.default)(input.uri, function (err, blob) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey234","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###234","fileName":"${__filename}","paramsNumber":2},`);
 
           if (err) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey234"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###234"},');
 
             return callback(new Error("tus: cannot fetch `file.uri` as Blob, make sure the uri is correct and accessible. " + err));
           }
           callback(null, new FileSource(blob));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey234"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###234"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"getSource"},');
@@ -34651,7 +34651,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"getSource","paramsNumber":3},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey235"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###235"},');
 
   }, {
     "./isCordova": 222,
@@ -34660,14 +34660,14 @@ const SRTlib = require('SRT-util');
     "./uriToBlob": 228
   }],
   227: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey236","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###236","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
     });
     var _createClass = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_createClass2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_createClass###2","fileName":"${__filename}","paramsNumber":0},`);
 
       function defineProperties(target, props) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"defineProperties","fileName":"${__filename}","paramsNumber":2},`);
@@ -34682,20 +34682,20 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"defineProperties","paramsNumber":2},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass###2"},');
 
       return function (Constructor, protoProps, staticProps) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_createClass.ReturnStatement2","fileName":"${__filename}","paramsNumber":3},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_createClass.ReturnStatement###2","fileName":"${__filename}","paramsNumber":3},`);
 
         if (protoProps) defineProperties(Constructor.prototype, protoProps);
         if (staticProps) defineProperties(Constructor, staticProps);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass.ReturnStatement2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass.ReturnStatement###2"},');
 
         return Constructor;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass.ReturnStatement2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass.ReturnStatement###2"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass###2"},');
 
     })();
     exports.getStorage = getStorage;
@@ -34719,7 +34719,7 @@ const SRTlib = require('SRT-util');
       if (e.code === e.SECURITY_ERR || e.code === e.QUOTA_EXCEEDED_ERR) {
         hasStorage = false;
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey236"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###236"},');
 
         throw e;
       }
@@ -34747,19 +34747,19 @@ const SRTlib = require('SRT-util');
       }, {
         key: "getItem",
         value: function getItem(key, cb) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"LocalStorage._createClass.value2","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"LocalStorage._createClass.value###2","fileName":"${__filename}","paramsNumber":2},`);
 
           cb(null, localStorage.getItem(key));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"LocalStorage._createClass.value2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"LocalStorage._createClass.value###2"},');
 
         }
       }, {
         key: "removeItem",
         value: function removeItem(key, cb) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"LocalStorage._createClass.value3","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"LocalStorage._createClass.value###3","fileName":"${__filename}","paramsNumber":2},`);
 
           cb(null, localStorage.removeItem(key));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"LocalStorage._createClass.value3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"LocalStorage._createClass.value###3"},');
 
         }
       }]);
@@ -34778,11 +34778,11 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"getStorage","paramsNumber":0},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey236"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###236"},');
 
   }, {}],
   228: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey237","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###237","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -34814,11 +34814,11 @@ const SRTlib = require('SRT-util');
 
     }
     exports.default = uriToBlob;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey237"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###237"},');
 
   }, {}],
   229: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey238","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###238","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -34903,11 +34903,11 @@ const SRTlib = require('SRT-util');
 
     })(Error);
     exports.default = DetailedError;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey238"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###238"},');
 
   }, {}],
   230: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey239","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###239","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     var _upload = require("./upload");
@@ -34961,21 +34961,21 @@ const SRTlib = require('SRT-util');
       moduleExport.FileStorage = storage.FileStorage;
     }
     module.exports = moduleExport;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey239"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###239"},');
 
   }, {
     "./node/storage": 227,
     "./upload": 231
   }],
   231: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey240","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###240","fileName":"${__filename}","paramsNumber":3},`);
 
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
     });
     var _createClass = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_createClass3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_createClass###3","fileName":"${__filename}","paramsNumber":0},`);
 
       function defineProperties(target, props) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"defineProperties","fileName":"${__filename}","paramsNumber":2},`);
@@ -34990,20 +34990,20 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"defineProperties","paramsNumber":2},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass###3"},');
 
       return function (Constructor, protoProps, staticProps) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_createClass.ReturnStatement3","fileName":"${__filename}","paramsNumber":3},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_createClass.ReturnStatement###3","fileName":"${__filename}","paramsNumber":3},`);
 
         if (protoProps) defineProperties(Constructor.prototype, protoProps);
         if (staticProps) defineProperties(Constructor, staticProps);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass.ReturnStatement3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass.ReturnStatement###3"},');
 
         return Constructor;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass.ReturnStatement3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass.ReturnStatement###3"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"_createClass###3"},');
 
     })();
     var _error = require("./error");
@@ -35129,7 +35129,7 @@ const SRTlib = require('SRT-util');
       }, {
         key: "_start",
         value: function _start(source) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###2","fileName":"${__filename}","paramsNumber":1},`);
 
           var _this2 = this;
           var file = this.file;
@@ -35139,7 +35139,7 @@ const SRTlib = require('SRT-util');
             this._size = +this.options.uploadSize;
             if (isNaN(this._size)) {
               this._emitError(new Error("tus: cannot convert `uploadSize` option into a number"));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###2"},');
 
               return;
             }
@@ -35147,7 +35147,7 @@ const SRTlib = require('SRT-util');
             this._size = source.size;
             if (this._size == null) {
               this._emitError(new Error("tus: cannot automatically derive upload's size from input and must be specified manually using the `uploadSize` option"));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###2"},');
 
               return;
             }
@@ -35156,7 +35156,7 @@ const SRTlib = require('SRT-util');
           if (retryDelays != null) {
             if (Object.prototype.toString.call(retryDelays) !== "[object Array]") {
               this._emitError(new Error("tus: the `retryDelays` option must either be an array or null"));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###2"},');
 
               return;
             } else {
@@ -35200,14 +35200,14 @@ const SRTlib = require('SRT-util');
           this._aborted = false;
           if (this.url != null) {
             this._resumeUpload();
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###2"},');
 
             return;
           }
           if (this.options.uploadUrl != null) {
             this.url = this.options.uploadUrl;
             this._resumeUpload();
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###2"},');
 
             return;
           }
@@ -35246,13 +35246,13 @@ const SRTlib = require('SRT-util');
           } else {
             this._createUpload();
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###2"},');
 
         }
       }, {
         key: "abort",
         value: function abort(shouldTerminate, cb) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value3","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###3","fileName":"${__filename}","paramsNumber":2},`);
 
           var _this3 = this;
           if (this._xhr !== null) {
@@ -35286,96 +35286,96 @@ const SRTlib = require('SRT-util');
           } else {
             cb();
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###3"},');
 
         }
       }, {
         key: "_hasStorage",
         value: function _hasStorage() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value4","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###4","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###4"},');
 
           return this.options.resume && this._storage;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###4"},');
 
         }
       }, {
         key: "_emitXhrError",
         value: function _emitXhrError(xhr, err, causingErr) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value5","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###5","fileName":"${__filename}","paramsNumber":3},`);
 
           this._emitError(new _error2.default(err, causingErr, xhr));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###5"},');
 
         }
       }, {
         key: "_emitError",
         value: function _emitError(err) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value6","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###6","fileName":"${__filename}","paramsNumber":1},`);
 
           if (typeof this.options.onError === "function") {
             this.options.onError(err);
           } else {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value6"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###6"},');
 
             throw err;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value6"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###6"},');
 
         }
       }, {
         key: "_emitSuccess",
         value: function _emitSuccess() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value7","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###7","fileName":"${__filename}","paramsNumber":0},`);
 
           if (typeof this.options.onSuccess === "function") {
             this.options.onSuccess();
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value7"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###7"},');
 
         }
       }, {
         key: "_emitProgress",
         value: function _emitProgress(bytesSent, bytesTotal) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value8","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###8","fileName":"${__filename}","paramsNumber":2},`);
 
           if (typeof this.options.onProgress === "function") {
             this.options.onProgress(bytesSent, bytesTotal);
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value8"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###8"},');
 
         }
       }, {
         key: "_emitChunkComplete",
         value: function _emitChunkComplete(chunkSize, bytesAccepted, bytesTotal) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value9","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###9","fileName":"${__filename}","paramsNumber":3},`);
 
           if (typeof this.options.onChunkComplete === "function") {
             this.options.onChunkComplete(chunkSize, bytesAccepted, bytesTotal);
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value9"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###9"},');
 
         }
       }, {
         key: "_setupXHR",
         value: function _setupXHR(xhr) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value10","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###10","fileName":"${__filename}","paramsNumber":1},`);
 
           this._xhr = xhr;
           setupXHR(xhr, this.options);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value10"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###10"},');
 
         }
       }, {
         key: "_createUpload",
         value: function _createUpload() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value11","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###11","fileName":"${__filename}","paramsNumber":0},`);
 
           var _this4 = this;
           if (!this.options.endpoint) {
             this._emitError(new Error("tus: unable to create upload because no endpoint is provided"));
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value11"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###11"},');
 
             return;
           }
@@ -35448,13 +35448,13 @@ const SRTlib = require('SRT-util');
           } else {
             xhr.send(null);
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value11"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###11"},');
 
         }
       }, {
         key: "_resumeUpload",
         value: function _resumeUpload() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value12","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###12","fileName":"${__filename}","paramsNumber":0},`);
 
           var _this5 = this;
           var xhr = (0, _request.newRequest)();
@@ -35527,17 +35527,17 @@ const SRTlib = require('SRT-util');
           };
           this._setupXHR(xhr);
           xhr.send(null);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value12"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###12"},');
 
         }
       }, {
         key: "_startUpload",
         value: function _startUpload() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value13","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###13","fileName":"${__filename}","paramsNumber":0},`);
 
           var _this6 = this;
           if (this._aborted) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value13"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###13"},');
 
             return;
           }
@@ -35576,13 +35576,13 @@ const SRTlib = require('SRT-util');
           this._setupXHR(xhr);
           xhr.setRequestHeader("Upload-Offset", this._offset);
           this._addChunkToRequest(xhr);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value13"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###13"},');
 
         }
       }, {
         key: "_addChunkToRequest",
         value: function _addChunkToRequest(xhr) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value14","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###14","fileName":"${__filename}","paramsNumber":1},`);
 
           var _this7 = this;
           if (("upload" in xhr)) {
@@ -35629,19 +35629,19 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value._addChunkToRequest._source.slice"},');
 
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value14"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###14"},');
 
         }
       }, {
         key: "_handleUploadResponse",
         value: function _handleUploadResponse(xhr) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value15","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###15","fileName":"${__filename}","paramsNumber":1},`);
 
           var _this8 = this;
           var offset = parseInt(xhr.getResponseHeader("Upload-Offset"), 10);
           if (isNaN(offset)) {
             this._emitXhrError(xhr, new Error("tus: invalid or missing offset value"));
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value15"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###15"},');
 
             return;
           }
@@ -35662,21 +35662,21 @@ const SRTlib = require('SRT-util');
             }
             this._emitSuccess();
             this._source.close();
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value15"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###15"},');
 
             return;
           }
           this._startUpload();
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value15"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###15"},');
 
         }
       }], [{
         key: "terminate",
         value: function terminate(url, options, cb) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value16","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Upload._createClass.value###16","fileName":"${__filename}","paramsNumber":3},`);
 
           if (typeof options !== "function" && typeof cb !== "function") {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value16"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###16"},');
 
             throw new Error("tus: a callback function must be specified");
           }
@@ -35708,7 +35708,7 @@ const SRTlib = require('SRT-util');
           };
           setupXHR(xhr, options);
           xhr.send(null);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value16"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Upload._createClass.value###16"},');
 
         }
       }]);
@@ -35754,7 +35754,7 @@ const SRTlib = require('SRT-util');
     }
     Upload.defaultOptions = defaultOptions;
     exports.default = Upload;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey240"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###240"},');
 
   }, {
     "./error": 229,
@@ -35766,10 +35766,10 @@ const SRTlib = require('SRT-util');
     "js-base64": 136
   }],
   232: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey241","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###241","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call39","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###39","fileName":"${__filename}","paramsNumber":1},`);
 
       'use strict';
       var required = require('requires-port'), qs = require('querystringify'), slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//, protocolre = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i, whitespace = '[\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028\\u2029\\uFEFF]', left = new RegExp('^' + whitespace + '+');
@@ -36030,20 +36030,20 @@ const SRTlib = require('SRT-util');
       Url.trimLeft = trimLeft;
       Url.qs = qs;
       module.exports = Url;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call39"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###39"},');
 
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey241"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###241"},');
 
   }, {
     "querystringify": 169,
     "requires-port": 187
   }],
   233: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey242","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###242","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call40","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###40","fileName":"${__filename}","paramsNumber":1},`);
 
       module.exports = deprecate;
       function deprecate(fn, msg) {
@@ -36108,20 +36108,20 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"config","paramsNumber":1},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call40"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###40"},');
 
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey242"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###242"},');
 
   }, {}],
   234: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey243","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###243","fileName":"${__filename}","paramsNumber":3},`);
 
     var indexOf = function (xs, item) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"indexOf","fileName":"${__filename}","paramsNumber":2},`);
 
       if (xs.indexOf) return xs.indexOf(item); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey243"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###243"},');
 
         return xs.indexOf(item);
       }
@@ -36135,7 +36135,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Object_keys","fileName":"${__filename}","paramsNumber":1},`);
 
       if (Object.keys) return Object.keys(obj); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey243"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###243"},');
 
         return Object.keys(obj);
       }
@@ -36146,7 +36146,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"forEach","fileName":"${__filename}","paramsNumber":2},`);
 
       if (xs.forEach) return xs.forEach(fn); else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey243"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###243"},');
 
         return xs.forEach(fn);
       }
@@ -36176,10 +36176,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"defineProp"},');
 
         return function (obj, name, value) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defineProp.ReturnStatement2","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defineProp.ReturnStatement###2","fileName":"${__filename}","paramsNumber":3},`);
 
           obj[name] = value;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"defineProp.ReturnStatement2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"defineProp.ReturnStatement###2"},');
 
         };
       }
@@ -36232,32 +36232,32 @@ const SRTlib = require('SRT-util');
 
       });
       forEach(globals, function (key) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Script.prototype.runInContext.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Script.prototype.runInContext.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
 
         if (context[key]) {
           win[key] = context[key];
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Script.prototype.runInContext.forEach2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Script.prototype.runInContext.forEach###2"},');
 
       });
       var winKeys = Object_keys(win);
       var res = wEval.call(win, this.code);
       forEach(Object_keys(win), function (key) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Script.prototype.runInContext.forEach3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Script.prototype.runInContext.forEach###3","fileName":"${__filename}","paramsNumber":1},`);
 
         if ((key in context) || indexOf(winKeys, key) === -1) {
           context[key] = win[key];
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Script.prototype.runInContext.forEach3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Script.prototype.runInContext.forEach###3"},');
 
       });
       forEach(globals, function (key) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Script.prototype.runInContext.forEach4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Script.prototype.runInContext.forEach###4","fileName":"${__filename}","paramsNumber":1},`);
 
         if (!((key in context))) {
           defineProp(context, key, win[key]);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Script.prototype.runInContext.forEach4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Script.prototype.runInContext.forEach###4"},');
 
       });
       document.body.removeChild(iframe);
@@ -36349,20 +36349,20 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"exports.createContext.Script.createContext"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey243"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###243"},');
 
   }, {}],
   235: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey246","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###246","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (global, factory) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey244","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###244","fileName":"${__filename}","paramsNumber":2},`);
 
       typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) : typeof define === 'function' && define.amd ? define(['exports'], factory) : factory(global.WHATWGFetch = {});
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey244"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###244"},');
 
     })(this, function (exports) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey245","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###245","fileName":"${__filename}","paramsNumber":1},`);
 
       'use strict';
       var support = {
@@ -36486,10 +36486,10 @@ const SRTlib = require('SRT-util');
           }, this);
         } else if (Array.isArray(headers)) {
           headers.forEach(function (header) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"headers.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"headers.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
 
             this.append(header[0], header[1]);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"headers.forEach2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"headers.forEach###2"},');
 
           }, this);
         } else if (headers) {
@@ -36630,7 +36630,7 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"fileReaderReady"},');
 
         return new Promise(function (resolve, reject) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression3","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression###3","fileName":"${__filename}","paramsNumber":2},`);
 
           reader.onload = function () {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression.reader.onload","fileName":"${__filename}","paramsNumber":0},`);
@@ -36646,7 +36646,7 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression.reader.onerror"},');
 
           };
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression###3"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"fileReaderReady","paramsNumber":1},');
@@ -37045,11 +37045,11 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"fetch"},');
 
         return new Promise(function (resolve, reject) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression4","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression###4","fileName":"${__filename}","paramsNumber":2},`);
 
           var request = new Request(input, init);
           if (request.signal && request.signal.aborted) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression###4"},');
 
             return reject(new exports.DOMException('Aborted', 'AbortError'));
           }
@@ -37125,7 +37125,7 @@ const SRTlib = require('SRT-util');
             };
           }
           xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression###4"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"fetch","paramsNumber":2},');
@@ -37145,14 +37145,14 @@ const SRTlib = require('SRT-util');
       Object.defineProperty(exports, '__esModule', {
         value: true
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey245"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###245"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey246"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###246"},');
 
   }, {}],
   236: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey247","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###247","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     function WildcardMatcher(text, separator) {
@@ -37211,25 +37211,25 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = function (text, test, separator) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports32","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###32","fileName":"${__filename}","paramsNumber":3},`);
 
       var matcher = new WildcardMatcher(text, separator || /[\/\.]/);
       if (typeof test != 'undefined') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports32"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###32"},');
 
         return matcher.match(test);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports32"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###32"},');
 
       return matcher;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports32"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###32"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey247"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###247"},');
 
   }, {}],
   237: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey248","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###248","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var alphabet = ('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_').split(''), length = 64, map = {}, seed = 0, i = 0, prev;
@@ -37279,11 +37279,11 @@ const SRTlib = require('SRT-util');
     yeast.encode = encode;
     yeast.decode = decode;
     module.exports = yeast;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey248"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###248"},');
 
   }, {}],
   238: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey249","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###249","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/companion-client",
@@ -37306,11 +37306,11 @@ const SRTlib = require('SRT-util');
         "namespace-emitter": "^2.0.1"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey249"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###249"},');
 
   }, {}],
   239: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey250","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###250","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     function _inheritsLoose(subClass, superClass) {
@@ -37509,11 +37509,11 @@ const SRTlib = require('SRT-util');
 
     })(_wrapNativeSuper(Error));
     module.exports = AuthError;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey250"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###250"},');
 
   }, {}],
   240: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey251","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###251","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     function _extends() {
@@ -37571,7 +37571,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = (function (_RequestClient) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports33","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###33","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Provider, _RequestClient);
       function Provider(uppy, opts) {
@@ -37745,20 +37745,20 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Provider.initPlugin"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports33"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###33"},');
 
       return Provider;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports33"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###33"},');
 
     })(RequestClient);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey251"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###251"},');
 
   }, {
     "./RequestClient": 241,
     "./tokenStorage": 244
   }],
   241: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey252","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###252","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var _class, _temp;
@@ -37766,7 +37766,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###2","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -37776,10 +37776,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###2"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###2"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -38203,16 +38203,16 @@ const SRTlib = require('SRT-util');
       }, {
         key: "defaultHeaders",
         get: function get() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._createClass.get2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._createClass.get###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._createClass.get2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._createClass.get###2"},');
 
           return {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             'Uppy-Versions': "@uppy/companion-client=" + RequestClient.VERSION
           };
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._createClass.get2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._createClass.get###2"},');
 
         }
       }]);
@@ -38222,7 +38222,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class"},');
 
     })(), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey252"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###252"},');
 
   }, {
     "../package.json": 238,
@@ -38230,11 +38230,11 @@ const SRTlib = require('SRT-util');
     "./AuthError": 239
   }],
   242: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey253","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###253","fileName":"${__filename}","paramsNumber":3},`);
 
     var ee = require('namespace-emitter');
     module.exports = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports34","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###34","fileName":"${__filename}","paramsNumber":0},`);
 
       function UppySocket(opts) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UppySocket","fileName":"${__filename}","paramsNumber":1},`);
@@ -38345,19 +38345,19 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._handleMessage"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports34"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###34"},');
 
       return UppySocket;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports34"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###34"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey253"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###253"},');
 
   }, {
     "namespace-emitter": 146
   }],
   243: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey254","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###254","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     var RequestClient = require('./RequestClient');
@@ -38368,7 +38368,7 @@ const SRTlib = require('SRT-util');
       Provider: Provider,
       Socket: Socket
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey254"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###254"},');
 
   }, {
     "./Provider": 240,
@@ -38376,7 +38376,7 @@ const SRTlib = require('SRT-util');
     "./Socket": 242
   }],
   244: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey255","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###255","fileName":"${__filename}","paramsNumber":3},`);
 
     'use strict';
     module.exports.setItem = function (key, value) {
@@ -38420,17 +38420,17 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.removeItem"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey255"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###255"},');
 
   }, {}],
   245: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey256","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###256","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function prettierBytes(num) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports35","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###35","fileName":"${__filename}","paramsNumber":1},`);
 
       if (typeof num !== 'number' || isNaN(num)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports35"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###35"},');
 
         throw new TypeError('Expected a number, got ' + typeof num);
       }
@@ -38440,7 +38440,7 @@ const SRTlib = require('SRT-util');
         num = -num;
       }
       if (num < 1) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports35"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###35"},');
 
         return (neg ? '-' : '') + num + ' B';
       }
@@ -38448,22 +38448,22 @@ const SRTlib = require('SRT-util');
       num = Number(num / Math.pow(1024, exponent));
       var unit = units[exponent];
       if (num >= 10 || num % 1 === 0) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports35"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###35"},');
 
         return (neg ? '-' : '') + num.toFixed(0) + ' ' + unit;
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports35"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###35"},');
 
         return (neg ? '-' : '') + num.toFixed(1) + ' ' + unit;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports35"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###35"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey256"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###256"},');
 
   }, {}],
   246: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey257","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###257","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/core",
@@ -38493,17 +38493,17 @@ const SRTlib = require('SRT-util');
         "preact": "8.2.9"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey257"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###257"},');
 
   }, {}],
   247: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey258","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###258","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###3","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -38513,10 +38513,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###3"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###3"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -38535,7 +38535,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"debounce"},');
 
       return function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement7","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###7","fileName":"${__filename}","paramsNumber":0},`);
 
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
           args[_key] = arguments[_key];
@@ -38553,17 +38553,17 @@ const SRTlib = require('SRT-util');
 
           });
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###7"},');
 
         return calling;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###7"},');
 
       };
             SRTlib.send('{"type":"FUNCTIONEND","function":"debounce","paramsNumber":1},');
 
     }
     module.exports = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports36","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###36","fileName":"${__filename}","paramsNumber":0},`);
 
       function Plugin(uppy, opts) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Plugin","fileName":"${__filename}","paramsNumber":2},`);
@@ -38745,26 +38745,26 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.uninstall"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports36"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###36"},');
 
       return Plugin;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports36"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###36"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey258"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###258"},');
 
   }, {
     "./../../utils/lib/findDOMElement": 325,
     "preact": 160
   }],
   248: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey259","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###259","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###4","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -38774,10 +38774,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###4"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###4"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -38824,21 +38824,21 @@ const SRTlib = require('SRT-util');
 
       var _cache = typeof Map === "function" ? new Map() : undefined;
       _wrapNativeSuper = function _wrapNativeSuper(Class) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_wrapNativeSuper2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_wrapNativeSuper###2","fileName":"${__filename}","paramsNumber":1},`);
 
         if (Class === null || !_isNativeFunction(Class)) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###2"},');
 
           return Class;
         }
         if (typeof Class !== "function") {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###2"},');
 
           throw new TypeError("Super expression must either be null or a function");
         }
         if (typeof _cache !== "undefined") {
           if (_cache.has(Class)) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###2"},');
 
             return _cache.get(Class);
           }
@@ -38861,10 +38861,10 @@ const SRTlib = require('SRT-util');
             configurable: true
           }
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###2"},');
 
         return _setPrototypeOf(Wrapper, Class);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###2"},');
 
       };
             SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
@@ -38880,17 +38880,17 @@ const SRTlib = require('SRT-util');
         _construct = Reflect.construct;
       } else {
         _construct = function _construct(Parent, args, Class) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_construct2","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_construct###2","fileName":"${__filename}","paramsNumber":3},`);
 
           var a = [null];
           a.push.apply(a, args);
           var Constructor = Function.bind.apply(Parent, a);
           var instance = new Constructor();
           if (Class) _setPrototypeOf(instance, Class.prototype);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct###2"},');
 
           return instance;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct###2"},');
 
         };
       }
@@ -38920,9 +38920,9 @@ const SRTlib = require('SRT-util');
       }
       try {
         Date.prototype.toString.call(Reflect.construct(Date, [], function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Date.prototype.toString.call.Reflect.construct2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Date.prototype.toString.call.Reflect.construct###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Date.prototype.toString.call.Reflect.construct2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Date.prototype.toString.call.Reflect.construct###2"},');
 
         }));
                 SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeReflectConstruct"},');
@@ -38949,13 +38949,13 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_setPrototypeOf","fileName":"${__filename}","paramsNumber":2},`);
 
       _setPrototypeOf = Object.setPrototypeOf || (function _setPrototypeOf(o, p) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_setPrototypeOf2","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_setPrototypeOf###2","fileName":"${__filename}","paramsNumber":2},`);
 
         o.__proto__ = p;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf###2"},');
 
         return o;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf###2"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf"},');
@@ -38968,12 +38968,12 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getPrototypeOf","fileName":"${__filename}","paramsNumber":1},`);
 
       _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getPrototypeOf2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getPrototypeOf###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf###2"},');
 
         return o.__proto__ || Object.getPrototypeOf(o);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf###2"},');
 
       };
             SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf"},');
@@ -40113,7 +40113,7 @@ const SRTlib = require('SRT-util');
 
         });
         this.on('upload-error', function (file, error, response) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on2","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on###2","fileName":"${__filename}","paramsNumber":3},`);
 
           var errorMsg = 'Unknown error';
           if (error.message) {
@@ -40146,24 +40146,24 @@ const SRTlib = require('SRT-util');
               throwErr: false
             });
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###2"},');
 
         });
         this.on('upload', function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on3","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on###3","fileName":"${__filename}","paramsNumber":0},`);
 
           _this6.setState({
             error: null
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###3"},');
 
         });
         this.on('upload-started', function (file, upload) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on4","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on###4","fileName":"${__filename}","paramsNumber":2},`);
 
           if (!_this6.getFile(file.id)) {
             _this6.log("Not setting progress for a file that has been removed: " + file.id);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on4"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###4"},');
 
             return;
           }
@@ -40176,16 +40176,16 @@ const SRTlib = require('SRT-util');
               bytesTotal: file.size
             }
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###4"},');
 
         });
         this.on('upload-progress', this._calculateProgress);
         this.on('upload-success', function (file, uploadResp) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on5","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on###5","fileName":"${__filename}","paramsNumber":2},`);
 
           if (!_this6.getFile(file.id)) {
             _this6.log("Not setting progress for a file that has been removed: " + file.id);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###5"},');
 
             return;
           }
@@ -40201,15 +40201,15 @@ const SRTlib = require('SRT-util');
             isPaused: false
           });
           _this6._calculateTotalProgress();
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###5"},');
 
         });
         this.on('preprocess-progress', function (file, progress) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on6","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on###6","fileName":"${__filename}","paramsNumber":2},`);
 
           if (!_this6.getFile(file.id)) {
             _this6.log("Not setting progress for a file that has been removed: " + file.id);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on6"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###6"},');
 
             return;
           }
@@ -40218,15 +40218,15 @@ const SRTlib = require('SRT-util');
               preprocess: progress
             })
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on6"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###6"},');
 
         });
         this.on('preprocess-complete', function (file) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on7","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on###7","fileName":"${__filename}","paramsNumber":1},`);
 
           if (!_this6.getFile(file.id)) {
             _this6.log("Not setting progress for a file that has been removed: " + file.id);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on7"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###7"},');
 
             return;
           }
@@ -40238,15 +40238,15 @@ const SRTlib = require('SRT-util');
           _this6.setState({
             files: files
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on7"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###7"},');
 
         });
         this.on('postprocess-progress', function (file, progress) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on8","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on###8","fileName":"${__filename}","paramsNumber":2},`);
 
           if (!_this6.getFile(file.id)) {
             _this6.log("Not setting progress for a file that has been removed: " + file.id);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on8"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###8"},');
 
             return;
           }
@@ -40255,15 +40255,15 @@ const SRTlib = require('SRT-util');
               postprocess: progress
             })
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on8"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###8"},');
 
         });
         this.on('postprocess-complete', function (file) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on9","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on###9","fileName":"${__filename}","paramsNumber":1},`);
 
           if (!_this6.getFile(file.id)) {
             _this6.log("Not setting progress for a file that has been removed: " + file.id);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on9"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###9"},');
 
             return;
           }
@@ -40275,14 +40275,14 @@ const SRTlib = require('SRT-util');
           _this6.setState({
             files: files
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on9"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###9"},');
 
         });
         this.on('restored', function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on10","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.on###10","fileName":"${__filename}","paramsNumber":0},`);
 
           _this6._calculateTotalProgress();
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on10"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.on###10"},');
 
         });
         if (typeof window !== 'undefined' && window.addEventListener) {
@@ -40296,12 +40296,12 @@ const SRTlib = require('SRT-util');
 
           });
           window.addEventListener('offline', function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.window.addEventListener2","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Uppy._proto._addListeners._addListeners.window.addEventListener###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.window.addEventListener2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.window.addEventListener###2"},');
 
             return _this6.updateOnlineStatus();
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.window.addEventListener2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Uppy._proto._addListeners._addListeners.window.addEventListener###2"},');
 
           });
           setTimeout(function () {
@@ -40854,18 +40854,18 @@ const SRTlib = require('SRT-util');
     })();
     Uppy.VERSION = require('../package.json').version;
     module.exports = function (opts) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports37","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###37","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports37"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###37"},');
 
       return new Uppy(opts);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports37"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###37"},');
 
     };
     module.exports.Uppy = Uppy;
     module.exports.Plugin = Plugin;
     module.exports.debugLogger = debugLogger;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey259"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###259"},');
 
   }, {
     "../package.json": 246,
@@ -40884,7 +40884,7 @@ const SRTlib = require('SRT-util');
     "namespace-emitter": 146
   }],
   249: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey260","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###260","fileName":"${__filename}","paramsNumber":3},`);
 
     var getTimeStamp = require('./../../utils/lib/getTimeStamp');
     var justErrorsLogger = {
@@ -40957,28 +40957,28 @@ const SRTlib = require('SRT-util');
       justErrorsLogger: justErrorsLogger,
       debugLogger: debugLogger
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey260"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###260"},');
 
   }, {
     "./../../utils/lib/getTimeStamp": 338
   }],
   250: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey261","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###261","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function supportsUploadProgress(userAgent) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports38","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###38","fileName":"${__filename}","paramsNumber":1},`);
 
       if (userAgent == null) {
         userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : null;
       }
       if (!userAgent) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports38"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###38"},');
 
         return true;
       }
       var m = (/Edge\/(\d+\.\d+)/).exec(userAgent);
       if (!m) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports38"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###38"},');
 
         return true;
       }
@@ -40987,35 +40987,35 @@ const SRTlib = require('SRT-util');
       major = parseInt(major, 10);
       minor = parseInt(minor, 10);
       if (major < 15 || major === 15 && minor < 15063) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports38"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###38"},');
 
         return true;
       }
       if (major > 18 || major === 18 && minor >= 18218) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports38"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###38"},');
 
         return true;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports38"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###38"},');
 
       return false;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports38"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###38"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey261"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###261"},');
 
   }, {}],
   251: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey262","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###262","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][245][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey262"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###262"},');
 
   }, {
     "dup": 245
   }],
   252: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey263","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###263","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/dashboard",
@@ -41055,11 +41055,11 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey263"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###263"},');
 
   }, {}],
   253: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey264","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###264","fileName":"${__filename}","paramsNumber":3},`);
 
     function _inheritsLoose(subClass, superClass) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
@@ -41313,14 +41313,14 @@ const SRTlib = require('SRT-util');
 
     })(Component);
     module.exports = AddFiles;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey264"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###264"},');
 
   }, {
     "./icons": 268,
     "preact": 160
   }],
   254: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey265","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###265","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var AddFiles = require('./AddFiles');
@@ -41356,20 +41356,20 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = AddFilesPanel;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey265"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###265"},');
 
   }, {
     "./AddFiles": 253,
     "preact": 160
   }],
   255: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey266","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###266","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends5","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###5","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -41379,10 +41379,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###5"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###5"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -41419,7 +41419,7 @@ const SRTlib = require('SRT-util');
     var WIDTH_MD = 576;
     var HEIGHT_MD = 400;
     module.exports = function Dashboard(props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports39","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###39","fileName":"${__filename}","paramsNumber":1},`);
 
       var noFiles = props.totalFileCount === 0;
       var isSizeMD = props.containerWidth > WIDTH_MD;
@@ -41446,7 +41446,7 @@ const SRTlib = require('SRT-util');
         itemsPerRow = 3;
       }
       var showFileList = props.showSelectedFiles && !noFiles;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports39"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###39"},');
 
       return h("div", {
         class: dashboardClassName,
@@ -41506,10 +41506,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Dashboard.ReturnStatement.h.h.h.h.props.progressindicators.map"},');
 
       })))));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports39"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###39"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey266"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###266"},');
 
   }, {
     "./../../../utils/lib/isDragDropSupported": 341,
@@ -41524,13 +41524,13 @@ const SRTlib = require('SRT-util');
     "preact-css-transition-group": 159
   }],
   256: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey267","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###267","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends6","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###6","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -41540,10 +41540,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###6"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###6"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -41750,7 +41750,7 @@ const SRTlib = require('SRT-util');
 
     })(Component);
     module.exports = FileCard;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey267"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###267"},');
 
   }, {
     "../../utils/getFileTypeIcon": 273,
@@ -41759,7 +41759,7 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   257: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey268","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###268","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var copyToClipboard = require('../../../utils/copyToClipboard');
@@ -41805,12 +41805,12 @@ const SRTlib = require('SRT-util');
         "aria-label": i18n('removeFile'),
         title: i18n('removeFile'),
         onclick: function onclick() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h.onclick2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h.onclick###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.onclick2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.onclick###2"},');
 
           return onClick();
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.onclick2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.onclick###2"},');
 
         }
       }, iconCross());
@@ -41852,12 +41852,12 @@ const SRTlib = require('SRT-util');
         "aria-label": props.i18n('copyLink'),
         title: props.i18n('copyLink'),
         onclick: function onclick(event) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h.onclick3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h.onclick###3","fileName":"${__filename}","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.onclick3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.onclick###3"},');
 
           return copyLinkToClipboard(event, props);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.onclick3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.onclick###3"},');
 
         }
       }, iconCopyLink());
@@ -41865,10 +41865,10 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = function Buttons(props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports40","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###40","fileName":"${__filename}","paramsNumber":1},`);
 
       var file = props.file, uploadInProgressOrComplete = props.uploadInProgressOrComplete, metaFields = props.metaFields, showLinkToFileUploadResult = props.showLinkToFileUploadResult, showRemoveButton = props.showRemoveButton, i18n = props.i18n, removeFile = props.removeFile, toggleFileCard = props.toggleFileCard, log = props.log, info = props.info;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports40"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###40"},');
 
       return h("div", {
         className: "uppy-DashboardItem-actionWrapper"
@@ -41896,19 +41896,19 @@ const SRTlib = require('SRT-util');
         info: props.info,
         log: props.log,
         onClick: function onClick() {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Buttons.ReturnStatement.h.h.onClick2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Buttons.ReturnStatement.h.h.onClick###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement.h.h.onClick2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement.h.h.onClick###2"},');
 
           return removeFile(file.id);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement.h.h.onClick2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Buttons.ReturnStatement.h.h.onClick###2"},');
 
         }
       }) : null);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports40"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###40"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey268"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###268"},');
 
   }, {
     "../../../utils/copyToClipboard": 270,
@@ -41916,7 +41916,7 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   258: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey269","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###269","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var prettierBytes = require('@transloadit/prettier-bytes');
@@ -42009,9 +42009,9 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = function FileInfo(props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports41","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###41","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports41"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###41"},');
 
       return h("div", {
         class: "uppy-DashboardItem-fileInfo",
@@ -42028,10 +42028,10 @@ const SRTlib = require('SRT-util');
 
         }
       })));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports41"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###41"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey269"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###269"},');
 
   }, {
     "../../../utils/truncateString": 276,
@@ -42039,15 +42039,15 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   259: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey270","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###270","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var FilePreview = require('../../FilePreview');
     var getFileTypeIcon = require('../../../utils/getFileTypeIcon');
     module.exports = function FilePreviewAndLink(props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports42","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###42","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports42"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###42"},');
 
       return h("div", {
         class: "uppy-DashboardItem-previewInnerWrap",
@@ -42063,10 +42063,10 @@ const SRTlib = require('SRT-util');
       }), h(FilePreview, {
         file: props.file
       }));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports42"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###42"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey270"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###270"},');
 
   }, {
     "../../../utils/getFileTypeIcon": 273,
@@ -42074,14 +42074,14 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   260: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey271","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###271","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var circleLength = 2 * Math.PI * 15;
     module.exports = function PauseResumeCancelIcon(props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports43","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###43","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports43"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###43"},');
 
       return h("svg", {
         "aria-hidden": "true",
@@ -42137,16 +42137,16 @@ const SRTlib = require('SRT-util');
         transform: "translate(2, 3)",
         points: "14 22.5 7 15.2457065 8.99985857 13.1732815 14 18.3547104 22.9729883 9 25 11.1005634"
       }));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports43"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###43"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey271"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###271"},');
 
   }, {
     "preact": 160
   }],
   261: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey272","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###272","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var _require2 = require('../../icons'), iconRetry = _require2.iconRetry;
@@ -42212,16 +42212,16 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = function FileProgress(props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports44","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###44","fileName":"${__filename}","paramsNumber":1},`);
 
       if (props.hideRetryButton && props.error || props.isUploaded && props.showRemoveButtonAfterComplete) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports44"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###44"},');
 
         return h("div", {
           class: "uppy-DashboardItem-progress"
         });
       } else if (props.isUploaded || props.hidePauseResumeCancelButtons && !props.error) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports44"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###44"},');
 
         return h("div", {
           class: "uppy-DashboardItem-progress"
@@ -42232,7 +42232,7 @@ const SRTlib = require('SRT-util');
           hidePauseResumeCancelButtons: props.hidePauseResumeCancelButtons
         })));
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports44"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###44"},');
 
         return h("div", {
           class: "uppy-DashboardItem-progress"
@@ -42255,10 +42255,10 @@ const SRTlib = require('SRT-util');
           hidePauseResumeCancelButtons: props.hidePauseResumeCancelButtons
         })));
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports44"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###44"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey272"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###272"},');
 
   }, {
     "../../icons": 268,
@@ -42266,7 +42266,7 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   262: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey273","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###273","fileName":"${__filename}","paramsNumber":3},`);
 
     function _inheritsLoose(subClass, superClass) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
@@ -42285,7 +42285,7 @@ const SRTlib = require('SRT-util');
     var FileInfo = require('./FileInfo');
     var Buttons = require('./Buttons');
     module.exports = (function (_Component) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports45","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###45","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(FileItem, _Component);
       function FileItem() {
@@ -42328,7 +42328,7 @@ const SRTlib = require('SRT-util');
 
       };
       _proto.render = function render() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render###2","fileName":"${__filename}","paramsNumber":0},`);
 
         var file = this.props.file;
         var isProcessing = file.progress.preprocess || file.progress.postprocess;
@@ -42352,7 +42352,7 @@ const SRTlib = require('SRT-util');
           'is-resumable': this.props.resumableUploads,
           'is-noIndividualCancellation': !this.props.individualCancellation
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render###2"},');
 
         return h("div", {
           class: dashboardItemClass,
@@ -42396,16 +42396,16 @@ const SRTlib = require('SRT-util');
           log: this.props.log,
           info: this.props.info
         })));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render###2"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports45"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###45"},');
 
       return FileItem;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports45"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###45"},');
 
     })(Component);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey273"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###273"},');
 
   }, {
     "./Buttons": 257,
@@ -42417,13 +42417,13 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   263: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey274","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###274","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends7","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###7","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -42433,10 +42433,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###7"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###7"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -42474,7 +42474,7 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports46","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###46","fileName":"${__filename}","paramsNumber":1},`);
 
       var noFiles = props.totalFileCount === 0;
       var dashboardFilesClass = classNames('uppy-Dashboard-files', {
@@ -42530,7 +42530,7 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"renderRow","paramsNumber":1},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports46"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###46"},');
 
       return h(VirtualList, {
         class: dashboardFilesClass,
@@ -42539,10 +42539,10 @@ const SRTlib = require('SRT-util');
         renderRow: renderRow,
         rowHeight: rowHeight
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports46"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###46"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey274"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###274"},');
 
   }, {
     "./FileItem/index.js": 262,
@@ -42551,16 +42551,16 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   264: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey275","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###275","fileName":"${__filename}","paramsNumber":3},`);
 
     var getFileTypeIcon = require('../utils/getFileTypeIcon');
     var _require = require('preact'), h = _require.h;
     module.exports = function FilePreview(props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports47","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###47","fileName":"${__filename}","paramsNumber":1},`);
 
       var file = props.file;
       if (file.preview) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports47"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###47"},');
 
         return h("img", {
           class: "uppy-DashboardItem-previewImg",
@@ -42569,7 +42569,7 @@ const SRTlib = require('SRT-util');
         });
       }
       var _getFileTypeIcon = getFileTypeIcon(file.type), color = _getFileTypeIcon.color, icon = _getFileTypeIcon.icon;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports47"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###47"},');
 
       return h("div", {
         class: "uppy-DashboardItem-previewIconWrap"
@@ -42592,17 +42592,17 @@ const SRTlib = require('SRT-util');
         rx: "3",
         "fill-rule": "evenodd"
       })));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports47"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###47"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey275"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###275"},');
 
   }, {
     "../utils/getFileTypeIcon": 273,
     "preact": 160
   }],
   265: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey276","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###276","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var ignoreEvent = require('../utils/ignoreEvent.js');
@@ -42639,14 +42639,14 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = PickerPanelContent;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey276"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###276"},');
 
   }, {
     "../utils/ignoreEvent.js": 274,
     "preact": 160
   }],
   266: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey277","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###277","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var _require2 = require('./icons'), iconPlus = _require2.iconPlus;
@@ -42708,7 +42708,7 @@ const SRTlib = require('SRT-util');
       var uploadingState = getUploadingState(props.isAllErrored, props.isAllComplete, props.isAllPaused, props.files);
       switch (uploadingState) {
         case 'uploading':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey277"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###277"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
@@ -42717,7 +42717,7 @@ const SRTlib = require('SRT-util');
           });
         case 'preprocessing':
         case 'postprocessing':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey277"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###277"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
@@ -42725,13 +42725,13 @@ const SRTlib = require('SRT-util');
             smart_count: props.processingFiles.length
           });
         case 'paused':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey277"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###277"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
           return props.i18n('uploadPaused');
         case 'waiting':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey277"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###277"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
@@ -42739,7 +42739,7 @@ const SRTlib = require('SRT-util');
             smart_count: props.newFiles.length
           });
         case 'complete':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey277"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###277"},');
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"UploadStatus"},');
 
@@ -42788,20 +42788,20 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = PanelTopBar;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey277"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###277"},');
 
   }, {
     "./icons": 268,
     "preact": 160
   }],
   267: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey278","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###278","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends8","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###8","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -42811,10 +42811,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###8"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###8"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -42993,13 +42993,13 @@ const SRTlib = require('SRT-util');
 
     })(Component);
     module.exports = VirtualList;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey278"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###278"},');
 
   }, {
     "preact": 160
   }],
   268: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey279","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###279","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     function defaultPickerIcon() {
@@ -43450,20 +43450,20 @@ const SRTlib = require('SRT-util');
       iconCross: iconCross,
       iconPlus: iconPlus
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey279"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###279"},');
 
   }, {
     "preact": 160
   }],
   269: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey280","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###280","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends9","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###9","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -43473,10 +43473,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends9"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###9"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends9"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###9"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -43544,7 +43544,7 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = (_temp = _class = (function (_Plugin) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###2","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Dashboard, _Plugin);
       function Dashboard(uppy, _opts) {
@@ -44654,13 +44654,13 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Dashboard","paramsNumber":2},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###2"},');
 
       return Dashboard;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###2"},');
 
     })(Plugin), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey280"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###280"},');
 
   }, {
     "../package.json": 252,
@@ -44681,13 +44681,13 @@ const SRTlib = require('SRT-util');
     "resize-observer-polyfill": 188
   }],
   270: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey281","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###281","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function copyToClipboard(textToCopy, fallbackString) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports48","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###48","fileName":"${__filename}","paramsNumber":2},`);
 
       fallbackString = fallbackString || 'Copy the URL below';
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports48"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###48"},');
 
       return new Promise(function (resolve) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.copyToClipboard.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":1},`);
@@ -44737,20 +44737,20 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.copyToClipboard.ReturnStatement.NewExpression"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports48"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###48"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey281"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###281"},');
 
   }, {}],
   271: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey282","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###282","fileName":"${__filename}","paramsNumber":3},`);
 
     var debounce = require('lodash.debounce');
     var FOCUSABLE_ELEMENTS = require('./../../../utils/lib/FOCUSABLE_ELEMENTS');
     var getActiveOverlayEl = require('./getActiveOverlayEl');
     module.exports = function createSuperFocus() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports49","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###49","fileName":"${__filename}","paramsNumber":0},`);
 
       var lastFocusWasOnSuperFocusableEl = false;
       var superFocus = function superFocus(dashboardEl, activeOverlayType) {
@@ -44784,13 +44784,13 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"superFocus"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports49"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###49"},');
 
       return debounce(superFocus, 260);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports49"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###49"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey282"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###282"},');
 
   }, {
     "./../../../utils/lib/FOCUSABLE_ELEMENTS": 317,
@@ -44798,48 +44798,48 @@ const SRTlib = require('SRT-util');
     "lodash.debounce": 137
   }],
   272: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey283","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###283","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getActiveOverlayEl(dashboardEl, activeOverlayType) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports50","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###50","fileName":"${__filename}","paramsNumber":2},`);
 
       if (activeOverlayType) {
         var overlayEl = dashboardEl.querySelector("[data-uppy-paneltype=\"" + activeOverlayType + "\"]");
         if (overlayEl) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports50"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###50"},');
 
           return overlayEl;
         }
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports50"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###50"},');
 
       return dashboardEl;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports50"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###50"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey283"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###283"},');
 
   }, {}],
   273: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey284","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###284","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('../components/icons'), iconFile = _require.iconFile, iconText = _require.iconText, iconImage = _require.iconImage, iconAudio = _require.iconAudio, iconVideo = _require.iconVideo, iconPDF = _require.iconPDF, iconArchive = _require.iconArchive;
     module.exports = function getIconByMime(fileType) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports51","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###51","fileName":"${__filename}","paramsNumber":1},`);
 
       var defaultChoice = {
         color: '#838999',
         icon: iconFile()
       };
       if (!fileType) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports51"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###51"},');
 
         return defaultChoice;
       }
       var fileTypeGeneral = fileType.split('/')[0];
       var fileTypeSpecific = fileType.split('/')[1];
       if (fileTypeGeneral === 'text') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports51"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###51"},');
 
         return {
           color: '#5a5e69',
@@ -44847,7 +44847,7 @@ const SRTlib = require('SRT-util');
         };
       }
       if (fileTypeGeneral === 'image') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports51"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###51"},');
 
         return {
           color: '#686de0',
@@ -44855,7 +44855,7 @@ const SRTlib = require('SRT-util');
         };
       }
       if (fileTypeGeneral === 'audio') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports51"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###51"},');
 
         return {
           color: '#068dbb',
@@ -44863,7 +44863,7 @@ const SRTlib = require('SRT-util');
         };
       }
       if (fileTypeGeneral === 'video') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports51"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###51"},');
 
         return {
           color: '#19af67',
@@ -44871,7 +44871,7 @@ const SRTlib = require('SRT-util');
         };
       }
       if (fileTypeGeneral === 'application' && fileTypeSpecific === 'pdf') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports51"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###51"},');
 
         return {
           color: '#e25149',
@@ -44880,26 +44880,26 @@ const SRTlib = require('SRT-util');
       }
       var archiveTypes = ['zip', 'x-7z-compressed', 'x-rar-compressed', 'x-gtar', 'x-apple-diskimage', 'x-diskcopy'];
       if (fileTypeGeneral === 'application' && archiveTypes.indexOf(fileTypeSpecific) !== -1) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports51"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###51"},');
 
         return {
           color: '#00C469',
           icon: iconArchive()
         };
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports51"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###51"},');
 
       return defaultChoice;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports51"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###51"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey284"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###284"},');
 
   }, {
     "../components/icons": 268
   }],
   274: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey285","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###285","fileName":"${__filename}","paramsNumber":3},`);
 
     function ignoreEvent(ev) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ignoreEvent","fileName":"${__filename}","paramsNumber":1},`);
@@ -44917,11 +44917,11 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = ignoreEvent;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey285"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###285"},');
 
   }, {}],
   275: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey286","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###286","fileName":"${__filename}","paramsNumber":3},`);
 
     var toArray = require('./../../../utils/lib/toArray');
     var getActiveOverlayEl = require('./getActiveOverlayEl');
@@ -44991,7 +44991,7 @@ const SRTlib = require('SRT-util');
 
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey286"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###286"},');
 
   }, {
     "./../../../utils/lib/FOCUSABLE_ELEMENTS": 317,
@@ -44999,36 +44999,36 @@ const SRTlib = require('SRT-util');
     "./getActiveOverlayEl": 272
   }],
   276: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey287","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###287","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function truncateString(string, maxLength) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports52","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###52","fileName":"${__filename}","paramsNumber":2},`);
 
       var separator = '...';
       if (string.length <= maxLength) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports52"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###52"},');
 
         return string;
       } else if (maxLength <= separator.length) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports52"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###52"},');
 
         return string.substr(0, maxLength);
       } else {
         var charsToShow = maxLength - separator.length;
         var frontChars = Math.ceil(charsToShow / 2);
         var backChars = Math.floor(charsToShow / 2);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports52"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###52"},');
 
         return string.substr(0, frontChars) + separator + string.substr(string.length - backChars);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports52"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###52"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey287"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###287"},');
 
   }, {}],
   277: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey288","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###288","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/facebook",
@@ -45056,11 +45056,11 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey288"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###288"},');
 
   }, {}],
   278: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey289","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###289","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _assertThisInitialized(self) {
@@ -45091,7 +45091,7 @@ const SRTlib = require('SRT-util');
     var ProviderViews = require('./../../provider-views');
     var _require3 = require('preact'), h = _require3.h;
     module.exports = (_temp = _class = (function (_Plugin) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###3","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Facebook, _Plugin);
       function Facebook(uppy, opts) {
@@ -45199,13 +45199,13 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###3"},');
 
       return Facebook;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###3"},');
 
     })(Plugin), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey289"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###289"},');
 
   }, {
     "../package.json": 277,
@@ -45215,7 +45215,7 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   279: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey290","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###290","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/informer",
@@ -45242,18 +45242,18 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey290"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###290"},');
 
   }, {}],
   280: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey291","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###291","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends10","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###10","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -45263,10 +45263,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends10"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###10"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends10"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###10"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -45287,7 +45287,7 @@ const SRTlib = require('SRT-util');
     var _require = require('./../../core'), Plugin = _require.Plugin;
     var _require2 = require('preact'), h = _require2.h;
     module.exports = (_temp = _class = (function (_Plugin) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###4","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Informer, _Plugin);
       function Informer(uppy, opts) {
@@ -45296,7 +45296,7 @@ const SRTlib = require('SRT-util');
         var _this;
         _this = _Plugin.call(this, uppy, opts) || this;
         _this.render = function (state) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.render###2","fileName":"${__filename}","paramsNumber":1},`);
 
           var _state$info = state.info, isHidden = _state$info.isHidden, message = _state$info.message, details = _state$info.details;
           function displayErrorAlert() {
@@ -45321,7 +45321,7 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"handleMouseLeave"},');
 
           };
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render###2"},');
 
           return h("div", {
             class: "uppy uppy-Informer",
@@ -45337,7 +45337,7 @@ const SRTlib = require('SRT-util');
             onMouseOver: handleMouseOver,
             onMouseLeave: handleMouseLeave
           }, "?")));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.render###2"},');
 
         };
         _this.type = 'progressindicator';
@@ -45353,22 +45353,22 @@ const SRTlib = require('SRT-util');
       }
       var _proto = Informer.prototype;
       _proto.install = function install() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install###2","fileName":"${__filename}","paramsNumber":0},`);
 
         var target = this.opts.target;
         if (target) {
           this.mount(target, this);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install###2"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###4"},');
 
       return Informer;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###4"},');
 
     })(Plugin), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey291"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###291"},');
 
   }, {
     "../package.json": 279,
@@ -45376,7 +45376,7 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   281: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey292","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###292","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/instagram",
@@ -45404,11 +45404,11 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey292"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###292"},');
 
   }, {}],
   282: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey293","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###293","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _assertThisInitialized(self) {
@@ -45439,7 +45439,7 @@ const SRTlib = require('SRT-util');
     var ProviderViews = require('./../../provider-views');
     var _require3 = require('preact'), h = _require3.h;
     module.exports = (_temp = _class = (function (_Plugin) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class5","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###5","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Instagram, _Plugin);
       function Instagram(uppy, opts) {
@@ -45451,9 +45451,9 @@ const SRTlib = require('SRT-util');
         Provider.initPlugin(_assertThisInitialized(_this), opts);
         _this.title = _this.opts.title || 'Instagram';
         _this.icon = function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.icon2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.icon###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon###2"},');
 
           return h("svg", {
             "aria-hidden": "true",
@@ -45474,7 +45474,7 @@ const SRTlib = require('SRT-util');
             d: "M16 8.622c2.403 0 2.688.009 3.637.052.877.04 1.354.187 1.67.31.392.144.745.374 1.036.673.299.29.529.644.673 1.035.123.317.27.794.31 1.671.043.95.052 1.234.052 3.637s-.009 2.688-.052 3.637c-.04.877-.187 1.354-.31 1.671a2.98 2.98 0 0 1-1.708 1.708c-.317.123-.794.27-1.671.31-.95.043-1.234.053-3.637.053s-2.688-.01-3.637-.053c-.877-.04-1.354-.187-1.671-.31a2.788 2.788 0 0 1-1.035-.673 2.788 2.788 0 0 1-.673-1.035c-.123-.317-.27-.794-.31-1.671-.043-.949-.052-1.234-.052-3.637s.009-2.688.052-3.637c.04-.877.187-1.354.31-1.67.144-.392.374-.745.673-1.036.29-.299.644-.529 1.035-.673.317-.123.794-.27 1.671-.31.95-.043 1.234-.052 3.637-.052zM16 7c-2.444 0-2.75.01-3.71.054-.959.044-1.613.196-2.185.419-.6.225-1.145.58-1.594 1.038-.458.45-.813.993-1.039 1.594-.222.572-.374 1.226-.418 2.184C7.01 13.25 7 13.556 7 16s.01 2.75.054 3.71c.044.959.196 1.613.419 2.185.226.6.58 1.145 1.038 1.594.45.458.993.813 1.594 1.038.572.223 1.227.375 2.184.419.96.044 1.267.054 3.711.054s2.75-.01 3.71-.054c.959-.044 1.613-.196 2.185-.419a4.602 4.602 0 0 0 2.632-2.632c.223-.572.375-1.226.419-2.184.044-.96.054-1.267.054-3.711s-.01-2.75-.054-3.71c-.044-.959-.196-1.613-.419-2.185A4.412 4.412 0 0 0 23.49 8.51a4.412 4.412 0 0 0-1.594-1.039c-.572-.222-1.226-.374-2.184-.418C18.75 7.01 18.444 7 16 7zm0 4.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm0 7.421a2.921 2.921 0 1 1 0-5.842 2.921 2.921 0 0 1 0 5.842zm4.875-6.671a1.125 1.125 0 1 1 0-2.25 1.125 1.125 0 0 1 0 2.25z",
             fill: "#FFF"
           })));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon###2"},');
 
         };
         _this.provider = new Provider(uppy, {
@@ -45494,7 +45494,7 @@ const SRTlib = require('SRT-util');
       }
       var _proto = Instagram.prototype;
       _proto.install = function install() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install3","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install###3","fileName":"${__filename}","paramsNumber":0},`);
 
         this.view = new ProviderViews(this, {
           provider: this.provider,
@@ -45516,40 +45516,40 @@ const SRTlib = require('SRT-util');
         if (target) {
           this.mount(target, this);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install###3"},');
 
       };
       _proto.uninstall = function uninstall() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall###2","fileName":"${__filename}","paramsNumber":0},`);
 
         this.view.tearDown();
         this.unmount();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall###2"},');
 
       };
       _proto.onFirstRender = function onFirstRender() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.onFirstRender2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.onFirstRender###2","fileName":"${__filename}","paramsNumber":0},`);
 
         this.view.getFolder('recent');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onFirstRender2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.onFirstRender###2"},');
 
       };
       _proto.render = function render(state) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render###2"},');
 
         return this.view.render(state);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render###2"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###5"},');
 
       return Instagram;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###5"},');
 
     })(Plugin), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey293"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###293"},');
 
   }, {
     "../package.json": 281,
@@ -45559,7 +45559,7 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   283: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey294","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###294","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/provider-views",
@@ -45587,11 +45587,11 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey294"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###294"},');
 
   }, {}],
   284: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey295","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###295","fileName":"${__filename}","paramsNumber":3},`);
 
     function _inheritsLoose(subClass, superClass) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
@@ -45651,13 +45651,13 @@ const SRTlib = require('SRT-util');
 
     })(Component);
     module.exports = AuthView;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey295"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###295"},');
 
   }, {
     "preact": 160
   }],
   285: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey296","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###296","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var Breadcrumb = function Breadcrumb(props) {
@@ -45674,9 +45674,9 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports53","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###53","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports53"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###53"},');
 
       return h("div", {
         class: "uppy-Provider-breadcrumbs"
@@ -45704,22 +45704,22 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.h.props.directories.map"},');
 
       }));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports53"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###53"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey296"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###296"},');
 
   }, {
     "preact": 160
   }],
   286: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey297","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###297","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends11","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###11","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -45729,10 +45729,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends11"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###11"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends11"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###11"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -45801,7 +45801,7 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = Browser;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey297"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###297"},');
 
   }, {
     "./Breadcrumbs": 285,
@@ -45812,7 +45812,7 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   287: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey298","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###298","fileName":"${__filename}","paramsNumber":3},`);
 
     function _assertThisInitialized(self) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
@@ -45839,7 +45839,7 @@ const SRTlib = require('SRT-util');
     }
     var _require = require('preact'), h = _require.h, Component = _require.Component;
     module.exports = (function (_Component) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports54","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###54","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Filter, _Component);
       function Filter(props) {
@@ -45866,10 +45866,10 @@ const SRTlib = require('SRT-util');
 
       };
       _proto.render = function render() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render3","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.render###3","fileName":"${__filename}","paramsNumber":0},`);
 
         var _this2 = this;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render###3"},');
 
         return h("div", {
           class: "uppy-ProviderBrowser-search"
@@ -45914,28 +45914,28 @@ const SRTlib = require('SRT-util');
         }, h("path", {
           d: "M17.318 17.232L9.94 9.854 9.586 9.5l-.354.354-7.378 7.378h.707l-.62-.62v.706L9.318 9.94l.354-.354-.354-.354L1.94 1.854v.707l.62-.62h-.706l7.378 7.378.354.354.354-.354 7.378-7.378h-.707l.622.62v-.706L9.854 9.232l-.354.354.354.354 7.378 7.378.708-.707-7.38-7.378v.708l7.38-7.38.353-.353-.353-.353-.622-.622-.353-.353-.354.352-7.378 7.38h.708L2.56 1.23 2.208.88l-.353.353-.622.62-.353.355.352.353 7.38 7.38v-.708l-7.38 7.38-.353.353.352.353.622.622.353.353.354-.353 7.38-7.38h-.708l7.38 7.38z"
         }))));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.render###3"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports54"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###54"},');
 
       return Filter;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports54"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###54"},');
 
     })(Component);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey298"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###298"},');
 
   }, {
     "preact": 160
   }],
   288: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey299","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###299","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports55","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###55","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports55"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###55"},');
 
       return h("div", {
         class: "uppy-ProviderBrowser-footer"
@@ -45948,22 +45948,22 @@ const SRTlib = require('SRT-util');
         class: "uppy-u-reset uppy-c-btn uppy-c-btn-link",
         onclick: props.cancel
       }, props.i18n('cancel')));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports55"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###55"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey299"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###299"},');
 
   }, {
     "preact": 160
   }],
   289: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey300","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###300","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports56","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###56","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports56"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###56"},');
 
       return h("li", {
         class: props.className
@@ -45984,16 +45984,16 @@ const SRTlib = require('SRT-util');
         "aria-disabled": props.isDisabled,
         "data-uppy-super-focusable": true
       }, props.itemIconEl, props.showTitles && props.title));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports56"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###56"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey300"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###300"},');
 
   }, {
     "preact": 160
   }],
   290: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey301","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###301","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     function FileIcon() {
@@ -46052,51 +46052,51 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports57","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###57","fileName":"${__filename}","paramsNumber":1},`);
 
       if (props.itemIconString === null) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports57"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###57"},');
 
         return;
       }
       switch (props.itemIconString) {
         case 'file':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey301"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###301"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports57"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###57"},');
 
           return h(FileIcon, null);
         case 'folder':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey301"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###301"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports57"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###57"},');
 
           return h(FolderIcon, null);
         case 'video':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey301"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###301"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports57"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###57"},');
 
           return h(VideoIcon, null);
         default:
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey301"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###301"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports57"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###57"},');
 
           return h("img", {
             src: props.itemIconString
           });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports57"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###57"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey301"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###301"},');
 
   }, {
     "preact": 160
   }],
   291: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey302","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###302","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var getAriaLabelOfCheckbox = function getAriaLabelOfCheckbox(props) {
@@ -46135,9 +46135,9 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports58","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###58","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports58"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###58"},');
 
       return h("li", {
         class: props.className
@@ -46162,22 +46162,22 @@ const SRTlib = require('SRT-util');
           name: props.title
         })
       }, props.itemIconEl, props.showTitles && props.title));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports58"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###58"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey302"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###302"},');
 
   }, {
     "preact": 160
   }],
   292: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey303","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###303","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends12","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###12","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -46187,10 +46187,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends12"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###12"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends12"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###12"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -46205,7 +46205,7 @@ const SRTlib = require('SRT-util');
     var GridLi = require('./components/GridLi');
     var ListLi = require('./components/ListLi');
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports59","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###59","fileName":"${__filename}","paramsNumber":1},`);
 
       var itemIconString = props.getItemIcon();
       var className = classNames('uppy-ProviderBrowserItem', {
@@ -46218,34 +46218,34 @@ const SRTlib = require('SRT-util');
       });
       switch (props.viewType) {
         case 'grid':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey303"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###303"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports59"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###59"},');
 
           return h(GridLi, _extends({}, props, {
             className: className,
             itemIconEl: itemIconEl
           }));
         case 'list':
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey303"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###303"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports59"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###59"},');
 
           return h(ListLi, _extends({}, props, {
             className: className,
             itemIconEl: itemIconEl
           }));
         default:
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey303"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###303"},');
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports59"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###59"},');
 
           throw new Error("There is no such type " + props.viewType);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports59"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###59"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey303"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###303"},');
 
   }, {
     "./components/GridLi": 289,
@@ -46255,13 +46255,13 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   293: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey304","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###304","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends13","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###13","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -46271,10 +46271,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends13"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###13"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends13"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###13"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -46321,16 +46321,16 @@ const SRTlib = require('SRT-util');
 
     };
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports60","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###60","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!props.folders.length && !props.files.length) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports60"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###60"},');
 
         return h("div", {
           class: "uppy-Provider-empty"
         }, props.i18n('noFilesFound'));
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports60"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###60"},');
 
       return h("div", {
         class: "uppy-ProviderBrowser-body"
@@ -46371,44 +46371,44 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.h.h.props.files.map"},');
 
       })));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports60"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###60"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey304"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###304"},');
 
   }, {
     "./Item/index": 292,
     "preact": 160
   }],
   294: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey305","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###305","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports61","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###61","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports61"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###61"},');
 
       return h("div", {
         class: "uppy-Provider-loading"
       }, h("span", null, props.i18n('loading')));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports61"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###61"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey305"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###305"},');
 
   }, {
     "preact": 160
   }],
   295: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey306","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###306","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends14","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###14","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -46418,10 +46418,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends14"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###14"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends14"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###14"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -46513,7 +46513,7 @@ const SRTlib = require('SRT-util');
 
     })(Component);
     module.exports = (_temp = _class = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class6","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###6","fileName":"${__filename}","paramsNumber":0},`);
 
       function ProviderView(plugin, opts) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProviderView","fileName":"${__filename}","paramsNumber":2},`);
@@ -47257,9 +47257,9 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto2.donePicking.donePicking._loaderWrapper"},');
 
         }, function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto2.donePicking.donePicking._loaderWrapper2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto2.donePicking.donePicking._loaderWrapper###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto2.donePicking.donePicking._loaderWrapper2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto2.donePicking.donePicking._loaderWrapper###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto2.donePicking"},');
@@ -47378,13 +47378,13 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto2.render"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###6"},');
 
       return ProviderView;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###6"},');
 
     })(), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey306"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###306"},');
 
   }, {
     "../package.json": 283,
@@ -47397,16 +47397,16 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   296: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey307","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###307","fileName":"${__filename}","paramsNumber":3},`);
 
     arguments[4][245][0].apply(exports, arguments);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey307"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###307"},');
 
   }, {
     "dup": 245
   }],
   297: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey308","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###308","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/status-bar",
@@ -47436,17 +47436,17 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey308"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###308"},');
 
   }, {}],
   298: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey309","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###309","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends15","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###15","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -47456,10 +47456,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends15"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###15"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends15"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###15"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -47545,7 +47545,7 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports62","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###62","fileName":"${__filename}","paramsNumber":1},`);
 
       props = props || ({});
       var _props = props, newFiles = _props.newFiles, allowNewUpload = _props.allowNewUpload, isUploadInProgress = _props.isUploadInProgress, isAllPaused = _props.isAllPaused, resumableUploads = _props.resumableUploads, error = _props.error, hideUploadButton = _props.hideUploadButton, hidePauseResumeButton = _props.hidePauseResumeButton, hideCancelButton = _props.hideCancelButton, hideRetryButton = _props.hideRetryButton;
@@ -47582,7 +47582,7 @@ const SRTlib = require('SRT-util');
       var statusBarClassNames = classNames({
         'uppy-Root': props.isTargetDOMEl
       }, 'uppy-StatusBar', "is-" + uploadState);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports62"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###62"},');
 
       return h("div", {
         class: statusBarClassNames,
@@ -47601,7 +47601,7 @@ const SRTlib = require('SRT-util');
       }, showUploadBtn ? h(UploadBtn, _extends({}, props, {
         uploadState: uploadState
       })) : null, showRetryBtn ? h(RetryBtn, props) : null, showPauseResumeBtn ? h(PauseResumeButton, props) : null, showCancelBtn ? h(CancelBtn, props) : null));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports62"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###62"},');
 
     };
     var UploadBtn = function UploadBtn(props) {
@@ -47943,7 +47943,7 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarError"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey309"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###309"},');
 
   }, {
     "./../../utils/lib/prettyETA": 346,
@@ -47954,7 +47954,7 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   299: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey310","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###310","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       STATE_ERROR: 'error',
@@ -47964,18 +47964,18 @@ const SRTlib = require('SRT-util');
       STATE_POSTPROCESSING: 'postprocessing',
       STATE_COMPLETE: 'complete'
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey310"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###310"},');
 
   }, {}],
   300: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey311","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###311","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends16","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###16","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -47985,10 +47985,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends16"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###16"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends16"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###16"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -48027,7 +48027,7 @@ const SRTlib = require('SRT-util');
     var getSpeed = require('./../../utils/lib/getSpeed');
     var getBytesRemaining = require('./../../utils/lib/getBytesRemaining');
     module.exports = (_temp = _class = (function (_Plugin) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class7","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###7","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(StatusBar, _Plugin);
       function StatusBar(uppy, opts) {
@@ -48197,7 +48197,7 @@ const SRTlib = require('SRT-util');
 
       };
       _proto.render = function render(state) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render###3","fileName":"${__filename}","paramsNumber":1},`);
 
         var capabilities = state.capabilities, files = state.files, allowNewUpload = state.allowNewUpload, totalProgress = state.totalProgress, error = state.error;
         var filesArray = Object.keys(files).map(function (file) {
@@ -48308,7 +48308,7 @@ const SRTlib = require('SRT-util');
         var isUploadInProgress = inProgressFiles.length > 0;
         var resumableUploads = capabilities.resumableUploads || false;
         var supportsUploadProgress = capabilities.uploadProgress !== false;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render###3"},');
 
         return StatusBarUI({
           error: error,
@@ -48343,33 +48343,33 @@ const SRTlib = require('SRT-util');
           hideAfterFinish: this.opts.hideAfterFinish,
           isTargetDOMEl: this.isTargetDOMEl
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render###3"},');
 
       };
       _proto.install = function install() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install4","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install###4","fileName":"${__filename}","paramsNumber":0},`);
 
         var target = this.opts.target;
         if (target) {
           this.mount(target, this);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install###4"},');
 
       };
       _proto.uninstall = function uninstall() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall3","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall###3","fileName":"${__filename}","paramsNumber":0},`);
 
         this.unmount();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall###3"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###7"},');
 
       return StatusBar;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###7"},');
 
     })(Plugin), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey311"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###311"},');
 
   }, {
     "../package.json": 297,
@@ -48381,7 +48381,7 @@ const SRTlib = require('SRT-util');
     "./StatusBarStates": 299
   }],
   301: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey312","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###312","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/store-default",
@@ -48400,17 +48400,17 @@ const SRTlib = require('SRT-util');
         "url": "git+https://github.com/transloadit/uppy.git"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey312"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###312"},');
 
   }, {}],
   302: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey313","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###313","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends17","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###17","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -48420,10 +48420,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends17"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###17"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends17"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###17"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -48504,33 +48504,33 @@ const SRTlib = require('SRT-util');
     })();
     DefaultStore.VERSION = require('../package.json').version;
     module.exports = function defaultStore() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports63","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###63","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports63"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###63"},');
 
       return new DefaultStore();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports63"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###63"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey313"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###313"},');
 
   }, {
     "../package.json": 301
   }],
   303: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey314","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###314","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (process, global, Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call43","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###43","fileName":"${__filename}","paramsNumber":3},`);
 
       !(function (e, t) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call41","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###41","fileName":"${__filename}","paramsNumber":2},`);
 
         "object" == typeof exports && "undefined" != typeof module ? t(exports) : "function" == typeof define && define.amd ? define("exifr", ["exports"], t) : t((e = e || self).exifr = {});
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call41"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###41"},');
 
       })(this, function (e) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call42","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###42","fileName":"${__filename}","paramsNumber":1},`);
 
         "use strict";
         function t(e, t) {
@@ -48594,10 +48594,10 @@ const SRTlib = require('SRT-util');
           });
           var n = ["prototype", "__proto__", "caller", "arguments", "length", "name"];
           (Object.getOwnPropertyNames(t).forEach(function (r) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.getOwnPropertyNames.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.getOwnPropertyNames.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
 
             -1 === n.indexOf(r) && e[r] !== t[r] && (e[r] = t[r]);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.getOwnPropertyNames.forEach2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.getOwnPropertyNames.forEach###2"},');
 
           }), t && u(e, t));
                     SRTlib.send('{"type":"FUNCTIONEND","function":"s","paramsNumber":2},');
@@ -49021,66 +49021,66 @@ const SRTlib = require('SRT-util');
           }, {
             key: "get",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###2"},');
 
               return this._map["map_" + e];
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "set",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":2},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###3"},');
 
               return (this._map["map_" + e] = t, this._keys.indexOf(e) < 0 && this._keys.push(e), this);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###3"},');
 
             }
           }, {
             key: "has",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value4","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value###4","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###4"},');
 
               return this._keys.indexOf(e) >= 0;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###4"},');
 
             }
           }, {
             key: "delete",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value5","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value###5","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = this._keys.indexOf(e);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###5"},');
 
               return !(t < 0) && (delete this._map["map_" + e], this._keys.splice(t, 1), !0);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###5"},');
 
             }
           }, {
             key: "keys",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value6","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value###6","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###6"},');
 
               return this._keys.slice(0);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###6"},');
 
             }
           }, {
             key: "values",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value7","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value###7","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = this;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###7"},');
 
               return this._keys.map(function (t) {
                                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value.ReturnStatement._keys.map","fileName":"${__filename}","paramsNumber":1},`);
@@ -49091,36 +49091,36 @@ const SRTlib = require('SRT-util');
                                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value.ReturnStatement._keys.map"},');
 
               });
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###7"},');
 
             }
           }, {
             key: "entries",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value8","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value###8","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = this;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###8"},');
 
               return this._keys.map(function (t) {
-                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value.ReturnStatement._keys.map2","fileName":"${__filename}","paramsNumber":1},`);
+                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value.ReturnStatement._keys.map###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value.ReturnStatement._keys.map2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value.ReturnStatement._keys.map###2"},');
 
                 return [t, e.get(t)];
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value.ReturnStatement._keys.map2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value.ReturnStatement._keys.map###2"},');
 
               });
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###8"},');
 
             }
           }, {
             key: "forEach",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value9","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.S.ReturnStatement.r.value###9","fileName":"${__filename}","paramsNumber":2},`);
 
               for (var n = 0; n < this._keys.length; n++) e.call(t, this._map["map_" + this._keys[n]], this._keys[n], this);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.S.ReturnStatement.r.value###9"},');
 
             }
           }, {
@@ -49242,111 +49242,111 @@ const SRTlib = require('SRT-util');
           }]), r(e, [{
             key: "_swapArrayBuffer",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":1},`);
 
               this._swapDataView(new DataView(e));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "_swapBuffer",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":1},`);
 
               this._swapDataView(new DataView(e.buffer, e.byteOffset, e.byteLength));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###3"},');
 
             }
           }, {
             key: "_swapDataView",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value4","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###4","fileName":"${__filename}","paramsNumber":1},`);
 
               (this.dataView = e, this.buffer = e.buffer, this.byteOffset = e.byteOffset, this.byteLength = e.byteLength);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###4"},');
 
             }
           }, {
             key: "_lengthToEnd",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value5","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###5","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###5"},');
 
               return this.byteLength - e;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###5"},');
 
             }
           }, {
             key: "set",
             value: function (t, n) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value6","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###6","fileName":"${__filename}","paramsNumber":2},`);
 
               var r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : e;
               if ((t instanceof DataView || t instanceof e ? t = new Uint8Array(t.buffer, t.byteOffset, t.byteLength) : t instanceof ArrayBuffer && (t = new Uint8Array(t)), !(t instanceof Uint8Array))) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value6"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###6"},');
 
                 throw T("BufferView.set(): Invalid data argument.");
               }
               var i = this.toUint8();
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###6"},');
 
               return (i.set(t, n), new r(this, n, t.byteLength));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###6"},');
 
             }
           }, {
             key: "subarray",
             value: function (t, n) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value7","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###7","fileName":"${__filename}","paramsNumber":2},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###7"},');
 
               return new e(this, t, n = n || this._lengthToEnd(t));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###7"},');
 
             }
           }, {
             key: "toUint8",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value8","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###8","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###8"},');
 
               return new Uint8Array(this.buffer, this.byteOffset, this.byteLength);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###8"},');
 
             }
           }, {
             key: "getUint8Array",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value9","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###9","fileName":"${__filename}","paramsNumber":2},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###9"},');
 
               return new Uint8Array(this.buffer, this.byteOffset + e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###9"},');
 
             }
           }, {
             key: "getString",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value10","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###10","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0, t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.byteLength, n = this.getUint8Array(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value10"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###10"},');
 
               return F(n);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value10"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###10"},');
 
             }
           }, {
             key: "getUnicodeString",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value11","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###11","fileName":"${__filename}","paramsNumber":0},`);
 
               for (var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0, t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.byteLength, n = [], r = 0; r < t && e + r < this.byteLength; r += 2) n.push(this.getUint16(e + r));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value11"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###11"},');
 
               return n.map(function (e) {
                                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value.ReturnStatement.n.map.join.n.map","fileName":"${__filename}","paramsNumber":1},`);
@@ -49357,218 +49357,218 @@ const SRTlib = require('SRT-util');
                                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value.ReturnStatement.n.map.join.n.map"},');
 
               }).join("");
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value11"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###11"},');
 
             }
           }, {
             key: "getInt8",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value12","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###12","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value12"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###12"},');
 
               return this.dataView.getInt8(e);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value12"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###12"},');
 
             }
           }, {
             key: "getUint8",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value13","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###13","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value13"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###13"},');
 
               return this.dataView.getUint8(e);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value13"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###13"},');
 
             }
           }, {
             key: "getInt16",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value14","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###14","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.le;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value14"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###14"},');
 
               return this.dataView.getInt16(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value14"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###14"},');
 
             }
           }, {
             key: "getInt32",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value15","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###15","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.le;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value15"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###15"},');
 
               return this.dataView.getInt32(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value15"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###15"},');
 
             }
           }, {
             key: "getUint16",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value16","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###16","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.le;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value16"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###16"},');
 
               return this.dataView.getUint16(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value16"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###16"},');
 
             }
           }, {
             key: "getUint32",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value17","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###17","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.le;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value17"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###17"},');
 
               return this.dataView.getUint32(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value17"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###17"},');
 
             }
           }, {
             key: "getFloat32",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value18","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###18","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.le;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value18"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###18"},');
 
               return this.dataView.getFloat32(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value18"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###18"},');
 
             }
           }, {
             key: "getFloat64",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value19","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###19","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.le;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value19"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###19"},');
 
               return this.dataView.getFloat64(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value19"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###19"},');
 
             }
           }, {
             key: "getFloat",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value20","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###20","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.le;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value20"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###20"},');
 
               return this.dataView.getFloat32(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value20"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###20"},');
 
             }
           }, {
             key: "getDouble",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value21","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###21","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.le;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value21"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###21"},');
 
               return this.dataView.getFloat64(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value21"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###21"},');
 
             }
           }, {
             key: "getUint64",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value22","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###22","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = this.getUint32(e), n = this.getUint32(e + 4);
               if (t < 1048575) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value22"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###22"},');
 
                 return t << 32 | n;
               }
               if (void 0 !== typeof j) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value22"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###22"},');
 
                 return (console.warn("Using BigInt because of type 64uint but JS can only handle 53b numbers."), j(t) << j(32) | j(n));
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value22"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###22"},');
 
               throw T("Trying to read 64b value but JS can only handle 53b numbers.");
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value22"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###22"},');
 
             }
           }, {
             key: "getUintBytes",
             value: function (e, t, n) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value23","fileName":"${__filename}","paramsNumber":3},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###23","fileName":"${__filename}","paramsNumber":3},`);
 
               switch (t) {
                 case 1:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value23"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###23"},');
 
                   return this.getUint8(e, n);
                 case 2:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value23"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###23"},');
 
                   return this.getUint16(e, n);
                 case 4:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value23"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###23"},');
 
                   return this.getUint32(e, n);
                 case 8:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value23"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###23"},');
 
                   return this.getUint64(e, n);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value23"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###23"},');
 
             }
           }, {
             key: "getUint",
             value: function (e, t, n) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value24","fileName":"${__filename}","paramsNumber":3},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###24","fileName":"${__filename}","paramsNumber":3},`);
 
               switch (t) {
                 case 8:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value24"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###24"},');
 
                   return this.getUint8(e, n);
                 case 16:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value24"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###24"},');
 
                   return this.getUint16(e, n);
                 case 32:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value24"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###24"},');
 
                   return this.getUint32(e, n);
                 case 64:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value24"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###24"},');
 
                   return this.getUint64(e, n);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value24"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###24"},');
 
             }
           }, {
             key: "toString",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value25","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###25","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value25"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###25"},');
 
               return this.dataView.toString(e, this.constructor.name);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value25"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###25"},');
 
             }
           }, {
             key: "ensureChunk",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value26","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.E.ReturnStatement.r.value###26","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value26"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.E.ReturnStatement.r.value###26"},');
 
             }
           }]), e);
@@ -49621,12 +49621,12 @@ const SRTlib = require('SRT-util');
           }, {
             key: "keyList",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.M.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.M.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.M.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.M.ReturnStatement.r.value###2"},');
 
               return k(this.keys());
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.M.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.M.ReturnStatement.r.value###2"},');
 
             }
           }]), n);
@@ -49639,19 +49639,19 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"K"},');
 
           return function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement8","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###8","fileName":"${__filename}","paramsNumber":0},`);
 
             for (var t = [], n = 0; n < arguments.length; n++) t[n] = arguments[n];
             try {
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###8"},');
 
               return Promise.resolve(e.apply(this, t));
             } catch (e) {
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###8"},');
 
               return Promise.reject(e);
             }
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement8"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###8"},');
 
           };
                     SRTlib.send('{"type":"FUNCTIONEND","function":"K","paramsNumber":1},');
@@ -49810,12 +49810,12 @@ const SRTlib = require('SRT-util');
           }, {
             key: "tagValues",
             get: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Z.ReturnStatement.r.get2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Z.ReturnStatement.r.get###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Z.ReturnStatement.r.get2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Z.ReturnStatement.r.get###2"},');
 
               return (this.allValues || (this.allValues = k(this.values())), this.allValues);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Z.ReturnStatement.r.get2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Z.ReturnStatement.r.get###2"},');
 
             }
           }]), n);
@@ -49934,7 +49934,7 @@ const SRTlib = require('SRT-util');
           }, {
             key: "translateTagSet",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.de.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.de.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":2},`);
 
               if (this.dict) {
                 var n, r, i = this.dict, s = i.tagKeys, a = i.tagValues, u = e;
@@ -49948,16 +49948,16 @@ const SRTlib = require('SRT-util');
                   t.add(c);
                 }
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.de.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.de.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "finalizeFilters",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.de.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.de.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":0},`);
 
               !this.enabled && this.deps.size > 0 ? (this.enabled = !0, me(this.pick, this.deps)) : this.enabled && this.pick.size > 0 && me(this.pick, this.deps);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.de.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.de.ReturnStatement.r.value###3"},');
 
             }
           }]), n);
@@ -50029,7 +50029,7 @@ const SRTlib = require('SRT-util');
           }]), r(n, [{
             key: "setupFromUndefined",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":0},`);
 
               var e, t = ie;
               Array.isArray(t) || ("function" == typeof t.entries && (t = t.entries()), t = k(t));
@@ -50043,13 +50043,13 @@ const SRTlib = require('SRT-util');
               var u = oe;
               Array.isArray(u) || ("function" == typeof u.entries && (u = u.entries()), u = k(u));
               for (var o = 0; o < u.length; o++) this[e = u[o]] = new de(e, pe[e], void 0, this);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "setupFromTrue",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":0},`);
 
               var e, t = ie;
               Array.isArray(t) || ("function" == typeof t.entries && (t = t.entries()), t = k(t));
@@ -50063,13 +50063,13 @@ const SRTlib = require('SRT-util');
               var u = oe;
               Array.isArray(u) || ("function" == typeof u.entries && (u = u.entries()), u = k(u));
               for (var o = 0; o < u.length; o++) this[e = u[o]] = new de(e, !0, void 0, this);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###3"},');
 
             }
           }, {
             key: "setupFromArray",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value4","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###4","fileName":"${__filename}","paramsNumber":1},`);
 
               var t, n = ie;
               Array.isArray(n) || ("function" == typeof n.entries && (n = n.entries()), n = k(n));
@@ -50084,13 +50084,13 @@ const SRTlib = require('SRT-util');
               Array.isArray(o) || ("function" == typeof o.entries && (o = o.entries()), o = k(o));
               for (var f = 0; f < o.length; f++) this[t = o[f]] = new de(t, !1, void 0, this);
               this.setupGlobalFilters(e, void 0, ue);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###4"},');
 
             }
           }, {
             key: "setupFromObject",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value5","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###5","fileName":"${__filename}","paramsNumber":1},`);
 
               var t;
               (ue.ifd0 = ue.ifd0 || ue.image, ue.ifd1 = ue.ifd1 || ue.thumbnail, y(this, e));
@@ -50110,26 +50110,26 @@ const SRTlib = require('SRT-util');
               Array.isArray(h) || ("function" == typeof h.entries && (h = h.entries()), h = k(h));
               for (var c = 0; c < h.length; c++) this[t = h[c]] = new de(t, pe[t], e[t], this.tiff);
               (this.setupGlobalFilters(e.pick, e.skip, ue, oe), !0 === e.tiff ? this.batchEnableWithBool(ue, !0) : !1 === e.tiff ? this.batchEnableWithUserValue(ue, e) : Array.isArray(e.tiff) ? this.setupGlobalFilters(e.tiff, void 0, ue) : "object" == typeof e.tiff && this.setupGlobalFilters(e.tiff.pick, e.tiff.skip, ue));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###5"},');
 
             }
           }, {
             key: "batchEnableWithBool",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value6","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###6","fileName":"${__filename}","paramsNumber":2},`);
 
               var n = e;
               Array.isArray(n) || ("function" == typeof n.entries && (n = n.entries()), n = k(n));
               for (var r = 0; r < n.length; r++) {
                 this[n[r]].enabled = t;
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###6"},');
 
             }
           }, {
             key: "batchEnableWithUserValue",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value7","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###7","fileName":"${__filename}","paramsNumber":2},`);
 
               var n = e;
               Array.isArray(n) || ("function" == typeof n.entries && (n = n.entries()), n = k(n));
@@ -50137,13 +50137,13 @@ const SRTlib = require('SRT-util');
                 var i = n[r], s = t[i];
                 this[i].enabled = !1 !== s && void 0 !== s;
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###7"},');
 
             }
           }, {
             key: "setupGlobalFilters",
             value: function (e, t, n) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value8","fileName":"${__filename}","paramsNumber":3},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###8","fileName":"${__filename}","paramsNumber":3},`);
 
               var r = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : n;
               if (e && e.length) {
@@ -50167,23 +50167,23 @@ const SRTlib = require('SRT-util');
                   me(this[g].skip, m);
                 }
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###8"},');
 
             }
           }, {
             key: "filterNestedSegmentTags",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value9","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###9","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = this.ifd0, t = this.exif, n = this.xmp, r = this.iptc, i = this.icc;
               (this.makerNote ? t.deps.add(37500) : t.skip.add(37500), this.userComment ? t.deps.add(37510) : t.skip.add(37510), n.enabled || e.skip.add(700), r.enabled || e.skip.add(33723), i.enabled || e.skip.add(34675));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###9"},');
 
             }
           }, {
             key: "traverseTiffDependencyTree",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value10","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###10","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = this, t = this.ifd0, n = this.exif, r = this.gps;
               (this.interop.needed && (n.deps.add(40965), t.deps.add(40965)), n.needed && t.deps.add(34665), r.needed && t.deps.add(34853), this.tiff.enabled = ue.some(function (t) {
@@ -50200,13 +50200,13 @@ const SRTlib = require('SRT-util');
               for (var s = 0; s < i.length; s++) {
                 this[i[s]].finalizeFilters();
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value10"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###10"},');
 
             }
           }, {
             key: "checkLoadedPlugins",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value11","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ye.ReturnStatement.r.value###11","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = ae;
               Array.isArray(e) || ("function" == typeof e.entries && (e = e.entries()), e = k(e));
@@ -50214,7 +50214,7 @@ const SRTlib = require('SRT-util');
                 var n = e[t];
                 this[n].enabled && !R.has(n) && D("segment parser", n);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value11"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ye.ReturnStatement.r.value###11"},');
 
             }
           }, {
@@ -50351,7 +50351,7 @@ const SRTlib = require('SRT-util');
           return (r(e, [{
             key: "setup",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":0},`);
 
               if (!this.fileParser) {
                 var e, t = this.file.getUint16(0);
@@ -50377,7 +50377,7 @@ const SRTlib = require('SRT-util');
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value"},');
 
                   })(this.file)) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value2"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###2"},');
 
                     throw T("Unknown file format");
                   }
@@ -50385,17 +50385,17 @@ const SRTlib = require('SRT-util');
                 }
                 this.fileParser = new e(this.options, this.file, this.parsers);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "read",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":1},`);
 
               try {
                 var t = this;
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value3"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###3"},');
 
                 return Se((function (e, t) {
                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se","fileName":"${__filename}","paramsNumber":2},`);
@@ -50426,31 +50426,31 @@ const SRTlib = require('SRT-util');
                                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se"},');
 
                 })(e, t.options), function (e) {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se2","fileName":"${__filename}","paramsNumber":1},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se###2","fileName":"${__filename}","paramsNumber":1},`);
 
                   t.file = e;
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se###2"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value3"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###3"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###3"},');
 
             }
           }, {
             key: "parse",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value4","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value###4","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
                 var e = this;
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value4"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###4"},');
 
                 return (e.setup(), Se(e.fileParser.parse(), function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se3","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se###3","fileName":"${__filename}","paramsNumber":0},`);
 
                   var t, n = {}, r = [], i = p(e.parsers).map((t = function (t) {
                                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t","fileName":"${__filename}","paramsNumber":1},`);
@@ -50479,9 +50479,9 @@ const SRTlib = require('SRT-util');
                                                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n"},');
 
                       })(function () {
-                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n2","fileName":"${__filename}","paramsNumber":0},`);
+                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n2"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n###2"},');
 
                         return Se(t.parse(), function (e) {
                                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n.ReturnStatement.Se","fileName":"${__filename}","paramsNumber":1},`);
@@ -50490,13 +50490,13 @@ const SRTlib = require('SRT-util');
                                                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n.ReturnStatement.Se"},');
 
                         });
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n2"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n###2"},');
 
                       }, function (e) {
-                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n3","fileName":"${__filename}","paramsNumber":1},`);
+                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n###3","fileName":"${__filename}","paramsNumber":1},`);
 
                         r.push(e);
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n3"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.n###3"},');
 
                       }), s = function () {
                                                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe.ReturnStatement.s","fileName":"${__filename}","paramsNumber":0},`);
@@ -50515,10 +50515,10 @@ const SRTlib = require('SRT-util');
                                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe"},');
 
                     }, function () {
-                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe2","fileName":"${__filename}","paramsNumber":0},`);
+                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe###2","fileName":"${__filename}","paramsNumber":0},`);
 
                       t.assignToOutput(n, i);
-                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe2"},');
+                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t.ReturnStatement.Pe###2"},');
 
                     });
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map.t"},');
@@ -50539,7 +50539,7 @@ const SRTlib = require('SRT-util');
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.i.p.map"},');
 
                   }));
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se3"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se###3"},');
 
                   return Se(Promise.all(i), function () {
                                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.ReturnStatement.Se","fileName":"${__filename}","paramsNumber":0},`);
@@ -50551,27 +50551,27 @@ const SRTlib = require('SRT-util');
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se.ReturnStatement.Se"},');
 
                   });
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se3"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Se###3"},');
 
                 }));
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value4"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###4"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###4"},');
 
             }
           }, {
             key: "extractThumbnail",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value5","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value###5","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
                 var e = this;
                 e.setup();
                 var t, n = R.get("tiff", e.options);
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value5"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###5"},');
 
                 return Pe(function () {
                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe","fileName":"${__filename}","paramsNumber":0},`);
@@ -50591,10 +50591,10 @@ const SRTlib = require('SRT-util');
                                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe.ReturnStatement"},');
 
                     })(function () {
-                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe.ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe.ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
                       if (e.file.isJpeg) {
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe.ReturnStatement2"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe.ReturnStatement###2"},');
 
                         return Se(e.fileParser.getOrFindSegment("tiff"), function (e) {
                                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe.ReturnStatement.ReturnStatement.Se","fileName":"${__filename}","paramsNumber":1},`);
@@ -50604,7 +50604,7 @@ const SRTlib = require('SRT-util');
 
                         });
                       }
-                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe.ReturnStatement2"},');
+                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe.ReturnStatement###2"},');
 
                     });
                   }
@@ -50615,10 +50615,10 @@ const SRTlib = require('SRT-util');
                                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe2","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe###2","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (void 0 !== t) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe2"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe###2"},');
 
                     return Se(e.fileParser.ensureSegmentChunk(t), function (t) {
                                             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe.ReturnStatement.Se","fileName":"${__filename}","paramsNumber":1},`);
@@ -50638,15 +50638,15 @@ const SRTlib = require('SRT-util');
 
                     });
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value.ReturnStatement.Pe###2"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value5"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###5"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.xe.ReturnStatement.r.value###5"},');
 
             }
           }]), e);
@@ -50668,19 +50668,19 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"Be"},');
 
           return function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement9","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###9","fileName":"${__filename}","paramsNumber":0},`);
 
             for (var t = [], n = 0; n < arguments.length; n++) t[n] = arguments[n];
             try {
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###9"},');
 
               return Promise.resolve(e.apply(this, t));
             } catch (e) {
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###9"},');
 
               return Promise.reject(e);
             }
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement9"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###9"},');
 
           };
                     SRTlib.send('{"type":"FUNCTIONEND","function":"Be","paramsNumber":1},');
@@ -50985,63 +50985,63 @@ const SRTlib = require('SRT-util');
           }, {
             key: "_extend",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":1},`);
 
               var t;
               t = _ ? B.allocUnsafe(e) : new Uint8Array(e);
               var n = new DataView(t.buffer, t.byteOffset, t.byteLength);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###2"},');
 
               return (t.set(new Uint8Array(this.buffer, this.byteOffset, this.byteLength), 0), {
                 uintView: t,
                 dataView: n
               });
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "subarray",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":2},`);
 
               var r = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###3"},');
 
               return (t = t || this._lengthToEnd(e), r && this._tryExtend(e, t), this.ranges.add(e, t), d(a(n.prototype), "subarray", this).call(this, e, t));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###3"},');
 
             }
           }, {
             key: "set",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value4","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value###4","fileName":"${__filename}","paramsNumber":2},`);
 
               var r = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
               r && this._tryExtend(t, e.byteLength, e);
               var i = d(a(n.prototype), "set", this).call(this, e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###4"},');
 
               return (this.ranges.add(t, i.byteLength), i);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###4"},');
 
             }
           }, {
             key: "ensureChunk",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value5","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value###5","fileName":"${__filename}","paramsNumber":2},`);
 
               try {
                 if (!this.chunked) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value5"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###5"},');
 
                   return;
                 }
                 if (this.ranges.available(e, t)) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value5"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###5"},');
 
                   return;
                 }
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value5"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###5"},');
 
                 return (function (e, t) {
                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value.ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
@@ -51055,22 +51055,22 @@ const SRTlib = require('SRT-util');
 
                 })(this.readChunk(e, t));
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value5"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###5"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###5"},');
 
             }
           }, {
             key: "available",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value6","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ke.ReturnStatement.r.value###6","fileName":"${__filename}","paramsNumber":2},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###6"},');
 
               return this.ranges.available(e, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ke.ReturnStatement.r.value###6"},');
 
             }
           }]), n);
@@ -51141,10 +51141,10 @@ const SRTlib = require('SRT-util');
           }, {
             key: "available",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Xe.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Xe.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":2},`);
 
               var n = e + t;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Xe.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Xe.ReturnStatement.r.value###2"},');
 
               return this.list.some(function (t) {
                                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Xe.ReturnStatement.r.value.ReturnStatement.list.some","fileName":"${__filename}","paramsNumber":1},`);
@@ -51155,7 +51155,7 @@ const SRTlib = require('SRT-util');
                                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.Xe.ReturnStatement.r.value.ReturnStatement.list.some"},');
 
               });
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Xe.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Xe.ReturnStatement.r.value###2"},');
 
             }
           }, {
@@ -51249,45 +51249,45 @@ const SRTlib = require('SRT-util');
           }, {
             key: "readChunked",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###2"},');
 
               return (this.chunked = !0, this.size = this.input.size, d(a(n.prototype), "readChunked", this).call(this));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "_readChunk",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":2},`);
 
               try {
                 var n = this, r = t ? e + t : void 0, i = n.input.slice(e, r);
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value3"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###3"},');
 
                 return Je(H(i), function (t) {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value.ReturnStatement.Je2","fileName":"${__filename}","paramsNumber":1},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value.ReturnStatement.Je###2","fileName":"${__filename}","paramsNumber":1},`);
 
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value.ReturnStatement.Je2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value.ReturnStatement.Je###2"},');
 
                   return n.set(t, e, !0);
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value.ReturnStatement.Je2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value.ReturnStatement.Je###2"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value3"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###3"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###3"},');
 
             }
           }]), n);
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe"},');
 
         })((function (e) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe###2","fileName":"${__filename}","paramsNumber":1},`);
 
           function n(e, r) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"n","fileName":"${__filename}","paramsNumber":2},`);
@@ -51299,55 +51299,55 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"n","paramsNumber":2},');
 
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe###2"},');
 
           return (s(n, e), r(n, [{
             key: "readWhole",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value4","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value###4","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value4"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###4"},');
 
                 return (this.chunked = !1, Ge(this.readChunk(this.nextChunkOffset)));
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value4"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###4"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###4"},');
 
             }
           }, {
             key: "readChunked",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value5","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value###5","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value5"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###5"},');
 
                 return (this.chunked = !0, Ge(this.readChunk(0, this.options.firstChunkSize)));
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value5"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###5"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###5"},');
 
             }
           }, {
             key: "readNextChunk",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value6","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value###6","fileName":"${__filename}","paramsNumber":1},`);
 
               try {
                 if ((void 0 === e && (e = this.nextChunkOffset), this.fullyRead)) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value6"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###6"},');
 
                   return (this.chunksRead++, !1);
                 }
                 var t = this.options.chunkSize;
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value6"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###6"},');
 
                 return (n = this.readChunk(e, t), r = function (e) {
                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value.ReturnStatement.r","fileName":"${__filename}","paramsNumber":1},`);
@@ -51359,64 +51359,64 @@ const SRTlib = require('SRT-util');
 
                 }, i ? r ? r(n) : n : (n && n.then || (n = Promise.resolve(n)), r ? n.then(r) : n));
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value6"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###6"},');
 
                 return Promise.reject(e);
               }
               var n, r, i;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###6"},');
 
             }
           }, {
             key: "readChunk",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value7","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value###7","fileName":"${__filename}","paramsNumber":2},`);
 
               try {
                 if ((this.chunksRead++, 0 === (t = this.safeWrapAddress(e, t)))) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value7"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###7"},');
 
                   return;
                 }
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value7"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###7"},');
 
                 return this._readChunk(e, t);
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value7"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###7"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###7"},');
 
             }
           }, {
             key: "safeWrapAddress",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value8","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value###8","fileName":"${__filename}","paramsNumber":2},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###8"},');
 
               return void 0 !== this.size && e + t > this.size ? Math.max(0, this.size - e) : t;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###8"},');
 
             }
           }, {
             key: "read",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value9","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value###9","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###9"},');
 
               return this.options.chunked ? this.readChunked() : this.readWhole();
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###9"},');
 
             }
           }, {
             key: "close",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value10","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.value###10","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value10"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.value###10"},');
 
             }
           }, {
@@ -51435,27 +51435,27 @@ const SRTlib = require('SRT-util');
           }, {
             key: "canReadNextChunk",
             get: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.get2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.get###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.get2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.get###2"},');
 
               return this.chunksRead < this.options.chunkLimit;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.get2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.get###2"},');
 
             }
           }, {
             key: "fullyRead",
             get: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.get3","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.qe.ReturnStatement.r.get###3","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.get3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.get###3"},');
 
               return void 0 !== this.size && this.nextChunkOffset === this.size;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.get3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe.ReturnStatement.r.get###3"},');
 
             }
           }]), n);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.qe###2"},');
 
         })(Ke));
         W.set("blob", qe);
@@ -51500,9 +51500,9 @@ const SRTlib = require('SRT-util');
                                                 SRTlib.send('{"type":"FUNCTIONEND","function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement"},');
 
                       })(function () {
-                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement2"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement###2"},');
 
                         return (t = u.file.readChunk(i, s), n = function (t) {
                                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement.ReturnStatement.n","fileName":"${__filename}","paramsNumber":1},`);
@@ -51512,15 +51512,15 @@ const SRTlib = require('SRT-util');
 
                         }, r ? n ? n(t) : t : (t && t.then || (t = Promise.resolve(t)), n ? t.then(n) : t));
                         var t, n, r;
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement2"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement###2"},');
 
                       }, function (t) {
-                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement3","fileName":"${__filename}","paramsNumber":1},`);
+                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement###3","fileName":"${__filename}","paramsNumber":1},`);
 
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement3"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement###3"},');
 
                         throw T(("Couldn't read segment: ").concat(JSON.stringify(e), ". ").concat(t.message));
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement3"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"i.a.ReturnStatement.t.ReturnStatement.ReturnStatement###3"},');
 
                       });
                     }
@@ -51594,15 +51594,15 @@ const SRTlib = require('SRT-util');
 
             var r = this, s = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}, a = arguments.length > 2 ? arguments[2] : void 0;
             (t(this, e), i(this, "errors", []), i(this, "raw", O()), i(this, "handleError", function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"i2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"i###2","fileName":"${__filename}","paramsNumber":1},`);
 
               if (!r.options.silentErrors) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"i2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"i###2"},');
 
                 throw e;
               }
               r.errors.push(e.message);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"i2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"i###2"},');
 
             }), this.chunk = this.normalizeInput(n), this.file = a, this.type = this.constructor.type, this.globalOptions = this.options = s, this.localOptions = s[this.type], this.canTranslate = this.localOptions && this.localOptions.translate);
                         SRTlib.send('{"type":"FUNCTIONEND","function":"e","paramsNumber":1},');
@@ -51624,10 +51624,10 @@ const SRTlib = require('SRT-util');
           }], [{
             key: "findPosition",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":2},`);
 
               var n = e.getUint16(t + 2) + 2, r = "function" == typeof this.headerLength ? this.headerLength(e, t, n) : this.headerLength, i = t + r, s = n - r;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###2"},');
 
               return {
                 offset: t,
@@ -51637,34 +51637,34 @@ const SRTlib = require('SRT-util');
                 size: s,
                 end: i + s
               };
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "parse",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}, n = new ye(i({}, this.type, t)), r = new this(e, n);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###3"},');
 
               return r.parse();
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###3"},');
 
             }
           }]), r(e, [{
             key: "translate",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value4","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value###4","fileName":"${__filename}","paramsNumber":0},`);
 
               this.canTranslate && (this.translated = this.translateBlock(this.raw, this.type));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###4"},');
 
             }
           }, {
             key: "translateBlock",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value5","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value###5","fileName":"${__filename}","paramsNumber":2},`);
 
               var n = re.get(t), r = ne.get(t), i = te.get(t), s = this.options[t], a = s.reviveValues && !!n, u = s.translateValues && !!r, o = s.translateKeys && !!i, f = {}, h = e;
               Array.isArray(h) || ("function" == typeof h.entries && (h = h.entries()), h = k(h));
@@ -51672,44 +51672,44 @@ const SRTlib = require('SRT-util');
                 var l = h[c], d = l[0], p = l[1];
                 (a && n.has(d) ? p = n.get(d)(p) : u && r.has(d) && (p = this.translateValue(p, r.get(d))), o && i.has(d) && (d = i.get(d) || d), f[d] = p);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###5"},');
 
               return f;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###5"},');
 
             }
           }, {
             key: "translateValue",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value6","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value###6","fileName":"${__filename}","paramsNumber":2},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###6"},');
 
               return t[e] || e;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###6"},');
 
             }
           }, {
             key: "assignToOutput",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value7","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value###7","fileName":"${__filename}","paramsNumber":2},`);
 
               this.assignObjectToOutput(e, this.constructor.type, t);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###7"},');
 
             }
           }, {
             key: "assignObjectToOutput",
             value: function (e, t, n) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value8","fileName":"${__filename}","paramsNumber":3},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Ze.ReturnStatement.r.value###8","fileName":"${__filename}","paramsNumber":3},`);
 
               if (this.globalOptions.mergeOutput) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value8"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###8"},');
 
                 return y(e, n);
               }
               e[t] ? y(e[t], n) : e[t] = n;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.Ze.ReturnStatement.r.value###8"},');
 
             }
           }, {
@@ -52031,25 +52031,25 @@ const SRTlib = require('SRT-util');
           }, {
             key: "readSegments",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
                 var e = this.appSegments.map(this.ensureSegmentChunk);
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###2"},');
 
                 return tt(Promise.all(e));
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###2"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "setupSegmentFinderArgs",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":1},`);
 
               var t = this;
               (!0 === e ? (this.findAll = !0, this.wanted = A(R.keyList())) : (e = void 0 === e ? R.keyList().filter(function (e) {
@@ -52069,20 +52069,20 @@ const SRTlib = require('SRT-util');
                                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.e.e.filter"},');
 
               }), this.findAll = !1, this.remaining = A(e), this.wanted = A(e)), this.unfinishedMultiSegment = !1);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###3"},');
 
             }
           }, {
             key: "findAppSegments",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value4","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value###4","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0, t = arguments.length > 1 ? arguments[1] : void 0;
               try {
                 var n = this;
                 n.setupSegmentFinderArgs(t);
                 var r = n.file, i = n.findAll, s = n.wanted, a = n.remaining;
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value4"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###4"},');
 
                 return rt(function () {
                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt","fileName":"${__filename}","paramsNumber":0},`);
@@ -52114,11 +52114,11 @@ const SRTlib = require('SRT-util');
                                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt2","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt###2","fileName":"${__filename}","paramsNumber":0},`);
 
                   var t = !1;
                   if ((e = n._findAppSegments(e, r.byteLength, i, s, a), !n.options.onlyTiff)) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt2"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt###2"},');
 
                     return (function () {
                                             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
@@ -52136,7 +52136,7 @@ const SRTlib = require('SRT-util');
                                                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut"},');
 
                         }, void 0, function () {
-                                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut2","fileName":"${__filename}","paramsNumber":0},`);
+                                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut###2","fileName":"${__filename}","paramsNumber":0},`);
 
                           var s = r.nextChunkOffset, a = n.appSegments.some(function (e) {
                                                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.a.n.appSegments.some","fileName":"${__filename}","paramsNumber":1},`);
@@ -52147,7 +52147,7 @@ const SRTlib = require('SRT-util');
                                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.a.n.appSegments.some"},');
 
                           });
-                                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut2"},');
+                                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut###2"},');
 
                           return rt(function () {
                                                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt","fileName":"${__filename}","paramsNumber":0},`);
@@ -52161,22 +52161,22 @@ const SRTlib = require('SRT-util');
                                                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt.ReturnStatement.$e"},');
 
                             }) : $e(r.readNextChunk(s), function (e) {
-                                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt.ReturnStatement.$e2","fileName":"${__filename}","paramsNumber":1},`);
+                                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt.ReturnStatement.$e###2","fileName":"${__filename}","paramsNumber":1},`);
 
                               i = !e;
-                                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt.ReturnStatement.$e2"},');
+                                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt.ReturnStatement.$e###2"},');
 
                             });
                                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt"},');
 
                           }, function () {
-                                                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt2","fileName":"${__filename}","paramsNumber":0},`);
+                                                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt###2","fileName":"${__filename}","paramsNumber":0},`);
 
                             void 0 === (e = n._findAppSegments(e, r.byteLength)) && (t = !0);
-                                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt2"},');
+                                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut.ReturnStatement.rt###2"},');
 
                           });
-                                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut2"},');
+                                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.ReturnStatement.ut###2"},');
 
                         });
                       }
@@ -52184,28 +52184,28 @@ const SRTlib = require('SRT-util');
 
                     })();
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt###2"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value4"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###4"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###4"},');
 
             }
           }, {
             key: "_findAppSegments",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value5","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value###5","fileName":"${__filename}","paramsNumber":2},`);
 
               for (var n, r, i, s, a, u, o = this.file, f = this.findAll, h = this.wanted, c = this.remaining, l = this.options; e < t; e++) if (255 === o.getUint8(e)) if (ft(n = o.getUint8(e + 1))) {
                 if ((r = o.getUint16(e + 2), (i = ht(o, e)) && h.has(i) && (a = (s = R.get(i)).findPosition(o, e), u = l[i], a.type = i, this.appSegments.push(a), !f && (s.multiSegment && u.multiSegment ? (this.unfinishedMultiSegment = a.chunkNumber < a.chunkCount, this.unfinishedMultiSegment || c.delete(i)) : c.delete(i), 0 === c.size)))) break;
                 (l.recordUnknownSegments && ((a = Ze.findPosition(o, e)).marker = n, this.unknownSegments.push(a)), e += r + 1);
               } else if (ot(n)) {
                 if ((r = o.getUint16(e + 2), 218 === n && !1 !== l.stopAfterSos)) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value5"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###5"},');
 
                   return;
                 }
@@ -52215,16 +52215,16 @@ const SRTlib = require('SRT-util');
                   marker: n
                 }), e += r + 1);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###5"},');
 
               return e;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###5"},');
 
             }
           }, {
             key: "mergeMultiSegments",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value6","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value###6","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = this;
               if (this.appSegments.some(function (e) {
@@ -52260,13 +52260,13 @@ const SRTlib = require('SRT-util');
 
                 });
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###6"},');
 
             }
           }, {
             key: "createParsers",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value7","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value###7","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
                 var e = this.mergedAppSegments || this.appSegments;
@@ -52281,23 +52281,23 @@ const SRTlib = require('SRT-util');
                     }
                   }
                 }
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value7"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###7"},');
 
                 return $e();
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value7"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###7"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###7"},');
 
             }
           }, {
             key: "getSegment",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value8","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value###8","fileName":"${__filename}","paramsNumber":1},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###8"},');
 
               return this.appSegments.find(function (t) {
                                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.appSegments.find","fileName":"${__filename}","paramsNumber":1},`);
@@ -52308,23 +52308,23 @@ const SRTlib = require('SRT-util');
                                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.appSegments.find"},');
 
               });
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###8"},');
 
             }
           }, {
             key: "getOrFindSegment",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value9","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value###9","fileName":"${__filename}","paramsNumber":1},`);
 
               try {
                 var t = this, n = t.getSegment(e);
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value9"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###9"},');
 
                 return rt(function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt3","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt###3","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (void 0 === n) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt3"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt###3"},');
 
                     return $e(t.findAppSegments(0, [e]), function () {
                                             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt.ReturnStatement.$e","fileName":"${__filename}","paramsNumber":0},`);
@@ -52334,23 +52334,23 @@ const SRTlib = require('SRT-util');
 
                     });
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt3"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt###3"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt4","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt###4","fileName":"${__filename}","paramsNumber":0},`);
 
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt4"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt###4"},');
 
                   return n;
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt4"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value.ReturnStatement.rt###4"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value9"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###9"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.ct.ReturnStatement.r.value###9"},');
 
             }
           }]), n);
@@ -52420,9 +52420,9 @@ const SRTlib = require('SRT-util');
                                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt2","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###2"},');
 
                   return pt(function () {
                                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt","fileName":"${__filename}","paramsNumber":0},`);
@@ -52435,9 +52435,9 @@ const SRTlib = require('SRT-util');
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt"},');
 
                   }, function () {
-                                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt2","fileName":"${__filename}","paramsNumber":0},`);
+                                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt2"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###2"},');
 
                     return pt(function () {
                                             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt","fileName":"${__filename}","paramsNumber":0},`);
@@ -52450,9 +52450,9 @@ const SRTlib = require('SRT-util');
                                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt"},');
 
                     }, function () {
-                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt2","fileName":"${__filename}","paramsNumber":0},`);
+                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt2"},');
+                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt###2"},');
 
                       return pt(function () {
                                                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt","fileName":"${__filename}","paramsNumber":0},`);
@@ -52465,9 +52465,9 @@ const SRTlib = require('SRT-util');
                                                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt"},');
 
                       }, function () {
-                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt2","fileName":"${__filename}","paramsNumber":0},`);
+                                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt2"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt###2"},');
 
                         return pt(function () {
                                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt","fileName":"${__filename}","paramsNumber":0},`);
@@ -52480,24 +52480,24 @@ const SRTlib = require('SRT-util');
                                                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt"},');
 
                         }, function () {
-                                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt2","fileName":"${__filename}","paramsNumber":0},`);
+                                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt2"},');
+                                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt###2"},');
 
                           return e.createOutput();
-                                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt2"},');
+                                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt###2"},');
 
                         });
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt2"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt###2"},');
 
                       });
-                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt2"},');
+                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt.ReturnStatement.pt###2"},');
 
                     });
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt2"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###2"},');
 
                   });
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###2"},');
 
                 }));
               } catch (e) {
@@ -52511,11 +52511,11 @@ const SRTlib = require('SRT-util');
           }, {
             key: "saveParseBlock",
             value: function (e) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###2","fileName":"${__filename}","paramsNumber":1},`);
 
               try {
                 var t = this;
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###2"},');
 
                 return (function (e, t) {
                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
@@ -52533,400 +52533,400 @@ const SRTlib = require('SRT-util');
                                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement"},');
 
                 })(function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement###2"},');
 
                   return (n = t[e](), i ? r ? r(n) : n : (n && n.then || (n = Promise.resolve(n)), r ? n.then(r) : n));
                   var n, r, i;
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement2"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement###2"},');
 
                 }, function (e) {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement3","fileName":"${__filename}","paramsNumber":1},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement###3","fileName":"${__filename}","paramsNumber":1},`);
 
                   t.handleError(e);
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement3"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement###3"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###2"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###2"},');
 
             }
           }, {
             key: "findIfd0Offset",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value3","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###3","fileName":"${__filename}","paramsNumber":0},`);
 
               void 0 === this.ifd0Offset && (this.ifd0Offset = this.chunk.getUint32(4));
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value3"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###3"},');
 
             }
           }, {
             key: "findIfd1Offset",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value4","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###4","fileName":"${__filename}","paramsNumber":0},`);
 
               if (void 0 === this.ifd1Offset) {
                 this.findIfd0Offset();
                 var e = this.chunk.getUint16(this.ifd0Offset), t = this.ifd0Offset + 2 + 12 * e;
                 this.ifd1Offset = this.chunk.getUint32(t);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value4"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###4"},');
 
             }
           }, {
             key: "parseBlock",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value5","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###5","fileName":"${__filename}","paramsNumber":2},`);
 
               var n = O();
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###5"},');
 
               return (this[t] = n, this.parseTags(e, t, n), n);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value5"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###5"},');
 
             }
           }, {
             key: "parseIfd0Block",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value6","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###6","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
                 var e = this;
                 if (e.ifd0) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value6"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###6"},');
 
                   return;
                 }
                 if ((e.findIfd0Offset(), e.ifd0Offset < 8)) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value6"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###6"},');
 
                   throw T("Invalid EXIF data: IFD0 offset should be less than 8");
                 }
                 if (!e.file.chunked && e.ifd0Offset > e.file.byteLength) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value6"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###6"},');
 
                   throw T(("IFD0 offset points to outside of file.\nthis.ifd0Offset: ").concat(e.ifd0Offset, ", file.byteLength: ").concat(e.file.byteLength));
                 }
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value6"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###6"},');
 
                 return pt(function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt3","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###3","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (e.file.isTiff) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt3"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###3"},');
 
                     return dt(e.file.ensureChunk(e.ifd0Offset, L(e.options)));
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt3"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###3"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt4","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###4","fileName":"${__filename}","paramsNumber":0},`);
 
                   var t = e.parseBlock(e.ifd0Offset, "ifd0");
                   if (0 !== t.size) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt4"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###4"},');
 
                     return (e.exifOffset = t.get(34665), e.interopOffset = t.get(40965), e.gpsOffset = t.get(34853), e.xmp = t.get(700), e.iptc = t.get(33723), e.icc = t.get(34675), e.options.sanitize && (t.delete(34665), t.delete(40965), t.delete(34853), t.delete(700), t.delete(33723), t.delete(34675)), t);
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt4"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###4"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value6"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###6"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value6"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###6"},');
 
             }
           }, {
             key: "ensureBlockChunk",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value7","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###7","fileName":"${__filename}","paramsNumber":2},`);
 
               try {
                 var n = this;
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value7"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###7"},');
 
                 return pt(function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt5","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###5","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (n.file.isTiff) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt5"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###5"},');
 
                     return dt(n.file.ensureChunk(e, t));
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt5"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###5"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt6","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###6","fileName":"${__filename}","paramsNumber":0},`);
 
                   e > n.chunk.byteLength && (n.chunk = E.from(n.file, n.le));
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt6"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###6"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value7"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###7"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value7"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###7"},');
 
             }
           }, {
             key: "parseExifBlock",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value8","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###8","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
                 var e = this;
                 if (e.exif) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value8"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###8"},');
 
                   return;
                 }
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value8"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###8"},');
 
                 return pt(function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt7","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###7","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (!e.ifd0) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt7"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###7"},');
 
                     return dt(e.parseIfd0Block());
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt7"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###7"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt8","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###8","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (void 0 !== e.exifOffset) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt8"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###8"},');
 
                     return pt(function () {
-                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt3","fileName":"${__filename}","paramsNumber":0},`);
+                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###3","fileName":"${__filename}","paramsNumber":0},`);
 
                       if (e.file.isTiff) {
-                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt3"},');
+                                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###3"},');
 
                         return dt(e.file.ensureChunk(e.exifOffset, L(e.options)));
                       }
-                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt3"},');
+                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###3"},');
 
                     }, function () {
-                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt4","fileName":"${__filename}","paramsNumber":0},`);
+                                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###4","fileName":"${__filename}","paramsNumber":0},`);
 
                       var t = e.parseBlock(e.exifOffset, "exif");
-                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt4"},');
+                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###4"},');
 
                       return (e.interopOffset || (e.interopOffset = t.get(40965)), e.makerNote = t.get(37500), e.userComment = t.get(37510), e.options.sanitize && (t.delete(40965), t.delete(37500), t.delete(37510)), e.unpack(t, 41728), e.unpack(t, 41729), t);
-                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt4"},');
+                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###4"},');
 
                     });
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt8"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###8"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value8"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###8"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value8"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###8"},');
 
             }
           }, {
             key: "unpack",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value9","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###9","fileName":"${__filename}","paramsNumber":2},`);
 
               var n = e.get(t);
               n && 1 === n.length && e.set(t, n[0]);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value9"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###9"},');
 
             }
           }, {
             key: "parseGpsBlock",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value10","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###10","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
                 var e = this;
                 if (e.gps) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value10"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###10"},');
 
                   return;
                 }
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value10"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###10"},');
 
                 return pt(function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt9","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###9","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (!e.ifd0) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt9"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###9"},');
 
                     return dt(e.parseIfd0Block());
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt9"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###9"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt10","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###10","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (void 0 !== e.gpsOffset) {
                     var t = e.parseBlock(e.gpsOffset, "gps");
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt10"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###10"},');
 
                     return (t && t.has(2) && t.has(4) && (t.set("latitude", gt.apply(void 0, t.get(2).concat([t.get(1)]))), t.set("longitude", gt.apply(void 0, t.get(4).concat([t.get(3)])))), t);
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt10"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###10"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value10"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###10"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value10"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###10"},');
 
             }
           }, {
             key: "parseInteropBlock",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value11","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###11","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
                 var e = this;
                 if (e.interop) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value11"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###11"},');
 
                   return;
                 }
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value11"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###11"},');
 
                 return pt(function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt11","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###11","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (!e.ifd0) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt11"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###11"},');
 
                     return dt(e.parseIfd0Block());
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt11"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###11"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt12","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###12","fileName":"${__filename}","paramsNumber":0},`);
 
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt12"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###12"},');
 
                   return pt(function () {
-                                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt5","fileName":"${__filename}","paramsNumber":0},`);
+                                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###5","fileName":"${__filename}","paramsNumber":0},`);
 
                     if (void 0 === e.interopOffset && !e.exif) {
-                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt5"},');
+                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###5"},');
 
                       return dt(e.parseExifBlock());
                     }
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt5"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###5"},');
 
                   }, function () {
-                                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt6","fileName":"${__filename}","paramsNumber":0},`);
+                                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###6","fileName":"${__filename}","paramsNumber":0},`);
 
                     if (void 0 !== e.interopOffset) {
-                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt6"},');
+                                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###6"},');
 
                       return e.parseBlock(e.interopOffset, "interop");
                     }
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt6"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt.ReturnStatement.pt###6"},');
 
                   });
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt12"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###12"},');
 
                 });
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value11"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###11"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value11"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###11"},');
 
             }
           }, {
             key: "parseThumbnailBlock",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value12","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###12","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = arguments.length > 0 && void 0 !== arguments[0] && arguments[0];
               try {
                 var t = this;
                 if (t.ifd1 || t.ifd1Parsed) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value12"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###12"},');
 
                   return;
                 }
                 if (t.options.mergeOutput && !e) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value12"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###12"},');
 
                   return;
                 }
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value12"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###12"},');
 
                 return (t.findIfd1Offset(), t.ifd1Offset > 0 && (t.parseBlock(t.ifd1Offset, "ifd1"), t.ifd1Parsed = !0), t.ifd1);
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value12"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###12"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value12"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###12"},');
 
             }
           }, {
             key: "extractThumbnail",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value13","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###13","fileName":"${__filename}","paramsNumber":0},`);
 
               try {
                 var e = this;
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value13"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###13"},');
 
                 return (e.headerParsed || e.parseHeader(), pt(function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt13","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###13","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (!e.ifd1Parsed) {
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt13"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###13"},');
 
                     return dt(e.parseThumbnailBlock(!0));
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt13"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###13"},');
 
                 }, function () {
-                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt14","fileName":"${__filename}","paramsNumber":0},`);
+                                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###14","fileName":"${__filename}","paramsNumber":0},`);
 
                   if (void 0 !== e.ifd1) {
                     var t = e.ifd1.get(513), n = e.ifd1.get(514);
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt14"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###14"},');
 
                     return e.chunk.getUint8Array(t, n);
                   }
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt14"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.ReturnStatement.pt###14"},');
 
                 }));
               } catch (e) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value13"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###13"},');
 
                 return Promise.reject(e);
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value13"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###13"},');
 
             }
           }, {
             key: "createOutput",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value14","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###14","fileName":"${__filename}","paramsNumber":0},`);
 
               var e, t, n, r = {}, i = ue;
               Array.isArray(i) || ("function" == typeof i.entries && (i = i.entries()), i = k(i));
@@ -52934,16 +52934,16 @@ const SRTlib = require('SRT-util');
                 if ("ifd1" === t) continue;
                 y(r, n);
               } else r[t] = n;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value14"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###14"},');
 
               return (this.makerNote && (r.makerNote = this.makerNote), this.userComment && (r.userComment = this.userComment), r);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value14"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###14"},');
 
             }
           }, {
             key: "assignToOutput",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value15","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###15","fileName":"${__filename}","paramsNumber":2},`);
 
               if (this.globalOptions.mergeOutput) y(e, t); else {
                 var n = v(t);
@@ -52953,7 +52953,7 @@ const SRTlib = require('SRT-util');
                   this.assignObjectToOutput(e, s, a);
                 }
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value15"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###15"},');
 
             }
           }, {
@@ -52970,30 +52970,30 @@ const SRTlib = require('SRT-util');
           }, {
             key: "thumbnail",
             get: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.get2","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.get###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.get2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.get###2"},');
 
               return this.ifd1;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.get2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.get###2"},');
 
             }
           }], [{
             key: "canHandle",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value16","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###16","fileName":"${__filename}","paramsNumber":2},`);
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value16"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###16"},');
 
               return 225 === e.getUint8(t + 1) && 1165519206 === e.getUint32(t + 4) && 0 === e.getUint16(t + 8);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value16"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###16"},');
 
             }
           }]), n);
                     SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt"},');
 
         })((function (e) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt###2","fileName":"${__filename}","paramsNumber":1},`);
 
           function n() {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"n","fileName":"${__filename}","paramsNumber":0},`);
@@ -53004,35 +53004,35 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"n","paramsNumber":0},');
 
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt###2"},');
 
           return (s(n, e), r(n, [{
             key: "parseHeader",
             value: function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value17","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###17","fileName":"${__filename}","paramsNumber":0},`);
 
               var e = this.chunk.getUint16();
               if (18761 === e) this.le = !0; else {
                 if (19789 !== e) {
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value17"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###17"},');
 
                   throw T("Invalid EXIF data: expected byte order marker (0x4949 or 0x4D4D).");
                 }
                 this.le = !1;
               }
               if ((this.chunk.le = this.le, 42 !== this.chunk.getUint16(2))) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value17"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###17"},');
 
                 throw T("Invalid EXIF data: expected 0x002A.");
               }
               this.headerParsed = !0;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value17"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###17"},');
 
             }
           }, {
             key: "parseTags",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value18","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###18","fileName":"${__filename}","paramsNumber":2},`);
 
               var n = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : O(), r = this.options[t], i = r.pick, s = r.skip, a = (i = A(i)).size > 0, u = 0 === s.size, o = this.chunk.getUint16(e);
               e += 2;
@@ -53043,35 +53043,35 @@ const SRTlib = require('SRT-util');
                 } else !u && s.has(h) || n.set(h, this.parseTag(e, h, t));
                 e += 12;
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value18"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###18"},');
 
               return n;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value18"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###18"},');
 
             }
           }, {
             key: "parseTag",
             value: function (e, t, n) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value19","fileName":"${__filename}","paramsNumber":3},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###19","fileName":"${__filename}","paramsNumber":3},`);
 
               var r, i = this.chunk.getUint16(e + 2), s = this.chunk.getUint32(e + 4), a = vt[i];
               if ((a * s <= 4 ? e += 8 : e = this.chunk.getUint32(e + 8), i < 1 || i > 13)) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                 throw T(("Invalid TIFF value type. block: ").concat(n.toUpperCase(), ", tag: ").concat(t.toString(16), ", type: ").concat(i, ", offset ").concat(e));
               }
               if (e > this.chunk.byteLength) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                 throw T(("Invalid TIFF value offset. block: ").concat(n.toUpperCase(), ", tag: ").concat(t.toString(16), ", type: ").concat(i, ", offset ").concat(e, " is outside of chunk size ").concat(this.chunk.byteLength));
               }
               if (1 === i) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                 return this.chunk.getUint8Array(e, s);
               }
               if (2 === i) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                 return "" === (r = (function (e) {
                                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value.ReturnStatement.r.trim","fileName":"${__filename}","paramsNumber":1},`);
@@ -53085,12 +53085,12 @@ const SRTlib = require('SRT-util');
                 })(r = this.chunk.getString(e, s)).trim()) ? void 0 : r;
               }
               if (7 === i) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                 return this.chunk.getUint8Array(e, s);
               }
               if (1 === s) {
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                 return this.parseTagValue(i, e);
               }
@@ -53099,67 +53099,67 @@ const SRTlib = require('SRT-util');
 
                 switch (e) {
                   case 1:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Uint8Array;
                   case 3:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Uint16Array;
                   case 4:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Uint32Array;
                   case 5:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Array;
                   case 6:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Int8Array;
                   case 8:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Int16Array;
                   case 9:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Int32Array;
                   case 10:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Array;
                   case 11:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Float32Array;
                   case 12:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
                     return Float64Array;
                   default:
-                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
                                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
@@ -53168,72 +53168,72 @@ const SRTlib = require('SRT-util');
                                 SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value.u.NewExpression"},');
 
               })(i))(s), o = a, f = 0; f < s; f++) (u[f] = this.parseTagValue(i, e), e += o);
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
               return u;
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value19"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###19"},');
 
             }
           }, {
             key: "parseTagValue",
             value: function (e, t) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value20","fileName":"${__filename}","paramsNumber":2},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.yt.ReturnStatement.r.value###20","fileName":"${__filename}","paramsNumber":2},`);
 
               switch (e) {
                 case 1:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getUint8(t);
                 case 3:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getUint16(t);
                 case 4:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getUint32(t);
                 case 5:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getUint32(t) / this.chunk.getUint32(t + 4);
                 case 6:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getInt8(t);
                 case 8:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getInt16(t);
                 case 9:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getInt32(t);
                 case 10:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getInt32(t) / this.chunk.getInt32(t + 4);
                 case 11:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getFloat(t);
                 case 12:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getDouble(t);
                 case 13:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   return this.chunk.getUint32(t);
                 default:
-                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
                   throw T(("Invalid tiff type ").concat(e));
               }
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value20"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt.ReturnStatement.r.value###20"},');
 
             }
           }]), n);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.yt###2"},');
 
         })(Ze));
         function gt(e, t, n, r) {
@@ -53249,20 +53249,20 @@ const SRTlib = require('SRT-util');
         (i(yt, "type", "tiff"), i(yt, "headerLength", 10), R.set("tiff", yt), e.Exifr = xe, e.Options = ye, e.allFormatters = ce, e.chunkedProps = ie, e.createDictionary = $, e.default = Re, e.disableAllOptions = be, e.extendDictionary = ee, e.fetchUrlAsArrayBuffer = Y, e.fileParsers = N, e.fileReaders = W, e.gps = Ie, e.gpsOnlyOptions = we, e.inheritables = he, e.orientation = _e, e.orientationOnlyOptions = Ae, e.otherSegments = se, e.parse = Le, e.readBlobAsArrayBuffer = H, e.rotation = je, e.rotations = ze, e.segmentParsers = R, e.segments = ae, e.segmentsAndBlocks = oe, e.tagKeys = te, e.tagRevivers = re, e.tagValues = ne, e.thumbnail = Te, e.thumbnailOnlyOptions = Oe, e.thumbnailUrl = Ve, e.tiffBlocks = ue, e.tiffExtractables = fe, Object.defineProperty(e, "__esModule", {
           value: !0
         }));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"call42"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"call###42"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call43"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###43"},');
 
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey314"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###314"},');
 
   }, {
     "_process": 162,
     "buffer": 360
   }],
   304: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey315","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###315","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/thumbnail-generator",
@@ -53289,18 +53289,18 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey315"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###315"},');
 
   }, {}],
   305: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey316","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###316","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends18","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###18","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -53310,10 +53310,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends18"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###18"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends18"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###18"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -53339,7 +53339,7 @@ const SRTlib = require('SRT-util');
     var MathLog2 = require('math-log2');
     var exifr = require('exifr/dist/mini.legacy.umd.js');
     module.exports = (_temp = _class = (function (_Plugin) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class8","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###8","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(ThumbnailGenerator, _Plugin);
       function ThumbnailGenerator(uppy, opts) {
@@ -53486,20 +53486,20 @@ const SRTlib = require('SRT-util');
       }
       var _proto = ThumbnailGenerator.prototype;
       _proto.setOptions = function setOptions(newOpts) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.setOptions2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.setOptions###2","fileName":"${__filename}","paramsNumber":1},`);
 
         _Plugin.prototype.setOptions.call(this, newOpts);
         this.i18nInit();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.setOptions2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.setOptions###2"},');
 
       };
       _proto.i18nInit = function i18nInit() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.i18nInit2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.i18nInit###2","fileName":"${__filename}","paramsNumber":0},`);
 
         this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
         this.i18n = this.translator.translate.bind(this.translator);
         this.setPluginState();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit###2"},');
 
       };
       _proto.createThumbnail = function createThumbnail(file, targetWidth, targetHeight) {
@@ -53521,11 +53521,11 @@ const SRTlib = require('SRT-util');
 
           });
           image.addEventListener('error', function (event) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.createThumbnail.createThumbnail.onload.NewExpression.image.addEventListener2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.createThumbnail.createThumbnail.onload.NewExpression.image.addEventListener###2","fileName":"${__filename}","paramsNumber":1},`);
 
             URL.revokeObjectURL(originalUrl);
             reject(event.error || new Error('Could not create thumbnail'));
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.createThumbnail.createThumbnail.onload.NewExpression.image.addEventListener2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.createThumbnail.createThumbnail.onload.NewExpression.image.addEventListener###2"},');
 
           });
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.createThumbnail.createThumbnail.onload.NewExpression"},');
@@ -53829,7 +53829,7 @@ const SRTlib = require('SRT-util');
 
       };
       _proto.install = function install() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install5","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install###5","fileName":"${__filename}","paramsNumber":0},`);
 
         this.uppy.on('file-removed', this.onFileRemoved);
         if (this.opts.lazy) {
@@ -53842,11 +53842,11 @@ const SRTlib = require('SRT-util');
         if (this.opts.waitForThumbnailsBeforeUpload) {
           this.uppy.addPreProcessor(this.waitUntilAllProcessed);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install###5"},');
 
       };
       _proto.uninstall = function uninstall() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall4","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall###4","fileName":"${__filename}","paramsNumber":0},`);
 
         this.uppy.off('file-removed', this.onFileRemoved);
         if (this.opts.lazy) {
@@ -53859,16 +53859,16 @@ const SRTlib = require('SRT-util');
         if (this.opts.waitForThumbnailsBeforeUpload) {
           this.uppy.removePreProcessor(this.waitUntilAllProcessed);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall###4"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###8"},');
 
       return ThumbnailGenerator;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###8"},');
 
     })(Plugin), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey316"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###316"},');
 
   }, {
     "../package.json": 304,
@@ -53881,7 +53881,7 @@ const SRTlib = require('SRT-util');
     "math-log2": 139
   }],
   306: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey317","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###317","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/transloadit",
@@ -53911,17 +53911,17 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey317"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###317"},');
 
   }, {}],
   307: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey318","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###318","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends19","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###19","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -53931,10 +53931,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends19"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###19"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends19"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###19"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -54038,64 +54038,64 @@ const SRTlib = require('SRT-util');
 
         });
         socket.on('error', function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###2","fileName":"${__filename}","paramsNumber":0},`);
 
           socket.disconnect();
           _this2.socket = null;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###2"},');
 
         });
         socket.on('assembly_finished', function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on3","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###3","fileName":"${__filename}","paramsNumber":0},`);
 
           _this2._onFinished();
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###3"},');
 
         });
         socket.on('assembly_upload_finished', function (file) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on4","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###4","fileName":"${__filename}","paramsNumber":1},`);
 
           _this2.emit('upload', file);
           _this2.status.uploads.push(file);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###4"},');
 
         });
         socket.on('assembly_uploading_finished', function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on5","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###5","fileName":"${__filename}","paramsNumber":0},`);
 
           _this2.emit('executing');
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on5"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###5"},');
 
         });
         socket.on('assembly_upload_meta_data_extracted', function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on6","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###6","fileName":"${__filename}","paramsNumber":0},`);
 
           _this2.emit('metadata');
           _this2._fetchStatus({
             diff: false
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on6"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###6"},');
 
         });
         socket.on('assembly_result_finished', function (stepName, result) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on7","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###7","fileName":"${__filename}","paramsNumber":2},`);
 
           _this2.emit('result', stepName, result);
           if (!_this2.status.results[stepName]) {
             _this2.status.results[stepName] = [];
           }
           _this2.status.results[stepName].push(result);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on7"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###7"},');
 
         });
         socket.on('assembly_error', function (err) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on8","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###8","fileName":"${__filename}","paramsNumber":1},`);
 
           _this2._onError(err);
           _this2._fetchStatus({
             diff: false
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on8"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"TransloaditAssembly._proto._connectSocket._connectSocket.socket.on###8"},');
 
         });
         this.socket = socket;
@@ -54276,7 +54276,7 @@ const SRTlib = require('SRT-util');
 
     })(Emitter);
     module.exports = TransloaditAssembly;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey318"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###318"},');
 
   }, {
     "./../../utils/lib/hasProperty": 339,
@@ -54285,7 +54285,7 @@ const SRTlib = require('SRT-util');
     "socket.io-client": 199
   }],
   308: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey319","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###319","fileName":"${__filename}","paramsNumber":3},`);
 
     function validateParams(params) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateParams","fileName":"${__filename}","paramsNumber":1},`);
@@ -54487,11 +54487,11 @@ const SRTlib = require('SRT-util');
     })();
     module.exports = AssemblyOptions;
     module.exports.validateParams = validateParams;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey319"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###319"},');
 
   }, {}],
   309: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey320","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###320","fileName":"${__filename}","paramsNumber":3},`);
 
     function _assertThisInitialized(self) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertThisInitialized","fileName":"${__filename}","paramsNumber":1},`);
@@ -54649,16 +54649,16 @@ const SRTlib = require('SRT-util');
 
     })(Emitter);
     module.exports = TransloaditAssemblyWatcher;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey320"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###320"},');
 
   }, {
     "component-emitter": 55
   }],
   310: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey321","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###321","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports64","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###64","fileName":"${__filename}","paramsNumber":0},`);
 
       function Client(opts) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Client","fileName":"${__filename}","paramsNumber":1},`);
@@ -54946,24 +54946,24 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto._reportError"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports64"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###64"},');
 
       return Client;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports64"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###64"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey321"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###321"},');
 
   }, {}],
   311: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey322","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###322","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends20","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###20","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -54973,10 +54973,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends20"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###20"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends20"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###20"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -55034,7 +55034,7 @@ const SRTlib = require('SRT-util');
     var TL_COMPANION = /https?:\/\/api2(?:-\w+)?\.transloadit\.com\/companion/;
     var TL_UPPY_SERVER = /https?:\/\/api2(?:-\w+)?\.transloadit\.com\/uppy-server/;
     module.exports = (_temp = _class = (function (_Plugin) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class9","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###9","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Transloadit, _Plugin);
       function Transloadit(uppy, opts) {
@@ -55097,21 +55097,21 @@ const SRTlib = require('SRT-util');
       }
       var _proto = Transloadit.prototype;
       _proto.setOptions = function setOptions(newOpts) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.setOptions3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.setOptions###3","fileName":"${__filename}","paramsNumber":1},`);
 
         _Plugin.prototype.setOptions.call(this, newOpts);
         this.i18nInit();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.setOptions3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.setOptions###3"},');
 
       };
       _proto.i18nInit = function i18nInit() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.i18nInit3","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.i18nInit###3","fileName":"${__filename}","paramsNumber":0},`);
 
         this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
         this.i18n = this.translator.translate.bind(this.translator);
         this.i18nArray = this.translator.translateArray.bind(this.translator);
         this.setPluginState();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit###3"},');
 
       };
       _proto._getClientVersion = function _getClientVersion() {
@@ -55268,18 +55268,18 @@ const SRTlib = require('SRT-util');
 
         });
         watcher.on('assembly-error', function (id, error) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on2","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on###2","fileName":"${__filename}","paramsNumber":2},`);
 
           var files = _this4.getAssemblyFiles(id);
           files.forEach(function (file) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on.files.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on.files.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
 
             _this4.uppy.emit('upload-error', file, error);
             _this4.uppy.emit('postprocess-complete', file);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on.files.forEach2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on.files.forEach###2"},');
 
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._createAssemblyWatcher._createAssemblyWatcher.watcher.on###2"},');
 
         });
         this.assemblyWatchers[uploadID] = watcher;
@@ -55658,50 +55658,50 @@ const SRTlib = require('SRT-util');
 
         });
         assembly.on('upload', function (file) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###2","fileName":"${__filename}","paramsNumber":1},`);
 
           _this11._onFileUploadComplete(id, file);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###2"},');
 
         });
         assembly.on('error', function (error) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###3","fileName":"${__filename}","paramsNumber":1},`);
 
           error.assembly = assembly.status;
           _this11.uppy.emit('transloadit:assembly-error', assembly.status, error);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###3"},');
 
         });
         assembly.on('executing', function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on4","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###4","fileName":"${__filename}","paramsNumber":0},`);
 
           _this11.uppy.emit('transloadit:assembly-executing', assembly.status);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###4"},');
 
         });
         if (this.opts.waitForEncoding) {
           assembly.on('result', function (stepName, result) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on5","fileName":"${__filename}","paramsNumber":2},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###5","fileName":"${__filename}","paramsNumber":2},`);
 
             _this11._onResult(id, stepName, result);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on5"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###5"},');
 
           });
         }
         if (this.opts.waitForEncoding) {
           assembly.on('finished', function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on6","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###6","fileName":"${__filename}","paramsNumber":0},`);
 
             _this11._onAssemblyFinished(assembly.status);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on6"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###6"},');
 
           });
         } else if (this.opts.waitForMetadata) {
           assembly.on('metadata', function () {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on7","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###7","fileName":"${__filename}","paramsNumber":0},`);
 
             _this11._onAssemblyFinished(assembly.status);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on7"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._connectAssembly._connectAssembly.assembly.on###7"},');
 
           });
         }
@@ -55860,7 +55860,7 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then"},');
 
         }, function (err) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
           fileIDs.forEach(function (fileID) {
                         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
@@ -55871,10 +55871,10 @@ const SRTlib = require('SRT-util');
                         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then.fileIDs.forEach"},');
 
           });
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then###2"},');
 
           throw err;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload._prepareUpload.ReturnStatement.assemblyOptions.build.then###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._prepareUpload"},');
@@ -56048,7 +56048,7 @@ const SRTlib = require('SRT-util');
 
       };
       _proto.install = function install() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install6","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install###6","fileName":"${__filename}","paramsNumber":0},`);
 
         this.uppy.addPreProcessor(this._prepareUpload);
         this.uppy.addPostProcessor(this._afterUpload);
@@ -56079,11 +56079,11 @@ const SRTlib = require('SRT-util');
             individualCancellation: false
           })
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install###6"},');
 
       };
       _proto.uninstall = function uninstall() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall5","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall###5","fileName":"${__filename}","paramsNumber":0},`);
 
         this.uppy.removePreProcessor(this._prepareUpload);
         this.uppy.removePostProcessor(this._afterUpload);
@@ -56097,7 +56097,7 @@ const SRTlib = require('SRT-util');
             individualCancellation: true
           })
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall###5"},');
 
       };
       _proto.getAssembly = function getAssembly(id) {
@@ -56127,16 +56127,16 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.getAssemblyFiles"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###9"},');
 
       return Transloadit;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###9"},');
 
     })(Plugin), _class.VERSION = require('../package.json').version, _temp);
     module.exports.COMPANION = COMPANION;
     module.exports.UPPY_SERVER = COMPANION;
     module.exports.COMPANION_PATTERN = ALLOWED_COMPANION_PATTERN;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey322"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###322"},');
 
   }, {
     "../package.json": 306,
@@ -56150,10 +56150,10 @@ const SRTlib = require('SRT-util');
     "./Client": 310
   }],
   312: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey323","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###323","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function parseUrl(url) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports65","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###65","fileName":"${__filename}","paramsNumber":1},`);
 
       var scheme = (/^\w+:\/\//).exec(url);
       var i = 0;
@@ -56162,27 +56162,27 @@ const SRTlib = require('SRT-util');
       }
       var slashIndex = url.indexOf('/', i);
       if (slashIndex === -1) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports65"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###65"},');
 
         return {
           origin: url,
           pathname: '/'
         };
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports65"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###65"},');
 
       return {
         origin: url.slice(0, slashIndex),
         pathname: url.slice(slashIndex)
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports65"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###65"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey323"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###323"},');
 
   }, {}],
   313: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey324","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###324","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/tus",
@@ -56210,11 +56210,11 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey324"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###324"},');
 
   }, {}],
   314: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey325","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###325","fileName":"${__filename}","paramsNumber":3},`);
 
     var tus = require('tus-js-client');
     function isCordova() {
@@ -56236,9 +56236,9 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = function getFingerprint(uppyFileObj) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports66","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###66","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports66"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###66"},');
 
       return function (file, options, callback) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFingerprint.ReturnStatement","fileName":"${__filename}","paramsNumber":3},`);
@@ -56255,23 +56255,23 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint.ReturnStatement"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports66"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###66"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey325"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###325"},');
 
   }, {
     "tus-js-client": 230
   }],
   315: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey326","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###326","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends21","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###21","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -56281,10 +56281,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends21"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###21"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends21"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###21"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -56344,7 +56344,7 @@ const SRTlib = require('SRT-util');
       retryDelays: null
     };
     module.exports = (_temp = _class = (function (_Plugin) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class10","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###10","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Tus, _Plugin);
       function Tus(uppy, opts) {
@@ -56815,7 +56815,7 @@ const SRTlib = require('SRT-util');
 
           });
           socket.on('error', function (errData) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.connectToServerSocket.connectToServerSocket.ReturnStatement.NewExpression.socket.on2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.connectToServerSocket.connectToServerSocket.ReturnStatement.NewExpression.socket.on###2","fileName":"${__filename}","paramsNumber":1},`);
 
             var message = errData.error.message;
             var error = _extends(new Error(message), {
@@ -56832,11 +56832,11 @@ const SRTlib = require('SRT-util');
             _this4.uppy.emit('upload-error', file, error);
             queuedRequest.done();
             reject(error);
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.connectToServerSocket.connectToServerSocket.ReturnStatement.NewExpression.socket.on2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.connectToServerSocket.connectToServerSocket.ReturnStatement.NewExpression.socket.on###2"},');
 
           });
           socket.on('success', function (data) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.connectToServerSocket.connectToServerSocket.ReturnStatement.NewExpression.socket.on3","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.connectToServerSocket.connectToServerSocket.ReturnStatement.NewExpression.socket.on###3","fileName":"${__filename}","paramsNumber":1},`);
 
             var uploadResp = {
               uploadURL: data.url
@@ -56845,7 +56845,7 @@ const SRTlib = require('SRT-util');
             _this4.resetUploaderReferences(file.id);
             queuedRequest.done();
             resolve();
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.connectToServerSocket.connectToServerSocket.ReturnStatement.NewExpression.socket.on3"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.connectToServerSocket.connectToServerSocket.ReturnStatement.NewExpression.socket.on###3"},');
 
           });
           var queuedRequest = _this4.requests.run(function () {
@@ -57080,7 +57080,7 @@ const SRTlib = require('SRT-util');
 
       };
       _proto.install = function install() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install7","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install###7","fileName":"${__filename}","paramsNumber":0},`);
 
         this.uppy.setState({
           capabilities: _extends({}, this.uppy.getState().capabilities, {
@@ -57092,11 +57092,11 @@ const SRTlib = require('SRT-util');
         if (this.opts.autoRetry) {
           this.uppy.on('back-online', this.uppy.retryAll);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install###7"},');
 
       };
       _proto.uninstall = function uninstall() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall6","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall###6","fileName":"${__filename}","paramsNumber":0},`);
 
         this.uppy.setState({
           capabilities: _extends({}, this.uppy.getState().capabilities, {
@@ -57107,16 +57107,16 @@ const SRTlib = require('SRT-util');
         if (this.opts.autoRetry) {
           this.uppy.off('back-online', this.uppy.retryAll);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall###6"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###10"},');
 
       return Tus;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###10"},');
 
     })(Plugin), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey326"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###326"},');
 
   }, {
     "../package.json": 313,
@@ -57134,10 +57134,10 @@ const SRTlib = require('SRT-util');
     "tus-js-client": 230
   }],
   316: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey327","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###327","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports67","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###67","fileName":"${__filename}","paramsNumber":0},`);
 
       function EventTracker(emitter) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"EventTracker","fileName":"${__filename}","paramsNumber":1},`);
@@ -57149,13 +57149,13 @@ const SRTlib = require('SRT-util');
       }
       var _proto = EventTracker.prototype;
       _proto.on = function on(event, fn) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.on2","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.on###2","fileName":"${__filename}","paramsNumber":2},`);
 
         this._events.push([event, fn]);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.on2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.on###2"},');
 
         return this._emitter.on(event, fn);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.on2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.on###2"},');
 
       };
       _proto.remove = function remove() {
@@ -57173,24 +57173,24 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.remove"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports67"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###67"},');
 
       return EventTracker;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports67"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###67"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey327"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###327"},');
 
   }, {}],
   317: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey328","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###328","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = ['a[href]:not([tabindex^="-"]):not([inert]):not([aria-hidden])', 'area[href]:not([tabindex^="-"]):not([inert]):not([aria-hidden])', 'input:not([disabled]):not([inert]):not([aria-hidden])', 'select:not([disabled]):not([inert]):not([aria-hidden])', 'textarea:not([disabled]):not([inert]):not([aria-hidden])', 'button:not([disabled]):not([inert]):not([aria-hidden])', 'iframe:not([tabindex^="-"]):not([inert]):not([aria-hidden])', 'object:not([tabindex^="-"]):not([inert]):not([aria-hidden])', 'embed:not([tabindex^="-"]):not([inert]):not([aria-hidden])', '[contenteditable]:not([tabindex^="-"]):not([inert]):not([aria-hidden])', '[tabindex]:not([tabindex^="-"]):not([inert]):not([aria-hidden])'];
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey328"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###328"},');
 
   }, {}],
   318: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey329","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###329","fileName":"${__filename}","paramsNumber":3},`);
 
     function _inheritsLoose(subClass, superClass) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
@@ -57206,21 +57206,21 @@ const SRTlib = require('SRT-util');
 
       var _cache = typeof Map === "function" ? new Map() : undefined;
       _wrapNativeSuper = function _wrapNativeSuper(Class) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_wrapNativeSuper3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_wrapNativeSuper###3","fileName":"${__filename}","paramsNumber":1},`);
 
         if (Class === null || !_isNativeFunction(Class)) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###3"},');
 
           return Class;
         }
         if (typeof Class !== "function") {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###3"},');
 
           throw new TypeError("Super expression must either be null or a function");
         }
         if (typeof _cache !== "undefined") {
           if (_cache.has(Class)) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper3"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###3"},');
 
             return _cache.get(Class);
           }
@@ -57243,10 +57243,10 @@ const SRTlib = require('SRT-util');
             configurable: true
           }
         });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###3"},');
 
         return _setPrototypeOf(Wrapper, Class);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper###3"},');
 
       };
             SRTlib.send('{"type":"FUNCTIONEND","function":"_wrapNativeSuper"},');
@@ -57262,17 +57262,17 @@ const SRTlib = require('SRT-util');
         _construct = Reflect.construct;
       } else {
         _construct = function _construct(Parent, args, Class) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_construct3","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_construct###3","fileName":"${__filename}","paramsNumber":3},`);
 
           var a = [null];
           a.push.apply(a, args);
           var Constructor = Function.bind.apply(Parent, a);
           var instance = new Constructor();
           if (Class) _setPrototypeOf(instance, Class.prototype);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct###3"},');
 
           return instance;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_construct###3"},');
 
         };
       }
@@ -57302,9 +57302,9 @@ const SRTlib = require('SRT-util');
       }
       try {
         Date.prototype.toString.call(Reflect.construct(Date, [], function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Date.prototype.toString.call.Reflect.construct3","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Date.prototype.toString.call.Reflect.construct###3","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Date.prototype.toString.call.Reflect.construct3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Date.prototype.toString.call.Reflect.construct###3"},');
 
         }));
                 SRTlib.send('{"type":"FUNCTIONEND","function":"_isNativeReflectConstruct"},');
@@ -57331,13 +57331,13 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_setPrototypeOf","fileName":"${__filename}","paramsNumber":2},`);
 
       _setPrototypeOf = Object.setPrototypeOf || (function _setPrototypeOf(o, p) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_setPrototypeOf3","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_setPrototypeOf###3","fileName":"${__filename}","paramsNumber":2},`);
 
         o.__proto__ = p;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf###3"},');
 
         return o;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf###3"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_setPrototypeOf"},');
@@ -57350,12 +57350,12 @@ const SRTlib = require('SRT-util');
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getPrototypeOf","fileName":"${__filename}","paramsNumber":1},`);
 
       _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getPrototypeOf3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getPrototypeOf###3","fileName":"${__filename}","paramsNumber":1},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf###3"},');
 
         return o.__proto__ || Object.getPrototypeOf(o);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf###3"},');
 
       };
             SRTlib.send('{"type":"FUNCTIONEND","function":"_getPrototypeOf"},');
@@ -57391,11 +57391,11 @@ const SRTlib = require('SRT-util');
 
     })(_wrapNativeSuper(Error));
     module.exports = NetworkError;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey329"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###329"},');
 
   }, {}],
   319: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey330","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###330","fileName":"${__filename}","paramsNumber":3},`);
 
     function findIndex(array, predicate) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findIndex","fileName":"${__filename}","paramsNumber":2},`);
@@ -57423,7 +57423,7 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports68","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###68","fileName":"${__filename}","paramsNumber":0},`);
 
       function RateLimitedQueue(limit) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"RateLimitedQueue","fileName":"${__filename}","paramsNumber":1},`);
@@ -57633,7 +57633,7 @@ const SRTlib = require('SRT-util');
                                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.NewExpression.queuedRequest._this4.run.innerPromise.then"},');
 
               }, function (err) {
-                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.NewExpression.queuedRequest._this4.run.innerPromise.then2","fileName":"${__filename}","paramsNumber":1},`);
+                                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.NewExpression.queuedRequest._this4.run.innerPromise.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
                 if (cancelError) {
                   reject(cancelError);
@@ -57641,7 +57641,7 @@ const SRTlib = require('SRT-util');
                   queuedRequest.done();
                   reject(err);
                 }
-                                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.NewExpression.queuedRequest._this4.run.innerPromise.then2"},');
+                                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.NewExpression.queuedRequest._this4.run.innerPromise.then###2"},');
 
               });
                             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction.wrapPromiseFunction.ReturnStatement.outerPromise.NewExpression.queuedRequest._this4.run"},');
@@ -57675,23 +57675,23 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.wrapPromiseFunction"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports68"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###68"},');
 
       return RateLimitedQueue;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports68"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###68"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey330"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###330"},');
 
   }, {}],
   320: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey331","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###331","fileName":"${__filename}","paramsNumber":3},`);
 
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends22","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###22","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -57701,10 +57701,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends22"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###22"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends22"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###22"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -57715,7 +57715,7 @@ const SRTlib = require('SRT-util');
     }
     var has = require('./hasProperty');
     module.exports = (function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports69","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###69","fileName":"${__filename}","paramsNumber":0},`);
 
       function Translator(locales) {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Translator","fileName":"${__filename}","paramsNumber":1},`);
@@ -57858,26 +57858,26 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._proto.translateArray"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports69"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###69"},');
 
       return Translator;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports69"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###69"},');
 
     })();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey331"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###331"},');
 
   }, {
     "./hasProperty": 339
   }],
   321: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey332","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###332","fileName":"${__filename}","paramsNumber":3},`);
 
     var dataURItoBlob = require('./dataURItoBlob');
     module.exports = function canvasToBlob(canvas, type, quality) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports70","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###70","fileName":"${__filename}","paramsNumber":3},`);
 
       if (canvas.toBlob) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports70"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###70"},');
 
         return new Promise(function (resolve) {
                     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.canvasToBlob.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":1},`);
@@ -57887,7 +57887,7 @@ const SRTlib = require('SRT-util');
 
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports70"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###70"},');
 
       return Promise.resolve().then(function () {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.canvasToBlob.ReturnStatement.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
@@ -57898,19 +57898,19 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.canvasToBlob.ReturnStatement.Promise.resolve.then"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports70"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###70"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey332"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###332"},');
 
   }, {
     "./dataURItoBlob": 322
   }],
   322: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey333","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###333","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function dataURItoBlob(dataURI, opts, toFile) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports71","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###71","fileName":"${__filename}","paramsNumber":3},`);
 
       var data = dataURI.split(',')[1];
       var mimeType = opts.mimeType || dataURI.split(',')[0].split(':')[1].split(';')[0];
@@ -57926,30 +57926,30 @@ const SRTlib = require('SRT-util');
       try {
         bytes = new Uint8Array(array);
       } catch (err) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports71"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###71"},');
 
         return null;
       }
       if (toFile) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports71"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###71"},');
 
         return new File([bytes], opts.name || '', {
           type: mimeType
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports71"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###71"},');
 
       return new Blob([bytes], {
         type: mimeType
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports71"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###71"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey333"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###333"},');
 
   }, {}],
   323: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey334","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###334","fileName":"${__filename}","paramsNumber":3},`);
 
     var throttle = require('lodash.throttle');
     function _emitSocketProgress(uploader, progressData, file) {
@@ -57971,70 +57971,70 @@ const SRTlib = require('SRT-util');
       leading: true,
       trailing: true
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey334"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###334"},');
 
   }, {
     "lodash.throttle": 138
   }],
   324: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey335","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###335","fileName":"${__filename}","paramsNumber":3},`);
 
     var isDOMElement = require('./isDOMElement');
     module.exports = function findAllDOMElements(element) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports72","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###72","fileName":"${__filename}","paramsNumber":1},`);
 
       if (typeof element === 'string') {
         var elements = [].slice.call(document.querySelectorAll(element));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports72"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###72"},');
 
         return elements.length > 0 ? elements : null;
       }
       if (typeof element === 'object' && isDOMElement(element)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports72"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###72"},');
 
         return [element];
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports72"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###72"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey335"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###335"},');
 
   }, {
     "./isDOMElement": 340
   }],
   325: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey336","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###336","fileName":"${__filename}","paramsNumber":3},`);
 
     var isDOMElement = require('./isDOMElement');
     module.exports = function findDOMElement(element, context) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports73","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###73","fileName":"${__filename}","paramsNumber":2},`);
 
       if (context === void 0) {
         context = document;
       }
       if (typeof element === 'string') {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports73"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###73"},');
 
         return context.querySelector(element);
       }
       if (isDOMElement(element)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports73"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###73"},');
 
         return element;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports73"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###73"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey336"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###336"},');
 
   }, {
     "./isDOMElement": 340
   }],
   326: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey337","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###337","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function generateFileID(file) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports74","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###74","fileName":"${__filename}","paramsNumber":1},`);
 
       var id = 'uppy';
       if (typeof file.name === 'string') {
@@ -58052,10 +58052,10 @@ const SRTlib = require('SRT-util');
       if (file.data.lastModified !== undefined) {
         id += '-' + file.data.lastModified;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports74"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###74"},');
 
       return id;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports74"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###74"},');
 
     };
     function encodeFilename(name) {
@@ -58086,31 +58086,31 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"encodeCharacter","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey337"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###337"},');
 
   }, {}],
   327: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey338","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###338","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getBytesRemaining(fileProgress) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports75","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###75","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports75"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###75"},');
 
       return fileProgress.bytesTotal - fileProgress.bytesUploaded;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports75"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###75"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey338"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###338"},');
 
   }, {}],
   328: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey339","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###339","fileName":"${__filename}","paramsNumber":3},`);
 
     var webkitGetAsEntryApi = require('./utils/webkitGetAsEntryApi/index');
     var fallbackApi = require('./utils/fallbackApi');
     module.exports = function getDroppedFiles(dataTransfer, _temp) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports76","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###76","fileName":"${__filename}","paramsNumber":2},`);
 
       var _ref = _temp === void 0 ? {} : _temp, _ref$logDropError = _ref.logDropError, logDropError = _ref$logDropError === void 0 ? function () {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getDroppedFiles.logDropError","fileName":"${__filename}","paramsNumber":0},`);
@@ -58119,47 +58119,47 @@ const SRTlib = require('SRT-util');
 
       } : _ref$logDropError;
       if (dataTransfer.items && dataTransfer.items[0] && ('webkitGetAsEntry' in dataTransfer.items[0])) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports76"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###76"},');
 
         return webkitGetAsEntryApi(dataTransfer, logDropError);
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports76"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###76"},');
 
         return fallbackApi(dataTransfer);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports76"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###76"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey339"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###339"},');
 
   }, {
     "./utils/fallbackApi": 329,
     "./utils/webkitGetAsEntryApi/index": 332
   }],
   329: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey340","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###340","fileName":"${__filename}","paramsNumber":3},`);
 
     var toArray = require('../../toArray');
     module.exports = function fallbackApi(dataTransfer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports77","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###77","fileName":"${__filename}","paramsNumber":1},`);
 
       var files = toArray(dataTransfer.files);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports77"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###77"},');
 
       return Promise.resolve(files);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports77"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###77"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey340"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###340"},');
 
   }, {
     "../../toArray": 349
   }],
   330: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey341","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###341","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getFilesAndDirectoriesFromDirectory(directoryReader, oldEntries, logDropError, _ref) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports78","fileName":"${__filename}","paramsNumber":4},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###78","fileName":"${__filename}","paramsNumber":4},`);
 
       var onSuccess = _ref.onSuccess;
       directoryReader.readEntries(function (entries) {
@@ -58182,48 +58182,48 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries"},');
 
       }, function (error) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries###2","fileName":"${__filename}","paramsNumber":1},`);
 
         logDropError(error);
         onSuccess(oldEntries);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFilesAndDirectoriesFromDirectory.directoryReader.readEntries###2"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports78"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###78"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey341"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###341"},');
 
   }, {}],
   331: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey342","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###342","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getRelativePath(fileEntry) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports79","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###79","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!fileEntry.fullPath || fileEntry.fullPath === '/' + fileEntry.name) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports79"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###79"},');
 
         return null;
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports79"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###79"},');
 
         return fileEntry.fullPath;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports79"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###79"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey342"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###342"},');
 
   }, {}],
   332: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey343","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###343","fileName":"${__filename}","paramsNumber":3},`);
 
     var toArray = require('../../../toArray');
     var getRelativePath = require('./getRelativePath');
     var getFilesAndDirectoriesFromDirectory = require('./getFilesAndDirectoriesFromDirectory');
     module.exports = function webkitGetAsEntryApi(dataTransfer, logDropError) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports80","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###80","fileName":"${__filename}","paramsNumber":2},`);
 
       var files = [];
       var rootPromises = [];
@@ -58245,11 +58245,11 @@ const SRTlib = require('SRT-util');
                             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.createPromiseToAddFileOrParseDirectory.createPromiseToAddFileOrParseDirectory.ReturnStatement.NewExpression.entry.file"},');
 
             }, function (error) {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.webkitGetAsEntryApi.createPromiseToAddFileOrParseDirectory.createPromiseToAddFileOrParseDirectory.ReturnStatement.NewExpression.entry.file2","fileName":"${__filename}","paramsNumber":1},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.webkitGetAsEntryApi.createPromiseToAddFileOrParseDirectory.createPromiseToAddFileOrParseDirectory.ReturnStatement.NewExpression.entry.file###2","fileName":"${__filename}","paramsNumber":1},`);
 
               logDropError(error);
               resolve();
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.createPromiseToAddFileOrParseDirectory.createPromiseToAddFileOrParseDirectory.ReturnStatement.NewExpression.entry.file2"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.createPromiseToAddFileOrParseDirectory.createPromiseToAddFileOrParseDirectory.ReturnStatement.NewExpression.entry.file###2"},');
 
             });
           } else if (entry.isDirectory) {
@@ -58297,7 +58297,7 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.toArray.forEach"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports80"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###80"},');
 
       return Promise.all(rootPromises).then(function () {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.webkitGetAsEntryApi.ReturnStatement.Promise.all.then","fileName":"${__filename}","paramsNumber":0},`);
@@ -58308,10 +58308,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.webkitGetAsEntryApi.ReturnStatement.Promise.all.then"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports80"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###80"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey343"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###343"},');
 
   }, {
     "../../../toArray": 349,
@@ -58319,67 +58319,67 @@ const SRTlib = require('SRT-util');
     "./getRelativePath": 331
   }],
   333: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey344","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###344","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getFileNameAndExtension(fullFileName) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports81","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###81","fileName":"${__filename}","paramsNumber":1},`);
 
       var lastDot = fullFileName.lastIndexOf('.');
       if (lastDot === -1 || lastDot === fullFileName.length - 1) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports81"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###81"},');
 
         return {
           name: fullFileName,
           extension: undefined
         };
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports81"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###81"},');
 
         return {
           name: fullFileName.slice(0, lastDot),
           extension: fullFileName.slice(lastDot + 1)
         };
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports81"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###81"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey344"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###344"},');
 
   }, {}],
   334: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey345","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###345","fileName":"${__filename}","paramsNumber":3},`);
 
     var getFileNameAndExtension = require('./getFileNameAndExtension');
     var mimeTypes = require('./mimeTypes');
     module.exports = function getFileType(file) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports82","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###82","fileName":"${__filename}","paramsNumber":1},`);
 
       var fileExtension = file.name ? getFileNameAndExtension(file.name).extension : null;
       fileExtension = fileExtension ? fileExtension.toLowerCase() : null;
       if (file.type) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports82"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###82"},');
 
         return file.type;
       } else if (fileExtension && mimeTypes[fileExtension]) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports82"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###82"},');
 
         return mimeTypes[fileExtension];
       } else {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports82"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###82"},');
 
         return 'application/octet-stream';
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports82"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###82"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey345"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###345"},');
 
   }, {
     "./getFileNameAndExtension": 333,
     "./mimeTypes": 345
   }],
   335: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey346","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###346","fileName":"${__filename}","paramsNumber":3},`);
 
     var mimeToExtensions = {
       'audio/mp3': 'mp3',
@@ -58399,72 +58399,72 @@ const SRTlib = require('SRT-util');
       'video/x-msvideo': 'avi'
     };
     module.exports = function getFileTypeExtension(mimeType) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports83","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###83","fileName":"${__filename}","paramsNumber":1},`);
 
       mimeType = mimeType.replace(/;.*$/, '');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports83"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###83"},');
 
       return mimeToExtensions[mimeType] || null;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports83"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###83"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey346"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###346"},');
 
   }, {}],
   336: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey347","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###347","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getSocketHost(url) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports84","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###84","fileName":"${__filename}","paramsNumber":1},`);
 
       var regex = /^(?:https?:\/\/|\/\/)?(?:[^@\n]+@)?(?:www\.)?([^\n]+)/i;
       var host = regex.exec(url)[1];
       var socketProtocol = (/^http:\/\//i).test(url) ? 'ws' : 'wss';
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports84"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###84"},');
 
       return socketProtocol + "://" + host;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports84"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###84"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey347"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###347"},');
 
   }, {}],
   337: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey348","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###348","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getSpeed(fileProgress) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports85","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###85","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!fileProgress.bytesUploaded) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports85"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###85"},');
 
         return 0;
       }
       var timeElapsed = new Date() - fileProgress.uploadStarted;
       var uploadSpeed = fileProgress.bytesUploaded / (timeElapsed / 1000);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports85"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###85"},');
 
       return uploadSpeed;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports85"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###85"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey348"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###348"},');
 
   }, {}],
   338: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey349","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###349","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function getTimeStamp() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports86","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###86","fileName":"${__filename}","paramsNumber":0},`);
 
       var date = new Date();
       var hours = pad(date.getHours().toString());
       var minutes = pad(date.getMinutes().toString());
       var seconds = pad(date.getSeconds().toString());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports86"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###86"},');
 
       return hours + ':' + minutes + ':' + seconds;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports86"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###86"},');
 
     };
     function pad(str) {
@@ -58476,72 +58476,72 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"pad","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey349"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###349"},');
 
   }, {}],
   339: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey350","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###350","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function has(object, key) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports87","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###87","fileName":"${__filename}","paramsNumber":2},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports87"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###87"},');
 
       return Object.prototype.hasOwnProperty.call(object, key);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports87"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###87"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey350"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###350"},');
 
   }, {}],
   340: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey351","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###351","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function isDOMElement(obj) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports88","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###88","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports88"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###88"},');
 
       return obj && typeof obj === 'object' && obj.nodeType === Node.ELEMENT_NODE;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports88"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###88"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey351"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###351"},');
 
   }, {}],
   341: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey352","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###352","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function isDragDropSupported() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports89","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###89","fileName":"${__filename}","paramsNumber":0},`);
 
       var div = document.createElement('div');
       if (!(('draggable' in div)) || !(('ondragstart' in div) && ('ondrop' in div))) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports89"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###89"},');
 
         return false;
       }
       if (!(('FormData' in window))) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports89"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###89"},');
 
         return false;
       }
       if (!(('FileReader' in window))) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports89"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###89"},');
 
         return false;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports89"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###89"},');
 
       return true;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports89"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###89"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey352"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###352"},');
 
   }, {}],
   342: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey353","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###353","fileName":"${__filename}","paramsNumber":3},`);
 
     function isNetworkError(xhr) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isNetworkError","fileName":"${__filename}","paramsNumber":1},`);
@@ -58558,52 +58558,52 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = isNetworkError;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey353"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###353"},');
 
   }, {}],
   343: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey354","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###354","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function isObjectURL(url) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports90","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###90","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports90"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###90"},');
 
       return url.indexOf('blob:') === 0;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports90"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###90"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey354"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###354"},');
 
   }, {}],
   344: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey355","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###355","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function isPreviewSupported(fileType) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports91","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###91","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!fileType) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports91"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###91"},');
 
         return false;
       }
       var fileTypeSpecific = fileType.split('/')[1];
       if ((/^(jpe?g|gif|png|svg|svg\+xml|bmp|webp)$/).test(fileTypeSpecific)) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports91"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###91"},');
 
         return true;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports91"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###91"},');
 
       return false;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports91"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###91"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey355"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###355"},');
 
   }, {}],
   345: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey356","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###356","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       md: 'text/markdown',
@@ -58650,15 +58650,15 @@ const SRTlib = require('SRT-util');
       log: 'text/plain',
       pdf: 'application/pdf'
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey356"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###356"},');
 
   }, {}],
   346: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey357","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###357","fileName":"${__filename}","paramsNumber":3},`);
 
     var secondsToTime = require('./secondsToTime');
     module.exports = function prettyETA(seconds) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports92","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###92","fileName":"${__filename}","paramsNumber":1},`);
 
       var time = secondsToTime(seconds);
       var hoursStr = time.hours ? time.hours + 'h ' : '';
@@ -58666,44 +58666,44 @@ const SRTlib = require('SRT-util');
       var minutesStr = minutesVal ? minutesVal + 'm' : '';
       var secondsVal = minutesVal ? ('0' + time.seconds).substr(-2) : time.seconds;
       var secondsStr = time.hours ? '' : minutesVal ? ' ' + secondsVal + 's' : secondsVal + 's';
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports92"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###92"},');
 
       return "" + hoursStr + minutesStr + secondsStr;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports92"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###92"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey357"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###357"},');
 
   }, {
     "./secondsToTime": 347
   }],
   347: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey358","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###358","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function secondsToTime(rawSeconds) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports93","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###93","fileName":"${__filename}","paramsNumber":1},`);
 
       var hours = Math.floor(rawSeconds / 3600) % 24;
       var minutes = Math.floor(rawSeconds / 60) % 60;
       var seconds = Math.floor(rawSeconds % 60);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports93"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###93"},');
 
       return {
         hours: hours,
         minutes: minutes,
         seconds: seconds
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports93"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###93"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey358"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###358"},');
 
   }, {}],
   348: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey359","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###359","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function settle(promises) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports94","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###94","fileName":"${__filename}","paramsNumber":1},`);
 
       var resolutions = [];
       var rejections = [];
@@ -58730,7 +58730,7 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.settle.wait.Promise.all.promises.map"},');
 
       }));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports94"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###94"},');
 
       return wait.then(function () {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.settle.ReturnStatement.wait.then","fileName":"${__filename}","paramsNumber":0},`);
@@ -58744,29 +58744,29 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.settle.ReturnStatement.wait.then"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports94"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###94"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey359"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###359"},');
 
   }, {}],
   349: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey360","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###360","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function toArray(list) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports95","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###95","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports95"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###95"},');
 
       return Array.prototype.slice.call(list || [], 0);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports95"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###95"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey360"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###360"},');
 
   }, {}],
   350: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey361","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###361","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = {
       "name": "@uppy/webcam",
@@ -58793,17 +58793,17 @@ const SRTlib = require('SRT-util');
         "@uppy/core": "^1.0.0"
       }
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey361"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###361"},');
 
   }, {}],
   351: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey362","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###362","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports96","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###96","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports96"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###96"},');
 
       return h("svg", {
         "aria-hidden": "true",
@@ -58816,16 +58816,16 @@ const SRTlib = require('SRT-util');
         d: "M57.3 8.433c4.59 0 8.1 3.51 8.1 8.1v29.7c0 4.59-3.51 8.1-8.1 8.1H8.7c-4.59 0-8.1-3.51-8.1-8.1v-29.7c0-4.59 3.51-8.1 8.1-8.1h9.45l4.59-7.02c.54-.54 1.35-1.08 2.16-1.08h16.2c.81 0 1.62.54 2.16 1.08l4.59 7.02h9.45zM33 14.64c-8.62 0-15.393 6.773-15.393 15.393 0 8.62 6.773 15.393 15.393 15.393 8.62 0 15.393-6.773 15.393-15.393 0-8.62-6.773-15.393-15.393-15.393zM33 40c-5.648 0-9.966-4.319-9.966-9.967 0-5.647 4.318-9.966 9.966-9.966s9.966 4.319 9.966 9.966C42.966 35.681 38.648 40 33 40z",
         "fill-rule": "evenodd"
       }));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports96"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###96"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey362"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###362"},');
 
   }, {
     "preact": 160
   }],
   352: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey363","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###363","fileName":"${__filename}","paramsNumber":3},`);
 
     function _inheritsLoose(subClass, superClass) {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_inheritsLoose","fileName":"${__filename}","paramsNumber":2},`);
@@ -58908,7 +58908,7 @@ const SRTlib = require('SRT-util');
 
     })(Component);
     module.exports = CameraScreen;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey363"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###363"},');
 
   }, {
     "./RecordButton": 354,
@@ -58917,13 +58917,13 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   353: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey364","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###364","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     module.exports = function (props) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports97","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###97","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports97"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###97"},');
 
       return h("div", {
         class: "uppy-Webcam-permissons"
@@ -58932,24 +58932,24 @@ const SRTlib = require('SRT-util');
       }, props.icon()), h("h1", {
         class: "uppy-Webcam-title"
       }, props.hasCamera ? props.i18n('allowAccessTitle') : props.i18n('noCameraTitle')), h("p", null, props.hasCamera ? props.i18n('allowAccessDescription') : props.i18n('noCameraDescription')));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports97"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###97"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey364"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###364"},');
 
   }, {
     "preact": 160
   }],
   354: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey365","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###365","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     module.exports = function RecordButton(_ref) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports98","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###98","fileName":"${__filename}","paramsNumber":1},`);
 
       var recording = _ref.recording, onStartRecording = _ref.onStartRecording, onStopRecording = _ref.onStopRecording, i18n = _ref.i18n;
       if (recording) {
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports98"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###98"},');
 
         return h("button", {
           class: "uppy-u-reset uppy-c-btn uppy-Webcam-button uppy-Webcam-button--video",
@@ -58972,7 +58972,7 @@ const SRTlib = require('SRT-util');
           height: "70"
         })));
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports98"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###98"},');
 
       return h("button", {
         class: "uppy-u-reset uppy-c-btn uppy-Webcam-button uppy-Webcam-button--video",
@@ -58993,25 +58993,25 @@ const SRTlib = require('SRT-util');
         cy: "50",
         r: "40"
       })));
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports98"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###98"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey365"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###365"},');
 
   }, {
     "preact": 160
   }],
   355: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey366","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###366","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var formatSeconds = require('./formatSeconds');
     module.exports = function RecordingLength(_ref) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports99","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###99","fileName":"${__filename}","paramsNumber":1},`);
 
       var recordingLengthSeconds = _ref.recordingLengthSeconds, i18n = _ref.i18n;
       var formattedRecordingLengthSeconds = formatSeconds(recordingLengthSeconds);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports99"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###99"},');
 
       return h("div", {
         class: "uppy-Webcam-recordingLength",
@@ -59019,25 +59019,25 @@ const SRTlib = require('SRT-util');
           recording_length: formattedRecordingLengthSeconds
         })
       }, formattedRecordingLengthSeconds);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports99"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###99"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey366"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###366"},');
 
   }, {
     "./formatSeconds": 357,
     "preact": 160
   }],
   356: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey367","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###367","fileName":"${__filename}","paramsNumber":3},`);
 
     var _require = require('preact'), h = _require.h;
     var CameraIcon = require('./CameraIcon');
     module.exports = function (_ref) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports100","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###100","fileName":"${__filename}","paramsNumber":1},`);
 
       var onSnapshot = _ref.onSnapshot, i18n = _ref.i18n;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports100"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###100"},');
 
       return h("button", {
         class: "uppy-u-reset uppy-c-btn uppy-Webcam-button uppy-Webcam-button--picture",
@@ -59047,39 +59047,39 @@ const SRTlib = require('SRT-util');
         onclick: onSnapshot,
         "data-uppy-super-focusable": true
       }, CameraIcon());
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports100"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###100"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey367"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###367"},');
 
   }, {
     "./CameraIcon": 351,
     "preact": 160
   }],
   357: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey368","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###368","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function formatSeconds(seconds) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports101","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###101","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports101"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###101"},');
 
       return Math.floor(seconds / 60) + ":" + String(seconds % 60).padStart(2, 0);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports101"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###101"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey368"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###368"},');
 
   }, {}],
   358: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey369","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###369","fileName":"${__filename}","paramsNumber":3},`);
 
     var _class, _temp;
     function _extends() {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_extends","fileName":"${__filename}","paramsNumber":0},`);
 
       _extends = Object.assign || (function (target) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends23","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_extends###23","fileName":"${__filename}","paramsNumber":1},`);
 
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
@@ -59089,10 +59089,10 @@ const SRTlib = require('SRT-util');
             }
           }
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends23"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###23"},');
 
         return target;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends23"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"_extends###23"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"_extends"},');
@@ -59203,7 +59203,7 @@ const SRTlib = require('SRT-util');
 
     }
     module.exports = (_temp = _class = (function (_Plugin) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class11","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class###11","fileName":"${__filename}","paramsNumber":1},`);
 
       _inheritsLoose(Webcam, _Plugin);
       function Webcam(uppy, opts) {
@@ -59218,9 +59218,9 @@ const SRTlib = require('SRT-util');
         _this.title = _this.opts.title || 'Camera';
         _this.type = 'acquirer';
         _this.icon = function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.icon3","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_this.icon###3","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon###3"},');
 
           return h("svg", {
             "aria-hidden": "true",
@@ -59242,7 +59242,7 @@ const SRTlib = require('SRT-util');
             fill: "#FFF",
             "fill-rule": "nonzero"
           })));
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"_this.icon###3"},');
 
         };
         _this.defaultLocale = {
@@ -59301,21 +59301,21 @@ const SRTlib = require('SRT-util');
       }
       var _proto = Webcam.prototype;
       _proto.setOptions = function setOptions(newOpts) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.setOptions4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.setOptions###4","fileName":"${__filename}","paramsNumber":1},`);
 
         _Plugin.prototype.setOptions.call(this, newOpts);
         this.i18nInit();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.setOptions4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.setOptions###4"},');
 
       };
       _proto.i18nInit = function i18nInit() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.i18nInit4","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.i18nInit###4","fileName":"${__filename}","paramsNumber":0},`);
 
         this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
         this.i18n = this.translator.translate.bind(this.translator);
         this.i18nArray = this.translator.translateArray.bind(this.translator);
         this.setPluginState();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.i18nInit###4"},');
 
       };
       _proto.hasCameraCheck = function hasCameraCheck() {
@@ -59548,14 +59548,14 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.stopped.then.then.then"},');
 
         }, function (error) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.stopped.then.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.stopped.then.then.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
           _this4.recordingChunks = null;
           _this4.recorder = null;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.stopped.then.then.then2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.stopped.then.then.then###2"},');
 
           throw error;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.stopped.then.then.then2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._stopRecording._stopRecording.ReturnStatement.stopped.then.then.then###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._stopRecording"},');
@@ -59679,13 +59679,13 @@ const SRTlib = require('SRT-util');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then"},');
 
         }, function (error) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
           _this6.captureInProgress = false;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then###2"},');
 
           throw error;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._takeSnapshot._takeSnapshot.opts.onBeforeSnapshot.catch.then.then###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto._takeSnapshot"},');
@@ -59787,14 +59787,14 @@ const SRTlib = require('SRT-util');
 
       };
       _proto.render = function render() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render4","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.render###4","fileName":"${__filename}","paramsNumber":0},`);
 
         if (!this.webcamActive) {
           this._start();
         }
         var webcamState = this.getPluginState();
         if (!webcamState.cameraReady || !webcamState.hasCamera) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render###4"},');
 
           return h(PermissionsScreen, {
             icon: CameraIcon,
@@ -59802,7 +59802,7 @@ const SRTlib = require('SRT-util');
             hasCamera: webcamState.hasCamera
           });
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render###4"},');
 
         return h(CameraScreen, _extends({}, webcamState, {
           onSnapshot: this._takeSnapshot,
@@ -59818,11 +59818,11 @@ const SRTlib = require('SRT-util');
           mirror: this.opts.mirror,
           src: this.stream
         }));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.render###4"},');
 
       };
       _proto.install = function install() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install8","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.install###8","fileName":"${__filename}","paramsNumber":0},`);
 
         this.setPluginState({
           cameraReady: false,
@@ -59832,26 +59832,26 @@ const SRTlib = require('SRT-util');
         if (target) {
           this.mount(target, this);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.install###8"},');
 
       };
       _proto.uninstall = function uninstall() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall7","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._temp._class._proto.uninstall###7","fileName":"${__filename}","paramsNumber":0},`);
 
         if (this.stream) {
           this._stop();
         }
         this.unmount();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class._proto.uninstall###7"},');
 
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###11"},');
 
       return Webcam;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class11"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._temp._class###11"},');
 
     })(Plugin), _class.VERSION = require('../package.json').version, _temp);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey369"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###369"},');
 
   }, {
     "../package.json": 350,
@@ -59867,25 +59867,25 @@ const SRTlib = require('SRT-util');
     "preact": 160
   }],
   359: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey370","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###370","fileName":"${__filename}","paramsNumber":3},`);
 
     module.exports = function supportsMediaRecorder() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports102","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###102","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports102"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###102"},');
 
       return typeof MediaRecorder === 'function' && !!MediaRecorder.prototype && typeof MediaRecorder.prototype.start === 'function';
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports102"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###102"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey370"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###370"},');
 
   }, {}],
   360: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey371","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###371","fileName":"${__filename}","paramsNumber":3},`);
 
     (function (Buffer) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call44","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call###44","fileName":"${__filename}","paramsNumber":1},`);
 
       'use strict';
       var base64 = require('base64-js');
@@ -59930,34 +59930,34 @@ const SRTlib = require('SRT-util');
       Object.defineProperty(Buffer.prototype, 'parent', {
         enumerable: true,
         get: function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get6","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get###6","fileName":"${__filename}","paramsNumber":0},`);
 
           if (!Buffer.isBuffer(this)) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get6"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###6"},');
 
             return undefined;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get6"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###6"},');
 
           return this.buffer;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get6"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###6"},');
 
         }
       });
       Object.defineProperty(Buffer.prototype, 'offset', {
         enumerable: true,
         get: function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get7","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"call.Object.defineProperty.get###7","fileName":"${__filename}","paramsNumber":0},`);
 
           if (!Buffer.isBuffer(this)) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get7"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###7"},');
 
             return undefined;
           }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get7"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###7"},');
 
           return this.byteOffset;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get7"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"call.Object.defineProperty.get###7"},');
 
         }
       });
@@ -60328,17 +60328,17 @@ const SRTlib = require('SRT-util');
           case 'ucs-2':
           case 'utf16le':
           case 'utf-16le':
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.Buffer.isEncoding"},');
 
             return true;
           default:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"call.Buffer.isEncoding"},');
 
@@ -60419,18 +60419,18 @@ const SRTlib = require('SRT-util');
             case 'ascii':
             case 'latin1':
             case 'binary':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"byteLength"},');
 
               return len;
             case 'utf8':
             case 'utf-8':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"byteLength"},');
 
@@ -60439,25 +60439,25 @@ const SRTlib = require('SRT-util');
             case 'ucs-2':
             case 'utf16le':
             case 'utf-16le':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"byteLength"},');
 
               return len * 2;
             case 'hex':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"byteLength"},');
 
               return len >>> 1;
             case 'base64':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"byteLength"},');
 
@@ -60507,43 +60507,43 @@ const SRTlib = require('SRT-util');
         while (true) {
           switch (encoding) {
             case 'hex':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"slowToString"},');
 
               return hexSlice(this, start, end);
             case 'utf8':
             case 'utf-8':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"slowToString"},');
 
               return utf8Slice(this, start, end);
             case 'ascii':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"slowToString"},');
 
               return asciiSlice(this, start, end);
             case 'latin1':
             case 'binary':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"slowToString"},');
 
               return latin1Slice(this, start, end);
             case 'base64':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"slowToString"},');
 
@@ -60552,9 +60552,9 @@ const SRTlib = require('SRT-util');
             case 'ucs-2':
             case 'utf16le':
             case 'utf-16le':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"slowToString"},');
 
@@ -60796,7 +60796,7 @@ const SRTlib = require('SRT-util');
         if (byteOffset < 0) byteOffset = buffer.length + byteOffset;
         if (byteOffset >= buffer.length) {
           if (dir) return -1; else {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
             return -1;
           }
@@ -61057,43 +61057,43 @@ const SRTlib = require('SRT-util');
         for (; ; ) {
           switch (encoding) {
             case 'hex':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.Buffer.prototype.write"},');
 
               return hexWrite(this, string, offset, length);
             case 'utf8':
             case 'utf-8':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.Buffer.prototype.write"},');
 
               return utf8Write(this, string, offset, length);
             case 'ascii':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.Buffer.prototype.write"},');
 
               return asciiWrite(this, string, offset, length);
             case 'latin1':
             case 'binary':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.Buffer.prototype.write"},');
 
               return latin1Write(this, string, offset, length);
             case 'base64':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.Buffer.prototype.write"},');
 
@@ -61102,9 +61102,9 @@ const SRTlib = require('SRT-util');
             case 'ucs-2':
             case 'utf16le':
             case 'utf-16le':
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
-                            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+                            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"call.Buffer.prototype.write"},');
 
@@ -62207,10 +62207,10 @@ const SRTlib = require('SRT-util');
                 SRTlib.send('{"type":"FUNCTIONEND","function":"numberIsNaN","paramsNumber":1},');
 
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"call44"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"call###44"},');
 
     }).call(this, require("buffer").Buffer);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey371"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###371"},');
 
   }, {
     "base64-js": 19,
@@ -62218,7 +62218,7 @@ const SRTlib = require('SRT-util');
     "ieee754": 131
   }],
   361: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey372","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###372","fileName":"${__filename}","paramsNumber":3},`);
 
     var objectCreate = Object.create || objectCreatePolyfill;
     var objectKeys = Object.keys || objectKeysPolyfill;
@@ -62253,24 +62253,24 @@ const SRTlib = require('SRT-util');
       Object.defineProperty(EventEmitter, 'defaultMaxListeners', {
         enumerable: true,
         get: function () {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.defineProperty.get4","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.defineProperty.get###4","fileName":"${__filename}","paramsNumber":0},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get###4"},');
 
           return defaultMaxListeners;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get4"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.get###4"},');
 
         },
         set: function (arg) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.defineProperty.set2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.defineProperty.set###2","fileName":"${__filename}","paramsNumber":1},`);
 
           if (typeof arg !== 'number' || arg < 0 || arg !== arg) {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.set2"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.set###2"},');
 
             throw new TypeError('"defaultMaxListeners" must be a positive number');
           }
           defaultMaxListeners = arg;
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.set2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"Object.defineProperty.set###2"},');
 
         }
       });
@@ -62513,25 +62513,25 @@ const SRTlib = require('SRT-util');
         this.fired = true;
         switch (arguments.length) {
           case 0:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey372"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###372"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"onceWrapper"},');
 
             return this.listener.call(this.target);
           case 1:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey372"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###372"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"onceWrapper"},');
 
             return this.listener.call(this.target, arguments[0]);
           case 2:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey372"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###372"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"onceWrapper"},');
 
             return this.listener.call(this.target, arguments[0], arguments[1]);
           case 3:
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey372"},');
+                        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###372"},');
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"onceWrapper"},');
 
@@ -62853,22 +62853,22 @@ const SRTlib = require('SRT-util');
             SRTlib.send('{"type":"FUNCTIONEND","function":"functionBindPolyfill"},');
 
       return function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement10","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###10","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement10"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###10"},');
 
         return fn.apply(context, arguments);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement10"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###10"},');
 
       };
             SRTlib.send('{"type":"FUNCTIONEND","function":"functionBindPolyfill","paramsNumber":1},');
 
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey372"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###372"},');
 
   }, {}],
   362: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey373","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###373","fileName":"${__filename}","paramsNumber":3},`);
 
     var companionEndpoint = 'http://localhost:3020';
     if (location.hostname === 'uppy.io') {
@@ -62876,11 +62876,11 @@ const SRTlib = require('SRT-util');
     }
     var COMPANION = companionEndpoint;
     module.exports = COMPANION;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey373"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###373"},');
 
   }, {}],
   363: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey374","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###374","fileName":"${__filename}","paramsNumber":3},`);
 
     require('es6-promise/auto');
     require('whatwg-fetch');
@@ -63016,7 +63016,7 @@ const SRTlib = require('SRT-util');
 
     }
     window.initUppy = initUppy;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey374"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###374"},');
 
   }, {
     "../env": 362,

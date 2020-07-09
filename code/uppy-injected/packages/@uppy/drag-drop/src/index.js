@@ -227,12 +227,12 @@ module.exports = class DragDrop extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
     return <button type="button" class={dragDropClass} style={dragDropStyle} onClick={() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
 
       return this.fileInputRef.click();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
 
     }} onDragOver={this.handleDragOver} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
         {this.renderHiddenFileInput()}

@@ -89,18 +89,18 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.i18nInit = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
       _this.translator = new Translator([_this.defaultLocale, _this.uppy.locale, _this.opts.locale]);
       _this.i18n = _this.translator.translate.bind(_this.translator);
       _this.i18nArray = _this.translator.translateArray.bind(_this.translator);
 
       _this.setPluginState();
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###2"},');
     };
 
     _this.removeTarget = function (plugin) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var pluginState = _this.getPluginState();
 
@@ -115,11 +115,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         targets: newTargets
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###3"},');
     };
 
     _this.addTarget = function (plugin) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var callerPluginId = plugin.id || plugin.constructor.name;
       var callerPluginName = plugin.title || callerPluginId;
       var callerPluginType = plugin.type;
@@ -129,7 +129,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
         _this.uppy.log(msg, 'error');
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###4"},');
         return;
       }
 
@@ -148,13 +148,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         targets: newTargets
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###4"},');
       return _this.el;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###4"},');
     };
 
     _this.hideAllPanels = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
       var update = {
         activePickerPanel: false,
         showAddFilesPanel: false,
@@ -164,17 +164,17 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       var current = _this.getPluginState();
 
       if (current.activePickerPanel === update.activePickerPanel && current.showAddFilesPanel === update.showAddFilesPanel && current.activeOverlayType === update.activeOverlayType) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###5"},');
         return;
       }
 
       _this.setPluginState(update);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports5"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###5"},');
     };
 
     _this.showPanel = function (id) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var _this$getPluginState = _this.getPluginState(),
           targets = _this$getPluginState.targets;
@@ -191,11 +191,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         activeOverlayType: 'PickerPanel'
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports6"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###6"},');
     };
 
     _this.openModal = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       var _createPromise = createPromise(),
           promise = _createPromise.promise,
@@ -239,9 +239,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       _this.uppy.emit('dashboard:modal-open');
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports7"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###7"},');
       return promise;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports7"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###7"},');
     };
 
     _this.closeModal = function (opts) {
@@ -249,7 +249,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         opts = {};
       }
 
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var _opts2 = opts,
           _opts2$manualClose = _opts2.manualClose,
           manualClose = _opts2$manualClose === void 0 ? true : _opts2$manualClose;
@@ -259,7 +259,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           isClosing = _this$getPluginState2.isClosing;
 
       if (isHidden || isClosing) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###8"},');
         return;
       }
 
@@ -319,33 +319,33 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       _this.uppy.emit('dashboard:modal-closed');
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###8"},');
       return promise;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports8"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###8"},');
     };
 
     _this.isModalOpen = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports9"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###9"},');
       return !_this.getPluginState().isHidden || false;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports9"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###9"},');
     };
 
     _this.requestCloseModal = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       if (_this.opts.onRequestCloseModal) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###10"},');
         return _this.opts.onRequestCloseModal();
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###10"},');
       return _this.closeModal();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports10"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###10"},');
     };
 
     _this.setDarkModeCapability = function (isDarkModeOn) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports11\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###11\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var _this$uppy$getState = _this.uppy.getState(),
           capabilities = _this$uppy$getState.capabilities;
@@ -356,22 +356,22 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         })
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports11"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###11"},');
     };
 
     _this.handleSystemDarkModeChange = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports12\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###12\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var isDarkModeOnNow = event.matches;
 
       _this.uppy.log("[Dashboard] Dark mode is " + (isDarkModeOnNow ? 'on' : 'off'));
 
       _this.setDarkModeCapability(isDarkModeOnNow);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports12"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###12"},');
     };
 
     _this.toggleFileCard = function (fileId) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports13\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###13\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (fileId) {
         _this.uppy.emit('dashboard:file-edit-start');
@@ -384,22 +384,22 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         activeOverlayType: fileId ? 'FileCard' : null
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports13"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###13"},');
     };
 
     _this.toggleAddFilesPanel = function (show) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports14\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###14\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this.setPluginState({
         showAddFilesPanel: show,
         activeOverlayType: show ? 'AddFiles' : null
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports14"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###14"},');
     };
 
     _this.addFiles = function (files) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports15\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###15\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       var descriptors = files.map(function (file) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"descriptors.files.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"descriptors.files.map"},');
@@ -421,11 +421,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this.uppy.log(err);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports15"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###15"},');
     };
 
     _this.startListeningToResize = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports16\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###16\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
       _this.resizeObserver = new ResizeObserver(function (entries, observer) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"resizeObserver.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
         var uppyDashboardInnerEl = entries[0];
@@ -463,20 +463,20 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"makeDashboardInsidesVisibleAnywayTimeout.setTimeout"},');
       }, 1000);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports16"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###16"},');
     };
 
     _this.stopListeningToResize = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports17\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###17\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this.resizeObserver.disconnect();
 
       clearTimeout(_this.makeDashboardInsidesVisibleAnywayTimeout);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports17"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###17"},');
     };
 
     _this.recordIfFocusedOnUppyRecently = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports18\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###18\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (_this.el.contains(event.target)) {
         _this.ifFocusedOnUppyRecently = true;
@@ -486,11 +486,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this.superFocus.cancel();
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports18"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###18"},');
     };
 
     _this.updateBrowserHistory = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports19\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###19\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       if (!history.state || !history.state[_this.modalName]) {
         var _extends2;
@@ -499,11 +499,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       }
 
       window.addEventListener('popstate', _this.handlePopState, false);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports19"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###19"},');
     };
 
     _this.handlePopState = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports20\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###20\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (_this.isModalOpen() && (!event.state || !event.state[_this.modalName])) {
         _this.closeModal({
@@ -515,24 +515,24 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         history.go(-1);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports20"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###20"},');
     };
 
     _this.handleKeyDownInModal = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports21\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###21\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       if (event.keyCode === ESC_KEY) _this.requestCloseModal(event);
       if (event.keyCode === TAB_KEY) trapFocus.forModal(event, _this.getPluginState().activeOverlayType, _this.el);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports21"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###21"},');
     };
 
     _this.handleClickOutside = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports22\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###22\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
       if (_this.opts.closeModalOnClickOutside) _this.requestCloseModal();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports22"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###22"},');
     };
 
     _this.handlePaste = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports23\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###23\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this.uppy.iteratePlugins(function (plugin) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -548,21 +548,21 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       _this.addFiles(files);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports23"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###23"},');
     };
 
     _this.handleInputChange = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports24\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###24\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       event.preventDefault();
       var files = toArray(event.target.files);
 
       _this.addFiles(files);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports24"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###24"},');
     };
 
     _this.handleDragOver = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports25\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###25\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       event.preventDefault();
       event.stopPropagation();
       event.dataTransfer.dropEffect = 'copy';
@@ -572,11 +572,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         isDraggingOver: true
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports25"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###25"},');
     };
 
     _this.handleDragLeave = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports26\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###26\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       event.preventDefault();
       event.stopPropagation();
       clearTimeout(_this.removeDragOverClassTimeout);
@@ -589,11 +589,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"removeDragOverClassTimeout.setTimeout"},');
       }, 50);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports26"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###26"},');
     };
 
     _this.handleDrop = function (event, dropCategory) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports27\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###27\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
       event.preventDefault();
       event.stopPropagation();
       clearTimeout(_this.removeDragOverClassTimeout);
@@ -603,13 +603,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       });
 
       _this.uppy.iteratePlugins(function (plugin) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
         if (plugin.type === 'acquirer') {
           plugin.handleRootDrop && plugin.handleRootDrop(event);
         }
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.iteratePlugins2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.iteratePlugins###2"},');
       });
 
       var executedDropErrorOnce = false;
@@ -641,37 +641,37 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getDroppedFiles.then"},');
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports27"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###27"},');
     };
 
     _this.handleRequestThumbnail = function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports28\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###28\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:request', file);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports28"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###28"},');
     };
 
     _this.handleCancelThumbnail = function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports29\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###29\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:cancel', file);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports29"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###29"},');
     };
 
     _this.handleKeyDownInInline = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports30\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###30\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       if (event.keyCode === TAB_KEY) trapFocus.forInline(event, _this.getPluginState().activeOverlayType, _this.el);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports30"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###30"},');
     };
 
     _this.handlePasteOnBody = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports31\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###31\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var isFocusInOverlay = _this.el.contains(document.activeElement);
 
@@ -679,23 +679,23 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this.handlePaste(event);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports31"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###31"},');
     };
 
     _this.handleComplete = function (_ref) {
       var failed = _ref.failed,
           uploadID = _ref.uploadID;
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports32\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###32\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       if (_this.opts.closeAfterFinish && failed.length === 0) {
         _this.requestCloseModal();
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports32"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###32"},');
     };
 
     _this.initEvents = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports33\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###33\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       if (_this.opts.trigger && !_this.opts.inline) {
         var showModalTrigger = findAllDOMElements(_this.opts.trigger);
@@ -731,19 +731,19 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this.el.addEventListener('keydown', _this.handleKeyDownInInline);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports33"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###33"},');
     };
 
     _this.removeEvents = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports34\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###34\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
       var showModalTrigger = findAllDOMElements(_this.opts.trigger);
 
       if (!_this.opts.inline && showModalTrigger) {
         showModalTrigger.forEach(function (trigger) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"showModalTrigger.forEach2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-          SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach2"},');
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"showModalTrigger.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach###2"},');
           return trigger.removeEventListener('click', _this.openModal);
-          SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach2"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach###2"},');
         });
       }
 
@@ -767,11 +767,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this.el.removeEventListener('keydown', _this.handleKeyDownInInline);
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports34"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###34"},');
     };
 
     _this.superFocusOnEachUpdate = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports35\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###35\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       var isFocusInUppy = _this.el.contains(document.activeElement);
 
@@ -787,61 +787,61 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this.superFocus.cancel();
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports35"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###35"},');
     };
 
     _this.afterUpdate = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports36\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###36\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this.superFocusOnEachUpdate();
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports36"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###36"},');
     };
 
     _this.cancelUpload = function (fileID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports37\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###37\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       _this.uppy.removeFile(fileID);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports37"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###37"},');
     };
 
     _this.saveFileCard = function (meta, fileID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports38\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###38\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       _this.uppy.setFileMeta(fileID, meta);
 
       _this.toggleFileCard();
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports38"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###38"},');
     };
 
     _this._attachRenderFunctionToTarget = function (target) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports39\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###39\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var plugin = _this.uppy.getPlugin(target.id);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports39"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###39"},');
       return _extends({}, target, {
         icon: plugin.icon || _this.opts.defaultPickerIcon,
         render: plugin.render
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports39"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###39"},');
     };
 
     _this._isTargetSupported = function (target) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports40\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###40\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var plugin = _this.uppy.getPlugin(target.id);
 
       if (typeof plugin.isSupported !== 'function') {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports40"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###40"},');
         return true;
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports40"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###40"},');
       return plugin.isSupported();
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports40"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###40"},');
     };
 
     _this._getAcquirers = memoize(function (targets) {
@@ -856,19 +856,19 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize"},');
     });
     _this._getProgressIndicators = memoize(function (targets) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.memoize2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize2"},');
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.memoize###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize###2"},');
       return targets.filter(function (target) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.targets.filter.map.targets.filter2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter2"},');
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.targets.filter.map.targets.filter###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter###2"},');
         return target.type === 'progressindicator';
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter###2"},');
       }).map(_this._attachRenderFunctionToTarget);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize###2"},');
     });
 
     _this.render = function (state) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports41\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###41\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var pluginState = _this.getPluginState();
 
@@ -940,7 +940,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         theme = _this.opts.theme;
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports41"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###41"},');
       return DashboardUI({
         state: state,
         isHidden: pluginState.isHidden,
@@ -1017,27 +1017,27 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         handleDragLeave: _this.handleDragLeave,
         handleDrop: _this.handleDrop
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports41"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###41"},');
     };
 
     _this.discoverProviderPlugins = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports42\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###42\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this.uppy.iteratePlugins(function (plugin) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
         if (plugin && !plugin.target && plugin.opts && plugin.opts.target === _this.constructor) {
           _this.addTarget(plugin);
         }
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.iteratePlugins3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.iteratePlugins###3"},');
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports42"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###42"},');
     };
 
     _this.install = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports43\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###43\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this.setPluginState({
         isHidden: true,
@@ -1056,7 +1056,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           closeAfterFinish = _this$opts.closeAfterFinish;
 
       if (inline && closeAfterFinish) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports43"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###43"},');
         throw new Error('[Dashboard] `closeAfterFinish: true` cannot be used on an inline Dashboard, because an inline Dashboard cannot be closed at all. Either set `inline: false`, or disable the `closeAfterFinish` option.');
       }
 
@@ -1130,11 +1130,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       _this.initEvents();
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports43"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###43"},');
     };
 
     _this.uninstall = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports44\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###44\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       if (!_this.opts.disableInformer) {
         var informer = _this.uppy.getPlugin(_this.id + ":Informer");
@@ -1156,12 +1156,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       var plugins = _this.opts.plugins || [];
       plugins.forEach(function (pluginID) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"plugins.forEach2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"plugins.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
         var plugin = _this.uppy.getPlugin(pluginID);
 
         if (plugin) plugin.unmount();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"plugins.forEach2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"plugins.forEach###2"},');
       });
 
       if (_this.opts.theme === 'auto') {
@@ -1172,7 +1172,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       _this.removeEvents();
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports44"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###44"},');
     };
 
     _this.id = _this.opts.id || 'Dashboard';

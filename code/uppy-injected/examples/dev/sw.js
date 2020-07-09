@@ -30,10 +30,10 @@ self.addEventListener('install', event => {
 
 });
 self.addEventListener('activate', event => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"self.addEventListener2","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"self.addEventListener###2","fileName":"${__filename}","paramsNumber":1},`);
 
   event.waitUntil(self.clients.claim());
-    SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener###2"},');
 
 });
 function sendMessageToAllClients(msg) {
@@ -83,7 +83,7 @@ function getFiles(store) {
 
 }
 self.addEventListener('message', event => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"self.addEventListener3","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"self.addEventListener###3","fileName":"${__filename}","paramsNumber":1},`);
 
   switch (event.data.type) {
     case 'uppy/ADD_FILE':
@@ -96,6 +96,6 @@ self.addEventListener('message', event => {
       getFiles(event.data.store);
       break;
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"self.addEventListener###3"},');
 
 });

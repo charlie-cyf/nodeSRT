@@ -41,12 +41,12 @@ function pick(opts = {}) {
     });
     uppy.on('error', reject);
     uppy.on('cancel-all', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###2"},');
 
       return reject(CANCEL);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###2"},');
 
     });
     uppy.getPlugin(pluginId).openModal();
@@ -61,18 +61,18 @@ function pick(opts = {}) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then"},');
 
   }, err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
     if (err === CANCEL) {
       uppy.getPlugin(pluginId).requestCloseModal();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then###2"},');
 
       return null;
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then###2"},');
 
     throw err;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then###2"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"pick","paramsNumber":1},');

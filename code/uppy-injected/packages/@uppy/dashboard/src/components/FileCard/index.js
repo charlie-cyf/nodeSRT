@@ -38,7 +38,7 @@ class FileCard extends Component {
 
   }
   updateMeta = (newVal, name) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###2","fileName":"${__filename}","paramsNumber":2},`);
 
     this.setState({
       formState: {
@@ -46,32 +46,32 @@ class FileCard extends Component {
         [name]: newVal
       }
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###2"},');
 
   }
   handleSave = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###3","fileName":"${__filename}","paramsNumber":0},`);
 
     const fileID = this.props.fileCardFor;
     this.props.saveFileCard(this.state.formState, fileID);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###3"},');
 
   }
   handleCancel = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###4","fileName":"${__filename}","paramsNumber":0},`);
 
     this.props.toggleFileCard();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###4"},');
 
   }
   renderMetaFields = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###5","fileName":"${__filename}","paramsNumber":0},`);
 
     const metaFields = this.props.metaFields || [];
     const fieldCSSClasses = {
       text: 'uppy-u-reset uppy-c-textInput uppy-Dashboard-FileCard-input'
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###5"},');
 
     return metaFields.map(field => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.metaFields.map","fileName":"${__filename}","paramsNumber":1},`);
@@ -106,7 +106,7 @@ class FileCard extends Component {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.metaFields.map"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###5"},');
 
   }
   render() {

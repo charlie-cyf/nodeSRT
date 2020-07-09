@@ -85,14 +85,14 @@ module.exports = class App extends React.Component {
             {this.state.open ? 'Close dashboard' : 'Open dashboard'}
           </button>
           <DashboardModal uppy={this.uppy2} open={this.state.open} target={document.body} onRequestClose={() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
 
       return this.setState({
         open: false
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
 
     }} />
         </div>

@@ -102,15 +102,15 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         });
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then"},');
       }, function (err) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.upload.then.catch.uppy.upload.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.upload.then.catch.uppy.upload.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         disabledByUppy.forEach(function (button) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"disabledByUppy.forEach2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"disabledByUppy.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           button.disabled = false;
-          SRTlib.send('{"type":"FUNCTIONEND","function":"disabledByUppy.forEach2"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"disabledByUppy.forEach###2"},');
         });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then###2"},');
         return Promise.reject(err);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then###2"},');
       }).catch(function (err) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.upload.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 

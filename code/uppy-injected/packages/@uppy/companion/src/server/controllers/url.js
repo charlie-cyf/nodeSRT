@@ -67,14 +67,14 @@ const get = (req, res) => {
     });
   }
   utils.getURLMeta(req.body.url, !debug).then(({size}) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
     logger.debug('Instantiating uploader.', null, req.id);
     const uploader = new Uploader(Uploader.reqToOptions(req, size));
     if (uploader.hasError()) {
       const response = uploader.getResponse();
       res.status(response.status).json(response.body);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then###2"},');
 
       return;
     }
@@ -89,18 +89,18 @@ const get = (req, res) => {
     });
     const response = uploader.getResponse();
     res.status(response.status).json(response.body);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then###2"},');
 
   }).catch(err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch###2","fileName":"${__filename}","paramsNumber":1},`);
 
     logger.error(err, 'controller.url.get.error', req.id);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch###2"},');
 
     return res.status(err.status || 500).json({
       message: 'failed to fetch URL metadata'
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch###2"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');

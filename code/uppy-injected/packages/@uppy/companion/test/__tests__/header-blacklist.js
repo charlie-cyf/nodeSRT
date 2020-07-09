@@ -17,7 +17,7 @@ describe('Header black-list testing', () => {
 
   });
   test('All headers invalid by regex', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"${__filename}","paramsNumber":0},`);
 
     const headers = headerSanitize({
       'Proxy-header-fake': 'proxy-header-fake',
@@ -29,22 +29,22 @@ describe('Header black-list testing', () => {
       'sec-header-fake': 'sec-header-fake'
     });
     expect(headers).toEqual({});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"test2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test###2"},');
 
   });
   test('All headers invalid by name and regex', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"${__filename}","paramsNumber":0},`);
 
     const headers = headerSanitize({
       'Proxy-header-fake': 'proxy-header-fake',
       'Sec-header-fake': 'sec-header-fake'
     });
     expect(headers).toEqual({});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"test3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test###3"},');
 
   });
   test('Returning only allowed headers', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"${__filename}","paramsNumber":0},`);
 
     const headers = headerSanitize({
       Authorization: 'Basic Xxxxxx',
@@ -57,18 +57,18 @@ describe('Header black-list testing', () => {
     expect(headers).toHaveProperty('Authorization');
     expect(headers).toHaveProperty('Content-Type');
     expect(headers).toHaveProperty('Expires');
-        SRTlib.send('{"type":"FUNCTIONEND","function":"test4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test###4"},');
 
   });
   test('Return empty object when headers is not an object', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test5","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"${__filename}","paramsNumber":0},`);
 
     expect(headerSanitize({})).toEqual({});
     expect(headerSanitize(null)).toEqual({});
     expect(headerSanitize(undefined)).toEqual({});
     expect(headerSanitize('Authorization: Basic 1234')).toEqual({});
     expect(headerSanitize(['Authorization', 'Basic 1234'])).toEqual({});
-        SRTlib.send('{"type":"FUNCTIONEND","function":"test5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"test###5"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"describe"},');

@@ -203,7 +203,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"get\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"RequestClient\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');
     return new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       _this4.preflightAndHeaders(path).then(function (headers) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"preflightAndHeaders.then.catch.preflightAndHeaders.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -225,7 +225,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"preflightAndHeaders.then.catch.preflightAndHeaders.then"},');
       }).catch(reject);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');
   };
@@ -236,30 +236,30 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"post\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"RequestClient\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"post"},');
     return new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       _this5.preflightAndHeaders(path).then(function (headers) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"preflightAndHeaders.then.catch.preflightAndHeaders.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"preflightAndHeaders.then.catch.preflightAndHeaders.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         fetchWithNetworkError(_this5._getUrl(path), {
           method: 'post',
           headers: headers,
           credentials: 'same-origin',
           body: JSON.stringify(data)
         }).then(_this5._getPostResponseFunc(skipPostResponse)).then(function (res) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then2"},');
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###2"},');
           return _this5._json(res).then(resolve);
-          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then2"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###2"},');
         }).catch(function (err) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fetchWithNetworkError.then.then.catch2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fetchWithNetworkError.then.then.catch###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           err = err.isAuthError ? err : new Error("Could not post " + _this5._getUrl(path) + ". " + err);
           reject(err);
-          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch2"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch###2"},');
         });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"preflightAndHeaders.then.catch.preflightAndHeaders.then2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###2"},');
       }).catch(reject);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression3"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###3"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"post"},');
   };
@@ -270,30 +270,30 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"delete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"RequestClient\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
     return new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       _this6.preflightAndHeaders(path).then(function (headers) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"preflightAndHeaders.then.catch.preflightAndHeaders.then3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"preflightAndHeaders.then.catch.preflightAndHeaders.then###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         fetchWithNetworkError(_this6.hostname + "/" + path, {
           method: 'delete',
           headers: headers,
           credentials: 'same-origin',
           body: data ? JSON.stringify(data) : null
         }).then(_this6._getPostResponseFunc(skipPostResponse)).then(function (res) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then3"},');
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###3"},');
           return _this6._json(res).then(resolve);
-          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then3"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###3"},');
         }).catch(function (err) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fetchWithNetworkError.then.then.catch3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fetchWithNetworkError.then.then.catch###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
           err = err.isAuthError ? err : new Error("Could not delete " + _this6._getUrl(path) + ". " + err);
           reject(err);
-          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch3"},');
+          SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch###3"},');
         });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"preflightAndHeaders.then.catch.preflightAndHeaders.then3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###3"},');
       }).catch(reject);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression4"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###4"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
   };

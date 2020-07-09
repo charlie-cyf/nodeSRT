@@ -81,18 +81,18 @@ class Instagram extends Provider {
     this.client.get('https://graph.instagram.com/me').qs({
       fields: 'username'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.instagram.user.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request###2"},');
 
         return done(err);
       } else {
         done(null, body.username);
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"client.get.qs.auth.request###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_getUsername"},');
@@ -175,12 +175,12 @@ class Instagram extends Provider {
     return this.client.get(`https://graph.instagram.com/${id}`).qs({
       fields: 'media_url'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
         logger.error(err, 'provider.instagram.size.error');
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request###2"},');
 
         return done(err);
       }
@@ -200,7 +200,7 @@ class Instagram extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch"},');
 
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.get.qs.auth.request###2"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');

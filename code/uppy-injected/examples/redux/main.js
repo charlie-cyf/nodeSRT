@@ -64,27 +64,27 @@ document.querySelector('#increment').onclick = () => {
 
 };
 document.querySelector('#decrement').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick2","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick###2","fileName":"${__filename}","paramsNumber":0},`);
 
   store.dispatch({
     type: 'DECREMENT'
   });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick###2"},');
 
 };
 document.querySelector('#incrementIfOdd').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick3","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick###3","fileName":"${__filename}","paramsNumber":0},`);
 
   if (getCounter() % 2 !== 0) {
     store.dispatch({
       type: 'INCREMENT'
     });
   }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick###3"},');
 
 };
 document.querySelector('#incrementAsync').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick4","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick###4","fileName":"${__filename}","paramsNumber":0},`);
 
   setTimeout(() => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"${__filename}","paramsNumber":0},`);
@@ -97,7 +97,7 @@ document.querySelector('#incrementAsync').onclick = () => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
 
   }, 1000);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick4"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"onclick###4"},');
 
 };
 const uppy = Uppy({

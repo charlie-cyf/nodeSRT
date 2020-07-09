@@ -78,11 +78,11 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
       });
       image.addEventListener('error', event => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"image.addEventListener2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"image.addEventListener###2","fileName":"${__filename}","paramsNumber":1},`);
 
         URL.revokeObjectURL(originalUrl);
         reject(event.error || new Error('Could not create thumbnail'));
-                SRTlib.send('{"type":"FUNCTIONEND","function":"image.addEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"image.addEventListener###2"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.onload.NewExpression"},');
@@ -392,17 +392,17 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   onCancelRequest = file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###2","fileName":"${__filename}","paramsNumber":1},`);
 
     const index = this.queue.indexOf(file.id);
     if (index !== -1) {
       this.queue.splice(index, 1);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###2"},');
 
   }
   onFileRemoved = file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports3","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###3","fileName":"${__filename}","paramsNumber":1},`);
 
     const index = this.queue.indexOf(file.id);
     if (index !== -1) {
@@ -411,11 +411,11 @@ module.exports = class ThumbnailGenerator extends Plugin {
     if (file.preview && isObjectURL(file.preview)) {
       URL.revokeObjectURL(file.preview);
     }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports3"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###3"},');
 
   }
   onRestored = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###4","fileName":"${__filename}","paramsNumber":0},`);
 
     const {files} = this.uppy.getState();
     const fileIDs = Object.keys(files);
@@ -434,38 +434,38 @@ module.exports = class ThumbnailGenerator extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###4"},');
 
   }
   waitUntilAllProcessed = fileIDs => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports5","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###5","fileName":"${__filename}","paramsNumber":1},`);
 
     fileIDs.forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
 
       const file = this.uppy.getFile(fileID);
       this.uppy.emit('preprocess-progress', file, {
         mode: 'indeterminate',
         message: this.i18n('generatingThumbnails')
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach###2"},');
 
     });
     const emitPreprocessCompleteForAll = () => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitPreprocessCompleteForAll","fileName":"${__filename}","paramsNumber":0},`);
 
       fileIDs.forEach(fileID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###3","fileName":"${__filename}","paramsNumber":1},`);
 
         const file = this.uppy.getFile(fileID);
         this.uppy.emit('preprocess-complete', file);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach###3"},');
 
       });
             SRTlib.send('{"type":"FUNCTIONEND","function":"emitPreprocessCompleteForAll"},');
 
     };
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###5"},');
 
     return new Promise((resolve, reject) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
@@ -486,7 +486,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
 
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###5"},');
 
   }
   install() {

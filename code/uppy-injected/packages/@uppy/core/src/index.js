@@ -297,10 +297,10 @@ class Uppy {
     this.i18nInit();
     if (newOpts.locale) {
       this.iteratePlugins(plugin => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins###2","fileName":"${__filename}","paramsNumber":1},`);
 
         plugin.setOptions();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###2"},');
 
       });
     }
@@ -393,12 +393,12 @@ class Uppy {
     const updatedMeta = Object.assign({}, this.getState().meta, data);
     const updatedFiles = Object.assign({}, this.getState().files);
     Object.keys(updatedFiles).forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
 
       updatedFiles[fileID] = Object.assign({}, updatedFiles[fileID], {
         meta: Object.assign({}, updatedFiles[fileID].meta, data)
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###2"},');
 
     });
     this.log('Adding metadata:');
@@ -724,10 +724,10 @@ class Uppy {
       this.log(`Added batch of ${newFiles.length} files`);
     } else {
       Object.keys(newFiles).forEach(fileID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###3","fileName":"${__filename}","paramsNumber":1},`);
 
         this.log(`Added file: ${newFiles[fileID].name}\n id: ${newFiles[fileID].id}\n type: ${newFiles[fileID].type}`);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###3"},');
 
       });
     }
@@ -790,12 +790,12 @@ class Uppy {
     }
     const uploadsToRemove = [];
     Object.keys(updatedUploads).forEach(uploadID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###4","fileName":"${__filename}","paramsNumber":1},`);
 
       const newFileIDs = currentUploads[uploadID].fileIDs.filter(fileIsNotRemoved);
       if (newFileIDs.length === 0) {
         uploadsToRemove.push(uploadID);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###4"},');
 
         return;
       }
@@ -803,7 +803,7 @@ class Uppy {
         ...currentUploads[uploadID],
         fileIDs: newFileIDs
       };
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###4"},');
 
     });
     uploadsToRemove.forEach(uploadID => {
@@ -901,23 +901,23 @@ class Uppy {
 
     const updatedFiles = Object.assign({}, this.getState().files);
     const inProgressUpdatedFiles = Object.keys(updatedFiles).filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.Object.keys.filter2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.Object.keys.filter###2","fileName":"${__filename}","paramsNumber":1},`);
 
-            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter###2"},');
 
       return !updatedFiles[file].progress.uploadComplete && updatedFiles[file].progress.uploadStarted;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter###2"},');
 
     });
     inProgressUpdatedFiles.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.forEach2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
 
       const updatedFile = Object.assign({}, updatedFiles[file], {
         isPaused: false,
         error: null
       });
       updatedFiles[file] = updatedFile;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.forEach2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.forEach###2"},');
 
     });
     this.setState({
@@ -1143,7 +1143,7 @@ class Uppy {
 
     });
     this.on('upload-error', (file, error, response) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###2","fileName":"${__filename}","paramsNumber":3},`);
 
       let errorMsg = 'Unknown error';
       if (error.message) {
@@ -1176,24 +1176,24 @@ class Uppy {
           throwErr: false
         });
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on###2"},');
 
     });
     this.on('upload', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###3","fileName":"${__filename}","paramsNumber":0},`);
 
       this.setState({
         error: null
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on###3"},');
 
     });
     this.on('upload-started', (file, upload) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on4","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###4","fileName":"${__filename}","paramsNumber":2},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"on4"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on###4"},');
 
         return;
       }
@@ -1206,16 +1206,16 @@ class Uppy {
           bytesTotal: file.size
         }
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on###4"},');
 
     });
     this.on('upload-progress', this._calculateProgress);
     this.on('upload-success', (file, uploadResp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on5","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###5","fileName":"${__filename}","paramsNumber":2},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"on5"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on###5"},');
 
         return;
       }
@@ -1231,15 +1231,15 @@ class Uppy {
         isPaused: false
       });
       this._calculateTotalProgress();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on###5"},');
 
     });
     this.on('preprocess-progress', (file, progress) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on6","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###6","fileName":"${__filename}","paramsNumber":2},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"on6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on###6"},');
 
         return;
       }
@@ -1248,15 +1248,15 @@ class Uppy {
           preprocess: progress
         })
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on###6"},');
 
     });
     this.on('preprocess-complete', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on7","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###7","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"on7"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on###7"},');
 
         return;
       }
@@ -1268,15 +1268,15 @@ class Uppy {
       this.setState({
         files: files
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on###7"},');
 
     });
     this.on('postprocess-progress', (file, progress) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on8","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###8","fileName":"${__filename}","paramsNumber":2},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"on8"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on###8"},');
 
         return;
       }
@@ -1285,15 +1285,15 @@ class Uppy {
           postprocess: progress
         })
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on###8"},');
 
     });
     this.on('postprocess-complete', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on9","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###9","fileName":"${__filename}","paramsNumber":1},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"on9"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"on###9"},');
 
         return;
       }
@@ -1305,14 +1305,14 @@ class Uppy {
       this.setState({
         files: files
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on###9"},');
 
     });
     this.on('restored', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on10","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###10","fileName":"${__filename}","paramsNumber":0},`);
 
       this._calculateTotalProgress();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"on10"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"on###10"},');
 
     });
     if (typeof window !== 'undefined' && window.addEventListener) {
@@ -1326,12 +1326,12 @@ class Uppy {
 
       });
       window.addEventListener('offline', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener###2","fileName":"${__filename}","paramsNumber":0},`);
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener###2"},');
 
         return this.updateOnlineStatus();
-                SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener2"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener###2"},');
 
       });
       setTimeout(() => {
@@ -1420,15 +1420,15 @@ class Uppy {
 
     let foundPlugin = null;
     this.iteratePlugins(plugin => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins###3","fileName":"${__filename}","paramsNumber":1},`);
 
       if (plugin.id === id) {
         foundPlugin = plugin;
-                SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins3"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###3"},');
 
         return false;
       }
-            SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###3"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"getPlugin"},');
@@ -1441,10 +1441,10 @@ class Uppy {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"iteratePlugins","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     Object.keys(this.plugins).forEach(pluginType => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach5","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###5","fileName":"${__filename}","paramsNumber":1},`);
 
       this.plugins[pluginType].forEach(method);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###5"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins"},');
@@ -1477,10 +1477,10 @@ class Uppy {
     this.reset();
     this._storeUnsubscribe();
     this.iteratePlugins(plugin => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins###4","fileName":"${__filename}","paramsNumber":1},`);
 
       this.removePlugin(plugin);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###4"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"close"},');
@@ -1830,13 +1830,13 @@ class Uppy {
       }, []);
       const waitingFileIDs = [];
       Object.keys(files).forEach(fileID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach6","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###6","fileName":"${__filename}","paramsNumber":1},`);
 
         const file = this.getFile(fileID);
         if (!file.progress.uploadStarted && currentlyUploadingFiles.indexOf(fileID) === -1) {
           waitingFileIDs.push(file.id);
         }
-                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach6"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###6"},');
 
       });
       const uploadID = this._createUpload(waitingFileIDs);

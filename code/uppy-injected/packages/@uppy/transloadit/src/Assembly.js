@@ -79,72 +79,72 @@ class TransloaditAssembly extends Emitter {
 
     });
     socket.on('connect_failed', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###2","fileName":"${__filename}","paramsNumber":0},`);
 
       this._onError(new NetworkError('Transloadit Socket.io connection error'));
       this.socket = null;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on2"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###2"},');
 
     });
     socket.on('error', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###3","fileName":"${__filename}","paramsNumber":0},`);
 
       socket.disconnect();
       this.socket = null;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on3"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###3"},');
 
     });
     socket.on('assembly_finished', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on4","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###4","fileName":"${__filename}","paramsNumber":0},`);
 
       this._onFinished();
-            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on4"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###4"},');
 
     });
     socket.on('assembly_upload_finished', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on5","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###5","fileName":"${__filename}","paramsNumber":1},`);
 
       this.emit('upload', file);
       this.status.uploads.push(file);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on5"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###5"},');
 
     });
     socket.on('assembly_uploading_finished', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on6","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###6","fileName":"${__filename}","paramsNumber":0},`);
 
       this.emit('executing');
-            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on6"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###6"},');
 
     });
     socket.on('assembly_upload_meta_data_extracted', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on7","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###7","fileName":"${__filename}","paramsNumber":0},`);
 
       this.emit('metadata');
       this._fetchStatus({
         diff: false
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on7"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###7"},');
 
     });
     socket.on('assembly_result_finished', (stepName, result) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on8","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###8","fileName":"${__filename}","paramsNumber":2},`);
 
       this.emit('result', stepName, result);
       if (!this.status.results[stepName]) {
         this.status.results[stepName] = [];
       }
       this.status.results[stepName].push(result);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on8"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###8"},');
 
     });
     socket.on('assembly_error', err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on9","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###9","fileName":"${__filename}","paramsNumber":1},`);
 
       this._onError(err);
       this._fetchStatus({
         diff: false
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on9"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on###9"},');
 
     });
     this.socket = socket;

@@ -29,10 +29,10 @@ function startXHRLimitTest(endpoint) {
 
   });
   uppy.on('upload-success', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###2","fileName":"${__filename}","paramsNumber":0},`);
 
     uppy.uploadsComplete++;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on2"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###2"},');
 
   });
     SRTlib.send('{"type":"FUNCTIONEND","function":"startXHRLimitTest","paramsNumber":1},');

@@ -25,10 +25,10 @@ module.exports.removeItem = function (key) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.removeItem\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.removeItem"},');
   return new Promise(function (resolve) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
     localStorage.removeItem(key);
     resolve();
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression###2"},');
   });
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.removeItem"},');
 };

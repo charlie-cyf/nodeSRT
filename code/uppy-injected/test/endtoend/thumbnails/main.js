@@ -26,23 +26,23 @@ uppyThumbnails.on('file-added', file => {
 
 });
 uppyThumbnails.on('thumbnail:error', (file, err) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on###2","fileName":"${__filename}","paramsNumber":2},`);
 
   const el = document.createElement('pre');
   el.style = 'font: 14pt monospace; background: red; color: white';
   el.textContent = `Error: ${err.stack}`;
   document.body.appendChild(el);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"uppyThumbnails.on2"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"uppyThumbnails.on###2"},');
 
 });
 uppyThumbnails.on('thumbnail:generated', (file, preview) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on3","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on###3","fileName":"${__filename}","paramsNumber":2},`);
 
   const img = new Image();
   img.src = file.preview;
   img.className = 'file-preview';
   img.style.display = 'block';
   document.body.appendChild(img);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"uppyThumbnails.on3"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"uppyThumbnails.on###3"},');
 
 });

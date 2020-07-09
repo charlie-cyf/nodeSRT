@@ -41,7 +41,7 @@ var VirtualList = /*#__PURE__*/function (_Component) {
     };
 
     _this.handleScroll = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
 
       _this.setState({
         offset: _this.base.scrollTop
@@ -51,7 +51,7 @@ var VirtualList = /*#__PURE__*/function (_Component) {
         _this.forceUpdate();
       }
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###2"},');
     };
 
     _this.focusElement = null;

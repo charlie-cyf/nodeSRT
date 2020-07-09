@@ -124,7 +124,7 @@ module.exports = /*#__PURE__*/function (_RequestClient) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"logout\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Provider\",\"superClass\":\"RequestClient\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
     return new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
 
       _this3.get(_this3.id + "/logout").then(function (res) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"get.then.catch.get.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -139,7 +139,7 @@ module.exports = /*#__PURE__*/function (_RequestClient) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"get.then.catch.get.then"},');
       }).catch(reject);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression###2"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
   };

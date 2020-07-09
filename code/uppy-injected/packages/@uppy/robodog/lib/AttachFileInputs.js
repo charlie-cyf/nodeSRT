@@ -102,9 +102,9 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
     this.inputs.forEach(function (input) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inputs.forEach2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inputs.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
       input.removeEventListener('change', _this4.handleChange);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"inputs.forEach2"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"inputs.forEach###2"},');
     });
     this.inputs = null;
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
