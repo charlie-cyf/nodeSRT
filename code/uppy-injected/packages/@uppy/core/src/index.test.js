@@ -10,6 +10,9 @@ const AcquirerPlugin2 = require('../../../../test/mocks/acquirerPlugin2');
 const InvalidPlugin = require('../../../../test/mocks/invalidPlugin');
 const InvalidPluginWithoutId = require('../../../../test/mocks/invalidPluginWithoutId');
 const InvalidPluginWithoutType = require('../../../../test/mocks/invalidPluginWithoutType');
+
+console.log(require.resolve('@uppy/utils/lib/prettyBytes'));
+
 jest.mock('cuid', () => {
   return () => 'cjd09qwxb000dlql4tp4doz8h';
 });
