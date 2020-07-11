@@ -299,7 +299,7 @@ class DropBox extends Provider {
 
     if (resp) {
       const fallbackMessage = `request to ${this.authProvider} returned ${resp.statusCode}`;
-      const errMsg = (resp.body || ({})).error_summary ? resp.body.error_summary : fallbackMessage;
+      const errMsg = resp.body.error_summary ? resp.body.error_summary : fallbackMessage;
             SRTlib.send('{"type":"FUNCTIONEND","function":"_error"},');
 
       return resp.statusCode === 401 ? new ProviderAuthError() : new ProviderApiError(errMsg, resp.statusCode);

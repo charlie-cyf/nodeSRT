@@ -71,7 +71,8 @@ module.exports.parseAndApplyDiff = function (codebase, diff) {
     JsDiff.parsePatch(diff).forEach(file => {
       const sourcePath = path.resolve(path.join(codebase, file.oldFileName.substring(file.oldFileName.indexOf('/')+1)))
     //   console.log('sourcePath', sourcePath);
-      const patchedFile = JsDiff.applyPatch(fs.readFileSync(sourcePath, 'utf8'), file);
+      const sourceCode = fs.existsSync(sourcePath) ? fs.readFileSync(sourcePath, 'utf8') : '';
+      const patchedFile = JsDiff.applyPatch(sourceCode, file);
     //   console.log('patched', patchedFile)
       objList.push({
           filename: sourcePath,

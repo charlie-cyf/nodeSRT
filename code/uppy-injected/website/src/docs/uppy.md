@@ -426,9 +426,9 @@ file.preview   // value that can be used to populate "src" attribute of an "img"
 Get an array of all file objects in Uppy. See [uppy.getFile()](#uppy-getFile-fileID) for an example of the file object format.
 
 ```js
-const prettierBytes = require('@transloadit/prettier-bytes')
+const prettyBytes = require('pretty-bytes')
 const items = uppy.getFiles().map(() =>
-  `<li>${file.name} - ${prettierBytes(file.size)}</li>`
+  `<li>${file.name} - ${prettyBytes(file.size)}</li>`
 ).join('')
 document.querySelector('.file-list').innerHTML = `<ul>${items}</ul>`
 ```
@@ -750,18 +750,6 @@ Fired each time a single upload has errored.
 uppy.on('upload-error', (file, error, response) => {
   console.log('error with file:', file.id)
   console.log('error message:', error)
-})
-```
-
-If the error is related to network conditions — endpoint unreachable due to firewall or ISP blockage, for instance — the error will have `error.isNetworkError` property set to `true`. Here’s how you can check for network errors:
-
-``` javascript
-uppy.on('upload-error', (file, error, response) => {
-  if (error.isNetworkError) {
-    // Let your users know that file upload could have failed
-    // due to firewall or ISP issues
-    alertUserAboutPossibleFirewallOrISPIssues(error)
-  }
 })
 ```
 

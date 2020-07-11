@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 const qs = require('querystring');
-const {URL} = require('url');
+const parseUrl = require('url').parse;
 const {hasMatch} = require('../helpers/utils');
 const oAuthState = require('../helpers/oauth-state');
 module.exports = function oauthRedirect(req, res) {
@@ -15,7 +15,7 @@ module.exports = function oauthRedirect(req, res) {
     return res.status(400).send('Cannot find state in session');
   }
   const handler = oAuthState.getFromState(state, 'companionInstance', req.companion.options.secret);
-  const handlerHostName = new URL(handler).host;
+  const handlerHostName = parseUrl(handler).host;
   if (hasMatch(handlerHostName, req.companion.options.server.validHosts)) {
     const providerName = req.companion.provider.authProvider;
     const params = qs.stringify(req.query);

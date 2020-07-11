@@ -3,15 +3,6 @@ const SRTlib = require('SRT-util');
 const MB = 1024 * 1024;
 const defaultOptions = {
   limit: 1,
-  getChunkSize(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.getChunkSize","fileName":"${__filename}","paramsNumber":1},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getChunkSize"},');
-
-    return Math.ceil(file.size / 10000);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getChunkSize"},');
-
-  },
   onStart() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onStart","fileName":"${__filename}","paramsNumber":0},`);
 
@@ -62,13 +53,10 @@ class MultipartUploader {
       ...defaultOptions,
       ...options
     };
-    if (!this.options.getChunkSize) {
-      this.options.getChunkSize = defaultOptions.getChunkSize;
-    }
     this.file = file;
     this.key = this.options.key || null;
     this.uploadId = this.options.uploadId || null;
-    this.parts = [];
+    this.parts = this.options.parts || [];
     this.createdPromise = Promise.reject();
     this.isPaused = false;
     this.chunks = null;
@@ -88,9 +76,7 @@ class MultipartUploader {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_initChunks","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MultipartUploader"}},`);
 
     const chunks = [];
-    const desiredChunkSize = this.options.getChunkSize(this.file);
-    const minChunkSize = Math.max(5 * MB, Math.ceil(this.file.size / 10000));
-    const chunkSize = Math.max(desiredChunkSize, minChunkSize);
+    const chunkSize = Math.max(Math.ceil(this.file.size / 10000), 5 * MB);
     for (let i = 0; i < this.file.size; i += chunkSize) {
       const end = Math.min(this.file.size, i + chunkSize);
       chunks.push(this.file.slice(i, end));

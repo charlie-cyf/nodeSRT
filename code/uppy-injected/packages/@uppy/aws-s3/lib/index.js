@@ -196,13 +196,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleUpload"},');
     return settle(fileIDs.map(function (id, index) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.settle.then.settle.fileIDs.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
-      paramsPromises[id] = getUploadParameters(_this2.uppy.getFile(id));
+
+      var file = _this2.uppy.getFile(id);
+
+      paramsPromises[id] = getUploadParameters(file);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.settle.then.settle.fileIDs.map"},');
       return paramsPromises[id].then(function (params) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         delete paramsPromises[id];
-
-        var file = _this2.uppy.getFile(id);
 
         _this2.validateParameters(file, params);
 
@@ -233,8 +234,6 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       }).catch(function (error) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.paramsPromises.id.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         delete paramsPromises[id];
-
-        var file = _this2.uppy.getFile(id);
 
         _this2.uppy.emit('upload-error', file, error);
 

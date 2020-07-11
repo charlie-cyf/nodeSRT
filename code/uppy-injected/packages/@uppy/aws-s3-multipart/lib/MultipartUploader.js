@@ -5,12 +5,6 @@ var SRTlib = require('SRT-util');
 var MB = 1024 * 1024;
 var defaultOptions = {
   limit: 1,
-  getChunkSize: function getChunkSize(file) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"defaultOptions.getChunkSize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getChunkSize"},');
-    return Math.ceil(file.size / 10000);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.getChunkSize"},');
-  },
   onStart: function onStart() {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"defaultOptions.onStart\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onStart"},');
@@ -46,15 +40,10 @@ var MultipartUploader = /*#__PURE__*/function () {
   function MultipartUploader(file, options) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     this.options = _extends({}, defaultOptions, {}, options);
-
-    if (!this.options.getChunkSize) {
-      this.options.getChunkSize = defaultOptions.getChunkSize;
-    }
-
     this.file = file;
     this.key = this.options.key || null;
     this.uploadId = this.options.uploadId || null;
-    this.parts = [];
+    this.parts = this.options.parts || [];
     this.createdPromise = Promise.reject();
     this.isPaused = false;
     this.chunks = null;
@@ -75,9 +64,7 @@ var MultipartUploader = /*#__PURE__*/function () {
   _proto._initChunks = function _initChunks() {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_initChunks\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MultipartUploader\"}},");
     var chunks = [];
-    var desiredChunkSize = this.options.getChunkSize(this.file);
-    var minChunkSize = Math.max(5 * MB, Math.ceil(this.file.size / 10000));
-    var chunkSize = Math.max(desiredChunkSize, minChunkSize);
+    var chunkSize = Math.max(Math.ceil(this.file.size / 10000), 5 * MB);
 
     for (var i = 0; i < this.file.size; i += chunkSize) {
       var end = Math.min(this.file.size, i + chunkSize);

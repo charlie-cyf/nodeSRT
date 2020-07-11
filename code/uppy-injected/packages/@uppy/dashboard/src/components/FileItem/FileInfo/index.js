@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 const {h} = require('preact');
-const prettierBytes = require('@transloadit/prettier-bytes');
+const prettyBytes = require('@uppy/utils/lib/prettyBytes');
 const truncateString = require('../../../utils/truncateString');
 const renderAcquirerIcon = (acquirer, props) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderAcquirerIcon","fileName":"${__filename}","paramsNumber":2},`);
@@ -21,7 +21,7 @@ const renderFileSource = props => {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSource"},');
 
-  return props.file.source && props.file.source !== props.id && <div class="uppy-Dashboard-Item-sourceIcon">
+  return props.file.source && props.file.source !== props.id && <div class="uppy-DashboardItem-sourceIcon">
       {props.acquirers.map(acquirer => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"props.acquirers.map","fileName":"${__filename}","paramsNumber":1},`);
 
@@ -50,7 +50,7 @@ const renderFileName = props => {
   }
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileName"},');
 
-  return <div class="uppy-Dashboard-Item-name" title={props.file.meta.name}>
+  return <div class="uppy-DashboardItem-name" title={props.file.meta.name}>
       {truncateString(props.file.meta.name, maxNameLength)}
     </div>;
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileName"},');
@@ -61,26 +61,10 @@ const renderFileSize = props => {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSize"},');
 
-  return props.file.data.size && <div class="uppy-Dashboard-Item-statusSize">
-      {prettierBytes(props.file.data.size)}
+  return props.file.data.size && <div class="uppy-DashboardItem-statusSize">
+      {prettyBytes(props.file.data.size)}
     </div>;
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSize"},');
-
-};
-const ErrorButton = ({file, onClick}) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ErrorButton","fileName":"${__filename}","paramsNumber":1},`);
-
-  if (file.error) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
-
-    return <span class="uppy-Dashboard-Item-errorDetails" aria-label={file.error} data-microtip-position="bottom" data-microtip-size="medium" role="tooltip" onclick={onClick}>
-        ?
-      </span>;
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
-
-  return null;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
 
 };
 module.exports = function FileInfo(props) {
@@ -88,18 +72,11 @@ module.exports = function FileInfo(props) {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  return <div class="uppy-Dashboard-Item-fileInfo" data-uppy-file-source={props.file.source}>
+  return <div class="uppy-DashboardItem-fileInfo" data-uppy-file-source={props.file.source}>
       {renderFileName(props)}
-      <div class="uppy-Dashboard-Item-status">
+      <div class="uppy-DashboardItem-status">
         {renderFileSize(props)}
         {renderFileSource(props)}
-        <ErrorButton file={props.file} onClick={() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.FileInfo.ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
-
-    alert(props.file.error);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FileInfo.ReturnStatement"},');
-
-  }} />
       </div>
     </div>;
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

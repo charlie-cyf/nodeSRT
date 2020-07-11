@@ -113,7 +113,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         focusable: "false",
         width: "32",
         height: "32",
-        viewBox: "0 0 32 32"
+        viewBox: "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg"
       }, h("g", {
         fill: "none",
         "fill-rule": "evenodd"
@@ -138,8 +139,6 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         stopRecording: 'Stop video recording',
         allowAccessTitle: 'Please allow access to your camera',
         allowAccessDescription: 'In order to take pictures or record video with your camera, please allow camera access for this site.',
-        noCameraTitle: 'Camera Not Available',
-        noCameraDescription: 'In order to take pictures or record video, please connect a camera device',
         recordingStoppedMaxSize: 'Recording stopped because the file size is about to exceed the limit',
         recordingLength: 'Recording length %{recording_length}'
       }
@@ -203,27 +202,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"i18nInit"},');
   };
 
-  _proto.hasCameraCheck = function hasCameraCheck() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"hasCameraCheck\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
-
-    if (!this.mediaDevices) {
-      SRTlib.send('{"type":"FUNCTIONEND","function":"hasCameraCheck"},');
-      return Promise.resolve(false);
-    }
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"hasCameraCheck"},');
-    return this.mediaDevices.enumerateDevices().then(function (devices) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.mediaDevices.enumerateDevices.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.mediaDevices.enumerateDevices.then"},');
-      return devices.some(function (device) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.devices.some\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.devices.some"},');
-        return device.kind === 'videoinput';
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.devices.some"},');
-      });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.mediaDevices.enumerateDevices.then"},');
-    });
-    SRTlib.send('{"type":"FUNCTIONEND","function":"hasCameraCheck"},');
+  _proto.isSupported = function isSupported() {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isSupported\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isSupported"},');
+    return !!this.mediaDevices;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"isSupported"},');
   };
 
   _proto.getConstraints = function getConstraints() {
@@ -245,40 +228,31 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_start\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
 
-    if (!this.supportsUserMedia) {
+    if (!this.isSupported()) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"_start"},');
       return Promise.reject(new Error('Webcam access not supported'));
     }
 
     this.webcamActive = true;
     var constraints = this.getConstraints();
-    this.hasCameraCheck().then(function (hasCamera) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.hasCameraCheck.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send('{"type":"FUNCTIONEND","function":"_start"},');
+    return this.mediaDevices.getUserMedia(constraints).then(function (stream) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      _this2.stream = stream;
 
       _this2.setPluginState({
-        hasCamera: hasCamera
+        cameraReady: true
       });
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.hasCameraCheck.then"},');
-      return _this2.mediaDevices.getUserMedia(constraints).then(function (stream) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-        _this2.stream = stream;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then"},');
+    }).catch(function (err) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
-        _this2.setPluginState({
-          cameraReady: true
-        });
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then"},');
-      }).catch(function (err) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.mediaDevices.getUserMedia.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-
-        _this2.setPluginState({
-          cameraError: err
-        });
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.mediaDevices.getUserMedia.then.catch"},');
+      _this2.setPluginState({
+        cameraError: err
       });
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.hasCameraCheck.then"},');
+
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch"},');
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_start"},');
   };
@@ -646,8 +620,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"_focus"},');
   };
 
-  _proto.render = function render() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+  _proto.render = function render(state) {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
 
     if (!this.webcamActive) {
       this._start();
@@ -655,12 +629,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     var webcamState = this.getPluginState();
 
-    if (!webcamState.cameraReady || !webcamState.hasCamera) {
+    if (!webcamState.cameraReady) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
       return h(PermissionsScreen, {
         icon: CameraIcon,
-        i18n: this.i18n,
-        hasCamera: webcamState.hasCamera
+        i18n: this.i18n
       });
     }
 

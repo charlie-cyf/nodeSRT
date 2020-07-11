@@ -8,7 +8,7 @@ var classNames = require('classnames');
 
 var statusBarStates = require('./StatusBarStates');
 
-var prettierBytes = require('@transloadit/prettier-bytes');
+var prettyBytes = require('@uppy/utils/lib/prettyBytes');
 
 var prettyETA = require('@uppy/utils/lib/prettyETA');
 
@@ -188,7 +188,7 @@ var RetryBtn = function RetryBtn(props) {
   }, h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "uppy-c-icon",
+    class: "UppyIcon",
     width: "8",
     height: "10",
     viewBox: "0 0 8 10"
@@ -211,7 +211,7 @@ var CancelBtn = function CancelBtn(props) {
   }, h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "uppy-c-icon",
+    class: "UppyIcon",
     width: "16",
     height: "16",
     viewBox: "0 0 16 16"
@@ -251,7 +251,7 @@ var PauseResumeButton = function PauseResumeButton(props) {
   }, isAllPaused ? h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "uppy-c-icon",
+    class: "UppyIcon",
     width: "16",
     height: "16",
     viewBox: "0 0 16 16"
@@ -269,7 +269,7 @@ var PauseResumeButton = function PauseResumeButton(props) {
   }))) : h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "uppy-c-icon",
+    class: "UppyIcon",
     width: "16",
     height: "16",
     viewBox: "0 0 16 16"
@@ -333,8 +333,8 @@ var ProgressDetails = function ProgressDetails(props) {
   }), h("span", {
     class: "uppy-StatusBar-additionalInfo"
   }, ifShowFilesUploadedOfTotal && renderDot(), props.i18n('dataUploadedOfTotal', {
-    complete: prettierBytes(props.totalUploadedSize),
-    total: prettierBytes(props.totalSize)
+    complete: prettyBytes(props.totalUploadedSize),
+    total: prettyBytes(props.totalSize)
   }), renderDot(), props.i18n('xTimeLeft', {
     time: prettyETA(props.totalETA)
   })));
@@ -418,7 +418,7 @@ var ProgressBarComplete = function ProgressBarComplete(_ref) {
   }, h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "uppy-StatusBar-statusIndicator uppy-c-icon",
+    class: "uppy-StatusBar-statusIndicator UppyIcon",
     width: "15",
     height: "11",
     viewBox: "0 0 15 11"
@@ -454,7 +454,7 @@ var ProgressBarError = function ProgressBarError(_ref2) {
   }, h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "uppy-StatusBar-statusIndicator uppy-c-icon",
+    class: "uppy-StatusBar-statusIndicator UppyIcon",
     width: "11",
     height: "11",
     viewBox: "0 0 11 11"

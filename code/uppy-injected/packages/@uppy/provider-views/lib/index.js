@@ -109,15 +109,6 @@ module.exports = (_temp = _class = /*#__PURE__*/function () {
     this.clearSelection = this.clearSelection.bind(this);
     this.render = this.render.bind(this);
     this.clearSelection();
-    this.plugin.setPluginState({
-      authenticated: false,
-      files: [],
-      folders: [],
-      directories: [],
-      activeRow: -1,
-      filterInput: '',
-      isSearchVisible: false
-    });
     SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
   }
 

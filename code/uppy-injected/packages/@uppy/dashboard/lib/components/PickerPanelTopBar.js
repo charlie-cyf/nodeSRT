@@ -3,6 +3,9 @@ var SRTlib = require('SRT-util');
 var _require = require('preact'),
     h = _require.h;
 
+var _require2 = require('./icons'),
+    iconPlus = _require2.iconPlus;
+
 var uploadStates = {
   STATE_ERROR: 'error',
   STATE_WAITING: 'waiting',
@@ -126,16 +129,7 @@ function PanelTopBar(props) {
       return props.toggleAddFilesPanel(true);
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
     }
-  }, h("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    class: "uppy-c-icon",
-    width: "15",
-    height: "15",
-    viewBox: "0 0 15 15"
-  }, h("path", {
-    d: "M8 6.5h6a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-.5.5H8v6a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5V8h-6a.5.5 0 0 1-.5-.5V7a.5.5 0 0 1 .5-.5h6v-6A.5.5 0 0 1 7 0h.5a.5.5 0 0 1 .5.5v6z"
-  })), h("span", {
+  }, iconPlus(), h("span", {
     class: "uppy-DashboardContent-addMoreCaption"
   }, props.i18n('addMore'))) : h("div", null));
   SRTlib.send('{"type":"FUNCTIONEND","function":"PanelTopBar","paramsNumber":1},');

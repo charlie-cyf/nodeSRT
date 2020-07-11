@@ -202,7 +202,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         _this2.uppy.setFileState(file.id, {
           s3Multipart: _extends({}, cFile.s3Multipart, {
             key: data.key,
-            uploadId: data.uploadId
+            uploadId: data.uploadId,
+            parts: []
           })
         });
 
@@ -265,6 +266,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           return;
         }
 
+        _this2.uppy.setFileState(file.id, {
+          s3Multipart: _extends({}, cFile.s3Multipart, {
+            parts: [].concat(cFile.s3Multipart.parts, [part])
+          })
+        });
+
         _this2.uppy.emit('s3-multipart:part-uploaded', cFile, part);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"onPartComplete"},');
@@ -276,7 +283,6 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         prepareUploadPart: _this2.opts.prepareUploadPart.bind(_this2, file),
         completeMultipartUpload: _this2.opts.completeMultipartUpload.bind(_this2, file),
         abortMultipartUpload: _this2.opts.abortMultipartUpload.bind(_this2, file),
-        getChunkSize: _this2.opts.getChunkSize ? _this2.opts.getChunkSize.bind(_this2) : null,
         onStart: onStart,
         onProgress: onProgress,
         onError: onError,

@@ -1,5 +1,6 @@
 const { findKey, select } = require("underscore");
 const Instrumentor = require('../instrument/instrumentor')
+const path = require('path')
 
 
 module.exports = class TestSelector {
@@ -32,6 +33,8 @@ module.exports = class TestSelector {
                     })
                 })
             }
+            // console.log('fileName:', change.filename )
+            // console.log("unnified Changes:", unifiedChanges)
             change.unifiedChanges = unifiedChanges;
         });
 
@@ -44,7 +47,8 @@ module.exports = class TestSelector {
         *   ]
         */
         let selectedTests = [];
-        const theCodeBase = this.codebase;
+        const theCodeBase = path.resolve(this.codebase+'-injected');
+    
         const graphVisitor = function(node, suiteName, testName, testFile) {
             if(node.testSuiteName){
                 suiteName = node.testSuiteName;
@@ -60,7 +64,9 @@ module.exports = class TestSelector {
                     if(change.filename === node.fileName.replace(theCodeBase, "")) {
                         change.unifiedChanges.forEach(ele => {
                             // check if change function is node
-                            if(ele.functionName.anonymous === node.anonymous && ele.functionName.paramsNumber === node.paramsNumber && ele.functionName.functionName === node.function.split('###')[0]){
+                            // console.log("filename:", change.filename ,'ele:', ele)
+                            if(ele.functionName && ele.functionName.anonymous === node.anonymous && ele.functionName.paramsNumber === node.paramsNumber && ele.functionName.functionName === node.function.split('###')[0]){
+                                // console.log('function name:', ele.functionName.functionName)
                                 if(selectedTests.filter(t => t.testFile === testFile && t.suiteName === suiteName && t.testFile === testFile).length === 0){
                                     selectedTests.push({testFile, suiteName, testName});
                                 }

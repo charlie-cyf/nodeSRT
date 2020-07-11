@@ -17,7 +17,6 @@ declare module Tus {
     metaFields?: string[] | null
     autoRetry?: boolean
     limit?: number
-    useFastRemoteRetry?: boolean
   }
 }
 

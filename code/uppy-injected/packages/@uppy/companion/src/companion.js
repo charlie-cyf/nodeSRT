@@ -1,6 +1,5 @@
 const SRTlib = require('SRT-util');
 
-const fs = require('fs');
 const express = require('express');
 const Grant = require('grant').express();
 const grantConfig = require('./config/grant')();
@@ -54,7 +53,6 @@ module.exports.errors = {
 module.exports.app = (options = {}) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.app","fileName":"${__filename}","paramsNumber":1},`);
 
-  validateConfig(options);
   options = merge({}, defaultOptions, options);
   const providers = providerManager.getDefaultProviders(options);
   providerManager.addProviderOptions(options, grantConfig);
@@ -253,6 +251,7 @@ const getOptionsMiddleware = options => {
       buildURL: getURLBuilder(options)
     };
     logger.info(`uppy client version ${req.companion.clientVersion}`, 'companion.client.version');
+    req.uppy = req.companion;
     next();
         SRTlib.send('{"type":"FUNCTIONEND","function":"middleware"},');
 
@@ -290,42 +289,5 @@ const maskLogger = companionOptions => {
   }
   logger.setMaskables(secrets);
     SRTlib.send('{"type":"FUNCTIONEND","function":"maskLogger"},');
-
-};
-const validateConfig = companionOptions => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateConfig","fileName":"${__filename}","paramsNumber":1},`);
-
-  const mandatoryOptions = ['secret', 'filePath', 'server.host'];
-  const unspecified = [];
-  mandatoryOptions.forEach(i => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"mandatoryOptions.forEach","fileName":"${__filename}","paramsNumber":1},`);
-
-    const value = i.split('.').reduce((prev, curr) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"value.i.split.reduce","fileName":"${__filename}","paramsNumber":2},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"value.i.split.reduce"},');
-
-      return prev ? prev[curr] : undefined;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"value.i.split.reduce"},');
-
-    }, companionOptions);
-    if (!value) unspecified.push(`"${i}"`);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"mandatoryOptions.forEach"},');
-
-  });
-  if (unspecified.length) {
-    const messagePrefix = 'Please specify the following options to use companion:';
-        SRTlib.send('{"type":"FUNCTIONEND","function":"validateConfig"},');
-
-    throw new Error(`${messagePrefix}\n${unspecified.join(',\n')}`);
-  }
-  try {
-    fs.accessSync(`${companionOptions.filePath}`, fs.R_OK | fs.W_OK);
-  } catch (err) {
-        SRTlib.send('{"type":"FUNCTIONEND","function":"validateConfig"},');
-
-    throw new Error(`No access to "${companionOptions.filePath}". Please ensure the directory exists and with read/write permissions.`);
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"validateConfig"},');
 
 };

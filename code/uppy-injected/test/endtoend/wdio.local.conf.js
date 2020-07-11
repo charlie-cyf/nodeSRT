@@ -33,6 +33,7 @@ exports.config = {
   // Set a base URL in order to shorten url command calls. If your url parameter starts
   // with "/", then the base url gets prepended.
   baseUrl: 'http://localhost',
+  path: '/',
 
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/

@@ -6,7 +6,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const redis = require('../server/redis')
 const logger = require('../server/logger')
-const { URL } = require('url')
+const { parseURL } = require('../server/helpers/utils')
 const merge = require('lodash.merge')
 // @ts-ignore
 const promBundle = require('express-prom-bundle')
@@ -80,7 +80,7 @@ morgan.token('url', (req, res) => {
 morgan.token('referrer', (req, res) => {
   const ref = req.headers.referer || req.headers.referrer
   if (typeof ref === 'string') {
-    const parsed = new URL(ref)
+    const parsed = parseURL(ref)
     const rawQuery = qs.parse(parsed.search.replace('?', ''))
     const { query, censored } = censorQuery(rawQuery)
     return censored ? `${parsed.href.split('?')[0]}?${qs.stringify(query)}` : parsed.href
@@ -162,20 +162,12 @@ app.get('/', (req, res) => {
   res.send(helper.buildHelpfulStartupMessage(companionOptions))
 })
 
-let companionApp
-try {
-  // initialize companion
-  companionApp = companion.app(companionOptions)
-} catch (error) {
-  console.error('\x1b[31m', error.message, '\x1b[0m')
-  process.exit(1)
-}
-
-// add companion to server middlewear
+// initialize companion
+helper.validateConfig(companionOptions)
 if (process.env.COMPANION_PATH) {
-  app.use(process.env.COMPANION_PATH, companionApp)
+  app.use(process.env.COMPANION_PATH, companion.app(companionOptions))
 } else {
-  app.use(companionApp)
+  app.use(companion.app(companionOptions))
 }
 
 // WARNING: This route is added in order to validate your app with OneDrive.

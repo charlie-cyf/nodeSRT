@@ -203,7 +203,7 @@ class OneDrive extends Provider {
 
     if (resp) {
       const fallbackMsg = `request to ${this.authProvider} returned ${resp.statusCode}`;
-      const errMsg = (resp.body || ({})).error ? resp.body.error.message : fallbackMsg;
+      const errMsg = resp.body.error ? resp.body.error.message : fallbackMsg;
             SRTlib.send('{"type":"FUNCTIONEND","function":"_error"},');
 
       return resp.statusCode === 401 ? new ProviderAuthError() : new ProviderApiError(errMsg, resp.statusCode);

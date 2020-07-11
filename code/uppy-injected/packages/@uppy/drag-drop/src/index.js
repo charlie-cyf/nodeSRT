@@ -168,7 +168,7 @@ module.exports = class DragDrop extends Plugin {
     const restrictions = this.uppy.opts.restrictions;
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderHiddenFileInput"},');
 
-    return <input class="uppy-DragDrop-input" type="file" hidden ref={ref => {
+    return <input class="uppy-DragDrop-input" type="file" tabindex={-1} focusable="false" ref={ref => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
 
       this.fileInputRef = ref;
@@ -183,7 +183,7 @@ module.exports = class DragDrop extends Plugin {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderArrowSvg"},');
 
-    return <svg aria-hidden="true" focusable="false" class="uppy-c-icon uppy-DragDrop-arrow" width="16" height="16" viewBox="0 0 16 16">
+    return <svg aria-hidden="true" focusable="false" class="UppyIcon uppy-DragDrop-arrow" width="16" height="16" viewBox="0 0 16 16">
         <path d="M11 10V0H5v10H2l6 6 6-6h-3zm0 0" fill-rule="evenodd" />
       </svg>;
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderArrowSvg"},');
@@ -214,10 +214,11 @@ module.exports = class DragDrop extends Plugin {
   render(state) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
-    const dragDropClass = `uppy-Root
+    const dragDropClass = `
+      uppy-Root
       uppy-u-reset
       uppy-DragDrop-container
-      ${this.isDragDropSupported ? 'uppy-DragDrop--isDragDropSupported' : ''}
+      ${this.isDragDropSupported ? 'uppy-DragDrop--is-dragdrop-supported' : ''}
       ${this.getPluginState().isDraggingOver ? 'uppy-DragDrop--isDraggingOver' : ''}
     `;
     const dragDropStyle = {
