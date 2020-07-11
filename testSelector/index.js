@@ -84,6 +84,7 @@ module.exports = class TestSelector {
         // TODO handle cases when changes happend outside a function.
         // TODO handle cases when cahnges happend outside a function and class.
         // TODO select new added tests
+        // TODO static analysis to get file dependencies on each tests.
                     
 
         return selectedTests;
