@@ -95,7 +95,7 @@ module.exports = class Webcam extends Plugin {
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.icon"},');
 
-      return <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32">
+      return <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fill-rule="evenodd">
           <rect fill="#03BFEF" width="32" height="32" rx="16" />
           <path d="M22 11c1.133 0 2 .867 2 2v7.333c0 1.134-.867 2-2 2H10c-1.133 0-2-.866-2-2V13c0-1.133.867-2 2-2h2.333l1.134-1.733C13.6 9.133 13.8 9 14 9h4c.2 0 .4.133.533.267L19.667 11H22zm-6 1.533a3.764 3.764 0 0 0-3.8 3.8c0 2.129 1.672 3.801 3.8 3.801s3.8-1.672 3.8-3.8c0-2.13-1.672-3.801-3.8-3.801zm0 6.261c-1.395 0-2.46-1.066-2.46-2.46 0-1.395 1.065-2.461 2.46-2.461s2.46 1.066 2.46 2.46c0 1.395-1.065 2.461-2.46 2.461z" fill="#FFF" fill-rule="nonzero" />
@@ -112,8 +112,6 @@ module.exports = class Webcam extends Plugin {
         stopRecording: 'Stop video recording',
         allowAccessTitle: 'Please allow access to your camera',
         allowAccessDescription: 'In order to take pictures or record video with your camera, please allow camera access for this site.',
-        noCameraTitle: 'Camera Not Available',
-        noCameraDescription: 'In order to take pictures or record video, please connect a camera device',
         recordingStoppedMaxSize: 'Recording stopped because the file size is about to exceed the limit',
         recordingLength: 'Recording length %{recording_length}'
       }
@@ -176,34 +174,13 @@ module.exports = class Webcam extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"i18nInit"},');
 
   }
-  hasCameraCheck() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"hasCameraCheck","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Webcam","superClass":"Plugin"}},`);
+  isSupported() {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isSupported","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Webcam","superClass":"Plugin"}},`);
 
-    if (!this.mediaDevices) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"hasCameraCheck"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isSupported"},');
 
-      return Promise.resolve(false);
-    }
-        SRTlib.send('{"type":"FUNCTIONEND","function":"hasCameraCheck"},');
-
-    return this.mediaDevices.enumerateDevices().then(devices => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.mediaDevices.enumerateDevices.then","fileName":"${__filename}","paramsNumber":1},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.mediaDevices.enumerateDevices.then"},');
-
-      return devices.some(device => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.devices.some","fileName":"${__filename}","paramsNumber":1},`);
-
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.devices.some"},');
-
-        return device.kind === 'videoinput';
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.devices.some"},');
-
-      });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.mediaDevices.enumerateDevices.then"},');
-
-    });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"hasCameraCheck"},');
+    return !!this.mediaDevices;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"isSupported"},');
 
   }
   getConstraints() {
@@ -225,40 +202,31 @@ module.exports = class Webcam extends Plugin {
   _start() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_start","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Webcam","superClass":"Plugin"}},`);
 
-    if (!this.supportsUserMedia) {
+    if (!this.isSupported()) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_start"},');
 
       return Promise.reject(new Error('Webcam access not supported'));
     }
     this.webcamActive = true;
     const constraints = this.getConstraints();
-    this.hasCameraCheck().then(hasCamera => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.hasCameraCheck.then","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"_start"},');
+
+    return this.mediaDevices.getUserMedia(constraints).then(stream => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then","fileName":"${__filename}","paramsNumber":1},`);
+
+      this.stream = stream;
+      this.setPluginState({
+        cameraReady: true
+      });
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then"},');
+
+    }).catch(err => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
       this.setPluginState({
-        hasCamera: hasCamera
+        cameraError: err
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.hasCameraCheck.then"},');
-
-      return this.mediaDevices.getUserMedia(constraints).then(stream => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then","fileName":"${__filename}","paramsNumber":1},`);
-
-        this.stream = stream;
-        this.setPluginState({
-          cameraReady: true
-        });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then"},');
-
-      }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.mediaDevices.getUserMedia.then.catch","fileName":"${__filename}","paramsNumber":1},`);
-
-        this.setPluginState({
-          cameraError: err
-        });
-                SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.mediaDevices.getUserMedia.then.catch"},');
-
-      });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.hasCameraCheck.then"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"_start"},');
@@ -637,17 +605,17 @@ module.exports = class Webcam extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_focus"},');
 
   }
-  render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Webcam","superClass":"Plugin"}},`);
+  render(state) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Webcam","superClass":"Plugin"}},`);
 
     if (!this.webcamActive) {
       this._start();
     }
     const webcamState = this.getPluginState();
-    if (!webcamState.cameraReady || !webcamState.hasCamera) {
+    if (!webcamState.cameraReady) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
-      return <PermissionsScreen icon={CameraIcon} i18n={this.i18n} hasCamera={webcamState.hasCamera} />;
+      return <PermissionsScreen icon={CameraIcon} i18n={this.i18n} />;
     }
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 

@@ -4,7 +4,7 @@ const Translator = require('@uppy/utils/lib/Translator');
 const ee = require('namespace-emitter');
 const cuid = require('cuid');
 const throttle = require('lodash.throttle');
-const prettierBytes = require('@transloadit/prettier-bytes');
+const prettyBytes = require('@uppy/utils/lib/prettyBytes');
 const match = require('mime-match');
 const DefaultStore = require('@uppy/store-default');
 const getFileType = require('@uppy/utils/lib/getFileType');
@@ -524,7 +524,7 @@ class Uppy {
 
         throw new RestrictionError(this.i18n('exceedsSize2', {
           backwardsCompat: this.i18n('exceedsSize'),
-          size: prettierBytes(maxFileSize)
+          size: prettyBytes(maxFileSize)
         }));
       }
     }

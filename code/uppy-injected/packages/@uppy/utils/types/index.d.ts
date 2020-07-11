@@ -1,15 +1,17 @@
 declare module '@uppy/utils/lib/Translator' {
   namespace Translator {
-    export interface Locale {
-      strings?: {
-        [key: string]: string | { [plural: number]: string }
+    export interface TranslatorOptions {
+      locale: {
+        strings: {
+          [key: string]: string | { [plural: number]: string }
+        }
+        pluralize: (n: number) => number
       }
-      pluralize?: (n: number) => number
     }
   }
 
   class Translator {
-    constructor (opts: Translator.Locale | Translator.Locale[])
+    constructor (opts: Translator.TranslatorOptions)
   }
 
   export = Translator

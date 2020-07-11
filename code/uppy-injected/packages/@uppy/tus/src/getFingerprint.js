@@ -24,18 +24,18 @@ module.exports = function getFingerprint(uppyFileObj) {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
-  return function (file, options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFingerprint.ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
+  return function (file, options, callback) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getFingerprint.ReturnStatement","fileName":"${__filename}","paramsNumber":3},`);
 
     if (isCordova() || isReactNative()) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint.ReturnStatement"},');
 
-      return tus.Upload.defaultOptions.fingerprint(file, options);
+      return tus.Upload.defaultOptions.fingerprint(file, options, callback);
     }
     const uppyFingerprint = ['tus', uppyFileObj.id, options.endpoint].join('-');
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint.ReturnStatement"},');
 
-    return Promise.resolve(uppyFingerprint);
+    return callback(null, uppyFingerprint);
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint.ReturnStatement"},');
 
   };

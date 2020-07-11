@@ -2,11 +2,10 @@ const SRTlib = require('SRT-util');
 
 const router = require('express').Router;
 const request = require('request');
-const {URL} = require('url');
 const Uploader = require('../Uploader');
 const validator = require('validator');
 const utils = require('../helpers/utils');
-const {getProtectedHttpAgent, getRedirectEvaluator} = require('../helpers/request');
+const {getProtectedHttpAgent} = require('../helpers/request');
 const logger = require('../logger');
 module.exports = () => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
@@ -44,8 +43,8 @@ const meta = (req, res) => {
     logger.error(err, 'controller.url.meta.error', req.id);
         SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch"},');
 
-    return res.status(err.status || 500).json({
-      message: 'failed to fetch URL metadata'
+    return res.status(500).json({
+      error: err
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch"},');
 
@@ -66,7 +65,7 @@ const get = (req, res) => {
       error: 'Invalid request body'
     });
   }
-  utils.getURLMeta(req.body.url, !debug).then(({size}) => {
+  utils.getURLMeta(req.body.url).then(({size}) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then###2","fileName":"${__filename}","paramsNumber":1},`);
 
     logger.debug('Instantiating uploader.', null, req.id);
@@ -95,10 +94,8 @@ const get = (req, res) => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch###2","fileName":"${__filename}","paramsNumber":1},`);
 
     logger.error(err, 'controller.url.get.error', req.id);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch###2"},');
-
-    return res.status(err.status || 500).json({
-      message: 'failed to fetch URL metadata'
+    res.json({
+      err
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch###2"},');
 
@@ -131,26 +128,15 @@ const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
   const opts = {
     uri: url,
     method: 'GET',
-    followRedirect: getRedirectEvaluator(url, blockLocalIPs),
-    agentClass: getProtectedHttpAgent(new URL(url).protocol, blockLocalIPs)
+    followAllRedirects: true,
+    agentClass: getProtectedHttpAgent(utils.parseURL(url).protocol, blockLocalIPs)
   };
-  request(opts).on('response', resp => {
+  request(opts).on('data', chunk => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on.request.on","fileName":"${__filename}","paramsNumber":1},`);
 
-    if (resp.statusCode >= 300) {
-      const err = new Error(`URL server responded with status: ${resp.statusCode}`);
-      onDataChunk(err, null);
-    } else {
-      resp.on('data', chunk => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on.request.on"},');
 
-                SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
-
-        return onDataChunk(null, chunk);
-                SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
-
-      });
-    }
+    return onDataChunk(null, chunk);
         SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on.request.on"},');
 
   }).on('end', () => {
@@ -164,8 +150,9 @@ const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
   }).on('error', err => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
 
-    logger.error(err, 'controller.url.download.error', traceId);
-    onDataChunk(err, null);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on"},');
+
+    return logger.error(err, 'controller.url.download.error', traceId);
         SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on"},');
 
   });

@@ -11,7 +11,6 @@ declare module AwsS3Multipart {
 
   interface AwsS3MultipartOptions extends Uppy.PluginOptions {
     companionUrl?: string
-    getChunkSize?: (file: Uppy.UppyFile) => number
     createMultipartUpload?: (
       file: Uppy.UppyFile
     ) => MaybePromise<{ uploadId: string; key: string }>

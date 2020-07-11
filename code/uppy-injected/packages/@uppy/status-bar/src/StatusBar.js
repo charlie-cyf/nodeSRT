@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const throttle = require('lodash.throttle');
 const classNames = require('classnames');
 const statusBarStates = require('./StatusBarStates');
-const prettierBytes = require('@transloadit/prettier-bytes');
+const prettyBytes = require('@uppy/utils/lib/prettyBytes');
 const prettyETA = require('@uppy/utils/lib/prettyETA');
 const {h} = require('preact');
 function calculateProcessingProgress(files) {
@@ -158,7 +158,7 @@ const RetryBtn = props => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"RetryBtn"},');
 
   return <button type="button" class="uppy-u-reset uppy-c-btn uppy-StatusBar-actionBtn uppy-StatusBar-actionBtn--retry" aria-label={props.i18n('retryUpload')} onclick={props.retryAll} data-uppy-super-focusable>
-      <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="8" height="10" viewBox="0 0 8 10">
+      <svg aria-hidden="true" focusable="false" class="UppyIcon" width="8" height="10" viewBox="0 0 8 10">
         <path d="M4 2.408a2.75 2.75 0 1 0 2.75 2.75.626.626 0 0 1 1.25.018v.023a4 4 0 1 1-4-4.041V.25a.25.25 0 0 1 .389-.208l2.299 1.533a.25.25 0 0 1 0 .416l-2.3 1.533A.25.25 0 0 1 4 3.316v-.908z" />
       </svg>
       {props.i18n('retry')}
@@ -172,7 +172,7 @@ const CancelBtn = props => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"CancelBtn"},');
 
   return <button type="button" class="uppy-u-reset uppy-StatusBar-actionCircleBtn" title={props.i18n('cancel')} aria-label={props.i18n('cancel')} onclick={props.cancelAll} data-uppy-super-focusable>
-      <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="16" height="16" viewBox="0 0 16 16">
+      <svg aria-hidden="true" focusable="false" class="UppyIcon" width="16" height="16" viewBox="0 0 16 16">
         <g fill="none" fill-rule="evenodd">
           <circle fill="#888" cx="8" cy="8" r="8" />
           <path fill="#FFF" d="M9.283 8l2.567 2.567-1.283 1.283L8 9.283 5.433 11.85 4.15 10.567 6.717 8 4.15 5.433 5.433 4.15 8 6.717l2.567-2.567 1.283 1.283z" />
@@ -198,12 +198,12 @@ const PauseResumeButton = props => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
   }} data-uppy-super-focusable>
-      {isAllPaused ? <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="16" height="16" viewBox="0 0 16 16">
+      {isAllPaused ? <svg aria-hidden="true" focusable="false" class="UppyIcon" width="16" height="16" viewBox="0 0 16 16">
           <g fill="none" fill-rule="evenodd">
             <circle fill="#888" cx="8" cy="8" r="8" />
             <path fill="#FFF" d="M6 4.25L11.5 8 6 11.75z" />
           </g>
-        </svg> : <svg aria-hidden="true" focusable="false" class="uppy-c-icon" width="16" height="16" viewBox="0 0 16 16">
+        </svg> : <svg aria-hidden="true" focusable="false" class="UppyIcon" width="16" height="16" viewBox="0 0 16 16">
           <g fill="none" fill-rule="evenodd">
             <circle fill="#888" cx="8" cy="8" r="8" />
             <path d="M5 4.5h2v7H5v-7zm4 0h2v7H9v-7z" fill="#FFF" />
@@ -263,8 +263,8 @@ const ProgressDetails = props => {
         {ifShowFilesUploadedOfTotal && renderDot()}
 
         {props.i18n('dataUploadedOfTotal', {
-    complete: prettierBytes(props.totalUploadedSize),
-    total: prettierBytes(props.totalSize)
+    complete: prettyBytes(props.totalUploadedSize),
+    total: prettyBytes(props.totalSize)
   })}
 
         {renderDot()}
@@ -349,7 +349,7 @@ const ProgressBarComplete = ({totalProgress, i18n}) => {
   return <div class="uppy-StatusBar-content" role="status" title={i18n('complete')}>
       <div class="uppy-StatusBar-status">
         <div class="uppy-StatusBar-statusPrimary">
-          <svg aria-hidden="true" focusable="false" class="uppy-StatusBar-statusIndicator uppy-c-icon" width="15" height="11" viewBox="0 0 15 11">
+          <svg aria-hidden="true" focusable="false" class="uppy-StatusBar-statusIndicator UppyIcon" width="15" height="11" viewBox="0 0 15 11">
             <path d="M.414 5.843L1.627 4.63l3.472 3.472L13.202 0l1.212 1.213L5.1 10.528z" />
           </svg>
           {i18n('complete')}
@@ -375,7 +375,7 @@ const ProgressBarError = ({error, retryAll, hideRetryButton, i18n}) => {
   return <div class="uppy-StatusBar-content" role="alert" title={i18n('uploadFailed')}>
       <div class="uppy-StatusBar-status">
         <div class="uppy-StatusBar-statusPrimary">
-          <svg aria-hidden="true" focusable="false" class="uppy-StatusBar-statusIndicator uppy-c-icon" width="11" height="11" viewBox="0 0 11 11">
+          <svg aria-hidden="true" focusable="false" class="uppy-StatusBar-statusIndicator UppyIcon" width="11" height="11" viewBox="0 0 11 11">
             <path d="M4.278 5.5L0 1.222 1.222 0 5.5 4.278 9.778 0 11 1.222 6.722 5.5 11 9.778 9.778 11 5.5 6.722 1.222 11 0 9.778z" />
           </svg>
           {i18n('uploadFailed')}

@@ -190,7 +190,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     return h("input", {
       class: "uppy-DragDrop-input",
       type: "file",
-      hidden: true,
+      tabindex: -1,
+      focusable: "false",
       ref: function ref(_ref) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
         _this5.fileInputRef = _ref;
@@ -210,7 +211,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     return h("svg", {
       "aria-hidden": "true",
       focusable: "false",
-      class: "uppy-c-icon uppy-DragDrop-arrow",
+      class: "UppyIcon uppy-DragDrop-arrow",
       width: "16",
       height: "16",
       viewBox: "0 0 16 16"
@@ -247,7 +248,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     var _this6 = this;
 
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
-    var dragDropClass = "uppy-Root\n      uppy-u-reset\n      uppy-DragDrop-container\n      " + (this.isDragDropSupported ? 'uppy-DragDrop--isDragDropSupported' : '') + "\n      " + (this.getPluginState().isDraggingOver ? 'uppy-DragDrop--isDraggingOver' : '') + "\n    ";
+    var dragDropClass = "\n      uppy-Root\n      uppy-u-reset\n      uppy-DragDrop-container\n      " + (this.isDragDropSupported ? 'uppy-DragDrop--is-dragdrop-supported' : '') + "\n      " + (this.getPluginState().isDraggingOver ? 'uppy-DragDrop--isDraggingOver' : '') + "\n    ";
     var dragDropStyle = {
       width: this.opts.width,
       height: this.opts.height

@@ -28,7 +28,7 @@ var cuid = require('cuid');
 
 var throttle = require('lodash.throttle');
 
-var prettierBytes = require('@transloadit/prettier-bytes');
+var prettyBytes = require('@uppy/utils/lib/prettyBytes');
 
 var match = require('mime-match');
 
@@ -542,7 +542,7 @@ var Uppy = /*#__PURE__*/function () {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_checkRestrictions"},');
         throw new RestrictionError(this.i18n('exceedsSize2', {
           backwardsCompat: this.i18n('exceedsSize'),
-          size: prettierBytes(maxFileSize)
+          size: prettyBytes(maxFileSize)
         }));
       }
     }

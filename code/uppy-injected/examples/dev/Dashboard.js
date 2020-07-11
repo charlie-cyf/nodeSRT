@@ -119,9 +119,6 @@ module.exports = () => {
     }
     console.log('successful files:', result.successful);
     console.log('failed files:', result.failed);
-    if (UPLOADER === 'transloadit') {
-      console.log('Transloadit result:', result.transloadit);
-    }
         SRTlib.send('{"type":"FUNCTIONEND","function":"uppyDashboard.on"},');
 
   });

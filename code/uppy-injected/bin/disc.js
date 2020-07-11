@@ -3,7 +3,6 @@ const SRTlib = require('SRT-util');
 const fs = require('fs');
 const path = require('path');
 const {PassThrough} = require('stream');
-const replace = require('replacestream');
 const browserify = require('browserify');
 const babelify = require('babelify');
 const minify = require('minify-stream');
@@ -37,15 +36,13 @@ bundler.transform(babelify);
 bundler.transform(minifyify, {
   global: true
 });
-bundler.bundle().pipe(disc()).pipe(prepend('---\nlayout: false\n---\n')).pipe(replace('http://', 'https://', {
-  limit: 1
-})).pipe(fs.createWriteStream(outputPath)).on('error', err => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bundler.bundle.pipe.pipe.pipe.pipe.on","fileName":"${__filename}","paramsNumber":1},`);
+bundler.bundle().pipe(disc()).pipe(prepend('---\nlayout: false\n---\n')).pipe(fs.createWriteStream(outputPath)).on('error', err => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bundler.bundle.pipe.pipe.pipe.on","fileName":"${__filename}","paramsNumber":1},`);
 
-    SRTlib.send('{"type":"FUNCTIONEND","function":"bundler.bundle.pipe.pipe.pipe.pipe.on"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"bundler.bundle.pipe.pipe.pipe.on"},');
 
   throw err;
-    SRTlib.send('{"type":"FUNCTIONEND","function":"bundler.bundle.pipe.pipe.pipe.pipe.on"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"bundler.bundle.pipe.pipe.pipe.on"},');
 
 });
 function prepend(text) {

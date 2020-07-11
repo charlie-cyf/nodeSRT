@@ -73,10 +73,7 @@ module.exports.addCustomProviders = (customProviders, providers, grantConfig) =>
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
 
     providers[providerName] = customProviders[providerName].module;
-    const providerConfig = Object.assign({}, customProviders[providerName].config);
-    providerConfig.callback = `/${providerName}/callback`;
-    providerConfig.transport = 'session';
-    grantConfig[providerName] = providerConfig;
+    grantConfig[providerName] = customProviders[providerName].config;
         SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
   });

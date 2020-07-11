@@ -181,14 +181,14 @@ module.exports = class AwsS3 extends Plugin {
     return settle(fileIDs.map((id, index) => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.settle.then.settle.fileIDs.map","fileName":"${__filename}","paramsNumber":2},`);
 
-      paramsPromises[id] = getUploadParameters(this.uppy.getFile(id));
+      const file = this.uppy.getFile(id);
+      paramsPromises[id] = getUploadParameters(file);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.settle.then.settle.fileIDs.map"},');
 
       return paramsPromises[id].then(params => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then","fileName":"${__filename}","paramsNumber":1},`);
 
         delete paramsPromises[id];
-        const file = this.uppy.getFile(id);
         this.validateParameters(file, params);
         const {method = 'post', url, fields, headers} = params;
         const xhrOpts = {
@@ -216,7 +216,6 @@ module.exports = class AwsS3 extends Plugin {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.paramsPromises.id.then.catch","fileName":"${__filename}","paramsNumber":1},`);
 
         delete paramsPromises[id];
-        const file = this.uppy.getFile(id);
         this.uppy.emit('upload-error', file, error);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.paramsPromises.id.then.catch"},');
 

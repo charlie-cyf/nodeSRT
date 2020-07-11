@@ -37,7 +37,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         focusable: "false",
         width: "32",
         height: "32",
-        viewBox: "0 0 32 32"
+        viewBox: "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg"
       }, h("g", {
         fill: "none",
         "fill-rule": "evenodd"
@@ -75,6 +76,15 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"OneDrive\",\"superClass\":\"Plugin\"}},");
     this.view = new ProviderViews(this, {
       provider: this.provider
+    });
+    this.setPluginState({
+      authenticated: false,
+      files: [],
+      folders: [],
+      directories: [],
+      activeRow: -1,
+      filterInput: '',
+      isSearchVisible: false
     });
     var target = this.opts.target;
 

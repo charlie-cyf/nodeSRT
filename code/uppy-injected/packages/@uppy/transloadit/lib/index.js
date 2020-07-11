@@ -168,8 +168,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     });
 
     var tus = _extends({}, file.tus, {
-      endpoint: status.tus_url,
-      addRequestId: true
+      endpoint: status.tus_url
     });
 
     var remote = file.remote;
@@ -438,7 +437,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       var _extends5;
 
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.client.getAssemblyStatus.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
-      var assemblyId = finalStatus.assembly_id;
+      var assemblyId = finalStatus.assemblyId;
 
       var state = _this7.getPluginState();
 
@@ -474,23 +473,16 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onCancelAll\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Transloadit\",\"superClass\":\"Plugin\"}},");
 
     var _this$getPluginState2 = this.getPluginState(),
-        uploadsAssemblies = _this$getPluginState2.uploadsAssemblies;
+        assemblies = _this$getPluginState2.assemblies;
 
-    var assemblyIDs = Object.keys(uploadsAssemblies).reduce(function (acc, uploadID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.assemblyIDs.Object.keys.reduce\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
-      acc.push.apply(acc, uploadsAssemblies[uploadID]);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assemblyIDs.Object.keys.reduce"},');
-      return acc;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assemblyIDs.Object.keys.reduce"},');
-    }, []);
-    var cancelPromises = assemblyIDs.map(function (assemblyID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.cancelPromises.assemblyIDs.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    var cancelPromises = Object.keys(assemblies).map(function (assemblyID) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.cancelPromises.Object.keys.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
 
       var assembly = _this9.getAssembly(assemblyID);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.assemblyIDs.map"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.Object.keys.map"},');
       return _this9._cancelAssembly(assembly);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.assemblyIDs.map"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.Object.keys.map"},');
     });
     Promise.all(cancelPromises).catch(function (err) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Promise.all.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
@@ -1017,8 +1009,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onTusError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Transloadit\",\"superClass\":\"Plugin\"}},");
 
     if (err && /^tus: /.test(err.message)) {
-      var xhr = err.originalRequest ? err.originalRequest.getUnderlyingObject() : null;
-      var url = xhr && xhr.responseURL ? xhr.responseURL : null;
+      var url = err.originalRequest && err.originalRequest.responseURL ? err.originalRequest.responseURL : null;
       this.client.submitError(err, {
         url: url,
         type: 'TUS_ERROR'
@@ -1043,7 +1034,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       this.uppy.on('upload-success', this._onFileUploadURLAvailable);
     } else {
       this.uppy.use(Tus, {
-        storeFingerprintForResuming: false,
+        resume: false,
         useFastRemoteRetry: false,
         metaFields: ['assembly_url', 'filename', 'fieldname'],
         limit: this.opts.limit

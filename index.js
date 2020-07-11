@@ -44,6 +44,10 @@ const excepts = [
     // 	console.log(res)
     // });
 
+    // make injected dir
+    if(!fs.existsSync(path.resolve(injectedCodebase))) {
+        fs.mkdirSync(injectedCodebase)
+    }
     copyDir(codeBase, injectedCodebase)
     console.log('copy success!')
 
