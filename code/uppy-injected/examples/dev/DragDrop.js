@@ -5,7 +5,7 @@ const Tus = require('@uppy/tus/src');
 const DragDrop = require('@uppy/drag-drop/src');
 const ProgressBar = require('@uppy/progress-bar/src');
 module.exports = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/examples/dev/DragDrop.js","paramsNumber":0},`);
 
   const uppyDragDrop = Uppy({
     debug: true,
@@ -20,7 +20,7 @@ module.exports = () => {
   });
   window.uppy = uppyDragDrop;
   uppyDragDrop.on('complete', result => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyDragDrop.on","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyDragDrop.on","fileName":"/examples/dev/DragDrop.js","paramsNumber":1},`);
 
     if (result.failed.length === 0) {
       console.log('Upload successful 😀');

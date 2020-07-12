@@ -137,7 +137,7 @@ th_TH.strings = {
   }
 };
 th_TH.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"th_TH.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"th_TH.pluralize","fileName":"/packages/@uppy/locales/src/th_TH.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"th_TH.pluralize"},');

@@ -1,11 +1,11 @@
 var SRTlib = require('SRT-util');
 
 module.exports = function copyToClipboard(textToCopy, fallbackString) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/dashboard/src/utils/copyToClipboard.js\",\"paramsNumber\":2},");
   fallbackString = fallbackString || 'Copy the URL below';
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return new Promise(function (resolve) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.copyToClipboard.ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.copyToClipboard.ReturnStatement.NewExpression\",\"fileName\":\"/packages/@uppy/dashboard/src/utils/copyToClipboard.js\",\"paramsNumber\":1},");
     var textArea = document.createElement('textarea');
     textArea.setAttribute('style', {
       position: 'fixed',
@@ -24,7 +24,7 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
     textArea.select();
 
     var magicCopyFailed = function magicCopyFailed() {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"magicCopyFailed\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"magicCopyFailed\",\"fileName\":\"/packages/@uppy/dashboard/src/utils/copyToClipboard.js\",\"paramsNumber\":0},");
       document.body.removeChild(textArea);
       window.prompt(fallbackString, textToCopy);
       resolve();

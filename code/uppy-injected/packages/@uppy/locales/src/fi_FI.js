@@ -142,7 +142,7 @@ fi_FI.strings = {
   recording: 'Tallennetaan'
 };
 fi_FI.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fi_FI.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fi_FI.pluralize","fileName":"/packages/@uppy/locales/src/fi_FI.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"fi_FI.pluralize"},');

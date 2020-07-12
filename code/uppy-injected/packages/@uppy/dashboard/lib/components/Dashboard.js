@@ -24,7 +24,7 @@ var _require = require('preact'),
 var PreactCSSTransitionGroup = require('preact-css-transition-group');
 
 function TransitionWrapper(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"TransitionWrapper\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"TransitionWrapper\",\"fileName\":\"/packages/@uppy/dashboard/src/components/Dashboard.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"TransitionWrapper"},');
   return h(PreactCSSTransitionGroup, {
     transitionName: "uppy-transition-slideDownUp",
@@ -40,7 +40,7 @@ var WIDTH_MD = 576;
 var HEIGHT_MD = 400;
 
 module.exports = function Dashboard(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/dashboard/src/components/Dashboard.js\",\"paramsNumber\":1},");
   var noFiles = props.totalFileCount === 0;
   var isSizeMD = props.containerWidth > WIDTH_MD;
   var dashboardClassName = classNames({
@@ -119,7 +119,7 @@ module.exports = function Dashboard(props) {
   }, props)) : null), h("div", {
     class: "uppy-Dashboard-progressindicators"
   }, props.progressindicators.map(function (target) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Dashboard.ReturnStatement.props.progressindicators.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Dashboard.ReturnStatement.props.progressindicators.map\",\"fileName\":\"/packages/@uppy/dashboard/src/components/Dashboard.js\",\"paramsNumber\":1},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Dashboard.ReturnStatement.props.progressindicators.map"},');
     return props.getPlugin(target.id).render(props.state);
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Dashboard.ReturnStatement.props.progressindicators.map"},');

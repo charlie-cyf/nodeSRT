@@ -18,7 +18,7 @@ app.use('/companion', companion.app({
     s3: {
       endpoint: 'https://{region}.digitaloceanspaces.com',
       getKey: (req, filename) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use.companion.app.providerOptions.s3.getKey","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use.companion.app.providerOptions.s3.getKey","fileName":"/examples/digitalocean-spaces/server.js","paramsNumber":2},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"app.use.companion.app.providerOptions.s3.getKey"},');
 
@@ -37,7 +37,7 @@ app.use('/companion', companion.app({
   }
 }));
 app.get('/uppy.min.css', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get","fileName":"/examples/digitalocean-spaces/server.js","paramsNumber":2},`);
 
   res.setHeader('content-type', 'text/css');
   fs.createReadStream(path.join('../../packages/uppy/dist/uppy.min.css')).pipe(res);

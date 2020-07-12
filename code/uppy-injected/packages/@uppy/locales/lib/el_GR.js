@@ -136,7 +136,7 @@ el_GR.strings = {
 };
 
 el_GR.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"el_GR.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"el_GR.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/el_GR.js\",\"paramsNumber\":1},");
 
   if (n === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"el_GR.pluralize"},');

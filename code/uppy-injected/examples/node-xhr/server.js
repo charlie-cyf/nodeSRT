@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 var formidable = require('formidable');
 var http = require('http');
 http.createServer(function (req, res) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"http.createServer.listen.http.createServer","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"http.createServer.listen.http.createServer","fileName":"/examples/node-xhr/server.js","paramsNumber":2},`);
 
   const headers = {
     'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ http.createServer(function (req, res) {
     form.uploadDir = './uploads';
     form.keepExtensions = true;
     form.parse(req, function (err, fields, files) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"http.createServer.listen.http.createServer.form.parse","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"http.createServer.listen.http.createServer.form.parse","fileName":"/examples/node-xhr/server.js","paramsNumber":3},`);
 
       if (err) {
         console.log('some error', err);
@@ -53,7 +53,7 @@ http.createServer(function (req, res) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"http.createServer.listen.http.createServer"},');
 
 }).listen(3020, () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"http.createServer.listen","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"http.createServer.listen","fileName":"/examples/node-xhr/server.js","paramsNumber":0},`);
 
   console.log('server started');
     SRTlib.send('{"type":"FUNCTIONEND","function":"http.createServer.listen"},');

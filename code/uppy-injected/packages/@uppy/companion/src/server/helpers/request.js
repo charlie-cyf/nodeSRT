@@ -6,7 +6,7 @@ const dns = require('dns');
 const ipAddress = require('ip-address');
 const FORBIDDEN_IP_ADDRESS = 'Forbidden IP address';
 function isIPAddress(address) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isIPAddress","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isIPAddress","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":1},`);
 
   const addressAsV6 = new ipAddress.Address6(address);
   const addressAsV4 = new ipAddress.Address4(address);
@@ -17,7 +17,7 @@ function isIPAddress(address) {
 
 }
 function isPrivateIP(ipAddress) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isPrivateIP","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isPrivateIP","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":1},`);
 
   let isPrivate = false;
   const ipPrefix = [];
@@ -62,7 +62,7 @@ function isPrivateIP(ipAddress) {
 }
 module.exports.FORBIDDEN_IP_ADDRESS = FORBIDDEN_IP_ADDRESS;
 module.exports.getProtectedHttpAgent = (protocol, blockPrivateIPs) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getProtectedHttpAgent","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getProtectedHttpAgent","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":2},`);
 
   if (blockPrivateIPs) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getProtectedHttpAgent"},');
@@ -76,10 +76,10 @@ module.exports.getProtectedHttpAgent = (protocol, blockPrivateIPs) => {
 
 };
 function dnsLookup(hostname, options, callback) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"dnsLookup","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"dnsLookup","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":3},`);
 
   dns.lookup(hostname, options, (err, addresses, maybeFamily) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"dns.lookup","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"dns.lookup","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":3},`);
 
     if (err) {
       callback(err, addresses, maybeFamily);
@@ -107,7 +107,7 @@ function dnsLookup(hostname, options, callback) {
 }
 class HttpAgent extends http.Agent {
   createConnection(options, callback) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createConnection","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"HttpAgent"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createConnection","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":2,"classInfo":{"className":"HttpAgent"}},`);
 
     options.lookup = dnsLookup;
     if (isIPAddress(options.host) && isPrivateIP(options.host)) {
@@ -125,7 +125,7 @@ class HttpAgent extends http.Agent {
 }
 class HttpsAgent extends https.Agent {
   createConnection(options, callback) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createConnection","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"HttpsAgent"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createConnection","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":2,"classInfo":{"className":"HttpsAgent"}},`);
 
     options.lookup = dnsLookup;
     if (isIPAddress(options.host) && isPrivateIP(options.host)) {

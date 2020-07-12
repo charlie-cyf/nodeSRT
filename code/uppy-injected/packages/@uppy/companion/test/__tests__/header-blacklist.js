@@ -2,10 +2,10 @@ const SRTlib = require('SRT-util');
 
 const headerSanitize = require('../../src/server/header-blacklist');
 describe('Header black-list testing', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"/packages/@uppy/companion/test/__tests__/header-blacklist.js","paramsNumber":0},`);
 
   test('All headers invalid by name', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"/packages/@uppy/companion/test/__tests__/header-blacklist.js","paramsNumber":0},`);
 
     const headers = headerSanitize({
       origin: 'http://www.transloadit.com',
@@ -17,7 +17,7 @@ describe('Header black-list testing', () => {
 
   });
   test('All headers invalid by regex', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"/packages/@uppy/companion/test/__tests__/header-blacklist.js","paramsNumber":0},`);
 
     const headers = headerSanitize({
       'Proxy-header-fake': 'proxy-header-fake',
@@ -33,7 +33,7 @@ describe('Header black-list testing', () => {
 
   });
   test('All headers invalid by name and regex', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"/packages/@uppy/companion/test/__tests__/header-blacklist.js","paramsNumber":0},`);
 
     const headers = headerSanitize({
       'Proxy-header-fake': 'proxy-header-fake',
@@ -44,7 +44,7 @@ describe('Header black-list testing', () => {
 
   });
   test('Returning only allowed headers', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"/packages/@uppy/companion/test/__tests__/header-blacklist.js","paramsNumber":0},`);
 
     const headers = headerSanitize({
       Authorization: 'Basic Xxxxxx',
@@ -61,7 +61,7 @@ describe('Header black-list testing', () => {
 
   });
   test('Return empty object when headers is not an object', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"/packages/@uppy/companion/test/__tests__/header-blacklist.js","paramsNumber":0},`);
 
     expect(headerSanitize({})).toEqual({});
     expect(headerSanitize(null)).toEqual({});

@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 import React from 'react';
 import {Text, TouchableHighlight, StyleSheet} from 'react-native';
 export default function SelectFiles(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"SelectFiles","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"SelectFiles","fileName":"/examples/react-native-expo/SelectFilesButton.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"SelectFiles"},');
 

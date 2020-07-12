@@ -18,31 +18,31 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function Informer(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Informer\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/informer/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Informer\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
 
     _this.render = function (state) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/informer/src/index.js\",\"paramsNumber\":1},");
       var _state$info = state.info,
           isHidden = _state$info.isHidden,
           message = _state$info.message,
           details = _state$info.details;
 
       function displayErrorAlert() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"displayErrorAlert\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"displayErrorAlert\",\"fileName\":\"/packages/@uppy/informer/src/index.js\",\"paramsNumber\":0},");
         var errorMessage = message + " \n\n " + details;
         alert(errorMessage);
         SRTlib.send('{"type":"FUNCTIONEND","function":"displayErrorAlert","paramsNumber":0},');
       }
 
       var handleMouseOver = function handleMouseOver() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleMouseOver\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleMouseOver\",\"fileName\":\"/packages/@uppy/informer/src/index.js\",\"paramsNumber\":0},");
         clearTimeout(_this.uppy.infoTimeoutID);
         SRTlib.send('{"type":"FUNCTIONEND","function":"handleMouseOver"},');
       };
 
       var handleMouseLeave = function handleMouseLeave() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleMouseLeave\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleMouseLeave\",\"fileName\":\"/packages/@uppy/informer/src/index.js\",\"paramsNumber\":0},");
         _this.uppy.infoTimeoutID = setTimeout(_this.uppy.hideInfo, 2000);
         SRTlib.send('{"type":"FUNCTIONEND","function":"handleMouseLeave"},');
       };
@@ -77,7 +77,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = Informer.prototype;
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Informer\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/informer/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Informer\",\"superClass\":\"Plugin\"}},");
     var target = this.opts.target;
 
     if (target) {

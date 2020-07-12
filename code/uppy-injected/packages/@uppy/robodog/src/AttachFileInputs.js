@@ -5,7 +5,7 @@ const toArray = require('@uppy/utils/lib/toArray');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');
 class AttachFileInputs extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/robodog/src/AttachFileInputs.js","paramsNumber":2,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.id = this.opts.id || 'AttachFileInputs';
@@ -16,18 +16,18 @@ class AttachFileInputs extends Plugin {
 
   }
   handleChange(event) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleChange","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleChange","fileName":"/packages/@uppy/robodog/src/AttachFileInputs.js","paramsNumber":1,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     this.addFiles(event.target);
         SRTlib.send('{"type":"FUNCTIONEND","function":"handleChange"},');
 
   }
   addFiles(input) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"/packages/@uppy/robodog/src/AttachFileInputs.js","paramsNumber":1,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     const files = toArray(input.files);
     files.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"/packages/@uppy/robodog/src/AttachFileInputs.js","paramsNumber":1},`);
 
       try {
         this.uppy.addFile({
@@ -48,7 +48,7 @@ class AttachFileInputs extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/robodog/src/AttachFileInputs.js","paramsNumber":0,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     this.el = findDOMElement(this.opts.target);
     if (!this.el) {
@@ -59,7 +59,7 @@ class AttachFileInputs extends Plugin {
     const {restrictions} = this.uppy.opts;
     this.inputs = this.el.querySelectorAll('input[type="file"]');
     this.inputs.forEach(input => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inputs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inputs.forEach","fileName":"/packages/@uppy/robodog/src/AttachFileInputs.js","paramsNumber":1},`);
 
       input.addEventListener('change', this.handleChange);
       if (!input.hasAttribute('multiple')) {
@@ -80,10 +80,10 @@ class AttachFileInputs extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/robodog/src/AttachFileInputs.js","paramsNumber":0,"classInfo":{"className":"AttachFileInputs","superClass":"Plugin"}},`);
 
     this.inputs.forEach(input => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inputs.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inputs.forEach###2","fileName":"/packages/@uppy/robodog/src/AttachFileInputs.js","paramsNumber":1},`);
 
       input.removeEventListener('change', this.handleChange);
             SRTlib.send('{"type":"FUNCTIONEND","function":"inputs.forEach###2"},');

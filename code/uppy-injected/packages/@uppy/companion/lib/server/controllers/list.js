@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const {errorToResponse} = require('../provider/error');
 function list({query, params, companion}, res, next) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"/packages/@uppy/companion/lib/server/controllers/list.js","paramsNumber":3},`);
 
   const providerName = params.providerName;
   const token = companion.providerTokens[providerName];
@@ -12,7 +12,7 @@ function list({query, params, companion}, res, next) {
     directory: params.id,
     query
   }, (err, data) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"companion.provider.list","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"companion.provider.list","fileName":"/packages/@uppy/companion/lib/server/controllers/list.js","paramsNumber":2},`);
 
     if (err) {
       const errResp = errorToResponse(err);

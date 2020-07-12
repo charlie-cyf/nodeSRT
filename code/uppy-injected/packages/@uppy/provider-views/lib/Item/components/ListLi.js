@@ -4,7 +4,7 @@ var _require = require('preact'),
     h = _require.h;
 
 var getAriaLabelOfCheckbox = function getAriaLabelOfCheckbox(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getAriaLabelOfCheckbox\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getAriaLabelOfCheckbox\",\"fileName\":\"/packages/@uppy/provider-views/src/Item/components/ListLi.js\",\"paramsNumber\":1},");
 
   if (props.type === 'folder') {
     if (props.isChecked) {
@@ -36,7 +36,7 @@ var getAriaLabelOfCheckbox = function getAriaLabelOfCheckbox(props) {
 };
 
 module.exports = function (props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/provider-views/src/Item/components/ListLi.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return h("li", {
     class: props.className

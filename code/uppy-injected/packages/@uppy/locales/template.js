@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const en_US = {};
 en_US.strings = {};
 en_US.pluralize = function (count) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"en_US.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"en_US.pluralize","fileName":"/packages/@uppy/locales/template.js","paramsNumber":1},`);
 
   if (count === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"en_US.pluralize"},');

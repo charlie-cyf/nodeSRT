@@ -5,7 +5,7 @@ var getFileNameAndExtension = require('./getFileNameAndExtension');
 var mimeTypes = require('./mimeTypes');
 
 module.exports = function getFileType(file) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/utils/src/getFileType.js\",\"paramsNumber\":1},");
   var fileExtension = file.name ? getFileNameAndExtension(file.name).extension : null;
   fileExtension = fileExtension ? fileExtension.toLowerCase() : null;
 

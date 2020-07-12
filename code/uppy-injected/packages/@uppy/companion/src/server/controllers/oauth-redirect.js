@@ -5,7 +5,7 @@ const parseUrl = require('url').parse;
 const {hasMatch} = require('../helpers/utils');
 const oAuthState = require('../helpers/oauth-state');
 module.exports = function oauthRedirect(req, res) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/companion/src/server/controllers/oauth-redirect.js","paramsNumber":2},`);
 
   const dynamic = (req.session.grant || ({})).dynamic || ({});
   const state = dynamic.state;

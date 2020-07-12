@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 module.exports = class EventTracker {
   constructor(emitter) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"EventTracker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/utils/src/EventTracker.js","paramsNumber":1,"classInfo":{"className":"EventTracker"}},`);
 
     this._events = [];
     this._emitter = emitter;
@@ -10,7 +10,7 @@ module.exports = class EventTracker {
 
   }
   on(event, fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"EventTracker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"/packages/@uppy/utils/src/EventTracker.js","paramsNumber":2,"classInfo":{"className":"EventTracker"}},`);
 
     this._events.push([event, fn]);
         SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
@@ -20,10 +20,10 @@ module.exports = class EventTracker {
 
   }
   remove() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"remove","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"EventTracker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"remove","fileName":"/packages/@uppy/utils/src/EventTracker.js","paramsNumber":0,"classInfo":{"className":"EventTracker"}},`);
 
     this._events.forEach(([event, fn]) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._events.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._events.forEach","fileName":"/packages/@uppy/utils/src/EventTracker.js","paramsNumber":1},`);
 
       this._emitter.off(event, fn);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._events.forEach"},');

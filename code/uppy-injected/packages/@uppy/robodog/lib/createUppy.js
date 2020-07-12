@@ -33,10 +33,10 @@ function createUppy(opts, overrides) {
     overrides = {};
   }
 
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createUppy\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createUppy\",\"fileName\":\"/packages/@uppy/robodog/src/createUppy.js\",\"paramsNumber\":2},");
   var uppyOptions = {};
   uppyOptionNames.forEach(function (name) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppyOptionNames.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppyOptionNames.forEach\",\"fileName\":\"/packages/@uppy/robodog/src/createUppy.js\",\"paramsNumber\":1},");
     if (has(opts, name)) uppyOptions[name] = opts[name];
     SRTlib.send('{"type":"FUNCTIONEND","function":"uppyOptionNames.forEach"},');
   });
@@ -45,7 +45,7 @@ function createUppy(opts, overrides) {
 
   var uppy = Uppy(uppyOptions);
   Object.keys(eventNames).forEach(function (optionName) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"/packages/@uppy/robodog/src/createUppy.js\",\"paramsNumber\":1},");
     var eventName = eventNames[optionName];
 
     if (typeof opts[optionName] === 'function') {
@@ -57,7 +57,7 @@ function createUppy(opts, overrides) {
 
   if (typeof opts.onProgress === 'function') {
     uppy.on('upload-progress', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.on\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.on\",\"fileName\":\"/packages/@uppy/robodog/src/createUppy.js\",\"paramsNumber\":0},");
 
       var _uppy$getState = uppy.getState(),
           totalProgress = _uppy$getState.totalProgress;

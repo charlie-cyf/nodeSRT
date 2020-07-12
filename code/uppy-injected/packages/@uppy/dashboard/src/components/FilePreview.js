@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const getFileTypeIcon = require('../utils/getFileTypeIcon');
 const {h} = require('preact');
 module.exports = function FilePreview(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/dashboard/src/components/FilePreview.js","paramsNumber":1},`);
 
   const file = props.file;
   if (file.preview) {

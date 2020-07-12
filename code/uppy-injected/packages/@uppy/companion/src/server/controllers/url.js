@@ -8,7 +8,7 @@ const utils = require('../helpers/utils');
 const {getProtectedHttpAgent} = require('../helpers/request');
 const logger = require('../logger');
 module.exports = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
@@ -17,7 +17,7 @@ module.exports = () => {
 
 };
 const meta = (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"meta","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"meta","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":2},`);
 
   logger.debug('URL file import handler running', null, req.id);
   const debug = req.companion.options.debug;
@@ -30,7 +30,7 @@ const meta = (req, res) => {
     });
   }
   utils.getURLMeta(req.body.url, !debug).then(meta => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
@@ -38,7 +38,7 @@ const meta = (req, res) => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
   }).catch(err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":1},`);
 
     logger.error(err, 'controller.url.meta.error', req.id);
         SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch"},');
@@ -53,7 +53,7 @@ const meta = (req, res) => {
 
 };
 const get = (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"get","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"get","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":2},`);
 
   logger.debug('URL file import handler running', null, req.id);
   const debug = req.companion.options.debug;
@@ -66,7 +66,7 @@ const get = (req, res) => {
     });
   }
   utils.getURLMeta(req.body.url).then(({size}) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then###2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then###2","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":1},`);
 
     logger.debug('Instantiating uploader.', null, req.id);
     const uploader = new Uploader(Uploader.reqToOptions(req, size));
@@ -79,7 +79,7 @@ const get = (req, res) => {
     }
     logger.debug('Waiting for socket connection before beginning remote download.', null, req.id);
     uploader.onSocketReady(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploader.onSocketReady","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploader.onSocketReady","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":0},`);
 
       logger.debug('Socket connection received. Starting remote download.', null, req.id);
       downloadURL(req.body.url, uploader.handleChunk.bind(uploader), !debug, req.id);
@@ -91,7 +91,7 @@ const get = (req, res) => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then###2"},');
 
   }).catch(err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch###2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch###2","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":1},`);
 
     logger.error(err, 'controller.url.get.error', req.id);
     res.json({
@@ -104,7 +104,7 @@ const get = (req, res) => {
 
 };
 const validateURL = (url, debug) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateURL","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateURL","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":2},`);
 
   const validURLOpts = {
     protocols: ['http', 'https'],
@@ -123,7 +123,7 @@ const validateURL = (url, debug) => {
 
 };
 const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"downloadURL","fileName":"${__filename}","paramsNumber":4},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"downloadURL","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":4},`);
 
   const opts = {
     uri: url,
@@ -132,7 +132,7 @@ const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
     agentClass: getProtectedHttpAgent(utils.parseURL(url).protocol, blockLocalIPs)
   };
   request(opts).on('data', chunk => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on.request.on","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on.request.on","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on.request.on"},');
 
@@ -140,7 +140,7 @@ const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on.request.on"},');
 
   }).on('end', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
@@ -148,7 +148,7 @@ const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
   }).on('error', err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on","fileName":"/packages/@uppy/companion/src/server/controllers/url.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on"},');
 

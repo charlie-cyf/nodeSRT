@@ -7,7 +7,7 @@ const ItemList = require('./ItemList');
 const FooterActions = require('./FooterActions');
 const {h} = require('preact');
 const Browser = props => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Browser","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Browser","fileName":"/packages/@uppy/provider-views/src/Browser.js","paramsNumber":1},`);
 
   let filteredFolders = props.folders;
   let filteredFiles = props.files;

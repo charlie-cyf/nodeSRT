@@ -24,7 +24,7 @@ var UrlUI = require('./UrlUI.js');
 var forEachDroppedOrPastedUrl = require('./utils/forEachDroppedOrPastedUrl');
 
 function UrlIcon() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UrlIcon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UrlIcon\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"UrlIcon"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -55,14 +55,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function Url(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.id = _this.opts.id || 'Url';
     _this.title = _this.opts.title || 'Link';
     _this.type = 'acquirer';
 
     _this.icon = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.icon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.icon\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.icon"},');
       return h(UrlIcon, null);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.icon"},');
@@ -103,7 +103,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = Url.prototype;
 
   _proto.setOptions = function setOptions(newOpts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
 
     _Plugin.prototype.setOptions.call(this, newOpts);
 
@@ -112,7 +112,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.i18nInit = function i18nInit() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
@@ -121,14 +121,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.getFileNameFromUrl = function getFileNameFromUrl(url) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getFileNameFromUrl\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getFileNameFromUrl\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"getFileNameFromUrl"},');
     return url.substring(url.lastIndexOf('/') + 1);
     SRTlib.send('{"type":"FUNCTIONEND","function":"getFileNameFromUrl"},');
   };
 
   _proto.checkIfCorrectURL = function checkIfCorrectURL(url) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"checkIfCorrectURL\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"checkIfCorrectURL\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
 
     if (!url) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"checkIfCorrectURL"},');
@@ -148,7 +148,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.addProtocolToURL = function addProtocolToURL(url) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addProtocolToURL\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addProtocolToURL\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     var protocolRegex = /^[a-z0-9]+:\/\//;
     var defaultProtocol = 'http://';
 
@@ -165,12 +165,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.getMeta = function getMeta(url) {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getMeta\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getMeta\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"getMeta"},');
     return this.client.post('url/meta', {
       url: url
     }).then(function (res) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.client.post.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.client.post.then\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1},");
 
       if (res.error) {
         _this2.uppy.log('[URL] Error:');
@@ -191,7 +191,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.addFile = function addFile(url) {
     var _this3 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addFile\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addFile\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     url = this.addProtocolToURL(url);
 
     if (!this.checkIfCorrectURL(url)) {
@@ -203,7 +203,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"addFile"},');
     return this.getMeta(url).then(function (meta) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.getMeta.then.then.catch.getMeta.then.then.getMeta.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.getMeta.then.then.catch.getMeta.then.then.getMeta.then\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1},");
       var tagFile = {
         source: _this3.id,
         name: _this3.getFileNameFromUrl(url),
@@ -229,7 +229,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       return tagFile;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.getMeta.then.then.catch.getMeta.then.then.getMeta.then"},');
     }).then(function (tagFile) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.getMeta.then.then.catch.getMeta.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.getMeta.then.then.catch.getMeta.then.then\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1},");
 
       _this3.uppy.log('[Url] Adding remote file');
 
@@ -243,7 +243,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.getMeta.then.then.catch.getMeta.then.then"},');
     }).catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.getMeta.then.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.getMeta.then.then.catch\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1},");
 
       _this3.uppy.log(err);
 
@@ -260,9 +260,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.handleRootDrop = function handleRootDrop(e) {
     var _this4 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleRootDrop\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleRootDrop\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     forEachDroppedOrPastedUrl(e.dataTransfer, 'drop', function (url) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.forEachDroppedOrPastedUrl\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.forEachDroppedOrPastedUrl\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1},");
 
       _this4.uppy.log("[URL] Adding file from dropped url: " + url);
 
@@ -276,9 +276,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.handleRootPaste = function handleRootPaste(e) {
     var _this5 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleRootPaste\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleRootPaste\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     forEachDroppedOrPastedUrl(e.clipboardData, 'paste', function (url) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.forEachDroppedOrPastedUrl###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.forEachDroppedOrPastedUrl###2\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1},");
 
       _this5.uppy.log("[URL] Adding file from pasted url: " + url);
 
@@ -290,7 +290,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.render = function render(state) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return h(UrlUI, {
       i18n: this.i18n,
@@ -300,7 +300,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     var target = this.opts.target;
 
     if (target) {
@@ -311,7 +311,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/url/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Url\",\"superClass\":\"Plugin\"}},");
     this.unmount();
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
   };

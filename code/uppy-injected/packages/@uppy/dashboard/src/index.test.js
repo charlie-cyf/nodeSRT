@@ -7,11 +7,11 @@ const GoogleDrivePlugin = require('@uppy/google-drive');
 describe('Dashboard', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Dashboard", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Dashboard", "fileName": "/packages/@uppy/dashboard/src/index.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/dashboard/src/index.test.js", "calls" : [`);
   });
 
   it('can safely be added together with the StatusBar without id conflicts', () => {

@@ -6,14 +6,14 @@ const basePropTypes = require('./propTypes').dashboard;
 const h = React.createElement;
 class Dashboard extends React.Component {
   componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"/packages/@uppy/react/src/Dashboard.js","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
 
     this.installPlugin();
         SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
 
   }
   componentDidUpdate(prevProps) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidUpdate","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Dashboard"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidUpdate","fileName":"/packages/@uppy/react/src/Dashboard.js","paramsNumber":1,"classInfo":{"className":"Dashboard"}},`);
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
@@ -23,14 +23,14 @@ class Dashboard extends React.Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/packages/@uppy/react/src/Dashboard.js","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
 
     this.uninstallPlugin();
         SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
 
   }
   installPlugin() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"installPlugin","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"installPlugin","fileName":"/packages/@uppy/react/src/Dashboard.js","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
 
     const uppy = this.props.uppy;
     const options = Object.assign({
@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
 
   }
   uninstallPlugin(props = this.props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstallPlugin","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Dashboard"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstallPlugin","fileName":"/packages/@uppy/react/src/Dashboard.js","paramsNumber":1,"classInfo":{"className":"Dashboard"}},`);
 
     const uppy = props.uppy;
     uppy.removePlugin(this.plugin);
@@ -53,13 +53,13 @@ class Dashboard extends React.Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/react/src/Dashboard.js","paramsNumber":0,"classInfo":{"className":"Dashboard"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
     return h('div', {
       ref: container => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h.ref","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.h.ref","fileName":"/packages/@uppy/react/src/Dashboard.js","paramsNumber":1},`);
 
         this.container = container;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.ref"},');

@@ -27,14 +27,14 @@ var qsStringify = require('qs-stringify');
 var MiniXHRUpload = require('./MiniXHRUpload');
 
 function resolveUrl(origin, link) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"resolveUrl\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"resolveUrl\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":2},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"resolveUrl"},');
   return origin ? new URL_(link, origin).toString() : new URL_(link).toString();
   SRTlib.send('{"type":"FUNCTIONEND","function":"resolveUrl","paramsNumber":2},');
 }
 
 function isXml(content, xhr) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isXml\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isXml\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":2},");
   var rawContentType = xhr.headers ? xhr.headers['content-type'] : xhr.getResponseHeader('Content-Type');
 
   if (rawContentType === null) {
@@ -62,7 +62,7 @@ function isXml(content, xhr) {
 }
 
 function getXmlValue(source, key) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getXmlValue\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getXmlValue\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":2},");
   var start = source.indexOf("<" + key + ">");
   var end = source.indexOf("</" + key + ">", start);
   SRTlib.send('{"type":"FUNCTIONEND","function":"getXmlValue"},');
@@ -71,7 +71,7 @@ function getXmlValue(source, key) {
 }
 
 function assertServerError(res) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"assertServerError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"assertServerError\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
 
   if (res && res.error) {
     var error = new Error(res.message);
@@ -94,7 +94,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function AwsS3(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.type = 'uploader';
     _this.id = _this.opts.id || 'AwsS3';
@@ -116,7 +116,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = AwsS3.prototype;
 
   _proto.getUploadParameters = function getUploadParameters(file) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getUploadParameters\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getUploadParameters\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
 
     if (!this.opts.companionUrl) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadParameters"},');
@@ -127,7 +127,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     var type = file.meta.type;
     var metadata = {};
     this.opts.metaFields.forEach(function (key) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.metaFields.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.metaFields.forEach\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
 
       if (file.meta[key] != null) {
         metadata[key] = file.meta[key].toString();
@@ -146,7 +146,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.validateParameters = function validateParameters(file, params) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"validateParameters\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"validateParameters\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
     var valid = typeof params === 'object' && params && typeof params.url === 'string' && (typeof params.fields === 'object' || params.fields == null) && (params.method == null || /^(put|post)$/i.test(params.method));
 
     if (!valid) {
@@ -162,11 +162,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.handleUpload = function handleUpload(fileIDs) {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleUpload\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleUpload\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
     var paramsPromises = Object.create(null);
 
     function onremove(file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onremove\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onremove\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
       var id = file.id;
 
       if (hasProperty(paramsPromises, id)) {
@@ -178,7 +178,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     this.uppy.on('file-removed', onremove);
     fileIDs.forEach(function (id) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.fileIDs.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.fileIDs.forEach\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
 
       var file = _this2.uppy.getFile(id);
 
@@ -187,7 +187,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.fileIDs.forEach"},');
     });
     var getUploadParameters = this.requests.wrapPromiseFunction(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getUploadParameters.requests.wrapPromiseFunction\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getUploadParameters.requests.wrapPromiseFunction\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getUploadParameters.requests.wrapPromiseFunction"},');
       return _this2.opts.getUploadParameters(file);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getUploadParameters.requests.wrapPromiseFunction"},');
@@ -195,14 +195,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     var numberOfFiles = fileIDs.length;
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleUpload"},');
     return settle(fileIDs.map(function (id, index) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.settle.then.settle.fileIDs.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.settle.then.settle.fileIDs.map\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":2},");
 
       var file = _this2.uppy.getFile(id);
 
       paramsPromises[id] = getUploadParameters(file);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.settle.then.settle.fileIDs.map"},');
       return paramsPromises[id].then(function (params) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
         delete paramsPromises[id];
 
         _this2.validateParameters(file, params);
@@ -232,7 +232,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         return _this2._uploader.uploadFile(file.id, index, numberOfFiles);
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then"},');
       }).catch(function (error) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.paramsPromises.id.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.paramsPromises.id.then.catch\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
         delete paramsPromises[id];
 
         _this2.uppy.emit('upload-error', file, error);
@@ -241,7 +241,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.settle.then.settle.fileIDs.map"},');
     })).then(function (settled) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.settle.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.settle.then\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
 
       _this2.uppy.off('file-removed', onremove);
 
@@ -253,12 +253,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
     var uppy = this.uppy;
     this.uppy.addUploader(this.handleUpload);
 
     function defaultGetResponseData(content, xhr) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"defaultGetResponseData\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"defaultGetResponseData\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":2},");
       var opts = this;
 
       if (!isXml(content, xhr)) {
@@ -298,7 +298,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     }
 
     function defaultGetResponseError(content, xhr) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"defaultGetResponseError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"defaultGetResponseError\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":2},");
 
       if (!isXml(content, xhr)) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetResponseError"},');
@@ -326,7 +326,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AwsS3\",\"superClass\":\"Plugin\"}},");
     this.uppy.removePreProcessor(this.handleUpload);
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
   };

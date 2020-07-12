@@ -4,7 +4,7 @@ var _require = require('preact'),
     h = _require.h;
 
 function FileIcon() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"FileIcon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"FileIcon\",\"fileName\":\"/packages/@uppy/provider-views/src/Item/components/ItemIcon.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"FileIcon"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -20,7 +20,7 @@ function FileIcon() {
 }
 
 function FolderIcon() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"FolderIcon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"FolderIcon\",\"fileName\":\"/packages/@uppy/provider-views/src/Item/components/ItemIcon.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"FolderIcon"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -38,7 +38,7 @@ function FolderIcon() {
 }
 
 function VideoIcon() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"VideoIcon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"VideoIcon\",\"fileName\":\"/packages/@uppy/provider-views/src/Item/components/ItemIcon.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"VideoIcon"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -53,7 +53,7 @@ function VideoIcon() {
 }
 
 module.exports = function (props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/provider-views/src/Item/components/ItemIcon.js\",\"paramsNumber\":1},");
 
   if (props.itemIconString === null) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

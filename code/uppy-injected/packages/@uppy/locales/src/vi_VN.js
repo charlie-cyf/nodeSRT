@@ -138,7 +138,7 @@ vi_VN.strings = {
   }
 };
 vi_VN.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"vi_VN.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"vi_VN.pluralize","fileName":"/packages/@uppy/locales/src/vi_VN.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"vi_VN.pluralize"},');

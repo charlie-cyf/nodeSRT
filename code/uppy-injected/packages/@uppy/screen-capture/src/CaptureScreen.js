@@ -7,14 +7,14 @@ const StopWatch = require('./StopWatch');
 const StreamStatus = require('./StreamStatus');
 class RecorderScreen extends Component {
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"RecorderScreen","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/packages/@uppy/screen-capture/src/CaptureScreen.js","paramsNumber":0,"classInfo":{"className":"RecorderScreen","superClass":"Component"}},`);
 
     this.props.onStop();
         SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"RecorderScreen","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/screen-capture/src/CaptureScreen.js","paramsNumber":0,"classInfo":{"className":"RecorderScreen","superClass":"Component"}},`);
 
     const {recording, stream: videoStream, recordedVideo} = this.props;
     const videoProps = {
@@ -39,7 +39,7 @@ class RecorderScreen extends Component {
         <div class="uppy-ScreenCapture-videoContainer">
           <StreamStatus  {...this.props} />
           <video ref={videoElement => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/screen-capture/src/CaptureScreen.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 

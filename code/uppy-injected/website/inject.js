@@ -30,7 +30,7 @@ const excludes = {
   '@uppy/react': ['react']
 };
 inject().catch(err => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inject.catch","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inject.catch","fileName":"/website/inject.js","paramsNumber":1},`);
 
   console.error(err);
   process.exit(1);
@@ -38,7 +38,7 @@ inject().catch(err => {
 
 });
 async function getMinifiedSize(pkg, name) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMinifiedSize","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMinifiedSize","fileName":"/website/inject.js","paramsNumber":2},`);
 
   const b = browserify(pkg);
   const packageJSON = fs.readFileSync(path.join(pkg, 'package.json'));
@@ -64,11 +64,11 @@ async function getMinifiedSize(pkg, name) {
 
 }
 async function injectSizes(config) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectSizes","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectSizes","fileName":"/website/inject.js","paramsNumber":1},`);
 
   console.info(chalk.grey('Generating bundle sizes…'));
   const padTarget = packages.reduce((max, cur) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"padTarget.packages.reduce","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"padTarget.packages.reduce","fileName":"/website/inject.js","paramsNumber":2},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"padTarget.packages.reduce"},');
 
@@ -77,7 +77,7 @@ async function injectSizes(config) {
 
   }, 0) + 2;
   const sizesPromise = Promise.all(packages.map(async pkg => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizesPromise.Promise.all.then.Promise.all.packages.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizesPromise.Promise.all.then.Promise.all.packages.map","fileName":"/website/inject.js","paramsNumber":1},`);
 
     const result = await getMinifiedSize(path.join(__dirname, '../packages', pkg), pkg);
     console.info(chalk.green(`  ✓ ${pkg}: ${(' ').repeat(padTarget - pkg.length)}` + `${bytes(result.minified)} min`.padEnd(10) + ` / ${bytes(result.gzipped)} gz`));
@@ -90,11 +90,11 @@ async function injectSizes(config) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"sizesPromise.Promise.all.then.Promise.all.packages.map"},');
 
   })).then(list => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizesPromise.Promise.all.then","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizesPromise.Promise.all.then","fileName":"/website/inject.js","paramsNumber":1},`);
 
     const map = {};
     list.forEach((size, i) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"list.forEach","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"list.forEach","fileName":"/website/inject.js","paramsNumber":2},`);
 
       map[packages[i]] = size;
             SRTlib.send('{"type":"FUNCTIONEND","function":"list.forEach"},');
@@ -111,12 +111,12 @@ async function injectSizes(config) {
 
 }
 async function injectBundles() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectBundles","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectBundles","fileName":"/website/inject.js","paramsNumber":0},`);
 
   const cmds = [`mkdir -p ${path.join(webRoot, '/themes/uppy/source/uppy')}`, `mkdir -p ${path.join(webRoot, '/themes/uppy/source/uppy/locales')}`, `cp -vfR ${path.join(uppyRoot, '/dist/*')} ${path.join(webRoot, '/themes/uppy/source/uppy/')}`, `cp -vfR ${path.join(robodogRoot, '/dist/*')} ${path.join(webRoot, '/themes/uppy/source/uppy/')}`, `cp -vfR ${path.join(localesRoot, '/dist/*')} ${path.join(webRoot, '/themes/uppy/source/uppy/locales')}`].join(' && ');
   const {stdout} = await promisify(exec)(cmds);
   stdout.trim().split('\n').forEach(function (line) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"stdout.trim.split.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"stdout.trim.split.forEach","fileName":"/website/inject.js","paramsNumber":1},`);
 
     console.info(chalk.green('✓ injected: '), chalk.grey(line));
         SRTlib.send('{"type":"FUNCTIONEND","function":"stdout.trim.split.forEach"},');
@@ -126,7 +126,7 @@ async function injectBundles() {
 
 }
 async function injectGhStars() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectGhStars","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectGhStars","fileName":"/website/inject.js","paramsNumber":0},`);
 
   const opts = {};
   if (('GITHUB_TOKEN' in process.env)) {
@@ -146,7 +146,7 @@ async function injectGhStars() {
 
 }
 async function injectMarkdown() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectMarkdown","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectMarkdown","fileName":"/website/inject.js","paramsNumber":0},`);
 
   const sources = {
     '.github/ISSUE_TEMPLATE/integration_help.md': 'src/_template/integration_help.md',
@@ -171,7 +171,7 @@ async function injectMarkdown() {
 
 }
 function injectLocaleList() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectLocaleList","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"injectLocaleList","fileName":"/website/inject.js","paramsNumber":0},`);
 
   const mdTable = [`<!-- WARNING! This file was automatically injected. Please run "${path.basename(__filename)}" to re-generate -->\n\n`, '| %count% Locales | NPM                | CDN                 | Source on GitHub |', '| --------------- | ------------------ | ------------------- | ---------------- |'];
   const mdRows = [];
@@ -179,7 +179,7 @@ function injectLocaleList() {
   const localePackagePath = path.join(localesRoot, 'src', '*.js');
   const localePackageVersion = require(path.join(localesRoot, 'package.json')).version;
   glob.sync(localePackagePath).forEach(localePath => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob.sync.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob.sync.forEach","fileName":"/website/inject.js","paramsNumber":1},`);
 
     const localeName = path.basename(localePath, '.js');
     if (localeName === 'es_GL') {
@@ -218,7 +218,7 @@ function injectLocaleList() {
 
 }
 async function readConfig() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"readConfig","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"readConfig","fileName":"/website/inject.js","paramsNumber":0},`);
 
   try {
     const buf = await promisify(fs.readFile)(configPath, 'utf8');
@@ -234,7 +234,7 @@ async function readConfig() {
 
 }
 async function inject() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"inject","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"inject","fileName":"/website/inject.js","paramsNumber":0},`);
 
   const config = await readConfig();
   await injectGhStars();

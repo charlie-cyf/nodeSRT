@@ -31,7 +31,7 @@ var CameraScreen = require('./CameraScreen');
 var PermissionsScreen = require('./PermissionsScreen');
 
 function toMimeType(fileType) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"toMimeType\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"toMimeType\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
 
   if (fileType[0] === '.') {
     SRTlib.send('{"type":"FUNCTIONEND","function":"toMimeType"},');
@@ -44,21 +44,21 @@ function toMimeType(fileType) {
 }
 
 function isVideoMimeType(mimeType) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isVideoMimeType\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isVideoMimeType\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"isVideoMimeType"},');
   return /^video\/[^*]+$/.test(mimeType);
   SRTlib.send('{"type":"FUNCTIONEND","function":"isVideoMimeType","paramsNumber":1},');
 }
 
 function isImageMimeType(mimeType) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isImageMimeType\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isImageMimeType\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"isImageMimeType"},');
   return /^image\/[^*]+$/.test(mimeType);
   SRTlib.send('{"type":"FUNCTIONEND","function":"isImageMimeType","paramsNumber":1},');
 }
 
 function getMediaDevices() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getMediaDevices\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getMediaDevices\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
 
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"getMediaDevices"},');
@@ -75,10 +75,10 @@ function getMediaDevices() {
   SRTlib.send('{"type":"FUNCTIONEND","function":"getMediaDevices"},');
   return {
     getUserMedia: function getUserMedia(opts) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.getUserMedia\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.getUserMedia\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.getUserMedia"},');
       return new Promise(function (resolve, reject) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.getUserMedia.ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.getUserMedia.ReturnStatement.NewExpression\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":2},");
 
         _getUserMedia.call(navigator, opts, resolve, reject);
 
@@ -96,7 +96,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function Webcam(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.mediaDevices = getMediaDevices();
     _this.supportsUserMedia = !!_this.mediaDevices;
@@ -106,7 +106,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     _this.type = 'acquirer';
 
     _this.icon = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.icon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.icon\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.icon"},');
       return h("svg", {
         "aria-hidden": "true",
@@ -145,7 +145,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
     var defaultOptions = {
       onBeforeSnapshot: function onBeforeSnapshot() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.defaultOptions.onBeforeSnapshot\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.defaultOptions.onBeforeSnapshot\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.defaultOptions.onBeforeSnapshot"},');
         return Promise.resolve();
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.defaultOptions.onBeforeSnapshot"},');
@@ -185,7 +185,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = Webcam.prototype;
 
   _proto.setOptions = function setOptions(newOpts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
 
     _Plugin.prototype.setOptions.call(this, newOpts);
 
@@ -194,7 +194,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.i18nInit = function i18nInit() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
@@ -203,14 +203,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.isSupported = function isSupported() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isSupported\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isSupported\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"isSupported"},');
     return !!this.mediaDevices;
     SRTlib.send('{"type":"FUNCTIONEND","function":"isSupported"},');
   };
 
   _proto.getConstraints = function getConstraints() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getConstraints\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getConstraints\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     var acceptsAudio = this.opts.modes.indexOf('video-audio') !== -1 || this.opts.modes.indexOf('audio-only') !== -1;
     var acceptsVideo = this.opts.modes.indexOf('video-audio') !== -1 || this.opts.modes.indexOf('video-only') !== -1 || this.opts.modes.indexOf('picture') !== -1;
     SRTlib.send('{"type":"FUNCTIONEND","function":"getConstraints"},');
@@ -226,7 +226,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto._start = function _start() {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_start\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_start\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
 
     if (!this.isSupported()) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"_start"},');
@@ -237,7 +237,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     var constraints = this.getConstraints();
     SRTlib.send('{"type":"FUNCTIONEND","function":"_start"},');
     return this.mediaDevices.getUserMedia(constraints).then(function (stream) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
       _this2.stream = stream;
 
       _this2.setPluginState({
@@ -246,7 +246,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch.mediaDevices.getUserMedia.then"},');
     }).catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.mediaDevices.getUserMedia.then.catch\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
 
       _this2.setPluginState({
         cameraError: err
@@ -258,7 +258,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto._getMediaRecorderOptions = function _getMediaRecorderOptions() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_getMediaRecorderOptions\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_getMediaRecorderOptions\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     var options = {};
 
     if (MediaRecorder.isTypeSupported) {
@@ -272,7 +272,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       }
 
       var acceptableMimeTypes = preferredVideoMimeTypes.filter(function (candidateType) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.acceptableMimeTypes.preferredVideoMimeTypes.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.acceptableMimeTypes.preferredVideoMimeTypes.filter\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.acceptableMimeTypes.preferredVideoMimeTypes.filter"},');
         return MediaRecorder.isTypeSupported(candidateType) && getFileTypeExtension(candidateType);
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.acceptableMimeTypes.preferredVideoMimeTypes.filter"},');
@@ -291,12 +291,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto._startRecording = function _startRecording() {
     var _this3 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_startRecording\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_startRecording\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     this.recorder = new MediaRecorder(this.stream, this._getMediaRecorderOptions());
     this.recordingChunks = [];
     var stoppingBecauseOfMaxSize = false;
     this.recorder.addEventListener('dataavailable', function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.recorder.addEventListener\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.recorder.addEventListener\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
 
       _this3.recordingChunks.push(event.data);
 
@@ -304,7 +304,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       if (_this3.recordingChunks.length > 1 && restrictions.maxFileSize != null && !stoppingBecauseOfMaxSize) {
         var totalSize = _this3.recordingChunks.reduce(function (acc, chunk) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"totalSize.recordingChunks.reduce\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"totalSize.recordingChunks.reduce\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":2},");
           SRTlib.send('{"type":"FUNCTIONEND","function":"totalSize.recordingChunks.reduce"},');
           return acc + chunk.size;
           SRTlib.send('{"type":"FUNCTIONEND","function":"totalSize.recordingChunks.reduce"},');
@@ -329,7 +329,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     if (this.opts.showRecordingLength) {
       this.recordingLengthTimer = setInterval(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.recordingLengthTimer.setInterval\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.recordingLengthTimer.setInterval\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
 
         var currentRecordingLength = _this3.getPluginState().recordingLengthSeconds;
 
@@ -350,12 +350,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto._stopRecording = function _stopRecording() {
     var _this4 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_stopRecording\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_stopRecording\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     var stopped = new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.stopped.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.stopped.NewExpression\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":2},");
 
       _this4.recorder.addEventListener('stop', function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"recorder.addEventListener\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"recorder.addEventListener\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
         resolve();
         SRTlib.send('{"type":"FUNCTIONEND","function":"recorder.addEventListener"},');
       });
@@ -374,7 +374,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     });
     SRTlib.send('{"type":"FUNCTIONEND","function":"_stopRecording"},');
     return stopped.then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then.stopped.then.then.stopped.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then.stopped.then.then.stopped.then\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
 
       _this4.setPluginState({
         isRecording: false
@@ -384,7 +384,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       return _this4.getVideo();
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then.stopped.then.then.stopped.then"},');
     }).then(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then.stopped.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then.stopped.then.then\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
 
       try {
         _this4.uppy.addFile(file);
@@ -396,12 +396,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then.stopped.then.then"},');
     }).then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
       _this4.recordingChunks = null;
       _this4.recorder = null;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then"},');
     }, function (error) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.stopped.then.then.then###2\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
       _this4.recordingChunks = null;
       _this4.recorder = null;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.stopped.then.then.then###2"},');
@@ -412,14 +412,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto._stop = function _stop() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_stop\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_stop\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     this.stream.getAudioTracks().forEach(function (track) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.stream.getAudioTracks.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.stream.getAudioTracks.forEach\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
       track.stop();
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.stream.getAudioTracks.forEach"},');
     });
     this.stream.getVideoTracks().forEach(function (track) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.stream.getVideoTracks.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.stream.getVideoTracks.forEach\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
       track.stop();
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.stream.getVideoTracks.forEach"},');
     });
@@ -429,7 +429,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto._getVideoElement = function _getVideoElement() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_getVideoElement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_getVideoElement\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getVideoElement"},');
     return this.el.querySelector('.uppy-Webcam-video');
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getVideoElement"},');
@@ -438,13 +438,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto._oneTwoThreeSmile = function _oneTwoThreeSmile() {
     var _this5 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_oneTwoThreeSmile\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_oneTwoThreeSmile\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"_oneTwoThreeSmile"},');
     return new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.NewExpression\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":2},");
       var count = _this5.opts.countdown;
       var countDown = setInterval(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"countDown.setInterval\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"countDown.setInterval\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
 
         if (!_this5.webcamActive) {
           clearInterval(countDown);
@@ -463,7 +463,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           _this5.uppy.info(_this5.i18n('smile'), 'success', 1500);
 
           setTimeout(function () {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"setTimeout\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"setTimeout\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
             SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
             return resolve();
             SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
@@ -480,7 +480,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto._takeSnapshot = function _takeSnapshot() {
     var _this6 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_takeSnapshot\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_takeSnapshot\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
 
     if (this.captureInProgress) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"_takeSnapshot"},');
@@ -489,7 +489,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     this.captureInProgress = true;
     this.opts.onBeforeSnapshot().catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then.opts.onBeforeSnapshot.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then.opts.onBeforeSnapshot.catch\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
       var message = typeof err === 'object' ? err.message : err;
 
       _this6.uppy.info(message, 'error', 5000);
@@ -498,12 +498,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       return Promise.reject(new Error("onBeforeSnapshot: " + message));
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then.opts.onBeforeSnapshot.catch"},');
     }).then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then"},');
       return _this6._getImage();
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then.opts.onBeforeSnapshot.catch.then"},');
     }).then(function (tagFile) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.onBeforeSnapshot.catch.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.onBeforeSnapshot.catch.then.then\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
       _this6.captureInProgress = false;
 
       try {
@@ -516,7 +516,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then"},');
     }, function (error) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.onBeforeSnapshot.catch.then.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.opts.onBeforeSnapshot.catch.then.then###2\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
       _this6.captureInProgress = false;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.opts.onBeforeSnapshot.catch.then.then###2"},');
       throw error;
@@ -528,7 +528,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto._getImage = function _getImage() {
     var _this7 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_getImage\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_getImage\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
 
     var video = this._getVideoElement();
 
@@ -558,7 +558,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     var name = "cam-" + Date.now() + "." + ext;
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getImage"},');
     return canvasToBlob(canvas, mimeType).then(function (blob) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.canvasToBlob.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.canvasToBlob.then\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.canvasToBlob.then"},');
       return {
         source: _this7.id,
@@ -574,7 +574,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.getVideo = function getVideo() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getVideo\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getVideo\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     var mimeType = this.recordingChunks[0].type;
     var fileExtension = getFileTypeExtension(mimeType);
 
@@ -603,7 +603,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto._focus = function _focus() {
     var _this8 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_focus\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_focus\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
 
     if (!this.opts.countdown) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"_focus"},');
@@ -611,7 +611,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     }
 
     setTimeout(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.setTimeout\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.setTimeout\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0},");
 
       _this8.uppy.info(_this8.i18n('smile'), 'success', 1500);
 
@@ -621,7 +621,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.render = function render(state) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
 
     if (!this.webcamActive) {
       this._start();
@@ -656,7 +656,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
     this.setPluginState({
       cameraReady: false,
       recordingLengthSeconds: 0
@@ -671,7 +671,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/webcam/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Webcam\",\"superClass\":\"Plugin\"}},");
 
     if (this.stream) {
       this._stop();

@@ -3,19 +3,19 @@ const SRTlib = require('SRT-util');
 const getTimeStamp = require('@uppy/utils/lib/getTimeStamp');
 const justErrorsLogger = {
   debug: (...args) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"justErrorsLogger.debug","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"justErrorsLogger.debug","fileName":"/packages/@uppy/core/src/loggers.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"justErrorsLogger.debug"},');
 
   },
   warn: (...args) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"justErrorsLogger.warn","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"justErrorsLogger.warn","fileName":"/packages/@uppy/core/src/loggers.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"justErrorsLogger.warn"},');
 
   },
   error: (...args) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"justErrorsLogger.error","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"justErrorsLogger.error","fileName":"/packages/@uppy/core/src/loggers.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"justErrorsLogger.error"},');
 
@@ -26,7 +26,7 @@ const justErrorsLogger = {
 };
 const debugLogger = {
   debug: (...args) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"debugLogger.debug","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"debugLogger.debug","fileName":"/packages/@uppy/core/src/loggers.js","paramsNumber":1},`);
 
     const debug = console.debug || console.log;
     debug.call(console, `[Uppy] [${getTimeStamp()}]`, ...args);
@@ -34,7 +34,7 @@ const debugLogger = {
 
   },
   warn: (...args) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"debugLogger.warn","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"debugLogger.warn","fileName":"/packages/@uppy/core/src/loggers.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"debugLogger.warn"},');
 
@@ -43,7 +43,7 @@ const debugLogger = {
 
   },
   error: (...args) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"debugLogger.error","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"debugLogger.error","fileName":"/packages/@uppy/core/src/loggers.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"debugLogger.error"},');
 

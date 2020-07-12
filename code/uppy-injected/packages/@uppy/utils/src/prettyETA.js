@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const secondsToTime = require('./secondsToTime');
 module.exports = function prettyETA(seconds) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/utils/src/prettyETA.js","paramsNumber":1},`);
 
   const time = secondsToTime(seconds);
   const hoursStr = time.hours ? time.hours + 'h ' : '';

@@ -3,11 +3,11 @@ const SRTlib = require('SRT-util');
 describe('File upload with URL plugin', () => {
     before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20URL%20plugin", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20URL%20plugin", "fileName": "/test/endtoend/url-plugin/test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${this.test}", "fileName": "/test/endtoend/url-plugin/test.js", "calls" : [`);
   });
 
   it('should import  and upload a file completely with Url Plugin', async () => {

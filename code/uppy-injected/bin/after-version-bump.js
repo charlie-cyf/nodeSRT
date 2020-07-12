@@ -9,7 +9,7 @@ const fs = require('fs');
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 async function replaceInFile(filename, replacements) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"replaceInFile","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"replaceInFile","fileName":"/bin/after-version-bump.js","paramsNumber":2},`);
 
   let content = await readFile(filename, 'utf8');
   for (const [rx, replacement] of replacements) {
@@ -20,7 +20,7 @@ async function replaceInFile(filename, replacements) {
 
 }
 async function updateVersions(files, packageName) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateVersions","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateVersions","fileName":"/bin/after-version-bump.js","paramsNumber":2},`);
 
   const {version} = require(`../packages/${packageName}/package.json`);
   const urlPart = packageName === 'uppy' ? packageName : packageName.slice(1);
@@ -33,7 +33,7 @@ async function updateVersions(files, packageName) {
 
 }
 async function gitAdd(files) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"gitAdd","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"gitAdd","fileName":"/bin/after-version-bump.js","paramsNumber":1},`);
 
   const git = spawn('git', ['add', ...files], {
     stdio: 'inherit'
@@ -48,7 +48,7 @@ async function gitAdd(files) {
 
 }
 async function npmRunBuild() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"npmRunBuild","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"npmRunBuild","fileName":"/bin/after-version-bump.js","paramsNumber":0},`);
 
   const npmRun = spawn('npm', ['run', 'build'], {
     stdio: 'inherit',
@@ -68,7 +68,7 @@ async function npmRunBuild() {
 
 }
 async function main() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"main","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"main","fileName":"/bin/after-version-bump.js","paramsNumber":0},`);
 
   if (process.env.ENDTOEND === '1') {
     console.log('Publishing for e2e tests, skipping version number sync.');
@@ -85,7 +85,7 @@ async function main() {
   await updateVersions(files, '@uppy/locales');
   const isIgnored = await globby.gitignore();
   await gitAdd(files.filter(filename => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"gitAdd.files.filter","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"gitAdd.files.filter","fileName":"/bin/after-version-bump.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"gitAdd.files.filter"},');
 
@@ -98,7 +98,7 @@ async function main() {
 
 }
 main().catch(function (err) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"main.catch","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"main.catch","fileName":"/bin/after-version-bump.js","paramsNumber":1},`);
 
   console.error(err.stack);
   process.exit(1);

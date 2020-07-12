@@ -8,7 +8,7 @@ const generateFileID = require('@uppy/utils/lib/generateFileID');
 const getFileType = require('@uppy/utils/lib/getFileType');
 const isPreviewSupported = require('@uppy/utils/lib/isPreviewSupported');
 function findIndex(array, predicate) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findIndex","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findIndex","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2},`);
 
   for (let i = 0; i < array.length; i++) {
     if (predicate(array[i])) {
@@ -24,7 +24,7 @@ function findIndex(array, predicate) {
 
 }
 function getOrigin() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getOrigin","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getOrigin","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0},`);
 
   if (('origin' in location)) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"getOrigin"},');
@@ -39,14 +39,14 @@ function getOrigin() {
 }
 class CloseWrapper extends Component {
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"CloseWrapper","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"CloseWrapper","superClass":"Component"}},`);
 
     this.props.onUnmount();
         SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"CloseWrapper","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"CloseWrapper","superClass":"Component"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
@@ -58,7 +58,7 @@ class CloseWrapper extends Component {
 module.exports = class ProviderView {
   static VERSION = require('../package.json').version
   constructor(plugin, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
     this.plugin = plugin;
     this.provider = opts.provider;
@@ -98,17 +98,17 @@ module.exports = class ProviderView {
 
   }
   tearDown() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"tearDown","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"tearDown","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"tearDown"},');
 
   }
   _updateFilesAndFolders(res, files, folders) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_updateFilesAndFolders","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_updateFilesAndFolders","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":3,"classInfo":{"className":"ProviderView"}},`);
 
     this.nextPagePath = res.nextPagePath;
     res.items.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.res.items.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.res.items.forEach","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       if (item.isFolder) {
         folders.push(item);
@@ -126,7 +126,7 @@ module.exports = class ProviderView {
 
   }
   preFirstRender() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"preFirstRender","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"preFirstRender","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
     this.plugin.setPluginState({
       didFirstRender: true
@@ -136,19 +136,19 @@ module.exports = class ProviderView {
 
   }
   getFolder(id, name) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getFolder","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getFolder","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getFolder"},');
 
     return this._loaderWrapper(this.provider.list(id), res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement._loaderWrapper","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement._loaderWrapper","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       const folders = [];
       const files = [];
       let updatedDirectories;
       const state = this.plugin.getPluginState();
       const index = findIndex(state.directories, dir => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"index.findIndex","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"index.findIndex","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"index.findIndex"},');
 
@@ -176,7 +176,7 @@ module.exports = class ProviderView {
 
   }
   getNextFolder(folder) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getNextFolder","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getNextFolder","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     this.getFolder(folder.requestPath, folder.name);
     this.lastCheckbox = undefined;
@@ -184,7 +184,7 @@ module.exports = class ProviderView {
 
   }
   addFile(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFile","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFile","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     const tagFile = {
       id: this.providerFileToId(file),
@@ -221,12 +221,12 @@ module.exports = class ProviderView {
 
   }
   removeFile(id) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFile","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFile","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     const {currentSelection} = this.plugin.getPluginState();
     this.plugin.setPluginState({
       currentSelection: currentSelection.filter(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter"},');
 
@@ -239,10 +239,10 @@ module.exports = class ProviderView {
 
   }
   logout() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
     this.provider.logout().then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.provider.logout.then.catch.provider.logout.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.provider.logout.then.catch.provider.logout.then","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       if (res.ok) {
         if (!res.revoked) {
@@ -267,7 +267,7 @@ module.exports = class ProviderView {
 
   }
   filterQuery(e) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"filterQuery","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"filterQuery","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     const state = this.plugin.getPluginState();
     this.plugin.setPluginState(Object.assign({}, state, {
@@ -277,7 +277,7 @@ module.exports = class ProviderView {
 
   }
   toggleSearch(inputEl) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"toggleSearch","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"toggleSearch","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     const state = this.plugin.getPluginState();
     this.plugin.setPluginState({
@@ -288,7 +288,7 @@ module.exports = class ProviderView {
 
   }
   filterItems(items) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"filterItems","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"filterItems","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     const state = this.plugin.getPluginState();
     if (!state.filterInput || state.filterInput === '') {
@@ -299,7 +299,7 @@ module.exports = class ProviderView {
         SRTlib.send('{"type":"FUNCTIONEND","function":"filterItems"},');
 
     return items.filter(folder => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.items.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.items.filter","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.items.filter"},');
 
@@ -311,12 +311,12 @@ module.exports = class ProviderView {
 
   }
   sortByTitle() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortByTitle","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortByTitle","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
     const state = Object.assign({}, this.plugin.getPluginState());
     const {files, folders, sorting} = state;
     const sortedFiles = files.sort((fileA, fileB) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFiles.files.sort","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFiles.files.sort","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2},`);
 
       if (sorting === 'titleDescending') {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFiles.files.sort"},');
@@ -330,7 +330,7 @@ module.exports = class ProviderView {
 
     });
     const sortedFolders = folders.sort((folderA, folderB) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFolders.folders.sort","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFolders.folders.sort","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2},`);
 
       if (sorting === 'titleDescending') {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.sortedFolders.folders.sort"},');
@@ -352,12 +352,12 @@ module.exports = class ProviderView {
 
   }
   sortByDate() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortByDate","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortByDate","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
     const state = Object.assign({}, this.plugin.getPluginState());
     const {files, folders, sorting} = state;
     const sortedFiles = files.sort((fileA, fileB) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFiles.files.sort###2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFiles.files.sort###2","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2},`);
 
       const a = new Date(fileA.modifiedDate);
       const b = new Date(fileB.modifiedDate);
@@ -373,7 +373,7 @@ module.exports = class ProviderView {
 
     });
     const sortedFolders = folders.sort((folderA, folderB) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFolders.folders.sort###2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFolders.folders.sort###2","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2},`);
 
       const a = new Date(folderA.modifiedDate);
       const b = new Date(folderB.modifiedDate);
@@ -397,7 +397,7 @@ module.exports = class ProviderView {
 
   }
   sortBySize() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortBySize","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortBySize","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
     const state = Object.assign({}, this.plugin.getPluginState());
     const {files, sorting} = state;
@@ -407,7 +407,7 @@ module.exports = class ProviderView {
       return;
     }
     const sortedFiles = files.sort((fileA, fileB) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFiles.files.sort###3","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.sortedFiles.files.sort###3","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2},`);
 
       const a = fileA.size;
       const b = fileB.size;
@@ -430,7 +430,7 @@ module.exports = class ProviderView {
 
   }
   isActiveRow(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isActiveRow","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isActiveRow","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"isActiveRow"},');
 
@@ -439,13 +439,13 @@ module.exports = class ProviderView {
 
   }
   isChecked(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isChecked","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isChecked","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     const {currentSelection} = this.plugin.getPluginState();
         SRTlib.send('{"type":"FUNCTIONEND","function":"isChecked"},');
 
     return currentSelection.some(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.currentSelection.some","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.currentSelection.some","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.currentSelection.some"},');
 
@@ -457,7 +457,7 @@ module.exports = class ProviderView {
 
   }
   addFolder(folder) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFolder","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFolder","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     const folderId = this.providerFileToId(folder);
     let state = this.plugin.getPluginState();
@@ -477,10 +477,10 @@ module.exports = class ProviderView {
         SRTlib.send('{"type":"FUNCTIONEND","function":"addFolder"},');
 
     return this.listAllFiles(folder.requestPath).then(files => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.listAllFiles.then.catch.listAllFiles.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.listAllFiles.then.catch.listAllFiles.then","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       files.forEach(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
         this.addFile(file);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach"},');
@@ -508,7 +508,7 @@ module.exports = class ProviderView {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.listAllFiles.then.catch.listAllFiles.then"},');
 
     }).catch(e => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.listAllFiles.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.listAllFiles.then.catch","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       state = this.plugin.getPluginState();
       delete state.selectedFolders[folderId];
@@ -523,7 +523,7 @@ module.exports = class ProviderView {
 
   }
   toggleCheckbox(e, file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"toggleCheckbox","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"toggleCheckbox","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
     e.stopPropagation();
     e.preventDefault();
@@ -551,7 +551,7 @@ module.exports = class ProviderView {
     if (this.isChecked(file)) {
       this.plugin.setPluginState({
         currentSelection: currentSelection.filter(item => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter###2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter###2","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.plugin.setPluginState.currentSelection.currentSelection.filter###2"},');
 
@@ -569,7 +569,7 @@ module.exports = class ProviderView {
 
   }
   providerFileToId(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"providerFileToId","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"providerFileToId","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"providerFileToId"},');
 
@@ -582,7 +582,7 @@ module.exports = class ProviderView {
 
   }
   handleAuth() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleAuth","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleAuth","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
     const authState = btoa(JSON.stringify({
       origin: getOrigin()
@@ -591,7 +591,7 @@ module.exports = class ProviderView {
     const link = `${this.provider.authUrl()}?state=${authState}&uppyVersions=${clientVersion}`;
     const authWindow = window.open(link, '_blank');
     const handleToken = e => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleToken","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleToken","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       if (!this._isOriginAllowed(e.origin, this.plugin.opts.companionAllowedHosts) || e.source !== authWindow) {
         this.plugin.uppy.log(`rejecting event from ${e.origin} vs allowed pattern ${this.plugin.opts.companionAllowedHosts}`);
@@ -618,10 +618,10 @@ module.exports = class ProviderView {
 
   }
   _isOriginAllowed(origin, allowedOrigin) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_isOriginAllowed","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_isOriginAllowed","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
     const getRegex = value => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getRegex","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getRegex","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       if (typeof value === 'string') {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"getRegex"},');
@@ -639,7 +639,7 @@ module.exports = class ProviderView {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_isOriginAllowed"},');
 
     return patterns.filter(pattern => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.patterns.filter.some.patterns.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.patterns.filter.some.patterns.filter","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.patterns.filter.some.patterns.filter"},');
 
@@ -647,7 +647,7 @@ module.exports = class ProviderView {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.patterns.filter.some.patterns.filter"},');
 
     }).some(pattern => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.patterns.filter.some","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.patterns.filter.some","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.patterns.filter.some"},');
 
@@ -659,7 +659,7 @@ module.exports = class ProviderView {
 
   }
   handleError(error) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleError","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleError","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     const uppy = this.plugin.uppy;
     uppy.log(error.toString());
@@ -677,20 +677,20 @@ module.exports = class ProviderView {
 
   }
   handleScroll(e) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleScroll","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleScroll","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1,"classInfo":{"className":"ProviderView"}},`);
 
     const scrollPos = e.target.scrollHeight - (e.target.scrollTop + e.target.offsetHeight);
     const path = this.nextPagePath || null;
     if (scrollPos < 50 && path && !this._isHandlingScroll) {
       this.provider.list(path).then(res => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.provider.list.then.catch.then.provider.list.then.catch.provider.list.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.provider.list.then.catch.then.provider.list.then.catch.provider.list.then","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
         const {files, folders} = this.plugin.getPluginState();
         this._updateFilesAndFolders(res, files, folders);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.provider.list.then.catch.then.provider.list.then.catch.provider.list.then"},');
 
       }).catch(this.handleError).then(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.provider.list.then.catch.then","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.provider.list.then.catch.then","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0},`);
 
         this._isHandlingScroll = false;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.provider.list.then.catch.then"},');
@@ -702,19 +702,19 @@ module.exports = class ProviderView {
 
   }
   listAllFiles(path, files = null) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"listAllFiles","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"listAllFiles","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
     files = files || [];
         SRTlib.send('{"type":"FUNCTIONEND","function":"listAllFiles"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2},`);
 
       this.provider.list(path).then(res => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.list.then.catch.provider.list.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.list.then.catch.provider.list.then","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
         res.items.forEach(item => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"res.items.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"res.items.forEach","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
           if (!item.isFolder) {
             files.push(item);
@@ -727,7 +727,7 @@ module.exports = class ProviderView {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"provider.list.then.catch.provider.list.then"},');
 
           return this.listAllFiles(moreFiles, files).then(files => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.listAllFiles.then.catch.listAllFiles.then","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.listAllFiles.then.catch.listAllFiles.then","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.listAllFiles.then.catch.listAllFiles.then"},');
 
@@ -735,7 +735,7 @@ module.exports = class ProviderView {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.listAllFiles.then.catch.listAllFiles.then"},');
 
           }).catch(e => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.listAllFiles.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.listAllFiles.then.catch","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.listAllFiles.then.catch"},');
 
@@ -751,7 +751,7 @@ module.exports = class ProviderView {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"provider.list.then.catch.provider.list.then"},');
 
       }).catch(e => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.list.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.list.then.catch","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"provider.list.then.catch"},');
 
@@ -766,11 +766,11 @@ module.exports = class ProviderView {
 
   }
   donePicking() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"donePicking","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"donePicking","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
     const {currentSelection} = this.plugin.getPluginState();
     const promises = currentSelection.map(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promises.currentSelection.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promises.currentSelection.map","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       if (file.isFolder) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promises.currentSelection.map"},');
@@ -785,13 +785,13 @@ module.exports = class ProviderView {
 
     });
     this._loaderWrapper(Promise.all(promises), () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._loaderWrapper","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._loaderWrapper","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0},`);
 
       this.clearSelection();
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._loaderWrapper"},');
 
     }, () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._loaderWrapper###2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports._loaderWrapper###2","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports._loaderWrapper###2"},');
 
@@ -800,7 +800,7 @@ module.exports = class ProviderView {
 
   }
   cancelPicking() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cancelPicking","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cancelPicking","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
     this.clearSelection();
     const dashboard = this.plugin.uppy.getPlugin('Dashboard');
@@ -809,7 +809,7 @@ module.exports = class ProviderView {
 
   }
   clearSelection() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"clearSelection","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"clearSelection","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":0,"classInfo":{"className":"ProviderView"}},`);
 
     this.plugin.setPluginState({
       currentSelection: []
@@ -818,10 +818,10 @@ module.exports = class ProviderView {
 
   }
   _loaderWrapper(promise, then, catch_) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_loaderWrapper","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_loaderWrapper","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":3,"classInfo":{"className":"ProviderView"}},`);
 
     promise.then(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promise.then.catch.promise.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promise.then.catch.promise.then","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       this.plugin.setPluginState({
         loading: false
@@ -830,7 +830,7 @@ module.exports = class ProviderView {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.promise.then.catch.promise.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promise.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promise.then.catch","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":1},`);
 
       this.plugin.setPluginState({
         loading: false
@@ -846,7 +846,7 @@ module.exports = class ProviderView {
 
   }
   render(state, viewOptions = {}) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/provider-views/src/index.js","paramsNumber":2,"classInfo":{"className":"ProviderView"}},`);
 
     const {authenticated, didFirstRender} = this.plugin.getPluginState();
     if (!didFirstRender) {

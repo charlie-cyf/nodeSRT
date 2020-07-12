@@ -135,7 +135,7 @@ sr_RS_Latin.strings = {
   openFolderNamed: 'Otvori folder %{name}'
 };
 sr_RS_Latin.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sr_RS_Latin.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sr_RS_Latin.pluralize","fileName":"/packages/@uppy/locales/src/sr_RS_Latin.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Latin.pluralize"},');

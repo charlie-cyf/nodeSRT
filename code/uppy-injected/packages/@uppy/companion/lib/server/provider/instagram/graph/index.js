@@ -11,7 +11,7 @@ const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../../error');
 class Instagram extends Provider {
   constructor(options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":1,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
     super(options);
     this.authProvider = options.provider = Instagram.authProvider;
@@ -20,7 +20,7 @@ class Instagram extends Provider {
 
   }
   static getExtraConfig() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getExtraConfig","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getExtraConfig","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":0,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getExtraConfig"},');
 
@@ -32,7 +32,7 @@ class Instagram extends Provider {
 
   }
   static get authProvider() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":0,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
 
@@ -43,7 +43,7 @@ class Instagram extends Provider {
   list({directory, token, query = {
     cursor: null
   }}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
     const qs = {
       fields: 'id,media_type,thumbnail_url,media_url,timestamp,children{media_type,media_url,thumbnail_url,timestamp}'
@@ -52,7 +52,7 @@ class Instagram extends Provider {
       qs.after = query.cursor;
     }
     this.client.get('https://graph.instagram.com/me/media').qs(qs).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -62,7 +62,7 @@ class Instagram extends Provider {
         return done(err);
       } else {
         this._getUsername(token, (err, username) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getUsername","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getUsername","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":2},`);
 
           err ? done(err) : done(null, this.adaptData(body, username, directory, query));
                     SRTlib.send('{"type":"FUNCTIONEND","function":"_getUsername"},');
@@ -76,12 +76,12 @@ class Instagram extends Provider {
 
   }
   _getUsername(token, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getUsername","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getUsername","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
     this.client.get('https://graph.instagram.com/me').qs({
       fields: 'username'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request###2","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -99,14 +99,14 @@ class Instagram extends Provider {
 
   }
   download({id, token}, onData) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
 
     return this.client.get(`https://graph.instagram.com/${id}`).qs({
       fields: 'media_url'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -117,13 +117,13 @@ class Instagram extends Provider {
         return;
       }
       request(body.media_url).on('response', resp => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on.request.on","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on.request.on","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":1},`);
 
         if (resp.statusCode !== 200) {
           onData(this._error(null, resp));
         } else {
           resp.on('data', chunk => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":1},`);
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
@@ -135,7 +135,7 @@ class Instagram extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on.request.on"},');
 
       }).on('end', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
@@ -143,7 +143,7 @@ class Instagram extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
       }).on('error', err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":1},`);
 
         logger.error(err, 'provider.instagram.download.url.error');
         onData(err);
@@ -157,7 +157,7 @@ class Instagram extends Provider {
 
   }
   thumbnail(_, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.instagram.thumbnail.error');
@@ -168,14 +168,14 @@ class Instagram extends Provider {
 
   }
   size({id, token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
     return this.client.get(`https://graph.instagram.com/${id}`).qs({
       fields: 'media_url'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request###2","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -185,7 +185,7 @@ class Instagram extends Provider {
         return done(err);
       }
       utils.getURLMeta(body.media_url).then(({size}) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
@@ -193,7 +193,7 @@ class Instagram extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":1},`);
 
         logger.error(err, 'provider.instagram.size.error');
         done();
@@ -207,7 +207,7 @@ class Instagram extends Provider {
 
   }
   logout(_, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
     done(null, {
       revoked: false,
@@ -217,7 +217,7 @@ class Instagram extends Provider {
 
   }
   adaptData(res, username, directory, currentQuery) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptData","fileName":"${__filename}","paramsNumber":4,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptData","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":4,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
     const data = {
       username: username,
@@ -225,7 +225,7 @@ class Instagram extends Provider {
     };
     const items = adapter.getItemSubList(res);
     items.forEach((item, i) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"items.forEach","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"items.forEach","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":2},`);
 
       data.items.push({
         isFolder: adapter.isFolder(item),
@@ -248,7 +248,7 @@ class Instagram extends Provider {
 
   }
   _error(err, resp) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_error","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_error","fileName":"/packages/@uppy/companion/lib/server/provider/instagram/graph/index.js","paramsNumber":2,"classInfo":{"className":"Instagram","superClass":"Provider"}},`);
 
     if (resp) {
       if (resp.body && resp.body.error.code === 190) {

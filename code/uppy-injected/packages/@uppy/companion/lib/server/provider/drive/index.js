@@ -13,7 +13,7 @@ const DRIVE_FILES_FIELDS = `kind,nextPageToken,incompleteSearch,files(${DRIVE_FI
 const SHARED_DRIVE_FIELDS = '*';
 class Drive extends Provider {
   constructor(options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
     super(options);
     this.authProvider = options.provider = Drive.authProvider;
@@ -24,7 +24,7 @@ class Drive extends Provider {
 
   }
   static get authProvider() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":0,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
 
@@ -33,7 +33,7 @@ class Drive extends Provider {
 
   }
   list(options, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
     const directory = options.directory || 'root';
     const query = options.query || ({});
@@ -41,12 +41,12 @@ class Drive extends Provider {
     const shouldListSharedDrives = directory === 'root' && !query.cursor;
     if (shouldListSharedDrives) {
       sharedDrivesPromise = new Promise(resolve => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sharedDrivesPromise.NewExpression","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sharedDrivesPromise.NewExpression","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
         this.client.query().get('drives').qs({
           fields: SHARED_DRIVE_FIELDS
         }).auth(options.token).request((err, resp) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.query.get.qs.auth.request","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.query.get.qs.auth.request","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2},`);
 
           if (err) {
             logger.error(err, 'provider.drive.sharedDrive.error');
@@ -70,10 +70,10 @@ class Drive extends Provider {
       supportsAllDrives: true
     };
     const filesPromise = new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filesPromise.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filesPromise.NewExpression","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2},`);
 
       this.client.query().get('files').qs(where).auth(options.token).request((err, resp) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.query.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.query.get.qs.auth.request###2","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2},`);
 
         if (err || resp.statusCode !== 200) {
           reject(this._error(err, resp));
@@ -89,14 +89,14 @@ class Drive extends Provider {
 
     });
     Promise.all([sharedDrivesPromise, filesPromise]).then(([sharedDrives, filesResponse]) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
       const returnData = this.adaptData(filesResponse.body, sharedDrives && sharedDrives.body, directory, query);
       done(null, returnData);
             SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.all.then"},');
 
     }, reqErr => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then###2","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
       logger.error(reqErr, 'provider.drive.list.error');
       done(reqErr);
@@ -107,7 +107,7 @@ class Drive extends Provider {
 
   }
   stats({id, token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"stats","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"stats","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"stats"},');
 
@@ -119,7 +119,7 @@ class Drive extends Provider {
 
   }
   _exportGsuiteFile(id, token, mimeType) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_exportGsuiteFile","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_exportGsuiteFile","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":3,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
     logger.info(`calling google file export for ${id} to ${mimeType}`, 'provider.drive.export');
         SRTlib.send('{"type":"FUNCTIONEND","function":"_exportGsuiteFile"},');
@@ -132,22 +132,22 @@ class Drive extends Provider {
 
   }
   _waitForFailedResponse(resp) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_waitForFailedResponse","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_waitForFailedResponse","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"_waitForFailedResponse"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2},`);
 
       let data = '';
       resp.on('data', chunk => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on.on.resp.on","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on.on.resp.on","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
         data += chunk;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on.on.resp.on"},');
 
       }).on('end', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on.on","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on.on","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":0},`);
 
         try {
           resolve(JSON.parse(data.toString()));
@@ -164,13 +164,13 @@ class Drive extends Provider {
 
   }
   download({id, token}, onData) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
     this.stats({
       id,
       token
     }, (err, _, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"stats","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"stats","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":3},`);
 
       if (err) {
         logger.error(err, 'provider.drive.download.stats.error');
@@ -189,18 +189,18 @@ class Drive extends Provider {
         }).auth(token).request();
       }
       requestStream.on('response', resp => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"requestStream.on.on.on.requestStream.on.on.requestStream.on","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"requestStream.on.on.on.requestStream.on.on.requestStream.on","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
         if (resp.statusCode !== 200) {
           this._waitForFailedResponse(resp).then(jsonResp => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_waitForFailedResponse.then.catch._waitForFailedResponse.then","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_waitForFailedResponse.then.catch._waitForFailedResponse.then","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
             resp.body = jsonResp;
             onData(this._error(null, resp));
                         SRTlib.send('{"type":"FUNCTIONEND","function":"_waitForFailedResponse.then.catch._waitForFailedResponse.then"},');
 
           }).catch(err => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_waitForFailedResponse.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_waitForFailedResponse.then.catch","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"_waitForFailedResponse.then.catch"},');
 
@@ -210,7 +210,7 @@ class Drive extends Provider {
           });
         } else {
           resp.on('data', chunk => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
@@ -222,7 +222,7 @@ class Drive extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"requestStream.on.on.on.requestStream.on.on.requestStream.on"},');
 
       }).on('end', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"requestStream.on.on.on.requestStream.on.on","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"requestStream.on.on.on.requestStream.on.on","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"requestStream.on.on.on.requestStream.on.on"},');
 
@@ -230,7 +230,7 @@ class Drive extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"requestStream.on.on.on.requestStream.on.on"},');
 
       }).on('error', err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"requestStream.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"requestStream.on.on.on","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
         logger.error(err, 'provider.drive.download.error');
         onData(err);
@@ -244,7 +244,7 @@ class Drive extends Provider {
 
   }
   thumbnail(_, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.drive.thumbnail.error');
@@ -255,7 +255,7 @@ class Drive extends Provider {
 
   }
   size({id, token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
@@ -263,7 +263,7 @@ class Drive extends Provider {
       id,
       token
     }, (err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.stats","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.stats","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -285,14 +285,14 @@ class Drive extends Provider {
 
   }
   logout({token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
 
     return this.client.get('https://accounts.google.com/o/oauth2/revoke').qs({
       token
     }).request((err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.request","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.request","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2},`);
 
       if (err || resp.statusCode !== 200) {
         logger.error(err, 'provider.drive.logout.error');
@@ -311,10 +311,10 @@ class Drive extends Provider {
 
   }
   adaptData(res, sharedDrivesResp, directory, query) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptData","fileName":"${__filename}","paramsNumber":4,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptData","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":4,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
     const adaptItem = item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptItem","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptItem","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"adaptItem"},');
 
@@ -350,7 +350,7 @@ class Drive extends Provider {
 
   }
   _error(err, resp) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_error","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_error","fileName":"/packages/@uppy/companion/lib/server/provider/drive/index.js","paramsNumber":2,"classInfo":{"className":"Drive","superClass":"Provider"}},`);
 
     if (resp) {
       const fallbackMessage = `request to ${this.authProvider} returned ${resp.statusCode}`;

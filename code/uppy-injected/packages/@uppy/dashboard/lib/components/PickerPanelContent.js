@@ -6,7 +6,7 @@ var _require = require('preact'),
 var ignoreEvent = require('../utils/ignoreEvent.js');
 
 function PickerPanelContent(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"PickerPanelContent\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"PickerPanelContent\",\"fileName\":\"/packages/@uppy/dashboard/src/components/PickerPanelContent.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"PickerPanelContent"},');
   return h("div", {
     class: "uppy-DashboardContent-panel",

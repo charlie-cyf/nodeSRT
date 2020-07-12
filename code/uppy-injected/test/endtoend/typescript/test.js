@@ -3,11 +3,11 @@ const SRTlib = require('SRT-util');
 describe('Project compiled with Uppy\'s TypeScript typings', () => {
     before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Project%20compiled%20with%20Uppy%27s%20TypeScript%20typings", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Project%20compiled%20with%20Uppy%27s%20TypeScript%20typings", "fileName": "/test/endtoend/typescript/test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${this.test}", "fileName": "/test/endtoend/typescript/test.js", "calls" : [`);
   });
 
   it('Should have correct imports (thus not crash)', async () => {

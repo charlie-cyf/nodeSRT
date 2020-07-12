@@ -6,7 +6,7 @@ const ProviderViews = require('@uppy/provider-views');
 const {h} = require('preact');
 module.exports = class MyCustomProvider extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":2,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'acquirer';
@@ -14,7 +14,7 @@ module.exports = class MyCustomProvider extends Plugin {
     Provider.initPlugin(this, opts);
     this.title = 'MyCustomProvider';
     this.icon = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.icon","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.icon","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.icon"},');
 
@@ -34,7 +34,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":0,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
     this.view = new ProviderViews(this);
     this.setPluginState({
@@ -54,7 +54,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":0,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
     this.view.tearDown();
     this.unmount();
@@ -62,7 +62,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   onAuth(authenticated) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onAuth","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onAuth","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
     this.setPluginState({
       authenticated
@@ -74,7 +74,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   isFolder(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isFolder","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isFolder","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"isFolder"},');
 
@@ -83,7 +83,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getItemData(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemData","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemData","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getItemData"},');
 
@@ -92,7 +92,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getItemIcon(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemIcon","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemIcon","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getItemIcon"},');
 
@@ -101,7 +101,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getItemSubList(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemSubList","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemSubList","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getItemSubList"},');
 
@@ -110,7 +110,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getItemName(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemName","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemName","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getItemName"},');
 
@@ -119,7 +119,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getMimeType(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMimeType","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMimeType","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getMimeType"},');
 
@@ -128,7 +128,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getItemId(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemId","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemId","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getItemId"},');
 
@@ -137,7 +137,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getItemRequestPath(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemRequestPath","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemRequestPath","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getItemRequestPath"},');
 
@@ -146,7 +146,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getItemModifiedDate(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemModifiedDate","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemModifiedDate","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getItemModifiedDate"},');
 
@@ -155,7 +155,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getItemThumbnailUrl(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemThumbnailUrl","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getItemThumbnailUrl","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getItemThumbnailUrl"},');
 
@@ -164,7 +164,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   getUsername() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUsername","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUsername","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":0,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getUsername"},');
 
@@ -173,7 +173,7 @@ module.exports = class MyCustomProvider extends Plugin {
 
   }
   render(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/examples/custom-provider/client/MyCustomProvider.js","paramsNumber":1,"classInfo":{"className":"MyCustomProvider","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 

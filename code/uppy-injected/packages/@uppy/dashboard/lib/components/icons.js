@@ -4,7 +4,7 @@ var _require = require('preact'),
     h = _require.h;
 
 function defaultPickerIcon() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"defaultPickerIcon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"defaultPickerIcon\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"defaultPickerIcon"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -19,7 +19,7 @@ function defaultPickerIcon() {
 }
 
 function iconCopy() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconCopy\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconCopy\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconCopy"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -37,7 +37,7 @@ function iconCopy() {
 }
 
 function iconResume() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconResume\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconResume\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconResume"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -55,7 +55,7 @@ function iconResume() {
 }
 
 function iconPause() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconPause\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconPause\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconPause"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -84,7 +84,7 @@ function iconPause() {
 }
 
 function localIcon() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"localIcon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"localIcon\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"localIcon"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -113,7 +113,7 @@ function localIcon() {
 }
 
 function iconMyDevice() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconMyDevice\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconMyDevice\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconMyDevice"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -138,7 +138,7 @@ function iconMyDevice() {
 }
 
 function iconRetry() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconRetry\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconRetry\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconRetry"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -160,7 +160,7 @@ function iconRetry() {
 }
 
 function checkIcon() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"checkIcon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"checkIcon\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"checkIcon"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -176,7 +176,7 @@ function checkIcon() {
 }
 
 function iconImage() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconImage\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconImage\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconImage"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -203,7 +203,7 @@ function iconImage() {
 }
 
 function iconAudio() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconAudio\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconAudio\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconAudio"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -221,7 +221,7 @@ function iconAudio() {
 }
 
 function iconVideo() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconVideo\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconVideo\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconVideo"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -239,7 +239,7 @@ function iconVideo() {
 }
 
 function iconPDF() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconPDF\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconPDF\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconPDF"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -257,7 +257,7 @@ function iconPDF() {
 }
 
 function iconArchive() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconArchive\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconArchive\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconArchive"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -275,7 +275,7 @@ function iconArchive() {
 }
 
 function iconFile() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconFile\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconFile\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconFile"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -296,7 +296,7 @@ function iconFile() {
 }
 
 function iconText() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconText\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconText\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconText"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -314,7 +314,7 @@ function iconText() {
 }
 
 function iconCopyLink() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconCopyLink\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconCopyLink\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconCopyLink"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -330,7 +330,7 @@ function iconCopyLink() {
 }
 
 function iconPencil() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconPencil\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconPencil\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconPencil"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -358,7 +358,7 @@ function iconPencil() {
 }
 
 function iconCross() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconCross\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconCross\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconCross"},');
   return h("svg", {
     "aria-hidden": "true",
@@ -377,7 +377,7 @@ function iconCross() {
 }
 
 function iconPlus() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconPlus\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"iconPlus\",\"fileName\":\"/packages/@uppy/dashboard/src/components/icons.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"iconPlus"},');
   return h("svg", {
     "aria-hidden": "true",

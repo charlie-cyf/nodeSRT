@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const base = require('./wdio.base.conf');
 function createCapability(capability) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createCapability","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createCapability","fileName":"/test/endtoend/wdio.remote.conf.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"createCapability"},');
 

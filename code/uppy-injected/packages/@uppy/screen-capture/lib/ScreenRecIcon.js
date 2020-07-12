@@ -4,7 +4,7 @@ var _require = require('preact'),
     h = _require.h;
 
 module.exports = function () {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/screen-capture/src/ScreenRecIcon.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return h("svg", {
     "aria-hidden": "true",

@@ -29,11 +29,11 @@ var VirtualList = /*#__PURE__*/function (_Component) {
   function VirtualList(props) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/dashboard/src/components/VirtualList.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
     _this = _Component.call(this, props) || this;
 
     _this.handleResize = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"/packages/@uppy/dashboard/src/components/VirtualList.js\",\"paramsNumber\":0},");
 
       _this.resize();
 
@@ -41,7 +41,7 @@ var VirtualList = /*#__PURE__*/function (_Component) {
     };
 
     _this.handleScroll = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###2\",\"fileName\":\"/packages/@uppy/dashboard/src/components/VirtualList.js\",\"paramsNumber\":0},");
 
       _this.setState({
         offset: _this.base.scrollTop
@@ -66,7 +66,7 @@ var VirtualList = /*#__PURE__*/function (_Component) {
   var _proto = VirtualList.prototype;
 
   _proto.resize = function resize() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"resize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"resize\",\"fileName\":\"/packages/@uppy/dashboard/src/components/VirtualList.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
 
     if (this.state.height !== this.base.offsetHeight) {
       this.setState({
@@ -78,7 +78,7 @@ var VirtualList = /*#__PURE__*/function (_Component) {
   };
 
   _proto.componentWillUpdate = function componentWillUpdate() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUpdate\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUpdate\",\"fileName\":\"/packages/@uppy/dashboard/src/components/VirtualList.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
 
     if (this.base.contains(document.activeElement)) {
       this.focusElement = document.activeElement;
@@ -88,7 +88,7 @@ var VirtualList = /*#__PURE__*/function (_Component) {
   };
 
   _proto.componentDidUpdate = function componentDidUpdate() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidUpdate\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidUpdate\",\"fileName\":\"/packages/@uppy/dashboard/src/components/VirtualList.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
 
     if (this.focusElement && this.focusElement.parentNode && document.activeElement !== this.focusElement) {
       this.focusElement.focus();
@@ -100,14 +100,14 @@ var VirtualList = /*#__PURE__*/function (_Component) {
   };
 
   _proto.componentDidMount = function componentDidMount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"/packages/@uppy/dashboard/src/components/VirtualList.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
     this.resize();
     window.addEventListener('resize', this.handleResize);
     SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"/packages/@uppy/dashboard/src/components/VirtualList.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
     window.removeEventListener('resize', this.handleResize);
     SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
   };
@@ -121,7 +121,7 @@ var VirtualList = /*#__PURE__*/function (_Component) {
         sync = _ref.sync,
         props = _objectWithoutPropertiesLoose(_ref, ["data", "rowHeight", "renderRow", "overscanCount", "sync"]);
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/dashboard/src/components/VirtualList.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"VirtualList\",\"superClass\":\"Component\"}},");
     var _this$state = this.state,
         offset = _this$state.offset,
         height = _this$state.height;

@@ -4,12 +4,12 @@ const SRTlib = require('SRT-util');
 const RequestClient = require('./RequestClient');
 const tokenStorage = require('./tokenStorage');
 const _getName = id => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getName","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getName","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"_getName"},');
 
   return id.split('-').map(s => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.id.split.map.join.id.split.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.id.split.map.join.id.split.map","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.id.split.map.join.id.split.map"},');
 
@@ -22,7 +22,7 @@ const _getName = id => {
 };
 module.exports = class Provider extends RequestClient {
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":2,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
     super(uppy, opts);
     this.provider = opts.provider;
@@ -35,18 +35,18 @@ module.exports = class Provider extends RequestClient {
 
   }
   headers() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"headers","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"headers","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"headers"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":2},`);
 
       super.headers().then(headers => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"headers.then.catch.headers.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"headers.then.catch.headers.then","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":1},`);
 
         this.getAuthToken().then(token => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"getAuthToken.then","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"getAuthToken.then","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":1},`);
 
           resolve(Object.assign({}, headers, {
             'uppy-auth-token': token
@@ -64,7 +64,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   onReceiveResponse(response) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onReceiveResponse","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onReceiveResponse","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
     response = super.onReceiveResponse(response);
     const plugin = this.uppy.getPlugin(this.pluginId);
@@ -80,7 +80,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   setAuthToken(token) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setAuthToken","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setAuthToken","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"setAuthToken"},');
 
@@ -89,7 +89,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   getAuthToken() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getAuthToken","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getAuthToken","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getAuthToken"},');
 
@@ -98,7 +98,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   authUrl() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authUrl","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authUrl","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"authUrl"},');
 
@@ -107,7 +107,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   fileUrl(id) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"fileUrl","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"fileUrl","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"fileUrl"},');
 
@@ -116,7 +116,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   list(directory) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":1,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
 
@@ -125,18 +125,18 @@ module.exports = class Provider extends RequestClient {
 
   }
   logout() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":0,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":2},`);
 
       this.get(`${this.id}/logout`).then(res => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"get.then.catch.get.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"get.then.catch.get.then","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":1},`);
 
         this.uppy.getPlugin(this.pluginId).storage.removeItem(this.tokenKey).then(() => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"storage.removeItem.then.catch.storage.removeItem.then","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"storage.removeItem.then.catch.storage.removeItem.then","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":0},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"storage.removeItem.then.catch.storage.removeItem.then"},');
 
@@ -154,7 +154,7 @@ module.exports = class Provider extends RequestClient {
 
   }
   static initPlugin(plugin, opts, defaultOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initPlugin","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initPlugin","fileName":"/packages/@uppy/companion-client/src/Provider.js","paramsNumber":3,"classInfo":{"className":"Provider","superClass":"RequestClient"}},`);
 
     plugin.type = 'acquirer';
     plugin.files = [];

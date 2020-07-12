@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 function findIndex(array, predicate) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findIndex","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"findIndex","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":2},`);
 
   for (let i = 0; i < array.length; i++) {
     if (predicate(array[i])) {
@@ -17,7 +17,7 @@ function findIndex(array, predicate) {
 
 }
 function createCancelError() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createCancelError","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createCancelError","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"createCancelError"},');
 
@@ -27,7 +27,7 @@ function createCancelError() {
 }
 module.exports = class RateLimitedQueue {
   constructor(limit) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RateLimitedQueue"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":1,"classInfo":{"className":"RateLimitedQueue"}},`);
 
     if (typeof limit !== 'number' || limit === 0) {
       this.limit = Infinity;
@@ -40,7 +40,7 @@ module.exports = class RateLimitedQueue {
 
   }
   _call(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_call","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RateLimitedQueue"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_call","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":1,"classInfo":{"className":"RateLimitedQueue"}},`);
 
     this.activeRequests += 1;
     let done = false;
@@ -57,7 +57,7 @@ module.exports = class RateLimitedQueue {
 
     return {
       abort: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.abort","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.abort","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0},`);
 
         if (done) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.abort"},');
@@ -72,7 +72,7 @@ module.exports = class RateLimitedQueue {
 
       },
       done: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.done","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.done","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0},`);
 
         if (done) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.done"},');
@@ -90,10 +90,10 @@ module.exports = class RateLimitedQueue {
 
   }
   _queueNext() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_queueNext","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"RateLimitedQueue"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_queueNext","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0,"classInfo":{"className":"RateLimitedQueue"}},`);
 
     Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Promise.resolve.then","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0},`);
 
       this._next();
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Promise.resolve.then"},');
@@ -103,7 +103,7 @@ module.exports = class RateLimitedQueue {
 
   }
   _next() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_next","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"RateLimitedQueue"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_next","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0,"classInfo":{"className":"RateLimitedQueue"}},`);
 
     if (this.activeRequests >= this.limit) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_next"},');
@@ -123,20 +123,20 @@ module.exports = class RateLimitedQueue {
 
   }
   _queue(fn, options = {}) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_queue","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RateLimitedQueue"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_queue","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":2,"classInfo":{"className":"RateLimitedQueue"}},`);
 
     const handler = {
       fn,
       priority: options.priority || 0,
       abort: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.handler.abort","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.handler.abort","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0},`);
 
         this._dequeue(handler);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.handler.abort"},');
 
       },
       done: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.handler.done","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.handler.done","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.handler.done"},');
 
@@ -146,7 +146,7 @@ module.exports = class RateLimitedQueue {
       }
     };
     const index = findIndex(this.queuedHandlers, other => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.index.findIndex","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.index.findIndex","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.index.findIndex"},');
 
@@ -166,7 +166,7 @@ module.exports = class RateLimitedQueue {
 
   }
   _dequeue(handler) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_dequeue","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RateLimitedQueue"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_dequeue","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":1,"classInfo":{"className":"RateLimitedQueue"}},`);
 
     const index = this.queuedHandlers.indexOf(handler);
     if (index !== -1) {
@@ -176,7 +176,7 @@ module.exports = class RateLimitedQueue {
 
   }
   run(fn, queueOptions) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"run","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RateLimitedQueue"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"run","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":2,"classInfo":{"className":"RateLimitedQueue"}},`);
 
     if (this.activeRequests < this.limit) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"run"},');
@@ -190,19 +190,19 @@ module.exports = class RateLimitedQueue {
 
   }
   wrapPromiseFunction(fn, queueOptions) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"wrapPromiseFunction","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RateLimitedQueue"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"wrapPromiseFunction","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":2,"classInfo":{"className":"RateLimitedQueue"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"wrapPromiseFunction"},');
 
     return (...args) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":1},`);
 
       let queuedRequest;
       const outerPromise = new Promise((resolve, reject) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"outerPromise.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"outerPromise.NewExpression","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":2},`);
 
         queuedRequest = this.run(() => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.run","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.run","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0},`);
 
           let cancelError;
           let innerPromise;
@@ -212,7 +212,7 @@ module.exports = class RateLimitedQueue {
             innerPromise = Promise.reject(err);
           }
           innerPromise.then(result => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"innerPromise.then","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"innerPromise.then","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":1},`);
 
             if (cancelError) {
               reject(cancelError);
@@ -223,7 +223,7 @@ module.exports = class RateLimitedQueue {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"innerPromise.then"},');
 
           }, err => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"innerPromise.then###2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"innerPromise.then###2","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":1},`);
 
             if (cancelError) {
               reject(cancelError);
@@ -237,7 +237,7 @@ module.exports = class RateLimitedQueue {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.run"},');
 
           return () => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0},`);
 
             cancelError = createCancelError();
                         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
@@ -250,7 +250,7 @@ module.exports = class RateLimitedQueue {
 
       });
       outerPromise.abort = () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"outerPromise.abort","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"outerPromise.abort","fileName":"/packages/@uppy/utils/src/RateLimitedQueue.js","paramsNumber":0},`);
 
         queuedRequest.abort();
                 SRTlib.send('{"type":"FUNCTIONEND","function":"outerPromise.abort"},');

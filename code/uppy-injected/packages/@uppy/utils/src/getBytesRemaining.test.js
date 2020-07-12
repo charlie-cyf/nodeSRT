@@ -4,11 +4,11 @@ const getBytesRemaining = require('./getBytesRemaining');
 describe('getBytesRemaining', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "getBytesRemaining", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "getBytesRemaining", "fileName": "/packages/@uppy/utils/src/getBytesRemaining.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/getBytesRemaining.test.js", "calls" : [`);
   });
 
   it('should calculate the bytes remaining given a fileProgress object', () => {

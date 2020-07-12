@@ -15,7 +15,7 @@ var TransloaditResultsPlugin = /*#__PURE__*/function (_Plugin) {
   function TransloaditResultsPlugin(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"TransloaditResultsPlugin\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/robodog/src/TransloaditResultsPlugin.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"TransloaditResultsPlugin\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.type = 'modifier';
     _this.id = _this.opts.id || 'TransloaditResultsPlugin';
@@ -27,13 +27,13 @@ var TransloaditResultsPlugin = /*#__PURE__*/function (_Plugin) {
   var _proto = TransloaditResultsPlugin.prototype;
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"TransloaditResultsPlugin\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/robodog/src/TransloaditResultsPlugin.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"TransloaditResultsPlugin\",\"superClass\":\"Plugin\"}},");
     this.uppy.addPostProcessor(this._afterUpload);
     SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
   };
 
   _proto._afterUpload = function _afterUpload(fileIDs, uploadID) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_afterUpload\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"TransloaditResultsPlugin\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_afterUpload\",\"fileName\":\"/packages/@uppy/robodog/src/TransloaditResultsPlugin.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"TransloaditResultsPlugin\",\"superClass\":\"Plugin\"}},");
 
     var _this$uppy$getState = this.uppy.getState(),
         currentUploads = _this$uppy$getState.currentUploads;
@@ -42,12 +42,12 @@ var TransloaditResultsPlugin = /*#__PURE__*/function (_Plugin) {
     var assemblies = result && Array.isArray(result.transloadit) ? result.transloadit : [];
     var assemblyResults = [];
     assemblies.forEach(function (assembly) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"assemblies.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"assemblies.forEach\",\"fileName\":\"/packages/@uppy/robodog/src/TransloaditResultsPlugin.js\",\"paramsNumber\":1},");
       Object.keys(assembly.results).forEach(function (stepName) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"/packages/@uppy/robodog/src/TransloaditResultsPlugin.js\",\"paramsNumber\":1},");
         var results = assembly.results[stepName];
         results.forEach(function (result) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"results.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"results.forEach\",\"fileName\":\"/packages/@uppy/robodog/src/TransloaditResultsPlugin.js\",\"paramsNumber\":1},");
           assemblyResults.push(_extends({}, result, {
             assemblyId: assembly.assembly_id,
             stepName: stepName

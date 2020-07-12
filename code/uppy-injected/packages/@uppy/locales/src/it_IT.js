@@ -135,7 +135,7 @@ it_IT.strings = {
   openFolderNamed: 'Cartella aperta %{name}'
 };
 it_IT.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"it_IT.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"it_IT.pluralize","fileName":"/packages/@uppy/locales/src/it_IT.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"it_IT.pluralize"},');

@@ -145,7 +145,7 @@ zh_TW.strings = {
 };
 
 zh_TW.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"zh_TW.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"zh_TW.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/zh_TW.js\",\"paramsNumber\":1},");
 
   if (n === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"zh_TW.pluralize"},');

@@ -4,11 +4,11 @@ const isObjectURL = require('./isObjectURL');
 describe('isObjectURL', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "isObjectURL", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "isObjectURL", "fileName": "/packages/@uppy/utils/src/isObjectURL.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/isObjectURL.test.js", "calls" : [`);
   });
 
   it('should return true if the specified url is an object url', () => {

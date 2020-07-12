@@ -27,11 +27,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function ThumbnailGenerator(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
 
     _this.onFileAdded = function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
       if (!file.preview && isPreviewSupported(file.type) && !file.isRemote) {
         _this.addToQueue(file.id);
@@ -41,7 +41,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.onCancelRequest = function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###2\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
       var index = _this.queue.indexOf(file.id);
 
@@ -53,7 +53,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.onFileRemoved = function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###3\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
       var index = _this.queue.indexOf(file.id);
 
@@ -69,14 +69,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.onRestored = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###4\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0},");
 
       var _this$uppy$getState = _this.uppy.getState(),
           files = _this$uppy$getState.files;
 
       var fileIDs = Object.keys(files);
       fileIDs.forEach(function (fileID) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
         var file = _this.uppy.getFile(fileID);
 
@@ -95,9 +95,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.waitUntilAllProcessed = function (fileIDs) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###5\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
       fileIDs.forEach(function (fileID) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach###2\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
         var file = _this.uppy.getFile(fileID);
 
@@ -110,9 +110,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       });
 
       var emitPreprocessCompleteForAll = function emitPreprocessCompleteForAll() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"emitPreprocessCompleteForAll\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"emitPreprocessCompleteForAll\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0},");
         fileIDs.forEach(function (fileID) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.forEach###3\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
           var file = _this.uppy.getFile(fileID);
 
@@ -125,11 +125,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###5"},');
       return new Promise(function (resolve, reject) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":2},");
 
         if (_this.queueProcessing) {
           _this.uppy.once('thumbnail:all-generated', function () {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.once\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.once\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0},");
             emitPreprocessCompleteForAll();
             resolve();
             SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.once"},');
@@ -177,7 +177,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = ThumbnailGenerator.prototype;
 
   _proto.setOptions = function setOptions(newOpts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
 
     _Plugin.prototype.setOptions.call(this, newOpts);
 
@@ -186,7 +186,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.i18nInit = function i18nInit() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
     this.setPluginState();
@@ -196,20 +196,20 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.createThumbnail = function createThumbnail(file, targetWidth, targetHeight) {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createThumbnail\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createThumbnail\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     var originalUrl = URL.createObjectURL(file.data);
     var onload = new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.onload.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.onload.NewExpression\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":2},");
       var image = new Image();
       image.src = originalUrl;
       image.addEventListener('load', function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"image.addEventListener\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"image.addEventListener\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0},");
         URL.revokeObjectURL(originalUrl);
         resolve(image);
         SRTlib.send('{"type":"FUNCTIONEND","function":"image.addEventListener"},');
       });
       image.addEventListener('error', function (event) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"image.addEventListener###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"image.addEventListener###2\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
         URL.revokeObjectURL(originalUrl);
         reject(event.error || new Error('Could not create thumbnail'));
         SRTlib.send('{"type":"FUNCTIONEND","function":"image.addEventListener###2"},');
@@ -217,7 +217,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.onload.NewExpression"},');
     });
     var orientationPromise = exifr.rotation(file.data).catch(function (_err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.orientationPromise.exifr.rotation.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.orientationPromise.exifr.rotation.catch\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.orientationPromise.exifr.rotation.catch"},');
       return 1;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.orientationPromise.exifr.rotation.catch"},');
@@ -226,7 +226,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     return Promise.all([onload, orientationPromise]).then(function (_ref) {
       var image = _ref[0],
           orientation = _ref[1];
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.Promise.all.then.then.Promise.all.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.Promise.all.then.then.Promise.all.then\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
       var dimensions = _this2.getProportionalDimensions(image, targetWidth, targetHeight, orientation.deg);
 
@@ -238,7 +238,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       return _this2.canvasToBlob(resizedImage, 'image/jpeg', 80);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.all.then.then.Promise.all.then"},');
     }).then(function (blob) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.Promise.all.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.Promise.all.then.then\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.all.then.then"},');
       return URL.createObjectURL(blob);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.all.then.then"},');
@@ -247,7 +247,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.getProportionalDimensions = function getProportionalDimensions(img, width, height, rotation) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getProportionalDimensions\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":4,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getProportionalDimensions\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":4,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     var aspect = img.width / img.height;
 
     if (rotation === 90 || rotation === 270) {
@@ -279,7 +279,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.protect = function protect(image) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"protect\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"protect\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     var ratio = image.width / image.height;
     var maxSquare = 5000000;
     var maxSize = 4096;
@@ -310,7 +310,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.resizeImage = function resizeImage(image, targetWidth, targetHeight) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"resizeImage\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"resizeImage\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     image = this.protect(image);
     var steps = Math.ceil(MathLog2(image.width / targetWidth));
 
@@ -338,7 +338,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.rotateImage = function rotateImage(image, translate) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"rotateImage\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"rotateImage\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     var w = image.width;
     var h = image.height;
 
@@ -365,7 +365,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.canvasToBlob = function canvasToBlob(canvas, type, quality) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"canvasToBlob\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"canvasToBlob\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
 
     try {
       canvas.getContext('2d').getImageData(0, 0, 1, 1);
@@ -379,11 +379,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     if (canvas.toBlob) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"canvasToBlob"},');
       return new Promise(function (resolve) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.then.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.then.NewExpression\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
         canvas.toBlob(resolve, type, quality);
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.then.NewExpression"},');
       }).then(function (blob) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.then\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
         if (blob === null) {
           SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.then"},');
@@ -398,12 +398,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"canvasToBlob"},');
     return Promise.resolve().then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.Promise.resolve.then.then.Promise.resolve.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.Promise.resolve.then.then.Promise.resolve.then\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.resolve.then.then.Promise.resolve.then"},');
       return dataURItoBlob(canvas.toDataURL(type, quality), {});
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.resolve.then.then.Promise.resolve.then"},');
     }).then(function (blob) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.Promise.resolve.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.Promise.resolve.then.then\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
       if (blob === null) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.resolve.then.then"},');
@@ -418,7 +418,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.setPreviewURL = function setPreviewURL(fileID, preview) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setPreviewURL\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setPreviewURL\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     this.uppy.setFileState(fileID, {
       preview: preview
     });
@@ -426,7 +426,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.addToQueue = function addToQueue(item) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addToQueue\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addToQueue\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     this.queue.push(item);
 
     if (this.queueProcessing === false) {
@@ -439,7 +439,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.processQueue = function processQueue() {
     var _this3 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"processQueue\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"processQueue\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     this.queueProcessing = true;
 
     if (this.queue.length > 0) {
@@ -453,10 +453,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"processQueue"},');
       return this.requestThumbnail(current).catch(function (err) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.requestThumbnail.catch.then.requestThumbnail.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.requestThumbnail.catch.then.requestThumbnail.catch\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.requestThumbnail.catch.then.requestThumbnail.catch"},');
       }).then(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.requestThumbnail.catch.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.requestThumbnail.catch.then\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.requestThumbnail.catch.then"},');
         return _this3.processQueue();
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.requestThumbnail.catch.then"},');
@@ -473,12 +473,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.requestThumbnail = function requestThumbnail(file) {
     var _this4 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"requestThumbnail\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"requestThumbnail\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
 
     if (isPreviewSupported(file.type) && !file.isRemote) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"requestThumbnail"},');
       return this.createThumbnail(file, this.opts.thumbnailWidth, this.opts.thumbnailHeight).then(function (preview) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.createThumbnail.then.catch.createThumbnail.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.createThumbnail.then.catch.createThumbnail.then\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
         _this4.setPreviewURL(file.id, preview);
 
@@ -488,7 +488,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.createThumbnail.then.catch.createThumbnail.then"},');
       }).catch(function (err) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.createThumbnail.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.createThumbnail.then.catch\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":1},");
 
         _this4.uppy.log("[ThumbnailGenerator] Failed thumbnail for " + file.id + ":", 'warning');
 
@@ -506,7 +506,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     this.uppy.on('file-removed', this.onFileRemoved);
 
     if (this.opts.lazy) {
@@ -525,7 +525,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/thumbnail-generator/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ThumbnailGenerator\",\"superClass\":\"Plugin\"}},");
     this.uppy.off('file-removed', this.onFileRemoved);
 
     if (this.opts.lazy) {

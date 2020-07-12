@@ -4,11 +4,11 @@ const createSuperFocus = require('./createSuperFocus');
 describe('createSuperFocus', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "createSuperFocus", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "createSuperFocus", "fileName": "/packages/@uppy/dashboard/src/utils/createSuperFocus.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/dashboard/src/utils/createSuperFocus.test.js", "calls" : [`);
   });
 
   it('should return a function that can be cancelled', () => {

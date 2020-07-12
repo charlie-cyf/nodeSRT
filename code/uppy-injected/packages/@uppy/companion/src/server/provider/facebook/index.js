@@ -11,7 +11,7 @@ const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../error');
 class Facebook extends Provider {
   constructor(options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":1,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
     super(options);
     this.authProvider = options.provider = Facebook.authProvider;
@@ -20,7 +20,7 @@ class Facebook extends Provider {
 
   }
   static get authProvider() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":0,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
 
@@ -31,7 +31,7 @@ class Facebook extends Provider {
   list({directory, token, query = {
     cursor: null
   }}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
     const qs = {
       fields: 'name,cover_photo,created_time,type'
@@ -45,7 +45,7 @@ class Facebook extends Provider {
       qs.fields = 'icon,images,name,width,height,created_time';
     }
     this.client.get(`https://graph.facebook.com/${path}`).qs(qs).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -55,7 +55,7 @@ class Facebook extends Provider {
         return done(err);
       } else {
         this._getUsername(token, (err, username) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getUsername","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_getUsername","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":2},`);
 
           err ? done(err) : done(null, this.adaptData(body, username, directory, query));
                     SRTlib.send('{"type":"FUNCTIONEND","function":"_getUsername"},');
@@ -69,12 +69,12 @@ class Facebook extends Provider {
 
   }
   _getUsername(token, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getUsername","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getUsername","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
     this.client.get('me').qs({
       fields: 'email'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.get.qs.auth.request###2","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -92,7 +92,7 @@ class Facebook extends Provider {
 
   }
   _getMediaUrl(body) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getMediaUrl","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getMediaUrl","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":1,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
     const sortedImages = adapter.sortImages(body.images);
         SRTlib.send('{"type":"FUNCTIONEND","function":"_getMediaUrl"},');
@@ -102,14 +102,14 @@ class Facebook extends Provider {
 
   }
   download({id, token}, onData) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
 
     return this.client.get(`https://graph.facebook.com/${id}`).qs({
       fields: 'images'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -120,13 +120,13 @@ class Facebook extends Provider {
         return;
       }
       request(this._getMediaUrl(body)).on('response', resp => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on.request.on","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on.request.on","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":1},`);
 
         if (resp.statusCode !== 200) {
           onData(this._error(null, resp));
         } else {
           resp.on('data', chunk => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":1},`);
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
@@ -138,7 +138,7 @@ class Facebook extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on.request.on"},');
 
       }).on('end', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on.request.on.on","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
@@ -146,7 +146,7 @@ class Facebook extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"request.on.on.on.request.on.on"},');
 
       }).on('error', err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.on.on.on","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":1},`);
 
         logger.error(err, 'provider.facebook.download.url.error');
         onData(err);
@@ -160,7 +160,7 @@ class Facebook extends Provider {
 
   }
   thumbnail(_, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
     const err = new Error('call to thumbnail is not implemented');
     logger.error(err, 'provider.facebook.thumbnail.error');
@@ -171,14 +171,14 @@ class Facebook extends Provider {
 
   }
   size({id, token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
     return this.client.get(`https://graph.facebook.com/${id}`).qs({
       fields: 'images'
     }).auth(token).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request###2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.get.qs.auth.request###2","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -188,7 +188,7 @@ class Facebook extends Provider {
         return done(err);
       }
       utils.getURLMeta(this._getMediaUrl(body)).then(({size}) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch.utils.getURLMeta.then","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
@@ -196,7 +196,7 @@ class Facebook extends Provider {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"utils.getURLMeta.then.catch.utils.getURLMeta.then"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"utils.getURLMeta.then.catch","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":1},`);
 
         logger.error(err, 'provider.facebook.size.error');
         done();
@@ -210,12 +210,12 @@ class Facebook extends Provider {
 
   }
   logout({token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
 
     return this.client.delete('me/permissions').auth(token).request((err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.delete.auth.request","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.delete.auth.request","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":2},`);
 
       if (err || resp.statusCode !== 200) {
         logger.error(err, 'provider.facebook.logout.error');
@@ -234,7 +234,7 @@ class Facebook extends Provider {
 
   }
   adaptData(res, username, directory, currentQuery) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptData","fileName":"${__filename}","paramsNumber":4,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptData","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":4,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
     const data = {
       username: username,
@@ -242,7 +242,7 @@ class Facebook extends Provider {
     };
     const items = adapter.getItemSubList(res);
     items.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"items.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"items.forEach","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":1},`);
 
       data.items.push({
         isFolder: adapter.isFolder(item),
@@ -265,7 +265,7 @@ class Facebook extends Provider {
 
   }
   _error(err, resp) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_error","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_error","fileName":"/packages/@uppy/companion/src/server/provider/facebook/index.js","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Provider"}},`);
 
     if (resp) {
       if (resp.body && resp.body.error.code === 190) {

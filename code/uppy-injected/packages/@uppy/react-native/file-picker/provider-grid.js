@@ -5,7 +5,7 @@ import {StyleSheet, View, Text} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
 export default class Example extends React.Component {
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Example"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/react-native/file-picker/provider-grid.js","paramsNumber":0,"classInfo":{"className":"Example"}},`);
 
     const items = [{
       name: 'TURQUOISE',
@@ -71,7 +71,7 @@ export default class Example extends React.Component {
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
     return <FlatGrid itemDimension={130} items={items} style={styles.gridView} renderItem={({item, index}) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/react-native/file-picker/provider-grid.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 

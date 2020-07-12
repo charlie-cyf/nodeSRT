@@ -7,7 +7,7 @@ const {h} = require('preact');
 module.exports = class FileInput extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":2,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.id = this.opts.id || 'FileInput';
@@ -35,7 +35,7 @@ module.exports = class FileInput extends Plugin {
 
   }
   setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
     super.setOptions(newOpts);
     this.i18nInit();
@@ -43,7 +43,7 @@ module.exports = class FileInput extends Plugin {
 
   }
   i18nInit() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":0,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
@@ -53,10 +53,10 @@ module.exports = class FileInput extends Plugin {
 
   }
   addFiles(files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
     const descriptors = files.map(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.descriptors.files.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.descriptors.files.map","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.descriptors.files.map"},');
 
@@ -78,7 +78,7 @@ module.exports = class FileInput extends Plugin {
 
   }
   handleInputChange(event) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleInputChange","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleInputChange","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
     this.uppy.log('[FileInput] Something selected through input...');
     const files = toArray(event.target.files);
@@ -88,14 +88,14 @@ module.exports = class FileInput extends Plugin {
 
   }
   handleClick(ev) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleClick","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleClick","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
     this.input.click();
         SRTlib.send('{"type":"FUNCTIONEND","function":"handleClick"},');
 
   }
   render(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":1,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
     const hiddenInputStyle = {
       width: '0.1px',
@@ -111,7 +111,7 @@ module.exports = class FileInput extends Plugin {
 
     return <div class="uppy-Root uppy-FileInput-container">
         <input class="uppy-FileInput-input" style={this.opts.pretty && hiddenInputStyle} type="file" name={this.opts.inputName} onchange={this.handleInputChange} multiple={restrictions.maxNumberOfFiles !== 1} accept={accept} ref={input => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":1},`);
 
       this.input = input;
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
@@ -125,7 +125,7 @@ module.exports = class FileInput extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":0,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
     const target = this.opts.target;
     if (target) {
@@ -135,7 +135,7 @@ module.exports = class FileInput extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/file-input/src/index.js","paramsNumber":0,"classInfo":{"className":"FileInput","superClass":"Plugin"}},`);
 
     this.unmount();
         SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');

@@ -5,7 +5,7 @@ const {h} = require('preact');
 module.exports = class ProgressBar extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/progress-bar/src/index.js","paramsNumber":2,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.id = this.opts.id || 'ProgressBar';
@@ -23,7 +23,7 @@ module.exports = class ProgressBar extends Plugin {
 
   }
   render(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/progress-bar/src/index.js","paramsNumber":1,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
 
     const progress = state.totalProgress || 0;
     const isHidden = (progress === 0 || progress === 100) && this.opts.hideAfterFinish;
@@ -41,7 +41,7 @@ module.exports = class ProgressBar extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/progress-bar/src/index.js","paramsNumber":0,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
 
     const target = this.opts.target;
     if (target) {
@@ -51,7 +51,7 @@ module.exports = class ProgressBar extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/progress-bar/src/index.js","paramsNumber":0,"classInfo":{"className":"ProgressBar","superClass":"Plugin"}},`);
 
     this.unmount();
         SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');

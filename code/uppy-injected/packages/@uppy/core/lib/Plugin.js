@@ -7,12 +7,12 @@ var preact = require('preact');
 var findDOMElement = require('@uppy/utils/lib/findDOMElement');
 
 function debounce(fn) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"debounce\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"debounce\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":1},");
   var calling = null;
   var latestArgs = null;
   SRTlib.send('{"type":"FUNCTIONEND","function":"debounce"},');
   return function () {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":1},");
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -22,7 +22,7 @@ function debounce(fn) {
 
     if (!calling) {
       calling = Promise.resolve().then(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"calling.Promise.resolve.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"calling.Promise.resolve.then\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":0},");
         calling = null;
         SRTlib.send('{"type":"FUNCTIONEND","function":"calling.Promise.resolve.then"},');
         return fn.apply(void 0, latestArgs);
@@ -39,7 +39,7 @@ function debounce(fn) {
 
 module.exports = /*#__PURE__*/function () {
   function Plugin(uppy, opts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Plugin\"}},");
     this.uppy = uppy;
     this.opts = opts || {};
     this.update = this.update.bind(this);
@@ -52,7 +52,7 @@ module.exports = /*#__PURE__*/function () {
   var _proto = Plugin.prototype;
 
   _proto.getPluginState = function getPluginState() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getPluginState\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getPluginState\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
 
     var _this$uppy$getState = this.uppy.getState(),
         plugins = _this$uppy$getState.plugins;
@@ -65,7 +65,7 @@ module.exports = /*#__PURE__*/function () {
   _proto.setPluginState = function setPluginState(update) {
     var _extends2;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setPluginState\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setPluginState\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
 
     var _this$uppy$getState2 = this.uppy.getState(),
         plugins = _this$uppy$getState2.plugins;
@@ -77,14 +77,14 @@ module.exports = /*#__PURE__*/function () {
   };
 
   _proto.setOptions = function setOptions(newOpts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
     this.opts = _extends({}, this.opts, {}, newOpts);
     this.setPluginState();
     SRTlib.send('{"type":"FUNCTIONEND","function":"setOptions"},');
   };
 
   _proto.update = function update(state) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"update\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"update\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
 
     if (typeof this.el === 'undefined') {
       SRTlib.send('{"type":"FUNCTIONEND","function":"update"},');
@@ -99,19 +99,19 @@ module.exports = /*#__PURE__*/function () {
   };
 
   _proto.afterUpdate = function afterUpdate() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"afterUpdate\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"afterUpdate\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"afterUpdate"},');
   };
 
   _proto.onMount = function onMount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onMount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onMount\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"onMount"},');
   };
 
   _proto.mount = function mount(target, plugin) {
     var _this = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"mount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"mount\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Plugin\"}},");
     var callerPluginName = plugin.id;
     var targetElement = findDOMElement(target);
 
@@ -119,7 +119,7 @@ module.exports = /*#__PURE__*/function () {
       this.isTargetDOMEl = true;
 
       this.rerender = function (state) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.rerender\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.rerender\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":1},");
 
         if (!_this.uppy.getPlugin(_this.id)) {
           SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.rerender"},');
@@ -153,7 +153,7 @@ module.exports = /*#__PURE__*/function () {
     } else if (typeof target === 'function') {
       var Target = target;
       this.uppy.iteratePlugins(function (plugin) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.iteratePlugins\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.iteratePlugins\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":1},");
 
         if (plugin instanceof Target) {
           targetPlugin = plugin;
@@ -181,21 +181,21 @@ module.exports = /*#__PURE__*/function () {
   };
 
   _proto.render = function render(state) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     throw new Error('Extend the render method to add your plugin to a DOM element');
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
   };
 
   _proto.addTarget = function addTarget(plugin) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addTarget\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addTarget\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"addTarget"},');
     throw new Error('Extend the addTarget method to add your plugin to another plugin\'s target');
     SRTlib.send('{"type":"FUNCTIONEND","function":"addTarget"},');
   };
 
   _proto.unmount = function unmount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"unmount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"unmount\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
 
     if (this.isTargetDOMEl && this.el && this.el.parentNode) {
       this.el.parentNode.removeChild(this.el);
@@ -205,12 +205,12 @@ module.exports = /*#__PURE__*/function () {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/core/src/Plugin.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Plugin\"}},");
     this.unmount();
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
   };

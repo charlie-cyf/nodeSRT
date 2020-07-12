@@ -7,7 +7,7 @@ const GoogleDrive = require('@uppy/google-drive');
 const {Dashboard, DashboardModal, DragDrop, ProgressBar} = require('@uppy/react');
 module.exports = class App extends React.Component {
   constructor(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"App"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/examples/react-example/App.js","paramsNumber":1,"classInfo":{"className":"App"}},`);
 
     super(props);
     this.state = {
@@ -35,7 +35,7 @@ module.exports = class App extends React.Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/examples/react-example/App.js","paramsNumber":0,"classInfo":{"className":"App"}},`);
 
     this.uppy.close();
     this.uppy2.close();
@@ -43,7 +43,7 @@ module.exports = class App extends React.Component {
 
   }
   handleModalClick() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleModalClick","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleModalClick","fileName":"/examples/react-example/App.js","paramsNumber":0,"classInfo":{"className":"App"}},`);
 
     this.setState({
       open: !this.state.open
@@ -52,7 +52,7 @@ module.exports = class App extends React.Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/examples/react-example/App.js","paramsNumber":0,"classInfo":{"className":"App"}},`);
 
     const {showInlineDashboard} = this.state;
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
@@ -63,7 +63,7 @@ module.exports = class App extends React.Component {
         <h2>Inline Dashboard</h2>
         <label>
           <input type="checkbox" checked={showInlineDashboard} onChange={event => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"/examples/react-example/App.js","paramsNumber":1},`);
 
       this.setState({
         showInlineDashboard: event.target.checked
@@ -85,7 +85,7 @@ module.exports = class App extends React.Component {
             {this.state.open ? 'Close dashboard' : 'Open dashboard'}
           </button>
           <DashboardModal uppy={this.uppy2} open={this.state.open} target={document.body} onRequestClose={() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement###2","fileName":"/examples/react-example/App.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
 

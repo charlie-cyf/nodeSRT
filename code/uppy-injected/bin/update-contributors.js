@@ -4,7 +4,7 @@ const execa = require('execa');
 const fs = require('fs');
 const README_FILE_NAME = 'README.md';
 async function updateContributorsListInReadme() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateContributorsListInReadme","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateContributorsListInReadme","fileName":"/bin/update-contributors.js","paramsNumber":0},`);
 
   const readme = fs.readFileSync(README_FILE_NAME, 'utf-8');
   const args = ['--owner', 'transloadit', '--repo', 'uppy', '--cols', '6', '--format', 'md', '--showlogin', 'true', '--sortOrder', 'desc'];

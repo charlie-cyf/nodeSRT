@@ -10,11 +10,11 @@ function setTransloaditKeyAndInit(transloaditKey) {
 describe('Transloadit file processing', () => {
     before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Transloadit%20file%20processing", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Transloadit%20file%20processing", "fileName": "/test/endtoend/transloadit/test.js", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "/test/endtoend/transloadit/test.js", "calls" : [`);
 
     await browser.url(testURL);
   });

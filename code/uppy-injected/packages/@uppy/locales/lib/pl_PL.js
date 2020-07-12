@@ -145,7 +145,7 @@ pl_PL.strings = {
 };
 
 pl_PL.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"pl_PL.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"pl_PL.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/pl_PL.js\",\"paramsNumber\":1},");
 
   if (n === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"pl_PL.pluralize"},');

@@ -4,7 +4,7 @@ const SRTlib = require('SRT-util');
 const AuthError = require('./AuthError');
 const NetworkError = require('@uppy/utils/lib/NetworkError');
 function stripSlash(url) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"stripSlash","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"stripSlash","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"stripSlash"},');
 
@@ -15,7 +15,7 @@ function stripSlash(url) {
 module.exports = class RequestClient {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":2,"classInfo":{"className":"RequestClient"}},`);
 
     this.uppy = uppy;
     this.opts = opts;
@@ -26,7 +26,7 @@ module.exports = class RequestClient {
 
   }
   get hostname() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"hostname","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"hostname","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":0,"classInfo":{"className":"RequestClient"}},`);
 
     const {companion} = this.uppy.getState();
     const host = this.opts.companionUrl;
@@ -37,7 +37,7 @@ module.exports = class RequestClient {
 
   }
   get defaultHeaders() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"defaultHeaders","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"defaultHeaders","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":0,"classInfo":{"className":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"defaultHeaders"},');
 
@@ -50,7 +50,7 @@ module.exports = class RequestClient {
 
   }
   headers() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"headers","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"headers","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":0,"classInfo":{"className":"RequestClient"}},`);
 
     const userHeaders = this.opts.companionHeaders || this.opts.serverHeaders || ({});
         SRTlib.send('{"type":"FUNCTIONEND","function":"headers"},');
@@ -63,12 +63,12 @@ module.exports = class RequestClient {
 
   }
   _getPostResponseFunc(skip) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getPostResponseFunc","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getPostResponseFunc","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"_getPostResponseFunc"},');
 
     return response => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
       if (!skip) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
@@ -85,7 +85,7 @@ module.exports = class RequestClient {
 
   }
   onReceiveResponse(response) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onReceiveResponse","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onReceiveResponse","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
 
     const state = this.uppy.getState();
     const companion = state.companion || ({});
@@ -105,7 +105,7 @@ module.exports = class RequestClient {
 
   }
   _getUrl(url) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getUrl","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getUrl","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
 
     if ((/^(https?:|)\/\//).test(url)) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_getUrl"},');
@@ -119,7 +119,7 @@ module.exports = class RequestClient {
 
   }
   _json(res) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_json","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_json","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
 
     if (res.status === 401) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_json"},');
@@ -131,7 +131,7 @@ module.exports = class RequestClient {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_json"},');
 
       return res.json().then(errData => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.res.json.then.catch.res.json.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.res.json.then.catch.res.json.then","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
         errMsg = errData.message ? `${errMsg} message: ${errData.message}` : errMsg;
         errMsg = errData.requestId ? `${errMsg} request-Id: ${errData.requestId}` : errMsg;
@@ -141,7 +141,7 @@ module.exports = class RequestClient {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.res.json.then.catch.res.json.then"},');
 
       }).catch(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.res.json.then.catch","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.res.json.then.catch","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.res.json.then.catch"},');
 
@@ -157,12 +157,12 @@ module.exports = class RequestClient {
 
   }
   preflight(path) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"preflight","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"preflight","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"preflight"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":2},`);
 
       if (this.preflightDone) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.NewExpression"},');
@@ -172,11 +172,11 @@ module.exports = class RequestClient {
       fetch(this._getUrl(path), {
         method: 'OPTIONS'
       }).then(response => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.then.catch.fetch.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.then.catch.fetch.then","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
         if (response.headers.has('access-control-allow-headers')) {
           this.allowedHeaders = response.headers.get('access-control-allow-headers').split(',').map(headerName => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"allowedHeaders.response.headers.get.split.map","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"allowedHeaders.response.headers.get.split.map","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"allowedHeaders.response.headers.get.split.map"},');
 
@@ -190,7 +190,7 @@ module.exports = class RequestClient {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.then.catch.fetch.then"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.then.catch","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
         this.uppy.log(`[CompanionClient] unable to make preflight request ${err}`, 'warning');
         this.preflightDone = true;
@@ -205,15 +205,15 @@ module.exports = class RequestClient {
 
   }
   preflightAndHeaders(path) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"preflightAndHeaders","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"preflightAndHeaders","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1,"classInfo":{"className":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"preflightAndHeaders"},');
 
     return Promise.all([this.preflight(path), this.headers()]).then(([allowedHeaders, headers]) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.all.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.all.then","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
       Object.keys(headers).forEach(header => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
         if (allowedHeaders.indexOf(header.toLowerCase()) === -1) {
           this.uppy.log(`[CompanionClient] excluding unallowed header ${header}`);
@@ -232,22 +232,22 @@ module.exports = class RequestClient {
 
   }
   get(path, skipPostResponse) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"get","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"get","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":2,"classInfo":{"className":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":2},`);
 
       this.preflightAndHeaders(path).then(headers => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preflightAndHeaders.then.catch.preflightAndHeaders.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preflightAndHeaders.then.catch.preflightAndHeaders.then","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
         fetch(this._getUrl(path), {
           method: 'get',
           headers: headers,
           credentials: 'same-origin'
         }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
           if (err.name === 'AbortError') {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch"},');
@@ -261,7 +261,7 @@ module.exports = class RequestClient {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch"},');
 
         }).then(this._getPostResponseFunc(skipPostResponse)).then(res => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then"},');
 
@@ -269,7 +269,7 @@ module.exports = class RequestClient {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then"},');
 
         }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
           err = err.isAuthError ? err : new Error(`Could not get ${this._getUrl(path)}. ${err}`);
           reject(err);
@@ -286,15 +286,15 @@ module.exports = class RequestClient {
 
   }
   post(path, data, skipPostResponse) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"post","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"post","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":3,"classInfo":{"className":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"post"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###3","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":2},`);
 
       this.preflightAndHeaders(path).then(headers => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
         fetch(this._getUrl(path), {
           method: 'post',
@@ -302,7 +302,7 @@ module.exports = class RequestClient {
           credentials: 'same-origin',
           body: JSON.stringify(data)
         }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
           if (err.name === 'AbortError') {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###2"},');
@@ -316,7 +316,7 @@ module.exports = class RequestClient {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###2"},');
 
         }).then(this._getPostResponseFunc(skipPostResponse)).then(res => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then###2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then###2"},');
 
@@ -324,7 +324,7 @@ module.exports = class RequestClient {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then###2"},');
 
         }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch###2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
           err = err.isAuthError ? err : new Error(`Could not post ${this._getUrl(path)}. ${err}`);
           reject(err);
@@ -341,15 +341,15 @@ module.exports = class RequestClient {
 
   }
   delete(path, data, skipPostResponse) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"delete","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"RequestClient"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"delete","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":3,"classInfo":{"className":"RequestClient"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###4","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###4","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":2},`);
 
       this.preflightAndHeaders(path).then(headers => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
         fetch(`${this.hostname}/${path}`, {
           method: 'delete',
@@ -357,7 +357,7 @@ module.exports = class RequestClient {
           credentials: 'same-origin',
           body: data ? JSON.stringify(data) : null
         }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
           if (err.name === 'AbortError') {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###3"},');
@@ -371,7 +371,7 @@ module.exports = class RequestClient {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###3"},');
 
         }).then(this._getPostResponseFunc(skipPostResponse)).then(res => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then###3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then###3"},');
 
@@ -379,7 +379,7 @@ module.exports = class RequestClient {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then###3"},');
 
         }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch###3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
           err = err.isAuthError ? err : new Error(`Could not delete ${this._getUrl(path)}. ${err}`);
           reject(err);

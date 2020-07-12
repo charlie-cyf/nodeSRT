@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const throttle = require('lodash.throttle');
 function _emitSocketProgress(uploader, progressData, file) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_emitSocketProgress","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_emitSocketProgress","fileName":"/packages/@uppy/utils/src/emitSocketProgress.js","paramsNumber":3},`);
 
   const {progress, bytesUploaded, bytesTotal} = progressData;
   if (progress) {

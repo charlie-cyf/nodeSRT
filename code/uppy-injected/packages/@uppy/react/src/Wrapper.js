@@ -6,7 +6,7 @@ const uppyPropType = require('./propTypes').uppy;
 const h = React.createElement;
 class UppyWrapper extends React.Component {
   constructor(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyWrapper"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/react/src/Wrapper.js","paramsNumber":1,"classInfo":{"className":"UppyWrapper"}},`);
 
     super(props);
     this.refContainer = this.refContainer.bind(this);
@@ -14,14 +14,14 @@ class UppyWrapper extends React.Component {
 
   }
   componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyWrapper"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"/packages/@uppy/react/src/Wrapper.js","paramsNumber":0,"classInfo":{"className":"UppyWrapper"}},`);
 
     this.installPlugin();
         SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
 
   }
   componentDidUpdate(prevProps) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidUpdate","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyWrapper"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidUpdate","fileName":"/packages/@uppy/react/src/Wrapper.js","paramsNumber":1,"classInfo":{"className":"UppyWrapper"}},`);
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
@@ -31,14 +31,14 @@ class UppyWrapper extends React.Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyWrapper"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/packages/@uppy/react/src/Wrapper.js","paramsNumber":0,"classInfo":{"className":"UppyWrapper"}},`);
 
     this.uninstallPlugin();
         SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
 
   }
   installPlugin() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"installPlugin","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyWrapper"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"installPlugin","fileName":"/packages/@uppy/react/src/Wrapper.js","paramsNumber":0,"classInfo":{"className":"UppyWrapper"}},`);
 
     const plugin = this.props.uppy.getPlugin(this.props.plugin);
     plugin.mount(this.container, plugin);
@@ -46,7 +46,7 @@ class UppyWrapper extends React.Component {
 
   }
   uninstallPlugin(props = this.props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstallPlugin","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyWrapper"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstallPlugin","fileName":"/packages/@uppy/react/src/Wrapper.js","paramsNumber":1,"classInfo":{"className":"UppyWrapper"}},`);
 
     const plugin = props.uppy.getPlugin(this.props.plugin);
     plugin.unmount();
@@ -54,14 +54,14 @@ class UppyWrapper extends React.Component {
 
   }
   refContainer(container) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"refContainer","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyWrapper"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"refContainer","fileName":"/packages/@uppy/react/src/Wrapper.js","paramsNumber":1,"classInfo":{"className":"UppyWrapper"}},`);
 
     this.container = container;
         SRTlib.send('{"type":"FUNCTIONEND","function":"refContainer"},');
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyWrapper"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/react/src/Wrapper.js","paramsNumber":0,"classInfo":{"className":"UppyWrapper"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 

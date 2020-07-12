@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 module.exports = prettierBytes;
 function prettierBytes(num) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prettierBytes","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prettierBytes","fileName":"/packages/@uppy/utils/src/prettyBytes.js","paramsNumber":1},`);
 
   if (typeof num !== 'number' || isNaN(num)) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"prettierBytes"},');

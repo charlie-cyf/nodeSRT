@@ -28,14 +28,14 @@ module.exports = /*#__PURE__*/function (_Component) {
   var _proto = FileItem.prototype;
 
   _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"shouldComponentUpdate\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileItem\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"shouldComponentUpdate\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileItem\",\"superClass\":\"Component\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"shouldComponentUpdate"},');
     return !shallowEqual(this.props, nextProps);
     SRTlib.send('{"type":"FUNCTIONEND","function":"shouldComponentUpdate"},');
   };
 
   _proto.componentDidMount = function componentDidMount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileItem\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileItem\",\"superClass\":\"Component\"}},");
     var file = this.props.file;
 
     if (!file.preview) {
@@ -46,7 +46,7 @@ module.exports = /*#__PURE__*/function (_Component) {
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileItem\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileItem\",\"superClass\":\"Component\"}},");
     var file = this.props.file;
 
     if (!file.preview) {
@@ -57,7 +57,7 @@ module.exports = /*#__PURE__*/function (_Component) {
   };
 
   _proto.render = function render() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileItem\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileItem\",\"superClass\":\"Component\"}},");
     var file = this.props.file;
     var isProcessing = file.progress.preprocess || file.progress.postprocess;
     var isUploaded = file.progress.uploadComplete && !isProcessing && !file.error;

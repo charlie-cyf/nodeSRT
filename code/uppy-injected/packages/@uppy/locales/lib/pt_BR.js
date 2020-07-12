@@ -136,7 +136,7 @@ pt_BR.strings = {
 };
 
 pt_BR.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"pt_BR.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"pt_BR.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/pt_BR.js\",\"paramsNumber\":1},");
 
   if (n === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"pt_BR.pluralize"},');

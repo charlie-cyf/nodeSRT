@@ -20,14 +20,14 @@ if (mode === 'build') {
   throw new Error("First argument must be either 'build' or 'test'");
 }
 function getSources(pluginName) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSources","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSources","fileName":"/bin/locale-packs.js","paramsNumber":1},`);
 
   const dependencies = {
     core: ['provider-views']
   };
   const globPath = path.join(__dirname, '..', 'packages', '@uppy', pluginName, 'lib', '**', '*.js');
   let contents = glob.sync(globPath).map(file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"contents.glob.sync.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"contents.glob.sync.map","fileName":"/bin/locale-packs.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"contents.glob.sync.map"},');
 
@@ -37,7 +37,7 @@ function getSources(pluginName) {
   });
   if (dependencies[pluginName]) {
     dependencies[pluginName].forEach(addPlugin => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"dependencies.pluginName.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"dependencies.pluginName.forEach","fileName":"/bin/locale-packs.js","paramsNumber":1},`);
 
       contents = contents.concat(getSources(addPlugin));
             SRTlib.send('{"type":"FUNCTIONEND","function":"dependencies.pluginName.forEach"},');
@@ -51,7 +51,7 @@ function getSources(pluginName) {
 
 }
 function buildPluginsList() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildPluginsList","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildPluginsList","fileName":"/bin/locale-packs.js","paramsNumber":0},`);
 
   const packagesGlobPath = path.join(__dirname, '..', 'packages', '@uppy', '*', 'package.json');
   const files = glob.sync(packagesGlobPath);
@@ -72,13 +72,13 @@ function buildPluginsList() {
     };
     global.localStorage = {
       key: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"global.localStorage.key","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"global.localStorage.key","fileName":"/bin/locale-packs.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"global.localStorage.key"},');
 
       },
       getItem: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"global.localStorage.getItem","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"global.localStorage.getItem","fileName":"/bin/locale-packs.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"global.localStorage.getItem"},');
 
@@ -87,7 +87,7 @@ function buildPluginsList() {
     global.window = {
       indexedDB: {
         open: () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"global.window.indexedDB.open","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"global.window.indexedDB.open","fileName":"/bin/locale-packs.js","paramsNumber":0},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"global.window.indexedDB.open"},');
 
@@ -99,7 +99,7 @@ function buildPluginsList() {
     };
     global.document = {
       createElement: () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"global.document.createElement","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"global.document.createElement","fileName":"/bin/locale-packs.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"global.document.createElement"},');
 
@@ -120,7 +120,7 @@ function buildPluginsList() {
         plugin = new Plugin({
           store: {
             dispatch: () => {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"plugin.NewExpression.store.dispatch","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"plugin.NewExpression.store.dispatch","fileName":"/bin/locale-packs.js","paramsNumber":0},`);
 
                             SRTlib.send('{"type":"FUNCTIONEND","function":"plugin.NewExpression.store.dispatch"},');
 
@@ -165,7 +165,7 @@ function buildPluginsList() {
 
 }
 function addLocaleToPack(plugin, pluginName) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addLocaleToPack","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addLocaleToPack","fileName":"/bin/locale-packs.js","paramsNumber":2},`);
 
   const localeStrings = plugin.defaultLocale.strings;
   for (const key in localeStrings) {
@@ -183,7 +183,7 @@ function addLocaleToPack(plugin, pluginName) {
 
 }
 function checkForUnused(fileContents, pluginName, localePack) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"checkForUnused","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"checkForUnused","fileName":"/bin/locale-packs.js","paramsNumber":3},`);
 
   const buff = fileContents.join('\n');
   for (const key in localePack) {
@@ -196,12 +196,12 @@ function checkForUnused(fileContents, pluginName, localePack) {
 
 }
 function sortObjectAlphabetically(obj, sortFunc) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortObjectAlphabetically","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sortObjectAlphabetically","fileName":"/bin/locale-packs.js","paramsNumber":2},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"sortObjectAlphabetically"},');
 
   return Object.keys(obj).sort(sortFunc).reduce(function (result, key) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Object.keys.sort.reduce","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Object.keys.sort.reduce","fileName":"/bin/locale-packs.js","paramsNumber":2},`);
 
     result[key] = obj[key];
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Object.keys.sort.reduce"},');
@@ -214,10 +214,10 @@ function sortObjectAlphabetically(obj, sortFunc) {
 
 }
 function createTypeScriptLocale(plugin, pluginName) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createTypeScriptLocale","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createTypeScriptLocale","fileName":"/bin/locale-packs.js","paramsNumber":2},`);
 
   const allowedStringTypes = Object.keys(plugin.defaultLocale.strings).map(key => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"allowedStringTypes.Object.keys.map.join.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"allowedStringTypes.Object.keys.map.join.Object.keys.map","fileName":"/bin/locale-packs.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"allowedStringTypes.Object.keys.map.join.Object.keys.map"},');
 
@@ -233,7 +233,7 @@ function createTypeScriptLocale(plugin, pluginName) {
 
 }
 function build() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"build","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"build","fileName":"/bin/locale-packs.js","paramsNumber":0},`);
 
   const {plugins, sources} = buildPluginsList();
   for (const pluginName in plugins) {
@@ -261,14 +261,14 @@ function build() {
 
 }
 function test() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"test","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"test","fileName":"/bin/locale-packs.js","paramsNumber":0},`);
 
   const leadingLocaleName = 'en_US';
   const followerLocales = {};
   const followerValues = {};
   const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', '*.js');
   glob.sync(localePackagePath).forEach(localePath => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob.sync.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob.sync.forEach","fileName":"/bin/locale-packs.js","paramsNumber":1},`);
 
     const localeName = path.basename(localePath, '.js');
     if (localeName === 'es_GL') {
@@ -289,7 +289,7 @@ function test() {
   for (const followerName in followerLocales) {
     const followerLocale = followerLocales[followerName];
     const missing = leadingLocale.filter(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"missing.leadingLocale.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"missing.leadingLocale.filter","fileName":"/bin/locale-packs.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"missing.leadingLocale.filter"},');
 
@@ -298,7 +298,7 @@ function test() {
 
     });
     const excess = followerLocale.filter(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"excess.followerLocale.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"excess.followerLocale.filter","fileName":"/bin/locale-packs.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"excess.followerLocale.filter"},');
 
@@ -307,7 +307,7 @@ function test() {
 
     });
     missing.forEach(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"missing.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"missing.forEach","fileName":"/bin/locale-packs.js","paramsNumber":1},`);
 
       let value = leadingValues[key];
       if (typeof value === 'object') {
@@ -318,7 +318,7 @@ function test() {
 
     });
     excess.forEach(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"excess.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"excess.forEach","fileName":"/bin/locale-packs.js","paramsNumber":1},`);
 
       fatals.push(`${chalk.cyan(followerName)} locale has excess string: '${chalk.yellow(key)}' that is not present in ${chalk.cyan(leadingLocaleName)}. `);
             SRTlib.send('{"type":"FUNCTIONEND","function":"excess.forEach"},');

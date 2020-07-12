@@ -2,17 +2,17 @@ const SRTlib = require('SRT-util');
 
 import * as Expo from 'expo';
 function takePictureWithExpo(options) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"takePictureWithExpo","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"takePictureWithExpo","fileName":"/packages/@uppy/react-native/file-picker/takePicture.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"takePictureWithExpo"},');
 
   return new Promise((resolve, reject) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"/packages/@uppy/react-native/file-picker/takePicture.js","paramsNumber":2},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
 
     return Expo.Permissions.askAsync(Expo.Permissions.CAMERA).then(isAllowed => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Expo.Permissions.askAsync.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Expo.Permissions.askAsync.then","fileName":"/packages/@uppy/react-native/file-picker/takePicture.js","paramsNumber":1},`);
 
       if (!isAllowed) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Expo.Permissions.askAsync.then"},');
@@ -24,7 +24,7 @@ function takePictureWithExpo(options) {
       return Expo.ImagePicker.launchCameraAsync({
         allowsEditing: true
       }).then(result => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Expo.ImagePicker.launchCameraAsync.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Expo.ImagePicker.launchCameraAsync.then","fileName":"/packages/@uppy/react-native/file-picker/takePicture.js","paramsNumber":1},`);
 
         if (!result.cancelled) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Expo.ImagePicker.launchCameraAsync.then"},');

@@ -21,14 +21,14 @@ const formUppy = robodog.form('#test-form', {
   progressBar: '#test-form .progress'
 });
 formUppy.on('error', err => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"formUppy.on","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"formUppy.on","fileName":"/examples/transloadit/main.js","paramsNumber":1},`);
 
   document.querySelector('#test-form .error').textContent = err.message;
     SRTlib.send('{"type":"FUNCTIONEND","function":"formUppy.on"},');
 
 });
 formUppy.on('upload-error', (file, err) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"formUppy.on###2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"formUppy.on###2","fileName":"/examples/transloadit/main.js","paramsNumber":2},`);
 
   document.querySelector('#test-form .error').textContent = err.message;
     SRTlib.send('{"type":"FUNCTIONEND","function":"formUppy.on###2"},');
@@ -65,7 +65,7 @@ const dashboard = robodog.dashboard('#dashboard', {
 });
 window.dashboard = dashboard;
 function openModal() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"openModal","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"openModal","fileName":"/examples/transloadit/main.js","paramsNumber":0},`);
 
   robodog.pick({
     restrictions: {
@@ -85,7 +85,7 @@ function openModal() {
 }
 window.openModal = openModal;
 window.doUpload = event => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.doUpload","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.doUpload","fileName":"/examples/transloadit/main.js","paramsNumber":1},`);
 
   const resultEl = document.querySelector('#upload-result');
   const errorEl = document.querySelector('#upload-error');
@@ -98,7 +98,7 @@ window.doUpload = event => {
       template_id: TEMPLATE_ID
     }
   }).then(result => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then","fileName":"/examples/transloadit/main.js","paramsNumber":1},`);
 
     resultEl.classList.remove('hidden');
     errorEl.classList.add('hidden');
@@ -106,7 +106,7 @@ window.doUpload = event => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then"},');
 
   }, err => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then###2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then###2","fileName":"/examples/transloadit/main.js","paramsNumber":1},`);
 
     resultEl.classList.add('hidden');
     errorEl.classList.remove('hidden');

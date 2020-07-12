@@ -12,7 +12,7 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use((req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use","fileName":"/examples/custom-provider/server/index.js","paramsNumber":3},`);
 
   res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 });
 app.get('/', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get","fileName":"/examples/custom-provider/server/index.js","paramsNumber":2},`);
 
   res.setHeader('Content-Type', 'text/plain');
   res.send('Welcome to my uppy companion service');
@@ -58,7 +58,7 @@ const uppyOptions = {
   debug: true
 };
 app.get('/oauth/authorize', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get###2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get###2","fileName":"/examples/custom-provider/server/index.js","paramsNumber":2},`);
 
   res.redirect(`http://localhost:3020/mycustomprovider/callback?state=${req.query.state}&access_token=randombytes`);
     SRTlib.send('{"type":"FUNCTIONEND","function":"app.get###2"},');
@@ -66,7 +66,7 @@ app.get('/oauth/authorize', (req, res) => {
 });
 app.use(uppy.app(uppyOptions));
 app.use((req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###2","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###2","fileName":"/examples/custom-provider/server/index.js","paramsNumber":3},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"app.use###2"},');
 
@@ -77,7 +77,7 @@ app.use((req, res, next) => {
 
 });
 app.use((err, req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###3","fileName":"${__filename}","paramsNumber":4},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###3","fileName":"/examples/custom-provider/server/index.js","paramsNumber":4},`);
 
   console.error('\x1b[31m', err.stack, '\x1b[0m');
   res.status(err.status || 500).json({

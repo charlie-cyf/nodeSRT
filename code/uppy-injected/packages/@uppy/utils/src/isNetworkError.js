@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 function isNetworkError(xhr) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isNetworkError","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isNetworkError","fileName":"/packages/@uppy/utils/src/isNetworkError.js","paramsNumber":1},`);
 
   if (!xhr) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"isNetworkError"},');

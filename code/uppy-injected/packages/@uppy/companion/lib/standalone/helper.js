@@ -8,7 +8,7 @@ const logger = require('../server/logger');
 const crypto = require('crypto');
 const {version} = require('../../package.json');
 exports.getCompanionOptions = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getCompanionOptions","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getCompanionOptions","fileName":"/packages/@uppy/companion/lib/standalone/helper.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getCompanionOptions"},');
 
@@ -17,7 +17,7 @@ exports.getCompanionOptions = () => {
 
 };
 const getConfigFromEnv = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigFromEnv","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigFromEnv","fileName":"/packages/@uppy/companion/lib/standalone/helper.js","paramsNumber":0},`);
 
   const uploadUrls = process.env.COMPANION_UPLOAD_URLS;
   const domains = process.env.COMPANION_DOMAINS || process.env.COMPANION_DOMAIN || null;
@@ -79,7 +79,7 @@ const getConfigFromEnv = () => {
 
 };
 const getSecret = baseEnvVar => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSecret","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSecret","fileName":"/packages/@uppy/companion/lib/standalone/helper.js","paramsNumber":1},`);
 
   const secretFile = process.env[`${baseEnvVar}_FILE`];
     SRTlib.send('{"type":"FUNCTIONEND","function":"getSecret"},');
@@ -89,7 +89,7 @@ const getSecret = baseEnvVar => {
 
 };
 const generateSecret = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"generateSecret","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"generateSecret","fileName":"/packages/@uppy/companion/lib/standalone/helper.js","paramsNumber":0},`);
 
   logger.warn('auto-generating server secret because none was specified', 'startup.secret');
     SRTlib.send('{"type":"FUNCTIONEND","function":"generateSecret"},');
@@ -99,7 +99,7 @@ const generateSecret = () => {
 
 };
 const getConfigFromFile = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigFromFile","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigFromFile","fileName":"/packages/@uppy/companion/lib/standalone/helper.js","paramsNumber":0},`);
 
   const path = getConfigPath();
   if (!path) {
@@ -115,7 +115,7 @@ const getConfigFromFile = () => {
 
 };
 const getConfigPath = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigPath","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getConfigPath","fileName":"/packages/@uppy/companion/lib/standalone/helper.js","paramsNumber":0},`);
 
   let configPath;
   for (let i = process.argv.length - 1; i >= 0; i--) {
@@ -133,7 +133,7 @@ const getConfigPath = () => {
 
 };
 exports.hasProtocol = url => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasProtocol","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasProtocol","fileName":"/packages/@uppy/companion/lib/standalone/helper.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.hasProtocol"},');
 
@@ -142,12 +142,12 @@ exports.hasProtocol = url => {
 
 };
 exports.buildHelpfulStartupMessage = companionOptions => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.buildHelpfulStartupMessage","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.buildHelpfulStartupMessage","fileName":"/packages/@uppy/companion/lib/standalone/helper.js","paramsNumber":1},`);
 
   const buildURL = utils.getURLBuilder(companionOptions);
   const callbackURLs = [];
   Object.keys(companionOptions.providerOptions).forEach(providerName => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/companion/lib/standalone/helper.js","paramsNumber":1},`);
 
     if (providerName === 's3') {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');

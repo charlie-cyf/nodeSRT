@@ -15,7 +15,7 @@ const STYLE_CONTENT = {
 };
 class VirtualList extends Component {
   constructor(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/dashboard/src/components/VirtualList.js","paramsNumber":1,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
 
     super(props);
     this.focusElement = null;
@@ -27,7 +27,7 @@ class VirtualList extends Component {
 
   }
   resize() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resize","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resize","fileName":"/packages/@uppy/dashboard/src/components/VirtualList.js","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
 
     if (this.state.height !== this.base.offsetHeight) {
       this.setState({
@@ -38,14 +38,14 @@ class VirtualList extends Component {
 
   }
   handleResize = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"/packages/@uppy/dashboard/src/components/VirtualList.js","paramsNumber":0},`);
 
     this.resize();
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
 
   }
   handleScroll = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###2","fileName":"/packages/@uppy/dashboard/src/components/VirtualList.js","paramsNumber":0},`);
 
     this.setState({
       offset: this.base.scrollTop
@@ -57,7 +57,7 @@ class VirtualList extends Component {
 
   }
   componentWillUpdate() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUpdate","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUpdate","fileName":"/packages/@uppy/dashboard/src/components/VirtualList.js","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
 
     if (this.base.contains(document.activeElement)) {
       this.focusElement = document.activeElement;
@@ -66,7 +66,7 @@ class VirtualList extends Component {
 
   }
   componentDidUpdate() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidUpdate","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidUpdate","fileName":"/packages/@uppy/dashboard/src/components/VirtualList.js","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
 
     if (this.focusElement && this.focusElement.parentNode && document.activeElement !== this.focusElement) {
       this.focusElement.focus();
@@ -77,7 +77,7 @@ class VirtualList extends Component {
 
   }
   componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"/packages/@uppy/dashboard/src/components/VirtualList.js","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
 
     this.resize();
     window.addEventListener('resize', this.handleResize);
@@ -85,14 +85,14 @@ class VirtualList extends Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/packages/@uppy/dashboard/src/components/VirtualList.js","paramsNumber":0,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
 
     window.removeEventListener('resize', this.handleResize);
         SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
 
   }
   render({data, rowHeight, renderRow, overscanCount = 10, sync, ...props}) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/dashboard/src/components/VirtualList.js","paramsNumber":1,"classInfo":{"className":"VirtualList","superClass":"Component"}},`);
 
     const {offset, height} = this.state;
     let start = Math.floor(offset / rowHeight);

@@ -6,11 +6,11 @@ const fs = require('fs');
 const path = require('path');
 const logger = require('./logger');
 exports.startCleanUpJob = dirPath => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.startCleanUpJob","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.startCleanUpJob","fileName":"/packages/@uppy/companion/lib/server/jobs.js","paramsNumber":1},`);
 
   logger.info('starting clean up job', 'jobs.cleanup.start');
   schedule.scheduleJob('0 23 * * *', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"schedule.scheduleJob","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"schedule.scheduleJob","fileName":"/packages/@uppy/companion/lib/server/jobs.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"schedule.scheduleJob"},');
 
@@ -22,11 +22,11 @@ exports.startCleanUpJob = dirPath => {
 
 };
 const cleanUpFinishedUploads = dirPath => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanUpFinishedUploads","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanUpFinishedUploads","fileName":"/packages/@uppy/companion/lib/server/jobs.js","paramsNumber":1},`);
 
   logger.info(`running clean up job for path: ${dirPath}`, 'jobs.cleanup.progress.read');
   fs.readdir(dirPath, (err, files) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fs.readdir","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fs.readdir","fileName":"/packages/@uppy/companion/lib/server/jobs.js","paramsNumber":2},`);
 
     if (err) {
       logger.error(err, 'jobs.cleanup.read.error');
@@ -36,7 +36,7 @@ const cleanUpFinishedUploads = dirPath => {
     }
     logger.info(`found ${files.length} files`, 'jobs.cleanup.files');
     files.forEach((file, fileIndex) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"/packages/@uppy/companion/lib/server/jobs.js","paramsNumber":2},`);
 
       if (!file.startsWith(FILE_NAME_PREFIX)) {
         logger.info(`skipping file ${file}`, 'jobs.cleanup.skip');
@@ -46,7 +46,7 @@ const cleanUpFinishedUploads = dirPath => {
       }
       const fullPath = path.join(dirPath, file);
       fs.stat(fullPath, (err, stats) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fs.stat","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fs.stat","fileName":"/packages/@uppy/companion/lib/server/jobs.js","paramsNumber":2},`);
 
         const twelveHoursAgo = 12 * 60 * 60 * 1000;
         if (err) {
@@ -59,7 +59,7 @@ const cleanUpFinishedUploads = dirPath => {
         }
         logger.info(`deleting file ${file}`, 'jobs.cleanup.progress.delete');
         fs.unlink(fullPath, err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fs.unlink","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fs.unlink","fileName":"/packages/@uppy/companion/lib/server/jobs.js","paramsNumber":1},`);
 
           if (err) logger.error(err, 'jobs.cleanup.delete.error');
                     SRTlib.send('{"type":"FUNCTIONEND","function":"fs.unlink"},');

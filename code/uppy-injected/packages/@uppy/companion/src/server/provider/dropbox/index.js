@@ -10,12 +10,12 @@ const adapter = require('./adapter');
 const {ProviderApiError, ProviderAuthError} = require('../error');
 const charsToEncode = /[\u007f-\uffff]/g;
 function httpHeaderSafeJson(v) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"httpHeaderSafeJson","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"httpHeaderSafeJson","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"httpHeaderSafeJson"},');
 
   return JSON.stringify(v).replace(charsToEncode, function (c) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.JSON.stringify.replace","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.JSON.stringify.replace","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.JSON.stringify.replace"},');
 
@@ -28,7 +28,7 @@ function httpHeaderSafeJson(v) {
 }
 class DropBox extends Provider {
   constructor(options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":1,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
     super(options);
     this.authProvider = options.provider = DropBox.authProvider;
@@ -38,7 +38,7 @@ class DropBox extends Provider {
 
   }
   static get authProvider() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authProvider","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":0,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"authProvider"},');
 
@@ -47,7 +47,7 @@ class DropBox extends Provider {
 
   }
   _userInfo({token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_userInfo","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_userInfo","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
     this.client.post('users/get_current_account').options({
       version: '2'
@@ -56,7 +56,7 @@ class DropBox extends Provider {
 
   }
   list(options, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
     let userInfoDone = false;
     let statsDone = false;
@@ -64,7 +64,7 @@ class DropBox extends Provider {
     let stats;
     let reqErr;
     const finishReq = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"finishReq","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"finishReq","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":0},`);
 
       if (reqErr || stats.statusCode !== 200) {
         const err = this._error(reqErr, stats);
@@ -78,7 +78,7 @@ class DropBox extends Provider {
 
     };
     this.stats(options, (err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"stats","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"stats","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2},`);
 
       statsDone = true;
       stats = resp;
@@ -90,7 +90,7 @@ class DropBox extends Provider {
 
     });
     this._userInfo(options, (err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_userInfo","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_userInfo","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2},`);
 
       userInfoDone = true;
       userInfo = resp;
@@ -105,7 +105,7 @@ class DropBox extends Provider {
 
   }
   stats({directory, query, token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"stats","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"stats","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
     if (query.cursor) {
       this.client.post('files/list_folder/continue').options({
@@ -126,7 +126,7 @@ class DropBox extends Provider {
 
   }
   download({id, token}, onData) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"download","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"download"},');
 
@@ -138,13 +138,13 @@ class DropBox extends Provider {
         })
       }
     }).auth(token).request().on('response', resp => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on.client.post.options.auth.request.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on.client.post.options.auth.request.on","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":1},`);
 
       if (resp.statusCode !== 200) {
         onData(this._error(null, resp));
       } else {
         resp.on('data', chunk => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"resp.on","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":1},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"resp.on"},');
 
@@ -156,7 +156,7 @@ class DropBox extends Provider {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on.client.post.options.auth.request.on"},');
 
     }).on('end', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on"},');
 
@@ -164,7 +164,7 @@ class DropBox extends Provider {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.on.client.post.options.auth.request.on.on"},');
 
     }).on('error', err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.on","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":1},`);
 
       logger.error(err, 'provider.dropbox.download.error');
       onData(err);
@@ -175,7 +175,7 @@ class DropBox extends Provider {
 
   }
   thumbnail({id, token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"thumbnail"},');
 
@@ -188,7 +188,7 @@ class DropBox extends Provider {
         })
       }
     }).auth(token).request().on('response', resp => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.client.post.options.auth.request.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on.client.post.options.auth.request.on","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":1},`);
 
       if (resp.statusCode !== 200) {
         const err = this._error(null, resp);
@@ -201,7 +201,7 @@ class DropBox extends Provider {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on.client.post.options.auth.request.on"},');
 
     }).on('error', err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request.on.on","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":1},`);
 
       logger.error(err, 'provider.dropbox.thumbnail.error');
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.client.post.options.auth.request.on.on"},');
@@ -211,7 +211,7 @@ class DropBox extends Provider {
 
   }
   size({id, token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"size","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"size"},');
 
@@ -220,7 +220,7 @@ class DropBox extends Provider {
     }).auth(token).json({
       path: id
     }).request((err, resp, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.json.request","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.json.request","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":3},`);
 
       if (err || resp.statusCode !== 200) {
         err = this._error(err, resp);
@@ -237,14 +237,14 @@ class DropBox extends Provider {
 
   }
   logout({token}, done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"logout"},');
 
     return this.client.post('auth/token/revoke').options({
       version: '2'
     }).auth(token).request((err, resp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.client.post.options.auth.request","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2},`);
 
       if (err || resp.statusCode !== 200) {
         logger.error(err, 'provider.dropbox.size.error');
@@ -263,7 +263,7 @@ class DropBox extends Provider {
 
   }
   adaptData(res, companion) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptData","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"adaptData","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
     const data = {
       username: adapter.getUsername(res),
@@ -271,7 +271,7 @@ class DropBox extends Provider {
     };
     const items = adapter.getItemSubList(res);
     items.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"items.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"items.forEach","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":1},`);
 
       data.items.push({
         isFolder: adapter.isFolder(item),
@@ -295,7 +295,7 @@ class DropBox extends Provider {
 
   }
   _error(err, resp) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_error","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_error","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/index.js","paramsNumber":2,"classInfo":{"className":"DropBox","superClass":"Provider"}},`);
 
     if (resp) {
       const fallbackMessage = `request to ${this.authProvider} returned ${resp.statusCode}`;

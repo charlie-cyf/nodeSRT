@@ -15,7 +15,7 @@ const {justErrorsLogger, debugLogger} = require('./loggers');
 const Plugin = require('./Plugin');
 class RestrictionError extends Error {
   constructor(...args) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RestrictionError","superClass":"Error"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"RestrictionError","superClass":"Error"}},`);
 
     super(...args);
     this.isRestriction = true;
@@ -26,7 +26,7 @@ class RestrictionError extends Error {
 class Uppy {
   static VERSION = require('../package.json').version
   constructor(opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.defaultLocale = {
       strings: {
@@ -89,7 +89,7 @@ class Uppy {
       },
       meta: {},
       onBeforeFileAdded: (currentFile, files) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onBeforeFileAdded","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onBeforeFileAdded","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeFileAdded"},');
 
@@ -98,7 +98,7 @@ class Uppy {
 
       },
       onBeforeUpload: files => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onBeforeUpload","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.onBeforeUpload","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.onBeforeUpload"},');
 
@@ -182,7 +182,7 @@ class Uppy {
       }
     });
     this._storeUnsubscribe = this.store.subscribe((prevState, nextState, patch) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_storeUnsubscribe.store.subscribe","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"_storeUnsubscribe.store.subscribe","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":3},`);
 
       this.emit('state-update', prevState, nextState, patch);
       this.updateAll(nextState);
@@ -197,7 +197,7 @@ class Uppy {
 
   }
   on(event, callback) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     this.emitter.on(event, callback);
         SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
@@ -207,7 +207,7 @@ class Uppy {
 
   }
   off(event, callback) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"off","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"off","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     this.emitter.off(event, callback);
         SRTlib.send('{"type":"FUNCTIONEND","function":"off"},');
@@ -217,10 +217,10 @@ class Uppy {
 
   }
   updateAll(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateAll","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateAll","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.iteratePlugins(plugin => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       plugin.update(state);
             SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins"},');
@@ -230,14 +230,14 @@ class Uppy {
 
   }
   setState(patch) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setState","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setState","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.store.setState(patch);
         SRTlib.send('{"type":"FUNCTIONEND","function":"setState"},');
 
   }
   getState() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getState","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getState","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getState"},');
 
@@ -246,7 +246,7 @@ class Uppy {
 
   }
   get state() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"state","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"state","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"state"},');
 
@@ -255,7 +255,7 @@ class Uppy {
 
   }
   setFileState(fileID, state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setFileState","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setFileState","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     if (!this.getState().files[fileID]) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"setFileState"},');
@@ -271,7 +271,7 @@ class Uppy {
 
   }
   i18nInit() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     this.translator = new Translator([this.defaultLocale, this.opts.locale]);
     this.locale = this.translator.locale;
@@ -281,7 +281,7 @@ class Uppy {
 
   }
   setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.opts = {
       ...this.opts,
@@ -297,7 +297,7 @@ class Uppy {
     this.i18nInit();
     if (newOpts.locale) {
       this.iteratePlugins(plugin => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins###2","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
         plugin.setOptions();
                 SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###2"},');
@@ -309,7 +309,7 @@ class Uppy {
 
   }
   resetProgress() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resetProgress","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resetProgress","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     const defaultProgress = {
       percentage: 0,
@@ -320,7 +320,7 @@ class Uppy {
     const files = Object.assign({}, this.getState().files);
     const updatedFiles = {};
     Object.keys(files).forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       const updatedFile = Object.assign({}, files[fileID]);
       updatedFile.progress = Object.assign({}, updatedFile.progress, defaultProgress);
@@ -337,14 +337,14 @@ class Uppy {
 
   }
   addPreProcessor(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addPreProcessor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addPreProcessor","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.preProcessors.push(fn);
         SRTlib.send('{"type":"FUNCTIONEND","function":"addPreProcessor"},');
 
   }
   removePreProcessor(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removePreProcessor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removePreProcessor","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const i = this.preProcessors.indexOf(fn);
     if (i !== -1) {
@@ -354,14 +354,14 @@ class Uppy {
 
   }
   addPostProcessor(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addPostProcessor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addPostProcessor","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.postProcessors.push(fn);
         SRTlib.send('{"type":"FUNCTIONEND","function":"addPostProcessor"},');
 
   }
   removePostProcessor(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removePostProcessor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removePostProcessor","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const i = this.postProcessors.indexOf(fn);
     if (i !== -1) {
@@ -371,14 +371,14 @@ class Uppy {
 
   }
   addUploader(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addUploader","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addUploader","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.uploaders.push(fn);
         SRTlib.send('{"type":"FUNCTIONEND","function":"addUploader"},');
 
   }
   removeUploader(fn) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeUploader","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeUploader","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const i = this.uploaders.indexOf(fn);
     if (i !== -1) {
@@ -388,12 +388,12 @@ class Uppy {
 
   }
   setMeta(data) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setMeta","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setMeta","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const updatedMeta = Object.assign({}, this.getState().meta, data);
     const updatedFiles = Object.assign({}, this.getState().files);
     Object.keys(updatedFiles).forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       updatedFiles[fileID] = Object.assign({}, updatedFiles[fileID], {
         meta: Object.assign({}, updatedFiles[fileID].meta, data)
@@ -411,7 +411,7 @@ class Uppy {
 
   }
   setFileMeta(fileID, data) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setFileMeta","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setFileMeta","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     const updatedFiles = Object.assign({}, this.getState().files);
     if (!updatedFiles[fileID]) {
@@ -431,7 +431,7 @@ class Uppy {
 
   }
   getFile(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getFile","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getFile","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getFile"},');
 
@@ -440,13 +440,13 @@ class Uppy {
 
   }
   getFiles() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getFiles","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getFiles","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     const {files} = this.getState();
         SRTlib.send('{"type":"FUNCTIONEND","function":"getFiles"},');
 
     return Object.keys(files).map(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Object.keys.map","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Object.keys.map"},');
 
@@ -458,7 +458,7 @@ class Uppy {
 
   }
   _checkMinNumberOfFiles(files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_checkMinNumberOfFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_checkMinNumberOfFiles","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const {minNumberOfFiles} = this.opts.restrictions;
     if (Object.keys(files).length < minNumberOfFiles) {
@@ -472,7 +472,7 @@ class Uppy {
 
   }
   _checkRestrictions(files, file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_checkRestrictions","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_checkRestrictions","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     const {maxFileSize, maxNumberOfFiles, allowedFileTypes} = this.opts.restrictions;
     if (maxNumberOfFiles) {
@@ -486,7 +486,7 @@ class Uppy {
     }
     if (allowedFileTypes) {
       const isCorrectFileType = allowedFileTypes.some(type => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"isCorrectFileType.allowedFileTypes.some","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"isCorrectFileType.allowedFileTypes.some","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
         if (type.indexOf('/') > -1) {
           if (!file.type) {
@@ -532,7 +532,7 @@ class Uppy {
 
   }
   _showOrLogErrorAndThrow(err, {showInformer = true, file = null, throwErr = true} = {}) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_showOrLogErrorAndThrow","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_showOrLogErrorAndThrow","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     const message = typeof err === 'object' ? err.message : err;
     const details = typeof err === 'object' && err.details ? err.details : '';
@@ -561,7 +561,7 @@ class Uppy {
 
   }
   _assertNewUploadAllowed(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertNewUploadAllowed","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_assertNewUploadAllowed","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const {allowNewUpload} = this.getState();
     if (allowNewUpload === false) {
@@ -573,7 +573,7 @@ class Uppy {
 
   }
   _checkAndCreateFileStateObject(files, file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_checkAndCreateFileStateObject","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_checkAndCreateFileStateObject","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     const fileType = getFileType(file);
     file.type = fileType;
@@ -646,15 +646,15 @@ class Uppy {
 
   }
   _startIfAutoProceed() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_startIfAutoProceed","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_startIfAutoProceed","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     if (this.opts.autoProceed && !this.scheduledAutoProceed) {
       this.scheduledAutoProceed = setTimeout(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"scheduledAutoProceed.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"scheduledAutoProceed.setTimeout","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
         this.scheduledAutoProceed = null;
         this.upload().catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"upload.catch","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"upload.catch","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
           if (!err.isRestriction) {
             this.log(err.stack || err.message || err);
@@ -670,7 +670,7 @@ class Uppy {
 
   }
   addFile(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFile","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFile","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this._assertNewUploadAllowed(file);
     const {files} = this.getState();
@@ -691,7 +691,7 @@ class Uppy {
 
   }
   addFiles(fileDescriptors) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this._assertNewUploadAllowed();
     const files = {
@@ -714,7 +714,7 @@ class Uppy {
       files
     });
     newFiles.forEach(newFile => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"newFiles.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"newFiles.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       this.emit('file-added', newFile);
             SRTlib.send('{"type":"FUNCTIONEND","function":"newFiles.forEach"},');
@@ -724,7 +724,7 @@ class Uppy {
       this.log(`Added batch of ${newFiles.length} files`);
     } else {
       Object.keys(newFiles).forEach(fileID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###3","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
         this.log(`Added file: ${newFiles[fileID].name}\n id: ${newFiles[fileID].id}\n type: ${newFiles[fileID].type}`);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###3"},');
@@ -737,7 +737,7 @@ class Uppy {
     if (errors.length > 0) {
       let message = 'Multiple errors occurred while adding files:\n';
       errors.forEach(subError => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"errors.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"errors.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
         message += `\n * ${subError.message}`;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"errors.forEach"},');
@@ -759,7 +759,7 @@ class Uppy {
 
   }
   removeFiles(fileIDs) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFiles","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const {files, currentUploads} = this.getState();
     const updatedFiles = {
@@ -770,7 +770,7 @@ class Uppy {
     };
     const removedFiles = Object.create(null);
     fileIDs.forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       if (files[fileID]) {
         removedFiles[fileID] = files[fileID];
@@ -780,7 +780,7 @@ class Uppy {
 
     });
     function fileIsNotRemoved(uploadFileID) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"fileIsNotRemoved","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"fileIsNotRemoved","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"fileIsNotRemoved"},');
 
@@ -790,7 +790,7 @@ class Uppy {
     }
     const uploadsToRemove = [];
     Object.keys(updatedUploads).forEach(uploadID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###4","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       const newFileIDs = currentUploads[uploadID].fileIDs.filter(fileIsNotRemoved);
       if (newFileIDs.length === 0) {
@@ -807,7 +807,7 @@ class Uppy {
 
     });
     uploadsToRemove.forEach(uploadID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploadsToRemove.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploadsToRemove.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       delete updatedUploads[uploadID];
             SRTlib.send('{"type":"FUNCTIONEND","function":"uploadsToRemove.forEach"},');
@@ -825,7 +825,7 @@ class Uppy {
     this._calculateTotalProgress();
     const removedFileIDs = Object.keys(removedFiles);
     removedFileIDs.forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"removedFileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"removedFileIDs.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       this.emit('file-removed', removedFiles[fileID]);
             SRTlib.send('{"type":"FUNCTIONEND","function":"removedFileIDs.forEach"},');
@@ -840,14 +840,14 @@ class Uppy {
 
   }
   removeFile(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFile","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFile","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.removeFiles([fileID]);
         SRTlib.send('{"type":"FUNCTIONEND","function":"removeFile"},');
 
   }
   pauseResume(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pauseResume","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pauseResume","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     if (!this.getState().capabilities.resumableUploads || this.getFile(fileID).uploadComplete) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"pauseResume"},');
@@ -867,11 +867,11 @@ class Uppy {
 
   }
   pauseAll() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pauseAll","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pauseAll","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     const updatedFiles = Object.assign({}, this.getState().files);
     const inProgressUpdatedFiles = Object.keys(updatedFiles).filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.Object.keys.filter","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter"},');
 
@@ -880,7 +880,7 @@ class Uppy {
 
     });
     inProgressUpdatedFiles.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       const updatedFile = Object.assign({}, updatedFiles[file], {
         isPaused: true
@@ -897,11 +897,11 @@ class Uppy {
 
   }
   resumeAll() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resumeAll","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resumeAll","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     const updatedFiles = Object.assign({}, this.getState().files);
     const inProgressUpdatedFiles = Object.keys(updatedFiles).filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.Object.keys.filter###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.Object.keys.filter###2","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressUpdatedFiles.Object.keys.filter###2"},');
 
@@ -910,7 +910,7 @@ class Uppy {
 
     });
     inProgressUpdatedFiles.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgressUpdatedFiles.forEach###2","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       const updatedFile = Object.assign({}, updatedFiles[file], {
         isPaused: false,
@@ -928,11 +928,11 @@ class Uppy {
 
   }
   retryAll() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"retryAll","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"retryAll","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     const updatedFiles = Object.assign({}, this.getState().files);
     const filesToRetry = Object.keys(updatedFiles).filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filesToRetry.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filesToRetry.Object.keys.filter","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"filesToRetry.Object.keys.filter"},');
 
@@ -941,7 +941,7 @@ class Uppy {
 
     });
     filesToRetry.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filesToRetry.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"filesToRetry.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       const updatedFile = Object.assign({}, updatedFiles[file], {
         isPaused: false,
@@ -966,7 +966,7 @@ class Uppy {
 
   }
   cancelAll() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cancelAll","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cancelAll","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     this.emit('cancel-all');
     const {files} = this.getState();
@@ -982,7 +982,7 @@ class Uppy {
 
   }
   retryUpload(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"retryUpload","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"retryUpload","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.setFileState(fileID, {
       error: null,
@@ -999,14 +999,14 @@ class Uppy {
 
   }
   reset() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"reset","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"reset","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     this.cancelAll();
         SRTlib.send('{"type":"FUNCTIONEND","function":"reset"},');
 
   }
   _calculateProgress(file, data) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_calculateProgress","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_calculateProgress","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     if (!this.getFile(file.id)) {
       this.log(`Not setting progress for a file that has been removed: ${file.id}`);
@@ -1028,11 +1028,11 @@ class Uppy {
 
   }
   _calculateTotalProgress() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_calculateTotalProgress","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_calculateTotalProgress","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     const files = this.getFiles();
     const inProgress = files.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgress.files.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"inProgress.files.filter","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"inProgress.files.filter"},');
 
@@ -1050,7 +1050,7 @@ class Uppy {
       return;
     }
     const sizedFiles = inProgress.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizedFiles.inProgress.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizedFiles.inProgress.filter","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"sizedFiles.inProgress.filter"},');
 
@@ -1059,7 +1059,7 @@ class Uppy {
 
     });
     const unsizedFiles = inProgress.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"unsizedFiles.inProgress.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"unsizedFiles.inProgress.filter","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"unsizedFiles.inProgress.filter"},');
 
@@ -1070,7 +1070,7 @@ class Uppy {
     if (sizedFiles.length === 0) {
       const progressMax = inProgress.length * 100;
       const currentProgress = unsizedFiles.reduce((acc, file) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"currentProgress.unsizedFiles.reduce","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"currentProgress.unsizedFiles.reduce","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"currentProgress.unsizedFiles.reduce"},');
 
@@ -1087,7 +1087,7 @@ class Uppy {
       return;
     }
     let totalSize = sizedFiles.reduce((acc, file) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"totalSize.sizedFiles.reduce","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"totalSize.sizedFiles.reduce","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"totalSize.sizedFiles.reduce"},');
 
@@ -1099,14 +1099,14 @@ class Uppy {
     totalSize += averageSize * unsizedFiles.length;
     let uploadedSize = 0;
     sizedFiles.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizedFiles.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizedFiles.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       uploadedSize += file.progress.bytesUploaded;
             SRTlib.send('{"type":"FUNCTIONEND","function":"sizedFiles.forEach"},');
 
     });
     unsizedFiles.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"unsizedFiles.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"unsizedFiles.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       uploadedSize += averageSize * (file.progress.percentage || 0) / 100;
             SRTlib.send('{"type":"FUNCTIONEND","function":"unsizedFiles.forEach"},');
@@ -1124,10 +1124,10 @@ class Uppy {
 
   }
   _addListeners() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_addListeners","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_addListeners","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     this.on('error', error => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       let errorMsg = 'Unknown error';
       if (error.message) {
@@ -1143,7 +1143,7 @@ class Uppy {
 
     });
     this.on('upload-error', (file, error, response) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###2","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###2","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":3},`);
 
       let errorMsg = 'Unknown error';
       if (error.message) {
@@ -1180,7 +1180,7 @@ class Uppy {
 
     });
     this.on('upload', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###3","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
       this.setState({
         error: null
@@ -1189,7 +1189,7 @@ class Uppy {
 
     });
     this.on('upload-started', (file, upload) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###4","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###4","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
@@ -1211,7 +1211,7 @@ class Uppy {
     });
     this.on('upload-progress', this._calculateProgress);
     this.on('upload-success', (file, uploadResp) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###5","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###5","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
@@ -1235,7 +1235,7 @@ class Uppy {
 
     });
     this.on('preprocess-progress', (file, progress) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###6","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###6","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
@@ -1252,7 +1252,7 @@ class Uppy {
 
     });
     this.on('preprocess-complete', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###7","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###7","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
@@ -1272,7 +1272,7 @@ class Uppy {
 
     });
     this.on('postprocess-progress', (file, progress) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###8","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###8","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
@@ -1289,7 +1289,7 @@ class Uppy {
 
     });
     this.on('postprocess-complete', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###9","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###9","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       if (!this.getFile(file.id)) {
         this.log(`Not setting progress for a file that has been removed: ${file.id}`);
@@ -1309,7 +1309,7 @@ class Uppy {
 
     });
     this.on('restored', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###10","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"on###10","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
       this._calculateTotalProgress();
             SRTlib.send('{"type":"FUNCTIONEND","function":"on###10"},');
@@ -1317,7 +1317,7 @@ class Uppy {
     });
     if (typeof window !== 'undefined' && window.addEventListener) {
       window.addEventListener('online', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener"},');
 
@@ -1326,7 +1326,7 @@ class Uppy {
 
       });
       window.addEventListener('offline', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener###2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener###2","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener###2"},');
 
@@ -1335,7 +1335,7 @@ class Uppy {
 
       });
       setTimeout(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
 
@@ -1348,7 +1348,7 @@ class Uppy {
 
   }
   updateOnlineStatus() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateOnlineStatus","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateOnlineStatus","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     const online = typeof window.navigator.onLine !== 'undefined' ? window.navigator.onLine : true;
     if (!online) {
@@ -1367,7 +1367,7 @@ class Uppy {
 
   }
   getID() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getID","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getID","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getID"},');
 
@@ -1376,7 +1376,7 @@ class Uppy {
 
   }
   use(Plugin, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"use","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"use","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     if (typeof Plugin !== 'function') {
       const msg = `Expected a plugin class, but got ${Plugin === null ? 'null' : typeof Plugin}.` + ' Please verify that the plugin was imported and spelled correctly.';
@@ -1416,11 +1416,11 @@ class Uppy {
 
   }
   getPlugin(id) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getPlugin","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getPlugin","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     let foundPlugin = null;
     this.iteratePlugins(plugin => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins###3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins###3","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       if (plugin.id === id) {
         foundPlugin = plugin;
@@ -1438,10 +1438,10 @@ class Uppy {
 
   }
   iteratePlugins(method) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"iteratePlugins","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"iteratePlugins","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     Object.keys(this.plugins).forEach(pluginType => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###5","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###5","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       this.plugins[pluginType].forEach(method);
             SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###5"},');
@@ -1451,7 +1451,7 @@ class Uppy {
 
   }
   removePlugin(instance) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removePlugin","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removePlugin","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.log(`Removing plugin ${instance.id}`);
     this.emit('plugin-remove', instance);
@@ -1471,13 +1471,13 @@ class Uppy {
 
   }
   close() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"close","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"close","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     this.log(`Closing Uppy instance ${this.opts.id}: removing all files and uninstalling plugins`);
     this.reset();
     this._storeUnsubscribe();
     this.iteratePlugins(plugin => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins###4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"iteratePlugins###4","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       this.removePlugin(plugin);
             SRTlib.send('{"type":"FUNCTIONEND","function":"iteratePlugins###4"},');
@@ -1487,7 +1487,7 @@ class Uppy {
 
   }
   info(message, type = 'info', duration = 3000) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"info","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"info","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":3,"classInfo":{"className":"Uppy"}},`);
 
     const isComplexMessage = typeof message === 'object';
     this.setState({
@@ -1511,7 +1511,7 @@ class Uppy {
 
   }
   hideInfo() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"hideInfo","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"hideInfo","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     const newInfo = Object.assign({}, this.getState().info, {
       isHidden: true
@@ -1524,7 +1524,7 @@ class Uppy {
 
   }
   log(message, type) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"log","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"log","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     const {logger} = this.opts;
     switch (type) {
@@ -1542,7 +1542,7 @@ class Uppy {
 
   }
   run() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"run","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"run","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     this.log('Calling run() is no longer necessary.', 'warning');
         SRTlib.send('{"type":"FUNCTIONEND","function":"run"},');
@@ -1552,7 +1552,7 @@ class Uppy {
 
   }
   restore(uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"restore","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"restore","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     this.log(`Core: attempting to restore upload "${uploadID}"`);
     if (!this.getState().currentUploads[uploadID]) {
@@ -1568,7 +1568,7 @@ class Uppy {
 
   }
   _createUpload(fileIDs, opts = {}) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_createUpload","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_createUpload","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     const {forceAllowNewUpload = false} = opts;
     const {allowNewUpload, currentUploads} = this.getState();
@@ -1600,7 +1600,7 @@ class Uppy {
 
   }
   _getUpload(uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getUpload","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getUpload","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const {currentUploads} = this.getState();
         SRTlib.send('{"type":"FUNCTIONEND","function":"_getUpload"},');
@@ -1610,7 +1610,7 @@ class Uppy {
 
   }
   addResultData(uploadID, data) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addResultData","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addResultData","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     if (!this._getUpload(uploadID)) {
       this.log(`Not setting result for an upload that has been removed: ${uploadID}`);
@@ -1631,7 +1631,7 @@ class Uppy {
 
   }
   _removeUpload(uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_removeUpload","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_removeUpload","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const currentUploads = {
       ...this.getState().currentUploads
@@ -1644,14 +1644,14 @@ class Uppy {
 
   }
   _runUpload(uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_runUpload","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_runUpload","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
 
     const uploadData = this.getState().currentUploads[uploadID];
     const restoreStep = uploadData.step;
     const steps = [...this.preProcessors, ...this.uploaders, ...this.postProcessors];
     let lastStep = Promise.resolve();
     steps.forEach((fn, step) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"steps.forEach","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"steps.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2},`);
 
       if (step < restoreStep) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"steps.forEach"},');
@@ -1659,7 +1659,7 @@ class Uppy {
         return;
       }
       lastStep = lastStep.then(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"lastStep.lastStep.then.then.lastStep.then","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"lastStep.lastStep.then.then.lastStep.then","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
         const {currentUploads} = this.getState();
         const currentUpload = currentUploads[uploadID];
@@ -1682,7 +1682,7 @@ class Uppy {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"lastStep.lastStep.then.then.lastStep.then"},');
 
       }).then(result => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"lastStep.lastStep.then.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"lastStep.lastStep.then.then","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"lastStep.lastStep.then.then"},');
 
@@ -1694,7 +1694,7 @@ class Uppy {
 
     });
     lastStep.catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"lastStep.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"lastStep.catch","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       this.emit('error', err, uploadID);
       this._removeUpload(uploadID);
@@ -1704,7 +1704,7 @@ class Uppy {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_runUpload"},');
 
     return lastStep.then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.lastStep.then.then.then.lastStep.then.then.lastStep.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.lastStep.then.then.then.lastStep.then.then.lastStep.then","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
       const {currentUploads} = this.getState();
       const currentUpload = currentUploads[uploadID];
@@ -1714,7 +1714,7 @@ class Uppy {
         return;
       }
       const files = currentUpload.fileIDs.map(fileID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.currentUpload.fileIDs.map","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.currentUpload.fileIDs.map","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"files.currentUpload.fileIDs.map"},');
 
@@ -1723,7 +1723,7 @@ class Uppy {
 
       });
       const successful = files.filter(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"successful.files.filter","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"successful.files.filter","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"successful.files.filter"},');
 
@@ -1732,7 +1732,7 @@ class Uppy {
 
       });
       const failed = files.filter(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"failed.files.filter","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"failed.files.filter","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"failed.files.filter"},');
 
@@ -1748,7 +1748,7 @@ class Uppy {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.lastStep.then.then.then.lastStep.then.then.lastStep.then"},');
 
     }).then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.lastStep.then.then.then.lastStep.then.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.lastStep.then.then.then.lastStep.then.then","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
       const {currentUploads} = this.getState();
       if (!currentUploads[uploadID]) {
@@ -1766,7 +1766,7 @@ class Uppy {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.lastStep.then.then.then.lastStep.then.then"},');
 
     }).then(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.lastStep.then.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.lastStep.then.then.then","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       if (result == null) {
         this.log(`Not setting result for an upload that has been removed: ${uploadID}`);
@@ -1781,7 +1781,7 @@ class Uppy {
 
   }
   upload() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"upload","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"upload","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0,"classInfo":{"className":"Uppy"}},`);
 
     if (!this.plugins.uploader) {
       this.log('No uploader type plugins are used', 'warning');
@@ -1802,7 +1802,7 @@ class Uppy {
         SRTlib.send('{"type":"FUNCTIONEND","function":"upload"},');
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then.Promise.resolve.then.catch.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then.Promise.resolve.then.catch.Promise.resolve.then","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then.Promise.resolve.then.catch.Promise.resolve.then"},');
 
@@ -1810,17 +1810,17 @@ class Uppy {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then.Promise.resolve.then.catch.Promise.resolve.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then.Promise.resolve.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then.Promise.resolve.then.catch","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       this._showOrLogErrorAndThrow(err);
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then.Promise.resolve.then.catch"},');
 
     }).then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":0},`);
 
       const {currentUploads} = this.getState();
       const currentlyUploadingFiles = Object.keys(currentUploads).reduce((prev, curr) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"currentlyUploadingFiles.Object.keys.reduce","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"currentlyUploadingFiles.Object.keys.reduce","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"currentlyUploadingFiles.Object.keys.reduce"},');
 
@@ -1830,7 +1830,7 @@ class Uppy {
       }, []);
       const waitingFileIDs = [];
       Object.keys(files).forEach(fileID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###6","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###6","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
         const file = this.getFile(fileID);
         if (!file.progress.uploadStarted && currentlyUploadingFiles.indexOf(fileID) === -1) {
@@ -1846,7 +1846,7 @@ class Uppy {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.resolve.then.catch.then.catch.Promise.resolve.then.catch.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.catch.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.resolve.then.catch.then.catch","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
       this._showOrLogErrorAndThrow(err, {
         showInformer: false
@@ -1859,7 +1859,7 @@ class Uppy {
   }
 }
 module.exports = function (opts) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 

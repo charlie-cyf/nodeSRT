@@ -7,7 +7,7 @@ const getFormData = require('get-form-data').default || require('get-form-data')
 module.exports = class Form extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":2,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'acquirer';
@@ -35,7 +35,7 @@ module.exports = class Form extends Plugin {
 
   }
   handleUploadStart() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleUploadStart","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleUploadStart","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
     if (this.opts.getMetaFromForm) {
       this.getMetaFromForm();
@@ -44,7 +44,7 @@ module.exports = class Form extends Plugin {
 
   }
   handleSuccess(result) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleSuccess","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleSuccess","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":1,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
     if (this.opts.addResultToForm) {
       this.addResultToForm(result);
@@ -56,14 +56,14 @@ module.exports = class Form extends Plugin {
 
   }
   handleFormSubmit(ev) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleFormSubmit","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleFormSubmit","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":1,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
     if (this.opts.triggerUploadOnSubmit) {
       ev.preventDefault();
       const elements = toArray(ev.target.elements);
       const disabledByUppy = [];
       elements.forEach(el => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.elements.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.elements.forEach","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":1},`);
 
         const isButton = el.tagName === 'BUTTON' || el.tagName === 'INPUT' && el.type === 'submit';
         if (isButton && !el.disabled) {
@@ -74,10 +74,10 @@ module.exports = class Form extends Plugin {
 
       });
       this.uppy.upload().then(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.upload.then.catch.uppy.upload.then","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.upload.then.catch.uppy.upload.then","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":0},`);
 
         disabledByUppy.forEach(button => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"disabledByUppy.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"disabledByUppy.forEach","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":1},`);
 
           button.disabled = false;
                     SRTlib.send('{"type":"FUNCTIONEND","function":"disabledByUppy.forEach"},');
@@ -86,10 +86,10 @@ module.exports = class Form extends Plugin {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then"},');
 
       }, err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.upload.then.catch.uppy.upload.then###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.upload.then.catch.uppy.upload.then###2","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":1},`);
 
         disabledByUppy.forEach(button => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"disabledByUppy.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"disabledByUppy.forEach###2","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":1},`);
 
           button.disabled = false;
                     SRTlib.send('{"type":"FUNCTIONEND","function":"disabledByUppy.forEach###2"},');
@@ -101,7 +101,7 @@ module.exports = class Form extends Plugin {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch.uppy.upload.then###2"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.upload.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.upload.then.catch","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":1},`);
 
         this.uppy.log(err.stack || err.message || err);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.upload.then.catch"},');
@@ -112,7 +112,7 @@ module.exports = class Form extends Plugin {
 
   }
   addResultToForm(result) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addResultToForm","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addResultToForm","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":1,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
     this.uppy.log('[Form] Adding result to the original form:');
     this.uppy.log(result);
@@ -148,7 +148,7 @@ module.exports = class Form extends Plugin {
 
   }
   getMetaFromForm() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMetaFromForm","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getMetaFromForm","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
     const formMeta = getFormData(this.form);
     delete formMeta[this.opts.resultName];
@@ -157,7 +157,7 @@ module.exports = class Form extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
     this.form = findDOMElement(this.opts.target);
     if (!this.form || this.form.nodeName !== 'FORM') {
@@ -173,7 +173,7 @@ module.exports = class Form extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/form/src/index.js","paramsNumber":0,"classInfo":{"className":"Form","superClass":"Plugin"}},`);
 
     this.form.removeEventListener('submit', this.handleFormSubmit);
     this.uppy.off('upload', this.handleUploadStart);

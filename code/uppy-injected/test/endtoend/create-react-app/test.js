@@ -4,11 +4,11 @@ const testURL = 'http://localhost:4567/create-react-app';
 describe('webpack build', () => {
     before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "webpack%20build", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "webpack%20build", "fileName": "/test/endtoend/create-react-app/test.js", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "/test/endtoend/create-react-app/test.js", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -31,11 +31,11 @@ describe('webpack build', () => {
 describe('React: Dashboard', () => {
     before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "React%3A%20Dashboard", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "React%3A%20Dashboard", "fileName": "/test/endtoend/create-react-app/test.js", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "/test/endtoend/create-react-app/test.js", "calls" : [`);
 
     await browser.url(testURL);
   });
@@ -80,11 +80,11 @@ describe('React: Dashboard', () => {
 describe('React: DashboardModal', () => {
     before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "React%3A%20DashboardModal", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "React%3A%20DashboardModal", "fileName": "/test/endtoend/create-react-app/test.js", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "/test/endtoend/create-react-app/test.js", "calls" : [`);
 
     await browser.url(testURL);
   });

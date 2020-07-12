@@ -16,10 +16,10 @@ var _require = require('preact'),
     h = _require.h;
 
 function calculateProcessingProgress(files) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"calculateProcessingProgress\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"calculateProcessingProgress\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   var progresses = [];
   Object.keys(files).forEach(function (fileID) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
     var progress = files[fileID].progress;
 
     if (progress.preprocess) {
@@ -36,14 +36,14 @@ function calculateProcessingProgress(files) {
       mode = _progresses$.mode,
       message = _progresses$.message;
   var value = progresses.filter(isDeterminate).reduce(function (total, progress, index, all) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"value.progresses.filter.reduce\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":4},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"value.progresses.filter.reduce\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":4},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"value.progresses.filter.reduce"},');
     return total + progress.value / all.length;
     SRTlib.send('{"type":"FUNCTIONEND","function":"value.progresses.filter.reduce"},');
   }, 0);
 
   function isDeterminate(progress) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isDeterminate\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isDeterminate\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"isDeterminate"},');
     return progress.mode === 'determinate';
     SRTlib.send('{"type":"FUNCTIONEND","function":"isDeterminate","paramsNumber":1},');
@@ -59,7 +59,7 @@ function calculateProcessingProgress(files) {
 }
 
 function togglePauseResume(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"togglePauseResume\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"togglePauseResume\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
 
   if (props.isAllComplete) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"togglePauseResume"},');
@@ -82,7 +82,7 @@ function togglePauseResume(props) {
 }
 
 module.exports = function (props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   props = props || {};
   var _props = props,
       newFiles = _props.newFiles,
@@ -155,7 +155,7 @@ module.exports = function (props) {
 };
 
 var UploadBtn = function UploadBtn(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UploadBtn\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UploadBtn\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   var uploadBtnClassNames = classNames('uppy-u-reset', 'uppy-c-btn', 'uppy-StatusBar-actionBtn', 'uppy-StatusBar-actionBtn--upload', {
     'uppy-c-btn-primary': props.uploadState === statusBarStates.STATE_WAITING
   });
@@ -177,7 +177,7 @@ var UploadBtn = function UploadBtn(props) {
 };
 
 var RetryBtn = function RetryBtn(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"RetryBtn\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"RetryBtn\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"RetryBtn"},');
   return h("button", {
     type: "button",
@@ -199,7 +199,7 @@ var RetryBtn = function RetryBtn(props) {
 };
 
 var CancelBtn = function CancelBtn(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"CancelBtn\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"CancelBtn\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"CancelBtn"},');
   return h("button", {
     type: "button",
@@ -231,7 +231,7 @@ var CancelBtn = function CancelBtn(props) {
 };
 
 var PauseResumeButton = function PauseResumeButton(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"PauseResumeButton\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"PauseResumeButton\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   var isAllPaused = props.isAllPaused,
       i18n = props.i18n;
   var title = isAllPaused ? i18n('resume') : i18n('pause');
@@ -242,7 +242,7 @@ var PauseResumeButton = function PauseResumeButton(props) {
     class: "uppy-u-reset uppy-StatusBar-actionCircleBtn",
     type: "button",
     onclick: function onclick() {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
       return togglePauseResume(props);
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
@@ -289,7 +289,7 @@ var PauseResumeButton = function PauseResumeButton(props) {
 };
 
 var LoadingSpinner = function LoadingSpinner() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"LoadingSpinner\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"LoadingSpinner\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"LoadingSpinner"},');
   return h("svg", {
     class: "uppy-StatusBar-spinner",
@@ -305,7 +305,7 @@ var LoadingSpinner = function LoadingSpinner() {
 };
 
 var ProgressBarProcessing = function ProgressBarProcessing(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressBarProcessing\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressBarProcessing\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   var value = Math.round(props.value * 100);
   SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarProcessing"},');
   return h("div", {
@@ -315,14 +315,14 @@ var ProgressBarProcessing = function ProgressBarProcessing(props) {
 };
 
 var renderDot = function renderDot() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderDot\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderDot\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"renderDot"},');
   return " \xB7 ";
   SRTlib.send('{"type":"FUNCTIONEND","function":"renderDot"},');
 };
 
 var ProgressDetails = function ProgressDetails(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressDetails\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressDetails\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   var ifShowFilesUploadedOfTotal = props.numUploads > 1;
   SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressDetails"},');
   return h("div", {
@@ -342,7 +342,7 @@ var ProgressDetails = function ProgressDetails(props) {
 };
 
 var UnknownProgressDetails = function UnknownProgressDetails(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UnknownProgressDetails\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UnknownProgressDetails\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"UnknownProgressDetails"},');
   return h("div", {
     class: "uppy-StatusBar-statusSecondary"
@@ -354,7 +354,7 @@ var UnknownProgressDetails = function UnknownProgressDetails(props) {
 };
 
 var UploadNewlyAddedFiles = function UploadNewlyAddedFiles(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UploadNewlyAddedFiles\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UploadNewlyAddedFiles\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   var uploadBtnClassNames = classNames('uppy-u-reset', 'uppy-c-btn', 'uppy-StatusBar-actionBtn', 'uppy-StatusBar-actionBtn--uploadNewlyAdded');
   SRTlib.send('{"type":"FUNCTIONEND","function":"UploadNewlyAddedFiles"},');
   return h("div", {
@@ -380,7 +380,7 @@ var ThrottledProgressDetails = throttle(ProgressDetails, 500, {
 });
 
 var ProgressBarUploading = function ProgressBarUploading(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressBarUploading\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressBarUploading\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
 
   if (!props.isUploadStarted || props.isAllComplete) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarUploading"},');
@@ -405,7 +405,7 @@ var ProgressBarUploading = function ProgressBarUploading(props) {
 var ProgressBarComplete = function ProgressBarComplete(_ref) {
   var totalProgress = _ref.totalProgress,
       i18n = _ref.i18n;
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressBarComplete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressBarComplete\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"ProgressBarComplete"},');
   return h("div", {
     class: "uppy-StatusBar-content",
@@ -433,10 +433,10 @@ var ProgressBarError = function ProgressBarError(_ref2) {
       retryAll = _ref2.retryAll,
       hideRetryButton = _ref2.hideRetryButton,
       i18n = _ref2.i18n;
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressBarError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ProgressBarError\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":1},");
 
   function displayErrorAlert() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"displayErrorAlert\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"displayErrorAlert\",\"fileName\":\"/packages/@uppy/status-bar/src/StatusBar.js\",\"paramsNumber\":0},");
     var errorMessage = i18n('uploadFailed') + " \n\n " + error;
     alert(errorMessage);
     SRTlib.send('{"type":"FUNCTIONEND","function":"displayErrorAlert","paramsNumber":0},');

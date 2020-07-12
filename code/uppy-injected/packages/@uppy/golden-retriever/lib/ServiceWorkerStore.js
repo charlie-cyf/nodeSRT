@@ -3,10 +3,10 @@ var SRTlib = require('SRT-util');
 var isSupported = typeof navigator !== 'undefined' && 'serviceWorker' in navigator;
 
 function waitForServiceWorker() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"waitForServiceWorker\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"waitForServiceWorker\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":0},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"waitForServiceWorker"},');
   return new Promise(function (resolve, reject) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":2},");
 
     if (!isSupported) {
       reject(new Error('Unsupported'));
@@ -14,7 +14,7 @@ function waitForServiceWorker() {
       resolve();
     } else {
       navigator.serviceWorker.addEventListener('controllerchange', function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"navigator.serviceWorker.addEventListener\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"navigator.serviceWorker.addEventListener\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":0},");
         resolve();
         SRTlib.send('{"type":"FUNCTIONEND","function":"navigator.serviceWorker.addEventListener"},');
       });
@@ -27,7 +27,7 @@ function waitForServiceWorker() {
 
 var ServiceWorkerStore = /*#__PURE__*/function () {
   function ServiceWorkerStore(opts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
     this.ready = waitForServiceWorker();
     this.name = opts.storeName;
     SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
@@ -38,10 +38,10 @@ var ServiceWorkerStore = /*#__PURE__*/function () {
   _proto.list = function list() {
     var _this = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"list\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"list\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
     var defer = {};
     var promise = new Promise(function (resolve, reject) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"promise.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"promise.NewExpression\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":2},");
       defer.resolve = resolve;
       defer.reject = reject;
       SRTlib.send('{"type":"FUNCTIONEND","function":"promise.NewExpression"},');
@@ -49,7 +49,7 @@ var ServiceWorkerStore = /*#__PURE__*/function () {
     console.log('Loading stored blobs from Service Worker');
 
     var onMessage = function onMessage(event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onMessage\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onMessage\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":1},");
 
       if (event.data.store !== _this.name) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"onMessage"},');
@@ -67,7 +67,7 @@ var ServiceWorkerStore = /*#__PURE__*/function () {
     };
 
     this.ready.then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ready.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ready.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":0},");
       navigator.serviceWorker.addEventListener('message', onMessage);
       navigator.serviceWorker.controller.postMessage({
         type: 'uppy/GET_FILES',
@@ -83,10 +83,10 @@ var ServiceWorkerStore = /*#__PURE__*/function () {
   _proto.put = function put(file) {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"put\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"put\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"put"},');
     return this.ready.then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":0},");
       navigator.serviceWorker.controller.postMessage({
         type: 'uppy/ADD_FILE',
         store: _this2.name,
@@ -100,10 +100,10 @@ var ServiceWorkerStore = /*#__PURE__*/function () {
   _proto.delete = function _delete(fileID) {
     var _this3 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"delete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"delete\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ServiceWorkerStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
     return this.ready.then(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then###2\",\"fileName\":\"/packages/@uppy/golden-retriever/src/ServiceWorkerStore.js\",\"paramsNumber\":0},");
       navigator.serviceWorker.controller.postMessage({
         type: 'uppy/REMOVE_FILE',
         store: _this3.name,

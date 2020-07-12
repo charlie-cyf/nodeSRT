@@ -27,11 +27,11 @@ function MockCore() {
 describe('uploader/ThumbnailGeneratorPlugin', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "uploader/ThumbnailGeneratorPlugin", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
   });
 
   it('should initialise successfully', () => {
@@ -54,11 +54,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('install', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "install", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "install", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     it('should subscribe to uppy file-added event', () => {
@@ -84,11 +84,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('uninstall', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "uninstall", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "uninstall", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     it('should unsubscribe from uppy file-added event', () => {
@@ -117,11 +117,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('queue', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "queue", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "queue", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     it('should add a new file to the queue and start processing the queue when queueProcessing is false', () => {
@@ -236,11 +236,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('events', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "events", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "events", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     const core = new MockCore();
@@ -304,11 +304,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('requestThumbnail', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "requestThumbnail", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "requestThumbnail", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     it('should call createThumbnail if it is a supported filetype', () => {
@@ -382,11 +382,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('setPreviewURL', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "setPreviewURL", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "setPreviewURL", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     it('should update the preview url for the specified image', () => {
@@ -429,11 +429,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('getProportionalDimensions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "getProportionalDimensions", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "getProportionalDimensions", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     function resize(thumbnailPlugin, image, width, height) {
@@ -525,11 +525,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('canvasToBlob', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "canvasToBlob", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "canvasToBlob", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     it('should use canvas.toBlob if available', () => {
@@ -556,13 +556,13 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('downScaleInSteps', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "downScaleInSteps", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "downScaleInSteps", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     let originalDocumentCreateElement;
     let originalURLCreateObjectURL;
     beforeEach(() => {
-            SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+            SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
 
       originalDocumentCreateElement = document.createElement;
       originalURLCreateObjectURL = URL.createObjectURL;
@@ -623,11 +623,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('resizeImage', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "resizeImage", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "resizeImage", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     it('should return a canvas with the resized image on it', () => {
@@ -689,11 +689,11 @@ describe('uploader/ThumbnailGeneratorPlugin', () => {
   describe('onRestored', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "onRestored", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "onRestored", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/thumbnail-generator/src/index.test.js", "calls" : [`);
     });
 
     it('should enqueue restored files', () => {

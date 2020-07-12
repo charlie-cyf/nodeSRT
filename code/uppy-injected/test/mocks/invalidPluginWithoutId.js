@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const {Plugin} = require('../../packages/@uppy/core');
 module.exports = class InvalidPluginWithoutName extends Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"InvalidPluginWithoutName","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/test/mocks/invalidPluginWithoutId.js","paramsNumber":2,"classInfo":{"className":"InvalidPluginWithoutName","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'acquirer';
@@ -12,7 +12,7 @@ module.exports = class InvalidPluginWithoutName extends Plugin {
 
   }
   run(results) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"run","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"InvalidPluginWithoutName","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"run","fileName":"/test/mocks/invalidPluginWithoutId.js","paramsNumber":1,"classInfo":{"className":"InvalidPluginWithoutName","superClass":"Plugin"}},`);
 
     this.uppy.log({
       class: this.constructor.name,

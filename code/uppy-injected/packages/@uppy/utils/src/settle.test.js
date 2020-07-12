@@ -4,11 +4,11 @@ const settle = require('./settle');
 describe('settle', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "settle", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "settle", "fileName": "/packages/@uppy/utils/src/settle.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/settle.test.js", "calls" : [`);
   });
 
   it('should resolve even if all input promises reject', async () => {

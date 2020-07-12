@@ -39,7 +39,7 @@ nb_NO.strings = {
   uploadAllNewFiles: 'Last opp alle nye filer'
 };
 nb_NO.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"nb_NO.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"nb_NO.pluralize","fileName":"/packages/@uppy/locales/legacy/nb_NO.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"nb_NO.pluralize"},');

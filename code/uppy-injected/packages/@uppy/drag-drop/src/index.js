@@ -9,7 +9,7 @@ const {h} = require('preact');
 module.exports = class DragDrop extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":2,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'acquirer';
@@ -45,7 +45,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     super.setOptions(newOpts);
     this.i18nInit();
@@ -53,7 +53,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   i18nInit() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
@@ -63,10 +63,10 @@ module.exports = class DragDrop extends Plugin {
 
   }
   addFiles(files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addFiles","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     const descriptors = files.map(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.descriptors.files.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.descriptors.files.map","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.descriptors.files.map"},');
 
@@ -91,7 +91,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   onInputChange(event) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onInputChange","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onInputChange","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     this.uppy.log('[DragDrop] Files selected through input');
     const files = toArray(event.target.files);
@@ -101,7 +101,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   handleDrop(event, dropCategory) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleDrop","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleDrop","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":2,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     event.preventDefault();
     event.stopPropagation();
@@ -111,7 +111,7 @@ module.exports = class DragDrop extends Plugin {
     });
     this.uppy.log('[DragDrop] Files were dropped');
     const logDropError = error => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logDropError","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logDropError","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1},`);
 
       this.uppy.log(error, 'error');
             SRTlib.send('{"type":"FUNCTIONEND","function":"logDropError"},');
@@ -120,7 +120,7 @@ module.exports = class DragDrop extends Plugin {
     getDroppedFiles(event.dataTransfer, {
       logDropError
     }).then(files => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getDroppedFiles.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getDroppedFiles.then","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDroppedFiles.then"},');
 
@@ -132,7 +132,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   handleDragOver(event) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleDragOver","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleDragOver","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     event.preventDefault();
     event.stopPropagation();
@@ -145,13 +145,13 @@ module.exports = class DragDrop extends Plugin {
 
   }
   handleDragLeave(event) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleDragLeave","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleDragLeave","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     event.preventDefault();
     event.stopPropagation();
     clearTimeout(this.removeDragOverClassTimeout);
     this.removeDragOverClassTimeout = setTimeout(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.removeDragOverClassTimeout.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.removeDragOverClassTimeout.setTimeout","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":0},`);
 
       this.setPluginState({
         isDraggingOver: false
@@ -163,13 +163,13 @@ module.exports = class DragDrop extends Plugin {
 
   }
   renderHiddenFileInput() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderHiddenFileInput","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderHiddenFileInput","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     const restrictions = this.uppy.opts.restrictions;
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderHiddenFileInput"},');
 
     return <input class="uppy-DragDrop-input" type="file" tabindex={-1} focusable="false" ref={ref => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1},`);
 
       this.fileInputRef = ref;
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
@@ -179,7 +179,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   renderArrowSvg() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderArrowSvg","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderArrowSvg","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderArrowSvg"},');
 
@@ -190,7 +190,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   renderLabel() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderLabel","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderLabel","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderLabel"},');
 
@@ -203,7 +203,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   renderNote() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderNote","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderNote","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderNote"},');
 
@@ -212,7 +212,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   render(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":1,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     const dragDropClass = `
       uppy-Root
@@ -228,7 +228,7 @@ module.exports = class DragDrop extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
     return <button type="button" class={dragDropClass} style={dragDropStyle} onClick={() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement###2","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
 
@@ -247,7 +247,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     this.setPluginState({
       isDraggingOver: false
@@ -260,7 +260,7 @@ module.exports = class DragDrop extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/drag-drop/src/index.js","paramsNumber":0,"classInfo":{"className":"DragDrop","superClass":"Plugin"}},`);
 
     this.unmount();
         SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');

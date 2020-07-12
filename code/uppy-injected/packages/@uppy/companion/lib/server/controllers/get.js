@@ -4,7 +4,7 @@ const Uploader = require('../Uploader');
 const logger = require('../logger');
 const {errorToResponse} = require('../provider/error');
 function get(req, res, next) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"get","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"get","fileName":"/packages/@uppy/companion/lib/server/controllers/get.js","paramsNumber":3},`);
 
   const providerName = req.params.providerName;
   const id = req.params.id;
@@ -15,7 +15,7 @@ function get(req, res, next) {
     token,
     query: req.query
   }, (err, size) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.size","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.size","fileName":"/packages/@uppy/companion/lib/server/controllers/get.js","paramsNumber":2},`);
 
     if (err) {
       const errResp = errorToResponse(err);
@@ -49,7 +49,7 @@ function get(req, res, next) {
     }
     logger.debug('Waiting for socket connection before beginning remote download.', null, req.id);
     uploader.onSocketReady(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploader.onSocketReady","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploader.onSocketReady","fileName":"/packages/@uppy/companion/lib/server/controllers/get.js","paramsNumber":0},`);
 
       logger.debug('Socket connection received. Starting remote download.', null, req.id);
       provider.download({

@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 (function () {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
   var each = [].forEach;
   var doc = document.documentElement;
@@ -13,7 +13,7 @@ const SRTlib = require('SRT-util');
     InnerPage();
   }
   function InnerPage() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"InnerPage","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"InnerPage","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
     var menuButton = document.querySelector('.js-MenuBtn');
     var header = document.querySelector('.js-MainHeader');
@@ -22,7 +22,7 @@ const SRTlib = require('SRT-util');
     var animating = false;
     var allLinks = [];
     function updateSidebar() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateSidebar","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateSidebar","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
       var top = doc && doc.scrollTop || body.scrollTop;
       var headerHeight = header.offsetHeight;
@@ -53,7 +53,7 @@ const SRTlib = require('SRT-util');
 
     }
     function makeLink(h) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeLink","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeLink","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
       var link = document.createElement('li');
       var text = h.textContent.replace(/\(.*\)$/, '');
@@ -66,7 +66,7 @@ const SRTlib = require('SRT-util');
 
     }
     function collectH3s(h) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"collectH3s","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"collectH3s","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
       var h3s = [];
       var next = h.nextSibling;
@@ -83,14 +83,14 @@ const SRTlib = require('SRT-util');
 
     }
     function makeSubLinks(h3s, small) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeSubLinks","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeSubLinks","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":2},`);
 
       var container = document.createElement('ul');
       if (small) {
         container.className = 'menu-sub';
       }
       h3s.forEach(function (h) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"h3s.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"h3s.forEach","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
         container.appendChild(makeLink(h));
                 SRTlib.send('{"type":"FUNCTIONEND","function":"h3s.forEach"},');
@@ -103,7 +103,7 @@ const SRTlib = require('SRT-util');
 
     }
     function setActive(id) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setActive","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setActive","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
       var previousActive = menu.querySelector('.section-link.active');
       var currentActive = typeof id === 'string' ? menu.querySelector('.section-link[href="#' + id + '"]') : id;
@@ -115,7 +115,7 @@ const SRTlib = require('SRT-util');
 
     }
     function makeLinkClickable(link) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeLinkClickable","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"makeLinkClickable","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
       if (link.getAttribute('data-scroll') === 'no') {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"makeLinkClickable"},');
@@ -131,14 +131,14 @@ const SRTlib = require('SRT-util');
 
     }
     menuButton.addEventListener('click', function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"menuButton.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"menuButton.addEventListener","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
       menu.classList.toggle('is-open');
             SRTlib.send('{"type":"FUNCTIONEND","function":"menuButton.addEventListener"},');
 
     });
     body.addEventListener('click', function (e) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"body.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"body.addEventListener","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
       if (e.target !== menuButton && !menu.contains(e.target)) {
         menu.classList.remove('is-open');
@@ -147,7 +147,7 @@ const SRTlib = require('SRT-util');
 
     });
     function initSubHeaders() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initSubHeaders","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initSubHeaders","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
       var currentPageAnchor = menu.querySelector('.sidebar-link.current');
       var isDocs = content.classList.contains('docs');
@@ -164,7 +164,7 @@ const SRTlib = require('SRT-util');
         var h2s = content.querySelectorAll('h2');
         if (h2s.length) {
           each.call(h2s, function (h) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"each.call","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"each.call","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
             sectionContainer.appendChild(makeLink(h));
             var h3s = collectH3s(h);
@@ -179,7 +179,7 @@ const SRTlib = require('SRT-util');
         } else {
           var h3s = content.querySelectorAll('h3');
           each.call(h3s, function (h) {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"each.call###2","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"each.call###2","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
             sectionContainer.appendChild(makeLink(h));
             allLinks.push(h);
@@ -188,7 +188,7 @@ const SRTlib = require('SRT-util');
           });
         }
         sectionContainer.addEventListener('click', function (e) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sectionContainer.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sectionContainer.addEventListener","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
           e.preventDefault();
           if (e.target.classList.contains('section-link')) {
@@ -196,7 +196,7 @@ const SRTlib = require('SRT-util');
             setActive(e.target);
             animating = true;
             setTimeout(function () {
-                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sectionContainer.addEventListener.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+                            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sectionContainer.addEventListener.setTimeout","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
               animating = false;
                             SRTlib.send('{"type":"FUNCTIONEND","function":"sectionContainer.addEventListener.setTimeout"},');
@@ -224,14 +224,14 @@ const SRTlib = require('SRT-util');
 
   }
   function IndexPage() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"IndexPage","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"IndexPage","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
     window.addEventListener('load', function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
       var tabs = document.querySelectorAll('.Tabs-link');
       function myTabClicks(tabClickEvent) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"myTabClicks","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"myTabClicks","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
         for (var i = 0; i < tabs.length; i++) {
           tabs[i].classList.remove('Tabs-link--active');
@@ -262,7 +262,7 @@ const SRTlib = require('SRT-util');
     var taglineList = document.querySelector('.MainHeader-taglineList');
     var taglineCounter = taglineList.children.length;
     function shuffleTaglines() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shuffleTaglines","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shuffleTaglines","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
       for (var i = taglineList.children.length; i >= 0; i--) {
         taglineList.appendChild(taglineList.children[Math.random() * i | 0]);
@@ -271,7 +271,7 @@ const SRTlib = require('SRT-util');
 
     }
     function loopTaglines() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"loopTaglines","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"loopTaglines","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
       taglineCounter--;
       if (taglineCounter >= 0) {
@@ -287,11 +287,11 @@ const SRTlib = require('SRT-util');
 
     }
     function showTagline(taglineText) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"showTagline","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"showTagline","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":1},`);
 
       tagline.classList.remove('is-visible');
       setTimeout(function () {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"/website/themes/uppy/source/js/common.js","paramsNumber":0},`);
 
         taglinePart.innerHTML = taglineText;
         tagline.classList.add('is-visible');

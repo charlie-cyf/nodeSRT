@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const {h} = require('preact');
 const AddFiles = require('./AddFiles');
 const AddFilesPanel = props => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AddFilesPanel","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AddFilesPanel","fileName":"/packages/@uppy/dashboard/src/components/AddFilesPanel.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"AddFilesPanel"},');
 
@@ -13,7 +13,7 @@ const AddFilesPanel = props => {
           {props.i18n('addingMoreFiles')}
         </div>
         <button class="uppy-DashboardContent-back" type="button" onclick={ev => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/dashboard/src/components/AddFilesPanel.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 

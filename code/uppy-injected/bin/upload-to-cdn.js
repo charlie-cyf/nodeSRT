@@ -12,12 +12,12 @@ const readFile = promisify(require('fs').readFile);
 const finished = promisify(require('stream').finished);
 const AdmZip = require('adm-zip');
 function delay(ms) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"delay","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"delay","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"delay"},');
 
   return new Promise(resolve => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.NewExpression"},');
 
@@ -32,22 +32,22 @@ const AWS_REGION = 'us-east-1';
 const AWS_BUCKET = 'crates.edgly.net';
 const AWS_DIRECTORY = '756b8efaed084669b02cb99d4540d81f/default';
 async function getRemoteDistFiles(packageName, version) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getRemoteDistFiles","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getRemoteDistFiles","fileName":"/bin/upload-to-cdn.js","paramsNumber":2},`);
 
   const files = new Map();
   const tarball = pacote.tarball.stream(`${packageName}@${version}`).pipe(new tar.Parse());
   tarball.on('entry', readEntry => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tarball.on","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tarball.on","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
     if (readEntry.path.startsWith('package/dist/')) {
       readEntry.pipe(concat(buf => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"readEntry.pipe.on.readEntry.pipe.concat","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"readEntry.pipe.on.readEntry.pipe.concat","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
         files.set(readEntry.path.replace(/^package\/dist\//, ''), buf);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"readEntry.pipe.on.readEntry.pipe.concat"},');
 
       })).on('error', err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"readEntry.pipe.on","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"readEntry.pipe.on","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
         tarball.emit('error', err);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"readEntry.pipe.on"},');
@@ -67,12 +67,12 @@ async function getRemoteDistFiles(packageName, version) {
 
 }
 async function getLocalDistFiles(packagePath) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getLocalDistFiles","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getLocalDistFiles","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
   const files = (await packlist({
     path: packagePath
   })).filter(f => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.filter.map.filter","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.filter.map.filter","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"files.filter.map.filter"},');
 
@@ -80,7 +80,7 @@ async function getLocalDistFiles(packagePath) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"files.filter.map.filter"},');
 
   }).map(f => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.filter.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.filter.map","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"files.filter.map"},');
 
@@ -89,7 +89,7 @@ async function getLocalDistFiles(packagePath) {
 
   });
   const entries = await Promise.all(files.map(async f => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"entries.Promise.all.files.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"entries.Promise.all.files.map","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"entries.Promise.all.files.map"},');
 
@@ -104,7 +104,7 @@ async function getLocalDistFiles(packagePath) {
 
 }
 async function main(packageName, version) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"main","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"main","fileName":"/bin/upload-to-cdn.js","paramsNumber":2},`);
 
   if (!packageName) {
     console.error('usage: upload-to-cdn <packagename> [version]');
@@ -168,7 +168,7 @@ async function main(packageName, version) {
 
 }
 main(...process.argv.slice(2)).catch(err => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"main.catch","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"main.catch","fileName":"/bin/upload-to-cdn.js","paramsNumber":1},`);
 
   console.error(err.stack);
   process.exit(1);

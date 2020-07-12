@@ -11,7 +11,7 @@ const isDragDropSupported = require('@uppy/utils/lib/isDragDropSupported');
 const {h} = require('preact');
 const PreactCSSTransitionGroup = require('preact-css-transition-group');
 function TransitionWrapper(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"TransitionWrapper","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"TransitionWrapper","fileName":"/packages/@uppy/dashboard/src/components/Dashboard.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"TransitionWrapper"},');
 
@@ -26,7 +26,7 @@ const WIDTH_LG = 700;
 const WIDTH_MD = 576;
 const HEIGHT_MD = 400;
 module.exports = function Dashboard(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/dashboard/src/components/Dashboard.js","paramsNumber":1},`);
 
   const noFiles = props.totalFileCount === 0;
   const isSizeMD = props.containerWidth > WIDTH_MD;
@@ -90,7 +90,7 @@ module.exports = function Dashboard(props) {
 
           <div class="uppy-Dashboard-progressindicators">
             {props.progressindicators.map(target => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Dashboard.ReturnStatement.props.progressindicators.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Dashboard.ReturnStatement.props.progressindicators.map","fileName":"/packages/@uppy/dashboard/src/components/Dashboard.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Dashboard.ReturnStatement.props.progressindicators.map"},');
 

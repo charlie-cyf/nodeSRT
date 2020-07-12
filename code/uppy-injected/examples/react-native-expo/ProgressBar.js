@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 import React from 'react';
 import {View, Text} from 'react-native';
 export default function ProgressBar(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBar","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ProgressBar","fileName":"/examples/react-native-expo/ProgressBar.js","paramsNumber":1},`);
 
   const progress = props.progress;
   const colorGreen = '#0b8600';

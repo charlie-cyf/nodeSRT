@@ -12,11 +12,11 @@ var _require = require('preact'),
     h = _require.h;
 
 function chunks(list, size) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"chunks\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"chunks\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileList.js\",\"paramsNumber\":2},");
   var chunked = [];
   var currentChunk = [];
   list.forEach(function (item, i) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"list.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"list.forEach\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileList.js\",\"paramsNumber\":2},");
 
     if (currentChunk.length < size) {
       currentChunk.push(item);
@@ -34,7 +34,7 @@ function chunks(list, size) {
 }
 
 module.exports = function (props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileList.js\",\"paramsNumber\":1},");
   var noFiles = props.totalFileCount === 0;
   var dashboardFilesClass = classNames('uppy-Dashboard-files', {
     'uppy-Dashboard-files--noFiles': noFiles
@@ -65,13 +65,13 @@ module.exports = function (props) {
   var rows = chunks(Object.keys(props.files), props.itemsPerRow);
 
   function renderRow(row) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderRow\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderRow\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileList.js\",\"paramsNumber\":1},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderRow"},');
     return h("div", {
       role: "presentation",
       key: row[0]
     }, row.map(function (fileID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.row.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.row.map\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileList.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.row.map"},');
       return h(FileItem, _extends({
         key: fileID

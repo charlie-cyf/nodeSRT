@@ -5,12 +5,12 @@ const VirtualList = require('./VirtualList');
 const classNames = require('classnames');
 const {h} = require('preact');
 function chunks(list, size) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"chunks","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"chunks","fileName":"/packages/@uppy/dashboard/src/components/FileList.js","paramsNumber":2},`);
 
   const chunked = [];
   let currentChunk = [];
   list.forEach((item, i) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"list.forEach","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"list.forEach","fileName":"/packages/@uppy/dashboard/src/components/FileList.js","paramsNumber":2},`);
 
     if (currentChunk.length < size) {
       currentChunk.push(item);
@@ -29,7 +29,7 @@ function chunks(list, size) {
 
 }
 module.exports = props => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/dashboard/src/components/FileList.js","paramsNumber":1},`);
 
   const noFiles = props.totalFileCount === 0;
   const dashboardFilesClass = classNames('uppy-Dashboard-files', {
@@ -60,13 +60,13 @@ module.exports = props => {
   };
   const rows = chunks(Object.keys(props.files), props.itemsPerRow);
   function renderRow(row) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderRow","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderRow","fileName":"/packages/@uppy/dashboard/src/components/FileList.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderRow"},');
 
     return <div role="presentation" key={row[0]}>
         {row.map(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.row.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.row.map","fileName":"/packages/@uppy/dashboard/src/components/FileList.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.row.map"},');
 

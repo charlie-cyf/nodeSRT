@@ -31,7 +31,7 @@ window.uppy = Uppy({
 });
 if (window.location.search === '?socketerr=true') {
   const emitError = (file, data) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitError","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitError","fileName":"/test/endtoend/providers/main.js","paramsNumber":2},`);
 
     data.uploader.uploaderSockets[file.id].emit('error', {
       error: {

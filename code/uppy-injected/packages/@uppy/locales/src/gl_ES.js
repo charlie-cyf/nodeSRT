@@ -135,7 +135,7 @@ gl_ES.strings = {
   openFolderNamed: 'Carpeta abierta %{name}'
 };
 gl_ES.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"gl_ES.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"gl_ES.pluralize","fileName":"/packages/@uppy/locales/src/gl_ES.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"gl_ES.pluralize"},');

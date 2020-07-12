@@ -8,20 +8,20 @@ var _require = require('preact'),
 var Item = require('./Item/index');
 
 var getSharedProps = function getSharedProps(fileOrFolder, props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getSharedProps\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getSharedProps\",\"fileName\":\"/packages/@uppy/provider-views/src/ItemList.js\",\"paramsNumber\":2},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"getSharedProps"},');
   return {
     id: fileOrFolder.id,
     title: fileOrFolder.name,
     getItemIcon: function getItemIcon() {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"getItemIcon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"getItemIcon\",\"fileName\":\"/packages/@uppy/provider-views/src/ItemList.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"getItemIcon"},');
       return fileOrFolder.icon;
       SRTlib.send('{"type":"FUNCTIONEND","function":"getItemIcon"},');
     },
     isChecked: props.isChecked(fileOrFolder),
     toggleCheckbox: function toggleCheckbox(e) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"toggleCheckbox\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"toggleCheckbox\",\"fileName\":\"/packages/@uppy/provider-views/src/ItemList.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"toggleCheckbox"},');
       return props.toggleCheckbox(e, fileOrFolder);
       SRTlib.send('{"type":"FUNCTIONEND","function":"toggleCheckbox"},');
@@ -35,7 +35,7 @@ var getSharedProps = function getSharedProps(fileOrFolder, props) {
 };
 
 module.exports = function (props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/provider-views/src/ItemList.js\",\"paramsNumber\":1},");
 
   if (!props.folders.length && !props.files.length) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
@@ -53,13 +53,13 @@ module.exports = function (props) {
     role: "listbox",
     tabindex: "-1"
   }, props.folders.map(function (folder) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.props.folders.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.props.folders.map\",\"fileName\":\"/packages/@uppy/provider-views/src/ItemList.js\",\"paramsNumber\":1},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.props.folders.map"},');
     return Item(_extends({}, getSharedProps(folder, props), {
       type: 'folder',
       isDisabled: props.isChecked(folder) ? props.isChecked(folder).loading : false,
       handleFolderClick: function handleFolderClick() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Item.handleFolderClick\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Item.handleFolderClick\",\"fileName\":\"/packages/@uppy/provider-views/src/ItemList.js\",\"paramsNumber\":0},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"Item.handleFolderClick"},');
         return props.handleFolderClick(folder);
         SRTlib.send('{"type":"FUNCTIONEND","function":"Item.handleFolderClick"},');
@@ -67,7 +67,7 @@ module.exports = function (props) {
     }));
     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.props.folders.map"},');
   }), props.files.map(function (file) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.props.files.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.props.files.map\",\"fileName\":\"/packages/@uppy/provider-views/src/ItemList.js\",\"paramsNumber\":1},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.props.files.map"},');
     return Item(_extends({}, getSharedProps(file, props), {
       type: 'file',

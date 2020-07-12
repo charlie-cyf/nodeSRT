@@ -4,11 +4,11 @@ const generateFileID = require('./generateFileID');
 describe('generateFileID', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "generateFileID", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "generateFileID", "fileName": "/packages/@uppy/utils/src/generateFileID.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/generateFileID.test.js", "calls" : [`);
   });
 
   it('should take the filename object and produce a lowercase file id made up of uppy- prefix, file name (cleaned up to be lowercase, letters and numbers only), type, relative path (folder) from file.meta.relativePath, size and lastModified date', () => {

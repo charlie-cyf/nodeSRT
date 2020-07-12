@@ -2,7 +2,7 @@ var SRTlib = require('SRT-util');
 
 var ProgressTimeout = /*#__PURE__*/function () {
   function ProgressTimeout(timeout, timeoutHandler) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ProgressTimeout\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/utils/src/ProgressTimeout.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ProgressTimeout\"}},");
     this._timeout = timeout;
     this._onTimedOut = timeoutHandler;
     this._isDone = false;
@@ -14,7 +14,7 @@ var ProgressTimeout = /*#__PURE__*/function () {
   var _proto = ProgressTimeout.prototype;
 
   _proto.progress = function progress() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"progress\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ProgressTimeout\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"progress\",\"fileName\":\"/packages/@uppy/utils/src/ProgressTimeout.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ProgressTimeout\"}},");
 
     if (this._isDone) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"progress"},');
@@ -30,7 +30,7 @@ var ProgressTimeout = /*#__PURE__*/function () {
   };
 
   _proto.done = function done() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"done\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ProgressTimeout\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"done\",\"fileName\":\"/packages/@uppy/utils/src/ProgressTimeout.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ProgressTimeout\"}},");
 
     if (this._aliveTimer) {
       clearTimeout(this._aliveTimer);

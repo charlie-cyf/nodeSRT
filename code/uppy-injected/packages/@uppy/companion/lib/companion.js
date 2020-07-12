@@ -34,7 +34,7 @@ const defaultOptions = {
       conditions: [],
       useAccelerateEndpoint: false,
       getKey: (req, filename) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.providerOptions.s3.getKey","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"defaultOptions.providerOptions.s3.getKey","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":2},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"defaultOptions.providerOptions.s3.getKey"},');
 
@@ -52,7 +52,7 @@ module.exports.errors = {
   ProviderAuthError
 };
 module.exports.app = (options = {}) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.app","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.app","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
   validateConfig(options);
   options = merge({}, defaultOptions, options);
@@ -74,7 +74,7 @@ module.exports.app = (options = {}) => {
   app.use(interceptGrantErrorResponse);
   app.use(Grant(grantConfig));
   app.use((req, res, next) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":3},`);
 
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE');
     res.header('Access-Control-Allow-Headers', ['uppy-auth-token', 'uppy-versions', res.get('Access-Control-Allow-Headers')].join(','));
@@ -114,23 +114,23 @@ module.exports.app = (options = {}) => {
 
 };
 module.exports.socket = server => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
   const wss = new SocketServer({
     server
   });
   const redisClient = redis.client();
   wss.on('connection', (ws, req) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"wss.on","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"wss.on","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":2},`);
 
     const fullPath = req.url;
     const token = fullPath.replace(/^.*\/api\//, '');
     logger.info(`connection received from ${token}`, 'socket.connect');
     function sendProgress(data) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sendProgress","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"sendProgress","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
       ws.send(jsonStringify(data), err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.send","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.send","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
         if (err) logger.error(err, 'socket.progress.error', shortenToken(token));
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ws.send"},');
@@ -141,7 +141,7 @@ module.exports.socket = server => {
     }
     if (redisClient) {
       redisClient.get(`${STORAGE_PREFIX}:${token}`, (err, data) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"redisClient.get","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"redisClient.get","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":2},`);
 
         if (err) logger.error(err, 'socket.redis.error', shortenToken(token));
         if (data) {
@@ -155,7 +155,7 @@ module.exports.socket = server => {
     emitter().emit(`connection:${token}`);
     emitter().on(token, sendProgress);
     ws.on('message', jsonData => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.on","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
       const data = JSON.parse(jsonData.toString());
       if (['pause', 'resume', 'cancel'].includes(data.action)) {
@@ -165,7 +165,7 @@ module.exports.socket = server => {
 
     });
     ws.on('close', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.on###2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ws.on###2","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":0},`);
 
       emitter().removeListener(token, sendProgress);
             SRTlib.send('{"type":"FUNCTIONEND","function":"ws.on###2"},');
@@ -178,13 +178,13 @@ module.exports.socket = server => {
 
 };
 const interceptGrantErrorResponse = interceptor((req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"interceptGrantErrorResponse.interceptor","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"interceptGrantErrorResponse.interceptor","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":2},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"interceptGrantErrorResponse.interceptor"},');
 
   return {
     isInterceptable: () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.isInterceptable","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.isInterceptable","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.isInterceptable"},');
 
@@ -193,7 +193,7 @@ const interceptGrantErrorResponse = interceptor((req, res) => {
 
     },
     intercept: (body, send) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.intercept","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.intercept","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":2},`);
 
       const unwantedBody = 'error=Grant%3A%20missing%20session%20or%20misconfigured%20provider';
       if (body === unwantedBody) {
@@ -212,7 +212,7 @@ const interceptGrantErrorResponse = interceptor((req, res) => {
 
 });
 const getOptionsMiddleware = options => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getOptionsMiddleware","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getOptionsMiddleware","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
   let s3Client = null;
   if (options.providerOptions.s3) {
@@ -242,7 +242,7 @@ const getOptionsMiddleware = options => {
     s3Client = new S3(s3ClientOptions);
   }
   const middleware = (req, res, next) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"middleware","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"middleware","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":3},`);
 
     const versionFromQuery = req.query.uppyVersions ? decodeURIComponent(req.query.uppyVersions) : null;
     req.companion = {
@@ -265,12 +265,12 @@ const getOptionsMiddleware = options => {
 
 };
 const maskLogger = companionOptions => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"maskLogger","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"maskLogger","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
   const secrets = [];
   const {providerOptions, customProviders} = companionOptions;
   Object.keys(providerOptions).forEach(provider => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
     if (providerOptions[provider].secret) {
       secrets.push(providerOptions[provider].secret);
@@ -280,7 +280,7 @@ const maskLogger = companionOptions => {
   });
   if (customProviders) {
     Object.keys(customProviders).forEach(provider => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
       if (customProviders[provider].config && customProviders[provider].config.secret) {
         secrets.push(customProviders[provider].config.secret);
@@ -294,15 +294,15 @@ const maskLogger = companionOptions => {
 
 };
 const validateConfig = companionOptions => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateConfig","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateConfig","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
   const mandatoryOptions = ['secret', 'filePath', 'server.host'];
   const unspecified = [];
   mandatoryOptions.forEach(i => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"mandatoryOptions.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"mandatoryOptions.forEach","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":1},`);
 
     const value = i.split('.').reduce((prev, curr) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"value.i.split.reduce","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"value.i.split.reduce","fileName":"/packages/@uppy/companion/lib/companion.js","paramsNumber":2},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"value.i.split.reduce"},');
 

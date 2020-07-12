@@ -14,7 +14,7 @@ var Stopwatch = /*#__PURE__*/function (_Component) {
   function Stopwatch(props) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/screen-capture/src/StopWatch.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
     _this = _Component.call(this, props) || this;
     _this.state = {
       elapsedTime: 0
@@ -60,14 +60,14 @@ var Stopwatch = /*#__PURE__*/function (_Component) {
   var _proto = Stopwatch.prototype;
 
   _proto.startTimer = function startTimer() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"startTimer\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"startTimer\",\"fileName\":\"/packages/@uppy/screen-capture/src/StopWatch.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
     this.timerTick();
     this.timerRunning = true;
     SRTlib.send('{"type":"FUNCTIONEND","function":"startTimer"},');
   };
 
   _proto.resetTimer = function resetTimer() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"resetTimer\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"resetTimer\",\"fileName\":\"/packages/@uppy/screen-capture/src/StopWatch.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
     clearTimeout(this.timer);
     this.setState({
       elapsedTime: 0
@@ -79,9 +79,9 @@ var Stopwatch = /*#__PURE__*/function (_Component) {
   _proto.timerTick = function timerTick() {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"timerTick\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"timerTick\",\"fileName\":\"/packages/@uppy/screen-capture/src/StopWatch.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
     this.timer = setTimeout(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"timer.setTimeout\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"timer.setTimeout\",\"fileName\":\"/packages/@uppy/screen-capture/src/StopWatch.js\",\"paramsNumber\":0},");
 
       _this2.setState({
         elapsedTime: _this2.state.elapsedTime + 1
@@ -95,14 +95,14 @@ var Stopwatch = /*#__PURE__*/function (_Component) {
   };
 
   _proto.fmtMSS = function fmtMSS(s) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"fmtMSS\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"fmtMSS\",\"fileName\":\"/packages/@uppy/screen-capture/src/StopWatch.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"fmtMSS"},');
     return (s - (s %= 60)) / 60 + (s > 9 ? ':' : ':0') + s;
     SRTlib.send('{"type":"FUNCTIONEND","function":"fmtMSS"},');
   };
 
   _proto.render = function render() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/screen-capture/src/StopWatch.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Stopwatch\",\"superClass\":\"Component\"}},");
 
     var _this$props = _extends({}, this.props),
         recording = _this$props.recording,

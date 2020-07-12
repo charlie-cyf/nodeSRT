@@ -24,7 +24,7 @@ var NetworkError = /*#__PURE__*/function (_Error) {
       xhr = null;
     }
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"NetworkError\",\"superClass\":\"Error\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/utils/src/NetworkError.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"NetworkError\",\"superClass\":\"Error\"}},");
     _this = _Error.call(this, "This looks like a network error, the endpoint might be blocked by an internet provider or a firewall.\n\nSource error: [" + error + "]") || this;
     _this.isNetworkError = true;
     _this.request = xhr;

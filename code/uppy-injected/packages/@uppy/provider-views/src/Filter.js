@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const {h, Component} = require('preact');
 module.exports = class Filter extends Component {
   constructor(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Filter","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/provider-views/src/Filter.js","paramsNumber":1,"classInfo":{"className":"Filter","superClass":"Component"}},`);
 
     super(props);
     this.preventEnterPress = this.preventEnterPress.bind(this);
@@ -11,7 +11,7 @@ module.exports = class Filter extends Component {
 
   }
   preventEnterPress(ev) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"preventEnterPress","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Filter","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"preventEnterPress","fileName":"/packages/@uppy/provider-views/src/Filter.js","paramsNumber":1,"classInfo":{"className":"Filter","superClass":"Component"}},`);
 
     if (ev.keyCode === 13) {
       ev.stopPropagation();
@@ -21,13 +21,13 @@ module.exports = class Filter extends Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Filter","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/provider-views/src/Filter.js","paramsNumber":0,"classInfo":{"className":"Filter","superClass":"Component"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
     return <div class="uppy-ProviderBrowser-search">
         <input class="uppy-u-reset uppy-ProviderBrowser-searchInput" type="text" placeholder={this.props.i18n('filter')} aria-label={this.props.i18n('filter')} onkeyup={this.preventEnterPress} onkeydown={this.preventEnterPress} onkeypress={this.preventEnterPress} oninput={e => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement","fileName":"/packages/@uppy/provider-views/src/Filter.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
 

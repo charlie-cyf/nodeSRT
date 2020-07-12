@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 function ignoreEvent(ev) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ignoreEvent","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ignoreEvent","fileName":"/packages/@uppy/dashboard/src/utils/ignoreEvent.js","paramsNumber":1},`);
 
   const tagName = ev.target.tagName;
   if (tagName === 'INPUT' || tagName === 'TEXTAREA') {

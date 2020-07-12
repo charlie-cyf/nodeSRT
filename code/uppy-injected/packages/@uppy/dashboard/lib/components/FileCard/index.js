@@ -20,11 +20,11 @@ var FileCard = /*#__PURE__*/function (_Component) {
   function FileCard(props) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileCard\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileCard\",\"superClass\":\"Component\"}},");
     _this = _Component.call(this, props) || this;
 
     _this.saveOnEnter = function (ev) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":1},");
 
       if (ev.keyCode === 13) {
         ev.stopPropagation();
@@ -40,7 +40,7 @@ var FileCard = /*#__PURE__*/function (_Component) {
     _this.updateMeta = function (newVal, name) {
       var _extends2;
 
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###2\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":2},");
 
       _this.setState({
         formState: _extends({}, _this.state.formState, (_extends2 = {}, _extends2[name] = newVal, _extends2))
@@ -50,7 +50,7 @@ var FileCard = /*#__PURE__*/function (_Component) {
     };
 
     _this.handleSave = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###3\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":0},");
       var fileID = _this.props.fileCardFor;
 
       _this.props.saveFileCard(_this.state.formState, fileID);
@@ -59,7 +59,7 @@ var FileCard = /*#__PURE__*/function (_Component) {
     };
 
     _this.handleCancel = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###4\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":0},");
 
       _this.props.toggleFileCard();
 
@@ -67,14 +67,14 @@ var FileCard = /*#__PURE__*/function (_Component) {
     };
 
     _this.renderMetaFields = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey###5\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":0},");
       var metaFields = _this.props.metaFields || [];
       var fieldCSSClasses = {
         text: 'uppy-u-reset uppy-c-textInput uppy-Dashboard-FileCard-input'
       };
       SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###5"},');
       return metaFields.map(function (field) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.metaFields.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.metaFields.map\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":1},");
         var id = "uppy-Dashboard-FileCard-input-" + field.id;
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.metaFields.map"},');
         return h("fieldset", {
@@ -86,7 +86,7 @@ var FileCard = /*#__PURE__*/function (_Component) {
         }, field.name), field.render !== undefined ? field.render({
           value: _this.state.formState[field.id],
           onChange: function onChange(newVal) {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.field.render.onChange\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.field.render.onChange\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":1},");
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.field.render.onChange"},');
             return _this.updateMeta(newVal, field.id);
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.field.render.onChange"},');
@@ -102,7 +102,7 @@ var FileCard = /*#__PURE__*/function (_Component) {
           onkeydown: _this.saveOnEnter,
           onkeypress: _this.saveOnEnter,
           oninput: function oninput(ev) {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":1},");
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
             return _this.updateMeta(ev.target.value, field.id);
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
@@ -121,7 +121,7 @@ var FileCard = /*#__PURE__*/function (_Component) {
     var storedMetaData = {};
 
     _metaFields.forEach(function (field) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"metaFields.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"metaFields.forEach\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":1},");
       storedMetaData[field.id] = _file.meta[field.id] || '';
       SRTlib.send('{"type":"FUNCTIONEND","function":"metaFields.forEach"},');
     });
@@ -136,7 +136,7 @@ var FileCard = /*#__PURE__*/function (_Component) {
   var _proto = FileCard.prototype;
 
   _proto.render = function render() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileCard\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileCard/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileCard\",\"superClass\":\"Component\"}},");
     var file = this.props.files[this.props.fileCardFor];
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return h("div", {

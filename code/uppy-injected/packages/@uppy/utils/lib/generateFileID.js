@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 
 module.exports = function generateFileID(file) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/utils/src/generateFileID.js\",\"paramsNumber\":1},");
   var id = 'uppy';
 
   if (typeof file.name === 'string') {
@@ -30,11 +30,11 @@ module.exports = function generateFileID(file) {
 };
 
 function encodeFilename(name) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"encodeFilename\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"encodeFilename\",\"fileName\":\"/packages/@uppy/utils/src/generateFileID.js\",\"paramsNumber\":1},");
   var suffix = '';
   SRTlib.send('{"type":"FUNCTIONEND","function":"encodeFilename"},');
   return name.replace(/[^A-Z0-9]/ig, function (character) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.name.replace\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.name.replace\",\"fileName\":\"/packages/@uppy/utils/src/generateFileID.js\",\"paramsNumber\":1},");
     suffix += '-' + encodeCharacter(character);
     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.name.replace"},');
     return '/';
@@ -44,7 +44,7 @@ function encodeFilename(name) {
 }
 
 function encodeCharacter(character) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"encodeCharacter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"encodeCharacter\",\"fileName\":\"/packages/@uppy/utils/src/generateFileID.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"encodeCharacter"},');
   return character.charCodeAt(0).toString(32);
   SRTlib.send('{"type":"FUNCTIONEND","function":"encodeCharacter","paramsNumber":1},');

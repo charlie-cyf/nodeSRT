@@ -4,11 +4,11 @@ const getSpeed = require('./getSpeed');
 describe('getSpeed', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "getSpeed", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "getSpeed", "fileName": "/packages/@uppy/utils/src/getSpeed.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/getSpeed.test.js", "calls" : [`);
   });
 
   it('should calculate the speed given a fileProgress object', () => {

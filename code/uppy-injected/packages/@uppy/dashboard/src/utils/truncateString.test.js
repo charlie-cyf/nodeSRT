@@ -4,11 +4,11 @@ const truncateString = require('./truncateString');
 describe('truncateString', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "truncateString", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "truncateString", "fileName": "/packages/@uppy/dashboard/src/utils/truncateString.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/dashboard/src/utils/truncateString.test.js", "calls" : [`);
   });
 
   it('should truncate the string to the length', () => {

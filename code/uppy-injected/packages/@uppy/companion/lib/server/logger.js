@@ -4,10 +4,10 @@ const chalk = require('chalk');
 const escapeStringRegexp = require('escape-string-regexp');
 const valuesToMask = [];
 exports.setMaskables = maskables => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.setMaskables","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.setMaskables","fileName":"/packages/@uppy/companion/lib/server/logger.js","paramsNumber":1},`);
 
   maskables.forEach(i => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"maskables.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"maskables.forEach","fileName":"/packages/@uppy/companion/lib/server/logger.js","paramsNumber":1},`);
 
     valuesToMask.push(escapeStringRegexp(i));
         SRTlib.send('{"type":"FUNCTIONEND","function":"maskables.forEach"},');
@@ -18,28 +18,28 @@ exports.setMaskables = maskables => {
 
 };
 exports.info = (msg, tag, traceId) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.info","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.info","fileName":"/packages/@uppy/companion/lib/server/logger.js","paramsNumber":3},`);
 
   log(msg, tag, 'info', traceId);
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.info"},');
 
 };
 exports.warn = (msg, tag, traceId) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.warn","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.warn","fileName":"/packages/@uppy/companion/lib/server/logger.js","paramsNumber":3},`);
 
   log(msg, tag, 'warn', traceId, chalk.bold.yellow);
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.warn"},');
 
 };
 exports.error = (msg, tag, traceId, shouldLogStackTrace) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.error","fileName":"${__filename}","paramsNumber":4},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.error","fileName":"/packages/@uppy/companion/lib/server/logger.js","paramsNumber":4},`);
 
   log(msg, tag, 'error', traceId, chalk.bold.red, shouldLogStackTrace);
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.error"},');
 
 };
 exports.debug = (msg, tag, traceId) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.debug","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.debug","fileName":"/packages/@uppy/companion/lib/server/logger.js","paramsNumber":3},`);
 
   if (process.env.NODE_ENV !== 'production') {
     log(msg, tag, 'debug', traceId);
@@ -48,14 +48,14 @@ exports.debug = (msg, tag, traceId) => {
 
 };
 const log = (msg, tag, level, id, color, shouldLogStackTrace) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"log","fileName":"${__filename}","paramsNumber":6},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"log","fileName":"/packages/@uppy/companion/lib/server/logger.js","paramsNumber":6},`);
 
   const time = new Date().toISOString();
   tag = tag || '';
   id = id || '';
   const whitespace = tag && id ? ' ' : '';
   color = color || (message => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"color","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"color","fileName":"/packages/@uppy/companion/lib/server/logger.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"color"},');
 
@@ -80,7 +80,7 @@ const log = (msg, tag, level, id, color, shouldLogStackTrace) => {
 
 };
 const maskMessage = msg => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"maskMessage","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"maskMessage","fileName":"/packages/@uppy/companion/lib/server/logger.js","paramsNumber":1},`);
 
   for (const toBeMasked of valuesToMask) {
     const toBeReplaced = new RegExp(toBeMasked, 'gi');

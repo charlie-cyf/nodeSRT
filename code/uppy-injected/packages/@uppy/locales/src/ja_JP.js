@@ -135,7 +135,7 @@ ja_JP.strings = {
   openFolderNamed: '開いたフォルダ %{name}'
 };
 ja_JP.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ja_JP.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ja_JP.pluralize","fileName":"/packages/@uppy/locales/src/ja_JP.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"ja_JP.pluralize"},');

@@ -12,11 +12,11 @@ var DEFAULT_EXPIRY = 24 * 60 * 60 * 1000;
 var DB_VERSION = 3;
 
 function migrateExpiration(store) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"migrateExpiration\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"migrateExpiration\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
   var request = store.openCursor();
 
   request.onsuccess = function (event) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
     var cursor = event.target.result;
 
     if (!cursor) {
@@ -34,14 +34,14 @@ function migrateExpiration(store) {
 }
 
 function connect(dbName) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"connect\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"connect\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
   var request = indexedDB.open(dbName, DB_VERSION);
   SRTlib.send('{"type":"FUNCTIONEND","function":"connect"},');
   return new Promise(function (resolve, reject) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":2},");
 
     request.onupgradeneeded = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onupgradeneeded\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onupgradeneeded\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       var db = event.target.result;
       var transaction = event.currentTarget.transaction;
 
@@ -65,7 +65,7 @@ function connect(dbName) {
       }
 
       transaction.oncomplete = function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"transaction.oncomplete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"transaction.oncomplete\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":0},");
         resolve(db);
         SRTlib.send('{"type":"FUNCTIONEND","function":"transaction.oncomplete"},');
       };
@@ -74,7 +74,7 @@ function connect(dbName) {
     };
 
     request.onsuccess = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###2\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       resolve(event.target.result);
       SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess###2"},');
     };
@@ -86,13 +86,13 @@ function connect(dbName) {
 }
 
 function waitForRequest(request) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"waitForRequest\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"waitForRequest\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"waitForRequest"},');
   return new Promise(function (resolve, reject) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###2\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":2},");
 
     request.onsuccess = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###3\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       resolve(event.target.result);
       SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess###3"},');
     };
@@ -109,7 +109,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
   function IndexedDBStore(opts) {
     var _this = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     this.opts = _extends({
       dbName: DB_NAME,
       storeName: 'default',
@@ -120,7 +120,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
     this.name = this.opts.storeName;
 
     var createConnection = function createConnection() {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createConnection\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createConnection\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
       return connect(_this.opts.dbName);
       SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
@@ -139,7 +139,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
   var _proto = IndexedDBStore.prototype;
 
   _proto.key = function key(fileID) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"key\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"key\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"key"},');
     return this.name + "!" + fileID;
     SRTlib.send('{"type":"FUNCTIONEND","function":"key"},');
@@ -148,10 +148,10 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.list = function list() {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"list\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"list\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
     return this.ready.then(function (db) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then.ready.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then.ready.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       var transaction = db.transaction([STORE_NAME], 'readonly');
       var store = transaction.objectStore(STORE_NAME);
       var request = store.index('store').getAll(IDBKeyRange.only(_this2.name));
@@ -159,10 +159,10 @@ var IndexedDBStore = /*#__PURE__*/function () {
       return waitForRequest(request);
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then.ready.then"},');
     }).then(function (files) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       var result = {};
       files.forEach(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"files.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"files.forEach\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
         result[file.fileID] = file.data;
         SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach"},');
       });
@@ -176,17 +176,17 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.get = function get(fileID) {
     var _this3 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"get\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"get\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');
     return this.ready.then(function (db) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then.ready.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then.ready.then###2\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       var transaction = db.transaction([STORE_NAME], 'readonly');
       var request = transaction.objectStore(STORE_NAME).get(_this3.key(fileID));
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then.ready.then###2"},');
       return waitForRequest(request);
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then.ready.then###2"},');
     }).then(function (result) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then.then###2\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then###2"},');
       return {
         id: result.data.fileID,
@@ -200,20 +200,20 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.getSize = function getSize() {
     var _this4 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getSize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getSize\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"getSize"},');
     return this.ready.then(function (db) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       var transaction = db.transaction([STORE_NAME], 'readonly');
       var store = transaction.objectStore(STORE_NAME);
       var request = store.index('store').openCursor(IDBKeyRange.only(_this4.name));
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then"},');
       return new Promise(function (resolve, reject) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###3\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":2},");
         var size = 0;
 
         request.onsuccess = function (event) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###4\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
           var cursor = event.target.result;
 
           if (cursor) {
@@ -227,7 +227,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
         };
 
         request.onerror = function () {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onerror\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onerror\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":0},");
           reject(new Error('Could not retrieve stored blobs size'));
           SRTlib.send('{"type":"FUNCTIONEND","function":"request.onerror"},');
         };
@@ -242,7 +242,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.put = function put(file) {
     var _this5 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"put\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"put\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
 
     if (file.data.size > this.opts.maxFileSize) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"put"},');
@@ -251,7 +251,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"put"},');
     return this.getSize().then(function (size) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.getSize.then.then.getSize.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.getSize.then.then.getSize.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
 
       if (size > _this5.opts.maxTotalSize) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.getSize.then.then.getSize.then"},');
@@ -262,7 +262,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
       return _this5.ready;
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.getSize.then.then.getSize.then"},');
     }).then(function (db) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.getSize.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.getSize.then.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       var transaction = db.transaction([STORE_NAME], 'readwrite');
       var request = transaction.objectStore(STORE_NAME).add({
         id: _this5.key(file.id),
@@ -281,10 +281,10 @@ var IndexedDBStore = /*#__PURE__*/function () {
   _proto.delete = function _delete(fileID) {
     var _this6 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"delete\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"delete\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
     return this.ready.then(function (db) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.ready.then###2\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       var transaction = db.transaction([STORE_NAME], 'readwrite');
       var request = transaction.objectStore(STORE_NAME).delete(_this6.key(fileID));
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then###2"},');
@@ -295,19 +295,19 @@ var IndexedDBStore = /*#__PURE__*/function () {
   };
 
   IndexedDBStore.cleanup = function cleanup() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"cleanup\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"cleanup\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"IndexedDBStore\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"cleanup"},');
     return connect(DB_NAME).then(function (db) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.connect.then.then.connect.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.connect.then.then.connect.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       var transaction = db.transaction([STORE_NAME], 'readwrite');
       var store = transaction.objectStore(STORE_NAME);
       var request = store.index('expires').openCursor(IDBKeyRange.upperBound(Date.now()));
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');
       return new Promise(function (resolve, reject) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.NewExpression###4\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":2},");
 
         request.onsuccess = function (event) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"request.onsuccess###5\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
           var cursor = event.target.result;
 
           if (cursor) {
@@ -327,7 +327,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');
     }).then(function (db) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.connect.then.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.connect.then.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/IndexedDBStore.js\",\"paramsNumber\":1},");
       db.close();
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then"},');
     });

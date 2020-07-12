@@ -6,7 +6,7 @@ const {hasMatch, sanitizeHtml} = require('../helpers/utils');
 const oAuthState = require('../helpers/oauth-state');
 const versionCmp = require('../helpers/version');
 module.exports = function sendToken(req, res, next) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/companion/src/server/controllers/send-token.js","paramsNumber":3},`);
 
   const uppyAuthToken = req.companion.authToken;
   if (req.companion.provider.needsCookieAuth) {
@@ -30,7 +30,7 @@ module.exports = function sendToken(req, res, next) {
 
 };
 const htmlContent = (token, origin) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"htmlContent","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"htmlContent","fileName":"/packages/@uppy/companion/src/server/controllers/send-token.js","paramsNumber":2},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"htmlContent"},');
 
@@ -50,7 +50,7 @@ const htmlContent = (token, origin) => {
 
 };
 const oldHtmlContent = (token, origin) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"oldHtmlContent","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"oldHtmlContent","fileName":"/packages/@uppy/companion/src/server/controllers/send-token.js","paramsNumber":2},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"oldHtmlContent"},');
 

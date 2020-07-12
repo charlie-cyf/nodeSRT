@@ -128,7 +128,7 @@ nl_NL.strings = {
   openFolderNamed: 'Open map %{name}'
 };
 nl_NL.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"nl_NL.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"nl_NL.pluralize","fileName":"/packages/@uppy/locales/src/nl_NL.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"nl_NL.pluralize"},');

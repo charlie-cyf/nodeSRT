@@ -5,21 +5,21 @@ const Core = require('./index');
 describe('Plugin', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Plugin", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Plugin", "fileName": "/packages/@uppy/core/src/Plugin.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/Plugin.test.js", "calls" : [`);
   });
 
   describe('getPluginState', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "getPluginState", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "getPluginState", "fileName": "/packages/@uppy/core/src/Plugin.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/Plugin.test.js", "calls" : [`);
     });
 
     it('returns an empty object if no state is available', () => {
@@ -40,11 +40,11 @@ describe('Plugin', () => {
   describe('setPluginState', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "setPluginState", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "setPluginState", "fileName": "/packages/@uppy/core/src/Plugin.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/Plugin.test.js", "calls" : [`);
     });
 
     it('applies patches', () => {

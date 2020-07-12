@@ -10,7 +10,7 @@ const exifr = require('exifr/dist/mini.legacy.umd.js');
 module.exports = class ThumbnailGenerator extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":2,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'modifier';
@@ -44,7 +44,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     super.setOptions(newOpts);
     this.i18nInit();
@@ -52,7 +52,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   i18nInit() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
@@ -61,16 +61,16 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   createThumbnail(file, targetWidth, targetHeight) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createThumbnail","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createThumbnail","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":3,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     const originalUrl = URL.createObjectURL(file.data);
     const onload = new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.onload.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.onload.NewExpression","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":2},`);
 
       const image = new Image();
       image.src = originalUrl;
       image.addEventListener('load', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"image.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"image.addEventListener","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0},`);
 
         URL.revokeObjectURL(originalUrl);
         resolve(image);
@@ -78,7 +78,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
       });
       image.addEventListener('error', event => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"image.addEventListener###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"image.addEventListener###2","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
         URL.revokeObjectURL(originalUrl);
         reject(event.error || new Error('Could not create thumbnail'));
@@ -89,7 +89,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
     });
     const orientationPromise = exifr.rotation(file.data).catch(_err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.orientationPromise.exifr.rotation.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.orientationPromise.exifr.rotation.catch","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.orientationPromise.exifr.rotation.catch"},');
 
@@ -100,7 +100,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"createThumbnail"},');
 
     return Promise.all([onload, orientationPromise]).then(([image, orientation]) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.all.then.then.Promise.all.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.all.then.then.Promise.all.then","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
       const dimensions = this.getProportionalDimensions(image, targetWidth, targetHeight, orientation.deg);
       const rotatedImage = this.rotateImage(image, orientation);
@@ -111,7 +111,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.all.then.then.Promise.all.then"},');
 
     }).then(blob => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.all.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.all.then.then","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.all.then.then"},');
 
@@ -123,7 +123,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   getProportionalDimensions(img, width, height, rotation) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getProportionalDimensions","fileName":"${__filename}","paramsNumber":4,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getProportionalDimensions","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":4,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     var aspect = img.width / img.height;
     if (rotation === 90 || rotation === 270) {
@@ -155,7 +155,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   protect(image) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"protect","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"protect","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     var ratio = image.width / image.height;
     var maxSquare = 5000000;
@@ -184,7 +184,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   resizeImage(image, targetWidth, targetHeight) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resizeImage","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resizeImage","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":3,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     image = this.protect(image);
     var steps = Math.ceil(MathLog2(image.width / targetWidth));
@@ -210,7 +210,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   rotateImage(image, translate) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"rotateImage","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"rotateImage","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":2,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     var w = image.width;
     var h = image.height;
@@ -235,7 +235,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   canvasToBlob(canvas, type, quality) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"canvasToBlob","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"canvasToBlob","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":3,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     try {
       canvas.getContext('2d').getImageData(0, 0, 1, 1);
@@ -250,13 +250,13 @@ module.exports = class ThumbnailGenerator extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"canvasToBlob"},');
 
       return new Promise(resolve => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.then.NewExpression","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.then.NewExpression","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
         canvas.toBlob(resolve, type, quality);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.then.NewExpression"},');
 
       }).then(blob => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.then","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
         if (blob === null) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.then"},');
@@ -273,7 +273,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"canvasToBlob"},');
 
     return Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.resolve.then.then.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.resolve.then.then.Promise.resolve.then","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.resolve.then.then.Promise.resolve.then"},');
 
@@ -281,7 +281,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.resolve.then.then.Promise.resolve.then"},');
 
     }).then(blob => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.resolve.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.resolve.then.then","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
       if (blob === null) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.resolve.then.then"},');
@@ -298,7 +298,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   setPreviewURL(fileID, preview) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setPreviewURL","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setPreviewURL","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":2,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     this.uppy.setFileState(fileID, {
       preview
@@ -307,7 +307,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   addToQueue(item) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addToQueue","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addToQueue","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     this.queue.push(item);
     if (this.queueProcessing === false) {
@@ -317,7 +317,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   processQueue() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"processQueue","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"processQueue","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     this.queueProcessing = true;
     if (this.queue.length > 0) {
@@ -331,12 +331,12 @@ module.exports = class ThumbnailGenerator extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"processQueue"},');
 
       return this.requestThumbnail(current).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.requestThumbnail.catch.then.requestThumbnail.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.requestThumbnail.catch.then.requestThumbnail.catch","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.requestThumbnail.catch.then.requestThumbnail.catch"},');
 
       }).then(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.requestThumbnail.catch.then","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.requestThumbnail.catch.then","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.requestThumbnail.catch.then"},');
 
@@ -353,13 +353,13 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   requestThumbnail(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"requestThumbnail","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"requestThumbnail","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     if (isPreviewSupported(file.type) && !file.isRemote) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"requestThumbnail"},');
 
       return this.createThumbnail(file, this.opts.thumbnailWidth, this.opts.thumbnailHeight).then(preview => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.createThumbnail.then.catch.createThumbnail.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.createThumbnail.then.catch.createThumbnail.then","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
         this.setPreviewURL(file.id, preview);
         this.uppy.log(`[ThumbnailGenerator] Generated thumbnail for ${file.id}`);
@@ -367,7 +367,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.createThumbnail.then.catch.createThumbnail.then"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.createThumbnail.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.createThumbnail.then.catch","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
         this.uppy.log(`[ThumbnailGenerator] Failed thumbnail for ${file.id}:`, 'warning');
         this.uppy.log(err, 'warning');
@@ -383,7 +383,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   onFileAdded = file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
     if (!file.preview && isPreviewSupported(file.type) && !file.isRemote) {
       this.addToQueue(file.id);
@@ -392,7 +392,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   onCancelRequest = file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###2","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
     const index = this.queue.indexOf(file.id);
     if (index !== -1) {
@@ -402,7 +402,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   onFileRemoved = file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###3","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###3","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
     const index = this.queue.indexOf(file.id);
     if (index !== -1) {
@@ -415,12 +415,12 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   onRestored = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###4","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0},`);
 
     const {files} = this.uppy.getState();
     const fileIDs = Object.keys(files);
     fileIDs.forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
       const file = this.uppy.getFile(fileID);
       if (!file.isRestored) {
@@ -438,10 +438,10 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   waitUntilAllProcessed = fileIDs => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###5","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports###5","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
     fileIDs.forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###2","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
       const file = this.uppy.getFile(fileID);
       this.uppy.emit('preprocess-progress', file, {
@@ -452,10 +452,10 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
     });
     const emitPreprocessCompleteForAll = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitPreprocessCompleteForAll","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitPreprocessCompleteForAll","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0},`);
 
       fileIDs.forEach(fileID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###3","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":1},`);
 
         const file = this.uppy.getFile(fileID);
         this.uppy.emit('preprocess-complete', file);
@@ -468,11 +468,11 @@ module.exports = class ThumbnailGenerator extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###5"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":2},`);
 
       if (this.queueProcessing) {
         this.uppy.once('thumbnail:all-generated', () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.once","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.once","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0},`);
 
           emitPreprocessCompleteForAll();
           resolve();
@@ -490,7 +490,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     this.uppy.on('file-removed', this.onFileRemoved);
     if (this.opts.lazy) {
@@ -507,7 +507,7 @@ module.exports = class ThumbnailGenerator extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/thumbnail-generator/src/index.js","paramsNumber":0,"classInfo":{"className":"ThumbnailGenerator","superClass":"Plugin"}},`);
 
     this.uppy.off('file-removed', this.onFileRemoved);
     if (this.opts.lazy) {

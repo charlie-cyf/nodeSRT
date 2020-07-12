@@ -5,11 +5,11 @@ const Transloadit = require('./');
 describe('Transloadit', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Transloadit", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Transloadit", "fileName": "/packages/@uppy/transloadit/src/index.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/transloadit/src/index.test.js", "calls" : [`);
   });
 
   it('Throws errors if options are missing', () => {

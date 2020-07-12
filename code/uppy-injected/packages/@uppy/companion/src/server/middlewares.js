@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const tokenService = require('./helpers/jwt');
 const logger = require('./logger');
 exports.hasSessionAndProvider = (req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasSessionAndProvider","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasSessionAndProvider","fileName":"/packages/@uppy/companion/src/server/middlewares.js","paramsNumber":3},`);
 
   if (!req.session || !req.body) {
     logger.debug('No session/body attached to req object. Exiting dispatcher.', null, req.id);
@@ -24,7 +24,7 @@ exports.hasSessionAndProvider = (req, res, next) => {
 
 };
 exports.verifyToken = (req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.verifyToken","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.verifyToken","fileName":"/packages/@uppy/companion/src/server/middlewares.js","paramsNumber":3},`);
 
   const token = req.companion.authToken;
   if (token == null) {
@@ -49,7 +49,7 @@ exports.verifyToken = (req, res, next) => {
 
 };
 exports.gentleVerifyToken = (req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.gentleVerifyToken","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.gentleVerifyToken","fileName":"/packages/@uppy/companion/src/server/middlewares.js","paramsNumber":3},`);
 
   const providerName = req.params.providerName;
   if (req.companion.authToken) {
@@ -63,7 +63,7 @@ exports.gentleVerifyToken = (req, res, next) => {
 
 };
 exports.cookieAuthToken = (req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.cookieAuthToken","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.cookieAuthToken","fileName":"/packages/@uppy/companion/src/server/middlewares.js","paramsNumber":3},`);
 
   req.companion.authToken = req.cookies[`uppyAuthToken--${req.companion.provider.authProvider}`];
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.cookieAuthToken"},');

@@ -13,11 +13,11 @@ function setUserAgent(userAgent) {
 describe('isMobileDevice', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "isMobileDevice", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "isMobileDevice", "fileName": "/packages/@uppy/utils/src/isMobileDevice.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/isMobileDevice.test.js", "calls" : [`);
   });
 
   it('should return true if the specified user agent is mobile', () => {

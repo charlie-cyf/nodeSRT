@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const router = require('express').Router;
 module.exports = function s3(config) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":1},`);
 
   if (typeof config.acl !== 'string') {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
@@ -15,7 +15,7 @@ module.exports = function s3(config) {
     throw new TypeError('s3: The `getKey` option must be a function');
   }
   function getUploadParameters(req, res, next) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUploadParameters","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUploadParameters","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":3},`);
 
     const client = req.companion.s3Client;
     const metadata = req.query.metadata || ({});
@@ -34,7 +34,7 @@ module.exports = function s3(config) {
       'content-type': req.query.type
     };
     Object.keys(metadata).forEach(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":1},`);
 
       fields[`x-amz-meta-${key}`] = metadata[key];
             SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
@@ -46,7 +46,7 @@ module.exports = function s3(config) {
       Fields: fields,
       Conditions: config.conditions
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.createPresignedPost","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.createPresignedPost","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":2},`);
 
       if (err) {
         next(err);
@@ -66,7 +66,7 @@ module.exports = function s3(config) {
 
   }
   function createMultipartUpload(req, res, next) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createMultipartUpload","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createMultipartUpload","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":3},`);
 
     const client = req.companion.s3Client;
     const key = config.getKey(req, req.body.filename, req.body.metadata || ({}));
@@ -93,7 +93,7 @@ module.exports = function s3(config) {
       Metadata: metadata,
       Expires: config.expires
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.createMultipartUpload","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.createMultipartUpload","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":2},`);
 
       if (err) {
         next(err);
@@ -112,7 +112,7 @@ module.exports = function s3(config) {
 
   }
   function getUploadedParts(req, res, next) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUploadedParts","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUploadedParts","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":3},`);
 
     const client = req.companion.s3Client;
     const {uploadId} = req.params;
@@ -127,7 +127,7 @@ module.exports = function s3(config) {
     let parts = [];
     listPartsPage(0);
     function listPartsPage(startAt) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"listPartsPage","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"listPartsPage","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":1},`);
 
       client.listParts({
         Bucket: config.bucket,
@@ -135,7 +135,7 @@ module.exports = function s3(config) {
         UploadId: uploadId,
         PartNumberMarker: startAt
       }, (err, data) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.listParts","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.listParts","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":2},`);
 
         if (err) {
           next(err);
@@ -156,7 +156,7 @@ module.exports = function s3(config) {
 
     }
     function done() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"done","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"done","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":0},`);
 
       res.json(parts);
             SRTlib.send('{"type":"FUNCTIONEND","function":"done","paramsNumber":0},');
@@ -166,7 +166,7 @@ module.exports = function s3(config) {
 
   }
   function signPartUpload(req, res, next) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"signPartUpload","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"signPartUpload","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":3},`);
 
     const client = req.companion.s3Client;
     const {uploadId, partNumber} = req.params;
@@ -193,7 +193,7 @@ module.exports = function s3(config) {
       Body: '',
       Expires: config.expires
     }, (err, url) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.getSignedUrl","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.getSignedUrl","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":2},`);
 
       if (err) {
         next(err);
@@ -211,7 +211,7 @@ module.exports = function s3(config) {
 
   }
   function abortMultipartUpload(req, res, next) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"abortMultipartUpload","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"abortMultipartUpload","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":3},`);
 
     const client = req.companion.s3Client;
     const {uploadId} = req.params;
@@ -228,7 +228,7 @@ module.exports = function s3(config) {
       Key: key,
       UploadId: uploadId
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.abortMultipartUpload","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.abortMultipartUpload","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":2},`);
 
       if (err) {
         next(err);
@@ -244,7 +244,7 @@ module.exports = function s3(config) {
 
   }
   function completeMultipartUpload(req, res, next) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"completeMultipartUpload","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"completeMultipartUpload","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":3},`);
 
     const client = req.companion.s3Client;
     const {uploadId} = req.params;
@@ -272,7 +272,7 @@ module.exports = function s3(config) {
         Parts: parts
       }
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.completeMultipartUpload","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.completeMultipartUpload","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":2},`);
 
       if (err) {
         next(err);
@@ -296,7 +296,7 @@ module.exports = function s3(config) {
 
 };
 function isValidPart(part) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isValidPart","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isValidPart","fileName":"/packages/@uppy/companion/lib/server/controllers/s3.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"isValidPart"},');
 

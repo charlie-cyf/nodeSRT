@@ -17,7 +17,7 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
   function AttachFileInputs(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/robodog/src/AttachFileInputs.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.id = _this.opts.id || 'AttachFileInputs';
     _this.type = 'acquirer';
@@ -30,7 +30,7 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
   var _proto = AttachFileInputs.prototype;
 
   _proto.handleChange = function handleChange(event) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleChange\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleChange\",\"fileName\":\"/packages/@uppy/robodog/src/AttachFileInputs.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
     this.addFiles(event.target);
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleChange"},');
   };
@@ -38,10 +38,10 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
   _proto.addFiles = function addFiles(input) {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addFiles\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addFiles\",\"fileName\":\"/packages/@uppy/robodog/src/AttachFileInputs.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
     var files = toArray(input.files);
     files.forEach(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"files.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"files.forEach\",\"fileName\":\"/packages/@uppy/robodog/src/AttachFileInputs.js\",\"paramsNumber\":1},");
 
       try {
         _this2.uppy.addFile({
@@ -64,7 +64,7 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
   _proto.install = function install() {
     var _this3 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/robodog/src/AttachFileInputs.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
     this.el = findDOMElement(this.opts.target);
 
     if (!this.el) {
@@ -75,7 +75,7 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
     var restrictions = this.uppy.opts.restrictions;
     this.inputs = this.el.querySelectorAll('input[type="file"]');
     this.inputs.forEach(function (input) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inputs.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inputs.forEach\",\"fileName\":\"/packages/@uppy/robodog/src/AttachFileInputs.js\",\"paramsNumber\":1},");
       input.addEventListener('change', _this3.handleChange);
 
       if (!input.hasAttribute('multiple')) {
@@ -100,9 +100,9 @@ var AttachFileInputs = /*#__PURE__*/function (_Plugin) {
   _proto.uninstall = function uninstall() {
     var _this4 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/robodog/src/AttachFileInputs.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AttachFileInputs\",\"superClass\":\"Plugin\"}},");
     this.inputs.forEach(function (input) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inputs.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inputs.forEach###2\",\"fileName\":\"/packages/@uppy/robodog/src/AttachFileInputs.js\",\"paramsNumber\":1},");
       input.removeEventListener('change', _this4.handleChange);
       SRTlib.send('{"type":"FUNCTIONEND","function":"inputs.forEach###2"},');
     });

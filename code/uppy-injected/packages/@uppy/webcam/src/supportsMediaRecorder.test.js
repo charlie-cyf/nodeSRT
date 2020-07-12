@@ -4,11 +4,11 @@ const supportsMediaRecorder = require('./supportsMediaRecorder');
 describe('supportsMediaRecorder', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "supportsMediaRecorder", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "supportsMediaRecorder", "fileName": "/packages/@uppy/webcam/src/supportsMediaRecorder.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/webcam/src/supportsMediaRecorder.test.js", "calls" : [`);
   });
 
   it('should return true if MediaRecorder is supported', () => {

@@ -4,7 +4,7 @@ const {Plugin} = require('@uppy/core');
 module.exports = class ReduxDevTools extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/redux-dev-tools/src/index.js","paramsNumber":2,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'debugger';
@@ -18,18 +18,18 @@ module.exports = class ReduxDevTools extends Plugin {
 
   }
   handleStateChange(prevState, nextState, patch) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleStateChange","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleStateChange","fileName":"/packages/@uppy/redux-dev-tools/src/index.js","paramsNumber":3,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
 
     this.devTools.send('UPPY_STATE_UPDATE', nextState);
         SRTlib.send('{"type":"FUNCTIONEND","function":"handleStateChange"},');
 
   }
   initDevTools() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initDevTools","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initDevTools","fileName":"/packages/@uppy/redux-dev-tools/src/index.js","paramsNumber":0,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
 
     this.devTools = window.devToolsExtension.connect();
     this.devToolsUnsubscribe = this.devTools.subscribe(message => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.devToolsUnsubscribe.devTools.subscribe","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.devToolsUnsubscribe.devTools.subscribe","fileName":"/packages/@uppy/redux-dev-tools/src/index.js","paramsNumber":1},`);
 
       if (message.type === 'DISPATCH') {
         console.log(message.payload.type);
@@ -63,7 +63,7 @@ module.exports = class ReduxDevTools extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/redux-dev-tools/src/index.js","paramsNumber":0,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
 
     this.withDevTools = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__;
     if (this.withDevTools) {
@@ -74,7 +74,7 @@ module.exports = class ReduxDevTools extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/redux-dev-tools/src/index.js","paramsNumber":0,"classInfo":{"className":"ReduxDevTools","superClass":"Plugin"}},`);
 
     if (this.withDevTools) {
       this.devToolsUnsubscribe();

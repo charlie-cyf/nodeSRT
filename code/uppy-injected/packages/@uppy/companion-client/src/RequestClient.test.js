@@ -4,11 +4,11 @@ const RequestClient = require('./RequestClient');
 describe('RequestClient', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "RequestClient", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "RequestClient", "fileName": "/packages/@uppy/companion-client/src/RequestClient.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/companion-client/src/RequestClient.test.js", "calls" : [`);
   });
 
   it('has a hostname without trailing slash', () => {

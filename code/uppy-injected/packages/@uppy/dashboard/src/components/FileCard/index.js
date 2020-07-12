@@ -6,14 +6,14 @@ const ignoreEvent = require('../../utils/ignoreEvent.js');
 const FilePreview = require('../FilePreview');
 class FileCard extends Component {
   constructor(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileCard","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":1,"classInfo":{"className":"FileCard","superClass":"Component"}},`);
 
     super(props);
     const file = this.props.files[this.props.fileCardFor];
     const metaFields = this.props.metaFields || [];
     const storedMetaData = {};
     metaFields.forEach(field => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"metaFields.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"metaFields.forEach","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":1},`);
 
       storedMetaData[field.id] = file.meta[field.id] || '';
             SRTlib.send('{"type":"FUNCTIONEND","function":"metaFields.forEach"},');
@@ -26,7 +26,7 @@ class FileCard extends Component {
 
   }
   saveOnEnter = ev => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":1},`);
 
     if (ev.keyCode === 13) {
       ev.stopPropagation();
@@ -38,7 +38,7 @@ class FileCard extends Component {
 
   }
   updateMeta = (newVal, name) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###2","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###2","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":2},`);
 
     this.setState({
       formState: {
@@ -50,7 +50,7 @@ class FileCard extends Component {
 
   }
   handleSave = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###3","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":0},`);
 
     const fileID = this.props.fileCardFor;
     this.props.saveFileCard(this.state.formState, fileID);
@@ -58,14 +58,14 @@ class FileCard extends Component {
 
   }
   handleCancel = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###4","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":0},`);
 
     this.props.toggleFileCard();
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###4"},');
 
   }
   renderMetaFields = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###5","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###5","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":0},`);
 
     const metaFields = this.props.metaFields || [];
     const fieldCSSClasses = {
@@ -74,7 +74,7 @@ class FileCard extends Component {
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###5"},');
 
     return metaFields.map(field => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.metaFields.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.metaFields.map","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":1},`);
 
       const id = `uppy-Dashboard-FileCard-input-${field.id}`;
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.metaFields.map"},');
@@ -84,7 +84,7 @@ class FileCard extends Component {
           {field.render !== undefined ? field.render({
         value: this.state.formState[field.id],
         onChange: newVal => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.field.render.onChange","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.field.render.onChange","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":1},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.field.render.onChange"},');
 
@@ -94,7 +94,7 @@ class FileCard extends Component {
         },
         fieldCSSClasses: fieldCSSClasses
       }, h) : <input class={fieldCSSClasses.text} id={id} type={field.type || 'text'} value={this.state.formState[field.id]} placeholder={field.placeholder} onkeyup={this.saveOnEnter} onkeydown={this.saveOnEnter} onkeypress={this.saveOnEnter} oninput={ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
@@ -110,7 +110,7 @@ class FileCard extends Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileCard","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/dashboard/src/components/FileCard/index.js","paramsNumber":0,"classInfo":{"className":"FileCard","superClass":"Component"}},`);
 
     const file = this.props.files[this.props.fileCardFor];
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');

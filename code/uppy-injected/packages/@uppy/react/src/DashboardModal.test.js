@@ -20,11 +20,11 @@ beforeEach(() => {
 describe('react <DashboardModal />', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "react%20%3CDashboardModal%20/%3E", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "react%20%3CDashboardModal%20/%3E", "fileName": "/packages/@uppy/react/src/DashboardModal.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/react/src/DashboardModal.test.js", "calls" : [`);
   });
 
   it('can be mounted and unmounted', () => {

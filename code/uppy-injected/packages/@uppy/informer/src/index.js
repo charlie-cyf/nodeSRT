@@ -5,7 +5,7 @@ const {h} = require('preact');
 module.exports = class Informer extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Informer","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/informer/src/index.js","paramsNumber":2,"classInfo":{"className":"Informer","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'progressindicator';
@@ -17,11 +17,11 @@ module.exports = class Informer extends Plugin {
 
   }
   render = state => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/informer/src/index.js","paramsNumber":1},`);
 
     const {isHidden, message, details} = state.info;
     function displayErrorAlert() {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"displayErrorAlert","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"displayErrorAlert","fileName":"/packages/@uppy/informer/src/index.js","paramsNumber":0},`);
 
       const errorMessage = `${message} \n\n ${details}`;
       alert(errorMessage);
@@ -29,14 +29,14 @@ module.exports = class Informer extends Plugin {
 
     }
     const handleMouseOver = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleMouseOver","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleMouseOver","fileName":"/packages/@uppy/informer/src/index.js","paramsNumber":0},`);
 
       clearTimeout(this.uppy.infoTimeoutID);
             SRTlib.send('{"type":"FUNCTIONEND","function":"handleMouseOver"},');
 
     };
     const handleMouseLeave = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleMouseLeave","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleMouseLeave","fileName":"/packages/@uppy/informer/src/index.js","paramsNumber":0},`);
 
       this.uppy.infoTimeoutID = setTimeout(this.uppy.hideInfo, 2000);
             SRTlib.send('{"type":"FUNCTIONEND","function":"handleMouseLeave"},');
@@ -57,7 +57,7 @@ module.exports = class Informer extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Informer","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/informer/src/index.js","paramsNumber":0,"classInfo":{"className":"Informer","superClass":"Plugin"}},`);
 
     const target = this.opts.target;
     if (target) {

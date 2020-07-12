@@ -135,7 +135,7 @@ sr_RS_Cyrillic.strings = {
   openFolderNamed: 'Отвори фолдер %{name}'
 };
 sr_RS_Cyrillic.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sr_RS_Cyrillic.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sr_RS_Cyrillic.pluralize","fileName":"/packages/@uppy/locales/src/sr_RS_Cyrillic.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"sr_RS_Cyrillic.pluralize"},');

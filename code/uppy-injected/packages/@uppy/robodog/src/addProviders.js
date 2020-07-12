@@ -16,7 +16,7 @@ const localProviders = {
 const remoteProviderOptionNames = ['companionUrl', 'companionAllowedHosts', 'companionHeaders', 'serverHeaders', 'target'];
 const localProviderOptionNames = ['target'];
 function addRemoteProvider(uppy, name, opts) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addRemoteProvider","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addRemoteProvider","fileName":"/packages/@uppy/robodog/src/addProviders.js","paramsNumber":3},`);
 
   const Provider = remoteProviders[name];
   const providerOptions = {
@@ -24,7 +24,7 @@ function addRemoteProvider(uppy, name, opts) {
     companionAllowedHosts: Transloadit.COMPANION_PATTERN
   };
   remoteProviderOptionNames.forEach(name => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"remoteProviderOptionNames.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"remoteProviderOptionNames.forEach","fileName":"/packages/@uppy/robodog/src/addProviders.js","paramsNumber":1},`);
 
     if (has(opts, name)) providerOptions[name] = opts[name];
         SRTlib.send('{"type":"FUNCTIONEND","function":"remoteProviderOptionNames.forEach"},');
@@ -38,12 +38,12 @@ function addRemoteProvider(uppy, name, opts) {
 
 }
 function addLocalProvider(uppy, name, opts) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addLocalProvider","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addLocalProvider","fileName":"/packages/@uppy/robodog/src/addProviders.js","paramsNumber":3},`);
 
   const Provider = localProviders[name];
   const providerOptions = {};
   localProviderOptionNames.forEach(name => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"localProviderOptionNames.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"localProviderOptionNames.forEach","fileName":"/packages/@uppy/robodog/src/addProviders.js","paramsNumber":1},`);
 
     if (has(opts, name)) providerOptions[name] = opts[name];
         SRTlib.send('{"type":"FUNCTIONEND","function":"localProviderOptionNames.forEach"},');
@@ -57,10 +57,10 @@ function addLocalProvider(uppy, name, opts) {
 
 }
 function addProviders(uppy, names, opts = {}) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addProviders","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addProviders","fileName":"/packages/@uppy/robodog/src/addProviders.js","paramsNumber":3},`);
 
   names.forEach(name => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"names.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"names.forEach","fileName":"/packages/@uppy/robodog/src/addProviders.js","paramsNumber":1},`);
 
     if (has(remoteProviders, name)) {
       addRemoteProvider(uppy, name, opts);
@@ -69,7 +69,7 @@ function addProviders(uppy, names, opts = {}) {
     } else {
       const validNames = [...Object.keys(remoteProviders), ...Object.keys(localProviders)];
       const expectedNameString = validNames.sort().map(validName => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"expectedNameString.validNames.sort.map.join.validNames.sort.map","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"expectedNameString.validNames.sort.map.join.validNames.sort.map","fileName":"/packages/@uppy/robodog/src/addProviders.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"expectedNameString.validNames.sort.map.join.validNames.sort.map"},');
 

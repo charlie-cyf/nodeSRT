@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const {h} = require('preact');
 module.exports = function SubmitButton({recording, recordedVideo, onSubmit, i18n}) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/screen-capture/src/SubmitButton.js","paramsNumber":1},`);
 
   if (recordedVideo && !recording) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const tokenService = require('../helpers/jwt');
 const logger = require('../logger');
 module.exports = function callback(req, res, next) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/companion/src/server/controllers/callback.js","paramsNumber":3},`);
 
   const providerName = req.params.providerName;
   if (!req.companion.providerTokens) {

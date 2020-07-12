@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 module.exports = function (api) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/examples/react-native-expo/babel.config.js","paramsNumber":1},`);
 
   api.cache(true);
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

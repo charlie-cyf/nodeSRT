@@ -7,7 +7,7 @@ const TRANSLOADIT_EXAMPLE_KEY = '35c1aed03f5011e982b6afe82599b6a0';
 const TRANSLOADIT_EXAMPLE_TEMPLATE = '0b2ee2bc25dc43619700c2ce0a75164a';
 class MarkdownTextarea {
   constructor(element) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     this.element = element;
     this.controls = document.createElement('div');
@@ -19,7 +19,7 @@ class MarkdownTextarea {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     const {element} = this;
     const wrapper = document.createElement('div');
@@ -33,10 +33,10 @@ class MarkdownTextarea {
 
   }
   setupTextareaDrop() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setupTextareaDrop","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setupTextareaDrop","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     dragdrop(this.element, files => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"dragdrop","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"dragdrop","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1},`);
 
       this.uploadFiles(files);
             SRTlib.send('{"type":"FUNCTIONEND","function":"dragdrop"},');
@@ -46,10 +46,10 @@ class MarkdownTextarea {
 
   }
   setupUploadLine() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setupUploadLine","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setupUploadLine","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     this.uploadLine.addEventListener('click', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploadLine.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uploadLine.addEventListener","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":0},`);
 
       this.pickFiles();
             SRTlib.send('{"type":"FUNCTIONEND","function":"uploadLine.addEventListener"},');
@@ -59,7 +59,7 @@ class MarkdownTextarea {
 
   }
   reportUploadError(err) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"reportUploadError","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"reportUploadError","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     this.uploadLine.classList.add('error');
     const message = document.createElement('span');
@@ -69,7 +69,7 @@ class MarkdownTextarea {
 
   }
   unreportUploadError() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"unreportUploadError","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"unreportUploadError","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     this.uploadLine.classList.remove('error');
     const message = this.uploadLine.querySelector('message');
@@ -80,10 +80,10 @@ class MarkdownTextarea {
 
   }
   insertAttachments(attachments) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"insertAttachments","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"insertAttachments","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     attachments.forEach(attachment => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"attachments.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"attachments.forEach","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1},`);
 
       const {file, thumb} = attachment;
       const link = `\n[LABEL](${file.ssl_url})\n`;
@@ -100,12 +100,12 @@ class MarkdownTextarea {
 
   }
   matchFilesAndThumbs(results) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"matchFilesAndThumbs","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"matchFilesAndThumbs","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     const filesById = {};
     const thumbsById = {};
     results.forEach(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"results.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"results.forEach","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1},`);
 
       if (result.stepName === 'thumbnails') {
         thumbsById[result.original_id] = result;
@@ -118,7 +118,7 @@ class MarkdownTextarea {
         SRTlib.send('{"type":"FUNCTIONEND","function":"matchFilesAndThumbs"},');
 
     return Object.keys(filesById).reduce((acc, key) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Object.keys.reduce","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Object.keys.reduce","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":2},`);
 
       const file = filesById[key];
       const thumb = thumbsById[key];
@@ -136,7 +136,7 @@ class MarkdownTextarea {
 
   }
   uploadFiles(files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadFiles","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     robodog.upload({
       waitForEncoding: true,
@@ -147,7 +147,7 @@ class MarkdownTextarea {
         template_id: TRANSLOADIT_EXAMPLE_TEMPLATE
       }
     }).then(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then.catch.robodog.upload.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then.catch.robodog.upload.then","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1},`);
 
       if (result == null) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then.catch.robodog.upload.then"},');
@@ -158,7 +158,7 @@ class MarkdownTextarea {
             SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.upload.then.catch.robodog.upload.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.upload.then.catch","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1},`);
 
       console.error(err);
       this.reportUploadError(err);
@@ -169,7 +169,7 @@ class MarkdownTextarea {
 
   }
   pickFiles() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pickFiles","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pickFiles","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":0,"classInfo":{"className":"MarkdownTextarea"}},`);
 
     robodog.pick({
       waitForEncoding: true,
@@ -180,7 +180,7 @@ class MarkdownTextarea {
         template_id: TRANSLOADIT_EXAMPLE_TEMPLATE
       }
     }).then(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.pick.then.catch.robodog.pick.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.pick.then.catch.robodog.pick.then","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1},`);
 
       if (result == null) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.pick.then.catch.robodog.pick.then"},');
@@ -191,7 +191,7 @@ class MarkdownTextarea {
             SRTlib.send('{"type":"FUNCTIONEND","function":"robodog.pick.then.catch.robodog.pick.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.pick.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"robodog.pick.then.catch","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1},`);
 
       console.error(err);
       this.reportUploadError(err);
@@ -205,7 +205,7 @@ class MarkdownTextarea {
 const textarea = new MarkdownTextarea(document.querySelector('#new textarea'));
 textarea.install();
 function renderSnippet(title, text) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderSnippet","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderSnippet","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":2},`);
 
   const template = document.querySelector('#snippet');
   const newSnippet = document.importNode(template.content, true);
@@ -219,7 +219,7 @@ function renderSnippet(title, text) {
 
 }
 function saveSnippet(title, text) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"saveSnippet","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"saveSnippet","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":2},`);
 
   const id = parseInt(localStorage.numSnippets || 0, 10);
   localStorage[`snippet_${id}`] = JSON.stringify({
@@ -231,7 +231,7 @@ function saveSnippet(title, text) {
 
 }
 function loadSnippets() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"loadSnippets","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"loadSnippets","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":0},`);
 
   for (let id = 0; localStorage[`snippet_${id}`] != null; id += 1) {
     const {title, text} = JSON.parse(localStorage[`snippet_${id}`]);
@@ -241,7 +241,7 @@ function loadSnippets() {
 
 }
 document.querySelector('#new').addEventListener('submit', event => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"document.querySelector.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"document.querySelector.addEventListener","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":1},`);
 
   event.preventDefault();
   const title = event.target.querySelector('input[name="title"]').value || 'Unnamed Snippet';
@@ -254,7 +254,7 @@ document.querySelector('#new').addEventListener('submit', event => {
 
 });
 window.addEventListener('DOMContentLoaded', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.addEventListener","fileName":"/examples/transloadit-textarea/main.js","paramsNumber":0},`);
 
   loadSnippets();
     SRTlib.send('{"type":"FUNCTIONEND","function":"window.addEventListener"},');

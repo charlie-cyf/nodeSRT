@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const querystring = require('querystring');
 exports.isFolder = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isFolder"},');
 
@@ -11,7 +11,7 @@ exports.isFolder = item => {
 
 };
 exports.getItemIcon = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
   if (exports.isFolder(item)) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemIcon"},');
@@ -25,7 +25,7 @@ exports.getItemIcon = item => {
 
 };
 exports.getItemSubList = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemSubList"},');
 
@@ -34,7 +34,7 @@ exports.getItemSubList = item => {
 
 };
 exports.getItemName = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
 
@@ -43,7 +43,7 @@ exports.getItemName = item => {
 
 };
 exports.getMimeType = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getMimeType"},');
 
@@ -52,7 +52,7 @@ exports.getMimeType = item => {
 
 };
 exports.getItemId = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemId"},');
 
@@ -61,7 +61,7 @@ exports.getItemId = item => {
 
 };
 exports.getItemRequestPath = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemRequestPath"},');
 
@@ -70,7 +70,7 @@ exports.getItemRequestPath = item => {
 
 };
 exports.getItemModifiedDate = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemModifiedDate"},');
 
@@ -79,7 +79,7 @@ exports.getItemModifiedDate = item => {
 
 };
 exports.getItemThumbnailUrl = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemThumbnailUrl"},');
 
@@ -88,7 +88,7 @@ exports.getItemThumbnailUrl = item => {
 
 };
 exports.getNextPagePath = (data, currentQuery, currentPath) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":3},`);
 
   if (!data.paging || !data.paging.cursors) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getNextPagePath"},');
@@ -105,12 +105,12 @@ exports.getNextPagePath = (data, currentQuery, currentPath) => {
 
 };
 exports.sortImages = images => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.sortImages","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.sortImages","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sortImages"},');
 
   return images.slice().sort((a, b) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.images.slice.sort","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.images.slice.sort","fileName":"/packages/@uppy/companion/lib/server/provider/facebook/adapter.js","paramsNumber":2},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.images.slice.sort"},');
 

@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const {h} = require('preact');
 const circleLength = 2 * Math.PI * 15;
 module.exports = function PauseResumeCancelIcon(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/dashboard/src/components/FileItem/FileProgress/PauseResumeCancelIcon.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 

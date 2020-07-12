@@ -4,11 +4,11 @@ const getSocketHost = require('./getSocketHost');
 describe('getSocketHost', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "getSocketHost", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "getSocketHost", "fileName": "/packages/@uppy/utils/src/getSocketHost.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/getSocketHost.test.js", "calls" : [`);
   });
 
   it('should get the host from the specified url', () => {

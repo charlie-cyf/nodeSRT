@@ -4,7 +4,7 @@ var _require = require('preact'),
     h = _require.h;
 
 var Breadcrumb = function Breadcrumb(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"Breadcrumb\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"Breadcrumb\",\"fileName\":\"/packages/@uppy/provider-views/src/Breadcrumbs.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"Breadcrumb"},');
   return h("span", null, h("button", {
     type: "button",
@@ -15,19 +15,19 @@ var Breadcrumb = function Breadcrumb(props) {
 };
 
 module.exports = function (props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/provider-views/src/Breadcrumbs.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return h("div", {
     class: "uppy-Provider-breadcrumbs"
   }, h("div", {
     class: "uppy-Provider-breadcrumbsIcon"
   }, props.breadcrumbsIcon), props.directories.map(function (directory, i) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.props.directories.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.props.directories.map\",\"fileName\":\"/packages/@uppy/provider-views/src/Breadcrumbs.js\",\"paramsNumber\":2},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.props.directories.map"},');
     return h(Breadcrumb, {
       key: directory.id,
       getFolder: function getFolder() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"emptyKey\",\"fileName\":\"/packages/@uppy/provider-views/src/Breadcrumbs.js\",\"paramsNumber\":0},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
         return props.getFolder(directory.id);
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');

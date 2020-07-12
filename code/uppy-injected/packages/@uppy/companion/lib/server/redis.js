@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const redis = require('redis');
 let redisClient;
 module.exports.client = opts => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.client","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.client","fileName":"/packages/@uppy/companion/lib/server/redis.js","paramsNumber":1},`);
 
   if (!opts) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.client"},');

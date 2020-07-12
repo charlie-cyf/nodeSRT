@@ -24,13 +24,13 @@ var StatusBar = /*#__PURE__*/function (_React$Component) {
   var _proto = StatusBar.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"/packages/@uppy/react/src/StatusBar.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\"}},");
     this.installPlugin();
     SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidUpdate\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidUpdate\",\"fileName\":\"/packages/@uppy/react/src/StatusBar.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\"}},");
 
     if (prevProps.uppy !== this.props.uppy) {
       this.uninstallPlugin(prevProps);
@@ -41,13 +41,13 @@ var StatusBar = /*#__PURE__*/function (_React$Component) {
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"/packages/@uppy/react/src/StatusBar.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\"}},");
     this.uninstallPlugin();
     SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
   };
 
   _proto.installPlugin = function installPlugin() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"installPlugin\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"installPlugin\",\"fileName\":\"/packages/@uppy/react/src/StatusBar.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\"}},");
     var uppy = this.props.uppy;
 
     var options = _extends({
@@ -67,7 +67,7 @@ var StatusBar = /*#__PURE__*/function (_React$Component) {
       props = this.props;
     }
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstallPlugin\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstallPlugin\",\"fileName\":\"/packages/@uppy/react/src/StatusBar.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\"}},");
     var uppy = props.uppy;
     uppy.removePlugin(this.plugin);
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstallPlugin"},');
@@ -76,11 +76,11 @@ var StatusBar = /*#__PURE__*/function (_React$Component) {
   _proto.render = function render() {
     var _this = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/react/src/StatusBar.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return h('div', {
       ref: function ref(container) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.h.ref\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.h.ref\",\"fileName\":\"/packages/@uppy/react/src/StatusBar.js\",\"paramsNumber\":1},");
         _this.container = container;
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.h.ref"},');
       }

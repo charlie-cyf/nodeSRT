@@ -3,15 +3,15 @@ const SRTlib = require('SRT-util');
 const fs = require('fs');
 class MockPurest {
   constructor(opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MockPurest"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion/test/__mocks__/purest.js","paramsNumber":1,"classInfo":{"className":"MockPurest"}},`);
 
     const methodsToMock = ['query', 'select', 'where', 'qs', 'auth', 'json'];
     const httpMethodsToMock = ['get', 'put', 'post', 'options', 'head'];
     methodsToMock.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"methodsToMock.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"methodsToMock.forEach","fileName":"/packages/@uppy/companion/test/__mocks__/purest.js","paramsNumber":1},`);
 
       this[item] = () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item","fileName":"/packages/@uppy/companion/test/__mocks__/purest.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"item"},');
 
@@ -23,10 +23,10 @@ class MockPurest {
 
     });
     httpMethodsToMock.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"httpMethodsToMock.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"httpMethodsToMock.forEach","fileName":"/packages/@uppy/companion/test/__mocks__/purest.js","paramsNumber":1},`);
 
       this[item] = url => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item###2","fileName":"/packages/@uppy/companion/test/__mocks__/purest.js","paramsNumber":1},`);
 
         this._requestUrl = url;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"item###2"},');
@@ -43,7 +43,7 @@ class MockPurest {
 
   }
   request(done) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"request","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"MockPurest"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"request","fileName":"/packages/@uppy/companion/test/__mocks__/purest.js","paramsNumber":1,"classInfo":{"className":"MockPurest"}},`);
 
     if (typeof done === 'function') {
       const responses = {
@@ -100,7 +100,7 @@ class MockPurest {
 
   }
   on(evt, cb) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"MockPurest"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"/packages/@uppy/companion/test/__mocks__/purest.js","paramsNumber":2,"classInfo":{"className":"MockPurest"}},`);
 
     if (evt === 'response') {
       cb(fs.createReadStream('./README.md'));
@@ -113,12 +113,12 @@ class MockPurest {
   }
 }
 module.exports = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/companion/test/__mocks__/purest.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
   return options => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/companion/test/__mocks__/purest.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 

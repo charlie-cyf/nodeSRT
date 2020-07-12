@@ -5,11 +5,11 @@ const testData = [[2, '2 B'], [9, '9 B'], [25, '25 B'], [235, '235 B'], [2335, '
 describe('prettyBytes', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "prettyBytes", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "prettyBytes", "fileName": "/packages/@uppy/utils/src/prettyBytes.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/prettyBytes.test.js", "calls" : [`);
   });
 
   it('should convert the specified number of bytes to a human-readable string like 236 MB', () => {

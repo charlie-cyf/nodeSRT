@@ -136,7 +136,7 @@ hr_HR.strings = {
 };
 
 hr_HR.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"hr_HR.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"hr_HR.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/hr_HR.js\",\"paramsNumber\":1},");
 
   if (n === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"hr_HR.pluralize"},');

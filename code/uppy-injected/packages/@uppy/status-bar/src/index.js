@@ -9,7 +9,7 @@ const getBytesRemaining = require('@uppy/utils/lib/getBytesRemaining');
 module.exports = class StatusBar extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":2,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.id = this.opts.id || 'StatusBar';
@@ -66,7 +66,7 @@ module.exports = class StatusBar extends Plugin {
 
   }
   setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
 
     super.setOptions(newOpts);
     this.i18nInit();
@@ -74,7 +74,7 @@ module.exports = class StatusBar extends Plugin {
 
   }
   i18nInit() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":0,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
 
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
@@ -83,11 +83,11 @@ module.exports = class StatusBar extends Plugin {
 
   }
   getTotalSpeed(files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getTotalSpeed","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getTotalSpeed","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
 
     let totalSpeed = 0;
     files.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.forEach","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
       totalSpeed = totalSpeed + getSpeed(file.progress);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.files.forEach"},');
@@ -100,7 +100,7 @@ module.exports = class StatusBar extends Plugin {
 
   }
   getTotalETA(files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getTotalETA","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getTotalETA","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
 
     const totalSpeed = this.getTotalSpeed(files);
     if (totalSpeed === 0) {
@@ -109,7 +109,7 @@ module.exports = class StatusBar extends Plugin {
       return 0;
     }
     const totalBytesRemaining = files.reduce((total, file) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.totalBytesRemaining.files.reduce","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.totalBytesRemaining.files.reduce","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":2},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.totalBytesRemaining.files.reduce"},');
 
@@ -124,12 +124,12 @@ module.exports = class StatusBar extends Plugin {
 
   }
   startUpload = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 
     return this.uppy.upload().catch(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.uppy.upload.catch","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.uppy.upload.catch","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.uppy.upload.catch"},');
 
@@ -138,7 +138,7 @@ module.exports = class StatusBar extends Plugin {
 
   }
   getUploadingState(isAllErrored, isAllComplete, files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUploadingState","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getUploadingState","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":3,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
 
     if (isAllErrored) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadingState"},');
@@ -173,11 +173,11 @@ module.exports = class StatusBar extends Plugin {
 
   }
   render(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
 
     const {capabilities, files, allowNewUpload, totalProgress, error} = state;
     const filesArray = Object.keys(files).map(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.filesArray.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.filesArray.Object.keys.map","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.filesArray.Object.keys.map"},');
 
@@ -186,7 +186,7 @@ module.exports = class StatusBar extends Plugin {
 
     });
     const newFiles = filesArray.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.newFiles.filesArray.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.newFiles.filesArray.filter","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.newFiles.filesArray.filter"},');
 
@@ -195,7 +195,7 @@ module.exports = class StatusBar extends Plugin {
 
     });
     const uploadStartedFiles = filesArray.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploadStartedFiles.filesArray.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploadStartedFiles.filesArray.filter","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploadStartedFiles.filesArray.filter"},');
 
@@ -204,7 +204,7 @@ module.exports = class StatusBar extends Plugin {
 
     });
     const pausedFiles = uploadStartedFiles.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.pausedFiles.uploadStartedFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.pausedFiles.uploadStartedFiles.filter","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.pausedFiles.uploadStartedFiles.filter"},');
 
@@ -213,7 +213,7 @@ module.exports = class StatusBar extends Plugin {
 
     });
     const completeFiles = filesArray.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.completeFiles.filesArray.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.completeFiles.filesArray.filter","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.completeFiles.filesArray.filter"},');
 
@@ -222,7 +222,7 @@ module.exports = class StatusBar extends Plugin {
 
     });
     const erroredFiles = filesArray.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.erroredFiles.filesArray.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.erroredFiles.filesArray.filter","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.erroredFiles.filesArray.filter"},');
 
@@ -231,7 +231,7 @@ module.exports = class StatusBar extends Plugin {
 
     });
     const inProgressFiles = filesArray.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.inProgressFiles.filesArray.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.inProgressFiles.filesArray.filter","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.inProgressFiles.filesArray.filter"},');
 
@@ -240,7 +240,7 @@ module.exports = class StatusBar extends Plugin {
 
     });
     const inProgressNotPausedFiles = inProgressFiles.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.inProgressNotPausedFiles.inProgressFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.inProgressNotPausedFiles.inProgressFiles.filter","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.inProgressNotPausedFiles.inProgressFiles.filter"},');
 
@@ -249,7 +249,7 @@ module.exports = class StatusBar extends Plugin {
 
     });
     const startedFiles = filesArray.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.startedFiles.filesArray.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.startedFiles.filesArray.filter","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.startedFiles.filesArray.filter"},');
 
@@ -258,7 +258,7 @@ module.exports = class StatusBar extends Plugin {
 
     });
     const processingFiles = filesArray.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.processingFiles.filesArray.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.processingFiles.filesArray.filter","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.processingFiles.filesArray.filter"},');
 
@@ -270,7 +270,7 @@ module.exports = class StatusBar extends Plugin {
     let totalSize = 0;
     let totalUploadedSize = 0;
     startedFiles.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.startedFiles.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.startedFiles.forEach","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":1},`);
 
       totalSize = totalSize + (file.progress.bytesTotal || 0);
       totalUploadedSize = totalUploadedSize + (file.progress.bytesUploaded || 0);
@@ -323,7 +323,7 @@ module.exports = class StatusBar extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":0,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
 
     const target = this.opts.target;
     if (target) {
@@ -333,7 +333,7 @@ module.exports = class StatusBar extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/status-bar/src/index.js","paramsNumber":0,"classInfo":{"className":"StatusBar","superClass":"Plugin"}},`);
 
     this.unmount();
         SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');

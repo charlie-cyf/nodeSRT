@@ -10,14 +10,14 @@ var exorcist = require('exorcist');
 var glob = require('glob');
 var path = require('path');
 function handleErr(err) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleErr","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleErr","fileName":"/bin/build-bundle.js","paramsNumber":1},`);
 
   console.error(chalk.red('✗ Error:'), chalk.red(err.message));
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleErr","paramsNumber":1},');
 
 }
 function buildBundle(srcFile, bundleFile, {minify = false, standalone = ''} = {}) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildBundle","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildBundle","fileName":"/bin/build-bundle.js","paramsNumber":3},`);
 
   var b = browserify(srcFile, {
     debug: true,
@@ -31,10 +31,10 @@ function buildBundle(srcFile, bundleFile, {minify = false, standalone = ''} = {}
     SRTlib.send('{"type":"FUNCTIONEND","function":"buildBundle"},');
 
   return new Promise(function (resolve, reject) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"/bin/build-bundle.js","paramsNumber":2},`);
 
     b.bundle().pipe(exorcist(bundleFile + '.map')).pipe(fs.createWriteStream(bundleFile), 'utf8').on('error', handleErr).on('finish', function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression.b.bundle.pipe.pipe.on.on","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression.b.bundle.pipe.pipe.on.on","fileName":"/bin/build-bundle.js","paramsNumber":0},`);
 
       if (minify) {
         console.info(chalk.green(`✓ Built Minified Bundle [${standalone}]:`), chalk.magenta(bundleFile));
@@ -67,7 +67,7 @@ const methods = [buildBundle('./packages/uppy/bundle.js', './packages/uppy/dist/
 })];
 const localePackagePath = path.join(__dirname, '..', 'packages', '@uppy', 'locales', 'src', '*.js');
 glob.sync(localePackagePath).forEach(localePath => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob.sync.forEach","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob.sync.forEach","fileName":"/bin/build-bundle.js","paramsNumber":1},`);
 
   const localeName = path.basename(localePath, '.js');
   methods.push(buildBundle(`./packages/@uppy/locales/src/${localeName}.js`, `./packages/@uppy/locales/dist/${localeName}.min.js`, {
@@ -77,7 +77,7 @@ glob.sync(localePackagePath).forEach(localePath => {
 
 });
 Promise.all(methods).then(function () {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then","fileName":"/bin/build-bundle.js","paramsNumber":0},`);
 
   console.info(chalk.yellow('✓ JS bundles 🎉'));
     SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.all.then"},');

@@ -135,7 +135,7 @@ tr_TR.strings = {
   openFolderNamed: 'Açık dosya %{name}'
 };
 tr_TR.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tr_TR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tr_TR.pluralize","fileName":"/packages/@uppy/locales/src/tr_TR.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"tr_TR.pluralize"},');

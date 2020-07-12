@@ -7,7 +7,7 @@ import truncateString from '@uppy/dashboard/lib/utils/truncateString.js';
 import renderStringFromJSX from 'preact-render-to-string';
 import SvgUri from 'react-native-svg-uri';
 function FileIcon() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FileIcon","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FileIcon","fileName":"/examples/react-native-expo/FileList.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"FileIcon"},');
 
@@ -18,7 +18,7 @@ function FileIcon() {
 
 }
 function UppyDashboardFileIcon(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UppyDashboardFileIcon","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UppyDashboardFileIcon","fileName":"/examples/react-native-expo/FileList.js","paramsNumber":1},`);
 
   const icon = renderStringFromJSX(getFileTypeIcon(props.type).icon);
   if (!icon) {
@@ -39,11 +39,11 @@ function UppyDashboardFileIcon(props) {
 
 }
 export default function FileList(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FileList","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FileList","fileName":"/examples/react-native-expo/FileList.js","paramsNumber":1},`);
 
   const uppyFiles = props.uppy.state.files;
   const uppyFilesArray = Object.keys(uppyFiles).map(id => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyFilesArray.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyFilesArray.Object.keys.map","fileName":"/examples/react-native-expo/FileList.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"uppyFilesArray.Object.keys.map"},');
 
@@ -55,7 +55,7 @@ export default function FileList(props) {
 
   return <View style={styles.container}>
       <FlatList data={uppyFilesArray} keyExtractor={(item, index) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/examples/react-native-expo/FileList.js","paramsNumber":2},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
@@ -63,7 +63,7 @@ export default function FileList(props) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
   }} numColumns={2} renderItem={({item}) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"/examples/react-native-expo/FileList.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 

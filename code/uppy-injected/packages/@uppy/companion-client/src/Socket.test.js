@@ -4,14 +4,14 @@ const UppySocket = require('./Socket');
 describe('Socket', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Socket", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Socket", "fileName": "/packages/@uppy/companion-client/src/Socket.test.js", "calls" : [`);
   });
 
   let webSocketConstructorSpy;
   let webSocketCloseSpy;
   let webSocketSendSpy;
   beforeEach(() => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/companion-client/src/Socket.test.js", "calls" : [`);
 
     webSocketConstructorSpy = jest.fn();
     webSocketCloseSpy = jest.fn();

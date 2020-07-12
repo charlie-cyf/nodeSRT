@@ -12,13 +12,13 @@ const browserify = require('browserify');
 const watchify = require('watchify');
 const bresolve = require('browser-resolve');
 function useSourcePackages(b) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"useSourcePackages","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"useSourcePackages","fileName":"/website/build-examples.js","paramsNumber":1},`);
 
   b._bresolve = (id, opts, cb) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"b._bresolve","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"b._bresolve","fileName":"/website/build-examples.js","paramsNumber":3},`);
 
     bresolve(id, opts, (err, result, pkg) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bresolve","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bresolve","fileName":"/website/build-examples.js","paramsNumber":3},`);
 
       if (err) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"bresolve"},');
@@ -53,7 +53,7 @@ if (!watchifyEnabled && process.argv[2]) {
   }
 }
 glob(srcPattern, (err, files) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"glob","fileName":"/website/build-examples.js","paramsNumber":2},`);
 
   if (err) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"glob"},');
@@ -65,7 +65,7 @@ glob(srcPattern, (err, files) => {
   }
   const muted = new Set();
   files.forEach(file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"/website/build-examples.js","paramsNumber":1},`);
 
     const b = browserify(file, {
       cache: {},
@@ -81,7 +81,7 @@ glob(srcPattern, (err, files) => {
       }
     });
     b.on('update', bundle).on('error', onError).on('file', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"b.on.on.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"b.on.on.on","fileName":"/website/build-examples.js","paramsNumber":1},`);
 
       muted.delete(file);
             SRTlib.send('{"type":"FUNCTIONEND","function":"b.on.on.on"},');
@@ -89,10 +89,10 @@ glob(srcPattern, (err, files) => {
     });
     bundle();
     function bundle(ids = []) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"bundle","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"bundle","fileName":"/website/build-examples.js","paramsNumber":1},`);
 
       ids.forEach(id => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ids.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ids.forEach","fileName":"/website/build-examples.js","paramsNumber":1},`);
 
         if (!muted.has(id)) {
           console.info(chalk.cyan('change:'), path.relative(process.cwd(), id));
@@ -107,7 +107,7 @@ glob(srcPattern, (err, files) => {
       mkdirp.sync(parentDir);
       console.info(chalk.grey(`⏳ building: ${path.relative(process.cwd(), file)}`));
       b.bundle().on('error', onError).pipe(createStream(output)).on('finish', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"b.bundle.on.pipe.on","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"b.bundle.on.pipe.on","fileName":"/website/build-examples.js","paramsNumber":0},`);
 
         console.info(chalk.green(`✓ built: ${path.relative(process.cwd(), file)}`));
                 SRTlib.send('{"type":"FUNCTIONEND","function":"b.bundle.on.pipe.on"},');
@@ -123,7 +123,7 @@ glob(srcPattern, (err, files) => {
 
 });
 function onError(err) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onError","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onError","fileName":"/website/build-examples.js","paramsNumber":1},`);
 
   console.error(chalk.red('✗ error:'), chalk.red(err.message));
   notifier.notify({

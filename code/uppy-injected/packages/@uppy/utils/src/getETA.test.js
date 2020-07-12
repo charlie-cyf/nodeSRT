@@ -4,11 +4,11 @@ const getETA = require('./getETA');
 describe('getETA', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "getETA", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "getETA", "fileName": "/packages/@uppy/utils/src/getETA.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/getETA.test.js", "calls" : [`);
   });
 
   it('should get the ETA remaining based on a fileProgress object', () => {

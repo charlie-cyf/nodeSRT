@@ -4,11 +4,11 @@ const AssemblyOptions = require('./AssemblyOptions');
 describe('Transloadit/AssemblyOptions', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Transloadit/AssemblyOptions", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Transloadit/AssemblyOptions", "fileName": "/packages/@uppy/transloadit/src/AssemblyOptions.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/transloadit/src/AssemblyOptions.test.js", "calls" : [`);
   });
 
   it('Validates response from getAssemblyOptions()', async () => {

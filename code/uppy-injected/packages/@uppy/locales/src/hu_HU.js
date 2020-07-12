@@ -136,7 +136,7 @@ hu_HU.strings = {
   openFolderNamed: 'Nyitott mappa %{name}'
 };
 hu_HU.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"hu_HU.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"hu_HU.pluralize","fileName":"/packages/@uppy/locales/src/hu_HU.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"hu_HU.pluralize"},');
 

@@ -4,11 +4,11 @@ const isNetworkError = require('./isNetworkError');
 describe('isNetworkError', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "isNetworkError", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "isNetworkError", "fileName": "/packages/@uppy/utils/src/isNetworkError.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/isNetworkError.test.js", "calls" : [`);
   });
 
   it('should return true if the specified xhr object contains a network error', () => {

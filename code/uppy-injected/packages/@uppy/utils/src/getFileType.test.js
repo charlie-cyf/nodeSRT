@@ -4,11 +4,11 @@ const getFileType = require('./getFileType');
 describe('getFileType', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "getFileType", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "getFileType", "fileName": "/packages/@uppy/utils/src/getFileType.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/getFileType.test.js", "calls" : [`);
   });
 
   it('should trust the filetype if the file comes from a remote source', () => {

@@ -136,7 +136,7 @@ fa_IR.strings = {
 };
 
 fa_IR.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fa_IR.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fa_IR.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/fa_IR.js\",\"paramsNumber\":1},");
 
   if (n === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"fa_IR.pluralize"},');

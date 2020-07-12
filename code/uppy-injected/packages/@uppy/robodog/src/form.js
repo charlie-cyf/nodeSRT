@@ -14,7 +14,7 @@ const defaultLocaleStrings = {
   chooseFiles: 'Choose files'
 };
 function mergeDefaultLocale(defaults, userProvided = {}) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"mergeDefaultLocale","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"mergeDefaultLocale","fileName":"/packages/@uppy/robodog/src/form.js","paramsNumber":2},`);
 
   const strings = userProvided.strings || ({});
     SRTlib.send('{"type":"FUNCTIONEND","function":"mergeDefaultLocale"},');
@@ -30,7 +30,7 @@ function mergeDefaultLocale(defaults, userProvided = {}) {
 
 }
 function form(target, opts) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"form","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"form","fileName":"/packages/@uppy/robodog/src/form.js","paramsNumber":2},`);
 
   if (!opts) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"form"},');

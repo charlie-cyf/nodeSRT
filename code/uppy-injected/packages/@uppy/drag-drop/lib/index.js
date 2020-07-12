@@ -28,7 +28,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function DragDrop(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.type = 'acquirer';
     _this.id = _this.opts.id || 'DragDrop';
@@ -65,7 +65,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = DragDrop.prototype;
 
   _proto.setOptions = function setOptions(newOpts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
 
     _Plugin.prototype.setOptions.call(this, newOpts);
 
@@ -74,7 +74,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.i18nInit = function i18nInit() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
@@ -85,9 +85,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.addFiles = function addFiles(files) {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addFiles\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addFiles\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     var descriptors = files.map(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.descriptors.files.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.descriptors.files.map\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.descriptors.files.map"},');
       return {
         source: _this2.id,
@@ -111,7 +111,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.onInputChange = function onInputChange(event) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onInputChange\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onInputChange\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     this.uppy.log('[DragDrop] Files selected through input');
     var files = toArray(event.target.files);
     this.addFiles(files);
@@ -122,7 +122,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.handleDrop = function handleDrop(event, dropCategory) {
     var _this3 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleDrop\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleDrop\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     event.preventDefault();
     event.stopPropagation();
     clearTimeout(this.removeDragOverClassTimeout);
@@ -132,7 +132,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     this.uppy.log('[DragDrop] Files were dropped');
 
     var logDropError = function logDropError(error) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"logDropError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"logDropError\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1},");
 
       _this3.uppy.log(error, 'error');
 
@@ -142,7 +142,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     getDroppedFiles(event.dataTransfer, {
       logDropError: logDropError
     }).then(function (files) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getDroppedFiles.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getDroppedFiles.then\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDroppedFiles.then"},');
       return _this3.addFiles(files);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getDroppedFiles.then"},');
@@ -151,7 +151,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.handleDragOver = function handleDragOver(event) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleDragOver\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleDragOver\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     event.preventDefault();
     event.stopPropagation();
     event.dataTransfer.dropEffect = 'copy';
@@ -165,12 +165,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.handleDragLeave = function handleDragLeave(event) {
     var _this4 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleDragLeave\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleDragLeave\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     event.preventDefault();
     event.stopPropagation();
     clearTimeout(this.removeDragOverClassTimeout);
     this.removeDragOverClassTimeout = setTimeout(function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.removeDragOverClassTimeout.setTimeout\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.removeDragOverClassTimeout.setTimeout\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":0},");
 
       _this4.setPluginState({
         isDraggingOver: false
@@ -184,7 +184,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.renderHiddenFileInput = function renderHiddenFileInput() {
     var _this5 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderHiddenFileInput\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderHiddenFileInput\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     var restrictions = this.uppy.opts.restrictions;
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderHiddenFileInput"},');
     return h("input", {
@@ -193,7 +193,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       tabindex: -1,
       focusable: "false",
       ref: function ref(_ref) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1},");
         _this5.fileInputRef = _ref;
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
       },
@@ -206,7 +206,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.renderArrowSvg = function renderArrowSvg() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderArrowSvg\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderArrowSvg\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderArrowSvg"},');
     return h("svg", {
       "aria-hidden": "true",
@@ -223,7 +223,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.renderLabel = function renderLabel() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderLabel\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderLabel\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderLabel"},');
     return h("div", {
       class: "uppy-DragDrop-label"
@@ -236,7 +236,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.renderNote = function renderNote() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderNote\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderNote\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderNote"},');
     return h("span", {
       class: "uppy-DragDrop-note"
@@ -247,7 +247,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.render = function render(state) {
     var _this6 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     var dragDropClass = "\n      uppy-Root\n      uppy-u-reset\n      uppy-DragDrop-container\n      " + (this.isDragDropSupported ? 'uppy-DragDrop--is-dragdrop-supported' : '') + "\n      " + (this.getPluginState().isDraggingOver ? 'uppy-DragDrop--isDraggingOver' : '') + "\n    ";
     var dragDropStyle = {
       width: this.opts.width,
@@ -259,7 +259,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       class: dragDropClass,
       style: dragDropStyle,
       onClick: function onClick() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement###2\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":0},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
         return _this6.fileInputRef.click();
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement###2"},');
@@ -274,7 +274,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     this.setPluginState({
       isDraggingOver: false
     });
@@ -288,7 +288,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/drag-drop/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"DragDrop\",\"superClass\":\"Plugin\"}},");
     this.unmount();
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
   };

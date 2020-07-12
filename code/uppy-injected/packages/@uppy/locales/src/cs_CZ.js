@@ -136,7 +136,7 @@ cs_CZ.strings = {
   }
 };
 cs_CZ.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cs_CZ.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"cs_CZ.pluralize","fileName":"/packages/@uppy/locales/src/cs_CZ.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"cs_CZ.pluralize"},');

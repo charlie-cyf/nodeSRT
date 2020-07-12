@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 exports.finishUploadTest = async browser => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.finishUploadTest","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.finishUploadTest","fileName":"/test/endtoend/providers/helper.js","paramsNumber":1},`);
 
   await browser.switchWindow(/localhost/);
   const fileItem = await browser.$('.uppy-ProviderBrowser-list li.uppy-ProviderBrowserItem:last-child button');
@@ -15,7 +15,7 @@ exports.finishUploadTest = async browser => {
 
 };
 exports.startUploadTest = async (browser, providerName, tabMatch) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.startUploadTest","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.startUploadTest","fileName":"/test/endtoend/providers/helper.js","paramsNumber":3},`);
 
   const providerButton = await browser.$(`.uppy-DashboardTab-btn[aria-controls=uppy-DashboardContent-panel--${providerName}]`);
   await providerButton.click();
@@ -29,7 +29,7 @@ exports.startUploadTest = async (browser, providerName, tabMatch) => {
 
 };
 exports.uploadWithRetry = async (browser, providerName, testURL) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.uploadWithRetry","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.uploadWithRetry","fileName":"/test/endtoend/providers/helper.js","paramsNumber":3},`);
 
   await browser.url(testURL + '?socketerr=true');
   const providerButton = await browser.$(`.uppy-DashboardTab-btn[aria-controls=uppy-DashboardContent-panel--${providerName}]`);

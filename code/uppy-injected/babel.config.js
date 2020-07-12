@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 module.exports = api => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/babel.config.js","paramsNumber":1},`);
 
   const targets = {};
   if (api.env('test')) {

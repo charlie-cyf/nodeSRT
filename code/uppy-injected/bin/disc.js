@@ -9,7 +9,7 @@ const minify = require('minify-stream');
 const disc = require('disc');
 const outputPath = path.join(__dirname, '../website/src/disc.html');
 function minifyify(filename) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"minifyify","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"minifyify","fileName":"/bin/disc.js","paramsNumber":1},`);
 
   if (filename.endsWith('.js')) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"minifyify"},');
@@ -37,7 +37,7 @@ bundler.transform(minifyify, {
   global: true
 });
 bundler.bundle().pipe(disc()).pipe(prepend('---\nlayout: false\n---\n')).pipe(fs.createWriteStream(outputPath)).on('error', err => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bundler.bundle.pipe.pipe.pipe.on","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"bundler.bundle.pipe.pipe.pipe.on","fileName":"/bin/disc.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"bundler.bundle.pipe.pipe.pipe.on"},');
 
@@ -46,7 +46,7 @@ bundler.bundle().pipe(disc()).pipe(prepend('---\nlayout: false\n---\n')).pipe(fs
 
 });
 function prepend(text) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prepend","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prepend","fileName":"/bin/disc.js","paramsNumber":1},`);
 
   const stream = new PassThrough();
   stream.write(text);

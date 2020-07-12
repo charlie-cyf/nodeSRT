@@ -5,11 +5,11 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 describe('RateLimitedQueue', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "RateLimitedQueue", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "RateLimitedQueue", "fileName": "/packages/@uppy/utils/src/RateLimitedQueue.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/RateLimitedQueue.test.js", "calls" : [`);
   });
 
   let pending = 0;

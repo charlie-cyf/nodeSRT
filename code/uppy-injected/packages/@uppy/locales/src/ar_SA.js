@@ -135,7 +135,7 @@ ar_SA.strings = {
   openFolderNamed: 'افتح المجلد %{name}'
 };
 ar_SA.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ar_SA.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ar_SA.pluralize","fileName":"/packages/@uppy/locales/src/ar_SA.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"ar_SA.pluralize"},');

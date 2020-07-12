@@ -7,14 +7,14 @@ const {h} = require('preact');
 module.exports = class Facebook extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/facebook/src/index.js","paramsNumber":2,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.id = this.opts.id || 'Facebook';
     Provider.initPlugin(this, opts);
     this.title = this.opts.title || 'Facebook';
     this.icon = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.icon","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.icon","fileName":"/packages/@uppy/facebook/src/index.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.icon"},');
 
@@ -39,7 +39,7 @@ module.exports = class Facebook extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/facebook/src/index.js","paramsNumber":0,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
 
     this.view = new ProviderViews(this, {
       provider: this.provider
@@ -61,7 +61,7 @@ module.exports = class Facebook extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/facebook/src/index.js","paramsNumber":0,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
 
     this.view.tearDown();
     this.unmount();
@@ -69,7 +69,7 @@ module.exports = class Facebook extends Plugin {
 
   }
   onFirstRender() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onFirstRender","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onFirstRender","fileName":"/packages/@uppy/facebook/src/index.js","paramsNumber":0,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"onFirstRender"},');
 
@@ -78,7 +78,7 @@ module.exports = class Facebook extends Plugin {
 
   }
   render(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/facebook/src/index.js","paramsNumber":1,"classInfo":{"className":"Facebook","superClass":"Plugin"}},`);
 
     const viewOptions = {};
     if (this.getPluginState().files.length && !this.getPluginState().folders.length) {

@@ -21,7 +21,7 @@ const PROTOCOLS = Object.freeze({
 });
 class Uploader {
   constructor(options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     if (!this.validateOptions(options)) {
       logger.debug(this._errRespMessage, 'uploader.validator.fail');
@@ -41,7 +41,7 @@ class Uploader {
     this.writeStream = fs.createWriteStream(this.path, {
       mode: 0o666
     }).on('error', err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.fs.createWriteStream.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.fs.createWriteStream.on","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.fs.createWriteStream.on"},');
 
@@ -54,7 +54,7 @@ class Uploader {
     this._paused = false;
     if (this.options.protocol === PROTOCOLS.tus) {
       emitter().on(`pause:${this.token}`, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0},`);
 
         this._paused = true;
         if (this.tus) {
@@ -64,7 +64,7 @@ class Uploader {
 
       });
       emitter().on(`resume:${this.token}`, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on###2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on###2","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0},`);
 
         this._paused = false;
         if (this.tus) {
@@ -74,7 +74,7 @@ class Uploader {
 
       });
       emitter().on(`cancel:${this.token}`, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on###3","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.on###3","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0},`);
 
         this._paused = true;
         if (this.tus) {
@@ -90,7 +90,7 @@ class Uploader {
 
   }
   static shortenToken(token) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shortenToken","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shortenToken","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"shortenToken"},');
 
@@ -99,7 +99,7 @@ class Uploader {
 
   }
   static reqToOptions(req, size) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"reqToOptions","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"reqToOptions","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     const useFormDataIsSet = Object.prototype.hasOwnProperty.call(req.body, 'useFormData');
     const useFormData = useFormDataIsSet ? req.body.useFormData : true;
@@ -127,7 +127,7 @@ class Uploader {
 
   }
   get bytesWritten() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"bytesWritten","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"bytesWritten","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"bytesWritten"},');
 
@@ -136,7 +136,7 @@ class Uploader {
 
   }
   validateOptions(options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validateOptions","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     if (options.httpMethod) {
       if (typeof options.httpMethod !== 'string') {
@@ -172,7 +172,7 @@ class Uploader {
       return false;
     }
     if (options.protocol && !Object.keys(PROTOCOLS).some(key => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.some","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.some","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.some"},');
 
@@ -203,7 +203,7 @@ class Uploader {
         SRTlib.send('{"type":"FUNCTIONEND","function":"validateOptions"},');
 
     return [options.endpoint, options.uploadUrl].every(url => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.every","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.every","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1},`);
 
       if (url && !validator.isURL(url, validatorOpts)) {
         this._errRespMessage = 'invalid destination url';
@@ -228,7 +228,7 @@ class Uploader {
 
   }
   hasError() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"hasError","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"hasError","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"hasError"},');
 
@@ -237,7 +237,7 @@ class Uploader {
 
   }
   get shortToken() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shortToken","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shortToken","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"shortToken"},');
 
@@ -246,10 +246,10 @@ class Uploader {
 
   }
   onSocketReady(callback) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onSocketReady","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onSocketReady","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     emitter().once(`connection:${this.token}`, () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.once","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emitter.once","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"emitter.once"},');
 
@@ -262,10 +262,10 @@ class Uploader {
 
   }
   cleanUp() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanUp","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanUp","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     fs.unlink(this.path, err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fs.unlink","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fs.unlink","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1},`);
 
       if (err) {
         logger.error(`cleanup failed for: ${this.path} err: ${err}`, 'uploader.cleanup.error');
@@ -281,7 +281,7 @@ class Uploader {
 
   }
   handleChunk(err, chunk) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleChunk","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleChunk","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     if (this.uploadStopped) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"handleChunk"},');
@@ -299,7 +299,7 @@ class Uploader {
     const protocol = this.options.protocol || PROTOCOLS.multipart;
     if (chunk === null) {
       this.writeStream.on('finish', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.on","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.on","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0},`);
 
         this.streamsEnded = true;
         switch (protocol) {
@@ -331,7 +331,7 @@ class Uploader {
       return this.endStreams();
     }
     this.writeStream.write(chunk, () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.write","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"writeStream.write","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0},`);
 
       logger.debug(`${this.bytesWritten} bytes`, 'uploader.download.progress', this.shortToken);
             SRTlib.send('{"type":"FUNCTIONEND","function":"writeStream.write"},');
@@ -344,12 +344,12 @@ class Uploader {
 
   }
   writeToStreams(chunk, cb) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"writeToStreams","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"writeToStreams","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     const done = [];
     const doneLength = this.duplexStream ? 2 : 1;
     const onDone = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onDone","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onDone","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0},`);
 
       done.push(true);
       if (done.length >= doneLength) {
@@ -366,7 +366,7 @@ class Uploader {
 
   }
   endStreams() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"endStreams","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"endStreams","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     this.writeStream.end();
     if (this.duplexStream) {
@@ -376,7 +376,7 @@ class Uploader {
 
   }
   getResponse() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getResponse","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getResponse","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     if (this._errRespMessage) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"getResponse"},');
@@ -400,7 +400,7 @@ class Uploader {
 
   }
   saveState(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"saveState","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"saveState","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     if (!this.storage) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"saveState"},');
@@ -412,7 +412,7 @@ class Uploader {
 
   }
   emitIllusiveProgress(bytesUploaded = 0) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitIllusiveProgress","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitIllusiveProgress","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     if (this._paused) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"emitIllusiveProgress"},');
@@ -430,7 +430,7 @@ class Uploader {
 
   }
   emitProgress(bytesUploaded, bytesTotal) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitProgress","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitProgress","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     bytesTotal = bytesTotal || this.options.size;
     if (this.tus && this.tus.options.uploadLengthDeferred && this.streamsEnded) {
@@ -457,7 +457,7 @@ class Uploader {
 
   }
   emitSuccess(url, extraData = {}) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitSuccess","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitSuccess","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     const emitData = {
       action: 'success',
@@ -472,7 +472,7 @@ class Uploader {
 
   }
   emitError(err, extraData = {}) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitError","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitError","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":2,"classInfo":{"className":"Uploader"}},`);
 
     const serializedErr = serializeError(err);
     delete serializedErr.stack;
@@ -488,7 +488,7 @@ class Uploader {
 
   }
   uploadTus() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadTus","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadTus","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     const file = fs.createReadStream(this.path);
     const uploader = this;
@@ -504,7 +504,7 @@ class Uploader {
         filetype: this.options.metadata.type
       }, this.options.metadata),
       onError(error) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onError","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onError","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1},`);
 
         logger.error(error, 'uploader.tus.error');
         uploader.emitError(error);
@@ -512,14 +512,14 @@ class Uploader {
 
       },
       onProgress(bytesUploaded, bytesTotal) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onProgress","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onProgress","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":2},`);
 
         uploader.emitIllusiveProgress(bytesUploaded);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"tus.NewExpression.onProgress"},');
 
       },
       onSuccess() {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onSuccess","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"tus.NewExpression.onSuccess","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0},`);
 
         uploader.emitSuccess(uploader.tus.url);
         uploader.cleanUp();
@@ -534,12 +534,12 @@ class Uploader {
 
   }
   uploadMultipart() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadMultipart","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadMultipart","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     const file = fs.createReadStream(this.path);
     let bytesUploaded = 0;
     file.on('data', data => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"file.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"file.on","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1},`);
 
       bytesUploaded += data.length;
       this.emitIllusiveProgress(bytesUploaded);
@@ -567,7 +567,7 @@ class Uploader {
       reqOptions.body = file;
     }
     request[httpMethod](reqOptions, (error, response, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.httpMethod","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.httpMethod","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":3},`);
 
       if (error) {
         logger.error(error, 'upload.multipart.error');
@@ -605,7 +605,7 @@ class Uploader {
 
   }
   uploadS3Multipart() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadS3Multipart","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadS3Multipart","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":0,"classInfo":{"className":"Uploader"}},`);
 
     const file = fs.createReadStream(this.path);
         SRTlib.send('{"type":"FUNCTIONEND","function":"uploadS3Multipart"},');
@@ -615,7 +615,7 @@ class Uploader {
 
   }
   _uploadS3MultipartStream(stream) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_uploadS3MultipartStream","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_uploadS3MultipartStream","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1,"classInfo":{"className":"Uploader"}},`);
 
     if (!this.options.s3) {
       this.emitError(new Error('The S3 client is not configured on this companion instance.'));
@@ -634,14 +634,14 @@ class Uploader {
     });
     this.s3Upload = upload;
     upload.on('httpUploadProgress', ({loaded, total}) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"upload.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"upload.on","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":1},`);
 
       this.emitProgress(loaded, total);
             SRTlib.send('{"type":"FUNCTIONEND","function":"upload.on"},');
 
     });
     upload.send((error, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"upload.send","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"upload.send","fileName":"/packages/@uppy/companion/lib/server/Uploader.js","paramsNumber":2},`);
 
       this.s3Upload = null;
       if (error) {

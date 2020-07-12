@@ -4,7 +4,7 @@ const toArray = require('@uppy/utils/lib/toArray');
 const getActiveOverlayEl = require('./getActiveOverlayEl');
 const FOCUSABLE_ELEMENTS = require('@uppy/utils/lib//FOCUSABLE_ELEMENTS');
 function focusOnFirstNode(event, nodes) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"focusOnFirstNode","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"focusOnFirstNode","fileName":"/packages/@uppy/dashboard/src/utils/trapFocus.js","paramsNumber":2},`);
 
   const node = nodes[0];
   if (node) {
@@ -15,7 +15,7 @@ function focusOnFirstNode(event, nodes) {
 
 }
 function focusOnLastNode(event, nodes) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"focusOnLastNode","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"focusOnLastNode","fileName":"/packages/@uppy/dashboard/src/utils/trapFocus.js","paramsNumber":2},`);
 
   const node = nodes[nodes.length - 1];
   if (node) {
@@ -26,7 +26,7 @@ function focusOnLastNode(event, nodes) {
 
 }
 function isFocusInOverlay(activeOverlayEl) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isFocusInOverlay","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isFocusInOverlay","fileName":"/packages/@uppy/dashboard/src/utils/trapFocus.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"isFocusInOverlay"},');
 
@@ -35,7 +35,7 @@ function isFocusInOverlay(activeOverlayEl) {
 
 }
 function trapFocus(event, activeOverlayType, dashboardEl) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"trapFocus","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"trapFocus","fileName":"/packages/@uppy/dashboard/src/utils/trapFocus.js","paramsNumber":3},`);
 
   const activeOverlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
   const focusableNodes = toArray(activeOverlayEl.querySelectorAll(FOCUSABLE_ELEMENTS));
@@ -52,14 +52,14 @@ function trapFocus(event, activeOverlayType, dashboardEl) {
 }
 module.exports = {
   forModal: (event, activeOverlayType, dashboardEl) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.forModal","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.forModal","fileName":"/packages/@uppy/dashboard/src/utils/trapFocus.js","paramsNumber":3},`);
 
     trapFocus(event, activeOverlayType, dashboardEl);
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.forModal"},');
 
   },
   forInline: (event, activeOverlayType, dashboardEl) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.forInline","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.forInline","fileName":"/packages/@uppy/dashboard/src/utils/trapFocus.js","paramsNumber":3},`);
 
     if (activeOverlayType === null) {} else {
       trapFocus(event, activeOverlayType, dashboardEl);

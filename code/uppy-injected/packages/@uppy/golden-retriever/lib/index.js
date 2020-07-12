@@ -23,7 +23,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function GoldenRetriever(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.type = 'debugger';
     _this.id = _this.opts.id || 'GoldenRetriever';
@@ -62,7 +62,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = GoldenRetriever.prototype;
 
   _proto.loadFilesStateFromLocalStorage = function loadFilesStateFromLocalStorage() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"loadFilesStateFromLocalStorage\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"loadFilesStateFromLocalStorage\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
     var savedState = this.MetaDataStore.load();
 
     if (savedState) {
@@ -78,10 +78,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.getWaitingFiles = function getWaitingFiles() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getWaitingFiles\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getWaitingFiles\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
     var waitingFiles = {};
     this.uppy.getFiles().forEach(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.getFiles.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.getFiles.forEach\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
       if (!file.progress || !file.progress.uploadStarted) {
         waitingFiles[file.id] = file;
@@ -97,7 +97,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.getUploadingFiles = function getUploadingFiles() {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getUploadingFiles\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getUploadingFiles\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
     var uploadingFiles = {};
 
     var _this$uppy$getState = this.uppy.getState(),
@@ -106,10 +106,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     if (currentUploads) {
       var uploadIDs = Object.keys(currentUploads);
       uploadIDs.forEach(function (uploadID) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploadIDs.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploadIDs.forEach\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
         var filesInUpload = currentUploads[uploadID].fileIDs;
         filesInUpload.forEach(function (fileID) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"filesInUpload.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"filesInUpload.forEach\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
           uploadingFiles[fileID] = _this2.uppy.getFile(fileID);
           SRTlib.send('{"type":"FUNCTIONEND","function":"filesInUpload.forEach"},');
         });
@@ -123,13 +123,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.saveFilesStateToLocalStorage = function saveFilesStateToLocalStorage() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"saveFilesStateToLocalStorage\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"saveFilesStateToLocalStorage\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
 
     var filesToSave = _extends(this.getWaitingFiles(), this.getUploadingFiles());
 
     var pluginData = {};
     this.uppy.emit('restore:get-data', function (data) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.emit\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.emit\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
       _extends(pluginData, data);
 
@@ -150,9 +150,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.loadFileBlobsFromServiceWorker = function loadFileBlobsFromServiceWorker() {
     var _this3 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"loadFileBlobsFromServiceWorker\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"loadFileBlobsFromServiceWorker\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
     this.ServiceWorkerStore.list().then(function (blobs) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
       var numberOfFilesRecovered = Object.keys(blobs).length;
 
       var numberOfFilesTryingToRecover = _this3.uppy.getFiles().length;
@@ -172,7 +172,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       return _this3.loadFileBlobsFromIndexedDB();
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ServiceWorkerStore.list.then.catch.ServiceWorkerStore.list.then"},');
     }).catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ServiceWorkerStore.list.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ServiceWorkerStore.list.then.catch\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
       _this3.uppy.log('[GoldenRetriever] Failed to recover blobs from Service Worker', 'warning');
 
@@ -186,9 +186,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.loadFileBlobsFromIndexedDB = function loadFileBlobsFromIndexedDB() {
     var _this4 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"loadFileBlobsFromIndexedDB\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"loadFileBlobsFromIndexedDB\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
     this.IndexedDBStore.list().then(function (blobs) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.IndexedDBStore.list.then.catch.IndexedDBStore.list.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.IndexedDBStore.list.then.catch.IndexedDBStore.list.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
       var numberOfFilesRecovered = Object.keys(blobs).length;
 
       if (numberOfFilesRecovered > 0) {
@@ -204,7 +204,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.IndexedDBStore.list.then.catch.IndexedDBStore.list.then"},');
     }).catch(function (err) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.IndexedDBStore.list.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.IndexedDBStore.list.then.catch\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
       _this4.uppy.log('[GoldenRetriever] Failed to recover blobs from IndexedDB', 'warning');
 
@@ -218,13 +218,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.onBlobsLoaded = function onBlobsLoaded(blobs) {
     var _this5 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onBlobsLoaded\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onBlobsLoaded\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
     var obsoleteBlobs = [];
 
     var updatedFiles = _extends({}, this.uppy.getState().files);
 
     Object.keys(blobs).forEach(function (fileID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Object.keys.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Object.keys.forEach\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
       var originalFile = _this5.uppy.getFile(fileID);
 
@@ -252,13 +252,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
     if (obsoleteBlobs.length) {
       this.deleteBlobs(obsoleteBlobs).then(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.deleteBlobs.then.catch.deleteBlobs.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.deleteBlobs.then.catch.deleteBlobs.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0},");
 
         _this5.uppy.log("[GoldenRetriever] Cleaned up " + obsoleteBlobs.length + " old files");
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.deleteBlobs.then.catch.deleteBlobs.then"},');
       }).catch(function (err) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.deleteBlobs.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.deleteBlobs.then.catch\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
         _this5.uppy.log("[GoldenRetriever] Could not clean up " + obsoleteBlobs.length + " old files", 'warning');
 
@@ -274,10 +274,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.deleteBlobs = function deleteBlobs(fileIDs) {
     var _this6 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"deleteBlobs\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"deleteBlobs\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
     var promises = [];
     fileIDs.forEach(function (id) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.fileIDs.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.fileIDs.forEach\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
       if (_this6.ServiceWorkerStore) {
         promises.push(_this6.ServiceWorkerStore.delete(id));
@@ -297,7 +297,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.install = function install() {
     var _this7 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoldenRetriever\",\"superClass\":\"Plugin\"}},");
     this.loadFilesStateFromLocalStorage();
 
     if (this.uppy.getFiles().length > 0) {
@@ -314,7 +314,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     }
 
     this.uppy.on('file-added', function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
       if (file.isRemote) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on"},');
@@ -323,7 +323,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       if (_this7.ServiceWorkerStore) {
         _this7.ServiceWorkerStore.put(file).catch(function (err) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ServiceWorkerStore.put.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ServiceWorkerStore.put.catch\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
           _this7.uppy.log('[GoldenRetriever] Could not store file', 'warning');
 
@@ -334,7 +334,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       }
 
       _this7.IndexedDBStore.put(file).catch(function (err) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"IndexedDBStore.put.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"IndexedDBStore.put.catch\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
         _this7.uppy.log('[GoldenRetriever] Could not store file', 'warning');
 
@@ -346,11 +346,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uppy.on"},');
     });
     this.uppy.on('file-removed', function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on###2\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
       if (_this7.ServiceWorkerStore) {
         _this7.ServiceWorkerStore.delete(file.id).catch(function (err) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ServiceWorkerStore.delete.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ServiceWorkerStore.delete.catch\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
           _this7.uppy.log('[GoldenRetriever] Failed to remove file', 'warning');
 
@@ -361,7 +361,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       }
 
       _this7.IndexedDBStore.delete(file.id).catch(function (err) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"IndexedDBStore.delete.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"IndexedDBStore.delete.catch\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
         _this7.uppy.log('[GoldenRetriever] Failed to remove file', 'warning');
 
@@ -374,22 +374,22 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     });
     this.uppy.on('complete', function (_ref) {
       var successful = _ref.successful;
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on###3\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
       var fileIDs = successful.map(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.successful.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"fileIDs.successful.map\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.successful.map"},');
         return file.id;
         SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.successful.map"},');
       });
 
       _this7.deleteBlobs(fileIDs).then(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"deleteBlobs.then.catch.deleteBlobs.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"deleteBlobs.then.catch.deleteBlobs.then\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0},");
 
         _this7.uppy.log("[GoldenRetriever] Removed " + successful.length + " files that finished uploading");
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"deleteBlobs.then.catch.deleteBlobs.then"},');
       }).catch(function (err) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"deleteBlobs.then.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"deleteBlobs.then.catch\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
         _this7.uppy.log("[GoldenRetriever] Could not remove " + successful.length + " files that finished uploading", 'warning');
 
@@ -402,14 +402,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     });
     this.uppy.on('state-update', this.saveFilesStateToLocalStorage);
     this.uppy.on('restored', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uppy.on###4\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":0},");
 
       var _this7$uppy$getState = _this7.uppy.getState(),
           currentUploads = _this7$uppy$getState.currentUploads;
 
       if (currentUploads) {
         Object.keys(currentUploads).forEach(function (uploadId) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Object.keys.forEach\",\"fileName\":\"/packages/@uppy/golden-retriever/src/index.js\",\"paramsNumber\":1},");
 
           _this7.uppy.restore(uploadId, currentUploads[uploadId]);
 

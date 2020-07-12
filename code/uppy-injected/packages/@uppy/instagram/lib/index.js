@@ -23,14 +23,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function Instagram(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/instagram/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.id = _this.opts.id || 'Instagram';
     Provider.initPlugin(_assertThisInitialized(_this), opts);
     _this.title = _this.opts.title || 'Instagram';
 
     _this.icon = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.icon\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.icon\",\"fileName\":\"/packages/@uppy/instagram/src/index.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.icon"},');
       return h("svg", {
         "aria-hidden": "true",
@@ -70,7 +70,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = Instagram.prototype;
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/instagram/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
     this.view = new ProviderViews(this, {
       provider: this.provider,
       viewType: 'grid',
@@ -97,20 +97,20 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/instagram/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
     this.view.tearDown();
     this.unmount();
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
   };
 
   _proto.onFirstRender = function onFirstRender() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onFirstRender\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"onFirstRender\",\"fileName\":\"/packages/@uppy/instagram/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
     this.view.getFolder('recent');
     SRTlib.send('{"type":"FUNCTIONEND","function":"onFirstRender"},');
   };
 
   _proto.render = function render(state) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/instagram/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Instagram\",\"superClass\":\"Plugin\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return this.view.render(state);
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');

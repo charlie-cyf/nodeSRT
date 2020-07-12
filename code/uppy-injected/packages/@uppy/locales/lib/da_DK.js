@@ -136,7 +136,7 @@ da_DK.strings = {
 };
 
 da_DK.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"da_DK.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"da_DK.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/da_DK.js\",\"paramsNumber\":1},");
 
   if (n === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"da_DK.pluralize"},');

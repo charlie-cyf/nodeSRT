@@ -14,7 +14,7 @@ module.exports = /*#__PURE__*/function (_Component) {
   function Filter(props) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Filter\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/provider-views/src/Filter.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Filter\",\"superClass\":\"Component\"}},");
     _this = _Component.call(this, props) || this;
     _this.preventEnterPress = _this.preventEnterPress.bind(_assertThisInitialized(_this));
     SRTlib.send('{"type":"FUNCTIONEND","function":"constructor"},');
@@ -24,7 +24,7 @@ module.exports = /*#__PURE__*/function (_Component) {
   var _proto = Filter.prototype;
 
   _proto.preventEnterPress = function preventEnterPress(ev) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"preventEnterPress\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Filter\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"preventEnterPress\",\"fileName\":\"/packages/@uppy/provider-views/src/Filter.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Filter\",\"superClass\":\"Component\"}},");
 
     if (ev.keyCode === 13) {
       ev.stopPropagation();
@@ -37,7 +37,7 @@ module.exports = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Filter\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/provider-views/src/Filter.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Filter\",\"superClass\":\"Component\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return h("div", {
       class: "uppy-ProviderBrowser-search"
@@ -50,7 +50,7 @@ module.exports = /*#__PURE__*/function (_Component) {
       onkeydown: this.preventEnterPress,
       onkeypress: this.preventEnterPress,
       oninput: function oninput(e) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement\",\"fileName\":\"/packages/@uppy/provider-views/src/Filter.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
         return _this2.props.filterQuery(e);
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');

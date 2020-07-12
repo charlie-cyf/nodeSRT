@@ -4,11 +4,11 @@ const parseUrl = require('./parseUrl');
 describe('Transloadit/parseUrl', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Transloadit/parseUrl", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Transloadit/parseUrl", "fileName": "/packages/@uppy/transloadit/src/parseUrl.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/transloadit/src/parseUrl.test.js", "calls" : [`);
   });
 
   it('splits a url into origin and pathname', () => {

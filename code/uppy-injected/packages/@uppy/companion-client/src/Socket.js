@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const ee = require('namespace-emitter');
 module.exports = class UppySocket {
   constructor(opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppySocket"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":1,"classInfo":{"className":"UppySocket"}},`);
 
     this.opts = opts;
     this._queued = [];
@@ -22,11 +22,11 @@ module.exports = class UppySocket {
 
   }
   open() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"open","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppySocket"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"open","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":0,"classInfo":{"className":"UppySocket"}},`);
 
     this.socket = new WebSocket(this.opts.target);
     this.socket.onopen = e => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket.onopen","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket.onopen","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":1},`);
 
       this.isOpen = true;
       while (this._queued.length > 0 && this.isOpen) {
@@ -38,7 +38,7 @@ module.exports = class UppySocket {
 
     };
     this.socket.onclose = e => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket.onclose","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.socket.onclose","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":1},`);
 
       this.isOpen = false;
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.socket.onclose"},');
@@ -49,7 +49,7 @@ module.exports = class UppySocket {
 
   }
   close() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"close","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppySocket"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"close","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":0,"classInfo":{"className":"UppySocket"}},`);
 
     if (this.socket) {
       this.socket.close();
@@ -58,7 +58,7 @@ module.exports = class UppySocket {
 
   }
   send(action, payload) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"send","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"UppySocket"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"send","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":2,"classInfo":{"className":"UppySocket"}},`);
 
     if (!this.isOpen) {
       this._queued.push({
@@ -77,28 +77,28 @@ module.exports = class UppySocket {
 
   }
   on(action, handler) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"UppySocket"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"on","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":2,"classInfo":{"className":"UppySocket"}},`);
 
     this.emitter.on(action, handler);
         SRTlib.send('{"type":"FUNCTIONEND","function":"on"},');
 
   }
   emit(action, payload) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emit","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"UppySocket"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emit","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":2,"classInfo":{"className":"UppySocket"}},`);
 
     this.emitter.emit(action, payload);
         SRTlib.send('{"type":"FUNCTIONEND","function":"emit"},');
 
   }
   once(action, handler) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"once","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"UppySocket"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"once","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":2,"classInfo":{"className":"UppySocket"}},`);
 
     this.emitter.once(action, handler);
         SRTlib.send('{"type":"FUNCTIONEND","function":"once"},');
 
   }
   _handleMessage(e) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_handleMessage","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppySocket"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_handleMessage","fileName":"/packages/@uppy/companion-client/src/Socket.js","paramsNumber":1,"classInfo":{"className":"UppySocket"}},`);
 
     try {
       const message = JSON.parse(e.data);

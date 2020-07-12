@@ -24,7 +24,7 @@ const TRANSLOADIT_KEY = '...';
 const TRANSLOADIT_TEMPLATE = '...';
 const RESTORE = false;
 module.exports = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/examples/dev/Dashboard.js","paramsNumber":0},`);
 
   const uppyDashboard = Uppy({
     logger: Uppy.debugLogger,
@@ -110,7 +110,7 @@ module.exports = () => {
   }
   window.uppy = uppyDashboard;
   uppyDashboard.on('complete', result => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyDashboard.on","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyDashboard.on","fileName":"/examples/dev/Dashboard.js","paramsNumber":1},`);
 
     if (result.failed.length === 0) {
       console.log('Upload successful 😀');

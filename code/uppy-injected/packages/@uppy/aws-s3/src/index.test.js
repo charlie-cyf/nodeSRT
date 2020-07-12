@@ -5,11 +5,11 @@ const AwsS3 = require('./');
 describe('AwsS3', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "AwsS3", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "AwsS3", "fileName": "/packages/@uppy/aws-s3/src/index.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/aws-s3/src/index.test.js", "calls" : [`);
   });
 
   it('Registers AwsS3 upload plugin', () => {
@@ -21,11 +21,11 @@ describe('AwsS3', () => {
   describe('getUploadParameters', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "getUploadParameters", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "getUploadParameters", "fileName": "/packages/@uppy/aws-s3/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/aws-s3/src/index.test.js", "calls" : [`);
     });
 
     it('Throws an error if configured without companionUrl', () => {

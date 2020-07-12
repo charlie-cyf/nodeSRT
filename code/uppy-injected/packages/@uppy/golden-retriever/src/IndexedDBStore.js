@@ -8,11 +8,11 @@ const STORE_NAME = 'files';
 const DEFAULT_EXPIRY = 24 * 60 * 60 * 1000;
 const DB_VERSION = 3;
 function migrateExpiration(store) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"migrateExpiration","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"migrateExpiration","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
   const request = store.openCursor();
   request.onsuccess = event => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
     const cursor = event.target.result;
     if (!cursor) {
@@ -30,16 +30,16 @@ function migrateExpiration(store) {
 
 }
 function connect(dbName) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"connect","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"connect","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
   const request = indexedDB.open(dbName, DB_VERSION);
     SRTlib.send('{"type":"FUNCTIONEND","function":"connect"},');
 
   return new Promise((resolve, reject) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":2},`);
 
     request.onupgradeneeded = event => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onupgradeneeded","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onupgradeneeded","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       const db = event.target.result;
       const transaction = event.currentTarget.transaction;
@@ -59,7 +59,7 @@ function connect(dbName) {
         migrateExpiration(store);
       }
       transaction.oncomplete = () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"transaction.oncomplete","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"transaction.oncomplete","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":0},`);
 
         resolve(db);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"transaction.oncomplete"},');
@@ -69,7 +69,7 @@ function connect(dbName) {
 
     };
     request.onsuccess = event => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess###2","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       resolve(event.target.result);
             SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess###2"},');
@@ -83,15 +83,15 @@ function connect(dbName) {
 
 }
 function waitForRequest(request) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"waitForRequest","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"waitForRequest","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"waitForRequest"},');
 
   return new Promise((resolve, reject) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression###2","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression###2","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":2},`);
 
     request.onsuccess = event => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess###3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess###3","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       resolve(event.target.result);
             SRTlib.send('{"type":"FUNCTIONEND","function":"request.onsuccess###3"},');
@@ -107,7 +107,7 @@ function waitForRequest(request) {
 let cleanedUp = false;
 class IndexedDBStore {
   constructor(opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
 
     this.opts = Object.assign({
       dbName: DB_NAME,
@@ -118,7 +118,7 @@ class IndexedDBStore {
     }, opts);
     this.name = this.opts.storeName;
     const createConnection = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createConnection","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createConnection","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"createConnection"},');
 
@@ -136,7 +136,7 @@ class IndexedDBStore {
 
   }
   key(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"key","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"key","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"key"},');
 
@@ -145,12 +145,12 @@ class IndexedDBStore {
 
   }
   list() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"IndexedDBStore"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"list","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":0,"classInfo":{"className":"IndexedDBStore"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"list"},');
 
     return this.ready.then(db => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then.then.ready.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then.then.ready.then","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       const transaction = db.transaction([STORE_NAME], 'readonly');
       const store = transaction.objectStore(STORE_NAME);
@@ -161,11 +161,11 @@ class IndexedDBStore {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then.ready.then"},');
 
     }).then(files => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then.then","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       const result = {};
       files.forEach(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
         result[file.fileID] = file.data;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach"},');
@@ -181,12 +181,12 @@ class IndexedDBStore {
 
   }
   get(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"get","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"get","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"get"},');
 
     return this.ready.then(db => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then.then.ready.then###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then.then.ready.then###2","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       const transaction = db.transaction([STORE_NAME], 'readonly');
       const request = transaction.objectStore(STORE_NAME).get(this.key(fileID));
@@ -196,7 +196,7 @@ class IndexedDBStore {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then.ready.then###2"},');
 
     }).then(result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then.then###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then.then###2","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then.then###2"},');
 
@@ -211,12 +211,12 @@ class IndexedDBStore {
 
   }
   getSize() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSize","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"IndexedDBStore"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSize","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":0,"classInfo":{"className":"IndexedDBStore"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getSize"},');
 
     return this.ready.then(db => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       const transaction = db.transaction([STORE_NAME], 'readonly');
       const store = transaction.objectStore(STORE_NAME);
@@ -224,11 +224,11 @@ class IndexedDBStore {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.ready.then"},');
 
       return new Promise((resolve, reject) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression###3","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression###3","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":2},`);
 
         let size = 0;
         request.onsuccess = event => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess###4","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess###4","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
           const cursor = event.target.result;
           if (cursor) {
@@ -241,7 +241,7 @@ class IndexedDBStore {
 
         };
         request.onerror = () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onerror","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onerror","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":0},`);
 
           reject(new Error('Could not retrieve stored blobs size'));
                     SRTlib.send('{"type":"FUNCTIONEND","function":"request.onerror"},');
@@ -257,7 +257,7 @@ class IndexedDBStore {
 
   }
   put(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"put","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"put","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
 
     if (file.data.size > this.opts.maxFileSize) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"put"},');
@@ -267,7 +267,7 @@ class IndexedDBStore {
         SRTlib.send('{"type":"FUNCTIONEND","function":"put"},');
 
     return this.getSize().then(size => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.getSize.then.then.getSize.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.getSize.then.then.getSize.then","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       if (size > this.opts.maxTotalSize) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.getSize.then.then.getSize.then"},');
@@ -280,7 +280,7 @@ class IndexedDBStore {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.getSize.then.then.getSize.then"},');
 
     }).then(db => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.getSize.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.getSize.then.then","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       const transaction = db.transaction([STORE_NAME], 'readwrite');
       const request = transaction.objectStore(STORE_NAME).add({
@@ -300,12 +300,12 @@ class IndexedDBStore {
 
   }
   delete(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"delete","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"delete","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1,"classInfo":{"className":"IndexedDBStore"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"delete"},');
 
     return this.ready.then(db => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.ready.then###2","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       const transaction = db.transaction([STORE_NAME], 'readwrite');
       const request = transaction.objectStore(STORE_NAME).delete(this.key(fileID));
@@ -319,12 +319,12 @@ class IndexedDBStore {
 
   }
   static cleanup() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanup","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"IndexedDBStore"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanup","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":0,"classInfo":{"className":"IndexedDBStore"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"cleanup"},');
 
     return connect(DB_NAME).then(db => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.connect.then.then.connect.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.connect.then.then.connect.then","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       const transaction = db.transaction([STORE_NAME], 'readwrite');
       const store = transaction.objectStore(STORE_NAME);
@@ -332,10 +332,10 @@ class IndexedDBStore {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');
 
       return new Promise((resolve, reject) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression###4","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression###4","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":2},`);
 
         request.onsuccess = event => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess###5","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request.onsuccess###5","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
           const cursor = event.target.result;
           if (cursor) {
@@ -356,7 +356,7 @@ class IndexedDBStore {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then.connect.then"},');
 
     }).then(db => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.connect.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.connect.then.then","fileName":"/packages/@uppy/golden-retriever/src/IndexedDBStore.js","paramsNumber":1},`);
 
       db.close();
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.connect.then.then"},');

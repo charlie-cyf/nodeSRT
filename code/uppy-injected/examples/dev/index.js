@@ -15,13 +15,13 @@ switch (window.location.pathname.toLowerCase()) {
 }
 if (('serviceWorker' in navigator)) {
   navigator.serviceWorker.register('/sw.js').then(registration => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"navigator.serviceWorker.register.then.catch.navigator.serviceWorker.register.then","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"navigator.serviceWorker.register.then.catch.navigator.serviceWorker.register.then","fileName":"/examples/dev/index.js","paramsNumber":1},`);
 
     console.log('ServiceWorker registration successful with scope: ', registration.scope);
         SRTlib.send('{"type":"FUNCTIONEND","function":"navigator.serviceWorker.register.then.catch.navigator.serviceWorker.register.then"},');
 
   }).catch(error => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"navigator.serviceWorker.register.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"navigator.serviceWorker.register.then.catch","fileName":"/examples/dev/index.js","paramsNumber":1},`);
 
     console.log('Registration failed with ' + error);
         SRTlib.send('{"type":"FUNCTIONEND","function":"navigator.serviceWorker.register.then.catch"},');

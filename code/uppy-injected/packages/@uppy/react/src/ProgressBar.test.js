@@ -14,11 +14,11 @@ const ProgressBar = require('./ProgressBar');
 describe('react <ProgressBar />', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "react%20%3CProgressBar%20/%3E", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "react%20%3CProgressBar%20/%3E", "fileName": "/packages/@uppy/react/src/ProgressBar.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/react/src/ProgressBar.test.js", "calls" : [`);
   });
 
   it('can be mounted and unmounted', () => {

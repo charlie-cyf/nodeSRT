@@ -5,11 +5,11 @@ const testURL = 'http://localhost:4567/providers';
 describe('File upload with Google Drive Provider', () => {
     before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20Google%20Drive%20Provider", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "File%20upload%20with%20Google%20Drive%20Provider", "fileName": "/test/endtoend/providers/provider.google.test.js", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "/test/endtoend/providers/provider.google.test.js", "calls" : [`);
 
     await browser.url(testURL);
   });

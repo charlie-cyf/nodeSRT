@@ -137,7 +137,7 @@ es_ES.strings = {
 };
 
 es_ES.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"es_ES.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"es_ES.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/es_ES.js\",\"paramsNumber\":1},");
 
   if (n === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"es_ES.pluralize"},');

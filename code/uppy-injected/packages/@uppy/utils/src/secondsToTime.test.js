@@ -4,11 +4,11 @@ const secondsToTime = require('./secondsToTime');
 describe('secondsToTime', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "secondsToTime", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "secondsToTime", "fileName": "/packages/@uppy/utils/src/secondsToTime.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/secondsToTime.test.js", "calls" : [`);
   });
 
   it('converts seconds to an { hours, minutes, seconds } object', () => {

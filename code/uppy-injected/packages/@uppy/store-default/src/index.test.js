@@ -4,11 +4,11 @@ const DefaultStore = require('./index');
 describe('DefaultStore', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "DefaultStore", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "DefaultStore", "fileName": "/packages/@uppy/store-default/src/index.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/store-default/src/index.test.js", "calls" : [`);
   });
 
   it('can be created with or without new', () => {

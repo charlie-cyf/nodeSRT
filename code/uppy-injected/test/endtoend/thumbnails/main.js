@@ -16,7 +16,7 @@ uppyThumbnails.use(FileInput, {
   pretty: false
 });
 uppyThumbnails.on('file-added', file => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on","fileName":"/test/endtoend/thumbnails/main.js","paramsNumber":1},`);
 
   const el = document.createElement('p');
   el.className = 'file-name';
@@ -26,7 +26,7 @@ uppyThumbnails.on('file-added', file => {
 
 });
 uppyThumbnails.on('thumbnail:error', (file, err) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on###2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on###2","fileName":"/test/endtoend/thumbnails/main.js","paramsNumber":2},`);
 
   const el = document.createElement('pre');
   el.style = 'font: 14pt monospace; background: red; color: white';
@@ -36,7 +36,7 @@ uppyThumbnails.on('thumbnail:error', (file, err) => {
 
 });
 uppyThumbnails.on('thumbnail:generated', (file, preview) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on###3","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyThumbnails.on###3","fileName":"/test/endtoend/thumbnails/main.js","paramsNumber":2},`);
 
   const img = new Image();
   img.src = file.preview;

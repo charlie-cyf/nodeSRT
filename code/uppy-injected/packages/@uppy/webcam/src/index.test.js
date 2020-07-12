@@ -5,21 +5,21 @@ const Webcam = require('./index');
 describe('Webcam', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Webcam", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Webcam", "fileName": "/packages/@uppy/webcam/src/index.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/webcam/src/index.test.js", "calls" : [`);
   });
 
   describe('_getMediaRecorderOptions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "_getMediaRecorderOptions", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "_getMediaRecorderOptions", "fileName": "/packages/@uppy/webcam/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/webcam/src/index.test.js", "calls" : [`);
     });
 
     it('should not have a mimeType set if no preferences given', () => {

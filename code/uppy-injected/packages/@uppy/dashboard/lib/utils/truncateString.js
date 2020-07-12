@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 
 module.exports = function truncateString(string, maxLength) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/dashboard/src/utils/truncateString.js\",\"paramsNumber\":2},");
   var separator = '...';
 
   if (string.length <= maxLength) {

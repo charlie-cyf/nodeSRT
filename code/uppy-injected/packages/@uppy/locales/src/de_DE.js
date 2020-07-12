@@ -138,7 +138,7 @@ de_DE.strings = {
   openFolderNamed: 'Ordner öffnen %{name}'
 };
 de_DE.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"de_DE.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"de_DE.pluralize","fileName":"/packages/@uppy/locales/src/de_DE.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"de_DE.pluralize"},');

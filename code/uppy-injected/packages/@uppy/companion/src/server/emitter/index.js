@@ -4,7 +4,7 @@ const nodeEmitter = require('./default-emitter');
 const redisEmitter = require('./redis-emitter');
 let emitter;
 module.exports = redisUrl => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/companion/src/server/emitter/index.js","paramsNumber":1},`);
 
   if (!emitter) {
     emitter = redisUrl ? redisEmitter(redisUrl) : nodeEmitter();

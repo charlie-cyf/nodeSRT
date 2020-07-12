@@ -5,7 +5,7 @@ import {StyleSheet, TouchableOpacity, Text, TextInput, View} from 'react-native'
 import Url from '@uppy/url';
 export default class UppyRNUrl extends React.Component {
   constructor() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/react-native/file-picker/url.js","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
     super();
     this.state = {
@@ -16,7 +16,7 @@ export default class UppyRNUrl extends React.Component {
 
   }
   componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"/packages/@uppy/react-native/file-picker/url.js","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
     const uppy = this.props.uppy;
     const options = Object.assign({
@@ -29,7 +29,7 @@ export default class UppyRNUrl extends React.Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/packages/@uppy/react-native/file-picker/url.js","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
     const uppy = this.props.uppy;
     uppy.removePlugin(this.plugin);
@@ -37,10 +37,10 @@ export default class UppyRNUrl extends React.Component {
 
   }
   onPressImport() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPressImport","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onPressImport","fileName":"/packages/@uppy/react-native/file-picker/url.js","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
     this.plugin.addFile(this.state.url).then(this.props.onDone).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"plugin.addFile.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"plugin.addFile.then.catch","fileName":"/packages/@uppy/react-native/file-picker/url.js","paramsNumber":1},`);
 
       console.log(err);
             SRTlib.send('{"type":"FUNCTIONEND","function":"plugin.addFile.then.catch"},');
@@ -50,13 +50,13 @@ export default class UppyRNUrl extends React.Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/react-native/file-picker/url.js","paramsNumber":0,"classInfo":{"className":"UppyRNUrl"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
     return <View style={styles.container}>
         <TextInput style={styles.input} autoFocus onChangeText={text => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/react-native/file-picker/url.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
@@ -70,7 +70,7 @@ export default class UppyRNUrl extends React.Component {
           <Text style={styles.buttonImportText}>Import</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonCancel} onPress={ev => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"/packages/@uppy/react-native/file-picker/url.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 

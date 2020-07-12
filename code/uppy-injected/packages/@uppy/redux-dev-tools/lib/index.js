@@ -17,7 +17,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function ReduxDevTools(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/redux-dev-tools/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.type = 'debugger';
     _this.id = _this.opts.id || 'ReduxDevTools';
@@ -33,7 +33,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = ReduxDevTools.prototype;
 
   _proto.handleStateChange = function handleStateChange(prevState, nextState, patch) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleStateChange\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleStateChange\",\"fileName\":\"/packages/@uppy/redux-dev-tools/src/index.js\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
     this.devTools.send('UPPY_STATE_UPDATE', nextState);
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleStateChange"},');
   };
@@ -41,10 +41,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.initDevTools = function initDevTools() {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"initDevTools\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"initDevTools\",\"fileName\":\"/packages/@uppy/redux-dev-tools/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
     this.devTools = window.devToolsExtension.connect();
     this.devToolsUnsubscribe = this.devTools.subscribe(function (message) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.devToolsUnsubscribe.devTools.subscribe\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.devToolsUnsubscribe.devTools.subscribe\",\"fileName\":\"/packages/@uppy/redux-dev-tools/src/index.js\",\"paramsNumber\":1},");
 
       if (message.type === 'DISPATCH') {
         console.log(message.payload.type);
@@ -84,7 +84,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/redux-dev-tools/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
     this.withDevTools = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__;
 
     if (this.withDevTools) {
@@ -96,7 +96,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/redux-dev-tools/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ReduxDevTools\",\"superClass\":\"Plugin\"}},");
 
     if (this.withDevTools) {
       this.devToolsUnsubscribe();

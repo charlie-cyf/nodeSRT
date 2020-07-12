@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 module.exports = function isDragDropSupported() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/utils/src/isDragDropSupported.js","paramsNumber":0},`);
 
   const div = document.createElement('div');
   if (!(('draggable' in div)) || !(('ondragstart' in div) && ('ondrop' in div))) {

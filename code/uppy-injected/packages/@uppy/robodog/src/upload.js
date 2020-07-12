@@ -4,7 +4,7 @@ const toArray = require('@uppy/utils/lib/toArray');
 const createUppy = require('./createUppy');
 const addTransloaditPlugin = require('./addTransloaditPlugin');
 function upload(files, opts = {}) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"upload","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"upload","fileName":"/packages/@uppy/robodog/src/upload.js","paramsNumber":2},`);
 
   if (!Array.isArray(files) && typeof files.length === 'number') {
     files = toArray(files);
@@ -14,7 +14,7 @@ function upload(files, opts = {}) {
   });
   addTransloaditPlugin(uppy, opts);
   files.forEach(file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"/packages/@uppy/robodog/src/upload.js","paramsNumber":1},`);
 
     uppy.addFile({
       data: file,

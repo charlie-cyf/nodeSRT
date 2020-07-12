@@ -16,7 +16,7 @@ var _require = require('preact'),
     h = _require.h;
 
 var Browser = function Browser(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"Browser\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"Browser\",\"fileName\":\"/packages/@uppy/provider-views/src/Browser.js\",\"paramsNumber\":1},");
   var filteredFolders = props.folders;
   var filteredFiles = props.files;
 

@@ -20,7 +20,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function ProgressBar(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ProgressBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/progress-bar/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"ProgressBar\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.id = _this.opts.id || 'ProgressBar';
     _this.title = 'Progress Bar';
@@ -40,7 +40,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = ProgressBar.prototype;
 
   _proto.render = function render(state) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ProgressBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/progress-bar/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"ProgressBar\",\"superClass\":\"Plugin\"}},");
     var progress = state.totalProgress || 0;
     var isHidden = (progress === 0 || progress === 100) && this.opts.hideAfterFinish;
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
@@ -62,7 +62,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ProgressBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/progress-bar/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ProgressBar\",\"superClass\":\"Plugin\"}},");
     var target = this.opts.target;
 
     if (target) {
@@ -73,7 +73,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ProgressBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/progress-bar/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"ProgressBar\",\"superClass\":\"Plugin\"}},");
     this.unmount();
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
   };

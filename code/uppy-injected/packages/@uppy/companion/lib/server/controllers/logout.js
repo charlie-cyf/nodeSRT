@@ -3,10 +3,10 @@ const SRTlib = require('SRT-util');
 const tokenService = require('../helpers/jwt');
 const {errorToResponse} = require('../provider/error');
 function logout(req, res, next) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"logout","fileName":"/packages/@uppy/companion/lib/server/controllers/logout.js","paramsNumber":3},`);
 
   const cleanSession = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanSession","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"cleanSession","fileName":"/packages/@uppy/companion/lib/server/controllers/logout.js","paramsNumber":0},`);
 
     if (req.session.grant) {
       req.session.grant.state = null;
@@ -21,7 +21,7 @@ function logout(req, res, next) {
     req.companion.provider.logout({
       token
     }, (err, data) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.companion.provider.logout","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.companion.provider.logout","fileName":"/packages/@uppy/companion/lib/server/controllers/logout.js","paramsNumber":2},`);
 
       if (err) {
         const errResp = errorToResponse(err);

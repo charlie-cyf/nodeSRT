@@ -7,12 +7,12 @@ const testURL = 'http://localhost:4567/chaos-monkey';
 describe('Chaos monkey', function () {
     before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Chaos%20monkey", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Chaos%20monkey", "fileName": "/test/endtoend/chaos-monkey/test.js", "calls" : [`);
   });
 
   this.timeout(5 * 60 * 1000);
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "/test/endtoend/chaos-monkey/test.js", "calls" : [`);
 
     await browser.url(testURL);
   });

@@ -7,7 +7,7 @@ const uppyReduxStore = require('@uppy/store-redux');
 const Dashboard = require('@uppy/dashboard');
 const Tus = require('@uppy/tus');
 function counter(state = 0, action) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"counter","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"counter","fileName":"/examples/redux/main.js","paramsNumber":2},`);
 
   switch (action.type) {
     case 'INCREMENT':
@@ -37,7 +37,7 @@ if (window.__REDUX_DEVTOOLS_EXTENSION__) {
 const store = createStore(reducer, enhancer);
 const valueEl = document.querySelector('#value');
 function getCounter() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getCounter","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getCounter","fileName":"/examples/redux/main.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"getCounter"},');
 
@@ -46,7 +46,7 @@ function getCounter() {
 
 }
 function render() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/examples/redux/main.js","paramsNumber":0},`);
 
   valueEl.innerHTML = getCounter().toString();
     SRTlib.send('{"type":"FUNCTIONEND","function":"render","paramsNumber":0},');
@@ -55,7 +55,7 @@ function render() {
 render();
 store.subscribe(render);
 document.querySelector('#increment').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick","fileName":"/examples/redux/main.js","paramsNumber":0},`);
 
   store.dispatch({
     type: 'INCREMENT'
@@ -64,7 +64,7 @@ document.querySelector('#increment').onclick = () => {
 
 };
 document.querySelector('#decrement').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick###2","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick###2","fileName":"/examples/redux/main.js","paramsNumber":0},`);
 
   store.dispatch({
     type: 'DECREMENT'
@@ -73,7 +73,7 @@ document.querySelector('#decrement').onclick = () => {
 
 };
 document.querySelector('#incrementIfOdd').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick###3","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick###3","fileName":"/examples/redux/main.js","paramsNumber":0},`);
 
   if (getCounter() % 2 !== 0) {
     store.dispatch({
@@ -84,10 +84,10 @@ document.querySelector('#incrementIfOdd').onclick = () => {
 
 };
 document.querySelector('#incrementAsync').onclick = () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick###4","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onclick###4","fileName":"/examples/redux/main.js","paramsNumber":0},`);
 
   setTimeout(() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"setTimeout","fileName":"/examples/redux/main.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"setTimeout"},');
 

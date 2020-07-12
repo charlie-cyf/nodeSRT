@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 const errors = [];
 window.onerror = err => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.onerror","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.onerror","fileName":"/test/endtoend/create-react-app/src/index.js","paramsNumber":1},`);
 
   errors.push(err);
     SRTlib.send('{"type":"FUNCTIONEND","function":"window.onerror"},');

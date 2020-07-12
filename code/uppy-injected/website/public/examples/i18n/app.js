@@ -1,13 +1,13 @@
 const SRTlib = require('SRT-util');
 
 (function () {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"/website/public/examples/i18n/app.js","paramsNumber":0},`);
 
   function r(e, n, t) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"r","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"r","fileName":"/website/public/examples/i18n/app.js","paramsNumber":3},`);
 
     function o(i, f) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"o","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"o","fileName":"/website/public/examples/i18n/app.js","paramsNumber":2},`);
 
       if (!n[i]) {
         if (!e[i]) {
@@ -31,7 +31,7 @@ const SRTlib = require('SRT-util');
           exports: {}
         };
         e[i][0].call(p.exports, function (r) {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"e.i.call","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"e.i.call","fileName":"/website/public/examples/i18n/app.js","paramsNumber":1},`);
 
           var n = e[i][1][r];
                     SRTlib.send('{"type":"FUNCTIONEND","function":"e.i.call"},');
@@ -61,7 +61,7 @@ const SRTlib = require('SRT-util');
 
 })()({
   1: [function (require, module, exports) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###2","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###2","fileName":"/website/public/examples/i18n/app.js","paramsNumber":3},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###2"},');
 

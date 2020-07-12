@@ -5,7 +5,7 @@ const addDashboardPlugin = require('./addDashboardPlugin');
 const addTransloaditPlugin = require('./addTransloaditPlugin');
 const addProviders = require('./addProviders');
 function dashboard(target, opts = {}) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"dashboard","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"dashboard","fileName":"/packages/@uppy/robodog/src/dashboard.js","paramsNumber":2},`);
 
   const inline = opts.inline == null ? true : opts.inline;
   const pluginId = 'Dashboard';

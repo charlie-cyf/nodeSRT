@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const {h} = require('preact');
 module.exports = function RecordButton({recording, onStartRecording, onStopRecording, i18n}) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/webcam/src/RecordButton.js","paramsNumber":1},`);
 
   if (recording) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

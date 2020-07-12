@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const mime = require('mime-types');
 const querystring = require('querystring');
 exports.getUsername = data => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getUsername","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getUsername","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getUsername"},');
 
@@ -12,7 +12,7 @@ exports.getUsername = data => {
 
 };
 exports.isFolder = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isFolder"},');
 
@@ -21,7 +21,7 @@ exports.isFolder = item => {
 
 };
 exports.getItemSize = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSize","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemSize"},');
 
@@ -30,7 +30,7 @@ exports.getItemSize = item => {
 
 };
 exports.getItemIcon = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemIcon"},');
 
@@ -39,7 +39,7 @@ exports.getItemIcon = item => {
 
 };
 exports.getItemSubList = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemSubList"},');
 
@@ -48,7 +48,7 @@ exports.getItemSubList = item => {
 
 };
 exports.getItemName = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
 
@@ -57,7 +57,7 @@ exports.getItemName = item => {
 
 };
 exports.getMimeType = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getMimeType"},');
 
@@ -66,7 +66,7 @@ exports.getMimeType = item => {
 
 };
 exports.getItemId = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemId"},');
 
@@ -75,7 +75,7 @@ exports.getItemId = item => {
 
 };
 exports.getItemRequestPath = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemRequestPath"},');
 
@@ -84,7 +84,7 @@ exports.getItemRequestPath = item => {
 
 };
 exports.getItemModifiedDate = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemModifiedDate"},');
 
@@ -93,7 +93,7 @@ exports.getItemModifiedDate = item => {
 
 };
 exports.getItemThumbnailUrl = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemThumbnailUrl"},');
 
@@ -102,7 +102,7 @@ exports.getItemThumbnailUrl = item => {
 
 };
 exports.getNextPagePath = data => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"/packages/@uppy/companion/src/server/provider/dropbox/adapter.js","paramsNumber":1},`);
 
   if (!data.has_more) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getNextPagePath"},');

@@ -11,10 +11,10 @@ const {getURLBuilder} = require('../helpers/utils');
 const logger = require('../logger');
 const Provider = require('./Provider');
 module.exports.getProviderMiddleware = providers => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getProviderMiddleware","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getProviderMiddleware","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":1},`);
 
   const middleware = (req, res, next, providerName) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"middleware","fileName":"${__filename}","paramsNumber":4},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"middleware","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":4},`);
 
     if (providers[providerName] && validOptions(req.companion.options)) {
       req.companion.provider = new providers[providerName]({
@@ -35,7 +35,7 @@ module.exports.getProviderMiddleware = providers => {
 
 };
 module.exports.getDefaultProviders = companionOptions => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getDefaultProviders","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getDefaultProviders","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":1},`);
 
   const {providerOptions} = companionOptions || ({
     providerOptions: null
@@ -47,7 +47,7 @@ module.exports.getDefaultProviders = companionOptions => {
     onedrive
   };
   const usesGraphAPI = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"usesGraphAPI","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"usesGraphAPI","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"usesGraphAPI"},');
 
@@ -67,10 +67,10 @@ module.exports.getDefaultProviders = companionOptions => {
 
 };
 module.exports.addCustomProviders = (customProviders, providers, grantConfig) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addCustomProviders","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addCustomProviders","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":3},`);
 
   Object.keys(customProviders).forEach(providerName => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":1},`);
 
     providers[providerName] = customProviders[providerName].module;
     grantConfig[providerName] = customProviders[providerName].config;
@@ -81,7 +81,7 @@ module.exports.addCustomProviders = (customProviders, providers, grantConfig) =>
 
 };
 module.exports.addProviderOptions = (companionOptions, grantConfig) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addProviderOptions","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addProviderOptions","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":2},`);
 
   const {server, providerOptions} = companionOptions;
   if (!validOptions({
@@ -99,7 +99,7 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
   };
   const {oauthDomain} = server;
   const keys = Object.keys(providerOptions).filter(key => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"keys.Object.keys.filter","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"keys.Object.keys.filter","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"keys.Object.keys.filter"},');
 
@@ -108,7 +108,7 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
 
   });
   keys.forEach(authProvider => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"keys.forEach","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":1},`);
 
     if (grantConfig[authProvider]) {
       grantConfig[authProvider].key = providerOptions[authProvider].key;
@@ -137,7 +137,7 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
 
 };
 const authNameToProvider = (authProvider, options) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authNameToProvider","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authNameToProvider","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":2},`);
 
   const providers = exports.getDefaultProviders(options);
   const providerNames = Object.keys(providers);
@@ -156,7 +156,7 @@ const authNameToProvider = (authProvider, options) => {
 
 };
 const validOptions = options => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validOptions","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"validOptions","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"validOptions"},');
 

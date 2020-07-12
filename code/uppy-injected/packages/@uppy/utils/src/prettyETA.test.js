@@ -4,11 +4,11 @@ const prettyETA = require('./prettyETA');
 describe('prettyETA', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "prettyETA", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "prettyETA", "fileName": "/packages/@uppy/utils/src/prettyETA.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/prettyETA.test.js", "calls" : [`);
   });
 
   it('should convert the specified number of seconds to a pretty ETA', () => {

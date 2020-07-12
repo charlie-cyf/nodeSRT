@@ -3,7 +3,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 var SRTlib = require('SRT-util');
 
 function findUppyInstances() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"findUppyInstances\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"findUppyInstances\",\"fileName\":\"/packages/@uppy/golden-retriever/src/MetaDataStore.js\",\"paramsNumber\":0},");
   var instances = [];
 
   for (var i = 0; i < localStorage.length; i++) {
@@ -20,7 +20,7 @@ function findUppyInstances() {
 }
 
 function maybeParse(str) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"maybeParse\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"maybeParse\",\"fileName\":\"/packages/@uppy/golden-retriever/src/MetaDataStore.js\",\"paramsNumber\":1},");
 
   try {
     SRTlib.send('{"type":"FUNCTIONEND","function":"maybeParse"},');
@@ -37,7 +37,7 @@ var cleanedUp = false;
 
 module.exports = /*#__PURE__*/function () {
   function MetaDataStore(opts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/golden-retriever/src/MetaDataStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
     this.opts = _extends({
       expires: 24 * 60 * 60 * 1000
     }, opts);
@@ -54,7 +54,7 @@ module.exports = /*#__PURE__*/function () {
   var _proto = MetaDataStore.prototype;
 
   _proto.load = function load() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"load\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"load\",\"fileName\":\"/packages/@uppy/golden-retriever/src/MetaDataStore.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
     var savedState = localStorage.getItem(this.name);
 
     if (!savedState) {
@@ -81,7 +81,7 @@ module.exports = /*#__PURE__*/function () {
   };
 
   _proto.save = function save(metadata) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"save\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"save\",\"fileName\":\"/packages/@uppy/golden-retriever/src/MetaDataStore.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
     var expires = Date.now() + this.opts.expires;
     var state = JSON.stringify({
       metadata: metadata,
@@ -92,11 +92,11 @@ module.exports = /*#__PURE__*/function () {
   };
 
   MetaDataStore.cleanup = function cleanup() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"cleanup\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"cleanup\",\"fileName\":\"/packages/@uppy/golden-retriever/src/MetaDataStore.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"MetaDataStore\"}},");
     var instanceIDs = findUppyInstances();
     var now = Date.now();
     instanceIDs.forEach(function (id) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.instanceIDs.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.instanceIDs.forEach\",\"fileName\":\"/packages/@uppy/golden-retriever/src/MetaDataStore.js\",\"paramsNumber\":1},");
       var data = localStorage.getItem("uppyState:" + id);
 
       if (!data) {

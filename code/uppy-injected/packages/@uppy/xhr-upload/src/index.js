@@ -13,7 +13,7 @@ const RateLimitedQueue = require('@uppy/utils/lib/RateLimitedQueue');
 const NetworkError = require('@uppy/utils/lib/NetworkError');
 const isNetworkError = require('@uppy/utils/lib/isNetworkError');
 function buildResponseError(xhr, error) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildResponseError","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildResponseError","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2},`);
 
   if (!error) error = new Error('Upload error');
   if (typeof error === 'string') error = new Error(error);
@@ -36,7 +36,7 @@ function buildResponseError(xhr, error) {
 
 }
 function setTypeInBlob(file) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setTypeInBlob","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setTypeInBlob","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
   const dataWithUpdatedType = file.data.slice(0, file.data.size, file.meta.type);
     SRTlib.send('{"type":"FUNCTIONEND","function":"setTypeInBlob"},');
@@ -48,7 +48,7 @@ function setTypeInBlob(file) {
 module.exports = class XHRUpload extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'uploader';
@@ -72,7 +72,7 @@ module.exports = class XHRUpload extends Plugin {
       withCredentials: false,
       responseType: '',
       getResponseData(responseText, response) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.defaultOptions.getResponseData","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.defaultOptions.getResponseData","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2},`);
 
         let parsedResponse = {};
         try {
@@ -87,7 +87,7 @@ module.exports = class XHRUpload extends Plugin {
 
       },
       getResponseError(responseText, response) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.defaultOptions.getResponseError","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.defaultOptions.getResponseError","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2},`);
 
         let error = new Error('Upload error');
         if (isNetworkError(response)) {
@@ -100,7 +100,7 @@ module.exports = class XHRUpload extends Plugin {
 
       },
       validateStatus(status, responseText, response) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.defaultOptions.validateStatus","fileName":"${__filename}","paramsNumber":3},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.defaultOptions.validateStatus","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":3},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.defaultOptions.validateStatus"},');
 
@@ -130,7 +130,7 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     super.setOptions(newOpts);
     this.i18nInit();
@@ -138,7 +138,7 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   i18nInit() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
@@ -147,7 +147,7 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   getOptions(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getOptions","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     const overrides = this.uppy.getState().xhrUpload;
     const opts = {
@@ -170,11 +170,11 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   addMetadata(formData, meta, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addMetadata","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addMetadata","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":3,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     const metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(meta);
     metaFields.forEach(item => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.metaFields.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.metaFields.forEach","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
       formData.append(item, meta[item]);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.metaFields.forEach"},');
@@ -184,7 +184,7 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   createFormDataUpload(file, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createFormDataUpload","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createFormDataUpload","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     const formPost = new FormData();
     this.addMetadata(formPost, file.meta, opts);
@@ -201,13 +201,13 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   createBundledUpload(files, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createBundledUpload","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createBundledUpload","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     const formPost = new FormData();
     const {meta} = this.uppy.getState();
     this.addMetadata(formPost, meta, opts);
     files.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.forEach","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
       const opts = this.getOptions(file);
       const dataWithUpdatedType = setTypeInBlob(file);
@@ -226,7 +226,7 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   createBareUpload(file, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createBareUpload","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createBareUpload","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"createBareUpload"},');
 
@@ -235,21 +235,21 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   upload(file, current, total) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"upload","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"upload","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":3,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     const opts = this.getOptions(file);
     this.uppy.log(`uploading ${current} of ${total}`);
         SRTlib.send('{"type":"FUNCTIONEND","function":"upload"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2},`);
 
       this.uppy.emit('upload-started', file);
       const data = opts.formData ? this.createFormDataUpload(file, opts) : this.createBareUpload(file, opts);
       const xhr = new XMLHttpRequest();
       this.uploaderEvents[file.id] = new EventTracker(this.uppy);
       const timer = new ProgressTimeout(opts.timeout, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"timer.NewExpression","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"timer.NewExpression","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
         xhr.abort();
         queuedRequest.done();
@@ -263,14 +263,14 @@ module.exports = class XHRUpload extends Plugin {
       });
       const id = cuid();
       xhr.upload.addEventListener('loadstart', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         this.uppy.log(`[XHRUpload] ${id} started`);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"xhr.upload.addEventListener"},');
 
       });
       xhr.upload.addEventListener('progress', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         this.uppy.log(`[XHRUpload] ${id} progress: ${ev.loaded} / ${ev.total}`);
         timer.progress();
@@ -285,7 +285,7 @@ module.exports = class XHRUpload extends Plugin {
 
       });
       xhr.addEventListener('load', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         this.uppy.log(`[XHRUpload] ${id} finished`);
         timer.done();
@@ -325,7 +325,7 @@ module.exports = class XHRUpload extends Plugin {
 
       });
       xhr.addEventListener('error', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         this.uppy.log(`[XHRUpload] ${id} errored`);
         timer.done();
@@ -348,20 +348,20 @@ module.exports = class XHRUpload extends Plugin {
         xhr.responseType = opts.responseType;
       }
       Object.keys(opts.headers).forEach(header => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         xhr.setRequestHeader(header, opts.headers[header]);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
       });
       const queuedRequest = this.requests.run(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
         xhr.send(data);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run"},');
 
         return () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
           timer.done();
           xhr.abort();
@@ -372,7 +372,7 @@ module.exports = class XHRUpload extends Plugin {
 
       });
       this.onFileRemove(file.id, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFileRemove","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFileRemove","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
         queuedRequest.abort();
         reject(new Error('File removed'));
@@ -380,7 +380,7 @@ module.exports = class XHRUpload extends Plugin {
 
       });
       this.onCancelAll(file.id, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onCancelAll","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onCancelAll","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
         queuedRequest.abort();
         reject(new Error('Upload cancelled'));
@@ -394,19 +394,19 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   uploadRemote(file, current, total) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadRemote","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadRemote","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":3,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     const opts = this.getOptions(file);
         SRTlib.send('{"type":"FUNCTIONEND","function":"uploadRemote"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2},`);
 
       this.uppy.emit('upload-started', file);
       const fields = {};
       const metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(file.meta);
       metaFields.forEach(name => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"metaFields.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"metaFields.forEach","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         fields[name] = file.meta[name];
                 SRTlib.send('{"type":"FUNCTIONEND","function":"metaFields.forEach"},');
@@ -424,7 +424,7 @@ module.exports = class XHRUpload extends Plugin {
         useFormData: opts.formData,
         headers: opts.headers
       }).then(res => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.catch.client.post.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.catch.client.post.then","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         const token = res.token;
         const host = getSocketHost(file.remote.companionUrl);
@@ -434,7 +434,7 @@ module.exports = class XHRUpload extends Plugin {
         });
         this.uploaderEvents[file.id] = new EventTracker(this.uppy);
         this.onFileRemove(file.id, () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFileRemove###2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onFileRemove###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
           socket.send('pause', {});
           queuedRequest.abort();
@@ -443,7 +443,7 @@ module.exports = class XHRUpload extends Plugin {
 
         });
         this.onCancelAll(file.id, () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onCancelAll###2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onCancelAll###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
           socket.send('pause', {});
           queuedRequest.abort();
@@ -452,7 +452,7 @@ module.exports = class XHRUpload extends Plugin {
 
         });
         this.onRetry(file.id, () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onRetry","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onRetry","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
           socket.send('pause', {});
           socket.send('resume', {});
@@ -460,7 +460,7 @@ module.exports = class XHRUpload extends Plugin {
 
         });
         this.onRetryAll(file.id, () => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onRetryAll","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"onRetryAll","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
           socket.send('pause', {});
           socket.send('resume', {});
@@ -468,7 +468,7 @@ module.exports = class XHRUpload extends Plugin {
 
         });
         socket.on('progress', progressData => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"socket.on"},');
 
@@ -477,7 +477,7 @@ module.exports = class XHRUpload extends Plugin {
 
         });
         socket.on('success', data => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
           const body = opts.getResponseData(data.response.responseText, data.response);
           const uploadURL = body[opts.responseUrlFieldName];
@@ -499,7 +499,7 @@ module.exports = class XHRUpload extends Plugin {
 
         });
         socket.on('error', errData => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"socket.on###3","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
           const resp = errData.response;
           const error = resp ? opts.getResponseError(resp.responseText, resp) : Object.assign(new Error(errData.error.message), {
@@ -516,7 +516,7 @@ module.exports = class XHRUpload extends Plugin {
 
         });
         const queuedRequest = this.requests.run(() => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run###2","fileName":"${__filename}","paramsNumber":0},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"queuedRequest.requests.run###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
           socket.open();
           if (file.isPaused) {
@@ -525,7 +525,7 @@ module.exports = class XHRUpload extends Plugin {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run###2"},');
 
           return () => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
@@ -539,7 +539,7 @@ module.exports = class XHRUpload extends Plugin {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"client.post.then.catch.client.post.then"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"client.post.then.catch","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         this.uppy.emit('upload-error', file, err);
         reject(err);
@@ -553,12 +553,12 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   uploadBundle(files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadBundle","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadBundle","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"uploadBundle"},');
 
     return new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###3","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.NewExpression###3","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2},`);
 
       const endpoint = this.opts.endpoint;
       const method = this.opts.method;
@@ -569,7 +569,7 @@ module.exports = class XHRUpload extends Plugin {
       });
       const xhr = new XMLHttpRequest();
       const timer = new ProgressTimeout(this.opts.timeout, () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"timer.NewExpression###2","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"timer.NewExpression###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
         xhr.abort();
         const error = new Error(this.i18n('timedOut', {
@@ -581,10 +581,10 @@ module.exports = class XHRUpload extends Plugin {
 
       });
       const emitError = error => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitError","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emitError","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         files.forEach(file => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
           this.uppy.emit('upload-error', file, error);
                     SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach"},');
@@ -594,7 +594,7 @@ module.exports = class XHRUpload extends Plugin {
 
       };
       xhr.upload.addEventListener('loadstart', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener###3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener###3","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         this.uppy.log('[XHRUpload] started uploading bundle');
         timer.progress();
@@ -602,7 +602,7 @@ module.exports = class XHRUpload extends Plugin {
 
       });
       xhr.upload.addEventListener('progress', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener###4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.upload.addEventListener###4","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         timer.progress();
         if (!ev.lengthComputable) {
@@ -611,7 +611,7 @@ module.exports = class XHRUpload extends Plugin {
           return;
         }
         files.forEach(file => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
           this.uppy.emit('upload-progress', file, {
             uploader: this,
@@ -625,7 +625,7 @@ module.exports = class XHRUpload extends Plugin {
 
       });
       xhr.addEventListener('load', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener###3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener###3","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         timer.done();
         if (this.opts.validateStatus(ev.target.status, xhr.responseText, xhr)) {
@@ -635,7 +635,7 @@ module.exports = class XHRUpload extends Plugin {
             body
           };
           files.forEach(file => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach###3","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach###3","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
             this.uppy.emit('upload-success', file, uploadResp);
                         SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach###3"},');
@@ -655,7 +655,7 @@ module.exports = class XHRUpload extends Plugin {
 
       });
       xhr.addEventListener('error', ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener###4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"xhr.addEventListener###4","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         timer.done();
         const error = this.opts.getResponseError(xhr.responseText, xhr) || new Error('Upload error');
@@ -667,7 +667,7 @@ module.exports = class XHRUpload extends Plugin {
 
       });
       this.uppy.on('cancel-all', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
         timer.done();
         xhr.abort();
@@ -680,7 +680,7 @@ module.exports = class XHRUpload extends Plugin {
         xhr.responseType = this.opts.responseType;
       }
       Object.keys(this.opts.headers).forEach(header => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         xhr.setRequestHeader(header, this.opts.headers[header]);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach###2"},');
@@ -688,7 +688,7 @@ module.exports = class XHRUpload extends Plugin {
       });
       xhr.send(formData);
       files.forEach(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach###4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach###4","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
         this.uppy.emit('upload-started', file);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"files.forEach###4"},');
@@ -701,10 +701,10 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   uploadFiles(files) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uploadFiles","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     const promises = files.map((file, i) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promises.files.map","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.promises.files.map","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2},`);
 
       const current = parseInt(i, 10) + 1;
       const total = files.length;
@@ -731,10 +731,10 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   onFileRemove(fileID, cb) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onFileRemove","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onFileRemove","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('file-removed', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
       if (fileID === file.id) cb(file.id);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on"},');
@@ -744,10 +744,10 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   onRetry(fileID, cb) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onRetry","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onRetry","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('upload-retry', targetFileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###2","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
       if (fileID === targetFileID) {
         cb();
@@ -759,10 +759,10 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   onRetryAll(fileID, cb) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onRetryAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onRetryAll","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('retry-all', filesToRetry => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###3","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
       if (!this.uppy.getFile(fileID)) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###3"},');
@@ -777,10 +777,10 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   onCancelAll(fileID, cb) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onCancelAll","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onCancelAll","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":2,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     this.uploaderEvents[fileID].on('cancel-all', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###4","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uploaderEvents.fileID.on###4","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
       if (!this.uppy.getFile(fileID)) {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploaderEvents.fileID.on###4"},');
@@ -795,7 +795,7 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   handleUpload(fileIDs) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleUpload","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleUpload","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     if (fileIDs.length === 0) {
       this.uppy.log('[XHRUpload] No files to upload!');
@@ -808,7 +808,7 @@ module.exports = class XHRUpload extends Plugin {
     }
     this.uppy.log('[XHRUpload] Uploading...');
     const files = fileIDs.map(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.fileIDs.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.fileIDs.map","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.files.fileIDs.map"},');
 
@@ -818,7 +818,7 @@ module.exports = class XHRUpload extends Plugin {
     });
     if (this.opts.bundle) {
       const isSomeFileRemote = files.some(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isSomeFileRemote.files.some","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.isSomeFileRemote.files.some","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.isSomeFileRemote.files.some"},');
 
@@ -838,7 +838,7 @@ module.exports = class XHRUpload extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"handleUpload"},');
 
     return this.uploadFiles(files).then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.uploadFiles.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.uploadFiles.then","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.uploadFiles.then"},');
 
@@ -850,7 +850,7 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     if (this.opts.bundle) {
       const {capabilities} = this.uppy.getState();
@@ -866,7 +866,7 @@ module.exports = class XHRUpload extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/xhr-upload/src/index.js","paramsNumber":0,"classInfo":{"className":"XHRUpload","superClass":"Plugin"}},`);
 
     if (this.opts.bundle) {
       const {capabilities} = this.uppy.getState();

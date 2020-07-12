@@ -137,7 +137,7 @@ ko_KR.strings = {
   }
 };
 ko_KR.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ko_KR.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ko_KR.pluralize","fileName":"/packages/@uppy/locales/src/ko_KR.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"ko_KR.pluralize"},');

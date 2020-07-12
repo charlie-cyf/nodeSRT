@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 module.exports = function getTimeStamp() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/utils/src/getTimeStamp.js","paramsNumber":0},`);
 
   var date = new Date();
   var hours = pad(date.getHours().toString());
@@ -14,7 +14,7 @@ module.exports = function getTimeStamp() {
 
 };
 function pad(str) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pad","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"pad","fileName":"/packages/@uppy/utils/src/getTimeStamp.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"pad"},');
 

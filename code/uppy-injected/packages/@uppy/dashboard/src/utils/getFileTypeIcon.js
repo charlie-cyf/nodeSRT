@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const {iconFile, iconText, iconImage, iconAudio, iconVideo, iconPDF, iconArchive} = require('../components/icons');
 module.exports = function getIconByMime(fileType) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/dashboard/src/utils/getFileTypeIcon.js","paramsNumber":1},`);
 
   const defaultChoice = {
     color: '#838999',

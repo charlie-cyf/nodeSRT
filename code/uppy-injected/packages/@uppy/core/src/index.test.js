@@ -10,9 +10,6 @@ const AcquirerPlugin2 = require('../../../../test/mocks/acquirerPlugin2');
 const InvalidPlugin = require('../../../../test/mocks/invalidPlugin');
 const InvalidPluginWithoutId = require('../../../../test/mocks/invalidPluginWithoutId');
 const InvalidPluginWithoutType = require('../../../../test/mocks/invalidPluginWithoutType');
-
-console.log(require.resolve('@uppy/utils/lib/prettyBytes'));
-
 jest.mock('cuid', () => {
   return () => 'cjd09qwxb000dlql4tp4doz8h';
 });
@@ -23,12 +20,12 @@ const sampleImage = fs.readFileSync(path.join(__dirname, '../../../../test/resou
 describe('src/Core', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "src/Core", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
   });
 
   const RealCreateObjectUrl = global.URL.createObjectURL;
   beforeEach(() => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
 
     global.URL.createObjectURL = jest.fn().mockReturnValue('newUrl');
   });
@@ -52,11 +49,11 @@ describe('src/Core', () => {
   describe('plugins', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "plugins", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "plugins", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should add a plugin to the plugin stack', () => {
@@ -129,11 +126,11 @@ describe('src/Core', () => {
   describe('state', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "state", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "state", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should update all the plugins with the new state when the updateAll method is called', () => {
@@ -345,11 +342,11 @@ describe('src/Core', () => {
   describe('upload hooks', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "upload%20hooks", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "upload%20hooks", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should add data returned from upload hooks to the .upload() result', () => {
@@ -388,11 +385,11 @@ describe('src/Core', () => {
   describe('preprocessors', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "preprocessors", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "preprocessors", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should add a preprocessor', () => {
@@ -532,11 +529,11 @@ describe('src/Core', () => {
   describe('postprocessors', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "postprocessors", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "postprocessors", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should add a postprocessor', () => {
@@ -648,11 +645,11 @@ describe('src/Core', () => {
   describe('uploaders', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "uploaders", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "uploaders", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should add an uploader', () => {
@@ -686,11 +683,11 @@ describe('src/Core', () => {
   describe('adding a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "adding%20a%20file", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "adding%20a%20file", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should call onBeforeFileAdded if it was specified in the options when initialising the class', () => {
@@ -846,11 +843,11 @@ describe('src/Core', () => {
     describe('with allowMultipleUploads: false', () => {
             beforeAll(() => {
         SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-        SRTlib.send(`{ "testSuiteName": "with%20allowMultipleUploads%3A%20false", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testSuiteName": "with%20allowMultipleUploads%3A%20false", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
       });
 
             beforeEach(() => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
       });
 
       it('allows no new files after upload', async () => {
@@ -969,11 +966,11 @@ describe('src/Core', () => {
   describe('uploading a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "uploading%20a%20file", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "uploading%20a%20file", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should return a { successful, failed } pair containing file objects', () => {
@@ -1162,11 +1159,11 @@ describe('src/Core', () => {
   describe('removing a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "removing%20a%20file", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "removing%20a%20file", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should remove the file', () => {
@@ -1205,11 +1202,11 @@ describe('src/Core', () => {
   describe('restoring a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "restoring%20a%20file", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "restoring%20a%20file", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     xit('should restore a file', () => {});
@@ -1227,11 +1224,11 @@ describe('src/Core', () => {
   describe('get a file', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "get%20a%20file", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "get%20a%20file", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should get the specified file', () => {
@@ -1261,11 +1258,11 @@ describe('src/Core', () => {
   describe('getFiles', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "getFiles", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "getFiles", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should return an empty array if there are no files', () => {
@@ -1306,11 +1303,11 @@ describe('src/Core', () => {
   describe('setOptions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "setOptions", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "setOptions", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should change options on the fly', () => {
@@ -1406,11 +1403,11 @@ describe('src/Core', () => {
   describe('meta data', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "meta%20data", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "meta%20data", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should set meta data by calling setMeta', () => {
@@ -1499,11 +1496,11 @@ describe('src/Core', () => {
   describe('progress', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "progress", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "progress", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should calculate the progress of a file upload', () => {
@@ -1745,11 +1742,11 @@ describe('src/Core', () => {
   describe('checkRestrictions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "checkRestrictions", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "checkRestrictions", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should enforce the maxNumberOfFiles rule', () => {
@@ -1899,11 +1896,11 @@ describe('src/Core', () => {
   describe('actions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "actions", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "actions", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should update the state when receiving the error event', () => {
@@ -1950,11 +1947,11 @@ describe('src/Core', () => {
   describe('updateOnlineStatus', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "updateOnlineStatus", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "updateOnlineStatus", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     const RealNavigatorOnline = global.window.navigator.onLine;
@@ -2002,11 +1999,11 @@ describe('src/Core', () => {
   describe('info', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "info", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "info", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should set a string based message to be displayed infinitely', () => {
@@ -2095,11 +2092,11 @@ describe('src/Core', () => {
   describe('createUpload', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "createUpload", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "createUpload", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should assign the specified files to a new upload', () => {
@@ -2135,11 +2132,11 @@ describe('src/Core', () => {
   describe('i18n', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "i18n", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "i18n", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('merges in custom locale strings', () => {
@@ -2166,11 +2163,11 @@ describe('src/Core', () => {
   describe('default restrictions', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "default%20restrictions", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "default%20restrictions", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should be merged with supplied restrictions', () => {
@@ -2195,11 +2192,11 @@ describe('src/Core', () => {
   describe('log', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "log", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "log", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/core/src/index.test.js", "calls" : [`);
     });
 
     it('should log via provided logger function', () => {

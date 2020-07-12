@@ -4,11 +4,11 @@ const copyToClipboard = require('./copyToClipboard');
 describe('copyToClipboard', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "copyToClipboard", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "copyToClipboard", "fileName": "/packages/@uppy/dashboard/src/utils/copyToClipboard.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/dashboard/src/utils/copyToClipboard.test.js", "calls" : [`);
   });
 
   xit('should copy the specified text to the clipboard', () => {

@@ -8,7 +8,7 @@ var formatSeconds = require('./formatSeconds');
 module.exports = function RecordingLength(_ref) {
   var recordingLengthSeconds = _ref.recordingLengthSeconds,
       i18n = _ref.i18n;
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/webcam/src/RecordingLength.js\",\"paramsNumber\":1},");
   var formattedRecordingLengthSeconds = formatSeconds(recordingLengthSeconds);
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return h("div", {

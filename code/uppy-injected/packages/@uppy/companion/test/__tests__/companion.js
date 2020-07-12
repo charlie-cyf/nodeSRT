@@ -3,13 +3,13 @@ const SRTlib = require('SRT-util');
 jest.mock('tus-js-client');
 jest.mock('purest');
 jest.mock('../../src/server/helpers/oauth-state', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"jest.mock","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"jest.mock","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"jest.mock"},');
 
   return {
     generateState: () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.generateState","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.generateState","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.generateState"},');
 
@@ -18,7 +18,7 @@ jest.mock('../../src/server/helpers/oauth-state', () => {
 
     },
     addToState: () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.addToState","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.addToState","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.addToState"},');
 
@@ -27,7 +27,7 @@ jest.mock('../../src/server/helpers/oauth-state', () => {
 
     },
     getFromState: (state, key) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.getFromState","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.getFromState","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":2},`);
 
       if (state === 'state-with-invalid-instance-url') {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.getFromState"},');
@@ -69,15 +69,15 @@ const authData = {
 const token = tokenService.generateToken(authData, process.env.COMPANION_SECRET);
 const OAUTH_STATE = 'some-cool-nice-encrytpion';
 describe('set i-am header', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
   test('set i-am header in response', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test"},');
 
     return request(authServer).get('/dropbox/list/').set('uppy-auth-token', token).expect(200).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.set.expect.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.set.expect.then","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.get.set.expect.then"},');
 
@@ -92,15 +92,15 @@ describe('set i-am header', () => {
 
 });
 describe('list provider files', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###2","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###2","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
   test('list files for dropbox', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###2"},');
 
     return request(authServer).get('/dropbox/list/').set('uppy-auth-token', token).expect(200).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.set.expect.then###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.set.expect.then###2","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.get.set.expect.then###2"},');
 
@@ -112,12 +112,12 @@ describe('list provider files', () => {
 
   });
   test('list files for google drive', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###3"},');
 
     return request(authServer).get('/drive/list/').set('uppy-auth-token', token).expect(200).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.set.expect.then###3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.set.expect.then###3","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.get.set.expect.then###3"},');
 
@@ -132,10 +132,10 @@ describe('list provider files', () => {
 
 });
 describe('validate upload data', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###3","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###3","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
   test('invalid upload protocol gets rejected', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###4"},');
 
@@ -143,7 +143,7 @@ describe('validate upload data', () => {
       endpoint: 'http://url.myendpoint.com/files',
       protocol: 'tusInvalid'
     }).expect(400).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.post.set.set.send.expect.then"},');
 
@@ -155,7 +155,7 @@ describe('validate upload data', () => {
 
   });
   test('invalid upload fieldname gets rejected', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###5"},');
 
@@ -164,7 +164,7 @@ describe('validate upload data', () => {
       protocol: 'tus',
       fieldname: 390
     }).expect(400).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###2","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.post.set.set.send.expect.then###2"},');
 
@@ -176,7 +176,7 @@ describe('validate upload data', () => {
 
   });
   test('invalid upload metadata gets rejected', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###6","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###6","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###6"},');
 
@@ -185,7 +185,7 @@ describe('validate upload data', () => {
       protocol: 'tus',
       metadata: 'I am a string instead of object'
     }).expect(400).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###3","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.post.set.set.send.expect.then###3"},');
 
@@ -197,7 +197,7 @@ describe('validate upload data', () => {
 
   });
   test('invalid upload headers get rejected', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###7","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###7","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###7"},');
 
@@ -206,7 +206,7 @@ describe('validate upload data', () => {
       protocol: 'tus',
       headers: 'I am a string instead of object'
     }).expect(400).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###4","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.post.set.set.send.expect.then###4"},');
 
@@ -218,7 +218,7 @@ describe('validate upload data', () => {
 
   });
   test('invalid upload HTTP Method gets rejected', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###8","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###8","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###8"},');
 
@@ -227,7 +227,7 @@ describe('validate upload data', () => {
       protocol: 'tus',
       httpMethod: 'DELETE'
     }).expect(400).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###5","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###5","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.post.set.set.send.expect.then###5"},');
 
@@ -239,7 +239,7 @@ describe('validate upload data', () => {
 
   });
   test('valid upload data is allowed - tus', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###9","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###9","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###9"},');
 
@@ -259,7 +259,7 @@ describe('validate upload data', () => {
 
   });
   test('valid upload data is allowed - s3-multipart', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###10","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###10","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###10"},');
 
@@ -282,10 +282,10 @@ describe('validate upload data', () => {
 
 });
 describe('download provdier file', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###4","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###4","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
   test('specified file gets downloaded from provider', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###11","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###11","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###11"},');
 
@@ -293,7 +293,7 @@ describe('download provdier file', () => {
       endpoint: 'http://master.tus.io/files',
       protocol: 'tus'
     }).expect(200).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###6","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.post.set.set.send.expect.then###6","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.post.set.set.send.expect.then###6"},');
 
@@ -308,15 +308,15 @@ describe('download provdier file', () => {
 
 });
 describe('test authentication', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###5","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###5","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
   test('authentication callback redirects to send-token url', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###12","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###12","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###12"},');
 
     return request(authServer).get('/drive/callback').expect(302).expect(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.expect.expect","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.expect.expect","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
       expect(res.header.location).toContain('http://localhost:3020/drive/send-token?uppyAuthToken=');
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.get.expect.expect"},');
@@ -326,12 +326,12 @@ describe('test authentication', () => {
 
   });
   test('the token gets sent via cookie and html', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###13","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###13","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###13"},');
 
     return request(authServer).get(`/dropbox/send-token?uppyAuthToken=${token}&state=state-with-newer-version`).expect(200).expect(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.expect.expect###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.expect.expect###2","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
       const authToken = res.header['set-cookie'][0].split(';')[0].split('uppyAuthToken--dropbox=')[1];
       expect(authToken).toEqual(token);
@@ -355,12 +355,12 @@ describe('test authentication', () => {
 
   });
   test('the token gets to older clients without stringify', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###14","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###14","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###14"},');
 
     return request(authServer).get(`/drive/send-token?uppyAuthToken=${token}&state=state-with-older-version`).expect(200).expect(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.expect.expect###3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.expect.expect###3","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
       const body = `
     <!DOCTYPE html>
@@ -382,12 +382,12 @@ describe('test authentication', () => {
 
   });
   test('the token gets sent to newer clients with old version style', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###15","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###15","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###15"},');
 
     return request(authServer).get(`/drive/send-token?uppyAuthToken=${token}&state=state-with-newer-version-old-style`).expect(200).expect(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.expect.expect###4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.expect.expect###4","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
       const body = `
     <!DOCTYPE html>
@@ -409,12 +409,12 @@ describe('test authentication', () => {
 
   });
   test('logout provider', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###16","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###16","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###16"},');
 
     return request(authServer).get('/drive/logout/').set('uppy-auth-token', token).expect(200).then(res => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.set.expect.then###4","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.request.get.set.expect.then###4","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.request.get.set.expect.then###4"},');
 
@@ -429,10 +429,10 @@ describe('test authentication', () => {
 
 });
 describe('connect to provider', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###6","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###6","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
   test('connect to dropbox via grant.js endpoint', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###17","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###17","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###17"},');
 
@@ -441,7 +441,7 @@ describe('connect to provider', () => {
 
   });
   test('connect to drive via grant.js endpoint', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###18","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###18","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###18"},');
 
@@ -453,10 +453,10 @@ describe('connect to provider', () => {
 
 });
 describe('handle oauth redirect', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###7","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###7","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
   test('redirect to a valid uppy instance', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###19","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###19","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###19"},');
 
@@ -465,7 +465,7 @@ describe('handle oauth redirect', () => {
 
   });
   test('do not redirect to invalid uppy instances', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###20","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###20","fileName":"/packages/@uppy/companion/test/__tests__/companion.js","paramsNumber":0},`);
 
     const state = 'state-with-invalid-instance-url';
         SRTlib.send('{"type":"FUNCTIONEND","function":"test###20"},');

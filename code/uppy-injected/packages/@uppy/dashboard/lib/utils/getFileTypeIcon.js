@@ -10,7 +10,7 @@ var _require = require('../components/icons'),
     iconArchive = _require.iconArchive;
 
 module.exports = function getIconByMime(fileType) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/dashboard/src/utils/getFileTypeIcon.js\",\"paramsNumber\":1},");
   var defaultChoice = {
     color: '#838999',
     icon: iconFile()

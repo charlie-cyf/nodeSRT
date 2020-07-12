@@ -27,14 +27,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function StatusBar(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
 
     _this.startUpload = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
       return _this.uppy.upload().catch(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.uppy.upload.catch\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.uppy.upload.catch\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":0},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.uppy.upload.catch"},');
       });
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
@@ -96,7 +96,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = StatusBar.prototype;
 
   _proto.setOptions = function setOptions(newOpts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
 
     _Plugin.prototype.setOptions.call(this, newOpts);
 
@@ -105,7 +105,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.i18nInit = function i18nInit() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
     this.setPluginState();
@@ -113,10 +113,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.getTotalSpeed = function getTotalSpeed(files) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getTotalSpeed\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getTotalSpeed\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
     var totalSpeed = 0;
     files.forEach(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.files.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.files.forEach\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       totalSpeed = totalSpeed + getSpeed(file.progress);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.files.forEach"},');
     });
@@ -126,7 +126,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.getTotalETA = function getTotalETA(files) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getTotalETA\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getTotalETA\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
     var totalSpeed = this.getTotalSpeed(files);
 
     if (totalSpeed === 0) {
@@ -135,7 +135,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     }
 
     var totalBytesRemaining = files.reduce(function (total, file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.totalBytesRemaining.files.reduce\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.totalBytesRemaining.files.reduce\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":2},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.totalBytesRemaining.files.reduce"},');
       return total + getBytesRemaining(file.progress);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.totalBytesRemaining.files.reduce"},');
@@ -146,7 +146,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.getUploadingState = function getUploadingState(isAllErrored, isAllComplete, files) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getUploadingState\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getUploadingState\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":3,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
 
     if (isAllErrored) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadingState"},');
@@ -184,68 +184,68 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.render = function render(state) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
     var capabilities = state.capabilities,
         files = state.files,
         allowNewUpload = state.allowNewUpload,
         totalProgress = state.totalProgress,
         error = state.error;
     var filesArray = Object.keys(files).map(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.filesArray.Object.keys.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.filesArray.Object.keys.map\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.filesArray.Object.keys.map"},');
       return files[file];
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.filesArray.Object.keys.map"},');
     });
     var newFiles = filesArray.filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.newFiles.filesArray.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.newFiles.filesArray.filter\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.newFiles.filesArray.filter"},');
       return !file.progress.uploadStarted && !file.progress.preprocess && !file.progress.postprocess;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.newFiles.filesArray.filter"},');
     });
     var uploadStartedFiles = filesArray.filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploadStartedFiles.filesArray.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.uploadStartedFiles.filesArray.filter\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploadStartedFiles.filesArray.filter"},');
       return file.progress.uploadStarted;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.uploadStartedFiles.filesArray.filter"},');
     });
     var pausedFiles = uploadStartedFiles.filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.pausedFiles.uploadStartedFiles.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.pausedFiles.uploadStartedFiles.filter\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.pausedFiles.uploadStartedFiles.filter"},');
       return file.isPaused;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.pausedFiles.uploadStartedFiles.filter"},');
     });
     var completeFiles = filesArray.filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.completeFiles.filesArray.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.completeFiles.filesArray.filter\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.completeFiles.filesArray.filter"},');
       return file.progress.uploadComplete;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.completeFiles.filesArray.filter"},');
     });
     var erroredFiles = filesArray.filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.erroredFiles.filesArray.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.erroredFiles.filesArray.filter\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.erroredFiles.filesArray.filter"},');
       return file.error;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.erroredFiles.filesArray.filter"},');
     });
     var inProgressFiles = filesArray.filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.inProgressFiles.filesArray.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.inProgressFiles.filesArray.filter\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.inProgressFiles.filesArray.filter"},');
       return !file.progress.uploadComplete && file.progress.uploadStarted;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.inProgressFiles.filesArray.filter"},');
     });
     var inProgressNotPausedFiles = inProgressFiles.filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.inProgressNotPausedFiles.inProgressFiles.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.inProgressNotPausedFiles.inProgressFiles.filter\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.inProgressNotPausedFiles.inProgressFiles.filter"},');
       return !file.isPaused;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.inProgressNotPausedFiles.inProgressFiles.filter"},');
     });
     var startedFiles = filesArray.filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.startedFiles.filesArray.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.startedFiles.filesArray.filter\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.startedFiles.filesArray.filter"},');
       return file.progress.uploadStarted || file.progress.preprocess || file.progress.postprocess;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.startedFiles.filesArray.filter"},');
     });
     var processingFiles = filesArray.filter(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.processingFiles.filesArray.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.processingFiles.filesArray.filter\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.processingFiles.filesArray.filter"},');
       return file.progress.preprocess || file.progress.postprocess;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.processingFiles.filesArray.filter"},');
@@ -254,7 +254,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     var totalSize = 0;
     var totalUploadedSize = 0;
     startedFiles.forEach(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.startedFiles.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.startedFiles.forEach\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":1},");
       totalSize = totalSize + (file.progress.bytesTotal || 0);
       totalUploadedSize = totalUploadedSize + (file.progress.bytesUploaded || 0);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.startedFiles.forEach"},');
@@ -304,7 +304,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
     var target = this.opts.target;
 
     if (target) {
@@ -315,7 +315,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/status-bar/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"StatusBar\",\"superClass\":\"Plugin\"}},");
     this.unmount();
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
   };

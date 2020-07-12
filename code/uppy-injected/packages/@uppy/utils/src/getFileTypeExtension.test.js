@@ -4,11 +4,11 @@ const getFileTypeExtension = require('./getFileTypeExtension');
 describe('getFileTypeExtension', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "getFileTypeExtension", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "getFileTypeExtension", "fileName": "/packages/@uppy/utils/src/getFileTypeExtension.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/getFileTypeExtension.test.js", "calls" : [`);
   });
 
   it('should return the filetype based on the specified mime type', () => {

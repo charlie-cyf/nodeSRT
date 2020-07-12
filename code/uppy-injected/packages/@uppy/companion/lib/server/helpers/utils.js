@@ -5,12 +5,12 @@ const urlParser = require('url');
 const crypto = require('crypto');
 const {getProtectedHttpAgent} = require('./request');
 exports.hasMatch = (value, criteria) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasMatch","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasMatch","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":2},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.hasMatch"},');
 
   return criteria.some(i => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.criteria.some","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.criteria.some","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.criteria.some"},');
 
@@ -22,13 +22,13 @@ exports.hasMatch = (value, criteria) => {
 
 };
 exports.jsonStringify = data => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.jsonStringify","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.jsonStringify","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":1},`);
 
   const cache = [];
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.jsonStringify"},');
 
   return JSON.stringify(data, (key, value) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.JSON.stringify","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.JSON.stringify","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":2},`);
 
     if (typeof value === 'object' && value !== null) {
       if (cache.indexOf(value) !== -1) {
@@ -48,7 +48,7 @@ exports.jsonStringify = data => {
 
 };
 exports.sanitizeHtml = text => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.sanitizeHtml","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.sanitizeHtml","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sanitizeHtml"},');
 
@@ -57,7 +57,7 @@ exports.sanitizeHtml = text => {
 
 };
 exports.parseURL = url => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.parseURL","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.parseURL","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.parseURL"},');
 
@@ -66,12 +66,12 @@ exports.parseURL = url => {
 
 };
 exports.getURLMeta = (url, blockLocalIPs = false) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getURLMeta","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getURLMeta","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":2},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getURLMeta"},');
 
   return new Promise((resolve, reject) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.NewExpression","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":2},`);
 
     const opts = {
       uri: url,
@@ -80,7 +80,7 @@ exports.getURLMeta = (url, blockLocalIPs = false) => {
       agentClass: getProtectedHttpAgent(exports.parseURL(url).protocol, blockLocalIPs)
     };
     request(opts, (err, response, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":3},`);
 
       if (err) {
         reject(err);
@@ -100,10 +100,10 @@ exports.getURLMeta = (url, blockLocalIPs = false) => {
 
 };
 module.exports.getURLBuilder = options => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getURLBuilder","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getURLBuilder","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":1},`);
 
   const buildURL = (path, isExternal, excludeHost) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildURL","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"buildURL","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":3},`);
 
     let url = path;
     if (isExternal) {
@@ -126,7 +126,7 @@ module.exports.getURLBuilder = options => {
 
 };
 function createSecret(secret) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createSecret","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createSecret","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":1},`);
 
   const hash = crypto.createHash('sha256');
   hash.update(secret);
@@ -137,7 +137,7 @@ function createSecret(secret) {
 
 }
 function createIv() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createIv","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createIv","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"createIv"},');
 
@@ -146,7 +146,7 @@ function createIv() {
 
 }
 function urlEncode(unencoded) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"urlEncode","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"urlEncode","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"urlEncode"},');
 
@@ -155,7 +155,7 @@ function urlEncode(unencoded) {
 
 }
 function urlDecode(encoded) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"urlDecode","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"urlDecode","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":1},`);
 
   encoded = encoded.replace(/-/g, '+').replace(/_/g, '/').replace(/~/g, '=');
     SRTlib.send('{"type":"FUNCTIONEND","function":"urlDecode"},');
@@ -165,7 +165,7 @@ function urlDecode(encoded) {
 
 }
 module.exports.encrypt = (input, secret) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.encrypt","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.encrypt","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":2},`);
 
   const iv = createIv();
   const cipher = crypto.createCipheriv('aes256', createSecret(secret), iv);
@@ -178,7 +178,7 @@ module.exports.encrypt = (input, secret) => {
 
 };
 module.exports.decrypt = (encrypted, secret) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.decrypt","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.decrypt","fileName":"/packages/@uppy/companion/lib/server/helpers/utils.js","paramsNumber":2},`);
 
   if (encrypted.length < 32) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.decrypt"},');

@@ -3,14 +3,14 @@ const SRTlib = require('SRT-util');
 const Emitter = require('component-emitter');
 class TransloaditAssemblyWatcher extends Emitter {
   constructor(uppy, assemblyIDs) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":2,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
     super();
     this._uppy = uppy;
     this._assemblyIDs = assemblyIDs;
     this._remaining = assemblyIDs.length;
     this.promise = new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"promise.NewExpression","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":2},`);
 
       this._resolve = resolve;
       this._reject = reject;
@@ -26,7 +26,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _watching(id) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_watching","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_watching","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":1,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"_watching"},');
 
@@ -35,7 +35,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _onAssemblyComplete(assembly) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onAssemblyComplete","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onAssemblyComplete","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":1,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
     if (!this._watching(assembly.assembly_id)) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_onAssemblyComplete"},');
@@ -49,7 +49,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _onAssemblyCancel(assembly) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onAssemblyCancel","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onAssemblyCancel","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":1,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
     if (!this._watching(assembly.assembly_id)) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_onAssemblyCancel"},');
@@ -61,7 +61,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _onAssemblyError(assembly, error) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onAssemblyError","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onAssemblyError","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":2,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
     if (!this._watching(assembly.assembly_id)) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_onAssemblyError"},');
@@ -76,7 +76,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _onImportError(assembly, fileID, error) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onImportError","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onImportError","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":3,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
     if (!this._watching(assembly.assembly_id)) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_onImportError"},');
@@ -88,7 +88,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _checkAllComplete() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_checkAllComplete","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_checkAllComplete","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":0,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
     this._remaining -= 1;
     if (this._remaining === 0) {
@@ -99,7 +99,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _removeListeners() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_removeListeners","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_removeListeners","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":0,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
     this._uppy.off('transloadit:complete', this._onAssemblyComplete);
     this._uppy.off('transloadit:assembly-cancel', this._onAssemblyCancel);
@@ -109,7 +109,7 @@ class TransloaditAssemblyWatcher extends Emitter {
 
   }
   _addListeners() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_addListeners","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_addListeners","fileName":"/packages/@uppy/transloadit/src/AssemblyWatcher.js","paramsNumber":0,"classInfo":{"className":"TransloaditAssemblyWatcher","superClass":"Emitter"}},`);
 
     this._uppy.on('transloadit:complete', this._onAssemblyComplete);
     this._uppy.on('transloadit:assembly-cancel', this._onAssemblyCancel);

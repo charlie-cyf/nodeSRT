@@ -16,7 +16,7 @@ var AuthView = /*#__PURE__*/function (_Component) {
   var _proto = AuthView.prototype;
 
   _proto.render = function render() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AuthView\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/provider-views/src/AuthView.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AuthView\",\"superClass\":\"Component\"}},");
     var pluginNameComponent = h("span", {
       class: "uppy-Provider-authTitleName"
     }, this.props.pluginName, h("br", null));

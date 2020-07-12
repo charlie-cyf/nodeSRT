@@ -4,11 +4,11 @@ const debounce = require('lodash.debounce');
 const FOCUSABLE_ELEMENTS = require('@uppy/utils/lib/FOCUSABLE_ELEMENTS');
 const getActiveOverlayEl = require('./getActiveOverlayEl');
 module.exports = function createSuperFocus() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/dashboard/src/utils/createSuperFocus.js","paramsNumber":0},`);
 
   let lastFocusWasOnSuperFocusableEl = false;
   const superFocus = (dashboardEl, activeOverlayType) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"superFocus","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"superFocus","fileName":"/packages/@uppy/dashboard/src/utils/createSuperFocus.js","paramsNumber":2},`);
 
     const overlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
     const isFocusInOverlay = overlayEl.contains(document.activeElement);

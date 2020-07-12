@@ -13,7 +13,7 @@ var RecordButton = require('./RecordButton');
 var RecordingLength = require('./RecordingLength');
 
 function isModeAvailable(modes, mode) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isModeAvailable\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"isModeAvailable\",\"fileName\":\"/packages/@uppy/webcam/src/CameraScreen.js\",\"paramsNumber\":2},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"isModeAvailable"},');
   return modes.indexOf(mode) !== -1;
   SRTlib.send('{"type":"FUNCTIONEND","function":"isModeAvailable","paramsNumber":2},');
@@ -29,19 +29,19 @@ var CameraScreen = /*#__PURE__*/function (_Component) {
   var _proto = CameraScreen.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"CameraScreen\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"/packages/@uppy/webcam/src/CameraScreen.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"CameraScreen\",\"superClass\":\"Component\"}},");
     this.props.onFocus();
     SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"CameraScreen\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"/packages/@uppy/webcam/src/CameraScreen.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"CameraScreen\",\"superClass\":\"Component\"}},");
     this.props.onStop();
     SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
   };
 
   _proto.render = function render() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"CameraScreen\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/webcam/src/CameraScreen.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"CameraScreen\",\"superClass\":\"Component\"}},");
     var shouldShowRecordButton = this.props.supportsRecording && (isModeAvailable(this.props.modes, 'video-only') || isModeAvailable(this.props.modes, 'audio-only') || isModeAvailable(this.props.modes, 'video-audio'));
     var shouldShowSnapshotButton = isModeAvailable(this.props.modes, 'picture');
     var shouldShowRecordingLength = this.props.supportsRecording && this.props.showRecordingLength;

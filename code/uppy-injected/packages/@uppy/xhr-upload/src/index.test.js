@@ -6,21 +6,21 @@ const XHRUpload = require('./index');
 describe('XHRUpload', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "XHRUpload", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "XHRUpload", "fileName": "/packages/@uppy/xhr-upload/src/index.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/xhr-upload/src/index.test.js", "calls" : [`);
   });
 
   describe('getResponseData', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "getResponseData", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "getResponseData", "fileName": "/packages/@uppy/xhr-upload/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/xhr-upload/src/index.test.js", "calls" : [`);
     });
 
     it('has the XHRUpload options as its `this`', () => {
@@ -60,11 +60,11 @@ describe('XHRUpload', () => {
   describe('validateStatus', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "validateStatus", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "validateStatus", "fileName": "/packages/@uppy/xhr-upload/src/index.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/xhr-upload/src/index.test.js", "calls" : [`);
     });
 
     it('emit upload error under status code 200', () => {

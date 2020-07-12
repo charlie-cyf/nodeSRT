@@ -8,11 +8,11 @@ module.exports = /*#__PURE__*/function () {
   function Translator(locales) {
     var _this = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Translator\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Translator\"}},");
     this.locale = {
       strings: {},
       pluralize: function pluralize(n) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.locale.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.locale.pluralize\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":1},");
 
         if (n === 1) {
           SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.locale.pluralize"},');
@@ -27,7 +27,7 @@ module.exports = /*#__PURE__*/function () {
 
     if (Array.isArray(locales)) {
       locales.forEach(function (locale) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.locales.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.locales.forEach\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.locales.forEach"},');
         return _this._apply(locale);
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.locales.forEach"},');
@@ -42,7 +42,7 @@ module.exports = /*#__PURE__*/function () {
   var _proto = Translator.prototype;
 
   _proto._apply = function _apply(locale) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_apply\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Translator\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_apply\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Translator\"}},");
 
     if (!locale || !locale.strings) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"_apply"},');
@@ -58,7 +58,7 @@ module.exports = /*#__PURE__*/function () {
   };
 
   _proto.interpolate = function interpolate(phrase, options) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"interpolate\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Translator\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"interpolate\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Translator\"}},");
     var _String$prototype = String.prototype,
         split = _String$prototype.split,
         replace = _String$prototype.replace;
@@ -82,10 +82,10 @@ module.exports = /*#__PURE__*/function () {
     return interpolated;
 
     function insertReplacement(source, rx, replacement) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"insertReplacement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"insertReplacement\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":3},");
       var newParts = [];
       source.forEach(function (chunk) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"source.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"source.forEach\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":1},");
 
         if (typeof chunk !== 'string') {
           SRTlib.send('{"type":"FUNCTIONEND","function":"source.forEach"},');
@@ -93,7 +93,7 @@ module.exports = /*#__PURE__*/function () {
         }
 
         split.call(chunk, rx).forEach(function (raw, i, list) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"split.call.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"split.call.forEach\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":3},");
 
           if (raw !== '') {
             newParts.push(raw);
@@ -116,14 +116,14 @@ module.exports = /*#__PURE__*/function () {
   };
 
   _proto.translate = function translate(key, options) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"translate\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Translator\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"translate\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Translator\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"translate"},');
     return this.translateArray(key, options).join('');
     SRTlib.send('{"type":"FUNCTIONEND","function":"translate"},');
   };
 
   _proto.translateArray = function translateArray(key, options) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"translateArray\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Translator\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"translateArray\",\"fileName\":\"/packages/@uppy/utils/src/Translator.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Translator\"}},");
     var string = this.locale.strings[key];
     var hasPluralForms = typeof string === 'object';
 

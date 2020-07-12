@@ -3,22 +3,22 @@ const SRTlib = require('SRT-util');
 const logger = require('../../src/server/logger');
 const chalk = require('chalk');
 describe('Test Logger secret mask', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":0},`);
 
   beforeAll(() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"beforeAll","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"beforeAll","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":0},`);
 
     logger.setMaskables(['ToBeMasked1', 'toBeMasked2', 'toBeMasked(And)?Escaped']);
         SRTlib.send('{"type":"FUNCTIONEND","function":"beforeAll"},');
 
   });
   test('masks secret values present in log.info messages', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":0},`);
 
     let loggedMessage = null;
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":2},`);
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
@@ -34,12 +34,12 @@ describe('Test Logger secret mask', () => {
 
   });
   test('masks secret values present in log.warn messages', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":0},`);
 
     let loggedMessage = null;
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###2","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":2},`);
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
@@ -55,12 +55,12 @@ describe('Test Logger secret mask', () => {
 
   });
   test('masks secret values present in log.error messages', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":0},`);
 
     let loggedMessage = null;
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###3","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###3","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":2},`);
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
@@ -76,12 +76,12 @@ describe('Test Logger secret mask', () => {
 
   });
   test('masks secret values present in log.error stack trace', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":0},`);
 
     let loggedMessage = null;
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###4","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###4","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":2},`);
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);
@@ -101,12 +101,12 @@ describe('Test Logger secret mask', () => {
 
   });
   test('escape regex characters from secret values before masking them', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":0},`);
 
     let loggedMessage = null;
     const defaultConsoleLog = console.log;
     console.log = (logPrefix, message) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###5","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"console.log###5","fileName":"/packages/@uppy/companion/test/__tests__/logger.js","paramsNumber":2},`);
 
       loggedMessage = message;
       defaultConsoleLog(logPrefix, message);

@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const querystring = require('querystring');
 exports.getUsername = data => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getUsername","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getUsername","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
   for (const item of data.files) {
     if (item.ownedByMe && item.permissions) {
@@ -19,7 +19,7 @@ exports.getUsername = data => {
 
 };
 exports.isFolder = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isFolder"},');
 
@@ -28,7 +28,7 @@ exports.isFolder = item => {
 
 };
 exports.getItemSize = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSize","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemSize"},');
 
@@ -37,7 +37,7 @@ exports.getItemSize = item => {
 
 };
 exports.getItemIcon = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
   if (exports.isSharedDrive(item)) {
     const size = '=w16-h16-n';
@@ -59,13 +59,13 @@ exports.getItemIcon = item => {
 
 };
 exports.getItemSubList = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
   const allowedGSuiteTypes = ['application/vnd.google-apps.document', 'application/vnd.google-apps.drawing', 'application/vnd.google-apps.script', 'application/vnd.google-apps.spreadsheet', 'application/vnd.google-apps.presentation'];
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemSubList"},');
 
   return item.files.filter(i => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.item.files.filter","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.item.files.filter","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.item.files.filter"},');
 
@@ -77,7 +77,7 @@ exports.getItemSubList = item => {
 
 };
 exports.getItemName = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
   const extensionMaps = {
     'application/vnd.google-apps.document': '.docx',
@@ -99,7 +99,7 @@ exports.getItemName = item => {
 
 };
 exports.getMimeType = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
   if (exports.isGsuiteFile(item.mimeType)) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getMimeType"},');
@@ -113,7 +113,7 @@ exports.getMimeType = item => {
 
 };
 exports.getItemId = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemId"},');
 
@@ -122,7 +122,7 @@ exports.getItemId = item => {
 
 };
 exports.getItemRequestPath = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemRequestPath"},');
 
@@ -131,7 +131,7 @@ exports.getItemRequestPath = item => {
 
 };
 exports.getItemModifiedDate = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemModifiedDate"},');
 
@@ -140,7 +140,7 @@ exports.getItemModifiedDate = item => {
 
 };
 exports.getItemThumbnailUrl = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemThumbnailUrl"},');
 
@@ -149,7 +149,7 @@ exports.getItemThumbnailUrl = item => {
 
 };
 exports.isSharedDrive = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isSharedDrive","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isSharedDrive","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isSharedDrive"},');
 
@@ -158,7 +158,7 @@ exports.isSharedDrive = item => {
 
 };
 exports.getNextPagePath = (data, currentQuery, currentPath) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":3},`);
 
   if (!data.nextPageToken) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getNextPagePath"},');
@@ -175,7 +175,7 @@ exports.getNextPagePath = (data, currentQuery, currentPath) => {
 
 };
 exports.isGsuiteFile = mimeType => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isGsuiteFile","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isGsuiteFile","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isGsuiteFile"},');
 
@@ -184,7 +184,7 @@ exports.isGsuiteFile = mimeType => {
 
 };
 exports.getGsuiteExportType = mimeType => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getGsuiteExportType","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getGsuiteExportType","fileName":"/packages/@uppy/companion/lib/server/provider/drive/adapter.js","paramsNumber":1},`);
 
   const typeMaps = {
     'application/vnd.google-apps.document': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',

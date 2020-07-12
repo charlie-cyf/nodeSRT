@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 class ProviderApiError extends Error {
   constructor(message, statusCode) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"ProviderApiError","superClass":"Error"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion/src/server/provider/error.js","paramsNumber":2,"classInfo":{"className":"ProviderApiError","superClass":"Error"}},`);
 
     super(message);
     this.name = 'ProviderApiError';
@@ -14,7 +14,7 @@ class ProviderApiError extends Error {
 }
 class ProviderAuthError extends ProviderApiError {
   constructor() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"ProviderAuthError","superClass":"ProviderApiError"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion/src/server/provider/error.js","paramsNumber":0,"classInfo":{"className":"ProviderAuthError","superClass":"ProviderApiError"}},`);
 
     super('invalid access token detected by Provider', 401);
     this.name = 'AuthError';
@@ -24,7 +24,7 @@ class ProviderAuthError extends ProviderApiError {
   }
 }
 function errorToResponse(err) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"errorToResponse","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"errorToResponse","fileName":"/packages/@uppy/companion/src/server/provider/error.js","paramsNumber":1},`);
 
   if (err instanceof ProviderAuthError && err.isAuthError) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"errorToResponse"},');

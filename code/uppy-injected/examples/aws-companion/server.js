@@ -23,7 +23,7 @@ const options = {
     },
     s3: {
       getKey: (req, filename) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"options.providerOptions.s3.getKey","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"options.providerOptions.s3.getKey","fileName":"/examples/aws-companion/server.js","paramsNumber":2},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"options.providerOptions.s3.getKey"},');
 
@@ -51,7 +51,7 @@ try {
   fs.mkdirSync(DATA_DIR);
 }
 process.on('exit', function () {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"process.on","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"process.on","fileName":"/examples/aws-companion/server.js","paramsNumber":0},`);
 
   rimraf.sync(DATA_DIR);
     SRTlib.send('{"type":"FUNCTIONEND","function":"process.on"},');
@@ -59,7 +59,7 @@ process.on('exit', function () {
 });
 app.use(companion.app(options));
 const server = app.listen(3020, () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"server.app.listen","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"server.app.listen","fileName":"/examples/aws-companion/server.js","paramsNumber":0},`);
 
   console.log('listening on port 3020');
     SRTlib.send('{"type":"FUNCTIONEND","function":"server.app.listen"},');

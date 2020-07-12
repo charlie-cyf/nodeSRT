@@ -21,7 +21,7 @@ function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
     files = {};
   }
 
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getUploadingState\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":4},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"getUploadingState\",\"fileName\":\"/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js\",\"paramsNumber\":4},");
 
   if (isAllErrored) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"getUploadingState"},');
@@ -64,7 +64,7 @@ function getUploadingState(isAllErrored, isAllComplete, isAllPaused, files) {
 }
 
 function UploadStatus(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UploadStatus\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"UploadStatus\",\"fileName\":\"/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js\",\"paramsNumber\":1},");
   var uploadingState = getUploadingState(props.isAllErrored, props.isAllComplete, props.isAllPaused, props.files);
 
   switch (uploadingState) {
@@ -100,7 +100,7 @@ function UploadStatus(props) {
 }
 
 function PanelTopBar(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"PanelTopBar\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"PanelTopBar\",\"fileName\":\"/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js\",\"paramsNumber\":1},");
   var allowNewUpload = props.allowNewUpload;
 
   if (allowNewUpload && props.maxNumberOfFiles) {
@@ -124,7 +124,7 @@ function PanelTopBar(props) {
     "aria-label": props.i18n('addMoreFiles'),
     title: props.i18n('addMoreFiles'),
     onclick: function onclick() {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"/packages/@uppy/dashboard/src/components/PickerPanelTopBar.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
       return props.toggleAddFilesPanel(true);
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');

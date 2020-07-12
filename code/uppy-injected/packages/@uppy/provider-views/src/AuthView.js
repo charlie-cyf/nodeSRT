@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const {h, Component} = require('preact');
 class AuthView extends Component {
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AuthView","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/provider-views/src/AuthView.js","paramsNumber":0,"classInfo":{"className":"AuthView","superClass":"Component"}},`);
 
     const pluginNameComponent = <span class="uppy-Provider-authTitleName">{this.props.pluginName}<br /></span>;
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');

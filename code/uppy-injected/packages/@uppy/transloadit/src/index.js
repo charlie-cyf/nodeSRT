@@ -9,7 +9,7 @@ const Client = require('./Client');
 const AssemblyOptions = require('./AssemblyOptions');
 const AssemblyWatcher = require('./AssemblyWatcher');
 function defaultGetAssemblyOptions(file, options) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"defaultGetAssemblyOptions","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"defaultGetAssemblyOptions","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"defaultGetAssemblyOptions"},');
 
@@ -28,7 +28,7 @@ const TL_UPPY_SERVER = /https?:\/\/api2(?:-\w+)?\.transloadit\.com\/uppy-server/
 module.exports = class Transloadit extends Plugin {
   static VERSION = require('../package.json').version
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     super(uppy, opts);
     this.type = 'uploader';
@@ -85,7 +85,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     super.setOptions(newOpts);
     this.i18nInit();
@@ -93,7 +93,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   i18nInit() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"i18nInit","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
@@ -103,11 +103,11 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _getClientVersion() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getClientVersion","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getClientVersion","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const list = [`uppy-core:${this.uppy.constructor.VERSION}`, `uppy-transloadit:${this.constructor.VERSION}`, `uppy-tus:${Tus.VERSION}`];
     const addPluginVersion = (pluginName, versionName) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addPluginVersion","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addPluginVersion","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2},`);
 
       const plugin = this.uppy.getPlugin(pluginName);
       if (plugin) {
@@ -134,7 +134,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _attachAssemblyMetadata(file, status) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_attachAssemblyMetadata","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_attachAssemblyMetadata","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const meta = {
       ...file.meta,
@@ -183,7 +183,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _createAssembly(fileIDs, uploadID, options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_createAssembly","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_createAssembly","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":3,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     this.uppy.log('[Transloadit] Create Assembly');
         SRTlib.send('{"type":"FUNCTIONEND","function":"_createAssembly"},');
@@ -194,7 +194,7 @@ module.exports = class Transloadit extends Plugin {
       expectedFiles: fileIDs.length,
       signature: options.signature
     }).then(newAssembly => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.client.createAssembly.then.catch.client.createAssembly.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.client.createAssembly.then.catch.client.createAssembly.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       const assembly = new Assembly(newAssembly);
       const status = assembly.status;
@@ -213,7 +213,7 @@ module.exports = class Transloadit extends Plugin {
       const {files} = this.uppy.getState();
       const updatedFiles = {};
       fileIDs.forEach(id => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         updatedFiles[id] = this._attachAssemblyMetadata(this.uppy.getFile(id), status);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDs.forEach"},');
@@ -233,7 +233,7 @@ module.exports = class Transloadit extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.client.createAssembly.then.catch.client.createAssembly.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.client.createAssembly.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.client.createAssembly.then.catch","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       err.message = `${this.i18n('creatingAssemblyFailed')}: ${err.message}`;
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.client.createAssembly.then.catch"},');
@@ -246,15 +246,15 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _createAssemblyWatcher(assemblyID, fileIDs, uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_createAssemblyWatcher","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_createAssemblyWatcher","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":3,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const watcher = new AssemblyWatcher(this.uppy, assemblyID);
     watcher.on('assembly-complete', id => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.watcher.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.watcher.on","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       const files = this.getAssemblyFiles(id);
       files.forEach(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         this.completedFiles[file.id] = true;
         this.uppy.emit('postprocess-complete', file);
@@ -265,11 +265,11 @@ module.exports = class Transloadit extends Plugin {
 
     });
     watcher.on('assembly-error', (id, error) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.watcher.on###2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.watcher.on###2","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2},`);
 
       const files = this.getAssemblyFiles(id);
       files.forEach(file => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"files.forEach###2","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         this.uppy.emit('upload-error', file, error);
         this.uppy.emit('postprocess-complete', file);
@@ -284,7 +284,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _shouldWaitAfterUpload() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_shouldWaitAfterUpload","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_shouldWaitAfterUpload","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"_shouldWaitAfterUpload"},');
 
@@ -293,12 +293,12 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _reserveFiles(assembly, fileIDs) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_reserveFiles","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_reserveFiles","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"_reserveFiles"},');
 
     return Promise.all(fileIDs.map(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.all.fileIDs.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.Promise.all.fileIDs.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       const file = this.uppy.getFile(fileID);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.Promise.all.fileIDs.map"},');
@@ -311,7 +311,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _onFileUploadURLAvailable(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onFileUploadURLAvailable","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onFileUploadURLAvailable","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     if (!file || !file.transloadit || !file.transloadit.assembly) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_onFileUploadURLAvailable"},');
@@ -321,7 +321,7 @@ module.exports = class Transloadit extends Plugin {
     const {assemblies} = this.getPluginState();
     const assembly = assemblies[file.transloadit.assembly];
     this.client.addFile(assembly, file).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.client.addFile.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.client.addFile.catch","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       this.uppy.log(err);
       this.uppy.emit('transloadit:import-error', assembly, file.id, err);
@@ -332,7 +332,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _findFile(uploadedFile) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_findFile","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_findFile","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const files = this.uppy.getFiles();
     for (let i = 0; i < files.length; i++) {
@@ -359,7 +359,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _onFileUploadComplete(assemblyId, uploadedFile) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onFileUploadComplete","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onFileUploadComplete","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const state = this.getPluginState();
     const file = this._findFile(uploadedFile);
@@ -384,7 +384,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _onResult(assemblyId, stepName, result) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onResult","fileName":"${__filename}","paramsNumber":3,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onResult","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":3,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const state = this.getPluginState();
     const file = state.files[result.original_id];
@@ -403,11 +403,11 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _onAssemblyFinished(status) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onAssemblyFinished","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onAssemblyFinished","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const url = status.assembly_ssl_url;
     this.client.getAssemblyStatus(url).then(finalStatus => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.client.getAssemblyStatus.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.client.getAssemblyStatus.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       const assemblyId = finalStatus.assemblyId;
       const state = this.getPluginState();
@@ -425,12 +425,12 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _cancelAssembly(assembly) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_cancelAssembly","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_cancelAssembly","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"_cancelAssembly"},');
 
     return this.client.cancelAssembly(assembly).then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.client.cancelAssembly.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.client.cancelAssembly.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
       this.uppy.emit('transloadit:assembly-cancelled', assembly);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.client.cancelAssembly.then"},');
@@ -440,11 +440,11 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _onCancelAll() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onCancelAll","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onCancelAll","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const {assemblies} = this.getPluginState();
     const cancelPromises = Object.keys(assemblies).map(assemblyID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.cancelPromises.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.cancelPromises.Object.keys.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       const assembly = this.getAssembly(assemblyID);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.Object.keys.map"},');
@@ -454,7 +454,7 @@ module.exports = class Transloadit extends Plugin {
 
     });
     Promise.all(cancelPromises).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Promise.all.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Promise.all.catch","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       this.uppy.log(err);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.Promise.all.catch"},');
@@ -464,7 +464,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _getPersistentData(setData) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getPersistentData","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_getPersistentData","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const state = this.getPluginState();
     const assemblies = state.assemblies;
@@ -479,7 +479,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _onRestored(pluginData) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onRestored","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onRestored","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const savedState = pluginData && pluginData[this.id] ? pluginData[this.id] : {};
     const previousAssemblies = savedState.assemblies || ({});
@@ -490,16 +490,16 @@ module.exports = class Transloadit extends Plugin {
       return;
     }
     const restoreState = assemblies => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"restoreState","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"restoreState","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       const files = {};
       const results = [];
       Object.keys(assemblies).forEach(id => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###2","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         const status = assemblies[id];
         status.uploads.forEach(uploadedFile => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"status.uploads.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"status.uploads.forEach","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
           const file = this._findFile(uploadedFile);
           files[uploadedFile.id] = {
@@ -512,10 +512,10 @@ module.exports = class Transloadit extends Plugin {
         });
         const state = this.getPluginState();
         Object.keys(status.results).forEach(stepName => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
           status.results[stepName].forEach(result => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"status.results.stepName.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"status.results.stepName.forEach","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
             const file = state.files[result.original_id];
             result.localId = file ? file.id : null;
@@ -544,18 +544,18 @@ module.exports = class Transloadit extends Plugin {
 
     };
     const restoreAssemblies = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"restoreAssemblies","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"restoreAssemblies","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
       const {assemblies, uploadsAssemblies} = this.getPluginState();
       Object.keys(uploadsAssemblies).forEach(uploadID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###3","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach###3","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         const assemblyIDs = uploadsAssemblies[uploadID];
         const fileIDsInUpload = assemblyIDs.reduce((acc, assemblyID) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDsInUpload.assemblyIDs.reduce","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDsInUpload.assemblyIDs.reduce","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2},`);
 
           const fileIDsInAssembly = this.getAssemblyFiles(assemblyID).map(file => {
-                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDsInAssembly.getAssemblyFiles.map","fileName":"${__filename}","paramsNumber":1},`);
+                        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDsInAssembly.getAssemblyFiles.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
                         SRTlib.send('{"type":"FUNCTIONEND","function":"fileIDsInAssembly.getAssemblyFiles.map"},');
 
@@ -576,7 +576,7 @@ module.exports = class Transloadit extends Plugin {
       });
       const allAssemblyIDs = Object.keys(assemblies);
       allAssemblyIDs.forEach(id => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"allAssemblyIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"allAssemblyIDs.forEach","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         const assembly = new Assembly(assemblies[id]);
         this._connectAssembly(assembly);
@@ -587,13 +587,13 @@ module.exports = class Transloadit extends Plugin {
 
     };
     const updateAssemblies = () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateAssemblies","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"updateAssemblies","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
       const {assemblies} = this.getPluginState();
             SRTlib.send('{"type":"FUNCTIONEND","function":"updateAssemblies"},');
 
       return Promise.all(Object.keys(assemblies).map(id => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.all.Object.keys.map","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.Promise.all.Object.keys.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.Promise.all.Object.keys.map"},');
 
@@ -605,7 +605,7 @@ module.exports = class Transloadit extends Plugin {
 
     };
     this.restored = Promise.resolve().then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.restored.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.restored.Promise.resolve.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
       restoreState(previousAssemblies);
       restoreAssemblies();
@@ -616,7 +616,7 @@ module.exports = class Transloadit extends Plugin {
 
     });
     this.restored.then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.restored.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.restored.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
       this.restored = null;
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.restored.then"},');
@@ -626,13 +626,13 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _connectAssembly(assembly) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_connectAssembly","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_connectAssembly","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const {status} = assembly;
     const id = status.assembly_id;
     this.activeAssemblies[id] = assembly;
     assembly.on('status', newStatus => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       const {assemblies} = this.getPluginState();
       this.setPluginState({
@@ -645,14 +645,14 @@ module.exports = class Transloadit extends Plugin {
 
     });
     assembly.on('upload', file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###2","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       this._onFileUploadComplete(id, file);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assembly.on###2"},');
 
     });
     assembly.on('error', error => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###3","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       error.assembly = assembly.status;
       this.uppy.emit('transloadit:assembly-error', assembly.status, error);
@@ -660,7 +660,7 @@ module.exports = class Transloadit extends Plugin {
 
     });
     assembly.on('executing', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###4","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###4","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
       this.uppy.emit('transloadit:assembly-executing', assembly.status);
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assembly.on###4"},');
@@ -668,7 +668,7 @@ module.exports = class Transloadit extends Plugin {
     });
     if (this.opts.waitForEncoding) {
       assembly.on('result', (stepName, result) => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###5","fileName":"${__filename}","paramsNumber":2},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###5","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2},`);
 
         this._onResult(id, stepName, result);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assembly.on###5"},');
@@ -677,7 +677,7 @@ module.exports = class Transloadit extends Plugin {
     }
     if (this.opts.waitForEncoding) {
       assembly.on('finished', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###6","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###6","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
         this._onAssemblyFinished(assembly.status);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assembly.on###6"},');
@@ -685,7 +685,7 @@ module.exports = class Transloadit extends Plugin {
       });
     } else if (this.opts.waitForMetadata) {
       assembly.on('metadata', () => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###7","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assembly.on###7","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
         this._onAssemblyFinished(assembly.status);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assembly.on###7"},');
@@ -698,7 +698,7 @@ module.exports = class Transloadit extends Plugin {
       return assembly;
     }
     const connected = new Promise((resolve, reject) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.connected.then.NewExpression","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.connected.then.NewExpression","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2},`);
 
       assembly.once('connect', resolve);
       assembly.once('status', resolve);
@@ -706,7 +706,7 @@ module.exports = class Transloadit extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.connected.then.NewExpression"},');
 
     }).then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.connected.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.connected.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
       this.uppy.log('[Transloadit] Socket is ready');
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.connected.then"},');
@@ -720,10 +720,10 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _prepareUpload(fileIDs, uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_prepareUpload","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_prepareUpload","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     fileIDs = fileIDs.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.fileIDs.fileIDs.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.fileIDs.fileIDs.filter","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.fileIDs.fileIDs.filter"},');
 
@@ -732,7 +732,7 @@ module.exports = class Transloadit extends Plugin {
 
     });
     fileIDs.forEach(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.fileIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.fileIDs.forEach","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       const file = this.uppy.getFile(fileID);
       this.uppy.emit('preprocess-progress', file, {
@@ -743,13 +743,13 @@ module.exports = class Transloadit extends Plugin {
 
     });
     const createAssembly = ({fileIDs, options}) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createAssembly","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createAssembly","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       let createdAssembly;
             SRTlib.send('{"type":"FUNCTIONEND","function":"createAssembly"},');
 
       return this._createAssembly(fileIDs, uploadID, options).then(assembly => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement._createAssembly.then.then.catch._createAssembly.then.then._createAssembly.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement._createAssembly.then.then.catch._createAssembly.then.then._createAssembly.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         createdAssembly = assembly;
         if (this.opts.importFromUploadURLs) {
@@ -760,10 +760,10 @@ module.exports = class Transloadit extends Plugin {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement._createAssembly.then.then.catch._createAssembly.then.then._createAssembly.then"},');
 
       }).then(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement._createAssembly.then.then.catch._createAssembly.then.then","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement._createAssembly.then.then.catch._createAssembly.then.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
         fileIDs.forEach(fileID => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###2","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
           const file = this.uppy.getFile(fileID);
           this.uppy.emit('preprocess-complete', file);
@@ -776,10 +776,10 @@ module.exports = class Transloadit extends Plugin {
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement._createAssembly.then.then.catch._createAssembly.then.then"},');
 
       }).catch(err => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement._createAssembly.then.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement._createAssembly.then.then.catch","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         fileIDs.forEach(fileID => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###3","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###3","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
           const file = this.uppy.getFile(fileID);
           this.uppy.emit('preprocess-complete', file);
@@ -804,7 +804,7 @@ module.exports = class Transloadit extends Plugin {
       }
     });
     const files = fileIDs.map(id => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.fileIDs.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.fileIDs.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.files.fileIDs.map"},');
 
@@ -816,15 +816,15 @@ module.exports = class Transloadit extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_prepareUpload"},');
 
     return assemblyOptions.build().then(assemblies => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.assemblyOptions.build.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.assemblyOptions.build.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.assemblyOptions.build.then"},');
 
       return Promise.all(assemblies.map(createAssembly)).then(createdAssemblies => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Promise.all.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         const assemblyIDs = createdAssemblies.map(assembly => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"assemblyIDs.createdAssemblies.map","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"assemblyIDs.createdAssemblies.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"assemblyIDs.createdAssemblies.map"},');
 
@@ -834,7 +834,7 @@ module.exports = class Transloadit extends Plugin {
         });
         this._createAssemblyWatcher(assemblyIDs, fileIDs, uploadID);
         createdAssemblies.map(assembly => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdAssemblies.map","fileName":"${__filename}","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"createdAssemblies.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
                     SRTlib.send('{"type":"FUNCTIONEND","function":"createdAssemblies.map"},');
 
@@ -848,10 +848,10 @@ module.exports = class Transloadit extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.assemblyOptions.build.then"},');
 
     }, err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.assemblyOptions.build.then###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.assemblyOptions.build.then###2","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       fileIDs.forEach(fileID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###4","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fileIDs.forEach###4","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         const file = this.uppy.getFile(fileID);
         this.uppy.emit('preprocess-complete', file);
@@ -869,10 +869,10 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _afterUpload(fileIDs, uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_afterUpload","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_afterUpload","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const files = fileIDs.map(fileID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.fileIDs.map###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.files.fileIDs.map###2","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.files.fileIDs.map###2"},');
 
@@ -881,7 +881,7 @@ module.exports = class Transloadit extends Plugin {
 
     });
     fileIDs = files.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.fileIDs.files.filter.map.files.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.fileIDs.files.filter.map.files.filter","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.fileIDs.files.filter.map.files.filter"},');
 
@@ -889,7 +889,7 @@ module.exports = class Transloadit extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.fileIDs.files.filter.map.files.filter"},');
 
     }).map(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.fileIDs.files.filter.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.fileIDs.files.filter.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.fileIDs.files.filter.map"},');
 
@@ -902,7 +902,7 @@ module.exports = class Transloadit extends Plugin {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_afterUpload"},');
 
       return this.restored.then(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.restored.then","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.restored.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.restored.then"},');
 
@@ -914,7 +914,7 @@ module.exports = class Transloadit extends Plugin {
     const assemblyIDs = state.uploadsAssemblies[uploadID];
     if (!this._shouldWaitAfterUpload()) {
       assemblyIDs.forEach(assemblyID => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assemblyIDs.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assemblyIDs.forEach","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
         const assembly = this.activeAssemblies[assemblyID];
         assembly.close();
@@ -923,7 +923,7 @@ module.exports = class Transloadit extends Plugin {
 
       });
       const assemblies = assemblyIDs.map(id => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assemblies.assemblyIDs.map","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assemblies.assemblyIDs.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assemblies.assemblyIDs.map"},');
 
@@ -947,7 +947,7 @@ module.exports = class Transloadit extends Plugin {
       return Promise.resolve();
     }
     const incompleteFiles = files.filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.incompleteFiles.files.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.incompleteFiles.files.filter","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.incompleteFiles.files.filter"},');
 
@@ -956,7 +956,7 @@ module.exports = class Transloadit extends Plugin {
 
     });
     incompleteFiles.forEach(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.incompleteFiles.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.incompleteFiles.forEach","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       this.uppy.emit('postprocess-progress', file, {
         mode: 'indeterminate',
@@ -969,10 +969,10 @@ module.exports = class Transloadit extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"_afterUpload"},');
 
     return watcher.promise.then(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.watcher.promise.then","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.watcher.promise.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0},`);
 
       const assemblies = assemblyIDs.map(id => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"assemblies.assemblyIDs.map","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"assemblies.assemblyIDs.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"assemblies.assemblyIDs.map"},');
 
@@ -998,12 +998,12 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _onError(err = null, uploadID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onError","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onError","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const state = this.getPluginState();
     const assemblyIDs = state.uploadsAssemblies[uploadID];
     assemblyIDs.forEach(assemblyID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assemblyIDs.forEach###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assemblyIDs.forEach###2","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       if (this.activeAssemblies[assemblyID]) {
         this.activeAssemblies[assemblyID].close();
@@ -1015,7 +1015,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   _onTusError(err) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onTusError","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onTusError","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     if (err && (/^tus: /).test(err.message)) {
       const url = err.originalRequest && err.originalRequest.responseURL ? err.originalRequest.responseURL : null;
@@ -1023,7 +1023,7 @@ module.exports = class Transloadit extends Plugin {
         url,
         type: 'TUS_ERROR'
       }).then(_ => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.client.submitError.then","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.client.submitError.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.client.submitError.then"},');
 
@@ -1033,7 +1033,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     this.uppy.addPreProcessor(this._prepareUpload);
     this.uppy.addPostProcessor(this._afterUpload);
@@ -1069,7 +1069,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     this.uppy.removePreProcessor(this._prepareUpload);
     this.uppy.removePostProcessor(this._afterUpload);
@@ -1088,7 +1088,7 @@ module.exports = class Transloadit extends Plugin {
 
   }
   getAssembly(id) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getAssembly","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getAssembly","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     const {assemblies} = this.getPluginState();
         SRTlib.send('{"type":"FUNCTIONEND","function":"getAssembly"},');
@@ -1098,12 +1098,12 @@ module.exports = class Transloadit extends Plugin {
 
   }
   getAssemblyFiles(assemblyID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getAssemblyFiles","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getAssemblyFiles","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"getAssemblyFiles"},');
 
     return this.uppy.getFiles().filter(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.uppy.getFiles.filter","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.ReturnStatement.uppy.getFiles.filter","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.uppy.getFiles.filter"},');
 

@@ -4,7 +4,7 @@ import React from 'react';
 import {AsyncStorage, View, FlatList, Image, WebView} from 'react-native';
 import Instagram from '@uppy/instagram';
 function getQueryParamValueFromUrl(name, url) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getQueryParamValueFromUrl","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getQueryParamValueFromUrl","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":2},`);
 
   name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
   var regexS = '[\\?&]' + name + '=([^&#]*)';
@@ -18,7 +18,7 @@ function getQueryParamValueFromUrl(name, url) {
 }
 export default class UppyRNInstagram extends React.Component {
   constructor() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
 
     super();
     this.state = {
@@ -58,7 +58,7 @@ export default class UppyRNInstagram extends React.Component {
 
   }
   componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
 
     const uppy = this.props.uppy;
     const options = Object.assign({
@@ -76,7 +76,7 @@ export default class UppyRNInstagram extends React.Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
 
     const uppy = this.props.uppy;
     uppy.removePlugin(this.plugin);
@@ -84,13 +84,13 @@ export default class UppyRNInstagram extends React.Component {
 
   }
   renderGrid(items) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderGrid","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyRNInstagram"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderGrid","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":1,"classInfo":{"className":"UppyRNInstagram"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderGrid"},');
 
     return <View style={styles.container}>
         <FlatList data={items} renderItem={({item}) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
@@ -106,7 +106,7 @@ export default class UppyRNInstagram extends React.Component {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     }} keyExtractor={(item, index) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":2},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
@@ -119,7 +119,7 @@ export default class UppyRNInstagram extends React.Component {
 
   }
   renderInstagram() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderInstagram","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderInstagram","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
 
     console.log(this.state.authUrl);
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderInstagram"},');
@@ -129,7 +129,7 @@ export default class UppyRNInstagram extends React.Component {
     }} style={{
       marginTop: 20
     }} onNavigationStateChange={ev => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###3","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":1},`);
 
       const url = ev.url;
       const token = getQueryParamValueFromUrl('uppyAuthToken', url);
@@ -143,7 +143,7 @@ export default class UppyRNInstagram extends React.Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/react-native/file-picker/instagram.js","paramsNumber":0,"classInfo":{"className":"UppyRNInstagram"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 

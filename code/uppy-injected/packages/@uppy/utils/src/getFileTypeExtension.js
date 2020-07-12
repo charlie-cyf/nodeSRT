@@ -18,7 +18,7 @@ const mimeToExtensions = {
   'video/x-msvideo': 'avi'
 };
 module.exports = function getFileTypeExtension(mimeType) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/utils/src/getFileTypeExtension.js","paramsNumber":1},`);
 
   mimeType = mimeType.replace(/;.*$/, '');
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

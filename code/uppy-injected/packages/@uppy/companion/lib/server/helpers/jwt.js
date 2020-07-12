@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const jwt = require('jsonwebtoken');
 const {encrypt, decrypt} = require('./utils');
 module.exports.generateToken = (payload, secret) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.generateToken","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.generateToken","fileName":"/packages/@uppy/companion/lib/server/helpers/jwt.js","paramsNumber":2},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.generateToken"},');
 
@@ -16,7 +16,7 @@ module.exports.generateToken = (payload, secret) => {
 
 };
 module.exports.verifyToken = (token, secret) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.verifyToken","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.verifyToken","fileName":"/packages/@uppy/companion/lib/server/helpers/jwt.js","paramsNumber":2},`);
 
   try {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.verifyToken"},');
@@ -35,7 +35,7 @@ module.exports.verifyToken = (token, secret) => {
 
 };
 module.exports.addToCookies = (res, token, companionOptions, providerName) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addToCookies","fileName":"${__filename}","paramsNumber":4},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.addToCookies","fileName":"/packages/@uppy/companion/lib/server/helpers/jwt.js","paramsNumber":4},`);
 
   const cookieOptions = {
     maxAge: 1000 * 60 * 60 * 24 * 30,
@@ -49,7 +49,7 @@ module.exports.addToCookies = (res, token, companionOptions, providerName) => {
 
 };
 module.exports.removeFromCookies = (res, companionOptions, providerName) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.removeFromCookies","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.removeFromCookies","fileName":"/packages/@uppy/companion/lib/server/helpers/jwt.js","paramsNumber":3},`);
 
   const cookieOptions = {
     maxAge: 1000 * 60 * 60 * 24 * 30,

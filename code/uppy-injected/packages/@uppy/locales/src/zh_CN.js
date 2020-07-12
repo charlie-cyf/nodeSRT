@@ -135,7 +135,7 @@ zh_CN.strings = {
   openFolderNamed: '打开文件夹 %{name}'
 };
 zh_CN.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"zh_CN.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"zh_CN.pluralize","fileName":"/packages/@uppy/locales/src/zh_CN.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"zh_CN.pluralize"},');

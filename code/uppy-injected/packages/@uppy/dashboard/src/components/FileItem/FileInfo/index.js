@@ -4,7 +4,7 @@ const {h} = require('preact');
 const prettyBytes = require('@uppy/utils/lib/prettyBytes');
 const truncateString = require('../../../utils/truncateString');
 const renderAcquirerIcon = (acquirer, props) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderAcquirerIcon","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderAcquirerIcon","fileName":"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js","paramsNumber":2},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderAcquirerIcon"},');
 
@@ -17,13 +17,13 @@ const renderAcquirerIcon = (acquirer, props) => {
 
 };
 const renderFileSource = props => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileSource","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileSource","fileName":"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSource"},');
 
   return props.file.source && props.file.source !== props.id && <div class="uppy-DashboardItem-sourceIcon">
       {props.acquirers.map(acquirer => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"props.acquirers.map","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"props.acquirers.map","fileName":"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js","paramsNumber":1},`);
 
     if (acquirer.id === props.file.source) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"props.acquirers.map"},');
@@ -38,7 +38,7 @@ const renderFileSource = props => {
 
 };
 const renderFileName = props => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileName","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileName","fileName":"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js","paramsNumber":1},`);
 
   let maxNameLength;
   if (props.containerWidth <= 352) {
@@ -57,7 +57,7 @@ const renderFileName = props => {
 
 };
 const renderFileSize = props => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileSize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderFileSize","fileName":"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSize"},');
 
@@ -68,7 +68,7 @@ const renderFileSize = props => {
 
 };
 module.exports = function FileInfo(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 

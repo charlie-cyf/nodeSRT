@@ -6,7 +6,7 @@ var _require = require('preact'),
 var AddFiles = require('./AddFiles');
 
 var AddFilesPanel = function AddFilesPanel(props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"AddFilesPanel\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"AddFilesPanel\",\"fileName\":\"/packages/@uppy/dashboard/src/components/AddFilesPanel.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"AddFilesPanel"},');
   return h("div", {
     class: "uppy-Dashboard-AddFilesPanel",
@@ -22,7 +22,7 @@ var AddFilesPanel = function AddFilesPanel(props) {
     class: "uppy-DashboardContent-back",
     type: "button",
     onclick: function onclick(ev) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"/packages/@uppy/dashboard/src/components/AddFilesPanel.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
       return props.toggleAddFilesPanel(false);
       SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');

@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const {h, Component} = require('preact');
 class Stopwatch extends Component {
   constructor(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/screen-capture/src/StopWatch.js","paramsNumber":1,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
     super(props);
     this.state = {
@@ -47,7 +47,7 @@ class Stopwatch extends Component {
 
   }
   startTimer() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"startTimer","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"startTimer","fileName":"/packages/@uppy/screen-capture/src/StopWatch.js","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
     this.timerTick();
     this.timerRunning = true;
@@ -55,7 +55,7 @@ class Stopwatch extends Component {
 
   }
   resetTimer() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resetTimer","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"resetTimer","fileName":"/packages/@uppy/screen-capture/src/StopWatch.js","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
     clearTimeout(this.timer);
     this.setState({
@@ -66,10 +66,10 @@ class Stopwatch extends Component {
 
   }
   timerTick() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"timerTick","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"timerTick","fileName":"/packages/@uppy/screen-capture/src/StopWatch.js","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
     this.timer = setTimeout(() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"timer.setTimeout","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"timer.setTimeout","fileName":"/packages/@uppy/screen-capture/src/StopWatch.js","paramsNumber":0},`);
 
       this.setState({
         elapsedTime: this.state.elapsedTime + 1
@@ -82,7 +82,7 @@ class Stopwatch extends Component {
 
   }
   fmtMSS(s) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"fmtMSS","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"fmtMSS","fileName":"/packages/@uppy/screen-capture/src/StopWatch.js","paramsNumber":1,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"fmtMSS"},');
 
@@ -91,7 +91,7 @@ class Stopwatch extends Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/screen-capture/src/StopWatch.js","paramsNumber":0,"classInfo":{"className":"Stopwatch","superClass":"Component"}},`);
 
     const {recording, i18n} = {
       ...this.props

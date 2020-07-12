@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const NRP = require('node-redis-pubsub');
 class RedisEmitter extends NRP {
   constructor(redisUrl) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/companion/lib/server/emitter/redis-emitter.js","paramsNumber":1,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
     super({
       url: redisUrl
@@ -12,10 +12,10 @@ class RedisEmitter extends NRP {
 
   }
   once(eventName, handler) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"once","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"once","fileName":"/packages/@uppy/companion/lib/server/emitter/redis-emitter.js","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
     const removeListener = this.on(eventName, message => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"removeListener.on","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"removeListener.on","fileName":"/packages/@uppy/companion/lib/server/emitter/redis-emitter.js","paramsNumber":1},`);
 
       handler(message);
       removeListener();
@@ -26,7 +26,7 @@ class RedisEmitter extends NRP {
 
   }
   emit(eventName, message) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emit","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"emit","fileName":"/packages/@uppy/companion/lib/server/emitter/redis-emitter.js","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emit"},');
 
@@ -35,7 +35,7 @@ class RedisEmitter extends NRP {
 
   }
   removeListener(eventName, handler) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeListener","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeListener","fileName":"/packages/@uppy/companion/lib/server/emitter/redis-emitter.js","paramsNumber":2,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
     this.receiver.removeListener(eventName, handler);
     this.receiver.punsubscribe(this.prefix + eventName);
@@ -43,7 +43,7 @@ class RedisEmitter extends NRP {
 
   }
   removeAllListeners(eventName) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeAllListeners","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeAllListeners","fileName":"/packages/@uppy/companion/lib/server/emitter/redis-emitter.js","paramsNumber":1,"classInfo":{"className":"RedisEmitter","superClass":"NRP"}},`);
 
     this.receiver.removeAllListeners(eventName);
     this.receiver.punsubscribe(this.prefix + eventName);
@@ -52,7 +52,7 @@ class RedisEmitter extends NRP {
   }
 }
 module.exports = redisUrl => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/companion/lib/server/emitter/redis-emitter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 

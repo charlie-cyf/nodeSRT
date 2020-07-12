@@ -4,11 +4,11 @@ const formatSeconds = require('./formatSeconds');
 describe('formatSeconds', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "formatSeconds", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "formatSeconds", "fileName": "/packages/@uppy/webcam/src/formatSeconds.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/webcam/src/formatSeconds.test.js", "calls" : [`);
   });
 
   it('should return a value of \'0:43\' when an argument of 43 seconds is supplied', () => {

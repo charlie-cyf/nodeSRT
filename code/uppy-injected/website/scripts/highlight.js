@@ -10,7 +10,7 @@ require('prismjs/components/')();
 delete global.Prism;
 const unhighlightedCodeRx = /<pre><code class="([^"]*)?">([\s\S]*?)<\/code><\/pre>/igm;
 function highlight(lang, code) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"highlight","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"highlight","fileName":"/website/scripts/highlight.js","paramsNumber":2},`);
 
   const startTag = `<figure class="highlight ${lang}"><table><tr><td class="code"><pre>`;
   const endTag = '</pre></td></tr></table></figure>';
@@ -27,10 +27,10 @@ function highlight(lang, code) {
 
 }
 function prismify(data) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prismify","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prismify","fileName":"/website/scripts/highlight.js","paramsNumber":1},`);
 
   data.content = data.content.replace(unhighlightedCodeRx, (_, lang, code) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"data.content.data.content.replace","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"data.content.data.content.replace","fileName":"/website/scripts/highlight.js","paramsNumber":3},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"data.content.data.content.replace"},');
 
@@ -39,7 +39,7 @@ function prismify(data) {
 
   });
   data.excerpt = data.excerpt.replace(unhighlightedCodeRx, (_, lang, code) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"data.excerpt.data.excerpt.replace","fileName":"${__filename}","paramsNumber":3},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"data.excerpt.data.excerpt.replace","fileName":"/website/scripts/highlight.js","paramsNumber":3},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"data.excerpt.data.excerpt.replace"},');
 
@@ -54,7 +54,7 @@ function prismify(data) {
 
 }
 function code(args, content) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"code","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"code","fileName":"/website/scripts/highlight.js","paramsNumber":2},`);
 
   let lang = '';
   if (args[0].startsWith('lang:')) {
@@ -67,7 +67,7 @@ function code(args, content) {
 
 }
 async function includeCode(args) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"includeCode","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"includeCode","fileName":"/website/scripts/highlight.js","paramsNumber":1},`);
 
   let lang = '';
   if (args[0].startsWith('lang:')) {

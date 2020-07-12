@@ -135,7 +135,7 @@ ru_RU.strings = {
   openFolderNamed: 'Открыть папку %{name}'
 };
 ru_RU.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ru_RU.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ru_RU.pluralize","fileName":"/packages/@uppy/locales/src/ru_RU.js","paramsNumber":1},`);
 
   if (n % 10 === 1 && n % 100 !== 11) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"ru_RU.pluralize"},');

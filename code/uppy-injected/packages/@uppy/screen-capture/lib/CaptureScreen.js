@@ -26,7 +26,7 @@ var RecorderScreen = /*#__PURE__*/function (_Component) {
   var _proto = RecorderScreen.prototype;
 
   _proto.componentWillUnmount = function componentWillUnmount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"RecorderScreen\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentWillUnmount\",\"fileName\":\"/packages/@uppy/screen-capture/src/CaptureScreen.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"RecorderScreen\",\"superClass\":\"Component\"}},");
     this.props.onStop();
     SRTlib.send('{"type":"FUNCTIONEND","function":"componentWillUnmount"},');
   };
@@ -34,7 +34,7 @@ var RecorderScreen = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var _this = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"RecorderScreen\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/screen-capture/src/CaptureScreen.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"RecorderScreen\",\"superClass\":\"Component\"}},");
     var _this$props = this.props,
         recording = _this$props.recording,
         videoStream = _this$props.stream,
@@ -66,7 +66,7 @@ var RecorderScreen = /*#__PURE__*/function (_Component) {
       class: "uppy-ScreenCapture-videoContainer"
     }, h(StreamStatus, this.props), h("video", _extends({
       ref: function ref(videoElement) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"/packages/@uppy/screen-capture/src/CaptureScreen.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
         return _this.videoElement = videoElement;
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');

@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 import React from 'react';
 import {StyleSheet, Text, TouchableHighlight} from 'react-native';
 export default function PauseResumeButton(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"PauseResumeButton","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"PauseResumeButton","fileName":"/examples/react-native-expo/PauseResumeButton.js","paramsNumber":1},`);
 
   if (!props.uploadStarted || props.uploadComplete) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"PauseResumeButton"},');

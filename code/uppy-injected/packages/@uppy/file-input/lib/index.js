@@ -24,7 +24,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function FileInput(uppy, opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, opts) || this;
     _this.id = _this.opts.id || 'FileInput';
     _this.title = 'File Input';
@@ -53,7 +53,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   var _proto = FileInput.prototype;
 
   _proto.setOptions = function setOptions(newOpts) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"setOptions\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
 
     _Plugin.prototype.setOptions.call(this, newOpts);
 
@@ -62,7 +62,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.i18nInit = function i18nInit() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"i18nInit\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
     this.translator = new Translator([this.defaultLocale, this.uppy.locale, this.opts.locale]);
     this.i18n = this.translator.translate.bind(this.translator);
     this.i18nArray = this.translator.translateArray.bind(this.translator);
@@ -73,9 +73,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.addFiles = function addFiles(files) {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addFiles\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addFiles\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
     var descriptors = files.map(function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.descriptors.files.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.descriptors.files.map\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.descriptors.files.map"},');
       return {
         source: _this2.id,
@@ -96,7 +96,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.handleInputChange = function handleInputChange(event) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleInputChange\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleInputChange\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
     this.uppy.log('[FileInput] Something selected through input...');
     var files = toArray(event.target.files);
     this.addFiles(files);
@@ -105,7 +105,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.handleClick = function handleClick(ev) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleClick\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleClick\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
     this.input.click();
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleClick"},');
   };
@@ -113,7 +113,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _proto.render = function render(state) {
     var _this3 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
     var hiddenInputStyle = {
       width: '0.1px',
       height: '0.1px',
@@ -136,7 +136,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       multiple: restrictions.maxNumberOfFiles !== 1,
       accept: accept,
       ref: function ref(input) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":1},");
         _this3.input = input;
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement"},');
       }
@@ -149,7 +149,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.install = function install() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
     var target = this.opts.target;
 
     if (target) {
@@ -160,7 +160,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   };
 
   _proto.uninstall = function uninstall() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"uninstall\",\"fileName\":\"/packages/@uppy/file-input/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"FileInput\",\"superClass\":\"Plugin\"}},");
     this.unmount();
     SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');
   };

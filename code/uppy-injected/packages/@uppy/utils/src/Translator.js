@@ -3,12 +3,12 @@ const SRTlib = require('SRT-util');
 const has = require('./hasProperty');
 module.exports = class Translator {
   constructor(locales) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Translator"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":1,"classInfo":{"className":"Translator"}},`);
 
     this.locale = {
       strings: {},
       pluralize: function (n) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.locale.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.locale.pluralize","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":1},`);
 
         if (n === 1) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.locale.pluralize"},');
@@ -24,7 +24,7 @@ module.exports = class Translator {
     };
     if (Array.isArray(locales)) {
       locales.forEach(locale => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.locales.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.locales.forEach","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.locales.forEach"},');
 
@@ -39,7 +39,7 @@ module.exports = class Translator {
 
   }
   _apply(locale) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_apply","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Translator"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_apply","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":1,"classInfo":{"className":"Translator"}},`);
 
     if (!locale || !locale.strings) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"_apply"},');
@@ -55,7 +55,7 @@ module.exports = class Translator {
 
   }
   interpolate(phrase, options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"interpolate","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Translator"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"interpolate","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":2,"classInfo":{"className":"Translator"}},`);
 
     const {split, replace} = String.prototype;
     const dollarRegex = /\$/g;
@@ -74,11 +74,11 @@ module.exports = class Translator {
 
     return interpolated;
     function insertReplacement(source, rx, replacement) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"insertReplacement","fileName":"${__filename}","paramsNumber":3},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"insertReplacement","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":3},`);
 
       const newParts = [];
       source.forEach(chunk => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"source.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"source.forEach","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":1},`);
 
         if (typeof chunk !== 'string') {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"source.forEach"},');
@@ -86,7 +86,7 @@ module.exports = class Translator {
           return newParts.push(chunk);
         }
         split.call(chunk, rx).forEach((raw, i, list) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"split.call.forEach","fileName":"${__filename}","paramsNumber":3},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"split.call.forEach","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":3},`);
 
           if (raw !== '') {
             newParts.push(raw);
@@ -110,7 +110,7 @@ module.exports = class Translator {
 
   }
   translate(key, options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"translate","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Translator"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"translate","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":2,"classInfo":{"className":"Translator"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"translate"},');
 
@@ -119,7 +119,7 @@ module.exports = class Translator {
 
   }
   translateArray(key, options) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"translateArray","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Translator"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"translateArray","fileName":"/packages/@uppy/utils/src/Translator.js","paramsNumber":2,"classInfo":{"className":"Translator"}},`);
 
     const string = this.locale.strings[key];
     const hasPluralForms = typeof string === 'object';

@@ -4,13 +4,13 @@ const isTouchDevice = require('./isTouchDevice');
 describe('isTouchDevice', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "isTouchDevice", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "isTouchDevice", "fileName": "/packages/@uppy/utils/src/isTouchDevice.test.js", "calls" : [`);
   });
 
   const RealTouchStart = global.window.ontouchstart;
   const RealMaxTouchPoints = global.navigator.maxTouchPoints;
   beforeEach(() => {
-        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/isTouchDevice.test.js", "calls" : [`);
 
     global.window.ontouchstart = true;
     global.navigator.maxTouchPoints = 1;

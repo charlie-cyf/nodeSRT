@@ -5,11 +5,11 @@ const sampleImageDataURI = require('./sampleImageDataURI');
 describe('dataURItoFile', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "dataURItoFile", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "dataURItoFile", "fileName": "/packages/@uppy/utils/src/dataURItoFile.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/dataURItoFile.test.js", "calls" : [`);
   });
 
   it('should convert a data uri to a file', () => {

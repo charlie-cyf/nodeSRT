@@ -5,11 +5,11 @@ const Redux = require('redux');
 describe('ReduxStore', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "ReduxStore", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "ReduxStore", "fileName": "/packages/@uppy/store-redux/src/index.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/store-redux/src/index.test.js", "calls" : [`);
   });
 
   function createStore(reducers = {}) {

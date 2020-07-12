@@ -1,7 +1,7 @@
 var SRTlib = require('SRT-util');
 
 module.exports = function parseUrl(url) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/transloadit/src/parseUrl.js\",\"paramsNumber\":1},");
   var scheme = /^\w+:\/\//.exec(url);
   var i = 0;
 

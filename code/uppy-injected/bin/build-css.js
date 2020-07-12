@@ -15,14 +15,14 @@ const renderScss = promisify(sass.render);
 const writeFile = promisify(fs.writeFile);
 const cwd = process.cwd();
 function handleErr(err) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleErr","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleErr","fileName":"/bin/build-css.js","paramsNumber":1},`);
 
   console.error(chalk.red('✗ Error:'), chalk.red(err.message));
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleErr","paramsNumber":1},');
 
 }
 async function compileCSS() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"compileCSS","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"compileCSS","fileName":"/bin/build-css.js","paramsNumber":0},`);
 
   const files = await glob('packages/{,@uppy/}*/src/style.scss');
   for (const file of files) {
@@ -30,14 +30,14 @@ async function compileCSS() {
       file,
       importedFiles: new Set(),
       importer(url, from, done) {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"scssResult.renderScss.importer","fileName":"${__filename}","paramsNumber":3},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"scssResult.renderScss.importer","fileName":"/bin/build-css.js","paramsNumber":3},`);
 
         resolve(url, {
           basedir: path.dirname(from),
           filename: from,
           extensions: ['.scss']
         }, (err, res) => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"scssResult.renderScss.importer.resolve","fileName":"${__filename}","paramsNumber":2},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"scssResult.renderScss.importer.resolve","fileName":"/bin/build-css.js","paramsNumber":2},`);
 
           if (err) {
                         SRTlib.send('{"type":"FUNCTIONEND","function":"scssResult.renderScss.importer.resolve"},');
@@ -67,7 +67,7 @@ async function compileCSS() {
       from: file
     });
     postcssResult.warnings().forEach(function (warn) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"postcssResult.warnings.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"postcssResult.warnings.forEach","fileName":"/bin/build-css.js","paramsNumber":1},`);
 
       console.warn(warn.toString());
             SRTlib.send('{"type":"FUNCTIONEND","function":"postcssResult.warnings.forEach"},');
@@ -89,7 +89,7 @@ async function compileCSS() {
       from: outfile
     });
     minifiedResult.warnings().forEach(function (warn) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"minifiedResult.warnings.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"minifiedResult.warnings.forEach","fileName":"/bin/build-css.js","paramsNumber":1},`);
 
       console.warn(warn.toString());
             SRTlib.send('{"type":"FUNCTIONEND","function":"minifiedResult.warnings.forEach"},');
@@ -102,7 +102,7 @@ async function compileCSS() {
 
 }
 compileCSS().then(() => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"compileCSS.then","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"compileCSS.then","fileName":"/bin/build-css.js","paramsNumber":0},`);
 
   console.info(chalk.yellow('✓ CSS Bundles 🎉'));
     SRTlib.send('{"type":"FUNCTIONEND","function":"compileCSS.then"},');

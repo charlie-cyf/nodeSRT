@@ -136,7 +136,7 @@ id_ID.strings = {
 };
 
 id_ID.pluralize = function (n) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"id_ID.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"id_ID.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/id_ID.js\",\"paramsNumber\":1},");
 
   if (n === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"id_ID.pluralize"},');

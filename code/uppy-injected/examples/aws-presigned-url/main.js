@@ -12,7 +12,7 @@ uppy.use(Dashboard, {
 });
 uppy.use(AwsS3, {
   getUploadParameters(file) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.use.getUploadParameters","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.use.getUploadParameters","fileName":"/examples/aws-presigned-url/main.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters"},');
 
@@ -27,7 +27,7 @@ uppy.use(AwsS3, {
         contentType: file.type
       })
     }).then(response => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then.fetch.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then.fetch.then","fileName":"/examples/aws-presigned-url/main.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then.fetch.then"},');
 
@@ -35,7 +35,7 @@ uppy.use(AwsS3, {
             SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then.fetch.then"},');
 
     }).then(data => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then","fileName":"/examples/aws-presigned-url/main.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.use.getUploadParameters.ReturnStatement.fetch.then.then"},');
 

@@ -14,7 +14,7 @@ var GridLi = require('./components/GridLi');
 var ListLi = require('./components/ListLi');
 
 module.exports = function (props) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/provider-views/src/Item/index.js\",\"paramsNumber\":1},");
   var itemIconString = props.getItemIcon();
   var className = classNames('uppy-ProviderBrowserItem', {
     'uppy-ProviderBrowserItem--selected': props.isChecked

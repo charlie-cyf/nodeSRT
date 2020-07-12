@@ -3,19 +3,19 @@ const SRTlib = require('SRT-util');
 const preact = require('preact');
 const findDOMElement = require('@uppy/utils/lib/findDOMElement');
 function debounce(fn) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"debounce","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"debounce","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":1},`);
 
   let calling = null;
   let latestArgs = null;
     SRTlib.send('{"type":"FUNCTIONEND","function":"debounce"},');
 
   return (...args) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":1},`);
 
     latestArgs = args;
     if (!calling) {
       calling = Promise.resolve().then(() => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"calling.Promise.resolve.then","fileName":"${__filename}","paramsNumber":0},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"calling.Promise.resolve.then","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":0},`);
 
         calling = null;
                 SRTlib.send('{"type":"FUNCTIONEND","function":"calling.Promise.resolve.then"},');
@@ -36,7 +36,7 @@ function debounce(fn) {
 }
 module.exports = class Plugin {
   constructor(uppy, opts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":2,"classInfo":{"className":"Plugin"}},`);
 
     this.uppy = uppy;
     this.opts = opts || ({});
@@ -48,7 +48,7 @@ module.exports = class Plugin {
 
   }
   getPluginState() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getPluginState","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getPluginState","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
 
     const {plugins} = this.uppy.getState();
         SRTlib.send('{"type":"FUNCTIONEND","function":"getPluginState"},');
@@ -58,7 +58,7 @@ module.exports = class Plugin {
 
   }
   setPluginState(update) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setPluginState","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setPluginState","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
 
     const {plugins} = this.uppy.getState();
     this.uppy.setState({
@@ -74,7 +74,7 @@ module.exports = class Plugin {
 
   }
   setOptions(newOpts) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"setOptions","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
 
     this.opts = {
       ...this.opts,
@@ -85,7 +85,7 @@ module.exports = class Plugin {
 
   }
   update(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"update","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"update","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
 
     if (typeof this.el === 'undefined') {
             SRTlib.send('{"type":"FUNCTIONEND","function":"update"},');
@@ -99,26 +99,26 @@ module.exports = class Plugin {
 
   }
   afterUpdate() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"afterUpdate","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"afterUpdate","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"afterUpdate"},');
 
   }
   onMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onMount","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"onMount"},');
 
   }
   mount(target, plugin) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"mount","fileName":"${__filename}","paramsNumber":2,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"mount","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":2,"classInfo":{"className":"Plugin"}},`);
 
     const callerPluginName = plugin.id;
     const targetElement = findDOMElement(target);
     if (targetElement) {
       this.isTargetDOMEl = true;
       this.rerender = state => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.rerender","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.rerender","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":1},`);
 
         if (!this.uppy.getPlugin(this.id)) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.rerender"},');
@@ -147,7 +147,7 @@ module.exports = class Plugin {
     } else if (typeof target === 'function') {
       const Target = target;
       this.uppy.iteratePlugins(plugin => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.iteratePlugins","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.uppy.iteratePlugins","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":1},`);
 
         if (plugin instanceof Target) {
           targetPlugin = plugin;
@@ -178,7 +178,7 @@ module.exports = class Plugin {
 
   }
   render(state) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
@@ -187,7 +187,7 @@ module.exports = class Plugin {
 
   }
   addTarget(plugin) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addTarget","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addTarget","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":1,"classInfo":{"className":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"addTarget"},');
 
@@ -196,7 +196,7 @@ module.exports = class Plugin {
 
   }
   unmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"unmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"unmount","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
 
     if (this.isTargetDOMEl && this.el && this.el.parentNode) {
       this.el.parentNode.removeChild(this.el);
@@ -205,13 +205,13 @@ module.exports = class Plugin {
 
   }
   install() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"install","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"install"},');
 
   }
   uninstall() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"uninstall","fileName":"/packages/@uppy/core/src/Plugin.js","paramsNumber":0,"classInfo":{"className":"Plugin"}},`);
 
     this.unmount();
         SRTlib.send('{"type":"FUNCTIONEND","function":"uninstall"},');

@@ -45,7 +45,9 @@ const excepts = [
     // });
 
     // make injected dir
-    if(!fs.existsSync(path.resolve(injectedCodebase))) {
+
+    console.log('making injected folder', injectedCodebase)
+    if(!fs.existsSync(injectedCodebase)) {
         fs.mkdirSync(injectedCodebase)
     }
     copyDir(codeBase, injectedCodebase)

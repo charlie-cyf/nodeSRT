@@ -5,10 +5,10 @@ const {getCompanionOptions} = require('../../src/standalone/helper');
 let grantConfig;
 let companionOptions;
 describe('Test Provider options', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe","fileName":"/packages/@uppy/companion/test/__tests__/provider-manager.js","paramsNumber":0},`);
 
   beforeEach(() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"beforeEach","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"beforeEach","fileName":"/packages/@uppy/companion/test/__tests__/provider-manager.js","paramsNumber":0},`);
 
     grantConfig = require('../../src/config/grant')();
     companionOptions = getCompanionOptions();
@@ -16,7 +16,7 @@ describe('Test Provider options', () => {
 
   });
   test('adds provider options', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test","fileName":"/packages/@uppy/companion/test/__tests__/provider-manager.js","paramsNumber":0},`);
 
     providerManager.addProviderOptions(companionOptions, grantConfig);
     expect(grantConfig.dropbox.key).toBe('dropbox_key');
@@ -29,7 +29,7 @@ describe('Test Provider options', () => {
 
   });
   test('adds extra provider config', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###2","fileName":"/packages/@uppy/companion/test/__tests__/provider-manager.js","paramsNumber":0},`);
 
     process.env.COMPANION_INSTAGRAM_KEY = '123456';
     providerManager.addProviderOptions(getCompanionOptions(), grantConfig);
@@ -60,7 +60,7 @@ describe('Test Provider options', () => {
 
   });
   test('adds provider options for secret files', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###3","fileName":"/packages/@uppy/companion/test/__tests__/provider-manager.js","paramsNumber":0},`);
 
     process.env.COMPANION_DROPBOX_SECRET_FILE = process.env.PWD + '/test/resources/dropbox_secret_file';
     process.env.COMPANION_GOOGLE_SECRET_FILE = process.env.PWD + '/test/resources/google_secret_file';
@@ -74,7 +74,7 @@ describe('Test Provider options', () => {
 
   });
   test('does not add provider options if protocol and host are not set', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###4","fileName":"/packages/@uppy/companion/test/__tests__/provider-manager.js","paramsNumber":0},`);
 
     delete companionOptions.server.host;
     delete companionOptions.server.protocol;
@@ -89,7 +89,7 @@ describe('Test Provider options', () => {
 
   });
   test('sets a master redirect uri, if oauthDomain is set', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###5","fileName":"/packages/@uppy/companion/test/__tests__/provider-manager.js","paramsNumber":0},`);
 
     companionOptions.server.oauthDomain = 'domain.com';
     providerManager.addProviderOptions(companionOptions, grantConfig);
@@ -103,10 +103,10 @@ describe('Test Provider options', () => {
 
 });
 describe('Test Custom Provider options', () => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###2","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"describe###2","fileName":"/packages/@uppy/companion/test/__tests__/provider-manager.js","paramsNumber":0},`);
 
   test('adds custom provider options', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###6","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"test###6","fileName":"/packages/@uppy/companion/test/__tests__/provider-manager.js","paramsNumber":0},`);
 
     const providers = providerManager.getDefaultProviders();
     providerManager.addCustomProviders({

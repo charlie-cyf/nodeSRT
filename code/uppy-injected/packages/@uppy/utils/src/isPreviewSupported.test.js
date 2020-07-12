@@ -4,11 +4,11 @@ const isPreviewSupported = require('./isPreviewSupported');
 describe('isPreviewSupported', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "isPreviewSupported", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "isPreviewSupported", "fileName": "/packages/@uppy/utils/src/isPreviewSupported.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/isPreviewSupported.test.js", "calls" : [`);
   });
 
   it('should return true for any filetypes that browsers can preview', () => {

@@ -7,7 +7,7 @@ const MEDIA_TYPES = Object.freeze({
   image: 'IMAGE'
 });
 const isVideo = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isVideo","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isVideo","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"isVideo"},');
 
@@ -16,7 +16,7 @@ const isVideo = item => {
 
 };
 exports.isFolder = _ => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.isFolder","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.isFolder"},');
 
@@ -25,7 +25,7 @@ exports.isFolder = _ => {
 
 };
 exports.getItemIcon = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemIcon","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemIcon"},');
 
@@ -34,11 +34,11 @@ exports.getItemIcon = item => {
 
 };
 exports.getItemSubList = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemSubList","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
   const newItems = [];
   item.data.forEach(subItem => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item.data.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item.data.forEach","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
     if (isVideo(subItem)) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"item.data.forEach"},');
@@ -47,7 +47,7 @@ exports.getItemSubList = item => {
     }
     if (subItem.media_type === MEDIA_TYPES.carousel) {
       subItem.children.data.forEach(i => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"subItem.children.data.forEach","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"subItem.children.data.forEach","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
         if (isVideo(i)) {
                     SRTlib.send('{"type":"FUNCTIONEND","function":"subItem.children.data.forEach"},');
@@ -71,7 +71,7 @@ exports.getItemSubList = item => {
 
 };
 exports.getItemName = (item, index) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemName","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":2},`);
 
   const ext = isVideo(item) ? 'mp4' : 'jpeg';
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemName"},');
@@ -81,7 +81,7 @@ exports.getItemName = (item, index) => {
 
 };
 exports.getMimeType = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getMimeType","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getMimeType"},');
 
@@ -90,7 +90,7 @@ exports.getMimeType = item => {
 
 };
 exports.getItemId = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemId","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemId"},');
 
@@ -99,7 +99,7 @@ exports.getItemId = item => {
 
 };
 exports.getItemRequestPath = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemRequestPath","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemRequestPath"},');
 
@@ -108,7 +108,7 @@ exports.getItemRequestPath = item => {
 
 };
 exports.getItemModifiedDate = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemModifiedDate","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemModifiedDate"},');
 
@@ -117,7 +117,7 @@ exports.getItemModifiedDate = item => {
 
 };
 exports.getItemThumbnailUrl = item => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getItemThumbnailUrl","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getItemThumbnailUrl"},');
 
@@ -126,7 +126,7 @@ exports.getItemThumbnailUrl = item => {
 
 };
 exports.getNextPagePath = (data, currentQuery, currentPath) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getNextPagePath","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":3},`);
 
   if (!data.paging || !data.paging.cursors) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"exports.getNextPagePath"},');

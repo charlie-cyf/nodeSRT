@@ -14,7 +14,7 @@ var UrlUI = /*#__PURE__*/function (_Component) {
   function UrlUI(props) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/url/src/UrlUI.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
     _this = _Component.call(this, props) || this;
     _this.handleKeyPress = _this.handleKeyPress.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
@@ -25,13 +25,13 @@ var UrlUI = /*#__PURE__*/function (_Component) {
   var _proto = UrlUI.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"componentDidMount\",\"fileName\":\"/packages/@uppy/url/src/UrlUI.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
     this.input.value = '';
     SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
   };
 
   _proto.handleKeyPress = function handleKeyPress(ev) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleKeyPress\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleKeyPress\",\"fileName\":\"/packages/@uppy/url/src/UrlUI.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
 
     if (ev.keyCode === 13) {
       this.props.addFile(this.input.value);
@@ -41,7 +41,7 @@ var UrlUI = /*#__PURE__*/function (_Component) {
   };
 
   _proto.handleClick = function handleClick() {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleClick\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handleClick\",\"fileName\":\"/packages/@uppy/url/src/UrlUI.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
     this.props.addFile(this.input.value);
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleClick"},');
   };
@@ -49,7 +49,7 @@ var UrlUI = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var _this2 = this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"render\",\"fileName\":\"/packages/@uppy/url/src/UrlUI.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"UrlUI\",\"superClass\":\"Component\"}},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
     return h("div", {
       class: "uppy-Url"
@@ -60,7 +60,7 @@ var UrlUI = /*#__PURE__*/function (_Component) {
       placeholder: this.props.i18n('enterUrlToImport'),
       onkeyup: this.handleKeyPress,
       ref: function ref(input) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement\",\"fileName\":\"/packages/@uppy/url/src/UrlUI.js\",\"paramsNumber\":1},");
         _this2.input = input;
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
       },

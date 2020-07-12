@@ -40,21 +40,21 @@ const russian = {
 describe('Translator', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "Translator", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "Translator", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
   });
 
   describe('translate', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "translate", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "translate", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
     });
 
     it('should translate a string', () => {
@@ -89,11 +89,11 @@ describe('Translator', () => {
   describe('translation strings inheritance / overriding', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "translation%20strings%20inheritance%20/%20overriding", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "translation%20strings%20inheritance%20/%20overriding", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
     });
 
     const launguagePackLoadedInCore = english;
@@ -132,11 +132,11 @@ describe('Translator', () => {
   describe('interpolation', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "interpolation", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "interpolation", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
     });
 
     it('should interpolate a string', () => {
@@ -158,11 +158,11 @@ describe('Translator', () => {
   describe('pluralization', () => {
         beforeAll(() => {
       SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "pluralization", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testSuiteName": "pluralization", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
     });
 
         beforeEach(() => {
-      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+      SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/Translator.test.js", "calls" : [`);
     });
 
     it('should translate a string', () => {

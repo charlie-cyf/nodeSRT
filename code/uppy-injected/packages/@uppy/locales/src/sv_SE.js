@@ -135,7 +135,7 @@ sv_SE.strings = {
   }
 };
 sv_SE.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sv_SE.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sv_SE.pluralize","fileName":"/packages/@uppy/locales/src/sv_SE.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"sv_SE.pluralize"},');

@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 module.exports = function dataURItoBlob(dataURI, opts, toFile) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/utils/src/dataURItoBlob.js","paramsNumber":3},`);
 
   const data = dataURI.split(',')[1];
   let mimeType = opts.mimeType || dataURI.split(',')[0].split(':')[1].split(';')[0];

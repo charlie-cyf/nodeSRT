@@ -6,7 +6,7 @@ const Uppy = require('@uppy/core');
 const Dashboard = require('@uppy/dashboard');
 const Transloadit = require('@uppy/transloadit');
 function initUppyTransloadit(transloaditKey) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initUppyTransloadit","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"initUppyTransloadit","fileName":"/test/endtoend/transloadit/main.js","paramsNumber":1},`);
 
   var uppyTransloadit = Uppy({
     id: 'uppyTransloadit',
@@ -35,13 +35,13 @@ function initUppyTransloadit(transloaditKey) {
     waitForEncoding: true
   });
   uppyTransloadit.on('transloadit:result', (stepName, result) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyTransloadit.on","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppyTransloadit.on","fileName":"/test/endtoend/transloadit/main.js","paramsNumber":2},`);
 
     console.log('Result here ====>', stepName, result);
     console.log('Cropped image url is here ====>', result.url);
     var img = new Image();
     img.onload = function () {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"img.onload","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"img.onload","fileName":"/test/endtoend/transloadit/main.js","paramsNumber":0},`);
 
       var result = document.createElement('div');
       result.setAttribute('id', 'uppy-result');

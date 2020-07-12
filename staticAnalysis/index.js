@@ -14,13 +14,6 @@ const madge = require('madge');
 
 extend(acornWalk.base);
 
-console.log(precinct(fs.readFileSync('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/code/uppy/packages/@uppy/core/src/index.test.js', 'utf-8')))
-
-const pkg = require('/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/code/uppy/package.json');
-resolver(pkg.dependencies, (err, res) => {
-    if (err) throw err
-    console.log(res)
-})
 
 module.exports = class StaticAnalyzor {
     constructor(codebase, ASTbase) {

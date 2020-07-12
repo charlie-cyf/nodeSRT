@@ -8,7 +8,7 @@ import selectDocument from './selectDocument';
 import Provider from './provider';
 export default class UppyReactNativeFilePicker extends React.Component {
   constructor() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
     super();
     this.state = {
@@ -34,17 +34,17 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
   }
   componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
     this.uppy = this.props.uppy;
         SRTlib.send('{"type":"FUNCTIONEND","function":"componentDidMount"},');
 
   }
   takePicture() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"takePicture","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"takePicture","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
     takePicture().then(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"takePicture.then.catch.takePicture.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"takePicture.then.catch.takePicture.then","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1},`);
 
       this.uppy.addFile({
         source: 'React Native',
@@ -56,7 +56,7 @@ export default class UppyReactNativeFilePicker extends React.Component {
             SRTlib.send('{"type":"FUNCTIONEND","function":"takePicture.then.catch.takePicture.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"takePicture.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"takePicture.then.catch","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1},`);
 
       console.log(err);
             SRTlib.send('{"type":"FUNCTIONEND","function":"takePicture.then.catch"},');
@@ -66,12 +66,12 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
   }
   selectImage() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"selectImage","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"selectImage","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
     selectImage({
       exif: true
     }).then(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectImage.then.catch.selectImage.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectImage.then.catch.selectImage.then","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1},`);
 
       this.uppy.addFile({
         source: 'React Native',
@@ -83,7 +83,7 @@ export default class UppyReactNativeFilePicker extends React.Component {
             SRTlib.send('{"type":"FUNCTIONEND","function":"selectImage.then.catch.selectImage.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectImage.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectImage.then.catch","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1},`);
 
       console.log(err);
             SRTlib.send('{"type":"FUNCTIONEND","function":"selectImage.then.catch"},');
@@ -93,10 +93,10 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
   }
   selectDocument() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"selectDocument","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"selectDocument","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
     selectDocument().then(file => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectDocument.then.catch.selectDocument.then","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectDocument.then.catch.selectDocument.then","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1},`);
 
       this.uppy.addFile({
         source: 'React Native',
@@ -107,7 +107,7 @@ export default class UppyReactNativeFilePicker extends React.Component {
             SRTlib.send('{"type":"FUNCTIONEND","function":"selectDocument.then.catch.selectDocument.then"},');
 
     }).catch(err => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectDocument.then.catch","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"selectDocument.then.catch","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1},`);
 
       console.log(err);
             SRTlib.send('{"type":"FUNCTIONEND","function":"selectDocument.then.catch"},');
@@ -117,7 +117,7 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
   }
   openProvider(id) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"openProvider","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"openProvider","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
     console.log('Open provider:', id);
     this.setState({
@@ -127,7 +127,7 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
   }
   chooseProvider(id) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"chooseProvider","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"chooseProvider","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
     console.log('Provider selected:', id);
     switch (id) {
@@ -153,18 +153,18 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
   }
   renderSourceList() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderSourceList","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderSourceList","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderSourceList"},');
 
     return <ScrollView contentContainerStyle={styles.providerList}>
         {this.state.providers.map((item, index) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.state.providers.map","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.state.providers.map","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":2},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.state.providers.map"},');
 
       return <TouchableOpacity style={styles.providerButton} key={index} onPress={ev => {
-                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+                SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1},`);
 
                 SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
@@ -178,7 +178,7 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
     })}
         <TouchableOpacity style={styles.cancelButton} onPress={ev => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 
@@ -193,13 +193,13 @@ export default class UppyReactNativeFilePicker extends React.Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":0,"classInfo":{"className":"UppyReactNativeFilePicker"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 
     return <Modal animationType="slide" transparent={false} visible={this.props.show} supportedOrientations={['portrait', 'portrait-upside-down', 'landscape', 'landscape-left', 'landscape-right']} onRequestClose={this.props.onRequestClose}>
         {this.state.openProvider ? <Provider providerID={this.state.openProvider} uppy={this.uppy} onDone={() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###3","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###3","fileName":"/packages/@uppy/react-native/file-picker/index.js","paramsNumber":0},`);
 
       this.setState({
         openProvider: null

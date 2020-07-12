@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 function thumbnail(req, res, next) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"thumbnail","fileName":"/packages/@uppy/companion/lib/server/controllers/thumbnail.js","paramsNumber":3},`);
 
   const providerName = req.params.providerName;
   const id = req.params.id;
@@ -11,7 +11,7 @@ function thumbnail(req, res, next) {
     id,
     token
   }, (err, response) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.thumbnail","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"provider.thumbnail","fileName":"/packages/@uppy/companion/lib/server/controllers/thumbnail.js","paramsNumber":2},`);
 
     if (err) {
       err.isAuthError ? res.sendStatus(401) : next(err);

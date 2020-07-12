@@ -6,7 +6,7 @@ const e = require('he').encode;
 const server = http.createServer(onrequest);
 server.listen(9967);
 function onrequest(req, res) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onrequest","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onrequest","fileName":"/examples/transloadit/server.js","paramsNumber":2},`);
 
   if (req.url !== '/test') {
     res.writeHead(404, {
@@ -19,21 +19,21 @@ function onrequest(req, res) {
   }
   let body = '';
   req.on('data', chunk => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.on","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.on","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
     body += chunk;
         SRTlib.send('{"type":"FUNCTIONEND","function":"req.on"},');
 
   });
   req.on('end', () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.on###2","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"req.on###2","fileName":"/examples/transloadit/server.js","paramsNumber":0},`);
 
     onbody(body);
         SRTlib.send('{"type":"FUNCTIONEND","function":"req.on###2"},');
 
   });
   function onbody(body) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onbody","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"onbody","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
     const fields = qs.parse(body);
     const assemblies = JSON.parse(fields.transloadit);
@@ -41,7 +41,7 @@ function onrequest(req, res) {
     res.write(Header());
     res.write(FormFields(fields));
     assemblies.forEach(assembly => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"assemblies.forEach","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"assemblies.forEach","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
       res.write(AssemblyResult(assembly));
             SRTlib.send('{"type":"FUNCTIONEND","function":"assemblies.forEach"},');
@@ -55,7 +55,7 @@ function onrequest(req, res) {
 
 }
 function Header() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Header","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Header","fileName":"/examples/transloadit/server.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"Header"},');
 
@@ -81,7 +81,7 @@ function Header() {
 
 }
 function Footer() {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Footer","fileName":"${__filename}","paramsNumber":0},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Footer","fileName":"/examples/transloadit/server.js","paramsNumber":0},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"Footer"},');
 
@@ -94,7 +94,7 @@ function Footer() {
 
 }
 function FormFields(fields) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FormFields","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FormFields","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"FormFields"},');
 
@@ -105,7 +105,7 @@ function FormFields(fields) {
     </dl>
   `;
   function Field([name, value]) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Field","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Field","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
     if (name === 'transloadit') {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Field"},');
@@ -125,7 +125,7 @@ function FormFields(fields) {
 
 }
 function AssemblyResult(assembly) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AssemblyResult","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AssemblyResult","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"AssemblyResult"},');
 
@@ -138,7 +138,7 @@ function AssemblyResult(assembly) {
 
 }
 function UploadsList(uploads) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UploadsList","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"UploadsList","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"UploadsList"},');
 
@@ -148,7 +148,7 @@ function UploadsList(uploads) {
     </ul>
   `;
   function Upload(upload) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Upload","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Upload","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"Upload"},');
 
@@ -160,13 +160,13 @@ function UploadsList(uploads) {
 
 }
 function ResultsList(results) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ResultsList","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ResultsList","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"ResultsList"},');
 
   return Object.keys(results).map(ResultsSection).join('\n');
   function ResultsSection(stepName) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ResultsSection","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"ResultsSection","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"ResultsSection"},');
 
@@ -180,7 +180,7 @@ function ResultsList(results) {
 
   }
   function Result(result) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Result","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"Result","fileName":"/examples/transloadit/server.js","paramsNumber":1},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"Result"},');
 

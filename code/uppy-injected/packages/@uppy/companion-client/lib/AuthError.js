@@ -22,7 +22,7 @@ var AuthError = /*#__PURE__*/function (_Error) {
   function AuthError() {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AuthError\",\"superClass\":\"Error\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/companion-client/src/AuthError.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"AuthError\",\"superClass\":\"Error\"}},");
     _this = _Error.call(this, 'Authorization required') || this;
     _this.name = 'AuthError';
     _this.isAuthError = true;

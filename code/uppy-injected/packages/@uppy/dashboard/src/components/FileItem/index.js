@@ -9,7 +9,7 @@ const FileInfo = require('./FileInfo');
 const Buttons = require('./Buttons');
 module.exports = class FileItem extends Component {
   shouldComponentUpdate(nextProps) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shouldComponentUpdate","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"FileItem","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"shouldComponentUpdate","fileName":"/packages/@uppy/dashboard/src/components/FileItem/index.js","paramsNumber":1,"classInfo":{"className":"FileItem","superClass":"Component"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"shouldComponentUpdate"},');
 
@@ -18,7 +18,7 @@ module.exports = class FileItem extends Component {
 
   }
   componentDidMount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileItem","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentDidMount","fileName":"/packages/@uppy/dashboard/src/components/FileItem/index.js","paramsNumber":0,"classInfo":{"className":"FileItem","superClass":"Component"}},`);
 
     const file = this.props.file;
     if (!file.preview) {
@@ -28,7 +28,7 @@ module.exports = class FileItem extends Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileItem","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/packages/@uppy/dashboard/src/components/FileItem/index.js","paramsNumber":0,"classInfo":{"className":"FileItem","superClass":"Component"}},`);
 
     const file = this.props.file;
     if (!file.preview) {
@@ -38,7 +38,7 @@ module.exports = class FileItem extends Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"FileItem","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/packages/@uppy/dashboard/src/components/FileItem/index.js","paramsNumber":0,"classInfo":{"className":"FileItem","superClass":"Component"}},`);
 
     const file = this.props.file;
     const isProcessing = file.progress.preprocess || file.progress.postprocess;

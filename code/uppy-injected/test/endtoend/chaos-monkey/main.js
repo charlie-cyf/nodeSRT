@@ -9,7 +9,7 @@ const isOnTravis = !!(process.env.TRAVIS && process.env.CI);
 const endpoint = isOnTravis ? 'http://companion.test:1081' : 'http://localhost:1081';
 let id = 0;
 window.setup = function (options) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":1},`);
 
   id += 1;
   const uppy = Uppy({
@@ -25,10 +25,10 @@ window.setup = function (options) {
     limit: options.limit
   });
   uppy.on('file-added', file => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup.uppy.on","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup.uppy.on","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":1},`);
 
     randomColorImage(function (blob) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"randomColorImage","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"randomColorImage","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":1},`);
 
       uppy.setFileState(file.id, {
         preview: URL.createObjectURL(blob)
@@ -46,14 +46,14 @@ window.setup = function (options) {
 
 };
 function randomColorImage(callback) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"randomColorImage","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"randomColorImage","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":1},`);
 
   const canvas = document.createElement('canvas');
   canvas.width = 140;
   canvas.height = 140;
   const context = canvas.getContext('2d');
   context.fillStyle = ('#xxxxxx').replace(/x/g, () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"context.fillStyle.replace","fileName":"${__filename}","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"context.fillStyle.replace","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"context.fillStyle.replace"},');
 

@@ -6,7 +6,7 @@ const ItemIcon = require('./components/ItemIcon');
 const GridLi = require('./components/GridLi');
 const ListLi = require('./components/ListLi');
 module.exports = props => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/provider-views/src/Item/index.js","paramsNumber":1},`);
 
   const itemIconString = props.getItemIcon();
   const className = classNames('uppy-ProviderBrowserItem', {

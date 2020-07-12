@@ -10,10 +10,10 @@ var dashboardOptionNames = ['metaFields', 'width', 'height', 'thumbnailWidth', '
 var modalDashboardOptionNames = ['trigger', 'closeModalOnClickOutside', 'closeAfterFinish', 'disablePageScrollWhenModalOpen', 'animateOpenClose', 'onRequestCloseModal', 'browserBackButtonClose'];
 
 function addDashboardPlugin(uppy, opts, overrideOpts) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addDashboardPlugin\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":3},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"addDashboardPlugin\",\"fileName\":\"/packages/@uppy/robodog/src/addDashboardPlugin.js\",\"paramsNumber\":3},");
   var dashboardOpts = {};
   dashboardOptionNames.forEach(function (key) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"dashboardOptionNames.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"dashboardOptionNames.forEach\",\"fileName\":\"/packages/@uppy/robodog/src/addDashboardPlugin.js\",\"paramsNumber\":1},");
 
     if (has(opts, key)) {
       dashboardOpts[key] = opts[key];
@@ -25,7 +25,7 @@ function addDashboardPlugin(uppy, opts, overrideOpts) {
 
   if (!inline) {
     modalDashboardOptionNames.forEach(function (key) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"modalDashboardOptionNames.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"modalDashboardOptionNames.forEach\",\"fileName\":\"/packages/@uppy/robodog/src/addDashboardPlugin.js\",\"paramsNumber\":1},");
 
       if (has(opts, key)) {
         dashboardOpts[key] = opts[key];

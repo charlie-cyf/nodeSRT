@@ -11,7 +11,7 @@ const isOnTravis = process.env.REACT_APP_ON_TRAVIS;
 const endpoint = isOnTravis ? 'http://companion.test:1080' : 'http://localhost:1080';
 class App extends Component {
   constructor(props) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":1,"classInfo":{"className":"App","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/test/endtoend/create-react-app/src/App.js","paramsNumber":1,"classInfo":{"className":"App","superClass":"Component"}},`);
 
     super(props);
     this.uppy = new Uppy({
@@ -39,7 +39,7 @@ class App extends Component {
 
   }
   componentWillUnmount() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"componentWillUnmount","fileName":"/test/endtoend/create-react-app/src/App.js","paramsNumber":0,"classInfo":{"className":"App","superClass":"Component"}},`);
 
     this.uppy.close();
     this.uppy2.close();
@@ -47,7 +47,7 @@ class App extends Component {
 
   }
   handleModalClick() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleModalClick","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"handleModalClick","fileName":"/test/endtoend/create-react-app/src/App.js","paramsNumber":0,"classInfo":{"className":"App","superClass":"Component"}},`);
 
     this.setState({
       open: !this.state.open
@@ -56,7 +56,7 @@ class App extends Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App","superClass":"Component"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/test/endtoend/create-react-app/src/App.js","paramsNumber":0,"classInfo":{"className":"App","superClass":"Component"}},`);
 
     const {showInlineDashboard} = this.state;
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
@@ -68,7 +68,7 @@ class App extends Component {
         <div id="inline-dashboard">
           <label>
             <input id="inline-dashboard-toggle" type="checkbox" checked={showInlineDashboard} onChange={event => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/test/endtoend/create-react-app/src/App.js","paramsNumber":1},`);
 
       this.setState({
         showInlineDashboard: event.target.checked
@@ -91,7 +91,7 @@ class App extends Component {
             {this.state.open ? 'Close dashboard' : 'Open dashboard'}
           </button>
           <DashboardModal uppy={this.uppy2} open={this.state.open} target="#modal-dashboard" onRequestClose={() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"/test/endtoend/create-react-app/src/App.js","paramsNumber":0},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement###2"},');
 

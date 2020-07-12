@@ -137,7 +137,7 @@ ro_RO.strings = {
 };
 
 ro_RO.pluralize = function (count) {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ro_RO.pluralize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ro_RO.pluralize\",\"fileName\":\"/packages/@uppy/locales/src/ro_RO.js\",\"paramsNumber\":1},");
 
   if (count === 1) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"ro_RO.pluralize"},');

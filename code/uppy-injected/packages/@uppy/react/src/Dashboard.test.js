@@ -14,11 +14,11 @@ const Dashboard = require('./Dashboard');
 describe('react <Dashboard />', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "react%20%3CDashboard%20/%3E", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "react%20%3CDashboard%20/%3E", "fileName": "/packages/@uppy/react/src/Dashboard.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/react/src/Dashboard.test.js", "calls" : [`);
   });
 
   it('can be mounted and unmounted', () => {

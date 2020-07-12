@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const {h} = require('preact');
 const ignoreEvent = require('../utils/ignoreEvent.js');
 function PickerPanelContent(props) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"PickerPanelContent","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"PickerPanelContent","fileName":"/packages/@uppy/dashboard/src/components/PickerPanelContent.js","paramsNumber":1},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"PickerPanelContent"},');
 

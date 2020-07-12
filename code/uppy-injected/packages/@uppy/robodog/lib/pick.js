@@ -17,7 +17,7 @@ function pick(opts) {
     opts = {};
   }
 
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"pick\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"pick\",\"fileName\":\"/packages/@uppy/robodog/src/pick.js\",\"paramsNumber\":1},");
   var target = opts.target || document.body;
   var pluginId = 'pick';
   var uppy = createUppy(opts, {
@@ -38,9 +38,9 @@ function pick(opts) {
 
   SRTlib.send('{"type":"FUNCTIONEND","function":"pick"},');
   return new Promise(function (resolve, reject) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then.NewExpression\",\"fileName\":\"/packages/@uppy/robodog/src/pick.js\",\"paramsNumber\":2},");
     uppy.on('complete', function (result) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.on\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.on\",\"fileName\":\"/packages/@uppy/robodog/src/pick.js\",\"paramsNumber\":1},");
 
       if (result.failed.length === 0) {
         resolve(result);
@@ -50,7 +50,7 @@ function pick(opts) {
     });
     uppy.on('error', reject);
     uppy.on('cancel-all', function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.on###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.on###2\",\"fileName\":\"/packages/@uppy/robodog/src/pick.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###2"},');
       return reject(CANCEL);
       SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###2"},');
@@ -58,12 +58,12 @@ function pick(opts) {
     uppy.getPlugin(pluginId).openModal();
     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then.NewExpression"},');
   }).then(function (result) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then\",\"fileName\":\"/packages/@uppy/robodog/src/pick.js\",\"paramsNumber\":1},");
     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then"},');
     return result;
     SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.then"},');
   }, function (err) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.then###2\",\"fileName\":\"/packages/@uppy/robodog/src/pick.js\",\"paramsNumber\":1},");
 
     if (err === CANCEL) {
       uppy.getPlugin(pluginId).requestCloseModal();

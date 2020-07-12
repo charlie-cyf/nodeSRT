@@ -12,7 +12,7 @@ import SelectFiles from './SelectFilesButton';
 import getTusFileReader from './tusFileReader';
 export default class App extends React.Component {
   constructor() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"constructor","fileName":"/examples/react-native-expo/App.js","paramsNumber":0,"classInfo":{"className":"App"}},`);
 
     super();
     this.state = {
@@ -43,7 +43,7 @@ export default class App extends React.Component {
       chunkSize: 10 * 1024 * 1024
     });
     this.uppy.on('upload-progress', (file, progress) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on","fileName":"/examples/react-native-expo/App.js","paramsNumber":2},`);
 
       this.setState({
         progress: progress.bytesUploaded,
@@ -55,13 +55,13 @@ export default class App extends React.Component {
 
     });
     this.uppy.on('upload-success', (file, response) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###2","fileName":"${__filename}","paramsNumber":2},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###2","fileName":"/examples/react-native-expo/App.js","paramsNumber":2},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"uppy.on###2"},');
 
     });
     this.uppy.on('complete', result => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###3","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###3","fileName":"/examples/react-native-expo/App.js","paramsNumber":1},`);
 
       this.setState({
         status: 'Upload complete ✅',
@@ -74,7 +74,7 @@ export default class App extends React.Component {
 
     });
     this.uppy.on('info-visible', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###4","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###4","fileName":"/examples/react-native-expo/App.js","paramsNumber":0},`);
 
       const info = this.uppy.getState().info;
       this.setState({
@@ -85,7 +85,7 @@ export default class App extends React.Component {
 
     });
     this.uppy.on('info-hidden', () => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###5","fileName":"${__filename}","paramsNumber":0},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on###5","fileName":"/examples/react-native-expo/App.js","paramsNumber":0},`);
 
       this.setState({
         info: null
@@ -97,7 +97,7 @@ export default class App extends React.Component {
 
   }
   showFilePicker() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"showFilePicker","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"showFilePicker","fileName":"/examples/react-native-expo/App.js","paramsNumber":0,"classInfo":{"className":"App"}},`);
 
     this.setState({
       isFilePickerVisible: true,
@@ -108,7 +108,7 @@ export default class App extends React.Component {
 
   }
   hideFilePicker() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"hideFilePicker","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"hideFilePicker","fileName":"/examples/react-native-expo/App.js","paramsNumber":0,"classInfo":{"className":"App"}},`);
 
     this.setState({
       isFilePickerVisible: false
@@ -117,7 +117,7 @@ export default class App extends React.Component {
 
   }
   togglePauseResume() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"togglePauseResume","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"togglePauseResume","fileName":"/examples/react-native-expo/App.js","paramsNumber":0,"classInfo":{"className":"App"}},`);
 
     if (this.state.isPaused) {
       this.uppy.resumeAll();
@@ -134,7 +134,7 @@ export default class App extends React.Component {
 
   }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"App"}},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"/examples/react-native-expo/App.js","paramsNumber":0,"classInfo":{"className":"App"}},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
 

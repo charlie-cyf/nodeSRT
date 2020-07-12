@@ -7,11 +7,11 @@ var FOCUSABLE_ELEMENTS = require('@uppy/utils/lib/FOCUSABLE_ELEMENTS');
 var getActiveOverlayEl = require('./getActiveOverlayEl');
 
 module.exports = function createSuperFocus() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/dashboard/src/utils/createSuperFocus.js\",\"paramsNumber\":0},");
   var lastFocusWasOnSuperFocusableEl = false;
 
   var superFocus = function superFocus(dashboardEl, activeOverlayType) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"superFocus\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"superFocus\",\"fileName\":\"/packages/@uppy/dashboard/src/utils/createSuperFocus.js\",\"paramsNumber\":2},");
     var overlayEl = getActiveOverlayEl(dashboardEl, activeOverlayType);
     var isFocusInOverlay = overlayEl.contains(document.activeElement);
 

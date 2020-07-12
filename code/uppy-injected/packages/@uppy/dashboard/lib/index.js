@@ -44,10 +44,10 @@ var TAB_KEY = 9;
 var ESC_KEY = 27;
 
 function createPromise() {
-  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createPromise\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"createPromise\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
   var o = {};
   o.promise = new Promise(function (resolve, reject) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"o.promise.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"o.promise.NewExpression\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":2},");
     o.resolve = resolve;
     o.reject = reject;
     SRTlib.send('{"type":"FUNCTIONEND","function":"o.promise.NewExpression"},');
@@ -63,11 +63,11 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   function Dashboard(uppy, _opts) {
     var _this;
 
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Dashboard\",\"superClass\":\"Plugin\"}},");
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"constructor\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":2,\"classInfo\":{\"className\":\"Dashboard\",\"superClass\":\"Plugin\"}},");
     _this = _Plugin.call(this, uppy, _opts) || this;
 
     _this.setOptions = function (newOpts) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       _Plugin.prototype.setOptions.call(_assertThisInitialized(_this), newOpts);
 
@@ -77,7 +77,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.i18nInit = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###2\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
       _this.translator = new Translator([_this.defaultLocale, _this.uppy.locale, _this.opts.locale]);
       _this.i18n = _this.translator.translate.bind(_this.translator);
       _this.i18nArray = _this.translator.translateArray.bind(_this.translator);
@@ -88,12 +88,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.removeTarget = function (plugin) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###3\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       var pluginState = _this.getPluginState();
 
       var newTargets = pluginState.targets.filter(function (target) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"newTargets.pluginState.targets.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"newTargets.pluginState.targets.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"newTargets.pluginState.targets.filter"},');
         return target.id !== plugin.id;
         SRTlib.send('{"type":"FUNCTIONEND","function":"newTargets.pluginState.targets.filter"},');
@@ -107,7 +107,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.addTarget = function (plugin) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###4\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###4\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       var callerPluginId = plugin.id || plugin.constructor.name;
       var callerPluginName = plugin.title || callerPluginId;
       var callerPluginType = plugin.type;
@@ -142,7 +142,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.hideAllPanels = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###5\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###5\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
       var update = {
         activePickerPanel: false,
         showAddFilesPanel: false,
@@ -162,13 +162,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.showPanel = function (id) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###6\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###6\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       var _this$getPluginState = _this.getPluginState(),
           targets = _this$getPluginState.targets;
 
       var activePickerPanel = targets.filter(function (target) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"activePickerPanel.targets.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"activePickerPanel.targets.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"activePickerPanel.targets.filter"},');
         return target.type === 'acquirer' && target.id === id;
         SRTlib.send('{"type":"FUNCTIONEND","function":"activePickerPanel.targets.filter"},');
@@ -183,7 +183,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.openModal = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###7\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###7\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       var _createPromise = createPromise(),
           promise = _createPromise.promise,
@@ -198,7 +198,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       if (_this.opts.animateOpenClose && _this.getPluginState().isClosing) {
         var handler = function handler() {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handler\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handler\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
           _this.setPluginState({
             isHidden: false
@@ -237,7 +237,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         opts = {};
       }
 
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###8\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###8\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       var _opts2 = opts,
           _opts2$manualClose = _opts2.manualClose,
           manualClose = _opts2$manualClose === void 0 ? true : _opts2$manualClose;
@@ -265,7 +265,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         });
 
         var handler = function handler() {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handler\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"handler\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
           _this.setPluginState({
             isHidden: true,
@@ -313,14 +313,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.isModalOpen = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###9\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###9\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###9"},');
       return !_this.getPluginState().isHidden || false;
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###9"},');
     };
 
     _this.requestCloseModal = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###10\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###10\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       if (_this.opts.onRequestCloseModal) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###10"},');
@@ -333,7 +333,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.setDarkModeCapability = function (isDarkModeOn) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###11\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###11\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       var _this$uppy$getState = _this.uppy.getState(),
           capabilities = _this$uppy$getState.capabilities;
@@ -348,7 +348,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handleSystemDarkModeChange = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###12\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###12\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       var isDarkModeOnNow = event.matches;
 
       _this.uppy.log("[Dashboard] Dark mode is " + (isDarkModeOnNow ? 'on' : 'off'));
@@ -359,7 +359,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.toggleFileCard = function (fileId) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###13\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###13\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       if (fileId) {
         _this.uppy.emit('dashboard:file-edit-start');
@@ -376,7 +376,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.toggleAddFilesPanel = function (show) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###14\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###14\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       _this.setPluginState({
         showAddFilesPanel: show,
@@ -387,9 +387,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.addFiles = function (files) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###15\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###15\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       var descriptors = files.map(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"descriptors.files.map\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"descriptors.files.map\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"descriptors.files.map"},');
         return {
           source: _this.id,
@@ -413,9 +413,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.startListeningToResize = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###16\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###16\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
       _this.resizeObserver = new ResizeObserver(function (entries, observer) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"resizeObserver.NewExpression\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"resizeObserver.NewExpression\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":2},");
         var uppyDashboardInnerEl = entries[0];
         var _uppyDashboardInnerEl = uppyDashboardInnerEl.contentRect,
             width = _uppyDashboardInnerEl.width,
@@ -435,7 +435,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       _this.resizeObserver.observe(_this.el.querySelector('.uppy-Dashboard-inner'));
 
       _this.makeDashboardInsidesVisibleAnywayTimeout = setTimeout(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"makeDashboardInsidesVisibleAnywayTimeout.setTimeout\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"makeDashboardInsidesVisibleAnywayTimeout.setTimeout\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
         var pluginState = _this.getPluginState();
 
@@ -455,7 +455,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.stopListeningToResize = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###17\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###17\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       _this.resizeObserver.disconnect();
 
@@ -464,7 +464,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.recordIfFocusedOnUppyRecently = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###18\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###18\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       if (_this.el.contains(event.target)) {
         _this.ifFocusedOnUppyRecently = true;
@@ -478,7 +478,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.updateBrowserHistory = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###19\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###19\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       if (!history.state || !history.state[_this.modalName]) {
         var _extends2;
@@ -491,7 +491,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handlePopState = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###20\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###20\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       if (_this.isModalOpen() && (!event.state || !event.state[_this.modalName])) {
         _this.closeModal({
@@ -507,23 +507,23 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handleKeyDownInModal = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###21\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###21\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       if (event.keyCode === ESC_KEY) _this.requestCloseModal(event);
       if (event.keyCode === TAB_KEY) trapFocus.forModal(event, _this.getPluginState().activeOverlayType, _this.el);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###21"},');
     };
 
     _this.handleClickOutside = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###22\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###22\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
       if (_this.opts.closeModalOnClickOutside) _this.requestCloseModal();
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###22"},');
     };
 
     _this.handlePaste = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###23\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###23\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       _this.uppy.iteratePlugins(function (plugin) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
         if (plugin.type === 'acquirer') {
           plugin.handleRootPaste && plugin.handleRootPaste(event);
@@ -540,7 +540,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handleInputChange = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###24\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###24\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       event.preventDefault();
       var files = toArray(event.target.files);
 
@@ -550,7 +550,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handleDragOver = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###25\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###25\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       event.preventDefault();
       event.stopPropagation();
       event.dataTransfer.dropEffect = 'copy';
@@ -564,12 +564,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handleDragLeave = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###26\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###26\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       event.preventDefault();
       event.stopPropagation();
       clearTimeout(_this.removeDragOverClassTimeout);
       _this.removeDragOverClassTimeout = setTimeout(function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"removeDragOverClassTimeout.setTimeout\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"removeDragOverClassTimeout.setTimeout\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
         _this.setPluginState({
           isDraggingOver: false
@@ -581,7 +581,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handleDrop = function (event, dropCategory) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###27\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###27\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":2},");
       event.preventDefault();
       event.stopPropagation();
       clearTimeout(_this.removeDragOverClassTimeout);
@@ -591,7 +591,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       });
 
       _this.uppy.iteratePlugins(function (plugin) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins###2\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
         if (plugin.type === 'acquirer') {
           plugin.handleRootDrop && plugin.handleRootDrop(event);
@@ -603,7 +603,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       var executedDropErrorOnce = false;
 
       var logDropError = function logDropError(error) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"logDropError\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"logDropError\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
         _this.uppy.log(error, 'error');
 
@@ -619,7 +619,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       getDroppedFiles(event.dataTransfer, {
         logDropError: logDropError
       }).then(function (files) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"getDroppedFiles.then\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"getDroppedFiles.then\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
         if (files.length > 0) {
           _this.uppy.log('[Dashboard] Files were dropped');
@@ -633,7 +633,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handleRequestThumbnail = function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###28\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###28\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:request', file);
@@ -643,7 +643,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handleCancelThumbnail = function (file) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###29\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###29\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       if (!_this.opts.waitForThumbnailsBeforeUpload) {
         _this.uppy.emit('thumbnail:cancel', file);
@@ -653,13 +653,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.handleKeyDownInInline = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###30\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###30\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       if (event.keyCode === TAB_KEY) trapFocus.forInline(event, _this.getPluginState().activeOverlayType, _this.el);
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports###30"},');
     };
 
     _this.handlePasteOnBody = function (event) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###31\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###31\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       var isFocusInOverlay = _this.el.contains(document.activeElement);
 
@@ -673,7 +673,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     _this.handleComplete = function (_ref) {
       var failed = _ref.failed,
           uploadID = _ref.uploadID;
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###32\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###32\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       if (_this.opts.closeAfterFinish && failed.length === 0) {
         _this.requestCloseModal();
@@ -683,14 +683,14 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.initEvents = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###33\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###33\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       if (_this.opts.trigger && !_this.opts.inline) {
         var showModalTrigger = findAllDOMElements(_this.opts.trigger);
 
         if (showModalTrigger) {
           showModalTrigger.forEach(function (trigger) {
-            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"showModalTrigger.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"showModalTrigger.forEach\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
             SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach"},');
             return trigger.addEventListener('click', _this.openModal);
             SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach"},');
@@ -723,12 +723,12 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.removeEvents = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###34\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###34\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
       var showModalTrigger = findAllDOMElements(_this.opts.trigger);
 
       if (!_this.opts.inline && showModalTrigger) {
         showModalTrigger.forEach(function (trigger) {
-          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"showModalTrigger.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"showModalTrigger.forEach###2\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
           SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach###2"},');
           return trigger.removeEventListener('click', _this.openModal);
           SRTlib.send('{"type":"FUNCTIONEND","function":"showModalTrigger.forEach###2"},');
@@ -759,7 +759,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.superFocusOnEachUpdate = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###35\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###35\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       var isFocusInUppy = _this.el.contains(document.activeElement);
 
@@ -779,7 +779,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.afterUpdate = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###36\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###36\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       _this.superFocusOnEachUpdate();
 
@@ -787,7 +787,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.cancelUpload = function (fileID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###37\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###37\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       _this.uppy.removeFile(fileID);
 
@@ -795,7 +795,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.saveFileCard = function (meta, fileID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###38\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":2},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###38\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":2},");
 
       _this.uppy.setFileMeta(fileID, meta);
 
@@ -805,7 +805,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this._attachRenderFunctionToTarget = function (target) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###39\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###39\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       var plugin = _this.uppy.getPlugin(target.id);
 
@@ -818,7 +818,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this._isTargetSupported = function (target) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###40\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###40\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       var plugin = _this.uppy.getPlugin(target.id);
 
@@ -833,10 +833,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this._getAcquirers = memoize(function (targets) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.memoize\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.memoize\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize"},');
       return targets.filter(function (target) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.targets.filter.map.targets.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.targets.filter.map.targets.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter"},');
         return target.type === 'acquirer' && _this._isTargetSupported(target);
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter"},');
@@ -844,10 +844,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize"},');
     });
     _this._getProgressIndicators = memoize(function (targets) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.memoize###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.memoize###2\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.memoize###2"},');
       return targets.filter(function (target) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.targets.filter.map.targets.filter###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.targets.filter.map.targets.filter###2\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter###2"},');
         return target.type === 'progressindicator';
         SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.targets.filter.map.targets.filter###2"},');
@@ -856,7 +856,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     });
 
     _this.render = function (state) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###41\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###41\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
       var pluginState = _this.getPluginState();
 
@@ -864,49 +864,49 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           capabilities = state.capabilities,
           allowNewUpload = state.allowNewUpload;
       var newFiles = Object.keys(files).filter(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"newFiles.Object.keys.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"newFiles.Object.keys.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"newFiles.Object.keys.filter"},');
         return !files[file].progress.uploadStarted;
         SRTlib.send('{"type":"FUNCTIONEND","function":"newFiles.Object.keys.filter"},');
       });
       var uploadStartedFiles = Object.keys(files).filter(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uploadStartedFiles.Object.keys.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uploadStartedFiles.Object.keys.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"uploadStartedFiles.Object.keys.filter"},');
         return files[file].progress.uploadStarted;
         SRTlib.send('{"type":"FUNCTIONEND","function":"uploadStartedFiles.Object.keys.filter"},');
       });
       var pausedFiles = Object.keys(files).filter(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"pausedFiles.Object.keys.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"pausedFiles.Object.keys.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"pausedFiles.Object.keys.filter"},');
         return files[file].isPaused;
         SRTlib.send('{"type":"FUNCTIONEND","function":"pausedFiles.Object.keys.filter"},');
       });
       var completeFiles = Object.keys(files).filter(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"completeFiles.Object.keys.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"completeFiles.Object.keys.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"completeFiles.Object.keys.filter"},');
         return files[file].progress.uploadComplete;
         SRTlib.send('{"type":"FUNCTIONEND","function":"completeFiles.Object.keys.filter"},');
       });
       var erroredFiles = Object.keys(files).filter(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"erroredFiles.Object.keys.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"erroredFiles.Object.keys.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"erroredFiles.Object.keys.filter"},');
         return files[file].error;
         SRTlib.send('{"type":"FUNCTIONEND","function":"erroredFiles.Object.keys.filter"},');
       });
       var inProgressFiles = Object.keys(files).filter(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inProgressFiles.Object.keys.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inProgressFiles.Object.keys.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressFiles.Object.keys.filter"},');
         return !files[file].progress.uploadComplete && files[file].progress.uploadStarted;
         SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressFiles.Object.keys.filter"},');
       });
       var inProgressNotPausedFiles = inProgressFiles.filter(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inProgressNotPausedFiles.inProgressFiles.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"inProgressNotPausedFiles.inProgressFiles.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressNotPausedFiles.inProgressFiles.filter"},');
         return !files[file].isPaused;
         SRTlib.send('{"type":"FUNCTIONEND","function":"inProgressNotPausedFiles.inProgressFiles.filter"},');
       });
       var processingFiles = Object.keys(files).filter(function (file) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"processingFiles.Object.keys.filter\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"processingFiles.Object.keys.filter\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"processingFiles.Object.keys.filter"},');
         return files[file].progress.preprocess || files[file].progress.postprocess;
         SRTlib.send('{"type":"FUNCTIONEND","function":"processingFiles.Object.keys.filter"},');
@@ -1006,10 +1006,10 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.discoverProviderPlugins = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###42\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###42\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       _this.uppy.iteratePlugins(function (plugin) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins###3\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uppy.iteratePlugins###3\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
         if (plugin && !plugin.target && plugin.opts && plugin.opts.target === _this.constructor) {
           _this.addTarget(plugin);
@@ -1022,7 +1022,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.install = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###43\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###43\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       _this.setPluginState({
         isHidden: true,
@@ -1059,7 +1059,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       var plugins = _this.opts.plugins || [];
       plugins.forEach(function (pluginID) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"plugins.forEach\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"plugins.forEach\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
         var plugin = _this.uppy.getPlugin(pluginID);
 
@@ -1119,7 +1119,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     };
 
     _this.uninstall = function () {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###44\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports###44\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
 
       if (!_this.opts.disableInformer) {
         var informer = _this.uppy.getPlugin(_this.id + ":Informer");
@@ -1141,7 +1141,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       var plugins = _this.opts.plugins || [];
       plugins.forEach(function (pluginID) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"plugins.forEach###2\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":1},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"plugins.forEach###2\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":1},");
 
         var plugin = _this.uppy.getPlugin(pluginID);
 
@@ -1238,7 +1238,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       animateOpenClose: true,
       proudlyDisplayPoweredByUppy: true,
       onRequestCloseModal: function onRequestCloseModal() {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.defaultOptions.onRequestCloseModal\",\"fileName\":\"" + __filename + "\",\"paramsNumber\":0},");
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.defaultOptions.onRequestCloseModal\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.defaultOptions.onRequestCloseModal"},');
         return _this.closeModal();
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.defaultOptions.onRequestCloseModal"},');

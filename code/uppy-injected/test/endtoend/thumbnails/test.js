@@ -12,11 +12,11 @@ const notImages = [{
 describe('ThumbnailGenerator', () => {
     before(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "ThumbnailGenerator", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "ThumbnailGenerator", "fileName": "/test/endtoend/thumbnails/test.js", "calls" : [`);
   });
 
   beforeEach(async () => {
-        SRTlib.send(`{ "testName": "${this.test}", "fileName": "${__filename}", "calls" : [`);
+        SRTlib.send(`{ "testName": "${this.test}", "fileName": "/test/endtoend/thumbnails/test.js", "calls" : [`);
 
     await browser.url(testURL);
   });

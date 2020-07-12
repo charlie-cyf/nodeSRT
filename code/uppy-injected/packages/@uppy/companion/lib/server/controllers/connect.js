@@ -3,7 +3,7 @@ const SRTlib = require('SRT-util');
 const oAuthState = require('../helpers/oauth-state');
 const atob = require('atob');
 module.exports = function connect(req, res) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports","fileName":"/packages/@uppy/companion/lib/server/controllers/connect.js","paramsNumber":2},`);
 
   const secret = req.companion.options.secret;
   let state = oAuthState.generateState(secret);

@@ -4,11 +4,11 @@ const getFileNameAndExtension = require('./getFileNameAndExtension');
 describe('getFileNameAndExtension', () => {
     beforeAll(() => {
     SRTlib.startLogger("./code/uppy", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "getFileNameAndExtension", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testSuiteName": "getFileNameAndExtension", "fileName": "/packages/@uppy/utils/src/getFileNameAndExtension.test.js", "calls" : [`);
   });
 
     beforeEach(() => {
-    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "${__filename}", "calls" : [`);
+    SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/packages/@uppy/utils/src/getFileNameAndExtension.test.js", "calls" : [`);
   });
 
   it('should return the filename and extension as an array', () => {

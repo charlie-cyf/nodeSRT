@@ -137,7 +137,7 @@ is_IS.strings = {
   }
 };
 is_IS.pluralize = function (n) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"is_IS.pluralize","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"is_IS.pluralize","fileName":"/packages/@uppy/locales/src/is_IS.js","paramsNumber":1},`);
 
   if (n === 1) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"is_IS.pluralize"},');

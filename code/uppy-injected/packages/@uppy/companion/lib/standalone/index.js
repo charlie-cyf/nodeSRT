@@ -36,12 +36,12 @@ if (app.get('env') !== 'test') {
 }
 const sensitiveKeys = new Set(['access_token', 'uppyAuthToken']);
 function censorQuery(rawQuery) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"censorQuery","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"censorQuery","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":1},`);
 
   const query = {};
   let censored = false;
   Object.keys(rawQuery).forEach(key => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"${__filename}","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":1},`);
 
     if (typeof rawQuery[key] !== 'string') {
             SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
@@ -69,7 +69,7 @@ function censorQuery(rawQuery) {
 app.use(addRequestId);
 app.use(morgan('combined'));
 morgan.token('url', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"morgan.token","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"morgan.token","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":2},`);
 
   const {query, censored} = censorQuery(req.query);
     SRTlib.send('{"type":"FUNCTIONEND","function":"morgan.token"},');
@@ -79,7 +79,7 @@ morgan.token('url', (req, res) => {
 
 });
 morgan.token('referrer', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"morgan.token###2","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"morgan.token###2","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":2},`);
 
   const ref = req.headers.referer || req.headers.referrer;
   if (typeof ref === 'string') {
@@ -126,12 +126,12 @@ if (process.env.COMPANION_COOKIE_DOMAIN) {
 }
 app.use(session(sessionOptions));
 app.use((req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":3},`);
 
   const protocol = process.env.COMPANION_PROTOCOL || 'http';
   if (process.env.COMPANION_CLIENT_ORIGINS) {
     const whitelist = process.env.COMPANION_CLIENT_ORIGINS.split(',').map(url => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"whitelist.process.env.COMPANION_CLIENT_ORIGINS.split.map","fileName":"${__filename}","paramsNumber":1},`);
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"whitelist.process.env.COMPANION_CLIENT_ORIGINS.split.map","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":1},`);
 
             SRTlib.send('{"type":"FUNCTIONEND","function":"whitelist.process.env.COMPANION_CLIENT_ORIGINS.split.map"},');
 
@@ -153,7 +153,7 @@ app.use((req, res, next) => {
 
 });
 app.get('/', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get","fileName":"${__filename}","paramsNumber":2},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":2},`);
 
   res.setHeader('Content-Type', 'text/plain');
   res.send(helper.buildHelpfulStartupMessage(companionOptions));
@@ -174,7 +174,7 @@ if (process.env.COMPANION_PATH) {
 }
 if (process.env.COMPANION_ONEDRIVE_DOMAIN_VALIDATION === 'true' && process.env.COMPANION_ONEDRIVE_KEY) {
   app.get('/.well-known/microsoft-identity-association.json', (req, res) => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get###2","fileName":"${__filename}","paramsNumber":2},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get###2","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":2},`);
 
     const content = JSON.stringify({
       associatedApplications: [{
@@ -192,7 +192,7 @@ if (process.env.COMPANION_ONEDRIVE_DOMAIN_VALIDATION === 'true' && process.env.C
   });
 }
 app.use((req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###2","fileName":"${__filename}","paramsNumber":3},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###2","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":3},`);
 
     SRTlib.send('{"type":"FUNCTIONEND","function":"app.use###2"},');
 
@@ -203,7 +203,7 @@ app.use((req, res, next) => {
 
 });
 app.use((err, req, res, next) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###3","fileName":"${__filename}","paramsNumber":4},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###3","fileName":"/packages/@uppy/companion/lib/standalone/index.js","paramsNumber":4},`);
 
   const logStackTrace = true;
   if (app.get('env') === 'production') {

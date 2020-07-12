@@ -50,7 +50,7 @@ const uppy = Uppy({
   endpoint: TUS_ENDPOINT
 });
 uppy.on('complete', result => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on","fileName":"${__filename}","paramsNumber":1},`);
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"uppy.on","fileName":"/examples/bundled/index.js","paramsNumber":1},`);
 
   if (result.failed.length === 0) {
     console.log('Upload successful 😀');
