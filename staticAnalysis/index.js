@@ -2,10 +2,14 @@ const path = require('path');
 const fs = require('fs')
 const acornWalk = require('acorn-walk')
 const { t } = require('typy')
-const globalConfig = require('../config')
+const globalUtil = require('../util')
+const node_core_modules =  require("module").builtinModules
 const { extend } = require('acorn-jsx-walk');
 const { pathExists } = require('fs-extra');
 const { dirname } = require('path');
+const { lookup } = require('dns');
+const requireResolver = require('resolve')
+
 acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
     c(node.value, st, "Expression")
@@ -17,59 +21,77 @@ function getTestSuiteName(ancestors) {
 }
 
 
-/*
+/**
 *   recursively find all dependencies dependName, including itself and all files depends on it. 
 *   return a list of filenames
-*   Note: node_modules will be ignored, but package.json file dependencies will be added.
-*   @params:    
-*       bases: { codebase: codebase,
-*                ASTbase: ASTbase }
-*   
+*   Note: node_modules will be ignored, but package.json file dependencies will be added.  
+*   !! local file dependencies specified in package.json will be mapped to its original file
+*   @param {String} dependName: the name in require
+*   @param {String} ASTfileName: the path to AST file that calls the dependName
 */
-// TODO refactor this with config.js 
 // TODO add test
-function getFileDependencies(dependName, fileName, packageJsonDependencies, bases, acc) {
-    const dirName = path.dirname(fileName)
-    let resolvedASTFile;
+function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, acc) {
+    console.log('dependname', dependName, 'ASTfileName', ASTfileName)
+    const codeBaseFileName = globalUtil.getCodebasePath(ASTfileName);
+    const codeBaseDir = path.dirname(codeBaseFileName)
+    const ASTdirName = path.dirname(ASTfileName)
+
     // first resolve dependName
-    let foundInPackageJson = false;
-    packageJsonDependencies.keys().forEach(key => {
-        if(dependName.startsWith(key)) {
-            foundInPackageJson = true;
-            const tempResolved = path.resolve(bases.codebase, packageJsonDependencies[key])
-            if(!acc.includes(tempResolved)) {
-                acc.push(tempResolved);
-                resolvedASTFile = path.resolve(bases.ASTbase, packageJsonDependencies[key]);
+    let resolved = requireResolver.sync(dependName, {basedir: codeBaseDir, extensions: ['.js', '.json']});
+    if(resolved.includes('/node_modules')){
+        if(packageJsonDependencies[dependName] && packageJsonDependencies[dependName].startsWith('file:')){
+            const mappedFile = packageJsonDependencies[dependName].replace('file:', "");
+            if(fs.existsSync(path.join(globalUtil.config.codeBase, mappedFile))) {
+                resolved = path.join(globalUtil.config.codeBase, mappedFile)
             }
-            return;
-        }
-    })
-    if(!foundInPackageJson) {
-        const tempResolve = path.resolve(dirName, dependName);
-        if(fs.existsSync(tempResolve)) {
-            resolvedASTFile = path.resolve;
-            acc.push(tempResolve);
         }
     }
 
-    if(resolvedFile) {
-        const tree = JSON.parse(resolvedFile);
-        acornWalk.ancestor(tree, {
-            CallExpression(node, ancestors) {
-                if(node.callee.type === "Identifier" && node.callee.name === "require") {
-                    // TODO recursive call on 
-                }
-            }
-        })
+    if(resolved === undefined || resolved.includes('/node_modules')) {
+        return acc;
     }
+
+    if(!acc.includes(resolved)) {
+        acc.push(resolved);
+    } else {
+        return acc
+    }
+
+    if(path.extname(resolved) === '.js') {
+        const ASTpath = globalUtil.getASTpath(resolved);
+        console.log('ASTpath', ASTpath)
+        if(fs.existsSync(ASTpath)) {
+            // loop thru all requires
+            const tree = JSON.parse(fs.readFileSync(ASTpath));
+            acornWalk.simple(tree, {
+                CallExpression(node) {
+                    if(node.callee.type === "Identifier" && node.callee.name === "require") {
+                        if(t(node, 'arguments[0].value').safeObject) {
+                             acc = acc.concat(getFileDependencies(t(node, 'arguments[0].value').safeObject, ASTpath, packageJsonDependencies, acc));
+                        }
+                    }
+                },
+
+                ImportDeclaration(node) {
+                    if(t(node, 'source.value').safeObject) {
+                        acc = acc.concat(getFileDependencies(t(node, 'source.value').safeObject, ASTpath, packageJsonDependencies, acc))
+                    }
+                }
+
+            })
+        }
+    }
+
+    return acc;
+   
 
 }
 
 
 module.exports = class StaticAnalyzor {
     constructor() {
-        this.codebase = globalConfig.data.codeBase;
-        this.ASTbase = globalConfig.getASTdir();
+        this.codebase = globalUtil.config.codeBase;
+        this.ASTbase = globalUtil.getASTdir();
     }
 
     getTestDependency() {
@@ -88,14 +110,7 @@ module.exports = class StaticAnalyzor {
         }
         testsFinderRecur(this.ASTbase);
 
-        // get package.json file depencencies
-        const bases = {codebase: this.codebase, ASTbase: this.ASTbase};
-        packageJson.dependencies.keys().forEach(key => {
-            if(packageJson.dependencies[key] && packageJson.dependencies[key].startsWith('file:')){
-                packageJsonFileDepends[key] = packageJson.dependencies[key].replace('file:', "");
-            }
-        })
-
+       
         dependencyGraph.forEach(ele => {
             let propertyMap = new Map();
             const tree = JSON.parse(fs.readFileSync(ele.testFilename));
@@ -103,7 +118,7 @@ module.exports = class StaticAnalyzor {
             acornWalk.ancestor(tree, {
                 CallExpression(node, ancestors) {
                     if(node.callee.type === "Identifier" && node.callee.name === "require") {
-                        // TODO handle require().data
+                        // TODO handle require("").data
                         const parent = ancestors[ancestors.length - 2];
                         // get identifier, 
                         const ids = [];
@@ -121,13 +136,25 @@ module.exports = class StaticAnalyzor {
 
                         // get file dependencies
                         if(t(node, 'arguments[0].value').safeObject) {
-                            const denpendents = getFileDependencies(t(node, 'arguments[0].value').safeObject, ele.testFilename, packageJsonFileDepends, bases, [])
+                            const dependents = getFileDependencies(t(node, 'arguments[0].value').safeObject, ele.testFilename, packageJson.dependencies, [])
+                            ids.forEach(id => {
+                                propertyMap.set(id, dependents)
+                            })
                         }
+
+
                     }
                 }
             })
+
+            // TODO  link test name to file dependencies
+            return propertyMap;
         })
 
+    }
+
+    getFileDependencies(dependName, ASTfileName, packageJsonDependencies, acc) {
+       return getFileDependencies(dependName, ASTfileName, packageJsonDependencies, acc);
     }
 
 }
