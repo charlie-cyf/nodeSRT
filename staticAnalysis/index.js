@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs')
 const acornWalk = require('acorn-walk')
 const { t } = require('typy')
-
+const globalConfig = require('../config')
 const { extend } = require('acorn-jsx-walk');
 const { pathExists } = require('fs-extra');
 const { dirname } = require('path');
@@ -67,9 +67,9 @@ function getFileDependencies(dependName, fileName, packageJsonDependencies, base
 
 
 module.exports = class StaticAnalyzor {
-    constructor(codebase, ASTbase) {
-        this.codebase = codebase;
-        this.ASTbase = ASTbase;
+    constructor() {
+        this.codebase = globalConfig.data.codeBase;
+        this.ASTbase = globalConfig.getASTdir();
     }
 
     getTestDependency() {
@@ -103,6 +103,7 @@ module.exports = class StaticAnalyzor {
             acornWalk.ancestor(tree, {
                 CallExpression(node, ancestors) {
                     if(node.callee.type === "Identifier" && node.callee.name === "require") {
+                        // TODO handle require().data
                         const parent = ancestors[ancestors.length - 2];
                         // get identifier, 
                         const ids = [];
