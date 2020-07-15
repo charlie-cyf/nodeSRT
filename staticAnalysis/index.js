@@ -9,6 +9,7 @@ const { pathExists } = require('fs-extra');
 const { dirname } = require('path');
 const { lookup } = require('dns');
 const requireResolver = require('resolve')
+const _ = require('underscore')
 
 acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
@@ -31,21 +32,53 @@ function getTestSuiteName(ancestors) {
 */
 // TODO add test
 function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, acc) {
-    console.log('dependname', dependName, 'ASTfileName', ASTfileName)
+    // console.log('dependname', dependName, 'ASTfileName', ASTfileName);
     const codeBaseFileName = globalUtil.getCodebasePath(ASTfileName);
     const codeBaseDir = path.dirname(codeBaseFileName)
     const ASTdirName = path.dirname(ASTfileName)
 
     // first resolve dependName
-    let resolved = requireResolver.sync(dependName, {basedir: codeBaseDir, extensions: ['.js', '.json']});
-    if(resolved.includes('/node_modules')){
-        if(packageJsonDependencies[dependName] && packageJsonDependencies[dependName].startsWith('file:')){
-            const mappedFile = packageJsonDependencies[dependName].replace('file:', "");
-            if(fs.existsSync(path.join(globalUtil.config.codeBase, mappedFile))) {
-                resolved = path.join(globalUtil.config.codeBase, mappedFile)
-            }
+    let resolved;
+    try {
+        resolved = requireResolver.sync(dependName, {basedir: codeBaseDir, extensions: ['.js', '.json']});
+    } catch (error) {
+        if(dependName.includes('/lib/')){
+            dependName = dependName.replace('/lib/', '/src/');
+            resolved = requireResolver.sync(dependName, {basedir: codeBaseDir, extensions: ['.js', '.json']});
+        } else {
+            throw error
         }
+        
     }
+
+    // mapping local file dependency to resolved
+    if(resolved.includes('/node_modules')){
+        const fileKeys = Object.keys(packageJsonDependencies).filter(k => packageJsonDependencies[k].startsWith('file:'))
+        fileKeys.forEach(key => {
+            if(dependName.startsWith(key)) {
+                const mappedDir = packageJsonDependencies[key].replace('file:', '');
+                const fileName = dependName.replace(key, '');
+                resolved = path.join(globalUtil.config.codeBase, mappedDir, fileName);
+                if(fs.existsSync(resolved) && !fs.lstatSync(resolved).isDirectory) {
+                    return;
+                } else if (fs.existsSync(resolved+'.js')) {
+                    resolved = resolved+'.js'
+                } else if (fs.existsSync(resolved+'.json')) {
+                    resolved = resolved+'.json'
+                } 
+
+                if(fs.lstatSync(resolved).isDirectory) {
+                    if(fs.existsSync(path.join(resolved, 'index.js'))) {
+                        resolved = path.join(resolved, 'index.js');
+                    } else if(fs.existsSync(path.join(resolved, 'index.json'))) {
+                        resolved = path.join(resolved, 'index.json');
+                    }
+                }
+                return;
+            }
+        })
+    }
+    // console.log('resolved', resolved)
 
     if(resolved === undefined || resolved.includes('/node_modules')) {
         return acc;
@@ -59,7 +92,6 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
 
     if(path.extname(resolved) === '.js') {
         const ASTpath = globalUtil.getASTpath(resolved);
-        console.log('ASTpath', ASTpath)
         if(fs.existsSync(ASTpath)) {
             // loop thru all requires
             const tree = JSON.parse(fs.readFileSync(ASTpath));
@@ -67,14 +99,14 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
                 CallExpression(node) {
                     if(node.callee.type === "Identifier" && node.callee.name === "require") {
                         if(t(node, 'arguments[0].value').safeObject) {
-                             acc = acc.concat(getFileDependencies(t(node, 'arguments[0].value').safeObject, ASTpath, packageJsonDependencies, acc));
+                             acc = _.union(getFileDependencies(t(node, 'arguments[0].value').safeObject, ASTpath, packageJsonDependencies, acc));
                         }
                     }
                 },
 
                 ImportDeclaration(node) {
                     if(t(node, 'source.value').safeObject) {
-                        acc = acc.concat(getFileDependencies(t(node, 'source.value').safeObject, ASTpath, packageJsonDependencies, acc))
+                        acc = _.union(getFileDependencies(t(node, 'source.value').safeObject, ASTpath, packageJsonDependencies, acc))
                     }
                 }
 

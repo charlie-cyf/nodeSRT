@@ -38,7 +38,7 @@ module.exports = {
     getCodebasePath: function(ASTPath) {
         let ASTdir = this.getASTdir();
         if(ASTPath.startsWith(ASTdir)) {
-            ASTPath.replace(ASTdir, this.config.codeBase);
+            ASTPath = ASTPath.replace(ASTdir, this.config.codeBase);
         } else {
             ASTPath = path.join(this.config.codeBase, ASTPath)
         }

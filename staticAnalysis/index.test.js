@@ -20,6 +20,6 @@ describe("static analysis to get file dependencies", () => {
         globalUtil.setter({codeBase: path.resolve('./code/uppy')})
         const analyzor = new StaticAnalyzor();
         const packages = JSON.parse(fs.readFileSync('./code/uppy/package.json'))
-        console.log(analyzor.getFileDependencies('./index', './packages/@uppy/core/src/index.test.js', packages.dependencies, []))
+        expect(analyzor.getFileDependencies('./index', './packages/@uppy/core/src/index.test.js', packages.dependencies, []).length).toBe(16)
     })
 })
