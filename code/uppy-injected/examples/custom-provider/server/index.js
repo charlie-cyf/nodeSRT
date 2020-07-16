@@ -29,6 +29,8 @@ app.get('/', (req, res) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"app.get"},');
 
 });
+const AUTHORIZE_URL = 'https://unsplash.com/oauth/authorize';
+const ACCESS_URL = 'https://unsplash.com/oauth/token';
 const uppyOptions = {
   providerOptions: {
     google: {
@@ -37,14 +39,15 @@ const uppyOptions = {
     }
   },
   customProviders: {
-    mycustomprovider: {
+    myunsplash: {
       config: {
-        authorize_url: 'http://localhost:3020/oauth/authorize',
-        access_url: 'http://localhost:3020/oauth/token',
+        authorize_url: AUTHORIZE_URL,
+        access_url: ACCESS_URL,
         oauth: 2,
-        key: '***',
-        secret: '**',
-        scope: ['read', 'write']
+        key: 'your unsplash key here',
+        secret: 'your unsplash secret here',
+        callback: '/myunsplash/callback',
+        transport: 'session'
       },
       module: require('./customprovider')
     }
@@ -57,13 +60,6 @@ const uppyOptions = {
   secret: 'some-secret',
   debug: true
 };
-app.get('/oauth/authorize', (req, res) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.get###2","fileName":"/examples/custom-provider/server/index.js","paramsNumber":2},`);
-
-  res.redirect(`http://localhost:3020/mycustomprovider/callback?state=${req.query.state}&access_token=randombytes`);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"app.get###2"},');
-
-});
 app.use(uppy.app(uppyOptions));
 app.use((req, res, next) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"app.use###2","fileName":"/examples/custom-provider/server/index.js","paramsNumber":3},`);

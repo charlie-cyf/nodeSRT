@@ -17,15 +17,16 @@ describe("static analysis to get file dependencies", () => {
 
     
     test('getFileDependencies', () => {
-        globalUtil.setter({codeBase: path.resolve('./code/uppy')})
+        globalUtil.setter({codeBase: path.resolve('../uppy')})
         const analyzor = new StaticAnalyzor();
-        const packages = JSON.parse(fs.readFileSync('./code/uppy/package.json'))
-        expect(analyzor.getFileDependencies('./index', './packages/@uppy/core/src/index.test.js', packages.dependencies, []).length).toBe(16)
+        const packages = JSON.parse(fs.readFileSync('../uppy/package.json'))
+        expect(analyzor.getFileDependencies('./index', './packages/@uppy/core/src/index.test.js', packages.dependencies, []).length).toBe(15)
     })
 
     test('get dependency graph', () => {
-        globalUtil.setter({codeBase: path.resolve('./code/uppy')})
+        globalUtil.setter({codeBase: path.resolve('../uppy')})
         const analyzor = new StaticAnalyzor();
-        console.log(analyzor.getTestDependency('./code/uppy-AST/packages/@uppy/core/src'))
+        const dependencyGraph = analyzor.getTestDependency('../uppy', "**/packages/**/*.test.js")
+        fs.writeFileSync('./dependcyGraph.json', JSON.stringify(dependencyGraph))
     })
 })

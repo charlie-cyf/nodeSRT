@@ -7,7 +7,7 @@ const {exec} = require('child_process');
 const YAML = require('js-yaml');
 const {promisify} = require('util');
 const gzipSize = require('gzip-size');
-const bytes = require('pretty-bytes');
+const prettierBytes = require('@transloadit/prettier-bytes');
 const browserify = require('browserify');
 const touch = require('touch');
 const glob = require('glob');
@@ -25,7 +25,7 @@ const defaultConfig = {
   uppy_bundle_kb_sizes: {},
   config: {}
 };
-const packages = ['uppy', '@uppy/core', '@uppy/dashboard', '@uppy/drag-drop', '@uppy/file-input', '@uppy/webcam', '@uppy/screen-capture', '@uppy/dropbox', '@uppy/google-drive', '@uppy/instagram', '@uppy/url', '@uppy/tus', '@uppy/xhr-upload', '@uppy/aws-s3', '@uppy/aws-s3-multipart', '@uppy/status-bar', '@uppy/progress-bar', '@uppy/informer', '@uppy/transloadit', '@uppy/form', '@uppy/golden-retriever', '@uppy/react', '@uppy/thumbnail-generator', '@uppy/store-default', '@uppy/store-redux'];
+const packages = ['uppy', '@uppy/robodog', '@uppy/react', '@uppy/core', '@uppy/aws-s3', '@uppy/aws-s3-multipart', '@uppy/dashboard', '@uppy/drag-drop', '@uppy/dropbox', '@uppy/file-input', '@uppy/form', '@uppy/golden-retriever', '@uppy/google-drive', '@uppy/informer', '@uppy/instagram', '@uppy/progress-bar', '@uppy/screen-capture', '@uppy/status-bar', '@uppy/thumbnail-generator', '@uppy/transloadit', '@uppy/tus', '@uppy/url', '@uppy/webcam', '@uppy/xhr-upload', '@uppy/store-default', '@uppy/store-redux'];
 const excludes = {
   '@uppy/react': ['react']
 };
@@ -80,12 +80,12 @@ async function injectSizes(config) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"sizesPromise.Promise.all.then.Promise.all.packages.map","fileName":"/website/inject.js","paramsNumber":1},`);
 
     const result = await getMinifiedSize(path.join(__dirname, '../packages', pkg), pkg);
-    console.info(chalk.green(`  ✓ ${pkg}: ${(' ').repeat(padTarget - pkg.length)}` + `${bytes(result.minified)} min`.padEnd(10) + ` / ${bytes(result.gzipped)} gz`));
+    console.info(chalk.green(`  ✓ ${pkg}: ${(' ').repeat(padTarget - pkg.length)}` + `${prettierBytes(result.minified)} min`.padEnd(10) + ` / ${prettierBytes(result.gzipped)} gz`));
         SRTlib.send('{"type":"FUNCTIONEND","function":"sizesPromise.Promise.all.then.Promise.all.packages.map"},');
 
     return Object.assign(result, {
-      prettyMinified: bytes(result.minified),
-      prettyGzipped: bytes(result.gzipped)
+      prettyMinified: prettierBytes(result.minified),
+      prettyGzipped: prettierBytes(result.gzipped)
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"sizesPromise.Promise.all.then.Promise.all.packages.map"},');
 
@@ -140,7 +140,7 @@ async function injectGhStars() {
   });
   console.log(`${headers['x-ratelimit-remaining']} requests remaining until we hit GitHub ratelimiter`);
   const dstpath = path.join(webRoot, 'themes', 'uppy', 'layout', 'partials', 'generated_stargazers.ejs');
-  fs.writeFileSync(dstpath, data.stargazers_count, 'utf-8');
+  fs.writeFileSync(dstpath, String(data.stargazers_count), 'utf-8');
   console.log(`${data.stargazers_count} stargazers written to '${dstpath}'`);
     SRTlib.send('{"type":"FUNCTIONEND","function":"injectGhStars","paramsNumber":0},');
 

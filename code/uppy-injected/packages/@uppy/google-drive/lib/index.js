@@ -38,8 +38,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         focusable: "false",
         width: "32",
         height: "32",
-        viewBox: "0 0 32 32",
-        xmlns: "http://www.w3.org/2000/svg"
+        viewBox: "0 0 32 32"
       }, h("g", {
         fill: "none",
         "fill-rule": "evenodd"
@@ -59,7 +58,6 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       companionUrl: _this.opts.companionUrl,
       companionHeaders: _this.opts.companionHeaders || _this.opts.serverHeaders,
       provider: 'drive',
-      authProvider: 'google',
       pluginId: _this.id
     });
     _this.onFirstRender = _this.onFirstRender.bind(_assertThisInitialized(_this));
@@ -74,18 +72,6 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"install\",\"fileName\":\"/packages/@uppy/google-drive/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"GoogleDrive\",\"superClass\":\"Plugin\"}},");
     this.view = new DriveProviderViews(this, {
       provider: this.provider
-    });
-    this.setPluginState({
-      authenticated: false,
-      files: [],
-      folders: [],
-      directories: [],
-      activeRow: -1,
-      filterInput: '',
-      isSearchVisible: false,
-      hasTeamDrives: false,
-      teamDrives: [],
-      teamDriveId: ''
     });
     var target = this.opts.target;
 

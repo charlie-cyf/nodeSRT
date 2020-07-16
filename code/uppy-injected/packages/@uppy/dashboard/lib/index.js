@@ -33,9 +33,6 @@ var cuid = require('cuid');
 
 var ResizeObserver = require('resize-observer-polyfill').default || require('resize-observer-polyfill');
 
-var _require2 = require('./components/icons'),
-    defaultPickerIcon = _require2.defaultPickerIcon;
-
 var createSuperFocus = require('./utils/createSuperFocus');
 
 var memoize = require('memoize-one').default || require('memoize-one');
@@ -55,6 +52,21 @@ function createPromise() {
   SRTlib.send('{"type":"FUNCTIONEND","function":"createPromise"},');
   return o;
   SRTlib.send('{"type":"FUNCTIONEND","function":"createPromise","paramsNumber":0},');
+}
+
+function defaultPickerIcon() {
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"defaultPickerIcon\",\"fileName\":\"/packages/@uppy/dashboard/src/index.js\",\"paramsNumber\":0},");
+  SRTlib.send('{"type":"FUNCTIONEND","function":"defaultPickerIcon"},');
+  return h("svg", {
+    "aria-hidden": "true",
+    focusable: "false",
+    width: "30",
+    height: "30",
+    viewBox: "0 0 30 30"
+  }, h("path", {
+    d: "M15 30c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15C6.716 0 0 6.716 0 15c0 8.284 6.716 15 15 15zm4.258-12.676v6.846h-8.426v-6.846H5.204l9.82-12.364 9.82 12.364H19.26z"
+  }));
+  SRTlib.send('{"type":"FUNCTIONEND","function":"defaultPickerIcon","paramsNumber":0},');
 }
 
 module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
@@ -987,6 +999,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         showLinkToFileUploadResult: _this.opts.showLinkToFileUploadResult,
         proudlyDisplayPoweredByUppy: _this.opts.proudlyDisplayPoweredByUppy,
         hideCancelButton: _this.opts.hideCancelButton,
+        hideRetryButton: _this.opts.hideRetryButton,
+        hidePauseResumeButton: _this.opts.hidePauseResumeButton,
+        showRemoveButtonAfterComplete: _this.opts.showRemoveButtonAfterComplete,
         containerWidth: pluginState.containerWidth,
         containerHeight: pluginState.containerHeight,
         areInsidesReadyToBeVisible: pluginState.areInsidesReadyToBeVisible,
@@ -1225,8 +1240,9 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       showLinkToFileUploadResult: true,
       showProgressDetails: false,
       hideUploadButton: false,
+      hideCancelButton: false,
       hideRetryButton: false,
-      hidePauseResumeCancelButtons: false,
+      hidePauseResumeButton: false,
       hideProgressAfterFinish: false,
       note: null,
       closeModalOnClickOutside: false,
@@ -1244,6 +1260,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.defaultOptions.onRequestCloseModal"},');
       },
       showSelectedFiles: true,
+      showRemoveButtonAfterComplete: false,
       browserBackButtonClose: false,
       theme: 'light'
     };

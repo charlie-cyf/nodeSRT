@@ -2,7 +2,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 var SRTlib = require('SRT-util');
 
-var prettyBytes = require('@uppy/utils/lib/prettyBytes');
+var prettierBytes = require('@transloadit/prettier-bytes');
 
 var indexedDB = typeof window !== 'undefined' && (window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB);
 var isSupported = !!indexedDB;
@@ -312,7 +312,7 @@ var IndexedDBStore = /*#__PURE__*/function () {
 
           if (cursor) {
             var entry = cursor.value;
-            console.log('[IndexedDBStore] Deleting record', entry.fileID, 'of size', prettyBytes(entry.data.size), '- expired on', new Date(entry.expires));
+            console.log('[IndexedDBStore] Deleting record', entry.fileID, 'of size', prettierBytes(entry.data.size), '- expired on', new Date(entry.expires));
             cursor.delete();
             cursor.continue();
           } else {

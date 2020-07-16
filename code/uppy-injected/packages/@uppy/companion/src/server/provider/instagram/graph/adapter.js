@@ -40,21 +40,13 @@ exports.getItemSubList = item => {
   item.data.forEach(subItem => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"item.data.forEach","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
-    if (isVideo(subItem)) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"item.data.forEach"},');
-
-      return;
-    }
     if (subItem.media_type === MEDIA_TYPES.carousel) {
       subItem.children.data.forEach(i => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"subItem.children.data.forEach","fileName":"/packages/@uppy/companion/src/server/provider/instagram/graph/adapter.js","paramsNumber":1},`);
 
-        if (isVideo(i)) {
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"subItem.children.data.forEach"},');
+                SRTlib.send('{"type":"FUNCTIONEND","function":"subItem.children.data.forEach"},');
 
-          return;
-        }
-        newItems.push(i);
+        return newItems.push(i);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"subItem.children.data.forEach"},');
 
       });

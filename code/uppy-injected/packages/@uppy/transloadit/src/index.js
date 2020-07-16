@@ -144,7 +144,8 @@ module.exports = class Transloadit extends Plugin {
     };
     const tus = {
       ...file.tus,
-      endpoint: status.tus_url
+      endpoint: status.tus_url,
+      addRequestId: true
     };
     let remote = file.remote;
     if (file.remote && TL_UPPY_SERVER.test(file.remote.companionUrl)) {
@@ -409,7 +410,7 @@ module.exports = class Transloadit extends Plugin {
     this.client.getAssemblyStatus(url).then(finalStatus => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.client.getAssemblyStatus.then","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
-      const assemblyId = finalStatus.assemblyId;
+      const assemblyId = finalStatus.assembly_id;
       const state = this.getPluginState();
       this.setPluginState({
         assemblies: {
@@ -442,15 +443,25 @@ module.exports = class Transloadit extends Plugin {
   _onCancelAll() {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onCancelAll","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":0,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
-    const {assemblies} = this.getPluginState();
-    const cancelPromises = Object.keys(assemblies).map(assemblyID => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.cancelPromises.Object.keys.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
+    const {uploadsAssemblies} = this.getPluginState();
+    const assemblyIDs = Object.keys(uploadsAssemblies).reduce((acc, uploadID) => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.assemblyIDs.Object.keys.reduce","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":2},`);
+
+      acc.push(...uploadsAssemblies[uploadID]);
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assemblyIDs.Object.keys.reduce"},');
+
+      return acc;
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assemblyIDs.Object.keys.reduce"},');
+
+    }, []);
+    const cancelPromises = assemblyIDs.map(assemblyID => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.cancelPromises.assemblyIDs.map","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1},`);
 
       const assembly = this.getAssembly(assemblyID);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.Object.keys.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.assemblyIDs.map"},');
 
       return this._cancelAssembly(assembly);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.Object.keys.map"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.assemblyIDs.map"},');
 
     });
     Promise.all(cancelPromises).catch(err => {
@@ -1018,7 +1029,8 @@ module.exports = class Transloadit extends Plugin {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"_onTusError","fileName":"/packages/@uppy/transloadit/src/index.js","paramsNumber":1,"classInfo":{"className":"Transloadit","superClass":"Plugin"}},`);
 
     if (err && (/^tus: /).test(err.message)) {
-      const url = err.originalRequest && err.originalRequest.responseURL ? err.originalRequest.responseURL : null;
+      const xhr = err.originalRequest ? err.originalRequest.getUnderlyingObject() : null;
+      const url = xhr && xhr.responseURL ? xhr.responseURL : null;
       this.client.submitError(err, {
         url,
         type: 'TUS_ERROR'
@@ -1044,7 +1056,7 @@ module.exports = class Transloadit extends Plugin {
       this.uppy.on('upload-success', this._onFileUploadURLAvailable);
     } else {
       this.uppy.use(Tus, {
-        resume: false,
+        storeFingerprintForResuming: false,
         useFastRemoteRetry: false,
         metaFields: ['assembly_url', 'filename', 'fieldname'],
         limit: this.opts.limit

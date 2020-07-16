@@ -48,7 +48,7 @@ describe('Chaos monkey', function () {
     function cancelFile() {
       return browser.execute(function () {
         window.addLogMessage('Cancelling a file');
-        var selector = Math.random() <= 0.7 ? '.is-inprogress .uppy-DashboardItem-action--remove' : '.uppy-DashboardItem-action--remove';
+        var selector = Math.random() <= 0.7 ? '.is-inprogress .uppy-Dashboard-Item-action--remove' : '.uppy-Dashboard-Item-action--remove';
         var buttons = document.querySelectorAll(selector);
         var del = buttons[Math.floor(Math.random() * buttons.length)];
         if (del) del.click();

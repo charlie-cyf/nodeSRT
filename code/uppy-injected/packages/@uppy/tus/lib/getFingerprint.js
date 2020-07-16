@@ -19,17 +19,17 @@ function isReactNative() {
 module.exports = function getFingerprint(uppyFileObj) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/tus/src/getFingerprint.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
-  return function (file, options, callback) {
-    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getFingerprint.ReturnStatement\",\"fileName\":\"/packages/@uppy/tus/src/getFingerprint.js\",\"paramsNumber\":3},");
+  return function (file, options) {
+    SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.getFingerprint.ReturnStatement\",\"fileName\":\"/packages/@uppy/tus/src/getFingerprint.js\",\"paramsNumber\":2},");
 
     if (isCordova() || isReactNative()) {
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint.ReturnStatement"},');
-      return tus.Upload.defaultOptions.fingerprint(file, options, callback);
+      return tus.Upload.defaultOptions.fingerprint(file, options);
     }
 
     var uppyFingerprint = ['tus', uppyFileObj.id, options.endpoint].join('-');
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint.ReturnStatement"},');
-    return callback(null, uppyFingerprint);
+    return Promise.resolve(uppyFingerprint);
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getFingerprint.ReturnStatement"},');
   };
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');

@@ -1,6 +1,6 @@
 const SRTlib = require('SRT-util');
 
-const prettyBytes = require('@uppy/utils/lib/prettyBytes');
+const prettierBytes = require('@transloadit/prettier-bytes');
 const indexedDB = typeof window !== 'undefined' && (window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB);
 const isSupported = !!indexedDB;
 const DB_NAME = 'uppy-blobs';
@@ -340,7 +340,7 @@ class IndexedDBStore {
           const cursor = event.target.result;
           if (cursor) {
             const entry = cursor.value;
-            console.log('[IndexedDBStore] Deleting record', entry.fileID, 'of size', prettyBytes(entry.data.size), '- expired on', new Date(entry.expires));
+            console.log('[IndexedDBStore] Deleting record', entry.fileID, 'of size', prettierBytes(entry.data.size), '- expired on', new Date(entry.expires));
             cursor.delete();
             cursor.continue();
           } else {

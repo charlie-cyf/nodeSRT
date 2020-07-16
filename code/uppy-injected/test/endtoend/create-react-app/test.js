@@ -62,7 +62,7 @@ describe('React: Dashboard', () => {
     await toggle();
     await toggle();
     await toggle();
-    const gdriveButton = await $('.uppy-DashboardTab:nth-child(1) button');
+    const gdriveButton = await $('.uppy-DashboardTab[data-uppy-acquirer-id="GoogleDrive"] button');
     await gdriveButton.click();
     await browser.pause(500);
     expect(await $('.uppy-Provider-authBtn')).to.exist;

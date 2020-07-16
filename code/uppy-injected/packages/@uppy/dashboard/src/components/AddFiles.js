@@ -1,6 +1,5 @@
 const SRTlib = require('SRT-util');
 
-const {iconMyDevice} = require('./icons');
 const {h, Component} = require('preact');
 class AddFiles extends Component {
   triggerFileInputClick = () => {
@@ -22,7 +21,7 @@ class AddFiles extends Component {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderPoweredByUppy","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":0,"classInfo":{"className":"AddFiles","superClass":"Component"}},`);
 
     const uppyBranding = <span>
-        <svg aria-hidden="true" focusable="false" class="UppyIcon uppy-Dashboard-poweredByIcon" width="11" height="11" viewBox="0 0 11 11">
+        <svg aria-hidden="true" focusable="false" class="uppy-c-icon uppy-Dashboard-poweredByIcon" width="11" height="11" viewBox="0 0 11 11">
           <path d="M7.365 10.5l-.01-4.045h2.612L5.5.806l-4.467 5.65h2.604l.01 4.044h3.718z" fill-rule="evenodd" />
         </svg>
         <span class="uppy-Dashboard-poweredByUppy">Uppy</span>
@@ -39,21 +38,10 @@ class AddFiles extends Component {
         SRTlib.send('{"type":"FUNCTIONEND","function":"renderPoweredByUppy"},');
 
   }
-  renderCloudIcon = () => {
+  renderHiddenFileInput = () => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###3","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":0},`);
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###3"},');
-
-    return <svg class="uppy-Dashboard-dropFilesIcon" aria-hidden="true" width="64" height="45" viewBox="0 0 64 45" xmlns="http://www.w3.org/2000/svg">
-        <path d="M38 44.932V31h8L33 15 20 31h8v13.932H13.538C6.075 44.932 0 38.774 0 31.202c0-6.1 4.06-11.512 9.873-13.162l.005-.017c.345-5.8 5.248-10.534 10.922-10.534.502 0 1.164.017 1.868.16C25.9 2.85 31.225 0 36.923 0c9.5 0 17.23 7.838 17.23 17.473l-.011.565.012.002C60.039 19.685 64 24.975 64 31.203c0 7.57-6.075 13.729-13.538 13.729H38z" fill="#E2E2E2" fill-rule="nonzero" />
-      </svg>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###3"},');
-
-  }
-  renderHiddenFileInput = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###4","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###4"},');
 
     return <input class="uppy-Dashboard-input" hidden aria-hidden="true" tabindex={-1} type="file" name="files[]" multiple={this.props.maxNumberOfFiles !== 1} onchange={this.onFileInputChange} accept={this.props.allowedFileTypes} ref={ref => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":1},`);
@@ -62,31 +50,36 @@ class AddFiles extends Component {
             SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
 
     }} />;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###4"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###3"},');
 
   }
   renderMyDeviceAcquirer = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###5","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###4","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###4"},');
 
-    return <div class="uppy-DashboardTab" role="presentation">
+    return <div class="uppy-DashboardTab" role="presentation" data-uppy-acquirer-id="MyDevice">
         <button type="button" class="uppy-DashboardTab-btn" role="tab" tabindex={0} data-uppy-super-focusable onclick={this.triggerFileInputClick}>
-          {iconMyDevice()}
+          <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32">
+            <g fill="none" fill-rule="evenodd">
+              <rect width="32" height="32" rx="16" fill="#2275D7" />
+              <path d="M21.973 21.152H9.863l-1.108-5.087h14.464l-1.246 5.087zM9.935 11.37h3.958l.886 1.444a.673.673 0 0 0 .585.316h6.506v1.37H9.935v-3.13zm14.898 3.44a.793.793 0 0 0-.616-.31h-.978v-2.126c0-.379-.275-.613-.653-.613H15.75l-.886-1.445a.673.673 0 0 0-.585-.316H9.232c-.378 0-.667.209-.667.587V14.5h-.782a.793.793 0 0 0-.61.303.795.795 0 0 0-.155.663l1.45 6.633c.078.36.396.618.764.618h13.354c.36 0 .674-.246.76-.595l1.631-6.636a.795.795 0 0 0-.144-.675z" fill="#FFF" />
+            </g>
+          </svg>
           <div class="uppy-DashboardTab-name">{this.props.i18n('myDevice')}</div>
         </button>
       </div>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###5"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###4"},');
 
   }
   renderDropPasteBrowseTagline = () => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###6","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":0},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###5","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":0},`);
 
     const numberOfAcquirers = this.props.acquirers.length;
     const browse = <button type="button" class="uppy-u-reset uppy-Dashboard-browse" onclick={this.triggerFileInputClick} data-uppy-super-focusable={numberOfAcquirers === 0}>
         {this.props.i18n('browse')}
       </button>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###5"},');
 
     return <div class="uppy-Dashboard-AddFiles-title">
         {numberOfAcquirers > 0 ? this.props.i18nArray('dropPasteImport', {
@@ -95,15 +88,15 @@ class AddFiles extends Component {
       browse
     })}
       </div>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###6"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###5"},');
 
   }
   renderAcquirer = acquirer => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###7","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###6","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":1},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###6"},');
 
-    return <div class="uppy-DashboardTab" role="presentation">
+    return <div class="uppy-DashboardTab" role="presentation" data-uppy-acquirer-id={acquirer.id}>
         <button type="button" class="uppy-DashboardTab-btn" role="tab" tabindex={0} aria-controls={`uppy-DashboardContent-panel--${acquirer.id}`} aria-selected={this.props.activePickerPanel.id === acquirer.id} data-uppy-super-focusable onclick={() => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement###2","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":0},`);
 
@@ -117,15 +110,15 @@ class AddFiles extends Component {
           <div class="uppy-DashboardTab-name">{acquirer.name}</div>
         </button>
       </div>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###7"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###6"},');
 
   }
   renderAcquirers = acquirers => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###8","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":1},`);
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey###7","fileName":"/packages/@uppy/dashboard/src/components/AddFiles.js","paramsNumber":1},`);
 
     const acquirersWithoutLastTwo = [...acquirers];
     const lastTwoAcquirers = acquirersWithoutLastTwo.splice(acquirers.length - 2, acquirers.length);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###7"},');
 
     return <div class="uppy-Dashboard-AddFiles-list" role="tablist">
         {this.renderMyDeviceAcquirer()}
@@ -150,7 +143,7 @@ class AddFiles extends Component {
     })}
         </span>
       </div>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###8"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey###7"},');
 
   }
   render() {

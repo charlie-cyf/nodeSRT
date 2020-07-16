@@ -12,7 +12,7 @@ module.exports = function FilePreview(props) {
   if (file.preview) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
     return h("img", {
-      class: "uppy-DashboardItem-previewImg",
+      class: "uppy-Dashboard-Item-previewImg",
       alt: file.name,
       src: file.preview
     });
@@ -24,16 +24,16 @@ module.exports = function FilePreview(props) {
 
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return h("div", {
-    class: "uppy-DashboardItem-previewIconWrap"
+    class: "uppy-Dashboard-Item-previewIconWrap"
   }, h("span", {
-    class: "uppy-DashboardItem-previewIcon",
+    class: "uppy-Dashboard-Item-previewIcon",
     style: {
       color: color
     }
   }, icon), h("svg", {
     "aria-hidden": "true",
     focusable: "false",
-    class: "uppy-DashboardItem-previewIconBg",
+    class: "uppy-Dashboard-Item-previewIconBg",
     width: "58",
     height: "76",
     viewBox: "0 0 58 76"

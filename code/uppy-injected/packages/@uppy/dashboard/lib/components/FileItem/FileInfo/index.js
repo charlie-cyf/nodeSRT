@@ -3,7 +3,7 @@ var SRTlib = require('SRT-util');
 var _require = require('preact'),
     h = _require.h;
 
-var prettyBytes = require('@uppy/utils/lib/prettyBytes');
+var prettierBytes = require('@transloadit/prettier-bytes');
 
 var truncateString = require('../../../utils/truncateString');
 
@@ -22,7 +22,7 @@ var renderFileSource = function renderFileSource(props) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderFileSource\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSource"},');
   return props.file.source && props.file.source !== props.id && h("div", {
-    class: "uppy-DashboardItem-sourceIcon"
+    class: "uppy-Dashboard-Item-sourceIcon"
   }, props.acquirers.map(function (acquirer) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"props.acquirers.map\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js\",\"paramsNumber\":1},");
 
@@ -50,7 +50,7 @@ var renderFileName = function renderFileName(props) {
 
   SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileName"},');
   return h("div", {
-    class: "uppy-DashboardItem-name",
+    class: "uppy-Dashboard-Item-name",
     title: props.file.meta.name
   }, truncateString(props.file.meta.name, maxNameLength));
   SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileName"},');
@@ -60,19 +60,48 @@ var renderFileSize = function renderFileSize(props) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"renderFileSize\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSize"},');
   return props.file.data.size && h("div", {
-    class: "uppy-DashboardItem-statusSize"
-  }, prettyBytes(props.file.data.size));
+    class: "uppy-Dashboard-Item-statusSize"
+  }, prettierBytes(props.file.data.size));
   SRTlib.send('{"type":"FUNCTIONEND","function":"renderFileSize"},');
+};
+
+var ErrorButton = function ErrorButton(_ref) {
+  var file = _ref.file,
+      onClick = _ref.onClick;
+  SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"ErrorButton\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js\",\"paramsNumber\":1},");
+
+  if (file.error) {
+    SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
+    return h("span", {
+      class: "uppy-Dashboard-Item-errorDetails",
+      "aria-label": file.error,
+      "data-microtip-position": "bottom",
+      "data-microtip-size": "medium",
+      role: "tooltip",
+      onclick: onClick
+    }, "?");
+  }
+
+  SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
+  return null;
+  SRTlib.send('{"type":"FUNCTIONEND","function":"ErrorButton"},');
 };
 
 module.exports = function FileInfo(props) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return h("div", {
-    class: "uppy-DashboardItem-fileInfo",
+    class: "uppy-Dashboard-Item-fileInfo",
     "data-uppy-file-source": props.file.source
   }, renderFileName(props), h("div", {
-    class: "uppy-DashboardItem-status"
-  }, renderFileSize(props), renderFileSource(props)));
+    class: "uppy-Dashboard-Item-status"
+  }, renderFileSize(props), renderFileSource(props), h(ErrorButton, {
+    file: props.file,
+    onClick: function onClick() {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.FileInfo.ReturnStatement\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js\",\"paramsNumber\":0},");
+      alert(props.file.error);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.FileInfo.ReturnStatement"},');
+    }
+  })));
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 };

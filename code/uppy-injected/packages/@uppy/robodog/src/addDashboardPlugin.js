@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 const Dashboard = require('@uppy/dashboard');
 const has = require('@uppy/utils/lib/hasProperty');
-const dashboardOptionNames = ['metaFields', 'width', 'height', 'thumbnailWidth', 'showLinkToFileUploadResult', 'showProgressDetails', 'hideRetryButton', 'hidePauseResumeCancelButtons', 'hideUploadButton', 'hideProgressAfterFinish', 'note', 'disableStatusBar', 'disableInformer', 'disableThumbnailGenerator', 'showSelectedFiles', 'proudlyDisplayPoweredByUppy', 'theme'];
+const dashboardOptionNames = ['metaFields', 'width', 'height', 'thumbnailWidth', 'showLinkToFileUploadResult', 'showProgressDetails', 'hideRetryButton', 'hideCancelButton', 'hideUploadButton', 'hideProgressAfterFinish', 'note', 'disableStatusBar', 'disableInformer', 'disableThumbnailGenerator', 'showSelectedFiles', 'proudlyDisplayPoweredByUppy', 'theme'];
 const modalDashboardOptionNames = ['trigger', 'closeModalOnClickOutside', 'closeAfterFinish', 'disablePageScrollWhenModalOpen', 'animateOpenClose', 'onRequestCloseModal', 'browserBackButtonClose'];
 function addDashboardPlugin(uppy, opts, overrideOpts) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"addDashboardPlugin","fileName":"/packages/@uppy/robodog/src/addDashboardPlugin.js","paramsNumber":3},`);

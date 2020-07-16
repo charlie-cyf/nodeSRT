@@ -63,16 +63,18 @@ module.exports = /*#__PURE__*/function (_Component) {
     var isUploaded = file.progress.uploadComplete && !isProcessing && !file.error;
     var uploadInProgressOrComplete = file.progress.uploadStarted || isProcessing;
     var uploadInProgress = file.progress.uploadStarted && !file.progress.uploadComplete || isProcessing;
-    var isPaused = file.isPaused || false;
     var error = file.error || false;
     var showRemoveButton = this.props.individualCancellation ? !isUploaded : !uploadInProgress && !isUploaded;
+
+    if (isUploaded && this.props.showRemoveButtonAfterComplete) {
+      showRemoveButton = true;
+    }
+
     var dashboardItemClass = classNames({
-      'uppy-u-reset': true,
-      'uppy-DashboardItem': true,
+      'uppy-Dashboard-Item': true,
       'is-inprogress': uploadInProgress,
       'is-processing': isProcessing,
       'is-complete': isUploaded,
-      'is-paused': isPaused,
       'is-error': !!error,
       'is-resumable': this.props.resumableUploads,
       'is-noIndividualCancellation': !this.props.individualCancellation
@@ -83,7 +85,7 @@ module.exports = /*#__PURE__*/function (_Component) {
       id: "uppy_" + file.id,
       role: this.props.role
     }, h("div", {
-      class: "uppy-DashboardItem-preview"
+      class: "uppy-Dashboard-Item-preview"
     }, h(FilePreviewAndLink, {
       file: file,
       showLinkToFileUploadResult: this.props.showLinkToFileUploadResult
@@ -92,7 +94,9 @@ module.exports = /*#__PURE__*/function (_Component) {
       error: error,
       isUploaded: isUploaded,
       hideRetryButton: this.props.hideRetryButton,
-      hidePauseResumeCancelButtons: this.props.hidePauseResumeCancelButtons,
+      hideCancelButton: this.props.hideCancelButton,
+      hidePauseResumeButton: this.props.hidePauseResumeButton,
+      showRemoveButtonAfterComplete: this.props.showRemoveButtonAfterComplete,
       resumableUploads: this.props.resumableUploads,
       individualCancellation: this.props.individualCancellation,
       pauseUpload: this.props.pauseUpload,
@@ -100,7 +104,7 @@ module.exports = /*#__PURE__*/function (_Component) {
       retryUpload: this.props.retryUpload,
       i18n: this.props.i18n
     })), h("div", {
-      class: "uppy-DashboardItem-fileInfoAndButtons"
+      class: "uppy-Dashboard-Item-fileInfoAndButtons"
     }, h(FileInfo, {
       file: file,
       id: this.props.id,

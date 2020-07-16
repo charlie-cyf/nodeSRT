@@ -38,18 +38,23 @@ var getFingerprint = require('./getFingerprint');
 
 var tusDefaultOptions = {
   endpoint: '',
-  resume: true,
+  uploadUrl: null,
+  metadata: {},
+  uploadSize: null,
   onProgress: null,
   onChunkComplete: null,
   onSuccess: null,
   onError: null,
-  headers: {},
-  chunkSize: Infinity,
-  withCredentials: false,
-  uploadUrl: null,
-  uploadSize: null,
   overridePatchMethod: false,
-  retryDelays: null
+  headers: {},
+  addRequestId: false,
+  chunkSize: Infinity,
+  retryDelays: [0, 1000, 3000, 5000],
+  parallelUploads: 1,
+  storeFingerprintForResuming: true,
+  removeFingerprintOnSuccess: false,
+  uploadLengthDeferred: false,
+  uploadDataDuringCreation: false
 };
 module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
   _inheritsLoose(Tus, _Plugin);
@@ -63,8 +68,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     _this.id = _this.opts.id || 'Tus';
     _this.title = 'Tus';
     var defaultOptions = {
-      resume: true,
       autoRetry: true,
+      resume: true,
       useFastRemoteRetry: true,
       limit: 0,
       retryDelays: [0, 1000, 3000, 5000]
@@ -154,30 +159,41 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
 
       _this2.uppy.emit('upload-started', file);
 
-      var optsTus = _extends({}, tusDefaultOptions, _this2.opts, file.tus || {});
+      var opts = _extends({}, _this2.opts, {}, file.tus || {});
 
-      optsTus.fingerprint = getFingerprint(file);
+      var uploadOptions = _extends({}, tusDefaultOptions, {}, opts);
 
-      optsTus.onError = function (err) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"optsTus.onError\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":1},");
+      delete uploadOptions.resume;
+
+      if (opts.resume) {
+        uploadOptions.storeFingerprintForResuming = true;
+      }
+
+      uploadOptions.fingerprint = getFingerprint(file);
+
+      uploadOptions.onError = function (err) {
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uploadOptions.onError\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":1},");
 
         _this2.uppy.log(err);
 
-        if (isNetworkError(err.originalRequest)) {
-          err = new NetworkError(err, err.originalRequest);
-        }
+        var xhr = err.originalRequest ? err.originalRequest.getUnderlyingObject() : null;
 
-        _this2.uppy.emit('upload-error', file, err);
+        if (isNetworkError(xhr)) {
+          err = new NetworkError(err, xhr);
+        }
 
         _this2.resetUploaderReferences(file.id);
 
         queuedRequest.done();
+
+        _this2.uppy.emit('upload-error', file, err);
+
         reject(err);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"optsTus.onError"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uploadOptions.onError"},');
       };
 
-      optsTus.onProgress = function (bytesUploaded, bytesTotal) {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"optsTus.onProgress\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":2},");
+      uploadOptions.onProgress = function (bytesUploaded, bytesTotal) {
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uploadOptions.onProgress\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":2},");
 
         _this2.onReceiveUploadUrl(file, upload.url);
 
@@ -187,14 +203,18 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           bytesTotal: bytesTotal
         });
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"optsTus.onProgress"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uploadOptions.onProgress"},');
       };
 
-      optsTus.onSuccess = function () {
-        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"optsTus.onSuccess\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":0},");
+      uploadOptions.onSuccess = function () {
+        SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"uploadOptions.onSuccess\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":0},");
         var uploadResp = {
           uploadURL: upload.url
         };
+
+        _this2.resetUploaderReferences(file.id);
+
+        queuedRequest.done();
 
         _this2.uppy.emit('upload-success', file, uploadResp);
 
@@ -202,11 +222,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
           _this2.uppy.log('Download ' + upload.file.name + ' from ' + upload.url);
         }
 
-        _this2.resetUploaderReferences(file.id);
-
-        queuedRequest.done();
         resolve(upload);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"optsTus.onSuccess"},');
+        SRTlib.send('{"type":"FUNCTIONEND","function":"uploadOptions.onSuccess"},');
       };
 
       var copyProp = function copyProp(obj, srcProp, destProp) {
@@ -220,7 +237,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       };
 
       var meta = {};
-      var metaFields = Array.isArray(optsTus.metaFields) ? optsTus.metaFields : Object.keys(file.meta);
+      var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields : Object.keys(file.meta);
       metaFields.forEach(function (item) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"metaFields.forEach\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":1},");
         meta[item] = file.meta[item];
@@ -228,16 +245,35 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       });
       copyProp(meta, 'type', 'filetype');
       copyProp(meta, 'name', 'filename');
-      optsTus.metadata = meta;
-      var upload = new tus.Upload(file.data, optsTus);
+      uploadOptions.metadata = meta;
+      var upload = new tus.Upload(file.data, uploadOptions);
       _this2.uploaders[file.id] = upload;
       _this2.uploaderEvents[file.id] = new EventTracker(_this2.uppy);
+
+      if (opts.resume) {
+        upload.findPreviousUploads().then(function (previousUploads) {
+          SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"upload.findPreviousUploads.then\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":1},");
+          var previousUpload = previousUploads[0];
+
+          if (previousUploads) {
+            _this2.uppy.log("[Tus] Resuming upload of " + file.id + " started at " + previousUpload.creationTime);
+
+            upload.resumeFromPreviousUpload(previousUpload);
+          }
+
+          SRTlib.send('{"type":"FUNCTIONEND","function":"upload.findPreviousUploads.then"},');
+        });
+      }
 
       var queuedRequest = _this2.requests.run(function () {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"queuedRequest.requests.run\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":0},");
 
         if (!file.isPaused) {
-          upload.start();
+          Promise.resolve().then(function () {
+            SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"Promise.resolve.then\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":0},");
+            upload.start();
+            SRTlib.send('{"type":"FUNCTIONEND","function":"Promise.resolve.then"},');
+          });
         }
 
         SRTlib.send('{"type":"FUNCTIONEND","function":"queuedRequest.requests.run"},');
@@ -366,6 +402,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
         uploadUrl: opts.uploadUrl,
         protocol: 'tus',
         size: file.data.size,
+        headers: opts.headers,
         metadata: file.meta
       })).then(function (res) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"client.post.then.then.catch.client.post.then.then.client.post.then\",\"fileName\":\"/packages/@uppy/tus/src/index.js\",\"paramsNumber\":1},");

@@ -2,8 +2,10 @@ const SRTlib = require('SRT-util');
 
 const http = require('http');
 const https = require('https');
+const {URL} = require('url');
 const dns = require('dns');
 const ipAddress = require('ip-address');
+const logger = require('../logger');
 const FORBIDDEN_IP_ADDRESS = 'Forbidden IP address';
 function isIPAddress(address) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"isIPAddress","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":1},`);
@@ -61,6 +63,34 @@ function isPrivateIP(ipAddress) {
 
 }
 module.exports.FORBIDDEN_IP_ADDRESS = FORBIDDEN_IP_ADDRESS;
+module.exports.getRedirectEvaluator = (requestURL, blockPrivateIPs) => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getRedirectEvaluator","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":2},`);
+
+  const protocol = new URL(requestURL).protocol;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getRedirectEvaluator"},');
+
+  return res => {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":1},`);
+
+    if (!blockPrivateIPs) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+      return true;
+    }
+    const redirectURL = res.headers.location;
+    const shouldRedirect = redirectURL ? new URL(redirectURL).protocol === protocol : false;
+    if (!shouldRedirect) {
+      logger.info(`blocking redirect from ${requestURL} to ${redirectURL}`, 'redirect.protection');
+    }
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+    return shouldRedirect;
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+
+  };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.getRedirectEvaluator"},');
+
+};
 module.exports.getProtectedHttpAgent = (protocol, blockPrivateIPs) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.getProtectedHttpAgent","fileName":"/packages/@uppy/companion/src/server/helpers/request.js","paramsNumber":2},`);
 

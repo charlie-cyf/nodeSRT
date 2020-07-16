@@ -1,9 +1,9 @@
 const SRTlib = require('SRT-util');
 
 const request = require('request');
-const urlParser = require('url');
+const {URL} = require('url');
 const crypto = require('crypto');
-const {getProtectedHttpAgent} = require('./request');
+const {getProtectedHttpAgent, getRedirectEvaluator} = require('./request');
 exports.hasMatch = (value, criteria) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.hasMatch","fileName":"/packages/@uppy/companion/src/server/helpers/utils.js","paramsNumber":2},`);
 
@@ -56,15 +56,6 @@ exports.sanitizeHtml = text => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"exports.sanitizeHtml"},');
 
 };
-exports.parseURL = url => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.parseURL","fileName":"/packages/@uppy/companion/src/server/helpers/utils.js","paramsNumber":1},`);
-
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.parseURL"},');
-
-  return urlParser.URL ? new urlParser.URL(url) : urlParser.parse(url);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.parseURL"},');
-
-};
 exports.getURLMeta = (url, blockLocalIPs = false) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.getURLMeta","fileName":"/packages/@uppy/companion/src/server/helpers/utils.js","paramsNumber":2},`);
 
@@ -76,13 +67,14 @@ exports.getURLMeta = (url, blockLocalIPs = false) => {
     const opts = {
       uri: url,
       method: 'HEAD',
-      followAllRedirects: true,
-      agentClass: getProtectedHttpAgent(exports.parseURL(url).protocol, blockLocalIPs)
+      followRedirect: getRedirectEvaluator(url, blockLocalIPs),
+      agentClass: getProtectedHttpAgent(new URL(url).protocol, blockLocalIPs)
     };
-    request(opts, (err, response, body) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request","fileName":"/packages/@uppy/companion/src/server/helpers/utils.js","paramsNumber":3},`);
+    request(opts, (err, response) => {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"request","fileName":"/packages/@uppy/companion/src/server/helpers/utils.js","paramsNumber":2},`);
 
-      if (err) {
+      if (err || response.statusCode >= 300) {
+        err = err || new Error(`URL server responded with status: ${response.statusCode}`);
         reject(err);
       } else {
         resolve({

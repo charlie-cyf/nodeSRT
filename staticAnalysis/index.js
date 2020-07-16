@@ -12,6 +12,7 @@ const requireResolver = require('resolve')
 const _ = require('underscore');
 const { prop } = require('acorn-jsx/xhtml');
 const { setMaxListeners } = require('process');
+var minimatch = require("minimatch")
 
 acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
@@ -33,11 +34,10 @@ function getTestSuiteName(ancestors) {
 *   @param {String} ASTfileName: the path to AST file that calls the dependName
 */
 function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, acc) {
-    // console.log('dependname', dependName, 'ASTfileName', ASTfileName);
     const codeBaseFileName = globalUtil.getCodebasePath(ASTfileName);
     const codeBaseDir = path.dirname(codeBaseFileName)
     const ASTdirName = path.dirname(ASTfileName)
-
+    
     // first resolve dependName
     let resolved;
     try {
@@ -51,31 +51,39 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
         }
         
     }
-
+    
+    // console.log('getFileDependencies get called on dependname', dependName, 'ASTfileName', ASTfileName, 'get', resolved);
+    
     // mapping local file dependency to resolved
     if(resolved.includes('/node_modules')){
         const fileKeys = Object.keys(packageJsonDependencies).filter(k => packageJsonDependencies[k].startsWith('file:'))
         fileKeys.forEach(key => {
             if(dependName.startsWith(key)) {
-                const mappedDir = packageJsonDependencies[key].replace('file:', '');
-                const fileName = dependName.replace(key, '');
-                resolved = path.join(globalUtil.config.codeBase, mappedDir, fileName);
-                if(fs.existsSync(resolved) && !fs.lstatSync(resolved).isDirectory) {
-                    return;
-                } else if (fs.existsSync(resolved+'.js')) {
-                    resolved = resolved+'.js'
-                } else if (fs.existsSync(resolved+'.json')) {
-                    resolved = resolved+'.json'
-                } 
+                try {
+                    const mappedDir = packageJsonDependencies[key].replace('file:', '');
+                    const fileName = dependName.replace(key, '');
+                    resolved = path.join(globalUtil.config.codeBase, mappedDir, fileName);
+                    if(fs.existsSync(resolved) && !fs.lstatSync(resolved).isDirectory) {
+                        return;
+                    } else if (fs.existsSync(resolved+'.js')) {
+                        resolved = resolved+'.js'
+                    } else if (fs.existsSync(resolved+'.json')) {
+                        resolved = resolved+'.json'
+                    } 
 
-                if(fs.lstatSync(resolved).isDirectory) {
-                    if(fs.existsSync(path.join(resolved, 'index.js'))) {
-                        resolved = path.join(resolved, 'index.js');
-                    } else if(fs.existsSync(path.join(resolved, 'index.json'))) {
-                        resolved = path.join(resolved, 'index.json');
+                    if(fs.lstatSync(resolved).isDirectory) {
+                        if(fs.existsSync(path.join(resolved, 'index.js'))) {
+                            resolved = path.join(resolved, 'index.js');
+                        } else if(fs.existsSync(path.join(resolved, 'index.json'))) {
+                            resolved = path.join(resolved, 'index.json');
+                        }
                     }
+                    return;
+                } catch (error) {
+                    // error that con be ignored
+                    // console.log(error)
                 }
-                return;
+                
             }
         })
     }
@@ -127,24 +135,39 @@ module.exports = class StaticAnalyzor {
         this.ASTbase = globalUtil.getASTdir();
     }
 
-    getTestDependency(dir) {
+    /**
+     * precondition: AST generated in dir+'-AST'
+     * Find tests denpendencies under dir matchs regex expression rgx
+     * @param {String} dir: path to codebase
+     * @param {String} rgx (optional)
+     */
+    getTestDependency(dir, rgx) {
         let dependencyGraph = []
         const packageJson = JSON.parse(fs.readFileSync(path.join(this.codebase, 'package.json')));
         
         // scan for test file
         const testsFinderRecur = function(astDir) {
             fs.readdirSync(astDir).forEach(file => {
-                if(file.endsWith('.test.js.json') || file.endsWith("spec.js.json")) {
-                    dependencyGraph.push({testFilename: path.resolve(astDir, file)})
-                } else if (fs.lstatSync(path.join(astDir, file)).isDirectory()) {
-                    testsFinderRecur(path.join(astDir, file));
+                if(rgx){
+                    // TODO fix this !!
+                    if( minimatch(path.join(astDir, file), rgx) ) {
+                        dependencyGraph.push({testFilename: path.resolve(astDir, file)})
+                    } else if (fs.lstatSync(path.join(astDir, file)).isDirectory()) {
+                        testsFinderRecur(path.join(astDir, file));
+                    }
+                } else {
+                    if(file.endsWith('.test.js.json') || file.endsWith("spec.js.json")) {
+                        dependencyGraph.push({testFilename: path.resolve(astDir, file)})
+                    } else if (fs.lstatSync(path.join(astDir, file)).isDirectory()) {
+                        testsFinderRecur(path.join(astDir, file));
+                    }
                 }
             })
         }
-        testsFinderRecur(dir);
+        testsFinderRecur(globalUtil.getASTdir(dir));
 
-        console.log('dependency Graph:', dependencyGraph)
-       
+        // console.log('dependency Graph:', dependencyGraph)
+        
         dependencyGraph.map(ele => {
             let propertyMap = new Map();
             const tree = JSON.parse(fs.readFileSync(ele.testFilename));
@@ -161,15 +184,17 @@ module.exports = class StaticAnalyzor {
                         }
                         // get identifier, 
                         const ids = [];
-                        if(variableDeclare.type === "VariableDeclarator") {
-                            if(variableDeclare.id.type === "Identifier") {
-                                ids.push(variableDeclare.id.name);
-                            } else if (variableDeclare.id.type === "ObjectPattern") {
-                                variableDeclare.id.properties.forEach(p => {
-                                    if(t(p, "key.name").safeObject) {
-                                        ids.push(t(p, "key.name").safeObject);
-                                    }
-                                })
+                        if(variableDeclare) {
+                            if(variableDeclare.type === "VariableDeclarator") {
+                                if(variableDeclare.id.type === "Identifier") {
+                                    ids.push(variableDeclare.id.name);
+                                } else if (variableDeclare.id.type === "ObjectPattern") {
+                                    variableDeclare.id.properties.forEach(p => {
+                                        if(t(p, "key.name").safeObject) {
+                                            ids.push(t(p, "key.name").safeObject);
+                                        }
+                                    })
+                                }
                             }
                         }
 
@@ -191,10 +216,11 @@ module.exports = class StaticAnalyzor {
              */
 
             ele.testSuits = [];
-            // TODO  link test name to file dependencies
+            // link test name to file dependencies
             acornWalk.simple(tree, {
                 CallExpression(node) { 
                     if(node.callee.type === 'Identifier' && node.callee.name === 'describe') {
+                        
                         const suiteName = t(node, 'arguments[0].value').safeObject;
                         let stmts = t(node, "arguments[1].body.body").safeObject;
                         if (stmts) {
@@ -232,6 +258,7 @@ module.exports = class StaticAnalyzor {
                                     continue;
                                 } else {
                                     // the statement is not a test 
+                                    // console.log('in testName getter else branch', stmt)
                                     acornWalk.simple(stmt, {
                                         Identifier(identifier) {
                                             if(propertyMap.has(identifier.name)) {
@@ -256,10 +283,17 @@ module.exports = class StaticAnalyzor {
                                     continue;
                                 }
 
-                                console.log('fileName:', ele.testFilename, 'test suite name:', suiteName, 'testName:', testName)
-                                acornWalk.simple(t(stmt, 'expression.arguments[0]').safeObject, {
+                                // console.log('fileName:', ele.testFilename, 'test suite name:', suiteName, 'testName:', testName)
+                                let obj;
+                                if(['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(testName)) {
+                                    obj = t(stmt, 'expression.arguments[0]').safeObject
+                                } else {
+                                    obj = t(stmt, 'expression.arguments[1]').safeObject
+                                }
+                                acornWalk.simple(obj, {
                                     Identifier(identifier) {
                                         if(propertyMap.has(identifier.name)) {
+                                            // console.log('map has identifier', identifier)
                                             let found = false;
                                             ele.testSuits.map(suit => {
                                                 if(suit.testSuitName === suiteName && suit.testName === testName) {
@@ -284,6 +318,9 @@ module.exports = class StaticAnalyzor {
                     }
                 }
             })
+
+            // set testFileName to be codebase filename
+            ele.testFilename = globalUtil.getCodebasePath(ele.testFilename)
         })
         return dependencyGraph;
 

@@ -4,7 +4,7 @@ const Translator = require('@uppy/utils/lib/Translator');
 const ee = require('namespace-emitter');
 const cuid = require('cuid');
 const throttle = require('lodash.throttle');
-const prettyBytes = require('@uppy/utils/lib/prettyBytes');
+const prettierBytes = require('@transloadit/prettier-bytes');
 const match = require('mime-match');
 const DefaultStore = require('@uppy/store-default');
 const getFileType = require('@uppy/utils/lib/getFileType');
@@ -524,7 +524,7 @@ class Uppy {
 
         throw new RestrictionError(this.i18n('exceedsSize2', {
           backwardsCompat: this.i18n('exceedsSize'),
-          size: prettyBytes(maxFileSize)
+          size: prettierBytes(maxFileSize)
         }));
       }
     }
@@ -758,8 +758,8 @@ class Uppy {
         SRTlib.send('{"type":"FUNCTIONEND","function":"addFiles"},');
 
   }
-  removeFiles(fileIDs) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFiles","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+  removeFiles(fileIDs, reason) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFiles","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
     const {files, currentUploads} = this.getState();
     const updatedFiles = {
@@ -827,7 +827,7 @@ class Uppy {
     removedFileIDs.forEach(fileID => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"removedFileIDs.forEach","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1},`);
 
-      this.emit('file-removed', removedFiles[fileID]);
+      this.emit('file-removed', removedFiles[fileID], reason);
             SRTlib.send('{"type":"FUNCTIONEND","function":"removedFileIDs.forEach"},');
 
     });
@@ -839,10 +839,10 @@ class Uppy {
         SRTlib.send('{"type":"FUNCTIONEND","function":"removeFiles"},');
 
   }
-  removeFile(fileID) {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFile","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":1,"classInfo":{"className":"Uppy"}},`);
+  removeFile(fileID, reason = null) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"removeFile","fileName":"/packages/@uppy/core/src/index.js","paramsNumber":2,"classInfo":{"className":"Uppy"}},`);
 
-    this.removeFiles([fileID]);
+    this.removeFiles([fileID], reason);
         SRTlib.send('{"type":"FUNCTIONEND","function":"removeFile"},');
 
   }
@@ -956,6 +956,14 @@ class Uppy {
       error: null
     });
     this.emit('retry-all', filesToRetry);
+    if (filesToRetry.length === 0) {
+            SRTlib.send('{"type":"FUNCTIONEND","function":"retryAll"},');
+
+      return Promise.resolve({
+        successful: [],
+        failed: []
+      });
+    }
     const uploadID = this._createUpload(filesToRetry, {
       forceAllowNewUpload: true
     });
@@ -972,7 +980,7 @@ class Uppy {
     const {files} = this.getState();
     const fileIDs = Object.keys(files);
     if (fileIDs.length) {
-      this.removeFiles(fileIDs);
+      this.removeFiles(fileIDs, 'cancel-all');
     }
     this.setState({
       totalProgress: 0,

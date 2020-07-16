@@ -36,6 +36,7 @@ module.exports = class AwsS3Multipart extends Plugin {
     const defaultOptions = {
       timeout: 30 * 1000,
       limit: 0,
+      retryDelays: [0, 1000, 3000, 5000],
       createMultipartUpload: this.createMultipartUpload.bind(this),
       listParts: this.listParts.bind(this),
       prepareUploadPart: this.prepareUploadPart.bind(this),
@@ -74,13 +75,13 @@ module.exports = class AwsS3Multipart extends Plugin {
         SRTlib.send('{"type":"FUNCTIONEND","function":"resetUploaderReferences"},');
 
   }
-  assertHost() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"assertHost","fileName":"/packages/@uppy/aws-s3-multipart/src/index.js","paramsNumber":0,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
+  assertHost(method) {
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"assertHost","fileName":"/packages/@uppy/aws-s3-multipart/src/index.js","paramsNumber":1,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
     if (!this.opts.companionUrl) {
             SRTlib.send('{"type":"FUNCTIONEND","function":"assertHost"},');
 
-      throw new Error('Expected a `companionUrl` option containing a Companion address.');
+      throw new Error(`Expected a \`companionUrl\` option containing a Companion address, or if you are not using Companion, a custom \`${method}\` implementation.`);
     }
         SRTlib.send('{"type":"FUNCTIONEND","function":"assertHost"},');
 
@@ -88,7 +89,7 @@ module.exports = class AwsS3Multipart extends Plugin {
   createMultipartUpload(file) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"createMultipartUpload","fileName":"/packages/@uppy/aws-s3-multipart/src/index.js","paramsNumber":1,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-    this.assertHost();
+    this.assertHost('createMultipartUpload');
     const metadata = {};
     Object.keys(file.meta).map(key => {
             SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"module.exports.Object.keys.map","fileName":"/packages/@uppy/aws-s3-multipart/src/index.js","paramsNumber":1},`);
@@ -112,7 +113,7 @@ module.exports = class AwsS3Multipart extends Plugin {
   listParts(file, {key, uploadId}) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"listParts","fileName":"/packages/@uppy/aws-s3-multipart/src/index.js","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-    this.assertHost();
+    this.assertHost('listParts');
     const filename = encodeURIComponent(key);
         SRTlib.send('{"type":"FUNCTIONEND","function":"listParts"},');
 
@@ -123,7 +124,7 @@ module.exports = class AwsS3Multipart extends Plugin {
   prepareUploadPart(file, {key, uploadId, number}) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"prepareUploadPart","fileName":"/packages/@uppy/aws-s3-multipart/src/index.js","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-    this.assertHost();
+    this.assertHost('prepareUploadPart');
     const filename = encodeURIComponent(key);
         SRTlib.send('{"type":"FUNCTIONEND","function":"prepareUploadPart"},');
 
@@ -134,7 +135,7 @@ module.exports = class AwsS3Multipart extends Plugin {
   completeMultipartUpload(file, {key, uploadId, parts}) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"completeMultipartUpload","fileName":"/packages/@uppy/aws-s3-multipart/src/index.js","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-    this.assertHost();
+    this.assertHost('completeMultipartUpload');
     const filename = encodeURIComponent(key);
     const uploadIdEnc = encodeURIComponent(uploadId);
         SRTlib.send('{"type":"FUNCTIONEND","function":"completeMultipartUpload"},');
@@ -148,7 +149,7 @@ module.exports = class AwsS3Multipart extends Plugin {
   abortMultipartUpload(file, {key, uploadId}) {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"abortMultipartUpload","fileName":"/packages/@uppy/aws-s3-multipart/src/index.js","paramsNumber":2,"classInfo":{"className":"AwsS3Multipart","superClass":"Plugin"}},`);
 
-    this.assertHost();
+    this.assertHost('abortMultipartUpload');
     const filename = encodeURIComponent(key);
     const uploadIdEnc = encodeURIComponent(uploadId);
         SRTlib.send('{"type":"FUNCTIONEND","function":"abortMultipartUpload"},');
@@ -173,8 +174,7 @@ module.exports = class AwsS3Multipart extends Plugin {
           s3Multipart: {
             ...cFile.s3Multipart,
             key: data.key,
-            uploadId: data.uploadId,
-            parts: []
+            uploadId: data.uploadId
           }
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"onStart"},');
@@ -227,12 +227,6 @@ module.exports = class AwsS3Multipart extends Plugin {
 
           return;
         }
-        this.uppy.setFileState(file.id, {
-          s3Multipart: {
-            ...cFile.s3Multipart,
-            parts: [...cFile.s3Multipart.parts, part]
-          }
-        });
         this.uppy.emit('s3-multipart:part-uploaded', cFile, part);
                 SRTlib.send('{"type":"FUNCTIONEND","function":"onPartComplete"},');
 
@@ -243,12 +237,14 @@ module.exports = class AwsS3Multipart extends Plugin {
         prepareUploadPart: this.opts.prepareUploadPart.bind(this, file),
         completeMultipartUpload: this.opts.completeMultipartUpload.bind(this, file),
         abortMultipartUpload: this.opts.abortMultipartUpload.bind(this, file),
+        getChunkSize: this.opts.getChunkSize ? this.opts.getChunkSize.bind(this) : null,
         onStart,
         onProgress,
         onError,
         onSuccess,
         onPartComplete,
         limit: this.opts.limit || 5,
+        retryDelays: this.opts.retryDelays || [],
         ...file.s3Multipart
       });
       this.uploaders[file.id] = upload;

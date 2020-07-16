@@ -1,7 +1,7 @@
 const SRTlib = require('SRT-util');
 
 const tokenService = require('../helpers/jwt');
-const parseUrl = require('url').parse;
+const {URL} = require('url');
 const {hasMatch, sanitizeHtml} = require('../helpers/utils');
 const oAuthState = require('../helpers/oauth-state');
 const versionCmp = require('../helpers/version');
@@ -18,7 +18,7 @@ module.exports = function sendToken(req, res, next) {
     const origin = oAuthState.getFromState(state, 'origin', req.companion.options.secret);
     const clientVersion = oAuthState.getFromState(state, 'clientVersion', req.companion.options.secret);
     const allowedClients = req.companion.options.clients;
-    if (!allowedClients || hasMatch(origin, allowedClients) || hasMatch(parseUrl(origin).host, allowedClients)) {
+    if (!allowedClients || hasMatch(origin, allowedClients) || hasMatch(new URL(origin).host, allowedClients)) {
       const allowsStringMessage = versionCmp.gte(clientVersion, '1.0.2');
             SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
 

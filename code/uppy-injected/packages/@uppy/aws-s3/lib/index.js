@@ -196,14 +196,13 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"handleUpload"},');
     return settle(fileIDs.map(function (id, index) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.ReturnStatement.settle.then.settle.fileIDs.map\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":2},");
-
-      var file = _this2.uppy.getFile(id);
-
-      paramsPromises[id] = getUploadParameters(file);
+      paramsPromises[id] = getUploadParameters(_this2.uppy.getFile(id));
       SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.ReturnStatement.settle.then.settle.fileIDs.map"},');
       return paramsPromises[id].then(function (params) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.paramsPromises.id.then.catch.paramsPromises.id.then\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
         delete paramsPromises[id];
+
+        var file = _this2.uppy.getFile(id);
 
         _this2.validateParameters(file, params);
 
@@ -234,6 +233,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       }).catch(function (error) {
         SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"ReturnStatement.paramsPromises.id.then.catch\",\"fileName\":\"/packages/@uppy/aws-s3/src/index.js\",\"paramsNumber\":1},");
         delete paramsPromises[id];
+
+        var file = _this2.uppy.getFile(id);
 
         _this2.uppy.emit('upload-error', file, error);
 

@@ -11,12 +11,12 @@ module.exports = function FilePreviewAndLink(props) {
   SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports\",\"fileName\":\"/packages/@uppy/dashboard/src/components/FileItem/FilePreviewAndLink/index.js\",\"paramsNumber\":1},");
   SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports"},');
   return h("div", {
-    class: "uppy-DashboardItem-previewInnerWrap",
+    class: "uppy-Dashboard-Item-previewInnerWrap",
     style: {
       backgroundColor: getFileTypeIcon(props.file.type).color
     }
   }, props.showLinkToFileUploadResult && props.file.uploadURL && h("a", {
-    class: "uppy-DashboardItem-previewLink",
+    class: "uppy-Dashboard-Item-previewLink",
     href: props.file.uploadURL,
     rel: "noreferrer noopener",
     target: "_blank",

@@ -26,7 +26,7 @@ const getConfigFromEnv = () => {
 
   return {
     providerOptions: {
-      google: {
+      drive: {
         key: process.env.COMPANION_GOOGLE_KEY,
         secret: getSecret('COMPANION_GOOGLE_SECRET')
       },
@@ -42,7 +42,7 @@ const getConfigFromEnv = () => {
         key: process.env.COMPANION_FACEBOOK_KEY,
         secret: getSecret('COMPANION_FACEBOOK_SECRET')
       },
-      microsoft: {
+      onedrive: {
         key: process.env.COMPANION_ONEDRIVE_KEY,
         secret: getSecret('COMPANION_ONEDRIVE_SECRET')
       },
@@ -81,9 +81,10 @@ const getConfigFromEnv = () => {
 const getSecret = baseEnvVar => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"getSecret","fileName":"/packages/@uppy/companion/src/standalone/helper.js","paramsNumber":1},`);
 
+  const secretFile = process.env[`${baseEnvVar}_FILE`];
     SRTlib.send('{"type":"FUNCTIONEND","function":"getSecret"},');
 
-  return (`${baseEnvVar}_FILE` in process.env) ? fs.readFileSync(process.env[`${baseEnvVar}_FILE`]).toString() : process.env[baseEnvVar];
+  return secretFile ? fs.readFileSync(secretFile).toString() : process.env[baseEnvVar];
     SRTlib.send('{"type":"FUNCTIONEND","function":"getSecret"},');
 
 };
@@ -129,40 +130,6 @@ const getConfigPath = () => {
 
   return configPath;
     SRTlib.send('{"type":"FUNCTIONEND","function":"getConfigPath"},');
-
-};
-exports.validateConfig = config => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"exports.validateConfig","fileName":"/packages/@uppy/companion/src/standalone/helper.js","paramsNumber":1},`);
-
-  const mandatoryOptions = ['secret', 'filePath', 'server.host'];
-  const unspecified = [];
-  mandatoryOptions.forEach(i => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"mandatoryOptions.forEach","fileName":"/packages/@uppy/companion/src/standalone/helper.js","paramsNumber":1},`);
-
-    const value = i.split('.').reduce((prev, curr) => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"value.i.split.reduce","fileName":"/packages/@uppy/companion/src/standalone/helper.js","paramsNumber":2},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"value.i.split.reduce"},');
-
-      return prev[curr];
-            SRTlib.send('{"type":"FUNCTIONEND","function":"value.i.split.reduce"},');
-
-    }, config);
-    if (!value) unspecified.push(`"${i}"`);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"mandatoryOptions.forEach"},');
-
-  });
-  if (unspecified.length) {
-    console.error('\x1b[31m', 'Please specify the following options', 'to run companion as Standalone:\n', unspecified.join(',\n'), '\x1b[0m');
-    process.exit(1);
-  }
-  try {
-    fs.accessSync(`${config.filePath}`, fs.R_OK | fs.W_OK);
-  } catch (err) {
-    console.error('\x1b[31m', `No access to "${config.filePath}".`, 'Please ensure the directory exists and with read/write permissions.', '\x1b[0m');
-    process.exit(1);
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"exports.validateConfig"},');
 
 };
 exports.hasProtocol = url => {

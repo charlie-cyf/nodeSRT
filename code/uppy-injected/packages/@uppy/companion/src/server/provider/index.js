@@ -73,7 +73,10 @@ module.exports.addCustomProviders = (customProviders, providers, grantConfig) =>
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"Object.keys.forEach","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":1},`);
 
     providers[providerName] = customProviders[providerName].module;
-    grantConfig[providerName] = customProviders[providerName].config;
+    const providerConfig = Object.assign({}, customProviders[providerName].config);
+    providerConfig.callback = `/${providerName}/callback`;
+    providerConfig.transport = 'session';
+    grantConfig[providerName] = providerConfig;
         SRTlib.send('{"type":"FUNCTIONEND","function":"Object.keys.forEach"},');
 
   });
@@ -107,16 +110,16 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
         SRTlib.send('{"type":"FUNCTIONEND","function":"keys.Object.keys.filter"},');
 
   });
-  keys.forEach(authProvider => {
+  keys.forEach(providerName => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"keys.forEach","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":1},`);
 
-    if (grantConfig[authProvider]) {
-      grantConfig[authProvider].key = providerOptions[authProvider].key;
-      grantConfig[authProvider].secret = providerOptions[authProvider].secret;
-      const {provider, name} = authNameToProvider(authProvider, companionOptions);
+    const authProvider = providerNameToAuthName(providerName, companionOptions);
+    if (authProvider && grantConfig[authProvider]) {
+      grantConfig[authProvider].key = providerOptions[providerName].key;
+      grantConfig[authProvider].secret = providerOptions[providerName].secret;
+      const provider = exports.getDefaultProviders(companionOptions)[providerName];
       Object.assign(grantConfig[authProvider], provider.getExtraConfig());
       if (oauthDomain) {
-        const providerName = name;
         const redirectPath = `/${providerName}/redirect`;
         const isExternal = !!server.implicitPath;
         const fullRedirectPath = getURLBuilder(companionOptions)(redirectPath, isExternal, true);
@@ -136,23 +139,14 @@ module.exports.addProviderOptions = (companionOptions, grantConfig) => {
     SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.addProviderOptions"},');
 
 };
-const authNameToProvider = (authProvider, options) => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"authNameToProvider","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":2},`);
+const providerNameToAuthName = (name, options) => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"providerNameToAuthName","fileName":"/packages/@uppy/companion/src/server/provider/index.js","paramsNumber":2},`);
 
   const providers = exports.getDefaultProviders(options);
-  const providerNames = Object.keys(providers);
-  for (const name of providerNames) {
-    const provider = providers[name];
-    if (provider.authProvider === authProvider) {
-            SRTlib.send('{"type":"FUNCTIONEND","function":"authNameToProvider"},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"providerNameToAuthName"},');
 
-      return {
-        name,
-        provider
-      };
-    }
-  }
-    SRTlib.send('{"type":"FUNCTIONEND","function":"authNameToProvider"},');
+  return (providers[name] || ({})).authProvider;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"providerNameToAuthName"},');
 
 };
 const validOptions = options => {

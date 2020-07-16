@@ -168,7 +168,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     });
 
     var tus = _extends({}, file.tus, {
-      endpoint: status.tus_url
+      endpoint: status.tus_url,
+      addRequestId: true
     });
 
     var remote = file.remote;
@@ -437,7 +438,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       var _extends5;
 
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.client.getAssemblyStatus.then\",\"fileName\":\"/packages/@uppy/transloadit/src/index.js\",\"paramsNumber\":1},");
-      var assemblyId = finalStatus.assemblyId;
+      var assemblyId = finalStatus.assembly_id;
 
       var state = _this7.getPluginState();
 
@@ -473,16 +474,23 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onCancelAll\",\"fileName\":\"/packages/@uppy/transloadit/src/index.js\",\"paramsNumber\":0,\"classInfo\":{\"className\":\"Transloadit\",\"superClass\":\"Plugin\"}},");
 
     var _this$getPluginState2 = this.getPluginState(),
-        assemblies = _this$getPluginState2.assemblies;
+        uploadsAssemblies = _this$getPluginState2.uploadsAssemblies;
 
-    var cancelPromises = Object.keys(assemblies).map(function (assemblyID) {
-      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.cancelPromises.Object.keys.map\",\"fileName\":\"/packages/@uppy/transloadit/src/index.js\",\"paramsNumber\":1},");
+    var assemblyIDs = Object.keys(uploadsAssemblies).reduce(function (acc, uploadID) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.assemblyIDs.Object.keys.reduce\",\"fileName\":\"/packages/@uppy/transloadit/src/index.js\",\"paramsNumber\":2},");
+      acc.push.apply(acc, uploadsAssemblies[uploadID]);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assemblyIDs.Object.keys.reduce"},');
+      return acc;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.assemblyIDs.Object.keys.reduce"},');
+    }, []);
+    var cancelPromises = assemblyIDs.map(function (assemblyID) {
+      SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.cancelPromises.assemblyIDs.map\",\"fileName\":\"/packages/@uppy/transloadit/src/index.js\",\"paramsNumber\":1},");
 
       var assembly = _this9.getAssembly(assemblyID);
 
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.Object.keys.map"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.assemblyIDs.map"},');
       return _this9._cancelAssembly(assembly);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.Object.keys.map"},');
+      SRTlib.send('{"type":"FUNCTIONEND","function":"module.exports.cancelPromises.assemblyIDs.map"},');
     });
     Promise.all(cancelPromises).catch(function (err) {
       SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":true,\"function\":\"module.exports.Promise.all.catch\",\"fileName\":\"/packages/@uppy/transloadit/src/index.js\",\"paramsNumber\":1},");
@@ -1009,7 +1017,8 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
     SRTlib.send("{\"type\":\"FUNCTIONSTART\",\"anonymous\":false,\"function\":\"_onTusError\",\"fileName\":\"/packages/@uppy/transloadit/src/index.js\",\"paramsNumber\":1,\"classInfo\":{\"className\":\"Transloadit\",\"superClass\":\"Plugin\"}},");
 
     if (err && /^tus: /.test(err.message)) {
-      var url = err.originalRequest && err.originalRequest.responseURL ? err.originalRequest.responseURL : null;
+      var xhr = err.originalRequest ? err.originalRequest.getUnderlyingObject() : null;
+      var url = xhr && xhr.responseURL ? xhr.responseURL : null;
       this.client.submitError(err, {
         url: url,
         type: 'TUS_ERROR'
@@ -1034,7 +1043,7 @@ module.exports = (_temp = _class = /*#__PURE__*/function (_Plugin) {
       this.uppy.on('upload-success', this._onFileUploadURLAvailable);
     } else {
       this.uppy.use(Tus, {
-        resume: false,
+        storeFingerprintForResuming: false,
         useFastRemoteRetry: false,
         metaFields: ['assembly_url', 'filename', 'fieldname'],
         limit: this.opts.limit

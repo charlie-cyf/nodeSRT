@@ -2,7 +2,7 @@ const SRTlib = require('SRT-util');
 
 'use strict';
 const AuthError = require('./AuthError');
-const NetworkError = require('@uppy/utils/lib/NetworkError');
+const fetchWithNetworkError = require('@uppy/utils/lib/fetchWithNetworkError');
 function stripSlash(url) {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"stripSlash","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
@@ -242,38 +242,24 @@ module.exports = class RequestClient {
       this.preflightAndHeaders(path).then(headers => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preflightAndHeaders.then.catch.preflightAndHeaders.then","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
-        fetch(this._getUrl(path), {
+        fetchWithNetworkError(this._getUrl(path), {
           method: 'get',
           headers: headers,
           credentials: 'same-origin'
-        }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
-
-          if (err.name === 'AbortError') {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch"},');
-
-            throw err;
-          } else {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch"},');
-
-            throw new NetworkError(err);
-          }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch"},');
-
         }).then(this._getPostResponseFunc(skipPostResponse)).then(res => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then"},');
 
           return this._json(res).then(resolve);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then"},');
 
         }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetchWithNetworkError.then.then.catch","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
           err = err.isAuthError ? err : new Error(`Could not get ${this._getUrl(path)}. ${err}`);
           reject(err);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"preflightAndHeaders.then.catch.preflightAndHeaders.then"},');
@@ -296,39 +282,25 @@ module.exports = class RequestClient {
       this.preflightAndHeaders(path).then(headers => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
-        fetch(this._getUrl(path), {
+        fetchWithNetworkError(this._getUrl(path), {
           method: 'post',
           headers: headers,
           credentials: 'same-origin',
           body: JSON.stringify(data)
-        }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
-
-          if (err.name === 'AbortError') {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###2"},');
-
-            throw err;
-          } else {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###2"},');
-
-            throw new NetworkError(err);
-          }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###2"},');
-
         }).then(this._getPostResponseFunc(skipPostResponse)).then(res => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then###2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###2"},');
 
           return this._json(res).then(resolve);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then###2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###2"},');
 
         }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetchWithNetworkError.then.then.catch###2","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
           err = err.isAuthError ? err : new Error(`Could not post ${this._getUrl(path)}. ${err}`);
           reject(err);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch###2"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch###2"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###2"},');
@@ -351,39 +323,25 @@ module.exports = class RequestClient {
       this.preflightAndHeaders(path).then(headers => {
                 SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
-        fetch(`${this.hostname}/${path}`, {
+        fetchWithNetworkError(`${this.hostname}/${path}`, {
           method: 'delete',
           headers: headers,
           credentials: 'same-origin',
           body: data ? JSON.stringify(data) : null
-        }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
-
-          if (err.name === 'AbortError') {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###3"},');
-
-            throw err;
-          } else {
-                        SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###3"},');
-
-            throw new NetworkError(err);
-          }
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then.fetch.catch.then.fetch.catch###3"},');
-
         }).then(this._getPostResponseFunc(skipPostResponse)).then(res => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch.fetch.catch.then.then###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then###3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###3"},');
 
           return this._json(res).then(resolve);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch.fetch.catch.then.then###3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch.fetchWithNetworkError.then.then###3"},');
 
         }).catch(err => {
-                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetch.catch.then.then.catch###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
+                    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"fetchWithNetworkError.then.then.catch###3","fileName":"/packages/@uppy/companion-client/src/RequestClient.js","paramsNumber":1},`);
 
           err = err.isAuthError ? err : new Error(`Could not delete ${this._getUrl(path)}. ${err}`);
           reject(err);
-                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetch.catch.then.then.catch###3"},');
+                    SRTlib.send('{"type":"FUNCTIONEND","function":"fetchWithNetworkError.then.then.catch###3"},');
 
         });
                 SRTlib.send('{"type":"FUNCTIONEND","function":"preflightAndHeaders.then.catch.preflightAndHeaders.then###3"},');

@@ -5,6 +5,7 @@ require('whatwg-fetch');
 const Uppy = require('@uppy/core');
 const Dashboard = require('@uppy/dashboard');
 const Tus = require('@uppy/tus');
+const canvasToBlob = require('@uppy/utils/lib/canvasToBlob');
 const isOnTravis = !!(process.env.TRAVIS && process.env.CI);
 const endpoint = isOnTravis ? 'http://companion.test:1081' : 'http://localhost:1081';
 let id = 0;
@@ -27,13 +28,13 @@ window.setup = function (options) {
   uppy.on('file-added', file => {
         SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"window.setup.uppy.on","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":1},`);
 
-    randomColorImage(function (blob) {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"randomColorImage","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":1},`);
+    randomColorImage().then(function (blob) {
+            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"randomColorImage.then","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":1},`);
 
       uppy.setFileState(file.id, {
         preview: URL.createObjectURL(blob)
       });
-            SRTlib.send('{"type":"FUNCTIONEND","function":"randomColorImage"},');
+            SRTlib.send('{"type":"FUNCTIONEND","function":"randomColorImage.then"},');
 
     });
         SRTlib.send('{"type":"FUNCTIONEND","function":"window.setup.uppy.on"},');
@@ -45,8 +46,8 @@ window.setup = function (options) {
     SRTlib.send('{"type":"FUNCTIONEND","function":"window.setup"},');
 
 };
-function randomColorImage(callback) {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"randomColorImage","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":1},`);
+function randomColorImage() {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"randomColorImage","fileName":"/test/endtoend/chaos-monkey/main.js","paramsNumber":0},`);
 
   const canvas = document.createElement('canvas');
   canvas.width = 140;
@@ -62,7 +63,9 @@ function randomColorImage(callback) {
 
   });
   context.fillRect(0, 0, 140, 140);
-  canvas.toBlob(callback);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"randomColorImage","paramsNumber":1},');
+    SRTlib.send('{"type":"FUNCTIONEND","function":"randomColorImage"},');
+
+  return canvasToBlob(canvas);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"randomColorImage","paramsNumber":0},');
 
 }
