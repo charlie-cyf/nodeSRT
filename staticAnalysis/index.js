@@ -9,7 +9,8 @@ const { pathExists } = require('fs-extra');
 const { dirname } = require('path');
 const { lookup } = require('dns');
 const requireResolver = require('resolve')
-const _ = require('underscore')
+const _ = require('underscore');
+const { prop } = require('acorn-jsx/xhtml');
 
 acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
@@ -30,7 +31,6 @@ function getTestSuiteName(ancestors) {
 *   @param {String} dependName: the name in require
 *   @param {String} ASTfileName: the path to AST file that calls the dependName
 */
-// TODO add test
 function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, acc) {
     // console.log('dependname', dependName, 'ASTfileName', ASTfileName);
     const codeBaseFileName = globalUtil.getCodebasePath(ASTfileName);
@@ -126,9 +126,9 @@ module.exports = class StaticAnalyzor {
         this.ASTbase = globalUtil.getASTdir();
     }
 
-    getTestDependency() {
+    getTestDependency(dir) {
         let dependencyGraph = []
-        const packageJson = JSON.parse(path.join(this.codebase, 'package.json'));
+        const packageJson = JSON.parse(fs.readFileSync(path.join(this.codebase, 'package.json')));
         
         // scan for test file
         const testsFinderRecur = function(astDir) {
@@ -140,25 +140,30 @@ module.exports = class StaticAnalyzor {
                 }
             })
         }
-        testsFinderRecur(this.ASTbase);
+        testsFinderRecur(dir);
 
        
-        dependencyGraph.forEach(ele => {
+        dependencyGraph.map(ele => {
             let propertyMap = new Map();
             const tree = JSON.parse(fs.readFileSync(ele.testFilename));
             // get file dependencies on each require
             acornWalk.ancestor(tree, {
                 CallExpression(node, ancestors) {
                     if(node.callee.type === "Identifier" && node.callee.name === "require") {
-                        // TODO handle require("").data
-                        const parent = ancestors[ancestors.length - 2];
+                        // handle require("").data
+                        let variableDeclare;
+                        for (let i = ancestors.length-1; i>=0; i--) {
+                            if (ancestors[i].type === 'VariableDeclarator') {
+                                variableDeclare = ancestors[i];
+                            }
+                        }
                         // get identifier, 
                         const ids = [];
-                        if(parent.type === "VariableDeclarator") {
-                            if(parent.id.type === "Identifier") {
-                                ids.push(parent.id.name);
-                            } else if (parent.id.type === "ObjectPattern") {
-                                parent.id.properties.forEach(p => {
+                        if(variableDeclare.type === "VariableDeclarator") {
+                            if(variableDeclare.id.type === "Identifier") {
+                                ids.push(variableDeclare.id.name);
+                            } else if (variableDeclare.id.type === "ObjectPattern") {
+                                variableDeclare.id.properties.forEach(p => {
                                     if(t(p, "key.name").safeObject) {
                                         ids.push(t(p, "key.name").safeObject);
                                     }
@@ -179,9 +184,101 @@ module.exports = class StaticAnalyzor {
                 }
             })
 
+            /**
+             * ele.testsuits: [{ testSuitName: String, testName: String, depends: [testfileName] } ... ]
+             */
+
+            ele.testSuits = [];
             // TODO  link test name to file dependencies
-            return propertyMap;
+            acornWalk.simple(tree, {
+                CallExpression(node) { 
+                    if(node.callee.type === 'Identifier' && node.callee.name === 'describe') {
+                        const suiteName = t(node, 'arguments[0].value').safeObject;
+                        let stmts = t(node, "arguments[1].body.body").safeObject;
+                        if (stmts) {
+                            for (let stmt of stmts) {
+                                let testName;
+                                if(t(stmt, "expression.callee.name").safeObject === 'beforeEach') {
+                                    testName = "beforeEach";
+                                } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach') {
+                                    testName = 'afterEach';
+                                } else if (t(stmt, "expression.callee.name").safeObject === 'beforeAll') {
+                                    testName = 'beforeAll';
+                                } else if (t(stmt, "expression.callee.name").safeObject === 'afterAll') {
+                                    testName = 'afterAll';
+                                } else if (t(stmt, "expression.callee.name").safeObject === 'after') {
+                                    testName = 'after';
+                                } else if (t(stmt, "expression.callee.name").safeObject === 'before') {
+                                    testName = 'before';
+                                } else if (t(stmt, "expression.callee.name").safeObject === 'it') {
+                                    testName = t(stmt, 'expression.arguments[0].value');
+                                } else if (t(stmt, "expression.callee.name").safeObject === 'test') {
+                                    testName = t(stmt, 'expression.arguments[0].value');
+                                } else if (stmt.type === "VariableDeclaration") {
+                                    acornWalk.simple(stmt, {
+                                        Identifier(identifier) {
+                                            if(propertyMap.has(identifier.name)) {
+                                                const newIdName = t(stmt, "id.name");
+                                                if(newIdName) {
+                                                    propertyMap.set(newIdName, propertyMap.get(identifier.name));
+                                                }
+                                            }
+                                        }
+                                    })
+                                } else {
+                                    // the statement is not a test 
+                                    acornWalk.simple(stmt, {
+                                        Identifier(identifier) {
+                                            if(propertyMap.has(identifier.name)) {
+                                                let found = false;
+                                                ele.testSuits.map(suit => {
+                                                    if(suit.testSuitName === suiteName && suit.testName === undefined) {
+                                                        suit.depends = _.union(suit.depends, propertyMap.get(identifier.name));
+                                                        found = true;
+                                                        return;
+                                                    }
+                                                })
+
+                                                if(!found) {
+                                                    ele.testSuits.push({
+                                                        testSuitName: suiteName,
+                                                        depends: propertyMap.get(identifier.name)
+                                                    })
+                                                }                                                
+                                            }
+                                        }
+                                    })
+                                    continue;
+                                }
+                                acornWalk.simple(t(stmt, 'expression.arguments[0]'), {
+                                    Identifier(identifier) {
+                                        if(propertyMap.has(identifier.name)) {
+                                            let found = false;
+                                            ele.testSuits.map(suit => {
+                                                if(suit.testSuitName === suiteName && suit.testName === testName) {
+                                                    suit.depends = _.union(suit.depends, propertyMap.get(identifier.name));
+                                                    found = true;
+                                                    return;
+                                                }
+                                            })
+
+                                            if(!found) {
+                                                ele.testSuits.push({
+                                                    testSuitName: suiteName,
+                                                    testName: testName,
+                                                    depends: propertyMap.get(identifier.name)
+                                                })
+                                            }                                                
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }
+            })
         })
+        return dependencyGraph;
 
     }
 
