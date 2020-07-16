@@ -11,6 +11,7 @@ const { lookup } = require('dns');
 const requireResolver = require('resolve')
 const _ = require('underscore');
 const { prop } = require('acorn-jsx/xhtml');
+const { setMaxListeners } = require('process');
 
 acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
@@ -133,8 +134,8 @@ module.exports = class StaticAnalyzor {
         // scan for test file
         const testsFinderRecur = function(astDir) {
             fs.readdirSync(astDir).forEach(file => {
-                if(path.extname(file) === '.test.js.json' || path.extname(file) === "spec.js.json") {
-                    dependencyGraph.push({testFilename: path.join(astDir, file)})
+                if(file.endsWith('.test.js.json') || file.endsWith("spec.js.json")) {
+                    dependencyGraph.push({testFilename: path.resolve(astDir, file)})
                 } else if (fs.lstatSync(path.join(astDir, file)).isDirectory()) {
                     testsFinderRecur(path.join(astDir, file));
                 }
@@ -142,6 +143,7 @@ module.exports = class StaticAnalyzor {
         }
         testsFinderRecur(dir);
 
+        console.log('dependency Graph:', dependencyGraph)
        
         dependencyGraph.map(ele => {
             let propertyMap = new Map();
@@ -211,9 +213,11 @@ module.exports = class StaticAnalyzor {
                                 } else if (t(stmt, "expression.callee.name").safeObject === 'before') {
                                     testName = 'before';
                                 } else if (t(stmt, "expression.callee.name").safeObject === 'it') {
-                                    testName = t(stmt, 'expression.arguments[0].value');
+                                    testName = t(stmt, 'expression.arguments[0].value').safeObject;
                                 } else if (t(stmt, "expression.callee.name").safeObject === 'test') {
-                                    testName = t(stmt, 'expression.arguments[0].value');
+                                    testName = t(stmt, 'expression.arguments[0].value').safeObject;
+                                } else if (t(stmt, "expression.callee.name").safeObject === 'describe') {
+                                    continue;
                                 } else if (stmt.type === "VariableDeclaration") {
                                     acornWalk.simple(stmt, {
                                         Identifier(identifier) {
@@ -225,6 +229,7 @@ module.exports = class StaticAnalyzor {
                                             }
                                         }
                                     })
+                                    continue;
                                 } else {
                                     // the statement is not a test 
                                     acornWalk.simple(stmt, {
@@ -250,7 +255,9 @@ module.exports = class StaticAnalyzor {
                                     })
                                     continue;
                                 }
-                                acornWalk.simple(t(stmt, 'expression.arguments[0]'), {
+
+                                console.log('fileName:', ele.testFilename, 'test suite name:', suiteName, 'testName:', testName)
+                                acornWalk.simple(t(stmt, 'expression.arguments[0]').safeObject, {
                                     Identifier(identifier) {
                                         if(propertyMap.has(identifier.name)) {
                                             let found = false;

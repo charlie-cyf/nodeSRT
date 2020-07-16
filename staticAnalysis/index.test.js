@@ -26,6 +26,6 @@ describe("static analysis to get file dependencies", () => {
     test('get dependency graph', () => {
         globalUtil.setter({codeBase: path.resolve('./code/uppy')})
         const analyzor = new StaticAnalyzor();
-        console.log(analyzor.getTestDependency('./code/uppy/packages/@uppy/core/src'))
+        console.log(analyzor.getTestDependency('./code/uppy-AST/packages/@uppy/core/src'))
     })
 })
