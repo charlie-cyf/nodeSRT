@@ -146,9 +146,7 @@ module.exports = class StaticAnalyzor {
         const testsFinderRecur = function(astDir) {
             fs.readdirSync(astDir).forEach(file => {
                 if(rgx){
-                    // TODO fix this !!
                     if( minimatch(globalUtil.getCodebasePath(path.resolve(astDir, file)), rgx) ) {
-                        console.log('regex', rgx, 'fullPath',path.resolve(astDir, file), 'minimatch', minimatch(path.resolve(astDir, file), rgx) )
                         dependencyGraph.push({testFilename: path.resolve(astDir, file)})
                     } else if (fs.lstatSync(path.join(astDir, file)).isDirectory()) {
                         testsFinderRecur(path.join(astDir, file));
