@@ -12,7 +12,7 @@ const requireResolver = require('resolve')
 const _ = require('underscore');
 const { prop } = require('acorn-jsx/xhtml');
 const { setMaxListeners } = require('process');
-var minimatch = require("minimatch")
+const minimatch = require("minimatch")
 
 acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
@@ -20,9 +20,6 @@ acornWalk.base.FieldDefinition = (node, st, c) => {
 }
 extend(acornWalk.base);
 
-function getTestSuiteName(ancestors) {
-    // TODO 
-}
 
 
 /**
@@ -150,7 +147,8 @@ module.exports = class StaticAnalyzor {
             fs.readdirSync(astDir).forEach(file => {
                 if(rgx){
                     // TODO fix this !!
-                    if( minimatch(path.join(astDir, file), rgx) ) {
+                    if( minimatch(globalUtil.getCodebasePath(path.resolve(astDir, file)), rgx) ) {
+                        console.log('regex', rgx, 'fullPath',path.resolve(astDir, file), 'minimatch', minimatch(path.resolve(astDir, file), rgx) )
                         dependencyGraph.push({testFilename: path.resolve(astDir, file)})
                     } else if (fs.lstatSync(path.join(astDir, file)).isDirectory()) {
                         testsFinderRecur(path.join(astDir, file));
