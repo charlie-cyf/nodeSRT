@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path');
+const fs = require('fs');
 
 
 module.exports = {
@@ -11,10 +12,11 @@ module.exports = {
     },
 
     getASTdir: function() {
-        if(this.config.codeBase) {
+        if(this.config.codeBase && !this.config.ASTdir) {
             if(this.config.ASTdir) return this.config.ASTdir;
             this.config.ASTdir = this.config.codeBase+'-AST'
         }
+        return this.config.ASTdir;
     },
 
     /**
@@ -48,6 +50,17 @@ module.exports = {
         }
 
         return ASTPath;
+    },
+
+
+    getCodeBasePackageJson: function() {
+        if(!this.config.packageJson) {
+            if(fs.existsSync(path.join(this.config.codeBase, 'package.json'))) {
+                this.config.packageJson = JSON.parse(fs.readFileSync(path.join(this.config.codeBase, 'package.json')))
+            }
+        }
+
+        return this.config.packageJson;
     }
 
 }

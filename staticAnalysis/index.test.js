@@ -17,16 +17,22 @@ describe("static analysis to get file dependencies", () => {
 
     
     test('getFileDependencies', () => {
-        globalUtil.setter({codeBase: path.resolve('../uppy')})
-        const analyzor = new StaticAnalyzor();
+        globalUtil.setter({codeBase: path.resolve('../uppy')})        
         const packages = JSON.parse(fs.readFileSync('../uppy/package.json'))
-        expect(analyzor.getFileDependencies('./index', './packages/@uppy/core/src/index.test.js', packages.dependencies, []).length).toBeGreaterThan(0)
+        expect(StaticAnalyzor.getFileDependencies('./index', './packages/@uppy/core/src/index.test.js', packages.dependencies, []).length).toBeGreaterThan(0)
+    })
+
+    test('get dependency graph with default parameter', () => {
+        globalUtil.setter({codeBase: path.resolve('../uppy')})
+        const dependencyGraph = StaticAnalyzor.getTestDependency('../uppy', ["**/packages/**/*.test.js"])
+        expect(dependencyGraph.length).toBeGreaterThan(0);
     })
 
     test('get dependency graph', () => {
         globalUtil.setter({codeBase: path.resolve('../uppy')})
-        const analyzor = new StaticAnalyzor();
-        const dependencyGraph = analyzor.getTestDependency('../uppy', "**/packages/**/*.test.js")
+        console.log('testMatch', globalUtil.getCodeBasePackageJson().jest.testMatch)
+        const dependencyGraph = StaticAnalyzor.getTestDependency('../uppy', globalUtil.getCodeBasePackageJson().jest.testMatch)
         expect(dependencyGraph.length).toBeGreaterThan(0);
+        console.log(dependencyGraph)
     })
 })

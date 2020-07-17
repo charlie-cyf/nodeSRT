@@ -1,6 +1,8 @@
 const { findKey, select } = require("underscore");
 const Instrumentor = require('../instrument/instrumentor')
 const path = require('path')
+const globalUtil = require('../util');
+const fs = require('fs')
 
 
 module.exports = class TestSelector {
@@ -9,6 +11,12 @@ module.exports = class TestSelector {
         this.callGraph = callGraph;
         this.fileDependency = fileDependency;
         this.classDependency = classDependency;
+    }
+
+    constructor() {
+        this.codebase = globalUtil.config.codeBase;
+        this.callGraph = JSON.parse(fs.readFileSync(globalUtil.config.callGraphPath))
+        this.fileDependency = JSON.parse(fs.readFileSync(globalUtil.config.fileDependencyGraphPath))
     }
 
     getReducedTests(changes) {

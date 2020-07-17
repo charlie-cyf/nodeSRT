@@ -1,6 +1,7 @@
 const fs = require("fs");
 const { Parser } = require("acorn")
 const Astravel = require('astravel')
+const globalUtil = require('./util')
 
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
@@ -72,6 +73,7 @@ module.exports = class ASTgenerater {
             fs.mkdirSync(ASTpath);
 
         generaterHelper(path, path + "/../" + filename + "-AST", excepts)
+        globalUtil.config.ASTdir = Path.resolve(path + "/../" + filename + "-AST");
     }
 
     static copyDir(source, distination) {

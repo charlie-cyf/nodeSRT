@@ -17,14 +17,20 @@ const excepts = [
     './code/uppy/test/endtoend/wdio.local.conf.js',
     './code/uppy/test/endtoend/wdio.base.conf.js',
 ];
+const globalUtil = require('./util');
+const StaticAnalyzor = require('./staticAnalysis');
 
 (async () => {
     //init
     if (codeBase.endsWith('/')) {
         codeBase = codeBase.substring(0, codeBase.length - 1)
     }
+    
 
     let injectedCodebase = codeBase + '-injected';
+
+    globalUtil.setter({codeBase: path.resolve(codeBase), injectedCodebase})    
+    globalUtil.config.packageJson = JSON.parse(fs.readFileSync(path.join(codeBase, 'package.json')))
 
     let parsedEnv = envfile.parse(fs.readFileSync('.env'));
     parsedEnv.SRT_PATH = __dirname;
@@ -34,6 +40,8 @@ const excepts = [
 
     // generate AST for codebase
     generate(codeBase, excepts)
+
+
 
     console.log("env", process.env.SRT_PATH)
 
@@ -87,9 +95,17 @@ const excepts = [
         callGraph = '[' + callGraph + ']'
         callGraph = callGraph.replace(/,]/g, ']');
         fs.writeFileSync(res.data.path + '.json', callGraph)
+        globalUtil.config.callGraphPath = path.resolve(res.data.path+'.json')
     });
 
+    // run static analysis, 
+    console.log('util codeBasse', globalUtil.config.codeBase)
+    const fileDependGraph =  StaticAnalyzor.getTestDependency(globalUtil.config.codeBase, globalUtil.getCodeBasePackageJson().jest.testMatch);
+    globalUtil.config.fileDependencyGraphPath = path.resolve('./tmp/fileDenpendencyGraph.json');
+    fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, fileDependGraph);
 
+
+    console.log('finished!')
 })()
 
 
