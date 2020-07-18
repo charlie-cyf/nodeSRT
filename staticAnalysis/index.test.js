@@ -33,6 +33,6 @@ describe("static analysis to get file dependencies", () => {
         console.log('testMatch', globalUtil.getCodeBasePackageJson().jest.testMatch)
         const dependencyGraph = StaticAnalyzor.getTestDependency('../uppy', globalUtil.getCodeBasePackageJson().jest.testMatch)
         expect(dependencyGraph.length).toBeGreaterThan(0);
-        console.log(dependencyGraph)
+        // console.log(dependencyGraph)
     })
 })

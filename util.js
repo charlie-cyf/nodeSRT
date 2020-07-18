@@ -9,6 +9,9 @@ module.exports = {
 
     setter: function(newConfig) {
         this.config = Object.assign({}, this.config, newConfig);
+        if(this.config.codeBase) {
+            this.config.codeBase = path.resolve(this.config.codeBase)
+        }
     },
 
     getASTdir: function() {
@@ -31,6 +34,13 @@ module.exports = {
         }
         return filePath+'.json'
 
+    },
+
+    getInjectedDir: function() {
+        if(!this.config.injectedDir) {
+            this.config.injectedDir += '-injected'
+        }
+        return this.config.injectedDir;
     },
 
     /**

@@ -1,0 +1,418 @@
+diff --git a/package-lock.json b/package-lock.json
+index dd4b9892..5e116fa3 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -5762,6 +5762,12 @@
+         }
+       }
+     },
++    "@transloadit/prettier-bytes": {
++      "version": "0.0.7",
++      "resolved": "https://registry.npmjs.org/@transloadit/prettier-bytes/-/prettier-bytes-0.0.7.tgz",
++      "integrity": "sha512-VeJbUb0wEKbcwaSlj5n+LscBl9IPgLPkHVGBkh00cztv6X4L/TJXK58LzFuBKX7/GAfiGhIwH67YTLTlzvIzBA==",
++      "dev": true
++    },
+     "@types/aws-lambda": {
+       "version": "8.10.50",
+       "resolved": "https://registry.npmjs.org/@types/aws-lambda/-/aws-lambda-8.10.50.tgz",
+@@ -7546,6 +7552,7 @@
+     "@uppy/core": {
+       "version": "file:packages/@uppy/core",
+       "requires": {
++        "@transloadit/prettier-bytes": "0.0.7",
+         "@uppy/store-default": "file:packages/@uppy/store-default",
+         "@uppy/utils": "file:packages/@uppy/utils",
+         "cuid": "^2.1.1",
+@@ -7553,11 +7560,19 @@
+         "mime-match": "^1.0.2",
+         "namespace-emitter": "^2.0.1",
+         "preact": "8.2.9"
++      },
++      "dependencies": {
++        "@transloadit/prettier-bytes": {
++          "version": "0.0.7",
++          "resolved": "https://registry.npmjs.org/@transloadit/prettier-bytes/-/prettier-bytes-0.0.7.tgz",
++          "integrity": "sha512-VeJbUb0wEKbcwaSlj5n+LscBl9IPgLPkHVGBkh00cztv6X4L/TJXK58LzFuBKX7/GAfiGhIwH67YTLTlzvIzBA=="
++        }
+       }
+     },
+     "@uppy/dashboard": {
+       "version": "file:packages/@uppy/dashboard",
+       "requires": {
++        "@transloadit/prettier-bytes": "0.0.7",
+         "@uppy/informer": "file:packages/@uppy/informer",
+         "@uppy/provider-views": "file:packages/@uppy/provider-views",
+         "@uppy/status-bar": "file:packages/@uppy/status-bar",
+@@ -7572,6 +7587,13 @@
+         "preact": "8.2.9",
+         "preact-css-transition-group": "^1.3.0",
+         "resize-observer-polyfill": "^1.5.0"
++      },
++      "dependencies": {
++        "@transloadit/prettier-bytes": {
++          "version": "0.0.7",
++          "resolved": "https://registry.npmjs.org/@transloadit/prettier-bytes/-/prettier-bytes-0.0.7.tgz",
++          "integrity": "sha512-VeJbUb0wEKbcwaSlj5n+LscBl9IPgLPkHVGBkh00cztv6X4L/TJXK58LzFuBKX7/GAfiGhIwH67YTLTlzvIzBA=="
++        }
+       }
+     },
+     "@uppy/drag-drop": {
+@@ -7616,8 +7638,15 @@
+     "@uppy/golden-retriever": {
+       "version": "file:packages/@uppy/golden-retriever",
+       "requires": {
+-        "@uppy/utils": "file:packages/@uppy/utils",
+-        "prettier-bytes": "^1.0.4"
++        "@transloadit/prettier-bytes": "0.0.7",
++        "@uppy/utils": "file:packages/@uppy/utils"
++      },
++      "dependencies": {
++        "@transloadit/prettier-bytes": {
++          "version": "0.0.7",
++          "resolved": "https://registry.npmjs.org/@transloadit/prettier-bytes/-/prettier-bytes-0.0.7.tgz",
++          "integrity": "sha512-VeJbUb0wEKbcwaSlj5n+LscBl9IPgLPkHVGBkh00cztv6X4L/TJXK58LzFuBKX7/GAfiGhIwH67YTLTlzvIzBA=="
++        }
+       }
+     },
+     "@uppy/google-drive": {
+@@ -7726,10 +7755,18 @@
+     "@uppy/status-bar": {
+       "version": "file:packages/@uppy/status-bar",
+       "requires": {
++        "@transloadit/prettier-bytes": "0.0.7",
+         "@uppy/utils": "file:packages/@uppy/utils",
+         "classnames": "^2.2.6",
+         "lodash.throttle": "^4.1.1",
+         "preact": "8.2.9"
++      },
++      "dependencies": {
++        "@transloadit/prettier-bytes": {
++          "version": "0.0.7",
++          "resolved": "https://registry.npmjs.org/@transloadit/prettier-bytes/-/prettier-bytes-0.0.7.tgz",
++          "integrity": "sha512-VeJbUb0wEKbcwaSlj5n+LscBl9IPgLPkHVGBkh00cztv6X4L/TJXK58LzFuBKX7/GAfiGhIwH67YTLTlzvIzBA=="
++        }
+       }
+     },
+     "@uppy/store-default": {
+@@ -30822,12 +30859,6 @@
+       "resolved": "https://registry.npmjs.org/prettier-bytes/-/prettier-bytes-1.0.4.tgz",
+       "integrity": "sha1-mUsCqkb2mcULYle1+qp/4lV+YtY="
+     },
+-    "pretty-bytes": {
+-      "version": "5.3.0",
+-      "resolved": "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.3.0.tgz",
+-      "integrity": "sha512-hjGrh+P926p4R4WbaB6OckyRtO0F0/lQBiT+0gnxjV+5kjPBrfVBFCsCLbMqVQeydvIoouYTCmmEURiH3R1Bdg==",
+-      "dev": true
+-    },
+     "pretty-format": {
+       "version": "23.6.0",
+       "resolved": "https://registry.npmjs.org/pretty-format/-/pretty-format-23.6.0.tgz",
+diff --git a/package.json b/package.json
+index 6bcf1e8b..cb4fea78 100644
+--- a/package.json
++++ b/package.json
+@@ -90,6 +90,7 @@
+     "@lerna/run": "3.20.0",
+     "@octokit/rest": "16.43.1",
+     "@size-limit/preset-big-lib": "2.2.4",
++    "@transloadit/prettier-bytes": "0.0.7",
+     "@types/aws-serverless-express": "3.3.3",
+     "@types/compression": "1.7.0",
+     "@types/connect-redis": "0.0.7",
+@@ -174,7 +175,6 @@
+     "postcss": "7.0.26",
+     "postcss-safe-important": "1.2.0",
+     "pre-commit": "1.2.2",
+-    "pretty-bytes": "5.3.0",
+     "react": "16.12.0",
+     "react-dom": "16.12.0",
+     "redux": "4.0.5",
+diff --git a/packages/@uppy/core/package.json b/packages/@uppy/core/package.json
+index 43af7689..a71ac01e 100644
+--- a/packages/@uppy/core/package.json
++++ b/packages/@uppy/core/package.json
+@@ -20,6 +20,7 @@
+     "url": "git+https://github.com/transloadit/uppy.git"
+   },
+   "dependencies": {
++    "@transloadit/prettier-bytes": "0.0.7",
+     "@uppy/store-default": "file:../store-default",
+     "@uppy/utils": "file:../utils",
+     "cuid": "^2.1.1",
+diff --git a/packages/@uppy/core/src/index.js b/packages/@uppy/core/src/index.js
+index c7867f8c..9fe1944c 100644
+--- a/packages/@uppy/core/src/index.js
++++ b/packages/@uppy/core/src/index.js
+@@ -2,7 +2,7 @@ const Translator = require('@uppy/utils/lib/Translator')
+ const ee = require('namespace-emitter')
+ const cuid = require('cuid')
+ const throttle = require('lodash.throttle')
+-const prettyBytes = require('@uppy/utils/lib/prettyBytes')
++const prettierBytes = require('@transloadit/prettier-bytes')
+ const match = require('mime-match')
+ const DefaultStore = require('@uppy/store-default')
+ const getFileType = require('@uppy/utils/lib/getFileType')
+@@ -476,7 +476,7 @@ class Uppy {
+       if (file.data.size > maxFileSize) {
+         throw new RestrictionError(this.i18n('exceedsSize2', {
+           backwardsCompat: this.i18n('exceedsSize'),
+-          size: prettyBytes(maxFileSize)
++          size: prettierBytes(maxFileSize)
+         }))
+       }
+     }
+diff --git a/packages/@uppy/core/src/index.test.js b/packages/@uppy/core/src/index.test.js
+index 14afe08c..9e9d7e97 100644
+--- a/packages/@uppy/core/src/index.test.js
++++ b/packages/@uppy/core/src/index.test.js
+@@ -1,6 +1,6 @@
+ const fs = require('fs')
+ const path = require('path')
+-const prettyBytes = require('@uppy/utils/lib/prettyBytes')
++const prettierBytes = require('@transloadit/prettier-bytes')
+ const Core = require('./index')
+ const Plugin = require('./Plugin')
+ const AcquirerPlugin1 = require('../../../../test/mocks/acquirerPlugin1')
+@@ -1553,7 +1553,7 @@ describe('src/Core', () => {
+         name: 'test.jpg',
+         data: new Blob([Buffer.alloc(2 * maxFileSize)])
+       }
+-      const errorMessage = `${core.i18n('exceedsSize')} ${prettyBytes(maxFileSize)}`
++      const errorMessage = `${core.i18n('exceedsSize')} ${prettierBytes(maxFileSize)}`
+       try {
+         core.on('restriction-failed', restrictionsViolatedEventMock)
+         core.addFile(file)
+diff --git a/packages/@uppy/dashboard/package.json b/packages/@uppy/dashboard/package.json
+index 9154e102..6df4d23a 100644
+--- a/packages/@uppy/dashboard/package.json
++++ b/packages/@uppy/dashboard/package.json
+@@ -22,6 +22,7 @@
+     "url": "git+https://github.com/transloadit/uppy.git"
+   },
+   "dependencies": {
++    "@transloadit/prettier-bytes": "0.0.7",
+     "@uppy/informer": "file:../informer",
+     "@uppy/provider-views": "file:../provider-views",
+     "@uppy/status-bar": "file:../status-bar",
+diff --git a/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js b/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js
+index a04ea556..97aed73b 100644
+--- a/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js
++++ b/packages/@uppy/dashboard/src/components/FileItem/FileInfo/index.js
+@@ -1,5 +1,5 @@
+ const { h } = require('preact')
+-const prettyBytes = require('@uppy/utils/lib/prettyBytes')
++const prettierBytes = require('@transloadit/prettier-bytes')
+ const truncateString = require('../../../utils/truncateString')
+ 
+ const renderAcquirerIcon = (acquirer, props) =>
+@@ -43,7 +43,7 @@ const renderFileName = (props) => {
+ const renderFileSize = (props) => (
+   props.file.data.size &&
+     <div class="uppy-DashboardItem-statusSize">
+-      {prettyBytes(props.file.data.size)}
++      {prettierBytes(props.file.data.size)}
+     </div>
+ )
+ 
+diff --git a/packages/@uppy/golden-retriever/package.json b/packages/@uppy/golden-retriever/package.json
+index c45b2eda..4cd11f38 100644
+--- a/packages/@uppy/golden-retriever/package.json
++++ b/packages/@uppy/golden-retriever/package.json
+@@ -23,8 +23,8 @@
+     "url": "git+https://github.com/transloadit/uppy.git"
+   },
+   "dependencies": {
+-    "@uppy/utils": "file:../utils",
+-    "prettier-bytes": "^1.0.4"
++    "@transloadit/prettier-bytes": "0.0.7",
++    "@uppy/utils": "file:../utils"
+   },
+   "peerDependencies": {
+     "@uppy/core": "^1.0.0"
+diff --git a/packages/@uppy/golden-retriever/src/IndexedDBStore.js b/packages/@uppy/golden-retriever/src/IndexedDBStore.js
+index ed1bcc3c..22f49aed 100644
+--- a/packages/@uppy/golden-retriever/src/IndexedDBStore.js
++++ b/packages/@uppy/golden-retriever/src/IndexedDBStore.js
+@@ -1,4 +1,4 @@
+-const prettyBytes = require('@uppy/utils/lib/prettyBytes')
++const prettierBytes = require('@transloadit/prettier-bytes')
+ const indexedDB = typeof window !== 'undefined' &&
+   (window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB)
+ 
+@@ -211,7 +211,7 @@ class IndexedDBStore {
+             const entry = cursor.value
+             console.log(
+               '[IndexedDBStore] Deleting record', entry.fileID,
+-              'of size', prettyBytes(entry.data.size),
++              'of size', prettierBytes(entry.data.size),
+               '- expired on', new Date(entry.expires))
+             cursor.delete() // Ignoring return value … it's not terrible if this goes wrong.
+             cursor.continue()
+diff --git a/packages/@uppy/status-bar/package.json b/packages/@uppy/status-bar/package.json
+index 37e6a14d..0ab4451e 100644
+--- a/packages/@uppy/status-bar/package.json
++++ b/packages/@uppy/status-bar/package.json
+@@ -26,6 +26,7 @@
+     "url": "git+https://github.com/transloadit/uppy.git"
+   },
+   "dependencies": {
++    "@transloadit/prettier-bytes": "0.0.7",
+     "@uppy/utils": "file:../utils",
+     "classnames": "^2.2.6",
+     "lodash.throttle": "^4.1.1",
+diff --git a/packages/@uppy/status-bar/src/StatusBar.js b/packages/@uppy/status-bar/src/StatusBar.js
+index 335a04d9..bdb37957 100644
+--- a/packages/@uppy/status-bar/src/StatusBar.js
++++ b/packages/@uppy/status-bar/src/StatusBar.js
+@@ -1,7 +1,7 @@
+ const throttle = require('lodash.throttle')
+ const classNames = require('classnames')
+ const statusBarStates = require('./StatusBarStates')
+-const prettyBytes = require('@uppy/utils/lib/prettyBytes')
++const prettierBytes = require('@transloadit/prettier-bytes')
+ const prettyETA = require('@uppy/utils/lib/prettyETA')
+ const { h } = require('preact')
+ 
+@@ -276,8 +276,8 @@ const ProgressDetails = (props) => {
+ 
+         {
+           props.i18n('dataUploadedOfTotal', {
+-            complete: prettyBytes(props.totalUploadedSize),
+-            total: prettyBytes(props.totalSize)
++            complete: prettierBytes(props.totalUploadedSize),
++            total: prettierBytes(props.totalSize)
+           })
+         }
+ 
+diff --git a/packages/@uppy/utils/src/prettyBytes.js b/packages/@uppy/utils/src/prettyBytes.js
+deleted file mode 100644
+index a6cf3bd6..00000000
+--- a/packages/@uppy/utils/src/prettyBytes.js
++++ /dev/null
+@@ -1,34 +0,0 @@
+-// Adapted from https://github.com/Flet/prettier-bytes/
+-// Changing 1000 bytes to 1024, so we can keep uppercase KB vs kB
+-// ISC License (c) Dan Flettre https://github.com/Flet/prettier-bytes/blob/master/LICENSE
+-
+-module.exports = prettierBytes
+-
+-function prettierBytes (num) {
+-  if (typeof num !== 'number' || isNaN(num)) {
+-    throw new TypeError('Expected a number, got ' + typeof num)
+-  }
+-
+-  var neg = num < 0
+-  var units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+-
+-  if (neg) {
+-    num = -num
+-  }
+-
+-  if (num < 1) {
+-    return (neg ? '-' : '') + num + ' B'
+-  }
+-
+-  var exponent = Math.min(Math.floor(Math.log(num) / Math.log(1024)), units.length - 1)
+-  num = Number(num / Math.pow(1024, exponent))
+-  var unit = units[exponent]
+-
+-  if (num >= 10 || num % 1 === 0) {
+-    // Do not show decimals when the number is two-digit, or if the number has no
+-    // decimal component.
+-    return (neg ? '-' : '') + num.toFixed(0) + ' ' + unit
+-  } else {
+-    return (neg ? '-' : '') + num.toFixed(1) + ' ' + unit
+-  }
+-}
+diff --git a/packages/@uppy/utils/src/prettyBytes.test.js b/packages/@uppy/utils/src/prettyBytes.test.js
+deleted file mode 100644
+index 87796ae5..00000000
+--- a/packages/@uppy/utils/src/prettyBytes.test.js
++++ /dev/null
+@@ -1,40 +0,0 @@
+-const prettyBytes = require('./prettyBytes')
+-
+-const testData = [
+-  [2, '2 B'],
+-  [9, '9 B'],
+-  [25, '25 B'],
+-  [235, '235 B'],
+-  [2335, '2.3 KB'],
+-  [23552, '23 KB'],
+-  [235520, '230 KB'],
+-  [2355520, '2.2 MB'],
+-  [23555520, '22 MB'],
+-  [235555520, '225 MB'],
+-  [2355555520, '2.2 GB'],
+-  [23555555520, '22 GB'],
+-  [235556555520, '219 GB'],
+-  [2355556655520, '2.1 TB'],
+-  [23555566655520, '21 TB'],
+-  [235555566665520, '214 TB']
+-]
+-
+-describe('prettyBytes', () => {
+-  it('should convert the specified number of bytes to a human-readable string like 236 MB', () => {
+-    testData.forEach(function (data) {
+-      expect(prettyBytes(data[0])).toEqual(data[1])
+-    })
+-  })
+-
+-  it('throws on non-number', () => {
+-    expect(() => {
+-      prettyBytes('this is a string')
+-    }).toThrow()
+-  })
+-
+-  it('throws on NaN', () => {
+-    expect(() => {
+-      prettyBytes(NaN)
+-    }).toThrow()
+-  })
+-})
+diff --git a/website/inject.js b/website/inject.js
+index ab09223a..3769c551 100644
+--- a/website/inject.js
++++ b/website/inject.js
+@@ -5,7 +5,7 @@ const { exec } = require('child_process')
+ const YAML = require('js-yaml')
+ const { promisify } = require('util')
+ const gzipSize = require('gzip-size')
+-const bytes = require('pretty-bytes')
++const prettierBytes = require('@transloadit/prettier-bytes')
+ const browserify = require('browserify')
+ const touch = require('touch')
+ const glob = require('glob')
+@@ -102,12 +102,12 @@ async function injectSizes (config) {
+       console.info(chalk.green(
+         // ✓ @uppy/pkgname:     10.0 kB min  / 2.0 kB gz
+         `  ✓ ${pkg}: ${' '.repeat(padTarget - pkg.length)}` +
+-        `${bytes(result.minified)} min`.padEnd(10) +
+-        ` / ${bytes(result.gzipped)} gz`
++        `${prettierBytes(result.minified)} min`.padEnd(10) +
++        ` / ${prettierBytes(result.gzipped)} gz`
+       ))
+       return Object.assign(result, {
+-        prettyMinified: bytes(result.minified),
+-        prettyGzipped: bytes(result.gzipped)
++        prettyMinified: prettierBytes(result.minified),
++        prettyGzipped: prettierBytes(result.gzipped)
+       })
+     })
+   ).then((list) => {
+diff --git a/website/src/docs/uppy.md b/website/src/docs/uppy.md
+index cb8b8a37..c105a79e 100644
+--- a/website/src/docs/uppy.md
++++ b/website/src/docs/uppy.md
+@@ -426,9 +426,9 @@ file.preview   // value that can be used to populate "src" attribute of an "img"
+ Get an array of all file objects in Uppy. See [uppy.getFile()](#uppy-getFile-fileID) for an example of the file object format.
+ 
+ ```js
+-const prettyBytes = require('pretty-bytes')
++const prettierBytes = require('@transloadit/prettier-bytes')
+ const items = uppy.getFiles().map(() =>
+-  `<li>${file.name} - ${prettyBytes(file.size)}</li>`
++  `<li>${file.name} - ${prettierBytes(file.size)}</li>`
+ ).join('')
+ document.querySelector('.file-list').innerHTML = `<ul>${items}</ul>`
+ ```

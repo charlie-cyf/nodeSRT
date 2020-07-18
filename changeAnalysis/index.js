@@ -3,6 +3,7 @@ var JsDiff = require('diff');
 const path = require('path');
 const fs = require('fs');
 const ASTgenerator = require('../ASTgenerater');
+const globalUtil = require('../util')
 
 
 // Compare AST2 to AST1 to output a list of changes' ancestors
@@ -95,7 +96,8 @@ module.exports.parseAndApplyDiff = function (codebase, diff) {
 * 
 */
 
-module.exports.getChangesAncestors = function (codeBase, diff) {
+module.exports.getChangesAncestors = function (diff) {
+    const codeBase = globalUtil.config.codeBase;
     let allChanges = this.parseAndApplyDiff(codeBase, diff);
     allChanges.forEach(change => {
         if(path.extname(change.filename) === '.js') {

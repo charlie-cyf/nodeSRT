@@ -2,6 +2,7 @@ const fs = require('fs');
 const changeAnalysis = require('./index');
 const { Parser } = require("acorn")
 const TestSelector = require("../testSelector")
+const globalUtil = require('../util');
 
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
@@ -25,13 +26,12 @@ res[0].forEach(ele => {
 })
 const diffFile = fs.readFileSync('./diff-3ebe9-803611.patch', "utf8");
 
-const changes = changeAnalysis.getChangesAncestors('../code/uppy', diffFile);
+const changes = changeAnalysis.getChangesAncestors(diffFile);
 
 // changes.forEach(c => {
 //     console.log(c.filename)
 // })
 
-const callGraph = JSON.parse(fs.readFileSync('../tmp/uppy.log.json'));
-const testSelector = new TestSelector('../code/uppy', callGraph, undefined, undefined);
-const selected = testSelector.getReducedTests(changes)
+globalUtil.setter({callGraphPath: '../tmp/uppy.log.json'})
+const selected = TestSelector.getReducedTests(changes)
 console.log(selected)

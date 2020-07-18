@@ -102,7 +102,7 @@ const StaticAnalyzor = require('./staticAnalysis');
     console.log('util codeBasse', globalUtil.config.codeBase)
     const fileDependGraph =  StaticAnalyzor.getTestDependency(globalUtil.config.codeBase, globalUtil.getCodeBasePackageJson().jest.testMatch);
     globalUtil.config.fileDependencyGraphPath = path.resolve('./tmp/fileDenpendencyGraph.json');
-    fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, fileDependGraph);
+    fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, JSON.stringify(fileDependGraph));
 
 
     console.log('finished!')
