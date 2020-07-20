@@ -41,7 +41,6 @@ describe("static analysis to get file dependencies", () => {
         globalUtil.setter({codeBase: path.resolve('../uppy')})
         const dependencyGraph = StaticAnalyzor.getTestDependency('../uppy/packages/@uppy/aws-s3', ["**/packages/**/*.test.js"])
         expect(dependencyGraph.length).toBeGreaterThan(0);
-        console.log(JSON.stringify(dependencyGraph));        
     })
     
 })

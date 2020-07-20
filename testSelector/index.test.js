@@ -2,6 +2,7 @@ const fs = require('fs');
 const globalUtil = require('../util')
 const changeAnalysis = require('../changeAnalysis')
 const TestSelector = require("../testSelector");
+const StaticAnalysis = require('../staticAnalysis')
 const { select } = require('underscore');
 
 describe('test selection on given diff file', () => {
@@ -11,6 +12,10 @@ describe('test selection on given diff file', () => {
             callGraphPath: './testSelector/sample/uppy.log.json',
             fileDependencyGraphPath: './testSelector/sample/fileDependencyGraph.json'
         })
+        // update fileDependencyGraph
+        const dependencyGraph = StaticAnalysis.getTestDependency('../uppy', globalUtil.getCodeBasePackageJson().jest.testMatch);
+        fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, JSON.stringify(dependencyGraph))
+
     })
 
     /**
@@ -21,6 +26,8 @@ describe('test selection on given diff file', () => {
         const selectedTests = TestSelector.getReducedTests(changes);
         // console.log(selectedTests);
         expect(selectedTests.length).toBeGreaterThan(10);
+        console.log(selectedTests.length)
+
     })
 })
 

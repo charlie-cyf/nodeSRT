@@ -1,4 +1,3 @@
-const { findKey, select } = require("underscore");
 const Instrumentor = require('../instrument/instrumentor')
 const path = require('path')
 const globalUtil = require('../util');
@@ -49,13 +48,13 @@ function getReducedTests(changes) {
     
         const graphVisitor = function(node, suiteName, testName, testFile) {
             if(node.testSuiteName){
-                suiteName = node.testSuiteName;
+                suiteName = unescape( node.testSuiteName );
                 node.calls.forEach(test => {
                     graphVisitor(test, suiteName, testName, testFile)
                 })
             } else if (node.testName) {
                 node.calls.forEach(ele => {                    
-                    graphVisitor(ele, suiteName, node.testName, node.fileName);
+                    graphVisitor(ele, suiteName, unescape( node.testName ), node.fileName);
                 })
             } else if (node.type && node.type === 'FUNCTIONSTART') {
                 changes.forEach(change => {
@@ -65,7 +64,7 @@ function getReducedTests(changes) {
                             // console.log("filename:", change.filename ,'ele:', ele)
                             if(ele.functionName && ele.functionName.anonymous === node.anonymous && ele.functionName.paramsNumber === node.paramsNumber && ele.functionName.functionName === node.function.split('###')[0]){
                                 // console.log('function name:', ele.functionName.functionName)
-                                if(selectedTests.filter(t => t.testFile === testFile && t.suiteName === suiteName && t.testFile === testFile).length === 0){
+                                if(selectedTests.filter(t => t.testFile === testFile && t.suiteName === suiteName && t.testName === testName).length === 0){
                                     selectedTests.push({testFile, suiteName, testName});
                                 }
                                 // mark change selected
@@ -80,19 +79,34 @@ function getReducedTests(changes) {
         const callGraph = JSON.parse(fs.readFileSync(globalUtil.config.callGraphPath));
         callGraph.forEach(node => graphVisitor(node))
 
+        const fileDependencyGraph = JSON.parse(fs.readFileSync(globalUtil.config.fileDependencyGraphPath))
         const findTestsByFile = function(file) {
-            // TODO
+            fileDependencyGraph.forEach(testfile => {
+                testfile.testSuits.forEach(suite => {
+                    if(suite.depends.includes(file)){
+                        let testName = suite.testName;
+                        if(['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(testName))
+                        {
+                            testName = undefined;
+                        }
+
+                        if(selectedTests.filter(t => t.testFile === testfile.testFileName && t.suiteName === suite.suiteName && t.testName === testName).length === 0){
+                            selectedTests.push({testFile: testfile.testFileName, suiteName:suite.testSuiteName, testName: testName});
+                        }
+                    }
+                })
+            })
         }
 
-        // TODO handle cases when changes happend outside a function.
-        // TODO handle cases when cahnges happend outside a function and class.
-        // TODO select new added tests
-        // TODO static analysis to get file dependencies on each tests.
+        //  handle cases when changes happend outside a function.
+        //  handle cases when cahnges happend outside a function and class.
+        //  TODO select new added tests
+        //  static analysis to get file dependencies on each tests.
         // 鲜衣怒马少年时 一夜看尽长安花
         changes.forEach(change => {
             change.unifiedChanges.forEach(c => {
                 if(!c.selected) {
-                    const testList = findTestsByFile(change.filname)
+                    findTestsByFile(change.filename)
                 }
             })
         })
