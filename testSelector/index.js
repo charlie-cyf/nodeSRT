@@ -80,11 +80,23 @@ function getReducedTests(changes) {
         const callGraph = JSON.parse(fs.readFileSync(globalUtil.config.callGraphPath));
         callGraph.forEach(node => graphVisitor(node))
 
+        const findTestsByFile = function(file) {
+            // TODO
+        }
+
         // TODO handle cases when changes happend outside a function.
         // TODO handle cases when cahnges happend outside a function and class.
         // TODO select new added tests
         // TODO static analysis to get file dependencies on each tests.
-                    
+        // 鲜衣怒马少年时 一夜看尽长安花
+        changes.forEach(change => {
+            change.unifiedChanges.forEach(c => {
+                if(!c.selected) {
+                    const testList = findTestsByFile(change.filname)
+                }
+            })
+        })
+        
 
         return selectedTests;
 

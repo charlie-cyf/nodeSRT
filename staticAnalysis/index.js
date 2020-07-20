@@ -60,7 +60,7 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
                     const mappedDir = packageJsonDependencies[key].replace('file:', '');
                     const fileName = dependName.replace(key, '');
                     resolved = path.join(globalUtil.config.codeBase, mappedDir, fileName);
-                    if(fs.existsSync(resolved) && !fs.lstatSync(resolved).isDirectory) {
+                    if(fs.existsSync(resolved) && !fs.lstatSync(resolved).isDirectory()) {
                         return;
                     } else if (fs.existsSync(resolved+'.js')) {
                         resolved = resolved+'.js'
@@ -68,7 +68,7 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
                         resolved = resolved+'.json'
                     } 
 
-                    if(fs.lstatSync(resolved).isDirectory) {
+                    if(fs.lstatSync(resolved).isDirectory()) {
                         if(fs.existsSync(path.join(resolved, 'index.js'))) {
                             resolved = path.join(resolved, 'index.js');
                         } else if(fs.existsSync(path.join(resolved, 'index.json'))) {
@@ -84,10 +84,27 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
             }
         })
     }
-    // console.log('resolved', resolved)
 
+    
     if(resolved === undefined || resolved.includes('/node_modules')) {
         return acc;
+    }
+    
+    if(fs.existsSync(resolved) && fs.lstatSync(resolved).isDirectory()) {
+        if(fs.existsSync(path.join(resolved, 'package.json'))) {
+            if(JSON.parse(fs.readFileSync(path.join(resolved, 'package.json'))).main){
+                resolved = path.join(resolved, JSON.parse(fs.readFileSync(path.join(resolved, 'package.json'))).main)
+            }
+        } 
+        if(fs.lstatSync(resolved).isDirectory() && fs.existsSync(path.join(resolved, 'index.js'))) {
+            resolved = path.join(resolved, 'index.js');
+        } else if(fs.existsSync(path.join(resolved, 'index.json'))) {
+            resolved = path.join(resolved, 'index.json');
+        }
+    }
+
+    if(resolved.includes('/lib/') && fs.existsSync(resolved.replace('/lib/', '/src/'))) {
+        resolved = resolved.replace('/lib/', '/src/')
     }
 
     if(!acc.includes(resolved)) {
@@ -144,6 +161,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js']) {
             }
         })
     }
+
     testsFinderRecur(globalUtil.getASTdir(dir));
 
     // console.log('dependency Graph:', dependencyGraph)   

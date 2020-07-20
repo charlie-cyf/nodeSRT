@@ -14,12 +14,17 @@ module.exports = {
         }
     },
 
-    getASTdir: function() {
+    getASTdir: function(dir = this.config.codeBase) {
+        dir = path.resolve(dir)
         if(this.config.codeBase && !this.config.ASTdir) {
-            if(this.config.ASTdir) return this.config.ASTdir;
             this.config.ASTdir = this.config.codeBase+'-AST'
         }
-        return this.config.ASTdir;
+
+        if(dir === this.config.codeBase) {
+            return this.config.ASTdir;
+        } else {
+            return dir.replace(this.config.codeBase, this.config.ASTdir);
+        }
     },
 
     /**

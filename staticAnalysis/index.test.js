@@ -22,12 +22,13 @@ describe("static analysis to get file dependencies", () => {
         expect(StaticAnalyzor.getFileDependencies('./index', './packages/@uppy/core/src/index.test.js', packages.dependencies, []).length).toBeGreaterThan(0)
     })
 
+    
     test('get dependency graph with default parameter', () => {
         globalUtil.setter({codeBase: path.resolve('../uppy')})
         const dependencyGraph = StaticAnalyzor.getTestDependency('../uppy', ["**/packages/**/*.test.js"])
         expect(dependencyGraph.length).toBeGreaterThan(0);
     })
-
+    
     test('get dependency graph', () => {
         globalUtil.setter({codeBase: path.resolve('../uppy')})
         console.log('testMatch', globalUtil.getCodeBasePackageJson().jest.testMatch)
@@ -35,4 +36,12 @@ describe("static analysis to get file dependencies", () => {
         expect(dependencyGraph.length).toBeGreaterThan(0);
         // console.log(dependencyGraph)
     })
+    
+    test('get dependency graph for packages includes package.json', () => {
+        globalUtil.setter({codeBase: path.resolve('../uppy')})
+        const dependencyGraph = StaticAnalyzor.getTestDependency('../uppy/packages/@uppy/aws-s3', ["**/packages/**/*.test.js"])
+        expect(dependencyGraph.length).toBeGreaterThan(0);
+        console.log(JSON.stringify(dependencyGraph));        
+    })
+    
 })

@@ -19,7 +19,7 @@ describe('test selection on given diff file', () => {
     test("selects affected tests", () => {
         const changes = changeAnalysis.getChangesAncestors(fs.readFileSync('./testSelector/sample/diff-3ebe9-803611.patch','utf-8'))
         const selectedTests = TestSelector.getReducedTests(changes);
-        console.log(selectedTests);
+        // console.log(selectedTests);
         expect(selectedTests.length).toBeGreaterThan(10);
     })
 })
