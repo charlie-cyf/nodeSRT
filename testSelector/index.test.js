@@ -26,6 +26,7 @@ describe('test selection on given diff file', () => {
         const selectedTests = TestSelector.getReducedTests(changes);
         // console.log(selectedTests);
         expect(selectedTests.length).toBeGreaterThan(10);
+        expect(selectedTests.length).toBeLessThan(200);
         console.log(selectedTests.length)
 
     })

@@ -1,7 +1,8 @@
 const Instrumentor = require('../instrument/instrumentor')
 const path = require('path')
 const globalUtil = require('../util');
-const fs = require('fs')
+const fs = require('fs');
+const { default: t } = require('typy');
 
 
 module.exports = {
@@ -100,7 +101,7 @@ function getReducedTests(changes) {
 
         //  handle cases when changes happend outside a function.
         //  handle cases when cahnges happend outside a function and class.
-        //  TODO select new added tests
+        //  select new added tests
         //  static analysis to get file dependencies on each tests.
         // 鲜衣怒马少年时 一夜看尽长安花
         changes.forEach(change => {
@@ -109,6 +110,37 @@ function getReducedTests(changes) {
                     findTestsByFile(change.filename)
                 }
             })
+            if(change.filename.endsWith('.test.js')) {
+                change.diffAncestors.map(ancestors => {
+                    let iter = ancestors.length - 1;
+                    let testName;
+                    let suiteName;
+                    while (iter >= 0) {
+                        if(ancestors[iter].type === "CallExpression") {
+                            if(!testName) {
+                                if(t(ancestors[iter], 'expression.callee.name').safeObject === 'it') {
+                                    testName = t(ancestors[iter], "expression.arguments[0].value").safeObject
+                                } else if (['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(t(ancestors[iter], 'expression.callee.name')).safeObject) {
+                                    testName = t(ancestors[iter], 'expression.callee.name').safeObject;
+                                }
+                            }
+
+                            if(!suiteName && t(ancestors[iter], 'expression.callee.name').safeObject === 'describe') {
+                                suiteName = t(ancestors[iter], 'expression.arguments[0].value').safeObject
+                            }
+                        }
+
+                        if(testName && suiteName) {
+                            break;
+                        }
+
+                        iter--;
+                    }
+                    if(selectedTests.filter(t => t.testFile === change.filename && t.suiteName === suiteName && t.testName === testName).length === 0){
+                        selectedTests.push({testFile: change.filename, suiteName, testName});
+                    }
+                })
+            }
         })
         
 
