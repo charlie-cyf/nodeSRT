@@ -116,9 +116,11 @@ function getReducedTests(changes) {
                     let testName;
                     let suiteName;
                     while (iter >= 0) {
+                        console.log('type', ancestors[iter].type)
                         if(ancestors[iter].type === "CallExpression") {
                             if(!testName) {
                                 if(t(ancestors[iter], 'expression.callee.name').safeObject === 'it') {
+                                    console.log('gets to it')
                                     testName = t(ancestors[iter], "expression.arguments[0].value").safeObject
                                 } else if (['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(t(ancestors[iter], 'expression.callee.name')).safeObject) {
                                     testName = t(ancestors[iter], 'expression.callee.name').safeObject;
@@ -126,6 +128,7 @@ function getReducedTests(changes) {
                             }
 
                             if(!suiteName && t(ancestors[iter], 'expression.callee.name').safeObject === 'describe') {
+                                console.log('gets to describe')
                                 suiteName = t(ancestors[iter], 'expression.arguments[0].value').safeObject
                             }
                         }
@@ -136,7 +139,7 @@ function getReducedTests(changes) {
 
                         iter--;
                     }
-                    if(selectedTests.filter(t => t.testFile === change.filename && t.suiteName === suiteName && t.testName === testName).length === 0){
+                    if(suiteName && selectedTests.filter(t => t.testFile === change.filename && t.suiteName === suiteName && t.testName === testName).length === 0){
                         selectedTests.push({testFile: change.filename, suiteName, testName});
                     }
                 })

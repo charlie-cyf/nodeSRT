@@ -19,7 +19,7 @@ describe('test selection on given diff file', () => {
     })
 
     /**
-     * precondition: revert uppy to 3ebe9a91beda60209db34247e680d8ffb1347dbd
+     * ! precondition: revert uppy to 3ebe9a91beda60209db34247e680d8ffb1347dbd
      */
     test("selects affected tests", () => {
         const changes = changeAnalysis.getChangesAncestors(fs.readFileSync('./testSelector/sample/diff-3ebe9-803611.patch','utf-8'))
@@ -28,6 +28,15 @@ describe('test selection on given diff file', () => {
         expect(selectedTests.length).toBeGreaterThan(10);
         expect(selectedTests.length).toBeLessThan(200);
         console.log(selectedTests.length)
+
+    })
+
+    test("selects changed/added tests", () => {
+        const changes = changeAnalysis.getChangesAncestors(fs.readFileSync('./testSelector/sample/changingTests.patch','utf-8'))
+        fs.writeFileSync('./changes.json', JSON.stringify(changes))
+        const selectedTests = TestSelector.getReducedTests(changes);
+        expect(selectedTests.length).toBe(3)
+        console.log(selectedTests)
 
     })
 })
