@@ -104,7 +104,7 @@ const StaticAnalyzor = require('./staticAnalysis');
     globalUtil.config.fileDependencyGraphPath = path.resolve('./tmp/fileDenpendencyGraph.json');
     fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, JSON.stringify(fileDependGraph));
 
-
+    // TODO run selected Tests, cli command $ jest -t "src/Core should expose a class|plugins should add a plugin to the plugin stack"
     console.log('finished!')
 })()
 
