@@ -1,0 +1,31 @@
+diff --git a/packages/@uppy/core/src/index.test.js b/packages/@uppy/core/src/index.test.js
+index 14afe08c..d7aaae5d 100644
+--- a/packages/@uppy/core/src/index.test.js
++++ b/packages/@uppy/core/src/index.test.js
+@@ -28,6 +28,11 @@ describe('src/Core', () => {
+     global.URL.createObjectURL = RealCreateObjectUrl
+   })
+ 
++	it('newly added test;', () => {
++		// this is a newly added test
++		//
++	})
++
+   it('should expose a class', () => {
+     const core = Core()
+     expect(core.constructor.name).toEqual('Uppy')
+@@ -203,9 +208,13 @@ describe('src/Core', () => {
+       const core = new Core()
+ 
+       core.setState({ foo: 'bar' })
+-
++	core.setState({foo:'bar'})
+       expect(core.getState()).toMatchObject({ foo: 'bar' })
+     })
++
++    it('test added a new test', () => {
++	        // added a new test
++    })
+   })
+ 
+   it('should reset when the reset method is called', () => {
