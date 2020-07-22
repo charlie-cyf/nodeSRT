@@ -27,7 +27,7 @@ describe('test selection on given diff file', () => {
         // console.log(selectedTests);
         expect(selectedTests.length).toBeGreaterThan(10);
         expect(selectedTests.length).toBeLessThan(200);
-        console.log(selectedTests.length)
+        console.log(selectedTests.length) // TODO check if 43 is correct
 
     })
 

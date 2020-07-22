@@ -37,7 +37,8 @@ module.exports.getDiffs = function (AST1, AST2) {
                        // console.log('set true in 1', node1.type)
                         diffList.push(tancestors);
                     } else {
-                        for(let i = 0; i<node1[k].length; i++){
+                        let i;
+                        for(i = 0; i<node1[k].length; i++){
                             getDiffAncestors(node1[k][i], node2[k][i], tancestors);
                         }
                     }
@@ -68,36 +69,55 @@ function objDeepEquals(obj1, obj2) {
     if(_.isEqual(obj1, obj2)) return true;
     if(obj1.type !== obj2.type) return false;
 
-    const temp1 = Object.keys(obj1).filter(k => !['start', 'end', 'comments', 'line', 'column'].includes(k))
-    const temp2 = Object.keys(obj1).filter(k => !['start', 'end', 'comments', 'line', 'column'].includes(k))
-
+    const temp1 = Object.keys(obj1).filter(k => !['start', 'end', 'loc', 'comments', 'line', 'column'].includes(k))
+    const temp2 = Object.keys(obj1).filter(k => !['start', 'end', 'loc', 'comments', 'line', 'column'].includes(k))
+    // console.log('temp1', temp1)
+    // console.log('temp2', temp2)
     if(temp1.length !== temp2.length) return false;
-
-    for(let i =0; i<temp1.length; i++) {
+    let i;
+    for( i =0; i<temp1.length; i++) {
         if(!temp2.includes(temp1[i])) return false;
     }
 
-    temp1.map(k => {
+
+    let k;
+    for(k of temp1) {
         if(!(['start', 'end', 'comments', 'line', 'column'].includes(k))) {
-            if(!(k in obj2)) return false;
+            if(!(k in obj2)) {
+                return false;
+            }
             if(typeof obj1[k] === 'object') {
                 if(Array.isArray(obj1[k])) {
-                    if(obj1[k].length !== obj2[k].length) return false;
-                    for(let i = 0; i<obj1[k].length; i++) {
-                        if(!objDeepEquals(obj1[k][i], obj2[k][i])) return false;
+                    if(obj1[k].length !== obj2[k].length) {
+                        return false;
+                    }
+                    let lengthNum = obj1[k].length;
+                    let j;
+                    for(j = 0; j < lengthNum; j++) {
+                        if(!objDeepEquals(obj1[k][j], obj2[k][j])) {
+                            return false;
+                        }
                     }
                 } else {
-                    if(!objDeepEquals(obj1[k], obj2[k])) return false;
+                    if(!objDeepEquals(obj1[k], obj2[k]))  {
+                        return false;
+                    }
                 }
             } else {
-                if(obj1[k] !== obj2[k]) return false;
+                if(obj1[k] !== obj2[k])  {
+                    return false;
+                }
             }
 
         }
-    })
+    }
 
     return true
 }
+
+module.exports.objDeepEquals = function(obj1, obj2) {
+    return objDeepEquals(obj1, obj2)
+} 
 
 // static change analysis on tests
 function getTestChangeAncestors(AST1, AST2) {
@@ -107,24 +127,88 @@ function getTestChangeAncestors(AST1, AST2) {
     const diffIDs = [];
 
     const testDiffRecur = function(node1, node2, ancestors) {
-        if(objDeepEquals(node1, node2)) return;
         let tancestors = Array.from(ancestors)
-        tancestors.push(node2);
-        if(t(node1, "callee.name").safeObject === 'describe' && t(node1, "callee.name").safeObject === 'describe') {
-            node2.arguments[1].body.body.forEach(exp => {
-                // assume no more variable declare and assignments in describe
-                if(exp.expression.type === 'CallExpression') {
-                    if(exp.expression.callee.name === 'describe') {
-                        // TODO
-                    } else if (exp.expression.callee.name === 'it') {
-
-                    } else if (exp.expression.callee.name === 'test') {
-
-                    } else if (['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(exp.expression.callee.name) ) {
-
-                    } 
+        if(objDeepEquals(node1, node2)) {
+            acornWalk.ancestor(node2, {
+                Identifier(identifier, idAnces) {
+                    if(diffIDs.includes(identifier.name)) {
+                        tancestors = tancestors.concat(idAnces)
+                        resArr.push(tancestors);
+                    }
                 }
             })
+            return;
+        };
+        tancestors.push(node2);
+        if(t(node1, "callee.name").safeObject === 'describe' && t(node1, "callee.name").safeObject === 'describe') {
+            let exp;
+            for(exp of node2.arguments[1].body.body) {
+                if(exp.type !== 'ExpressionStatement') {
+                    const tempList = node1.arguments[1].body.body.filter(e => objDeepEquals(exp, e))
+                    if(tempList.length === 0) {
+                        resArr.push(tancestors)
+                    }
+                } else if(exp.expression.type === 'CallExpression') {
+                    if(exp.expression.callee.name !== 'describe') {
+                        const flag = false;
+                        acornWalk.ancestor(exp, {
+                            Identifier(identifier, idAnces) {
+                                if(diffIDs.includes(identifier.name)) {
+                                    tancestors = tancestors.concat(idAnces)
+                                    resArr.push(tancestors);
+                                    flag = true
+                                }
+                            }
+                        })
+                        if(flag) continue;
+                    }
+                    if (['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(exp.expression.callee.name) ) {
+                        const exp1 = node1.arguments[1].body.body.filter(ele => {
+                           return ele.type === exp.type && ele.expression.callee.name === exp.expression.callee.name;
+                        })
+                        if(exp1.length > 0) {
+                            if(!objDeepEquals(exp1[0].expression, exp.expression)) {
+                                let atancestors = Array.from(tancestors)
+                                atancestors.push(exp.expression)
+                                resArr.push(atancestors);
+                            } 
+                        } else {
+                            let atancestors = Array.from(tancestors)
+                            atancestors.push(exp.expression)
+                            resArr.push(atancestors);
+                        }
+                    } else {
+                        const exp1 = node1.arguments[1].body.body.filter(ele => {
+                           return ele.type === exp.type && ele.expression.callee.name === exp.expression.callee.name 
+                            && ele.expression.arguments[0].value === exp.expression.arguments[0].value;
+                        })
+
+                        if(exp1.length === 0) {
+                            let atancestors = Array.from(tancestors)
+                            atancestors.push(exp.expression)
+                            resArr.push(atancestors);
+                        } else {
+                            if(exp.expression.callee.name === 'describe') {
+                                testDiffRecur(exp1[0].expression, exp.expression, tancestors)                                
+                            } else if (exp.expression.callee.name === 'it') {
+                                if(!objDeepEquals(exp1[0].expression, exp.expression)) {
+                                    let atancestors = Array.from(tancestors)
+                                    atancestors.push(exp.expression)
+                                    resArr.push(atancestors);
+                                } 
+                            } else if (exp.expression.callee.name === 'test') {
+                                if(!objDeepEquals(exp1[0].expression, exp.expression)) {
+                                    let atancestors = Array.from(tancestors)
+                                    atancestors.push(exp.expression)
+                                    resArr.push(atancestors);
+                                } 
+                            } 
+
+                        }
+
+                    }
+                }
+            }
         } else {
             new Error('comparing obj are not describe object', node1, node2)
         }
@@ -155,10 +239,10 @@ function getTestChangeAncestors(AST1, AST2) {
                     }
                 }
             } else if(node.type === 'ExpressionStatement') {
-                if(node.expression === 'CallExpression' && node.expression.callee.name === 'describe') {
+                if(node.expression.type === 'CallExpression' && node.expression.callee.name === 'describe') {
                     // find test suite in AST1
                     const node1 = AST1.body.filter(ele => {
-                        ele.type === 'ExpressionStatement' && ele.expression === 'CallExpression' 
+                        return ele.type === 'ExpressionStatement' && ele.expression.type === 'CallExpression' 
                         && ele.expression.callee.name === 'describe' 
                         && ele.expression.arguments[0].value === node.expression.arguments[0].value
                     })
@@ -170,13 +254,13 @@ function getTestChangeAncestors(AST1, AST2) {
                 } else {
                     const idx = AST2.body.findIndex(n => _.isEqual(n, node))
                     if(!objDeepEquals(AST1.body[idx], AST2.body[idx])) {
-                        resArr.push(AST2);
+                        resArr.push([AST2]);
                     }
                 }
             } else {
                 const idx = AST2.body.findIndex(n => _.isEqual(n, node))
                 if(!objDeepEquals(AST1.body[idx], AST2.body[idx])) {
-                    resArr.push(AST2);
+                    resArr.push([AST2]);
                 }
             }
         })
