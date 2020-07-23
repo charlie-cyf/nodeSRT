@@ -4,12 +4,13 @@ const bodyParser = require("body-parser");
 const path = require('path')
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") })
 const app = express()
+const cors = require('cors')
 const port = 8888
 let log_path;
 
 app.use(bodyParser.json({limit: '50mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
-
+app.use(cors())
 
 /*
   * instrument server side logger

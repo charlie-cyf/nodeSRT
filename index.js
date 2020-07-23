@@ -10,12 +10,15 @@ const SRTlibPath = './instrument/SRTlib.js'
 const InstrumentorSrc = './instrument/'
 const child_process = require('child_process');
 const excepts = [
-    './code/uppy/packages/@uppy/companion/src/server/Uploader.js',
-    './code/uppy/packages/@uppy/companion/src/server/helpers/jwt.js',
-    './code/uppy/packages/@uppy/companion/src/standalone/index.js',
-    './code/uppy/test/endtoend/utils.js',
-    './code/uppy/test/endtoend/wdio.local.conf.js',
-    './code/uppy/test/endtoend/wdio.base.conf.js',
+    '../uppy/packages/@uppy/companion/src/server/helpers/jwt.js',
+    '../uppy/packages/@uppy/companion/src/server/helpers/request.js',
+    '../uppy/packages/@uppy/companion/src/server/jobs.js',
+    '../uppy/packages/@uppy/companion/src/server/logger.js',
+    '../uppy/packages/@uppy/companion/src/standalone/index.js',
+    '../uppy/packages/@uppy/companion/src/standalone/start-server.js',
+    '../uppy/packages/@uppy/companion/src/standalone/helper.js',
+    '../uppy/test/endtoend/wdio.local.conf.js',
+    '../uppy/test/endtoend/wdio.base.conf.js',
 ];
 const globalUtil = require('./util');
 const StaticAnalyzor = require('./staticAnalysis');

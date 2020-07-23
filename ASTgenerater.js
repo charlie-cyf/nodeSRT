@@ -21,8 +21,7 @@ function generaterHelper(path, ASTpath, excepts) {
             try {
                 let content = fs.readFileSync(path + '/' + file);
 
-
-                if (excepts.filter(ele => { return Path.resolve(path + '/' + file) === Path.resolve(ele) }).length <= 0) {
+                if (!excepts.includes(Path.resolve(path, file))) {
 
                     let tree = parseHelper(content)
 
@@ -67,6 +66,9 @@ module.exports = class ASTgenerater {
         if (path.endsWith('/')) {
             path = path.substring(0, path.length - 1)
         }
+        // let excepts2 = []
+        excepts.forEach((p, index) =>  excepts[index] = Path.resolve(process.cwd(), p) );
+
         const filename = path.split("/").pop();
         const ASTpath = path + "/../" + filename + "-AST"
         if (!fs.existsSync(ASTpath))
