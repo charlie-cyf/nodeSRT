@@ -24,7 +24,7 @@ app.post('/instrument-message', (req, res) => {
   // console.log("POST", req.body)
   let logStream;
   try {
-    log_path = path.join(process.env.SRT_PATH, "tmp", req.body.fileName);
+    log_path = path.join(process.cwd(), "tmp", req.body.fileName);
     logStream = fs.createWriteStream(log_path, { flags: "a" });
     logStream.write(req.body.msg);
     logStream.end();
@@ -39,6 +39,37 @@ app.get('/log-path', (req, res) => {
   res.json({
     path: log_path
   })
+})
+
+let e2e_log_path;
+
+/**
+ * req.body:
+ *  @param start {boolean}: the end-to-end log recording started, set to false when record ends
+ *  @param name {String}: the name of current running test suite
+ */
+app.post('/set-e2e-name', (req, res) => {
+  if(req.body.start) {
+    e2e_log_path = path.join(process.cwd(), 'tmp', 'e2e', req.body.name+'.json')
+  } else {
+    e2e_log_path = undefined;
+  }
+  res.send({logPath: e2e_log_path});
+})
+
+app.post('/e2e-message', (req, res) => {
+  if(e2e_log_path) {
+    try {
+      logStream = fs.createWriteStream(e2e_log_path, { flags: "a" });
+      logStream.write(req.body.msg);
+      logStream.end();
+      res.send('ok');
+    } catch (err) {
+      res.status(500).send({ error: err })
+    } 
+  } else {
+    res.send('ok');
+  }
 })
 
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`))
