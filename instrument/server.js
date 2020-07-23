@@ -59,6 +59,7 @@ app.post('/set-e2e-name', (req, res) => {
 
 app.post('/e2e-message', (req, res) => {
   if(e2e_log_path) {
+    let logStream; // TODO might have problem
     try {
       logStream = fs.createWriteStream(e2e_log_path, { flags: "a" });
       logStream.write(req.body.msg);

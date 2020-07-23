@@ -40,6 +40,7 @@ const StaticAnalyzor = require('./staticAnalysis');
     fs.writeFileSync("./.env", envfile.stringify(parsedEnv))
     require("dotenv").config()
 
+    globalUtil.setter({ReactFile: ['**/test/endtoend/create-react-app/src/*.js']})
 
     // generate AST for codebase
     generate(codeBase, excepts)

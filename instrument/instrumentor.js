@@ -10,6 +10,8 @@ const { t } = require('typy')
 var _ = require('underscore');
 const { para } = require('acorn-jsx/xhtml')
 const { extend } = require('acorn-jsx-walk')
+const multimatch = require('multimatch');
+const globalUtil = require('../util')
 
 acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
@@ -52,7 +54,11 @@ module.exports = class Instrumentor {
                 const iFileName = fullPath.replace(this.astPath, '').replace('.json', '');
 
                 //add require to the top
-                tree.body.unshift(ASTParser.parse("const SRTlib = require('SRT-util');"));
+                if(multimatch(iFileName, globalUtil.config.ReactFile).length > 0) {
+                    tree.body.unshift(ASTParser.parse("import SRTlib from 'SRT-util';")); // ! acorn error, await fixing!
+                } else {
+                    tree.body.unshift(ASTParser.parse("const SRTlib = require('SRT-util');"));
+                }
 
                 const getSuiteName = this.getSuiteName;
                 const codebase = this.codebaseName

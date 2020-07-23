@@ -43,7 +43,7 @@ module.exports = {
 
     getInjectedDir: function() {
         if(!this.config.injectedDir) {
-            this.config.injectedDir += '-injected'
+            this.config.injectedDir = this.config.codeBase + '-injected'
         }
         return this.config.injectedDir;
     },
