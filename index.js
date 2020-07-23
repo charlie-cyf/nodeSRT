@@ -81,6 +81,7 @@ const StaticAnalyzor = require('./staticAnalysis');
     child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm install', { stdio: [0, 1, 2] });
 
     // copy SRTlib.js to injected node_modules
+    // ! use package.json dependency "file:"
     const SRTUtilFolder = path.join(injectedCodebase, 'node_modules', 'SRT-util');
     if (!fs.existsSync(SRTUtilFolder)) {
         fs.mkdirSync(SRTUtilFolder);
