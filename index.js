@@ -72,22 +72,23 @@ const StaticAnalyzor = require('./staticAnalysis');
     console.log('injection complete!')
     // update package.json jest configuration
     const injectedPackageJson = JSON.parse(fs.readFileSync(path.join(injectedCodebase, 'package.json')));
-    injectedPackageJson.jest.setupFilesAfterEnv = ["./jest.setup.js"]
+    injectedPackageJson.jest.setupFilesAfterEnv = ["./jest.setup.js"];
+    injectedPackageJson.dependencies["SRTutil"] = 'file:SRTutil';
     fs.writeFileSync(injectedCodebase + '/package.json', JSON.stringify(injectedPackageJson));
 
     fs.copyFileSync(path.join(InstrumentorSrc, 'jest.setup.js'), path.join(injectedCodebase, 'jest.setup.js'))
-
-    // run npm install in injected folder
-    child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm install', { stdio: [0, 1, 2] });
-
+    fs.copyFileSync(path.join(InstrumentorSrc, 'SRTpackage.json'), path.join(injectedCodebase, "SRTutil", 'package.json'))
+    
     // copy SRTlib.js to injected node_modules
     // ! use package.json dependency "file:"
-    const SRTUtilFolder = path.join(injectedCodebase, 'node_modules', 'SRT-util');
+    const SRTUtilFolder = path.join(injectedCodebase, 'SRTutil');
     if (!fs.existsSync(SRTUtilFolder)) {
         fs.mkdirSync(SRTUtilFolder);
     }
     fs.copyFileSync(SRTlibPath, path.join(SRTUtilFolder, 'index.js'))
-
+    
+    // run npm install in injected folder
+    child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm install', { stdio: [0, 1, 2] });
 
     // run tests in injected codebase
     child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm run test:unit', { stdio: [0, 1, 2] })

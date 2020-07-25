@@ -3,8 +3,10 @@ const acornWalk = require('acorn-walk')
 const path = require('path')
 const { Parser } = require("acorn")
 const astring = require('astring');
+const {parse} = require('../ASTgenerater')
 
 const {JsxGenerator} = require("./astringJsx");
+
 
 const { t } = require('typy')
 var _ = require('underscore');
@@ -55,9 +57,9 @@ module.exports = class Instrumentor {
 
                 //add require to the top
                 if(multimatch(iFileName, globalUtil.config.ReactFile).length > 0) {
-                    tree.body.unshift(ASTParser.parse("import SRTlib from 'SRT-util';")); // ! acorn error, await fixing!
+                    tree.body.unshift(parse("import SRTlib from 'SRTutil';")); // ! acorn error, await fixing!
                 } else {
-                    tree.body.unshift(ASTParser.parse("const SRTlib = require('SRT-util');"));
+                    tree.body.unshift(ASTParser.parse("const SRTlib = require('SRTutil');"));
                 }
 
                 const getSuiteName = this.getSuiteName;
