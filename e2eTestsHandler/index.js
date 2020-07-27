@@ -39,24 +39,28 @@ async function collectDependency(suites = suites) {
         await sleep(10);
     }
 
-    for(suite of suites) {
-        // set dependency graph name
-        await axios.post('http://localhost:8888/set-e2e-name', {
-            start: true,
-            name: suite
-        })
-        // run e2e test
-        const runInstruction = globalUtil.config.runE2EInstr.replace('${suitename}', suite);
-        child_process.execSync(`cd ${globalUtil.getInjectedDir()} && ${runInstruction}`);
-
-
-        await axios.post('http://localhost:8888/set-e2e-name', {start: false})
-
+    try {
+        for(suite of suites) {
+            // set dependency graph name
+            await axios.post('http://localhost:8888/set-e2e-name', {
+                start: true,
+                name: suite
+            })
+            // run e2e test
+            const runInstruction = globalUtil.config.runE2EInstr.replace('${suitename}', suite);
+            child_process.execSync(`cd ${globalUtil.getInjectedDir()} && pwd &&${runInstruction}`);   
+    
+            await axios.post('http://localhost:8888/set-e2e-name', {start: false})
+    
+        }        
+    } catch (error) {
+        throw error;
+    } finally {
+        if(globalUtil.config.E2EpostrunInstr) {
+            child_process.execSync(globalUtil.config.E2EpostrunInstr, { stdio: [0, 1, 2] })
+        }
     }
     
-    if(globalUtil.config.E2EpostrunInstr) {
-        child_process.execSync(globalUtil.config.E2EpostrunInstr, { stdio: [0, 1, 2] })
-    }
 }
 
 function sleep(s) {

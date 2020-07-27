@@ -1,5 +1,5 @@
 const express = require('express')
-const fs = require('fs')
+const fs = require('graceful-fs')
 const bodyParser = require("body-parser");
 const path = require('path')
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") })
