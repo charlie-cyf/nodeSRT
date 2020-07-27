@@ -45,7 +45,7 @@ describe('e2e test handler', () => {
             E2EpostrunInstr: 'pkill -9 java',
             runE2EInstr: 'npm run test:endtoend:local -- -b chrome --suite ${suitename}'
         })
-        await e2eHandler.collectDependency(suite)
+        await e2eHandler.collectDependency(['create-react-app'])
     })
 
 

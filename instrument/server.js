@@ -49,6 +49,7 @@ let e2e_log_path;
  *  @param name {String}: the name of current running test suite
  */
 app.post('/set-e2e-name', (req, res) => {
+  console.log('get post set e2e name')
   if(req.body.start) {
     e2e_log_path = path.join(process.cwd(), 'tmp', 'e2e', req.body.name+'.json')
   } else {
@@ -59,11 +60,8 @@ app.post('/set-e2e-name', (req, res) => {
 
 app.post('/e2e-message', (req, res) => {
   if(e2e_log_path) {
-    let logStream; // TODO might have problem
     try {
-      logStream = fs.createWriteStream(e2e_log_path, { flags: "a" });
-      logStream.write(req.body.msg);
-      logStream.end();
+      fs.appendFileSync(e2e_log_path, req.body.msg)
       res.send('ok');
     } catch (err) {
       res.status(500).send({ error: err })

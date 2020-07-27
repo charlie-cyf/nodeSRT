@@ -35,20 +35,28 @@ function getTestSuite(config) {
 async function collectDependency(suites = suites) {
     // run e2e pre run step
     if(globalUtil.config.E2EprerunInstr) {
-        child_process.execSync(globalUtil.config.E2EprerunInstr, { stdio: [0, 1, 2] })
-        await sleep(10);
+        // child_process.execSync(globalUtil.config.E2EprerunInstr, { stdio: [0, 1, 2] })
+        console.log('after pre e2e pre run Instr')
     }
 
     try {
         for(suite of suites) {
+            console.log('suite', suite)
+
             // set dependency graph name
             await axios.post('http://localhost:8888/set-e2e-name', {
                 start: true,
                 name: suite
+            }).then(res => {
+                if(res >= 400) {
+                    throw Error('set e2e name failed! ', res)
+                }
             })
+
+            console.log('after post request')
             // run e2e test
             const runInstruction = globalUtil.config.runE2EInstr.replace('${suitename}', suite);
-            child_process.execSync(`cd ${globalUtil.getInjectedDir()} && pwd &&${runInstruction}`);   
+            child_process.execSync(`cd ${globalUtil.getInjectedDir()} && pwd && ${runInstruction}`);   
     
             await axios.post('http://localhost:8888/set-e2e-name', {start: false})
     
