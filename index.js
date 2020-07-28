@@ -14,6 +14,7 @@ const excepts = [
     '../uppy/packages/@uppy/companion/src/server/helpers/request.js',
     '../uppy/packages/@uppy/companion/src/server/jobs.js',
     '../uppy/packages/@uppy/companion/src/server/logger.js',
+    '../uppy/packages/@uppy/companion/src/companion.js',
     '../uppy/packages/@uppy/companion/src/standalone/index.js',
     '../uppy/packages/@uppy/companion/src/standalone/start-server.js',
     '../uppy/packages/@uppy/companion/src/standalone/helper.js',
@@ -77,7 +78,6 @@ const StaticAnalyzor = require('./staticAnalysis');
     fs.writeFileSync(injectedCodebase + '/package.json', JSON.stringify(injectedPackageJson));
 
     fs.copyFileSync(path.join(InstrumentorSrc, 'jest.setup.js'), path.join(injectedCodebase, 'jest.setup.js'))
-    fs.copyFileSync(path.join(InstrumentorSrc, 'SRTpackage.json'), path.join(injectedCodebase, "SRTutil", 'package.json'))
     
     // copy SRTlib.js to injected node_modules
     // ! use package.json dependency "file:"
@@ -85,6 +85,7 @@ const StaticAnalyzor = require('./staticAnalysis');
     if (!fs.existsSync(SRTUtilFolder)) {
         fs.mkdirSync(SRTUtilFolder);
     }
+    fs.copyFileSync(path.join(InstrumentorSrc, 'SRTpackage.json'), path.join(injectedCodebase, "SRTutil", 'package.json'))
     fs.copyFileSync(SRTlibPath, path.join(SRTUtilFolder, 'index.js'))
     
     // run npm install in injected folder

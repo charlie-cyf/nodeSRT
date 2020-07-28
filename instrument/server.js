@@ -52,6 +52,11 @@ app.post('/set-e2e-name', (req, res) => {
   console.log('get post set e2e name')
   if(req.body.start) {
     e2e_log_path = path.join(process.cwd(), 'tmp', 'e2e', req.body.name+'.json')
+    console.log(req.body.name)
+    console.log(e2e_log_path)
+    if(!fs.existsSync(e2e_log_path)) {
+      fs.openSync(e2e_log_path, 'w')
+    }
   } else {
     e2e_log_path = undefined;
   }
@@ -61,9 +66,11 @@ app.post('/set-e2e-name', (req, res) => {
 app.post('/e2e-message', (req, res) => {
   if(e2e_log_path) {
     try {
-      fs.appendFileSync(e2e_log_path, req.body.msg)
+      if(req.body.msg) 
+        fs.appendFileSync(e2e_log_path, req.body.msg)
       res.send('ok');
     } catch (err) {
+      console.log('err', err)
       res.status(500).send({ error: err })
     } 
   } else {

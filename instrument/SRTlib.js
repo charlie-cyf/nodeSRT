@@ -21,7 +21,7 @@ module.exports = class SRTlib {
         } else {
             console.warn('received message when SRTlib logger not started!', msg)
             axios.post('http://localhost:8888/e2e-message', {
-                meg: msg
+                msg: msg
             }).then(res => {
                 if (res.status >= 400) 
                     new Error ('e2e message send failed!', res.error)
