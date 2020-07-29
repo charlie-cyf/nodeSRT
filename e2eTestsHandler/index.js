@@ -40,6 +40,11 @@ async function collectDependency(suites = suites) {
         console.log('after pre e2e pre run Instr')
     }
 
+    if(globalUtil.config.buildE2EInstr) {
+        child_process.execSync(`cd ${globalUtil.getInjectedDir()} && ${globalUtil.config.buildE2EInstr}`, { stdio: [0, 1, 2] })
+        await sleep(9);
+    }
+
     try {
         for(suite of suites) {
             console.log('suite', suite)
@@ -49,7 +54,7 @@ async function collectDependency(suites = suites) {
                 start: true,
                 name: suite
             }).then(res => {
-                if(res >= 400) {
+                if(res.status >= 400) {
                     throw Error('set e2e name failed! ', res)
                 }
             })

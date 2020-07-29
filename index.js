@@ -18,6 +18,7 @@ const excepts = [
     '../uppy/packages/@uppy/companion/src/standalone/index.js',
     '../uppy/packages/@uppy/companion/src/standalone/start-server.js',
     '../uppy/packages/@uppy/companion/src/standalone/helper.js',
+    '../uppy/test/endtoend/util.js',
     '../uppy/test/endtoend/wdio.local.conf.js',
     '../uppy/test/endtoend/wdio.base.conf.js',
 ];

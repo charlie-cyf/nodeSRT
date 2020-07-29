@@ -24,9 +24,9 @@ module.exports = class SRTlib {
                 msg: msg
             }).then(res => {
                 if (res.status >= 400) 
-                    new Error ('e2e message send failed!', res.error)
+                    console.warn('e2e message send failed!', res.error)
             }).catch(err => {
-                new Error('e2e message send failed!', err)
+                console.warn('e2e message send failed!', err)
             })
         }
     }
