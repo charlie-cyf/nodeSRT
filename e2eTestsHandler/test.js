@@ -3,14 +3,14 @@ const globalUtil = require('../util');
 
 const suite = [
     'chaos-monkey',
-    // 'create-react-app',
-    // 'i18n-drag-drop',
-    // 'thumbnails',
-    // 'transloadit',
-    // 'tus-drag-drop',
-    // 'typescript',
-    // 'url-plugin',
-    // 'xhr-limit'
+    'create-react-app',
+    'i18n-drag-drop',
+    'thumbnails',
+    'transloadit',
+    'tus-drag-drop',
+    'typescript',
+    'url-plugin',
+    'xhr-limit'
   ];
 
 (async function(){

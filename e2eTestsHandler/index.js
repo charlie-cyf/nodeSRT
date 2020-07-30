@@ -3,6 +3,7 @@ const fs = require('fs');
 const globalUtil = require('../util')
 const glob = require('glob').sync
 const child_process = require('child_process');
+const testSelector = require('../testSelector');
 const axios = require('axios')
 const suites = [];
 
@@ -17,7 +18,8 @@ module.exports = {
     },
 
     getTestSuite,
-    collectDependency
+    collectDependency,
+    selectE2ETests
 }
 
 function getTestSuite(config) {
@@ -32,6 +34,11 @@ function getTestSuite(config) {
     return suites;
 }
 
+/**
+ * 
+ * @param {Array} suites 
+ * @returns {String} path to dependency graph dir
+ */
 async function collectDependency(suites = suites) {
     // run e2e pre run step
     if(globalUtil.config.E2EprerunInstr) {
@@ -74,7 +81,53 @@ async function collectDependency(suites = suites) {
             child_process.execSync(globalUtil.config.E2EpostrunInstr, { stdio: [0, 1, 2] })
         }
     }
-    
+
+    // post selection steps: get e2e dependency dir
+    let e2eDir;
+    await axios.post('http://localhost:8888/e2e-process-result').then(res => {
+        if(res.status === 200) {
+            e2eDir = res.data.dir;
+        }
+    })
+    return e2eDir;
+
+}
+
+/**
+ * 
+ * @param {Object} changes 
+ * @param {String} e2eDir the directory storing e2e dependency graph 
+ */
+function selectE2ETests(changes, e2eDir) {
+    testSelector.getUnifiedChange(changes);
+
+    let selectedSuite = [];
+
+    changes.forEach(change => {
+        let filename = change.filename.replace(globalUtil.config.codeBase, '')
+        changes.unifiedChanges.forEach(ele => {
+            fs.readdirSync(e2eDir).forEach(file => {
+                const graph = JSON.parse(fs.readFileSync(path.join(e2eDir, file)));
+                graph.forEach(node => {
+                    if(node.type === "FUNCTIONSTART") {
+                        if(ele.functionName && ele.functionName.anonymous === node.anonymous 
+                            && ele.functionName.paramsNumber === node.paramsNumber 
+                            && ele.functionName.functionName === node.function.split('###')[0]
+                            && filename === node.fileName) {
+                                if(!selectedSuite.includes(file.replace('json', ''))) {
+                                    selectedSuite.push(file.replace('.json', ''))
+                                }
+                            }
+
+                    }
+                })
+            })
+        })
+
+    })
+
+    return selectedSuite;
+
 }
 
 function sleep(s) {

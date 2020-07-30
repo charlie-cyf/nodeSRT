@@ -78,4 +78,17 @@ app.post('/e2e-message', (req, res) => {
   }
 })
 
+app.post('/e2e-process-result', (req, res) => {
+  let dir = path.join(process.cwd(), 'tmp', 'e2e');
+  // let dir = path.join(process.cwd(), 'tmp');
+  fs.readdirSync(dir).forEach(file => {
+    if(path.extname(file) === '.json') {
+      let content = fs.readFileSync(path.join(dir, file), 'utf-8');
+      fs.writeFileSync(path.join(dir, file), '[' +content.substr(0, content.length - 1) + ']')
+    }
+  })
+
+  res.json({dir: dir});
+})
+
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`))

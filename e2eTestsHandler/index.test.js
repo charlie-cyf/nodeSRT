@@ -1,5 +1,7 @@
 const e2eHandler = require('./index');
 const globalUtil = require('../util')
+const changeAnalysis = require('../changeAnalysis')
+const fs = require('fs');
 const path = require('path');
 const { glob } = require('glob');
 const suite = [
@@ -45,7 +47,13 @@ describe('e2e test handler', () => {
             E2EpostrunInstr: 'pkill -9 java',
             runE2EInstr: 'npm run test:endtoend:local -- -b chrome --suite ${suitename}'
         })
-        await e2eHandler.collectDependency(['create-react-app'])
+        // await e2eHandler.collectDependency(['create-react-app'])
+    })
+
+    test('select e2e test suite', () => {
+        const changes = changeAnalysis.getChangesAncestors(fs.readFileSync('./testSelector/sample/diff-3ebe9-803611.patch','utf-8'))
+        const selectedSuite = e2eHandler.selectE2ETests(changes, "/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/tmp/e2e");
+        console.log(selectedSuite);
     })
 
 
