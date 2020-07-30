@@ -105,7 +105,7 @@ function selectE2ETests(changes, e2eDir) {
 
     changes.forEach(change => {
         let filename = change.filename.replace(globalUtil.config.codeBase, '')
-        changes.unifiedChanges.forEach(ele => {
+        change.unifiedChanges.forEach(ele => {
             fs.readdirSync(e2eDir).forEach(file => {
                 const graph = JSON.parse(fs.readFileSync(path.join(e2eDir, file)));
                 graph.forEach(node => {
@@ -114,7 +114,7 @@ function selectE2ETests(changes, e2eDir) {
                             && ele.functionName.paramsNumber === node.paramsNumber 
                             && ele.functionName.functionName === node.function.split('###')[0]
                             && filename === node.fileName) {
-                                if(!selectedSuite.includes(file.replace('json', ''))) {
+                                if(!selectedSuite.includes(file.replace('.json', ''))) {
                                     selectedSuite.push(file.replace('.json', ''))
                                 }
                             }

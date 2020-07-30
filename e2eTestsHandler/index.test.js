@@ -50,10 +50,11 @@ describe('e2e test handler', () => {
         // await e2eHandler.collectDependency(['create-react-app'])
     })
 
+    // ! need to revert uppy to 3ebe9a91beda60209db34247e680d8ffb1347dbd
     test('select e2e test suite', () => {
         const changes = changeAnalysis.getChangesAncestors(fs.readFileSync('./testSelector/sample/diff-3ebe9-803611.patch','utf-8'))
-        const selectedSuite = e2eHandler.selectE2ETests(changes, "/windir/c/Users/presi/Documents/workspace/cs449-projects/nodeSRT/tmp/e2e");
-        console.log(selectedSuite);
+        const selectedSuite = e2eHandler.selectE2ETests(changes, "./tmp/e2e");
+        expect(selectedSuite).toEqual(['chaos-monkey', 'url-plugin'])
     })
 
 
