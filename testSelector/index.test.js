@@ -33,7 +33,7 @@ describe('test selection on given diff file', () => {
 
     test("selects changed/added tests", () => {
         const changes = changeAnalysis.getChangesAncestors(fs.readFileSync('./testSelector/sample/changingTests.patch','utf-8'))
-        fs.writeFileSync('./changes.json', JSON.stringify(changes))
+        // fs.writeFileSync('./changes.json', JSON.stringify(changes))
         const selectedTests = TestSelector.getReducedTests(changes);
         expect(selectedTests.length).toBe(3)
         console.log(selectedTests)
