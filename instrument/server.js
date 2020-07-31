@@ -26,7 +26,7 @@ app.post('/instrument-message', (req, res) => {
   // console.log("POST", req.body)
   let logStream;
   try {
-    log_path = path.join(process.cwd(), "tmp", req.body.fileName);
+    log_path = path.join("/tmp/nodeSRT", req.body.fileName);
     logStream = fs.createWriteStream(log_path, { flags: "a" });
     logStream.write(req.body.msg);
     logStream.end();
@@ -53,7 +53,7 @@ let e2e_log_path;
 app.post('/set-e2e-name', (req, res) => {
   console.log('get post set e2e name')
   if(req.body.start) {
-    e2e_log_path = path.join(process.cwd(), 'tmp', 'e2e', req.body.name+'.json')
+    e2e_log_path = path.join('/tmp/nodeSRT/', 'e2e', req.body.name+'.json')
     console.log(req.body.name)
     console.log(e2e_log_path)
     if(!fs.existsSync(e2e_log_path)) {

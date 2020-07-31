@@ -56,7 +56,7 @@ module.exports = class Instrumentor {
                 const iFileName = fullPath.replace(this.astPath, '').replace('.json', '');
 
                 //add require to the top
-                if(multimatch(iFileName, globalUtil.config.ReactFile).length > 0) {
+                if(iFileName.includes('/create-react-app')) {
                     tree.body.unshift(parse("import SRTlib from 'SRTutil';")); // ! acorn error, await fixing!
                 } else {
                     tree.body.unshift(ASTParser.parse("const SRTlib = require('SRTutil');"));

@@ -37,14 +37,7 @@ if(program.diffFile) {
     globalUtil.setter({diffFile: program.diffFile});
 } 
 
-if(program.config) {
-    try{
-        globalUtil.setter(JSON.parse(fs.readFileSync(program.config)))
-    } catch (err) {
-        console.error('ERROR: loading config file', err)
-        process.exit(-1)
-    }
-}
+
 
 globalUtil.setter({includesE2E: program.e2e})
 
@@ -69,6 +62,15 @@ if(program.excepts) {
     globalUtil.setter({excepts: JSON.parse(program.excepts)})
 }
 
+if(program.config) {
+    try {
+        globalUtil.setter(JSON.parse(fs.readFileSync(program.config)))
+    } catch (err) {
+        console.error('ERROR: loading config file', err)
+        process.exit(-1);
+    }
+}
+
 if(!globalUtil.config.codeBase) {
     console.error('ERROR: basefolder missing!')
     process.exit(-1);
@@ -79,8 +81,29 @@ const serverProcess = child_process.spawn('SRTserver')
 
 console.log(chalk.yellow('analyzing on codebase', globalUtil.config.codeBase), '...')
 
+if(!fs.existsSync('/tmp/nodeSRT')) fs.mkdirSync('/tmp/nodeSRT');
+
+async function runner() {
+    await api.getDependency()
+
+}
+
+runner().then(() => {
+   serverProcess.kill('SIGINT') 
+}).catch(err => {
+    serverProcess.kill('SIGINT')
+    console.error('ERROR', err)
+})
 
 
-api.getDependency()
+process.on('error', () => {
+    serverProcess.kill('SIGINT')
+})
 
-serverProcess.kill('SIGINT')
+
+process.on('uncaughtException', () => {
+    serverProcess.kill('SIGINT')
+})
+
+
+
