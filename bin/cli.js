@@ -7,6 +7,8 @@ const globalUtil = require('../util');
 const { glob } = require('glob');
 const fs = require('fs');
 const { globalAgent } = require('http');
+const child_process = require('child_process');
+const api = require('../api')
 
 
 program
@@ -20,6 +22,7 @@ program
 .option('--callGraph <path>', 'path to callgraph')
 .option('--fileDependencyGraph <path>', 'path to file denpendency graph')
 .option('--E2EdenpendencyGraph <path>', 'dir to E2e dependencyGraph')
+.option('--excepts <array>', 'array of files to be excluded when injection')
 .parse(process.argv)
 
 console.log(chalk.white.bold('nodeSRT'))
@@ -62,11 +65,20 @@ if(program.E2EdenpendencyGraph) {
     globalUtil.setter({E2EdenpendencyGraphDir: program.E2EdenpendencyGraph})
 }
 
+if(program.excepts) {
+    globalUtil.setter({excepts: JSON.parse(program.excepts)})
+}
+
 if(!globalUtil.config.codeBase) {
     console.error('ERROR: basefolder missing!')
     process.exit(-1);
 }
 
+console.log(chalk.green('start server ...'))
+child_process.execSync('SRTserver &', { stdio: [0, 1, 2] })
 
 console.log(chalk.yellow('analyzing on codebase', globalUtil.config.codeBase), '...')
 
+
+
+api.getDependency()

@@ -4,7 +4,8 @@
   "description": "Selective Regression Testing for Node.js \\s\\s special Javascript/Node.js features to handle 1) Object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects <br />  \t[] dynamic property key(i.e. pan[cake], pan['size']) <br /> \t[] constructor & factory <br /> \t[] defineProperties: getter and setter <br /> \t[] deleting properties. e.g. delete obj.key;  <br />",
   "main": "index.js",
   "bin": {
-    "nodeSRT": "./bin/cli.js"
+    "nodeSRT": "./bin/cli.js",
+    "SRTserver": "./instrument/server.js"
   },
   "scripts": {
     "start": "npm-run-all --parallel start:server start:index",

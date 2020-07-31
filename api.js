@@ -1,7 +1,7 @@
 const globalUtil = require('./util');
 
 module.exports = {
-    getDependencyGraph
+    getDependency
 }
 
 function getDependency() {
@@ -21,5 +21,7 @@ function getDependency() {
         return;
     }
 
-    
+
+
+
 }
