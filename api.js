@@ -1,4 +1,5 @@
 const globalUtil = require('./util');
+const { generate, copyDir } = require("./ASTgenerater");
 
 module.exports = {
     getDependency
@@ -20,6 +21,10 @@ function getDependency() {
         }
         return;
     }
+
+    const codeBase = globalUtil.config.codeBase0;
+    globalUtil.config.packageJson = JSON.parse(fs.readFileSync(path.join(codeBase, 'package.json')))
+    
 
 
 

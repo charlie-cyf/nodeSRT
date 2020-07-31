@@ -75,10 +75,12 @@ if(!globalUtil.config.codeBase) {
 }
 
 console.log(chalk.green('start server ...'))
-child_process.execSync('SRTserver &', { stdio: [0, 1, 2] })
+const serverProcess = child_process.spawn('SRTserver')
 
 console.log(chalk.yellow('analyzing on codebase', globalUtil.config.codeBase), '...')
 
 
 
 api.getDependency()
+
+serverProcess.kill('SIGINT')
