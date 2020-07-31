@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Selective Regression Testing for Node.js \\s\\s special Javascript/Node.js features to handle 1) Object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects <br />  \t[] dynamic property key(i.e. pan[cake], pan['size']) <br /> \t[] constructor & factory <br /> \t[] defineProperties: getter and setter <br /> \t[] deleting properties. e.g. delete obj.key;  <br />",
   "main": "index.js",
+  "bin": {
+    "nodeSRT": "./bin/cli.js"
+  },
   "scripts": {
     "start": "npm-run-all --parallel start:server start:index",
     "start:index": "node index.js",
@@ -32,7 +35,9 @@
     "astring": "^1.4.3",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
     "child_process": "^1.0.2",
+    "commander": "^6.0.0",
     "cors": "^2.8.5",
     "detective-cjs": "^3.1.1",
     "diff": "^4.0.2",
