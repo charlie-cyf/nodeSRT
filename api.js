@@ -10,10 +10,12 @@ const StaticAnalyzor = require('./staticAnalysis');
 const { globalAgent } = require('http');
 const changeAnalysis = require('./changeAnalysis')
 const TestSelector = require('./testSelector')
+const selectedTestRunner = require('./selectedTestRunner')
 
 module.exports = {
     getDependency,
-    testSelection
+    testSelection,
+    runSelectedUnitTests
 }
 
 async function getDependency() {
@@ -88,7 +90,7 @@ async function getDependency() {
     child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm install', { stdio: [0, 1, 2] });
 
     // run tests in injected codebase
-    child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm run test:unit', { stdio: [0, 1, 2] })
+    child_process.execSync('cd ' + injectedCodebase + ' && pwd && ' + globalUtil.config.runUnitTestsInstr, { stdio: [0, 1, 2] })
 
     // get call graph
     let callGraph;
@@ -136,4 +138,8 @@ function testSelection(diff) {
     globalUtil.config.selectedE2E = e2eHandler.selectE2ETests(changes, globalUtil.config.E2EdenpendencyGraphDir)
     console.timeEnd('e2e test selection')
 
+}
+
+function runSelectedUnitTests(tests, diff) {
+    selectedTestRunner.runUnitTests(tests, diff)
 }
