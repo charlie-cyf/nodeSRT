@@ -85,6 +85,20 @@ if(!fs.existsSync('/tmp/nodeSRT')) fs.mkdirSync('/tmp/nodeSRT');
 
 async function runner() {
     await api.getDependency()
+    if(!globalUtil.config.diffFile) {
+        return;
+    }
+    console.log(chalk.green('analyzing changes ...'))
+    console.time('selecting tests');
+    await api.testSelection(fs.readFileSync(globalUtil.config.diffFile, 'utf-8'))
+    console.timeEnd('selecting tests');
+    console.log('selected unit tests:', globalUtil.config.selectedUnit)
+    console.log('selected ', globalUtil.config.selectedUnit.length, 'unit tests')
+    if(globalUtil.config.includesE2E) {
+        console.log('selected e2e tests: ', globalUtil.config.selectedE2E)
+        console.log('selected ', globalUtil.config.selectedE2E.length, 'e2e tests')
+    }
+
 
 }
 

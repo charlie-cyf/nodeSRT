@@ -19,7 +19,6 @@ module.exports = class SRTlib {
         if(SRTlib.endPontUrl && SRTlib.basePath){
             SRTlib.message = SRTlib.message+msg;
         } else {
-            console.warn('received message when SRTlib logger not started!', msg)
             axios.post('http://localhost:8888/e2e-message', {
                 msg: msg
             }).then(res => {

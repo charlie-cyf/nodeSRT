@@ -7,9 +7,13 @@ const child_process = require('child_process');
 const path = require('path');
 const e2eHandler = require("./e2eTestsHandler")
 const StaticAnalyzor = require('./staticAnalysis');
+const { globalAgent } = require('http');
+const changeAnalysis = require('./changeAnalysis')
+const TestSelector = require('./testSelector')
 
 module.exports = {
-    getDependency
+    getDependency,
+    testSelection
 }
 
 async function getDependency() {
@@ -38,10 +42,10 @@ async function getDependency() {
 
     const codeBase = globalUtil.config.codeBase;
     globalUtil.config.packageJson = JSON.parse(fs.readFileSync(path.join(codeBase, 'package.json')))
-    
+   
     if(globalUtil.config.excepts) {
-        globalUtil.config.excepts.map(ele => {
-            ele = path.join(globalUtil.config.codeBase, ele)
+        globalUtil.config.excepts.forEach((ele, index) => {
+            globalUtil.config.excepts[index] = path.join(globalUtil.config.codeBase, ele)
         })
     } else {
         globalUtil.config.excepts = []
@@ -111,10 +115,25 @@ async function getDependency() {
     if(!fs.existsSync('/tmp/nodeSRT/e2e')) {
         fs.mkdirSync('/tmp/nodeSRT/e2e')
     }
-    globalUtil.config.E2EdenpendencyGraphDir = await e2eHandler.collectDependency(globalUtil.config.e2eTestSuite)
+
+    if(globalUtil.config.E2Etemp) {
+        copyDir(globalUtil.config.E2Etemp, path.join(globalUtil.getInjectedDir(), globalUtil.config.E2Edir))
+    }
+
+    const suites = e2eHandler.getTestSuite(globalUtil.config.e2eTestSuite)
+    console.log("suite names", suites)
+    globalUtil.config.E2EdenpendencyGraphDir = await e2eHandler.collectDependency(suites)
     console.log("e2e test dependency graph generated!", globalUtil.config.E2EdenpendencyGraphDir)
 
+}
 
-
+function testSelection(diff) {
+    const changes = changeAnalysis.getChangesAncestors(diff);
+    globalUtil.config.selectedUnit = TestSelector.getReducedTests(changes);
+    if(!globalUtil.config.includesE2E) return;
+    // end to end selection
+    console.time('e2e test selection')
+    globalUtil.config.selectedE2E = e2eHandler.selectE2ETests(changes, globalUtil.config.E2EdenpendencyGraphDir)
+    console.timeEnd('e2e test selection')
 
 }
