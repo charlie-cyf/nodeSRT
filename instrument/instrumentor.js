@@ -28,6 +28,13 @@ const ASTParser = Parser.extend(
 
 )
 
+function printProgress(progress){
+    process.stdout.write(progress)
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+    process.stdout.write('\r');
+}
+
 module.exports = class Instrumentor {
 
     
@@ -64,7 +71,7 @@ module.exports = class Instrumentor {
 
                 const getSuiteName = this.getSuiteName;
                 const codebase = this.codebaseName
-                console.log('inject to:', fullPath)
+                printProgress('inject to: ' + fullPath)
                 // if file is test
                 try {
                     if (fullPath.includes('test.js') || fullPath.includes('spec.js')) {

@@ -23,13 +23,15 @@ function runUnitTests(tests, diff) {
 
     let testFiles = []
     tests.map(test => {
-        testFiles.push(path.join(globalUtil.config.codeBase, test.testFile));
+        if(!testFiles.includes(path.join(globalUtil.config.codeBase, test.testFile)))
+            testFiles.push(path.join(globalUtil.config.codeBase, test.testFile));
     })
+
 
     // run selected file
     if(globalUtil.config.runUnitTestsInstr) {
         const runInstruction = globalUtil.config.runUnitTestsInstr + ' ' + testFiles.join(' ');
-        child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && ${runInstruction}`, { stdio: [0, 1, 2] });
+        child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && ${runInstruction}`, { stdio: [0, 1, 2] });
     }
 
 }

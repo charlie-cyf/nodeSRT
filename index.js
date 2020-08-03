@@ -37,22 +37,11 @@ const StaticAnalyzor = require('./staticAnalysis');
     globalUtil.setter({codeBase: path.resolve(codeBase), injectedCodebase})    
     globalUtil.config.packageJson = JSON.parse(fs.readFileSync(path.join(codeBase, 'package.json')))
 
-    let parsedEnv = envfile.parse(fs.readFileSync('.env'));
-    parsedEnv.SRT_PATH = __dirname;
-    fs.writeFileSync("./.env", envfile.stringify(parsedEnv))
-    require("dotenv").config()
 
     globalUtil.setter({ReactFile: ['**/test/endtoend/create-react-app/src/*.js']})
 
     // generate AST for codebase
     generate(codeBase, excepts)
-
-
-
-    console.log("env", process.env.SRT_PATH)
-
-    if (!fs.existsSync(process.env.SRT_PATH + '/tmp'))
-        fs.mkdirSync(process.env.SRT_PATH + '/tmp');
 
     // madge('./code/uppy').then((res) => {
     // 	console.log(res)
