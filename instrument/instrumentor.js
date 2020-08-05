@@ -29,10 +29,11 @@ const ASTParser = Parser.extend(
 )
 
 function printProgress(progress){
-    process.stdout.write(progress)
-    process.stdout.clearLine();
-    process.stdout.cursorTo(0);
-    process.stdout.write('\r');
+    // process.stdout.write(progress)
+    // process.stdout.clearLine();
+    // process.stdout.cursorTo(0);
+    // process.stdout.write('\r');
+    
 }
 
 module.exports = class Instrumentor {

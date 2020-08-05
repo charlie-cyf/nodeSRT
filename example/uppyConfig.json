@@ -18,10 +18,10 @@
     },
     "includesE2E": false,
     "runUnitTestsInstr": "npm run test:unit",
-    "E2EprerunInstr": "cd /windir/c/Users/presi/Documents/workspace/cs449-projects && java -Dwebdriver.chrome.driver=/usr/bin/chromedriver -jar selenium-server-standalone-*.jar &",
+    "E2EprerunInstr": "cd /mnt/c/Users/presi/Documents && java -jar selenium-server-standalone-*.jar &",
     "E2EpostrunInstr": "pkill -9 java",
     "buildE2EInstr": "npm run test:endtoend:build",
     "runE2EInstr": "npx wdio test/endtoend/wdio.local.conf.js \"-b\" \"chrome\" \"--suite\" \"${suitename}\"",
-    "E2Etemp": "/windir/c/Users/presi/Documents/workspace/cs449-projects/endtoend",
+    "E2Etemp": "/mnt/c/Users/presi/workspace/endtoend",
     "E2Edir": "test/endtoend/"
 }

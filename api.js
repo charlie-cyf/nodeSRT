@@ -11,6 +11,7 @@ const { globalAgent } = require('http');
 const changeAnalysis = require('./changeAnalysis')
 const TestSelector = require('./testSelector')
 const selectedTestRunner = require('./selectedTestRunner')
+const ncp = require('ncp').ncp;
 
 module.exports = {
     getDependency,
