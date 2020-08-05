@@ -16,7 +16,8 @@ const ncp = require('ncp').ncp;
 module.exports = {
     getDependency,
     testSelection,
-    runSelectedUnitTests
+    runSelectedUnitTests,
+    getE2Edependency
 }
 
 async function getDependency() {
@@ -53,6 +54,7 @@ async function getDependency() {
     } else {
         globalUtil.config.excepts = []
     }
+
 
     // generate AST
     generate(codeBase, globalUtil.config.excepts);
@@ -114,6 +116,11 @@ async function getDependency() {
 
     if(!globalUtil.config.includesE2E) return;
 
+    await getE2Edependency();
+   
+}
+
+async function getE2Edependency() {
     // run e2e tests
     if(!fs.existsSync('/tmp/nodeSRT/e2e')) {
         fs.mkdirSync('/tmp/nodeSRT/e2e')
