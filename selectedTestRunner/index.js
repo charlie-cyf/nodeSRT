@@ -21,6 +21,12 @@ function runUnitTests(tests, diff) {
         fs.writeFileSync(path.join(codebase, file.oldFileName.substring(file.oldFileName.indexOf('/')+1)), patchedFile);
     })
 
+    if(globalUtil.config.JestOnlyChanged) {
+        console('running jest onlyChanged...')
+        child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && jest -o`, { stdio: [0, 1, 2] });
+    }
+
+
     modifyTests(globalUtil.config.codeBase, tests)
 
     let testFiles = []

@@ -17,6 +17,7 @@
           ]
     },
     "ci": true,
+    "JestOnlyChanged": true,
     "includesE2E": false,
     "runUnitTestsInstr": "npm run test:unit",
     "E2EprerunInstr": "cd /mnt/c/Users/presi/Documents && java -jar selenium-server-standalone-*.jar &",

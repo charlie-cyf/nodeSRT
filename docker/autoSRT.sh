@@ -34,8 +34,4 @@ pwd
 echo "running SRT"
 nodeSRT -b ./uppy -d ./diff.patch --docker true  --config ./nodeSRT/example/dockerConfig.json
 
-echo "run jest onlyChanged"
-cd uppy
-jest -o
-
 echo "finished! $1"
