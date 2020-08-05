@@ -31,7 +31,7 @@ function runUnitTests(tests, diff) {
 
 
     // run selected file
-    if(globalUtil.config.runUnitTestsInstr) {
+    if(globalUtil.config.runUnitTestsInstr && testFiles.length > 0) {
         const runInstruction = globalUtil.config.runUnitTestsInstr + ' ' + testFiles.join(' ');
         child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && ${runInstruction}`, { stdio: [0, 1, 2] });
     }
