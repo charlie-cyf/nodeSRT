@@ -23,7 +23,7 @@ function runUnitTests(tests, diff) {
 
     if(globalUtil.config.JestOnlyChanged) {
         console.log('running jest onlyChanged...')
-        child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && jest -o`, { stdio: [0, 1, 2] });
+        child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && npm run build:lib && jest -o`, { stdio: [0, 1, 2] });
     }
 
 
