@@ -31,7 +31,7 @@ echo "go back to /src"
 pwd
 
 echo "running SRT"
-nodeSRT -b ./uppy -d ./diff.patch  --config ./nodeSRT/example/uppyConfig.json
+nodeSRT -b ./uppy -d ./diff.patch  --config ./nodeSRT/example/dockerConfig.json
 
 
 
