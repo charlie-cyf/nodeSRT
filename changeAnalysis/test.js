@@ -24,7 +24,7 @@ console.log('res length', res.length)
 res[0].forEach(ele => {
     console.log('ele length', ele.type)
 })
-const diffFile = fs.readFileSync('../testSelector/sample/changingTests.patch', "utf8");
+const diffFile = fs.readFileSync('./diff-d3595e.patch', "utf8");
 globalUtil.setter({codeBase: '../../uppy'})
 const changes = changeAnalysis.getChangesAncestors(diffFile);
 

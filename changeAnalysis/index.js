@@ -287,6 +287,9 @@ function getTestChangeAncestors(AST1, AST2) {
 module.exports.parseAndApplyDiff = function (codebase, diff) {
     let objList = [];
     JsDiff.parsePatch(diff).forEach(file => {
+      if(file.oldFileName === undefined) {
+          return;
+      }
       const sourcePath = path.resolve(path.join(codebase, file.oldFileName.substring(file.oldFileName.indexOf('/')+1)))
     //   console.log('sourcePath', sourcePath);
       const sourceCode = fs.existsSync(sourcePath) ? fs.readFileSync(sourcePath, 'utf8') : '';

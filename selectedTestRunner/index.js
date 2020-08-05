@@ -12,6 +12,10 @@ function runUnitTests(tests, diff) {
     // apply diff to codebase
     const codebase = globalUtil.config.codeBase;
     JsDiff.parsePatch(diff).forEach(file => {
+        if(file.oldFileName === undefined) {
+            return;
+        }
+
         const sourcePath = path.resolve(path.join(codebase, file.oldFileName.substring(file.oldFileName.indexOf('/')+1)))
       //   console.log('sourcePath', sourcePath);
         const sourceCode = fs.existsSync(sourcePath) ? fs.readFileSync(sourcePath, 'utf8') : '';
