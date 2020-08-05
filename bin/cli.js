@@ -109,16 +109,24 @@ async function runner() {
         console.log('selected ', globalUtil.config.selectedE2E.length, 'e2e tests')
     }
 
-    // ask if running selected tests
-    readInterface.question('do you want to run selected tests? (Y/N)', (input) => {
-        if(input.includes('y') || input.includes('Y')) {
-            console.log(chalk.green('running selected tests ...'))
-            console.time('run selected tests')
-            api.runSelectedUnitTests(globalUtil.config.selectedUnit, fs.readFileSync(globalUtil.config.diffFile, 'utf-8'))
-            console.timeEnd('run selected tests')
-        } 
-        readInterface.close();
-    })
+    if(globalUtil.config.ci) {
+        console.log(chalk.green('running selected tests ...'))
+        console.time('run selected tests')
+        api.runSelectedUnitTests(globalUtil.config.selectedUnit, fs.readFileSync(globalUtil.config.diffFile, 'utf-8'))
+        console.timeEnd('run selected tests')        
+    } else {
+        // ask if running selected tests
+        readInterface.question('do you want to run selected tests? (Y/N)', (input) => {
+            if(input.includes('y') || input.includes('Y')) {
+                console.log(chalk.green('running selected tests ...'))
+                console.time('run selected tests')
+                api.runSelectedUnitTests(globalUtil.config.selectedUnit, fs.readFileSync(globalUtil.config.diffFile, 'utf-8'))
+                console.timeEnd('run selected tests')
+            } 
+            readInterface.close();
+        })
+    }
+
 
 }
 

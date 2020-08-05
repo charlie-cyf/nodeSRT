@@ -1,0 +1,28 @@
+{
+    "excepts": [
+        "packages/@uppy/companion/src/server/helpers/jwt.js",
+        "packages/@uppy/companion/src/server/helpers/request.js",
+        "packages/@uppy/companion/src/server/jobs.js",
+        "packages/@uppy/companion/src/server/logger.js",
+        "packages/@uppy/companion/src/companion.js",
+        "packages/@uppy/companion/src/standalone/index.js",
+        "packages/@uppy/companion/src/standalone/start-server.js",
+        "packages/@uppy/companion/src/standalone/helper.js",
+        "test/endtoend/utils.js",
+        "test/endtoend/wdio.local.conf.js",
+        "test/endtoend/wdio.base.conf.js" ],
+    "e2eTestSuite": {
+        "specs": [
+            "test/endtoend/*/test.js"
+          ]
+    },
+    "ci": true,
+    "includesE2E": false,
+    "runUnitTestsInstr": "npm run test:unit",
+    "E2EprerunInstr": "cd /mnt/c/Users/presi/Documents && java -jar selenium-server-standalone-*.jar &",
+    "E2EpostrunInstr": "pkill -9 java",
+    "buildE2EInstr": "npm run test:endtoend:build",
+    "runE2EInstr": "npx wdio test/endtoend/wdio.local.conf.js \"-b\" \"chrome\" \"--suite\" \"${suitename}\"",
+    "E2Etemp": "/mnt/c/Users/presi/workspace/endtoend",
+    "E2Edir": "test/endtoend/"
+}
