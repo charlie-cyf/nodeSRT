@@ -18,11 +18,12 @@ function runUnitTests(tests, diff) {
         // console.log('diff file', file)
         const patchedFile = JsDiff.applyPatch(sourceCode, file);
         // console.log("patchedFile", patchedFile)
-        if(fs.existsSync(path.join(codebase, file.newFileName.substring(file.newFileName.indexOf('/')+1)))) {
-            fs.writeFileSync(path.join(codebase, file.newFileName.substring(file.newFileName.indexOf('/')+1)), patchedFile);
+        if(file.newFileName.includes('/dev/null')) {
+            fs.unlinkSync(sourcePath);
         } else {
-            fs.unlinkSync(sourcePath)
+            fs.writeFileSync(path.join(codebase, file.newFileName.substring(file.newFileName.indexOf('/')+1)), patchedFile);
         }
+        
 
     })
 
