@@ -3,6 +3,7 @@ const path = require('path');
 const globalUtil = require('../util')
 const child_process = require('child_process');
 const JsDiff = require('diff');
+const mkdirp = require('mkdirp')
 
 /**
  * 
@@ -25,7 +26,11 @@ function runUnitTests(tests, diff) {
         if(file.newFileName.includes('/dev/null')) {
             fs.unlinkSync(sourcePath);
         } else {
-            fs.writeFileSync(path.join(codebase, file.newFileName.substring(file.newFileName.indexOf('/')+1)), patchedFile);
+            const newFile = path.join(codebase, file.newFileName.substring(file.newFileName.indexOf('/')+1))
+            if(!fs.existsSync(path.dirname(newFile))) {
+                mkdirp.sync(path.dirname(newFile))
+            }
+            fs.writeFileSync(newFile, patchedFile);
         }
         
 

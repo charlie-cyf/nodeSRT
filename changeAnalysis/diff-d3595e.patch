@@ -1,0 +1,16 @@
+diff --git a/website/src/_posts/2019-12-1.7.md b/website/src/_posts/2019-12-1.7.md
+index 97c8ff98..19286f97 100644
+--- a/website/src/_posts/2019-12-1.7.md
++++ b/website/src/_posts/2019-12-1.7.md
+@@ -3,6 +3,7 @@ title: "Uppy 1.7: A Small One"
+ date: 2020-01-10
+ author: renee
+ published: true
++image: "https://uppy.io/images/blog/1.7/cat-video-screen.jpg"
+ ---
+ 
+ Uppy 1.7 was released last December! This release added Hebrew translations, a recording length timer for the `@uppy/webcam` plugin, and a collection of improvements to Companion.
+diff --git a/website/src/images/blog/1.7/cat-video-screen.jpg b/website/src/images/blog/1.7/cat-video-screen.jpg
+new file mode 100644
+index 00000000..ef8911c6
+Binary files /dev/null and b/website/src/images/blog/1.7/cat-video-screen.jpg differ

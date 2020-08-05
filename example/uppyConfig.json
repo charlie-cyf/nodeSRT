@@ -23,5 +23,6 @@
     "E2EpostrunInstr": "pkill -9 java",
     "buildE2EInstr": "npm run test:endtoend:build",
     "runE2EInstr": "npx wdio test/endtoend/wdio.local.conf.js \"-b\" \"chrome\" \"--suite\" \"${suitename}\"",
+    "E2Etemp": "/mnt/c/Users/presi/workspace/endtoend",
     "E2Edir": "test/endtoend/"
 }

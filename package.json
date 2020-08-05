@@ -53,6 +53,7 @@
     "graceful-fs": "^4.2.4",
     "madge": "^3.9.2",
     "minimatch": "^3.0.4",
+    "mkdirp": "^1.0.4",
     "multimatch": "^4.0.0",
     "ncp": "^2.0.0",
     "object-diff-ast": "^0.10.1",
