@@ -32,4 +32,9 @@ describe('selected tests runner', () => {
         const diff = fs.readFileSync('./testSelector/sample/changingTests.patch','utf-8')
         selectedTestRunner.runUnitTests(selectedTests, diff)
     })
+
+    it.only('run selected unit tests', () => {
+      const diff = fs.readFileSync('./testSelector/sample/21f3a85.patch','utf-8')
+      selectedTestRunner.runUnitTests([], diff)
+  })
 })

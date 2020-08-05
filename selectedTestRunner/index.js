@@ -15,7 +15,9 @@ function runUnitTests(tests, diff) {
         const sourcePath = path.resolve(path.join(codebase, file.oldFileName.substring(file.oldFileName.indexOf('/')+1)))
       //   console.log('sourcePath', sourcePath);
         const sourceCode = fs.existsSync(sourcePath) ? fs.readFileSync(sourcePath, 'utf8') : '';
+        // console.log('diff file', file)
         const patchedFile = JsDiff.applyPatch(sourceCode, file);
+        // console.log("patchedFile", patchedFile)
         fs.writeFileSync(path.join(codebase, file.oldFileName.substring(file.oldFileName.indexOf('/')+1)), patchedFile);
     })
 

@@ -23,6 +23,7 @@ program
 .option('--fileDependencyGraph <path>', 'path to file denpendency graph')
 .option('--E2EdenpendencyGraph <path>', 'dir to E2e dependencyGraph')
 .option('--excepts <array>', 'array of files to be excluded when injection')
+.option('--docker <boolean>', "whether running in docker")
 .parse(process.argv)
 
 console.log(chalk.white.bold('nodeSRT'))
@@ -109,7 +110,7 @@ async function runner() {
         console.log('selected ', globalUtil.config.selectedE2E.length, 'e2e tests')
     }
 
-    if(globalUtil.config.ci) {
+    if(program.docker) {
         console.log(chalk.green('running selected tests ...'))
         console.time('run selected tests')
         api.runSelectedUnitTests(globalUtil.config.selectedUnit, fs.readFileSync(globalUtil.config.diffFile, 'utf-8'))
