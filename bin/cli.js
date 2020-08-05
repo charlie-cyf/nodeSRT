@@ -134,7 +134,6 @@ runner().then(() => {
    serverProcess.kill('SIGINT') 
 }).catch(err => {
     console.log('ERROR', err)
-    console.error('ERROR', err)
     serverProcess.kill('SIGINT')
 })
 

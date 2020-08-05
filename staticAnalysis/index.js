@@ -8,11 +8,12 @@ const { extend } = require('acorn-jsx-walk');
 const { pathExists } = require('fs-extra');
 const { dirname } = require('path');
 const { lookup } = require('dns');
-const requireResolver = require('resolve')
+const requireResolver = require('enhanced-resolve')
 const _ = require('underscore');
 const { prop } = require('acorn-jsx/xhtml');
 const { setMaxListeners } = require('process');
 const multimatch = require('multimatch');
+const { globalAgent } = require('http');
 
 acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
@@ -34,15 +35,16 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
     const codeBaseFileName = globalUtil.getCodebasePath(ASTfileName);
     const codeBaseDir = path.dirname(codeBaseFileName)
     const ASTdirName = path.dirname(ASTfileName)
-    
+    const codeBaseFile = globalUtil.getCodebasePath(ASTfileName)
+
     // first resolve dependName
     let resolved;
     try {
-        resolved = requireResolver.sync(dependName, {basedir: codeBaseDir, extensions: ['.js', '.json']});
+        resolved = requireResolver.sync(dependName, codeBaseFile);
     } catch (error) {
         if(dependName.includes('/lib/')){
             dependName = dependName.replace('/lib/', '/src/');
-            resolved = requireResolver.sync(dependName, {basedir: codeBaseDir, extensions: ['.js', '.json']});
+            resolved = requireResolver.sync(dependName, codeBaseFile);
         } else {
             throw error
         }

@@ -40,5 +40,5 @@
 
 ## docker comamnd
 `docker build -t srtdock:latest .`
-`docker run --rm srtdock`
+`docker run --rm -ti srtdock`
 
