@@ -92,27 +92,29 @@ async function getDependency() {
     // run npm install in injected folder
     child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm install', { stdio: [0, 1, 2] });
 
-    // run tests in injected codebase
-    child_process.execSync('cd ' + injectedCodebase + ' && pwd && ' + globalUtil.config.runUnitTestsInstr, { stdio: [0, 1, 2] })
+    if(!globalUtil.config.onlyE2E) {
+        // run tests in injected codebase
+        child_process.execSync('cd ' + injectedCodebase + ' && pwd && ' + globalUtil.config.runUnitTestsInstr, { stdio: [0, 1, 2] })
 
-    // get call graph
-    let callGraph;
+        // get call graph
+        let callGraph;
 
-    await axios.get('http://localhost:8888/log-path').then(res => {
-        callGraph = fs.readFileSync(res.data.path);
-        callGraph = '[' + callGraph + ']'
-        callGraph = callGraph.replace(/,]/g, ']');
-        fs.writeFileSync(res.data.path + '.json', callGraph)
-        globalUtil.config.callGraphPath = path.resolve(res.data.path+'.json')
-    });
-    console.log('callgraph generated!', globalUtil.config.callGraphPath)
+        await axios.get('http://localhost:8888/log-path').then(res => {
+            callGraph = fs.readFileSync(res.data.path);
+            callGraph = '[' + callGraph + ']'
+            callGraph = callGraph.replace(/,]/g, ']');
+            fs.writeFileSync(res.data.path + '.json', callGraph)
+            globalUtil.config.callGraphPath = path.resolve(res.data.path+'.json')
+        });
+        console.log('callgraph generated!', globalUtil.config.callGraphPath)
 
-     // pre static analysis step: build
-     child_process.execSync('cd ' + codeBase + ' && pwd && npm install', { stdio: [0, 1, 2] })
-     const fileDependGraph =  StaticAnalyzor.getTestDependency(globalUtil.config.codeBase, globalUtil.getCodeBasePackageJson().jest.testMatch);
-     globalUtil.config.fileDependencyGraphPath = path.resolve('/tmp/nodeSRT/fileDenpendencyGraph.json');
-     fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, JSON.stringify(fileDependGraph));
-    console.log('file dependency graph generated!', globalUtil.config.fileDependencyGraphPath);
+        // pre static analysis step: build
+        child_process.execSync('cd ' + codeBase + ' && pwd && npm install', { stdio: [0, 1, 2] })
+        const fileDependGraph =  StaticAnalyzor.getTestDependency(globalUtil.config.codeBase, globalUtil.getCodeBasePackageJson().jest.testMatch);
+        globalUtil.config.fileDependencyGraphPath = path.resolve('/tmp/nodeSRT/fileDenpendencyGraph.json');
+        fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, JSON.stringify(fileDependGraph));
+        console.log('file dependency graph generated!', globalUtil.config.fileDependencyGraphPath);
+    }
 
     if(!globalUtil.config.includesE2E) return;
 
