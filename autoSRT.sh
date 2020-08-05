@@ -1,15 +1,12 @@
 #!/bin/bash
 
 echo "first arg: $1"
-node -v
-echo "upgrade node"
-curl -sL https://rpm.nodesource.com/setup_14.x | bash -
-ls -la /etc/yum.repos.d/|grep nodesource
-yum remove -y nodejs npm
-yum install -y nodejs
+echo "installing dependency"
 
 
+echo "node version:"
 node -v
+
 git clone https://github.com/transloadit/uppy.git
 git clone https://github.com/charlie-cyf/nodeSRT.git
 
