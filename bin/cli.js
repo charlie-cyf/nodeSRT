@@ -89,7 +89,6 @@ const serverProcess = child_process.spawn('SRTserver')
 
 console.log(chalk.yellow('analyzing on codebase', globalUtil.config.codeBase), '...')
 
-if(!fs.existsSync('/tmp/nodeSRT')) fs.mkdirSync('/tmp/nodeSRT');
 
 if(!globalUtil.config.skipGetDependency) {
     child_process.execSync(`rm -rf ${globalUtil.getInjectedDir()} ${globalUtil.getASTdir()}`, { stdio: [0, 1, 2] });

@@ -38,7 +38,7 @@ async function getDependency() {
     }
 
     if(fs.existsSync('/tmp/nodeSRT')) {
-        fs.rmdirSync('/tmp/nodeSRT', {recursive: true})
+        child_process.execSync(`rm -rf /tmp/nodeSRT`, { stdio: [0, 1, 2] });
     }
     
     fs.mkdirSync('/tmp/nodeSRT');
