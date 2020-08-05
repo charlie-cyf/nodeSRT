@@ -133,8 +133,8 @@ async function runner() {
 runner().then(() => {
    serverProcess.kill('SIGINT') 
 }).catch(err => {
-    serverProcess.kill('SIGINT')
     console.error('ERROR', err)
+    serverProcess.kill('SIGINT')
 })
 
 readInterface.on('close', () => {
