@@ -10,6 +10,7 @@ const { globalAgent } = require('http');
 const child_process = require('child_process');
 const api = require('../api')
 const readline = require("readline");
+const changeAnalysis = require('../changeAnalysis')
 const e2eHandler = require("../e2eTestsHandler")
 
 program
@@ -97,7 +98,10 @@ if(!globalUtil.config.skipGetDependency) {
 async function runner() {
     if(globalUtil.config.onlyE2E && globalUtil.config.includesE2E) {
         await api.getDependency();
-        await api.testSelection(fs.readFileSync(globalUtil.config.diffFile, 'utf-8'))        
+        const changes = changeAnalysis.getChangesAncestors(fs.readFileSync(globalUtil.config.diffFile, 'utf-8'));
+        console.time('e2e test selection')
+        globalUtil.config.selectedE2E = e2eHandler.selectE2ETests(changes, globalUtil.config.E2EdenpendencyGraphDir)
+        console.timeEnd('e2e test selection')
         console.log('selected E2E tests:', globalUtil.config.selectedE2E)
         return;
 
