@@ -2,7 +2,6 @@
 
 echo "first arg: $1"
 echo "installing dependency"
-npm install -g jest
 
 echo "node version:"
 node -v
