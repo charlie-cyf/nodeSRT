@@ -97,9 +97,7 @@ if(!globalUtil.config.skipGetDependency) {
 async function runner() {
     if(globalUtil.config.onlyE2E && globalUtil.config.includesE2E) {
         await api.getDependency();
-        console.time('e2e test selection')
-        globalUtil.config.selectedE2E = e2eHandler.selectE2ETests(changes, globalUtil.config.E2EdenpendencyGraphDir)
-        console.timeEnd('e2e test selection')
+        await api.testSelection(fs.readFileSync(globalUtil.config.diffFile, 'utf-8'))        
         console.log('selected E2E tests:', globalUtil.config.selectedE2E)
         return;
 
