@@ -12,6 +12,7 @@ const mkdirp = require('mkdirp')
 function runUnitTests(tests, diff) {
     // apply diff to codebase
     const codebase = globalUtil.config.codeBase;
+    let testFiles = []
     JsDiff.parsePatch(diff).forEach(file => {
         if(file.oldFileName === undefined) {
             return;
@@ -31,6 +32,11 @@ function runUnitTests(tests, diff) {
                 mkdirp.sync(path.dirname(newFile))
             }
             fs.writeFileSync(newFile, patchedFile);
+
+            // add file to test runner if new file is new added test file
+            if(file.newFileName.endsWith('.test.js') && file.oldFileName.includes('/dev/null')) {
+                testFiles.push(newFile)
+            }
         }
         
 
@@ -44,7 +50,6 @@ function runUnitTests(tests, diff) {
 
     modifyTests(globalUtil.config.codeBase, tests)
 
-    let testFiles = []
     tests.map(test => {
         if(!testFiles.includes(path.join(globalUtil.config.codeBase, test.testFile)))
             testFiles.push(path.join(globalUtil.config.codeBase, test.testFile));
