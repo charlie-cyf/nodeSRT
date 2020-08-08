@@ -31,12 +31,28 @@ echo "go back to /src"
 pwd
 
 echo "running SRT"
-nodeSRT -b ./uppy -d ./diff.patch --docker true  --config ./nodeSRT/example/dockerConfig.json | tee output.txt
+nodeSRT -b ./uppy -d ./diff.patch --docker true  --config ./nodeSRT/example/dockerConfig.json 2>&1 | tee output.txt
 
 echo "finished! $1"
 
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-echo "+++++++++++ print output ++++++++++++++++++++++++++++++"
+echo "++++++++++++ test result ++++++++++++++++++++++++++++++"
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "all tests:"
+awk '/Test Suites:/,/Ran all test suites./' output.txt
 
-cat output.txt
+echo "selection time:"
+awk '/selecting tests:/,/running selected tests .../' output.txt
+
+echo "Jest --onlyChange result:"
+awk '/Test Suites:/,/Ran all test suites related to changed files./' output.txt
+cat output.txt | grep "No tests found related to files changed since last commit."
+
+echo "run selected tests:"
+awk '/Test Suites:/,/Ran all test suites matching/'
+
+
+
+
+
+
