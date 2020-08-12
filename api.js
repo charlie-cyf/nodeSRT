@@ -89,7 +89,8 @@ async function getDependency() {
     fs.copyFileSync(path.join(__dirname, '/instrument/', 'SRTpackage.json'), path.join(injectedCodebase, "SRTutil", 'package.json'))
     fs.copyFileSync(path.join(__dirname, 'instrument/SRTlib.js'), path.join(SRTUtilFolder, 'index.js'))
     
-    // run npm install in injected folder
+    // run npm install in injected folderd
+    console.log('running install')
     child_process.execSync('cd ' + injectedCodebase + ' && pwd && npm install', { stdio: [0, 1, 2] });
 
     if(!globalUtil.config.onlyE2E) {
