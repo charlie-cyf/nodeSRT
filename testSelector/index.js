@@ -158,7 +158,7 @@ function getReducedTests(changes) {
         findTestsByFile(change.filename);
       }
     });
-    if (change.filename.endsWith(".test.js")) {
+    if (change.filename.endsWith(".test.js") || change.filename.endsWith(".test.jsx")) {
       change.diffAncestors.map((ancestors) => {
         let iter = ancestors.length - 1;
         let testName;

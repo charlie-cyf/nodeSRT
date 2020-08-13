@@ -74,9 +74,12 @@ async function getDependency() {
     console.log('injection complete!')
     // update package.json jest configuration
     const injectedPackageJson = JSON.parse(fs.readFileSync(path.join(injectedCodebase, 'package.json')));
-    injectedPackageJson.jest.setupFilesAfterEnv = ["./jest.setup.js"];
+    // const jestProperty = injectedCodebase.jest ? injectedCodebase.jest : {}
+    // jestProperty.setupFilesAfterEnv = ["./jest.setup.js"];
     injectedPackageJson.dependencies["SRTutil"] = 'file:SRTutil';
     fs.writeFileSync(injectedCodebase + '/package.json', JSON.stringify(injectedPackageJson));
+    
+    fs.copyFileSync(path.join(__dirname, "/instrument", 'simough-jest-config.js'), path.join(injectedCodebase, 'jest.config.js'))
 
     fs.copyFileSync(path.join(__dirname, "/instrument", 'jest.setup.js'), path.join(injectedCodebase, 'jest.setup.js'))
     
@@ -95,6 +98,7 @@ async function getDependency() {
 
     if(!globalUtil.config.onlyE2E) {
         // run tests in injected codebase
+        console.log('running unit tests ...')
         child_process.execSync('cd ' + injectedCodebase + ' && pwd && ' + globalUtil.config.runUnitTestsInstr, { stdio: [0, 1, 2] })
 
         // get call graph

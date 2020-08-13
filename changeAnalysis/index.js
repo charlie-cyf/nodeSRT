@@ -320,11 +320,11 @@ module.exports.getChangesAncestors = function (diff) {
     const codeBase = globalUtil.config.codeBase;
     let allChanges = this.parseAndApplyDiff(codeBase, diff);
     allChanges.forEach(change => {
-        if(change.filename.endsWith('.test.js')) {
+        if(change.filename.endsWith('.test.js') || change.filename.endsWith('.test.jsx')) {
             const beforeAST = ASTgenerator.parse(fs.readFileSync(change.filename, 'utf8'));
             const afterAST = ASTgenerator.parse(change.content);
             change.diffAncestors = getTestChangeAncestors(beforeAST, afterAST);
-        } else if(path.extname(change.filename) === '.js') {
+        } else if(path.extname(change.filename) === '.js' || path.extname(change.filename) === '.jsx') {
             const beforeAST = ASTgenerator.parse(fs.readFileSync(change.filename, 'utf8'));
             const afterAST = ASTgenerator.parse(change.content);
             change.diffAncestors = this.getDiffs(beforeAST, afterAST);

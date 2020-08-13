@@ -19,6 +19,12 @@ acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
     c(node.value, st, "Expression")
 }
+
+acornWalk.base.ClassProperty = (node, st, c) => {
+    if (node.computed) c(node.key, st, "Expression")
+    c(node.value, st, "Expression")
+}
+
 extend(acornWalk.base);
 
 
@@ -149,7 +155,7 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
  * @param {String} dir: path to codebase
  * @param {Array<String>} rgx (optional)
  */
-function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js']) {
+function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.jsx']) {
     let dependencyGraph = []
     const packageJson = globalUtil.getCodeBasePackageJson();
     
@@ -171,8 +177,9 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js']) {
     dependencyGraph.map(ele => {
         let propertyMap = new Map();
         const tree = JSON.parse(fs.readFileSync(ele.testFilename));
+        const program = tree.program
         // get file dependencies on each require
-        acornWalk.ancestor(tree, {
+        acornWalk.ancestor(program, {
             CallExpression(node, ancestors) {
                 if(node.callee.type === "Identifier" && node.callee.name === "require") {
                     // handle require("").data
@@ -208,6 +215,24 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js']) {
 
 
                 }
+            },
+
+            ImportDeclaration(node, ancestors) {
+                if(node.specifiers) {
+                    const ids = [];
+                    node.specifiers.forEach(spec => {
+                        if(t(spec, "local.name").safeObject) {
+                            ids.push(spec.local.name)
+                        }
+                    })
+
+                    if(t(node, 'source.value').safeObject) {
+                        const dependent = getFileDependencies(t(node, 'source.value').safeObject, ele.testFilename, packageJson.dependencies, [])
+                        ids.forEach(id => {
+                            propertyMap.set(id, dependents)
+                        })
+                    }
+                }
             }
         })
 
@@ -217,7 +242,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js']) {
 
         ele.testSuits = [];
         // link test name to file dependencies
-        acornWalk.simple(tree, {
+        acornWalk.simple(program, {
             CallExpression(node) { 
                 if(node.callee.type === 'Identifier' && node.callee.name === 'describe') {
                     

@@ -34,7 +34,7 @@ function runUnitTests(tests, diff) {
             fs.writeFileSync(newFile, patchedFile);
 
             // add file to test runner if new file is new added test file
-            if(file.newFileName.endsWith('.test.js') && file.oldFileName.includes('/dev/null')) {
+            if(file.newFileName.includes('.test.j') && file.oldFileName.includes('/dev/null')) {
                 testFiles.push(newFile)
             }
         }

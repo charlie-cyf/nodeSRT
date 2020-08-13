@@ -1,5 +1,15 @@
 {
-    "excepts": [],
+    "excepts": [
+        "src/app/lib/config/services/loadableConfig.js",
+        "src/app/lib/utilities/getToggles/index.test.js",
+        "src/app/pages/index.js",
+        "src/app/routes/utils/getConfig/index.js",
+        "app/routes/cpsAsset/getInitialData/convertToOptimoBlocks/blocks/paragraph/index.js",
+        "webpack.config.js",
+        "src/app/routes/cpsAsset/getInitialData/convertToOptimoBlocks/blocks/paragraph/index.js",
+        "src/client.test.jsx"
+
+    ],
     "e2eTestSuite": {
         "specs": [
             "test/endtoend/*/test.js"

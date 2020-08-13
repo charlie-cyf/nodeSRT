@@ -20,7 +20,7 @@ function generaterHelper(path, ASTpath, excepts) {
     let files = fs.readdirSync(path);
 
     files.forEach(file => {
-        if (Path.extname(file) === '.js') {
+        if (Path.extname(file) === '.js' || Path.extname(file) === '.jsx') {
             try {
                 let content = fs.readFileSync(path + '/' + file, 'utf-8');
 
@@ -102,7 +102,7 @@ module.exports = class ASTgenerater {
         const copy = function (source, distination) {
 
             fs.readdirSync(source).forEach(file => {
-                if (file === '.git' || file === 'node_modules') return;
+                if ( file === 'node_modules') return;
                 const name = file.split('/').pop();
                 if (fs.lstatSync(Path.join(source, file)).isDirectory()) {
                     if (!fs.existsSync(Path.join(distination, file)))
