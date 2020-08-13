@@ -2,12 +2,15 @@ const fs = require("fs");
 const { Parser } = require("acorn")
 const Astravel = require('astravel')
 const globalUtil = require('./util')
+const babelParser = require('@babel/parser');
 
 const ASTParser = Parser.extend(
     require("acorn-jsx")(),
     require("acorn-bigint"),
     require('acorn-static-class-features'),
-    require('acorn-stage3')
+    require('acorn-stage3'),
+    require('acorn-logical-assignment'),
+    require('acorn-import-meta')
 
 )
 const Path = require('path');
@@ -19,7 +22,7 @@ function generaterHelper(path, ASTpath, excepts) {
     files.forEach(file => {
         if (Path.extname(file) === '.js') {
             try {
-                let content = fs.readFileSync(path + '/' + file);
+                let content = fs.readFileSync(path + '/' + file, 'utf-8');
 
                 if (!excepts.includes(Path.resolve(path, file))) {
 
@@ -44,12 +47,27 @@ function generaterHelper(path, ASTpath, excepts) {
 
 function parseHelper(code) {
     let comments = [];
-    return ASTParser.parse(code, {
-        locations: true,
-        onComment: comments,
+    // return ASTParser.parse(code, {
+    //     locations: true,
+    //     onComment: comments,
+    //     sourceType: "module",
+    //     allowHashBang: true
+    // })
+    return babelParser.parse(code, {
+        // parse in strict mode and allow module declarations
         sourceType: "module",
-        allowHashBang: true
-    })
+        // sourceType: "expression",
+        allowImportExportEverywhere: true,
+      
+        plugins: [
+          // enable jsx and flow syntax
+          "jsx",
+          "flow",
+          "classProperties",
+          "estree"
+        ]
+      })
+
 }
 
 
@@ -59,6 +77,10 @@ module.exports = class ASTgenerater {
     // take source code, return parsed ast
     static parse(code) {
         return parseHelper(code)
+    }
+     
+    static parseStmt(stmt){
+        return parseHelper(stmt).program.body[0];
     }
 
     // will ignore paths in excepts

@@ -1,0 +1,17 @@
+{
+    "excepts": [],
+    "e2eTestSuite": {
+        "specs": [
+            "test/endtoend/*/test.js"
+          ]
+    },
+    "includesE2E": false,
+    "onlyE2E": true,
+    "runUnitTestsInstr": "npm run build && npm run test:unit",
+    "E2EprerunInstr": "cd /mnt/c/Users/presi/Documents && java -jar selenium-server-standalone-*.jar &",
+    "E2EpostrunInstr": "pkill -9 java",
+    "buildE2EInstr": "npm run build:lib && npm run test:endtoend:build",
+    "runE2EInstr": "npx wdio test/endtoend/wdio.local.conf.js \"-b\" \"chrome\" \"--suite\" \"${suitename}\"",
+    "E2Etemp": "/mnt/c/Users/presi/workspace/uppy/test/endtoend",
+    "E2Edir": "test/endtoend/"
+}

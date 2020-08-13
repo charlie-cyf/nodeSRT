@@ -3,7 +3,7 @@ const path = require('path')
 var Instrumentor = require('../instrumentor')
 const {generate, copyDir} = require("../../ASTgenerater");
 
-const codebase = './codeTest2'
+const codebase = './transloadit'
 const excepts = [
     './companion/src/server/Uploader.js',
     './companion/src/server/helpers/jwt.js',

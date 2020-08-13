@@ -1,63 +1,48 @@
-const SRTlib = require('SRT-util');
+const SRTlib = require('SRTutil');
 
-const {h, Component} = require('preact');
+const {
+  h,
+  Component
+} = require('preact');
+
 class AddFiles extends Component {
-  triggerFileInputClick=() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey","fileName":"${__filename}","paramsNumber":0},`);
-
+  triggerFileInputClick = () => {
     this.fileInput.click();
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey"},');
+  };
+  onFileInputChange = event => {
+    this.props.handleInputChange(event); // We clear the input after a file is selected, because otherwise
+    // change event is not fired in Chrome and Safari when a file
+    // with the same name is selected.
+    // ___Why not use value="" on <input/> instead?
+    //    Because if we use that method of clearing the input,
+    //    Chrome will not trigger change if we drop the same file twice (Issue #768).
 
-  }
-  onFileInputChange=event => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey2","fileName":"${__filename}","paramsNumber":1},`);
-
-    this.props.handleInputChange(event);
     event.target.value = null;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey2"},');
+  };
 
-  }
   renderPoweredByUppy() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"renderPoweredByUppy","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AddFiles","superClass":"Component"}},`);
-
     const uppyBranding = <span>
         <svg aria-hidden="true" focusable="false" class="uppy-c-icon uppy-Dashboard-poweredByIcon" width="11" height="11" viewBox="0 0 11 11">
           <path d="M7.365 10.5l-.01-4.045h2.612L5.5.806l-4.467 5.65h2.604l.01 4.044h3.718z" fill-rule="evenodd" />
         </svg>
         <span class="uppy-Dashboard-poweredByUppy">Uppy</span>
-      </span>;
+      </span>; // Support both the old word-order-insensitive string `poweredBy` and the new word-order-sensitive string `poweredBy2`
+
     const linkText = this.props.i18nArray('poweredBy2', {
       backwardsCompat: this.props.i18n('poweredBy'),
       uppy: uppyBranding
     });
-        SRTlib.send('{"type":"FUNCTIONEND","function":"renderPoweredByUppy"},');
-
     return <a tabindex="-1" href="https://uppy.io" rel="noreferrer noopener" target="_blank" class="uppy-Dashboard-poweredBy">
         {linkText}
       </a>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"renderPoweredByUppy"},');
-
   }
-  renderHiddenFileInput=() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey3","fileName":"${__filename}","paramsNumber":0},`);
 
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
-
+  renderHiddenFileInput = () => {
     return <input class="uppy-Dashboard-input" hidden aria-hidden="true" tabindex={-1} type="file" name="files[]" multiple={this.props.maxNumberOfFiles !== 1} onchange={this.onFileInputChange} accept={this.props.allowedFileTypes} ref={ref => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"${__filename}","paramsNumber":1},`);
-
       this.fileInput = ref;
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
-
     }} />;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey3"},');
-
-  }
-  renderMyDeviceAcquirer=() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey4","fileName":"${__filename}","paramsNumber":0},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
-
+  };
+  renderMyDeviceAcquirer = () => {
     return <div class="uppy-DashboardTab" role="presentation">
         <button type="button" class="uppy-DashboardTab-btn" role="tab" tabindex={0} data-uppy-super-focusable onclick={this.triggerFileInputClick}>
           <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32">
@@ -69,88 +54,43 @@ class AddFiles extends Component {
           <div class="uppy-DashboardTab-name">{this.props.i18n('myDevice')}</div>
         </button>
       </div>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey4"},');
-
-  }
-  renderDropPasteBrowseTagline=() => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey5","fileName":"${__filename}","paramsNumber":0},`);
-
+  };
+  renderDropPasteBrowseTagline = () => {
     const numberOfAcquirers = this.props.acquirers.length;
     const browse = <button type="button" class="uppy-u-reset uppy-Dashboard-browse" onclick={this.triggerFileInputClick} data-uppy-super-focusable={numberOfAcquirers === 0}>
         {this.props.i18n('browse')}
       </button>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
-
     return <div class="uppy-Dashboard-AddFiles-title">
         {numberOfAcquirers > 0 ? this.props.i18nArray('dropPasteImport', {
-      browse
-    }) : this.props.i18nArray('dropPaste', {
-      browse
-    })}
+        browse
+      }) : this.props.i18nArray('dropPaste', {
+        browse
+      })}
       </div>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey5"},');
-
-  }
-  renderAcquirer=acquirer => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey6","fileName":"${__filename}","paramsNumber":1},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
-
+  };
+  renderAcquirer = acquirer => {
     return <div class="uppy-DashboardTab" role="presentation">
-        <button type="button" class="uppy-DashboardTab-btn" role="tab" tabindex={0} aria-controls={`uppy-DashboardContent-panel--${acquirer.id}`} aria-selected={this.props.activePickerPanel.id === acquirer.id} data-uppy-super-focusable onclick={() => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement2","fileName":"${__filename}","paramsNumber":0},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
-
-      return this.props.showPanel(acquirer.id);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement2"},');
-
-    }}>
+        <button type="button" class="uppy-DashboardTab-btn" role="tab" tabindex={0} aria-controls={`uppy-DashboardContent-panel--${acquirer.id}`} aria-selected={this.props.activePickerPanel.id === acquirer.id} data-uppy-super-focusable onclick={() => this.props.showPanel(acquirer.id)}>
           {acquirer.icon()}
           <div class="uppy-DashboardTab-name">{acquirer.name}</div>
         </button>
       </div>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey6"},');
-
-  }
-  renderAcquirers=acquirers => {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"emptyKey7","fileName":"${__filename}","paramsNumber":1},`);
-
+  };
+  renderAcquirers = acquirers => {
+    // Group last two buttons, so we don’t end up with
+    // just one button on a new line
     const acquirersWithoutLastTwo = [...acquirers];
     const lastTwoAcquirers = acquirersWithoutLastTwo.splice(acquirers.length - 2, acquirers.length);
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
-
     return <div class="uppy-Dashboard-AddFiles-list" role="tablist">
         {this.renderMyDeviceAcquirer()}
-        {acquirersWithoutLastTwo.map(acquirer => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.acquirersWithoutLastTwo.map","fileName":"${__filename}","paramsNumber":1},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.acquirersWithoutLastTwo.map"},');
-
-      return this.renderAcquirer(acquirer);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.acquirersWithoutLastTwo.map"},');
-
-    })}
+        {acquirersWithoutLastTwo.map(acquirer => this.renderAcquirer(acquirer))}
         <span role="presentation" style="white-space: nowrap;">
-          {lastTwoAcquirers.map(acquirer => {
-            SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement.lastTwoAcquirers.map","fileName":"${__filename}","paramsNumber":1},`);
-
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.lastTwoAcquirers.map"},');
-
-      return this.renderAcquirer(acquirer);
-            SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement.lastTwoAcquirers.map"},');
-
-    })}
+          {lastTwoAcquirers.map(acquirer => this.renderAcquirer(acquirer))}
         </span>
       </div>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"emptyKey7"},');
+  };
 
-  }
   render() {
-        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"render","fileName":"${__filename}","paramsNumber":0,"classInfo":{"className":"AddFiles","superClass":"Component"}},`);
-
-        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
-
     return <div class="uppy-Dashboard-AddFiles">
         {this.renderHiddenFileInput()}
         {this.renderDropPasteBrowseTagline()}
@@ -160,8 +100,8 @@ class AddFiles extends Component {
           {this.props.proudlyDisplayPoweredByUppy && this.renderPoweredByUppy(this.props)}
         </div>
       </div>;
-        SRTlib.send('{"type":"FUNCTIONEND","function":"render"},');
-
   }
+
 }
+
 module.exports = AddFiles;
