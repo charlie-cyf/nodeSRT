@@ -1,8 +1,6 @@
-const SRTlib = require("SRTutil");
-
-const AssemblyOptions = require("./AssemblyOptions");
-
-describe("Transloadit/AssemblyOptions", () => {
+const SRTlib = require('SRTutil');
+const AssemblyOptions = require('./AssemblyOptions');
+describe('Transloadit/AssemblyOptions', () => {
   beforeAll(() => {
     SRTlib.startLogger("/mnt/c/Users/presi/workspace/nodeSRT/instrument/test/transloadit", "http://localhost:8888/instrument-message");
     SRTlib.send(`{ "testSuiteName": "Transloadit/AssemblyOptions", "fileName": "/src/AssemblyOptions.test.js", "calls" : [`);
@@ -10,39 +8,39 @@ describe("Transloadit/AssemblyOptions", () => {
   beforeEach(() => {
     SRTlib.send(`{ "testName": "${escape(jasmine["currentTest"].description)}", "fileName": "/src/AssemblyOptions.test.js", "calls" : [`);
   });
-  it("Validates response from getAssemblyOptions()", async () => {
+  it('Validates response from getAssemblyOptions()', async () => {
     const options = new AssemblyOptions([{
-      name: "testfile"
+      name: 'testfile'
     }], {
       getAssemblyOptions: file => {
-        expect(file.name).toBe("testfile");
+        expect(file.name).toBe('testfile');
         return {
-          params: "{\"some\":\"json\"}"
+          params: '{"some":"json"}'
         };
       }
     });
-    await expect(options.build()).rejects.toThrow(/undefined/undefined);
+    await expect(options.build()).rejects.toThrow(/The `params\.auth\.key` option is required/);
   });
-  it("Uses different assemblies for different params", async () => {
+  it('Uses different assemblies for different params', async () => {
     const data = Buffer.alloc(10);
     data.size = data.byteLength;
     const options = new AssemblyOptions([{
-      name: "a.png",
+      name: 'a.png',
       data
     }, {
-      name: "b.png",
+      name: 'b.png',
       data
     }, {
-      name: "c.png",
+      name: 'c.png',
       data
     }, {
-      name: "d.png",
+      name: 'd.png',
       data
     }], {
       getAssemblyOptions: file => ({
         params: {
           auth: {
-            key: "fake key"
+            key: 'fake key'
           },
           steps: {
             fake_step: {
@@ -54,35 +52,35 @@ describe("Transloadit/AssemblyOptions", () => {
     });
     const assemblies = await options.build();
     expect(assemblies).toHaveLength(4);
-    expect(assemblies[0].options.params.steps.fake_step.data).toBe("a.png");
-    expect(assemblies[1].options.params.steps.fake_step.data).toBe("b.png");
-    expect(assemblies[2].options.params.steps.fake_step.data).toBe("c.png");
-    expect(assemblies[3].options.params.steps.fake_step.data).toBe("d.png");
+    expect(assemblies[0].options.params.steps.fake_step.data).toBe('a.png');
+    expect(assemblies[1].options.params.steps.fake_step.data).toBe('b.png');
+    expect(assemblies[2].options.params.steps.fake_step.data).toBe('c.png');
+    expect(assemblies[3].options.params.steps.fake_step.data).toBe('d.png');
   });
-  it("Should merge files with same parameters into one Assembly", async () => {
+  it('Should merge files with same parameters into one Assembly', async () => {
     const data = Buffer.alloc(10);
     const data2 = Buffer.alloc(20);
     const options = new AssemblyOptions([{
-      name: "a.png",
+      name: 'a.png',
       data,
       size: data.byteLength
     }, {
-      name: "b.png",
+      name: 'b.png',
       data,
       size: data.byteLength
     }, {
-      name: "c.png",
+      name: 'c.png',
       data,
       size: data.byteLength
     }, {
-      name: "d.png",
+      name: 'd.png',
       data: data2,
       size: data2.byteLength
     }], {
       getAssemblyOptions: file => ({
         params: {
           auth: {
-            key: "fake key"
+            key: 'fake key'
           },
           steps: {
             fake_step: {
@@ -99,35 +97,32 @@ describe("Transloadit/AssemblyOptions", () => {
     expect(assemblies[0].options.params.steps.fake_step.data).toBe(10);
     expect(assemblies[1].options.params.steps.fake_step.data).toBe(20);
   });
-  it("Does not create an Assembly if no files are being uploaded", async () => {
+  it('Does not create an Assembly if no files are being uploaded', async () => {
     const options = new AssemblyOptions([], {
       getAssemblyOptions() {
-        throw new Error("should not create Assembly");
+        throw new Error('should not create Assembly');
       }
-
     });
     await expect(options.build()).resolves.toEqual([]);
   });
-  it("Creates an Assembly if no files are being uploaded but `alwaysRunAssembly` is enabled", async () => {
+  it('Creates an Assembly if no files are being uploaded but `alwaysRunAssembly` is enabled', async () => {
     const options = new AssemblyOptions([], {
       alwaysRunAssembly: true,
-
       getAssemblyOptions(file) {
         expect(file).toBe(null);
         return {
           params: {
             auth: {
-              key: "fake key"
+              key: 'fake key'
             },
-            template_id: "example"
+            template_id: 'example'
           }
         };
       }
-
     });
     await expect(options.build()).resolves.toHaveLength(1);
   });
-  it("Collects metadata if `fields` is an array", async () => {
+  it('Collects metadata if `fields` is an array', async () => {
     function defaultGetAssemblyOptions(file, options) {
       return {
         params: options.params,
@@ -135,22 +130,21 @@ describe("Transloadit/AssemblyOptions", () => {
         fields: options.fields
       };
     }
-
     const options = new AssemblyOptions([{
       id: 1,
       meta: {
-        watermark: "Some text"
+        watermark: 'Some text'
       }
     }, {
       id: 2,
       meta: {
-        watermark: "\u24D2 Transloadit GmbH"
+        watermark: 'ⓒ Transloadit GmbH'
       }
     }], {
-      fields: ["watermark"],
+      fields: ['watermark'],
       params: {
         auth: {
-          key: "fake key"
+          key: 'fake key'
         }
       },
       getAssemblyOptions: defaultGetAssemblyOptions
@@ -158,10 +152,10 @@ describe("Transloadit/AssemblyOptions", () => {
     const assemblies = await options.build();
     expect(assemblies).toHaveLength(2);
     expect(assemblies[0].options.fields).toMatchObject({
-      watermark: "Some text"
+      watermark: 'Some text'
     });
     expect(assemblies[1].options.fields).toMatchObject({
-      watermark: "\u24D2 Transloadit GmbH"
+      watermark: 'ⓒ Transloadit GmbH'
     });
   });
   afterEach(() => {

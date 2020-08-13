@@ -97,6 +97,32 @@ var generator = Object.assign({
 
   },
 
+  ClassProperty: function ClassProperty(node, state) {
+    this.FieldDefinition(node, state)
+  },
+
+  JSXFragment: function JSXFragment(node, state) {
+    var output = state;
+    this[node.openingFragment.type](node.openingFragment, state);
+    for (var i = 0; i < node.children.length; i++) {
+      var child = node.children[i];
+      this[child.type](child, state);
+    }
+    this[node.closingFragment.type](node.closingFragment, state);
+  },
+
+  JSXOpeningFragment: function(node, state) {
+    var output = state;
+    output.write('<>')
+  },
+
+  JSXClosingFragment: function JSXClosingFragment(node, state) {
+    var output = state;
+    output.write('</>')
+  },
+
+
+
   // text
   JSXText: function JSXExpressionContainer(node, state) {
     var output = state;

@@ -6,8 +6,13 @@
         "src/app/routes/utils/getConfig/index.js",
         "app/routes/cpsAsset/getInitialData/convertToOptimoBlocks/blocks/paragraph/index.js",
         "webpack.config.js",
+        "webpack.config.client.js",
+        "src/clientEnvVars.js",
+        "src/client.test.jsx",
         "src/app/routes/cpsAsset/getInitialData/convertToOptimoBlocks/blocks/paragraph/index.js",
-        "src/client.test.jsx"
+        "src/testHelpers/loggerMock.js"
+
+
 
     ],
     "e2eTestSuite": {
@@ -16,7 +21,7 @@
           ]
     },
     "includesE2E": false,
-    "onlyE2E": true,
+    "onlyE2E": false,
     "runUnitTestsInstr": "npm run build && npm run test:unit",
     "E2EprerunInstr": "cd /mnt/c/Users/presi/Documents && java -jar selenium-server-standalone-*.jar &",
     "E2EpostrunInstr": "pkill -9 java",

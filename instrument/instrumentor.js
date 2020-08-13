@@ -191,6 +191,8 @@ module.exports = class Instrumentor {
                                     }
 
 
+                                } else if (node.callee.name === 'it') {
+                                    
                                 }
                             }
                         })
@@ -260,9 +262,9 @@ module.exports = class Instrumentor {
                     }
 
                     //  write to outputDir
-                    // fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(program, {generator: JsxGenerator,
-                    //      comments: true}))
-                    fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), babelGenerator(toBabel(tree)).code)
+                    fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(program, {generator: JsxGenerator,
+                         comments: true}))
+                    // fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), babelGenerator(toBabel(tree)).code)
 
 
                 } catch (err) {
@@ -335,6 +337,7 @@ module.exports = class Instrumentor {
     }
 
     functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg) {
+
         const paramsNum = node.params.length;
 
         const memberExpHandler = function (node, idList) {

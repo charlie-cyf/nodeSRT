@@ -80,8 +80,9 @@ async function getDependency() {
     fs.writeFileSync(injectedCodebase + '/package.json', JSON.stringify(injectedPackageJson));
     
     fs.copyFileSync(path.join(__dirname, "/instrument", 'simough-jest-config.js'), path.join(injectedCodebase, 'jest.config.js'))
-
     fs.copyFileSync(path.join(__dirname, "/instrument", 'jest.setup.js'), path.join(injectedCodebase, 'jest.setup.js'))
+    fs.copyFileSync(path.join(__dirname, "/instrument", 'bundleSize.js'), path.join(injectedCodebase, "scripts/bundleSize/bundleSizeConfig.js"))
+
     
     // copy SRTlib.js to injected node_modules
     // ! use package.json dependency "file:"

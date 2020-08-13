@@ -1,8 +1,8 @@
 const { jestDirAlias } = require('./dirAlias');
 
 const unitTests = {
-  setupFiles: ['./src/testHelpers/jest-setup.js', './jest-setup.js'],
-  setupFilesAfterEnv: ['./src/testHelpers/setupTests.js'],
+  setupFiles: ['./src/testHelpers/jest-setup.js'],
+  setupFilesAfterEnv: ['./src/testHelpers/setupTests.js', './jest.setup.js'],
   moduleNameMapper: jestDirAlias,
   snapshotSerializers: ['enzyme-to-json/serializer'],
   transform: {
