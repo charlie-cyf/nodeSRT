@@ -116,7 +116,11 @@ async function getDependency() {
 
         // pre static analysis step: build
         child_process.execSync('cd ' + codeBase + ' && pwd && npm install', { stdio: [0, 1, 2] })
-        const fileDependGraph =  StaticAnalyzor.getTestDependency(globalUtil.config.codeBase, globalUtil.getCodeBasePackageJson().jest.testMatch);
+        const fileDependGraph =  StaticAnalyzor.getTestDependency(globalUtil.config.codeBase, [
+            '**/__tests__/**/*.js?(x)',
+            '**/?(*.)+(spec|test).js?(x)',
+            '!**/src/integration/!(utils)/**/*',
+          ]);
         globalUtil.config.fileDependencyGraphPath = path.resolve('/tmp/nodeSRT/fileDenpendencyGraph.json');
         fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, JSON.stringify(fileDependGraph));
         console.log('file dependency graph generated!', globalUtil.config.fileDependencyGraphPath);

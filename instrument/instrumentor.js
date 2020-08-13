@@ -114,7 +114,7 @@ module.exports = class Instrumentor {
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'beforeAll') {
                                                 beforeAllFound = true;
                                                 // start logger
-                                                if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
+                                                if (t(stmt, 'expression.arguments[0].body.body').safeObject) { 
                                                     stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
                                                     stmt.expression.arguments[0].body.body.unshift(parseStmt("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
                                                 }
@@ -192,7 +192,7 @@ module.exports = class Instrumentor {
 
 
                                 } else if (node.callee.name === 'it') {
-                                    
+                                    // TODO it without decribe
                                 }
                             }
                         })
@@ -496,6 +496,7 @@ module.exports = class Instrumentor {
     }
 
     getSuiteName(node) {
+        // TODO handle suite name has TemplateLiteral
         return t(node, 'arguments[0].value').safeObject;
     }
 
