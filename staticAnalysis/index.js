@@ -126,7 +126,8 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
         if(fs.existsSync(ASTpath)) {
             // loop thru all requires
             const tree = JSON.parse(fs.readFileSync(ASTpath));
-            acornWalk.simple(tree, {
+            const program = tree.program
+            acornWalk.simple(program, {
                 CallExpression(node) {
                     if(node.callee.type === "Identifier" && node.callee.name === "require") {
                         if(t(node, 'arguments[0].value').safeObject) {
