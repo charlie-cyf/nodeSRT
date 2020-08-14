@@ -1,10 +1,18 @@
 const SRTlib = require('SRTutil');
 import React from 'react';
+/*eslint-disable-line no-unused-vars*/
 import {StyleSheet, View, FlatList, Text, Image} from 'react-native';
 import getFileTypeIcon from '@uppy/dashboard/lib/utils/getFileTypeIcon.js';
 import truncateString from '@uppy/dashboard/lib/utils/truncateString.js';
 import renderStringFromJSX from 'preact-render-to-string';
 import SvgUri from 'react-native-svg-uri';
+/*function truncateString (str) {*/
+/*const maxChars = 20*/
+/*if (str.length > maxChars) {*/
+/*return str.substring(0, 25) + '...'*/
+/*}*/
+/*return str*/
+/*}*/
 function FileIcon() {
   SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"FileIcon","fileName":"/FileList.js","paramsNumber":0},`);
   SRTlib.send('{"type":"FUNCTIONEND","function":"FileIcon"},');

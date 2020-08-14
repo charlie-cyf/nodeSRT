@@ -6,6 +6,7 @@ const { Parser } = require("acorn")
 const astring = require('astring');
 const {parse, parseStmt} = require('../ASTgenerater')
 const toBabel = require('estree-to-babel');
+const astravel = require('astravel')
 const babelGenerator = require('@babel/generator').default;
 
 const {JsxGenerator} = require("./astringJsx");
@@ -37,6 +38,21 @@ const ASTParser = Parser.extend(
 )
 
 function printProgress(progress){    
+}
+
+/**
+ * check if tests inside a test site
+ * @param {Object} ancestors 
+ */
+function isInsideDecribe(ancestors) {
+    let idx = ancestors.length - 1;
+    while(idx >= 0) {
+        if(t(ancestors[idx], "type").safeObject === "CallExpression" && t(ancestors[idx], "callee.name").safeObject === "describe") {
+            return true;
+        }
+        idx--;
+    }
+    return false
 }
 
 module.exports = class Instrumentor {
@@ -74,7 +90,7 @@ module.exports = class Instrumentor {
                     program.body.unshift(parseStmt("const SRTlib = require('SRTutil');"));
                 }
 
-                const getSuiteName = this.getSuiteName;
+                const getSuiteName = Instrumentor.getSuiteName;
                 const codebase = this.codebaseName
                 printProgress('inject to: ' + fullPath)
                 // if file is test
@@ -193,6 +209,9 @@ module.exports = class Instrumentor {
 
                                 } else if (node.callee.name === 'it') {
                                     // TODO it without decribe
+                                    if(!isInsideDecribe(ancestors)) {
+                                        
+                                    }
                                 }
                             }
                         })
@@ -437,7 +456,7 @@ module.exports = class Instrumentor {
                     }
                     break;
                 case 'FunctionDeclaration':
-                case 'ArrowFunctionExpression': // TODO handle arrowFunction name case
+                case 'ArrowFunctionExpression': 
                 case 'Program':
                     return idList;
                 case 'CallExpression':
@@ -495,9 +514,15 @@ module.exports = class Instrumentor {
 
     }
 
-    getSuiteName(node) {
-        // TODO handle suite name has TemplateLiteral
-        return t(node, 'arguments[0].value').safeObject;
+    static getSuiteName(node) {
+        // handle suite name has TemplateLiteral
+        if(t(node, "arguments[0].type").safeObject === "TemplateLiteral") {
+            const name = astring.generate(node.arguments[0], {generator: JsxGenerator,
+                comments: true})
+            return name.substring(1, name.length - 1);
+        } else {
+            return t(node, 'arguments[0].value').safeObject;
+        }
     }
 
     static processStringNames(s) {

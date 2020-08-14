@@ -14,6 +14,7 @@ const { prop } = require('acorn-jsx/xhtml');
 const { setMaxListeners } = require('process');
 const multimatch = require('multimatch');
 const { globalAgent } = require('http');
+const Instrumentor = require('../instrument/instrumentor')
 
 acornWalk.base.FieldDefinition = (node, st, c) => {
     if (node.computed) c(node.key, st, "Expression")
@@ -44,6 +45,7 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
     const codeBaseFile = globalUtil.getCodebasePath(ASTfileName)
 
     // first resolve dependName
+    // TODO fix for jsconfig.json compilerOptions
     let resolved;
     try {
         resolved = requireResolver.sync(dependName, codeBaseFile);
@@ -57,7 +59,6 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
         
     }
     
-    // console.log('getFileDependencies get called on dependname', dependName, 'ASTfileName', ASTfileName, 'get', resolved);
     
     // mapping local file dependency to resolved
     if(resolved.includes('/node_modules')){
@@ -230,7 +231,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                     if(t(node, 'source.value').safeObject) {
                         const dependent = getFileDependencies(t(node, 'source.value').safeObject, ele.testFilename, packageJson.dependencies, [])
                         ids.forEach(id => {
-                            propertyMap.set(id, dependents)
+                            propertyMap.set(id, dependent)
                         })
                     }
                 }
@@ -246,8 +247,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
         acornWalk.simple(program, {
             CallExpression(node) { 
                 if(node.callee.type === 'Identifier' && node.callee.name === 'describe') {
-                    
-                    const suiteName = t(node, 'arguments[0].value').safeObject;
+                    const suiteName = Instrumentor.getSuiteName(node)
                     let stmts = t(node, "arguments[1].body.body").safeObject;
                     if (stmts) {
                         for (let stmt of stmts) {
@@ -341,6 +341,8 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                             })
                         }
                     }
+                } else {
+                    // TODO handle test without suite
                 }
             }
         })

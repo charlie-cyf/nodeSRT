@@ -60,7 +60,7 @@ module.exports = {
             ASTPath = path.join(this.config.codeBase, ASTPath)
         }
 
-        if(ASTPath.endsWith('.js.json')) {
+        if(ASTPath.endsWith('.js.json') || ASTPath.endsWith('.jsx.json')) {
             ASTPath = ASTPath.substring(0, ASTPath.length-5);
         }
 
