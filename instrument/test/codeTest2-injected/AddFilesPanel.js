@@ -1,6 +1,11 @@
 const SRTlib = require('SRTutil');
-const {h} = require('preact');
+
+const {
+  h
+} = require('preact');
+
 const AddFiles = require('./AddFiles');
+
 const AddFilesPanel = props => {
   SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"AddFilesPanel","fileName":"/AddFilesPanel.js","paramsNumber":1},`);
   SRTlib.send('{"type":"FUNCTIONEND","function":"AddFilesPanel"},');
@@ -10,15 +15,16 @@ const AddFilesPanel = props => {
           {props.i18n('addingMoreFiles')}
         </div>
         <button class="uppy-DashboardContent-back" type="button" onclick={ev => {
-    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/AddFilesPanel.js","paramsNumber":1},`);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
-    return props.toggleAddFilesPanel(false);
-    SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
-  }}>{props.i18n('back')}
+        SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"ReturnStatement","fileName":"/AddFilesPanel.js","paramsNumber":1},`);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+        return props.toggleAddFilesPanel(false);
+        SRTlib.send('{"type":"FUNCTIONEND","function":"ReturnStatement"},');
+      }}>{props.i18n('back')}
         </button>
       </div>
-      <AddFiles  {...props} />
+      <AddFiles {...props} />
     </div>;
   SRTlib.send('{"type":"FUNCTIONEND","function":"AddFilesPanel"},');
 };
+
 module.exports = AddFilesPanel;

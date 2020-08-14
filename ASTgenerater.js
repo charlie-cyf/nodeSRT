@@ -63,8 +63,7 @@ function parseHelper(code) {
           // enable jsx and flow syntax
           "jsx",
           "flow",
-          "classProperties",
-          "estree"
+          "classProperties"
         ]
       })
 

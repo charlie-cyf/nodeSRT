@@ -1,5 +1,9 @@
 const SRTlib = require('SRTutil');
-const {default: getAmpUrl} = require('.');
+
+const {
+  default: getAmpUrl
+} = require('.');
+
 describe('getAmpUrl', () => {
   beforeAll(() => {
     SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/codeTest2", "http://localhost:8888/instrument-message");

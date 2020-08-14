@@ -1,14 +1,14 @@
 import SRTlib from 'SRTutil';
-import React, {useContext} from 'react';
-import {node} from 'prop-types';
+import React, { useContext } from 'react';
+import { node } from 'prop-types';
 import styled from 'styled-components';
-import {GEL_SPACING_DBL, GEL_SPACING_TRPL, GEL_SPACING_QUAD} from '@bbc/gel-foundations/spacings';
+import { GEL_SPACING_DBL, GEL_SPACING_TRPL, GEL_SPACING_QUAD } from '@bbc/gel-foundations/spacings';
 import SectionLabel from '@bbc/psammead-section-label';
-import {GEL_GROUP_4_SCREEN_WIDTH_MIN, GEL_GROUP_3_SCREEN_WIDTH_MAX} from '@bbc/gel-foundations/breakpoints';
+import { GEL_GROUP_4_SCREEN_WIDTH_MIN, GEL_GROUP_3_SCREEN_WIDTH_MAX } from '@bbc/gel-foundations/breakpoints';
 import path from 'ramda/src/path';
 import pathOr from 'ramda/src/pathOr';
 import Grid from '#app/components/Grid';
-import {getImageParts} from '#app/routes/cpsAsset/getInitialData/convertToOptimoBlocks/blocks/image/helpers';
+import { getImageParts } from '#app/routes/cpsAsset/getInitialData/convertToOptimoBlocks/blocks/image/helpers';
 import CpsMetadata from '#containers/CpsMetadata';
 import ChartbeatAnalytics from '#containers/ChartbeatAnalytics';
 import LinkedData from '#containers/LinkedData';
@@ -30,13 +30,26 @@ import visuallyHiddenHeadline from '#containers/VisuallyHiddenHeadline';
 import Byline from '#containers/Byline';
 import SocialEmbed from '#containers/SocialEmbed';
 import CpsRecommendations from '#containers/CpsRecommendations';
-import {getFirstPublished, getLastPublished, getAboutTags} from '#lib/utilities/parseAssetData';
+import { getFirstPublished, getLastPublished, getAboutTags } from '#lib/utilities/parseAssetData';
 import categoryType from './categoryMap/index';
 import Include from '#containers/Include';
-import {ServiceContext} from '#contexts/ServiceContext';
-const StoryPage = ({pageData, mostReadEndpointOverride}) => {
+import { ServiceContext } from '#contexts/ServiceContext';
+
+const StoryPage = ({
+  pageData,
+  mostReadEndpointOverride
+}) => {
   SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"StoryPage","fileName":"/StoryPage.jsx","paramsNumber":1},`);
-  const {dir, mostRead: {header}, script, service, serviceLang, lang} = useContext(ServiceContext);
+  const {
+    dir,
+    mostRead: {
+      header
+    },
+    script,
+    service,
+    serviceLang,
+    lang
+  } = useContext(ServiceContext);
   const title = path(['promo', 'headlines', 'headline'], pageData);
   const shortHeadline = path(['promo', 'headlines', 'shortHeadline'], pageData);
   const category = path(['promo', 'passport', 'category', 'categoryName'], pageData);
@@ -104,53 +117,46 @@ const StoryPage = ({pageData, mostReadEndpointOverride}) => {
     text,
     image,
     timestamp: props => {
-      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender.timestamp","fileName":"/StoryPage.jsx","paramsNumber":1},`);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.timestamp"},');
-      SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
-      return allowDateStamp ? <StyledTimestamp  {...props} popOut={false} minutesTolerance={1} /> : null;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.timestamp"},');
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender"},');
+      return allowDateStamp ? <StyledTimestamp {...props} popOut={false} minutesTolerance={1} /> : null;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender"},');
     },
     video: props => {
-      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender.video","fileName":"/StoryPage.jsx","paramsNumber":1},`);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.video"},');
-      SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
-      return <MediaPlayer  {...props} assetUri={assetUri} />;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.video"},');
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###2","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###2"},');
+      return <MediaPlayer {...props} assetUri={assetUri} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###2"},');
     },
     version: props => {
-      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender.version","fileName":"/StoryPage.jsx","paramsNumber":1},`);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.version"},');
-      SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
-      return <MediaPlayer  {...props} assetUri={assetUri} />;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.version"},');
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###3","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###3"},');
+      return <MediaPlayer {...props} assetUri={assetUri} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###3"},');
     },
     byline: props => {
-      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender.byline","fileName":"/StoryPage.jsx","paramsNumber":1},`);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.byline"},');
-      SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
-      return <StyledByline  {...props} />;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.byline"},');
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###4","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###4"},');
+      return <StyledByline {...props} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###4"},');
     },
     include: props => {
-      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender.include","fileName":"/StoryPage.jsx","paramsNumber":1},`);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.include"},');
-      SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
-      return <Include  {...props} />;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.include"},');
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###5","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###5"},');
+      return <Include {...props} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###5"},');
     },
     social_embed: props => {
-      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender.social_embed","fileName":"/StoryPage.jsx","paramsNumber":1},`);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.social_embed"},');
-      SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
-      return <SocialEmbed  {...props} />;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.social_embed"},');
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###6","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###6"},');
+      return <SocialEmbed {...props} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###6"},');
     },
     wsoj: props => {
-      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender.wsoj","fileName":"/StoryPage.jsx","paramsNumber":1},`);
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.wsoj"},');
-      SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
-      return <CpsRecommendations  {...props} parentColumns={gridColsMain} items={recommendationsInitialData} />;
-      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender.wsoj"},');
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###7","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###7"},');
+      return <CpsRecommendations {...props} parentColumns={gridColsMain} items={recommendationsInitialData} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###7"},');
     }
   };
   const StyledTimestamp = styled(Timestamp)`
@@ -174,7 +180,8 @@ const StoryPage = ({pageData, mostReadEndpointOverride}) => {
     @media (min-width: ${GEL_GROUP_4_SCREEN_WIDTH_MIN}) {
       max-width: ${GEL_GROUP_4_SCREEN_WIDTH_MIN};
     }
-  `;
+  `; // Firefox specific styling to prevent content from overflowing on smaller resolutions
+
   const GridPrimaryColumn = styled(Grid)`
     @media (max-width: ${GEL_GROUP_3_SCREEN_WIDTH_MAX}) {
       width: 100%;
@@ -190,6 +197,12 @@ const StoryPage = ({pageData, mostReadEndpointOverride}) => {
     margin-bottom: ${GEL_SPACING_TRPL};
     padding: ${GEL_SPACING_DBL};
   `;
+  /**
+   * this should be the defacto wrapper for OJs
+   * as it displays a conditional padding, which
+   * works well for mobile view.
+   */
+
   const ResponsiveComponentWrapper = styled.div`
     margin-bottom: ${GEL_SPACING_TRPL};
     @media (min-width: ${GEL_GROUP_4_SCREEN_WIDTH_MIN}) {
@@ -199,7 +212,6 @@ const StoryPage = ({pageData, mostReadEndpointOverride}) => {
   const MostReadSection = styled.section.attrs(() => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MostReadSection.styled.section.attrs","fileName":"/StoryPage.jsx","paramsNumber":0},`);
     SRTlib.send('{"type":"FUNCTIONEND","function":"MostReadSection.styled.section.attrs"},');
-    SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
     return {
       role: 'region',
       'aria-labelledby': 'Most-Read',
@@ -207,10 +219,12 @@ const StoryPage = ({pageData, mostReadEndpointOverride}) => {
     };
     SRTlib.send('{"type":"FUNCTIONEND","function":"MostReadSection.styled.section.attrs"},');
   })``;
-  const MostReadWrapper = ({children}) => {
+
+  const MostReadWrapper = ({
+    children
+  }) => {
     SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"MostReadWrapper","fileName":"/StoryPage.jsx","paramsNumber":1},`);
     SRTlib.send('{"type":"FUNCTIONEND","function":"MostReadWrapper"},');
-    SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
     return <MostReadSection>
       <SectionLabel script={script} labelId="Most-Read" service={service} dir={dir}>
         {header}
@@ -219,6 +233,7 @@ const StoryPage = ({pageData, mostReadEndpointOverride}) => {
     </MostReadSection>;
     SRTlib.send('{"type":"FUNCTIONEND","function":"MostReadWrapper"},');
   };
+
   MostReadWrapper.propTypes = {
     children: node.isRequired
   };
@@ -236,7 +251,9 @@ const StoryPage = ({pageData, mostReadEndpointOverride}) => {
           </main>
           <CpsRelatedContent content={relatedContent} parentColumns={gridColsMain} />
         </GridPrimaryColumn>
-        <GridSecondaryColumn item dir={dir} columns={gridColsSecondary} parentColumns={gridColumns} lang={serviceLang}>
+        <GridSecondaryColumn item dir={dir} columns={gridColsSecondary} parentColumns={gridColumns} // `serviceLang` is defined when the language the page is written in is different to the
+      // language of the service. `serviceLang` is used to override the page language.
+      lang={serviceLang}>
           {topStoriesInitialData && <ResponsiveComponentWrapper>
               <TopStories content={topStoriesInitialData} parentColumns={gridColsSecondary} />
             </ResponsiveComponentWrapper>}
@@ -251,5 +268,6 @@ const StoryPage = ({pageData, mostReadEndpointOverride}) => {
     </>;
   SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
 };
+
 StoryPage.propTypes = cpsAssetPagePropTypes;
 export default StoryPage;

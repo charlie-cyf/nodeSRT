@@ -8,6 +8,7 @@ const {parse, parseStmt} = require('../ASTgenerater')
 const toBabel = require('estree-to-babel');
 const astravel = require('astravel')
 const babelGenerator = require('@babel/generator').default;
+const babelTraverse = require("@babel/traverse");
 
 const {JsxGenerator} = require("./astringJsx");
 
@@ -102,8 +103,9 @@ module.exports = class Instrumentor {
                         } else {
                             testPlatform = 'jest'
                         }
-                        acornWalk.ancestor(program, {
-                            CallExpression(node, ancestors) {
+                        babelWalk.ancestor({
+                            CallExpression(node, state, ancestors) {
+                                // console.log(ancestors)
                                 if (node.callee.name === 'describe') {
                                     let beforeAllFound = false;
                                     let afterAllFound = false;
@@ -210,11 +212,13 @@ module.exports = class Instrumentor {
                                 } else if (node.callee.name === 'it') {
                                     // TODO it without decribe
                                     if(!isInsideDecribe(ancestors)) {
-                                        
+
                                     }
                                 }
                             }
-                        })
+                        })(tree, {
+                            counter: 0,
+                          })
                     } else {
                         let functionMap = new Map();
                         const getListOfId = Instrumentor.getListOfId;
@@ -243,8 +247,8 @@ module.exports = class Instrumentor {
                         };
 
 
-                        acornWalk.ancestor(program, {
-                            FunctionDeclaration(node, ancestors) {
+                        babelWalk.ancestor({
+                            FunctionDeclaration(node, state, ancestors) {
                                 const paramsNum = node.params.length;
                                 const funcName = node.id.name;
                                 // node.body.body.unshift(parseStmt('SRTlib.send(`{ "anonymous": false, "function": \"' + funcName + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
@@ -254,12 +258,12 @@ module.exports = class Instrumentor {
                                 insertBeforeReturn(node, funcName, buildFunctionEndMsg);
                             },
 
-                            FunctionExpression(node, ancestors) {
+                            FunctionExpression(node, state, ancestors) {
                                 const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
                                 insertBeforeReturn(node, funcName, buildFunctionEndMsg);
                             },
 
-                            ArrowFunctionExpression(node, ancestors) {
+                            ArrowFunctionExpression(node, state, ancestors) {
                                 // handle arrow function implicit return
                                 if (node.body.type !== 'BlockStatement') {
                                     const returnStmt = {
@@ -276,14 +280,31 @@ module.exports = class Instrumentor {
                                 insertBeforeReturn(node, funcName, buildFunctionEndMsg)
                             },
 
+                            ClassMethod(node, state, ancestors) {
+                                const funcName = t(node, 'key.name').safeObject;
+                                if(funcName) {
+                                    // build class info
+                                    const classDeclare = ancestors[ancestors.length - 3];
+                                    const classObj = {className: classDeclare.id.name};
+                                    if(classDeclare.superClass !== null){
+                                        classObj.superClass = classDeclare.superClass.name;
+                                    }
+                                    node.body.body.unshift(buildFunctionStartMsg(funcName, node.params.length, false, classObj))
+                                    node.body.body.push(buildFunctionEndMsg(funcName, node.params.length))
+                                    insertBeforeReturn(node, funcName, buildFunctionEndMsg)
+                                }
+                            }
 
-                        })
+
+                        })(tree, {
+                            counter: 0,
+                          })
                     }
 
                     //  write to outputDir
-                    fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(program, {generator: JsxGenerator,
-                         comments: true}))
-                    // fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), babelGenerator(toBabel(tree)).code)
+                    // fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), astring.generate(program, {generator: JsxGenerator,
+                    //      comments: true}))
+                    fs.writeFileSync(outputDir + '/' + file.replace('.json', ""), babelGenerator(tree).code)
 
 
                 } catch (err) {
@@ -391,7 +412,7 @@ module.exports = class Instrumentor {
             fname = parent.id.name;
             // node.body.body.unshift(ASTParser.parse('SRTlib.send(`{ "anonymous": false, "function": \"' + fname + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
             node.body.body.unshift(buildFunctionStartMsg(fname, paramsNum, false, undefined))
-        } else if (parent.type === 'MethodDefinition') {
+        } else if (parent.type === 'ClassMethod' || parent.type === 'MethodDefinition') {
             const classDeclare = ancestors[ancestors.length - 4];
             const classObj = {className: classDeclare.id.name};
             if(classDeclare.superClass !== null){
@@ -491,6 +512,11 @@ module.exports = class Instrumentor {
                     }
                     break;
                 case 'Property':
+                    if (ancestor.key.type === 'Identifier') {
+                        idList.unshift(ancestor.key.name);
+                    }
+                    break;
+                case 'ClassProperty' :
                     if (ancestor.key.type === 'Identifier') {
                         idList.unshift(ancestor.key.name);
                     }

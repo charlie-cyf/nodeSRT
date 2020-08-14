@@ -25,6 +25,7 @@
   "homepage": "https://github.com/charlie-cyf/nodeSRT#readme",
   "dependencies": {
     "@babel/parser": "^7.11.3",
+    "@babel/traverse": "^7.11.0",
     "acorn": "^7.3.1",
     "acorn-bigint": "^0.4.0",
     "acorn-import-meta": "^1.1.0",
