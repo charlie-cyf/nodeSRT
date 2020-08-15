@@ -8,13 +8,9 @@
         "webpack.config.js",
         "webpack.config.client.js",
         "src/clientEnvVars.js",
-        "src/client.test.jsx",
-        "src/app/routes/cpsAsset/getInitialData/convertToOptimoBlocks/blocks/paragraph/index.js",
+        
+        
         "src/testHelpers/loggerMock.js",
-        "src/app/containers/ChartbeatAnalytics/canonical/index.test.jsx",
-
-        "src/app/routes/index.test.jsx",
-
         "src/app/containers/ConsentBanner/CanonicalLogic/setCookieOven.test.js"
 
 
