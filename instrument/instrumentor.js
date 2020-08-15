@@ -105,7 +105,9 @@ module.exports = class Instrumentor {
                         }
                         babelWalk.ancestor({
                             CallExpression(node, state, ancestors) {
-                                // console.log(ancestors)
+                                const cloneAncestors = [...ancestors]
+                                cloneAncestors.pop();
+
                                 if (node.callee.name === 'describe') {
                                     let beforeAllFound = false;
                                     let afterAllFound = false;
@@ -119,6 +121,37 @@ module.exports = class Instrumentor {
                                     let stmts = t(node, "arguments[1].body.body").safeObject;
                                     if (stmts) {
                                         stmts.forEach(stmt => {
+                                            // handle cases when afterEach has id arguments
+                                            if (['afterEach', 'beforeEach', 'afterAll', 'beforeAll'].includes(t(stmt, "expression.callee.name").safeObject) 
+                                                &&
+                                                !['ArrowFunctionExpression', 'FunctionExpression'].includes(t(stmt, 'expression.arguments[0].type').safeObject) ) 
+                                            {
+                                                 //replace arguments with ArrowFunctionExpr
+                                                const argument = stmt.expression.arguments[0];
+                                                stmt.expression.arguments[0] = {
+                                                    type: "ArrowFunctionExpression",
+                                                    id: null,
+                                                    generator: false,
+                                                    async: false,
+                                                    params: [],
+                                                    body: {
+                                                        type: "BlockStatement",
+                                                        body: [
+                                                            {
+                                                                type: "ExpressionStatement",
+                                                                expression: {
+                                                                    type: 'CallExpression',
+                                                                    callee: argument,
+                                                                    arguments: []
+                                                                }
+                                                            }
+                                                        ],
+                                                        directives: []
+                                                    }                          
+                                                }
+                                            }
+
+
                                             if (t(stmt, "expression.callee.name").safeObject === 'beforeEach' && testPlatform === 'jest') {
                                                 beforeEachFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) { // might should add code block
@@ -126,11 +159,11 @@ module.exports = class Instrumentor {
                                                     stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`], \"endTestName\": \"beforeEach\" },`);'))
 
                                                 }
-                                            } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach' && testPlatform === 'jest') {
+                                            } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach' && testPlatform === 'jest' && !isInsideDecribe(cloneAncestors)) {
                                                 afterEachFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                    stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testName\": \"afterEach\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
-                                                    stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`], \"endTestName\": \"afterEach\" },`);'))
+                                                    // stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testName\": \"afterEach\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
+                                                    stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`]},`);'))
                                                 }
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'beforeAll') {
                                                 beforeAllFound = true;
@@ -162,16 +195,6 @@ module.exports = class Instrumentor {
                                                     stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`], \"endTestSuiteName\": "' + Instrumentor.processStringNames(suiteName) + '" },`);'))
                                                     stmt.expression.arguments[0].body.body.push(parseStmt("await SRTlib.endLogger();"));
                                                 }
-                                            } else if (t(stmt, "expression.callee.name").safeObject === 'beforeEach' && testPlatform === 'mocha') {
-                                                beforeEachFound = true;
-                                                if (t(stmt, 'expression.arguments[0].body.body').safeObject) { // might should add code block
-                                                    stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testName\": \"${this.test}\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
-                                                }
-                                            } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach' && testPlatform === 'mocha') {
-                                                afterEachFound = true;
-                                                if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                    stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`], \"endTestName\": "\${this.test}\" },`);'))
-                                                }
                                             } 
                                         });
 
@@ -188,9 +211,9 @@ module.exports = class Instrumentor {
                                         }
                                         
 
-                                        // if (!afterEachFound && testPlatform === 'jest') {
-                                        //     stmts.push(parseStmt('afterEach(() => { SRTlib.send(`], \"endTestName\": \"${escape(jasmine["currentTest"].description)}\" },`); })'))
-                                        // }
+                                        if (!afterEachFound && testPlatform === 'jest' && !isInsideDecribe(cloneAncestors)) {
+                                            stmts.push(parseStmt('afterEach(() => { SRTlib.send(`], \"endTestName\": \"${escape(jasmine["currentTest"].description)}\" },`); })'))
+                                        }
 
                                         // if (!afterEachFound && testPlatform === 'mocha') {
                                         //     stmts.push(parseStmt('afterEach(() => { SRTlib.send(`], \"endTestName\": \"${this.test}\" },`); })'))
@@ -212,66 +235,77 @@ module.exports = class Instrumentor {
                                     }
 
 
-                                } else if (node.callee.name === 'it') {
-                                    // TODO it without decribe
+                                } else if (node.callee.name === 'it' && isInsideDecribe(ancestors)) { // check if inside describe before inject
                                     const testName = getSuiteName(node);
-                                    if(!isInsideDecribe(ancestors)) {
-                                        let beforeAllFound = false;
-                                        let afterAllFound = false;
-                                        const block = ancestors[ancestors.length - 2];
-                                        if(block.type === "BlockStatement") {
-                                            // inject beforeAll and afterAll
-                                            block.body.forEach(stmt => {
-                                                if (t(stmt, "expression.callee.name").safeObject === 'beforeEach' && testPlatform === 'jest') {
-                                                    
-                                                    if (t(stmt, 'expression.arguments[0].body.body').safeObject) { // might should add code block
-                                                        stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testName\": \"beforeEach\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
-                                                        stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`], \"endTestName\": \"beforeEach\" },`);'))
-    
-                                                    }
-                                                } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach' && testPlatform === 'jest') {
-                                                    
-                                                    if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                        stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testName\": \"afterEach\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
-                                                        stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`], \"endTestName\": \"afterEach\" },`);'))
-                                                    }
-                                                } else if (t(stmt, "expression.callee.name").safeObject === 'beforeAll') {
-                                                    beforeAllFound = true;
-                                                    // start logger
-                                                    if (t(stmt, 'expression.arguments[0].body.body').safeObject) { 
-                                                        stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
-                                                        stmt.expression.arguments[0].body.body.unshift(parseStmt("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
-                                                    }
-                                                } else if (t(stmt, "expression.callee.name").safeObject === 'AfterAll') {
-                                                    afterAllFound = true;
-                                                    // make callback function async
-                                                    stmt.expression.arguments[0].async = true;
-                                                    if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                        stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`], \"endTestSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\" },`);'))
-                                                        stmt.expression.arguments[0].body.body.push(parseStmt("await SRTlib.endLogger();"));
-                                                    }
-                                                } 
-
-                                                
-                                            })
-
-                                            if(!beforeAllFound) {
-                                                block.body.unshift(parseStmt('beforeAll(() => { SRTlib.startLogger(\"' + codebase + '\", "http://localhost:8888/instrument-message"); SRTlib.send(`{ \"testSuiteName\": \"undefined\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`); })'))
+                                    // handle non ArrowFuntcion argument it
+                                    if(!['ArrowFunctionExpression', 'FunctionExpression'].includes(t(node, 'arguments[1].type').safeObject)) {
+                                        const argument = node.arguments[1];
+                                        if(argument.type === 'CallExpression') {
+                                            node.arguments[1] = {
+                                                type: "ArrowFunctionExpression",
+                                                id: null,
+                                                generator: false,
+                                                async: true,
+                                                params: [],
+                                                body: {
+                                                    type: "BlockStatement",
+                                                    body: [
+                                                        {
+                                                            type: "ExpressionStatement",
+                                                            expression: argument
+                                                        }
+                                                    ],
+                                                    directives: []
+                                                }                          
                                             }
 
-                                            if(!afterAllFound) {
-                                                block.body.push(parseStmt('afterAll(async () => { SRTlib.send(`], \"endTestSuiteName\": \"undefined\" },`); await SRTlib.endLogger();} )'))
-
+                                        } else {
+                                            node.arguments[1] = {
+                                                type: "ArrowFunctionExpression",
+                                                id: null,
+                                                generator: false,
+                                                async: true,
+                                                params: [],
+                                                body: {
+                                                    type: "BlockStatement",
+                                                    body: [
+                                                        {
+                                                            type: "ExpressionStatement",
+                                                            expression: {
+                                                                type: 'CallExpression',
+                                                                callee: argument,
+                                                                arguments: []
+                                                            }
+                                                        }
+                                                    ],
+                                                    directives: []
+                                                }                          
                                             }
                                         }
                                     }
-                                    
+                                                                        
                                     if(node.arguments[1].type === "ArrowFunctionExpression" || node.arguments[1].type === "FunctionExpression") {
+                                        if (node.arguments[1].body.type !== 'BlockStatement') {
+                                            // turn into blockStatment
+                                            const expStmt = {
+                                                type: "ExpressionStatement",
+                                                expression: node.arguments[1].body
+                                            };
+                                            node.arguments[1].body = {
+                                                type: "BlockStatement",
+                                                body: [expStmt]
+                                            }
+                                        }
+
                                         node.arguments[1].body.body.unshift(parseStmt('SRTlib.send(`{ \"testName\": \"'+ Instrumentor.processStringNames(testName) +'\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`)'))
-                                        node.arguments[1].body.body.push(parseStmt('SRTlib.send(`], \"endTestName\": \"'+  Instrumentor.processStringNames(testName) + '\" },`)'))
+                                        // node.arguments[1].body.body.push(parseStmt('SRTlib.send(`], \"endTestName\": \"'+  Instrumentor.processStringNames(testName) + '\" },`)'))
                                     }
 
                                 }
+                            },
+
+                            BlockStatement (blcok, state, ancestors) {
+
                             }
                         })(tree, {
                             counter: 0,
@@ -303,59 +337,59 @@ module.exports = class Instrumentor {
                             return parseStmt('SRTlib.send(\''+JSON.stringify(temp)+',\');')
                         };
 
+                        // ! debug test file only
+                        // babelWalk.ancestor({
+                        //     FunctionDeclaration(node, state, ancestors) {
+                        //         const paramsNum = node.params.length;
+                        //         const funcName = node.id.name;
+                        //         // node.body.body.unshift(parseStmt('SRTlib.send(`{ "anonymous": false, "function": \"' + funcName + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+                        //         node.body.body.unshift(buildFunctionStartMsg(funcName, paramsNum, false, undefined))
+                        //         // node.body.body.push(parseStmt('SRTlib.send(\'], "end": "' + funcName + '"},\');'))
+                        //         node.body.body.push(buildFunctionEndMsg(funcName, paramsNum))
+                        //         insertBeforeReturn(node, funcName, buildFunctionEndMsg);
+                        //     },
 
-                        babelWalk.ancestor({
-                            FunctionDeclaration(node, state, ancestors) {
-                                const paramsNum = node.params.length;
-                                const funcName = node.id.name;
-                                // node.body.body.unshift(parseStmt('SRTlib.send(`{ "anonymous": false, "function": \"' + funcName + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
-                                node.body.body.unshift(buildFunctionStartMsg(funcName, paramsNum, false, undefined))
-                                // node.body.body.push(parseStmt('SRTlib.send(\'], "end": "' + funcName + '"},\');'))
-                                node.body.body.push(buildFunctionEndMsg(funcName, paramsNum))
-                                insertBeforeReturn(node, funcName, buildFunctionEndMsg);
-                            },
+                        //     FunctionExpression(node, state, ancestors) {
+                        //         const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
+                        //         insertBeforeReturn(node, funcName, buildFunctionEndMsg);
+                        //     },
 
-                            FunctionExpression(node, state, ancestors) {
-                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
-                                insertBeforeReturn(node, funcName, buildFunctionEndMsg);
-                            },
+                        //     ArrowFunctionExpression(node, state, ancestors) {
+                        //         // handle arrow function implicit return
+                        //         if (node.body.type !== 'BlockStatement') {
+                        //             const returnStmt = {
+                        //                 type: "ReturnStatement",
+                        //                 argument: node.body
+                        //             };
+                        //             node.body = {
+                        //                 type: "BlockStatement",
+                        //                 body: [returnStmt]
+                        //             }
+                        //         }
 
-                            ArrowFunctionExpression(node, state, ancestors) {
-                                // handle arrow function implicit return
-                                if (node.body.type !== 'BlockStatement') {
-                                    const returnStmt = {
-                                        type: "ReturnStatement",
-                                        argument: node.body
-                                    };
-                                    node.body = {
-                                        type: "BlockStatement",
-                                        body: [returnStmt]
-                                    }
-                                }
+                        //         const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
+                        //         insertBeforeReturn(node, funcName, buildFunctionEndMsg)
+                        //     },
 
-                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
-                                insertBeforeReturn(node, funcName, buildFunctionEndMsg)
-                            },
-
-                            ClassMethod(node, state, ancestors) {
-                                const funcName = t(node, 'key.name').safeObject;
-                                if(funcName) {
-                                    // build class info
-                                    const classDeclare = ancestors[ancestors.length - 3];
-                                    const classObj = {className: classDeclare.id.name};
-                                    if(classDeclare.superClass !== null){
-                                        classObj.superClass = classDeclare.superClass.name;
-                                    }
-                                    node.body.body.unshift(buildFunctionStartMsg(funcName, node.params.length, false, classObj))
-                                    node.body.body.push(buildFunctionEndMsg(funcName, node.params.length))
-                                    insertBeforeReturn(node, funcName, buildFunctionEndMsg)
-                                }
-                            }
+                        //     ClassMethod(node, state, ancestors) {
+                        //         const funcName = t(node, 'key.name').safeObject;
+                        //         if(funcName) {
+                        //             // build class info
+                        //             const classDeclare = ancestors[ancestors.length - 3];
+                        //             const classObj = {className: classDeclare.id.name};
+                        //             if(classDeclare.superClass !== null){
+                        //                 classObj.superClass = classDeclare.superClass.name;
+                        //             }
+                        //             node.body.body.unshift(buildFunctionStartMsg(funcName, node.params.length, false, classObj))
+                        //             node.body.body.push(buildFunctionEndMsg(funcName, node.params.length))
+                        //             insertBeforeReturn(node, funcName, buildFunctionEndMsg)
+                        //         }
+                        //     }
 
 
-                        })(tree, {
-                            counter: 0,
-                          })
+                        // })(tree, {
+                        //     counter: 0,
+                        //   })
                     }
 
                     //  write to outputDir

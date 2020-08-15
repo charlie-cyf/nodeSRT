@@ -17,7 +17,8 @@
 
         "src/app/containers/ConsentBanner/CanonicalLogic/setCookieOven.test.js",
         "src/app/containers/ArticleTimestamp/timeFormatTests/generateTimeFormats.test.js",
-        "scripts/bundleSize/bundleSize.test.js"
+        "scripts/bundleSize/bundleSize.test.js",
+        "src/app/containers/StoryPromo/index.test.jsx"
 
 
 

@@ -19,14 +19,14 @@ module.exports = class SRTlib {
         if(SRTlib.endPontUrl && SRTlib.basePath){
             SRTlib.message = SRTlib.message+msg;
         } else {
-            axios.post('http://localhost:8888/e2e-message', {
-                msg: msg
-            }).then(res => {
-                if (res.status >= 400) 
-                    console.warn('e2e message send failed! status code', res.status, res.error)
-            }).catch(err => {
-                console.warn('e2e message send failed!')
-            })
+            // axios.post('http://localhost:8888/e2e-message', {
+            //     msg: msg
+            // }).then(res => {
+            //     if (res.status >= 400) 
+            //         console.warn('e2e message send failed! status code', res.status, res.error)
+            // }).catch(err => {
+            //     console.warn('e2e message send failed!')
+            // })
         }
     }
 
