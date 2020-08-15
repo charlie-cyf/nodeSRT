@@ -205,14 +205,13 @@ const testFrontPages = ({
           SRTlib.send(`{ "testSuiteName": "200%20status%20code", "fileName": "/index.test.jsx", "calls" : [`);
         });
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           mockRouteProps({
             service,
             isAmp,
             dataResponse: successDataResponse,
             variant
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         const configs = {
           url: serviceURL,
@@ -222,7 +221,7 @@ const testFrontPages = ({
           variant
         };
         it('should respond with rendered data', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20rendered%20data", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with rendered data","fileName":"/index.test.jsx"},`);
           testRenderedData(configs);
         });
         afterAll(async () => {
@@ -237,7 +236,7 @@ const testFrontPages = ({
         });
         const pageType = 'Front Page';
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           mockRouteProps({
             service,
             isAmp,
@@ -245,10 +244,9 @@ const testFrontPages = ({
             variant,
             pageType
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         it('should respond with a rendered 404', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20rendered%20404", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a rendered 404","fileName":"/index.test.jsx"},`);
           const {
             status,
             text
@@ -278,7 +276,7 @@ const testFrontPages = ({
       });
       const pageType = 'frontPage';
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           service,
           isAmp,
@@ -287,10 +285,9 @@ const testFrontPages = ({
           variant,
           pageType
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with a 500', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500","fileName":"/index.test.jsx"},`);
         const {
           status,
           text
@@ -306,9 +303,6 @@ const testFrontPages = ({
         SRTlib.send(`], "endTestSuiteName": "Unknown%20error%20within%20the%20data%20fetch%2C%20react%20router%20or%20its%20dependencies" },`);
         await SRTlib.endLogger();
       });
-    });
-    afterEach(() => {
-      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
     afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "Front%20Page%3A%20%24%7BserviceURL%7D" },`);
@@ -359,7 +353,7 @@ const testArticles = ({
           SRTlib.send(`{ "testSuiteName": "200%20status%20code", "fileName": "/index.test.jsx", "calls" : [`);
         });
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           mockRouteProps({
             id,
             service,
@@ -367,7 +361,6 @@ const testArticles = ({
             dataResponse: successDataResponse,
             variant
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         const configs = {
           url: articleURL,
@@ -377,7 +370,7 @@ const testArticles = ({
           variant
         };
         it('should respond with rendered data', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20rendered%20data", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with rendered data","fileName":"/index.test.jsx"},`);
           testRenderedData(configs);
         });
         afterAll(async () => {
@@ -392,7 +385,7 @@ const testArticles = ({
         });
         const pageType = 'articles';
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           mockRouteProps({
             id,
             service,
@@ -401,10 +394,9 @@ const testArticles = ({
             variant,
             pageType
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         it('should respond with a rendered 404', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20rendered%20404", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a rendered 404","fileName":"/index.test.jsx"},`);
           const {
             status,
             text
@@ -434,7 +426,7 @@ const testArticles = ({
       });
       const pageType = 'articles';
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           id,
           service,
@@ -444,10 +436,9 @@ const testArticles = ({
           variant,
           pageType
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with a 500', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500","fileName":"/index.test.jsx"},`);
         const {
           status,
           text
@@ -463,9 +454,6 @@ const testArticles = ({
         SRTlib.send(`], "endTestSuiteName": "Unknown%20error%20within%20the%20data%20fetch%2C%20react%20router%20or%20its%20dependencies" },`);
         await SRTlib.endLogger();
       });
-    });
-    afterEach(() => {
-      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
     afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "Optimo%20Article%3A%20/%24%7Bservice%7D/articles/optimoID/%24%7Bextension%7D%24%7BqueryString%7D" },`);
@@ -516,7 +504,7 @@ const testAssetPages = ({
           SRTlib.send(`{ "testSuiteName": "200%20status%20code", "fileName": "/index.test.jsx", "calls" : [`);
         });
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           mockRouteProps({
             assetUri,
             service,
@@ -524,7 +512,6 @@ const testAssetPages = ({
             dataResponse: successDataResponse,
             variant
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         const configs = {
           url: articleURL,
@@ -534,7 +521,7 @@ const testAssetPages = ({
           variant
         };
         it('should respond with rendered data', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20rendered%20data", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with rendered data","fileName":"/index.test.jsx"},`);
           testRenderedData(configs);
         });
         afterAll(async () => {
@@ -549,7 +536,7 @@ const testAssetPages = ({
         });
         const pageType = 'CPS Asset';
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           mockRouteProps({
             assetUri,
             service,
@@ -558,10 +545,9 @@ const testAssetPages = ({
             variant,
             pageType
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         it('should respond with a rendered 404', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20rendered%20404", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a rendered 404","fileName":"/index.test.jsx"},`);
           const {
             status,
             text
@@ -591,7 +577,7 @@ const testAssetPages = ({
       });
       const pageType = 'cpsAsset';
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           assetUri,
           service,
@@ -601,10 +587,9 @@ const testAssetPages = ({
           variant,
           pageType
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with a 500', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500","fileName":"/index.test.jsx"},`);
         const {
           status,
           text
@@ -620,9 +605,6 @@ const testAssetPages = ({
         SRTlib.send(`], "endTestSuiteName": "Unknown%20error%20within%20the%20data%20fetch%2C%20react%20router%20or%20its%20dependencies" },`);
         await SRTlib.endLogger();
       });
-    });
-    afterEach(() => {
-      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
     afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "CPS%20Asset%3A%20/%24%7Bservice%7D/%24%7BassetUri%7D%24%7Bextension%7D%24%7BqueryString%7D" },`);
@@ -673,13 +655,12 @@ const testMediaPages = ({
           SRTlib.send(`{ "testSuiteName": "200%20status%20code", "fileName": "/index.test.jsx", "calls" : [`);
         });
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           mockRouteProps({
             service,
             isAmp,
             dataResponse: successDataResponse
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         const configs = {
           url: mediaPageURL,
@@ -688,7 +669,7 @@ const testMediaPages = ({
           successDataResponse
         };
         it('should respond with rendered data', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20rendered%20data", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with rendered data","fileName":"/index.test.jsx"},`);
           testRenderedData(configs);
         });
         afterAll(async () => {
@@ -708,17 +689,16 @@ const testMediaPages = ({
       });
       const pageType = 'media';
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           service,
           isAmp,
           dataResponse: notFoundDataResponse,
           pageType
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with a rendered 404', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20a%20rendered%20404", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a rendered 404","fileName":"/index.test.jsx"},`);
         const {
           status,
           text
@@ -743,7 +723,7 @@ const testMediaPages = ({
       });
       const pageType = 'liveRadio';
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           service,
           isAmp,
@@ -751,10 +731,9 @@ const testMediaPages = ({
           responseType: 'reject',
           pageType
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with a 500', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500","fileName":"/index.test.jsx"},`);
         const {
           status,
           text
@@ -770,9 +749,6 @@ const testMediaPages = ({
         SRTlib.send(`], "endTestSuiteName": "Unknown%20error%20within%20the%20data%20fetch%2C%20react%20router%20or%20its%20dependencies" },`);
         await SRTlib.endLogger();
       });
-    });
-    afterEach(() => {
-      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
     afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "%24%7Bplatform%7D%20radio%20page%20-%20live%20radio" },`);
@@ -824,13 +800,12 @@ const testTvPages = ({
           SRTlib.send(`{ "testSuiteName": "200%20status%20code", "fileName": "/index.test.jsx", "calls" : [`);
         });
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           mockRouteProps({
             service,
             isAmp,
             dataResponse: successDataResponse
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         const configs = {
           url: mediaPageURL,
@@ -839,7 +814,7 @@ const testTvPages = ({
           successDataResponse
         };
         it('should respond with rendered data', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20rendered%20data", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with rendered data","fileName":"/index.test.jsx"},`);
           testRenderedData(configs);
         });
         afterAll(async () => {
@@ -859,17 +834,16 @@ const testTvPages = ({
       });
       const pageType = 'On Demand TV Brand';
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           service,
           isAmp,
           dataResponse: notFoundDataResponse,
           pageType
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with a rendered 404', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20a%20rendered%20404", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a rendered 404","fileName":"/index.test.jsx"},`);
         const {
           status,
           text
@@ -894,7 +868,7 @@ const testTvPages = ({
       });
       const pageType = 'onDemandTVBrand';
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           service,
           isAmp,
@@ -902,10 +876,9 @@ const testTvPages = ({
           responseType: 'reject',
           pageType
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with a 500', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500","fileName":"/index.test.jsx"},`);
         const {
           status,
           text
@@ -921,9 +894,6 @@ const testTvPages = ({
         SRTlib.send(`], "endTestSuiteName": "Unknown%20error%20within%20the%20data%20fetch%2C%20react%20router%20or%20its%20dependencies" },`);
         await SRTlib.endLogger();
       });
-    });
-    afterEach(() => {
-      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
     });
     afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "%24%7Bplatform%7D%20tv%20brand%20page" },`);
@@ -975,13 +945,12 @@ const testOnDemandTvEpisodePages = ({
           SRTlib.send(`{ "testSuiteName": "200%20status%20code", "fileName": "/index.test.jsx", "calls" : [`);
         });
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           mockRouteProps({
             service,
             isAmp,
             dataResponse: successDataResponse
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         const configs = {
           url: mediaPageURL,
@@ -990,7 +959,7 @@ const testOnDemandTvEpisodePages = ({
           successDataResponse
         };
         it('should respond with rendered data', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20rendered%20data", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with rendered data","fileName":"/index.test.jsx"},`);
           testRenderedData(configs);
         });
         afterAll(async () => {
@@ -1010,17 +979,16 @@ const testOnDemandTvEpisodePages = ({
       });
       const pageType = 'On Demand TV Episode';
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           service,
           isAmp,
           dataResponse: notFoundDataResponse,
           pageType
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with a rendered 404', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20a%20rendered%20404", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a rendered 404","fileName":"/index.test.jsx"},`);
         const {
           status,
           text
@@ -1045,7 +1013,7 @@ const testOnDemandTvEpisodePages = ({
       });
       const pageType = 'onDemandTVEpisode';
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           service,
           isAmp,
@@ -1053,10 +1021,9 @@ const testOnDemandTvEpisodePages = ({
           responseType: 'reject',
           pageType
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with a 500', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500","fileName":"/index.test.jsx"},`);
         const {
           status,
           text
@@ -1073,9 +1040,6 @@ const testOnDemandTvEpisodePages = ({
         await SRTlib.endLogger();
       });
     });
-    afterEach(() => {
-      SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
-    });
     afterAll(async () => {
       SRTlib.send(`], "endTestSuiteName": "%24%7Bplatform%7D%20tv%20episode%20page" },`);
       await SRTlib.endLogger();
@@ -1089,9 +1053,8 @@ describe('Server', () => {
     SRTlib.send(`{ "testSuiteName": "Server", "fileName": "/index.test.jsx", "calls" : [`);
   });
   beforeEach(() => {
-    SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
     jest.clearAllMocks();
-    SRTlib.send(`], "endTestName": "beforeEach" },`);
   });
   describe('/status', () => {
     beforeAll(() => {
@@ -1099,7 +1062,7 @@ describe('Server', () => {
       SRTlib.send(`{ "testSuiteName": "/status", "fileName": "/index.test.jsx", "calls" : [`);
     });
     it('should respond with a 200', async () => {
-      SRTlib.send(`{ "testName": "should%20respond%20with%20a%20200", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 200","fileName":"/index.test.jsx"},`);
       const {
         statusCode,
         body
@@ -1122,12 +1085,12 @@ describe('Server', () => {
       SRTlib.send(`{ "testSuiteName": "Service%20workers", "fileName": "/index.test.jsx", "calls" : [`);
     });
     it('should serve a file for existing service workers', async () => {
-      SRTlib.send(`{ "testName": "should%20serve%20a%20file%20for%20existing%20service%20workers", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should serve a file for existing service workers","fileName":"/index.test.jsx"},`);
       await makeRequest('/news/articles/sw.js');
       expect(sendFileSpy.mock.calls[0][0]).toEqual(path.join(__dirname, '/public/sw.js'));
     });
     it('should not serve a file for non-existing service workers', async () => {
-      SRTlib.send(`{ "testName": "should%20not%20serve%20a%20file%20for%20non-existing%20service%20workers", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should not serve a file for non-existing service workers","fileName":"/index.test.jsx"},`);
       const {
         statusCode
       } = await makeRequest('/some-service/articles/sw.js');
@@ -1145,12 +1108,12 @@ describe('Server', () => {
       SRTlib.send(`{ "testSuiteName": "Manifest%20json", "fileName": "/index.test.jsx", "calls" : [`);
     });
     it('should serve a file for valid service paths', async () => {
-      SRTlib.send(`{ "testName": "should%20serve%20a%20file%20for%20valid%20service%20paths", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should serve a file for valid service paths","fileName":"/index.test.jsx"},`);
       await makeRequest('/news/articles/manifest.json');
       expect(sendFileSpy.mock.calls[0][0]).toEqual(path.join(__dirname, '/public/news/manifest.json'));
     });
     it('should not serve a manifest file for non-existing services', async () => {
-      SRTlib.send(`{ "testName": "should%20not%20serve%20a%20manifest%20file%20for%20non-existing%20services", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should not serve a manifest file for non-existing services","fileName":"/index.test.jsx"},`);
       const {
         statusCode
       } = await makeRequest('/some-service/manifest.json');
@@ -1158,7 +1121,7 @@ describe('Server', () => {
       expect(statusCode).toEqual(500);
     });
     it('should serve a response cache control of 7 days', async () => {
-      SRTlib.send(`{ "testName": "should%20serve%20a%20response%20cache%20control%20of%207%20days", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should serve a response cache control of 7 days","fileName":"/index.test.jsx"},`);
       const {
         header
       } = await makeRequest('/news/articles/manifest.json');
@@ -1175,7 +1138,7 @@ describe('Server', () => {
       SRTlib.send(`{ "testSuiteName": "Most%20Read%20json", "fileName": "/index.test.jsx", "calls" : [`);
     });
     it('should serve a file for valid service paths with variants', async () => {
-      SRTlib.send(`{ "testName": "should%20serve%20a%20file%20for%20valid%20service%20paths%20with%20variants", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should serve a file for valid service paths with variants","fileName":"/index.test.jsx"},`);
       const {
         body
       } = await makeRequest('/zhongwen/mostread/trad.json');
@@ -1184,7 +1147,7 @@ describe('Server', () => {
       }));
     });
     it('should serve a file for valid service paths without variants', async () => {
-      SRTlib.send(`{ "testName": "should%20serve%20a%20file%20for%20valid%20service%20paths%20without%20variants", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should serve a file for valid service paths without variants","fileName":"/index.test.jsx"},`);
       const {
         body
       } = await makeRequest('/news/mostread.json');
@@ -1193,7 +1156,7 @@ describe('Server', () => {
       }));
     });
     it('should respond with a 500 for non-existing services', async () => {
-      SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500%20for%20non-existing%20services", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500 for non-existing services","fileName":"/index.test.jsx"},`);
       const {
         statusCode
       } = await makeRequest('/some-service/mostread.json');
@@ -1210,7 +1173,7 @@ describe('Server', () => {
       SRTlib.send(`{ "testSuiteName": "STY%20secondary%20column%20json", "fileName": "/index.test.jsx", "calls" : [`);
     });
     it('should serve a file for valid service paths with variants', async () => {
-      SRTlib.send(`{ "testName": "should%20serve%20a%20file%20for%20valid%20service%20paths%20with%20variants", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should serve a file for valid service paths with variants","fileName":"/index.test.jsx"},`);
       const {
         body
       } = await makeRequest('/zhongwen/sty-secondary-column/trad.json');
@@ -1220,7 +1183,7 @@ describe('Server', () => {
       }));
     });
     it('should serve a file for valid service paths without variants', async () => {
-      SRTlib.send(`{ "testName": "should%20serve%20a%20file%20for%20valid%20service%20paths%20without%20variants", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should serve a file for valid service paths without variants","fileName":"/index.test.jsx"},`);
       const {
         body
       } = await makeRequest('/mundo/sty-secondary-column.json');
@@ -1230,7 +1193,7 @@ describe('Server', () => {
       }));
     });
     it('should respond with a 500 for non-existing services', async () => {
-      SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500%20for%20non-existing%20services", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500 for non-existing services","fileName":"/index.test.jsx"},`);
       const {
         statusCode
       } = await makeRequest('/some-service/sty-secondary-column.json');
@@ -1256,7 +1219,7 @@ describe('Server', () => {
       })]));
     });
     it('should serve a file for valid service paths without variants', async () => {
-      SRTlib.send(`{ "testName": "should%20serve%20a%20file%20for%20valid%20service%20paths%20without%20variants", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should serve a file for valid service paths without variants","fileName":"/index.test.jsx"},`);
       const {
         body
       } = await makeRequest('/mundo/23263889/recommendations.json');
@@ -1265,7 +1228,7 @@ describe('Server', () => {
       })]));
     });
     it('should respond with a 500 for non-existing services', async () => {
-      SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500%20for%20non-existing%20services", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500 for non-existing services","fileName":"/index.test.jsx"},`);
       const {
         statusCode
       } = await makeRequest('/some-service/recommendations.json');
@@ -1282,7 +1245,7 @@ describe('Server', () => {
       SRTlib.send(`{ "testSuiteName": "IDX%20json", "fileName": "/index.test.jsx", "calls" : [`);
     });
     it('should serve a file for valid idx paths', async () => {
-      SRTlib.send(`{ "testName": "should%20serve%20a%20file%20for%20valid%20idx%20paths", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should serve a file for valid idx paths","fileName":"/index.test.jsx"},`);
       const {
         body
       } = await makeRequest('/persian/afghanistan.json');
@@ -1291,7 +1254,7 @@ describe('Server', () => {
       }));
     });
     it('should respond with a 500 for non-existing services', async () => {
-      SRTlib.send(`{ "testName": "should%20respond%20with%20a%20500%20for%20non-existing%20services", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 500 for non-existing services","fileName":"/index.test.jsx"},`);
       const {
         statusCode
       } = await makeRequest('/some-service/ukraine_in_russian.json');
@@ -1313,7 +1276,7 @@ describe('Server', () => {
         SRTlib.send(`{ "testSuiteName": "for%20articles", "fileName": "/index.test.jsx", "calls" : [`);
       });
       it('should respond with JSON', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20JSON", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with JSON","fileName":"/index.test.jsx"},`);
         const {
           body
         } = await makeRequest('/news/articles/c0g992jmmkko.json');
@@ -1327,7 +1290,7 @@ describe('Server', () => {
           SRTlib.send(`{ "testSuiteName": "with%20non-existent%20data", "fileName": "/index.test.jsx", "calls" : [`);
         });
         it('should respond with a 404', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20404", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 404","fileName":"/index.test.jsx"},`);
           const {
             statusCode
           } = await makeRequest('/news/articles/cERROR00025o.json');
@@ -1344,7 +1307,7 @@ describe('Server', () => {
           SRTlib.send(`{ "testSuiteName": "Trailing%20slash%20redirects", "fileName": "/index.test.jsx", "calls" : [`);
         });
         it('should respond with a 301', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20301", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 301","fileName":"/index.test.jsx"},`);
           const {
             statusCode
           } = await makeRequest('/news/articles/c6v11qzyv8po/');
@@ -1366,7 +1329,7 @@ describe('Server', () => {
         SRTlib.send(`{ "testSuiteName": "for%20front%20pages", "fileName": "/index.test.jsx", "calls" : [`);
       });
       it('should respond with JSON', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20JSON", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with JSON","fileName":"/index.test.jsx"},`);
         const {
           body
         } = await makeRequest('/persian.json');
@@ -1380,7 +1343,7 @@ describe('Server', () => {
           SRTlib.send(`{ "testSuiteName": "with%20non-existent%20data", "fileName": "/index.test.jsx", "calls" : [`);
         });
         beforeEach(() => {
-          SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
           const notFoundDataResponse = {
             isAmp: false,
             data: {
@@ -1394,10 +1357,9 @@ describe('Server', () => {
             isAmp: false,
             dataResponse: notFoundDataResponse
           });
-          SRTlib.send(`], "endTestName": "beforeEach" },`);
         });
         it('should respond with a 404', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20404", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 404","fileName":"/index.test.jsx"},`);
           const {
             statusCode
           } = await makeRequest('/ERROR.json');
@@ -1419,7 +1381,7 @@ describe('Server', () => {
         SRTlib.send(`{ "testSuiteName": "for%20radio%20page%20-%20live%20radio", "fileName": "/index.test.jsx", "calls" : [`);
       });
       it('should respond with JSON', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20JSON", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with JSON","fileName":"/index.test.jsx"},`);
         const {
           body
         } = await makeRequest('/korean/bbc_korean_radio/liveradio.json');
@@ -1433,7 +1395,7 @@ describe('Server', () => {
           SRTlib.send(`{ "testSuiteName": "with%20non-existent%20data", "fileName": "/index.test.jsx", "calls" : [`);
         });
         it('should respond with a 404', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20404", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 404","fileName":"/index.test.jsx"},`);
           const {
             statusCode
           } = await makeRequest('/korean/bbc_korean_radio/ERROR.json');
@@ -1455,7 +1417,7 @@ describe('Server', () => {
         SRTlib.send(`{ "testSuiteName": "for%20radio%20schedules", "fileName": "/index.test.jsx", "calls" : [`);
       });
       it('should respond with JSON for service with radio schedule', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20JSON%20for%20service%20with%20radio%20schedule", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with JSON for service with radio schedule","fileName":"/index.test.jsx"},`);
         const {
           body
         } = await makeRequest('/arabic/bbc_arabic_radio/schedule.json');
@@ -1464,14 +1426,14 @@ describe('Server', () => {
         }));
       });
       it('should respond with 404 for service without radio schedule', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20404%20for%20service%20without%20radio%20schedule", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with 404 for service without radio schedule","fileName":"/index.test.jsx"},`);
         const {
           statusCode
         } = await makeRequest('/pidgin/bbc_pidgin_radio/schedule.json');
         expect(statusCode).toEqual(404);
       });
       it('should respond with 404 for invalid service paths', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20404%20for%20invalid%20service%20paths", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with 404 for invalid service paths","fileName":"/index.test.jsx"},`);
         const {
           statusCode
         } = await makeRequest('/arabic/bbc_pidgin_radio/schedule.json');
@@ -1488,7 +1450,7 @@ describe('Server', () => {
         SRTlib.send(`{ "testSuiteName": "for%20tv%20brand%20page", "fileName": "/index.test.jsx", "calls" : [`);
       });
       it('should respond with JSON', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20JSON", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with JSON","fileName":"/index.test.jsx"},`);
         const {
           body
         } = await makeRequest('/pashto/bbc_pashto_tv/tv_programmes/w13xttn4.json');
@@ -1502,7 +1464,7 @@ describe('Server', () => {
           SRTlib.send(`{ "testSuiteName": "with%20non-existent%20data", "fileName": "/index.test.jsx", "calls" : [`);
         });
         it('should respond with a 404', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20404", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 404","fileName":"/index.test.jsx"},`);
           const {
             statusCode
           } = await makeRequest('/pashto/bbc_pashto_radio/ERROR.json');
@@ -1524,7 +1486,7 @@ describe('Server', () => {
         SRTlib.send(`{ "testSuiteName": "for%20cps%20asset%20pages", "fileName": "/index.test.jsx", "calls" : [`);
       });
       it('should respond with JSON', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20JSON", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with JSON","fileName":"/index.test.jsx"},`);
         const {
           body
         } = await makeRequest('/pidgin/tori-49450859.json');
@@ -1538,7 +1500,7 @@ describe('Server', () => {
           SRTlib.send(`{ "testSuiteName": "with%20non-existent%20data", "fileName": "/index.test.jsx", "calls" : [`);
         });
         it('should respond with a 404', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20404", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 404","fileName":"/index.test.jsx"},`);
           const {
             statusCode
           } = await makeRequest('/pidgin/tori-00000000.json');
@@ -1560,7 +1522,7 @@ describe('Server', () => {
         SRTlib.send(`{ "testSuiteName": "for%20legacy%20asset%20pages", "fileName": "/index.test.jsx", "calls" : [`);
       });
       it('should respond with JSON', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20JSON", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with JSON","fileName":"/index.test.jsx"},`);
         const {
           body
         } = await makeRequest('/hausa/multimedia/2012/07/120712_click.json');
@@ -1574,7 +1536,7 @@ describe('Server', () => {
           SRTlib.send(`{ "testSuiteName": "with%20non-existent%20data", "fileName": "/index.test.jsx", "calls" : [`);
         });
         it('should respond with a 404', async () => {
-          SRTlib.send(`{ "testName": "should%20respond%20with%20a%20404", "fileName": "/index.test.jsx", "calls" : [`);
+          SRTlib.send(`{"type":"TESTSTART","testName":"should respond with a 404","fileName":"/index.test.jsx"},`);
           const {
             statusCode
           } = await makeRequest('/hausa/multimedia/2012/07/120712_non-existent.json');
@@ -1823,16 +1785,15 @@ describe('Server', () => {
         SRTlib.send(`{ "testSuiteName": "404%20status%20code", "fileName": "/index.test.jsx", "calls" : [`);
       });
       beforeEach(() => {
-        SRTlib.send(`{ "testName": "beforeEach", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/index.test.jsx"},`);
         mockRouteProps({
           service,
           isAmp,
           dataResponse
         });
-        SRTlib.send(`], "endTestName": "beforeEach" },`);
       });
       it('should respond with rendered data', async () => {
-        SRTlib.send(`{ "testName": "should%20respond%20with%20rendered%20data", "fileName": "/index.test.jsx", "calls" : [`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should respond with rendered data","fileName":"/index.test.jsx"},`);
         const {
           text,
           status
@@ -1854,9 +1815,6 @@ describe('Server', () => {
       await SRTlib.endLogger();
     });
   });
-  afterEach(() => {
-    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
-  });
   afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Server" },`);
     await SRTlib.endLogger();
@@ -1870,32 +1828,32 @@ describe('Server HTTP Headers', () => {
     statusRequest = await request(server).get('/status');
   });
   it(`should not contain 'x-powered-by'`, () => {
-    SRTlib.send(`{ "testName": "should%20not%20contain%20%27x-powered-by%27", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"should not contain 'x-powered-by'","fileName":"/index.test.jsx"},`);
     const headerKeys = Object.keys(statusRequest.headers);
     expect(headerKeys).not.toContain('x-powered-by');
   });
   it(`should have 'x-frame-options' set to 'DENY'`, () => {
-    SRTlib.send(`{ "testName": "should%20have%20%27x-frame-options%27%20set%20to%20%27DENY%27", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"should have 'x-frame-options' set to 'DENY'","fileName":"/index.test.jsx"},`);
     validateHttpHeader(statusRequest.headers, 'x-frame-options', 'DENY');
   });
   it(`should have X-DNS-Prefetch-Control set to 'off' `, () => {
-    SRTlib.send(`{ "testName": "should%20have%20X-DNS-Prefetch-Control%20set%20to%20%27off%27%20", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"should have X-DNS-Prefetch-Control set to 'off' ","fileName":"/index.test.jsx"},`);
     validateHttpHeader(statusRequest.headers, 'x-dns-prefetch-control', 'off');
   });
   it(`should have Strict-Transport-Security set to 'max-age=15552000; includeSubDomains' `, () => {
-    SRTlib.send(`{ "testName": "should%20have%20Strict-Transport-Security%20set%20to%20%27max-age%3D15552000%3B%20includeSubDomains%27%20", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"should have Strict-Transport-Security set to 'max-age=15552000; includeSubDomains' ","fileName":"/index.test.jsx"},`);
     validateHttpHeader(statusRequest.headers, 'strict-transport-security', 'max-age=15552000; includeSubDomains');
   });
   it(`should have X-Download-Options set to 'noopen' `, () => {
-    SRTlib.send(`{ "testName": "should%20have%20X-Download-Options%20set%20to%20%27noopen%27%20", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"should have X-Download-Options set to 'noopen' ","fileName":"/index.test.jsx"},`);
     validateHttpHeader(statusRequest.headers, 'x-download-options', 'noopen');
   });
   it(`should have X-Content-Type-Options set to 'nosniff' `, () => {
-    SRTlib.send(`{ "testName": "should%20have%20X-Content-Type-Options%20set%20to%20%27nosniff%27%20", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"should have X-Content-Type-Options set to 'nosniff' ","fileName":"/index.test.jsx"},`);
     validateHttpHeader(statusRequest.headers, 'x-content-type-options', 'nosniff');
   });
   it(`should have X-XSS-Protection set to '1; mode=block' `, () => {
-    SRTlib.send(`{ "testName": "should%20have%20X-XSS-Protection%20set%20to%20%271%3B%20mode%3Dblock%27%20", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"should have X-XSS-Protection set to '1; mode=block' ","fileName":"/index.test.jsx"},`);
     validateHttpHeader(statusRequest.headers, 'x-xss-protection', '1; mode=block');
   });
   describe("should set 'x-clacks-overhead' header", () => {
@@ -1904,11 +1862,11 @@ describe('Server HTTP Headers', () => {
       SRTlib.send(`{ "testSuiteName": "should%20set%20%27x-clacks-overhead%27%20header", "fileName": "/index.test.jsx", "calls" : [`);
     });
     it('should send the message on', async () => {
-      SRTlib.send(`{ "testName": "should%20send%20the%20message%20on", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should send the message on","fileName":"/index.test.jsx"},`);
       validateHttpHeader(statusRequest.headers, 'x-clacks-overhead', 'GNU Terry Pratchett');
     });
     it('should not log the message', async () => {
-      SRTlib.send(`{ "testName": "should%20not%20log%20the%20message", "fileName": "/index.test.jsx", "calls" : [`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should not log the message","fileName":"/index.test.jsx"},`);
       global.console.log = jest.fn();
       await makeRequest('/status');
       expect(global.console.log).not.toHaveBeenCalledWith('GNU Terry Pratchett');
@@ -1917,9 +1875,6 @@ describe('Server HTTP Headers', () => {
       SRTlib.send(`], "endTestSuiteName": "should%20set%20%27x-clacks-overhead%27%20header" },`);
       await SRTlib.endLogger();
     });
-  });
-  afterEach(() => {
-    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
   afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Server%20HTTP%20Headers" },`);
@@ -1945,7 +1900,7 @@ describe('Routing Information Logging', () => {
     status: 200
   };
   it(`on non-200 response should log matched page type from route`, async () => {
-    SRTlib.send(`{ "testName": "on%20non-200%20response%20should%20log%20matched%20page%20type%20from%20route", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"on non-200 response should log matched page type from route","fileName":"/index.test.jsx"},`);
     const pageType = 'Matching Page Type from Route';
     const status = 404;
     mockRouteProps({
@@ -1964,7 +1919,7 @@ describe('Routing Information Logging', () => {
     });
   });
   it(`on 200 response should log page type derived from response data`, async () => {
-    SRTlib.send(`{ "testName": "on%20200%20response%20should%20log%20page%20type%20derived%20from%20response%20data", "fileName": "/index.test.jsx", "calls" : [`);
+    SRTlib.send(`{"type":"TESTSTART","testName":"on 200 response should log page type derived from response data","fileName":"/index.test.jsx"},`);
     mockRouteProps({
       service,
       isAmp,
@@ -1976,9 +1931,6 @@ describe('Routing Information Logging', () => {
       status: 200,
       pageType: 'Page Type from Data'
     });
-  });
-  afterEach(() => {
-    SRTlib.send(`], "endTestName": "${escape(jasmine["currentTest"].description)}" },`);
   });
   afterAll(async () => {
     SRTlib.send(`], "endTestSuiteName": "Routing%20Information%20Logging" },`);

@@ -56,6 +56,15 @@ function isInsideDecribe(ancestors) {
     return false
 }
 
+function buildTestStartMsg(testName, fileName) {
+    const temp = {
+        type: "TESTSTART",
+        testName,
+        fileName
+    }
+    return parseStmt('SRTlib.send(`'+JSON.stringify(temp)+',`);')
+}
+
 module.exports = class Instrumentor {
 
     
@@ -72,6 +81,25 @@ module.exports = class Instrumentor {
         }
     }
 
+    /**
+     * dynamic call graph should looks like follows:
+     * [ { suiteName,
+     *      calls: [
+     *          {
+     *              type: "testStart",
+     *              testName,
+     *              filename
+     *          },
+     *          {
+     *              type: "functionStart",
+     *              functionName ...
+     *          }
+     *          ...          
+     *      ]
+     *      suiteEnd
+     *   }
+     * ]
+     */
     getInjected() {
         this.injectHelper(this.astPath, this.outputPath);
     }
@@ -155,15 +183,14 @@ module.exports = class Instrumentor {
                                             if (t(stmt, "expression.callee.name").safeObject === 'beforeEach' && testPlatform === 'jest') {
                                                 beforeEachFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) { // might should add code block
-                                                    stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testName\": \"beforeEach\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
-                                                    stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`], \"endTestName\": \"beforeEach\" },`);'))
+                                                    stmt.expression.arguments[0].body.body.unshift(buildTestStartMsg('beforeEach', iFileName))
 
                                                 }
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach' && testPlatform === 'jest' && !isInsideDecribe(cloneAncestors)) {
                                                 afterEachFound = true;
                                                 if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
                                                     // stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testName\": \"afterEach\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
-                                                    stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`]},`);'))
+                                                    stmt.expression.arguments[0].body.body.push(buildTestStartMsg('afterEach', iFileName))
                                                 }
                                             } else if (t(stmt, "expression.callee.name").safeObject === 'beforeAll') {
                                                 beforeAllFound = true;
@@ -180,57 +207,16 @@ module.exports = class Instrumentor {
                                                     stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`], \"endTestSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\" },`);'))
                                                     stmt.expression.arguments[0].body.body.push(parseStmt("await SRTlib.endLogger();"));
                                                 }
-                                            } else if (t(stmt, "expression.callee.name").safeObject === 'before') {
-                                                beforeFound = true;
-                                                // start logger
-                                                if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                    stmt.expression.arguments[0].body.body.unshift(parseStmt('SRTlib.send(`{ \"testSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);'))
-                                                    stmt.expression.arguments[0].body.body.unshift(parseStmt("SRTlib.startLogger(\'" + codebase + "\', 'http://localhost:8888/instrument-message')"));
-                                                }
-                                            } else if (t(stmt, "expression.callee.name").safeObject === 'After') {
-                                                afterFound = true;
-                                                // make callback function async
-                                                stmt.expression.arguments[0].async = true;
-                                                if (t(stmt, 'expression.arguments[0].body.body').safeObject) {
-                                                    stmt.expression.arguments[0].body.body.push(parseStmt('SRTlib.send(`], \"endTestSuiteName\": "' + Instrumentor.processStringNames(suiteName) + '" },`);'))
-                                                    stmt.expression.arguments[0].body.body.push(parseStmt("await SRTlib.endLogger();"));
-                                                }
-                                            } 
+                                            }
                                         });
-
-                                        // if (!beforeEachFound && testPlatform === 'jest') {
-                                        //     stmts.unshift(parseStmt('beforeEach(() => {SRTlib.send(`{ \"testName\": \"${escape(jasmine["currentTest"].description)}\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);})'))
-                                        // }
-
-                                        // if (!beforeEachFound && testPlatform === 'mocha') {
-                                        //     stmts.unshift(parseStmt('beforeEach(() => {SRTlib.send(`{ \"testName\": \"${this.test}\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`);})'))
-                                        // }
 
                                         if (!beforeAllFound && testPlatform === 'jest' ) {
                                             stmts.unshift(parseStmt('beforeAll(() => { SRTlib.startLogger(\"' + codebase + '\", "http://localhost:8888/instrument-message"); SRTlib.send(`{ \"testSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`); })'))
                                         }
-                                        
-
-                                        if (!afterEachFound && testPlatform === 'jest' && !isInsideDecribe(cloneAncestors)) {
-                                            stmts.push(parseStmt('afterEach(() => { SRTlib.send(`], \"endTestName\": \"${escape(jasmine["currentTest"].description)}\" },`); })'))
-                                        }
-
-                                        // if (!afterEachFound && testPlatform === 'mocha') {
-                                        //     stmts.push(parseStmt('afterEach(() => { SRTlib.send(`], \"endTestName\": \"${this.test}\" },`); })'))
-                                        // }
 
                                         if (!afterAllFound && testPlatform === 'jest') {
                                             stmts.push(parseStmt('afterAll(async () => { SRTlib.send(`], \"endTestSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\" },`); await SRTlib.endLogger();} )'))
                                         }
-
-                                        if (!beforeFound && testPlatform === 'mocha' ) {
-                                            stmts.unshift(parseStmt('before(() => { SRTlib.startLogger(\"' + codebase + '\", "http://localhost:8888/instrument-message"); SRTlib.send(`{ \"testSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`); })'))
-                                        }
-
-                                        if (!afterFound && testPlatform === 'mocha') {
-                                            stmts.push(parseStmt('after(async () => { SRTlib.send(`], \"endTestSuiteName\": \"' + Instrumentor.processStringNames(suiteName) + '\" },`); await SRTlib.endLogger();} )'))
-                                        }
-
                                         node.arguments[1].body.body = stmts;
                                     }
 
@@ -297,8 +283,7 @@ module.exports = class Instrumentor {
                                             }
                                         }
 
-                                        node.arguments[1].body.body.unshift(parseStmt('SRTlib.send(`{ \"testName\": \"'+ Instrumentor.processStringNames(testName) +'\", \"fileName\": \"'+iFileName+'\", \"calls\" : [`)'))
-                                        // node.arguments[1].body.body.push(parseStmt('SRTlib.send(`], \"endTestName\": \"'+  Instrumentor.processStringNames(testName) + '\" },`)'))
+                                        node.arguments[1].body.body.unshift(buildTestStartMsg(Instrumentor.processStringNames(testName), iFileName))
                                     }
 
                                 }
@@ -337,59 +322,58 @@ module.exports = class Instrumentor {
                             return parseStmt('SRTlib.send(\''+JSON.stringify(temp)+',\');')
                         };
 
-                        // ! debug test file only
-                        // babelWalk.ancestor({
-                        //     FunctionDeclaration(node, state, ancestors) {
-                        //         const paramsNum = node.params.length;
-                        //         const funcName = node.id.name;
-                        //         // node.body.body.unshift(parseStmt('SRTlib.send(`{ "anonymous": false, "function": \"' + funcName + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
-                        //         node.body.body.unshift(buildFunctionStartMsg(funcName, paramsNum, false, undefined))
-                        //         // node.body.body.push(parseStmt('SRTlib.send(\'], "end": "' + funcName + '"},\');'))
-                        //         node.body.body.push(buildFunctionEndMsg(funcName, paramsNum))
-                        //         insertBeforeReturn(node, funcName, buildFunctionEndMsg);
-                        //     },
+                        babelWalk.ancestor({
+                            FunctionDeclaration(node, state, ancestors) {
+                                const paramsNum = node.params.length;
+                                const funcName = node.id.name;
+                                // node.body.body.unshift(parseStmt('SRTlib.send(`{ "anonymous": false, "function": \"' + funcName + '\", "fileName": \"${__filename}\", "paramsNumber": ' + paramsNum + ', "calls" : [`);'))
+                                node.body.body.unshift(buildFunctionStartMsg(funcName, paramsNum, false, undefined))
+                                // node.body.body.push(parseStmt('SRTlib.send(\'], "end": "' + funcName + '"},\');'))
+                                node.body.body.push(buildFunctionEndMsg(funcName, paramsNum))
+                                insertBeforeReturn(node, funcName, buildFunctionEndMsg);
+                            },
 
-                        //     FunctionExpression(node, state, ancestors) {
-                        //         const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
-                        //         insertBeforeReturn(node, funcName, buildFunctionEndMsg);
-                        //     },
+                            FunctionExpression(node, state, ancestors) {
+                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
+                                insertBeforeReturn(node, funcName, buildFunctionEndMsg);
+                            },
 
-                        //     ArrowFunctionExpression(node, state, ancestors) {
-                        //         // handle arrow function implicit return
-                        //         if (node.body.type !== 'BlockStatement') {
-                        //             const returnStmt = {
-                        //                 type: "ReturnStatement",
-                        //                 argument: node.body
-                        //             };
-                        //             node.body = {
-                        //                 type: "BlockStatement",
-                        //                 body: [returnStmt]
-                        //             }
-                        //         }
+                            ArrowFunctionExpression(node, state, ancestors) {
+                                // handle arrow function implicit return
+                                if (node.body.type !== 'BlockStatement') {
+                                    const returnStmt = {
+                                        type: "ReturnStatement",
+                                        argument: node.body
+                                    };
+                                    node.body = {
+                                        type: "BlockStatement",
+                                        body: [returnStmt]
+                                    }
+                                }
 
-                        //         const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
-                        //         insertBeforeReturn(node, funcName, buildFunctionEndMsg)
-                        //     },
+                                const funcName = functionHandler(node, ancestors, getListOfId, functionMap, buildFunctionStartMsg, buildFunctionEndMsg);
+                                insertBeforeReturn(node, funcName, buildFunctionEndMsg)
+                            },
 
-                        //     ClassMethod(node, state, ancestors) {
-                        //         const funcName = t(node, 'key.name').safeObject;
-                        //         if(funcName) {
-                        //             // build class info
-                        //             const classDeclare = ancestors[ancestors.length - 3];
-                        //             const classObj = {className: classDeclare.id.name};
-                        //             if(classDeclare.superClass !== null){
-                        //                 classObj.superClass = classDeclare.superClass.name;
-                        //             }
-                        //             node.body.body.unshift(buildFunctionStartMsg(funcName, node.params.length, false, classObj))
-                        //             node.body.body.push(buildFunctionEndMsg(funcName, node.params.length))
-                        //             insertBeforeReturn(node, funcName, buildFunctionEndMsg)
-                        //         }
-                        //     }
+                            ClassMethod(node, state, ancestors) {
+                                const funcName = t(node, 'key.name').safeObject;
+                                if(funcName) {
+                                    // build class info
+                                    const classDeclare = ancestors[ancestors.length - 3];
+                                    const classObj = {className: classDeclare.id.name};
+                                    if(classDeclare.superClass !== null){
+                                        classObj.superClass = classDeclare.superClass.name;
+                                    }
+                                    node.body.body.unshift(buildFunctionStartMsg(funcName, node.params.length, false, classObj))
+                                    node.body.body.push(buildFunctionEndMsg(funcName, node.params.length))
+                                    insertBeforeReturn(node, funcName, buildFunctionEndMsg)
+                                }
+                            }
 
 
-                        // })(tree, {
-                        //     counter: 0,
-                        //   })
+                        })(tree, {
+                            counter: 0,
+                          })
                     }
 
                     //  write to outputDir
