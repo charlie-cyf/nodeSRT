@@ -221,7 +221,7 @@ module.exports = class Instrumentor {
                                     }
 
 
-                                } else if (node.callee.name === 'it' && isInsideDecribe(ancestors)) { // check if inside describe before inject
+                                } else if (node.callee.name === 'it' ) { //// check if inside describe before inject
                                     const testName = getSuiteName(node);
                                     // handle non ArrowFuntcion argument it
                                     if(!['ArrowFunctionExpression', 'FunctionExpression'].includes(t(node, 'arguments[1].type').safeObject)) {
