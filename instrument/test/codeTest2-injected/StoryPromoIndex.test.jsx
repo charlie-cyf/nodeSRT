@@ -39,10 +39,6 @@ WrappedStoryPromo.defaultProps = {
   service: 'igbo'
 };
 describe('StoryPromo Container', () => {
-  beforeAll(() => {
-    SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/codeTest2", "http://localhost:8888/instrument-message");
-    SRTlib.send(`{ "testSuiteName": "StoryPromo%20Container", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
-  });
   Object.entries(fixtures).forEach(([name, data]) => {
     shouldMatchSnapshot(`should render ${name} correctly for canonical`, <WrappedStoryPromo platform="canonical" item={data} />);
     shouldMatchSnapshot(`should render ${name} correctly for amp`, <WrappedStoryPromo platform="amp" item={data} />);
@@ -76,7 +72,7 @@ describe('StoryPromo Container', () => {
       cleanup();
     });
     it('should render h3, a, p, time', () => {
-      SRTlib.send(`{"type":"TESTSTART","testName":"should render h3, a, p, time","fileName":"/StoryPromoIndex.test.jsx"},`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20h3%2C%20a%2C%20p%2C%20time","fileName":"/StoryPromoIndex.test.jsx"},`);
       expect(cpsContainer.querySelectorAll('h3 a')[0].innerHTML).toEqual(cpsItem.headlines.headline);
       expect(cpsContainer.getElementsByTagName('p')[0].innerHTML).toEqual(cpsItem.summary);
       expect(cpsContainer.getElementsByTagName('time')[0].innerHTML).toEqual('2 Mee 2019');
@@ -90,7 +86,7 @@ describe('StoryPromo Container', () => {
       expect(yorubaContainer.getElementsByTagName('time')[0].innerHTML).toEqual('2 Èbibi 2019');
     });
     it('should render relative time if timestamp < 10 hours', () => {
-      SRTlib.send(`{"type":"TESTSTART","testName":"should render relative time if timestamp < 10 hours","fileName":"/StoryPromoIndex.test.jsx"},`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20relative%20time%20if%20timestamp%20%3C%2010%20hours","fileName":"/StoryPromoIndex.test.jsx"},`);
       const oneMinuteAgo = Date.now() - 60 * 1000;
       const newItem = { ...cpsItem,
         timestamp: oneMinuteAgo
@@ -110,8 +106,12 @@ describe('StoryPromo Container', () => {
       service,
       expectationFirstJan2020
     }) => {
+      beforeAll(() => {
+        SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/codeTest2", "http://localhost:8888/instrument-message");
+        SRTlib.send(`{ "testSuiteName": "assertion%20tests", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
+      });
       it(`should render time element with multiple calendars for ${service} Story Promo`, () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should render time element with multiple calendars for ${service} Story Promo","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20time%20element%20with%20multiple%20calendars%20for%20%24%7Bservice%7D%20Story%20Promo","fileName":"/StoryPromoIndex.test.jsx"},`);
         const firstJan2020 = 1577836800000;
         const newItem = { ...cpsItem,
           timestamp: firstJan2020
@@ -121,9 +121,13 @@ describe('StoryPromo Container', () => {
         } = render(<WrappedStoryPromo service={service} item={newItem} />);
         expect(container.getElementsByTagName('time')[0].innerHTML).toEqual(expectationFirstJan2020);
       });
+      afterAll(async () => {
+        SRTlib.send(`], "endTestSuiteName": "assertion%20tests" },`);
+        await SRTlib.endLogger();
+      });
     });
     it('should render img with src & alt when platform is canonical', () => {
-      SRTlib.send(`{"type":"TESTSTART","testName":"should render img with src & alt when platform is canonical","fileName":"/StoryPromoIndex.test.jsx"},`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20img%20with%20src%20%26%20alt%20when%20platform%20is%20canonical","fileName":"/StoryPromoIndex.test.jsx"},`);
       const {
         container
       } = render(<WrappedStoryPromo item={cpsItem} lazyLoadImage={false} />);
@@ -133,7 +137,7 @@ describe('StoryPromo Container', () => {
       expect(container.getElementsByTagName('img')[0].getAttribute('alt')).toEqual(cpsItem.indexImage.altText);
     });
     it('should render amp-img with src & alt when platform is amp', () => {
-      SRTlib.send(`{"type":"TESTSTART","testName":"should render amp-img with src & alt when platform is amp","fileName":"/StoryPromoIndex.test.jsx"},`);
+      SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20amp-img%20with%20src%20%26%20alt%20when%20platform%20is%20amp","fileName":"/StoryPromoIndex.test.jsx"},`);
       const {
         container
       } = render(<WrappedStoryPromo platform="amp" item={cpsItem} />);
@@ -153,7 +157,7 @@ describe('StoryPromo Container', () => {
         delete assetTypeItem.name;
       });
       it('should not include a headline element', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should not include a headline element","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20not%20include%20a%20headline%20element","fileName":"/StoryPromoIndex.test.jsx"},`);
         cpsContainer = render(<WrappedStoryPromo item={cpsItem} />).container;
         assetTypeContainer = render(<WrappedStoryPromo item={assetTypeItem} />).container;
         expect(cpsContainer.getElementsByTagName('h3').length).toEqual(0);
@@ -176,7 +180,7 @@ describe('StoryPromo Container', () => {
         delete assetTypeItem.summary;
       });
       it('should not include any paragraph element', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should not include any paragraph element","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20not%20include%20any%20paragraph%20element","fileName":"/StoryPromoIndex.test.jsx"},`);
         cpsContainer = render(<WrappedStoryPromo item={cpsItem} />).container;
         assetTypeContainer = render(<WrappedStoryPromo item={assetTypeItem} />).container;
         expect(cpsContainer.getElementsByTagName('p').length).toEqual(0);
@@ -198,7 +202,7 @@ describe('StoryPromo Container', () => {
         delete assetTypeItem.timestamp;
       });
       it('should not include a time element', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should not include a time element","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20not%20include%20a%20time%20element","fileName":"/StoryPromoIndex.test.jsx"},`);
         cpsContainer = render(<WrappedStoryPromo item={cpsItem} />).container;
         assetTypeContainer = render(<WrappedStoryPromo item={assetTypeItem} />).container;
         expect(cpsContainer.getElementsByTagName('time').length).toEqual(0);
@@ -220,7 +224,7 @@ describe('StoryPromo Container', () => {
         delete assetTypeItem.indexImage;
       });
       it('should not include an img element', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should not include an img element","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20not%20include%20an%20img%20element","fileName":"/StoryPromoIndex.test.jsx"},`);
         expect(cpsContainer.getElementsByTagName('img').length).toEqual(0);
         expect(assetTypeContainer.getElementsByTagName('img').length).toEqual(0);
       });
@@ -239,7 +243,7 @@ describe('StoryPromo Container', () => {
         cpsItem.timestamp = 1565035200000;
       });
       it('should show the correct local date', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should show the correct local date","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20show%20the%20correct%20local%20date","fileName":"/StoryPromoIndex.test.jsx"},`);
         const {
           container: newsContainer
         } = render(<WrappedStoryPromo item={cpsItem} service="news" />);
@@ -270,7 +274,7 @@ describe('StoryPromo Container', () => {
         SRTlib.send(`{ "testSuiteName": "With%20Index%20Alsos", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
       });
       it('should render a list with three related items', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should render a list with three related items","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20a%20list%20with%20three%20related%20items","fileName":"/StoryPromoIndex.test.jsx"},`);
         const {
           container
         } = render(<WrappedStoryPromo item={indexAlsosItem} promoType="top" />);
@@ -278,7 +282,7 @@ describe('StoryPromo Container', () => {
         expect(container.getElementsByTagName('li')).toHaveLength(3);
       });
       it('should render a related item not contained within a list', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should render a related item not contained within a list","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20a%20related%20item%20not%20contained%20within%20a%20list","fileName":"/StoryPromoIndex.test.jsx"},`);
         const {
           container
         } = render(<WrappedStoryPromo item={onlyOneRelatedItem} promoType="top" />);
@@ -296,7 +300,7 @@ describe('StoryPromo Container', () => {
         SRTlib.send(`{ "testSuiteName": "Live%20Story%20Promo", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
       });
       it('should render a live story promo with live text', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should render a live story promo with live text","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20a%20live%20story%20promo%20with%20live%20text","fileName":"/StoryPromoIndex.test.jsx"},`);
         const {
           getByText
         } = render(<WrappedStoryPromo item={liveItem} />);
@@ -305,7 +309,7 @@ describe('StoryPromo Container', () => {
         expect(label).not.toHaveAttribute('aria-hidden', 'true');
       });
       it('should render a live story promo as aria-hidden, with visually hidden text if the label is in english', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should render a live story promo as aria-hidden, with visually hidden text if the label is in english","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20a%20live%20story%20promo%20as%20aria-hidden%2C%20with%20visually%20hidden%20text%20if%20the%20label%20is%20in%20english","fileName":"/StoryPromoIndex.test.jsx"},`);
         const {
           getByText
         } = render(<WrappedStoryPromo item={liveItem} service="news" />);
@@ -314,7 +318,7 @@ describe('StoryPromo Container', () => {
         expect(label).toHaveAttribute('aria-hidden', 'true');
       });
       it('should render a live story promo without a timestamp', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should render a live story promo without a timestamp","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20a%20live%20story%20promo%20without%20a%20timestamp","fileName":"/StoryPromoIndex.test.jsx"},`);
         const {
           container
         } = render(<WrappedStoryPromo item={liveItem} />);
@@ -332,14 +336,14 @@ describe('StoryPromo Container', () => {
         SRTlib.send(`{ "testSuiteName": "Story%20Promo%20of%20type%20Guide", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
       });
       it('should not render a timestamp', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should not render a timestamp","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20not%20render%20a%20timestamp","fileName":"/StoryPromoIndex.test.jsx"},`);
         const {
           container
         } = render(<WrappedStoryPromo item={guideLinkItem} />);
         expect(container.getElementsByTagName('time').length).toEqual(0);
       });
       it('should not render a heading tag', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should not render a heading tag","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20not%20render%20a%20heading%20tag","fileName":"/StoryPromoIndex.test.jsx"},`);
         const {
           container
         } = render(<WrappedStoryPromo item={guideLinkItem} />);
@@ -356,7 +360,7 @@ describe('StoryPromo Container', () => {
         SRTlib.send(`{ "testSuiteName": "Recommendation%20Promo", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
       });
       it('should render headline as a div instead of an h3', () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"should render headline as a div instead of an h3","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"should%20render%20headline%20as%20a%20div%20instead%20of%20an%20h3","fileName":"/StoryPromoIndex.test.jsx"},`);
         const {
           container
         } = render(<WrappedStoryPromo platform="canonical" item={fixtures.standard} isRecommendation />);
@@ -374,12 +378,7 @@ describe('StoryPromo Container', () => {
     });
   });
   describe('given there is a CPS MAP block with a media error', () => {
-    beforeAll(() => {
-      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/codeTest2", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "given%20there%20is%20a%20CPS%20MAP%20block%20with%20a%20media%20error", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
-    });
     beforeEach(() => {
-      SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/StoryPromoIndex.test.jsx"},`);
       jest.clearAllMocks();
     });
     afterEach(() => {
@@ -395,8 +394,12 @@ describe('StoryPromo Container', () => {
       item,
       platform
     }) => {
+      beforeAll(() => {
+        SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/codeTest2", "http://localhost:8888/instrument-message");
+        SRTlib.send(`{ "testSuiteName": "given%20there%20is%20a%20CPS%20MAP%20block%20with%20a%20media%20error", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
+      });
       it(`when we render for ${platform}, it should log a warning`, () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"when we render for ${platform}, it should log a warning","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"when%20we%20render%20for%20%24%7Bplatform%7D%2C%20it%20should%20log%20a%20warning","fileName":"/StoryPromoIndex.test.jsx"},`);
         render(<WrappedStoryPromo item={item} platform={platform} />);
         expect(loggerMock.warn).toHaveBeenCalledWith(MEDIA_MISSING, {
           url: '/pashto/front_page',
@@ -404,19 +407,14 @@ describe('StoryPromo Container', () => {
           mediaBlock: mapWithMediaError.media
         });
       });
-    });
-    afterAll(async () => {
-      SRTlib.send(`], "endTestSuiteName": "given%20there%20is%20a%20CPS%20MAP%20block%20with%20a%20media%20error" },`);
-      await SRTlib.endLogger();
+      afterAll(async () => {
+        SRTlib.send(`], "endTestSuiteName": "given%20there%20is%20a%20CPS%20MAP%20block%20with%20a%20media%20error" },`);
+        await SRTlib.endLogger();
+      });
     });
   });
   describe('given there is a CPS MAP block without a media error', () => {
-    beforeAll(() => {
-      SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/codeTest2", "http://localhost:8888/instrument-message");
-      SRTlib.send(`{ "testSuiteName": "given%20there%20is%20a%20CPS%20MAP%20block%20without%20a%20media%20error", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
-    });
     beforeEach(() => {
-      SRTlib.send(`{"type":"TESTSTART","testName":"beforeEach","fileName":"/StoryPromoIndex.test.jsx"},`);
       jest.clearAllMocks();
     });
     afterEach(() => {
@@ -432,19 +430,19 @@ describe('StoryPromo Container', () => {
       item,
       platform
     }) => {
+      beforeAll(() => {
+        SRTlib.startLogger("/home/centos/nodeSRT/instrument/test/codeTest2", "http://localhost:8888/instrument-message");
+        SRTlib.send(`{ "testSuiteName": "given%20there%20is%20a%20CPS%20MAP%20block%20without%20a%20media%20error", "fileName": "/StoryPromoIndex.test.jsx", "calls" : [`);
+      });
       it(`when we render for ${platform}, it should *not* log a warning`, () => {
-        SRTlib.send(`{"type":"TESTSTART","testName":"when we render for ${platform}, it should *not* log a warning","fileName":"/StoryPromoIndex.test.jsx"},`);
+        SRTlib.send(`{"type":"TESTSTART","testName":"when%20we%20render%20for%20%24%7Bplatform%7D%2C%20it%20should%20*not*%20log%20a%20warning","fileName":"/StoryPromoIndex.test.jsx"},`);
         render(<WrappedStoryPromo item={item} platform={platform} />);
         expect(loggerMock.warn).not.toHaveBeenCalled();
       });
+      afterAll(async () => {
+        SRTlib.send(`], "endTestSuiteName": "given%20there%20is%20a%20CPS%20MAP%20block%20without%20a%20media%20error" },`);
+        await SRTlib.endLogger();
+      });
     });
-    afterAll(async () => {
-      SRTlib.send(`], "endTestSuiteName": "given%20there%20is%20a%20CPS%20MAP%20block%20without%20a%20media%20error" },`);
-      await SRTlib.endLogger();
-    });
-  });
-  afterAll(async () => {
-    SRTlib.send(`], "endTestSuiteName": "StoryPromo%20Container" },`);
-    await SRTlib.endLogger();
   });
 });

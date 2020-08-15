@@ -39,6 +39,7 @@ const StoryPage = ({
   pageData,
   mostReadEndpointOverride
 }) => {
+  SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"StoryPage","fileName":"/StoryPage.jsx","paramsNumber":1},`);
   const {
     dir,
     mostRead: {
@@ -115,13 +116,48 @@ const StoryPage = ({
     subheadline: headings,
     text,
     image,
-    timestamp: props => allowDateStamp ? <StyledTimestamp {...props} popOut={false} minutesTolerance={1} /> : null,
-    video: props => <MediaPlayer {...props} assetUri={assetUri} />,
-    version: props => <MediaPlayer {...props} assetUri={assetUri} />,
-    byline: props => <StyledByline {...props} />,
-    include: props => <Include {...props} />,
-    social_embed: props => <SocialEmbed {...props} />,
-    wsoj: props => <CpsRecommendations {...props} parentColumns={gridColsMain} items={recommendationsInitialData} />
+    timestamp: props => {
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender"},');
+      return allowDateStamp ? <StyledTimestamp {...props} popOut={false} minutesTolerance={1} /> : null;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender"},');
+    },
+    video: props => {
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###2","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###2"},');
+      return <MediaPlayer {...props} assetUri={assetUri} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###2"},');
+    },
+    version: props => {
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###3","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###3"},');
+      return <MediaPlayer {...props} assetUri={assetUri} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###3"},');
+    },
+    byline: props => {
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###4","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###4"},');
+      return <StyledByline {...props} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###4"},');
+    },
+    include: props => {
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###5","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###5"},');
+      return <Include {...props} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###5"},');
+    },
+    social_embed: props => {
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###6","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###6"},');
+      return <SocialEmbed {...props} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###6"},');
+    },
+    wsoj: props => {
+      SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"componentsToRender###7","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###7"},');
+      return <CpsRecommendations {...props} parentColumns={gridColsMain} items={recommendationsInitialData} />;
+      SRTlib.send('{"type":"FUNCTIONEND","function":"componentsToRender###7"},');
+    }
   };
   const StyledTimestamp = styled(Timestamp)`
     padding-bottom: ${GEL_SPACING_DBL};
@@ -173,24 +209,35 @@ const StoryPage = ({
       padding: ${GEL_SPACING_DBL};
     }
   `;
-  const MostReadSection = styled.section.attrs(() => ({
-    role: 'region',
-    'aria-labelledby': 'Most-Read',
-    'data-e2e': 'most-read'
-  }))``;
+  const MostReadSection = styled.section.attrs(() => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":true,"function":"MostReadSection.styled.section.attrs","fileName":"/StoryPage.jsx","paramsNumber":0},`);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"MostReadSection.styled.section.attrs"},');
+    return {
+      role: 'region',
+      'aria-labelledby': 'Most-Read',
+      'data-e2e': 'most-read'
+    };
+    SRTlib.send('{"type":"FUNCTIONEND","function":"MostReadSection.styled.section.attrs"},');
+  })``;
 
   const MostReadWrapper = ({
     children
-  }) => <MostReadSection>
+  }) => {
+    SRTlib.send(`{"type":"FUNCTIONSTART","anonymous":false,"function":"MostReadWrapper","fileName":"/StoryPage.jsx","paramsNumber":1},`);
+    SRTlib.send('{"type":"FUNCTIONEND","function":"MostReadWrapper"},');
+    return <MostReadSection>
       <SectionLabel script={script} labelId="Most-Read" service={service} dir={dir}>
         {header}
       </SectionLabel>
       {children}
     </MostReadSection>;
+    SRTlib.send('{"type":"FUNCTIONEND","function":"MostReadWrapper"},');
+  };
 
   MostReadWrapper.propTypes = {
     children: node.isRequired
   };
+  SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
   return <>
       <CpsMetadata title={title} shortHeadline={shortHeadline} language={lang} description={summary} firstPublished={firstPublished} lastPublished={lastPublished} imageLocator={indexImageLocator} imageAltText={indexImageAltText} aboutTags={aboutTags} />
       <LinkedData type={categoryType(category)} seoTitle={title} headline={title} description={summary} showAuthor datePublished={firstPublished} dateModified={lastPublished} aboutTags={aboutTags} />
@@ -219,6 +266,7 @@ const StoryPage = ({
         </GridSecondaryColumn>
       </StoryPageGrid>
     </>;
+  SRTlib.send('{"type":"FUNCTIONEND","function":"StoryPage"},');
 };
 
 StoryPage.propTypes = cpsAssetPagePropTypes;
