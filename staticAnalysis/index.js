@@ -1,32 +1,18 @@
 const path = require('path');
 const fs = require('fs')
-const acornWalk = require('acorn-walk')
+const babelWalk = require('babel-walk');
 const { t } = require('typy')
 const globalUtil = require('../util')
 const node_core_modules =  require("module").builtinModules
-const { extend } = require('acorn-jsx-walk');
 const { pathExists } = require('fs-extra');
 const { dirname } = require('path');
 const { lookup } = require('dns');
 const requireResolver = require('enhanced-resolve')
 const _ = require('underscore');
-const { prop } = require('acorn-jsx/xhtml');
-const { setMaxListeners } = require('process');
 const multimatch = require('multimatch');
-const { globalAgent } = require('http');
 const Instrumentor = require('../instrument/instrumentor')
+const JSON5 = require('json5')
 
-acornWalk.base.FieldDefinition = (node, st, c) => {
-    if (node.computed) c(node.key, st, "Expression")
-    c(node.value, st, "Expression")
-}
-
-acornWalk.base.ClassProperty = (node, st, c) => {
-    if (node.computed) c(node.key, st, "Expression")
-    c(node.value, st, "Expression")
-}
-
-extend(acornWalk.base);
 
 
 
@@ -38,12 +24,15 @@ extend(acornWalk.base);
 *   @param {String} dependName: the name in require
 *   @param {String} ASTfileName: the path to AST file that calls the dependName
 */
-function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, acc) {
+function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, compilerOptionsPaths, acc) {
     const codeBaseFileName = globalUtil.getCodebasePath(ASTfileName);
     const codeBaseDir = path.dirname(codeBaseFileName)
     const ASTdirName = path.dirname(ASTfileName)
     const codeBaseFile = globalUtil.getCodebasePath(ASTfileName)
 
+    console.log('before replace', dependName)
+    dependName = replaceWithCompilerOption(dependName, compilerOptionsPaths)
+    console.log(dependName)
     // first resolve dependName
     // TODO fix for jsconfig.json compilerOptions
     let resolved;
@@ -58,6 +47,8 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
         }
         
     }
+
+    console.log('resolved:', resolved)
     
     
     // mapping local file dependency to resolved
@@ -128,21 +119,23 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
             // loop thru all requires
             const tree = JSON.parse(fs.readFileSync(ASTpath));
             const program = tree.program
-            acornWalk.simple(program, {
-                CallExpression(node) {
+            babelWalk.simple({
+                CallExpression(node, state) {
                     if(node.callee.type === "Identifier" && node.callee.name === "require") {
                         if(t(node, 'arguments[0].value').safeObject) {
-                             acc = _.union(getFileDependencies(t(node, 'arguments[0].value').safeObject, ASTpath, packageJsonDependencies, acc));
+                             acc = _.union(getFileDependencies(t(node, 'arguments[0].value').safeObject, ASTpath, packageJsonDependencies, compilerOptionsPaths, acc));
                         }
                     }
                 },
 
                 ImportDeclaration(node) {
                     if(t(node, 'source.value').safeObject) {
-                        acc = _.union(getFileDependencies(t(node, 'source.value').safeObject, ASTpath, packageJsonDependencies, acc))
+                        acc = _.union(getFileDependencies(t(node, 'source.value').safeObject, ASTpath, packageJsonDependencies, compilerOptionsPaths, acc))
                     }
                 }
 
+            })(tree, {
+                counter: 0
             })
         }
     }
@@ -151,6 +144,26 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
    
 
 }
+
+
+function replaceWithCompilerOption(depend, compilerOptionsPaths) {
+    Object.keys(compilerOptionsPaths).forEach(p => {
+        if(multimatch(depend, [p])) {    
+            let temp = p       
+            if(p.endsWith('\*')) {
+                temp = p.substring(0, p.length - 1)
+            }
+            let tobeReplace = compilerOptionsPaths[p][0];
+            if(tobeReplace.endsWith('\*')) {
+                tobeReplace = tobeReplace.substring(0, tobeReplace.length - 1)
+            }
+            depend = depend.replace(temp, tobeReplace)
+            return;
+        }
+    })
+    return depend
+}
+
 /**
  * precondition: AST generated in dir+'-AST'
  * Find tests denpendencies under dir matchs regex expression rgx
@@ -160,6 +173,8 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, a
 function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.jsx']) {
     let dependencyGraph = []
     const packageJson = globalUtil.getCodeBasePackageJson();
+    const compilerOptionsPaths = JSON5.parse(fs.readFileSync(path.join(dir, 'jsconfig.json'), 'utf-8'));
+
     
     // scan for test file
     const testsFinderRecur = function(astDir) {
@@ -181,8 +196,8 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
         const tree = JSON.parse(fs.readFileSync(ele.testFilename));
         const program = tree.program
         // get file dependencies on each require
-        acornWalk.ancestor(program, {
-            CallExpression(node, ancestors) {
+        babelWalk.ancestor({
+            async CallExpression(node, state,ancestors) {
                 if(node.callee.type === "Identifier" && node.callee.name === "require") {
                     // handle require("").data
                     let variableDeclare;
@@ -209,7 +224,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
 
                     // get file dependencies
                     if(t(node, 'arguments[0].value').safeObject) {
-                        const dependents = getFileDependencies(t(node, 'arguments[0].value').safeObject, ele.testFilename, packageJson.dependencies, [])
+                        const dependents = getFileDependencies(t(node, 'arguments[0].value').safeObject, ele.testFilename, packageJson.dependencies, compilerOptionsPaths.compilerOptions.paths, [])
                         ids.forEach(id => {
                             propertyMap.set(id, dependents)
                         })
@@ -219,7 +234,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                 }
             },
 
-            ImportDeclaration(node, ancestors) {
+            ImportDeclaration(node, state, ancestors) {
                 if(node.specifiers) {
                     const ids = [];
                     node.specifiers.forEach(spec => {
@@ -229,13 +244,15 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                     })
 
                     if(t(node, 'source.value').safeObject) {
-                        const dependent = getFileDependencies(t(node, 'source.value').safeObject, ele.testFilename, packageJson.dependencies, [])
+                        const dependent = getFileDependencies(t(node, 'source.value').safeObject, ele.testFilename, packageJson.dependencies, compilerOptionsPaths.compilerOptions.paths, [])
                         ids.forEach(id => {
                             propertyMap.set(id, dependent)
                         })
                     }
                 }
             }
+        })(tree, {
+            counter: 0
         })
 
         /**
@@ -244,7 +261,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
 
         ele.testSuits = [];
         // link test name to file dependencies
-        acornWalk.simple(program, {
+        babelWalk.simple({
             CallExpression(node) { 
                 if(node.callee.type === 'Identifier' && node.callee.name === 'describe') {
                     const suiteName = Instrumentor.getSuiteName(node)
@@ -271,8 +288,8 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                             } else if (t(stmt, "expression.callee.name").safeObject === 'describe') {
                                 continue;
                             } else if (stmt.type === "VariableDeclaration") {
-                                acornWalk.simple(stmt, {
-                                    Identifier(identifier) {
+                                babelWalk.simple({
+                                    Identifier(identifier, state) {
                                         if(propertyMap.has(identifier.name)) {
                                             const newIdName = t(stmt, "id.name");
                                             if(newIdName) {
@@ -280,13 +297,15 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                                             }
                                         }
                                     }
+                                })(stmt, {
+                                    counter: 0
                                 })
                                 continue;
                             } else {
                                 // the statement is not a test 
                                 // console.log('in testName getter else branch', stmt)
-                                acornWalk.simple(stmt, {
-                                    Identifier(identifier) {
+                                babelWalk.simple({
+                                    Identifier(identifier, state) {
                                         if(propertyMap.has(identifier.name)) {
                                             let found = false;
                                             ele.testSuits.map(suit => {
@@ -305,6 +324,8 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                                             }                                                
                                         }
                                     }
+                                })(stmt, {
+                                    counter: 0
                                 })
                                 continue;
                             }
@@ -316,8 +337,8 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                             } else {
                                 obj = t(stmt, 'expression.arguments[1]').safeObject
                             }
-                            acornWalk.simple(obj, {
-                                Identifier(identifier) {
+                            babelWalk.simple({
+                                Identifier(identifier, state) {
                                     if(propertyMap.has(identifier.name)) {
                                         // console.log('map has identifier', identifier)
                                         let found = false;
@@ -338,6 +359,8 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                                         }                                                
                                     }
                                 }
+                            })(obj, {
+                                counter: 0
                             })
                         }
                     }
@@ -345,6 +368,8 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                     // TODO handle test without suite
                 }
             }
+        })(tree, {
+            counter: 0
         })
 
         // set testFileName to be codebase filename
