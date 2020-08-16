@@ -44,7 +44,7 @@ function runUnitTests(tests, diff) {
 
     if(globalUtil.config.JestOnlyChanged) {
         console.log('running jest onlyChanged...')
-        child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && npm run build:lib && jest -o`, { stdio: [0, 1, 2] });
+        child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && npm run build && jest -o`, { stdio: [0, 1, 2] });
     }
 
 
@@ -58,7 +58,7 @@ function runUnitTests(tests, diff) {
 
     // run selected file
     if(globalUtil.config.runUnitTestsInstr && testFiles.length > 0) {
-        const runInstruction = globalUtil.config.runUnitTestsInstr + ' ' + testFiles.join(' ');
+        const runInstruction = 'npm run build && jest ' + testFiles.join(' ');
         child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && ${runInstruction}`, { stdio: [0, 1, 2] });
     }
 
@@ -70,17 +70,25 @@ String.prototype.replaceAll = function(str1, str2, ignore)
 } 
 
 function modifyTests(codeBase, tests) {
+    // unescape test name and suite name
+    tests.forEach(test => {
+        test.testName = unescape(test.testName);
+        test.suiteName = unescape(test.suiteName);
+    })
+
     
     tests.forEach(test => {
         let content = fs.readFileSync(path.join(codeBase, test.testFile), 'utf-8')
         if(test.testName && !['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(test.testName)) {
             content = content.replaceAll(`it('${test.testName}',`, `it.only('${test.testName}',`)
             content = content.replaceAll(`it("${test.testName}",`, `it.only("${test.testName}",`)
+            content = content.replaceAll(`it(\`${test.testName}\`,`, `it.only(\`${test.testName}\`,`)
         } else {
             // content = content.replace(new RegExp(`describe('${test.suiteName}',`, 'g'), `describe.only('${test.suiteName}',`)
             // content = content.replace(new RegExp(`describe("${test.suiteName}",`, 'g'), `describe.only("${test.suiteName}",`)
             content = content.replaceAll(`describe('${test.suiteName}',`, `describe.only('${test.suiteName}',`)
             content = content.replaceAll(`describe("${test.suiteName}",`, `describe.only("${test.suiteName}",`)
+            content = content.replaceAll(`describe(\`${test.suiteName}\`,`, `describe.only(\`${test.suiteName}\`,`)
         }
         fs.writeFileSync(path.join(codeBase, test.testFile), content);
     })

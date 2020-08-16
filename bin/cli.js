@@ -130,7 +130,7 @@ async function runner() {
         readInterface.close()     
     } else {
         // ask if running selected tests
-        readInterface.question('do you want to run selected tests? (Y/N)', (input) => {
+        readInterface.question('do you want to run selected tests? (Y/N) ', (input) => {
             if(input.includes('y') || input.includes('Y')) {
                 console.log(chalk.green('running selected tests ...'))
                 api.runSelectedUnitTests(globalUtil.config.selectedUnit, fs.readFileSync(globalUtil.config.diffFile, 'utf-8'))

@@ -326,6 +326,7 @@ module.exports.getChangesAncestors = function (diff) {
             change.diffAncestors = getTestChangeAncestors(beforeAST, afterAST);
         } else if(path.extname(change.filename) === '.js' || path.extname(change.filename) === '.jsx') {
             const beforeAST = ASTgenerator.parse(fs.readFileSync(change.filename, 'utf8'));
+            // console.log('change content', change.content)
             const afterAST = ASTgenerator.parse(change.content);
             change.diffAncestors = this.getDiffs(beforeAST, afterAST);
         } 

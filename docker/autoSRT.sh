@@ -6,7 +6,7 @@ echo "installing dependency"
 echo "node version:"
 node -v
 
-git clone https://github.com/transloadit/uppy.git
+git clone https://github.com/bbc/simorgh.git
 git clone https://github.com/charlie-cyf/nodeSRT.git
 
 cd ./nodeSRT
@@ -16,7 +16,7 @@ echo "installing nodeSRT..."
 
 npm i -g .
 
-cd ../uppy
+cd ../simorgh
 echo "go to uppy"
 pwd 
 

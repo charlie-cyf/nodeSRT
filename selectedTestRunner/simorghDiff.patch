@@ -1,0 +1,352 @@
+diff --git a/src/app/containers/ChartbeatAnalytics/utils/index.js b/src/app/containers/ChartbeatAnalytics/utils/index.js
+index 2aa1b61be..3827d2b39 100644
+--- a/src/app/containers/ChartbeatAnalytics/utils/index.js
++++ b/src/app/containers/ChartbeatAnalytics/utils/index.js
+@@ -39,6 +39,8 @@ export const getType = (pageType, shorthand = false) => {
+       return 'Most Read';
+     case 'STY':
+       return 'STY';
++    case 'PGL':
++      return 'PGL';
+     default:
+       return null;
+   }
+@@ -113,6 +115,8 @@ export const getTitle = ({ pageType, pageData, brandName, title }) => {
+       return `${title} - ${brandName}`;
+     case 'STY':
+       return path(['promo', 'headlines', 'headline'], pageData);
++    case 'PGL':
++      return path(['promo', 'headlines', 'headline'], pageData);
+     default:
+       return null;
+   }
+diff --git a/src/app/containers/ChartbeatAnalytics/utils/index.test.js b/src/app/containers/ChartbeatAnalytics/utils/index.test.js
+index f718df1e5..dc0c204e8 100644
+--- a/src/app/containers/ChartbeatAnalytics/utils/index.test.js
++++ b/src/app/containers/ChartbeatAnalytics/utils/index.test.js
+@@ -76,6 +76,11 @@ describe('Chartbeat utilities', () => {
+         expectedDefaultType: 'STY',
+         expectedShortType: 'STY',
+       },
++      {
++        type: 'PGL',
++        expectedDefaultType: 'PGL',
++        expectedShortType: 'PGL',
++      },
+       {
+         type: null,
+         expectedDefaultType: null,
+@@ -227,113 +232,6 @@ describe('Chartbeat utilities', () => {
+   });
+ 
+   describe('Chartbeat Title', () => {
+-    it('should call getPromoHeadline when pageType is article', () => {
+-      const pageType = 'article';
+-      const pageData = {};
+-
+-      const mockGetPromoHeadline = jest
+-        .fn()
+-        .mockImplementation(() => 'This is an article title');
+-      articleUtils.getPromoHeadline = mockGetPromoHeadline;
+-      expect(getTitle({ pageType, pageData })).toBe('This is an article title');
+-      expect(mockGetPromoHeadline).toHaveBeenCalledTimes(1);
+-    });
+-
+-    it('should call getPageTitle when pageType is frontPage', () => {
+-      const pageType = 'frontPage';
+-      const pageData = {};
+-      const brandName = 'BBC News';
+-
+-      const mockGetPageTitle = jest
+-        .fn()
+-        .mockImplementation(() => 'This is a frontpage title');
+-      frontPageUtils.getPageTitle = mockGetPageTitle;
+-      expect(getTitle({ pageType, pageData, brandName })).toBe(
+-        'This is a frontpage title',
+-      );
+-      expect(mockGetPageTitle).toHaveBeenCalledTimes(1);
+-    });
+-
+-    it('should call getPageTitle when pageType is IDX', () => {
+-      const pageType = 'IDX';
+-      const pageData = {};
+-      const brandName = 'BBC Persian';
+-
+-      const mockGetPageTitle = jest
+-        .fn()
+-        .mockImplementation(() => 'This is an IDX page title');
+-      frontPageUtils.getPageTitle = mockGetPageTitle;
+-      expect(getTitle({ pageType, pageData, brandName })).toBe(
+-        'This is an IDX page title',
+-      );
+-      expect(mockGetPageTitle).toHaveBeenCalledTimes(1);
+-    });
+-
+-    it('should call getPageTitle when pageType is index', () => {
+-      const pageType = 'index';
+-      const pageData = {};
+-      const brandName = 'BBC News';
+-
+-      const mockGetPageTitle = jest
+-        .fn()
+-        .mockImplementation(() => 'This is an index page title');
+-      frontPageUtils.getPageTitle = mockGetPageTitle;
+-      expect(getTitle({ pageType, pageData, brandName })).toBe(
+-        'This is an index page title',
+-      );
+-      expect(mockGetPageTitle).toHaveBeenCalledTimes(1);
+-    });
+-
+-    it('should default to null when no matching pageType', () => {
+-      const pageType = 'some page type';
+-      const pageData = {};
+-      const brandName = 'BBC News';
+-
+-      expect(getTitle({ pageType, pageData, brandName })).toBe(null);
+-    });
+-
+-    it('should return correct title when pageType is MAP', () => {
+-      const pageType = 'MAP';
+-      const pageData = {
+-        promo: {
+-          headlines: {
+-            headline: 'MAP Page Title',
+-          },
+-        },
+-      };
+-
+-      expect(getTitle({ pageType, pageData })).toBe('MAP Page Title');
+-    });
+-
+-    it('should return correct title when pageType is media (Live radio)', () => {
+-      const pageType = 'media';
+-      const pageData = {
+-        pageTitle: 'Live Radio Page Title',
+-      };
+-
+-      expect(getTitle({ pageType, pageData })).toBe('Live Radio Page Title');
+-    });
+-
+-    it('should return correct title when pageType is media (onDemand radio)', () => {
+-      const pageType = 'media';
+-      const pageData = {
+-        pageTitle: 'OnDemand Radio Page Title',
+-      };
+-
+-      expect(getTitle({ pageType, pageData })).toBe(
+-        'OnDemand Radio Page Title',
+-      );
+-    });
+-
+-    it('should return correct title when pageType is media (onDemand TV)', () => {
+-      const pageType = 'media';
+-      const pageData = {
+-        pageTitle: 'OnDemand TV Page Title',
+-      };
+-
+-      expect(getTitle({ pageType, pageData })).toBe('OnDemand TV Page Title');
+-    });
+-
+     it('should return correct title when pageType is mostRead', () => {
+       const pageType = 'mostRead';
+       const pageData = {};
+@@ -345,18 +243,67 @@ describe('Chartbeat utilities', () => {
+       );
+     });
+ 
+-    it('should return correct title when pageType is STY', () => {
+-      const pageType = 'STY';
+-      const pageData = {
+-        promo: {
+-          headlines: {
+-            headline: 'STY Page Title',
++    test.each`
++      pageType       | brandName        | pageTitle                        | expectedNumberOfCalls
++      ${'index'}     | ${'BBC News'}    | ${'This is an index page title'} | ${1}
++      ${'IDX'}       | ${'BBC Persian'} | ${'This is an IDX page title'}   | ${1}
++      ${'frontPage'} | ${'BBC News'}    | ${'This is a frontpage title'}   | ${1}
++      ${'article'}   | ${null}          | ${'This is an article title'}    | ${1}
++      ${'foo'}       | ${'BBC News'}    | ${null}                          | ${0}
++    `(
++      'should call getPageTitle when pageType is $pageType',
++      ({ brandName, pageType, pageTitle, expectedNumberOfCalls }) => {
++        const pageData = {};
++
++        const mockTitle = jest.fn().mockImplementation(() => pageTitle);
++
++        if (pageType === 'article') {
++          articleUtils.getPromoHeadline = mockTitle;
++        } else {
++          frontPageUtils.getPageTitle = mockTitle;
++        }
++
++        expect(getTitle({ pageType, pageData, brandName })).toBe(pageTitle);
++
++        expect(mockTitle).toHaveBeenCalledTimes(expectedNumberOfCalls);
++      },
++    );
++
++    test.each`
++      pageType   | context               | pageTitle
++      ${'media'} | ${'(onDemand TV)'}    | ${'OnDemand TV Page Title'}
++      ${'media'} | ${'(onDemand Radio)'} | ${'OnDemand TV Radio Title'}
++      ${'media'} | ${'(Live Radio)'}     | ${'Live Radio Title'}
++    `(
++      'should return correct title when pageType is $pageType $context',
++      ({ pageType, pageTitle }) => {
++        const pageData = {
++          pageTitle,
++        };
++
++        expect(getTitle({ pageType, pageData })).toBe(pageTitle);
++      },
++    );
++
++    test.each`
++      pageType | pageTitle
++      ${'PGL'} | ${'PGL Page Title'}
++      ${'STY'} | ${'STY Page Title'}
++      ${'MAP'} | ${'MAP Page Title'}
++    `(
++      'should return correct title when pageType is $pageType',
++      ({ pageType, pageTitle }) => {
++        const pageData = {
++          promo: {
++            headlines: {
++              headline: pageTitle,
++            },
+           },
+-        },
+-      };
++        };
+ 
+-      expect(getTitle({ pageType, pageData })).toBe('STY Page Title');
+-    });
++        expect(getTitle({ pageType, pageData })).toBe(pageTitle);
++      },
++    );
+   });
+ 
+   describe('Chartbeat Config', () => {
+@@ -418,6 +365,15 @@ describe('Chartbeat utilities', () => {
+         virtualReferrer: 'test.bbc.com/previous-path',
+       };
+ 
++      const mockTitle = jest
++        .fn()
++        .mockImplementation(() => 'This is an index page title');
++
++      frontPageUtils.getPageTitle = mockTitle;
++
++      const expectedCookieValue = 'foobar';
++      jest.spyOn(Cookie, 'get').mockImplementation(() => expectedCookieValue);
++
+       expect(getConfig(fixtureData)).toStrictEqual(expectedConfig);
+     });
+ 
+@@ -766,6 +722,15 @@ describe('Chartbeat utilities', () => {
+       virtualReferrer: 'test.bbc.com/previous-path',
+     };
+ 
++    const mockTitle = jest
++      .fn()
++      .mockImplementation(() => 'This is an index page title');
++
++    frontPageUtils.getPageTitle = mockTitle;
++
++    const expectedCookieValue = 'foobar';
++    jest.spyOn(Cookie, 'get').mockImplementation(() => expectedCookieValue);
++
+     expect(getConfig(fixtureData)).toStrictEqual(expectedConfig);
+   });
+ 
+diff --git a/src/app/pages/PhotoGalleryPage/PhotoGalleryPage.jsx b/src/app/pages/PhotoGalleryPage/PhotoGalleryPage.jsx
+index bec09cf5b..ed940f73e 100644
+--- a/src/app/pages/PhotoGalleryPage/PhotoGalleryPage.jsx
++++ b/src/app/pages/PhotoGalleryPage/PhotoGalleryPage.jsx
+@@ -20,6 +20,7 @@ import MediaPlayer from '#containers/CpsAssetMediaPlayer';
+ import Blocks from '#containers/Blocks';
+ import CpsRelatedContent from '#containers/CpsRelatedContent';
+ import ATIAnalytics from '#containers/ATIAnalytics';
++import ChartbeatAnalytics from '#containers/ChartbeatAnalytics';
+ import ComscoreAnalytics from '#containers/ComscoreAnalytics';
+ import cpsAssetPagePropTypes from '../../models/propTypes/cpsAssetPage';
+ import fauxHeadline from '#containers/FauxHeadline';
+@@ -108,6 +109,7 @@ const PhotoGalleryPage = ({ pageData }) => {
+         aboutTags={aboutTags}
+       />
+       <ATIAnalytics data={pageData} />
++      <ChartbeatAnalytics data={pageData} />
+       <ComscoreAnalytics />
+       <StyledGrid as="main" role="main">
+         <Blocks blocks={blocks} componentsToRender={componentsToRender} />
+diff --git a/src/app/pages/PhotoGalleryPage/__snapshots__/index.test.jsx.snap b/src/app/pages/PhotoGalleryPage/__snapshots__/index.test.jsx.snap
+index c4b6f9dda..2656f7883 100644
+--- a/src/app/pages/PhotoGalleryPage/__snapshots__/index.test.jsx.snap
++++ b/src/app/pages/PhotoGalleryPage/__snapshots__/index.test.jsx.snap
+@@ -555,6 +555,9 @@ exports[`Photo Gallery Page should not show the pop-out timestamp when allowDate
+             id="DataContainer"
+           >
+             <noscript />
++            <div>
++              chartbeat
++            </div>
+             <main
+               class="c0"
+               role="main"
+@@ -2021,6 +2024,9 @@ exports[`Photo Gallery Page snapshots should match snapshot for PGL with about t
+                 id="DataContainer"
+               >
+                 <noscript />
++                <div>
++                  chartbeat
++                </div>
+                 <main
+                   class="c0"
+                   role="main"
+@@ -3869,6 +3875,9 @@ exports[`Photo Gallery Page snapshots should match snapshot for PGL with all CPS
+                 id="DataContainer"
+               >
+                 <noscript />
++                <div>
++                  chartbeat
++                </div>
+                 <main
+                   class="c0"
+                   role="main"
+@@ -5196,6 +5205,9 @@ exports[`Photo Gallery Page snapshots should match snapshot for PGL with no onwa
+                 id="DataContainer"
+               >
+                 <noscript />
++                <div>
++                  chartbeat
++                </div>
+                 <main
+                   class="c0"
+                   role="main"
+@@ -7164,6 +7176,9 @@ exports[`Photo Gallery Page snapshots should match snapshot for PGL with non-CPS
+                 id="DataContainer"
+               >
+                 <noscript />
++                <div>
++                  chartbeat
++                </div>
+                 <main
+                   class="c0"
+                   role="main"
+diff --git a/src/app/pages/PhotoGalleryPage/index.test.jsx b/src/app/pages/PhotoGalleryPage/index.test.jsx
+index e78c1a520..7b906609e 100644
+--- a/src/app/pages/PhotoGalleryPage/index.test.jsx
++++ b/src/app/pages/PhotoGalleryPage/index.test.jsx
+@@ -20,6 +20,11 @@ const toggleState = {
+   },
+ };
+ 
++jest.mock('#containers/ChartbeatAnalytics', () => {
++  const ChartbeatAnalytics = () => <div>chartbeat</div>;
++  return ChartbeatAnalytics;
++});
++
+ const Page = ({ pageData, service }) => (
+   <StaticRouter>
+     <ToggleContext.Provider value={{ toggleState, toggleDispatch: jest.fn() }}>

@@ -97,7 +97,7 @@ module.exports = class Instrumentor {
      * [ { suiteName,
      *      calls: [
      *          {
-     *              type: "testStart",
+     *              type: "TESTSTART",
      *              testName,
      *              filename
      *          },

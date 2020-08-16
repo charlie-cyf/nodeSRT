@@ -24,8 +24,8 @@ console.log('res length', res.length)
 res[0].forEach(ele => {
     console.log('ele length', ele.type)
 })
-const diffFile = fs.readFileSync('./diff-d3595e.patch', "utf8");
-globalUtil.setter({codeBase: '../../uppy'})
+const diffFile = fs.readFileSync('../../diff.patch', "utf8");
+globalUtil.setter({codeBase: '../../simorgh'})
 const changes = changeAnalysis.getChangesAncestors(diffFile);
 
 // changes.forEach(c => {

@@ -60,45 +60,49 @@ function getReducedTests(changes) {
   let selectedTests = [];
   const theCodeBase = globalUtil.getInjectedDir();
 
+  const suiteVisitor = function (records, suiteName, testFile) {
+    let testName;
+    for(let node of records) {
+      if(node.type === "TESTSTART") {
+        testName = node.testName;
+      } else if (node.testSuiteName) {
+        suiteVisitor(node.calls, node.testSuiteName, node.fileName)
+      } else if (node.type === "FUNCTIONSTART") {
+        changes.forEach((change) => {
+          if (change.filename === node.fileName.replace(theCodeBase, "")) {
+            change.unifiedChanges.forEach((ele) => {
+              // check if change function is node
+              // console.log("filename:", change.filename ,'ele:', ele)
+              if (
+                ele.functionName &&
+                ele.functionName.anonymous === node.anonymous &&
+                ele.functionName.paramsNumber === node.paramsNumber &&
+                ele.functionName.functionName === node.function.split("###")[0]
+              ) {
+                // console.log('function name:', ele.functionName.functionName)
+                if (
+                  selectedTests.filter(
+                    (t) =>
+                      t.testFile === testFile &&
+                      t.suiteName === suiteName &&
+                      t.testName === testName
+                  ).length === 0
+                ) {
+                  selectedTests.push({ testFile, suiteName, testName });
+                }
+                // mark change selected
+                ele.selected = true;
+              }
+            });
+          }
+        });
+      }
+    }
+  }
+
   const graphVisitor = function (node, suiteName, testName, testFile) {
     if (node.testSuiteName) {
-      suiteName = unescape(node.testSuiteName);
-      node.calls.forEach((test) => {
-        graphVisitor(test, suiteName, testName, testFile);
-      });
-    } else if (node.testName) {
-      node.calls.forEach((ele) => {
-        graphVisitor(ele, suiteName, unescape(node.testName), node.fileName);
-      });
-    } else if (node.type && node.type === "FUNCTIONSTART") {
-      changes.forEach((change) => {
-        if (change.filename === node.fileName.replace(theCodeBase, "")) {
-          change.unifiedChanges.forEach((ele) => {
-            // check if change function is node
-            // console.log("filename:", change.filename ,'ele:', ele)
-            if (
-              ele.functionName &&
-              ele.functionName.anonymous === node.anonymous &&
-              ele.functionName.paramsNumber === node.paramsNumber &&
-              ele.functionName.functionName === node.function.split("###")[0]
-            ) {
-              // console.log('function name:', ele.functionName.functionName)
-              if (
-                selectedTests.filter(
-                  (t) =>
-                    t.testFile === testFile &&
-                    t.suiteName === suiteName &&
-                    t.testName === testName
-                ).length === 0
-              ) {
-                selectedTests.push({ testFile, suiteName, testName });
-              }
-              // mark change selected
-              ele.selected = true;
-            }
-          });
-        }
-      });
+      suiteVisitor(node.calls, node.testSuiteName, node.fileName)
     }
   };
 
