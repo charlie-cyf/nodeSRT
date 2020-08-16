@@ -30,11 +30,9 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, c
     const ASTdirName = path.dirname(ASTfileName)
     const codeBaseFile = globalUtil.getCodebasePath(ASTfileName)
 
-    console.log('before replace', dependName)
+    //  fix for jsconfig.json compilerOptions
     dependName = replaceWithCompilerOption(dependName, compilerOptionsPaths)
-    console.log(dependName)
     // first resolve dependName
-    // TODO fix for jsconfig.json compilerOptions
     let resolved;
     try {
         resolved = requireResolver.sync(dependName, codeBaseFile);
@@ -48,7 +46,6 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, c
         
     }
 
-    console.log('resolved:', resolved)
     
     
     // mapping local file dependency to resolved
@@ -197,7 +194,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
         const program = tree.program
         // get file dependencies on each require
         babelWalk.ancestor({
-            async CallExpression(node, state,ancestors) {
+            CallExpression(node, state, ancestors) {
                 if(node.callee.type === "Identifier" && node.callee.name === "require") {
                     // handle require("").data
                     let variableDeclare;
@@ -261,89 +258,61 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
 
         ele.testSuits = [];
         // link test name to file dependencies
-        babelWalk.simple({
-            CallExpression(node) { 
-                if(node.callee.type === 'Identifier' && node.callee.name === 'describe') {
-                    const suiteName = Instrumentor.getSuiteName(node)
-                    let stmts = t(node, "arguments[1].body.body").safeObject;
-                    if (stmts) {
-                        for (let stmt of stmts) {
-                            let testName;
-                            if(t(stmt, "expression.callee.name").safeObject === 'beforeEach') {
-                                testName = "beforeEach";
-                            } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach') {
-                                testName = 'afterEach';
-                            } else if (t(stmt, "expression.callee.name").safeObject === 'beforeAll') {
-                                testName = 'beforeAll';
-                            } else if (t(stmt, "expression.callee.name").safeObject === 'afterAll') {
-                                testName = 'afterAll';
-                            } else if (t(stmt, "expression.callee.name").safeObject === 'after') {
-                                testName = 'after';
-                            } else if (t(stmt, "expression.callee.name").safeObject === 'before') {
-                                testName = 'before';
-                            } else if (t(stmt, "expression.callee.name").safeObject === 'it') {
-                                testName = t(stmt, 'expression.arguments[0].value').safeObject;
-                            } else if (t(stmt, "expression.callee.name").safeObject === 'test') {
-                                testName = t(stmt, 'expression.arguments[0].value').safeObject;
-                            } else if (t(stmt, "expression.callee.name").safeObject === 'describe') {
-                                continue;
-                            } else if (stmt.type === "VariableDeclaration") {
-                                babelWalk.simple({
-                                    Identifier(identifier, state) {
-                                        if(propertyMap.has(identifier.name)) {
-                                            const newIdName = t(stmt, "id.name");
-                                            if(newIdName) {
-                                                propertyMap.set(newIdName, propertyMap.get(identifier.name));
-                                            }
-                                        }
-                                    }
-                                })(stmt, {
-                                    counter: 0
-                                })
-                                continue;
-                            } else {
-                                // the statement is not a test 
-                                // console.log('in testName getter else branch', stmt)
-                                babelWalk.simple({
-                                    Identifier(identifier, state) {
-                                        if(propertyMap.has(identifier.name)) {
-                                            let found = false;
-                                            ele.testSuits.map(suit => {
-                                                if(suit.testSuitName === suiteName && suit.testName === undefined) {
-                                                    suit.depends = _.union(suit.depends, propertyMap.get(identifier.name));
-                                                    found = true;
-                                                    return;
-                                                }
-                                            })
+        babelWalk.ancestor({
+            BlockStatement(node, state, ancestors) {
+                let suiteName = Instrumentor.isInsideDecribe(ancestors);
+                if(!suiteName) suiteName = 'undefined';
+                let foundTests = false;
+                node.body.forEach(stmt => {
+                    if(t(stmt, 'expression.callee.name').safeObject === 'it' || t(stmt, 'expression.callee.name').safeObject === 'test') {
+                        foundTests = true;
+                    }
+                })
 
-                                            if(!found) {
-                                                ele.testSuits.push({
-                                                    testSuitName: suiteName,
-                                                    depends: propertyMap.get(identifier.name)
-                                                })
-                                            }                                                
-                                        }
-                                    }
-                                })(stmt, {
-                                    counter: 0
-                                })
-                                continue;
-                            }
-
-                            // console.log('fileName:', ele.testFilename, 'test suite name:', suiteName, 'testName:', testName)
-                            let obj;
-                            if(['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(testName)) {
-                                obj = t(stmt, 'expression.arguments[0]').safeObject
-                            } else {
-                                obj = t(stmt, 'expression.arguments[1]').safeObject
-                            }
+                if(foundTests) {
+                    for (let stmt of node.body) {
+                        let testName;
+                        if(t(stmt, "expression.callee.name").safeObject === 'beforeEach') {
+                            testName = "beforeEach";
+                        } else if (t(stmt, "expression.callee.name").safeObject === 'afterEach') {
+                            testName = 'afterEach';
+                        } else if (t(stmt, "expression.callee.name").safeObject === 'beforeAll') {
+                            testName = 'beforeAll';
+                        } else if (t(stmt, "expression.callee.name").safeObject === 'afterAll') {
+                            testName = 'afterAll';
+                        } else if (t(stmt, "expression.callee.name").safeObject === 'after') {
+                            testName = 'after';
+                        } else if (t(stmt, "expression.callee.name").safeObject === 'before') {
+                            testName = 'before';
+                        } else if (t(stmt, "expression.callee.name").safeObject === 'it') {
+                            testName = t(stmt, 'expression.arguments[0].value').safeObject;
+                        } else if (t(stmt, "expression.callee.name").safeObject === 'test') {
+                            testName = t(stmt, 'expression.arguments[0].value').safeObject;
+                        } else if (t(stmt, "expression.callee.name").safeObject === 'describe') {
+                            continue;
+                        } else if (stmt.type === "VariableDeclaration") {
                             babelWalk.simple({
                                 Identifier(identifier, state) {
                                     if(propertyMap.has(identifier.name)) {
-                                        // console.log('map has identifier', identifier)
+                                        const newIdName = t(stmt, "id.name");
+                                        if(newIdName) {
+                                            propertyMap.set(newIdName, propertyMap.get(identifier.name));
+                                        }
+                                    }
+                                }
+                            })(stmt, {
+                                counter: 0
+                            })
+                            continue;
+                        } else {
+                            // the statement is not a test 
+                            // console.log('in testName getter else branch', stmt)
+                            babelWalk.simple({
+                                Identifier(identifier, state) {
+                                    if(propertyMap.has(identifier.name)) {
                                         let found = false;
                                         ele.testSuits.map(suit => {
-                                            if(suit.testSuitName === suiteName && suit.testName === testName) {
+                                            if(suit.testSuitName === suiteName && suit.testName === undefined) {
                                                 suit.depends = _.union(suit.depends, propertyMap.get(identifier.name));
                                                 found = true;
                                                 return;
@@ -353,21 +322,78 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                                         if(!found) {
                                             ele.testSuits.push({
                                                 testSuitName: suiteName,
-                                                testName: testName,
                                                 depends: propertyMap.get(identifier.name)
                                             })
                                         }                                                
                                     }
                                 }
-                            })(obj, {
+                            })(stmt, {
                                 counter: 0
                             })
+                            continue;
                         }
+
+                        // console.log('fileName:', ele.testFilename, 'test suite name:', suiteName, 'testName:', testName)
+                        let obj;
+                        if(['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(testName)) {
+                            obj = t(stmt, 'expression.arguments[0]').safeObject
+                        } else {
+                            obj = t(stmt, 'expression.arguments[1]').safeObject
+                        }
+                        babelWalk.simple({
+                            Identifier(identifier, state) {
+                                if(propertyMap.has(identifier.name)) {
+                                    // console.log('map has identifier', identifier)
+                                    let found = false;
+                                    ele.testSuits.map(suit => {
+                                        if(suit.testSuitName === suiteName && suit.testName === testName) {
+                                            suit.depends = _.union(suit.depends, propertyMap.get(identifier.name));
+                                            found = true;
+                                            return;
+                                        }
+                                    })
+
+                                    if(!found) {
+                                        ele.testSuits.push({
+                                            testSuitName: suiteName,
+                                            testName: testName,
+                                            depends: propertyMap.get(identifier.name)
+                                        })
+                                    }                                                
+                                }
+                            },
+
+                            CallExpression(node, state) {
+                                if(t(node, 'callee.name').safeObject === "require") {
+                                    if(t(node, 'arguments[0].value')) {
+                                        const dependents = getFileDependencies(t(node, 'arguments[0].value').safeObject, ele.testFilename, packageJson.dependencies, compilerOptionsPaths.compilerOptions.paths, [])                                        
+                                        let found = false;
+                                        ele.testSuits.map(suit => {
+                                            if(suit.testSuitName === suiteName && suit.testName === testName) {
+                                                suit.depends = _.union(suit.depends, dependents);
+                                                found = true;
+                                                return;
+                                            }
+                                        })
+
+                                        if(!found) {
+                                            ele.testSuits.push({
+                                                testSuitName: suiteName,
+                                                testName: testName,
+                                                depends: dependents
+                                            })
+                                        }     
+                                    }
+                                }
+                            }
+
+                        })(obj, {
+                            counter: 0
+                        })
                     }
-                } else {
-                    // TODO handle test without suite
                 }
-            }
+            },
+
         })(tree, {
             counter: 0
         })

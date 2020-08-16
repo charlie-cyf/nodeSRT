@@ -631,6 +631,10 @@ module.exports = class Instrumentor {
         return escape(s);
     }
 
+    static isInsideDecribe(ancestors) {
+        return isInsideDecribe(ancestors);
+    }
+
 
 
 }

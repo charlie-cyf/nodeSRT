@@ -50,6 +50,7 @@ describe("static analysis to get file dependencies", () => {
             '**/?(*.)+(spec|test).js?(x)',
             '!**/src/integration/!(utils)/**/*',
           ])
+        fs.writeFileSync("/tmp/nodeSRT/depend.json", JSON.stringify(dependencyGraph))
         expect(dependencyGraph.length).toBeGreaterThan(0);
     })
     
