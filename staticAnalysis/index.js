@@ -7,7 +7,7 @@ const node_core_modules =  require("module").builtinModules
 const { pathExists } = require('fs-extra');
 const { dirname } = require('path');
 const { lookup } = require('dns');
-const requireResolver = require('enhanced-resolve')
+const requireResolver = require('resolve')
 const _ = require('underscore');
 const multimatch = require('multimatch');
 const Instrumentor = require('../instrument/instrumentor')
@@ -23,6 +23,7 @@ const JSON5 = require('json5')
 *   !! local file dependencies specified in package.json will be mapped to its original file
 *   @param {String} dependName: the name in require
 *   @param {String} ASTfileName: the path to AST file that calls the dependName
+*   @returns {Array} acc: an array of all dependencies
 */
 function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, compilerOptionsPaths, acc) {
     const codeBaseFileName = globalUtil.getCodebasePath(ASTfileName);
@@ -30,26 +31,39 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, c
     const ASTdirName = path.dirname(ASTfileName)
     const codeBaseFile = globalUtil.getCodebasePath(ASTfileName)
 
+    let resolved;
     //  fix for jsconfig.json compilerOptions
     dependName = replaceWithCompilerOption(dependName, compilerOptionsPaths)
     // first resolve dependName
-    let resolved;
-    try {
-        resolved = requireResolver.sync(dependName, codeBaseFile);
-    } catch (error) {
-        if(dependName.includes('/lib/')){
-            dependName = dependName.replace('/lib/', '/src/');
-            resolved = requireResolver.sync(dependName, codeBaseFile);
-        } else {
-            throw error
+
+    // if(codeBaseFileName.endsWith('.jsx')){
+    //     if(dependName === '.') {
+    //         resolved = codeBaseFileName;
+    //     } else if (fs.existsSync(path.resolve(codeBaseDir, dependName+'.jsx'))) {
+    //         resolved = path.resolve(codeBaseDir, dependName+'.jsx')
+    //     } else if (fs.existsSync(path.resolve(codeBaseDir, dependName, 'index.jsx'))) {
+    //         resolved = path.resolve(codeBaseDir, dependName, 'index.jsx')
+    //     }
+    // }
+
+    if(resolved === undefined) {
+        try {
+            resolved = requireResolver.sync(dependName, {basedir: codeBaseDir, extensions:['.js', '.jsx','.json']});
+        } catch (error) {
+            try {
+                resolved = requireResolver.sync(dependName, {basedir: globalUtil.config.codeBase, extensions:['.js', '.jsx','.json']});                
+            } catch (error2) {
+                console.warn(error)
+                console.warn(error2)                
+            }
         }
-        
     }
+
 
     
     
     // mapping local file dependency to resolved
-    if(resolved.includes('/node_modules')){
+    if(resolved && resolved.includes('/node_modules')){
         const fileKeys = Object.keys(packageJsonDependencies).filter(k => packageJsonDependencies[k].startsWith('file:'))
         fileKeys.forEach(key => {
             if(dependName.startsWith(key)) {
@@ -83,7 +97,7 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, c
     }
 
     
-    if(resolved === undefined || resolved.includes('/node_modules')) {
+    if(resolved === undefined || resolved.includes('/node_modules') || !fs.existsSync(resolved)) {
         return acc;
     }
     
@@ -100,9 +114,6 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, c
         }
     }
 
-    if(resolved.includes('/lib/') && fs.existsSync(resolved.replace('/lib/', '/src/'))) {
-        resolved = resolved.replace('/lib/', '/src/')
-    }
 
     if(!acc.includes(resolved)) {
         acc.push(resolved);
@@ -122,6 +133,12 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, c
                         if(t(node, 'arguments[0].value').safeObject) {
                              acc = _.union(getFileDependencies(t(node, 'arguments[0].value').safeObject, ASTpath, packageJsonDependencies, compilerOptionsPaths, acc));
                         }
+                    } else if (t(node, 'callee.object.name').safeObject === "jest" && t(node, 'callee.property.name').safeObject === 'mock' ) {
+                        // handle jest.mock
+                        if(t(node, 'arguments[0].value').safeObject) {
+                            const dependents = getFileDependencies(t(node, 'arguments[0].value').safeObject, ASTpath, packageJsonDependencies, compilerOptionsPaths, acc)
+                            acc = _.union(acc, dependents)
+                        }                    
                     }
                 },
 
@@ -129,7 +146,9 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, c
                     if(t(node, 'source.value').safeObject) {
                         acc = _.union(getFileDependencies(t(node, 'source.value').safeObject, ASTpath, packageJsonDependencies, compilerOptionsPaths, acc))
                     }
-                }
+                },
+
+
 
             })(tree, {
                 counter: 0
@@ -144,8 +163,10 @@ function getFileDependencies(dependName, ASTfileName, packageJsonDependencies, c
 
 
 function replaceWithCompilerOption(depend, compilerOptionsPaths) {
-    Object.keys(compilerOptionsPaths).forEach(p => {
-        if(multimatch(depend, [p])) {    
+    Object.keys(compilerOptionsPaths).forEach(p => {      
+
+        if(multimatch(depend, [p]).length > 0 || multimatch(depend+"\/", [p]).length > 0) {  
+            // console.log('inside multimatch p=', p, "depend=",depend)  
             let temp = p       
             if(p.endsWith('\*')) {
                 temp = p.substring(0, p.length - 1)
@@ -153,12 +174,30 @@ function replaceWithCompilerOption(depend, compilerOptionsPaths) {
             let tobeReplace = compilerOptionsPaths[p][0];
             if(tobeReplace.endsWith('\*')) {
                 tobeReplace = tobeReplace.substring(0, tobeReplace.length - 1)
-            }
+            } 
             depend = depend.replace(temp, tobeReplace)
             return;
+        } else if (p.endsWith('/*')) {
+            const tempP = p.substring(0, p.length - 2);
+            if(depend.startsWith(tempP)) {
+                let tobeReplace = compilerOptionsPaths[p][0];
+                if(tobeReplace.endsWith('\*')) {
+                    tobeReplace = tobeReplace.substring(0, tobeReplace.length - 2)
+                }                
+                depend = depend.replace(tempP, tobeReplace)
+                return;
+            }
         }
     })
-    return depend
+
+    if(globalUtil.config.dirAlias) {
+        Object.keys(globalUtil.config.dirAlias).forEach(k => {
+            if(depend.startsWith(k)) {
+                depend = depend.replace(k, globalUtil.config.dirAlias[k])
+            }
+        })
+    }
+    return depend;
 }
 
 /**
@@ -170,7 +209,7 @@ function replaceWithCompilerOption(depend, compilerOptionsPaths) {
 function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.jsx']) {
     let dependencyGraph = []
     const packageJson = globalUtil.getCodeBasePackageJson();
-    const compilerOptionsPaths = JSON5.parse(fs.readFileSync(path.join(dir, 'jsconfig.json'), 'utf-8'));
+    const compilerOptionsPaths = JSON5.parse(fs.readFileSync(path.join(globalUtil.config.codeBase, 'jsconfig.json'), 'utf-8'));
 
     
     // scan for test file
@@ -186,7 +225,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
 
     testsFinderRecur(globalUtil.getASTdir(dir));
 
-    // console.log('dependency Graph:', dependencyGraph)   
+    let preDefinedDepends = [];
     
     dependencyGraph.map(ele => {
         let propertyMap = new Map();
@@ -201,6 +240,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                     for (let i = ancestors.length-1; i>=0; i--) {
                         if (ancestors[i].type === 'VariableDeclarator') {
                             variableDeclare = ancestors[i];
+                            break;
                         }
                     }
                     // get identifier, 
@@ -211,6 +251,19 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                                 ids.push(variableDeclare.id.name);
                             } else if (variableDeclare.id.type === "ObjectPattern") {
                                 variableDeclare.id.properties.forEach(p => {
+                                    if(t(p, "key.name").safeObject) {
+                                        ids.push(t(p, "key.name").safeObject);
+                                    }
+                                    if(t(p, "value.name").safeObject) {
+                                        ids.push(t(p, "value.name").safeObject);
+                                    }
+                                    
+                                })
+                            } else if (variableDeclare.id.type === 'ObjectProperty') {
+                                variableDeclare.id.properties.forEach(p => {
+                                    if(t(p, "value.name").safeObject) {
+                                        ids.push(t(p, "value.name").safeObject);
+                                    }
                                     if(t(p, "key.name").safeObject) {
                                         ids.push(t(p, "key.name").safeObject);
                                     }
@@ -228,6 +281,12 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                     }
 
 
+                } else if (t(node, 'callee.object.name').safeObject === "jest" && t(node, 'callee.property.name').safeObject === 'mock' ) {
+                    // handle jest.mock
+                    if(t(node, 'arguments[0].value').safeObject) {
+                        const dependents = getFileDependencies(t(node, 'arguments[0].value').safeObject, ele.testFilename, packageJson.dependencies, compilerOptionsPaths.compilerOptions.paths, [])
+                        preDefinedDepends = _.union(preDefinedDepends, dependents)
+                    }                    
                 }
             },
 
@@ -261,6 +320,7 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
         babelWalk.ancestor({
             BlockStatement(node, state, ancestors) {
                 let suiteName = Instrumentor.isInsideDecribe(ancestors);
+                let foundSuite = suiteName === undefined
                 if(!suiteName) suiteName = 'undefined';
                 let foundTests = false;
                 node.body.forEach(stmt => {
@@ -269,7 +329,26 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                     }
                 })
 
-                if(foundTests) {
+                if(foundTests || foundSuite) {
+                    // add predefined to suite dependency
+                    if(preDefinedDepends.length > 0) {
+                        let predefineFoundFlag = false;
+                        ele.testSuits.map(suit => {
+                            if(suit.testSuitName === suiteName && suit.testName === undefined) {
+                                suit.depends = _.union(suit.depends, preDefinedDepends);
+                                predefineFoundFlag = true;
+                                return;
+                            }
+                        })
+    
+                        if(!predefineFoundFlag) {
+                            ele.testSuits.push({
+                                testSuitName: suiteName,
+                                depends: preDefinedDepends
+                            })
+                        }
+                    }
+
                     for (let stmt of node.body) {
                         let testName;
                         if(t(stmt, "expression.callee.name").safeObject === 'beforeEach') {
@@ -306,7 +385,6 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                             continue;
                         } else {
                             // the statement is not a test 
-                            // console.log('in testName getter else branch', stmt)
                             babelWalk.simple({
                                 Identifier(identifier, state) {
                                     if(propertyMap.has(identifier.name)) {
@@ -343,7 +421,6 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
                         babelWalk.simple({
                             Identifier(identifier, state) {
                                 if(propertyMap.has(identifier.name)) {
-                                    // console.log('map has identifier', identifier)
                                     let found = false;
                                     ele.testSuits.map(suit => {
                                         if(suit.testSuitName === suiteName && suit.testName === testName) {
@@ -408,4 +485,5 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
 module.exports = {
     getTestDependency,
     getFileDependencies,
+    replaceWithCompilerOption
 }

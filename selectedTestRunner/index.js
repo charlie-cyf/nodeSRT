@@ -34,7 +34,7 @@ function runUnitTests(tests, diff) {
             fs.writeFileSync(newFile, patchedFile);
 
             // add file to test runner if new file is new added test file
-            if(file.newFileName.includes('.test.j') && file.oldFileName.includes('/dev/null')) {
+            if(file.newFileName.includes('.test.js') && file.oldFileName.includes('/dev/null')) {
                 testFiles.push(newFile)
             }
         }
@@ -44,7 +44,7 @@ function runUnitTests(tests, diff) {
 
     if(globalUtil.config.JestOnlyChanged) {
         console.log('running jest onlyChanged...')
-        child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && npm run build && jest -o`, { stdio: [0, 1, 2] });
+        child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && npm run build && test -z $CI && jest --ci --runInBand --env=jsdom --coverage --colors --testPathIgnorePatterns=\"src/integration\" \"puppeteer\" -o`, { stdio: [0, 1, 2] });
     }
 
 

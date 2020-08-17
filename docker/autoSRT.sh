@@ -31,7 +31,7 @@ echo "go back to /src"
 pwd
 
 echo "running SRT"
-nodeSRT -b ./uppy -d ./diff.patch --docker true  --config ./nodeSRT/example/dockerConfig.json 2>&1 | tee output.txt
+nodeSRT -b ./simorgh -d ./diff.patch --docker true  --config ./nodeSRT/example/dockerConfig.json 2>&1 | tee output.txt
 
 
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++"
