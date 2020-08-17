@@ -52,6 +52,7 @@ describe("static analysis to get file dependencies", () => {
             '**/__tests__/**/*.js?(x)',
             '**/?(*.)+(spec|test).js?(x)',
             '!**/src/integration/!(utils)/**/*',
+            '!**/puppeteer/**',
           ])
         expect(dependencyGraph.length).toBeGreaterThan(0);
     })
@@ -69,6 +70,7 @@ describe("static analysis to get file dependencies", () => {
         const dependencyGraph = StaticAnalyzor.getTestDependency('../simorgh', [
             '**/__tests__/**/*.js?(x)',
             '**/?(*.)+(spec|test).js?(x)',
+            '!**/puppeteer/**',
             '!**/src/integration/!(utils)/**/*',
           ])
         fs.writeFileSync("/tmp/nodeSRT/depend.json", JSON.stringify(dependencyGraph))

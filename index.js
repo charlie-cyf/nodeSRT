@@ -105,7 +105,7 @@ const StaticAnalyzor = require('./staticAnalysis');
 
     // TODO run selected Tests, cli command $ jest -t "src/Core should expose a class|plugins should add a plugin to the plugin stack"
     console.log('finished!')
-})()
+})
 
 
 

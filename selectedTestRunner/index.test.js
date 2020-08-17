@@ -1,181 +1,157 @@
 const selectedTestRunner = require('./index')
 const globalUtil = require('../util');
-const { before } = require('underscore');
+const {
+  before
+} = require('underscore');
 const fs = require('fs')
-const selectedTests = [
-  {
-    testFile: '/src/app/pages/MediaAssetPage/index.test.jsx',
-    suiteName: 'AV%20player',
-    testName: 'beforeEach'
+const selectedTests = [{
+    testFile: '/home/centos/simorgh/cypress/support/helpers/getPaths/index.test.js',
+    suiteName: undefined,
+    testName: undefined
   },
   {
-    testFile: '/src/app/pages/MediaAssetPage/index.test.jsx',
-    suiteName: 'AV%20player',
-    testName: 'should%20render%20version%20%28live%20audio%20stream%29'
+    testFile: '/home/centos/simorgh/puppeteer/bundleRequests.test.js',
+    suiteName: undefined,
+    testName: undefined
   },
   {
-    testFile: '/src/app/pages/MediaAssetPage/index.test.jsx',
-    suiteName: 'heading',
-    testName: 'beforeEach'
+    testFile: '/home/centos/simorgh/puppeteer/bundleRequests.test.js',
+    suiteName: undefined,
+    testName: 'only loads expected js bundles'
   },
   {
-    testFile: '/src/app/containers/MediaPlayer/helpers/metadata/index.test.js',
-    suiteName: 'getType',
-    testName: 'should%20return%20a%20valid%20type'
+    testFile: '/home/centos/simorgh/puppeteer/bundleRequests.test.js',
+    suiteName: undefined,
+    testName: 'loads at least 1 service bundle'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Page%20Type',
-    testName: 'Type%20%24%7BrawType%7D%20should%20return%20%24%7BexpectedDefaultType%7D%20as%20default'
+    testFile: '/home/centos/simorgh/puppeteer/rich-text-transforms.test.js',
+    suiteName: undefined,
+    testName: undefined
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Page%20Type',
-    testName: 'Type%20%24%7BrawType%7D%20should%20return%20%24%7BexpectedShortType%7D%20as%20shorthand'
+    testFile: '/home/centos/simorgh/scripts/ampHtmlValidator/index.test.js',
+    suiteName: undefined,
+    testName: undefined
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Sections',
-    testName: 'undefined'
+    testFile: '/home/centos/simorgh/scripts/ampHtmlValidator/index.test.js',
+    suiteName: undefined,
+    testName: 'should print a passing test with the right console methods'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20call%20getPromoHeadline%20when%20pageType%20is%20article'
+    testFile: '/home/centos/simorgh/scripts/ampHtmlValidator/index.test.js',
+    suiteName: undefined,
+    testName: 'should print a failing test with the right console methods'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20call%20getPageTitle%20when%20pageType%20is%20frontPage'
+    testFile: '/home/centos/simorgh/scripts/ampHtmlValidator/index.test.js',
+    suiteName: undefined,
+    testName: 'should print a summary of results'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20call%20getPageTitle%20when%20pageType%20is%20IDX'
+    testFile: '/home/centos/simorgh/scripts/ampHtmlValidator/index.test.js',
+    suiteName: undefined,
+    testName: 'should get the page string'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20call%20getPageTitle%20when%20pageType%20is%20index'
+    testFile: '/home/centos/simorgh/scripts/ampHtmlValidator/index.test.js',
+    suiteName: undefined,
+    testName: 'should validate a url'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20default%20to%20null%20when%20no%20matching%20pageType'
+    testFile: '/home/centos/simorgh/scripts/ampHtmlValidator/index.test.js',
+    suiteName: undefined,
+    testName: 'should print passes when verbose is true'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20return%20correct%20title%20when%20pageType%20is%20MAP'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/bundleSize.test.js',
+    suiteName: undefined,
+    testName: undefined
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20return%20correct%20title%20when%20pageType%20is%20media%20%28Live%20radio%29'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/bundleSize.test.js',
+    suiteName: undefined,
+    testName: 'should not throw an error'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20return%20correct%20title%20when%20pageType%20is%20media%20%28onDemand%20radio%29'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/bundleSize.test.js',
+    suiteName: undefined,
+    testName: 'should use ora to show loading and success states'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20return%20correct%20title%20when%20pageType%20is%20media%20%28onDemand%20TV%29'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/bundleSize.test.js',
+    suiteName: undefined,
+    testName: 'should log a summary of bundle sizes'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20return%20correct%20title%20when%20pageType%20is%20mostRead'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/bundleSize.test.js',
+    suiteName: undefined,
+    testName: 'should throw an error'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Title',
-    testName: 'should%20return%20correct%20title%20when%20pageType%20is%20STY'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/bundleSize.test.js',
+    suiteName: undefined,
+    testName: 'should use ora to show loading and failure states'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Config',
-    testName: 'should%20return%20config%20for%20amp%20pages%20when%20page%20type%20is%20article%20and%20env%20is%20live'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/bundleSize.test.js',
+    suiteName: undefined,
+    testName: 'should log an error telling dev how to update thresholds'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Config',
-    testName: 'should%20return%20config%20for%20canonical%20pages%20when%20page%20type%20is%20frontPage%20and%20env%20is%20not%20live'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/getBundleData.test.js',
+    suiteName: undefined,
+    testName: undefined
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Config',
-    testName: 'should%20return%20config%20for%20canonical%20pages%20when%20page%20type%20is%20MAP%20and%20env%20is%20live'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/getBundleData.test.js',
+    suiteName: undefined,
+    testName: 'should output correctly for page type with two common bundles'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Config',
-    testName: 'should%20return%20config%20for%20amp%20pages%20when%20page%20type%20is%20media%20%28live%20radio%29%20and%20env%20is%20not%20live'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/getBundleData.test.js',
+    suiteName: undefined,
+    testName: 'should output correctly for page type with one common bundles'
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Config',
-    testName: 'should%20return%20config%20for%20amp%20pages%20when%20page%20type%20is%20STY%20and%20env%20is%20live'
+    testFile: '/home/centos/simorgh/scripts/bundleSize/pageTypeBundleExtractor.test.js',
+    suiteName: undefined,
+    testName: undefined
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20Config',
-    testName: 'should%20return%20config%20for%20canonical%20pages%20when%20page%20type%20is%20STY%20and%20env%20is%20not%20live'
+    testFile: '/home/centos/simorgh/scripts/lighthouseBudget.test.js',
+    suiteName: undefined,
+    testName: undefined
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20utilities',
-    testName: 'should%20return%20config%20for%20amp%20pages%20when%20page%20type%20is%20media%20%28onDemand%20radio%29%20and%20env%20is%20live'
+    testFile: '/home/centos/simorgh/src/app/components/SkipLinkWrapper/index.test.jsx',
+    suiteName: undefined,
+    testName: undefined
   },
   {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20utilities',
-    testName: 'should%20return%20config%20for%20amp%20pages%20when%20page%20type%20is%20media%20%28onDemand%20TV%29%20and%20env%20is%20live'
-  },
-  {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20utilities',
-    testName: 'should%20return%20config%20for%20canonical%20pages%20when%20page%20type%20is%20media%20%28onDemand%20TV%29%20and%20env%20is%20live'
-  },
-  {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20utilities',
-    testName: 'should%20return%20config%20for%20canonical%20pages%20when%20page%20type%20is%20mostRead%20and%20env%20is%20not%20live'
-  },
-  {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20utilities',
-    testName: 'should%20return%20config%20for%20canonical%20pages%20when%20page%20type%20is%20IDX%20and%20env%20is%20not%20live'
-  },
-  {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20utilities',
-    testName: 'should%20return%20null%20for%20virtualReferrer%20when%20there%20is%20no%20previousPath'
-  },
-  {
-    testFile: '/src/app/containers/ChartbeatAnalytics/utils/index.test.js',
-    suiteName: 'Chartbeat%20utilities',
-    testName: 'should%20return%20null%20for%20virtualReferrer%20when%20isOnClient%20is%20false'
+    testFile: '/home/centos/simorgh/src/app/containers/ATIAnalytics/amp/ampAnalyticsJson.test.js',
+    suiteName: undefined,
+    testName: undefined
   }
 ]
 
 
 describe('selected tests runner', () => {
-    beforeAll(() => {
-        globalUtil.setter({
-            codeBase: '../simorgh',
-            runUnitTestsInstr: "npm run build && jest"
-        })
+  beforeAll(() => {
+    globalUtil.setter({
+      codeBase: '../simorgh',
+      runUnitTestsInstr: "npm run build && jest"
     })
+  })
 
-    it('run selected unit tests', () => {
-        const diff = fs.readFileSync('./testSelector/sample/changingTests.patch','utf-8')
-        selectedTestRunner.runUnitTests(selectedTests, diff)
-    })
+  it('run selected unit tests', () => {
+    const diff = fs.readFileSync('./testSelector/sample/diff.patch', 'utf-8')
+    selectedTestRunner.runUnitTests(selectedTests, diff)
+  })
 
-    it('run selected unit tests', () => {
-      const diff = fs.readFileSync('./testSelector/sample/21f3a85.patch','utf-8')
-      selectedTestRunner.runUnitTests([], diff)
+  it('run selected unit tests', () => {
+    const diff = fs.readFileSync('./testSelector/sample/21f3a85.patch', 'utf-8')
+    selectedTestRunner.runUnitTests([], diff)
   })
 })

@@ -51,14 +51,16 @@ function runUnitTests(tests, diff) {
     modifyTests(globalUtil.config.codeBase, tests)
 
     tests.map(test => {
-        if(!testFiles.includes(path.join(globalUtil.config.codeBase, test.testFile)))
-            testFiles.push(path.join(globalUtil.config.codeBase, test.testFile));
+        if(!testFiles.includes(test.testFile)) {
+            
+            testFiles.push(test.testFile);
+        }
     })
 
 
     // run selected file
     if(globalUtil.config.runUnitTestsInstr && testFiles.length > 0) {
-        const runInstruction = 'npm run build && jest ' + testFiles.join(' ');
+        const runInstruction = 'npm run build && test -z $CI && jest --ci --runInBand --env=jsdom --coverage --colors ' + testFiles.join(' ');
         child_process.execSync(`cd ${globalUtil.config.codeBase} && pwd && npm install && ${runInstruction}`, { stdio: [0, 1, 2] });
     }
 
@@ -71,26 +73,26 @@ String.prototype.replaceAll = function(str1, str2, ignore)
 
 function modifyTests(codeBase, tests) {
     // unescape test name and suite name
-    tests.forEach(test => {
-        test.testName = unescape(test.testName);
-        test.suiteName = unescape(test.suiteName);
+    tests.forEach((test, index) => {
+        tests[index].testName = unescape(test.testName);
+        tests[index].suiteName = unescape(test.suiteName);
     })
 
     
     tests.forEach(test => {
-        let content = fs.readFileSync(path.join(codeBase, test.testFile), 'utf-8')
+        let content = fs.readFileSync(test.testFile, 'utf-8')
         if(test.testName && !['beforeEach', 'afterEach', 'beforeAll', 'afterAll', 'after', 'before'].includes(test.testName)) {
             content = content.replaceAll(`it('${test.testName}',`, `it.only('${test.testName}',`)
             content = content.replaceAll(`it("${test.testName}",`, `it.only("${test.testName}",`)
             content = content.replaceAll(`it(\`${test.testName}\`,`, `it.only(\`${test.testName}\`,`)
-        } else {
+        } else if(test.suiteName) {
             // content = content.replace(new RegExp(`describe('${test.suiteName}',`, 'g'), `describe.only('${test.suiteName}',`)
             // content = content.replace(new RegExp(`describe("${test.suiteName}",`, 'g'), `describe.only("${test.suiteName}",`)
             content = content.replaceAll(`describe('${test.suiteName}',`, `describe.only('${test.suiteName}',`)
             content = content.replaceAll(`describe("${test.suiteName}",`, `describe.only("${test.suiteName}",`)
             content = content.replaceAll(`describe(\`${test.suiteName}\`,`, `describe.only(\`${test.suiteName}\`,`)
         }
-        fs.writeFileSync(path.join(codeBase, test.testFile), content);
+        fs.writeFileSync(test.testFile, content);
     })
 }
 

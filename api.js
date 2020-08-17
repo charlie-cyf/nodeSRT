@@ -120,6 +120,7 @@ async function getDependency() {
             '**/__tests__/**/*.js?(x)',
             '**/?(*.)+(spec|test).js?(x)',
             '!**/src/integration/!(utils)/**/*',
+            '!**/puppeteer/**',
             ]);
         globalUtil.config.fileDependencyGraphPath = path.resolve('/tmp/nodeSRT/fileDenpendencyGraph.json');
         fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, JSON.stringify(fileDependGraph));

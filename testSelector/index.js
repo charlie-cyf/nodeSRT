@@ -117,7 +117,7 @@ function getReducedTests(changes) {
   const findTestsByFile = function (file) {
     fileDependencyGraph.forEach((testfile) => {
       testfile.testSuits.forEach((suite) => {
-        if (suite.depends.includes(file)) {
+        if (suite.depends.includes(path.join(globalUtil.config.codeBase, file))) {
           let testName = suite.testName;
           if (
             [
@@ -135,13 +135,13 @@ function getReducedTests(changes) {
           if (
             selectedTests.filter(
               (t) =>
-                t.testFile === testfile.testFileName &&
+                t.testFile === testfile.testFilename &&
                 t.suiteName === suite.suiteName &&
                 t.testName === testName
             ).length === 0
           ) {
             selectedTests.push({
-              testFile: testfile.testFileName,
+              testFile: testfile.testFilename,
               suiteName: suite.testSuiteName,
               testName: testName,
             });

@@ -11,6 +11,19 @@
         
         "src/testHelpers/loggerMock.js",
         "src/app/containers/ConsentBanner/CanonicalLogic/setCookieOven.test.js" ],
+    "dirAlias": {                                        
+            "#pages": "./src/app/pages",
+            "#testHelpers": "./src/testHelpers",
+            "#server": "./src/server",
+            "#utils": "./src/app/routes/utils",
+            "#app": "src/app",
+            "#contexts": "src/app/contexts",
+            "#containers": "src/app/containers",
+            "#data": "data/",
+            "#hooks": "src/app/hooks",
+            "#lib": "src/app/lib/",
+            "#models": "src/app/models/"
+    },
     
     "ci": true,
     "JestOnlyChanged": true,
