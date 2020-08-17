@@ -50,8 +50,8 @@ docker push
 ```
 singularity command:
 ```
- singularity build -s srtSingular.sif docker://charlie9731/srtdock:v2
-
+singularity build -s srtSingular.sif docker://charlie9731/srtdock:v2
+singularity run -w -e srtSingular.sif <commit id>
 ```
 RHEL install docker script
 ```
