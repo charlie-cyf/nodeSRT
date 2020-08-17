@@ -39,6 +39,27 @@
 2. Although astring can handle comments, some special comments are misplaced after injection. e.g. @ts-ignore Therefore, they need to be ignore when doing code injection. Otherwise we will have a build error.
 
 ## docker comamnd
-`docker build -t srtdock:latest .`
-`docker run --rm -ti srtdock`
+`docker build -t srtdock:latest .`<br /> 
+`docker run --rm -ti srtdock` <br /> 
+
+push to docker hub: https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html
+``` 
+docker login
+docker tag f645182d6e68 charlie9731/srtdock:v2
+docker push 
+```
+singularity command:
+```
+ singularity build -s srtSingular.sif docker://charlie9731/srtdock:v2
+
+```
+RHEL install docker script
+```
+sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+sudo dnf install -y vim git curl
+sudo dnf install --nobest docker-ce
+sudo groupadd docker
+sudo usermod -aG docker ec2-user
+```
+
 

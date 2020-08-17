@@ -21,11 +21,12 @@ echo "go to uppy"
 pwd 
 
 
+echo "resetting uppy..."
+git reset --hard $1^
+
 echo "generating diff..."
 git diff $1^ $1 > ../diff.patch
 
-echo "resetting uppy..."
-git reset --hard $1^
 cd ..
 echo "go back to /src"
 pwd
