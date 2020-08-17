@@ -136,7 +136,7 @@ function getReducedTests(changes) {
             selectedTests.filter(
               (t) =>
                 t.testFile === testfile.testFilename &&
-                t.suiteName === suite.suiteName &&
+                t.suiteName === suite.testSuiteName &&
                 t.testName === testName
             ).length === 0
           ) {
