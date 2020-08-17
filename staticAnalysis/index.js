@@ -225,9 +225,9 @@ function getTestDependency(dir, rgx=['**/*.test.js', '**/*.spec.js', '**/*.spec.
 
     testsFinderRecur(globalUtil.getASTdir(dir));
 
-    let preDefinedDepends = [];
     
     dependencyGraph.map(ele => {
+        let preDefinedDepends = [];
         let propertyMap = new Map();
         const tree = JSON.parse(fs.readFileSync(ele.testFilename));
         const program = tree.program

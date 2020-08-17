@@ -16,7 +16,7 @@ describe('test selection on given diff file', () => {
         // const dependencyGraph = StaticAnalysis.getTestDependency('../uppy', globalUtil.getCodeBasePackageJson().jest.testMatch);
         // fs.writeFileSync(globalUtil.config.fileDependencyGraphPath, JSON.stringify(dependencyGraph))
     })
-
+    
     /**
      * ! precondition: revert uppy to 3ebe9a91beda60209db34247e680d8ffb1347dbd
      */

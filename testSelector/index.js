@@ -136,13 +136,13 @@ function getReducedTests(changes) {
             selectedTests.filter(
               (t) =>
                 t.testFile === testfile.testFilename &&
-                t.suiteName === suite.testSuiteName &&
+                t.suiteName === suite.testSuitName &&
                 t.testName === testName
             ).length === 0
           ) {
             selectedTests.push({
               testFile: testfile.testFilename,
-              suiteName: suite.testSuiteName,
+              suiteName: suite.testSuitName,
               testName: testName,
             });
           }
