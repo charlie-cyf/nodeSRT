@@ -46,7 +46,7 @@ push to docker hub: https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhu
 ``` 
 docker login
 docker tag f645182d6e68 charlie9731/srtdock:v2
-docker push 
+docker push charlie9731/srtdock
 ```
 singularity command:
 ```

@@ -76,6 +76,9 @@ function modifyTests(codeBase, tests) {
     tests.forEach((test, index) => {
         tests[index].testName = unescape(test.testName);
         tests[index].suiteName = unescape(test.suiteName);
+        if(!test.testFile.startsWith(globalUtil.config.codeBase)) {
+            tests[index].testFile = path.join(globalUtil.config.codeBase, test.testFile)
+        }
     })
 
     
