@@ -1,7 +1,7 @@
 # Selective Regression Testing for Node.js
 
 ## Steps: <br /> 
-1. ~~static analysis on each js file, generate dependency graph on functions and fields~~
+1. static analysis on each js file, generate dependency graph on functions and fields
 2. inject dynamic analysis code to each function
 3. run tests one by one, get entities influenced by each tests. Store as json file.
 4. parse diff file, identify changes.
@@ -35,7 +35,7 @@
 	[] chained promises
 
 ## design decisions
-1. since the selection is at method level, if a modification is on a uncovered method, we will run all tests have dependencies on this file. ThereFore static analysis in unnecessary.
+1. since the selection is at method level, if a modification is outsid of the method, we will run all tests have dependencies on this file. 
 2. Although astring can handle comments, some special comments are misplaced after injection. e.g. @ts-ignore Therefore, they need to be ignore when doing code injection. Otherwise we will have a build error.
 
 ## docker comamnd
