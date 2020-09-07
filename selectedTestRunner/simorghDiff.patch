@@ -1,78 +1,73 @@
-diff --git a/src/app/routes/home/getInitialData/index.js b/src/app/routes/home/getInitialData/index.js
-index 38c021bca..8a50b2e97 100644
---- a/src/app/routes/home/getInitialData/index.js
-+++ b/src/app/routes/home/getInitialData/index.js
-@@ -42,7 +42,12 @@ export default async ({ path, service, variant, pageType }) => {
-     const pageDataPromise = fetchPageData({ path, pageType });
+diff --git a/src/app/containers/MediaPlayer/helpers/logMissingBlockId.js b/src/app/containers/MediaPlayer/helpers/logMissingMediaId.js
+similarity index 63%
+rename from src/app/containers/MediaPlayer/helpers/logMissingBlockId.js
+rename to src/app/containers/MediaPlayer/helpers/logMissingMediaId.js
+index 1bea27707..a25abf8bb 100644
+--- a/src/app/containers/MediaPlayer/helpers/logMissingBlockId.js
++++ b/src/app/containers/MediaPlayer/helpers/logMissingMediaId.js
+@@ -3,10 +3,10 @@ import { MEDIA_MISSING_FIELD } from '#lib/logger.const';
  
-     const { json, status } = pageHasRadioSchedule
--      ? await withRadioSchedule({ pageDataPromise, service, path })
-+      ? await withRadioSchedule({
-+          pageDataPromise,
-+          service,
-+          path,
-+          pageType: 'Home',
-+        })
-       : await pageDataPromise;
+ const logger = nodeLogger(__filename);
  
-     return {
-diff --git a/src/app/routes/idx/getInitialData/index.js b/src/app/routes/idx/getInitialData/index.js
-index 6900e90f4..fe5104c8c 100644
---- a/src/app/routes/idx/getInitialData/index.js
-+++ b/src/app/routes/idx/getInitialData/index.js
-@@ -47,6 +47,7 @@ export default async ({ path, service, variant, pageType }) => {
-           service,
-           path,
-           radioService: 'dari',
-+          pageType: 'IDX',
-         })
-       : await pageDataPromise;
+-const logMissingBlockId = ({ url, assetType }) => {
+-  const blockIdError = 'Missing Block ID';
++const logMissingMediaId = ({ url, assetType }) => {
++  const blockIdError = 'Missing Version or Block ID';
+   const message = { url, assetType, blockIdError };
+   logger.warn(MEDIA_MISSING_FIELD, message);
+ };
  
-diff --git a/src/app/routes/liveRadio/getInitialData/index.js b/src/app/routes/liveRadio/getInitialData/index.js
-index 53b372e6e..a434e63fc 100644
---- a/src/app/routes/liveRadio/getInitialData/index.js
-+++ b/src/app/routes/liveRadio/getInitialData/index.js
-@@ -41,6 +41,7 @@ export default async ({ path: pathname, pageType, service }) => {
-           service,
-           path: pathname,
-           radioService: getRadioService({ service, pathname }),
-+          pageType: 'LiveRadio',
-         })
-       : await pageDataPromise;
+-export default logMissingBlockId;
++export default logMissingMediaId;
+diff --git a/src/app/containers/MediaPlayer/index.jsx b/src/app/containers/MediaPlayer/index.jsx
+index 0ea22daa8..731344239 100644
+--- a/src/app/containers/MediaPlayer/index.jsx
++++ b/src/app/containers/MediaPlayer/index.jsx
+@@ -28,7 +28,7 @@ import {
+   emptyBlockArrayDefaultProps,
+ } from '#models/propTypes';
+ import logEmbedSourceStatus from './helpers/logEmbedSourceStatus';
+-import logMissingBlockId from './helpers/logMissingBlockId';
++import logMissingMediaId from './helpers/logMissingMediaId';
  
-diff --git a/src/app/routes/onDemandRadio/getInitialData/index.js b/src/app/routes/onDemandRadio/getInitialData/index.js
-index 0dff5a660..60e04706e 100644
---- a/src/app/routes/onDemandRadio/getInitialData/index.js
-+++ b/src/app/routes/onDemandRadio/getInitialData/index.js
-@@ -34,6 +34,7 @@ export default async ({ path: pathname, pageType, service }) => {
-           service,
-           path: pathname,
-           radioService: getRadioService({ service, pathname }),
-+          pageType: 'OnDemandRadio',
-         })
-       : await pageDataPromise;
+ const { logMediaPlayerStatus } = toggles[
+   process.env.SIMORGH_APP_ENV || 'local'
+@@ -132,8 +132,8 @@ const MediaPlayerContainer = ({
  
-diff --git a/src/app/routes/utils/withRadioSchedule/index.js b/src/app/routes/utils/withRadioSchedule/index.js
-index bb29e8596..0cfb9c501 100644
---- a/src/app/routes/utils/withRadioSchedule/index.js
-+++ b/src/app/routes/utils/withRadioSchedule/index.js
-@@ -36,6 +36,7 @@ const withRadioSchedule = async ({
-   service,
-   path,
-   radioService,
-+  pageType,
- }) => {
-   const { SIMORGH_APP_ENV, SIMORGH_BASE_URL } = process.env;
+   const mediaIsValid = available && (versionId || blockId);
+   if (!mediaIsValid) {
+-    if (!blockId) {
+-      logMissingBlockId({ url: assetId, assetType });
++    if (!(versionId || blockId)) {
++      logMissingMediaId({ url: assetId, assetType });
+     }
+     return (
+       <StyledMessageContainer>
+diff --git a/src/app/containers/MediaPlayer/index.test.jsx b/src/app/containers/MediaPlayer/index.test.jsx
+index aa69280f9..5b4ff6a11 100644
+--- a/src/app/containers/MediaPlayer/index.test.jsx
++++ b/src/app/containers/MediaPlayer/index.test.jsx
+@@ -10,12 +10,12 @@ import {
+   VideoAmpWithCaption,
+ } from './fixtureData';
+ import logEmbedSourceStatus from './helpers/logEmbedSourceStatus';
+-import logMissingBlockId from './helpers/logMissingBlockId';
++import logMissingMediaId from './helpers/logMissingMediaId';
+ import defaultToggles from '#lib/config/toggles';
+ import onClient from '#lib/utilities/onClient';
  
-@@ -47,7 +48,10 @@ const withRadioSchedule = async ({
-     baseUrl: SIMORGH_BASE_URL,
-   });
+ jest.mock('./helpers/logEmbedSourceStatus');
+-jest.mock('./helpers/logMissingBlockId');
++jest.mock('./helpers/llogMissingMediaId');
+ jest.mock('#lib/utilities/onClient');
  
--  logger.info(RADIO_SCHEDULE_REQUEST_RECEIVED, { url: radioScheduleUrl });
-+  logger.info(RADIO_SCHEDULE_REQUEST_RECEIVED, {
-+    url: radioScheduleUrl,
-+    pageType,
-+  });
-   const radioSchedulePromise = fetchData(radioScheduleUrl);
+ describe('MediaPlayer', () => {
+@@ -59,7 +59,7 @@ it('should render the iframe when showPlaceholder is set to false', () => {
+ it('should render the Media Message when there is no versionId', () => {
+   const { getByText } = render(VideoCanonicalNoVersionId);
+   const mediaMessage = `This content is no longer available`;
+-  expect(logMissingBlockId).toHaveBeenCalledTimes(1);
++  expect(logMissingMediaId).toHaveBeenCalledTimes(1);
+   expect(getByText(mediaMessage)).toBeInTheDocument();
+ });
  
-   const [{ json: pageData, ...rest }, radioScheduleJson] = await Promise.all([

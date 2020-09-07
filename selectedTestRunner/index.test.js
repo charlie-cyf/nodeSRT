@@ -6,216 +6,72 @@ const {
 const fs = require('fs')
 const selectedTests = [
   {
-    testFile: '/src/app/pages/FrontPage/index.test.jsx',
+    testFile: '/src/app/pages/MediaAssetPage/index.test.jsx',
+    suiteName: 'Media%20Asset%20Page',
+    testName: 'beforeEach'
+  },
+  {
+    testFile: '/src/app/pages/MediaAssetPage/index.test.jsx',
+    suiteName: 'AV%20player',
+    testName: 'beforeEach'
+  },
+  {
+    testFile: '/src/app/pages/MediaAssetPage/index.test.jsx',
+    suiteName: 'AV%20player',
+    testName: 'should%20render%20version%20%28live%20audio%20stream%29'
+  },
+  {
+    testFile: '/src/app/pages/MediaAssetPage/index.test.jsx',
+    suiteName: 'heading',
+    testName: 'beforeEach'
+  },
+  {
+    testFile: '/src/app/pages/StoryPage/index.test.jsx',
     suiteName: 'snapshots',
-    testName: 'should%20render%20a%20pidgin%20frontpage%20correctly'
+    testName: 'should%20match%20snapshot%20for%20STY'
   },
   {
-    testFile: '/src/app/pages/FrontPage/index.test.jsx',
-    suiteName: 'snapshots',
-    testName: 'should%20render%20a%20pidgin%20amp%20frontpage'
+    testFile: '/src/app/pages/StoryPage/index.test.jsx',
+    suiteName: 'Story%20Page',
+    testName: 'should%20only%20render%20firstPublished%20timestamp%20for%20Igbo%20when%20lastPublished%20is%20less%20than%201%20min%20later'
   },
   {
-    testFile: '/src/app/pages/FrontPage/index.test.jsx',
-    suiteName: 'Assertions',
-    testName: 'should%20render%20visually%20hidden%20text%20as%20h1'
+    testFile: '/src/app/pages/StoryPage/index.test.jsx',
+    suiteName: 'Story%20Page',
+    testName: 'should%20not%20show%20the%20pop-out%20timestamp%20when%20allowDateStamp%20is%20false'
   },
   {
-    testFile: '/src/app/pages/FrontPage/index.test.jsx',
-    suiteName: 'Assertions',
-    testName: 'should%20render%20front%20page%20sections'
+    testFile: '/src/app/pages/StoryPage/index.test.jsx',
+    suiteName: 'Story%20Page',
+    testName: 'should%20render%20correctly%20when%20the%20secondary%20column%20data%20is%20not%20available'
   },
   {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20match%20snapshot%20for%20Canonical'
+    testFile: '/src/app/pages/StoryPage/index.test.jsx',
+    suiteName: 'Story%20Page',
+    testName: 'should%20render%20secondary%20column%20with%20lang%20attribute%20of%20%60serviceLang%60%20when%20a%20language%20override%20is%20present'
   },
   {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20match%20snapshot%20for%20AMP'
+    testFile: '/src/app/containers/MediaPlayer/index.test.jsx',
+    suiteName: 'log%20MediaPlayer%20status',
+    testName: 'should%20log%20embed%20source%20status%20code%20when%20player%20is%20loaded'
   },
   {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20brand%20title%20for%20OnDemand%20Radio%20Pages'
+    testFile: '/src/app/containers/MediaPlayer/index.test.jsx',
+    suiteName: 'log%20MediaPlayer%20status',
+    testName: 'should%20not%20log%20when%20toggle%20is%20disabled'
   },
   {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20datestamp%20correctly%20for%20Pashto%20OnDemand%20Radio%20Pages'
+    testFile: '/src/app/containers/MediaPlayer/index.test.jsx',
+    suiteName: 'log%20MediaPlayer%20status',
+    testName: 'should%20only%20log%20on%20server'
   },
   {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20datestamp%20correctly%20for%20Korean%20OnDemand%20Radio%20Pages'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20datestamp%20correctly%20for%20Indonesian%20OnDemand%20Radio%20Pages'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20datestamp%20correctly%20for%20Zhongwen%20OnDemand%20Radio%20Pages'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20summary%20for%20OnDemand%20Radio%20Pages'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20audio%20player%20on%20canonical'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20audio%20player%20on%20canonical%20using%20no%20override%20on%20live'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20audio%20player%20on%20AMP'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20audio%20player%20on%20AMP%20using%20no%20override%20on%20live'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20expired%20content%20message%20if%20episode%20is%20expired'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20show%20the%20%27content%20not%20yet%20available%27%20message%20if%20episode%20is%20not%20yet%20available'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20return%20bbc_afaanoromoo_radio%20when%20the%20masterBrand%20is%20bbc_oromo_radio%20on%20canonical'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20return%20bbc_afaanoromoo_radio%20when%20the%20masterBrand%20is%20bbc_oromo_radio%20on%20AMP'
-  },
-  {
-    testFile: '/src/app/pages/OnDemandRadioPage/index.test.jsx',
-    suiteName: 'OnDemand%20Radio%20Page%20',
-    testName: 'should%20contain%20the%20translated%20iframe%20title'
-  },
-  {
-    testFile: '/src/app/routes/getInitialData.test.jsx',
-    suiteName: 'undefined',
-    testName: '%24%7BpageType%7D%20-%20should%20handle%20Ares%20404'
-  },
-  {
-    testFile: '/src/app/routes/getInitialData.test.jsx',
-    suiteName: 'undefined',
-    testName: '%24%7BpageType%7D%20-%20should%20handle%20Ares%20202'
-  },
-  {
-    testFile: '/src/app/routes/getInitialData.test.jsx',
-    suiteName: 'undefined',
-    testName: '%24%7BpageType%7D%20-%20should%20handle%20Ares%20500'
-  },
-  {
-    testFile: '/src/app/routes/getInitialData.test.jsx',
-    suiteName: 'undefined',
-    testName: '%24%7BpageType%7D%20-%20should%20handle%20Ares%20returning%20unexpected%20data'
-  },
-  {
-    testFile: '/src/app/routes/home/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20from%20front%20page',
-    testName: 'should%20return%20data%20for%20a%20page%20without%20radio%20schedules%20to%20render'
-  },
-  {
-    testFile: '/src/app/routes/home/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20from%20front%20page',
-    testName: 'should%20return%20data%20to%20render%20a%20front%20page%20with%20radio%20schedules'
-  },
-  {
-    testFile: '/src/app/routes/home/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20from%20front%20page',
-    testName: 'should%20return%20data%20for%20service%20with%20radio%20schedules%2C%20but%20without%20radio%20schedules%20on%20front%20page'
-  },
-  {
-    testFile: '/src/app/routes/home/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20from%20front%20page',
-    testName: 'should%20return%20page%20data%20for%20misconfigured%20service%20without%20radio%20schedules%2C%20but%20with%20radio%20schedules%20on%20front%20page'
-  },
-  {
-    testFile: '/src/app/routes/idx/getInitialData/index.test.js',
-    suiteName: 'Get%20intial%20data%20from%20IDX%20page',
-    testName: 'should%20return%20essential%20data%20for%20an%20IDX%20page%20to%20render'
-  },
-  {
-    testFile: '/src/app/routes/liveRadio/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20for%20live%20radio',
-    testName: 'should%20return%20essential%20data%20for%20a%20page%20to%20render'
-  },
-  {
-    testFile: '/src/app/routes/liveRadio/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20for%20live%20radio',
-    testName: 'should%20override%20renderer%20on%20test'
-  },
-  {
-    testFile: '/src/app/routes/liveRadio/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20for%20live%20radio',
-    testName: 'should%20not%20override%20renderer%20on%20live'
-  },
-  {
-    testFile: '/src/app/routes/utils/withRadioSchedule/index.test.js',
-    suiteName: 'page%20data%20and%20radio%20schedule%20promises%20resolve%20with%20data',
-    testName: 'should%20merge%20radio%20schedule%20data%20into%20page%20data'
-  },
-  {
-    testFile: '/src/app/routes/utils/withRadioSchedule/index.test.js',
-    suiteName: 'if%20either%20page%20data%20or%20radio%20schedule%20fetch%20returns%20non-ok%20status%20code',
-    testName: 'should%20not%20merge%20radio%20schedule%20data%20into%20page%20data%20if%20radio%20schedule%20fetch%20returns%20non-ok%20status%20code'
-  },
-  {
-    testFile: '/src/app/routes/utils/withRadioSchedule/index.test.js',
-    suiteName: 'if%20either%20page%20data%20or%20radio%20schedule%20fetch%20returns%20non-ok%20status%20code',
-    testName: 'should%20not%20merge%20radio%20schedule%20data%20into%20page%20data%20if%20page%20data%20fetch%20returns%20non-ok%20status%20code'
-  },
-  {
-    testFile: '/src/app/routes/utils/withRadioSchedule/index.test.js',
-    suiteName: 'if%20either%20page%20data%20or%20radio%20schedule%20fetch%20returns%20non-ok%20status%20code',
-    testName: 'should%20not%20merge%20radio%20schedule%20data%20into%20page%20data%20if%20both%20page%20data%20and%20radio%20schedule%20return%20non-ok%20status%20code'
-  },
-  {
-    testFile: '/src/app/routes/utils/withRadioSchedule/index.test.js',
-    suiteName: 'fetch%20API%20promises%20rejected',
-    testName: 'should%20return%20page%20data%20without%20radio%20schedules%20if%20radio%20schedule%20fetch%20promise%20is%20rejected'
-  },
-  {
-    testFile: '/src/app/routes/onDemandRadio/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20for%20on%20demand%20radio',
-    testName: 'should%20return%20essential%20data%20for%20a%20page%20to%20render'
-  },
-  {
-    testFile: '/src/app/routes/onDemandRadio/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20for%20on%20demand%20radio',
-    testName: 'should%20override%20renderer%20on%20test'
-  },
-  {
-    testFile: '/src/app/routes/onDemandRadio/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20for%20on%20demand%20radio',
-    testName: 'should%20not%20override%20renderer%20on%20live'
-  },
-  {
-    testFile: '/src/app/routes/onDemandRadio/getInitialData/index.test.js',
-    suiteName: 'Get%20initial%20data%20for%20on%20demand%20radio',
-    testName: 'invokes%20logging%20when%20expected%20data%20is%20missing%20in%20ARES%20response'
+    testFile: '/src/simorgh/src/app/containers/MediaPlayer/index.test.jsx',
+    suiteName: 'log MediaPlayer status',
+    testName: undefined
   }
 ]
+
 
 
 
