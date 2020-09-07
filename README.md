@@ -20,7 +20,7 @@ use this command to run nodeSRT
 `-d --diffFile <path>` path to diff file <br/>
 `--config <path>` path to JSON config file <br/>
 `--e2e <boolean>` run analyze on e2e tests <br/>
-`--skipGetDependency <boolean>` skip get denpendency graph step, has to set  --callGraph --fileDependencyGraph --E2EdenpendencyGraph as well <br/>
+`--skipGetDependency <boolean>` skip get denpendency graph step, has to set  `--callGraph` `--fileDependencyGraph` `--E2EdenpendencyGraph` as well <br/>
 `--callGraph <path>` path to callgraph <br/>
 `--fileDependencyGraph <path>` path to file denpendency graph <br/>
 `--E2EdenpendencyGraph <path>` dir to E2e dependencyGraph <br/>
