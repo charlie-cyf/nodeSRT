@@ -40,14 +40,14 @@ options only in configuration files only: <br/>
 `E2Edir: <string>` path E2E test folder <br/>
 `E2Etemp: <string>` test folder to be copied to E2E test folder if you want to use your own E2E test folder <br/>
 
-- since each End-to-end test suite set up differently, you might want to customize [e2e test handler](e2eTestHandler) for your e2e test suite
+- since each End-to-end test suite set up differently, you might want to customize [e2e test handler](https://github.com/charlie-cyf/nodeSRT/tree/master/e2eTestsHandler) for your e2e test suite
 
 ### examples
 sample nodeSRT command:
 ```
 nodeSRT -b ./simorgh -d ./diff.patch --config ./nodeSRT/example/dockerConfig.json
 ```
-you can find some sample configuration files in [here](example)
+you can find some sample configuration files in [here](https://github.com/charlie-cyf/nodeSRT/tree/master/example)
 
 
 ## How it works
@@ -87,4 +87,4 @@ sudo usermod -aG docker ec2-user
 ```
 
 ## experiment data
-you can find experiment data in [here](experiment)
+you can find experiment data in [here](https://github.com/charlie-cyf/nodeSRT/tree/master/experiment)
