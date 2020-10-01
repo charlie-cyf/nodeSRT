@@ -79,6 +79,24 @@ We also evaluated our selection technique by performing an empirical study on tw
 size and code coverage.
 
 \section{Approach Overview}
+JavaScript is a dynamic typing, just-in-time compiled, prototype-based object-orientation, multi-paradigm language and supports
+event-driven, functional, and imperative programming styles. Many special language features makes tranditional SRT technique
+not working on JavaScript programs. These features include first-class functions, Inheritance and the prototype chain, Asynchronous and Error handling. 
+
+To mitigate these challenges, our tool uses a combination of static and dynamic analysis, then perform a modification-based test 
+selection algorithm in method level. The Modification-based approach works by analyzing modified code entities 
+then select tests based on modifications. This strategy is relatively simple and proved safe by [13] [7]. This tool can 
+also be used in CI/CD environment. NodeSRT consists of five parts: dynamic analysis, static analysis, change analysis, 
+test selection, and selected test runner. 
+\begin{figure}[htbp]
+    \centerline{\includegraphics[scale=0.45]{NodeSRT Architecture.png}}
+    \caption{NodeSRT Architecture}
+    \label{fig}
+    \end{figure}    
+    
+As shown in Figure 1. The Static Analysis part performs static analysis on original codebase to get file dependency
+graph on each tests. The dynamic analysis part generate a dynamic call graph by injecting code to original codebase 
+generated AST. 
 
 \section{Related Work}
 % this paragraph might need refactoring.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  29 SEP 2020 16:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  30 SEP 2020 15:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -221,7 +221,11 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 File: l3backend-pdftex.def 2020-09-11 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count199
 \l__pdf_internal_box=\box49
-) (c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux)
+) (c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux
+
+LaTeX Warning: Label `fig' multiply defined.
+
+)
 \openout1 = `"Selective Regression Testing on NodeJS Application.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -258,34 +262,40 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (c:/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-)) [1{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+))
+<NodeSRT Architecture.png, id=1, 532.99126pt x 293.095pt>
+File: NodeSRT Architecture.png Graphic file (type png)
+<use NodeSRT Architecture.png>
+Package pdftex.def Info: NodeSRT Architecture.png  used on input line 92.
+(pdftex.def)             Requested size: 239.84384pt x 131.89153pt.
+ [1{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 111.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 129.
  (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 111.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 129.
  (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 146.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 164.
  (c:/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [2]
-<fig1.png, id=18, 82.1469pt x 71.5473pt>
+) [2 <c:/Users/presi/workspace/nodeSRT/docs/NodeSRT Architecture.png>]
+<fig1.png, id=20, 82.1469pt x 71.5473pt>
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 251.
+Package pdftex.def Info: fig1.png  used on input line 269.
 (pdftex.def)             Requested size: 82.14668pt x 71.5471pt.
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 262.
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 280.
  (c:/texlive/2020/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 262.
- [3 <c:/Users/presi/workspace/nodeSRT/docs/fig1.png (PNG copy)>]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 280.
+ [3]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -299,20 +309,24 @@ Before submitting the final camera ready copy, remember to:
 
 [4
 
-] (c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux) ) 
+ <c:/Users/presi/workspace/nodeSRT/docs/fig1.png (PNG copy)>] (c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3916 strings out of 480876
- 56480 string characters out of 5911487
- 309488 words of memory out of 5000000
- 19501 multiletter control sequences out of 15000+600000
+ 3922 strings out of 480876
+ 56645 string characters out of 5911487
+ 310527 words of memory out of 5000000
+ 19506 multiletter control sequences out of 15000+600000
  577017 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,11n,37p,661b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (4 pages, 132859 bytes).
+Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (4 pages, 145996 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 66 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
