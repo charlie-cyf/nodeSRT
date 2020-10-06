@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  1 OCT 2020 15:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  6 OCT 2020 13:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -217,9 +217,28 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (c:/texlive/2020/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen169
+\lightrulewidth=\dimen170
+\cmidrulewidth=\dimen171
+\belowrulesep=\dimen172
+\belowbottomsep=\dimen173
+\aboverulesep=\dimen174
+\abovetopsep=\dimen175
+\cmidrulesep=\dimen176
+\cmidrulekern=\dimen177
+\defaultaddspace=\dimen178
+\@cmidla=\count199
+\@cmidlb=\count266
+\@aboverulesep=\dimen179
+\@belowrulesep=\dimen180
+\@thisruleclass=\count267
+\@lastruleclass=\count268
+\@thisrulewidth=\dimen181
 ) (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-11 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count199
+\l__kernel_color_stack_int=\count269
 \l__pdf_internal_box=\box49
 ) (c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux
 
@@ -228,34 +247,34 @@ LaTeX Warning: Label `fig' multiply defined.
 )
 \openout1 = `"Selective Regression Testing on NodeJS Application.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
 
 -- Lines per column: 56 (exact).
 (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count266
-\scratchdimen=\dimen169
+\scratchcounter=\count270
+\scratchdimen=\dimen182
 \scratchbox=\box50
-\nofMPsegments=\count267
-\nofMParguments=\count268
+\nofMPsegments=\count271
+\nofMParguments=\count272
 \everyMPshowfont=\toks22
-\MPscratchCnt=\count269
-\MPscratchDim=\dimen170
-\MPnumerator=\count270
-\makeMPintoPDFobject=\count271
+\MPscratchCnt=\count273
+\MPscratchDim=\dimen183
+\MPnumerator=\count274
+\makeMPintoPDFobject=\count275
 \everyMPtoPDFconversion=\toks23
 ) (c:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -266,35 +285,140 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 <NodeSRT Architecture.png, id=1, 532.99126pt x 293.095pt>
 File: NodeSRT Architecture.png Graphic file (type png)
 <use NodeSRT Architecture.png>
-Package pdftex.def Info: NodeSRT Architecture.png  used on input line 92.
+Package pdftex.def Info: NodeSRT Architecture.png  used on input line 93.
 (pdftex.def)             Requested size: 239.84384pt x 131.89153pt.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 98.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 99.
  (c:/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [1{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 146.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 131.
  (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 146.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 131.
  (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2 <c:/Users/presi/workspace/nodeSRT/docs/NodeSRT Architecture.png>] [3]
+)
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+[]\OT1/ptm/m/n/8 project
+ []
+
+
+Overfull \hbox (1.32765pt too wide) in paragraph at lines 133--133
+[]\OT1/ptm/m/n/8 retest
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\OT1/ptm/m/n/8 time
+ []
+
+
+Overfull \hbox (3.81561pt too wide) in paragraph at lines 133--133
+[]\OT1/ptm/m/n/8 select
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\OT1/ptm/m/n/8 time
+ []
+
+
+Overfull \hbox (3.5198pt too wide) in paragraph at lines 133--133
+[]\OT1/ptm/m/n/8 NodeSRT
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+[]\OT1/ptm/m/n/8 Jest
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\OT1/ptm/m/n/8 test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\OT1/ptm/m/n/8 No.
+ []
+
+
+Overfull \hbox (3.5198pt too wide) in paragraph at lines 133--133
+[]\OT1/ptm/m/n/8 NodeSRT
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\OT1/ptm/m/n/8 run-ning
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\OT1/ptm/m/n/8 time
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+[]\OT1/ptm/m/n/8 Jest
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\OT1/ptm/m/n/8 run-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\OT1/ptm/m/n/8 ning
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\OT1/ptm/m/n/8 time
+ []
+
+
+Overfull \hbox (2.0pt too wide) in paragraph at lines 134--134
+[]\OT1/ptm/m/n/8 20.66| 
+ []
+
+
+Overfull \hbox (3.41582pt too wide) in paragraph at lines 135--135
+[]\OT1/ptm/m/n/8 Simorgh| 
+ []
+
+
+Overfull \hbox (2.0pt too wide) in paragraph at lines 135--135
+[]\OT1/ptm/m/n/8 450.7| 
+ []
+
+
+Overfull \hbox (1.59998pt too wide) in paragraph at lines 135--135
+[]\OT1/ptm/m/n/8 2256| 
+ []
+
+
+Overfull \hbox (2.0pt too wide) in paragraph at lines 135--135
+[]\OT1/ptm/m/n/8 17.26| 
+ []
+
+[2 <c:/Users/presi/workspace/nodeSRT/docs/NodeSRT Architecture.png>] [3]
 <fig1.png, id=24, 82.1469pt x 71.5473pt>
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 286.
+Package pdftex.def Info: fig1.png  used on input line 315.
 (pdftex.def)             Requested size: 82.14668pt x 71.5471pt.
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 297.
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 326.
  (c:/texlive/2020/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 297.
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 326.
+ [4 <c:/Users/presi/workspace/nodeSRT/docs/fig1.png (PNG copy)>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -306,24 +430,26 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4 <c:/Users/presi/workspace/nodeSRT/docs/fig1.png (PNG copy)>] (c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux)
+[5
+
+] (c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3922 strings out of 480876
- 56645 string characters out of 5911487
- 310525 words of memory out of 5000000
- 19506 multiletter control sequences out of 15000+600000
+ 3980 strings out of 480876
+ 57406 string characters out of 5911487
+ 311303 words of memory out of 5000000
+ 19560 multiletter control sequences out of 15000+600000
  577017 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,11n,37p,661b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (4 pages, 147678 bytes).
+Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (5 pages, 149227 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 69 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

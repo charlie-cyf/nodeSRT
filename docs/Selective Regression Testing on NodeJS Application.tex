@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{booktabs}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -114,6 +115,34 @@ Our tool can also be used to select end-to-end tests since NodeSRT uses HTTP req
 record logging messages and build dynamic call graph.
 
 \section{Empirical Evaluation}
+
+To evaluate NodeSRT, we performed empirical evaluation on two open-source Node.js project. We chose these two project because 
+our empirical study requires sample has to be well-maintained and has reasonable amount of tests. By using the method mentioned in [24], 
+we found Uppy and Simorgh. The 
+experiment ran on a 4 core x86-64 CPU with 16 GB of RAM, AWS cloud Linux server. Due to the fact that the internet speed and computing speed is not 
+unchanged, we use the percentage of tests selected and the percentage of SRT full process running time to 
+represent the result. 
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[htbp]
+    \caption{Empirical study result}
+    \centering
+    \begin{tabular}{@{}|p{3em}|p{2em}|p{1.8em}|p{3.5em}|p{2em}|p{3.5em}|p{2.5em}|@{}}
+    \toprule
+    project name & retest time (s)&select time (ms)&NodeSRT test No. (\%)&Jest test No. (\%)& NodeSRT running time (\%) & Jest running time (\%) \\ \midrule
+    Uppy         & 69.3  &  490   &                    8.40              &  20.66              &   50.24               &   23.63                    \\ \midrule
+    Simorgh      & 450.7  &  2256 &                    2.73              &  17.26              &   8.10                &   30.18                   \\ \bottomrule
+    \end{tabular}
+    \end{table}
+
+    Uppy is a sleek, modular JavaScript file uploader. It has 112k lines of code, 216 unit tests and 9 end-to-end tests, 
+achieves 20\% of code coverage. Simorgh is the BBC website rebuild using React.js. This project has 698k lines of code. 
+It includes 2801 unit tests, achieves 97\% of code coverage. 
+
+As shown in Table I, given file dependency graph and function call graph, the selection step for both project is less than 5\% of total 
+running time. 
+
 
 \section{Related Work}
 % this paragraph might need refactoring.
