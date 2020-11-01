@@ -125,8 +125,6 @@ INPUT c:/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT c:/texlive/2020/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
-INPUT c:/texlive/2020/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
@@ -148,6 +146,8 @@ INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
+INPUT c:/texlive/2020/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
+INPUT c:/texlive/2020/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux

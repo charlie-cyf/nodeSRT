@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  8 OCT 2020 13:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  1 NOV 2020 11:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -435,7 +435,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  36i,10n,37p,417b,252s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (3 pages, 88984 bytes).
+Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (3 pages, 89117 bytes).
 PDF statistics:
  38 PDF objects out of 1000 (max. 8388607)
  25 compressed objects within 1 object stream
