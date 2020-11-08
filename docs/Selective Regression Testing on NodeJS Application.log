@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  1 NOV 2020 11:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  8 NOV 2020 14:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -281,134 +281,134 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 <NodeSRT Architecture.png, id=1, 532.99126pt x 293.095pt>
 File: NodeSRT Architecture.png Graphic file (type png)
 <use NodeSRT Architecture.png>
-Package pdftex.def Info: NodeSRT Architecture.png  used on input line 92.
+Package pdftex.def Info: NodeSRT Architecture.png  used on input line 88.
 (pdftex.def)             Requested size: 239.84384pt x 131.89153pt.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 98.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 94.
  (c:/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [1{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 130.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 127.
  (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 130.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 127.
  (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 []\OT1/ptm/m/n/8 project
  []
 
 
-Overfull \hbox (1.32765pt too wide) in paragraph at lines 132--132
+Overfull \hbox (1.32765pt too wide) in paragraph at lines 129--129
 []\OT1/ptm/m/n/8 retest
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \OT1/ptm/m/n/8 time
  []
 
 
-Overfull \hbox (3.81561pt too wide) in paragraph at lines 132--132
+Overfull \hbox (3.81561pt too wide) in paragraph at lines 129--129
 []\OT1/ptm/m/n/8 select
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \OT1/ptm/m/n/8 time
  []
 
 
-Overfull \hbox (3.5198pt too wide) in paragraph at lines 132--132
+Overfull \hbox (3.5198pt too wide) in paragraph at lines 129--129
 []\OT1/ptm/m/n/8 NodeSRT
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 []\OT1/ptm/m/n/8 Jest
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \OT1/ptm/m/n/8 test
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \OT1/ptm/m/n/8 No.
  []
 
 
-Overfull \hbox (3.5198pt too wide) in paragraph at lines 132--132
+Overfull \hbox (3.5198pt too wide) in paragraph at lines 129--129
 []\OT1/ptm/m/n/8 NodeSRT
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \OT1/ptm/m/n/8 run-ning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \OT1/ptm/m/n/8 time
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 []\OT1/ptm/m/n/8 Jest
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \OT1/ptm/m/n/8 run-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \OT1/ptm/m/n/8 ning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \OT1/ptm/m/n/8 time
  []
 
 
-Overfull \hbox (2.0pt too wide) in paragraph at lines 133--133
+Overfull \hbox (2.0pt too wide) in paragraph at lines 130--130
 []\OT1/ptm/m/n/8 20.66| 
  []
 
 
-Overfull \hbox (3.41582pt too wide) in paragraph at lines 134--134
+Overfull \hbox (3.41582pt too wide) in paragraph at lines 131--131
 []\OT1/ptm/m/n/8 Simorgh| 
  []
 
 
-Overfull \hbox (2.0pt too wide) in paragraph at lines 134--134
+Overfull \hbox (2.0pt too wide) in paragraph at lines 131--131
 []\OT1/ptm/m/n/8 450.7| 
  []
 
 
-Overfull \hbox (1.59998pt too wide) in paragraph at lines 134--134
+Overfull \hbox (1.59998pt too wide) in paragraph at lines 131--131
 []\OT1/ptm/m/n/8 2256| 
  []
 
 
-Overfull \hbox (2.0pt too wide) in paragraph at lines 134--134
+Overfull \hbox (2.0pt too wide) in paragraph at lines 131--131
 []\OT1/ptm/m/n/8 17.26| 
  []
 
 [2 <c:/Users/presi/workspace/nodeSRT/docs/NodeSRT Architecture.png>]
-Underfull \hbox (badness 6775) in paragraph at lines 176--177
+Underfull \hbox (badness 6775) in paragraph at lines 173--174
 \OT1/ptm/m/n/8 Mu-ta-tion Test-ing," in 2013 IEEE Sixth In-ter-na-tional Con-fer-
  []
 
 
-Underfull \hbox (badness 1540) in paragraph at lines 179--180
+Underfull \hbox (badness 1540) in paragraph at lines 176--177
 \OT1/ptm/m/n/8 se-lec-tion tech-nique," ACM Trans-ac-tions on Soft-ware En-gi-neer-ing
  []
 
@@ -435,7 +435,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  36i,10n,37p,417b,252s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (3 pages, 89117 bytes).
+Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (3 pages, 88928 bytes).
 PDF statistics:
  38 PDF objects out of 1000 (max. 8388607)
  25 compressed objects within 1 object stream

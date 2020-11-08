@@ -49,7 +49,7 @@ JavaScript, Selective Regression Testing, Node.js Application, Static Analysis, 
 
 \section{Introduction}
 With the continuous growth of web applications, Node.js has become one of the most popular frameworks 
-for web application development \cite{b16}. For critical online services, performing regression testing is important. However, 
+for web application development \cite{b16}. For critical online services, performing regression testing and integration testing is important. However, 
 since JavaScript is a loosely typed, dynamic language, test 
 selection on JavaScript projects is hard. Besides, modern web applications are usually composed of 
 more than one component; running unit tests only does not judge the overall behaviour of the web 
@@ -63,13 +63,12 @@ the program and selects tests that reflect changed files. Method-level analysis 
 then selects tests that reflect changed method. Since method-level selection is more complicated than  
 file-levle selection, file-level selection runs faster in phase one. However, file-level selection selects more 
 tests than needed. Therefore it is less precise than method-level selection and runs slower in phase two. 
-
-Jest OnlyChange is the current industry-standard SRT technique; it operates at file-level granularity and selects 
-tests to be rerun based on file changes in the Git repository. As it is safe and the most light-weighted approach. Although fast, this approach may not be precise 
+Jest OnlyChange is the current industry-standard SRT technique which operates at file-level granularity. And it can reduce tests executed 
+without skipping tests that might expose failures. Plus it is the most light-weighted approach. Although fast, this approach may not be precise 
 enough for some test suites. Therefore, our research starts from a question:\textit{"Can we find a more 
 effective test selection technique for Node.js Applications?"} 
 
-To evaluate effectiveness of test selection technique, Rothermel\cite{b13} proposed four metrics: Inclusiveness, Precision, Efficiency, Generality. Inclusiveness 
+To evaluate effectiveness of SRT techniques, Rothermel\cite{b13} proposed four metrics: Inclusiveness, Precision, Efficiency, Generality. Inclusiveness 
 measures the extent to which SRT technique chooses tests that are affected by the change. Precision measures 
 the ability that SRT technique omits tests that are not affected by the change. Efficiency measures the time and 
 space required. Generality measures its ability to function in a comprehensive and practical range of situations.
@@ -81,12 +80,9 @@ We also evaluated our selection technique by performing an empirical study on tw
 size and code coverage.
 
 \section{Approach Overview}
- Many special language features makes tranditional SRT technique
-not working on JavaScript programs. These features include first-class functions, Inheritance and the prototype chain, Asynchronous and Error handling.
-To mitigate these challenges, our tool uses a combination of static and dynamic analysis, then perform a modification-based test 
+To mitigate the challenge of performing test selection on JavaScript programs, our tool uses a combination of static and dynamic analysis, then perform a modification-based test 
 selection algorithm in method level. The Modification-based approach works by analyzing modified code entities 
-then select tests based on modifications. This strategy is relatively simple and proved safe by \cite{b3, b4}. NodeSRT can 
-also be used in CI/CD environment. NodeSRT consists of five parts: dynamic analysis, static analysis, change analysis, 
+to select tests based on modifications. This strategy can guarantee safety while being relatively simple. NodeSRT consists of five parts: dynamic analysis, static analysis, change analysis, 
 test selection, and selected test runner. 
 \begin{figure}[htbp]
     \centerline{\includegraphics[scale=0.45]{NodeSRT Architecture.png}}
@@ -94,15 +90,16 @@ test selection, and selected test runner.
     \label{fig}
     \end{figure}    
 
-As shown in Figure 1. The \textbf{Static Analysis module} performs static analysis on original codebase to get file dependency
-graph on each tests. It works by identifing and resolving \verb|require| and \verb|import| in JavaScript files. The \textbf{Dynamic Analysis module} generate a dynamic call graph by injecting code to original codebase 
-generated AST. Since Node.js applications have the characteristics of client-side, server-side separated, code in 
-different modules may be running in a different environment. E.g. The server-side code is running in Node.js 
-environment. Client-side code is running in the browser environment. To collect runtime information of both 
-modules, NodeSRT uses HTTP requests. The injected code will send logging messages to the server. The logging server will 
-collect all the logging messages and generate a call graph in JSON format. As noted by \cite{b2, b4} when the codebase 
-becomes large, code analysis result should be store in database to ensure performance. \textbf{Change Analysis module} 
-compares the ASTs of the changed files, then generate a JSON representation of changes. Since NodeSRT uses function-level 
+ The \textbf{Static Analysis module} performs static analysis on original codebase to get file dependency
+graph on each tests. It works by identifing and resolving \verb|require| and \verb|import| in JavaScript files. 
+The \textbf{Dynamic Analysis module} generate a dynamic call graph by injecting code to original codebase 
+generated AST. 
+NodeSRT uses HTTP requests to collect runtime information of application. Since web applications usually consists of different modules, code in 
+different modules may be running in a different runtime environments. E.g. The server-side code runs in Node.js 
+environment. Client-side code runs in the browser environment. The code injector in Dynamic Analysis module injects code that send logging messages to 
+the logging server, which collects all the logging messages and generates call graph in JSON format. The runtime information we collected include function name, file name, and the number of parameters. 
+These entities will be used in later modules. As noted by \cite{b2, b4} when the codebase becomes large, code analysis result should be store in a database to ensure performance. 
+\textbf{Change Analysis module} compares the ASTs of the changed files, then generate a JSON representation of changes. Since NodeSRT uses function-level 
 granularity, change analysis module finds the closest function name of each different AST node based on their ancestors. 
 If the function is anonymous, NodeSRT will generate a unique name for it based on its parent function name, class name and file name. 
 This approach is similar to the approach of Chianti \cite{b12} handling anonymous class in Java. With call graph, file dependency graph, 
@@ -115,10 +112,10 @@ record logging messages and build dynamic call graph.
 
 \section{Empirical Evaluation}
 
-To evaluate NodeSRT, we performed empirical evaluation on two open-source Node.js project. We chose these two project because 
+To evaluate NodeSRT, we performed empirical evaluation on two open-source Node.js projects. We chose these two projects because 
 our empirical study requires sample has to be well-maintained and has reasonable amount of tests. By using the method mentioned in \cite{b10}, 
-we found Uppy and Simorgh. Uppy has 112k lines of code, 216 unit tests and 9 end-to-end tests, 
-achieves 20\% of code coverage. Simorgh is the BBC website rebuild using React.js. This project has 698k lines of code. 
+we selected Uppy and Simorgh. Uppy has 112k lines of code, 216 unit tests and 9 end-to-end tests, 
+achieves 20\% of code coverage. Simorgh has 698k lines of code. 
 It includes 2801 unit tests, achieves 97\% of code coverage. The 
 experiment ran on a 4 core x86-64 CPU with 16 GB of RAM, AWS cloud Linux server. Due to the fact that the internet speed and computing speed is not 
 unchanged, we use the percentage of tests selected and the percentage of SRT full process running time to 
