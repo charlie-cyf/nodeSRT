@@ -113,7 +113,7 @@ record logging messages and build dynamic call graph.
 \section{Empirical Evaluation}
 
 To evaluate NodeSRT, we performed empirical evaluation on two open-source Node.js projects. We chose these two projects because 
-our empirical study requires sample has to be well-maintained and has reasonable amount of tests. By using the method mentioned in \cite{b10}, 
+our empirical study requires systems that are sample has to be well-maintained and has reasonable amount of tests. By using the method mentioned in \cite{b10}, 
 we selected Uppy and Simorgh. Uppy has 112k lines of code, 216 unit tests and 9 end-to-end tests, 
 achieves 20\% of code coverage. Simorgh has 698k lines of code. 
 It includes 2801 unit tests, achieves 97\% of code coverage. The 
@@ -124,15 +124,14 @@ represent the result.
 \begin{table}[htbp]
     \caption{Empirical study result}
     \centering
-    \begin{tabular}{@{}|p{3em}|p{2em}|p{1.8em}|p{3.5em}|p{2em}|p{3.5em}|p{2.5em}|@{}}
+    % \begin{tabular}{@{}p{3em}p{2em}p{1.8em}p{3.5em}p{2em}p{3.5em}p{2.5em}@{}}
+    \begin{tabular}{@{}p{2em}p{2.2em}p{2em}p{1.8em}p{3.5em}p{2em}p{3.5em}p{3em}@{}}
     \toprule
-    project name & retest time (s)&select time (ms)&NodeSRT test No. (\%)&Jest test No. (\%)& NodeSRT running time (\%) & Jest running time (\%) \\ \midrule
-    Uppy         & 69.3  &  490   &                    8.40              &  20.66              &   50.24               &   23.63                    \\ \midrule
-    Simorgh      & 450.7  &  2256 &                    2.73              &  17.26              &   8.10                &   30.18                   \\ \bottomrule
+    \textbf{Project Name} & \textbf{Round of exp.}  & \textbf{Retest time (s)}           & \textbf{Select time (ms)} & \textbf{NodeSRT test No. (\%)}    & \textbf{Jest test No. (\%)}       & \textbf{NodeSRT running time (\%)} & \textbf{Jest run time (\%)} \\ \midrule
+    Uppy         & \multicolumn{1}{r}{480} & \multicolumn{1}{r}{69.3}  & \multicolumn{1}{r}{490} & \multicolumn{1}{r}{8.4} & \multicolumn{1}{r}{20.7} & \multicolumn{1}{r}{50.2}  &   \multicolumn{1}{r}{23.6} \\ 
+    Simorgh      & \multicolumn{1}{r}{108} & \multicolumn{1}{r}{450.7} & \multicolumn{1}{r}{2256} & \multicolumn{1}{r}{2.7}& \multicolumn{1}{r}{17.2} & \multicolumn{1}{r}{8.1}   &  \multicolumn{1}{r}{30.2} \\ \bottomrule
     \end{tabular}
     \end{table}
-
-
 
 As shown in Table I, given file dependency graph and call graph, the selection step for both project is less than 5\% of total 
 running time. Comparing to Jest OnlyChange, NodeSRT selects much less tests for both projects. In fact, NodeSRT selects 1.5 times fewer 
