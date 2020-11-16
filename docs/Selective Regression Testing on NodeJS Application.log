@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  14 NOV 2020 22:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.24)  15 NOV 2020 21:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -236,6 +236,9 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count267
 \@lastruleclass=\count268
 \@thisrulewidth=\dimen181
+) (c:/texlive/2020/texmf-dist/tex/latex/preprint/balance.sty
+Package: balance 1999/02/23 4.3 (PWD)
+\oldvsize=\dimen182
 ) (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-11 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count269
@@ -262,13 +265,13 @@ LaTeX Font Info:    ... okay on input line 14.
 (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count270
-\scratchdimen=\dimen182
+\scratchdimen=\dimen183
 \scratchbox=\box50
 \nofMPsegments=\count271
 \nofMParguments=\count272
 \everyMPshowfont=\toks22
 \MPscratchCnt=\count273
-\MPscratchDim=\dimen183
+\MPscratchDim=\dimen184
 \MPnumerator=\count274
 \makeMPintoPDFobject=\count275
 \everyMPtoPDFconversion=\toks23
@@ -290,121 +293,130 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 128.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 135.
  (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 128.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 135.
  (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (8.72784pt too wide) in paragraph at lines 130--130
+Overfull \hbox (8.72784pt too wide) in paragraph at lines 137--137
 []\OT1/ptm/b/n/8 Project
  []
 
 
-Overfull \hbox (3.9919pt too wide) in paragraph at lines 130--130
+Overfull \hbox (3.9919pt too wide) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 Name| 
  []
 
 
-Overfull \hbox (5.51985pt too wide) in paragraph at lines 130--130
+Overfull \hbox (5.51985pt too wide) in paragraph at lines 137--137
 []\OT1/ptm/b/n/8 Round
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 of
  []
 
 
-Overfull \hbox (5.31975pt too wide) in paragraph at lines 130--130
+Overfull \hbox (5.31975pt too wide) in paragraph at lines 137--137
 []\OT1/ptm/b/n/8 Retest
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 time
  []
 
 
-Overfull \hbox (5.59169pt too wide) in paragraph at lines 130--130
+Overfull \hbox (5.59169pt too wide) in paragraph at lines 137--137
 []\OT1/ptm/b/n/8 Select
  []
 
 
-Overfull \hbox (0.7038pt too wide) in paragraph at lines 130--130
+Overfull \hbox (0.7038pt too wide) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 time
  []
 
 
-Overfull \hbox (0.70381pt too wide) in paragraph at lines 130--130
+Overfull \hbox (0.70381pt too wide) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 (ms)| 
  []
 
 
-Overfull \hbox (5.01581pt too wide) in paragraph at lines 130--130
+Overfull \hbox (5.01581pt too wide) in paragraph at lines 137--137
 []\OT1/ptm/b/n/8 NodeSRT
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 []\OT1/ptm/b/n/8 Jest
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 test
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 No.
  []
 
 
-Overfull \hbox (5.01581pt too wide) in paragraph at lines 130--130
+Overfull \hbox (5.01581pt too wide) in paragraph at lines 137--137
 []\OT1/ptm/b/n/8 NodeSRT
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 run-ning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 time
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 []\OT1/ptm/b/n/8 Jest
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 run
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 137--137
 \OT1/ptm/b/n/8 time
  []
 
 
-Overfull \hbox (1.69598pt too wide) in paragraph at lines 131--131
+Overfull \hbox (1.69598pt too wide) in paragraph at lines 138--138
 []\OT1/ptm/m/n/8 Uppy| 
  []
 
 
-Overfull \hbox (11.41582pt too wide) in paragraph at lines 132--132
+Overfull \hbox (11.41582pt too wide) in paragraph at lines 139--139
 []\OT1/ptm/m/n/8 Simorgh| 
  []
 
+
+Underfull \hbox (badness 1755) in paragraph at lines 164--165
+[]\OT1/ptm/m/n/8 S. Al-i-madadi, A. Mes-bah and K. Pat-tabi-ra-man, "Hy-brid DOM-
+ []
+
+
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
+
 [2 <c:/Users/presi/workspace/nodeSRT/docs/NodeSRT Architecture.png>]
-Underfull \hbox (badness 6775) in paragraph at lines 172--173
-\OT1/ptm/m/n/8 Mu-ta-tion Test-ing," in 2013 IEEE Sixth In-ter-na-tional Con-fer-
+Underfull \hbox (badness 1430) in paragraph at lines 173--174
+\OT1/ptm/m/n/8 na-tional Con-fer-ence on Soft-ware En-gi-neer-ing (ICSE), 2005. doi:
  []
 
 
@@ -423,19 +435,20 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3
 
-] (c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux) ) 
+Overfull \vbox (0.94487pt too high) has occurred while \output is active []
+
+ [3] (c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux) ) 
 Here is how much of TeX's memory you used:
- 3959 strings out of 480876
- 57020 string characters out of 5911487
- 311265 words of memory out of 5000000
- 19546 multiletter control sequences out of 15000+600000
+ 3974 strings out of 480876
+ 57353 string characters out of 5911487
+ 314667 words of memory out of 5000000
+ 19557 multiletter control sequences out of 15000+600000
  572653 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,10n,37p,417b,252s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,11n,37p,405b,252s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (3 pages, 88921 bytes).
+Output written on "c:/Users/presi/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" (3 pages, 88468 bytes).
 PDF statistics:
  38 PDF objects out of 1000 (max. 8388607)
  25 compressed objects within 1 object stream
