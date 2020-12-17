@@ -29,17 +29,16 @@ Node.js is one of the most popular frameworks for building web applications. As 
 matures, the cost of running their entire regression test suite can become significant. 
 Selective Regression Testing (SRT) is a technique that executes only a subset of tests the regression test suite can detect software failures more efficiently. 
 Previous SRT studies mainly focused on standard desktop applications. Node.js applications are 
-considered hard to perform test reduction because Node's asynchronous, event-driven programming model and 
+considered hard to perform test reduction because of Node's asynchronous, event-driven programming model and because  
 JavaScript is a dynamic programming language. 
 In this paper, we present NodeSRT, a Selective Regression Testing framework for Node.js applications. 
-By performing static and dynamic analysis, NodeSRT gets relationship between changed methods and tests, 
-then reduces the whole regression test suite to only tests that are 
-affected by the change, which would improve the execution time of the regression test suite. 
+By performing static and dynamic analysis, NodeSRT identifies relationship between changed methods and tests, 
+then reduces the regression test suite to only tests that are 
+affected by the change, improve the execution time of the regression test suite. 
 To evaluate our selection technique, we applied NodeSRT to two open-source projects: Uppy and Simorgh, 
 then compared our approach with retest-all strategy and current industry-standard SRT technique: Jest 
-OnlyChange option. The results demonstrate that NodeSRT correctly selects affected tests based on 
-changes and is 450\% more precise than the Jest OnlyChange option. NodeSRT is also over 2.5 times faster in 
-high code coverage project.
+OnlyChange. The results demonstrate that NodeSRT correctly selects affected tests based on 
+changes and is 250\% faster, 450\% more precise than the Jest OnlyChange. 
     
 \end{abstract}
 
