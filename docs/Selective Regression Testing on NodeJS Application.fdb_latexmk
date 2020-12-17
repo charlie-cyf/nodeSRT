@@ -1,11 +1,11 @@
 # Fdb version 3
-["pdflatex"] 1608173365 "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.tex" "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" "Selective Regression Testing on NodeJS Application" 1608173704
+["pdflatex"] 1608173989 "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.tex" "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf" "Selective Regression Testing on NodeJS Application" 1608173991
   "IEEEtran.cls" 1602015178 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "NodeSRT Architecture.png" 1602015178 23149 3ca0e17f569886c30c49135d19d56db3 ""
-  "Selective Regression Testing on NodeJS Application.aux" 1608173367 1248 7643d92f8ce56d1bad38c08ba880a399 "pdflatex"
-  "Selective Regression Testing on NodeJS Application.tex" 1608173429 15954 3eec6ea79a9ebc1e0da7fa407be74b95 ""
-  "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux" 1608173367 1248 7643d92f8ce56d1bad38c08ba880a399 ""
-  "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.tex" 1608173429 15954 3eec6ea79a9ebc1e0da7fa407be74b95 ""
+  "Selective Regression Testing on NodeJS Application.aux" 1608173991 1248 7643d92f8ce56d1bad38c08ba880a399 "pdflatex"
+  "Selective Regression Testing on NodeJS Application.tex" 1608173987 15944 cdcce41d8bd67a91233971b51c9b3400 ""
+  "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.aux" 1608173991 1248 7643d92f8ce56d1bad38c08ba880a399 ""
+  "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.tex" 1608173987 15944 cdcce41d8bd67a91233971b51c9b3400 ""
   "c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc" 1602018009 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1602019652 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1602017507 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -80,6 +80,6 @@
   (generated)
   "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.log"
   "Selective Regression Testing on NodeJS Application.pdf"
-  "Selective Regression Testing on NodeJS Application.aux"
   "Selective Regression Testing on NodeJS Application.log"
   "c:/Users/charlie chen/Documents/workspace/nodeSRT/docs/Selective Regression Testing on NodeJS Application.pdf"
+  "Selective Regression Testing on NodeJS Application.aux"
