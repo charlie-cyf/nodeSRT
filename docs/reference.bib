@@ -1,0 +1,210 @@
+
+@inproceedings{b1,
+  author    = {Saba Alimadadi and Ali Mesbah and Karthik Pattabiraman},
+  title     = {{Hybrid DOM-Sensitive Change Impact Analysis for JavaScript}},
+  booktitle = {29th European Conference on Object-Oriented Programming (ECOOP 2015)},
+  pages     = {321--345},
+  series    = {Leibniz International Proceedings in Informatics (LIPIcs)},
+  isbn      = {978-3-939897-86-6},
+  issn      = {1868-8969},
+  year      = {2015},
+  volume    = {37},
+  editor    = {John Tang Boyland},
+  publisher = {Schloss Dagstuhl--Leibniz-Zentrum fuer Informatik},
+  address   = {Dagstuhl, Germany},
+  url       = {http://drops.dagstuhl.de/opus/volltexte/2015/5228},
+  urn       = {urn:nbn:de:0030-drops-52280},
+  doi       = {10.4230/LIPIcs.ECOOP.2015.321},
+  annote    = {Keywords: Change impact analysis, JavaScript, hybrid analysis}
+}
+
+
+
+@inproceedings{b2,
+  author    = {A. {Beszédes} and T. {Gergely} and L. {Schrettner} and J. {Jász} and L. {Langó} and T. {Gyimóthy}},
+  booktitle = {2012 28th IEEE International Conference on Software Maintenance (ICSM)},
+  title     = {Code coverage-based regression test selection and prioritization in WebKit},
+  year      = {2012},
+  volume    = {},
+  number    = {},
+  pages     = {46-55},
+  doi       = {10.1109/ICSM.2012.6405252}
+}
+
+@inproceedings{b4,
+  author    = { {Yih-Farn Chen} and D. S. {Rosenblum} and  {Kiem-Phong Vo}},
+  booktitle = {Proceedings of 16th International Conference on Software Engineering},
+  title     = {TESTTUBE: a system for selective regression testing},
+  year      = {1994},
+  volume    = {},
+  number    = {},
+  pages     = {211-220},
+  doi       = {10.1109/ICSE.1994.296780}
+}
+
+@inproceedings{b6,
+  author    = {Gligoric, Milos and Eloussi, Lamyaa and Marinov, Darko},
+  title     = {Practical Regression Test Selection with Dynamic File Dependencies},
+  year      = {2015},
+  isbn      = {9781450336208},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/2771783.2771784},
+  doi       = {10.1145/2771783.2771784},
+  abstract  = { Regression testing is important but can be time-intensive. One approach to speed it up is regression test selection (RTS), which runs only a subset of tests. RTS was proposed over three decades ago but has not been widely adopted in practice. Meanwhile, testing frameworks, such as JUnit, are widely adopted and well integrated with many popular build systems. Hence, integrating RTS in a testing framework already used by many projects would increase the likelihood that RTS is adopted. We propose a new, lightweight RTS technique, called Ekstazi, that can integrate well with testing frameworks. Ekstazi tracks dynamic dependencies of tests on files, and unlike most prior RTS techniques, Ekstazi requires no integration with version-control systems. We implemented Ekstazi for Java and JUnit, and evaluated it on 615 revisions of 32 open-source projects (totaling almost 5M LOC) with shorter- and longer-running test suites. The results show that Ekstazi reduced the end-to-end testing time 32% on average, and 54% for longer-running test suites, compared to executing all tests. Ekstazi also has lower end-to-end time than the existing techniques, despite the fact that it selects more tests. Ekstazi has been adopted by several popular open source projects, including Apache Camel, Apache Commons Math, and Apache CXF. },
+  booktitle = {Proceedings of the 2015 International Symposium on Software Testing and Analysis},
+  pages     = {211–222},
+  numpages  = {12},
+  keywords  = {Regression test selection, file dependencies},
+  location  = {Baltimore, MD, USA},
+  series    = {ISSTA 2015}
+}
+
+@article{b7,
+  author     = {Harrold, Mary Jean and Jones, James A. and Li, Tongyu and Liang, Donglin and Orso, Alessandro and Pennings, Maikel and Sinha, Saurabh and Spoon, S. Alexander and Gujarathi, Ashish},
+  title      = {Regression Test Selection for Java Software},
+  year       = {2001},
+  issue_date = {11/01/2001},
+  publisher  = {Association for Computing Machinery},
+  address    = {New York, NY, USA},
+  volume     = {36},
+  number     = {11},
+  issn       = {0362-1340},
+  url        = {https://doi.org/10.1145/504311.504305},
+  doi        = {10.1145/504311.504305},
+  abstract   = {Regression testing is applied to modified software to provide confidence that the changed parts behave as intended and that the unchanged parts have not been adversely affected by the modifications. To reduce the cost of regression testing, test cases are selected from the test suite that was used to test the original version of the software---this process is called regression test selection. A safe regression-test-selection algorithm selects every test case in the test suite that may reveal a fault in the modified software. Safe regression-test-selection technique that, based on the use of a suitable representation, handles the features of the Java language. Unlike other safe regression test selection techniques, the presented technique also handles incomplete programs. The technique can thus be safely applied in the (very common) case of Java software that uses external libraries of components; the analysis of the external code is note required for the technique to select test cases for such software. The paper also describes RETEST, a regression-test-selection algorithm can be effective in reducing the size of the test suite.},
+  journal    = {SIGPLAN Not.},
+  month      = oct,
+  pages      = {312–326},
+  numpages   = {15}
+}
+
+@inproceedings{b8,
+  author    = {Hirzel, Matthias},
+  title     = {Selective Regression Testing for Web Applications Created with Google Web Toolkit},
+  year      = {2014},
+  isbn      = {9781450329262},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/2647508.2647527},
+  doi       = {10.1145/2647508.2647527},
+  abstract  = {Today's web applications are highly dynamic and powerful software components that may change often. Mostly, they are based on JavaScript or AJAX. A common way to ensure correct behaviour is to use selective regression tests. Nevertheless, especially on the client side, testing is hard. One way to ease the development and the testing process of dynamic web applications is to use the Google Web Toolkit (GWT). This framework enables the development in Java and transfers the code via a compiler into JavaScript. However, it does not support regression testing with test selection. As far as we know, this paper presents the first selective regression testing technique for GWT-based web applications. In order to determine test cases that have to be rerun, it compares the Java code of two versions of the application, localizes and classifies changes in the code, and traces the mapping of Java source code to JavaScript code. We have implemented our technique as a prototype Eclipse plug-in and have conducted an evaluation of the tool.},
+  booktitle = {Proceedings of the 2014 International Conference on Principles and Practices of Programming on the Java Platform: Virtual Machines, Languages, and Tools},
+  pages     = {110–121},
+  numpages  = {12},
+  keywords  = {selective regression testing, web applications, fault localization, google web toolkit, control flow graph, debugging},
+  location  = {Cracow, Poland},
+  series    = {PPPJ '14}
+}
+
+@inproceedings{b9,
+  author    = {M. J. {Harrold} and M. L. {Souffa}},
+  booktitle = {Proceedings. Conference on Software Maintenance, 1988.},
+  title     = {An incremental approach to unit testing during maintenance},
+  year      = {1988},
+  volume    = {},
+  number    = {},
+  pages     = {362-367},
+  doi       = {10.1109/ICSM.1988.10188}
+}
+
+@inproceedings{b10,
+  author    = {Labuschagne, Adriaan and Inozemtseva, Laura and Holmes, Reid},
+  title     = {Measuring the Cost of Regression Testing in Practice: A Study of Java Projects Using Continuous Integration},
+  year      = {2017},
+  isbn      = {9781450351058},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/3106237.3106288},
+  doi       = {10.1145/3106237.3106288},
+  abstract  = {Software defects cost time and money to diagnose and fix. Consequently, developers use a variety of techniques to avoid introducing defects into their systems. However, these techniques have costs of their own; the benefit of using a technique must outweigh the cost of applying it. In this paper we investigate the costs and benefits of automated regression testing in practice. Specifically, we studied 61 projects that use Travis CI, a cloud-based continuous integration tool, in order to examine real test failures that were encountered by the developers of those projects. We determined how the developers resolved the failures they encountered and used this information to classify the failures as being caused by a flaky test, by a bug in the system under test, or by a broken or obsolete test. We consider that test failures caused by bugs represent a benefit of the test suite, while failures caused by broken or obsolete tests represent a test suite maintenance cost. We found that 18% of test suite executions fail and that 13% of these failures are flaky. Of the non-flaky failures, only 74% were caused by a bug in the system under test; the remaining 26% were due to incorrect or obsolete tests. In addition, we found that, in the failed builds, only 0.38% of the test case executions failed and 64% of failed builds contained more than one failed test. Our findings contribute to a wider understanding of the unforeseen costs that can impact the overall cost effectiveness of regression testing in practice. They can also inform research into test case selection techniques, as we have provided an approximate empirical bound on the practical value that could be extracted from such techniques. This value appears to be large, as the 61 systems under study contained nearly 3 million lines of test code and yet over 99% of test case executions could have been eliminated with a perfect oracle.},
+  booktitle = {Proceedings of the 2017 11th Joint Meeting on Foundations of Software Engineering},
+  pages     = {821–830},
+  numpages  = {10},
+  keywords  = {flaky tests, cost effectiveness, continuous integration, Regression testing},
+  location  = {Paderborn, Germany},
+  series    = {ESEC/FSE 2017}
+}
+
+@inproceedings{b11,
+  author    = {S. {Mirshokraie} and A. {Mesbah} and K. {Pattabiraman}},
+  booktitle = {2013 IEEE Sixth International Conference on Software Testing, Verification and Validation},
+  title     = {Efficient JavaScript Mutation Testing},
+  year      = {2013},
+  volume    = {},
+  number    = {},
+  pages     = {74-83},
+  doi       = {10.1109/ICST.2013.23}
+}
+
+@inproceedings{b12,
+  author    = { {Xiaoxia Ren} and B. G. {Ryder} and M. {Stoerzer} and F. {Tip}},
+  booktitle = {Proceedings. 27th International Conference on Software Engineering, 2005. ICSE 2005.},
+  title     = {Chianti: a change impact analysis tool for Java programs},
+  year      = {2005},
+  volume    = {},
+  number    = {},
+  pages     = {664-665},
+  doi       = {10.1109/ICSE.2005.1553643}
+}
+
+@article{b13,
+  author  = {G. {Rothermel} and M. J. {Harrold}},
+  journal = {IEEE Transactions on Software Engineering},
+  title   = {Analyzing regression test selection techniques},
+  year    = {1996},
+  volume  = {22},
+  number  = {8},
+  pages   = {529-551},
+  doi     = {10.1109/32.536955}
+}
+
+
+@article{b14,
+  author     = {Rothermel, Gregg and Harrold, Mary Jean},
+  title      = {A Safe, Efficient Regression Test Selection Technique},
+  year       = {1997},
+  issue_date = {April 1997},
+  publisher  = {Association for Computing Machinery},
+  address    = {New York, NY, USA},
+  volume     = {6},
+  number     = {2},
+  issn       = {1049-331X},
+  url        = {https://doi.org/10.1145/248233.248262},
+  doi        = {10.1145/248233.248262},
+  abstract   = {Regression testing is an expensive but necessary maintenance activity performed on modified software to provide confidence that changes are correct and do not adversely affect other portions of the softwore. A regression test selection technique choses, from an existing test set, thests that are deemed necessary to validate modified software. We present a new technique for regression test selection. Our algorithms construct control flow graphs for a precedure or program and its modified version and use these graphs to select tests that execute changed code from the original test suite. We prove that, under certain conditions, the set of tests our technique selects includes every test from the original test suite that con expose faults in the modified procedfdure or program. Under these conditions our algorithms are safe. Moreover, although our algorithms may select some tests that cannot expose faults, they are at lease as precise as other safe regression test selection algorithms. Unlike many other regression test selection algorithms, our algorithms handle all language constructs and all types of program modifications. We have implemented our algorithms; initial empirical studies indicate that our technique can significantly reduce the cost of regression testing modified software.},
+  journal    = {ACM Trans. Softw. Eng. Methodol.},
+  month      = apr,
+  pages      = {173–210},
+  numpages   = {38},
+  keywords   = {selective retest, regression test selection, regression testing}
+}
+
+@inproceedings{b16,
+  author    = {Schiavio, Filippo and Sun, Haiyang and Bonetta, Daniele and Ros\`{a}, Andrea and Binder, Walter},
+  title     = {NodeMOP: Runtime Verification for Node.Js Applications},
+  year      = {2019},
+  isbn      = {9781450359337},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/3297280.3297456},
+  doi       = {10.1145/3297280.3297456},
+  abstract  = {Node.js has become one of the most popular frameworks for general-purpose and server-side application development in JavaScript. However, due to its dynamic, asynchronous, event-driven programming model, Node.js applications are considered error-prone, and their correctness is hard to verify. Monitoring-Oriented Programming (MOP) is a Runtime Verification (RV) paradigm that aims at improving the safety and reliability of a software system. To the best of our knowledge, no practical RV framework targets JavaScript and Node.js applications.In this paper, we introduce NodeMOP, a novel RV framework for JavaScript that allows one to apply RV to Node.js applications. Using NodeMOP, we have formalized two properties related to popular asynchronous APIs based on the Node.js documentation, one from the file-system module and the other from the HTTP module. NodeMOP also supports error recovery by allowing developers to define custom handlers in case of property violations. We showcase NodeMOP with our specified properties on examples of Node.js API misuse. We also evaluate the overhead of NodeMOP with benchmarks based on the introduced examples.},
+  booktitle = {Proceedings of the 34th ACM/SIGAPP Symposium on Applied Computing},
+  pages     = {1794–1801},
+  numpages  = {8},
+  keywords  = {self-healing systems, Node.js, software verification, dynamic analysis, runtime verification, JavaScript, monitoring-oriented programming},
+  location  = {Limassol, Cyprus},
+  series    = {SAC '19}
+}
+
+@inproceedings{b17,
+  author    = {A. {Taha} and S. M. {Thebaut} and S. {Liu}},
+  booktitle = {[1989] Proceedings of the Thirteenth Annual International Computer Software   Applications Conference},
+  title     = {An approach to software fault localization and revalidation based on incremental data flow analysis},
+  year      = {1989},
+  volume    = {},
+  number    = {},
+  pages     = {527-534},
+  doi       = {10.1109/CMPSAC.1989.65142}
+}
