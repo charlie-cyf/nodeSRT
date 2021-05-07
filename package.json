@@ -74,7 +74,7 @@
     "resolve-package-json": "^1.4.0",
     "styx": "^0.2.1",
     "typy": "^3.3.0",
-    "underscore": "^1.10.2",
+    "underscore": "^1.12.1",
     "xtend": "^4.0.2"
   },
   "devDependencies": {
